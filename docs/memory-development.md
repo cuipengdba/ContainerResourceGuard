@@ -25,6 +25,6 @@ Swap 下调先读 memory.swap.current；目标低于已有用量时延后，不�
 
 ## 当前验证
 
-Windows 通用单元和 vet 通过，覆盖参数边界、high/硬预算一致性、祖先/原值夹限、零 Swap、危险下调、落盘期间 Swap 增长、恢复原来为零的 Swap 限额、外部改值。Linux race/真实控制文件、实际 Swap 负载、跨周期稳定窗口和缓存回收同时发生时的业务结果仍待执行。
+Windows 通用单元和 vet 通过，覆盖参数边界、high/硬预算一致性、祖先/原值夹限、零 Swap、危险下调、落盘期间 Swap 增长、恢复原来为零的 Swap 限额、外部改值。Linux race/CI 和 16 项真实控制/工具检查已通过，见 [实测](testing-memory-io.md)。实际 Swap、跨周期稳定窗口和原缓存回收高峰仍待验收。
 
 内核接口依据 [Linux cgroup v2 官方文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
