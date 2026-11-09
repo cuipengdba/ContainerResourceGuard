@@ -20,6 +20,8 @@ type Config struct {
 	PidsMax         *uint64       `json:"pids_max,omitempty"`
 	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
 	IOWeight        *uint64       `json:"io_weight,omitempty"`
+	MemoryHigh      string        `json:"memory_high,omitempty"`
+	MemorySwapMax   string        `json:"memory_swap_max,omitempty"`
 	Mode            string        `json:"mode,omitempty"`
 	IOProfile       string        `json:"io_profile,omitempty"`
 	StateDir        string        `json:"state_dir,omitempty"`
@@ -140,6 +142,24 @@ func (c *Config) Validate() error {
 	}
 	if c.IOWeight != nil && (*c.IOWeight < 1 || *c.IOWeight > 10000) {
 		return errors.New("io_weight must be 1..10000 (relative default weight, not a hard IO cap)")
+	}
+	if c.MemoryHigh != "" {
+		n, err := ParseBytes(c.MemoryHigh)
+		if err != nil || n < 16<<20 {
+			return errors.New("memory_high must be an integer byte quantity of at least 16MiB")
+		}
+		if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
+			max, _ := ParseBytes(c.Limits.MemoryMax)
+			if n > max {
+				return errors.New("memory_high cannot exceed requested memory_max")
+			}
+		}
+	}
+	if c.MemorySwapMax != "" {
+		n, err := ParseBytes(c.MemorySwapMax)
+		if err != nil || n > 0 && n < uint64(os.Getpagesize()) {
+			return errors.New("memory_swap_max must be 0B or at least one page in whole bytes")
+		}
 	}
 	if c.Mode == "" {
 		c.Mode = "enforce"

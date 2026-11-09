@@ -145,6 +145,12 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if c.IOWeight != nil {
 		p.Settings = append(p.Settings, Setting{File: "io.weight", Value: "default " + strconv.FormatUint(*c.IOWeight, 10)})
 	}
+	extra, warnings, err := memoryExtras(c, env, original, wantMem, desiredMem, mem)
+	if err != nil {
+		return p, err
+	}
+	p.Settings = append(p.Settings, extra...)
+	p.Warnings = append(p.Warnings, warnings...)
 	if c.ResourceMode == "manual" {
 		settings, devices, warnings := manualIO(c, env, original, manualDevice, relatedDevices)
 		p.Settings = append(p.Settings, settings...)

@@ -181,7 +181,7 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	return engine, lock, nil
 }
 func allowed(s Setting) bool {
-	return (s.File == "cpu.max" || s.File == "memory.max" || s.File == "pids.max" || s.File == "cpu.weight" || s.File == "io.weight") && s.Device == "" && s.DeviceIdentity == "" || s.File == "io.max" && validDevice(s.Device) && (s.DeviceIdentity == "" || validIdentity(s.DeviceIdentity))
+	return (s.File == "cpu.max" || s.File == "memory.max" || s.File == "memory.high" || s.File == "memory.swap.max" || s.File == "pids.max" || s.File == "cpu.weight" || s.File == "io.weight") && s.Device == "" && s.DeviceIdentity == "" || s.File == "io.max" && validDevice(s.Device) && (s.DeviceIdentity == "" || validIdentity(s.DeviceIdentity))
 }
 
 func (e *Engine) verifyDevice(s Setting) error {
@@ -300,13 +300,18 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 		_ = e.save()
 		return "conflict", "current value differs from the last owned value; refusing overwrite"
 	}
-	if s.File == "memory.max" && maxNumber(s.Value) < maxNumber(current) {
+	if (s.File == "memory.max" || s.File == "memory.high") && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.memoryPreflight(s.Value); err != nil {
 			return "skipped", err.Error()
 		}
 	}
 	if s.File == "pids.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.pidsHeadroom(s.Value); err != nil {
+			return "skipped", err.Error()
+		}
+	}
+	if s.File == "memory.swap.max" && maxNumber(s.Value) < maxNumber(current) {
+		if err := e.swapHeadroom(s.Value); err != nil {
 			return "skipped", err.Error()
 		}
 	}
@@ -321,7 +326,7 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 	}
 	// A slow journal fsync may outlive the preflight. Recheck usage immediately
 	// before lowering memory.max, without attempting forced cache reclaim.
-	if s.File == "memory.max" && maxNumber(s.Value) < maxNumber(current) {
+	if (s.File == "memory.max" || s.File == "memory.high") && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.memoryHeadroom(s.Value, 0); err != nil {
 			return "skipped", err.Error()
 		}
@@ -340,6 +345,11 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 	}
 	if s.File == "pids.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.pidsHeadroom(s.Value); err != nil {
+			return "skipped", err.Error()
+		}
+	}
+	if s.File == "memory.swap.max" && maxNumber(s.Value) < maxNumber(current) {
+		if err := e.swapHeadroom(s.Value); err != nil {
 			return "skipped", err.Error()
 		}
 	}
@@ -371,6 +381,9 @@ func validControl(s Setting, v string) bool {
 		return len(f) == 2 && (f[0] == "max" || positive(f[0])) && positive(f[1])
 	case "memory.max":
 		return v == "max" || positive(v)
+	case "memory.high", "memory.swap.max":
+		_, err := strconv.ParseUint(v, 10, 64)
+		return v == "max" || err == nil
 	case "pids.max":
 		_, err := strconv.ParseUint(v, 10, 64)
 		return v == "max" || err == nil
@@ -439,11 +452,14 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 					m.Conflict = true
 					err = errors.New("value changed while saving restore intent; external value retained")
 				}
-				if err == nil && m.File == "memory.max" && maxNumber(m.Original) < maxNumber(cur) {
+				if err == nil && (m.File == "memory.max" || m.File == "memory.high") && maxNumber(m.Original) < maxNumber(cur) {
 					err = e.memoryPreflight(m.Original)
 				}
 				if err == nil && m.File == "pids.max" && maxNumber(m.Original) < maxNumber(cur) {
 					err = e.pidsHeadroom(m.Original)
+				}
+				if err == nil && m.File == "memory.swap.max" && maxNumber(m.Original) < maxNumber(cur) {
+					err = e.swapHeadroom(m.Original)
 				}
 				if err == nil {
 					err = e.verifyDevice(m.Setting)
@@ -569,6 +585,10 @@ func requestedControl(c Config, file string) bool {
 		return c.CPUWeight != nil
 	case "io.weight":
 		return c.IOWeight != nil
+	case "memory.high":
+		return c.MemoryHigh != ""
+	case "memory.swap.max":
+		return c.MemorySwapMax != ""
 	}
 	return false
 }
