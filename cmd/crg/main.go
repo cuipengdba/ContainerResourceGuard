@@ -42,7 +42,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|quiesce|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
@@ -159,12 +159,12 @@ func mainErr() error {
 		emit(p)
 		return nil
 	}
-	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
+	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "quiesce" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
 		return errors.New("unknown command")
 	}
 	var c guard.Config
 	var e error
-	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "diagnose" || cmd == "upgrade-check" || cmd == "state-backup" || cmd == "disable" || cmd == "enable") && *config == "") {
+	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "diagnose" || cmd == "upgrade-check" || cmd == "state-backup" || cmd == "quiesce" || cmd == "disable" || cmd == "enable") && *config == "") {
 		c = guard.Config{Percent: 100}
 		if *state != "" {
 			c.StateDir = *state
@@ -300,7 +300,7 @@ func mainErr() error {
 			return nil
 		}
 	}
-	if cmd == "disable" {
+	if cmd == "disable" || cmd == "quiesce" {
 		if err := guard.Disable(c, env); err != nil {
 			return fmt.Errorf("cannot persist disable marker: %w", err)
 		}
@@ -313,7 +313,7 @@ func mainErr() error {
 		if e == nil {
 			break
 		}
-		if cmd != "disable" || !errors.Is(e, guard.ErrLocked) || time.Now().After(deadline) {
+		if (cmd != "disable" && cmd != "quiesce") || !errors.Is(e, guard.ErrLocked) || time.Now().After(deadline) {
 			return e
 		}
 		select {
@@ -328,6 +328,13 @@ func mainErr() error {
 	defer lock.Close()
 	if err := guard.VerifyIdentity(env); err != nil {
 		return err
+	}
+	if cmd == "quiesce" {
+		// OpenEngine holds both existing writer locks. Leave every original,
+		// applied/pending value and kernel control untouched for the upgrade.
+		// Do not replace the last resource snapshot with an invented plan.
+		emit(map[string]any{"state": "quiesced", "owned_mutations": len(engine.Journal.Mutations), "limits_action": "retained", "business_action": "none", "detail": "current-identity disable marker persisted and writer locks acquired; last resource snapshot/journal retained; enable resumes the optional helper on its next retry"})
+		return nil
 	}
 	if cmd == "enable" {
 		if err := guard.Enable(c); err != nil {

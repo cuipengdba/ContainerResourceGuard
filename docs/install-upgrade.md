@@ -7,6 +7,8 @@
 ```sh
 /opt/crg/crg build-info
 /opt/crg/crg upgrade-check --config /etc/crg/config.json
+# 升级维护：暂停自身资源 Agent，内核限额与原值日志保留，不执行恢复。
+/opt/crg/crg quiesce --config /etc/crg/config.json
 # 先显式停用；确认恢复结果，并按原 supervisor 的独立辅助管理方式停止 CRG helper。
 /opt/crg/crg disable --config /etc/crg/config.json
 /opt/crg/crg state-backup --config /etc/crg/config.json --output /recovery/crg-state-before-upgrade.json
@@ -19,6 +21,10 @@
 JSON 只报告本读取器的兼容结果、版本、摘要、控制器类别、条目数及身份是否相符，不返回原值或旧容器路径。build-info 新增锁协议、可读 journal/profile 版本和控制项列表，原 version/revision/os/arch 字段保持不变。读取器接受某快照不代表未运行过的另一候选二进制也接受；候选来源校验和该候选自身预检仍须分别执行。
 
 quiescent_snapshot 仅在读取时禁用标记属于当前身份且两把锁空闲时为 true。命令返回即释放锁，不能把这份 JSON 当作稍后切换二进制的锁凭证。未知旧版本是否遵循同一锁协议必须核对；未经验证的版本不允许假定可直接在线切换。
+
+quiesce 是显式维护操作：持久化与既有格式一致的当前身份禁用标记，至多等待 5s 获取两把写锁，验证自身身份后返回；不调用恢复、不改控制值、不重写当前 journal/pending 或最后一次 status。当前 Agent 退出后内核限额继续生效，optional helper 重试读取该标记时继续退出；之后 enable 才允许按既有重试策略重启 Agent。
+
+disable 仍表示停用并尝试恢复真实原值。quiesce 与 disable 都不能接入业务启动必经路径；维护失败不退出业务，若标记已持久化但后续拿锁/校验失败，会明确返回错误，限额仍应按内核实际值检查。status 保留最后资源结果，需结合 writer_lock_held、snapshot_age_seconds 和 upgrade-check 的 disabled_for_current_container 判断，不能把旧 managed 快照当成写入者仍运行。
 
 ## 私有备份边界
 
