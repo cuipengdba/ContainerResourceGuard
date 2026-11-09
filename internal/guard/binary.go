@@ -58,10 +58,17 @@ func pathWithin(parent, child string) bool {
 }
 
 func binarySnapshot(c Config, s upgradeSnapshot) string {
+	// A fresh quiesce after enable creates a new timestamp. That is not a
+	// change of restore ownership: requireSwapSnapshot separately requires the
+	// current identity's marker while both locks are held.
+	var marker DisableMarker
+	_ = json.Unmarshal(s.Disable, &marker) // inspectUpgrade already validated it.
+	marker.TimeUTC = ""
+	disabled, _ := json.Marshal(marker)
 	b, _ := json.Marshal(struct {
 		Config                     Config
 		Journal, Disabled, Profile json.RawMessage
-	}{c, s.Journal, s.Disable, s.Profile})
+	}{c, s.Journal, disabled, s.Profile})
 	return digest(b)
 }
 
