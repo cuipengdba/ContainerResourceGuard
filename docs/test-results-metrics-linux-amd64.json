@@ -1,0 +1,62 @@
+{
+  "revision": "5c707d933d6d8335554bce3b8174dfb57f754084",
+  "tests": [
+    {
+      "name": "default-off-produces-no-metrics-file",
+      "passed": true
+    },
+    {
+      "name": "opt-in-private-bounded-local-export",
+      "passed": true,
+      "bytes": 2422
+    },
+    {
+      "name": "export-has-no-container-identity-or-path-labels",
+      "passed": true
+    },
+    {
+      "name": "healthy-export-not-rewritten-every-loop",
+      "passed": true
+    },
+    {
+      "name": "failed-export-preserves-symlink-target",
+      "passed": true
+    },
+    {
+      "name": "CPU-reconciliation-continues-during-metrics-failure",
+      "passed": true
+    },
+    {
+      "name": "business-PID1-survives-metrics-failure",
+      "passed": true
+    },
+    {
+      "name": "export-recovers-after-fixture-path-fixed",
+      "passed": true
+    },
+    {
+      "name": "disable-restores-real-resource-originals",
+      "passed": true
+    },
+    {
+      "name": "disable-retains-last-metrics-sample-as-documented",
+      "passed": true
+    }
+  ],
+  "scope": "isolated placeholder PID1; does not validate vendor business metrics workload",
+  "binary_sha256": "ddc3c23a0215b53a82bfb4b1bdf1e36ac4dcfe66b6eab5397c05d8c567483279",
+  "cleanup": {
+    "namespace_absent": true,
+    "initial_namespace_wait_timed_out": true,
+    "later_independently_verified": true
+  },
+  "automation": {
+    "go": "1.22.5",
+    "vet": "passed",
+    "race": "passed",
+    "guard_statement_coverage_percent": 71.5,
+    "modeled_SIGKILL_checkpoints": 16,
+    "optional_supervisor_fault_checks": 12,
+    "ci": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42693288738"
+  }
+}
