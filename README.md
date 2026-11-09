@@ -63,6 +63,8 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 
 ## 文档
 
+后续设计：[双资源模式与五个可选参数](docs/resource-modes.md)；[容器/Pod 重启 ID 处理](docs/restart-behavior.md)。交付状态以任务和发布报告为准。
+
 | 文档 | 内容 |
 |---|---|
 | [全部需求](docs/requirements.md) | 用户需求、约定与边界，逐项编号 |
