@@ -1,0 +1,77 @@
+{
+  "tests": [
+    {
+      "name": "active-writer-preview-refused-without-state-write",
+      "passed": true
+    },
+    {
+      "name": "active-writer-backup-refused-without-output",
+      "passed": true
+    },
+    {
+      "name": "reader-declares-lock-and-format-capabilities",
+      "passed": true
+    },
+    {
+      "name": "external-value-preserved-and-incomplete-restore-visible",
+      "passed": true
+    },
+    {
+      "name": "disabled-compatible-snapshot-has-unresolved-original",
+      "passed": true
+    },
+    {
+      "name": "private-backup-preserves-exact-original-and-conflict",
+      "passed": true
+    },
+    {
+      "name": "existing-private-backup-not-overwritten",
+      "passed": true
+    },
+    {
+      "name": "state-directory-output-refused",
+      "passed": true
+    },
+    {
+      "name": "state-alias-output-refused",
+      "passed": true
+    },
+    {
+      "name": "malformed-journal-refuses-preview-and-backup-unchanged",
+      "passed": true
+    },
+    {
+      "name": "writer-refuses-incompatible-foreign-journal-before-archive",
+      "passed": true
+    },
+    {
+      "name": "future-profile-refused-without-journal-change",
+      "passed": true
+    },
+    {
+      "name": "old-disable-marker-is-not-current-upgrade-permission",
+      "passed": true
+    },
+    {
+      "name": "preview-and-backup-never-rewrite-live-originals",
+      "passed": true
+    },
+    {
+      "name": "explicit-fixture-original-allows-clean-restoration",
+      "passed": true
+    },
+    {
+      "name": "same-business-PID1-reenabled-after-private-backup",
+      "passed": true
+    }
+  ],
+  "scope": "own placeholder PID1 and real cgroup; compatibility preview/private backup, not complete online upgrade",
+  "binary_sha256": "0bed7e8ae27f04d25019aecf7dd009199741fbb903f8947f4969ae579ee2b460",
+  "cleanup": {
+    "namespace_absent": true
+  },
+  "revision": "cb7b37fb1de88c18f8de3570f486ce74f59811ed",
+  "ci": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42708349537",
+  "linux_go": "1.22.5",
+  "race_vet_shell_and_interruption_checks": "passed; sixteen modeled-file child-process interruption cases, twelve optional-helper/generated-supervisor shell cases; not real power failure"
+}
