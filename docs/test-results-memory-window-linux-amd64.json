@@ -1,0 +1,56 @@
+{
+  "revision": "b0ed1e09be5c518564c79aa7c90e4f4c9afe1a35",
+  "tests": [
+    {
+      "name": "CPU-applies-while-memory-window-waits",
+      "passed": true
+    },
+    {
+      "name": "window-wait-does-not-rewrite-journal",
+      "passed": true
+    },
+    {
+      "name": "safe-initial-memory-limit-applies-after-window",
+      "passed": true
+    },
+    {
+      "name": "unsafe-real-allocation-defers-lower-budget",
+      "passed": true,
+      "current_bytes": 81891328
+    },
+    {
+      "name": "unsafe-wait-keeps-journal-quiet",
+      "passed": true
+    },
+    {
+      "name": "released-allocation-restarts-window-before-apply",
+      "passed": true,
+      "observed_wait_seconds": 4.207110893912613
+    },
+    {
+      "name": "observe-mode-never-lowers-memory",
+      "passed": true
+    },
+    {
+      "name": "enforce-after-observe-starts-fresh-window",
+      "passed": true
+    },
+    {
+      "name": "fresh-window-eventually-applies",
+      "passed": true
+    },
+    {
+      "name": "disable-restores-real-originals",
+      "passed": true
+    },
+    {
+      "name": "business-PID1-alive-and-no-OOM",
+      "passed": true
+    }
+  ],
+  "scope": "isolated placeholder PID1, real allocations and own cgroup; no vendor/cache peak-workload or long-run acceptance",
+  "binary_sha256": "a90bd0bf1cb1c3a0d97a7bf3a8de1c68adaa3f80c0b82ff63d318174c53ab2db",
+  "cleanup": {
+    "namespace_absent": true
+  }
+}
