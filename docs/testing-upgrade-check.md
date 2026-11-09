@@ -9,3 +9,8 @@ Linux race/vet 通过，guard 覆盖率 72.0%；16 个普通文件建模的子�
 只公开 [检查名称与结果](test-results-upgrade-check-linux-amd64.json)，不公开真实私有备份、旧值、容器标识或配置内容。它们属于私有恢复材料。
 
 此项未验证厂商业务在线升级、未知旧二进制锁协议、自动导入/迁移、断电、完整安装卸载及二进制失败回退；不能据此关闭全部 P08 或宣布稳定版。语义与操作见 [开发文档](install-upgrade.md)。
+
+
+## 跨读取器暂停检查
+
+05abe0d 的新 CLI 对仍运行 cb7b37f 的独立占位容器执行 quiesce；20 项检查通过，源摘要、二进制摘要与逐项结果见 [新增报告](test-results-quiesce-linux-amd64.json)。实际 CPU/内存限额和 journal 原字节保留，两把锁空闲，私有备份保留真实原值；enable 后旧 Agent 继续相同预算，PID 1 存活。也重跑了未知 journal/profile、旧身份 marker、外部值冲突和输出覆盖保护。Linux Go1.22.5 race/vet、16 项强杀模型、12 项 shell 故障检查通过，自建 namespace 确认已移除。这证明维护暂停的跨版行为，未替代后续实际二进制切换演练。
