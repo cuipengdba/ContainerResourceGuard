@@ -19,7 +19,9 @@
 
 接下来使用原镜像克隆补齐 enforce 冷启动、探针、相同负载和辅助故障回归。POST /test 与引擎备份结果不能代替尚未提供的厂商专用业务接口验收。
 
-30% 限额引擎回归出现临时备库退出/探测超时；手动 16MiB/s + 256 IOPS 回归又出现原主库连接失败与数据库内部重启，两轮均失败。真实原值和 observe 已恢复，容器未重建、随后 SQL 正常，见 [失败报告](testing-vendor-enforce.md)。已明确另测 4096 IOPS 新手动预算，新增主库启动时间对比；不替换原失败。已开发 [原生持续负载入口与判定条件](continuous-acceptance.md)，短时 fresh/reuse 验证待完成，24h 尚未开始。
+30% 限额引擎回归出现临时备库退出/探测超时；手动 16MiB/s + 256 IOPS 回归出现原主库连接失败与数据库内部重启，两轮均失败。第三轮 16MiB/s + 4096 IOPS 明确新手动预算，两类业务共 20 项短测通过且主库未重启；清理等待 120s 超时保留，后续独立核对确认真实原值/observe 和 SQL 正常，见 [包含失败的报告](testing-vendor-enforce.md)。已开发 [原生持续负载入口与判定条件](continuous-acceptance.md)，正修正工具准备时的权限/依赖问题并重测 fresh/reuse；24h 尚未开始。
+
+安装升级的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/install-upgrade) 已实现持锁兼容预检和显式私有原值备份，16 项真实检查、Linux race/vet、强杀/辅助故障与 CI 通过；尚未完成完整安装、二进制切换和迁移演练。30 分钟低 IO/持续故障开销测试开始准备，结果独立归档。
 
 DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化约 251s；首轮重建探测超时保留，后续独立复测两次就绪约 205s/211s，128 行标记校验一致，新身份和旧日志隔离均确认。HISDBS observe 约 20s，20% 超过 300s，30% 初始化约 250s、备份后重建约 204s。详见 [保留失败的冷启动进展](testing-cold-start-progress.md)。实际原 liveness 只执行 ls，不能把它与 SQL/API 就绪条件等同。
 

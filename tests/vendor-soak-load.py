@@ -42,9 +42,6 @@ if os.environ.get('CRG_VENDOR_SOAK_TEST') != 'disposable-loopback-only':
 if open('/proc/self/cgroup').read() != open('/proc/1/cgroup').read():
     parser.error('test worker must share its own container PID1 cgroup')
 
-import psycopg2
-from psycopg2 import extensions
-
 if hasattr(time, 'monotonic'):
     monotonic = time.monotonic
 else:
@@ -92,44 +89,113 @@ def save():
         if os.path.exists(path):
             os.unlink(path)
 
-def wait_pg(connection, seconds):
-    deadline = monotonic() + seconds
-    while True:
-        state = connection.poll()
-        if state == extensions.POLL_OK:
-            return
-        remaining = deadline - monotonic()
-        if remaining <= 0:
-            raise RuntimeError('bounded SQL client deadline')
-        if state == extensions.POLL_READ:
-            readable, _, _ = select.select([connection.fileno()], [], [], remaining)
-            if not readable:
-                raise RuntimeError('bounded SQL read deadline')
-        elif state == extensions.POLL_WRITE:
-            _, writable, _ = select.select([], [connection.fileno()], [], remaining)
-            if not writable:
-                raise RuntimeError('bounded SQL write deadline')
-        else:
-            raise RuntimeError('unsupported asynchronous client state')
+# Reuse the image's existing libpq; no pip install or image mutation.
+# Follow PostgreSQL 14 asynchronous libpq: drain all results before a new query.
+pq = ctypes.CDLL('/opt/postgresql/pgsql/lib/libpq.so.5')
+pointer, integer, string = ctypes.c_void_p, ctypes.c_int, ctypes.c_char_p
+for name, returns, parameters in [
+        ('PQconnectStartParams', pointer, [ctypes.POINTER(string), ctypes.POINTER(string), integer]),
+        ('PQconnectPoll', integer, [pointer]), ('PQsocket', integer, [pointer]),
+        ('PQsetnonblocking', integer, [pointer, integer]), ('PQfinish', None, [pointer]),
+        ('PQsendQuery', integer, [pointer, string]), ('PQflush', integer, [pointer]),
+        ('PQconsumeInput', integer, [pointer]), ('PQisBusy', integer, [pointer]),
+        ('PQgetResult', pointer, [pointer]), ('PQresultStatus', integer, [pointer]),
+        ('PQntuples', integer, [pointer]), ('PQnfields', integer, [pointer]),
+        ('PQgetisnull', integer, [pointer, integer, integer]),
+        ('PQgetlength', integer, [pointer, integer, integer]),
+        ('PQgetvalue', pointer, [pointer, integer, integer]), ('PQclear', None, [pointer])]:
+    function = getattr(pq, name)
+    function.restype, function.argtypes = returns, parameters
+
+
+class Connection(object):
+    def __init__(self, handle):
+        self.handle = handle
+
+    def close(self):
+        if self.handle:
+            pq.PQfinish(self.handle)
+            self.handle = None
+
+
+def ready(connection, deadline, write=False, read=False):
+    remaining = deadline - monotonic()
+    sock = pq.PQsocket(connection.handle)
+    if remaining <= 0 or sock < 0:
+        raise RuntimeError('bounded SQL socket deadline')
+    readable, writable, _ = select.select([sock] if read else [], [sock] if write else [], [], remaining)
+    if not readable and not writable:
+        raise RuntimeError('bounded SQL readiness deadline')
+    return bool(readable)
+
 
 def connect():
-    connection = psycopg2.connect(host='127.0.0.1', port=5432, user='postgres',
-                                  dbname='postgres', connect_timeout=3, **{'async': 1})
+    # Numeric loopback only. Normal libpq password sources stay private.
+    keys = (string * 7)(b'host', b'port', b'user', b'dbname', b'sslmode', b'application_name', None)
+    values = (string * 7)(b'127.0.0.1', b'5432', b'postgres', b'postgres', b'disable', b'crg-disposable-soak', None)
+    connection = Connection(pq.PQconnectStartParams(keys, values, 0))
     try:
-        wait_pg(connection, 5)
+        if not connection.handle:
+            raise RuntimeError('SQL connection allocation failed')
+        deadline = monotonic() + 5
+        state = 2  # Initial PGRES_POLLING_WRITING, as specified by libpq.
+        while state != 3:  # PGRES_POLLING_OK
+            if state not in (1, 2):
+                raise RuntimeError('SQL connection polling failed')
+            ready(connection, deadline, write=state == 2, read=state == 1)
+            state = pq.PQconnectPoll(connection.handle)
+        if pq.PQsetnonblocking(connection.handle, 1) != 0:
+            raise RuntimeError('SQL nonblocking mode unavailable')
         return connection
     except Exception:
         connection.close()
         raise
 
+
 def query(connection, statement, seconds=5):
-    cursor = connection.cursor()
-    try:
-        cursor.execute(statement)
-        wait_pg(connection, seconds)
-        return cursor.fetchall() if cursor.description else []
-    finally:
-        cursor.close()
+    deadline = monotonic() + seconds
+    if pq.PQsendQuery(connection.handle, statement.encode('utf-8')) != 1:
+        raise RuntimeError('SQL send failed')
+    while True:
+        state = pq.PQflush(connection.handle)
+        if state == 0:
+            break
+        if state != 1:
+            raise RuntimeError('SQL flush failed')
+        if ready(connection, deadline, write=True, read=True) and pq.PQconsumeInput(connection.handle) != 1:
+            raise RuntimeError('SQL input failed')
+    rows = []
+    while True:
+        if monotonic() >= deadline:
+            raise RuntimeError('bounded SQL result deadline')
+        if pq.PQconsumeInput(connection.handle) != 1:
+            raise RuntimeError('SQL input failed')
+        if pq.PQisBusy(connection.handle):
+            ready(connection, deadline, read=True)
+            continue
+        result = pq.PQgetResult(connection.handle)
+        if not result:
+            return rows
+        try:
+            if pq.PQresultStatus(result) not in (1, 2):  # COMMAND_OK / TUPLES_OK
+                raise RuntimeError('SQL server returned an error')
+            count, fields = pq.PQntuples(result), pq.PQnfields(result)
+            if count > 256 or fields > 64:
+                raise RuntimeError('test SQL result exceeds bounds')
+            for index in range(count):
+                row = []
+                for field in range(fields):
+                    if pq.PQgetisnull(result, index, field):
+                        row.append(None)
+                        continue
+                    length = pq.PQgetlength(result, index, field)
+                    if not 0 <= length <= 4096:
+                        raise RuntimeError('test SQL field exceeds bounds')
+                    row.append(ctypes.string_at(pq.PQgetvalue(result, index, field), length).decode('utf-8'))
+                rows.append(row)
+        finally:
+            pq.PQclear(result)
+
 
 def checksum(connection):
     row = query(connection, 'SELECT count(*),sum(id),sum(octet_length(payload)),'
