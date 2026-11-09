@@ -15,7 +15,7 @@ root=Path(__file__).resolve().parents[1]
 revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 checks=[]
 def check(name,archive,expected,arch='amd64',source=revision,success=False):
-    result=subprocess.run([sys.executable,str(root/'scripts/verify-release.py'),str(archive),'--sha256',expected,'--source-revision',source,'--arch',arch],capture_output=True,text=True)
+    result=subprocess.run([sys.executable,str(root/'scripts/verify-release.py'),str(archive),'--sha256',expected,'--source-revision',source,'--arch',arch],capture_output=True,text=True,timeout=30)
     if (result.returncode==0)!=success:raise AssertionError(name+': '+result.stdout+result.stderr)
     checks.append({'name':name,'passed':True})
 for arch in ['amd64','arm64']:
@@ -28,7 +28,7 @@ check('wrong-source-revision',archive,sha,source='0'*40)
 with tempfile.TemporaryDirectory(prefix='crg-integrity-') as temporary:
     directory=Path(temporary)
     bad=directory/'truncated.tar.gz';bad.write_bytes(original[:len(original)//2]);check('truncated-archive',bad,hashlib.sha256(bad.read_bytes()).hexdigest())
-    for name,member in [('traversal','../escape'),('absolute','/escape'),('symlink','link'),('duplicate','same')]:
+    for name,member in [('traversal','../escape'),('absolute','/escape'),('windows-drive','C:/escape'),('backslash','..\\escape'),('symlink','link'),('duplicate','same')]:
         bad=directory/(name+'.tar.gz')
         with tarfile.open(bad,'w:gz') as t:
             info=tarfile.TarInfo(member)

@@ -56,9 +56,10 @@ try:
     # rather than reopening a caller-writable path after verification.
     with verified_snapshot() as snapshot,tarfile.open(fileobj=snapshot,mode='r:gz') as t:
         for index,m in enumerate(t):
-            require(index<4096 and m.name not in seen,'too many or duplicate members')
-            seen.add(m.name)
-            require(not m.name.startswith('/') and '..' not in PurePosixPath(m.name).parts and PurePosixPath(m.name).as_posix()==m.name.rstrip('/'),'unsafe member name')
+            canonical=m.name.rstrip('/') if m.isdir() else m.name
+            require(index<4096 and canonical not in seen,'too many or duplicate members')
+            seen.add(canonical)
+            require(not re.search(r'(^[A-Za-z]:|\\)',canonical) and not canonical.startswith('/') and '..' not in PurePosixPath(canonical).parts and PurePosixPath(canonical).as_posix()==canonical,'unsafe member name')
             require(m.isfile() or m.isdir(),'links/special members not supported')
             total+=m.size
             require(0<=m.size<=(64*1024**2 if m.name=='crg' else 2*1024**2) and total<=128*1024**2,'expanded archive exceeds bounds')

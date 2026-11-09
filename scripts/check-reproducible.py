@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import zlib
 
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('version')
@@ -28,6 +29,6 @@ with tempfile.TemporaryDirectory(prefix='crg-reproduce-') as temporary:
     subprocess.run([sys.executable,'scripts/package.py',a.version],cwd=clone,env=env,check=True)
     actual={name:hashlib.sha256((clone/'dist'/name).read_bytes()).hexdigest() for name in names}
     if actual!=expected:raise SystemExit('reproducibility mismatch: '+','.join(name for name in names if actual[name]!=expected[name]))
-result={'source_revision':revision,'same_toolchain':True,'different_absolute_checkout':True,'byte_equal':True,'artifacts':expected,'limits':'same host/toolchain recipe; independent platform and third-party reproduction are separate evidence'}
+result={'source_revision':revision,'same_toolchain':True,'different_absolute_checkout':True,'byte_equal':True,'packager_environment':{'python':sys.version.split()[0],'zlib_runtime':zlib.ZLIB_RUNTIME_VERSION,'platform':sys.platform},'artifacts':expected,'limits':'same host/toolchain recipe; independent platform and third-party reproduction are separate evidence'}
 (root/'dist/reproducibility-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result))
