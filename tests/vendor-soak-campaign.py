@@ -20,6 +20,7 @@ parser.add_argument('--namespace', required=True)
 parser.add_argument('--fixture-root', type=Path, required=True)
 parser.add_argument('--work-dir', type=Path, required=True)
 parser.add_argument('--run-id', required=True)
+parser.add_argument('--source-run-id', help='reuse only the same container workload data from a prior passed equal-duration native run')
 parser.add_argument('--test-phase', choices=['smoke', 'baseline', 'enforce', 'acceptance'], required=True)
 parser.add_argument('--seconds', type=int, required=True)
 parser.add_argument('--agent-sha256', required=True)
@@ -29,6 +30,8 @@ if not re.fullmatch(r'crg-vendor-lab-[a-z0-9-]+', args.namespace):
     parser.error('only disposable crg-vendor-lab-* namespaces are accepted')
 if not re.fullmatch(r'[0-9]{8,12}', args.run_id):
     parser.error('run-id must contain 8..12 digits; two extra digits reserved for backup cycles')
+if args.source_run_id and not re.fullmatch(r'[0-9]{8,12}', args.source_run_id):
+    parser.error('source-run-id must contain 8..12 digits')
 if not 120 <= args.seconds <= 604800 or args.test_phase in ['baseline', 'enforce'] and args.seconds != 86400 or args.test_phase == 'acceptance' and args.seconds != 604800:
     parser.error('smoke requires 120..604800 seconds; baseline/enforce require 86400; acceptance requires 604800')
 if not hasattr(os, 'pidfd_open') or not hasattr(signal, 'pidfd_send_signal'):
@@ -48,6 +51,7 @@ jobs = []
 created_output = False
 report = {'schema': 'crg-vendor-campaign-v1', 'phase': 'preparing',
           'test_phase': args.test_phase, 'requested_seconds': args.seconds,
+          'source_run_id': args.source_run_id,
           'worker_sha256': hashlib.sha256(worker_source).hexdigest(),
           'engine_script_sha256': hashlib.sha256(engine_script.read_bytes()).hexdigest(),
           'agent_sha256': args.agent_sha256, 'cache_sha256': args.cache_sha256,
@@ -229,6 +233,8 @@ try:
         own['entry'] = entry
         ex(role, '/bin/bash', '-c', 'set -Ce; umask 077; cat > ' + entry + '; chmod 0444 ' + entry, data=worker_source)
         command = 'CRG_VENDOR_SOAK_TEST=disposable-loopback-only python ' + entry + ' --run-id ' + args.run_id + ' --seconds ' + str(args.seconds) + ' --test-phase ' + args.test_phase
+        if args.source_run_id:
+            command += ' --source-run-id ' + args.source_run_id
         log = (args.work_dir / (role + '-load.log')).open('w')
         job = subprocess.Popen(['kubectl', 'exec', '-n', args.namespace, role + '-business', '-c', role, '--', 'su', '-', 'postgres', '-c', command], stdin=subprocess.DEVNULL, stdout=log, stderr=log)
         jobs.append((role, job, log))

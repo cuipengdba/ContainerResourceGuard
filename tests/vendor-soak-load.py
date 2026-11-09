@@ -283,6 +283,7 @@ try:
                   ".fixture(id,payload) SELECT g,repeat(md5(g::text),128) FROM generate_series(1,16384) g", 300)
             query(connection, 'CHECKPOINT', 300)
         report['initial_checksum'] = checksum(connection)
+        report['cluster_database_bytes_initial'] = int(query(connection, 'SELECT sum(pg_database_size(oid)) FROM pg_database')[0][0])
         if args.source_run_id and report['initial_checksum'][:4] != previous['final_checksum'][:4]:
             raise RuntimeError('prior workload data integrity does not match')
     finally:
@@ -314,6 +315,7 @@ try:
     connection = connect()
     try:
         report['final_checksum'] = checksum(connection)
+        report['cluster_database_bytes_final'] = int(query(connection, 'SELECT sum(pg_database_size(oid)) FROM pg_database')[0][0])
         report['primary_start_time_final'] = query(connection, 'SELECT pg_postmaster_start_time()')[0][0]
     finally:
         connection.close()
