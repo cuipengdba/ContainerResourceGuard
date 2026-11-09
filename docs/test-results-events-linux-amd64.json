@@ -1,0 +1,81 @@
+{
+  "revision": "f7b4a560fddc4c98eb027964c2a434a6dff98849",
+  "tests": [
+    {
+      "name": "default-off-produces-no-metrics-file",
+      "passed": true
+    },
+    {
+      "name": "events-default-off-produces-no-file",
+      "passed": true
+    },
+    {
+      "name": "opt-in-bounded-private-redacted-events",
+      "passed": true
+    },
+    {
+      "name": "opt-in-private-bounded-local-export",
+      "passed": true,
+      "bytes": 2430
+    },
+    {
+      "name": "export-has-no-container-identity-or-path-labels",
+      "passed": true
+    },
+    {
+      "name": "healthy-export-not-rewritten-every-loop",
+      "passed": true
+    },
+    {
+      "name": "failed-export-preserves-symlink-target",
+      "passed": true
+    },
+    {
+      "name": "CPU-reconciliation-continues-during-metrics-failure",
+      "passed": true
+    },
+    {
+      "name": "business-PID1-survives-metrics-failure",
+      "passed": true
+    },
+    {
+      "name": "export-recovers-after-fixture-path-fixed",
+      "passed": true
+    },
+    {
+      "name": "event-export-failure-preserves-target-and-CPU-continues",
+      "passed": true
+    },
+    {
+      "name": "events-recover-after-explicit-fixture-path-fix",
+      "passed": true
+    },
+    {
+      "name": "repeated-resource-changes-are-coalesced-before-minute",
+      "passed": true
+    },
+    {
+      "name": "real-minute-window-records-coalesced-transition",
+      "passed": true,
+      "elapsed_seconds": 63.47777176788077,
+      "records": 2
+    },
+    {
+      "name": "disable-restores-real-resource-originals",
+      "passed": true
+    },
+    {
+      "name": "disable-retains-last-local-events",
+      "passed": true
+    },
+    {
+      "name": "disable-retains-last-metrics-sample-as-documented",
+      "passed": true
+    }
+  ],
+  "scope": "isolated placeholder PID1; does not validate vendor business metrics workload",
+  "binary_sha256": "beeafbe4b61e381dffdeb1c5ec418a550ba8ad841610d494d9726c39fd9e5f01",
+  "cleanup": {
+    "namespace_absent": true
+  }
+}
