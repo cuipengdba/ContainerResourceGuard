@@ -9,15 +9,24 @@
 | `self and container PID 1 differ` | 可能处在业务子组或 hostPID 环境，拒绝不明确目标 |
 | `IO unmanaged: profile unavailable` | 尚未分发标定文件，CPU/内存可继续独立管理 |
 | `calibrated device missing or ambiguous` | 设备身份变化或该设备在容器内不可见，需要核对/重标定 |
-| `memory target too close...` | 内存目标低于当前使用量加安全余量，跳过；不要强行下压运行中数据库 |
+| `unsafe memory decrease...` | 内存余量/增长、events 或 PSI 不适合下调，本轮跳过；核对目标和负载 |
 | `conflict` | 外部改写了同一控制项，CRG 暂停该项，保留外部值 |
-| `lock unavailable` | 同一容器状态目录已有 Agent，不能同时再启动一份 |
+| `lock unavailable` | 当前 cgroup 或状态目录已被控制操作持锁；不同 state_dir 也不能再启动一份 RC2 |
 | `invalid journal` / 持久化失败 | 无法保证恢复依据，停止新增写入，检查目录和磁盘 |
 | `degraded` | 有跳过、冲突或 IO 基准缺失，不能当成三项全部受控 |
 
 ## 停用
 
-先让现有 supervisor 停止并不再重启 CRG 辅助管理循环，再执行：
+RC2 推荐：
+
+```bash
+crg disable --config /etc/crg/config.json
+crg status --config /etc/crg/config.json --format human
+```
+
+停用标记阻止原辅助循环重新施加限额；有外部冲突时返回非 0，外部值保留。重新启用用 enable；具体行为见 [运维说明](operations.md)。
+
+使用底层 restore 时，先让现有 supervisor 停止并不再重启 CRG 辅助管理循环，再执行：
 
 ```bash
 crg restore

@@ -37,7 +37,10 @@ crg run --percent 20
 crg run --config /etc/crg/config.json
 
 # 本容器状态
-crg status
+crg status --format human
+
+# 安装预检（只打开/关闭写入入口，不写资源值）
+crg preflight --percent 20 --format human
 ```
 
 先观察时用 `examples/observe.json`。`run` 的默认模式是 **enforce**；`doctor` 始终只读。运行时不热加载配置，修改后仅重启辅助 Agent。
@@ -46,7 +49,7 @@ crg status
 
 CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgroup、程序不存在、配置错误、Agent 崩溃，不能决定业务容器退出。使用 [集成示例](docs/integration.md)，不要把 CRG 设为业务启动前置条件或健康探针。
 
-资源限额由内核执行，**Agent 退出不等于撤销已写入限额**。过低的 CPU/IO 会影响性能，过低的内存可能 OOM。停用恢复需先停止 Agent，再执行 `crg restore`；外部已经改写的值不会被强制覆盖。
+资源限额由内核执行，**Agent 退出不等于撤销已写入限额**。过低的 CPU/IO 会影响性能，过低的内存可能 OOM。RC2 可用 `crg disable --config /etc/crg/config.json` 协调停用并恢复；外部已经改写的值不会被强制覆盖。详见 [本地运维](docs/operations.md)。
 
 ## 支持范围
 
@@ -67,6 +70,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 | [版本规划](docs/roadmap.md) | 下一候选版、稳定版与后续增强的优先级和验收 |
 | [配置](docs/configuration.md) | 一个 percent 的语义与所有可选参数 |
 | [安装与升级](docs/installation.md) | 架构选择、持久部署、校验、升级和回退 |
+| [本地运维](docs/operations.md) | 预检、人类可读状态、停用/启用、低频状态与覆盖范围 |
 | [架构](docs/architecture.md) | 一对一发现、写入、恢复和冲突处理 |
 | [容器接入](docs/integration.md) | 原 start.sh / supervisor / 缓存控制关系 |
 | [IO 标定](docs/io-calibration.md) | 方法、设备绑定、多设备和局限 |
@@ -81,8 +85,10 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 go test -race ./...
 go vet ./...
 bash tests/supervisor.sh
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o dist/crg-linux-amd64 ./cmd/crg
-CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -trimpath -o dist/crg-linux-arm64 ./cmd/crg
+python3 tests/integration-patch.py
+bash scripts/build.sh dev
+python3 scripts/package.py dev
+python3 scripts/check-package.py dev
 ```
 
 标准库实现，无第三方运行时依赖。最低 Go 版本见 `go.mod`。MIT License。

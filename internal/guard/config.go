@@ -14,14 +14,24 @@ import (
 )
 
 type Config struct {
-	Percent         float64 `json:"percent"`
-	Mode            string  `json:"mode,omitempty"`
-	IOProfile       string  `json:"io_profile,omitempty"`
-	StateDir        string  `json:"state_dir,omitempty"`
-	IntervalSeconds int     `json:"interval_seconds,omitempty"`
+	Percent         float64  `json:"percent"`
+	Mode            string   `json:"mode,omitempty"`
+	IOProfile       string   `json:"io_profile,omitempty"`
+	StateDir        string   `json:"state_dir,omitempty"`
+	IntervalSeconds int      `json:"interval_seconds,omitempty"`
+	DataPaths       []string `json:"data_paths,omitempty"`
 }
 
 func Decode(data []byte, out any) error {
+	trimmed := bytes.TrimSpace(data)
+	if len(trimmed) == 0 || trimmed[0] != '{' {
+		return errors.New("expected a JSON object")
+	}
+	check := json.NewDecoder(bytes.NewReader(data))
+	check.UseNumber()
+	if err := uniqueJSON(check); err != nil {
+		return err
+	}
 	d := json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
 	if err := d.Decode(out); err != nil {
@@ -32,6 +42,45 @@ func Decode(data []byte, out any) error {
 		return errors.New("expected exactly one JSON object")
 	}
 	return nil
+}
+
+func uniqueJSON(d *json.Decoder) error {
+	t, err := d.Token()
+	if err != nil {
+		return err
+	}
+	delim, ok := t.(json.Delim)
+	if !ok {
+		return nil
+	}
+	switch delim {
+	case '{':
+		seen := map[string]bool{}
+		for d.More() {
+			key, err := d.Token()
+			if err != nil {
+				return err
+			}
+			s, ok := key.(string)
+			if !ok || seen[s] {
+				return errors.New("duplicate or invalid JSON key")
+			}
+			seen[s] = true
+			if err := uniqueJSON(d); err != nil {
+				return err
+			}
+		}
+	case '[':
+		for d.More() {
+			if err := uniqueJSON(d); err != nil {
+				return err
+			}
+		}
+	default:
+		return errors.New("unexpected JSON delimiter")
+	}
+	_, err = d.Token()
+	return err
 }
 
 func (c *Config) Validate() error {
@@ -58,6 +107,11 @@ func (c *Config) Validate() error {
 	}
 	if c.IntervalSeconds < 1 || c.IntervalSeconds > 3600 {
 		return errors.New("interval_seconds must be 1..3600")
+	}
+	for _, p := range c.DataPaths {
+		if !path.IsAbs(p) || path.Clean(p) != p {
+			return errors.New("data_paths must contain clean absolute Linux paths")
+		}
 	}
 	return nil
 }

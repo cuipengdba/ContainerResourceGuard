@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 # Source from your EXISTING supervisor. Do not enable errexit in the caller.
 # This function always returns success. CRG failure cannot decide business status.
+crg_stop_optional() {
+  [[ -n "${CRG_HELPER_PID:-}" ]] || return 0
+  kill -TERM "$CRG_HELPER_PID" 2>/dev/null || :
+  for (( crg_attempt=0; crg_attempt<30; crg_attempt++ )); do
+    kill -0 "$CRG_HELPER_PID" 2>/dev/null || break
+    sleep 0.1 || :
+  done
+  if kill -0 "$CRG_HELPER_PID" 2>/dev/null; then
+    kill -KILL "$CRG_HELPER_PID" 2>/dev/null || :
+  else
+    wait "$CRG_HELPER_PID" 2>/dev/null || :
+  fi
+  CRG_HELPER_PID=
+  return 0
+}
+
 crg_start_optional() {
   local binary="${CRG_BIN:-/opt/crg/crg}" config="${CRG_CONFIG:-/etc/crg/config.json}"
   CRG_HELPER_PID=

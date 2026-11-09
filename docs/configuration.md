@@ -21,8 +21,9 @@
 | `io_profile` | `/etc/crg/io-profile.json` | 该节点显式标定产生的设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |
 | `interval_seconds` | 15 | 检查周期，1–3600 秒；仅有变更才输出日志 |
+| `data_paths` | 无 | 可选的容器内绝对路径列表；只读显示 IO 设备覆盖，不改变统一预算 |
 
-不支持的 JSON 字段、多个 JSON 对象、无效范围均拒绝，防止拼写错误悄悄失效。不能在配置里指定目标 cgroup/PID/容器。
+不支持的 JSON 字段、重复键、多个 JSON 对象、无效范围均拒绝，防止拼写错误悄悄失效。不能在配置里指定目标 cgroup/PID/容器。
 
 ## CLI
 
@@ -35,18 +36,24 @@
 | `--state-dir DIR` | 覆盖默认状态目录，必须容器独立 |
 | `--io-profile FILE` | 覆盖标定文件路径 |
 | `run --once` | 执行一轮并退出；已写限额继续存在 |
-| `status [--state-dir DIR]` | 读取最后一份状态，注意 `time_utc` 判断新鲜度 |
+| `status [--config FILE] [--state-dir DIR] [--format human]` | 身份校验、快照年龄、当时读到的控制值 |
+| `preflight --percent 20 [--format human]` | 计划与控制文件打开权限预检，不写资源值 |
+| `disable [--config FILE] [--state-dir DIR]` | 标记停用、等待 Agent 释放锁、恢复自有原值 |
+| `enable [--config FILE] [--state-dir DIR]` | 删除停用标记，辅助循环下次重试时重启 Agent |
 | `restore [--state-dir DIR]` | Agent 停止后恢复自己仍持有的配置 |
 | `calibrate --directory DIR --output FILE [--seconds 3]` | 显式 IO 标定，每阶段 1–30 秒，默认 3 秒 |
 | `version` | 输出版本 |
+| `build-info` | 输出版本、源码修订与运行架构 |
 
 Agent 启动时读取配置；持续运行不会热加载。重启 Agent 可更新 percent，原始外部上限通过日志保存，不会把 CRG 上一次 20% 误当作不可提高到 30% 的外部上限。
 
 ## 安全计算
 
 - 既有外部 CPU/内存/IO 限额更严格时保留更严格值。上级内存和 CPU 配额也参与约束；隐藏的祖先仍由内核限制。
-- 内存下调前要求目标高于当前使用量至少 `5% + 16 MiB`，否则跳过并报告。该瞬时检查不能保证并发增长后绝不 OOM。
+- 内存下调检查 `5% + 16 MiB` 余量、采样增长、可用的 events/PSI，并在日志同步后复查；见 [运维说明](operations.md)。瞬时检查不能保证并发增长后绝不 OOM。
 - 不修改 `memory.high`、swap、OOM 策略、cpuset 和资源 requests；HugeTLB 单独记账是否纳入内存上限取决于内核配置。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
 - IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
+
+JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。

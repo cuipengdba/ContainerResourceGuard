@@ -43,6 +43,21 @@ func lockFile(path string) (*os.File, error) {
 	}
 	return f, nil
 }
+
+// Lock the actual cgroup inode, independent of state_dir, TMPDIR and mount path.
+// This is advisory coordination between CRG instances, not a security boundary.
+func lockGroup(path string) (*os.File, error) {
+	fd, e := syscall.Open(path, syscall.O_RDONLY|syscall.O_DIRECTORY|syscall.O_NOFOLLOW|syscall.O_CLOEXEC, 0)
+	if e != nil {
+		return nil, e
+	}
+	f := os.NewFile(uintptr(fd), path)
+	if e = syscall.Flock(fd, syscall.LOCK_EX|syscall.LOCK_NB); e != nil {
+		f.Close()
+		return nil, e
+	}
+	return f, nil
+}
 func fileDevice(path string) (string, error) {
 	var s syscall.Stat_t
 	if e := syscall.Stat(path, &s); e != nil {

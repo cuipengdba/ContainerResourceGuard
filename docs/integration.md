@@ -35,6 +35,8 @@ fi
 
 停止辅助进程先发送 TERM，最多等待约 2 秒后再发送 KILL，不能因它忽略 TERM 阻塞原业务关闭。内核不可中断 IO 仍可能延迟任务实际消失，容器运行时的最终清理继续有效。
 
+关闭时先按原顺序向业务与缓存进程发停止信号，再调用 `crg_stop_optional || :`。该函数对辅助管理循环最多等待约 3 秒；不要用不带目标 PID 的 `wait` 等待所有可选进程。
+
 `examples/supervisor.sh` 是完整但简化的进程管理示例，主要用于集成演练。它保留原命令的退出码，并向业务主进程传递停止信号；业务自身的孙进程信号处理仍依赖原启动脚本，不能未经验证直接替换成熟的生产 supervisor。
 
 ## 文件与权限
@@ -46,6 +48,21 @@ fi
 - 不提供 Kubernetes 集群角色、管理其他容器的 socket 或全节点 Agent。
 
 首次永久接入需发布启动管理脚本并在计划内重启时加载；以后 Pod/容器重建自动重新发现。一次临时 `kubectl exec` 启动不能替代持久接入。
+
+## 生成现有 supervisor 的审阅补丁
+
+RC2 提供与已调查 supervisor 结构匹配的 [补丁示例](../examples/business-supervisor.crg.patch) 及生成工具（Python 3.9+）：
+
+```bash
+python3 scripts/integrate-supervisor.py /path/to/business-supervisor.sh \
+  --output-dir /path/to/new-review-directory
+bash -n /path/to/new-review-directory/supervisor.proposed.sh
+cat /path/to/new-review-directory/supervisor.patch
+```
+
+工具不修改输入文件；新目录中保留逐字节原件、候选脚本、差异和 SHA256 清单。发现未知结构、重复接入标记或已有输出目录时拒绝猜测/覆盖。先启动原业务和原缓存管理，再加入可选 CRG；保留原退出码与缓存重试代码。
+
+完成审阅及故障测试后，维护者可在计划发布中将候选文件原子替换到挂载来源；保留原 mode/owner，`bash -n` 通过后再计划重启。回退先 disable 恢复资源，再将备份原件按同样方式替换回来源并在计划内重启。当前开发只生成并测试补丁，没有写入现有业务节点。
 
 ## 与缓存控制共存
 

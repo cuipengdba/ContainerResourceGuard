@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -62,7 +63,7 @@ func main() {
 		}
 		count.Store(uint64(len(memorySink)))
 		time.Sleep(time.Duration(*seconds) * time.Second)
-	case "read", "write":
+	case "read", "write", "randread", "randwrite":
 		if *directory == "" {
 			panic("directory required")
 		}
@@ -91,14 +92,22 @@ func main() {
 			panic(e)
 		}
 		start = time.Now()
+		block := buf
+		if *mode == "randread" || *mode == "randwrite" {
+			block = buf[:4096]
+		}
+		rng := rand.New(rand.NewSource(1))
 		deadline := start.Add(time.Duration(*seconds) * time.Second)
 		off := int64(0)
 		for time.Now().Before(deadline) {
 			var n int
-			if *mode == "read" {
-				n, e = syscall.Pread(fd, buf, off)
+			if *mode == "randread" || *mode == "randwrite" {
+				off = rng.Int63n(size/4096) * 4096
+			}
+			if *mode == "read" || *mode == "randread" {
+				n, e = syscall.Pread(fd, block, off)
 			} else {
-				n, e = syscall.Pwrite(fd, buf, off)
+				n, e = syscall.Pwrite(fd, block, off)
 			}
 			if e != nil {
 				panic(e)
@@ -109,5 +118,9 @@ func main() {
 	default:
 		panic("unknown mode")
 	}
-	_ = json.NewEncoder(os.Stdout).Encode(map[string]any{"mode": *mode, "seconds": time.Since(start).Seconds(), "count": count.Load(), "rate": float64(count.Load()) / time.Since(start).Seconds()})
+	r := map[string]any{"mode": *mode, "seconds": time.Since(start).Seconds(), "count": count.Load(), "rate": float64(count.Load()) / time.Since(start).Seconds()}
+	if *mode == "randread" || *mode == "randwrite" {
+		r["iops"] = float64(count.Load()/4096) / time.Since(start).Seconds()
+	}
+	_ = json.NewEncoder(os.Stdout).Encode(r)
 }

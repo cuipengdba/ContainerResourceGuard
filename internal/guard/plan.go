@@ -1,6 +1,7 @@
 package guard
 
 import (
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"math"
@@ -33,10 +34,12 @@ type Setting struct {
 func (s Setting) Key() string { return s.File + ":" + s.Device }
 
 type Plan struct {
-	Environment Environment `json:"environment"`
-	Percent     float64     `json:"percent"`
-	Settings    []Setting   `json:"settings"`
-	Warnings    []string    `json:"warnings,omitempty"`
+	Environment Environment      `json:"environment"`
+	Percent     float64          `json:"percent"`
+	Settings    []Setting        `json:"settings"`
+	Warnings    []string         `json:"warnings,omitempty"`
+	Devices     []DeviceCoverage `json:"io_devices,omitempty"`
+	Paths       []PathCoverage   `json:"data_paths,omitempty"`
 }
 
 func maxNumber(s string) uint64 {
@@ -110,6 +113,7 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	data, e := os.ReadFile(c.IOProfile)
 	if e != nil {
 		p.Warnings = append(p.Warnings, "IO unmanaged: profile unavailable: "+e.Error())
+		p.Paths = pathCoverage(c.DataPaths, p.Settings)
 		return p, nil
 	}
 	var profile Profile
@@ -120,22 +124,51 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		return p, errors.New("unsupported or empty IO profile")
 	}
 	seen := map[string]bool{}
+	resolved := map[string]DeviceProfile{}
 	for _, d := range profile.Devices {
+		if d.ReadBPS == 0 || d.WriteBPS == 0 || d.ReadIOPS == 0 || d.WriteIOPS == 0 {
+			return p, errors.New("IO profile rates must all be positive")
+		}
 		dev, e := resolveProfileDevice(d)
 		if e != nil {
 			p.Warnings = append(p.Warnings, "IO unmanaged: "+e.Error())
+			p.Devices = append(p.Devices, DeviceCoverage{ProfileDevice: d.Device, State: "unavailable", Detail: e.Error()})
 			continue
 		}
 		if seen[dev] {
 			return p, errors.New("duplicate profile device")
 		}
 		seen[dev] = true
-		if d.ReadBPS == 0 || d.WriteBPS == 0 || d.ReadIOPS == 0 || d.WriteIOPS == 0 {
-			return p, errors.New("IO profile rates must all be positive")
+		resolved[dev] = d
+	}
+	for _, d := range profile.Devices {
+		dev, err := resolveProfileDevice(d)
+		if err != nil {
+			continue
+		}
+		coverage := DeviceCoverage{ProfileDevice: d.Device, Device: dev, State: "planned", Detail: "all four calibrated dimensions; actual write/readback required"}
+		stacked := false
+		for other := range resolved {
+			if other == dev {
+				continue
+			}
+			related, err := relatedDevices(dev, other)
+			if err != nil || related {
+				stacked = true
+				break
+			}
+		}
+		if stacked {
+			coverage.State, coverage.Detail = "skipped", "overlapping or unreadable device stack; use one calibrated layer per path"
+			p.Devices = append(p.Devices, coverage)
+			p.Warnings = append(p.Warnings, "IO unmanaged: "+dev+": "+coverage.Detail)
+			continue
 		}
 		scale := func(n uint64) uint64 { return scaleRate(n, c.Percent) }
 		if scale(d.ReadBPS) == 0 || scale(d.WriteBPS) == 0 || scale(d.ReadIOPS) == 0 || scale(d.WriteIOPS) == 0 {
 			p.Warnings = append(p.Warnings, "IO unmanaged: percent below whole-unit BPS/IOPS minimum for device "+dev)
+			coverage.State, coverage.Detail = "skipped", "percent below integer BPS/IOPS minimum"
+			p.Devices = append(p.Devices, coverage)
 			continue
 		}
 		value := fmt.Sprintf("rbps=%d wbps=%d riops=%d wiops=%d", scale(d.ReadBPS), scale(d.WriteBPS), scale(d.ReadIOPS), scale(d.WriteIOPS))
@@ -147,6 +180,13 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		}
 		value = clampIO(value, prev)
 		p.Settings = append(p.Settings, Setting{File: "io.max", Device: dev, Value: value})
+		p.Devices = append(p.Devices, coverage)
+	}
+	p.Paths = pathCoverage(c.DataPaths, p.Settings)
+	for _, v := range p.Paths {
+		if v.State != "planned" {
+			p.Warnings = append(p.Warnings, "data path "+v.Path+": "+v.Detail)
+		}
 	}
 	return p, nil
 }
@@ -156,20 +196,35 @@ func scaleRate(n uint64, percent float64) uint64 {
 }
 
 func resolveProfileDevice(d DeviceProfile) (string, error) {
-	if !validDevice(d.Device) || len(d.Identity) != 64 {
+	return resolveDevice(d, DeviceIdentity, func() ([]string, error) {
+		entries, err := os.ReadDir("/sys/dev/block")
+		if err != nil {
+			return nil, err
+		}
+		names := make([]string, 0, len(entries))
+		for _, v := range entries {
+			names = append(names, v.Name())
+		}
+		return names, nil
+	})
+}
+
+func resolveDevice(d DeviceProfile, identity func(string) (string, error), devices func() ([]string, error)) (string, error) {
+	id, decodeErr := hex.DecodeString(d.Identity)
+	if !validDevice(d.Device) || decodeErr != nil || len(id) != 32 {
 		return "", errors.New("invalid profile device identity")
 	}
-	if id, e := DeviceIdentity(d.Device); e == nil && id == d.Identity {
+	if id, e := identity(d.Device); e == nil && id == d.Identity {
 		return d.Device, nil
 	}
-	entries, e := os.ReadDir("/sys/dev/block")
+	entries, e := devices()
 	if e != nil {
 		return "", e
 	}
 	var matches []string
 	for _, v := range entries {
-		if id, e := DeviceIdentity(v.Name()); e == nil && id == d.Identity {
-			matches = append(matches, v.Name())
+		if id, e := identity(v); e == nil && id == d.Identity {
+			matches = append(matches, v)
 		}
 	}
 	if len(matches) != 1 {

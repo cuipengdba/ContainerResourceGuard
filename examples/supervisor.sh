@@ -6,8 +6,8 @@ business_pid= CRG_HELPER_PID=
 stop_children() {
   trap - TERM INT
   [[ -z "$business_pid" ]] || kill -TERM "$business_pid" 2>/dev/null
-  [[ -z "$CRG_HELPER_PID" ]] || kill -TERM "$CRG_HELPER_PID" 2>/dev/null
-  wait 2>/dev/null
+  if declare -F crg_stop_optional >/dev/null; then crg_stop_optional || :; fi
+  [[ -z "$business_pid" ]] || wait "$business_pid" 2>/dev/null
 }
 trap 'stop_children; exit 143' TERM
 trap 'stop_children; exit 130' INT

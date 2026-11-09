@@ -32,6 +32,8 @@ tar -xzf containerresourceguard-VERSION-linux-amd64.tar.gz
 
 先显式标定，再分发 profile。每个容器先执行 `crg doctor --percent 20`，检查容量来源和限制预览，再通过现有 supervisor 的可选分支启用。详见 [集成说明](integration.md)。
 
+RC2 可执行 `crg preflight --config /etc/crg/config.json --format human` 查看打开权限和换算；不写资源限额，不能代替启用后的真实回读。发布包还包含 supervisor 补丁生成工具，生成时不修改原文件。
+
 ## 权限
 
 默认不自动 remount、升权、授予 capabilities 或挂载全宿主 cgroup。部署维护者负责提供自身目标组可写的视图；只读/无权限时程序报告降级，业务继续运行。
@@ -42,10 +44,14 @@ tar -xzf containerresourceguard-VERSION-linux-amd64.tar.gz
 
 保持配置、profile 和状态目录。先停止辅助重试循环及 Agent；以同目录临时文件加原子替换发布新二进制，然后仅重新启动辅助进程。不要在仍执行的脚本上做非原子原地覆盖。
 
+RC1 到 RC2 必须先停止全部旧 Agent；不同 state_dir 的混合版本并行运行不受 RC2 完整单实例保护。保留原状态目录可继续使用版本 1 日志及原值；损坏/缺少关键字段的日志拒绝写入。
+
 若新版本不支持已有日志格式，应该拒绝新增写入，不能删除日志强行继续。当前日志版本为 1。
 
 ## 回退
 
 只停 Agent 不会撤销限额。需要解除本程序管理时，先停止它，再用匹配版本 `crg restore`，确认逐项恢复结果。保留外部已改写的值，不盲目写 max。之后可换回旧二进制或停用可选入口。
+
+RC2 优先使用 `crg disable --config FILE` 协调停止写入和恢复，确认成功后再停辅助循环；停用标记须保留到完成回退，详见 [本地运维](operations.md)。RC1 不识别新停用标记，回退旧程序前必须关闭其自动启动入口，不能依赖标记阻止旧版重新施加限额。
 
 资源限额测试、业务性能验收、备份恢复验证完成前，不应把候选版本直接视为生产验收通过。

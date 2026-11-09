@@ -66,6 +66,17 @@ type Engine struct {
 	Files   Files
 	Journal Journal
 	Persist func(Journal) error
+	Pause   func(time.Duration)
+}
+
+var ErrLocked = errors.New("one agent per container: lock unavailable")
+
+type Locks struct{ group, state *os.File }
+
+func (l *Locks) Close() error {
+	a := l.state.Close()
+	b := l.group.Close()
+	return errors.Join(a, b)
 }
 
 func AtomicJSON(path string, v any) error {
@@ -102,15 +113,29 @@ func AtomicJSON(path string, v any) error {
 	if e = os.Rename(tmp, path); e != nil {
 		return e
 	}
-	if d, x := os.Open(dir); x == nil {
-		e = d.Sync()
-		d.Close()
+	d, e := os.Open(dir)
+	if e != nil {
 		return e
 	}
-	return nil
+	e = d.Sync()
+	closeErr = d.Close()
+	return errors.Join(e, closeErr)
 }
 
-func OpenEngine(c Config, env Environment) (*Engine, *os.File, error) {
+func OpenEngine(c Config, env Environment) (*Engine, *Locks, error) {
+	group, e := lockGroup(env.Target)
+	if e != nil {
+		return nil, nil, fmt.Errorf("%w: %v", ErrLocked, e)
+	}
+	engine, state, e := openState(c, env)
+	if e != nil {
+		group.Close()
+		return nil, nil, e
+	}
+	return engine, &Locks{group: group, state: state}, nil
+}
+
+func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	if e := os.MkdirAll(c.StateDir, 0700); e != nil {
 		return nil, nil, e
 	}
@@ -120,16 +145,18 @@ func OpenEngine(c Config, env Environment) (*Engine, *os.File, error) {
 	}
 	lock, e := lockFile(filepath.Join(c.StateDir, "agent.lock"))
 	if e != nil {
-		return nil, nil, fmt.Errorf("one agent per container: lock unavailable: %w", e)
+		return nil, nil, fmt.Errorf("%w: %v", ErrLocked, e)
 	}
 	fail := func(err error) (*Engine, *os.File, error) { lock.Close(); return nil, nil, err }
 	j := Journal{Version: 1, Identity: env.Identity, Target: env.Target, Mutations: map[string]*Mutation{}}
 	path := filepath.Join(c.StateDir, "journal.json")
 	if b, e := os.ReadFile(path); e == nil {
-		if e = Decode(b, &j); e != nil {
+		var loaded Journal
+		if e = Decode(b, &loaded); e != nil {
 			return fail(fmt.Errorf("invalid journal; refusing writes: %w", e))
 		}
-		if j.Version != 1 || j.Mutations == nil {
+		j = loaded
+		if j.Version != 1 || j.Mutations == nil || j.Identity == "" || !filepath.IsAbs(j.Target) {
 			return fail(errors.New("unsupported journal"))
 		}
 		if j.Identity != env.Identity || j.Target != env.Target {
@@ -143,7 +170,7 @@ func OpenEngine(c Config, env Environment) (*Engine, *os.File, error) {
 		return fail(e)
 	}
 	for key, m := range j.Mutations {
-		if m == nil || !allowed(m.Setting) || key != m.Key() {
+		if m == nil || !allowed(m.Setting) || key != m.Key() || !validControl(m.Setting, m.Original) || !validControl(m.Setting, m.Applied) || (m.Pending != "" && !validControl(m.Setting, m.Pending)) || !validControl(m.Setting, m.Value) {
 			return fail(errors.New("journal contains an invalid mutation"))
 		}
 	}
@@ -208,6 +235,9 @@ func (e *Engine) Apply(p Plan) Status {
 	return status
 }
 func (e *Engine) applyOne(s Setting) (string, string) {
+	if !allowed(s) || !validControl(s, s.Value) {
+		return "skipped", "invalid controller value"
+	}
 	current, err := e.current(s)
 	if err != nil {
 		return "skipped", err.Error()
@@ -238,17 +268,8 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 		return "conflict", "current value differs from the last owned value; refusing overwrite"
 	}
 	if s.File == "memory.max" && maxNumber(s.Value) < maxNumber(current) {
-		used, x := e.Files.Read(filepath.Join(e.Env.Target, "memory.current"))
-		if x != nil {
-			return "skipped", "cannot read current memory: " + x.Error()
-		}
-		n, x := strconv.ParseUint(strings.TrimSpace(used), 10, 64)
-		if x != nil {
-			return "skipped", "invalid current memory"
-		}
-		// Avoid a synchronous forced reclaim/OOM during an already busy workload.
-		if maxNumber(s.Value) < n+n/20+(16<<20) {
-			return "skipped", "memory target too close to/below current usage (5% + 16 MiB headroom required)"
+		if err := e.memoryPreflight(s.Value); err != nil {
+			return "skipped", err.Error()
 		}
 	}
 	if current == s.Value {
@@ -259,6 +280,22 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 	if err = e.save(); err != nil {
 		m.Pending = ""
 		return "skipped", "cannot persist write intent: " + err.Error()
+	}
+	// A slow journal fsync may outlive the preflight. Recheck usage immediately
+	// before lowering memory.max, without attempting forced cache reclaim.
+	if s.File == "memory.max" && maxNumber(s.Value) < maxNumber(current) {
+		if err := e.memoryHeadroom(s.Value, 0); err != nil {
+			return "skipped", err.Error()
+		}
+	}
+	latest, err := e.current(s)
+	if err != nil {
+		return "skipped", "cannot recheck before write; intent retained: " + err.Error()
+	}
+	if latest != current {
+		m.Conflict = true
+		_ = e.save()
+		return "conflict", "value changed while saving intent; refusing overwrite"
 	}
 	if err = e.write(s, s.Value); err != nil {
 		return "skipped", "write failed; intent retained for recovery: " + err.Error()
@@ -280,6 +317,29 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 	return "applied", "written and verified"
 }
 
+func validControl(s Setting, v string) bool {
+	positive := func(v string) bool { n, err := strconv.ParseUint(v, 10, 64); return err == nil && n > 0 }
+	switch s.File {
+	case "cpu.max":
+		f := strings.Fields(v)
+		return len(f) == 2 && (f[0] == "max" || positive(f[0])) && positive(f[1])
+	case "memory.max":
+		return v == "max" || positive(v)
+	case "io.max":
+		f := strings.Fields(v)
+		if len(f) != 4 || canonicalIO(v) != v {
+			return false
+		}
+		for _, n := range ioMap(v) {
+			if n != "max" && !positive(n) {
+				return false
+			}
+		}
+		return true
+	}
+	return false
+}
+
 func (e *Engine) Restore() Status {
 	r := Status{TimeUTC: time.Now().UTC().Format(time.RFC3339), Mode: "restore", State: "restored", Plan: Plan{Environment: e.Env}}
 	for key, m := range e.Journal.Mutations {
@@ -298,7 +358,18 @@ func (e *Engine) Restore() Status {
 			m.Applied = cur
 			m.Pending = m.Original
 			if err = e.save(); err == nil {
-				err = e.write(m.Setting, m.Original)
+				var latest string
+				latest, err = e.current(m.Setting)
+				if err == nil && latest != cur {
+					m.Conflict = true
+					err = errors.New("value changed while saving restore intent; external value retained")
+				}
+				if err == nil && m.File == "memory.max" && maxNumber(m.Original) < maxNumber(cur) {
+					err = e.memoryPreflight(m.Original)
+				}
+				if err == nil {
+					err = e.write(m.Setting, m.Original)
+				}
 			}
 			if err == nil {
 				var actual string

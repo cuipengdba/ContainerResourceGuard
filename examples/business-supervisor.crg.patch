@@ -1,0 +1,33 @@
+--- supervisor.original
++++ supervisor.proposed.sh
+@@ -8,6 +8,7 @@
+ 
+ business_pid=
+ guard_pid=
++CRG_HELPER_PID=
+ stopping=0
+ 
+ stop_both() {
+@@ -16,6 +17,9 @@
+   trap - TERM INT
+   [[ -z "$business_pid" ]] || kill -TERM "$business_pid" 2>/dev/null || true
+   [[ -z "$guard_pid" ]] || kill -TERM "$guard_pid" 2>/dev/null || true
++  # CRG OPTIONAL STOP BEGIN
++  if declare -F crg_stop_optional >/dev/null; then crg_stop_optional || :; fi
++  # CRG OPTIONAL STOP END
+   [[ -z "$business_pid" ]] || wait "$business_pid" 2>/dev/null || true
+   [[ -z "$guard_pid" ]] || wait "$guard_pid" 2>/dev/null || true
+ }
+@@ -34,6 +38,12 @@
+ "$BUSINESS_START" &
+ business_pid=$!
+ start_guard
++# CRG OPTIONAL BEGIN
++if [[ -r "${CRG_HELPER_SCRIPT:-/opt/crg/optional-agent.sh}" ]]; then
++  source "${CRG_HELPER_SCRIPT:-/opt/crg/optional-agent.sh}" || :
++  if declare -F crg_start_optional >/dev/null; then crg_start_optional || :; fi
++fi
++# CRG OPTIONAL END
+ 
+ while :; do
+   if ! kill -0 "$business_pid" 2>/dev/null; then
