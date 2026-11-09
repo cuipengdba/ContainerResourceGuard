@@ -49,4 +49,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 
 通过此项代表 PostgreSQL 引擎场景通过，不代表 DBS/HISDBS API、业务同步、原缓存 Agent 共存或长期性能门槛已经完成。
 
+原厂镜像主库的隔离入口为 `vendor-engine-smoke.py`；它会向专用克隆主库写入全新测试 schema、执行备份/流复制/独立恢复并探测 POST /test，不能用于现有业务命名空间。前提、参数和本次实际执行边界见 [原镜像备份短测](../docs/testing-vendor-backup.md)。
+
 真实测量值及未覆盖范围见 [测试报告](../docs/testing.md)。源码中的测试负载不是产品命令，不包含跨容器资源管理功能。
