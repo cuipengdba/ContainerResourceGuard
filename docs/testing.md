@@ -1,5 +1,7 @@
 # 测试报告
 
+RC2 的新增测试与验收边界见 [v0.1.0-rc.2 报告](testing-rc2.md)。以下保留 RC1 历史结果，不用旧版本结果替代新版验证。
+
 日期：2026-11-09。版本：v0.1.0-rc.1。最终隔离容器回归 **23 个检查点全部通过**。去标识数值见 [JSON 记录](test-results-linux-amd64.json)，执行方法见 [tests/README.md](../tests/README.md)。
 
 ## 环境与范围

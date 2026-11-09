@@ -1,0 +1,176 @@
+{
+  "version": "v0.1.0-rc.2",
+  "source_revision": "c3b97269febe85f303f10788344616296895c1c0",
+  "binary_sha256": "a3e963c9a0bb0ff2d1b14321d9834352257a9ec619df0737cc37dbf998ca92f7",
+  "tests": [
+    {
+      "name": "isolated-pods-ready",
+      "passed": true
+    },
+    {
+      "name": "independent-20-30-percent",
+      "passed": true
+    },
+    {
+      "name": "memory-percent-a",
+      "passed": true,
+      "bytes": 13334654976
+    },
+    {
+      "name": "memory-percent-b",
+      "passed": true,
+      "bytes": 20001980416
+    },
+    {
+      "name": "data-path-coverage",
+      "passed": true
+    },
+    {
+      "name": "different-state-dir-second-agent-refused",
+      "passed": true
+    },
+    {
+      "name": "human-preflight",
+      "passed": true
+    },
+    {
+      "name": "unchanged-status-journal-no-writes-12-seconds",
+      "passed": true
+    },
+    {
+      "name": "direct-read-limit",
+      "passed": true,
+      "actual": 15759895.805563029,
+      "limit": 15775398,
+      "seconds": 6.054631028
+    },
+    {
+      "name": "direct-write-limit",
+      "passed": true,
+      "actual": 8466562.816441394,
+      "limit": 10236521,
+      "seconds": 6.192452965
+    },
+    {
+      "name": "direct-randread-limit",
+      "passed": true,
+      "actual": 29.82552582590315,
+      "limit": 35,
+      "seconds": 6.001565956
+    },
+    {
+      "name": "direct-randwrite-limit",
+      "passed": true,
+      "actual": 20.07557032456537,
+      "limit": 26,
+      "seconds": 6.077033594
+    },
+    {
+      "name": "disable-restores-owned-limits",
+      "passed": true
+    },
+    {
+      "name": "optional-retry-does-not-reapply-disabled",
+      "passed": true
+    },
+    {
+      "name": "disable-a-does-not-change-b",
+      "passed": true
+    },
+    {
+      "name": "enable-reapplies-without-business-restart",
+      "passed": true
+    },
+    {
+      "name": "external-value-retained-single-json",
+      "passed": true
+    },
+    {
+      "name": "read-only-permission-fail-open",
+      "passed": true
+    },
+    {
+      "name": "recreated-container-rediscovers-cgroup",
+      "passed": true
+    },
+    {
+      "name": "postgres-sql-backup-replication-restore",
+      "passed": true,
+      "separate_retest": true
+    },
+    {
+      "name": "readonly-state-no-controller-writes",
+      "passed": true
+    },
+    {
+      "name": "corrupt-journal-no-controller-writes",
+      "passed": true
+    },
+    {
+      "name": "full-state-no-controller-writes",
+      "passed": true
+    },
+    {
+      "name": "faulted-agent-business-alive",
+      "passed": true
+    },
+    {
+      "name": "cpu-throttling",
+      "passed": true,
+      "cores": 4.629653651617558,
+      "throttles": 40
+    },
+    {
+      "name": "memory-hard-limit-oom",
+      "passed": true,
+      "bytes": 133345280,
+      "oom_kill_delta": 1
+    },
+    {
+      "name": "business-pids-still-alive",
+      "passed": true
+    }
+  ],
+  "initial_failures": [
+    {
+      "name": "postgres-sql-backup-replication-restore",
+      "startup_wait_seconds": 30,
+      "result": "timeout after database-tool preparation; no configuration error in database log; subsequent separate retest retained same budget and 30-second startup threshold",
+      "cgroup_write_bytes": 554362368,
+      "cgroup_write_ios": 5324
+    }
+  ],
+  "overhead": {
+    "seconds": 12,
+    "check_interval_seconds": 1,
+    "cpu_ticks_delta": 1,
+    "clock_ticks_per_second": 100,
+    "rss_kib": 6912,
+    "write_bytes_delta": 0,
+    "wchar_delta": 0,
+    "same_status_journal_mtime": true
+  },
+  "postgres": {
+    "version": "14.19",
+    "separate_retest_passed": true,
+    "rows": 20000,
+    "restored_digest": "20000:56b45135ee3119193c4874b619e208d2",
+    "replicated_rows": 20001,
+    "vendor_api_acceptance": false
+  },
+  "scope": {
+    "architecture": "amd64",
+    "cgroup": "v2",
+    "kernel_family": "5.14",
+    "single_device_real_test": true,
+    "arm64_execution": false,
+    "multi_device_real_test": false,
+    "vendor_workload_acceptance": false,
+    "long_duration_acceptance": false
+  },
+  "cleanup": {
+    "namespace_absent": true,
+    "test_data_removed": true,
+    "raw_reports_retained": true
+  }
+}
