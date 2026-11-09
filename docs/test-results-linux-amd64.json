@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-09",
+  "platform": "Linux 5.14, cgroup v2, amd64, XFS/LVM",
+  "host_online_cpus": 24,
+  "host_memory_bytes": 66673278976,
+  "passed": true,
+  "checks": [
+    {
+      "name": "setup-unit",
+      "passed": true
+    },
+    {
+      "name": "setup-supervisor",
+      "passed": true
+    },
+    {
+      "name": "setup-calibration",
+      "passed": true
+    },
+    {
+      "name": "setup-wait",
+      "passed": true
+    },
+    {
+      "name": "one-to-one-a-does-not-change-b",
+      "passed": true
+    },
+    {
+      "name": "percent20-cpu",
+      "passed": true
+    },
+    {
+      "name": "percent30-cpu",
+      "passed": true
+    },
+    {
+      "name": "distinct-cgroups",
+      "passed": true
+    },
+    {
+      "name": "memory-percent-a",
+      "passed": true,
+      "bytes": 13334654976
+    },
+    {
+      "name": "io-profile-applied-a",
+      "passed": true
+    },
+    {
+      "name": "memory-percent-b",
+      "passed": true,
+      "bytes": 20001980416
+    },
+    {
+      "name": "io-profile-applied-b",
+      "passed": true
+    },
+    {
+      "name": "duplicate-agent-lock",
+      "passed": true
+    },
+    {
+      "name": "cpu-real-throttling",
+      "passed": true,
+      "cores": 4.628076348889645,
+      "elapsed": 4.23234698898159,
+      "throttles": 40
+    },
+    {
+      "name": "io-real-read",
+      "passed": true,
+      "bytes_per_second": 14436806.25103364,
+      "limit": 15775398,
+      "seconds": 5.1568801539999995
+    },
+    {
+      "name": "io-real-write",
+      "passed": true,
+      "bytes_per_second": 10214220.759057228,
+      "limit": 10236521,
+      "seconds": 5.030243044
+    },
+    {
+      "name": "readonly-fail-open",
+      "passed": true
+    },
+    {
+      "name": "external-change-not-overwritten",
+      "passed": true
+    },
+    {
+      "name": "restore-preserves-external-value",
+      "passed": true
+    },
+    {
+      "name": "restore-owned-values",
+      "passed": true
+    },
+    {
+      "name": "recreate-auto-discovery",
+      "passed": true
+    },
+    {
+      "name": "memory-small-hard-limit",
+      "passed": true,
+      "bytes": 133345280
+    },
+    {
+      "name": "memory-hard-limit-oom-contained",
+      "passed": true,
+      "probe_exit": 137,
+      "oom_kill_delta": 1
+    }
+  ],
+  "supplemental_supervisor": {
+    "passed": true,
+    "output": "PASS optional-agent-missing business_exit=37\nPASS optional-agent-denied business_exit=37\nPASS optional-agent-invalid business_exit=37\nPASS optional-agent-crash business_exit=37\nPASS optional-agent-hang business_exit=37\nPASS optional-agent-ignore-term business_exit=37\n"
+  },
+  "tested_amd64_sha256": "61a41a025a5cd147df3edca66061805a3b64f5baf45a6d06d66d074ddb9d0053",
+  "cleanup": {
+    "namespace_absent": true,
+    "temporary_data_files_remaining": 0
+  }
+}

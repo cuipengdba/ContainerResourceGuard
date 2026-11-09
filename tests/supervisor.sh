@@ -13,13 +13,14 @@ printf 'BUSINESS_FINISHED\n'
 exit 37
 SH
 chmod 0755 "$work/business"
-for scenario in missing denied invalid crash hang; do
+for scenario in missing denied invalid crash hang ignore-term; do
   agent="$work/$scenario"
   case "$scenario" in
     missing) : ;;
     denied) printf '#!/bin/sh\nexit 1\n' > "$agent"; chmod 0644 "$agent" ;;
     invalid|crash) printf '#!/bin/sh\nexit 7\n' > "$agent"; chmod 0755 "$agent" ;;
     hang) printf '#!/bin/sh\nexec sleep 60\n' > "$agent"; chmod 0755 "$agent" ;;
+    ignore-term) printf '#!/bin/sh\ntrap "" TERM\nexec sleep 60\n' > "$agent"; chmod 0755 "$agent" ;;
   esac
   started=$SECONDS
   set +e

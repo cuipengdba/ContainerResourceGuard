@@ -12,7 +12,21 @@ crg_start_optional() {
     # Isolate shell options and errors from the business supervisor.
     set +e
     child= nap= delay=5
-    trap '[[ -z "$child" ]] || kill -TERM "$child" 2>/dev/null; [[ -z "$nap" ]] || kill -TERM "$nap" 2>/dev/null; wait 2>/dev/null; exit 0' TERM INT
+    stop_optional() {
+      trap - TERM INT
+      [[ -z "$nap" ]] || kill -TERM "$nap" 2>/dev/null
+      if [[ -n "$child" ]]; then
+        kill -TERM "$child" 2>/dev/null
+        # Never let an auxiliary process ignoring TERM block business shutdown.
+        for (( attempt=0; attempt<20; attempt++ )); do
+          kill -0 "$child" 2>/dev/null || break
+          sleep 0.1
+        done
+        kill -KILL "$child" 2>/dev/null
+      fi
+      exit 0
+    }
+    trap stop_optional TERM INT
     while :; do
       "$binary" run --config "$config" &
       child=$!
