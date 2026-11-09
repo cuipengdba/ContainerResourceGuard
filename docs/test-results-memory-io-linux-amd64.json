@@ -1,0 +1,108 @@
+{
+  "version": "v0.4.0-dev",
+  "revision": "36551fb283dd8d9809dd7e842ede3c15b9c461c1",
+  "tests": [
+    {
+      "name": "high-and-zero-swap-written-readback",
+      "passed": true
+    },
+    {
+      "name": "default-IO-weight-written",
+      "passed": true
+    },
+    {
+      "name": "IO-default-weight-reload",
+      "passed": true
+    },
+    {
+      "name": "bounded-memory-fixture-allocated",
+      "passed": true
+    },
+    {
+      "name": "unsafe-high-decrease-deferred",
+      "passed": true
+    },
+    {
+      "name": "high-decrease-retries-after-usage-falls",
+      "passed": true
+    },
+    {
+      "name": "high-external-change-preserved",
+      "passed": true
+    },
+    {
+      "name": "IO-default-external-change-preserved",
+      "passed": true
+    },
+    {
+      "name": "disable-restores-swap-original-and-keeps-external-high",
+      "passed": true
+    },
+    {
+      "name": "repeated-calibration-v2-and-three-samples",
+      "passed": true
+    },
+    {
+      "name": "profile-inspection-resolves-and-reports-dispersion",
+      "passed": true,
+      "quality": {
+        "samples": 3,
+        "spread_percent": {
+          "read_bps": 48.86117834966049,
+          "read_iops": 41.0958904109589,
+          "write_bps": 1.4306640727500453,
+          "write_iops": 25.37313432835821
+        },
+        "warnings": [
+          "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+          "read_iops spread exceeds 25%; check device competition and repeat explicitly",
+          "write_iops spread exceeds 25%; check device competition and repeat explicitly"
+        ]
+      }
+    },
+    {
+      "name": "calibration-temporary-files-cleaned",
+      "passed": true
+    },
+    {
+      "name": "duplicate-profile-refuses-implicit-replacement",
+      "passed": true
+    },
+    {
+      "name": "merge-default-preview-preserves-input",
+      "passed": true
+    },
+    {
+      "name": "explicit-profile-output-created",
+      "passed": true
+    },
+    {
+      "name": "business-PID1-survived-control-faults",
+      "passed": true
+    }
+  ],
+  "scope": "isolated placeholder fixture, no vendor business; host has no actual swap workload",
+  "binary_sha256": "6049b0ac24d197ff3d5c4ca1cc29f7b6dab51bd62ceccfef1343c11f9c395b22",
+  "io_weight_interface_available": true,
+  "fixture_swap_baseline_prepared": "max with zero use; host swap not enabled",
+  "per_device_weight_override": {
+    "supported": false,
+    "errno": 95,
+    "detail": "kernel/device backend not active; no scheduler or host controller enabled"
+  },
+  "cleanup": {
+    "namespace_absent": true,
+    "data_removed": true
+  },
+  "date": "2026-11-10",
+  "initial_attempt": {
+    "failed_operation": "per-device io.weight override",
+    "errno": 95,
+    "cleanup": {
+      "namespace_absent": true,
+      "data_removed": true
+    },
+    "binary_unchanged_on_recheck": true
+  },
+  "release_status": "development-only"
+}
