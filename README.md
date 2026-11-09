@@ -67,7 +67,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 |---|---|
 | [全部需求](docs/requirements.md) | 用户需求、约定与边界，逐项编号 |
 | [开发任务](docs/tasks.md) | 实现、验证状态和证据 |
-| [版本规划](docs/roadmap.md) | 下一候选版、稳定版与后续增强的优先级和验收 |
+| [后续十版规划](docs/roadmap.md) | 从 RC3 到 1.0 的十个版本、40 项任务与发布条件 |
 | [配置](docs/configuration.md) | 一个 percent 的语义与所有可选参数 |
 | [安装与升级](docs/installation.md) | 架构选择、持久部署、校验、升级和回退 |
 | [本地运维](docs/operations.md) | 预检、人类可读状态、停用/启用、低频状态与覆盖范围 |
