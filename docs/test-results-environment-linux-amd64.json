@@ -1,0 +1,220 @@
+{
+  "source_revision": "ff753f0cea7c8dc398ff9cb603b5083b12dd6215",
+  "binary_sha256": "976fffaa2ab9f9d075e43fa9e7ba9e8b5a57f93fc99b7f79e7c5804e3737fed8",
+  "scope": "Linux 5.14 amd64 containerd/Kubernetes cgroup-v2; no ARM64 or 6.x runtime evidence",
+  "successful_check_records": 37,
+  "phases": [
+    {
+      "scope": "five continuous native/untrusted capacity Pod recreations with shared state, then harness guard rejected private cgroup namespace before read-only assertions",
+      "result": {
+        "source_revision": "ff753f0cea7c8dc398ff9cb603b5083b12dd6215",
+        "tests": [
+          {
+            "name": "cycle-0-unique-self-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-0-native-host-capacities",
+            "passed": true,
+            "cpu": 24,
+            "memory_bytes": 66673278976
+          },
+          {
+            "name": "cycle-0-manual-works-with-or-without-capacity",
+            "passed": true
+          },
+          {
+            "name": "cycle-0-originals-restored",
+            "passed": true
+          },
+          {
+            "name": "cycle-0-journal-current-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-unique-self-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-untrusted-capacities-skipped",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-percent-does-not-use-fake-host-totals",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-manual-works-with-or-without-capacity",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-originals-restored",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-journal-current-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-1-old-journal-isolated",
+            "passed": true
+          },
+          {
+            "name": "cycle-2-unique-self-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-2-native-host-capacities",
+            "passed": true,
+            "cpu": 24,
+            "memory_bytes": 66673278976
+          },
+          {
+            "name": "cycle-2-manual-works-with-or-without-capacity",
+            "passed": true
+          },
+          {
+            "name": "cycle-2-originals-restored",
+            "passed": true
+          },
+          {
+            "name": "cycle-2-journal-current-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-2-old-journal-isolated",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-unique-self-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-untrusted-capacities-skipped",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-percent-does-not-use-fake-host-totals",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-manual-works-with-or-without-capacity",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-originals-restored",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-journal-current-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-3-old-journal-isolated",
+            "passed": true
+          },
+          {
+            "name": "cycle-4-unique-self-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-4-native-host-capacities",
+            "passed": true,
+            "cpu": 24,
+            "memory_bytes": 66673278976
+          },
+          {
+            "name": "cycle-4-manual-works-with-or-without-capacity",
+            "passed": true
+          },
+          {
+            "name": "cycle-4-originals-restored",
+            "passed": true
+          },
+          {
+            "name": "cycle-4-journal-current-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-4-old-journal-isolated",
+            "passed": true
+          },
+          {
+            "name": "cycle-5-unique-self-identity",
+            "passed": true
+          }
+        ],
+        "identities": [
+          "88fff0818cb55425de304b72ddc1948cb09ddd33b52cc6b933e78bcd375b6422",
+          "6b229334c39925bba3170014ccb9bd6c98bc3a3f0ba229fcbf674158a42fe477",
+          "c3d61799b4a266df77743bd9d703a7e0be25ac9553eda8d670d86a5832bf6097",
+          "499ec73b378134699a14fb047cf53316b4a5f15d3d9c796658bb9a4739a8044a",
+          "030b8a6bd66c212bf050693baae96fd0b7be37818538a588b84a3567c8eb3a8a",
+          "be7ea0ec145dfefdeea7eda4032b85f60dbaa40c29046557cef6407b37c14068"
+        ],
+        "scope": "Linux 5.14 amd64 containerd/Kubernetes cgroup-v2; no ARM64 or 6.x runtime evidence",
+        "binary_sha256": "976fffaa2ab9f9d075e43fa9e7ba9e8b5a57f93fc99b7f79e7c5804e3737fed8",
+        "error": "foreign cgroup",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-v05-20261110/environment-job.py\", line 35, in <module>\n    if group.name!='cri-containerd-'+cid+'.scope' or not str(group).startswith('/sys/fs/cgroup/kubepods.slice/'):raise RuntimeError('foreign cgroup')\nRuntimeError: foreign cgroup\n",
+        "cleanup": {
+          "namespace_absent": true
+        }
+      }
+    },
+    {
+      "scope": "separate corrected read-only private cgroup namespace fixture",
+      "result": {
+        "source_revision": "ff753f0cea7c8dc398ff9cb603b5083b12dd6215",
+        "tests": [
+          {
+            "name": "cycle-5-unique-self-identity",
+            "passed": true
+          },
+          {
+            "name": "cycle-5-untrusted-capacities-skipped",
+            "passed": true
+          },
+          {
+            "name": "cycle-5-percent-does-not-use-fake-host-totals",
+            "passed": true
+          },
+          {
+            "name": "readonly-control-denial-leaves-PID1-alive",
+            "passed": true
+          },
+          {
+            "name": "cycle-5-journal-current-identity",
+            "passed": true
+          }
+        ],
+        "identities": [
+          "dff38e412baaca8cef8c6602c04177e1e9485ab820a965255b00f62833cfd4dd"
+        ],
+        "scope": "Linux 5.14 amd64 containerd/Kubernetes cgroup-v2; no ARM64 or 6.x runtime evidence",
+        "binary_sha256": "976fffaa2ab9f9d075e43fa9e7ba9e8b5a57f93fc99b7f79e7c5804e3737fed8",
+        "readonly_private_cgroup_namespace": true,
+        "cleanup": {
+          "namespace_absent": true
+        }
+      }
+    }
+  ],
+  "other_harness_failures": [
+    "initial fixture referenced online_cpus instead of documented host_online_cpus; cleaned",
+    "repeat run stopped after first successful native/manual cycle because Pod deletion wait timed out; subsequent namespace absence verified"
+  ],
+  "linux_automation": {
+    "go": "1.22.5",
+    "vet": "passed",
+    "race": "passed",
+    "guard_statement_coverage_percent": 67.5,
+    "modeled_SIGKILL_checkpoints": 16,
+    "optional_supervisor_failure_checks": 12,
+    "ci": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42684563608"
+  },
+  "unsupported_evidence": [
+    "no Linux 6.x run",
+    "no ARM64 hardware run",
+    "no node reboot or CPU hotplug run"
+  ]
+}
