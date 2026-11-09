@@ -1,0 +1,96 @@
+{
+  "source_revision": "c3a207123d1aa51b04cf15e1eaa92d57e669e087",
+  "tests": [
+    {
+      "name": "dbs-live-memory-with-existing-agent-status",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-PSI-honestly-unavailable",
+      "passed": true
+    },
+    {
+      "name": "dbs-allowlist-omits-private-paths-identities-and-credentials",
+      "passed": true
+    },
+    {
+      "name": "dbs-explicit-private-file-export",
+      "passed": true,
+      "bytes": 1846
+    },
+    {
+      "name": "dbs-existing-output-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-directory-output-rejected",
+      "passed": true
+    },
+    {
+      "name": "dbs-controls-and-business-PID1-unchanged",
+      "passed": true
+    },
+    {
+      "name": "dbs-only-new-diagnostic-output-cleaned",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-live-memory-with-existing-agent-status",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-missing-PSI-honestly-unavailable",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-allowlist-omits-private-paths-identities-and-credentials",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-explicit-private-file-export",
+      "passed": true,
+      "bytes": 1841
+    },
+    {
+      "name": "hisdbs-existing-output-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-directory-output-rejected",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-controls-and-business-PID1-unchanged",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-only-new-diagnostic-output-cleaned",
+      "passed": true
+    }
+  ],
+  "scope": "on-demand read-only diagnostics against both original vendor observe Agents; no controller changes",
+  "binary_sha256": "b0b0cc9e763056184fb3fae08d3d8a9870ba95fa53728038d8f1148787c5291b",
+  "phase": "passed",
+  "automation": {
+    "go": "1.22.5",
+    "vet": "passed",
+    "race": "passed",
+    "guard_coverage_percent": 70.8,
+    "modeled_SIGKILL_checkpoints": 16,
+    "optional_supervisor_checks": 12,
+    "fuzz_config": {
+      "seconds": 30,
+      "executions": 740305
+    },
+    "fuzz_profile": {
+      "seconds": 31,
+      "executions": 542052
+    },
+    "ci": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42691163930"
+  },
+  "boundaries": [
+    "original business resource Agents remained observe using source fc2e26d",
+    "diagnostics source c3a2071 is older than opt-in metrics source 5c707d9; does not validate metrics",
+    "no long fault, actual power-loss or long resource overhead result"
+  ]
+}
