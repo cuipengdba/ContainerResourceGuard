@@ -1,0 +1,173 @@
+{
+  "tests": [
+    {
+      "name": "active-writer-refuses-replacement",
+      "passed": true
+    },
+    {
+      "name": "quiesce-retains-controls-journal-and-business",
+      "passed": true
+    },
+    {
+      "name": "wrong-old-digest-refused-before-backup",
+      "passed": true
+    },
+    {
+      "name": "wrong-running-candidate-digest-refused",
+      "passed": true
+    },
+    {
+      "name": "existing-backup-directory-never-overwritten",
+      "passed": true
+    },
+    {
+      "name": "quiescent-install-changes-only-binary",
+      "passed": true
+    },
+    {
+      "name": "private-backup-preserves-real-originals",
+      "passed": true
+    },
+    {
+      "name": "installed-candidate-accepts-disabled-original-journal",
+      "passed": true
+    },
+    {
+      "name": "changed-effective-config-refuses-auto-rollback",
+      "passed": true
+    },
+    {
+      "name": "tampered-private-rollback-binary-refused",
+      "passed": true
+    },
+    {
+      "name": "external-installed-binary-preserved",
+      "passed": true
+    },
+    {
+      "name": "immediate-binary-rollback-preserves-live-limits",
+      "passed": true
+    },
+    {
+      "name": "new-Agent-resumes-under-original-helper-with-same-originals",
+      "passed": true
+    },
+    {
+      "name": "unchanged-journal-allows-rollback-after-new-Agent-resume",
+      "passed": true
+    },
+    {
+      "name": "previous-Agent-resumes-after-binary-rollback",
+      "passed": true
+    },
+    {
+      "name": "final-disable-restores-true-runtime-originals",
+      "passed": true
+    }
+  ],
+  "scope": "own placeholder PID1: previous cb7 reader to a132 candidate, private receipt immediate rollback and helper-only resume; not vendor deployment",
+  "previous_binary_sha256": "0bed7e8ae27f04d25019aecf7dd009199741fbb903f8947f4969ae579ee2b460",
+  "binary_sha256": "9458e5579b7d5afeb44edb5de37683e3600d868f0189167431a4bb5cee915cf5",
+  "cleanup": {
+    "namespace_absent": true
+  },
+  "source_revision": "a1327dc3877a2b9fb42473a493819eedf77f8987",
+  "previous_failed_campaigns": [
+    {
+      "source_revision": "9fc969dc5326775ab05c1e855918b3aa95e8fc3a",
+      "binary_sha256": "50b590fceba548e9bc47670940c265db04f6390fb8a56e0a3403ab5ade7fe2bc",
+      "tests": [
+        {
+          "name": "active-writer-refuses-replacement",
+          "passed": true
+        },
+        {
+          "name": "quiesce-retains-controls-journal-and-business",
+          "passed": true
+        },
+        {
+          "name": "wrong-old-digest-refused-before-backup",
+          "passed": true
+        },
+        {
+          "name": "wrong-running-candidate-digest-refused",
+          "passed": true
+        },
+        {
+          "name": "existing-backup-directory-never-overwritten",
+          "passed": true
+        }
+      ],
+      "cleanup": {
+        "namespace_absent": true
+      },
+      "failure": "commit-time quiescence incorrectly rejected"
+    },
+    {
+      "source_revision": "dc619926794fc2c21b8b6de2ebf21729537d46bf",
+      "binary_sha256": "7f9a10524882c8fa6320ea04834fb6d1cb79c73012b5d728d0d26a0a9a64f196",
+      "tests": [
+        {
+          "name": "active-writer-refuses-replacement",
+          "passed": true
+        },
+        {
+          "name": "quiesce-retains-controls-journal-and-business",
+          "passed": true
+        },
+        {
+          "name": "wrong-old-digest-refused-before-backup",
+          "passed": true
+        },
+        {
+          "name": "wrong-running-candidate-digest-refused",
+          "passed": true
+        },
+        {
+          "name": "existing-backup-directory-never-overwritten",
+          "passed": true
+        },
+        {
+          "name": "quiescent-install-changes-only-binary",
+          "passed": true
+        },
+        {
+          "name": "private-backup-preserves-real-originals",
+          "passed": true
+        },
+        {
+          "name": "installed-candidate-accepts-disabled-original-journal",
+          "passed": true
+        },
+        {
+          "name": "changed-effective-config-refuses-auto-rollback",
+          "passed": true
+        },
+        {
+          "name": "tampered-private-rollback-binary-refused",
+          "passed": true
+        },
+        {
+          "name": "external-installed-binary-preserved",
+          "passed": true
+        },
+        {
+          "name": "immediate-binary-rollback-preserves-live-limits",
+          "passed": true
+        },
+        {
+          "name": "new-Agent-resumes-under-original-helper-with-same-originals",
+          "passed": true
+        },
+        {
+          "name": "unchanged-journal-allows-rollback-after-new-Agent-resume",
+          "passed": false
+        }
+      ],
+      "cleanup": {
+        "namespace_absent": true
+      },
+      "failure": "renewed same-identity disable timestamp prevented rollback; original journal remained intact"
+    }
+  ]
+}
