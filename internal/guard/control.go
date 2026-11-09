@@ -120,10 +120,15 @@ func ReadStatus(c Config, env Environment) (StatusView, error) {
 		}
 	}
 	e := Engine{Env: env, Files: RealFiles{}}
-	settings := v.Plan.Settings
-	if len(settings) == 0 {
-		for _, i := range v.Items {
+	settings := append([]Setting(nil), v.Plan.Settings...)
+	seen := map[string]bool{}
+	for _, s := range settings {
+		seen[s.Key()] = true
+	}
+	for _, i := range v.Items {
+		if !seen[i.Key()] {
 			settings = append(settings, i.Setting)
+			seen[i.Key()] = true
 		}
 	}
 	for _, s := range settings {

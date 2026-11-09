@@ -7,8 +7,9 @@ import (
 	"os"
 )
 
-func verifyCgroup(string) error            { return errors.New("Linux required") }
-func groupIdentity(string) (string, error) { return "", errors.New("Linux required") }
-func lockFile(string) (*os.File, error)    { return nil, errors.New("Linux required") }
-func lockGroup(string) (*os.File, error)   { return nil, errors.New("Linux required") }
-func fileDevice(string) (string, error)    { return "", errors.New("Linux required") }
+func verifyCgroup(string) error                    { return errors.New("Linux required") }
+func groupIdentity(string) (string, error)         { return "", errors.New("Linux required") }
+func lockFile(string) (*os.File, error)            { return nil, errors.New("Linux required") }
+func lockGroup(string) (*os.File, error)           { return nil, errors.New("Linux required") }
+func fileDevice(string) (string, error)            { return "", errors.New("Linux required") }
+func openConfigFile(path string) (*os.File, error) { return os.Open(path) }

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -53,12 +54,13 @@ type ItemStatus struct {
 	Detail string `json:"detail,omitempty"`
 }
 type Status struct {
-	TimeUTC string       `json:"time_utc"`
-	Mode    string       `json:"mode"`
-	State   string       `json:"state"`
-	Plan    Plan         `json:"plan"`
-	Items   []ItemStatus `json:"items"`
-	Error   string       `json:"error,omitempty"`
+	TimeUTC       string          `json:"time_utc"`
+	Mode          string          `json:"mode"`
+	State         string          `json:"state"`
+	Plan          Plan            `json:"plan"`
+	Items         []ItemStatus    `json:"items"`
+	Error         string          `json:"error,omitempty"`
+	Configuration *ConfigRevision `json:"configuration,omitempty"`
 }
 type Engine struct {
 	Config       Config
@@ -388,8 +390,21 @@ func validControl(s Setting, v string) bool {
 }
 
 func (e *Engine) Restore() Status {
+	return e.restoreKeys(nil)
+}
+
+func (e *Engine) restoreKeys(selected map[string]bool) Status {
 	r := Status{TimeUTC: time.Now().UTC().Format(time.RFC3339), Mode: "restore", State: "restored", Plan: Plan{Environment: e.Env}}
-	for key, m := range e.Journal.Mutations {
+	before, _ := json.Marshal(e.Journal)
+	keys := make([]string, 0, len(e.Journal.Mutations))
+	for key := range e.Journal.Mutations {
+		if selected == nil || selected[key] {
+			keys = append(keys, key)
+		}
+	}
+	sort.Strings(keys)
+	for _, key := range keys {
+		m := e.Journal.Mutations[key]
 		item := ItemStatus{Setting: m.Setting, State: "restored"}
 		if err := e.verifyDevice(m.Setting); err != nil {
 			item.State, item.Detail = "skipped", err.Error()
@@ -404,6 +419,7 @@ func (e *Engine) Restore() Status {
 			item.State = "skipped"
 			item.Detail = err.Error()
 		} else if m.Conflict || cur != m.Applied && (m.Pending == "" || cur != m.Pending) {
+			m.Conflict = true
 			item.State = "conflict"
 			item.Detail = "external value retained"
 		} else {
@@ -458,11 +474,95 @@ func (e *Engine) Restore() Status {
 		}
 		r.Items = append(r.Items, item)
 	}
-	if err := e.save(); err != nil {
-		r.State = "degraded"
-		r.Error = err.Error()
+	after, _ := json.Marshal(e.Journal)
+	if string(before) != string(after) {
+		if err := e.save(); err != nil {
+			r.State = "degraded"
+			r.Error = err.Error()
+		}
 	}
 	return r
+}
+
+// Reconcile also handles dimensions removed by a new configuration. Restore
+// only unchanged values that CRG still owns. Observe never initiates writes.
+func (e *Engine) Reconcile(p Plan) Status {
+	wanted := map[string]bool{}
+	for _, s := range p.Settings {
+		wanted[s.Key()] = true
+	}
+	removed := map[string]bool{}
+	retained := map[string]bool{}
+	for key := range e.Journal.Mutations {
+		if !wanted[key] {
+			if requestedControl(e.Config, e.Journal.Mutations[key].File) {
+				retained[key] = true
+			} else {
+				removed[key] = true
+			}
+		}
+	}
+	var restored Status
+	if e.Config.Mode != "observe" && len(removed) > 0 {
+		restored = e.restoreKeys(removed)
+		if restored.Error != "" {
+			restored.Mode, restored.Plan = e.Config.Mode, p
+			return restored // A journal failure forbids additional kernel writes.
+		}
+	}
+	r := e.Apply(p)
+	if e.Config.Mode == "observe" {
+		for key := range retained {
+			removed[key] = true
+		}
+		keys := make([]string, 0, len(removed))
+		for key := range removed {
+			keys = append(keys, key)
+		}
+		sort.Strings(keys)
+		for _, key := range keys {
+			m := e.Journal.Mutations[key]
+			r.Items = append(r.Items, ItemStatus{Setting: m.Setting, State: "retained", Detail: "observe does not undo previously written limits; use disable for explicit restoration"})
+		}
+	} else if len(removed) > 0 {
+		r.Items = append(r.Items, restored.Items...)
+		if restored.State != "restored" {
+			r.State = "degraded"
+		}
+		if restored.Error != "" {
+			r.Error = "removed controls could not be durably restored: " + restored.Error
+		}
+	}
+	if e.Config.Mode != "observe" && len(retained) > 0 {
+		keys := make([]string, 0, len(retained))
+		for key := range retained {
+			keys = append(keys, key)
+		}
+		sort.Strings(keys)
+		for _, key := range keys {
+			m := e.Journal.Mutations[key]
+			r.Items = append(r.Items, ItemStatus{Setting: m.Setting, State: "retained", Detail: "requested control missing from resolved plan; previous owned limit retained; review warnings or explicitly disable before changing device scope"})
+		}
+		r.State = "degraded"
+	}
+	return r
+}
+
+func requestedControl(c Config, file string) bool {
+	manual := c.ResourceMode == "manual"
+	switch file {
+	case "cpu.max":
+		return !manual || c.Limits != nil && c.Limits.CPUCores != nil
+	case "memory.max":
+		return !manual || c.Limits != nil && c.Limits.MemoryMax != ""
+	case "io.max":
+		return !manual || c.Limits != nil && c.Limits.HasIO()
+	case "pids.max":
+		return c.PidsMax != nil
+	case "cpu.weight":
+		return c.CPUWeight != nil
+	}
+	return false
 }
 
 func VerifyIdentity(env Environment) error {

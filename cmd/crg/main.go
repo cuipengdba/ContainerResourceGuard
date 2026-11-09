@@ -41,7 +41,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|disable|enable|restore|calibrate|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|reload|disable|enable|restore|calibrate|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
@@ -115,12 +115,12 @@ func mainErr() error {
 		emit(p)
 		return nil
 	}
-	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
+	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
 		return errors.New("unknown command")
 	}
 	var c guard.Config
 	var e error
-	if (cmd == "restore" || cmd == "status" || cmd == "disable" || cmd == "enable") && *config == "" {
+	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "disable" || cmd == "enable") && *config == "") {
 		c = guard.Config{Percent: 100}
 		if *state != "" {
 			c.StateDir = *state
@@ -146,6 +146,14 @@ func mainErr() error {
 	env, e := guard.Discover()
 	if e != nil {
 		return e
+	}
+	if cmd == "reload" {
+		request, err := guard.RequestReload(c, env, *config)
+		if err != nil {
+			return err
+		}
+		emit(map[string]any{"state": "requested", "request_id": request.RequestID, "detail": "inspect status.configuration and individual resource results for acceptance and application"})
+		return nil
 	}
 	if cmd == "status" {
 		v, err := guard.ReadStatus(c, env)
@@ -247,12 +255,26 @@ func mainErr() error {
 		}
 		return nil
 	}
+	overrides := guard.ConfigOverrides{StateDir: *state, IOProfile: *profile}
+	if percentProvided {
+		overrides.Percent = *percent
+	}
+	watcher, err := guard.NewConfigWatcher(*config, c, overrides)
+	if err != nil {
+		return err
+	}
+	live, err := guard.StartReload(c, env, watcher.Path)
+	if err != nil {
+		return fmt.Errorf("cannot persist reload runtime; refusing writes: %w", err)
+	}
 	ticker := time.NewTicker(time.Duration(c.IntervalSeconds) * time.Second)
 	defer ticker.Stop()
 	control := time.NewTicker(time.Second)
 	defer control.Stop()
 	writer := guard.StatusWriter{Path: filepath.Join(c.StateDir, "status.json")}
 	lastOutput := ""
+	requestID, controlError := "", ""
+	forceReload := false
 	for {
 		if disabled, err := guard.IsDisabled(c, env); err != nil {
 			return err
@@ -262,11 +284,32 @@ func mainErr() error {
 		if e = guard.VerifyIdentity(env); e != nil {
 			return e
 		}
+		watcher.Poll(env, engine.Originals(), forceReload)
+		forceReload = false
+		if c.IntervalSeconds != watcher.Current.IntervalSeconds {
+			ticker.Reset(time.Duration(watcher.Current.IntervalSeconds) * time.Second)
+		}
+		c = watcher.Current
+		engine.Config = c
 		p, e := guard.BuildPlan(c, env, engine.Originals())
 		if e != nil {
 			return e
 		}
-		r := engine.Apply(p)
+		r := engine.Reconcile(p)
+		configuration := watcher.Revision
+		configuration.RequestID = requestID
+		r.Configuration = &configuration
+		if configuration.State == "rejected" {
+			r.State = "degraded"
+			r.Error = configuration.Error
+		}
+		if controlError != "" {
+			r.State = "degraded"
+			if r.Error != "" {
+				r.Error += "; "
+			}
+			r.Error += controlError
+		}
 		if _, e = writer.Write(r, time.Now()); e != nil {
 			return fmt.Errorf("status persistence failed; no further writes: %w", e)
 		}
@@ -289,6 +332,23 @@ func mainErr() error {
 					return err
 				} else if disabled {
 					return nil
+				}
+				id, err := live.PollRequest(c, requestID)
+				message := ""
+				if err != nil {
+					message = err.Error()
+				}
+				if message != controlError {
+					controlError = message
+					forceReload = id != ""
+					if id != "" {
+						requestID = id
+					}
+					break waitLoop
+				}
+				if id != "" {
+					requestID, forceReload = id, true
+					break waitLoop
 				}
 			case <-ticker.C:
 				break waitLoop

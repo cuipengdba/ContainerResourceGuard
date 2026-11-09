@@ -169,7 +169,7 @@ func (c *Config) Validate() error {
 func ReadConfig(path string, percent float64) (Config, error) {
 	var c Config
 	if path != "" {
-		b, e := os.ReadFile(path)
+		b, e := ReadBoundedFile(path)
 		if e != nil {
 			return c, e
 		}
