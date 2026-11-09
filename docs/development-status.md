@@ -12,7 +12,8 @@
 - 原镜像启动链、SQL 和 POST /test 已通过，保留主库 8960MB shared_buffers；CRG observe 与原缓存程序 enforce 共存。两种业务的备份、流复制及独立恢复共 18 项短测通过，见 [结果与边界](testing-vendor-backup.md)。尚未证明限额模式下的性能。
 - [IO 开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/io-controls) 已实现默认 io.weight、重复标定、质量检查与 profile 合并；[内存开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/memory-pressure) 已实现 memory_high/memory_swap_max。16 项联合控制/工具实测见该分支 [报告](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/memory-pressure/docs/testing-memory-io.md)。内核拒绝设备权重后端时如实记录，不把默认值回读当作竞争效果。
 - [环境开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/environment-checks) 已实现宿主容量来源校验；无法确认总量时跳过对应百分比维度，保留手动绝对值与恢复能力。Linux race/vet、启动故障检查及分阶段 37 条真实检查记录已归档，包含五次连续重建和单独只读命名空间测试，见该分支 [报告](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/environment-checks/docs/testing-environment.md)。硬件矩阵仍未完成。
-- [诊断开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/local-diagnostics) 已开发按需内存分类、白名单/有界本地诊断、特殊状态文件/输入规模保护和默认关闭的本地指标。Linux race/vet、两组短时 fuzz、16 项原镜像只读诊断及 10 项指标故障隔离检查通过，分别见该分支报告；统一原因码、事件和长时门槛尚未完成。
+- [诊断开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/local-diagnostics) 已开发按需内存分类、白名单诊断、输入保护、可选本地指标/有界事件及逐项原因码。已有 16 项原镜像只读诊断、10 项指标检查、11 项真实内存窗口检查和新二进制 17 项指标/事件联合检查，Linux race/vet、短时 fuzz 及强杀回归分别归档；命令级统一原因与长时门槛仍未完成。
+- [原镜像故障及回退](testing-vendor-faults.md) 两轮各 14 场景完成：SQL/API 与 TERM 通过，后轮确认原缓存进程/enforce 与随后 SQL。前轮早期缓存 false 快照保留；所有本次临时 Pod 已移除。
 
 ## 当前开发与验收
 
@@ -20,6 +21,6 @@
 
 DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化约 251s；首轮重建探测超时保留，后续独立复测两次就绪约 205s/211s，128 行标记校验一致，新身份和旧日志隔离均确认。HISDBS observe 约 20s，20% 超过 300s，30% 初始化约 250s、备份后重建约 204s。详见 [保留失败的冷启动进展](testing-cold-start-progress.md)。实际原 liveness 只执行 ls，不能把它与 SQL/API 就绪条件等同。
 
-后续按十版安排继续补齐多设备竞争、跨周期内存窗口、环境矩阵、诊断、安装升级、构建来源和兼容契约。io_weight、memory_high、memory_swap_max 已在开发分支实现，尚未合入 main 或发布；RC2 不接受这些字段。
+后续按十版安排继续补齐多设备竞争、缓存高峰、环境矩阵、安装升级、构建来源和兼容契约。跨周期内存窗口已有 11 项真实检查；io_weight、memory_high、memory_swap_max 和本地观测功能仍只在开发分支，尚未合入 main 或发布；RC2 不接受这些字段。
 
 24h 基线/24h 限额运行、arm64 真机、实际多设备及 1.0 的至少 7 天目标业务验收均未完成。完成源代码、通过短测或创建版本标签都不能替代持续运行和真实业务证据。业务节点当前只读检查，未修改其部署和控制文件。

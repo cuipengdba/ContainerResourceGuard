@@ -1,0 +1,1341 @@
+{
+  "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+  "phases": [
+    {
+      "phase": "checked",
+      "cases": [
+        {
+          "role": "dbs",
+          "case": "missing",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 21.159986686892807,
+              "api_ready_seconds": 21.41920264204964,
+              "elapsed_seconds": 21.419206202030182,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8235083\nuser_usec 6119470\nsystem_usec 2115612\ncore_sched.force_idle_usec 0\nnr_periods 160\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480036352\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=202240 rios=3 wios=25 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790144512 rios=3 wios=5274 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 3.7079813529271632,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "denied",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 25.015132223954424,
+              "api_ready_seconds": 25.281705391826108,
+              "elapsed_seconds": 25.28170873899944,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8331366\nuser_usec 6147211\nsystem_usec 2184155\ncore_sched.force_idle_usec 0\nnr_periods 193\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1486311424\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=393728 rios=3 wios=46 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790262272 rios=3 wios=5214 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "degraded",
+              "resource_items": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                }
+              ],
+              "requested": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+                }
+              ],
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "PID1_alive_before_TERM": true,
+          "permission_degradation_observed": true,
+          "main_TERM_seconds": 4.024320947006345,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "enforce"
+        },
+        {
+          "role": "dbs",
+          "case": "invalid",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 26.175350221805274,
+              "api_ready_seconds": 26.43177904980257,
+              "elapsed_seconds": 26.43178275297396,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8360631\nuser_usec 6130713\nsystem_usec 2229917\ncore_sched.force_idle_usec 0\nnr_periods 194\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480183808\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=232960 rios=3 wios=25 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790171136 rios=3 wios=5251 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 3.7161021130159497,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "crash",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 20.603039191802964,
+              "api_ready_seconds": 20.859749297844246,
+              "elapsed_seconds": 20.859753724886104,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8134569\nuser_usec 6106115\nsystem_usec 2028453\ncore_sched.force_idle_usec 0\nnr_periods 167\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480458240\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=16950272 rios=3 wios=91 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=752681984 rios=3 wios=5202 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 6.487780429888517,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "hang",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 19.883217685157433,
+              "api_ready_seconds": 20.196716035017744,
+              "elapsed_seconds": 20.196720430161804,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8226557\nuser_usec 6147290\nsystem_usec 2079267\ncore_sched.force_idle_usec 0\nnr_periods 162\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480757248\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=16994304 rios=4 wios=93 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=708706304 rios=4 wios=4214 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 7.949287011986598,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "ignoreterm",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 20.92415014305152,
+              "api_ready_seconds": 21.18358635320328,
+              "elapsed_seconds": 21.18358999118209,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8257189\nuser_usec 6145133\nsystem_usec 2112056\ncore_sched.force_idle_usec 0\nnr_periods 176\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483939840\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=16948736 rios=4 wios=98 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=708648448 rios=4 wios=4080 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 6.203213984146714,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "rollback",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 18.649399725021794,
+              "api_ready_seconds": 18.905448687030002,
+              "elapsed_seconds": 18.905453973915428,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8237067\nuser_usec 6120093\nsystem_usec 2116973\ncore_sched.force_idle_usec 0\nnr_periods 159\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1482797056\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=17007616 rios=3 wios=92 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=751830016 rios=3 wios=5247 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 5.1943457829765975,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "missing",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 22.537151337834075,
+              "api_ready_seconds": 22.79468597797677,
+              "elapsed_seconds": 22.794690574984998,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8210495\nuser_usec 6120015\nsystem_usec 2090480\ncore_sched.force_idle_usec 0\nnr_periods 158\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1479802880\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=186880 rios=3 wios=27 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790120960 rios=3 wios=5414 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.444235436851159,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "denied",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 25.790198220172897,
+              "api_ready_seconds": 26.05156961805187,
+              "elapsed_seconds": 26.051574626006186,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8306220\nuser_usec 6170763\nsystem_usec 2135456\ncore_sched.force_idle_usec 0\nnr_periods 176\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483173888\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=17253888 rios=4 wios=113 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=721769984 rios=4 wios=4461 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "degraded",
+              "resource_items": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                }
+              ],
+              "requested": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+                }
+              ],
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "permission_degradation_observed": true,
+          "main_TERM_seconds": 5.14477045298554,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "enforce"
+        },
+        {
+          "role": "hisdbs",
+          "case": "invalid",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 21.854944850085303,
+              "api_ready_seconds": 22.113229212118313,
+              "elapsed_seconds": 22.113234183052555,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8242785\nuser_usec 6186198\nsystem_usec 2056586\ncore_sched.force_idle_usec 0\nnr_periods 163\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480450048\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=16978432 rios=3 wios=96 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=708678144 rios=3 wios=4079 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 3.8449442610144615,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "crash",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 25.781418453203514,
+              "api_ready_seconds": 26.03807095508091,
+              "elapsed_seconds": 26.038075340213254,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8369864\nuser_usec 6212454\nsystem_usec 2157410\ncore_sched.force_idle_usec 0\nnr_periods 203\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483403264\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=193536 rios=3 wios=26 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790074368 rios=3 wios=5444 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 3.853295136941597,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "hang",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 22.405639024917036,
+              "api_ready_seconds": 22.67295757587999,
+              "elapsed_seconds": 22.672961725853384,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8271137\nuser_usec 6126074\nsystem_usec 2145062\ncore_sched.force_idle_usec 0\nnr_periods 188\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483378688\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=268288 rios=4 wios=27 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=790140928 rios=4 wios=5364 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.701733825961128,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "ignoreterm",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 26.135375111130998,
+              "api_ready_seconds": 26.403217405080795,
+              "elapsed_seconds": 26.403221101034433,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8346612\nuser_usec 6161119\nsystem_usec 2185492\ncore_sched.force_idle_usec 0\nnr_periods 225\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1484156928\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=301568 rios=4 wios=29 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=790182400 rios=4 wios=5366 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 5.141178969992325,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "rollback",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 20.023470687912777,
+              "api_ready_seconds": 20.282491666032,
+              "elapsed_seconds": 20.282495028106496,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8260443\nuser_usec 6152686\nsystem_usec 2107757\ncore_sched.force_idle_usec 0\nnr_periods 156\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480040448\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=17019904 rios=3 wios=92 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=708719616 rios=3 wios=4291 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": false,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 8.062220013933256,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        }
+      ],
+      "started": 1794258338.051216,
+      "criteria": {
+        "first_liveness_delay_seconds": 300,
+        "database_and_api_deadline_seconds": 90,
+        "probe_interval_seconds": 1
+      },
+      "scope": "disposable original-image Pods with original start and optional helpers, cold initialization and data-preserving Pod recreation; no production changes",
+      "calibration_quality": {
+        "version": 2,
+        "created_utc": "2026-11-09T19:49:47Z",
+        "devices": [
+          {
+            "profile_device": "253:0",
+            "device": "253:0",
+            "state": "resolved",
+            "detail": "stable device identity matches; this does not establish current performance",
+            "quality": {
+              "samples": 3,
+              "spread_percent": {
+                "read_bps": 43.686440571614185,
+                "read_iops": 43.51851851851852,
+                "write_bps": 69.73315892379705,
+                "write_iops": 18.34862385321101
+              },
+              "warnings": [
+                "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+                "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+                "read_iops spread exceeds 25%; check device competition and repeat explicitly"
+              ]
+            }
+          }
+        ],
+        "warnings": [
+          "1 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+        ]
+      },
+      "legacy_profile_is_lower_median_of_three_samples": true,
+      "resource_binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+      "ended": 1794258850.142096,
+      "mode_label_note": "outer mode records the default test mode; effective_config_mode corrects denied cases to enforce, matching their actual saved candidate and attempted writes"
+    },
+    {
+      "phase": "checked",
+      "cases": [
+        {
+          "role": "dbs",
+          "case": "missing",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 24.280877691926435,
+              "api_ready_seconds": 24.536650810856372,
+              "elapsed_seconds": 24.536654326831922,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8285954\nuser_usec 6180018\nsystem_usec 2105935\ncore_sched.force_idle_usec 0\nnr_periods 194\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483329536\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=202752 rios=3 wios=23 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790112256 rios=3 wios=5277 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.591177477966994,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.04912172886543,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "denied",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 19.59750338201411,
+              "api_ready_seconds": 19.859556438867003,
+              "elapsed_seconds": 19.859560144832358,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8252757\nuser_usec 6158167\nsystem_usec 2094590\ncore_sched.force_idle_usec 0\nnr_periods 171\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1486278656\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=317440 rios=3 wios=41 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790272000 rios=3 wios=5308 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "degraded",
+              "resource_items": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                }
+              ],
+              "requested": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+                }
+              ],
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.2572494619525969,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "permission_degradation_observed": true,
+          "main_TERM_seconds": 4.178134287940338,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "enforce"
+        },
+        {
+          "role": "dbs",
+          "case": "invalid",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 23.53814272186719,
+              "api_ready_seconds": 23.797078860923648,
+              "elapsed_seconds": 23.797082403907552,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8217118\nuser_usec 6124559\nsystem_usec 2092558\ncore_sched.force_idle_usec 0\nnr_periods 174\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480441856\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=254976 rios=3 wios=27 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790189056 rios=3 wios=5504 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 9.937351169995964,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 3.559130409033969,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "crash",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 21.570174532942474,
+              "api_ready_seconds": 21.82792486390099,
+              "elapsed_seconds": 21.827928344951943,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8307280\nuser_usec 6201835\nsystem_usec 2105445\ncore_sched.force_idle_usec 0\nnr_periods 175\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483530240\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=155648 rios=3 wios=27 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790065152 rios=3 wios=5205 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.2104566099587828,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.072911178926006,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "hang",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 21.694209235953167,
+              "api_ready_seconds": 21.95153781888075,
+              "elapsed_seconds": 21.951541513903067,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8254380\nuser_usec 6165010\nsystem_usec 2089370\ncore_sched.force_idle_usec 0\nnr_periods 180\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1471078400\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=239104 rios=3 wios=28 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790148608 rios=3 wios=5288 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.22360279993154109,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.880906529026106,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "ignoreterm",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 19.933314540889114,
+              "api_ready_seconds": 20.18680385686457,
+              "elapsed_seconds": 20.18680815701373,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8363927\nuser_usec 6167566\nsystem_usec 2196360\ncore_sched.force_idle_usec 0\nnr_periods 166\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1471533056\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=159232 rios=3 wios=23 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790105600 rios=3 wios=5493 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.21160832699388266,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 5.745515955844894,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "dbs",
+          "case": "rollback",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 19.70897947694175,
+              "api_ready_seconds": 19.973601458827034,
+              "elapsed_seconds": 19.973606026964262,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8241554\nuser_usec 6166090\nsystem_usec 2075464\ncore_sched.force_idle_usec 0\nnr_periods 174\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1482387456\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=208896 rios=4 wios=26 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=790159360 rios=4 wios=5502 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.20661433599889278,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.030562265077606,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "missing",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 23.768061359180138,
+              "api_ready_seconds": 24.02987573714927,
+              "elapsed_seconds": 24.02987930015661,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8278348\nuser_usec 6179706\nsystem_usec 2098641\ncore_sched.force_idle_usec 0\nnr_periods 176\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1479888896\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=16980480 rios=3 wios=94 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=721373696 rios=3 wios=4738 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 9.906920307083055,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.198593039996922,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "denied",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 18.686157224001363,
+              "api_ready_seconds": 18.94427588605322,
+              "elapsed_seconds": 18.944279534975067,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8263857\nuser_usec 6206755\nsystem_usec 2057101\ncore_sched.force_idle_usec 0\nnr_periods 163\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1485705216\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=17139712 rios=3 wios=113 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=708851712 rios=3 wios=4085 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "degraded",
+              "resource_items": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+                  "state": "skipped",
+                  "detail": "controller write denied by read-only cgroup fixture; raw target path omitted"
+                }
+              ],
+              "requested": [
+                {
+                  "file": "cpu.max",
+                  "value": "480000 100000"
+                },
+                {
+                  "file": "memory.max",
+                  "value": "13334654976"
+                },
+                {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+                }
+              ],
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.21616647415794432,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "permission_degradation_observed": true,
+          "main_TERM_seconds": 5.778826762922108,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "enforce"
+        },
+        {
+          "role": "hisdbs",
+          "case": "invalid",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 22.791205692104995,
+              "api_ready_seconds": 23.04627559101209,
+              "elapsed_seconds": 23.04627857496962,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8230933\nuser_usec 6098582\nsystem_usec 2132351\ncore_sched.force_idle_usec 0\nnr_periods 164\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1480253440\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=12288 wbytes=248320 rios=3 wios=29 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790153728 rios=3 wios=5341 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 9.370013307081535,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 3.750479062786326,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "crash",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 23.811919004889205,
+              "api_ready_seconds": 24.07199128693901,
+              "elapsed_seconds": 24.071996181970462,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8310459\nuser_usec 6162956\nsystem_usec 2147502\ncore_sched.force_idle_usec 0\nnr_periods 202\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483395072\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=61440 wbytes=194048 rios=6 wios=27 dbytes=0 dios=0\n253:0 rbytes=61440 wbytes=790070784 rios=6 wios=5276 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.2104112629313022,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.0279538640752435,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "hang",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 21.5360250051599,
+              "api_ready_seconds": 21.7938852570951,
+              "elapsed_seconds": 21.793888731161132,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8355873\nuser_usec 6198292\nsystem_usec 2157580\ncore_sched.force_idle_usec 0\nnr_periods 187\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483829248\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=16384 wbytes=195072 rios=4 wios=27 dbytes=0 dios=0\n253:0 rbytes=16384 wbytes=790108672 rios=4 wios=5557 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.2250088038854301,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.099136039847508,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "ignoreterm",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 19.590181421022862,
+              "api_ready_seconds": 19.852890376001596,
+              "elapsed_seconds": 19.85289449803531,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8215162\nuser_usec 6089083\nsystem_usec 2126078\ncore_sched.force_idle_usec 0\nnr_periods 163\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1483276288\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=65536 wbytes=233472 rios=7 wios=29 dbytes=0 dios=0\n253:0 rbytes=65536 wbytes=790138880 rios=7 wios=5328 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.21506537194363773,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.789027099963278,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        },
+        {
+          "role": "hisdbs",
+          "case": "rollback",
+          "mode": "observe",
+          "percent": 20,
+          "starts": [
+            {
+              "phase": "initialization",
+              "network_down": true,
+              "passed": true,
+              "pg_ready_seconds": 20.717966101830825,
+              "api_ready_seconds": 20.971863433951512,
+              "elapsed_seconds": 20.971866842824966,
+              "kernel_counters": {
+                "cpu.stat": "usage_usec 8267912\nuser_usec 6163702\nsystem_usec 2104209\ncore_sched.force_idle_usec 0\nnr_periods 163\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+                "memory.current": "1470648320\n",
+                "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+                "io.stat": "8:0 rbytes=28672 wbytes=139776 rios=4 wios=25 dbytes=0 dios=0\n253:0 rbytes=28672 wbytes=790045184 rios=4 wios=5512 dbytes=0 dios=0\n"
+              },
+              "actual_controls": {
+                "cpu.max": "800000 100000",
+                "memory.max": "21474836480",
+                "io.max": ""
+              },
+              "resource_state": "unavailable",
+              "original_ls_probe_exit": 0,
+              "sql_ok": true
+            }
+          ],
+          "original_cache_process_running": true,
+          "cache_state": "enforce",
+          "cache_wait_after_API_seconds": 0.2162432949990034,
+          "SQL_after_cache_wait_ok": true,
+          "PID1_alive_before_TERM": true,
+          "main_TERM_seconds": 4.890739794820547,
+          "main_exit_code": 0,
+          "TERM_within_12_seconds": true,
+          "own_pod_removed": true,
+          "effective_config_mode": "observe"
+        }
+      ],
+      "started": 1794258995.5990486,
+      "criteria": {
+        "first_liveness_delay_seconds": 300,
+        "database_and_api_deadline_seconds": 90,
+        "probe_interval_seconds": 1
+      },
+      "scope": "disposable original-image Pods with original start and optional helpers, cold initialization and data-preserving Pod recreation; no production changes",
+      "calibration_quality": {
+        "version": 2,
+        "created_utc": "2026-11-09T19:49:47Z",
+        "devices": [
+          {
+            "profile_device": "253:0",
+            "device": "253:0",
+            "state": "resolved",
+            "detail": "stable device identity matches; this does not establish current performance",
+            "quality": {
+              "samples": 3,
+              "spread_percent": {
+                "read_bps": 43.686440571614185,
+                "read_iops": 43.51851851851852,
+                "write_bps": 69.73315892379705,
+                "write_iops": 18.34862385321101
+              },
+              "warnings": [
+                "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+                "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+                "read_iops spread exceeds 25%; check device competition and repeat explicitly"
+              ]
+            }
+          }
+        ],
+        "warnings": [
+          "1 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+        ]
+      },
+      "legacy_profile_is_lower_median_of_three_samples": true,
+      "resource_binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+      "ended": 1794259516.9192052,
+      "mode_label_note": "outer mode records the default test mode; effective_config_mode corrects denied cases to enforce, matching their actual saved candidate and attempted writes"
+    }
+  ],
+  "boundaries": [
+    "first phase only sampled cache immediately after API readiness; false snapshots are retained",
+    "second phase predeclared up to 45 seconds for original cache doctor retry after directory creation",
+    "TERM response preserves the observed original supervisor exit code 0; this is not a test of arbitrary vendor business exit codes",
+    "no 24h or seven-day acceptance in this matrix"
+  ]
+}
