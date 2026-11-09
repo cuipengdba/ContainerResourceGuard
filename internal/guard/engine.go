@@ -181,7 +181,7 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	return engine, lock, nil
 }
 func allowed(s Setting) bool {
-	return (s.File == "cpu.max" || s.File == "memory.max" || s.File == "pids.max" || s.File == "cpu.weight") && s.Device == "" && s.DeviceIdentity == "" || s.File == "io.max" && validDevice(s.Device) && (s.DeviceIdentity == "" || validIdentity(s.DeviceIdentity))
+	return (s.File == "cpu.max" || s.File == "memory.max" || s.File == "pids.max" || s.File == "cpu.weight" || s.File == "io.weight") && s.Device == "" && s.DeviceIdentity == "" || s.File == "io.max" && validDevice(s.Device) && (s.DeviceIdentity == "" || validIdentity(s.DeviceIdentity))
 }
 
 func (e *Engine) verifyDevice(s Setting) error {
@@ -211,6 +211,9 @@ func (e *Engine) current(s Setting) (string, error) {
 	}
 	if s.File == "io.max" {
 		v = ioValue(v, s.Device)
+	}
+	if s.File == "io.weight" {
+		return defaultIOWeight(v)
 	}
 	return strings.TrimSpace(v), nil
 }
@@ -374,6 +377,9 @@ func validControl(s Setting, v string) bool {
 	case "cpu.weight":
 		n, err := strconv.ParseUint(v, 10, 64)
 		return err == nil && n >= 1 && n <= 10000
+	case "io.weight":
+		canonical, err := defaultIOWeight(v)
+		return err == nil && canonical == v
 	case "io.max":
 		f := strings.Fields(v)
 		if len(f) != 4 || canonicalIO(v) != v {
@@ -561,6 +567,8 @@ func requestedControl(c Config, file string) bool {
 		return c.PidsMax != nil
 	case "cpu.weight":
 		return c.CPUWeight != nil
+	case "io.weight":
+		return c.IOWeight != nil
 	}
 	return false
 }

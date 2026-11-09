@@ -19,6 +19,7 @@ type Config struct {
 	Limits          *ManualLimits `json:"limits,omitempty"`
 	PidsMax         *uint64       `json:"pids_max,omitempty"`
 	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
+	IOWeight        *uint64       `json:"io_weight,omitempty"`
 	Mode            string        `json:"mode,omitempty"`
 	IOProfile       string        `json:"io_profile,omitempty"`
 	StateDir        string        `json:"state_dir,omitempty"`
@@ -136,6 +137,9 @@ func (c *Config) Validate() error {
 	}
 	if c.CPUWeight != nil && (*c.CPUWeight < 1 || *c.CPUWeight > 10000) {
 		return errors.New("cpu_weight must be 1..10000 (relative weight, not a hard quota)")
+	}
+	if c.IOWeight != nil && (*c.IOWeight < 1 || *c.IOWeight > 10000) {
+		return errors.New("io_weight must be 1..10000 (relative default weight, not a hard IO cap)")
 	}
 	if c.Mode == "" {
 		c.Mode = "enforce"

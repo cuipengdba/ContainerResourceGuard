@@ -150,6 +150,14 @@ func Calibrate(ctx context.Context, directory string, seconds int) (Profile, err
 	if d.ReadIOPS, e = measure(false, true); e != nil {
 		return p, e
 	}
+	latestDevice, err := fileDevice(directory)
+	if err != nil {
+		return p, err
+	}
+	latestID, err := DeviceIdentity(dev)
+	if err != nil || latestDevice != dev || latestID != id {
+		return p, errors.New("calibration device changed; no profile accepted")
+	}
 	p.Devices = []DeviceProfile{d}
 	return p, nil
 }

@@ -12,12 +12,13 @@ import (
 )
 
 type DeviceProfile struct {
-	Device    string `json:"device"`
-	Identity  string `json:"identity"`
-	ReadBPS   uint64 `json:"read_bps"`
-	WriteBPS  uint64 `json:"write_bps"`
-	ReadIOPS  uint64 `json:"read_iops"`
-	WriteIOPS uint64 `json:"write_iops"`
+	Device       string          `json:"device"`
+	Identity     string          `json:"identity"`
+	ReadBPS      uint64          `json:"read_bps"`
+	WriteBPS     uint64          `json:"write_bps"`
+	ReadIOPS     uint64          `json:"read_iops"`
+	WriteIOPS    uint64          `json:"write_iops"`
+	Measurements []IOMeasurement `json:"measurements,omitempty"`
 }
 type Profile struct {
 	Version    int             `json:"version"`
@@ -141,6 +142,9 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if c.CPUWeight != nil {
 		p.Settings = append(p.Settings, Setting{File: "cpu.weight", Value: strconv.FormatUint(*c.CPUWeight, 10)})
 	}
+	if c.IOWeight != nil {
+		p.Settings = append(p.Settings, Setting{File: "io.weight", Value: "default " + strconv.FormatUint(*c.IOWeight, 10)})
+	}
 	if c.ResourceMode == "manual" {
 		settings, devices, warnings := manualIO(c, env, original, manualDevice, relatedDevices)
 		p.Settings = append(p.Settings, settings...)
@@ -149,7 +153,7 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		p.Paths = pathCoverage(c.DataPaths, p.Settings)
 		return p, nil
 	}
-	data, e := os.ReadFile(c.IOProfile)
+	data, e := ReadBoundedFile(c.IOProfile)
 	if e != nil {
 		p.Warnings = append(p.Warnings, "IO unmanaged: profile unavailable: "+e.Error())
 		p.Paths = pathCoverage(c.DataPaths, p.Settings)
@@ -159,8 +163,8 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if e = Decode(data, &profile); e != nil {
 		return p, fmt.Errorf("invalid IO profile: %w", e)
 	}
-	if profile.Version != 1 || len(profile.Devices) == 0 || profile.Method != "direct-sync-qdepth1-seq1m-random4k" {
-		return p, errors.New("unsupported or empty IO profile")
+	if e = ValidateProfile(profile); e != nil {
+		return p, e
 	}
 	seen := map[string]bool{}
 	resolved := map[string]DeviceProfile{}

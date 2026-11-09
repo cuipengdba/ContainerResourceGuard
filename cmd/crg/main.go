@@ -41,7 +41,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|reload|disable|enable|restore|calibrate|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
@@ -61,6 +61,9 @@ func mainErr() error {
 	dir := f.String("directory", "", "existing block-backed directory for calibration")
 	output := f.String("output", "/etc/crg/io-profile.json", "calibration JSON output")
 	seconds := f.Int("seconds", 3, "seconds per calibration phase (1..30)")
+	samples := f.Int("samples", 3, "explicit calibration repetitions (1..9); never runs at business startup")
+	mergeProfile := f.String("merge-profile", "", "second explicit profile for offline merge")
+	replaceProfile := f.Bool("replace", false, "explicitly replace matching identities during profile merge")
 	format := f.String("format", "json", "output format: json or human (status, doctor, preflight)")
 	if e := f.Parse(os.Args[2:]); e != nil {
 		return e
@@ -85,26 +88,64 @@ func mainErr() error {
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	if cmd == "profile-check" || cmd == "profile-merge" {
+		path := *profile
+		if path == "" {
+			path = "/etc/crg/io-profile.json"
+		}
+		p, err := guard.LoadProfile(path)
+		if err != nil {
+			return err
+		}
+		if cmd == "profile-check" {
+			v, err := guard.InspectProfile(p)
+			if err != nil {
+				return err
+			}
+			emit(v)
+			return nil
+		}
+		if *mergeProfile == "" {
+			return errors.New("profile-merge requires --merge-profile; default is preview without writes")
+		}
+		addition, err := guard.LoadProfile(*mergeProfile)
+		if err != nil {
+			return err
+		}
+		merged, err := guard.MergeProfiles(p, addition, *replaceProfile)
+		if err != nil {
+			return err
+		}
+		persist := false
+		f.Visit(func(v *flag.Flag) {
+			if v.Name == "output" {
+				persist = true
+			}
+		})
+		if persist {
+			if err = guard.AtomicJSON(*output, merged); err != nil {
+				return err
+			}
+		}
+		emit(map[string]any{"profile": merged, "persisted": persist})
+		return nil
+	}
 	if cmd == "calibrate" {
 		if *dir == "" {
 			return errors.New("calibrate requires --directory; never benchmarks at business startup")
 		}
-		p, e := guard.Calibrate(ctx, *dir, *seconds)
+		p, e := guard.CalibrateRepeated(ctx, *dir, *seconds, *samples)
 		if e != nil {
 			return e
 		}
-		if b, x := os.ReadFile(*output); x == nil {
+		if b, x := guard.ReadBoundedFile(*output); x == nil {
 			var prior guard.Profile
 			if x = guard.Decode(b, &prior); x != nil {
 				return fmt.Errorf("existing profile invalid; refusing replacement: %w", x)
 			}
-			if prior.Version != p.Version || prior.Method != p.Method {
-				return errors.New("existing profile version/method mismatch")
-			}
-			for _, old := range prior.Devices {
-				if old.Identity != p.Devices[0].Identity {
-					p.Devices = append(p.Devices, old)
-				}
+			p, x = guard.MergeProfiles(prior, p, true)
+			if x != nil {
+				return fmt.Errorf("existing profile rejected; refusing replacement: %w", x)
 			}
 		} else if !os.IsNotExist(x) {
 			return x
