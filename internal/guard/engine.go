@@ -63,6 +63,7 @@ type Status struct {
 	Error         string          `json:"error,omitempty"`
 	Configuration *ConfigRevision `json:"configuration,omitempty"`
 	Metrics       *MetricsStatus  `json:"metrics,omitempty"`
+	Events        *EventsStatus   `json:"events,omitempty"`
 }
 type Engine struct {
 	Config        Config

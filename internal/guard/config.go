@@ -24,6 +24,7 @@ type Config struct {
 	MemorySwapMax       string        `json:"memory_swap_max,omitempty"`
 	MemoryStableSeconds int           `json:"memory_stable_seconds,omitempty"`
 	MetricsEnabled      bool          `json:"metrics_enabled,omitempty"`
+	EventsEnabled       bool          `json:"events_enabled,omitempty"`
 	Mode                string        `json:"mode,omitempty"`
 	IOProfile           string        `json:"io_profile,omitempty"`
 	StateDir            string        `json:"state_dir,omitempty"`

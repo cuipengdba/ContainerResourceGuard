@@ -355,6 +355,7 @@ func mainErr() error {
 	defer control.Stop()
 	writer := guard.StatusWriter{Path: filepath.Join(c.StateDir, "status.json")}
 	metrics := guard.MetricsWriter{}
+	events := guard.EventWriter{}
 	lastOutput := ""
 	requestID, controlError := "", ""
 	forceReload := false
@@ -394,6 +395,7 @@ func mainErr() error {
 			r.Error += controlError
 		}
 		r.Metrics = metrics.Write(c, engine, r, time.Now())
+		r.Events = events.Write(c, r, time.Now())
 		if _, e = writer.Write(r, time.Now()); e != nil {
 			return fmt.Errorf("status persistence failed; no further writes: %w", e)
 		}
@@ -463,6 +465,9 @@ func humanPlan(p guard.Plan) {
 }
 
 func humanStatus(v guard.StatusView) {
+	if v.Events != nil {
+		fmt.Printf("Local events: %s (%s)\n", v.Events.State, v.Events.Detail)
+	}
 	fmt.Printf("State: %s; mode: %s; snapshot age: %ds; writer lock held: %t\n", v.State, v.Mode, v.SnapshotAgeSeconds, v.WriterLockHeld)
 	if v.Metrics != nil {
 		fmt.Printf("Local metrics: %s (%s)\n", v.Metrics.State, v.Metrics.Detail)
