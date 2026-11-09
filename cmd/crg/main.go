@@ -311,6 +311,20 @@ func mainErr() error {
 	}
 	if cmd == "restore" || cmd == "disable" {
 		r := engine.Restore()
+		// Explicit restore/disable may wait a bounded period for an opt-in
+		// stability window. This command is never a business startup gate.
+		windowDeadline := time.Now().Add(time.Duration(c.MemoryStableSeconds+3) * time.Second)
+		for guard.MemoryWindowPending(r) && time.Now().Before(windowDeadline) {
+			select {
+			case <-ctx.Done():
+				return ctx.Err()
+			case <-time.After(time.Second):
+			}
+			if err := guard.VerifyIdentity(env); err != nil {
+				return err
+			}
+			r = engine.Restore()
+		}
 		if cmd == "disable" {
 			r.Mode = "disable"
 		}
@@ -459,7 +473,7 @@ func humanStatus(v guard.StatusView) {
 		humanPlan(v.Plan)
 	}
 	for _, i := range v.Items {
-		fmt.Printf("Result %s %s: %s (%s)\n", i.File, i.Device, i.State, i.Detail)
+		fmt.Printf("Result %s %s: %s [%s] (%s)\n", i.File, i.Device, i.State, i.ReasonCode, i.Detail)
 	}
 	for _, i := range v.Actual {
 		fmt.Printf("Actual %s %s: %s %s\n", i.File, i.Device, i.Value, i.Detail)

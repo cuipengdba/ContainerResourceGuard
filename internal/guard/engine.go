@@ -50,8 +50,9 @@ type Journal struct {
 }
 type ItemStatus struct {
 	Setting
-	State  string `json:"state"`
-	Detail string `json:"detail,omitempty"`
+	State      string `json:"state"`
+	Detail     string `json:"detail,omitempty"`
+	ReasonCode string `json:"reason_code,omitempty"`
 }
 type Status struct {
 	TimeUTC       string          `json:"time_utc"`
@@ -64,13 +65,15 @@ type Status struct {
 	Metrics       *MetricsStatus  `json:"metrics,omitempty"`
 }
 type Engine struct {
-	Config       Config
-	Env          Environment
-	Files        Files
-	Journal      Journal
-	Persist      func(Journal) error
-	Pause        func(time.Duration)
-	DeviceLookup func(string) (string, error)
+	Config        Config
+	Env           Environment
+	Files         Files
+	Journal       Journal
+	Persist       func(Journal) error
+	Pause         func(time.Duration)
+	Now           func() time.Time
+	memoryWindows map[string]memoryWindow
+	DeviceLookup  func(string) (string, error)
 }
 
 var ErrLocked = errors.New("one agent per container: lock unavailable")
@@ -256,6 +259,9 @@ func (e *Engine) Originals() map[string]string {
 func (e *Engine) save() error { return e.Persist(e.Journal) }
 
 func (e *Engine) Apply(p Plan) Status {
+	if e.Config.Mode == "observe" {
+		e.memoryWindows = nil
+	}
 	status := Status{TimeUTC: time.Now().UTC().Format(time.RFC3339), Mode: e.Config.Mode, State: "managed", Plan: p}
 	if len(p.Warnings) > 0 {
 		status.State = "degraded"
@@ -263,11 +269,11 @@ func (e *Engine) Apply(p Plan) Status {
 	for _, s := range p.Settings {
 		item := ItemStatus{Setting: s}
 		if e.Config.Mode == "observe" {
-			item.State = "observe"
+			item.State, item.ReasonCode = "observe", "observe"
 			status.Items = append(status.Items, item)
 			continue
 		}
-		item.State, item.Detail = e.applyOne(s)
+		item.State, item.Detail, item.ReasonCode = e.applyOne(s)
 		if item.State != "applied" {
 			status.State = "degraded"
 		}
@@ -278,30 +284,30 @@ func (e *Engine) Apply(p Plan) Status {
 	}
 	return status
 }
-func (e *Engine) applyOne(s Setting) (string, string) {
+func (e *Engine) applyOne(s Setting) (string, string, string) {
 	if !allowed(s) || !validControl(s, s.Value) {
-		return "skipped", "invalid controller value"
+		return "skipped", "invalid controller value", "invalid_request"
 	}
 	if err := e.verifyDevice(s); err != nil {
-		return "skipped", err.Error()
+		return "skipped", err.Error(), "device_identity"
 	}
 	current, err := e.current(s)
 	if err != nil {
-		return "skipped", err.Error()
+		return "skipped", err.Error(), "controller_read"
 	}
 	if !validControl(s, current) {
-		return "skipped", "unsupported original controller value; refusing to create an unrestorable journal"
+		return "skipped", "unsupported original controller value; refusing to create an unrestorable journal", "unrestorable_original"
 	}
 	m, exists := e.Journal.Mutations[s.Key()]
 	if exists && m.DeviceIdentity != "" && m.DeviceIdentity != s.DeviceIdentity {
-		return "conflict", "IO device identity differs from owned journal entry"
+		return "conflict", "IO device identity differs from owned journal entry", "external_conflict"
 	}
 	if !exists {
 		m = &Mutation{Setting: s, Original: current, Applied: current}
 		e.Journal.Mutations[s.Key()] = m
 	}
 	if m.Conflict {
-		return "conflict", "external change detected previously; explicit restore/review required"
+		return "conflict", "external change detected previously; explicit restore/review required", "external_conflict"
 	}
 	if m.Pending != "" {
 		if current == m.Pending {
@@ -312,85 +318,85 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 		} else {
 			m.Conflict = true
 			_ = e.save()
-			return "conflict", "interrupted write and external value differ"
+			return "conflict", "interrupted write and external value differ", "external_conflict"
 		}
 	}
 	if current != m.Applied {
 		m.Conflict = true
 		_ = e.save()
-		return "conflict", "current value differs from the last owned value; refusing overwrite"
+		return "conflict", "current value differs from the last owned value; refusing overwrite", "external_conflict"
 	}
 	if (s.File == "memory.max" || s.File == "memory.high") && maxNumber(s.Value) < maxNumber(current) {
-		if err := e.memoryPreflight(s.Value); err != nil {
-			return "skipped", err.Error()
+		if err := e.memoryDecreasePreflight(s.File, s.Value, current); err != nil {
+			return "skipped", err.Error(), errorReason(err, "memory_safety")
 		}
 	}
 	if s.File == "pids.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.pidsHeadroom(s.Value); err != nil {
-			return "skipped", err.Error()
+			return "skipped", err.Error(), "task_safety"
 		}
 	}
 	if s.File == "memory.swap.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.swapHeadroom(s.Value); err != nil {
-			return "skipped", err.Error()
+			return "skipped", err.Error(), "swap_safety"
 		}
 	}
 	if current == s.Value {
-		return "applied", "already at desired value"
+		return "applied", "already at desired value", "unchanged"
 	}
 	m.Setting = s
 	m.Pending = s.Value
 	if err = e.save(); err != nil {
 		m.Pending = ""
-		return "skipped", "cannot persist write intent: " + err.Error()
+		return "skipped", "cannot persist write intent: " + err.Error(), "journal_intent"
 	}
 	// A slow journal fsync may outlive the preflight. Recheck usage immediately
 	// before lowering memory.max, without attempting forced cache reclaim.
 	if (s.File == "memory.max" || s.File == "memory.high") && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.memoryHeadroom(s.Value, 0); err != nil {
-			return "skipped", err.Error()
+			return "skipped", err.Error(), "memory_safety"
 		}
 	}
 	latest, err := e.current(s)
 	if err != nil {
-		return "skipped", "cannot recheck before write; intent retained: " + err.Error()
+		return "skipped", "cannot recheck before write; intent retained: " + err.Error(), "controller_recheck"
 	}
 	if latest != current {
 		m.Conflict = true
 		_ = e.save()
-		return "conflict", "value changed while saving intent; refusing overwrite"
+		return "conflict", "value changed while saving intent; refusing overwrite", "external_conflict"
 	}
 	if err := e.verifyDevice(s); err != nil {
-		return "skipped", err.Error()
+		return "skipped", err.Error(), "device_identity"
 	}
 	if s.File == "pids.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.pidsHeadroom(s.Value); err != nil {
-			return "skipped", err.Error()
+			return "skipped", err.Error(), "task_safety"
 		}
 	}
 	if s.File == "memory.swap.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.swapHeadroom(s.Value); err != nil {
-			return "skipped", err.Error()
+			return "skipped", err.Error(), "swap_safety"
 		}
 	}
 	if err = e.write(s, s.Value); err != nil {
-		return "skipped", "write failed; intent retained for recovery: " + err.Error()
+		return "skipped", "write failed; intent retained for recovery: " + err.Error(), "controller_write"
 	}
 	after, err := e.current(s)
 	if err != nil {
-		return "skipped", "cannot verify write; intent retained: " + err.Error()
+		return "skipped", "cannot verify write; intent retained: " + err.Error(), "controller_verify"
 	}
 	if after != s.Value {
 		m.Conflict = true
 		_ = e.save()
-		return "conflict", "readback differs from requested limit"
+		return "conflict", "readback differs from requested limit", "external_conflict"
 	}
 	m.Applied = s.Value
 	m.Pending = ""
 	if err = e.save(); err != nil {
-		return "degraded", "limit written but journal finalization failed: " + err.Error()
+		return "degraded", "limit written but journal finalization failed: " + err.Error(), "journal_finalize"
 	}
-	return "applied", "written and verified"
+	return "applied", "written and verified", "applied"
 }
 
 func validControl(s Setting, v string) bool {
@@ -444,9 +450,9 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 	sort.Strings(keys)
 	for _, key := range keys {
 		m := e.Journal.Mutations[key]
-		item := ItemStatus{Setting: m.Setting, State: "restored"}
+		item := ItemStatus{Setting: m.Setting, State: "restored", ReasonCode: "restored"}
 		if err := e.verifyDevice(m.Setting); err != nil {
-			item.State, item.Detail = "skipped", err.Error()
+			item.State, item.Detail, item.ReasonCode = "skipped", err.Error(), "device_identity"
 			r.State = "degraded"
 			r.Items = append(r.Items, item)
 			continue
@@ -455,13 +461,23 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 		if err == nil && cur == m.Original {
 			delete(e.Journal.Mutations, key)
 		} else if err != nil {
-			item.State = "skipped"
+			item.State, item.ReasonCode = "skipped", "controller_read"
 			item.Detail = err.Error()
 		} else if m.Conflict || cur != m.Applied && (m.Pending == "" || cur != m.Pending) {
 			m.Conflict = true
-			item.State = "conflict"
+			item.State, item.ReasonCode = "conflict", "external_conflict"
 			item.Detail = "external value retained"
 		} else {
+			// A multi-cycle wait must not rewrite intent every second. Once the
+			// window is safe, retain the original post-fsync instantaneous check.
+			if e.Config.MemoryStableSeconds > 0 && (m.File == "memory.max" || m.File == "memory.high") && maxNumber(m.Original) < maxNumber(cur) {
+				if err := e.memoryDecreasePreflight(m.File, m.Original, cur); err != nil {
+					item.State, item.Detail, item.ReasonCode = "skipped", err.Error(), errorReason(err, "memory_safety")
+					r.State = "degraded"
+					r.Items = append(r.Items, item)
+					continue
+				}
+			}
 			// Persist restore intent BEFORE writing, just like normal application.
 			m.Applied = cur
 			m.Pending = m.Original
@@ -473,7 +489,7 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 					err = errors.New("value changed while saving restore intent; external value retained")
 				}
 				if err == nil && (m.File == "memory.max" || m.File == "memory.high") && maxNumber(m.Original) < maxNumber(cur) {
-					err = e.memoryPreflight(m.Original)
+					err = reasonError("memory_safety", e.memoryPreflight(m.Original))
 				}
 				if err == nil && m.File == "pids.max" && maxNumber(m.Original) < maxNumber(cur) {
 					err = e.pidsHeadroom(m.Original)
@@ -507,7 +523,7 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 			if err == nil {
 				delete(e.Journal.Mutations, key)
 			} else {
-				item.State = "skipped"
+				item.State, item.ReasonCode = "skipped", errorReason(err, "restore_incomplete")
 				item.Detail = err.Error()
 			}
 		}
@@ -564,7 +580,7 @@ func (e *Engine) Reconcile(p Plan) Status {
 		sort.Strings(keys)
 		for _, key := range keys {
 			m := e.Journal.Mutations[key]
-			r.Items = append(r.Items, ItemStatus{Setting: m.Setting, State: "retained", Detail: "observe does not undo previously written limits; use disable for explicit restoration"})
+			r.Items = append(r.Items, ItemStatus{Setting: m.Setting, State: "retained", ReasonCode: "observe_retained", Detail: "observe does not undo previously written limits; use disable for explicit restoration"})
 		}
 	} else if len(removed) > 0 {
 		r.Items = append(r.Items, restored.Items...)
@@ -583,7 +599,7 @@ func (e *Engine) Reconcile(p Plan) Status {
 		sort.Strings(keys)
 		for _, key := range keys {
 			m := e.Journal.Mutations[key]
-			r.Items = append(r.Items, ItemStatus{Setting: m.Setting, State: "retained", Detail: "requested control missing from resolved plan; previous owned limit retained; review warnings or explicitly disable before changing device scope"})
+			r.Items = append(r.Items, ItemStatus{Setting: m.Setting, State: "retained", ReasonCode: "plan_unresolved", Detail: "requested control missing from resolved plan; previous owned limit retained; review warnings or explicitly disable before changing device scope"})
 		}
 		r.State = "degraded"
 	}

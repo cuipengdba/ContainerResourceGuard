@@ -14,21 +14,22 @@ import (
 )
 
 type Config struct {
-	Percent         float64       `json:"percent,omitempty"`
-	ResourceMode    string        `json:"resource_mode,omitempty"`
-	Limits          *ManualLimits `json:"limits,omitempty"`
-	PidsMax         *uint64       `json:"pids_max,omitempty"`
-	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
-	IOWeight        *uint64       `json:"io_weight,omitempty"`
-	MemoryHigh      string        `json:"memory_high,omitempty"`
-	MemorySwapMax   string        `json:"memory_swap_max,omitempty"`
-	MetricsEnabled  bool          `json:"metrics_enabled,omitempty"`
-	Mode            string        `json:"mode,omitempty"`
-	IOProfile       string        `json:"io_profile,omitempty"`
-	StateDir        string        `json:"state_dir,omitempty"`
-	IntervalSeconds int           `json:"interval_seconds,omitempty"`
-	DataPaths       []string      `json:"data_paths,omitempty"`
-	percentPresent  bool
+	Percent             float64       `json:"percent,omitempty"`
+	ResourceMode        string        `json:"resource_mode,omitempty"`
+	Limits              *ManualLimits `json:"limits,omitempty"`
+	PidsMax             *uint64       `json:"pids_max,omitempty"`
+	CPUWeight           *uint64       `json:"cpu_weight,omitempty"`
+	IOWeight            *uint64       `json:"io_weight,omitempty"`
+	MemoryHigh          string        `json:"memory_high,omitempty"`
+	MemorySwapMax       string        `json:"memory_swap_max,omitempty"`
+	MemoryStableSeconds int           `json:"memory_stable_seconds,omitempty"`
+	MetricsEnabled      bool          `json:"metrics_enabled,omitempty"`
+	Mode                string        `json:"mode,omitempty"`
+	IOProfile           string        `json:"io_profile,omitempty"`
+	StateDir            string        `json:"state_dir,omitempty"`
+	IntervalSeconds     int           `json:"interval_seconds,omitempty"`
+	DataPaths           []string      `json:"data_paths,omitempty"`
+	percentPresent      bool
 }
 
 func (c *Config) UnmarshalJSON(data []byte) error {
@@ -171,6 +172,9 @@ func (c *Config) Validate() error {
 		if err != nil || n > 0 && n < uint64(os.Getpagesize()) {
 			return errors.New("memory_swap_max must be 0B or at least one page in whole bytes")
 		}
+	}
+	if c.MemoryStableSeconds != 0 && (c.MemoryStableSeconds < 2 || c.MemoryStableSeconds > 3600) {
+		return errors.New("memory_stable_seconds must be 0 (legacy instantaneous guards) or 2..3600")
 	}
 	if c.Mode == "" {
 		c.Mode = "enforce"
