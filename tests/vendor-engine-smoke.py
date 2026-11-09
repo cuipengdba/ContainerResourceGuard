@@ -30,7 +30,8 @@ try:
     if meta['metadata'].get('labels',{}).get('managed-by')!='crg-vendor-test' or meta['spec'].get('hostNetwork') or meta['spec'].get('hostPID'):
       raise RuntimeError('refusing Pod without disposable fixture label or with host namespaces')
     (p/(role+'-business')).mkdir(mode=0o700,exist_ok=True)
-    item={'checks':[],'phase':'preparing','probes':[]};report['roles'][role]=item;save()
+    item={'checks':[],'phase':'preparing','probes':[]};report['roles'][role]=item
+    item['primary_start_time_before']=sql(role,'SELECT pg_postmaster_start_time();');save()
     root='/opt/postgresql/basebackup/crg-acceptance-'+args.run_id;base=root+'/snapshot';standby=root+'/standby';restore=root+'/restore'
     ex(role,'test ! -e '+shlex.quote(root)+' && mkdir -m 700 '+shlex.quote(root),log='backup-root.txt')
     stop=threading.Event()
@@ -88,6 +89,8 @@ try:
           item.setdefault('cleanup_errors',[]).append({'temporary_engine':directory.rsplit('/',1)[-1],'kind':type(error).__name__})
       stop.set();monitor.join(timeout=25)
       item['probe_monitor_stopped']=not monitor.is_alive()
+    item['primary_start_time_after']=sql(role,'SELECT pg_postmaster_start_time();')
+    check(item,'primary_did_not_restart',item['primary_start_time_before']==item['primary_start_time_after'])
     check(item,'business_probes_during_backup_sync_restore',len(item['probes'])>=1 and all(x['api_ok'] and x['sql_ok'] and x['api_seconds']<=5 and x['sql_seconds']<=5 for x in item['probes']),{'samples':len(item['probes']),'api_max':max(x['api_seconds'] for x in item['probes']),'sql_max':max(x['sql_seconds'] for x in item['probes'])})
     ex(role,'test ! -f '+standby+'/postmaster.pid && test ! -f '+restore+'/postmaster.pid && rm -rf -- '+standby+' '+restore,log='temporary-servers-cleanup.txt')
     item['temporary_servers_stopped_and_copies_removed']=True;save()
