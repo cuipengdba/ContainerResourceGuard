@@ -72,7 +72,10 @@ def run(command, timeout=30, check=True, data=None):
 
 
 def ex(role, *command, **kwargs):
-    return run(['kubectl', 'exec', '-n', args.namespace, role + '-business', '-c', role, '--', *command], **kwargs)
+    prefix = ['kubectl', 'exec', '-n', args.namespace, role + '-business', '-c', role]
+    if kwargs.get('data') is not None:
+        prefix.append('-i')
+    return run([*prefix, '--', *command], **kwargs)
 
 
 def save():
@@ -232,6 +235,8 @@ try:
         entry = '/tmp/crg-soak-load-' + args.run_id + '.py'
         own['entry'] = entry
         ex(role, '/bin/bash', '-c', 'set -Ce; umask 077; cat > ' + entry + '; chmod 0444 ' + entry, data=worker_source)
+        if ex(role, 'sha256sum', entry).stdout.decode().split()[0] != report['worker_sha256']:
+            raise RuntimeError('copied worker digest mismatch; refusing to run')
         command = 'CRG_VENDOR_SOAK_TEST=disposable-loopback-only python ' + entry + ' --run-id ' + args.run_id + ' --seconds ' + str(args.seconds) + ' --test-phase ' + args.test_phase
         if args.source_run_id:
             command += ' --source-run-id ' + args.source_run_id

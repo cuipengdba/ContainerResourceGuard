@@ -21,7 +21,7 @@
 
 30% 限额引擎回归出现临时备库退出/探测超时；手动 16MiB/s + 256 IOPS 回归出现原主库连接失败与数据库内部重启，两轮均失败。第三轮 16MiB/s + 4096 IOPS 明确新手动预算，两类业务共 20 项短测通过且主库未重启；清理等待 120s 超时保留，后续独立核对确认真实原值/observe 和 SQL 正常，见 [包含失败的报告](testing-vendor-enforce.md)。已开发 [原生持续负载入口与判定条件](continuous-acceptance.md)，正修正工具准备时的权限/依赖问题并重测 fresh/reuse；24h 尚未开始。
 
-安装升级的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/install-upgrade) 已实现持锁兼容预检和显式私有原值备份，16 项真实检查、Linux race/vet、强杀/辅助故障与 CI 通过；尚未完成完整安装、二进制切换和迁移演练。三组实际 30 分钟低 IO/持续故障测试已进入计时，见 [预设开销判定](overhead-acceptance.md)，没有提前宣布结果。main 包内缺失文档引用测试入口已修正，ca19975 的 CI 与两架构本地包校验通过。
+安装升级的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/install-upgrade) 已实现持锁兼容预检和显式私有原值备份，16 项真实检查、Linux race/vet、强杀/辅助故障与 CI 通过；尚未完成完整安装、二进制切换和迁移演练。三组实际 30 分钟低 IO/持续故障测试已按原判定通过，见 [开销结果与边界](overhead-acceptance.md)。新 CLI 暂停旧版 Agent 的 20 项真实检查通过；显式二进制替换/私有回退入口继续开发验收。main 包内缺失文档引用测试入口已修正，ca19975 的 CI 与两架构本地包校验通过。
 
 DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化约 251s；首轮重建探测超时保留，后续独立复测两次就绪约 205s/211s，128 行标记校验一致，新身份和旧日志隔离均确认。HISDBS observe 约 20s，20% 超过 300s，30% 初始化约 250s、备份后重建约 204s。详见 [保留失败的冷启动进展](testing-cold-start-progress.md)。实际原 liveness 只执行 ls，不能把它与 SQL/API 就绪条件等同。
 
