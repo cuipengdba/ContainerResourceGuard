@@ -50,7 +50,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "build-info" {
-		emit(map[string]any{"version": version, "revision": revision, "os": runtime.GOOS, "arch": runtime.GOARCH,
+		emit(map[string]any{"version": version, "revision": revision, "os": runtime.GOOS, "arch": runtime.GOARCH, "go_version": runtime.Version(),
 			"lock_protocol": guard.LockProtocol, "journal_versions": []int{1}, "io_profile_versions": []int{1, 2},
 			"writer_controls": []string{"cpu.max", "cpu.weight", "io.max", "io.weight", "memory.max", "memory.high", "memory.swap.max", "pids.max"}})
 		return nil

@@ -1,0 +1,27 @@
+# 可信构建与离线校验开发
+
+2026-11-10，next/release-provenance 开发分支，尚未发布 v0.8/1.0。承接 P09.1/P09.2；实现与实测结果分别归档，不能把编写 workflow 等同生成了可验证证明。
+
+发布构建固定 Go1.27.3，并禁用自动切换/下载工具链、外部模块代理和本地 Go 环境文件。`go.mod` 的最低源兼容版本不因此改变。官方归档摘要见 [工具链记录](../scripts/toolchain.json)，来自 [Go 官方下载清单](https://go.dev/dl/?mode=json)；版本/摘要应按维护更新流程一起更改。构建要求 checkout 精确且已提交的源码修订，版本号严格限定；不允许把当前代码随意标成别的修订。build-info 增补 go_version，既有字段保持。
+
+构建清单记录两架构实际二进制摘要、Go 内嵌模块/构建信息和源码时间。CycloneDX 1.6 SBOM 逐架构从相同工具链与目标的 `go list -deps` 生成标准库包清单，绑定实际二进制 SHA256。该清单是包级构建依赖，不声称所有源函数都进入最终二进制。编译器列为构建工具，不作为分发载荷；厂商数据库、libpq 与独立缓存程序不随本产品分发，不属于本包 SBOM。新外部 Go 依赖须补许可证和清单支持，不能自动漏记。
+
+打包只从已提交的 Git blob 中选择公开文档/脚本/示例；未跟踪文件、工作区临时文件和私有配置不进入包。gzip 时间置零、成员顺序/属主/模式/时间固定，包中包含 BUILD.json 与 SBOM.cdx.json。包修订与二进制源码修订分别记录；固定二进制、两项修订及工具链才具有可重复性意义。源码时间不是实际构建时刻，真实构建来源由 CI 证明补充。
+
+```sh
+bash scripts/build.sh v0.8.0-dev
+python3 scripts/package.py v0.8.0-dev
+python3 scripts/check-package.py v0.8.0-dev
+python3 tests/release-integrity.py v0.8.0-dev
+python3 scripts/check-reproducible.py v0.8.0-dev
+
+# 此摘要必须来自独立可信渠道或已验证证明，不能只信同目录下载的 SHA256SUMS。
+python3 scripts/verify-release.py containerresourceguard-VERSION-linux-amd64.tar.gz \
+  --sha256 TRUSTED_PACKAGE_SHA256 --source-revision EXPECTED_FULL_SOURCE_SHA --arch amd64
+```
+
+离线校验先对有大小上限的压缩包建立私有临时快照并匹配外部可信摘要，再检查包结构、目标 ELF、源码修订和内部二进制/SBOM 摘要。拒绝链接、特殊文件、重复项、越界路径、过多成员和过大展开体积，不解包或执行载荷。摘要只解决内容完整性，摘要来源的可信度需要用户的发布渠道或签名身份策略。安装前应分别验证包来源及解包后的候选摘要，再使用显式维护命令；不把安装维护接入数据库启动前置条件。
+
+CI 固定 Actions 的完整提交摘要；非 PR 构建拟生成包的 provenance、两种二进制各自 SBOM attestation。公开仓库使用 GitHub OIDC，不把长期签名私钥写入仓库。来源验证使用 [GitHub 的证明说明](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations) 与 [gh attestation verify](https://cli.github.com/manual/gh_attestation_verify)，约束仓库、工作流、预期源码修订及托管 runner；仅“签名有效”不足以证明是预期版本。离线验证另需预先从可信渠道保存 bundle 与信任根，不能用未知包自带的根建立信任。
+
+重复构建检查在另一个绝对路径的新克隆中执行同一提交和固定配方，比较两种二进制、两种压缩包、两份 SBOM、清单与校验和的字节摘要；它证明本机同工具链的路径独立性，不替代另一平台或独立第三方复现。跨平台结果、完整 SBOM schema 核对、实际证明生成/验证、安装前演练与长期回归继续分别验收。
