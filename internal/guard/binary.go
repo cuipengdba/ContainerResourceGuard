@@ -304,6 +304,9 @@ func replaceBinary(c Config, env Environment, s upgradeSnapshot, source *os.File
 	if err = VerifyIdentity(env); err != nil {
 		return err
 	}
+	// inspectUpgrade only parses state. This caller still holds both writer
+	// locks through withUpgradeSnapshot, so a current marker is quiescent here.
+	fresh.Check.QuiescentSnapshot = fresh.Check.DisabledForCurrent
 	if err = requireSwapSnapshot(fresh); err != nil {
 		return err
 	}

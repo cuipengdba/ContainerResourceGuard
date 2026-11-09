@@ -42,7 +42,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|quiesce|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|quiesce|binary-install|binary-rollback|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
