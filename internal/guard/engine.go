@@ -153,7 +153,7 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	fail := func(err error) (*Engine, *os.File, error) { lock.Close(); return nil, nil, err }
 	j := Journal{Version: 1, Identity: env.Identity, Target: env.Target, Mutations: map[string]*Mutation{}}
 	path := filepath.Join(c.StateDir, "journal.json")
-	if b, e := os.ReadFile(path); e == nil {
+	if b, e := ReadStateBoundedFile(path); e == nil {
 		var loaded Journal
 		if e = Decode(b, &loaded); e != nil {
 			return fail(fmt.Errorf("invalid journal; refusing writes: %w", e))

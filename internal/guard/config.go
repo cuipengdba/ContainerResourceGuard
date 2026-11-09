@@ -46,6 +46,9 @@ func (c *Config) UnmarshalJSON(data []byte) error {
 }
 
 func Decode(data []byte, out any) error {
+	if len(data) > MaxJSONBytes {
+		return errors.New("JSON source exceeds 1MiB")
+	}
 	trimmed := bytes.TrimSpace(data)
 	if len(trimmed) == 0 || trimmed[0] != '{' {
 		return errors.New("expected a JSON object")
@@ -68,6 +71,13 @@ func Decode(data []byte, out any) error {
 }
 
 func uniqueJSON(d *json.Decoder) error {
+	return uniqueJSONDepth(d, 0)
+}
+
+func uniqueJSONDepth(d *json.Decoder, depth int) error {
+	if depth > 64 {
+		return errors.New("JSON nesting exceeds 64 levels")
+	}
 	t, err := d.Token()
 	if err != nil {
 		return err
@@ -89,13 +99,13 @@ func uniqueJSON(d *json.Decoder) error {
 				return errors.New("duplicate or invalid JSON key")
 			}
 			seen[s] = true
-			if err := uniqueJSON(d); err != nil {
+			if err := uniqueJSONDepth(d, depth+1); err != nil {
 				return err
 			}
 		}
 	case '[':
 		for d.More() {
-			if err := uniqueJSON(d); err != nil {
+			if err := uniqueJSONDepth(d, depth+1); err != nil {
 				return err
 			}
 		}
@@ -182,7 +192,13 @@ func (c *Config) Validate() error {
 	if c.IntervalSeconds < 1 || c.IntervalSeconds > 3600 {
 		return errors.New("interval_seconds must be 1..3600")
 	}
+	if len(c.DataPaths) > 64 {
+		return errors.New("data_paths supports at most 64 paths per container")
+	}
 	for _, p := range c.DataPaths {
+		if len(p) > 4096 {
+			return errors.New("data_paths entries must not exceed 4096 bytes")
+		}
 		if !path.IsAbs(p) || path.Clean(p) != p {
 			return errors.New("data_paths must contain clean absolute Linux paths")
 		}

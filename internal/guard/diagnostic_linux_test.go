@@ -5,6 +5,7 @@ package guard
 import (
 	"os"
 	"path/filepath"
+	"syscall"
 	"testing"
 	"time"
 )
@@ -57,5 +58,27 @@ func TestLiveMemoryStatusDoesNotRewritePersistedSnapshot(t *testing.T) {
 	after, _ := os.ReadFile(path)
 	if string(before) != string(after) {
 		t.Fatal("status command wrote dynamic counters to disk")
+	}
+}
+
+func TestStateJSONRejectsFIFOAndSymlinkWhileConfigSupportsLink(t *testing.T) {
+	root := t.TempDir()
+	file, fifo, link := filepath.Join(root, "ordinary.json"), filepath.Join(root, "pipe"), filepath.Join(root, "link")
+	if err := os.WriteFile(file, []byte(`{"percent":20}`), 0600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(file, link); err != nil {
+		t.Fatal(err)
+	}
+	if err := syscall.Mkfifo(fifo, 0600); err != nil {
+		t.Fatal(err)
+	}
+	for _, path := range []string{fifo, link} {
+		if _, err := ReadStateBoundedFile(path); err == nil {
+			t.Fatal("special state source accepted", path)
+		}
+	}
+	if _, err := ReadBoundedFile(link); err != nil {
+		t.Fatal("ConfigMap-compatible link rejected", err)
 	}
 }

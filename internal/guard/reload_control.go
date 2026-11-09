@@ -56,7 +56,7 @@ func StartReload(c Config, env Environment, source string) (ReloadRuntime, error
 // authority for accepted policy and individual kernel readbacks.
 func RequestReload(c Config, env Environment, source string) (ReloadRequest, error) {
 	var r ReloadRequest
-	b, err := ReadBoundedFile(filepath.Join(c.StateDir, "runtime.json"))
+	b, err := ReadStateBoundedFile(filepath.Join(c.StateDir, "runtime.json"))
 	if err != nil {
 		return r, err
 	}
@@ -93,7 +93,7 @@ func (r ReloadRuntime) PollRequest(c Config, seen string) (string, error) {
 	if r.Source == "" {
 		return "", nil
 	}
-	b, err := ReadBoundedFile(filepath.Join(c.StateDir, "reload.json"))
+	b, err := ReadStateBoundedFile(filepath.Join(c.StateDir, "reload.json"))
 	if os.IsNotExist(err) {
 		return "", nil
 	}

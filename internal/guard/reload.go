@@ -15,7 +15,22 @@ const MaxJSONBytes = 1 << 20
 // ConfigMap symlinks are intentionally followed; their final target must be a
 // bounded regular file. FIFOs/devices cannot stall the Agent's config reader.
 func ReadBoundedFile(path string) ([]byte, error) {
-	f, err := openConfigFile(path)
+	return readBoundedFile(path, false)
+}
+
+// State files have the same size bound and also reject a final symlink. Their
+// directory is private and locked; config sources separately support ConfigMap
+// symlink replacement by design.
+func ReadStateBoundedFile(path string) ([]byte, error) {
+	return readBoundedFile(path, true)
+}
+
+func readBoundedFile(path string, state bool) ([]byte, error) {
+	open := openConfigFile
+	if state {
+		open = openStateJSONFile
+	}
+	f, err := open(path)
 	if err != nil {
 		return nil, err
 	}

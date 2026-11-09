@@ -31,3 +31,9 @@ crg diagnose --state-dir /run/crg --output /tmp/crg-diagnostic-001.json
 Windows 单元与 vet 已通过；用例覆盖重叠计数、未知与零区分、异常数字/PSI、白名单脱敏、64 项/64KiB 上限、拒绝覆盖及状态路径保护。Linux race、目录同步/权限与真实容器按需诊断待验收。没有把开发实现、短测与后续长时门槛混为一项。
 
 统计解释依据 [Linux cgroup v2 官方文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)，未把最新内核存在的字段作为旧内核必备字段。
+
+## 输入规模与状态读取保护
+
+提前承接 P09.3：所有 JSON 解码限制为 1MiB、最多 64 层嵌套，data_paths 最多 64 项且每项不超过 4096 字节，防止小配置展开出过大的状态报告。journal、status、disable 和重载会话/请求均有界读取；Linux 使用非阻塞、禁止最终符号链接的文件打开方式，拒绝 FIFO、设备、目录和超大状态。配置/profile 文件仍可读取指向普通文件的 ConfigMap 符号链接。
+
+这些边界不删除或重建坏日志，不省略原值落盘。异常状态会拒绝相应控制或读取，诊断命令不复制错误原文。新增配置/profile 模糊测试入口；长时运行、真实掉电和持续满盘故障仍待验收，不能只凭模糊测试种子通过关闭 P09.3。

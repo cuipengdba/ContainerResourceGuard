@@ -18,7 +18,7 @@ type DisableMarker struct {
 // A marker belongs to a cgroup incarnation. A replacement container starts with
 // its own policy even when an emptyDir survives the old container process.
 func IsDisabled(c Config, env Environment) (bool, error) {
-	b, err := os.ReadFile(filepath.Join(c.StateDir, "disabled.json"))
+	b, err := ReadStateBoundedFile(filepath.Join(c.StateDir, "disabled.json"))
 	if os.IsNotExist(err) {
 		return false, nil
 	}
@@ -97,7 +97,7 @@ type StatusView struct {
 
 func ReadStatus(c Config, env Environment) (StatusView, error) {
 	var v StatusView
-	b, err := os.ReadFile(filepath.Join(c.StateDir, "status.json"))
+	b, err := ReadStateBoundedFile(filepath.Join(c.StateDir, "status.json"))
 	if err != nil {
 		return v, err
 	}
