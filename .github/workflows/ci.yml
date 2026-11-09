@@ -1,0 +1,22 @@
+name: build-and-test
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - run: test -z "$(gofmt -l cmd internal)"
+      - run: go vet ./...
+      - run: go test -race -cover ./...
+      - run: bash tests/supervisor.sh
+      - run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o dist/crg-linux-amd64 ./cmd/crg
+      - run: CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -trimpath -o dist/crg-linux-arm64 ./cmd/crg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crg-linux
+          path: dist/
