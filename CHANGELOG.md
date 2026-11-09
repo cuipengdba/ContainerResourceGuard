@@ -6,6 +6,7 @@
 - 新增默认 stdout 预览、显式本地输出的 diagnose；白名单内容、64KiB/64 项上限和新文件保护。
 - 不因动态统计增加循环状态写入，不新增端口。统一原因码、可选指标和有界事件继续开发；见 docs/diagnostics-development.md。
 - 提前增加 P09.3 的状态文件 1MiB/类型/符号链接保护、JSON 深度与数据路径规模边界，以及配置/profile 模糊测试入口。
+- 可选 metrics_enabled 运维开关，默认关闭；本容器 metrics.prom 有界/每分钟导出，错误不停止资源协调，journal 仍同步持久化。
 
 ## v0.5.0 开发分支（未发布）
 

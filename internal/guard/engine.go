@@ -61,6 +61,7 @@ type Status struct {
 	Items         []ItemStatus    `json:"items"`
 	Error         string          `json:"error,omitempty"`
 	Configuration *ConfigRevision `json:"configuration,omitempty"`
+	Metrics       *MetricsStatus  `json:"metrics,omitempty"`
 }
 type Engine struct {
 	Config       Config
@@ -87,8 +88,20 @@ func AtomicJSON(path string, v any) error {
 	if e != nil {
 		return e
 	}
+	return atomicFile(path, append(b, '\n'))
+}
+
+func atomicFile(path string, b []byte) error {
+	return writeAtomicFile(path, b, true)
+}
+
+func volatileFile(path string, b []byte) error {
+	return writeAtomicFile(path, b, false)
+}
+
+func writeAtomicFile(path string, b []byte, durable bool) error {
 	dir := filepath.Dir(path)
-	if e = os.MkdirAll(dir, 0700); e != nil {
+	if e := os.MkdirAll(dir, 0700); e != nil {
 		return e
 	}
 	if st, x := os.Lstat(path); x == nil && (!st.Mode().IsRegular() || st.Mode()&os.ModeSymlink != 0) {
@@ -101,9 +114,13 @@ func AtomicJSON(path string, v any) error {
 	tmp := f.Name()
 	defer os.Remove(tmp)
 	if e = f.Chmod(0600); e == nil {
-		_, e = f.Write(append(b, '\n'))
+		var n int
+		n, e = f.Write(b)
+		if e == nil && n != len(b) {
+			e = errors.New("short state file write")
+		}
 	}
-	if e == nil {
+	if e == nil && durable {
 		e = f.Sync()
 	}
 	closeErr := f.Close()
@@ -115,6 +132,9 @@ func AtomicJSON(path string, v any) error {
 	}
 	if e = os.Rename(tmp, path); e != nil {
 		return e
+	}
+	if !durable {
+		return nil
 	}
 	d, e := os.Open(dir)
 	if e != nil {

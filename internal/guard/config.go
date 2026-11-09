@@ -22,6 +22,7 @@ type Config struct {
 	IOWeight        *uint64       `json:"io_weight,omitempty"`
 	MemoryHigh      string        `json:"memory_high,omitempty"`
 	MemorySwapMax   string        `json:"memory_swap_max,omitempty"`
+	MetricsEnabled  bool          `json:"metrics_enabled,omitempty"`
 	Mode            string        `json:"mode,omitempty"`
 	IOProfile       string        `json:"io_profile,omitempty"`
 	StateDir        string        `json:"state_dir,omitempty"`
