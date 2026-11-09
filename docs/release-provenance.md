@@ -22,7 +22,25 @@ python3 scripts/verify-release.py containerresourceguard-VERSION-linux-amd64.tar
 
 离线校验先对有大小上限的压缩包建立私有临时快照并匹配外部可信摘要，再检查包结构、目标 ELF、源码修订和内部二进制/SBOM 摘要。拒绝链接、特殊文件、重复项、越界路径、过多成员和过大展开体积，不解包或执行载荷。摘要只解决内容完整性，摘要来源的可信度需要用户的发布渠道或签名身份策略。安装前应分别验证包来源及解包后的候选摘要，再使用显式维护命令；不把安装维护接入数据库启动前置条件。
 
+可选 schema 核对入口为 `python3 scripts/validate-sbom.py dist/sbom-linux-amd64.cdx.json --schema-directory LOCAL_SCHEMA_DIRECTORY`。在独立开发工具环境安装 jsonschema==4.26.0，预先从 [CycloneDX 官方 1.6 schema 目录](https://github.com/CycloneDX/specification/tree/1.6/schema) 获取 BOM/SPDX/JSF 三个文件；本脚本先按 [锁定摘要](../scripts/sbom-schema-lock.json) 校验，再本地验证，不自动下载或解析远程引用。该依赖不进入 CRG 二进制或业务镜像。
+
 CI 固定 Actions 的完整提交摘要；非 PR 构建拟生成包的 provenance、两种二进制各自 SBOM attestation。公开仓库使用 GitHub OIDC，不把长期签名私钥写入仓库。来源验证使用 [GitHub 的证明说明](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations) 与 [gh attestation verify](https://cli.github.com/manual/gh_attestation_verify)，约束仓库、工作流、预期源码修订及托管 runner；仅“签名有效”不足以证明是预期版本。离线验证另需预先从可信渠道保存 bundle 与信任根，不能用未知包自带的根建立信任。
+
+```sh
+gh attestation verify PACKAGE_FILE --repo cuipengdba/ContainerResourceGuard \
+  --signer-workflow cuipengdba/ContainerResourceGuard/.github/workflows/ci.yml \
+  --source-digest EXPECTED_FULL_SOURCE_SHA --source-ref EXPECTED_REF \
+  --deny-self-hosted-runners
+# EXPECTED_REF 对开发证明使用完整 refs/heads/next/release-provenance；
+# 正式版需对应预期 refs/tags/VERSION，并核对完整源码 SHA。
+# SBOM 证明针对二进制，另加 --predicate-type https://cyclonedx.org/bom。
+
+# 在已建立信任的联网工具机预取，保存在新建的私有工作目录。
+gh attestation download PACKAGE_FILE --repo cuipengdba/ContainerResourceGuard
+gh attestation trusted-root > trusted_root.jsonl
+# 离线使用同样身份/源码策略，加 --bundle BUNDLE_FILE
+# 和 --custom-trusted-root trusted_root.jsonl；实际文件名以 download 输出为准。
+```
 
 重复构建检查在另一个绝对路径的新克隆中执行同一提交和固定配方，比较两种二进制、两种压缩包、两份 SBOM、清单与校验和的字节摘要；它证明本机同工具链的路径独立性，不替代另一平台或独立第三方复现。跨平台结果、完整 SBOM schema 核对、实际证明生成/验证、安装前演练与长期回归继续分别验收。
 

@@ -60,5 +60,5 @@ for arch in ('amd64','arm64'):
             info=normalize(info)
             archive.addfile(info,None if data is None else io.BytesIO(data))
     outputs.append(artifact)
-(dist/'SHA256SUMS').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in outputs),encoding='utf-8')
+(dist/'SHA256SUMS').write_bytes(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in outputs).encode('utf-8'))
 for p in outputs:print(p)
