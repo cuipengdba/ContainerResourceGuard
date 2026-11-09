@@ -88,6 +88,10 @@ func TestBinarySnapshotCannotAuthorizeOtherIdentityOrChangedState(t *testing.T) 
 		t.Fatal(err)
 	}
 	before := binarySnapshot(c, s)
+	s.Disable = []byte(`{"version":1,"identity":"self","time_utc":"2026-11-10T01:00:00Z"}`)
+	if binarySnapshot(c, s) != before {
+		t.Fatal("same-identity quiesce timestamp prevents safe binary rollback")
+	}
 	changed := c
 	changed.IntervalSeconds = 30
 	if binarySnapshot(changed, s) == before {
