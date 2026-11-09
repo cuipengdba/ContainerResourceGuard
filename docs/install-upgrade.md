@@ -32,4 +32,28 @@ state-backup 还要求当前身份已停用，全程持有两把锁，输出到�
 
 备份保存严格校验过的原始 journal（包含真实原值和未完成写意图）、disable marker、存在时的 profile，不重写其中身份或值。它**包含私有路径和身份，不是脱敏诊断包**，不应上传 GitHub。原配置、可选 helper、原 supervisor 和二进制需另外按安装手册备份；不包含临时 runtime/status/reload、数据库数据或其他容器信息。
 
-当前没有自动迁移/导入命令。备份不是允许对新容器恢复旧限额的凭据，不删除不兼容日志、不用 max 重置、不重写身份以强行升级。新容器重建仍走既有自身发现与旧日志隔离。完整受控二进制切换、失败回退及模板安装工具继续开发，只有完成演练后才能关闭 P08。
+当前没有自动迁移/导入命令。备份不是允许对新容器恢复旧限额的凭据，不删除不兼容日志、不用 max 重置、不重写身份以强行升级。新容器重建仍走既有自身发现与旧日志隔离。完整模板安装工具继续开发，只有完成演练后才能关闭 P08。
+
+## 受控二进制替换开发
+
+`binary-install` / `binary-rollback` 是显式维护命令，不在启动路径执行。当前实现仍在开发验证，未发布：
+
+```sh
+# 安装目录必须是此容器专属的可写目录，crg 是原 helper 已配置的程序路径。
+# /staging/crg 必须先按可信发布摘要核验；该候选从安装目录之外运行。
+/staging/crg quiesce --config /etc/crg/config.json
+/staging/crg binary-install --config /etc/crg/config.json \
+  --install-dir /opt/crg/bin --backup-dir /recovery/upgrade-001 \
+  --previous-sha256 EXPECTED_OLD_SHA --candidate-sha256 EXPECTED_NEW_SHA
+/opt/crg/bin/crg upgrade-check --config /etc/crg/config.json
+# 保持暂停时的即时回退；不导入 state.json、不恢复内核限额。
+/staging/crg binary-rollback --config /etc/crg/config.json \
+  --install-dir /opt/crg/bin --backup-dir /recovery/upgrade-001
+# 核对后再 enable，原 optional helper 在下次重试时启动程序。
+```
+
+源文件为正在运行的候选 `/proc/self/exe`，按 32KiB 缓冲复制，上限 64MiB；显式新旧 SHA256 均匹配才继续。原程序必须报告已知锁协议和 journal v1。摘要来自用户信任的发布渠道；本命令不建立签名信任、不下载远程安装脚本。安装目录不得是符号链接或组/其他用户可写目录，不得与 state_dir 重叠；备份目录必须全新，与安装和状态目录分离，位于真实受保护父目录。挂载需由部署保证为每容器专用，禁止多个容器共用可写安装目录。
+
+全程持有自身两把锁，要求当前身份禁用且 journal 属于当前身份。备份 0700 目录内保存旧程序、0600 私有状态副本和 receipt，先同步，再在原安装目录暂存并以 rename 替换单个 crg，随后同步父目录。原 supervisor、start.sh、数据库和缓存程序不改。提交前复核身份、状态和目标摘要；外部变更则拒绝。
+
+回退只替换程序文件，不导入旧 journal。必须仍是同一身份，目标为记录的候选摘要，旧程序副本摘要正确，配置和状态快照与安装前一致；enable 后发生新状态变更时保守拒绝自动回退，需保持暂停并分别检查旧读取器兼容性和当前原值所有权。receipt 的 prepared/installed/rolled_back 记录与目标实际摘要共同用于判断中断位置；rename 后同步或 receipt 更新失败会报错，不能把错误等同于文件未替换。成功后也保持暂停，需显式 enable。

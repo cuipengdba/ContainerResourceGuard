@@ -68,6 +68,10 @@ func mainErr() error {
 	mergeProfile := f.String("merge-profile", "", "second explicit profile for offline merge")
 	replaceProfile := f.Bool("replace", false, "explicitly replace matching identities during profile merge")
 	format := f.String("format", "json", "output format: json or human (status, doctor, preflight)")
+	installDir := f.String("install-dir", "", "dedicated per-container existing CRG installation directory")
+	backupDir := f.String("backup-dir", "", "private binary recovery directory; fresh for installation")
+	previousSHA := f.String("previous-sha256", "", "trusted expected installed binary SHA256")
+	candidateSHA := f.String("candidate-sha256", "", "trusted expected running candidate SHA256")
 	if e := f.Parse(os.Args[2:]); e != nil {
 		return e
 	}
@@ -159,7 +163,7 @@ func mainErr() error {
 		emit(p)
 		return nil
 	}
-	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "quiesce" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
+	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "binary-install" && cmd != "binary-rollback" && cmd != "quiesce" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
 		return errors.New("unknown command")
 	}
 	var c guard.Config
@@ -190,6 +194,23 @@ func mainErr() error {
 	env, e := guard.Discover()
 	if e != nil {
 		return e
+	}
+	if cmd == "binary-install" || cmd == "binary-rollback" {
+		if *config == "" || *installDir == "" || *backupDir == "" {
+			return errors.New("binary maintenance requires explicit --config, --install-dir and --backup-dir")
+		}
+		var receipt guard.BinaryReceipt
+		var err error
+		if cmd == "binary-install" {
+			receipt, err = guard.InstallOwnBinary(ctx, c, env, *installDir, *backupDir, *previousSHA, *candidateSHA)
+		} else {
+			receipt, err = guard.RollbackBinary(c, env, *installDir, *backupDir)
+		}
+		if err != nil {
+			return err
+		}
+		emit(map[string]any{"state": receipt.State, "previous_sha256": receipt.PreviousSHA256, "candidate_sha256": receipt.CandidateSHA256, "limits_action": "retained", "business_action": "none", "detail": "remains quiescent; explicitly enable after verification; recovery receipt and state backup are private"})
+		return nil
 	}
 	if cmd == "upgrade-check" || cmd == "state-backup" {
 		if cmd == "upgrade-check" {
