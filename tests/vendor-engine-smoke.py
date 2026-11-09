@@ -1,8 +1,9 @@
-import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys
+import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys,signal
 parser=argparse.ArgumentParser(description="Engine smoke in disposable original-vendor Pods; never use a business namespace")
 parser.add_argument("--namespace",required=True)
 parser.add_argument("--work-dir",required=True)
 parser.add_argument("--run-id",default=time.strftime("%Y%m%d%H%M%S",time.gmtime()))
+parser.add_argument("--cleanup-fixture",action="store_true",help="after a passed run, drop only this run's new primary schema/restore DB and remove its stopped snapshot; keep logs/logical dump")
 args=parser.parse_args()
 if not re.fullmatch(r"[0-9]{8,14}",args.run_id):parser.error("run-id must contain 8..14 digits")
 if not args.namespace.startswith("crg-vendor-lab-"):parser.error("only disposable crg-vendor-lab-* namespaces are accepted")
@@ -10,6 +11,9 @@ p=pathlib.Path(args.work_dir);ns=args.namespace
 p.mkdir(mode=0o700,parents=True,exist_ok=True)
 report={'phase':'running','started':time.time(),'roles':{},'scope':'isolated original vendor primary plus engine backup/streaming/independent restore; does not verify undocumented vendor backup/sync APIs','criteria':{'rows':16384,'payload_bytes_per_row':4096,'phase_deadline_seconds':300,'api_max_seconds':5,'sql_max_seconds':5,'expected_api_result':'000','stream_catchup_seconds':60}}
 bin='/opt/postgresql/pgsql/bin/';schema='crg_acceptance_'+args.run_id;reportfile=p/'business-backup.json'
+if reportfile.exists() or reportfile.is_symlink():parser.error('existing report; refusing to overwrite evidence')
+def interrupted(signum,frame):raise RuntimeError('engine fixture interrupted; attempting temporary-instance cleanup')
+signal.signal(signal.SIGTERM,interrupted)
 def save():reportfile.write_text(json.dumps(report,indent=2))
 def ex(role,cmd,timeout=300,check=True,log=None):
     r=subprocess.run(['kubectl','exec','-n',ns,role+'-business','-c',role,'--','su','-','postgres','-c',cmd],capture_output=True,text=True,timeout=timeout)
@@ -94,6 +98,16 @@ try:
     check(item,'business_probes_during_backup_sync_restore',len(item['probes'])>=1 and all(x['api_ok'] and x['sql_ok'] and x['api_seconds']<=5 and x['sql_seconds']<=5 for x in item['probes']),{'samples':len(item['probes']),'api_max':max(x['api_seconds'] for x in item['probes']),'sql_max':max(x['sql_seconds'] for x in item['probes'])})
     ex(role,'test ! -f '+standby+'/postmaster.pid && test ! -f '+restore+'/postmaster.pid && rm -rf -- '+standby+' '+restore,log='temporary-servers-cleanup.txt')
     item['temporary_servers_stopped_and_copies_removed']=True;save()
+  if args.cleanup_fixture:
+    for role,item in report['roles'].items():
+      # Only reached after both suites passed and their own temporary instances
+      # stopped. Run ID is validated, every name below was created by this run.
+      if sql(role,'SELECT pg_postmaster_start_time();')!=item['primary_start_time_before']:raise RuntimeError('primary changed before own fixture cleanup')
+      sql(role,'DROP DATABASE crg_acceptance_restore_'+args.run_id+';')
+      sql(role,'DROP SCHEMA '+schema+' CASCADE;')
+      root='/opt/postgresql/basebackup/crg-acceptance-'+args.run_id
+      ex(role,'test ! -e '+root+'/standby && test ! -e '+root+'/restore && test ! -e '+root+'/snapshot/postmaster.pid && rm -rf -- '+root+'/snapshot',timeout=120,log='own-snapshot-cleanup.txt')
+      item['own_fixture_schema_restore_database_snapshot_removed']=True;save()
   report['phase']='passed'
 except Exception as e:
   report['phase']='failed';report['error']=str(e);report['traceback']=traceback.format_exc()

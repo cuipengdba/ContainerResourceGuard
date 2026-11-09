@@ -36,7 +36,7 @@ for arch in ('amd64','arm64'):
         archive.addfile(entry,io.BytesIO(metadata))
         for name in ('README.md','LICENSE','CHANGELOG.md','SECURITY.md','docs','examples','scripts'):
             archive.add(root/name,arcname=name,filter=normalize)
-        for name in ('README.md','vendor-engine-smoke.py','vendor-soak-load.py'):
+        for name in ('README.md','vendor-engine-smoke.py','vendor-soak-load.py','vendor-soak-campaign.py'):
             archive.add(root/'tests'/name,arcname='tests/'+name,filter=normalize)
     outputs.append(artifact)
 (dist/'SHA256SUMS').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in outputs),encoding='utf-8')

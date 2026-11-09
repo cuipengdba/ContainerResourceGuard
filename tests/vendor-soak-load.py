@@ -264,6 +264,7 @@ save()
 try:
     connection = connect()
     try:
+        report['primary_start_time_initial'] = query(connection, 'SELECT pg_postmaster_start_time()')[0][0]
         if args.source_run_id:
             previous_path = '/opt/postgresql/basebackup/crg-soak-' + args.source_run_id + '/load.json'
             if os.path.islink(previous_path):
@@ -313,10 +314,12 @@ try:
     connection = connect()
     try:
         report['final_checksum'] = checksum(connection)
+        report['primary_start_time_final'] = query(connection, 'SELECT pg_postmaster_start_time()')[0][0]
     finally:
         connection.close()
     report['payload_integrity'] = report['initial_checksum'][:4] == report['final_checksum'][:4]
-    passed = report['threads_stopped'] and report['payload_integrity'] and not interrupted[0]
+    report['primary_not_restarted'] = report['primary_start_time_initial'] == report['primary_start_time_final']
+    passed = report['threads_stopped'] and report['payload_integrity'] and report['primary_not_restarted'] and not interrupted[0]
     for kind, period in [('sql', 2), ('api', 5)]:
         item = report[kind]
         cumulative = 0
