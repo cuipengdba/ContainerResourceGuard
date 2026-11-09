@@ -25,3 +25,14 @@ python3 scripts/verify-release.py containerresourceguard-VERSION-linux-amd64.tar
 CI 固定 Actions 的完整提交摘要；非 PR 构建拟生成包的 provenance、两种二进制各自 SBOM attestation。公开仓库使用 GitHub OIDC，不把长期签名私钥写入仓库。来源验证使用 [GitHub 的证明说明](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations) 与 [gh attestation verify](https://cli.github.com/manual/gh_attestation_verify)，约束仓库、工作流、预期源码修订及托管 runner；仅“签名有效”不足以证明是预期版本。离线验证另需预先从可信渠道保存 bundle 与信任根，不能用未知包自带的根建立信任。
 
 重复构建检查在另一个绝对路径的新克隆中执行同一提交和固定配方，比较两种二进制、两种压缩包、两份 SBOM、清单与校验和的字节摘要；它证明本机同工具链的路径独立性，不替代另一平台或独立第三方复现。跨平台结果、完整 SBOM schema 核对、实际证明生成/验证、安装前演练与长期回归继续分别验收。
+
+
+## 实测结果
+
+[逐项证据](test-results-release-provenance.json) 分别标明源码/构建版本，不能将不同修订、版本字符串或编译器的二进制摘要混用。cce9018 在 Windows Go1.27.3 下完成两个目标 ELF/包校验、14 项正反完整性检查、另一绝对路径克隆重建；两二进制、两压缩包、两 SBOM、构建清单与 SHA256SUMS 的字节均相等。另用 jsonschema4.26.0 / Draft7Validator 与 CycloneDX 官方 1.6 标签的 BOM/SPDX/JSF schema 验证两份 SBOM，均无错误，schema 摘要已归档。没有把这一结果称为漏洞扫描或标准认证。
+
+首轮 [CI42720487857](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42720487857) 的构建/包/完整性/复现和 provenance 已通过，但 SBOM action 要求 serialNumber，缺该字段导致失败；后续绑定二进制摘要生成确定性 UUID，重复构建使用同一逻辑 BOM 身份，保留可复现性。修复后的 [CI42721505581](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42721505581) 与 [CI42721825291](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42721825291) 全部通过，两个架构分别生成 SBOM 证明。
+
+对 7844ba5 的真实 CI 产物执行 gh attestation verify：限定本仓库、ci.yml、完整源码 SHA、开发分支 ref，拒绝 self-hosted runner。两种包的 provenance 与两种二进制的 CycloneDX 证明四项通过；错误源码、错误工作流和篡改包三个反例拒绝。先从既有可信 GitHub CLI/TUF 引导获取 root 与 bundle，再把 HTTP/HTTPS/ALL 代理设成不可达本地地址，正确 root/bundle/身份的本地验证通过，错误源码、篡改产物与空信任根拒绝。没有执行操作系统防火墙隔离，不把代理条件夸成物理断网。
+
+这些是开发分支的发布工具证据，仍未发布 v0.8/1.0。验证构建证明只证明来源/内容绑定，仍须核对该版本的功能验收、已知问题与正式发布状态。跨宿主重建、实际安装前验证联动和更长故障回归继续单独归档。

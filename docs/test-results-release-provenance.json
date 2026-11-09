@@ -1,0 +1,249 @@
+{
+  "local_source_revision": "cce90189082e67e829db824af8b53489bc28c78e",
+  "local_build_version": "v0.8.0-dev",
+  "local_package_check": [
+    {
+      "arch": "amd64",
+      "static_elf": true,
+      "markdown_links_valid": true,
+      "binary_sha256": "072cb14f39adfc2af8881fc4c41893b387ced4cc078da885dec08f8e1ee2116e"
+    },
+    {
+      "arch": "arm64",
+      "static_elf": true,
+      "markdown_links_valid": true,
+      "binary_sha256": "132e20dd26ed8b970fd95ea151b7d65600d7a57bf48297d1b7e502469ef85ada"
+    }
+  ],
+  "local_integrity_check": {
+    "checks": [
+      {
+        "name": "valid-amd64",
+        "passed": true
+      },
+      {
+        "name": "valid-arm64",
+        "passed": true
+      },
+      {
+        "name": "wrong-external-digest",
+        "passed": true
+      },
+      {
+        "name": "wrong-architecture",
+        "passed": true
+      },
+      {
+        "name": "wrong-source-revision",
+        "passed": true
+      },
+      {
+        "name": "truncated-archive",
+        "passed": true
+      },
+      {
+        "name": "traversal",
+        "passed": true
+      },
+      {
+        "name": "absolute",
+        "passed": true
+      },
+      {
+        "name": "windows-drive",
+        "passed": true
+      },
+      {
+        "name": "backslash",
+        "passed": true
+      },
+      {
+        "name": "symlink",
+        "passed": true
+      },
+      {
+        "name": "duplicate",
+        "passed": true
+      },
+      {
+        "name": "inner-binary-binding",
+        "passed": true
+      },
+      {
+        "name": "changed-package-cannot-use-old-trusted-digest",
+        "passed": true
+      }
+    ],
+    "count": 14,
+    "scope": "offline integrity and parser bounds; signature identity verified separately"
+  },
+  "local_path_reproduction": {
+    "source_revision": "cce90189082e67e829db824af8b53489bc28c78e",
+    "same_toolchain": true,
+    "different_absolute_checkout": true,
+    "byte_equal": true,
+    "packager_environment": {
+      "python": "3.12.14",
+      "zlib_runtime": "1.3.2",
+      "platform": "win32"
+    },
+    "artifacts": {
+      "crg-linux-amd64": "072cb14f39adfc2af8881fc4c41893b387ced4cc078da885dec08f8e1ee2116e",
+      "crg-linux-arm64": "132e20dd26ed8b970fd95ea151b7d65600d7a57bf48297d1b7e502469ef85ada",
+      "containerresourceguard-v0.8.0-dev-linux-amd64.tar.gz": "0c0e7f32ff855ad6c5074945406325cf008934a8d6ba61b4e2bc75bfed0e89f5",
+      "containerresourceguard-v0.8.0-dev-linux-arm64.tar.gz": "b2eda13ef98793c7460cee3c23724acf182ef0f43b2bd5a8d6f9c5fec188d7ea",
+      "sbom-linux-amd64.cdx.json": "5dbd7493f15ac483da9b03b2bea0d9fea1a9cb0669424db78e0346243ab0cc16",
+      "sbom-linux-arm64.cdx.json": "33aeecc1c37df0e836cafa78e68b661d7b3ccfc2ea26311232f45e1259b4fb65",
+      "build-manifest.json": "f9bea075bcd04fccb01c281bfdaac543f4a595c32c29bf2ef61b6d99ab3327f0",
+      "SHA256SUMS": "6889c6f57b2de2b213f4338fbb45963aedb4d501c3791db0de3b7b9d4246e6fe"
+    },
+    "limits": "same host/toolchain recipe; independent platform and third-party reproduction are separate evidence"
+  },
+  "SBOM_schema": {
+    "source_revision": "cce90189082e67e829db824af8b53489bc28c78e",
+    "validator": "jsonschema 4.26.0 / Draft7Validator",
+    "schema_snapshots": [
+      {
+        "url": "https://raw.githubusercontent.com/CycloneDX/specification/1.6/schema/bom-1.6.schema.json",
+        "sha256": "3e92dddbc30cf7f6a02b80f0942b1a4cfd4fb1c26f1dfc4310afa9d613cafb93"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/CycloneDX/specification/1.6/schema/spdx.schema.json",
+        "sha256": "baa9d3bd1ed57b6751b0887edead6b5063ff53ff7429cf85d476c6c94af0166e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/CycloneDX/specification/1.6/schema/jsf-0.82.schema.json",
+        "sha256": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae"
+      }
+    ],
+    "architectures": [
+      {
+        "arch": "amd64",
+        "SBOM_sha256": "5dbd7493f15ac483da9b03b2bea0d9fea1a9cb0669424db78e0346243ab0cc16",
+        "schema_valid": true,
+        "errors": []
+      },
+      {
+        "arch": "arm64",
+        "SBOM_sha256": "33aeecc1c37df0e836cafa78e68b661d7b3ccfc2ea26311232f45e1259b4fb65",
+        "schema_valid": true,
+        "errors": []
+      }
+    ]
+  },
+  "online_signature_verification": {
+    "source_revision": "7844ba509ca995c983869740722e47fd58dbfc77",
+    "CI_run": 42721505581,
+    "repository": "cuipengdba/ContainerResourceGuard",
+    "workflow": "cuipengdba/ContainerResourceGuard/.github/workflows/ci.yml",
+    "source_ref": "refs/heads/next/release-provenance",
+    "deny_self_hosted_runners": true,
+    "checks": [
+      {
+        "name": "provenance-amd64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "SBOM-amd64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "provenance-arm64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "SBOM-arm64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "wrong-source",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      },
+      {
+        "name": "wrong-workflow",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      },
+      {
+        "name": "tampered-artifact",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      }
+    ],
+    "artifacts": {
+      "containerresourceguard-next-release-provenance-linux-amd64.tar.gz": "fb647b43f679ab70904098977f2bceeebe84276d4f432bd8b5a0bd2d5a3d4ab3",
+      "containerresourceguard-next-release-provenance-linux-arm64.tar.gz": "ce361d9550b672636009fe891e8eafb6b8a7872a4e783ed4258f7db9dc0e77e7",
+      "crg-linux-amd64": "9638ffca5289e3382f96c394e6a72f294a841ad59b149d4d654fb6e990d6cc38",
+      "crg-linux-arm64": "013f62adfb2edf6b9d3538200d2c6a550efb1ab9d354a773f688d904f14c3fc7"
+    }
+  },
+  "offline_signature_verification": {
+    "source_revision": "7844ba509ca995c983869740722e47fd58dbfc77",
+    "CI_run": 42721505581,
+    "artifact_sha256": "fb647b43f679ab70904098977f2bceeebe84276d4f432bd8b5a0bd2d5a3d4ab3",
+    "bundle_sha256": "183d222be786d9162b8392ece07ac27380c33d0cdaf8f947e6cf503f9fd9dce7",
+    "trusted_root_sha256": "db07310827da2ae2798ec7eefc5daf8432506ce458d5bc30cd2feba03708d239",
+    "checks": [
+      {
+        "name": "offline-correct-root-bundle-identity",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "offline-wrong-source-refused",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      },
+      {
+        "name": "offline-tampered-artifact-refused",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      },
+      {
+        "name": "offline-empty-trust-root-refused",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      }
+    ],
+    "network_condition": "HTTP/HTTPS/ALL proxy set to unreachable loopback with empty NO_PROXY; no OS firewall isolation",
+    "trust": "root and bundle fetched through existing trusted GitHub CLI/TUF bootstrap before the offline calls; archive does not supply a trust root"
+  },
+  "first_CI_failure": {
+    "run": 42720487857,
+    "source_revision": "2167e317b5768293b45b9a20d1440923076a109f",
+    "outcome": "runtime/race/build/package/integrity/reproduction and provenance passed; SBOM action rejected missing serialNumber; arm64 SBOM and artifact upload skipped"
+  },
+  "successful_CI_runs": [
+    {
+      "run": 42721505581,
+      "source_revision": "7844ba509ca995c983869740722e47fd58dbfc77"
+    },
+    {
+      "run": 42721825291,
+      "source_revision": "cce90189082e67e829db824af8b53489bc28c78e"
+    }
+  ],
+  "limits": [
+    "cross-compilation/signature proof does not prove arm64 hardware execution",
+    "all results refer to development artifacts, not a released version",
+    "schema validation is not a security review or completeness certification",
+    "offline proxy rejection is not OS firewall isolation",
+    "first signature harness failed Windows GBK decoding; raw private outputs retained; new UTF-8 harness used fresh output directory"
+  ]
+}
