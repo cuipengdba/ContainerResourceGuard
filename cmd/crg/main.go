@@ -11,6 +11,7 @@ import (
 	"os/signal"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"syscall"
 	"time"
 
@@ -41,7 +42,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|diagnose|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
@@ -156,12 +157,12 @@ func mainErr() error {
 		emit(p)
 		return nil
 	}
-	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
+	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
 		return errors.New("unknown command")
 	}
 	var c guard.Config
 	var e error
-	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "disable" || cmd == "enable") && *config == "") {
+	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "diagnose" || cmd == "disable" || cmd == "enable") && *config == "") {
 		c = guard.Config{Percent: 100}
 		if *state != "" {
 			c.StateDir = *state
@@ -187,6 +188,32 @@ func mainErr() error {
 	env, e := guard.Discover()
 	if e != nil {
 		return e
+	}
+	if cmd == "diagnose" {
+		var snapshot *guard.StatusView
+		if v, err := guard.ReadStatus(c, env); err == nil {
+			snapshot = &v
+		}
+		bundle := guard.BuildDiagnosticBundle(env, snapshot, guard.RealFiles{})
+		encoded, err := guard.EncodeDiagnosticBundle(bundle)
+		if err != nil {
+			return err
+		}
+		persist := false
+		f.Visit(func(v *flag.Flag) {
+			if v.Name == "output" {
+				persist = true
+			}
+		})
+		if !persist {
+			fmt.Print(string(encoded))
+			return nil
+		}
+		if err = guard.WriteDiagnosticFile(*output, c, bundle); err != nil {
+			return err
+		}
+		emit(map[string]any{"state": "written", "bytes": len(encoded), "maximum_bytes": guard.DiagnosticMaxBytes, "included": guard.DiagnosticContents()})
+		return nil
 	}
 	if cmd == "reload" {
 		request, err := guard.RequestReload(c, env, *config)
@@ -431,5 +458,34 @@ func humanStatus(v guard.StatusView) {
 	}
 	for _, i := range v.Actual {
 		fmt.Printf("Actual %s %s: %s %s\n", i.File, i.Device, i.Value, i.Detail)
+	}
+	if v.Memory != nil {
+		fmt.Printf("Live memory sample: %s (overlapping counters; do not sum)\n", v.Memory.SampledUTC)
+		for name, value := range map[string]*uint64{"memory.current": v.Memory.CurrentBytes, "memory.swap.current": v.Memory.SwapCurrentBytes} {
+			if value != nil {
+				fmt.Printf("%s: %d bytes\n", name, *value)
+			}
+		}
+		names := make([]string, 0, len(v.Memory.StatBytes))
+		for name := range v.Memory.StatBytes {
+			names = append(names, name)
+		}
+		sort.Strings(names)
+		for _, name := range names {
+			fmt.Printf("memory.stat.%s: %d bytes\n", name, v.Memory.StatBytes[name])
+		}
+		for _, name := range []string{"low", "high", "max", "oom", "oom_kill", "oom_group_kill", "sock_throttled"} {
+			if value, ok := v.Memory.Events[name]; ok {
+				fmt.Printf("memory.events.%s: %d\n", name, value)
+			}
+		}
+		for _, name := range []string{"some", "full"} {
+			if value, ok := v.Memory.Pressure[name]; ok {
+				fmt.Printf("memory.pressure.%s: avg10=%.2f%% avg60=%.2f%% avg300=%.2f%% total=%d us\n", name, value.Avg10, value.Avg60, value.Avg300, value.TotalMicros)
+			}
+		}
+		for _, name := range v.Memory.Unavailable {
+			fmt.Printf("Memory statistic unavailable: %s\n", name)
+		}
 	}
 }

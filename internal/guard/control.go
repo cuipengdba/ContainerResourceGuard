@@ -88,10 +88,11 @@ func (w *StatusWriter) Write(s Status, now time.Time) (bool, error) {
 
 type StatusView struct {
 	Status
-	SnapshotAgeSeconds int64        `json:"snapshot_age_seconds"`
-	WriterLockHeld     bool         `json:"writer_lock_held"`
-	Actual             []ItemStatus `json:"actual"`
-	LockCheckError     string       `json:"lock_check_error,omitempty"`
+	Memory             *MemorySnapshot `json:"memory,omitempty"`
+	SnapshotAgeSeconds int64           `json:"snapshot_age_seconds"`
+	WriterLockHeld     bool            `json:"writer_lock_held"`
+	Actual             []ItemStatus    `json:"actual"`
+	LockCheckError     string          `json:"lock_check_error,omitempty"`
 }
 
 func ReadStatus(c Config, env Environment) (StatusView, error) {
@@ -120,6 +121,8 @@ func ReadStatus(c Config, env Environment) (StatusView, error) {
 		}
 	}
 	e := Engine{Env: env, Files: RealFiles{}}
+	memory := ReadMemorySnapshot(env, e.Files)
+	v.Memory = &memory
 	settings := append([]Setting(nil), v.Plan.Settings...)
 	seen := map[string]bool{}
 	for _, s := range settings {
