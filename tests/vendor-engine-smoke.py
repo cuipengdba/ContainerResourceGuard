@@ -79,8 +79,15 @@ try:
       # Stop only the two temporary data directories created by this run. Keep
       # failed snapshots/logs for diagnosis; never stop the original primary.
       for directory in [standby,restore]:
-        ex(role,'if test -s '+directory+'/postmaster.pid; then '+bin+'pg_ctl -D '+directory+' -m fast -w -t 30 stop; fi',timeout=45,check=False)
+        try:
+          cleanup=ex(role,'if test -s '+directory+'/postmaster.pid; then '+bin+'pg_ctl -D '+directory+' -m fast -w -t 30 stop; fi',timeout=45,check=False)
+          if cleanup.returncode:item.setdefault('cleanup_errors',[]).append({'temporary_engine':directory.rsplit('/',1)[-1],'kind':'nonzero-exit'})
+        except Exception as error:
+          # Retain the original phase failure; still attempt the other temporary
+          # engine and stop the monitor. No implicit quota relaxation here.
+          item.setdefault('cleanup_errors',[]).append({'temporary_engine':directory.rsplit('/',1)[-1],'kind':type(error).__name__})
       stop.set();monitor.join(timeout=25)
+      item['probe_monitor_stopped']=not monitor.is_alive()
     check(item,'business_probes_during_backup_sync_restore',len(item['probes'])>=1 and all(x['api_ok'] and x['sql_ok'] and x['api_seconds']<=5 and x['sql_seconds']<=5 for x in item['probes']),{'samples':len(item['probes']),'api_max':max(x['api_seconds'] for x in item['probes']),'sql_max':max(x['sql_seconds'] for x in item['probes'])})
     ex(role,'test ! -f '+standby+'/postmaster.pid && test ! -f '+restore+'/postmaster.pid && rm -rf -- '+standby+' '+restore,log='temporary-servers-cleanup.txt')
     item['temporary_servers_stopped_and_copies_removed']=True;save()
