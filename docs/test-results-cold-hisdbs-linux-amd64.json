@@ -1,0 +1,366 @@
+{
+  "phase": "checked",
+  "cases": [
+    {
+      "role": "hisdbs",
+      "mode": "observe",
+      "percent": 20,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 20.044305571122095,
+          "api_ready_seconds": 20.321249593049288,
+          "elapsed_seconds": 20.321253134170547,
+          "kernel_counters": {
+            "cpu.stat": "usage_usec 8150810\nuser_usec 6184887\nsystem_usec 1965923\ncore_sched.force_idle_usec 0\nnr_periods 156\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "1486016512\n",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "io.stat": "8:0 rbytes=12288 wbytes=212480 rios=3 wios=28 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790175232 rios=3 wios=5295 dbytes=0 dios=0\n"
+          },
+          "actual_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": ""
+          },
+          "resource_state": "observe",
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000",
+              "state": "observe"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976",
+              "state": "observe"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+              "state": "observe"
+            }
+          ],
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+            }
+          ],
+          "original_ls_probe_exit": 0,
+          "sql_ok": true
+        },
+        {
+          "phase": "after-backup-recreation",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 23.648757316870615,
+          "api_ready_seconds": 23.91869285190478,
+          "elapsed_seconds": 23.91869680187665,
+          "kernel_counters": {
+            "cpu.stat": "usage_usec 7685675\nuser_usec 5565385\nsystem_usec 2120289\ncore_sched.force_idle_usec 0\nnr_periods 200\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "1384660992\n",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "io.stat": "8:0 rbytes=12288 wbytes=230400 rios=3 wios=25 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=691971072 rios=3 wios=4187 dbytes=0 dios=0\n"
+          },
+          "actual_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": ""
+          },
+          "resource_state": "observe",
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000",
+              "state": "observe"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976",
+              "state": "observe"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+              "state": "observe"
+            }
+          ],
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+            }
+          ],
+          "original_ls_probe_exit": 0,
+          "sql_ok": true
+        }
+      ],
+      "backup_before_restart_ok": true,
+      "new_resource_identity": true,
+      "old_journal_isolated": false,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "mode": "enforce",
+      "percent": 20,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": false,
+          "elapsed_seconds": 300.7891658949666,
+          "kernel_counters": {
+            "cpu.stat": "usage_usec 15087712\nuser_usec 9086361\nsystem_usec 6001351\ncore_sched.force_idle_usec 0\nnr_periods 1849\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "858583040\n",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "io.stat": "8:0 rbytes=12288 wbytes=258048 rios=3 wios=26 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=708210688 rios=3 wios=4519 dbytes=0 dios=0\n"
+          },
+          "actual_controls": {
+            "cpu.max": "480000 100000",
+            "memory.max": "13334654976",
+            "io.max": "253:0 rbps=7649691 wbps=5077704 riops=21 wiops=21"
+          },
+          "resource_state": "managed",
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000",
+              "state": "applied",
+              "detail": "written and verified"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976",
+              "state": "applied",
+              "detail": "written and verified"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+              "state": "applied",
+              "detail": "written and verified"
+            }
+          ],
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+            }
+          ],
+          "original_ls_probe_exit": 0
+        }
+      ],
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "mode": "enforce",
+      "percent": 30,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 249.56702322489582,
+          "api_ready_seconds": 249.8308141150046,
+          "elapsed_seconds": 249.8308176798746,
+          "kernel_counters": {
+            "cpu.stat": "usage_usec 14526604\nuser_usec 8692734\nsystem_usec 5833870\ncore_sched.force_idle_usec 0\nnr_periods 1634\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "1494712320\n",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "io.stat": "8:0 rbytes=12288 wbytes=412160 rios=3 wios=38 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790534656 rios=3 wios=5357 dbytes=0 dios=0\n"
+          },
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=11474536 wbps=7616556 riops=32 wiops=32"
+          },
+          "resource_state": "managed",
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000",
+              "state": "applied",
+              "detail": "already at desired value"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416",
+              "state": "applied",
+              "detail": "already at desired value"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32",
+              "state": "applied",
+              "detail": "already at desired value"
+            }
+          ],
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32"
+            }
+          ],
+          "original_ls_probe_exit": 0,
+          "sql_ok": true
+        },
+        {
+          "phase": "after-backup-recreation",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 203.76544566405937,
+          "api_ready_seconds": 204.02935787895694,
+          "elapsed_seconds": 204.02936132904142,
+          "kernel_counters": {
+            "cpu.stat": "usage_usec 12790203\nuser_usec 7709927\nsystem_usec 5080276\ncore_sched.force_idle_usec 0\nnr_periods 1157\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "1384779776\n",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "io.stat": "8:0 rbytes=12288 wbytes=451584 rios=3 wios=41 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=692233216 rios=3 wios=4291 dbytes=0 dios=0\n"
+          },
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=11474536 wbps=7616556 riops=32 wiops=32"
+          },
+          "resource_state": "managed",
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000",
+              "state": "applied",
+              "detail": "already at desired value"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416",
+              "state": "applied",
+              "detail": "already at desired value"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32",
+              "state": "applied",
+              "detail": "already at desired value"
+            }
+          ],
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32"
+            }
+          ],
+          "original_ls_probe_exit": 0,
+          "sql_ok": true
+        }
+      ],
+      "backup_before_restart_ok": true,
+      "new_resource_identity": true,
+      "old_journal_isolated": true,
+      "own_pod_removed": true
+    }
+  ],
+  "started": 1794255428.833541,
+  "criteria": {
+    "first_liveness_delay_seconds": 300,
+    "database_and_api_deadline_seconds": 300,
+    "probe_interval_seconds": 1
+  },
+  "scope": "disposable original-image Pods with original start and optional helpers, cold initialization and Pod recreation reusing the mounted data directory; no production changes",
+  "calibration_quality": {
+    "version": 2,
+    "created_utc": "2026-11-09T19:49:47Z",
+    "devices": [
+      {
+        "profile_device": "253:0",
+        "device": "253:0",
+        "state": "resolved",
+        "detail": "stable device identity matches; this does not establish current performance",
+        "quality": {
+          "samples": 3,
+          "spread_percent": {
+            "read_bps": 43.686440571614185,
+            "read_iops": 43.51851851851852,
+            "write_bps": 69.73315892379705,
+            "write_iops": 18.34862385321101
+          },
+          "warnings": [
+            "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+            "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+            "read_iops spread exceeds 25%; check device competition and repeat explicitly"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      "1 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+    ]
+  },
+  "legacy_profile_is_lower_median_of_three_samples": true,
+  "resource_binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "ended": 1794256323.4595923,
+  "data_retention_boundary": "the mounted data directory was reused; this run has no row sentinel across restarts, so does not by itself establish row persistence"
+}
