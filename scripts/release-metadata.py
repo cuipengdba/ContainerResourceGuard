@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import uuid
 
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('version')
@@ -46,7 +47,8 @@ for arch in ['amd64', 'arm64']:
     manifest['artifacts'].append(item)
     app = {'type': 'application', 'bom-ref': 'crg', 'name': 'ContainerResourceGuard', 'version': a.version, 'hashes': [{'alg': 'SHA-256', 'content': digest}], 'licenses': [{'license': {'id': 'MIT'}}], 'properties': [{'name': 'crg:source_revision', 'value': revision}, {'name': 'crg:target', 'value': 'linux/' + arch}]}
     components = [{'type': 'library', 'bom-ref': 'stdlib:' + name, 'name': name, 'version': pin, 'scope': 'required', 'properties': [{'name': 'crg:inventory_level', 'value': 'Go standard build dependency'}]} for name in names]
-    sbom = {'bomFormat': 'CycloneDX', 'specVersion': '1.6', 'version': 1, 'metadata': {'timestamp': stamp, 'component': app, 'tools': {'components': [{'type': 'framework', 'name': 'Go toolchain', 'version': pin, 'licenses': [{'license': {'id': 'BSD-3-Clause'}}]}]}, 'properties': [{'name': 'crg:timestamp_semantics', 'value': 'source commit time, not wall-clock build time'}, {'name': 'crg:coverage', 'value': 'application and target-specific standard package build dependencies; compiler listed as tool; excludes vendor databases and programs not distributed here'}]}, 'components': components, 'dependencies': [{'ref': 'crg', 'dependsOn': [c['bom-ref'] for c in components]}]}
+    serial='urn:uuid:'+str(uuid.uuid5(uuid.NAMESPACE_URL,'https://github.com/cuipengdba/ContainerResourceGuard/SBOM/'+arch+'/'+digest))
+    sbom = {'bomFormat': 'CycloneDX', 'specVersion': '1.6', 'serialNumber':serial, 'version': 1, 'metadata': {'timestamp': stamp, 'component': app, 'tools': {'components': [{'type': 'framework', 'name': 'Go toolchain', 'version': pin, 'licenses': [{'license': {'id': 'BSD-3-Clause'}}]}]}, 'properties': [{'name': 'crg:timestamp_semantics', 'value': 'source commit time, not wall-clock build time'}, {'name': 'crg:coverage', 'value': 'application and target-specific standard package build dependencies; compiler listed as tool; excludes vendor databases and programs not distributed here'}]}, 'components': components, 'dependencies': [{'ref': 'crg', 'dependsOn': [c['bom-ref'] for c in components]}]}
     (root / 'dist' / ('sbom-linux-' + arch + '.cdx.json')).write_text(json.dumps(sbom, indent=2, sort_keys=True) + '\n', encoding='utf-8', newline='\n')
 (root / 'dist/build-manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n', encoding='utf-8', newline='\n')
 print(json.dumps({'go_version': pin, 'source_revision': revision, 'architectures': ['amd64', 'arm64'], 'SBOM': 'package-level build dependencies'}))
