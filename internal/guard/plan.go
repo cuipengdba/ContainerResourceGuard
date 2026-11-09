@@ -133,7 +133,11 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		if d.ReadBPS == 0 || d.WriteBPS == 0 || d.ReadIOPS == 0 || d.WriteIOPS == 0 {
 			return p, errors.New("IO profile rates must all be positive")
 		}
-		scale := func(n uint64) uint64 { return uint64(math.Max(1, math.Floor(float64(n)*c.Percent/100))) }
+		scale := func(n uint64) uint64 { return scaleRate(n, c.Percent) }
+		if scale(d.ReadBPS) == 0 || scale(d.WriteBPS) == 0 || scale(d.ReadIOPS) == 0 || scale(d.WriteIOPS) == 0 {
+			p.Warnings = append(p.Warnings, "IO unmanaged: percent below whole-unit BPS/IOPS minimum for device "+dev)
+			continue
+		}
 		value := fmt.Sprintf("rbps=%d wbps=%d riops=%d wiops=%d", scale(d.ReadBPS), scale(d.WriteBPS), scale(d.ReadIOPS), scale(d.WriteIOPS))
 		// Keep stricter pre-existing limits for each dimension of this device.
 		prev, _ := read(filepath.Join(env.Target, "io.max"))
@@ -145,6 +149,10 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		p.Settings = append(p.Settings, Setting{File: "io.max", Device: dev, Value: value})
 	}
 	return p, nil
+}
+
+func scaleRate(n uint64, percent float64) uint64 {
+	return uint64(math.Floor(float64(n) * percent / 100))
 }
 
 func resolveProfileDevice(d DeviceProfile) (string, error) {

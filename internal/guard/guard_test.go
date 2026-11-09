@@ -220,6 +220,9 @@ func TestPlanPercentAndExistingLimits(t *testing.T) {
 	}
 }
 func TestIOPreservesStricterAndDeviceIsolation(t *testing.T) {
+	if scaleRate(133, .2) != 0 || scaleRate(133, 20) != 26 {
+		t.Fatal("IO rounding must not exceed the requested percentage")
+	}
 	if got := clampIO("rbps=1000 wbps=2000 riops=10 wiops=20", "rbps=500 wbps=max riops=4 wiops=max"); got != "rbps=500 wbps=2000 riops=4 wiops=20" {
 		t.Fatal(got)
 	}

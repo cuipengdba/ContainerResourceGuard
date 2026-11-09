@@ -65,6 +65,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 | [全部需求](docs/requirements.md) | 用户需求、约定与边界，逐项编号 |
 | [开发任务](docs/tasks.md) | 实现、验证状态和证据 |
 | [配置](docs/configuration.md) | 一个 percent 的语义与所有可选参数 |
+| [安装与升级](docs/installation.md) | 架构选择、持久部署、校验、升级和回退 |
 | [架构](docs/architecture.md) | 一对一发现、写入、恢复和冲突处理 |
 | [容器接入](docs/integration.md) | 原 start.sh / supervisor / 缓存控制关系 |
 | [IO 标定](docs/io-calibration.md) | 方法、设备绑定、多设备和局限 |
