@@ -307,6 +307,7 @@ try:
             report['elapsed_seconds'] = elapsed
             save()
             next_save = monotonic() + 300
+    report['measurement_finished_utc'] = datetime.datetime.utcnow().isoformat() + 'Z'
     stop.set()
     for thread in threads:
         thread.join(7)

@@ -4,6 +4,7 @@ parser.add_argument("--namespace",required=True)
 parser.add_argument("--work-dir",required=True)
 parser.add_argument("--run-id",default=time.strftime("%Y%m%d%H%M%S",time.gmtime()))
 parser.add_argument("--cleanup-fixture",action="store_true",help="after a passed run, drop only this run's new primary schema/restore DB and remove its stopped snapshot; keep logs/logical dump")
+parser.add_argument("--native-campaign-probes",action="store_true",help="content-only result pending a surrounding native campaign; exec latency stays diagnostic, never produces standalone passed")
 args=parser.parse_args()
 if not re.fullmatch(r"[0-9]{8,14}",args.run_id):parser.error("run-id must contain 8..14 digits")
 if not args.namespace.startswith("crg-vendor-lab-"):parser.error("only disposable crg-vendor-lab-* namespaces are accepted")
@@ -95,7 +96,14 @@ try:
       item['probe_monitor_stopped']=not monitor.is_alive()
     item['primary_start_time_after']=sql(role,'SELECT pg_postmaster_start_time();')
     check(item,'primary_did_not_restart',item['primary_start_time_before']==item['primary_start_time_after'])
-    check(item,'business_probes_during_backup_sync_restore',len(item['probes'])>=1 and all(x['api_ok'] and x['sql_ok'] and x['api_seconds']<=5 and x['sql_seconds']<=5 for x in item['probes']),{'samples':len(item['probes']),'api_max':max(x['api_seconds'] for x in item['probes']),'sql_max':max(x['sql_seconds'] for x in item['probes'])})
+    condition=len(item['probes'])>=1 and all(x['api_ok'] and x['sql_ok'] and x['api_seconds']<=5 and x['sql_seconds']<=5 for x in item['probes'])
+    detail={'samples':len(item['probes']),'api_max':max(x['api_seconds'] for x in item['probes']),'sql_max':max(x['sql_seconds'] for x in item['probes'])}
+    if args.native_campaign_probes:
+      item['exec_probe_diagnostic']={'passed_original_5s_criterion':condition,**detail}
+      item['native_campaign_validation_pending']=True
+      check(item,'probe_monitor_stopped',item['probe_monitor_stopped'])
+    else:
+      check(item,'business_probes_during_backup_sync_restore',condition,detail)
     ex(role,'test ! -f '+standby+'/postmaster.pid && test ! -f '+restore+'/postmaster.pid && rm -rf -- '+standby+' '+restore,log='temporary-servers-cleanup.txt')
     item['temporary_servers_stopped_and_copies_removed']=True;save()
   if args.cleanup_fixture:
@@ -108,8 +116,8 @@ try:
       root='/opt/postgresql/basebackup/crg-acceptance-'+args.run_id
       ex(role,'test ! -e '+root+'/standby && test ! -e '+root+'/restore && test ! -e '+root+'/snapshot/postmaster.pid && rm -rf -- '+root+'/snapshot',timeout=120,log='own-snapshot-cleanup.txt')
       item['own_fixture_schema_restore_database_snapshot_removed']=True;save()
-  report['phase']='passed'
+  report['phase']='content-passed-native-pending' if args.native_campaign_probes else 'passed'
 except Exception as e:
   report['phase']='failed';report['error']=str(e);report['traceback']=traceback.format_exc()
 report['ended']=time.time();save();print(json.dumps({'phase':report['phase'],'roles':{k:{'phase':v['phase'],'checks':len(v['checks'])} for k,v in report['roles'].items()}}))
-sys.exit(0 if report['phase']=='passed' else 1)
+sys.exit(0 if report['phase'] in ['passed','content-passed-native-pending'] else 1)

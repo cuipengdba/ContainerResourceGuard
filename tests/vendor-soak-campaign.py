@@ -5,6 +5,7 @@ Never a product daemon. Does not apply resources or manage business lifecycles.
 Starts only synthetic workers and temporary engine tests in verified lab Pods.
 """
 import argparse
+import datetime
 import hashlib
 import json
 import os
@@ -273,8 +274,9 @@ try:
             current = report['backups'][-1]
             result = json.loads((Path(current_dir) / 'business-backup.json').read_text())
             current['exit'], current['phase'] = backup.returncode, result['phase']
-            current['roles'] = {role: {'checks': len(value['checks']), 'cleanup': value.get('own_fixture_schema_restore_database_snapshot_removed', False)} for role, value in result['roles'].items()}
-            if backup.returncode or result['phase'] != 'passed' or not all(item['cleanup'] for item in current['roles'].values()):
+            current['roles'] = {role: {'checks': len(value['checks']), 'cleanup': value.get('own_fixture_schema_restore_database_snapshot_removed', False), 'native_pending': value.get('native_campaign_validation_pending', False), 'exec_probe_diagnostic': value.get('exec_probe_diagnostic')} for role, value in result['roles'].items()}
+            current['content_ended_epoch'] = time.time()
+            if backup.returncode or result['phase'] != 'content-passed-native-pending' or set(current['roles']) != set(roles) or not all(item['cleanup'] and item['native_pending'] for item in current['roles'].values()):
                 raise RuntimeError('periodic engine regression or cleanup failed')
             backup = None
             save()
@@ -285,9 +287,9 @@ try:
             cycle_id = args.run_id + ('%02d' % backup_index)
             current_dir = str(args.work_dir / ('backup-' + cycle_id))
             log = (args.work_dir / ('backup-' + cycle_id + '.log')).open('w')
-            backup = subprocess.Popen(['python3', str(engine_script), '--namespace', args.namespace, '--work-dir', current_dir, '--run-id', cycle_id, '--cleanup-fixture'], stdin=subprocess.DEVNULL, stdout=log, stderr=log)
+            backup = subprocess.Popen(['python3', str(engine_script), '--namespace', args.namespace, '--work-dir', current_dir, '--run-id', cycle_id, '--cleanup-fixture', '--native-campaign-probes'], stdin=subprocess.DEVNULL, stdout=log, stderr=log)
             backup_started = time.monotonic()
-            report['backups'].append({'offset_seconds': elapsed, 'run_id': cycle_id})
+            report['backups'].append({'offset_seconds': elapsed, 'run_id': cycle_id, 'content_started_epoch': time.time()})
             backup_index += 1
             save()
         if all(job.poll() is not None for _, job, _ in jobs):
@@ -307,6 +309,19 @@ try:
         if len(samples) < args.seconds / 60 * .98 or any(b['elapsed_seconds'] - a['elapsed_seconds'] > 120 for a, b in zip(samples, samples[1:])):
             raise RuntimeError('host sampling coverage insufficient')
     report['elapsed_seconds_since_both_started'] = time.monotonic() - started
+    # Only this surrounding campaign can turn content-only cycles into accepted
+    # cycles, after both native workloads covered the WHOLE measurement interval
+    # and passed their original 5s/max, 1s/p95, zero-error and coverage criteria.
+    for cycle in report['backups']:
+        for role in roles:
+            workload = report['roles'][role]['workload']
+            native_started = datetime.datetime.fromisoformat(workload['started_utc'].replace('Z', '+00:00')).timestamp()
+            native_ended = datetime.datetime.fromisoformat(workload['measurement_finished_utc'].replace('Z', '+00:00')).timestamp()
+            if not native_started <= cycle['content_started_epoch'] <= cycle['content_ended_epoch'] <= native_ended:
+                raise RuntimeError('native workload did not surround engine cycle')
+        cycle['native_workload_validation'] = 'passed-with-entire-campaign'
+        cycle['content_phase'] = cycle['phase']
+        cycle['phase'] = 'passed'
     report['phase'] = 'passed'
 except BaseException as error:
     report['phase'] = 'failed'
