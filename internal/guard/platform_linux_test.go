@@ -154,3 +154,21 @@ func TestDisableMarkerIdentity(t *testing.T) {
 		t.Fatal(off, err)
 	}
 }
+
+func TestCapacityFilesMustComeFromNativeFilesystem(t *testing.T) {
+	file := filepath.Join(t.TempDir(), "fake-meminfo")
+	if err := os.WriteFile(file, []byte("MemTotal: 1024 kB\n"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	if err := verifyCapacitySource(file, "memory"); err == nil {
+		t.Fatal("regular disk file accepted as host procfs")
+	}
+	if err := verifyCapacitySource("/proc/meminfo", "memory"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat("/sys/devices/system/cpu/online"); err == nil {
+		if err := verifyCapacitySource("/sys/devices/system/cpu/online", "cpu"); err != nil {
+			t.Fatal(err)
+		}
+	}
+}

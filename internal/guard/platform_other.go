@@ -13,3 +13,5 @@ func lockFile(string) (*os.File, error)            { return nil, errors.New("Lin
 func lockGroup(string) (*os.File, error)           { return nil, errors.New("Linux required") }
 func fileDevice(string) (string, error)            { return "", errors.New("Linux required") }
 func openConfigFile(path string) (*os.File, error) { return os.Open(path) }
+
+func verifyCapacitySource(string, string) error { return errors.New("Linux required") }

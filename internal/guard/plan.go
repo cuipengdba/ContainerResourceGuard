@@ -70,6 +70,9 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		return Plan{}, err
 	}
 	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode}
+	if c.ResourceMode == "percent" {
+		p.Warnings = append(p.Warnings, env.CapacityWarnings...)
+	}
 	if p.ResourceMode == "" {
 		p.ResourceMode = "percent"
 	}

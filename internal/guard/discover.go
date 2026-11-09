@@ -8,7 +8,6 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"strconv"
 	"strings"
 )
 
@@ -75,13 +74,14 @@ func Resolve(cgroup, mountinfo, pid1 string) (string, error) {
 }
 
 type Environment struct {
-	Target               string `json:"cgroup"`
-	Identity             string `json:"identity"`
-	OnlineCPUs           int    `json:"host_online_cpus"`
-	MemoryBytes          uint64 `json:"host_memory_bytes"`
-	CPUCapacitySource    string `json:"cpu_capacity_source"`
-	MemoryCapacitySource string `json:"memory_capacity_source"`
-	EffectiveCPUs        string `json:"effective_cpuset,omitempty"`
+	Target               string   `json:"cgroup"`
+	Identity             string   `json:"identity"`
+	OnlineCPUs           int      `json:"host_online_cpus"`
+	MemoryBytes          uint64   `json:"host_memory_bytes"`
+	CPUCapacitySource    string   `json:"cpu_capacity_source"`
+	MemoryCapacitySource string   `json:"memory_capacity_source"`
+	EffectiveCPUs        string   `json:"effective_cpuset,omitempty"`
+	CapacityWarnings     []string `json:"capacity_warnings,omitempty"`
 }
 
 func Discover() (Environment, error) {
@@ -124,37 +124,7 @@ func Discover() (Environment, error) {
 	if e != nil {
 		return env, e
 	}
-	online, e := read("/sys/devices/system/cpu/online")
-	if e != nil {
-		return env, e
-	}
-	env.OnlineCPUs, e = CountCPUs(online)
-	if e != nil {
-		return env, e
-	}
-	env.CPUCapacitySource = "/sys/devices/system/cpu/online"
-	// A read-only host proc mount may be used on systems that virtualize /proc/meminfo.
-	env.MemoryCapacitySource = "/proc/meminfo"
-	if _, e = os.Stat("/host/proc/meminfo"); e == nil {
-		env.MemoryCapacitySource = "/host/proc/meminfo"
-	}
-	mem, e := read(env.MemoryCapacitySource)
-	if e != nil {
-		return env, e
-	}
-	for _, line := range strings.Split(mem, "\n") {
-		f := strings.Fields(line)
-		if len(f) == 3 && f[0] == "MemTotal:" && f[2] == "kB" {
-			v, x := strconv.ParseUint(f[1], 10, 64)
-			if x != nil || v == 0 || v > 1<<54 {
-				return env, errors.New("invalid MemTotal")
-			}
-			env.MemoryBytes = v * 1024
-		}
-	}
-	if env.MemoryBytes == 0 {
-		return env, errors.New("host MemTotal unavailable")
-	}
+	discoverCapacity(&env, read, func(path string) bool { _, err := os.Stat(path); return err == nil }, verifyCapacitySource)
 	env.EffectiveCPUs, _ = read(filepath.Join(env.Target, "cpuset.cpus.effective"))
 	return env, nil
 }

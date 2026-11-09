@@ -33,7 +33,9 @@ func memoryExtras(c Config, env Environment, original map[string]string, wantMem
 	var settings []Setting
 	var warnings []string
 	page := uint64(os.Getpagesize())
-	if c.MemoryHigh != "" {
+	if c.MemoryHigh != "" && wantMem && requestedMem == 0 {
+		warnings = append(warnings, "memory_high unmanaged: percent memory budget unavailable")
+	} else if c.MemoryHigh != "" {
 		n, _ := ParseBytes(c.MemoryHigh)
 		n = n / page * page
 		if wantMem && n > requestedMem {

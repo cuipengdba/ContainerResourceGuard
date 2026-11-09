@@ -1,5 +1,11 @@
 # 变更记录
 
+## v0.5.0 开发分支（未发布）
+
+- 核对原生 procfs/sysfs 容量来源，支持显式只读宿主挂载；虚拟或损坏容量维度明确跳过。
+- 容量异常不阻止自身 status/disable/restore；手动绝对限额仍受外部边界约束。
+- 内核/架构/重建完整矩阵继续验收，见 docs/environment-development.md。
+
 ## v0.4.0 开发分支（未发布）
 
 - 可选 memory_high 与 memory_swap_max，保持默认不改。

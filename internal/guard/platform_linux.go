@@ -19,6 +19,21 @@ func verifyCgroup(p string) error {
 	}
 	return nil
 }
+
+func verifyCapacitySource(path, kind string) error {
+	var s syscall.Statfs_t
+	if err := syscall.Statfs(path, &s); err != nil {
+		return err
+	}
+	want := int64(0x9fa0) // PROC_SUPER_MAGIC
+	if kind == "cpu" {
+		want = 0x62656572
+	} // SYSFS_MAGIC
+	if int64(s.Type) != want {
+		return fmt.Errorf("source is not native %s filesystem; provide read-only host proc/sys mounts", kind)
+	}
+	return nil
+}
 func groupIdentity(p string) (string, error) {
 	var s syscall.Stat_t
 	if e := syscall.Stat(p, &s); e != nil {
