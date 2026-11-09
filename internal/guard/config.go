@@ -14,12 +14,32 @@ import (
 )
 
 type Config struct {
-	Percent         float64  `json:"percent"`
-	Mode            string   `json:"mode,omitempty"`
-	IOProfile       string   `json:"io_profile,omitempty"`
-	StateDir        string   `json:"state_dir,omitempty"`
-	IntervalSeconds int      `json:"interval_seconds,omitempty"`
-	DataPaths       []string `json:"data_paths,omitempty"`
+	Percent         float64       `json:"percent,omitempty"`
+	ResourceMode    string        `json:"resource_mode,omitempty"`
+	Limits          *ManualLimits `json:"limits,omitempty"`
+	PidsMax         *uint64       `json:"pids_max,omitempty"`
+	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
+	Mode            string        `json:"mode,omitempty"`
+	IOProfile       string        `json:"io_profile,omitempty"`
+	StateDir        string        `json:"state_dir,omitempty"`
+	IntervalSeconds int           `json:"interval_seconds,omitempty"`
+	DataPaths       []string      `json:"data_paths,omitempty"`
+	percentPresent  bool
+}
+
+func (c *Config) UnmarshalJSON(data []byte) error {
+	type plain Config
+	var v plain
+	if err := Decode(data, &v); err != nil {
+		return err
+	}
+	*c = Config(v)
+	var fields map[string]json.RawMessage
+	if err := json.Unmarshal(data, &fields); err != nil {
+		return err
+	}
+	_, c.percentPresent = fields["percent"]
+	return nil
 }
 
 func Decode(data []byte, out any) error {
@@ -84,8 +104,38 @@ func uniqueJSON(d *json.Decoder) error {
 }
 
 func (c *Config) Validate() error {
-	if math.IsNaN(c.Percent) || math.IsInf(c.Percent, 0) || c.Percent <= 0 || c.Percent > 100 {
-		return errors.New("percent must be greater than 0 and at most 100")
+	if c.ResourceMode == "" {
+		c.ResourceMode = "percent"
+	}
+	switch c.ResourceMode {
+	case "percent":
+		if math.IsNaN(c.Percent) || math.IsInf(c.Percent, 0) || c.Percent <= 0 || c.Percent > 100 {
+			return errors.New("percent must be greater than 0 and at most 100")
+		}
+		if c.Limits != nil {
+			return errors.New("percent resource_mode cannot include manual limits")
+		}
+	case "manual":
+		if c.percentPresent || c.Percent != 0 {
+			return errors.New("manual resource_mode cannot include percent")
+		}
+		if c.Limits == nil {
+			return errors.New("manual resource_mode requires limits")
+		}
+		if err := c.Limits.Validate(); err != nil {
+			return err
+		}
+		if c.Limits.HasIO() && len(c.DataPaths) == 0 {
+			return errors.New("manual IO requires data_paths to discover current block devices; no calibration needed")
+		}
+	default:
+		return errors.New("resource_mode must be percent or manual")
+	}
+	if c.PidsMax != nil && (*c.PidsMax == 0 || *c.PidsMax > math.MaxInt32) {
+		return errors.New("pids_max must be 1..2147483647")
+	}
+	if c.CPUWeight != nil && (*c.CPUWeight < 1 || *c.CPUWeight > 10000) {
+		return errors.New("cpu_weight must be 1..10000 (relative weight, not a hard quota)")
 	}
 	if c.Mode == "" {
 		c.Mode = "enforce"

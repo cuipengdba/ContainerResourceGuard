@@ -298,7 +298,12 @@ func mainErr() error {
 }
 
 func humanPlan(p guard.Plan) {
-	fmt.Printf("Requested: %.4g%% CPU / memory / calibrated IO\nCgroup: %s\nHost: %d online CPUs, %d bytes memory\n", p.Percent, p.Environment.Target, p.Environment.OnlineCPUs, p.Environment.MemoryBytes)
+	if p.ResourceMode == "manual" {
+		fmt.Println("Requested: manual CPU / memory / per-device IO; omitted dimensions unmanaged")
+	} else {
+		fmt.Printf("Requested: %.4g%% CPU / memory / calibrated IO\n", p.Percent)
+	}
+	fmt.Printf("Cgroup: %s\nHost: %d online CPUs, %d bytes memory\n", p.Environment.Target, p.Environment.OnlineCPUs, p.Environment.MemoryBytes)
 	for _, s := range p.Settings {
 		fmt.Printf("Target %s %s: %s\n", s.File, s.Device, s.Value)
 	}

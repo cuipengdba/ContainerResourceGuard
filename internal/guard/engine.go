@@ -61,12 +61,13 @@ type Status struct {
 	Error   string       `json:"error,omitempty"`
 }
 type Engine struct {
-	Config  Config
-	Env     Environment
-	Files   Files
-	Journal Journal
-	Persist func(Journal) error
-	Pause   func(time.Duration)
+	Config       Config
+	Env          Environment
+	Files        Files
+	Journal      Journal
+	Persist      func(Journal) error
+	Pause        func(time.Duration)
+	DeviceLookup func(string) (string, error)
 }
 
 var ErrLocked = errors.New("one agent per container: lock unavailable")
@@ -178,7 +179,25 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	return engine, lock, nil
 }
 func allowed(s Setting) bool {
-	return (s.File == "cpu.max" || s.File == "memory.max") && s.Device == "" || s.File == "io.max" && validDevice(s.Device)
+	return (s.File == "cpu.max" || s.File == "memory.max" || s.File == "pids.max" || s.File == "cpu.weight") && s.Device == "" && s.DeviceIdentity == "" || s.File == "io.max" && validDevice(s.Device) && (s.DeviceIdentity == "" || validIdentity(s.DeviceIdentity))
+}
+
+func (e *Engine) verifyDevice(s Setting) error {
+	if s.DeviceIdentity == "" {
+		return nil
+	}
+	lookup := e.DeviceLookup
+	if lookup == nil {
+		lookup = DeviceIdentity
+	}
+	id, err := lookup(s.Device)
+	if err != nil {
+		return fmt.Errorf("cannot verify IO device identity: %w", err)
+	}
+	if id != s.DeviceIdentity {
+		return errors.New("IO device identity changed; refusing writes/restoration to a replacement device")
+	}
+	return nil
 }
 func (e *Engine) current(s Setting) (string, error) {
 	if !allowed(s) {
@@ -238,11 +257,20 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 	if !allowed(s) || !validControl(s, s.Value) {
 		return "skipped", "invalid controller value"
 	}
+	if err := e.verifyDevice(s); err != nil {
+		return "skipped", err.Error()
+	}
 	current, err := e.current(s)
 	if err != nil {
 		return "skipped", err.Error()
 	}
+	if !validControl(s, current) {
+		return "skipped", "unsupported original controller value; refusing to create an unrestorable journal"
+	}
 	m, exists := e.Journal.Mutations[s.Key()]
+	if exists && m.DeviceIdentity != "" && m.DeviceIdentity != s.DeviceIdentity {
+		return "conflict", "IO device identity differs from owned journal entry"
+	}
 	if !exists {
 		m = &Mutation{Setting: s, Original: current, Applied: current}
 		e.Journal.Mutations[s.Key()] = m
@@ -272,6 +300,11 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 			return "skipped", err.Error()
 		}
 	}
+	if s.File == "pids.max" && maxNumber(s.Value) < maxNumber(current) {
+		if err := e.pidsHeadroom(s.Value); err != nil {
+			return "skipped", err.Error()
+		}
+	}
 	if current == s.Value {
 		return "applied", "already at desired value"
 	}
@@ -296,6 +329,14 @@ func (e *Engine) applyOne(s Setting) (string, string) {
 		m.Conflict = true
 		_ = e.save()
 		return "conflict", "value changed while saving intent; refusing overwrite"
+	}
+	if err := e.verifyDevice(s); err != nil {
+		return "skipped", err.Error()
+	}
+	if s.File == "pids.max" && maxNumber(s.Value) < maxNumber(current) {
+		if err := e.pidsHeadroom(s.Value); err != nil {
+			return "skipped", err.Error()
+		}
 	}
 	if err = e.write(s, s.Value); err != nil {
 		return "skipped", "write failed; intent retained for recovery: " + err.Error()
@@ -325,6 +366,12 @@ func validControl(s Setting, v string) bool {
 		return len(f) == 2 && (f[0] == "max" || positive(f[0])) && positive(f[1])
 	case "memory.max":
 		return v == "max" || positive(v)
+	case "pids.max":
+		_, err := strconv.ParseUint(v, 10, 64)
+		return v == "max" || err == nil
+	case "cpu.weight":
+		n, err := strconv.ParseUint(v, 10, 64)
+		return err == nil && n >= 1 && n <= 10000
 	case "io.max":
 		f := strings.Fields(v)
 		if len(f) != 4 || canonicalIO(v) != v {
@@ -344,6 +391,12 @@ func (e *Engine) Restore() Status {
 	r := Status{TimeUTC: time.Now().UTC().Format(time.RFC3339), Mode: "restore", State: "restored", Plan: Plan{Environment: e.Env}}
 	for key, m := range e.Journal.Mutations {
 		item := ItemStatus{Setting: m.Setting, State: "restored"}
+		if err := e.verifyDevice(m.Setting); err != nil {
+			item.State, item.Detail = "skipped", err.Error()
+			r.State = "degraded"
+			r.Items = append(r.Items, item)
+			continue
+		}
 		cur, err := e.current(m.Setting)
 		if err == nil && cur == m.Original {
 			delete(e.Journal.Mutations, key)
@@ -366,6 +419,21 @@ func (e *Engine) Restore() Status {
 				}
 				if err == nil && m.File == "memory.max" && maxNumber(m.Original) < maxNumber(cur) {
 					err = e.memoryPreflight(m.Original)
+				}
+				if err == nil && m.File == "pids.max" && maxNumber(m.Original) < maxNumber(cur) {
+					err = e.pidsHeadroom(m.Original)
+				}
+				if err == nil {
+					err = e.verifyDevice(m.Setting)
+				}
+				if err == nil {
+					latest, readErr := e.current(m.Setting)
+					if readErr != nil {
+						err = readErr
+					} else if latest != cur {
+						m.Conflict = true
+						err = errors.New("value changed during restore preflight; external value retained")
+					}
 				}
 				if err == nil {
 					err = e.write(m.Setting, m.Original)

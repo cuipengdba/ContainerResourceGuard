@@ -29,7 +29,15 @@ func CheckPreflight(c Config, env Environment) (Preflight, error) {
 	if err != nil {
 		return r, err
 	}
-	for _, name := range []string{"cpu.max", "memory.max", "io.max"} {
+	names := []string{}
+	seen := map[string]bool{}
+	for _, s := range p.Settings {
+		if !seen[s.File] {
+			names = append(names, s.File)
+			seen[s.File] = true
+		}
+	}
+	for _, name := range names {
 		i := AccessCheck{File: name, Detail: "open permitted; actual write/readback still required"}
 		f, err := os.OpenFile(filepath.Join(env.Target, name), os.O_WRONLY, 0)
 		if err != nil {

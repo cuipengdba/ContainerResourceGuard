@@ -204,3 +204,8 @@ func validDevice(s string) bool {
 	}
 	return true
 }
+
+func validIdentity(s string) bool {
+	v, err := hex.DecodeString(s)
+	return err == nil && len(v) == 32
+}

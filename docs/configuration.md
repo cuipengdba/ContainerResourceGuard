@@ -1,5 +1,21 @@
 # 配置参数
 
+开发分支新增双资源模式；已发布 RC2 尚不接受这些新字段。见 [设计及分版安排](resource-modes.md)。`resource_mode` 是预算算法，`mode` 仍是 enforce/observe。
+
+## 手动资源模式（RC3 开发中）
+
+```json
+{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_max":"4GiB"}}
+```
+
+省略的资源不接管，不要求 IO 标定。需要手动 IO 时添加 `limits.io_read_bps`、`io_write_bps`、`io_read_iops`、`io_write_iops` 及 `data_paths`；各路径必须能确认当前块设备和稳定身份，相同设备去重。BPS/IOPS 按每设备应用，不能解释为多设备合计。
+
+CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字节字符串支持整数及 B/KiB/MiB/GiB/TiB/KB/MB/GB/TB 后缀；无后缀表示字节，区分大小写，不接受小数、负数、指数、/s 或超出有符号 64 位范围的数值。IOPS 是正整数。manual 不能填写 percent，percent 模式不能填写 limits。
+
+新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。两者不填写就不改；pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
+
+首次从百分比切到手动、或删除已管理项目时，开发阶段应先用同版本 disable 完成恢复，再调整配置并 enable；自动热切换/移除项目的规则由 P03.5 实现，不能把遗漏的旧限额默认为已撤销。
+
 ## 最小配置
 
 ```json

@@ -26,20 +26,22 @@ type Profile struct {
 	Devices    []DeviceProfile `json:"devices"`
 }
 type Setting struct {
-	File   string `json:"file"`
-	Device string `json:"device,omitempty"`
-	Value  string `json:"value"`
+	File           string `json:"file"`
+	Device         string `json:"device,omitempty"`
+	DeviceIdentity string `json:"device_identity,omitempty"`
+	Value          string `json:"value"`
 }
 
 func (s Setting) Key() string { return s.File + ":" + s.Device }
 
 type Plan struct {
-	Environment Environment      `json:"environment"`
-	Percent     float64          `json:"percent"`
-	Settings    []Setting        `json:"settings"`
-	Warnings    []string         `json:"warnings,omitempty"`
-	Devices     []DeviceCoverage `json:"io_devices,omitempty"`
-	Paths       []PathCoverage   `json:"data_paths,omitempty"`
+	Environment  Environment      `json:"environment"`
+	Percent      float64          `json:"percent"`
+	ResourceMode string           `json:"resource_mode,omitempty"`
+	Settings     []Setting        `json:"settings"`
+	Warnings     []string         `json:"warnings,omitempty"`
+	Devices      []DeviceCoverage `json:"io_devices,omitempty"`
+	Paths        []PathCoverage   `json:"data_paths,omitempty"`
 }
 
 func maxNumber(s string) uint64 {
@@ -63,9 +65,14 @@ func cpuCores(s string) float64 {
 }
 
 func BuildPlan(c Config, env Environment, original map[string]string) (Plan, error) {
-	p := Plan{Environment: env, Percent: c.Percent}
-	desiredCPU := float64(env.OnlineCPUs) * c.Percent / 100
-	desiredMem := uint64(float64(env.MemoryBytes) * c.Percent / 100)
+	if err := c.Validate(); err != nil {
+		return Plan{}, err
+	}
+	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode}
+	if p.ResourceMode == "" {
+		p.ResourceMode = "percent"
+	}
+	desiredCPU, desiredMem, wantCPU, wantMem := requestedResources(c, env)
 	desiredMem = desiredMem / uint64(os.Getpagesize()) * uint64(os.Getpagesize())
 	cpu, mem := desiredCPU, desiredMem
 	// Never raise an existing external limit. For values CRG owns, use the saved baseline.
@@ -93,22 +100,54 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 			cpu = math.Min(cpu, float64(n))
 		}
 	}
-	if cpu < desiredCPU {
+	if wantCPU && cpu < desiredCPU {
 		p.Warnings = append(p.Warnings, "CPU constrained by existing limits/cpuset")
 	}
-	if mem < desiredMem {
+	if wantMem && mem < desiredMem {
 		p.Warnings = append(p.Warnings, "memory constrained by existing limits")
 	}
 	quota := uint64(cpu * 100000)
-	if quota < 1000 {
+	if wantCPU && quota < 1000 {
 		p.Warnings = append(p.Warnings, "CPU target below kernel minimum quota; CPU skipped")
-	} else {
+	} else if wantCPU {
 		p.Settings = append(p.Settings, Setting{File: "cpu.max", Value: fmt.Sprintf("%d 100000", quota)})
 	}
-	if mem < 16<<20 {
+	if wantMem && mem < 16<<20 {
 		p.Warnings = append(p.Warnings, "memory target below 16 MiB; memory skipped")
-	} else {
+	} else if wantMem {
 		p.Settings = append(p.Settings, Setting{File: "memory.max", Value: strconv.FormatUint(mem, 10)})
+	}
+	if c.PidsMax != nil {
+		n := *c.PidsMax
+		for dir := env.Target; ; dir = filepath.Dir(dir) {
+			v, _ := read(filepath.Join(dir, "pids.max"))
+			if dir == env.Target {
+				if saved, ok := original["pids.max:"]; ok {
+					v = saved
+				}
+			}
+			if limit := maxNumber(v); limit < n {
+				n = limit
+			}
+			if dir == filepath.Dir(dir) {
+				break
+			}
+		}
+		if n < *c.PidsMax {
+			p.Warnings = append(p.Warnings, "pids_max constrained by existing limits")
+		}
+		p.Settings = append(p.Settings, Setting{File: "pids.max", Value: strconv.FormatUint(n, 10)})
+	}
+	if c.CPUWeight != nil {
+		p.Settings = append(p.Settings, Setting{File: "cpu.weight", Value: strconv.FormatUint(*c.CPUWeight, 10)})
+	}
+	if c.ResourceMode == "manual" {
+		settings, devices, warnings := manualIO(c, env, original, manualDevice, relatedDevices)
+		p.Settings = append(p.Settings, settings...)
+		p.Devices = devices
+		p.Warnings = append(p.Warnings, warnings...)
+		p.Paths = pathCoverage(c.DataPaths, p.Settings)
+		return p, nil
 	}
 	data, e := os.ReadFile(c.IOProfile)
 	if e != nil {
@@ -179,7 +218,7 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 			prev = v
 		}
 		value = clampIO(value, prev)
-		p.Settings = append(p.Settings, Setting{File: "io.max", Device: dev, Value: value})
+		p.Settings = append(p.Settings, Setting{File: "io.max", Device: dev, DeviceIdentity: d.Identity, Value: value})
 		p.Devices = append(p.Devices, coverage)
 	}
 	p.Paths = pathCoverage(c.DataPaths, p.Settings)

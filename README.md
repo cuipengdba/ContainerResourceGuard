@@ -65,6 +65,8 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 
 后续设计：[双资源模式与五个可选参数](docs/resource-modes.md)；[容器/Pod 重启 ID 处理](docs/restart-behavior.md)。交付状态以任务和发布报告为准。
 
+开发分支已加入手动模式入口，例如 `{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_max":"4GiB"}}`。完整示例见 [manual.json](examples/manual.json)，无需 IO 的示例见 [manual-cpu-memory.json](examples/manual-cpu-memory.json)；已发布 RC2 仍仅支持原字段，新增功能尚待 Linux 实机验收。
+
 | 文档 | 内容 |
 |---|---|
 | [全部需求](docs/requirements.md) | 用户需求、约定与边界，逐项编号 |
