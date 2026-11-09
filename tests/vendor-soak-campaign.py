@@ -53,6 +53,7 @@ created_output = False
 report = {'schema': 'crg-vendor-campaign-v1', 'phase': 'preparing',
           'test_phase': args.test_phase, 'requested_seconds': args.seconds,
           'source_run_id': args.source_run_id,
+          'campaign_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
           'worker_sha256': hashlib.sha256(worker_source).hexdigest(),
           'engine_script_sha256': hashlib.sha256(engine_script.read_bytes()).hexdigest(),
           'agent_sha256': args.agent_sha256, 'cache_sha256': args.cache_sha256,
