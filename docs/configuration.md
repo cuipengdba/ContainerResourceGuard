@@ -32,7 +32,11 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 | JSON 字段 | 默认值 | 含义 |
 |---|---|---|
-| `percent` | 无，必填 | 三类资源共同百分比，范围 `(0,100]` |
+| `resource_mode` | `percent` | 开发分支新增；percent 自动换算，manual 分别指定 |
+| `percent` | 无 | 百分比模式必填，范围 `(0,100]`；手动模式不能混用 |
+| `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
+| `pids_max` | 不修改 | 开发分支新增；任务数硬上限，包含线程 |
+| `cpu_weight` | 不修改 | 开发分支新增；CPU 相对竞争权重 1–10000 |
 | `mode` | `enforce` | `enforce` 写入，`observe` 仅预览 |
 | `io_profile` | `/etc/crg/io-profile.json` | 该节点显式标定产生的设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |

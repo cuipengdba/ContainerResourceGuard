@@ -1,0 +1,177 @@
+{
+  "date": "2026-11-10",
+  "status": "development-verification-not-release",
+  "version": "v0.1.0-rc.3-dev",
+  "source_revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+  "binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "architecture": "linux/amd64",
+  "environment": {
+    "host_online_cpus": 24,
+    "host_memory_bytes": 66673278976,
+    "storage": "single XFS/LVM block device"
+  },
+  "tests": [
+    {
+      "name": "source-unit",
+      "passed": true,
+      "output": "\tgithub.com/cuipengdba/ContainerResourceGuard/tests/load\t\tcoverage: 0.0% of statements\nok  \tgithub.com/cuipengdba/ContainerResourceGuard/cmd/crg\t1.015s\tcoverage: 10.1% of statements\nok  \tgithub.com/cuipengdba/ContainerResourceGuard/internal/guard\t3.981s\tcoverage: 58.4% of statements\n",
+      "error": ""
+    },
+    {
+      "name": "source-vet",
+      "passed": true,
+      "output": "",
+      "error": ""
+    },
+    {
+      "name": "source-supervisor",
+      "passed": true,
+      "output": "PASS optional-agent-missing business_exit=37\nPASS optional-agent-denied business_exit=37\nPASS optional-agent-invalid business_exit=37\nPASS optional-agent-crash business_exit=37\nPASS optional-agent-hang business_exit=37\nPASS optional-agent-ignore-term business_exit=37\n",
+      "error": ""
+    },
+    {
+      "name": "source-patch",
+      "passed": true,
+      "output": "PASS generated-patch-missing business_exit=37 cache_started=true\nPASS generated-patch-denied business_exit=37 cache_started=true\nPASS generated-patch-invalid business_exit=37 cache_started=true\nPASS generated-patch-crash business_exit=37 cache_started=true\nPASS generated-patch-hang business_exit=37 cache_started=true\nPASS generated-patch-ignore-term business_exit=37 cache_started=true\n",
+      "error": ""
+    },
+    {
+      "name": "manual-percent-own-distinct-cgroups",
+      "passed": true
+    },
+    {
+      "name": "manual-CPU-memory-exact",
+      "passed": true
+    },
+    {
+      "name": "manual-pids-cpu-weight",
+      "passed": true
+    },
+    {
+      "name": "manual-IO-without-profile",
+      "passed": true
+    },
+    {
+      "name": "old-minimal-percent-config-compatible",
+      "passed": true
+    },
+    {
+      "name": "cross-state-second-agent-refused",
+      "passed": true
+    },
+    {
+      "name": "manual-direct-read-hard-cap",
+      "passed": true,
+      "actual": 10013244.753361056,
+      "cap": 10485760,
+      "seconds": 6.073688982
+    },
+    {
+      "name": "manual-direct-write-hard-cap",
+      "passed": true,
+      "actual": 5224809.384094075,
+      "cap": 5242880,
+      "seconds": 6.221437499
+    },
+    {
+      "name": "manual-direct-randread-hard-cap",
+      "passed": true,
+      "actual": 44.520836329924094,
+      "cap": 50,
+      "seconds": 6.019652062
+    },
+    {
+      "name": "manual-direct-randwrite-hard-cap",
+      "passed": true,
+      "actual": 28.00688214630648,
+      "cap": 30,
+      "seconds": 6.069935502
+    },
+    {
+      "name": "manual-CPU-load-throttled",
+      "passed": true,
+      "actual_cores": 2.401602753861794,
+      "cap_cores": 2.5
+    },
+    {
+      "name": "readonly-business-alive",
+      "passed": true
+    },
+    {
+      "name": "manual-memory-hard-boundary",
+      "passed": true,
+      "child_exit": 137,
+      "oom_kills": 1
+    },
+    {
+      "name": "recreated-pod-retained-state-new-identity",
+      "passed": true
+    },
+    {
+      "name": "recreated-pod-manual-limits-reapplied",
+      "passed": true
+    },
+    {
+      "name": "disable-restores-manual-and-optional-controls",
+      "passed": true,
+      "originals": {
+        "cpu.max:": "max 100000",
+        "cpu.weight:": "1",
+        "io.max:device-A": "rbps=max wbps=max riops=max wiops=max",
+        "memory.max:": "max",
+        "pids.max:": "406648"
+      },
+      "actual": {
+        "pids.max:": "406648",
+        "cpu.max:": "max 100000",
+        "cpu.weight:": "1",
+        "io.max:device-A": "rbps=max wbps=max riops=max wiops=max",
+        "memory.max:": "max"
+      }
+    },
+    {
+      "name": "manual-disable-does-not-touch-percent",
+      "passed": true
+    },
+    {
+      "name": "all-business-PID1-alive",
+      "passed": true
+    }
+  ],
+  "scope": "isolated test commands in cached DBS image; original vendor start.sh/API/cache program not exercised",
+  "initial_failures": [
+    {
+      "phase": "preliminary transport-bound run",
+      "error": "SSH stdout broken pipe; remaining checks aborted",
+      "classification": "test transport",
+      "namespace_and_data_cleanup": true
+    },
+    {
+      "phase": "final-binary full run",
+      "test": "disable-restores-manual-and-optional-controls",
+      "classification": "incorrect test assumption",
+      "error": "asserted original cpu.weight=100; runtime original was 1",
+      "followup": "same binary rechecked all saved originals, including cpu.weight=1 and pids.max=406648; passed"
+    }
+  ],
+  "cleanup": {
+    "full_run": {
+      "namespace_absent": true,
+      "delete_rc": 0,
+      "data_removed": true
+    },
+    "restore_recheck": {
+      "namespace_absent": true,
+      "delete_rc": 0,
+      "data_removed": true
+    }
+  },
+  "remaining": [
+    "original DBS/HISDBS API and cache coexistence",
+    "cold-start readiness diagnosis",
+    "business soak and backup cycles",
+    "actual task-count exhaustion and competitive CPU weight behavior",
+    "complex storage and arm64 hardware",
+    "remaining roadmap features and 1.0 acceptance"
+  ]
+}
