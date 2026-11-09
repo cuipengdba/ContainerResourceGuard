@@ -6,6 +6,7 @@
 
 - 重启身份设计及百分比/手动两种模式、五个额外可选参数已纳入 [46 项任务的十版规划](roadmap.md)。
 - main 已实现双模式 CPU/内存/IO、可选 pids_max 和 cpu_weight；[22 项分阶段 Linux 验证](testing-dual-modes.md) 已归档，包含新 Pod 身份发现、真实硬限额和恢复原值。原失败记录保留。
+- 已补充 [有界任务耗尽及 CPU 权重竞争](testing-pids-weight.md)：耗尽后 PID 1 存活并能恢复真实原值；8s 权重测试失败，30s 沿用相同区间通过，两个阶段均归档。
 - [next/safe-reload 分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/safe-reload) 提前开发 v0.2。源码 8401515 的 [CI](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42676218251)、Linux race/vet、辅助进程故障与建模强杀回归通过；13 项真实 cgroup 重载验证通过。见该分支的 [详细报告](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/safe-reload/docs/testing-reload.md)。功能尚未合入 main 或发布。
 - DBS/HISDBS 原镜像已只读导出到隔离测试节点，传输摘要与各自原镜像 config digest 核对通过。未把厂商镜像、业务数据或脚本纳入公开仓库。
 - 原镜像启动链、SQL 和 POST /test 已通过，保留主库 8960MB shared_buffers；CRG observe 与原缓存程序 enforce 共存。两种业务的备份、流复制及独立恢复共 18 项短测通过，见 [结果与边界](testing-vendor-backup.md)。尚未证明限额模式下的性能。
@@ -17,7 +18,7 @@
 
 接下来使用原镜像克隆补齐 enforce 冷启动、探针、相同负载和辅助故障回归。POST /test 与引擎备份结果不能代替尚未提供的厂商专用业务接口验收。
 
-DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化约 251s；其 30% 重建遇到探测与清理等待超时，正在补测。HISDBS observe 约 20s，20% 超过 300s，30% 初始化约 250s、备份后重建约 204s。详见 [保留失败的冷启动进展](testing-cold-start-progress.md)。实际原 liveness 只执行 ls，不能把它与 SQL/API 就绪条件等同。
+DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化约 251s；首轮重建探测超时保留，后续独立复测两次就绪约 205s/211s，128 行标记校验一致，新身份和旧日志隔离均确认。HISDBS observe 约 20s，20% 超过 300s，30% 初始化约 250s、备份后重建约 204s。详见 [保留失败的冷启动进展](testing-cold-start-progress.md)。实际原 liveness 只执行 ls，不能把它与 SQL/API 就绪条件等同。
 
 后续按十版安排继续补齐多设备竞争、跨周期内存窗口、环境矩阵、诊断、安装升级、构建来源和兼容契约。io_weight、memory_high、memory_swap_max 已在开发分支实现，尚未合入 main 或发布；RC2 不接受这些字段。
 

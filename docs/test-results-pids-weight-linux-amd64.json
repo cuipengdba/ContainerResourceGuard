@@ -1,0 +1,106 @@
+{
+  "scope": "isolated placeholder PID1, two independently controlled sibling container leaves; not vendor workload acceptance",
+  "phases": [
+    {
+      "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+      "criteria": {
+        "weight_b_share_min": 0.72,
+        "weight_b_share_max": 0.88,
+        "cpu_test_seconds": 8,
+        "cpu_time_total_min_seconds": 5,
+        "fork_attempts_max": 80,
+        "child_lifetime_seconds": 3
+      },
+      "checks": [
+        {
+          "name": "two-independent-agents-own-distinct-leaves",
+          "passed": true
+        },
+        {
+          "name": "weight-and-task-cap-readback",
+          "passed": true
+        },
+        {
+          "name": "actual-cpu-weight-competition",
+          "passed": false,
+          "usage_seconds": {
+            "a": 2.270046,
+            "b": 5.763237
+          },
+          "b_share": 0.7174198892283515,
+          "throttle_delta": {
+            "a": 0,
+            "b": 0
+          }
+        }
+      ],
+      "binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+      "shared_logical_cpu": 23,
+      "error": "actual-cpu-weight-competition",
+      "cleanup": {
+        "namespace_absent": true
+      }
+    },
+    {
+      "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+      "criteria": {
+        "weight_b_share_min": 0.72,
+        "weight_b_share_max": 0.88,
+        "cpu_test_seconds": 30,
+        "cpu_time_total_min_seconds": 20,
+        "fork_attempts_max": 80,
+        "child_lifetime_seconds": 3
+      },
+      "checks": [
+        {
+          "name": "two-independent-agents-own-distinct-leaves",
+          "passed": true
+        },
+        {
+          "name": "weight-and-task-cap-readback",
+          "passed": true
+        },
+        {
+          "name": "actual-cpu-weight-competition",
+          "passed": true,
+          "usage_seconds": {
+            "a": 4.430427,
+            "b": 25.646561
+          },
+          "b_share": 0.8526971184747622,
+          "throttle_delta": {
+            "a": 0,
+            "b": 0
+          }
+        },
+        {
+          "name": "bounded-task-exhaustion-returns-EAGAIN",
+          "passed": true,
+          "errors": [
+            11
+          ],
+          "children": 48,
+          "event_delta": 1
+        },
+        {
+          "name": "PID1-and-sibling-survive-task-exhaustion",
+          "passed": true
+        },
+        {
+          "name": "a-disable-restores-real-originals",
+          "passed": true
+        },
+        {
+          "name": "b-disable-restores-real-originals",
+          "passed": true
+        }
+      ],
+      "binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+      "shared_logical_cpu": 23,
+      "cleanup": {
+        "namespace_absent": true
+      }
+    }
+  ],
+  "boundary": "short-window competition failed the original declared range; the later longer window passed the same range. Both results retained. No exact proportional-share or latency guarantee."
+}
