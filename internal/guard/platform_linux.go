@@ -67,6 +67,25 @@ func lockFile(path string) (*os.File, error) {
 	return f, nil
 }
 
+func lockExistingState(path string) (*os.File, error) {
+	f, err := openStateJSONFile(path)
+	if err != nil {
+		return nil, err
+	}
+	st, err := f.Stat()
+	if err == nil && !st.Mode().IsRegular() {
+		err = fmt.Errorf("existing state lock must be a regular file")
+	}
+	if err == nil {
+		err = syscall.Flock(int(f.Fd()), syscall.LOCK_EX|syscall.LOCK_NB)
+	}
+	if err != nil {
+		f.Close()
+		return nil, err
+	}
+	return f, nil
+}
+
 // Lock the actual cgroup inode, independent of state_dir, TMPDIR and mount path.
 // This is advisory coordination between CRG instances, not a security boundary.
 func lockGroup(path string) (*os.File, error) {

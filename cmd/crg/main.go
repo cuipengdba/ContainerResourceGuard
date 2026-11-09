@@ -42,7 +42,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|diagnose|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
@@ -50,7 +50,9 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "build-info" {
-		emit(map[string]string{"version": version, "revision": revision, "os": runtime.GOOS, "arch": runtime.GOARCH})
+		emit(map[string]any{"version": version, "revision": revision, "os": runtime.GOOS, "arch": runtime.GOARCH,
+			"lock_protocol": guard.LockProtocol, "journal_versions": []int{1}, "io_profile_versions": []int{1, 2},
+			"writer_controls": []string{"cpu.max", "cpu.weight", "io.max", "io.weight", "memory.max", "memory.high", "memory.swap.max", "pids.max"}})
 		return nil
 	}
 	f := flag.NewFlagSet(cmd, flag.ContinueOnError)
@@ -157,12 +159,12 @@ func mainErr() error {
 		emit(p)
 		return nil
 	}
-	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
+	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
 		return errors.New("unknown command")
 	}
 	var c guard.Config
 	var e error
-	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "diagnose" || cmd == "disable" || cmd == "enable") && *config == "") {
+	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "diagnose" || cmd == "upgrade-check" || cmd == "state-backup" || cmd == "disable" || cmd == "enable") && *config == "") {
 		c = guard.Config{Percent: 100}
 		if *state != "" {
 			c.StateDir = *state
@@ -188,6 +190,31 @@ func mainErr() error {
 	env, e := guard.Discover()
 	if e != nil {
 		return e
+	}
+	if cmd == "upgrade-check" || cmd == "state-backup" {
+		if cmd == "upgrade-check" {
+			check, err := guard.CheckUpgrade(c, env)
+			if err != nil {
+				return err
+			}
+			emit(check)
+			return nil
+		}
+		explicitOutput := false
+		f.Visit(func(v *flag.Flag) {
+			if v.Name == "output" {
+				explicitOutput = true
+			}
+		})
+		if !explicitOutput {
+			return errors.New("state-backup requires explicit --output outside the state directory; private originals and identities are included")
+		}
+		check, err := guard.BackupUpgradeState(c, env, *output)
+		if err != nil {
+			return err
+		}
+		emit(map[string]any{"state": "written", "maximum_bytes": 4 * guard.MaxJSONBytes, "check": check, "content": "private journal/disable marker/profile; keep existing configuration and supervisor backups separately"})
+		return nil
 	}
 	if cmd == "diagnose" {
 		var snapshot *guard.StatusView

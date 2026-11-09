@@ -48,6 +48,21 @@ type Journal struct {
 	Target    string               `json:"target"`
 	Mutations map[string]*Mutation `json:"mutations"`
 }
+
+// The writer and offline upgrade preview must accept exactly the same journal.
+// Do not archive an incompatible old identity and silently start a new journal.
+func validateJournal(j Journal) error {
+	if j.Version != 1 || j.Mutations == nil || j.Identity == "" || !filepath.IsAbs(j.Target) {
+		return errors.New("unsupported journal")
+	}
+	for key, m := range j.Mutations {
+		if m == nil || !allowed(m.Setting) || key != m.Key() || !validControl(m.Setting, m.Original) || !validControl(m.Setting, m.Applied) || (m.Pending != "" && !validControl(m.Setting, m.Pending)) || !validControl(m.Setting, m.Value) {
+			return errors.New("journal contains an invalid mutation")
+		}
+	}
+	return nil
+}
+
 type ItemStatus struct {
 	Setting
 	State      string `json:"state"`
@@ -183,8 +198,8 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 			return fail(fmt.Errorf("invalid journal; refusing writes: %w", e))
 		}
 		j = loaded
-		if j.Version != 1 || j.Mutations == nil || j.Identity == "" || !filepath.IsAbs(j.Target) {
-			return fail(errors.New("unsupported journal"))
+		if err := validateJournal(j); err != nil {
+			return fail(err)
 		}
 		if j.Identity != env.Identity || j.Target != env.Target {
 			// A new container never reuses the old cgroup or its values.
@@ -195,11 +210,6 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 		}
 	} else if !os.IsNotExist(e) {
 		return fail(e)
-	}
-	for key, m := range j.Mutations {
-		if m == nil || !allowed(m.Setting) || key != m.Key() || !validControl(m.Setting, m.Original) || !validControl(m.Setting, m.Applied) || (m.Pending != "" && !validControl(m.Setting, m.Pending)) || !validControl(m.Setting, m.Value) {
-			return fail(errors.New("journal contains an invalid mutation"))
-		}
 	}
 	engine := &Engine{Config: c, Env: env, Files: RealFiles{}, Journal: j, Persist: func(j Journal) error { return AtomicJSON(path, j) }}
 	return engine, lock, nil
