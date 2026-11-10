@@ -2,7 +2,7 @@
 
 next/compatibility-contract 已组合后续开发能力，尚未发布；公开RC2的功能以对应标签文档为准。维护命令不接入业务启动必经路径。
 
-最小配置仍是 `{"percent":20}`。本页的命令只作用于执行命令的当前容器；没有远程容器管理入口。与 Agent 使用同一个 `--config` 或 `--state-dir`。
+当前建议配置为 `{"cpu_percent":20,"memory_percent":20,"io_percent":20}`，三项各自省略时默认20；旧单`percent`只作历史兼容。本页的命令只作用于执行命令的当前容器；没有远程容器管理入口。与 Agent 使用同一个 `--config` 或 `--state-dir`。
 
 ## 安装前检查
 
@@ -53,7 +53,7 @@ RC2 同时持有自身 cgroup 目录 inode 的独占非阻塞锁及状态目录�
 可以额外配置路径以便诊断，而无需单独指定资源预算：
 
 ```json
-{"percent":20,"data_paths":["/data","/backup"]}
+{"cpu_percent":20,"memory_percent":20,"io_percent":20,"data_paths":["/data","/backup"]}
 ```
 
 路径只用于只读查询其文件系统设备，不读取业务文件内容。输出实际设备号、是否存在计划限额；未配置路径时只报告 profile 中的设备，不声称覆盖所有容器 IO。Overlay/NFS/缺基准路径不会被猜成某个本地盘。
