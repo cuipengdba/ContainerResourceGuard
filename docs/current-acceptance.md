@@ -9,7 +9,7 @@
 | 分区IO | [468fe73实际双分区四格164项](testing-partition-cgroup.md)，与组合生产源码逐文件一致合同独立列明 | 单父盘双分区不等于独立物理多设备；未测复杂栈仍未支持 |
 | 业务与辅助故障 | 原7638/d6的600秒手动预算、冷重建/故障/维护各报告保持自身来源 | 当前d370已按原manual64预算两格复验及20场景辅助故障通过且清理；原[默认20%失败](testing-three-resource-default20-business.md)及[补测](testing-three-resource-default20-supplement.md)不改为通过 |
 | 正式长期 | [旧fc2 observe基线固定21h观察](continuous-acceptance.md)，4周期内容仍待最终原生判定 | 尚未接受完整86400秒；固定d6的等时enforce、至少7天未开始 |
-| 维护/最终支持 | 已有开发构建往返、共享切换/独立恢复、配置/状态兼容草案 | 当前候选实际维护、最近两个已发布次版本、最终支持矩阵、未测硬件及边界审计未完成 |
+| 维护/最终支持 | 已有开发构建往返、共享切换/独立恢复、配置/状态兼容草案 | [当前d370开发程序实际维护22项/两格600秒通过](testing-partition-realpaths-maintenance.md)；最近两个已发布次版本、最终支持矩阵、未测硬件及边界审计未完成 |
 
 每份报告中的源码、实际程序摘要、环境、预算、时长和未测范围决定它能证明什么。文件存在或CI绿色不自动关闭整组业务、硬件或发布条件。当前三资源范围不恢复pids/权重/memory.high/Swap新参数；旧代码仅按兼容和恢复所有权规则处理。
 
@@ -21,3 +21,9 @@
 
 
 故障通过并清理后，[维护夹具已进入DBS启动阶段](test-start-partition-realpaths-maintenance-execution.json)。这是固定执行开始观察，尚无完整600秒维护结果；上面的0Pod等待观察属于更早时刻。
+
+
+上文维护协调0个Pod是固定启动时刻；[实际维护终态](testing-partition-realpaths-maintenance.md)另列22项通过及清理，最近两个已发布次版本仍未完成。
+
+
+当前[开发程序维护22项/两格600秒](testing-partition-realpaths-maintenance.md)与[冷重建44项/四次启动](testing-partition-realpaths-cold-rebuild.md)均通过且清理。七天组件按独立安排继续；最近两个已发布次版本、正式24h+24h、老化状态后置及最终支持审计尚未关闭。

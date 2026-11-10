@@ -1,0 +1,111 @@
+{
+  "phase": "frozen-before-launch",
+  "kind": "continuous component of comprehensive seven-day acceptance; not whole P10 or release gate completion",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "dbc0b8fb57ea1bb364eccc5508d59d60cfb808f11e191757ced5983e9da5e902",
+  "runner_sha256": "c00cdfb46d8be6b9f9e29499070c90adac0e0ddf6047b5bffb4f95bd88493814",
+  "campaign_wrapper_sha256": "b39729ec610d9accb0d9c2ad9065e103fe5ab14a03b896dafb0fa49056518846",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualification_sha256": {
+    "identity-qualification.json": "68f95200ca8387e8dad987028309c6e3b98ad3cb3abd6f2b7ccfd1b07c301ec9",
+    "integration-qualification.json": "fc85ee09ca3cd868e5924f74d739f0d52951d412f2773da268eb5746e35337d2",
+    "overhead-qualification.json": "3ed12aabcfae45d4bf8c43ac8bf736525e46a6459da191d8c01f051923217dc3",
+    "business-qualification.json": "6b26d3bea1f2f55a4a42e37c517104a0483836dc7b34ee9c4cadbfb6ff980a64",
+    "fault-qualification.json": "f55d645f1f530b7050d989ed1755b90f3fc371a6dc55529097267635a5e4e928"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prerequisites": [
+    "Current d370 cold rebuild2cases/4boots/44checks, strengthened fresh current cache check, exit0 and namespace independently absent.",
+    "Current d370 maintenance2cases/22checks,exit0 and namespace independently absent.",
+    "Exact program/source/build-info, five completed qualifications and original private cache/supervisor hashes.",
+    "Host memory>=28GiB before each Pod,>=8GiB steady;disk>=20GiB."
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_actual_seconds_each_role": 604800,
+    "SQL_period_seconds": 2,
+    "API_period_seconds": 5,
+    "errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "coverage_min": 0.98,
+    "payload_bytes_each_role": 67108864,
+    "same_primary_PID1_Agent_cache_and_actual8_controls": true,
+    "OOM_kill_delta": 0,
+    "host_sample_seconds": 60,
+    "maximum_host_sample_gap_seconds": 120,
+    "backup_offsets_seconds": [
+      300,
+      21600,
+      43200,
+      64800,
+      86400,
+      108000,
+      129600,
+      151200,
+      172800,
+      194400,
+      216000,
+      237600,
+      259200,
+      280800,
+      302400,
+      324000,
+      345600,
+      367200,
+      388800,
+      410400,
+      432000,
+      453600,
+      475200,
+      496800,
+      518400,
+      540000,
+      561600,
+      583200
+    ],
+    "engine_cycles_each_role": 28,
+    "engine_content_checks_each_role_each_cycle": 10,
+    "maximum_engine_cycle_seconds": 1800
+  },
+  "component_checks": 11,
+  "end_state": "After actual continuous component, remove only exact UID-owned test namespace and keep aged database/config/state/log directories for required postflight. Report P10_complete=false.",
+  "postflight_required": [
+    "Verify aged data/config/journal/daily logs and backup; recreate current Pods using retained seven-day fixture and verify fresh cache status/new IDs/old journal isolation/true runtime originals.",
+    "Perform source-qualified Agent upgrade/rollback and stop/restore without losing aged payload; all operations within a fresh declared native smoke window.",
+    "Recheck helper-fault isolation and logging, preserve failures and full source/runtime boundary.",
+    "Complete independent original24h observe/equal24h enforce,>=7day composite audit, released-minor maintenance and final support/52-task audit before1.0."
+  ],
+  "parallel_scope": "Independent disposable namespace; may overlap old formal baseline/enforce under host reserve checks. Original fc2 baseline and fixed d6 staged candidate/tools/budgets unchanged.",
+  "limitations": [
+    "Manual64 budget, existing Linux5.14 AMD64 single device; not default20%/automatic30% sustained business, ARM vendor or physical multi-device.",
+    "Fresh64MiB synthetic schemas and known/test API with native probes plus engine backup/streaming/independent restore, not unknown vendor-specific APIs.",
+    "Stable-primary continuous phase intentionally does not reboot its primary; cold/rebuild/upgrade/fault component checks are separately source-qualified before/after within comprehensive audit.",
+    "No source-run-id reuses short baseline as604800s; actual monotonic duration is required.",
+    "Seven-day component alone cannot close P10,24h+24h,postflight,published-minor or hardware/support gates.",
+    "No automatic source/build replacement or quota/deadline relaxation during measurement."
+  ]
+}
