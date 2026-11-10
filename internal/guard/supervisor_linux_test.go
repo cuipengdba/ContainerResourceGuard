@@ -19,6 +19,11 @@ func TestSupervisorAtomicReplacementGuardsAndPreservesMode(t *testing.T) {
 	if err := os.WriteFile(path, old, 0750); err != nil {
 		t.Fatal(err)
 	}
+	// An inherited private umask may narrow creation permissions. Establish
+	// the explicit fixture mode before testing preservation of that mode.
+	if err := os.Chmod(path, 0750); err != nil {
+		t.Fatal(err)
+	}
 	if err := replaceSupervisor(path, next, 0750, digest([]byte("wrong"))); err == nil {
 		t.Fatal("wrong source accepted")
 	}
@@ -61,6 +66,11 @@ func TestSupervisorAtomicReplacementGuardsAndPreservesMode(t *testing.T) {
 
 func TestSupervisorSyntaxNeverRunsSourceOrBashEnvironment(t *testing.T) {
 	marker := filepath.Join(t.TempDir(), "must-not-exist")
+	envFile := filepath.Join(t.TempDir(), "bash-env")
+	if err := os.WriteFile(envFile, []byte("touch "+shellLiteral(marker)+"\n"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	t.Setenv("BASH_ENV", envFile)
 	body := []byte("#!/bin/bash\ntouch " + shellLiteral(marker) + "\n")
 	if err := checkedShell(context.Background(), body); err != nil {
 		t.Fatal(err)
