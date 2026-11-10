@@ -1,0 +1,50 @@
+{
+  "kind": "fixed measurement-start snapshot, not completion or live status",
+  "observed_utc": "2026-11-10T12:28:14Z",
+  "phase": "measuring-not-accepted",
+  "source_revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+  "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+  "measurement_started_utc": "2026-11-10T12:24:25.120032+00:00",
+  "criteria": {
+    "actual_seconds": 1800,
+    "warmup_seconds": 45,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "CPU_single_core_percent_max": 0.1,
+    "RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_write_bytes_max": 8388608,
+    "fault_write_bytes_max": 16777216,
+    "host_available_min_bytes": 8589934592,
+    "host_disk_free_min_bytes": 21474836480,
+    "OOM_kill_delta_max": 0,
+    "io_cap_bps": 65536,
+    "io_cap_iops": 8
+  },
+  "cases": {
+    "healthy": {
+      "sample_count_at_snapshot": 23,
+      "last_sample_elapsed_seconds": 220.010615976993,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false
+    },
+    "export-failure": {
+      "sample_count_at_snapshot": 23,
+      "last_sample_elapsed_seconds": 220.0112128581386,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false
+    },
+    "readonly": {
+      "sample_count_at_snapshot": 23,
+      "last_sample_elapsed_seconds": 220.01167300506495,
+      "cgroup_readonly": true,
+      "fixture_external_IO": true
+    }
+  },
+  "limitations": [
+    "All three scenarios must actually measure1800 seconds and satisfy the frozen thresholds before a result can pass.",
+    "Placeholder PID1 engineering overhead only; not vendor business acceptance, default20 evidence, or first-calibration cost.",
+    "Readonly scenario externally caps only its own private cgroup IO as declared; this is fixture setup, not a capability of the read-only Agent.",
+    "Original formal business baseline is unchanged."
+  ]
+}

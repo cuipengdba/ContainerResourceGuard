@@ -33,3 +33,5 @@ Go1.22.5最低源码工具链下，两个候选各完成两个解析器的10分�
 | FuzzDecodeProfile | 7503502 | 600.979 | 602.829 |
 
 两项均退出0。GOMAXPROCS/并行worker各2，GOMEMLIMIT256MiB为软目标；未宣称Windows硬资源预算或Linux真机结果。有限fuzz不替代DBS/HISDBS业务、正式长时及硬件验收，也不能把旧74693/1bc9数据合成当前源码的统一执行量。
+
+三资源/每日日志当前d6ea657程序已按[冻结计划](test-plan-three-resource-steady-overhead.json)进入三场景30min稳定开销测量；[固定启动快照](test-start-three-resource-steady-overhead.json)仅记录开始及约220秒采样，尚未通过1800秒判定。旧长时源码结果不替代本轮。
