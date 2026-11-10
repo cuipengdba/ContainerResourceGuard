@@ -35,7 +35,7 @@ DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化�
 
 ## 组合候选补充记录
 
-[next/compatibility-contract](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/compatibility-contract) 已组合后续开发代码，并汇入 main 的业务证据与持续测试入口，尚未合入 main 或发布。该分支已经补齐配置表中的五项可选控制和观测参数、热重载/维护手册以及[兼容契约草案](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/compatibility-contract.md)。固定 Go1.27.3 的实际程序完成[31项独立容器维护检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-maintenance.md)，包括接入后六种辅助故障、真实限额/原值恢复、持久重建、永久卸载及锁/维护错误码；Go1.22.5最低源码工具链与Go1.27.3 CI分别归档。相同候选的三组30min预算和两个解析器各10min fuzz已启动，不能将启动记录当作完成。
+[next/compatibility-contract](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/compatibility-contract) 已组合后续开发代码，并汇入 main 的业务证据与持续测试入口，尚未合入 main 或发布。该分支已经补齐配置表中的五项可选控制和观测参数、热重载/维护手册以及[兼容契约草案](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/compatibility-contract.md)。固定 Go1.27.3 的实际程序完成[31项独立容器维护检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-maintenance.md)，包括接入后六种辅助故障、真实限额/原值恢复、持久重建、永久卸载及锁/维护错误码；Go1.22.5最低源码工具链与Go1.27.3 CI分别归档。相同候选的三组30min预算和两个解析器各10min fuzz已完成；含R26的74693候选两个解析器也各完成10min fuzz，见[独立结果](testing-combined-long.md)，不同源码的开销证据不混用。
 
 正式24h observe基线仍在运行，24h enforce和至少7天业务验收未开始；最新采样与最终判定分开，未发布1.0。业务节点保持只读，厂商专用接口、真实掉电及未测硬件组合不扩成已验证范围。
 
@@ -45,4 +45,6 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 
 最新证据：两候选默认自动标定22项、真实满/只读状态9项检查通过；首轮失败完整保留，Linux/race及CI通过。见[自动IO实测](testing-automatic-io.md)。真实路径业务仍按独立报告判定。
 
-真机路径首轮：DBS自动30%标定/控制成功，但48/29 IOPS额度下未达原300秒就绪预算，业务未通过；本轮HISDBS未执行，手动额度新夹具对照已启动。见[真实路径进展](testing-realpaths-progress.md)。
+真机路径前两轮脚本超时保留；后续证实直接以root运行就绪探针缺libpq库路径，数据库实际已接受连接。修正为postgres原登录环境的新夹具保持30%和300秒预算，DBS约53.12秒就绪且managed，原生/备份验收仍在进行。见[诊断与真实路径进展](testing-realpaths-progress.md)。
+
+组合候选长时工程检查已归档：1bc9三组实际30min及其两项10min fuzz、含R26的74693两项10min fuzz通过；不等同业务长期验收，见[源码分别列明的结果](testing-combined-long.md)。

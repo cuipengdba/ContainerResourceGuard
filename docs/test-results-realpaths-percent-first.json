@@ -25,13 +25,35 @@
       "state": "applied"
     }
   ],
-  "outcome": "failed readiness within declared 300 seconds",
   "postgres_version_file_created": true,
   "profile_saved": true,
   "DBS_business_acceptance_passed": false,
   "HISDBS_executed_in_this_round": false,
   "namespace_removed": true,
-  "interpretation": "The controller calibrated and applied its requested limits, while the original workload did not reach readiness within the original budget. Low 48/29 IOPS is an evident capacity constraint; this record alone does not prove it is the sole cause.",
-  "follow_up": "fresh same-path manual-budget control with 7.2 CPU, 20001980416B memory, read/write 16MiB/s and 4096 IOPS; original 300s startup and native 5s/1s/zero-error criteria retained; no implicit raising of the 30% result",
-  "pending_preference": "Asked whether default percent IO should keep four BPS/IOPS caps or only read/write BPS with optional manual IOPS. Current code retains four caps until a reply; elapsed time is not a decision."
+  "interpretation": "The original private harness failed, but retained PostgreSQL CSV logs show database-ready messages in both percent and manual rounds. Direct-root pg_isready returns 127 because libpq.so.5 is not found; the original postgres login environment returns 0. This failure does not prove insufficient IOPS or a database startup timeout.",
+  "follow_up": "Fresh round with postgres-login pg_isready and saved exit/output, same percent=30 four caps and 300s startup budget; RC3 DBS and combined HISDBS; native SQL/API and engine criteria unchanged.",
+  "pending_preference": "Original default-IO preference question is unrelated to the now-diagnosed harness failure; four percent caps remain unchanged.",
+  "original_harness_outcome": "failed readiness within declared 300 seconds",
+  "outcome": "failed private readiness harness; database readiness timeout not established",
+  "diagnosis": {
+    "manual_control_harness_also_failed": true,
+    "manual_budget": {
+      "cpu_cores": 7.2,
+      "memory_bytes": 20001980416,
+      "read_write_bps": 16777216,
+      "read_write_iops": 4096
+    },
+    "percent_database_ready_log": "2026-11-10 10:25:35.486 CST",
+    "manual_database_ready_log": "2026-11-10 10:50:33.620 CST",
+    "read_only_baseline_probe_AB": {
+      "roles": [
+        "dbs",
+        "hisdbs"
+      ],
+      "direct_root_exit": 127,
+      "direct_root_reason": "libpq.so.5 missing from library search path",
+      "postgres_login_exit": 0
+    },
+    "business_acceptance_after_fix": "not yet established by this original run"
+  }
 }

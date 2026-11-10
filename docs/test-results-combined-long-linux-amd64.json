@@ -1,0 +1,129 @@
+{
+  "date": "2026-11-10",
+  "scope": "combined-candidate parser fuzz and isolated placeholder-container Agent overhead; no vendor business latency or long-term acceptance claim",
+  "overhead": {
+    "source_revision": "1bc9bcb0a6d5c446f6e36220b5ad4db1bdef8bb7",
+    "binary_sha256": "41713d40f380046ef2489cb2f978ce959984d73df767f8ca552b7f0ac287ee42",
+    "phase": "passed",
+    "criteria": {
+      "actual_seconds": 1800,
+      "warmup_seconds": 45,
+      "sample_period_seconds": 10,
+      "interval_seconds": 15,
+      "CPU_single_core_percent_max": 0.1,
+      "RSS_max_bytes": 20971520,
+      "stable_status_min_write_interval_seconds": 299,
+      "healthy_write_bytes_max": 8388608,
+      "fault_write_bytes_max": 16777216,
+      "host_available_min_bytes": 8589934592,
+      "host_disk_free_min_bytes": 21474836480,
+      "OOM_kill_delta_max": 0,
+      "io_cap_bps": 65536,
+      "io_cap_iops": 8
+    },
+    "measurement_elapsed_seconds": 1800.0255198981613,
+    "namespace_absent": true,
+    "cases": {
+      "healthy": {
+        "samples": 181,
+        "passed": true,
+        "CPU_single_core_percent": 0.016666586614969184,
+        "max_RSS_bytes": 8257536,
+        "write_bytes_delta": 139264,
+        "wchar_delta": 82595,
+        "status_write_count": 6,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0086456248537,
+        "same_Agent_process": true
+      },
+      "export-failure": {
+        "samples": 181,
+        "passed": true,
+        "CPU_single_core_percent": 0.016111033946527444,
+        "max_RSS_bytes": 7864320,
+        "write_bytes_delta": 20480,
+        "wchar_delta": 13793,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0086211878806,
+        "same_Agent_process": true
+      },
+      "readonly": {
+        "samples": 181,
+        "passed": true,
+        "CPU_single_core_percent": 0.026110986114325586,
+        "max_RSS_bytes": 8495104,
+        "write_bytes_delta": 1126400,
+        "wchar_delta": 337020,
+        "status_write_count": 6,
+        "status_min_write_gap_seconds": 300.030020346,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0086168409325,
+        "same_Agent_process": true
+      }
+    }
+  },
+  "fuzz": [
+    {
+      "source_revision": "1bc9bcb0a6d5c446f6e36220b5ad4db1bdef8bb7",
+      "toolchain": "go version go1.22.5 linux/amd64",
+      "limits": {
+        "CPUQuota": "50%",
+        "MemoryMax": 536870912,
+        "TasksMax": 48,
+        "RuntimeMaxSec": 1500
+      },
+      "exit": 0,
+      "targets": [
+        {
+          "target": "FuzzDecodeConfig",
+          "requested_seconds": 600,
+          "actual_go_test_seconds": 601.133,
+          "executions": 2551832,
+          "passed": true
+        },
+        {
+          "target": "FuzzDecodeProfile",
+          "requested_seconds": 600,
+          "actual_go_test_seconds": 601.091,
+          "executions": 2498437,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "source_revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+      "toolchain": "go version go1.22.5 linux/amd64",
+      "limits": {
+        "CPUQuota": "50%",
+        "MemoryMax": 536870912,
+        "TasksMax": 48,
+        "RuntimeMaxSec": 1500
+      },
+      "exit": 0,
+      "targets": [
+        {
+          "target": "FuzzDecodeConfig",
+          "requested_seconds": 600,
+          "actual_go_test_seconds": 744.357,
+          "executions": 1326447,
+          "passed": true
+        },
+        {
+          "target": "FuzzDecodeProfile",
+          "requested_seconds": 600,
+          "actual_go_test_seconds": 601.173,
+          "executions": 1593451,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Overhead binary predates R26 automatic calibration; these steady-state manual-mode numbers do not include calibration startup IO.",
+    "Fuzz results are bounded parser exercises, not proof that every input or crash is safe.",
+    "24h baseline/enforce, at least seven days, real power loss, other hardware and vendor-specific business APIs are separate gates."
+  ]
+}
