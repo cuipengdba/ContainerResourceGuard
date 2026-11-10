@@ -1,0 +1,370 @@
+{
+  "date": "2026-11-10",
+  "phase": "failed",
+  "configuration": {},
+  "percentages": {
+    "cpu_percent": 20,
+    "memory_percent": 20,
+    "io_percent": 20
+  },
+  "sources": {
+    "rc3": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+    },
+    "v10": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+    }
+  },
+  "cases": [
+    {
+      "phase": "failed",
+      "candidate_branch": "rc3",
+      "first_pg_ready_seconds": 31.1761406022124,
+      "first_api_ready_seconds": 31.511617419077083,
+      "ready_and_managed_seconds": 62.265593443997204,
+      "profile": {
+        "version": 1,
+        "method": "direct-sync-qdepth1-seq1m-random4k",
+        "devices": [
+          {
+            "device": "253:0",
+            "read_bps": 75083436,
+            "write_bps": 49042309,
+            "read_iops": 150,
+            "write_iops": 71
+          }
+        ]
+      },
+      "host_basis": {
+        "host_online_cpus": 24,
+        "host_memory_bytes": 66673278976
+      },
+      "actual_three_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=15016687 wbps=9808461 riops=30 wiops=14"
+      },
+      "final_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=15016687 wbps=9808461 riops=30 wiops=14",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "final_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "case": "rc3-dbs-default20",
+      "native": {
+        "phase": "failed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2971933220979,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 284,
+          "errors": 10,
+          "histogram": [
+            257,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            2,
+            9,
+            3,
+            10
+          ],
+          "max_seconds": 5.014413574011996,
+          "p95_bucket_upper_seconds": 2,
+          "sample_coverage": 0.9466666666666667,
+          "successes": 274,
+          "total_seconds": 74.2679663891904
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 57,
+          "histogram": [
+            0,
+            0,
+            61,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            58,
+            0
+          ],
+          "max_seconds": 4.004452145891264,
+          "p95_bucket_upper_seconds": 5,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 64,
+          "total_seconds": 234.319581968477
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T11:10:08.133523Z",
+        "measurement_finished_utc": "2026-11-10T11:20:08.399287Z"
+      },
+      "campaign_failure": "workers ended before all scheduled engine cycles finished",
+      "engine_cycle": {
+        "phase": "failed",
+        "failure": null,
+        "roles": {
+          "dbs": {
+            "phase": "streaming",
+            "cleanup": null,
+            "native_pending": null,
+            "checks": [
+              {
+                "name": "fixture_initial_rows",
+                "passed": true
+              },
+              {
+                "name": "physical_backup_finished",
+                "passed": true
+              },
+              {
+                "name": "streaming_new_rows_and_checksum",
+                "passed": true
+              },
+              {
+                "name": "standby_in_recovery",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_initial_checksum",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_is_writable",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_does_not_modify_primary",
+                "passed": true
+              }
+            ]
+          }
+        }
+      },
+      "sample_count": 11,
+      "sample_interval_seconds": 600.2896302819718,
+      "agent_interval_metrics": {
+        "cpu_seconds_delta": 0.07999999999999999,
+        "peak_sampled_RSS_bytes": 7335936,
+        "write_bytes_delta": 16384,
+        "wchar_delta": 5344
+      },
+      "cache_interval_metrics": {
+        "cpu_seconds_delta": 2.95,
+        "peak_sampled_RSS_bytes": 12120064,
+        "write_bytes_delta": 675840,
+        "wchar_delta": 466479
+      },
+      "all_identity_checks": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "rc3-dbs-default20-real-path-original-startup-default20-and-automatic-profile",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-default20-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-default20-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-default20-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-default20-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-default20-600s-native-and-backup-sync-independent-restore",
+      "passed": false
+    }
+  ],
+  "not_started": [
+    "main/HISDBS",
+    "combined/DBS",
+    "combined/HISDBS"
+  ],
+  "cleanup": {
+    "pod_delete_command_exit": 1,
+    "original_command_output_retained": false,
+    "error": "The Pod deletion command failed after the first failed business cell; the outer harness stopped before the remaining three cells. Its exact stderr was not retained.",
+    "namespace_absent_in_terminal_report": true,
+    "later_round17_independently_required_namespace_absence_before_start": true
+  },
+  "slow_synthetic_statements": [
+    {
+      "time": "2026-11-10 19:11:50.272 CST",
+      "duration_ms": 70861.772,
+      "kind": "engine synthetic fixture load/checkpoint"
+    },
+    {
+      "time": "2026-11-10 19:20:05.355 CST",
+      "duration_ms": 42431.014,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.356 CST",
+      "duration_ms": 37417.787,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.358 CST",
+      "duration_ms": 32405.744,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.357 CST",
+      "duration_ms": 27390.392,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.356 CST",
+      "duration_ms": 22375.164,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.357 CST",
+      "duration_ms": 17362.515,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.357 CST",
+      "duration_ms": 12349.298,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:11:01.327 CST",
+      "duration_ms": 11145.267,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.357 CST",
+      "duration_ms": 7334.403,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:11:01.327 CST",
+      "duration_ms": 6131.449,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:12:20.900 CST",
+      "duration_ms": 3458.447,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:11:59.440 CST",
+      "duration_ms": 3236.201,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:20:05.356 CST",
+      "duration_ms": 2319.687,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:08:29.320 CST",
+      "duration_ms": 2058.063,
+      "kind": "checkpoint"
+    },
+    {
+      "time": "2026-11-10 19:12:15.123 CST",
+      "duration_ms": 1681.575,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:10:41.842 CST",
+      "duration_ms": 1661.001,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:10:43.833 CST",
+      "duration_ms": 1651.862,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:19:18.556 CST",
+      "duration_ms": 1632.396,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:11:55.771 CST",
+      "duration_ms": 1567.81,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:10:45.635 CST",
+      "duration_ms": 1453.593,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:10:47.578 CST",
+      "duration_ms": 1396.806,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:11:01.327 CST",
+      "duration_ms": 1116.917,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:10:49.207 CST",
+      "duration_ms": 1025.627,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:12:16.340 CST",
+      "duration_ms": 898.519,
+      "kind": "native synthetic UPDATE"
+    },
+    {
+      "time": "2026-11-10 19:11:03.031 CST",
+      "duration_ms": 829.92,
+      "kind": "native synthetic UPDATE"
+    }
+  ],
+  "limitations": [
+    "Resource enforcement and application acceptance are different: the limits were applied, but this workload failed its fixed default20 business criteria.",
+    "The native measurement completed600 seconds; the backup cycle had only7 content checks and was not accepted.",
+    "Sampled Agent metrics cover the post-calibration600.290-second interval, not first-calibration I/O or total startup cost.",
+    "CPU throttling and memory/OOM counters were zero in the first/last samples; these observations do not prove one unique cause for SQL/API errors.",
+    "No SQL error categories or original HTTP exceptions were captured; do not label every request error a timeout.",
+    "The first failure is retained; missing cells need a separately planned supplement without changing limits or deadlines.",
+    "No changes to the original baseline or deployed business containers."
+  ]
+}

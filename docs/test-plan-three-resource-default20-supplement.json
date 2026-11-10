@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before launch",
+  "test_job_sha256": "1da45fa5cb5cf48a185ae28c676354d47462e50b26e71b73185f235fa642fcc8",
+  "sources": {
+    "rc3": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+    },
+    "v10": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+    }
+  },
+  "cases": [
+    "main/HISDBS",
+    "combined/DBS",
+    "combined/HISDBS"
+  ],
+  "configuration": {},
+  "effective_percentages": {
+    "cpu_percent": 20,
+    "memory_percent": 20,
+    "io_percent": 20
+  },
+  "IO": "No directory/output/profile/rate override. Each new fixture performs fresh automatic calibration under existing original business start chain.",
+  "prerequisites": [
+    "round17 terminal and namespace independently absent",
+    "R30 engineering report passed",
+    "source-qualified program digests match",
+    "host available memory >=28GiB before each clone, >=8GiB while running, disk free >=20GiB"
+  ],
+  "criteria": {
+    "original_images_start_scripts_PG_parameters_and_readonly_cache_mount": true,
+    "PG_API_and_three_managed_controls_max_seconds": 300,
+    "PG_API_observed_independently_of_Agent_state": true,
+    "cache_enforce_after_ready_max_seconds": 45,
+    "cache_enforce_also_within_startup_seconds": 300,
+    "only_three_resources_and_other_five_values_unchanged": true,
+    "daily0600_logs_report_v2": true,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "sample_coverage_min": 0.98,
+    "payload_PG_and_engine_backup_sync_independent_restore": true
+  },
+  "failure_policy": "Retain each failure with actual controls, status and memory counters. Do not increase IO percentages or IOPS, alter PG memory parameters, reuse a successful manual budget, or extend original business deadlines. Continue independent remaining cells with fresh fixtures.",
+  "limitations": [
+    "Default20 need not fit the original business workload; source implementation success and business budget acceptance are distinct.",
+    "Short four-cell run does not close 24h+24h, seven-day or unavailable hardware gates.",
+    "No changes to existing business deployment or formal baseline."
+  ],
+  "supplement_to": "Round16 original main/DBS failed600-second result retained; no rerun or retrospective pass.",
+  "cleanup_policy": "Original Pod deletion120s command remains. Record its nonzero exit/timeout as a failed case. If the Pod still exists, delete only the labelled private namespace with the existing150s command, require API-confirmed namespace and old cgroup absence before recreating an isolated namespace for a remaining independent cell. No force delete, guard/business signalling or relaxed resource limits. If cleanup is incomplete, stop remaining cells. Final namespace absence is mandatory."
+}
