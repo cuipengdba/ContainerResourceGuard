@@ -30,7 +30,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 宿主机内存取 `MemTotal`，不是随时变化的空闲内存；CPU 取 sysfs 在线 CPU 列表，而不是 Go 进程当前可调度核数。状态输出容量来源。如果 `/proc/meminfo` 被 lxcfs 等虚拟化，应只读提供 `/host/proc/meminfo`，CRG 优先使用该文件。
 
-## 全部可选字段
+## 当前配置字段（资源仅三项）
 
 | JSON 字段 | 默认值 | 含义 |
 |---|---|---|
@@ -39,8 +39,6 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `percent` | 不使用 | 仅旧配置兼容入口，不能混用独立百分比；manual禁用 |
 | `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
-| `pids_max` | 不修改 | 开发分支新增；任务数硬上限，包含线程 |
-| `cpu_weight` | 不修改 | 开发分支新增；CPU 相对竞争权重 1–10000 |
 | `mode` | `enforce` | `enforce` 写入，`observe` 仅预览 |
 | `io_profile` | `/etc/crg/io-profile.json` | 默认自动标定/复用的本地设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |
@@ -86,4 +84,4 @@ JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--fo
 
 `io_calibration` 默认 `auto`，可选 `off`；percent/enforce首次启动自动选最大合格文件系统，缺基准才测，observe/manual及只读命令不测。默认输出 `/etc/crg/io-profile.json`，详见[自动标定](automatic-io-calibration.md)。RC3写v1汇总；1.0组合候选写v2样本，未发布版本勿混用。
 
-R27/R28覆盖旧默认：各资源独立百分比默认20，运行日志默认启用；手动模式仍按绝对值且省略项不接管。具体示例以[独立百分比](independent-percentages.md)及[日志](logging.md)为准，历史测试使用的旧配置不追改。
+R29/R30覆盖旧默认：仅CPU、内存、IO各自默认20，v1跳过、v2校验后设置，运行日志默认启用；手动模式仍按绝对值且省略项不接管。具体示例以[独立百分比](independent-percentages.md)及[日志](logging.md)为准，历史测试使用的旧配置不追改。

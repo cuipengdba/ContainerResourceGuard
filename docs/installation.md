@@ -14,7 +14,7 @@ tar -xzf containerresourceguard-VERSION-linux-amd64.tar.gz
 
 发布包包含程序、示例配置、可选启动脚本、文档和许可证，不包含设备标定文件、服务器地址或凭据。arm64 若只经过交叉编译，测试报告会明确说明。
 
-RC2 包内 BUILD.json 保存二进制 SHA256、程序源码修订 source_revision 与打包文档修订 package_revision；`crg build-info` 对应程序源码修订。测试结果归档的文档提交可能晚于程序构建，所以两个修订可以不同。SHA256SUMS 对应整个发布压缩包。构建/测试命令需在完整源码仓库执行。
+包内 BUILD.json 保存二进制 SHA256、程序源码修订 source_revision 与打包文档修订 package_revision；`crg build-info` 对应程序源码修订。测试结果归档的文档提交可能晚于程序构建，所以两个修订可以不同。SHA256SUMS 对应整个发布压缩包。构建/测试命令需在完整源码仓库执行。
 
 ## 放入每个容器
 
@@ -25,14 +25,15 @@ RC2 包内 BUILD.json 保存二进制 SHA256、程序源码修订 source_revisio
 ```text
 /opt/crg/crg                    程序，可只读
 /opt/crg/optional-agent.sh      可选辅助管理脚本，可只读
-/etc/crg/config.json           每个容器独立，例如 {"percent":20}
-/etc/crg/io-profile.json       当前节点/目标设备标定文件，可只读
+/etc/crg/config.json           每个容器独立，例如{}或三个独立百分比
+/etc/crg/io-profile.json       默认自动生成/复用的设备基准，首次需可写
 /tmp/containerresourceguard/   当前容器自己的可写状态目录
+/var/log/crg/                  当前容器自己的每日日志，持久挂载可跨Pod保留
 ```
 
 节点工具分发目录必须在该工作负载可能调度到的节点存在，或者将程序放进镜像。IO profile 必须对应当前节点的设备身份；不能把其他服务器的 profile 原样当作本机能力。
 
-默认不需要先手工标定或分发profile；提供容器独立、可写持久的默认profile位置，首次由辅助Agent自动标定，之后复用，见[自动流程](automatic-io-calibration.md)。每个容器先执行 `crg doctor --percent 20`，检查容量来源和限制预览，再通过现有 supervisor 的可选分支启用。详见 [集成说明](integration.md)。
+默认不需要先手工标定或分发profile；提供容器独立、可写持久的默认profile位置，首次由辅助Agent自动标定，之后复用，见[自动流程](automatic-io-calibration.md)。每个容器先执行 `crg doctor --config /etc/crg/config.json`，检查容量来源和限制预览，再通过现有 supervisor 的可选分支启用。详见 [集成说明](integration.md)。
 
 RC2 可执行 `crg preflight --config /etc/crg/config.json --format human` 查看打开权限和换算；不写资源限额，不能代替启用后的真实回读。发布包还包含 supervisor 补丁生成工具，生成时不修改原文件。
 

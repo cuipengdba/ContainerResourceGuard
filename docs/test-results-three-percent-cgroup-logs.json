@@ -1,0 +1,257 @@
+{
+  "observed_utc": "2026-11-10T08:53:57Z",
+  "release_candidate": "v0.1.0-rc.3-preview.1",
+  "sources": {
+    "rc3": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+    },
+    "v10": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+    }
+  },
+  "unit": {
+    "minimum_toolchain": "go1.22.5 linux/amd64",
+    "vet": "passed",
+    "race_cover_all_packages": "passed",
+    "optional_helper_scenarios_per_candidate": 6,
+    "generated_supervisor_fault_scenarios_per_candidate": 6,
+    "log_package_statement_coverage_percent": 78.4
+  },
+  "ci": {
+    "rc3": {
+      "run_id": 42785715660,
+      "result": "success"
+    },
+    "v10": {
+      "run_id": 42785715856,
+      "result": "success"
+    }
+  },
+  "actual": {
+    "phase": "passed",
+    "scope": "two committed candidates, original-image placeholder PID1; actual self-cgroup/logging engineering checks, not DBS/HISDBS business acceptance",
+    "tests": [
+      {
+        "name": "rc3-v1-simulated-proc-no-resource-state-or-calibration-writes",
+        "passed": true
+      },
+      {
+        "name": "rc3-v1-explicit-calibrate-also-skips",
+        "passed": true
+      },
+      {
+        "name": "rc3-hybrid-simulated-proc-no-resource-state-or-calibration-writes",
+        "passed": true
+      },
+      {
+        "name": "rc3-unknown-simulated-proc-no-resource-state-or-calibration-writes",
+        "passed": true
+      },
+      {
+        "name": "rc3-v2-readonly-cgroup-explained-and-business-PID1-unaffected",
+        "passed": true,
+        "agent_exit_code": 0
+      },
+      {
+        "name": "rc3-defaults20-only-three-control-readbacks-and-extras-unchanged",
+        "passed": true,
+        "kernel": {
+          "cpu.max": "480000 100000",
+          "memory.max": "13334654976",
+          "io.max": "253:0 rbps=18782934 wbps=7889325 riops=28 wiops=26",
+          "cpu.weight": "1",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0",
+          "pids.max": "406648"
+        },
+        "resource_state": "managed",
+        "warnings": []
+      },
+      {
+        "name": "rc3-CPU-memory-default20-of-host",
+        "passed": true
+      },
+      {
+        "name": "rc3-default-daily-file-json-console-and-lifecycle",
+        "passed": true
+      },
+      {
+        "name": "rc3-independent-three-percentages-and-other-resources-unchanged",
+        "passed": true,
+        "kernel": {
+          "cpu.max": "240000 100000",
+          "memory.max": "10000990208",
+          "io.max": "253:0 rbps=28174401 wbps=11833988 riops=42 wiops=39",
+          "cpu.weight": "1",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0",
+          "pids.max": "406648"
+        }
+      },
+      {
+        "name": "rc3-CLI-overrides-only-own-dimensions",
+        "passed": true
+      },
+      {
+        "name": "rc3-profile-cache-reused-with-independent-IO",
+        "passed": true
+      },
+      {
+        "name": "rc3-read-only-log-keeps-resource-control-and-PID1",
+        "passed": true
+      },
+      {
+        "name": "rc3-actual-ENOSPC-log-does-not-stop-control",
+        "passed": true
+      },
+      {
+        "name": "rc3-actual-thirty-calendar-day-cleanup",
+        "passed": true
+      },
+      {
+        "name": "rc3-actual-one-GB-total-cleans-oldest",
+        "passed": true
+      },
+      {
+        "name": "rc3-actual-daily-file-reset-without-numbered-parts",
+        "passed": true
+      },
+      {
+        "name": "rc3-restore-three-true-originals-and-extras-still-original",
+        "passed": true
+      },
+      {
+        "name": "rc3-Pod-new-ID-keeps-profile-and-same-day-log",
+        "passed": true
+      },
+      {
+        "name": "rc3-sentinel-and-OOM-preserved",
+        "passed": true
+      },
+      {
+        "name": "v10-v1-simulated-proc-no-resource-state-or-calibration-writes",
+        "passed": true
+      },
+      {
+        "name": "v10-v1-explicit-calibrate-also-skips",
+        "passed": true
+      },
+      {
+        "name": "v10-hybrid-simulated-proc-no-resource-state-or-calibration-writes",
+        "passed": true
+      },
+      {
+        "name": "v10-unknown-simulated-proc-no-resource-state-or-calibration-writes",
+        "passed": true
+      },
+      {
+        "name": "v10-v2-readonly-cgroup-explained-and-business-PID1-unaffected",
+        "passed": true,
+        "agent_exit_code": 0
+      },
+      {
+        "name": "v10-defaults20-only-three-control-readbacks-and-extras-unchanged",
+        "passed": true,
+        "kernel": {
+          "cpu.max": "480000 100000",
+          "memory.max": "13334654976",
+          "io.max": "253:0 rbps=12940016 wbps=7494020 riops=16 wiops=27",
+          "cpu.weight": "1",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0",
+          "pids.max": "406648"
+        },
+        "resource_state": "managed",
+        "warnings": []
+      },
+      {
+        "name": "v10-CPU-memory-default20-of-host",
+        "passed": true
+      },
+      {
+        "name": "v10-default-daily-file-json-console-and-lifecycle",
+        "passed": true
+      },
+      {
+        "name": "v10-independent-three-percentages-and-other-resources-unchanged",
+        "passed": true,
+        "kernel": {
+          "cpu.max": "240000 100000",
+          "memory.max": "10000990208",
+          "io.max": "253:0 rbps=19410024 wbps=11241031 riops=24 wiops=40",
+          "cpu.weight": "1",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0",
+          "pids.max": "406648"
+        }
+      },
+      {
+        "name": "v10-CLI-overrides-only-own-dimensions",
+        "passed": true
+      },
+      {
+        "name": "v10-profile-cache-reused-with-independent-IO",
+        "passed": true
+      },
+      {
+        "name": "v10-read-only-log-keeps-resource-control-and-PID1",
+        "passed": true
+      },
+      {
+        "name": "v10-actual-ENOSPC-log-does-not-stop-control",
+        "passed": true
+      },
+      {
+        "name": "v10-actual-thirty-calendar-day-cleanup",
+        "passed": true
+      },
+      {
+        "name": "v10-actual-one-GB-total-cleans-oldest",
+        "passed": true
+      },
+      {
+        "name": "v10-actual-daily-file-reset-without-numbered-parts",
+        "passed": true
+      },
+      {
+        "name": "v10-restore-three-true-originals-and-extras-still-original",
+        "passed": true
+      },
+      {
+        "name": "v10-Pod-new-ID-keeps-profile-and-same-day-log",
+        "passed": true
+      },
+      {
+        "name": "v10-sentinel-and-OOM-preserved",
+        "passed": true
+      }
+    ],
+    "sources": {
+      "rc3": {
+        "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+      },
+      "v10": {
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+        "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+      }
+    },
+    "namespace_absent": true
+  },
+  "limits": [
+    "cgroup v1/hybrid/unknown tested through child mount namespace proc fixtures, not a physical v1 kernel",
+    "actual Linux amd64 cgroup v2, original image with placeholder PID1, not vendor business acceptance",
+    "ARM64 cross-build only; Linux6.x and actual multi-device matrix pending",
+    "formal RC3 business gates, stable 24h+24h and v1.0 >=7d business gates remain open"
+  ]
+}
