@@ -22,3 +22,5 @@
 ## 真机路径启动补充
 
 两类原镜像使用真实容器路径及原CCG只读挂载，最小配置只有percent30：RC3 DBS自动选择/etc/crg、53.124秒就绪且managed，组合候选HISDBS选择/data、63.616秒就绪且managed。两套后续业务短测均失败，不能把本页22+9项工程检查或这两项启动结果等同业务通过；详见[完整失败与后续对照](testing-realpaths-progress.md)。
+
+自动标定候选的真实路径辅助故障测试已完成：RC3/DBS与组合候选/HISDBS各10场景，共108项检查通过，夹具全部清理；不代替业务性能与长时验收。见[故障实测](testing-realpaths-faults.md)。

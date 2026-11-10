@@ -50,3 +50,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 组合候选长时工程检查已归档：1bc9三组实际30min及其两项10min fuzz、含R26的74693两项10min fuzz通过；不等同业务长期验收，见[源码分别列明的结果](testing-combined-long.md)。
 
 原路径手动对照的失败、探针修正与新预算冻结计划见[手动测试记录](testing-realpaths-manual.md)。
+
+自动标定候选的真实路径辅助故障测试已完成：RC3/DBS与组合候选/HISDBS各10场景，共108项检查通过，夹具全部清理；不代替业务性能与长时验收。见[故障实测](testing-realpaths-faults.md)。
