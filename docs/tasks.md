@@ -162,3 +162,7 @@ P02/P08旧observe首次接入与旧参考入口恢复已在运行前归档[第19
 P06/P09已增加[原生ARM64 CI入口与边界](native-arm64-ci.md)，运行前冻结源码/环境断言、race及启动脚本计划；等待实际工作流结果，不提前关闭ARM64资源/厂商业务、Linux6.x控制或多设备门槛。
 
 原生ARM64 CI现已完成两线基础执行：主线041aeb1/组合ccfe0f7的vet/race、helper/集成补丁和CLI通过，Go pass事件101/184；实际内核7.0而非6.x。包内工作流链接导致的两次普通CI失败已保留并只修正文档链接，后续完整CI另验。见[精确范围和结果](native-arm64-ci.md)；ARM资源/厂商业务及硬件门槛仍未关闭。
+
+P06原生基础CI之后的[实际容器控制器计划](plan-native-cgroup-ci.md)已归档，拟补AMD64/ARM64实际三项控制、自动百分比/新ID及权限回退。当前仅设计，脚本与工作流尚未实现/运行，不关闭资源/业务或硬件门槛。
+
+包链接修复后的两线完整构建CI已通过：[main/c3bed5b](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42825125118)、[组合/91b2f54](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42825125168)。两次原链接失败保留；修复提交仅影响文档，与前述原生ARM任务的源修订分开记录。

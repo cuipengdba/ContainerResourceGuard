@@ -15,7 +15,7 @@
 | 备份后新Pod ID | 四格8次原启动、88项通过，数据/日志/原值保持，仅手动64预算 | [冷重建](testing-three-resource-cold-rebuild.md) |
 | 在线维护 | 第13轮已发布预览首次安装拒绝；第15轮两套协议兼容开发构建22项/各600秒通过，不代表两个已发布次版本 | [拒绝记录](testing-three-resource-online-maintenance.md)、[开发构建往返](testing-three-resource-protocol-maintenance.md) |
 | 当前程序稳定开销 | 三场景各1800秒、181样本通过，Agent单核CPU≤0.0267%、RSS≤9011200B，仅占位PID1工程结果 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
-| ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包检查失败](native-arm64-ci.md) |
+| ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 长期验收 | 旧observe基线超过12h仍运行，三周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定12h快照及边界](continuous-acceptance.md) |
 
 以下保留早期源码/预算的开发历史，各自结论仅适用于报告中的程序和配置。R29暂缓的扩展资源不因历史实现而恢复为当前交付。
