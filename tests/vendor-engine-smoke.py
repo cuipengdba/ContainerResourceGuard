@@ -2,6 +2,7 @@ import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys,si
 parser=argparse.ArgumentParser(description="Engine smoke in disposable original-vendor Pods; never use a business namespace")
 parser.add_argument("--namespace",required=True)
 parser.add_argument("--work-dir",required=True)
+parser.add_argument("--role",action="append",choices=["dbs","hisdbs"],help="test selected disposable role(s); default both; permits sequential real-path fixtures")
 parser.add_argument("--run-id",default=time.strftime("%Y%m%d%H%M%S",time.gmtime()))
 parser.add_argument("--cleanup-fixture",action="store_true",help="after a passed run, drop only this run's new primary schema/restore DB and remove its stopped snapshot; keep logs/logical dump")
 parser.add_argument("--native-campaign-probes",action="store_true",help="content-only result pending a surrounding native campaign; exec latency stays diagnostic, never produces standalone passed")
@@ -30,7 +31,7 @@ def check(item,name,condition,detail=None):
 def summary(role,port=5432):return sql(role,"SELECT count(*),sum(id),sum(octet_length(payload)),md5(string_agg(md5(payload),'' ORDER BY id)) FROM "+schema+'.fixture;',port)
 save()
 try:
-  for role in ['dbs','hisdbs']:
+  for role in list(dict.fromkeys(args.role or ['dbs','hisdbs'])):
     meta=json.loads(subprocess.check_output(['kubectl','get','pod','-n',ns,role+'-business','-o','json'],text=True,timeout=30))
     if meta['metadata'].get('labels',{}).get('managed-by')!='crg-vendor-test' or meta['spec'].get('hostNetwork') or meta['spec'].get('hostPID'):
       raise RuntimeError('refusing Pod without disposable fixture label or with host namespaces')

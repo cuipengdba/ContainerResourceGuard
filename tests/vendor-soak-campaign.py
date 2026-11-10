@@ -20,6 +20,8 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--namespace', required=True)
 parser.add_argument('--fixture-root', type=Path, required=True)
 parser.add_argument('--work-dir', type=Path, required=True)
+parser.add_argument('--role', action='append', choices=['dbs', 'hisdbs'], help='selected disposable roles; default both, supports sequential real-path fixtures')
+parser.add_argument('--smoke-enforce', action='store_true', help='smoke only: require managed resource state; does not shorten any formal release phase')
 parser.add_argument('--run-id', required=True)
 parser.add_argument('--source-run-id', help='reuse only the same container workload data from a prior passed equal-duration native run')
 parser.add_argument('--test-phase', choices=['smoke', 'baseline', 'enforce', 'acceptance'], required=True)
@@ -27,6 +29,8 @@ parser.add_argument('--seconds', type=int, required=True)
 parser.add_argument('--agent-sha256', required=True)
 parser.add_argument('--cache-sha256', required=True)
 args = parser.parse_args()
+if args.smoke_enforce and args.test_phase != 'smoke':
+    parser.error('--smoke-enforce only applies to smoke; formal phase rules are unchanged')
 if not re.fullmatch(r'crg-vendor-lab-[a-z0-9-]+', args.namespace):
     parser.error('only disposable crg-vendor-lab-* namespaces are accepted')
 if not re.fullmatch(r'[0-9]{8,12}', args.run_id):
@@ -152,7 +156,7 @@ def take_sample(role):
     if controls(own['group']) != own['controls']:
         raise RuntimeError('resource controls changed during fixed-budget phase')
     state = json.loads(own['state'].read_text())
-    expected = 'observe' if args.test_phase in ['baseline', 'smoke'] else 'managed'
+    expected = 'observe' if args.test_phase == 'baseline' or args.test_phase == 'smoke' and not args.smoke_enforce else 'managed'
     if state['state'] != expected or (expected == 'managed' and not all(item['state'] == 'applied' for item in state['items'])):
         raise RuntimeError('resource state no longer matches phase')
     cache = json.loads(own['cache_state'].read_text())
@@ -199,7 +203,7 @@ try:
     created_output = True
     save()
     guards()
-    for role in ['dbs', 'hisdbs']:
+    for role in list(dict.fromkeys(args.role or ['dbs', 'hisdbs'])):
         meta = json.loads(run(['kubectl', 'get', 'pod', '-n', args.namespace, role + '-business', '-o', 'json']).stdout)
         if meta['metadata'].get('labels', {}).get('managed-by') != 'crg-vendor-test' or any(meta['spec'].get(flag) for flag in ['hostPID', 'hostNetwork', 'hostIPC']):
             raise RuntimeError('not an isolated original-image lab Pod')
@@ -288,7 +292,8 @@ try:
             cycle_id = args.run_id + ('%02d' % backup_index)
             current_dir = str(args.work_dir / ('backup-' + cycle_id))
             log = (args.work_dir / ('backup-' + cycle_id + '.log')).open('w')
-            backup = subprocess.Popen(['python3', str(engine_script), '--namespace', args.namespace, '--work-dir', current_dir, '--run-id', cycle_id, '--cleanup-fixture', '--native-campaign-probes'], stdin=subprocess.DEVNULL, stdout=log, stderr=log)
+            selected_roles = [value for role in roles for value in ['--role', role]]
+            backup = subprocess.Popen(['python3', str(engine_script), '--namespace', args.namespace, '--work-dir', current_dir, '--run-id', cycle_id, '--cleanup-fixture', '--native-campaign-probes'] + selected_roles, stdin=subprocess.DEVNULL, stdout=log, stderr=log)
             backup_started = time.monotonic()
             report['backups'].append({'offset_seconds': elapsed, 'run_id': cycle_id, 'content_started_epoch': time.time()})
             backup_index += 1

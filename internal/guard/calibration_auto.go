@@ -78,7 +78,9 @@ func prepareAutomaticIO(ctx context.Context, c Config, env Environment,
 	if err = calibrationOutputReady(c.IOProfile); err != nil {
 		return fail("calibration_output_unwritable", err)
 	}
-	bounded, cancel := context.WithTimeout(ctx, 45*time.Second)
+	// The 36 measured seconds exclude three direct-IO file population passes.
+	// Allow bounded setup time without shortening samples or gating business.
+	bounded, cancel := context.WithTimeout(ctx, 180*time.Second)
 	defer cancel()
 	p, err := measure(bounded, selected.Directory, 3, 3)
 	if err != nil {
