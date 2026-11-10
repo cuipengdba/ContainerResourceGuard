@@ -105,3 +105,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 组合开发源码50671aa在Windows/amd64、Go1.27.3下两个解析器各10分钟fuzz通过，包含12条明确归档的新百分比/默认/非法语料；不是Linux业务或资源开销结论，见[独立结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-three-resource-parser-fuzz-windows.json)。
 
 第18轮默认20%剩余三格补测结束：18项启动/控制/日志通过，三格业务组合均失败；main/HIS有完整失败原生结果，两个组合格仅有未完成快照，不计600秒通过。清理确认，连同第16轮四格均未通过，见[补测结果](testing-three-resource-default20-supplement.md)。
+
+当前三资源/日志组合程序的正常、持续导出失败、只读cgroup三组30min工程开销测量已开始，尚未结束；不代替业务性能或正式长期验收。见[冻结计划和启动状态](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-long.md)。
