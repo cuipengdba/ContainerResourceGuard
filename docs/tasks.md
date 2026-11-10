@@ -176,3 +176,5 @@ P06/P09[原生控制器第二轮独立dm/loop计划](plan-native-cgroup-dm-loop.
 P02/P08增加[共享程序切换和显式恢复演练](plan-shared-program-stage.md)：首次执行前冻结三份脚本摘要和双阶段600秒预算；默认只读，完整前置不通过时禁止锁/输出/CLI写入。独立克隆与真机拒绝尚未执行，不修改原24h基线，不将工具作为产品的多容器控制器。
 
 P02/P08[共享程序首轮未通过](testing-shared-program-stage-first.md)：候选保持121.088秒但固定120秒内仅55次采样，原59次门拒绝，未启动新enforce；旧参考入口恢复和独立清理通过。改成固定时刻采样，新增两项虚拟时钟检查，12项本地通过；全新夹具按[修正冻结计划](test-plan-shared-program-stage-cadence.json)重验，不降低预算、时长或覆盖标准。
+
+P06增加[Linux6实际环境兼容性计划](plan-linux6-cgroup-ci.md)：两线AMD64/ARM64手动任务先断言实际6.*内核，再复用原22项dm/loop控制器与原预算；首次执行前冻结源码和工作流，不改产品或测试机，不提前声称支持。
