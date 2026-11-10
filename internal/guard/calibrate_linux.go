@@ -13,8 +13,8 @@ import (
 	"time"
 )
 
-// Calibrate only creates a new regular file in an explicitly named directory.
-// No raw-device writes, cache dropping, global tuning, or startup calibration.
+// Calibrate only creates a new regular file in a selected/overridden directory.
+// No raw-device writes, cache dropping, or global tuning.
 func Calibrate(ctx context.Context, directory string, seconds int) (Profile, error) {
 	p := Profile{Version: 1, Method: "direct-sync-qdepth1-seq1m-random4k", CreatedUTC: time.Now().UTC().Format(time.RFC3339)}
 	if seconds < 1 || seconds > 30 {
@@ -47,19 +47,31 @@ func Calibrate(ctx context.Context, directory string, seconds int) (Profile, err
 	if e != nil {
 		return p, e
 	}
-	tmp, e := os.CreateTemp(directory, ".crg-calibration-*")
+	dirfd, e := syscall.Open(directory, syscall.O_RDONLY|syscall.O_DIRECTORY|syscall.O_NOFOLLOW|syscall.O_CLOEXEC, 0)
 	if e != nil {
 		return p, e
 	}
-	name := tmp.Name()
-	tmp.Close()
-	defer os.Remove(name)
-	// Open the file we just created without following a substituted symlink.
-	fd, e := syscall.Open(name, syscall.O_RDWR|syscall.O_DIRECT|syscall.O_NOFOLLOW|syscall.O_CLOEXEC, 0600)
+	defer syscall.Close(dirfd)
+	var nonce [16]byte
+	if _, e = rand.Read(nonce[:]); e != nil {
+		return p, e
+	}
+	name := fmt.Sprintf(".crg-calibration-%x", nonce)
+	// Open once, relative to the pinned directory. Never close and reopen a
+	// temporary pathname that could have been replaced with a business file.
+	fd, e := syscall.Openat(dirfd, name, syscall.O_CREAT|syscall.O_EXCL|syscall.O_RDWR|syscall.O_DIRECT|syscall.O_NOFOLLOW|syscall.O_CLOEXEC, 0600)
 	if e != nil {
 		return p, fmt.Errorf("O_DIRECT unavailable: %w", e)
 	}
+	defer syscall.Unlinkat(dirfd, name)
 	defer syscall.Close(fd)
+	var created syscall.Stat_t
+	if e = syscall.Fstat(fd, &created); e != nil || created.Mode&syscall.S_IFMT != syscall.S_IFREG || created.Nlink != 1 {
+		return p, errors.New("calibration file is not a new private regular file")
+	}
+	if linuxDeviceNumber(uint64(created.Dev)) != dev {
+		return p, errors.New("calibration mount changed before file creation")
+	}
 	if e = syscall.Ftruncate(fd, size); e != nil {
 		return p, e
 	}

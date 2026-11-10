@@ -44,7 +44,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `metrics_enabled` | false | 当前 state_dir 的有界 metrics.prom，默认无监听端口；导出失败不停止资源协调 |
 | `events_enabled` | false | 当前 state_dir 的有界 events.jsonl，最多64条/64KiB，默认无监听端口；不包含原值/路径/原始错误 |
 | `mode` | `enforce` | `enforce` 协调写入；`observe` 不新增写入，也不撤销此前已生效限额 |
-| `io_profile` | `/etc/crg/io-profile.json` | 该节点显式标定产生的设备基准 |
+| `io_profile` | `/etc/crg/io-profile.json` | 默认自动标定/复用的本地设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |
 | `interval_seconds` | 15 | 检查周期，1–3600 秒；仅有变更才输出日志 |
 | `data_paths` | 无 | 最多64个容器内绝对路径、每个最多4096字节；百分比模式诊断覆盖，手动 IO 模式必须用它发现当前设备 |
@@ -73,7 +73,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `binary-install` / `binary-rollback` | 显式摘要/私有receipt控制的单程序替换，不重启业务，不自动enable |
 | `supervisor-plan` / `supervisor-install` / `supervisor-uninstall` | 已审阅模板的预览/接入/恢复门槛卸载，显式维护路径和摘要，见接入设计 |
 | `restore [--state-dir DIR]` | Agent 停止后恢复自己仍持有的配置 |
-| `calibrate --directory DIR --output FILE [--seconds 3] [--samples 3]` | 显式 IO 重复标定，每阶段1–30秒、样本1–9；默认3次，业务启动不测速 |
+| `calibrate [--seconds 3] [--samples 3]` | 无目录/输出参数也可自动选择；维护时主动重标定，默认后台首次流程见自动标定说明 |
 | `profile-check --io-profile FILE` / `profile-merge --io-profile A --merge-profile B [--replace] [--output FILE]` | 基准质量/身份核对及默认只读合并预览，显式输出才保存 |
 | `version` | 输出版本 |
 | `build-info` | 输出版本、源码修订与运行架构 |
@@ -90,3 +90,5 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
+
+`io_calibration` 默认 `auto`，可选 `off`；percent/enforce首次启动自动选最大合格文件系统，缺基准才测，observe/manual及只读命令不测。默认输出 `/etc/crg/io-profile.json`，详见[自动标定](automatic-io-calibration.md)。RC3写v1汇总；1.0组合候选写v2样本，未发布版本勿混用。

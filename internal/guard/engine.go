@@ -9,6 +9,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -70,15 +71,16 @@ type ItemStatus struct {
 	ReasonCode string `json:"reason_code,omitempty"`
 }
 type Status struct {
-	TimeUTC       string          `json:"time_utc"`
-	Mode          string          `json:"mode"`
-	State         string          `json:"state"`
-	Plan          Plan            `json:"plan"`
-	Items         []ItemStatus    `json:"items"`
-	Error         string          `json:"error,omitempty"`
-	Configuration *ConfigRevision `json:"configuration,omitempty"`
-	Metrics       *MetricsStatus  `json:"metrics,omitempty"`
-	Events        *EventsStatus   `json:"events,omitempty"`
+	TimeUTC       string             `json:"time_utc"`
+	Mode          string             `json:"mode"`
+	State         string             `json:"state"`
+	Plan          Plan               `json:"plan"`
+	Items         []ItemStatus       `json:"items"`
+	Error         string             `json:"error,omitempty"`
+	Configuration *ConfigRevision    `json:"configuration,omitempty"`
+	Metrics       *MetricsStatus     `json:"metrics,omitempty"`
+	Events        *EventsStatus      `json:"events,omitempty"`
+	AutomaticIO   *AutomaticIOStatus `json:"automatic_io,omitempty"`
 }
 type Engine struct {
 	Config        Config
@@ -93,6 +95,13 @@ type Engine struct {
 }
 
 var ErrLocked = errors.New("one agent per container: lock unavailable")
+
+func lockFailure(err error) error {
+	if errors.Is(err, syscall.EAGAIN) || errors.Is(err, syscall.EWOULDBLOCK) {
+		return fmt.Errorf("%w: %w", ErrLocked, err)
+	}
+	return fmt.Errorf("cannot open/acquire resource lock: %w", err)
+}
 
 type Locks struct{ group, state *os.File }
 
@@ -167,7 +176,7 @@ func writeAtomicFile(path string, b []byte, durable bool) error {
 func OpenEngine(c Config, env Environment) (*Engine, *Locks, error) {
 	group, e := lockGroup(env.Target)
 	if e != nil {
-		return nil, nil, fmt.Errorf("%w: %v", ErrLocked, e)
+		return nil, nil, lockFailure(e)
 	}
 	engine, state, e := openState(c, env)
 	if e != nil {
@@ -187,7 +196,7 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	}
 	lock, e := lockFile(filepath.Join(c.StateDir, "agent.lock"))
 	if e != nil {
-		return nil, nil, fmt.Errorf("%w: %v", ErrLocked, e)
+		return nil, nil, lockFailure(e)
 	}
 	fail := func(err error) (*Engine, *os.File, error) { lock.Close(); return nil, nil, err }
 	j := Journal{Version: 1, Identity: env.Identity, Target: env.Target, Mutations: map[string]*Mutation{}}

@@ -72,10 +72,10 @@ func mainErr() (result error) {
 	state := f.String("state-dir", "", "per-container writable state directory")
 	profile := f.String("io-profile", "", "explicitly calibrated IO profile")
 	once := f.Bool("once", false, "apply or observe once, then exit (limits remain)")
-	dir := f.String("directory", "", "existing block-backed directory for calibration")
+	dir := f.String("directory", "", "optional calibration directory override; default selects largest eligible filesystem")
 	output := f.String("output", "/etc/crg/io-profile.json", "calibration JSON output")
 	seconds := f.Int("seconds", 3, "seconds per calibration phase (1..30)")
-	samples := f.Int("samples", 3, "explicit calibration repetitions (1..9); never runs at business startup")
+	samples := f.Int("samples", 3, "calibration repetitions (1..9)")
 	mergeProfile := f.String("merge-profile", "", "second explicit profile for offline merge")
 	replaceProfile := f.Bool("replace", false, "explicitly replace matching identities during profile merge")
 	format := f.String("format", "json", "output format: json or human (status, doctor, preflight)")
@@ -158,7 +158,14 @@ func mainErr() (result error) {
 	if cmd == "calibrate" {
 		stage = "calibration_failed"
 		if *dir == "" {
-			return errors.New("calibrate requires --directory; never benchmarks at business startup")
+			selection, err := guard.SelectCalibrationDirectory()
+			if err != nil {
+				return err
+			}
+			*dir = selection.Directory
+		}
+		if e := guard.CalibrationOutputReady(*output); e != nil {
+			return e
 		}
 		p, e := guard.CalibrateRepeated(ctx, *dir, *seconds, *samples)
 		if e != nil {
@@ -451,6 +458,9 @@ func mainErr() (result error) {
 		emit(r)
 		return nil
 	}
+	// This process is optional and started asynchronously by the existing
+	// supervisor. Calibration never gates business/cache startup or their exit.
+	automaticIO := guard.PrepareAutomaticIO(ctx, c, env)
 	overrides := guard.ConfigOverrides{StateDir: *state, IOProfile: *profile}
 	if percentProvided {
 		overrides.Percent = *percent
@@ -494,6 +504,16 @@ func mainErr() (result error) {
 			return e
 		}
 		r := engine.Reconcile(p)
+		if c.ResourceMode == "percent" && c.Mode == "enforce" && c.IOCalibration == "auto" && automaticIO != nil && c.IOProfile == automaticIO.Profile {
+			r.AutomaticIO = automaticIO
+			if automaticIO.State == "degraded" {
+				r.State = "degraded"
+				if r.Error != "" {
+					r.Error += "; "
+				}
+				r.Error += automaticIO.Detail
+			}
+		}
 		configuration := watcher.Revision
 		configuration.RequestID = requestID
 		r.Configuration = &configuration

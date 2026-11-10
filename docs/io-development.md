@@ -15,8 +15,8 @@
 ## 重复标定与 profile
 
 ```sh
-# 只在显式维护操作执行，四个阶段各 3 秒、重复 3 次。
-crg calibrate --directory /backup --seconds 3 --samples 3 --output /etc/crg/io-profile.json
+# R26：默认后台首次自动执行；此命令用于维护者主动重新标定。
+crg calibrate
 crg profile-check --io-profile /etc/crg/io-profile.json
 
 # 默认只生成预览，不写文件；相同稳定身份默认拒绝覆盖。
@@ -25,7 +25,7 @@ crg profile-merge --io-profile /tmp/a.json --merge-profile /tmp/b.json
 crg profile-merge --io-profile /tmp/a.json --merge-profile /tmp/b.json --replace --output /tmp/merged.json
 ```
 
-每次样本仍使用新建的 128MiB 普通临时文件，不读业务文件、不写裸盘、不清全局缓存；每个样本结束删除该临时文件。`samples` 为 1–9，默认 3，`seconds` 为每阶段 1–30。包括每次初始化写入，整体耗时可能大于 `samples × seconds × 4`；IO 阻塞不能假装可被 Go context 立即中断。启动及协调循环不测速。
+每次样本仍使用新建的 128MiB 普通临时文件，不读业务文件、不写裸盘、不清全局缓存；每个样本结束删除该临时文件。`samples` 为 1–9，默认 3，`seconds` 为每阶段 1–30。包括每次初始化写入，整体耗时可能大于 `samples × seconds × 4`；IO 阻塞不能假装可被 Go context 立即中断。R26新增首次辅助Agent自动标定/复用，业务不等待；协调循环不测速。
 
 新标定输出 profile v2：保存各样本四维速率、阶段时长和时间戳，汇总采用每维中位数；偶数样本采用较低中位数，不选最快一次。每轮和结束时复核设备身份，变化时拒绝结果。读取源文件有 1MiB 普通文件上限。
 
@@ -33,7 +33,7 @@ crg profile-merge --io-profile /tmp/a.json --merge-profile /tmp/b.json --replace
 
 v1 profile 继续可读，可合并到 v2；导入旧设备条目没有样本时明确提示未知离散程度，不编造历史样本。v2 的汇总与样本中位数不一致、重复稳定身份、零速率、未知方法均拒绝。profile 合并是文件维护操作，不改变当前内核限额；需等待协调或显式 reload 才重新计算。
 
-旧 RC2/RC3 不支持 v2 新字段。降级前备份 profile 并使用旧版本可读取、对该节点有效的 v1 基准，先用新版本核对恢复和 journal 兼容性；禁止删日志后用无限值覆盖。设备编号变化仍按稳定身份重识别，替盘必须显式重标定。新机器应本地标定，不能因为文件可解析就直接套用另一台机器的性能。
+旧 RC2/RC3 不支持 v2 新字段。降级前备份 profile 并使用旧版本可读取、对该节点有效的 v1 基准，先用新版本核对恢复和 journal 兼容性；禁止删日志后用无限值覆盖。设备编号变化仍按稳定身份重识别，替盘身份不匹配时，新自动流程在无已有IO上限等前提下生成本地基准，不复用旧设备性能。新机器应本地标定，不能因为文件可解析就直接套用另一台机器的性能。
 
 ## 当前验证范围
 
