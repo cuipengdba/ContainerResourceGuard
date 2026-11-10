@@ -37,7 +37,7 @@ DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化�
 
 ## 组合候选补充记录
 
-[next/compatibility-contract](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/compatibility-contract) 已组合后续开发代码，并汇入 main 的业务证据与持续测试入口，尚未合入 main 或发布。该分支已经补齐配置表中的五项可选控制和观测参数、热重载/维护手册以及[兼容契约草案](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/compatibility-contract.md)。固定 Go1.27.3 的实际程序完成[31项独立容器维护检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-maintenance.md)，包括接入后六种辅助故障、真实限额/原值恢复、持久重建、永久卸载及锁/维护错误码；Go1.22.5最低源码工具链与Go1.27.3 CI分别归档。相同候选的三组30min预算和两个解析器各10min fuzz已完成；含R26的74693候选两个解析器也各完成10min fuzz，见[独立结果](testing-combined-long.md)，不同源码的开销证据不混用。
+[next/compatibility-contract](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/compatibility-contract) 已组合后续开发代码，并汇入 main 的业务证据与持续测试入口，尚未合入 main 或发布。该分支早期曾补齐五项可选控制（其交付现已按R29暂停），观测参数、热重载/维护手册以及[兼容契约草案](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/compatibility-contract.md)。固定 Go1.27.3 的实际程序完成[31项独立容器维护检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-maintenance.md)，包括接入后六种辅助故障、真实限额/原值恢复、持久重建、永久卸载及锁/维护错误码；Go1.22.5最低源码工具链与Go1.27.3 CI分别归档。相同候选的三组30min预算和两个解析器各10min fuzz已完成；含R26的74693候选两个解析器也各完成10min fuzz，见[独立结果](testing-combined-long.md)，不同源码的开销证据不混用。
 
 正式24h observe基线仍在运行，24h enforce和至少7天业务验收未开始；最新采样与最终判定分开，未发布1.0。业务节点保持只读，厂商专用接口、真实掉电及未测硬件组合不扩成已验证范围。
 

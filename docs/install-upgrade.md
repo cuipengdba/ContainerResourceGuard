@@ -57,3 +57,9 @@ state-backup 还要求当前身份已停用，全程持有两把锁，输出到�
 全程持有自身两把锁，要求当前身份禁用且 journal 属于当前身份。备份 0700 目录内保存旧程序、0600 私有状态副本和 receipt，先同步，再在原安装目录暂存并以 rename 替换单个 crg，随后同步父目录。原 supervisor、start.sh、数据库和缓存程序不改。提交前复核身份、状态和目标摘要；外部变更则拒绝。
 
 回退只替换程序文件，不导入旧 journal。必须仍是同一身份，目标为记录的候选摘要，旧程序副本摘要正确，配置、journal、profile 与安装前一致；再次 quiesce 的同身份停用标记只忽略记录时间，版本和身份仍核对。enable 后产生新资源写意图或更改配置时保守拒绝自动回退，需保持暂停并分别检查旧读取器兼容性和当前原值所有权。receipt 的 prepared/installed/rolled_back 记录与目标实际摘要共同用于判断中断位置；rename 后同步或 receipt 更新失败会报错，不能把错误等同于文件未替换。成功后也保持暂停，需显式 enable。
+
+## 已发布预览的首次迁移边界
+
+main的v0.1.0-rc.3-preview.1没有声明本开发维护命令要求的lock_protocol和journal_versions，因此不能直接按上述保留限额的binary-install流程升级到组合线。[第13轮](testing-three-resource-online-maintenance.md)在两套业务中均首次安装失败，旧程序摘要保持且没有创建recovery内容；保护条件继续保留。首次接入组合线需单独按旧程序disable恢复并核对原值、停止旧辅助入口、备份及安装新程序的迁移流程审核，不用新state_dir或删journal绕过旧所有权。
+
+[第15轮计划](test-plan-three-resource-protocol-maintenance.json)只测试明确声明同一协议的两套未发布组合程序，不能扩成已发布预览在线迁移成功，也不能替代最近两个已发布次版本验收。

@@ -1,6 +1,6 @@
 # 有界本地事件（开发功能）
 
-next/local-diagnostics 实现 P07.4 的本地事件记录。events_enabled 默认 false，不改变单 percent 配置入口。
+next/local-diagnostics 实现 P07.4 的本地事件记录。events_enabled默认false，是观测开关，不增加资源控制；当前资源配置按R29使用CPU/内存/IO三个独立百分比，各默认20。
 
 ```json
 {"percent":20,"events_enabled":true}
