@@ -4,13 +4,21 @@
 
 ## 配置与资源语义
 
-1. 保留最小 `{"percent":20}`。省略 resource_mode 等价 percent，省略 mode 等价 enforce；resource_mode 的 percent/manual 与 mode 的 enforce/observe 分别表示预算方式和写入方式。配置严格拒绝未知字段、重复键、null/无效必要值、超过1MiB或64层输入，不通过忽略拼写错误改变预算。
-2. percent 是每个容器相对当前宿主 CPU 总量、内存总量及设备实测标定基准的独立上限。IO 不是磁盘固定物理总量，缓存命中、网络和数据库共享内存不等同磁盘 IO。不得悄悄把宿主口径换成上层 cgroup 百分比，或为通过测试自动增大预算；更严格的祖先/运行时/cpuset 仍限制实际可用量。无法确认宿主总量时跳过相应百分比维度并报告，不能编造总量。
+1. 最新R29最小配置为`{}`，仅`cpu_percent`、`memory_percent`、`io_percent`三个独立比例，未填项分别默认20，取值大于0且不超过100。旧`{"percent":20}`只作部署兼容，不能与新字段混用。省略resource_mode等价percent，省略mode等价enforce；预算算法与是否写入分别控制。配置严格拒绝未知字段、重复键、null/无效必要值、超过1MiB或64层输入，不通过忽略拼写错误改变预算。
+2. 三个百分比分别是每个容器相对当前宿主CPU总量、内存总量及设备实测标定基准的独立上限。IO不是磁盘固定物理总量，缓存命中、网络和数据库共享内存不等同磁盘IO。不得悄悄把宿主口径换成上层cgroup百分比，或为通过测试自动增大预算；更严格的祖先/运行时/cpuset仍限制实际可用量。无法确认宿主总量时跳过相应百分比维度并报告，不能编造总量。
 3. manual 省略维度表示不接管该维度；不把缺省项目设成 max。移除已经接管的维度按所有权规则恢复真实原值。manual 与 percent 同时出现即拒绝，包含显式 percent:0。IO 绝对值需 data_paths 发现当前设备，不在业务启动时测速。
-4. pids_max、cpu_weight、io_weight、memory_high、memory_swap_max 均为可选，省略不改；权重不等于硬上限或竞争时固定比例。memory_stable_seconds 默认为0，保留既有瞬时安全检查；新窗口 opt-in。metrics/events 默认关闭，不引入服务端口。
+4. 当前三百分比模式不控制pids.max、cpu.weight、io.weight、memory.high、memory.swap.max，拒绝额外百分比字段及混用这些绝对值。历史manual/percent兼容代码不作为当前推荐参数；扩展资源交付暂停，原诊断/热重载/升级/压力保护仍推进。memory_stable_seconds默认0，保留瞬时安全检查，窗口opt-in；metrics/events默认关闭，不引入服务端口。
 5. 新版本可增加可选字段，但旧读取器严格拒绝新字段。降级前必须显式移除旧版不支持的配置，并检查原值日志能否读取；“配置保持最小形式兼容”不等于旧程序支持所有新能力。既有字段的含义、单位、默认值及安全检查不得在补丁版悄悄改变。
 
 配置目前为隐式第一代格式，没有可随意填写的 schema_version 字段；增加显式版本要经过兼容设计。ConfigMap 的合法原子符号链接配置读取继续支持，私有状态文件保持更严格的普通文件/不跟随链接规则。
+
+上述默认调整发生于1.0契约冻结前，直接来自R27–R30。R28八项百分比开发候选不作为现行默认；若曾运行，使用对应旧候选disable恢复其扩展控制后再切换。既有已发布RC2仍按其原输入和显式标定规则使用，不能把新字段交给旧读取器。
+
+热重载重新对未填项应用独立20%默认，显式CLI比例及log_dir覆盖跨重载保持优先；输入拒绝时保留上一整份有效策略和代次。manual与任一比例（含CLI覆盖）混用拒绝。已存在有效设备profile时可在manual/percent之间切换；从manual启动后再改为percent且缺profile，不承诺在热重载时自动重跑首次标定，应观察IO降级并按自动标定流程受控重启辅助Agent。业务不等待Agent重启。
+
+R30在资源锁、状态、标定和控制写入前检测自身cgroup版本：纯v2才继续身份与权限校验；v1、混合及无法确认版本跳过，stdout返回skipped且正常退出。proc读取失败则Agent报错停止写入。两种路径均不决定原业务退出，不自动切换cgroup模式。`cgroup_detected`日志明确版本、允许动作和原因，后续逐项结果另行核对。
+
+R27运行日志默认每日一个JSON Lines文件，保留今天及前29日、总量最多1,000,000,000B，先删最旧，当天独占超限则清空重写并记录标记。文件日志只读/权限/空间/清理失败仅降级stderr，不传播为业务或资源协调失败。持久保留跨Pod日志需该容器的独立持久目录；日志不是私有恢复journal的替代。
 
 ## CLI 与 JSON
 
@@ -21,6 +29,7 @@
 | 未输出资源结果的命令失败 | stdout 一个 JSON：schema=crg-command-error-v1、state=degraded、reason_code、error、business_action=none；退出1 |
 | restore/disable 返回未完整恢复 | 保留完整资源结果，stdout 增加 reason_code=restore_incomplete，退出1；不再追加第二份 JSON |
 | run 的某维度被内核拒绝/延后/冲突 | 逐项 state/reason_code 解释；进程可继续协调，不能仅靠进程存活或退出0断言限额全部生效 |
+| v1/混合/未知版本被门禁跳过 | stdout包含state=skipped、cgroup版本/原因、business_action=none；退出0，日志清楚，不表示任何资源已受控 |
 | reload 请求已落盘 | requested 只代表已请求；需核对会话/配置代次和逐项实际结果，不能认定已全部应用 |
 | status | 最后快照结合 snapshot_age_seconds、writer_lock_held 和 actual 判断；旧身份快照拒绝 |
 | quiesce | 保留内核限额与 journal，暂停当前写入者；不等价 disable/restore |

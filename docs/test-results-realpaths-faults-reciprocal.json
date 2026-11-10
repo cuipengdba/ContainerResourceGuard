@@ -1,0 +1,763 @@
+{
+  "date": "2026-11-10",
+  "phase": "passed",
+  "sources": {
+    "rc3": {
+      "revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+      "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615"
+    },
+    "v10": {
+      "revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+      "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9"
+    }
+  },
+  "candidate_role_coverage": {
+    "v10": [
+      "dbs"
+    ],
+    "rc3": [
+      "hisdbs"
+    ]
+  },
+  "criteria": {
+    "PG_API_readiness_seconds": 90,
+    "cache_after_API_seconds": 45,
+    "TERM_seconds": 12,
+    "original_database_parameters_retained": true,
+    "automatic_percent": 30
+  },
+  "cases": [
+    {
+      "role": "dbs",
+      "case": "missing",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 23.284396572969854,
+      "PG_API_ready_seconds": 23.542418126016855,
+      "TERM_seconds": 4.0473248769994825,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "invalid",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.670466754119843,
+      "PG_API_ready_seconds": 20.925895733991638,
+      "TERM_seconds": 4.040936985053122,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "crash",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 19.479209093144163,
+      "PG_API_ready_seconds": 19.739667213056237,
+      "TERM_seconds": 4.1262981898617,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "hang",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 25.6139326361008,
+      "PG_API_ready_seconds": 27.370412555988878,
+      "TERM_seconds": 4.446848299121484,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "ignoreterm",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 21.145351060898975,
+      "PG_API_ready_seconds": 21.402775899972767,
+      "TERM_seconds": 5.49249721178785,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "rollback",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 19.79198669595644,
+      "PG_API_ready_seconds": 20.048718221951276,
+      "TERM_seconds": 4.834537026938051,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "cgroup-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 26.524187471950427,
+      "PG_API_ready_seconds": 26.78645017184317,
+      "TERM_seconds": 5.0737300319597125,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "calibrated"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        },
+        {
+          "file": "memory.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        },
+        {
+          "file": "io.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        }
+      ]
+    },
+    {
+      "role": "dbs",
+      "case": "profile-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 23.138999895891175,
+      "PG_API_ready_seconds": 23.42036805092357,
+      "TERM_seconds": 4.190984206972644,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "degraded",
+        "reason_code": "calibration_output_unwritable"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "applied",
+          "reason_code": "unchanged"
+        },
+        {
+          "file": "memory.max",
+          "state": "applied",
+          "reason_code": "unchanged"
+        }
+      ]
+    },
+    {
+      "role": "dbs",
+      "case": "state-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.639357849024236,
+      "PG_API_ready_seconds": 20.89657300291583,
+      "TERM_seconds": 4.096752259880304,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "case": "cancel-calibration",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.587609770009294,
+      "PG_API_ready_seconds": 20.853907983982936,
+      "TERM_seconds": 3.67527719005011,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "missing",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 23.391158042941242,
+      "PG_API_ready_seconds": 23.64933227491565,
+      "TERM_seconds": 5.158891530008987,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "invalid",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 19.854079485870898,
+      "PG_API_ready_seconds": 20.143295873887837,
+      "TERM_seconds": 5.688523198943585,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "crash",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 23.3290459420532,
+      "PG_API_ready_seconds": 23.584090324118733,
+      "TERM_seconds": 4.128393840976059,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "hang",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 23.227178934961557,
+      "PG_API_ready_seconds": 23.533100809901953,
+      "TERM_seconds": 4.233019297011197,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "ignoreterm",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 25.251185678876936,
+      "PG_API_ready_seconds": 25.51546673895791,
+      "TERM_seconds": 4.041165355825797,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "rollback",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 21.58308701706119,
+      "PG_API_ready_seconds": 21.839922310085967,
+      "TERM_seconds": 4.068564864108339,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "cgroup-readonly",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 29.159703915007412,
+      "PG_API_ready_seconds": 29.447121023898944,
+      "TERM_seconds": 4.480343552073464,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "calibrated"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "skipped"
+        },
+        {
+          "file": "memory.max",
+          "state": "skipped"
+        },
+        {
+          "file": "io.max",
+          "state": "skipped"
+        }
+      ]
+    },
+    {
+      "role": "hisdbs",
+      "case": "profile-readonly",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 22.18390988302417,
+      "PG_API_ready_seconds": 22.439862703206018,
+      "TERM_seconds": 4.34887399408035,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "degraded",
+        "reason_code": "calibration_output_unwritable"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "applied"
+        },
+        {
+          "file": "memory.max",
+          "state": "applied"
+        }
+      ]
+    },
+    {
+      "role": "hisdbs",
+      "case": "state-readonly",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 21.0126688410528,
+      "PG_API_ready_seconds": 21.265040986938402,
+      "TERM_seconds": 6.325165168149397,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "case": "cancel-calibration",
+      "phase": "checked",
+      "candidate_branch": "rc3",
+      "PG_ready_seconds": 22.100925281876698,
+      "PG_API_ready_seconds": 22.3649606090039,
+      "TERM_seconds": 4.517890040995553,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "dbs-missing-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-invalid-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-invalid-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-invalid-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-invalid-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-invalid-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-crash-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-crash-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-crash-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-crash-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-crash-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-hang-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-hang-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-hang-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-hang-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-hang-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-ignoreterm-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-ignoreterm-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-ignoreterm-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-ignoreterm-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-ignoreterm-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-rollback-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-rollback-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-rollback-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-rollback-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-rollback-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-cgroup-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-cgroup-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-cgroup-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-cgroup-readonly-read-only-controls-remain-original",
+      "passed": true
+    },
+    {
+      "name": "dbs-cgroup-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-cgroup-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-profile-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-profile-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-profile-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-profile-readonly-output-permission-skips-measurement",
+      "passed": true
+    },
+    {
+      "name": "dbs-profile-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-profile-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-readonly-state-readonly-refuses-before-benchmark-or-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-state-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "dbs-cancel-calibration-actual-calibration-TERM-before-first-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-cancel-calibration-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-cancel-calibration-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-cancel-calibration-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-cancel-calibration-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "dbs-cancel-calibration-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-missing-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-missing-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-missing-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-missing-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-missing-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-invalid-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-invalid-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-invalid-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-invalid-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-invalid-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-crash-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-crash-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-crash-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-crash-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-crash-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-hang-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-hang-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-hang-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-hang-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-hang-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-ignoreterm-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-ignoreterm-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-ignoreterm-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-ignoreterm-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-ignoreterm-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-rollback-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-rollback-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-rollback-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-rollback-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-rollback-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cgroup-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cgroup-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cgroup-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cgroup-readonly-read-only-controls-remain-original",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cgroup-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cgroup-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-profile-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-profile-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-profile-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-profile-readonly-output-permission-skips-measurement",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-profile-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-profile-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-readonly-state-readonly-refuses-before-benchmark-or-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-state-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cancel-calibration-actual-calibration-TERM-before-first-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cancel-calibration-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cancel-calibration-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cancel-calibration-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cancel-calibration-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-cancel-calibration-original-TERM-within12s",
+      "passed": true
+    }
+  ],
+  "namespace_absent": true,
+  "limitations": [
+    "old source before R27-R30, not latest release binary",
+    "reciprocal20 cases/108 checks; combined with earlier20 only for the same old source programs",
+    "does not replace native600s or long-term business acceptance",
+    "cgroup-readonly still permits initial calibration; no pre-calibration permission gate claim"
+  ]
+}

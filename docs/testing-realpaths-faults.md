@@ -16,3 +16,9 @@
 无权限能够放行业务，并不表示已经成功控制资源。生效的严格IO/内存等额度仍可能使业务变慢；自动30%业务负载失败及手动16MiB/s的SQL错误继续保留于[真实路径记录](testing-realpaths-progress.md)和[手动对照记录](testing-realpaths-manual.md)。
 
 另已冻结[交叉候选/角色故障补齐计划](test-plan-realpaths-faults-reciprocal.json)：组合候选/DBS和RC3/HISDBS，仍为每组10场景。该条件任务等待在线维护任务终止并独立确认自有namespace不存在后才创建夹具，不提前标为通过。
+
+## 第11轮交叉覆盖：已完成
+
+组合/DBS、RC3/HISDBS各10场景，另108项检查全部通过，自有Pod及namespace均已删除。[交叉结果](test-results-realpaths-faults-reciprocal.json)分别记录来源和延迟。与前批合计四个候选/角色组合、40场景、216项检查，仅覆盖同一组旧023becf/74693ef程序；不把它外推到新增R27–R30的新程序。
+
+本轮单次观察超时在原90秒总启动期限内重试，TERM从信号请求起计算总12秒，没有重置预算。所有原业务/缓存/SQL/探针/退出要求继续保留。故障通过不等于生效限额下的原生性能通过。

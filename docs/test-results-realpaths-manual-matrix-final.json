@@ -1,0 +1,541 @@
+{
+  "date": "2026-11-10",
+  "phase": "failed",
+  "sources": {
+    "rc3": {
+      "revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+      "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615"
+    },
+    "v10": {
+      "revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+      "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9"
+    }
+  },
+  "scope": "old 023becf/74693ef programs before R27-R30; original-image real paths and database parameters, not latest preview binary",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "bandwidth_cases_MiB_per_second": [
+      16,
+      64
+    ],
+    "read_write_iops": 4096
+  },
+  "cases": [
+    {
+      "case": "v10-hisdbs-bw16",
+      "phase": "failed",
+      "resource_mode": "manual",
+      "candidate_branch": "v10",
+      "declared_read_write_bps": 16777216,
+      "ready_and_managed_seconds": 53.21442396892235,
+      "own_pod_removed": true,
+      "failure_class": "native-SQL-error",
+      "campaign_phase": "failed",
+      "fixed_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=16777216 wbps=16777216 riops=4096 wiops=4096",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "native": {
+        "phase": "failed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2870104250032,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 297,
+          "errors": 2,
+          "histogram": [
+            280,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            6,
+            4,
+            2,
+            2
+          ],
+          "max_seconds": 5.005085614044219,
+          "p95_bucket_upper_seconds": 0.1,
+          "sample_coverage": 0.99,
+          "successes": 295,
+          "total_seconds": 25.559773608809337
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.008679406018927693,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9325336541514844
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "engine_cycles": [
+        {
+          "phase": "content-passed-native-pending",
+          "exit": 0,
+          "roles": {
+            "hisdbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 66,
+                "api_max": 1.0882733878679574,
+                "sql_max": 1.0541237429715693
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "rc3-dbs-bw64",
+      "phase": "short-acceptance-passed",
+      "resource_mode": "manual",
+      "candidate_branch": "rc3",
+      "declared_read_write_bps": 67108864,
+      "ready_and_managed_seconds": 24.095802898984402,
+      "own_pod_removed": true,
+      "campaign_phase": "passed",
+      "fixed_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2472689268179,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 300,
+          "errors": 0,
+          "histogram": [
+            294,
+            1,
+            0,
+            1,
+            0,
+            0,
+            2,
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "max_seconds": 2.1213754802010953,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0,
+          "successes": 300,
+          "total_seconds": 3.1881936935242265
+        },
+        "api": {
+          "attempts": 120,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.008944293949753046,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0,
+          "successes": 120,
+          "total_seconds": 0.9367240408901125
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "engine_cycles": [
+        {
+          "phase": "passed",
+          "content_phase": "content-passed-native-pending",
+          "exit": 0,
+          "native_workload_validation": "passed-with-entire-campaign",
+          "roles": {
+            "dbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 22,
+                "api_max": 3.1847386290319264,
+                "sql_max": 0.34353224211372435
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "rc3-hisdbs-bw64",
+      "phase": "short-acceptance-passed",
+      "resource_mode": "manual",
+      "candidate_branch": "rc3",
+      "declared_read_write_bps": 67108864,
+      "ready_and_managed_seconds": 21.231524121016264,
+      "own_pod_removed": true,
+      "campaign_phase": "passed",
+      "fixed_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.3533938939217,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            290,
+            3,
+            0,
+            1,
+            0,
+            1,
+            2,
+            1,
+            3,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.7859303751029074,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 3.1052476360928267
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009118790039792657,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9989920125808567
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "engine_cycles": [
+        {
+          "phase": "passed",
+          "content_phase": "content-passed-native-pending",
+          "exit": 0,
+          "native_workload_validation": "passed-with-entire-campaign",
+          "roles": {
+            "hisdbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 21,
+                "api_max": 2.235597809078172,
+                "sql_max": 2.767501045949757
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "v10-dbs-bw64",
+      "phase": "failed",
+      "resource_mode": "manual",
+      "candidate_branch": "v10",
+      "declared_read_write_bps": 67108864,
+      "ready_and_managed_seconds": 22.640550104901195,
+      "own_pod_removed": true,
+      "failure_class": "cache-enforce-prerequisite-not-observed-no-native-run"
+    },
+    {
+      "case": "v10-hisdbs-bw64",
+      "phase": "short-acceptance-passed",
+      "resource_mode": "manual",
+      "candidate_branch": "v10",
+      "declared_read_write_bps": 67108864,
+      "ready_and_managed_seconds": 29.939622840844095,
+      "own_pod_removed": true,
+      "campaign_phase": "passed",
+      "fixed_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2505925958976,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            295,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0
+          ],
+          "max_seconds": 1.2318451169412583,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 2.2545900866389275
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.5954225179739296,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.5414812879171222
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "engine_cycles": [
+        {
+          "phase": "passed",
+          "content_phase": "content-passed-native-pending",
+          "exit": 0,
+          "native_workload_validation": "passed-with-entire-campaign",
+          "roles": {
+            "hisdbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 21,
+                "api_max": 3.1865448460448533,
+                "sql_max": 2.2381784070748836
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "v10-hisdbs-bw16-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw16-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw16-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw16-600s-native-and-backup-sync-independent-restore",
+      "passed": false
+    },
+    {
+      "name": "rc3-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "rc3-dbs-bw64-600s-native-and-backup-sync-independent-restore",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-bw64-600s-native-and-backup-sync-independent-restore",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-cache-independent-enforce",
+      "passed": false
+    },
+    {
+      "name": "v10-hisdbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-600s-native-and-backup-sync-independent-restore",
+      "passed": true
+    }
+  ],
+  "namespace_absent": true,
+  "dependent_upgrade": {
+    "execution": "not-started",
+    "reason": "all four manual64 candidate-role cells were required; v10-DBS failed before native workload",
+    "terminal_phase": "failed"
+  },
+  "limitations": [
+    "three passed64 cells do not form a complete four-cell matrix",
+    "instant cache-enforce prerequisite failure is not proof of SQL/API performance failure",
+    "16MiB/s native errors remain failed",
+    "new R27-R30 source must be validated independently"
+  ]
+}
