@@ -47,3 +47,5 @@ PG/API/managed就绪仍限300秒。旧组合/DBS在约22.64秒的瞬时缓存enf
 ## 最新程序的备份后冷重建
 
 [第17轮计划](test-plan-three-resource-cold-rebuild.json)覆盖main/组合×DBS/HISDBS的四格、每格两次原启动。固定手动64MiB/s预算与原300秒就绪、缓存45秒条件；128行标记及64MiB合成payload在备份、Pod新ID、独立逻辑恢复库之间核对。核对同一配置重新发现身份、旧journal隔离、每日日志追加、每容器一个Agent、只三项控制和新容器原值恢复。先等第16轮终态及夹具独立清理，不触碰正式基线；本轮不冒充默认百分比性能或新的600秒/长期验收。
+
+第15轮已完整通过22项及两套原生600秒，夹具清理，见[按程序来源区分的终态](testing-three-resource-protocol-maintenance.md)。第16轮默认空配置已进入首格持续负载；第17轮等待其终止并清理。

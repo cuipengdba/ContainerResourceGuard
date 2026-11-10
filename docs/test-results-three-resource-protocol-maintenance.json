@@ -1,0 +1,463 @@
+{
+  "date": "2026-11-10",
+  "phase": "passed",
+  "sources": {
+    "previous": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "release_status": "unreleased combined development binary"
+    },
+    "candidate": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased combined CI artifact",
+      "CI_run": 42795979841
+    }
+  },
+  "scope": "Two protocol-advertising unreleased combined development binaries; original DBS/HISDBS image/start chain, real container paths and read-only cache mount, separate private test-node fixtures. Not an upgrade from the published main preview.",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "cases": [
+    {
+      "role": "dbs",
+      "phase": "short-acceptance-passed",
+      "ready_and_managed_seconds": 25.298649470089003,
+      "cache_enforce_observation_seconds": 8.007715304149315,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794307595.389535,
+          "ended_epoch": 1794307596.0967991
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794307596.3071227,
+          "ended_epoch": 1794307596.870801
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794307597.1014667,
+          "ended_epoch": 1794307597.5459208
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794307597.7768514,
+          "ended_epoch": 1794307598.3496184
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794307598.3504746,
+          "ended_epoch": 1794307598.5816631
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794307601.8170965,
+          "ended_epoch": 1794307602.1902046
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794307602.1911142,
+          "ended_epoch": 1794307602.5653365
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794307602.5662303,
+          "ended_epoch": 1794307602.7897048
+        }
+      ],
+      "own_pod_removed": true,
+      "all_operations_within_native_measurement": true,
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.3084158960264,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            300,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.01081548212096095,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.21504130237735808
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009061516029760242,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9854015843011439
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T10:46:33.780696Z",
+        "measurement_finished_utc": "2026-11-10T10:56:34.057731Z"
+      }
+    },
+    {
+      "role": "hisdbs",
+      "phase": "short-acceptance-passed",
+      "ready_and_managed_seconds": 30.46143538504839,
+      "cache_enforce_observation_seconds": 3.0023188930936158,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794308252.243373,
+          "ended_epoch": 1794308252.8024368
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794308253.0113647,
+          "ended_epoch": 1794308253.5774138
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794308253.803805,
+          "ended_epoch": 1794308254.170481
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794308254.398404,
+          "ended_epoch": 1794308255.0620232
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794308255.063439,
+          "ended_epoch": 1794308255.320142
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794308258.5587785,
+          "ended_epoch": 1794308258.9384112
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794308258.93971,
+          "ended_epoch": 1794308259.345986
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794308259.347297,
+          "ended_epoch": 1794308259.5877712
+        }
+      ],
+      "own_pod_removed": true,
+      "all_operations_within_native_measurement": true,
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.3484271350317,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            299,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011589732021093369,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.21539547643624246
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009400715120136738,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9775706033688039
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T10:57:30.753843Z",
+        "measurement_finished_utc": "2026-11-10T11:07:31.031693Z"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "candidate_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "version": "v0.1.0-rc.3-preview.1",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "candidate_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "version": "v0.1.0-rc.3-preview.1",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "hisdbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    }
+  ],
+  "namespace_absent": true,
+  "limitations": [
+    "Round13 published-main-preview first-install refusal remains failed; this does not add a protocol advertisement to that binary.",
+    "Both source programs are development builds, not two released minor versions.",
+    "Manual64MiB/s budget is not default20 or automatic30 performance evidence.",
+    "Two600-second runs do not close24h+24h or seven-day gates; unavailable hardware remains untested."
+  ]
+}
