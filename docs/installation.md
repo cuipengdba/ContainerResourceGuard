@@ -2,17 +2,32 @@
 
 CRG 是放进既有业务容器的静态二进制，不需要安装 Operator、不修改 Kubernetes 控制平面。首次持久接入仍要发布原 supervisor 的可选子进程管理逻辑，并在计划内重启时加载。
 
+本页描述组合开发候选的维护流程，尚未发布；当前RC2没有后续开发工具/来源证明能力。功能和验收范围以所用标签及对应证据为准，不把开发CI当成正式发布。
+
 ## 安装包
 
-从本仓库 Releases 下载匹配架构的 `containerresourceguard-VERSION-linux-amd64.tar.gz` 或 arm64 包，同时下载 `SHA256SUMS`。
+从本仓库 Releases 下载匹配架构的 `containerresourceguard-VERSION-linux-amd64.tar.gz` 或 arm64 包，同时下载校验和、BUILD/SBOM和可获得的证明。校验和与包同目录下载只解决传输一致性，预期摘要和源码SHA须来自可信发布渠道；后续有证明的版本应先限定来源身份验证，再解包/执行。
 
 ```bash
 sha256sum -c SHA256SUMS --ignore-missing
+# 有证明的正式发布：用实际版本完整源码SHA与 refs/tags/VERSION，
+# 限定仓库、ci.yml和托管runner；开发分支证明不能替代正式tag。
+gh attestation verify containerresourceguard-VERSION-linux-amd64.tar.gz \
+  --repo cuipengdba/ContainerResourceGuard \
+  --signer-workflow cuipengdba/ContainerResourceGuard/.github/workflows/ci.yml \
+  --source-digest EXPECTED_FULL_SOURCE_SHA --source-ref refs/tags/VERSION \
+  --deny-self-hosted-runners
+# 此脚本来自已信任的源码/工具目录，不从未知包中先解出再信任它。
+python3 scripts/verify-release.py containerresourceguard-VERSION-linux-amd64.tar.gz \
+  --sha256 TRUSTED_PACKAGE_SHA256 --source-revision EXPECTED_FULL_SOURCE_SHA --arch amd64
+# 上述验证通过后，在新建的私有目录解包：
 tar -xzf containerresourceguard-VERSION-linux-amd64.tar.gz
 ./crg version
 ```
 
 发布包包含程序、示例配置、可选启动脚本、文档和许可证，不包含设备标定文件、服务器地址或凭据。arm64 若只经过交叉编译，测试报告会明确说明。
+
+来源/离线bundle及可信根准备见[可信发布说明](release-provenance.md)。验证失败不继续安装；RC2缺少新证明时明确显示该能力缺失，不能伪造新版本证明套用旧包。
 
 RC2 包内 BUILD.json 保存二进制 SHA256、程序源码修订 source_revision 与打包文档修订 package_revision；`crg build-info` 对应程序源码修订。测试结果归档的文档提交可能晚于程序构建，所以两个修订可以不同。SHA256SUMS 对应整个发布压缩包。构建/测试命令需在完整源码仓库执行。
 
@@ -36,6 +51,8 @@ RC2 包内 BUILD.json 保存二进制 SHA256、程序源码修订 source_revisio
 
 RC2 可执行 `crg preflight --config /etc/crg/config.json --format human` 查看打开权限和换算；不写资源限额，不能代替启用后的真实回读。发布包还包含 supervisor 补丁生成工具，生成时不修改原文件。
 
+组合候选增加[显式接入工具](supervisor-install.md)：已有程序/helper/config先按可信摘要部署，supervisor-plan仅核对预览；supervisor-install明确备份再原子替换已验证模板，下一次计划重启生效。工具不替用户创建全节点必需挂载，不在文件/权限缺失时阻断原业务启动。29项实际接入/持久卸载证据归档在安装开发分支，厂商业务在线升级另行验证。
+
 ## 权限
 
 默认不自动 remount、升权、授予 capabilities 或挂载全宿主 cgroup。部署维护者负责提供自身目标组可写的视图；只读/无权限时程序报告降级，业务继续运行。
@@ -45,6 +62,8 @@ RC2 可执行 `crg preflight --config /etc/crg/config.json --format human` 查�
 ## 升级
 
 保持配置、profile 和状态目录。先停止辅助重试循环及 Agent；以同目录临时文件加原子替换发布新二进制，然后仅重新启动辅助进程。不要在仍执行的脚本上做非原子原地覆盖。
+
+支持新维护协议的版本可使用[升级维护命令](install-upgrade.md)：用已信任候选quiesce当前写入者，upgrade-check/state-backup核对原值及读取兼容，再以显式新旧摘要binary-install；检查后enable，仅恢复原helper，不重启业务。自动工具不识别旧程序build-info中的锁/日志协议时拒绝；RC1/RC2等缺必要协议信息版本按完整停止全部旧Agent/辅助循环、保留状态与私有备份的人工发布步骤处理，不能假定“新程序有锁”即可安全混跑。
 
 RC1 到 RC2 必须先停止全部旧 Agent；不同 state_dir 的混合版本并行运行不受 RC2 完整单实例保护。保留原状态目录可继续使用版本 1 日志及原值；损坏/缺少关键字段的日志拒绝写入。
 
@@ -59,3 +78,5 @@ RC3 开发分支为 IO 日志增加设备身份，且可记录 pids.max/cpu.weig
 RC2 优先使用 `crg disable --config FILE` 协调停止写入和恢复，确认成功后再停辅助循环；停用标记须保留到完成回退，详见 [本地运维](operations.md)。RC1 不识别新停用标记，回退旧程序前必须关闭其自动启动入口，不能依赖标记阻止旧版重新施加限额。
 
 资源限额测试、业务性能验收、备份恢复验证完成前，不应把候选版本直接视为生产验收通过。
+
+永久卸载先disable并确认真实原值/剩余条目，再撤除持久supervisor入口。组合工具supervisor-uninstall只逐字节恢复已备份脚本，不删状态/程序/配置，不停止业务；quiesce保留限额，因此不能替代disable作为卸载前提。只在运行时临时层撤除不能保证新Pod继续停用。

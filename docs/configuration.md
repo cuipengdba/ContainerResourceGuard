@@ -1,6 +1,6 @@
 # 配置参数
 
-开发分支新增双资源模式；已发布 RC2 尚不接受这些新字段。见 [设计及分版安排](resource-modes.md)。`resource_mode` 是预算算法，`mode` 仍是 enforce/observe。
+本页描述 next/compatibility-contract 的组合开发候选，尚未发布。已发布 RC2 不接受后续新增字段；各版本安排见 [双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
 
 ## 手动资源模式（RC3 开发中）
 
@@ -14,7 +14,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。两者不填写就不改；pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
 
-首次从百分比切到手动、或删除已管理项目时，开发阶段应先用同版本 disable 完成恢复，再调整配置并 enable；自动热切换/移除项目的规则由 P03.5 实现，不能把遗漏的旧限额默认为已撤销。
+组合候选已经实现双模式热切换和移除项协调，详见 [热重载](hot-reload.md)。完整候选先校验，再逐项应用；删除维度尝试恢复自有原值，内存/任务安全下调可能延后，需核对实际结果。旧版没有热重载时，先用匹配版本 disable 完成恢复，再改配置并 enable。
 
 ## 最小配置
 
@@ -37,11 +37,17 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
 | `pids_max` | 不修改 | 开发分支新增；任务数硬上限，包含线程 |
 | `cpu_weight` | 不修改 | 开发分支新增；CPU 相对竞争权重 1–10000 |
-| `mode` | `enforce` | `enforce` 写入，`observe` 仅预览 |
+| `io_weight` | 不修改 | IO 默认竞争权重 1–10000；保留每设备覆盖，需要内核后端支持，不是硬上限 |
+| `memory_high` | 不修改 | 字节字符串，至少16MiB；页对齐，并受请求/当前及祖先 memory.max/high 约束；下调可能延后 |
+| `memory_swap_max` | 不修改 | 字节字符串，0B或至少一页；仅限制交换空间，不包含普通内存；有用量时保留余量，0B须已无swap用量 |
+| `memory_stable_seconds` | 0 | 0保留瞬时安全检查，或2–3600秒的可选连续稳定窗口；至少3个分隔样本，等待期间不写新意图 |
+| `metrics_enabled` | false | 当前 state_dir 的有界 metrics.prom，默认无监听端口；导出失败不停止资源协调 |
+| `events_enabled` | false | 当前 state_dir 的有界 events.jsonl，最多64条/64KiB，默认无监听端口；不包含原值/路径/原始错误 |
+| `mode` | `enforce` | `enforce` 协调写入；`observe` 不新增写入，也不撤销此前已生效限额 |
 | `io_profile` | `/etc/crg/io-profile.json` | 该节点显式标定产生的设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |
 | `interval_seconds` | 15 | 检查周期，1–3600 秒；仅有变更才输出日志 |
-| `data_paths` | 无 | 可选的容器内绝对路径列表；只读显示 IO 设备覆盖，不改变统一预算 |
+| `data_paths` | 无 | 最多64个容器内绝对路径、每个最多4096字节；百分比模式诊断覆盖，手动 IO 模式必须用它发现当前设备 |
 
 不支持的 JSON 字段、重复键、多个 JSON 对象、无效范围均拒绝，防止拼写错误悄悄失效。不能在配置里指定目标 cgroup/PID/容器。
 
@@ -60,18 +66,25 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `preflight --percent 20 [--format human]` | 计划与控制文件打开权限预检，不写资源值 |
 | `disable [--config FILE] [--state-dir DIR]` | 标记停用、等待 Agent 释放锁、恢复自有原值 |
 | `enable [--config FILE] [--state-dir DIR]` | 删除停用标记，辅助循环下次重试时重启 Agent |
+| `reload [--state-dir DIR] [--config FILE]` | 向同一容器/当前 Agent 会话请求重载；requested不等价已生效 |
+| `quiesce --config FILE` | 暂停写入者，保留内核限额和原值日志；供显式维护 |
+| `diagnose [--config FILE] [--output FRESH_PRIVATE_FILE]` | 默认输出白名单诊断快照，显式新输出文件0600且有界；不复制原始日志 |
+| `upgrade-check --config FILE` / `state-backup --config FILE --output FRESH_PRIVATE_FILE` | 持锁兼容核对 / 显式私有状态备份，见安装升级说明 |
+| `binary-install` / `binary-rollback` | 显式摘要/私有receipt控制的单程序替换，不重启业务，不自动enable |
+| `supervisor-plan` / `supervisor-install` / `supervisor-uninstall` | 已审阅模板的预览/接入/恢复门槛卸载，显式维护路径和摘要，见接入设计 |
 | `restore [--state-dir DIR]` | Agent 停止后恢复自己仍持有的配置 |
-| `calibrate --directory DIR --output FILE [--seconds 3]` | 显式 IO 标定，每阶段 1–30 秒，默认 3 秒 |
+| `calibrate --directory DIR --output FILE [--seconds 3] [--samples 3]` | 显式 IO 重复标定，每阶段1–30秒、样本1–9；默认3次，业务启动不测速 |
+| `profile-check --io-profile FILE` / `profile-merge --io-profile A --merge-profile B [--replace] [--output FILE]` | 基准质量/身份核对及默认只读合并预览，显式输出才保存 |
 | `version` | 输出版本 |
 | `build-info` | 输出版本、源码修订与运行架构 |
 
-Agent 启动时读取配置；持续运行不会热加载。重启 Agent 可更新 percent，原始外部上限通过日志保存，不会把 CRG 上一次 20% 误当作不可提高到 30% 的外部上限。
+文件启动的组合候选每个协调周期检查同一路径的新配置，显式reload使用每秒控制轮询；无效候选保留最后有效配置，state_dir不能运行中改变。CLI覆盖持续生效，单纯文件调百分比时不要同时指定--percent。原始外部上限通过日志保存，不会把CRG上次20%误当作不可提高到30%的外部上限。维护参数、错误码与兼容规则见 [契约草案](compatibility-contract.md)。
 
 ## 安全计算
 
 - 既有外部 CPU/内存/IO 限额更严格时保留更严格值。上级内存和 CPU 配额也参与约束；隐藏的祖先仍由内核限制。
 - 内存下调检查 `5% + 16 MiB` 余量、采样增长、可用的 events/PSI，并在日志同步后复查；见 [运维说明](operations.md)。瞬时检查不能保证并发增长后绝不 OOM。
-- 不修改 `memory.high`、swap、OOM 策略、cpuset 和资源 requests；HugeTLB 单独记账是否纳入内存上限取决于内核配置。
+- 仅显式 memory_high / memory_swap_max 才接管对应值；不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
 - IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
