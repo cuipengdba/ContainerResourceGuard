@@ -1,0 +1,65 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "b58b59ca86bda901ad6b6db7b6a55e41d5fdf52e81d06eabccf5960c9d92fb5f",
+  "runner_sha256": "308c7bac2933835a934c5f5e6bf012752cb5dcf0687cec5c965137c9c84c194e",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "exact_qualification_sha256": {
+    "identity-qualification.json": "68f95200ca8387e8dad987028309c6e3b98ad3cb3abd6f2b7ccfd1b07c301ec9",
+    "integration-qualification.json": "fc85ee09ca3cd868e5924f74d739f0d52951d412f2773da268eb5746e35337d2"
+  },
+  "cases": [
+    "current combined candidate / DBS / manual64MiB",
+    "current combined candidate / HISDBS / manual64MiB"
+  ],
+  "scope": "Sequential fresh original-image Pods, real vendor container mount paths and start.sh, original PG parameters and independent cache helper; synthetic64MiB data, private loopback DCS/credentials; no production data or external network.",
+  "prior_criteria": {
+    "readiness_total_seconds": 300,
+    "observation_timeouts": "retry only inside the original total deadline; each call clamped to remaining time",
+    "native_seconds": 600,
+    "native_maximum_seconds": 5,
+    "native_p95_upper_bound_seconds": 1,
+    "maximum_errors": 0,
+    "minimum_sample_coverage": 0.98,
+    "engine_content_checks": 10,
+    "engine_cleanup_required": true,
+    "primary_restart_allowed": false,
+    "payload_integrity_required": true
+  },
+  "additional_startup_rule": "Cache helper must report enforce within45s after PG/API/managed and within original total300s startup deadline.",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096,
+    "other_five_controls": "unchanged originals"
+  },
+  "prerequisites": [
+    "Exact-source CI and9 accepted build identity checks with invalid CLI-usage trial excluded.",
+    "Exact candidate R50b overhead report passed, exit0 and namespace independently absent before any business Pod is created.",
+    "Original R12 manual business passed and namespace independently absent.",
+    "Native root/explicit marker; exact payload/helper/binary/build-info hashes; fresh private output/program/namespace.",
+    "Host available memory>=28GiB before each case,>=8GiB throughout; disk>=20GiB."
+  ],
+  "short_campaign_seconds": 600,
+  "case_checks_expected": 6,
+  "engine_content_checks_per_case": 10,
+  "limitations": [
+    "Only named manual budget, no claim default20%/automatic30% business performance.",
+    "Only native5.14 AMD64 and existing single-device real vendor paths; no ARM vendor or independent physical disks.",
+    "Two600s runs do not replace24h baseline+24h enforce,>=7days, latest-two-published-minor upgrade or stable1.0.",
+    "Existing fixed formal d6 candidate/baseline configuration and processes unchanged."
+  ],
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "actual_budget_gate": "Require all3 items applied, exact own-leaf720000/100000 CPU,20001980416B memory and67108864B/s+4096IOPS both directions on one resolved device; other5 actual values unchanged. Campaign then samples fixed actual8 controls."
+}
