@@ -270,3 +270,6 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 版本化候选[真实DBS/HISDBS路径复验](testing-versioned-candidate-business.md)已冻结：必须先通过新ELF自身开销，继而按原manual64/300/45/600秒及错误/延迟/覆盖/独立恢复标准顺序执行；辅助故障及实际长期仍另判，未宣称发布。
+
+
+原fc2 observe的DBS/HISDBS已[各实际86400秒终态通过](testing-baseline24h-final.md)，原生SQL/API零错误、四轮内容随完整窗口接受、工作线程/协调入口已退出，原exec超5秒诊断保留。原固定d6阶段重新只读前置13/14，通过完整前序但仍需其他业务夹具先正常清理；无阶段切换/写限额。原24h enforce及七天/当前v1.0.0新摘要资格仍独立，未发布1.0。

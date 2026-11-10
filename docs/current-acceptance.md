@@ -18,8 +18,8 @@
 
 | 阶段 | 固定来源与当前证据 | 尚未完成 |
 |---|---|---|
-| 正式24h observe基线 | 原fc2程序，[22h固定观察](test-progress-baseline24h-22h-linux-amd64.json)，4周期内容完成但native-pending；[持续判定](continuous-acceptance.md) | 实际86400秒最终覆盖/延迟/完整性判定 |
-| 正式等时enforce | 固定d6候选、预算及切换方案保留；须先有接受的完整基线再核对实时前置 | 独立24h enforce及对照报告；[原隔离门槛](test-results-formal-stage-current-readiness.json)要求其他业务夹具先清理，不能以d370七天替换 |
+| 正式24h observe基线 | 原fc2程序，[两角色各实际86400秒终态通过](testing-baseline24h-final.md)，4周期原生组合接受，协调/负载入口已退出；exec超5秒诊断保留 | 旧observe结果不能代表新候选或限额阶段 |
+| 正式等时enforce | 固定d6候选、预算及切换方案保留；须先有接受的完整基线再核对实时前置 | 独立24h enforce及对照报告；[完整基线后13/14前置](test-results-formal-stage-after-baseline.json)要求其他业务夹具先清理，不能以d370七天替换 |
 | 当前d370七天连续组件 | [已开始及首周期观察](testing-seven-day-current-candidate.md)，首周期两角色各10项内容及临时清理完成，仍native-pending | 实际604800秒、28周期和完整原生判定 |
 | 七天实际老化状态后置 | [只读采集/门禁](testing-aged-postflight-preflight.md)及[恢复/重建/维护执行器](testing-aged-postflight-execution.md)已实现，Linux自检和真实提前执行拒绝通过；独立短数据演练36项/各600秒终态通过且清理，原控制保持 | 真实七天后的执行及老化辅助故障/最终综合审计 |
 
