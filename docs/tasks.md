@@ -74,7 +74,7 @@
 
 | 任务 ID | 计划版本 | 开发范围 | 状态 |
 |---|---|---|---|
-| P01.1–P01.4 | v0.1.0-rc.3 | DBS/HISDBS 克隆回归、冷启动/原探针、Agent 开销修正、实际接入回退 | 最新三资源两程序×两业务的manual64矩阵24项/各600秒通过，冷重建88项/8次启动通过，40场景故障216项通过；默认20%第16轮main/DBS失败，剩余三格第18轮补测，旧预算失败保留。见testing-three-resource-followup.md |
+| P01.1–P01.4 | v0.1.0-rc.3 | DBS/HISDBS 克隆回归、冷启动/原探针、Agent 开销修正、实际接入回退 | 最新三资源两程序×两业务的manual64矩阵24项/各600秒通过，冷重建88项/8次启动通过，40场景故障216项通过；默认20%第16/18轮四格业务组合均失败，两个组合格无完整原生终态，旧预算失败保留。见testing-three-resource-followup.md |
 | P02.1–P02.4 | v0.1.0 | 24h+24h 基线对比、业务指标、故障回归、稳定安装与支持矩阵 | 原24h observe基线已有固定12h快照，仍未最终验收；24h enforce及至少7天未开始。新候选前置计划已归档，旧observe程序首次接入演练及正式基线完整通过仍是启动前提。见plan-enforce24h-three-resource.md |
 | P03.1–P03.4 | v0.2.0 | 配置热重载、逐项写入、代次/待完成原因、模式与并发规则 | 旧safe-reload13项与三独立百分比组合候选d6ea657的15项持续重载分别归档；坏配置保持、独立默认/CLI优先、切换及外部冲突核对通过，未正式发布。见testing-three-resource-followup.md |
 | P04.1–P04.4 | v0.3.0 | 重复标定/profile 维护、路径覆盖、多设备/映射栈实测 | 开发分支已实现并有单设备短测；多设备/映射栈实测待完成 |
@@ -148,3 +148,5 @@ P01/P03/P08/P10后续验收已在运行前归档[三资源候选测试计划](te
 第17轮真实路径备份/新Pod ID冷重建四格、8次启动、88项检查通过，数据/独立逻辑恢复库/一对一身份/日志追加及新容器原值恢复核对，全部夹具清理；仅为手动64MiB/s预算。见[冷重建结果](testing-three-resource-cold-rebuild.md)。
 
 组合开发源码50671aa在Windows/amd64、Go1.27.3下两个解析器各10分钟fuzz通过，包含12条明确归档的新百分比/默认/非法语料；不是Linux业务或资源开销结论，见[独立结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-three-resource-parser-fuzz-windows.json)。
+
+第18轮默认20%剩余三格补测结束：18项启动/控制/日志通过，三格业务组合均失败；main/HIS有完整失败原生结果，两个组合格仅有未完成快照，不计600秒通过。清理确认，连同第16轮四格均未通过，见[补测结果](testing-three-resource-default20-supplement.md)。
