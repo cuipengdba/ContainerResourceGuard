@@ -94,3 +94,5 @@ python3 scripts/check-package.py dev
 标准库实现，无第三方运行时依赖。最低 Go 版本见 `go.mod`。MIT License。
 
 运行日志默认每天一个文件，保留最近30个日历日，总量不超过1GB，写日志失败仍放行业务。详见[每日日志](docs/logging.md)。旧percent配置仅作兼容；新功能尚未发布，验收状态见任务清单。
+
+[DBS/HISDBS 首次双组件接入与参数实测（2026-11-10）](docs/deployment-dbs-hisdbs-20261110.zh.md)
