@@ -1,0 +1,30 @@
+{
+  "kind": "fixed maintenance coordinator launch/wait observation, not maintenance execution or acceptance",
+  "phase": "waiting-for-current-source-fault-acceptance-and-cleanup",
+  "observed_node_utc": "2026-11-10T20:26:50Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "job_sha256": "ea5e9f11bf6f63cfcca10adf96fc0d60aa6ca3caf54f159d18a6df87ce584b78",
+  "programs": {
+    "previous": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased protocol-advertising combined development build"
+    },
+    "candidate": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+      "release_status": "unreleased integrated partition development build"
+    }
+  },
+  "runner_and_worker_identity_verified": true,
+  "namespace_independently_absent": true,
+  "maintenance_Pods_created": 0,
+  "cases_measured": 0,
+  "checks_accepted": 0,
+  "plan": "test-plan-partition-realpaths-maintenance.json",
+  "limitations": [
+    "Only coordinator running. Both programs unreleased; recent-two-released-minors condition remains open.",
+    "Faults must pass20cases/108checks,exit0 and independent namespace absence before any maintenance Pod.",
+    "Original formal baseline and fixed d6 enforce candidate unchanged."
+  ]
+}
