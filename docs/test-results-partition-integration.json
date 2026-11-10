@@ -1,0 +1,756 @@
+{
+  "phase": "passed",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "Windows_local_checks": [
+    "go test ./...",
+    "go vet ./...",
+    "gofmt",
+    "Python AST",
+    "documentation links"
+  ],
+  "production_source_equivalence_contract": "docs/test-plan-partition-integration.json",
+  "CI": [
+    {
+      "kind": "build-and-test",
+      "run_id": 42882251278,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42882251278",
+      "manifest": {
+        "artifacts": [
+          {
+            "arch": "amd64",
+            "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+            "go_build_info": {
+              "GoVersion": "go1.27.3",
+              "Main": {
+                "Path": "github.com/cuipengdba/ContainerResourceGuard",
+                "Version": "(devel)"
+              },
+              "Path": "github.com/cuipengdba/ContainerResourceGuard/cmd/crg",
+              "Settings": [
+                {
+                  "Key": "-buildmode",
+                  "Value": "exe"
+                },
+                {
+                  "Key": "-compiler",
+                  "Value": "gc"
+                },
+                {
+                  "Key": "-trimpath",
+                  "Value": "true"
+                },
+                {
+                  "Key": "DefaultGODEBUG",
+                  "Value": "containermaxprocs=0,cryptocustomrand=1,decoratemappings=0,gotestjsonbuildtext=1,httpcookiemaxnum=0,httpservecontentkeepheaders=1,httpservecontentmaxranges=1,multipathtcp=0,randseednop=0,rsa1024min=0,tlsmlkem=0,tlssecpmlkem=0,tlssha1=1,tracebacklabels=0,updatemaxprocs=0,urlmaxqueryparams=0,urlstrictcolons=0,winreadlinkvolume=0,winsymlink=0,x509negativeserial=1,x509rsacrt=0,x509sha256skid=0,x509sslcertoverrideplatform=0,x509usepolicies=0"
+                },
+                {
+                  "Key": "CGO_ENABLED",
+                  "Value": "0"
+                },
+                {
+                  "Key": "GOARCH",
+                  "Value": "amd64"
+                },
+                {
+                  "Key": "GOOS",
+                  "Value": "linux"
+                },
+                {
+                  "Key": "GOAMD64",
+                  "Value": "v1"
+                }
+              ]
+            },
+            "standard_package_count": 118
+          },
+          {
+            "arch": "arm64",
+            "binary_sha256": "d26c2336dfa7b98f3d87d0dad8520d6fbb852f40761b70060b455f91f119fc26",
+            "go_build_info": {
+              "GoVersion": "go1.27.3",
+              "Main": {
+                "Path": "github.com/cuipengdba/ContainerResourceGuard",
+                "Version": "(devel)"
+              },
+              "Path": "github.com/cuipengdba/ContainerResourceGuard/cmd/crg",
+              "Settings": [
+                {
+                  "Key": "-buildmode",
+                  "Value": "exe"
+                },
+                {
+                  "Key": "-compiler",
+                  "Value": "gc"
+                },
+                {
+                  "Key": "-trimpath",
+                  "Value": "true"
+                },
+                {
+                  "Key": "DefaultGODEBUG",
+                  "Value": "containermaxprocs=0,cryptocustomrand=1,decoratemappings=0,gotestjsonbuildtext=1,httpcookiemaxnum=0,httpservecontentkeepheaders=1,httpservecontentmaxranges=1,multipathtcp=0,randseednop=0,rsa1024min=0,tlsmlkem=0,tlssecpmlkem=0,tlssha1=1,tracebacklabels=0,updatemaxprocs=0,urlmaxqueryparams=0,urlstrictcolons=0,winreadlinkvolume=0,winsymlink=0,x509negativeserial=1,x509rsacrt=0,x509sha256skid=0,x509sslcertoverrideplatform=0,x509usepolicies=0"
+                },
+                {
+                  "Key": "CGO_ENABLED",
+                  "Value": "0"
+                },
+                {
+                  "Key": "GOARCH",
+                  "Value": "arm64"
+                },
+                {
+                  "Key": "GOOS",
+                  "Value": "linux"
+                },
+                {
+                  "Key": "GOARM64",
+                  "Value": "v8.0"
+                }
+              ]
+            },
+            "standard_package_count": 118
+          }
+        ],
+        "go_version": "go1.27.3",
+        "schema": "crg-build-v1",
+        "source_date_epoch": 1794337698,
+        "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "next-compatibility-contract"
+      },
+      "package_check": [
+        {
+          "arch": "amd64",
+          "static_elf": true,
+          "markdown_links_valid": true,
+          "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9"
+        },
+        {
+          "arch": "arm64",
+          "static_elf": true,
+          "markdown_links_valid": true,
+          "binary_sha256": "d26c2336dfa7b98f3d87d0dad8520d6fbb852f40761b70060b455f91f119fc26"
+        }
+      ],
+      "Windows_Linux_build_manifest_and_binary_hashes_equal": true,
+      "artifact_id": 13795375843,
+      "raw_member_sha256": {
+        "build-manifest.json": "2ed53ca1b2bed7783808977d84b88ba3716c0292aa4b0f5ecd41efac0dc3857a",
+        "package-check.json": "ca4c325da6adea135fc4bbbb3783f719e9ab8d3b81cfb7a8e67ca44d6621cac6"
+      }
+    },
+    {
+      "kind": "native-arm64",
+      "run_id": 42882251248,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42882251248",
+      "environment": {
+        "kind": "native execution environment, not vendor business acceptance",
+        "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "runner_label": "ubuntu-24.04-arm",
+        "machine": "aarch64",
+        "kernel": "7.0.0-1017-azure",
+        "system": "Linux",
+        "go": {
+          "CGO_ENABLED": "1",
+          "GOARCH": "arm64",
+          "GOHOSTARCH": "arm64",
+          "GOHOSTOS": "linux",
+          "GOOS": "linux",
+          "GOVERSION": "go1.27.3"
+        },
+        "cgroup_filesystem": "cgroup2fs",
+        "native_runner_assertions_passed": true
+      },
+      "result": {
+        "phase": "passed",
+        "scope": "native unit/race, helper scripts and CLI only; no actual resource writes or vendor business",
+        "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "binary_sha256": "f9cd34b38b76c26aec735189e44967451e2e92de119d4131c4a16e52afe31d86",
+        "ELF_machine": 183,
+        "packages_passed": [
+          "github.com/cuipengdba/ContainerResourceGuard/cmd/crg",
+          "github.com/cuipengdba/ContainerResourceGuard/internal/guard",
+          "github.com/cuipengdba/ContainerResourceGuard/internal/runlog"
+        ],
+        "test_pass_events": 212,
+        "limitations": [
+          "Not cgroup CPU/memory/IO enforcement evidence.",
+          "Not ARM64 DBS/HISDBS business, multi-device or long-duration acceptance.",
+          "Kernel support conclusions require the recorded environment and appropriate real-controller tests."
+        ]
+      },
+      "partition_tests": [
+        "TestPartitionSeparatesFilesystemIdentityAndWholeControl",
+        "TestPartitionGeometryAndReplacementInvalidateCache",
+        "TestPartitionRejectsUnverifiedTreeAndGeometry",
+        "TestSiblingPartitionsShareConservativeCapAndOriginalClamp",
+        "TestPartitionPlanRejectsAmbiguityOverlapAndStaleBindings",
+        "TestSiblingCapsUseIOPercentageAndDoNotDependOnProfileOrder",
+        "TestParentJournalRestoresWithoutPartitionAndRejectsReplacement"
+      ],
+      "artifact_id": 13795231150,
+      "raw_member_sha256": {
+        "result.json": "95becfc5ef2f6bc49e99433e7c97484efa4747fa2e11f4c66b30ecc868a8fd92"
+      }
+    },
+    {
+      "kind": "native-cgroup",
+      "architecture": "amd64",
+      "run_id": 42882251208,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42882251208",
+      "build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "native-controller-ci",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "report": {
+        "phase": "passed",
+        "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "driver_sha256": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+        "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "7.0.0-1017-azure",
+        "tests": [
+          {
+            "name": "exact-native-program-source",
+            "passed": true
+          },
+          {
+            "name": "local-Docker-only",
+            "passed": true
+          },
+          {
+            "name": "scratch-image-native-and-owned",
+            "passed": true
+          },
+          {
+            "name": "manual-exact-three-actual-controls",
+            "passed": true,
+            "actual_controls": {
+              "cpu.max": "50000 100000",
+              "memory.max": "134217728",
+              "io.max": "252:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+              "pids.max": "17436",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            }
+          },
+          {
+            "name": "CPU-actual-throttling",
+            "passed": true
+          },
+          {
+            "name": "read-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "write-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "randwrite-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "memory-limit-and-safe-allocation",
+            "passed": true
+          },
+          {
+            "name": "Agent-crash-retains-kernel-caps-and-PID1",
+            "passed": true
+          },
+          {
+            "name": "same-journal-Agent-restart",
+            "passed": true
+          },
+          {
+            "name": "manual-disable-restores-eight-originals",
+            "passed": true
+          },
+          {
+            "name": "manual-logs-sentinel-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "independent-percentages-and-real-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "percent-disable-before-normal-rebuild",
+            "passed": true
+          },
+          {
+            "name": "new-Docker-ID-discovers-new-journal-identity",
+            "passed": true
+          },
+          {
+            "name": "stable-profile-reused-without-second-calibration",
+            "passed": true
+          },
+          {
+            "name": "daily-log-prefix-retained-and-appended",
+            "passed": true
+          },
+          {
+            "name": "new-container-originals-restore-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "actual-readonly-without-capabilities-is-degraded",
+            "passed": true
+          },
+          {
+            "name": "readonly-failure-visible-and-PID1-preserved",
+            "passed": true
+          },
+          {
+            "name": "readonly-disable-with-no-owned-mutations",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "CPU": {
+            "actual_wall_seconds": 8.090958506999982,
+            "used_CPU_seconds": 4.055846,
+            "average_cores": 0.5012812754497554,
+            "nr_throttled_delta": 81,
+            "load": {
+              "count": 0,
+              "mode": "cpu",
+              "rate": 0,
+              "seconds": 8.051976168
+            }
+          },
+          "read": {
+            "count": 25165824,
+            "mode": "read",
+            "rate": 4188709.6145900968,
+            "seconds": 6.008012659
+          },
+          "write": {
+            "count": 25165824,
+            "mode": "write",
+            "rate": 4194209.6666323175,
+            "seconds": 6.000133977
+          },
+          "randwrite": {
+            "count": 6328320,
+            "iops": 257.49832111094634,
+            "mode": "randwrite",
+            "rate": 1054713.1373331863,
+            "seconds": 6.000038088
+          },
+          "percent": {
+            "host_online_CPUs": 4,
+            "host_memory_bytes": 16760344576,
+            "requested_percentages": {
+              "cpu": 10,
+              "memory": 1,
+              "IO": 20
+            },
+            "expected_controls": {
+              "cpu.max": "40000 100000",
+              "memory.max": "167600128",
+              "io.max": "252:0 rbps=82729200 wbps=83149688 riops=1068 wiops=1953",
+              "pids.max": "17436",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "automatic_IO_state": "calibrated",
+            "profile_sha256": "fa8c4d29a0608bbcbcb65837a85e0f7e05a221fffb5133830d5a3e7d16264d61"
+          }
+        },
+        "cleanup": {
+          "own_image_absent": true,
+          "all_owned_containers_and_cgroups_absent": true,
+          "own_mount_mapper_and_loop_absent": true,
+          "private_directory_removed": true
+        },
+        "programs": {
+          "crg": "65d6ba7d0f100de1f006894bfccfc8768652cb0b043796711b37cdf5b0ca05b3",
+          "hold": "e8efecb6eed07a4f03d39f393a07a787d04988a1c21a51984e54a1eadec98167",
+          "load": "611d5183323fc9403b7884b20beb83ee4617a2cdc49aae038918c6e7a27f7e3a"
+        },
+        "docker": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "28.0.4",
+              "Details": {
+                "ApiVersion": "1.48",
+                "Arch": "amd64",
+                "BuildTime": "Tue Mar 25 15:07:16 2025",
+                "Experimental": "false",
+                "GitCommit": "6430e49",
+                "GoVersion": "go1.23.7",
+                "KernelVersion": "7.0.0-1017-azure",
+                "MinAPIVersion": "1.24",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "Version": "28.0.4",
+          "ApiVersion": "1.48",
+          "MinAPIVersion": "1.24",
+          "GitCommit": "6430e49",
+          "GoVersion": "go1.23.7",
+          "Os": "linux",
+          "Arch": "amd64",
+          "KernelVersion": "7.0.0-1017-azure",
+          "BuildTime": "2025-03-25T15:07:16.000000000+00:00"
+        },
+        "storage_fixture": {
+          "kind": "ext4 on real dm-linear UUID over exclusive loop file",
+          "sparse_backing_bytes": 2147483648,
+          "physical_independent_device": false,
+          "device": "252:0"
+        },
+        "data_device": "252:0",
+        "device_inventory": {
+          "exposed": true,
+          "is_partition": false,
+          "direct_identity_files": {
+            "dm/uuid": true,
+            "device/wwid": false,
+            "wwid": false
+          }
+        }
+      },
+      "artifact_id": 13794647347,
+      "raw_member_sha256": {
+        "results/report.json": "269f59b8ddc362d86be8d4b55d9a87a0a177a87ecda6cc939e91439c3426a651"
+      }
+    },
+    {
+      "kind": "native-cgroup",
+      "architecture": "arm64",
+      "run_id": 42882251208,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42882251208",
+      "build_info": {
+        "arch": "arm64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "native-controller-ci",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "report": {
+        "phase": "passed",
+        "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "driver_sha256": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+        "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "7.0.0-1017-azure",
+        "tests": [
+          {
+            "name": "exact-native-program-source",
+            "passed": true
+          },
+          {
+            "name": "local-Docker-only",
+            "passed": true
+          },
+          {
+            "name": "scratch-image-native-and-owned",
+            "passed": true
+          },
+          {
+            "name": "manual-exact-three-actual-controls",
+            "passed": true,
+            "actual_controls": {
+              "cpu.max": "50000 100000",
+              "memory.max": "134217728",
+              "io.max": "252:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+              "pids.max": "17491",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            }
+          },
+          {
+            "name": "CPU-actual-throttling",
+            "passed": true
+          },
+          {
+            "name": "read-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "write-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "randwrite-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "memory-limit-and-safe-allocation",
+            "passed": true
+          },
+          {
+            "name": "Agent-crash-retains-kernel-caps-and-PID1",
+            "passed": true
+          },
+          {
+            "name": "same-journal-Agent-restart",
+            "passed": true
+          },
+          {
+            "name": "manual-disable-restores-eight-originals",
+            "passed": true
+          },
+          {
+            "name": "manual-logs-sentinel-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "independent-percentages-and-real-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "percent-disable-before-normal-rebuild",
+            "passed": true
+          },
+          {
+            "name": "new-Docker-ID-discovers-new-journal-identity",
+            "passed": true
+          },
+          {
+            "name": "stable-profile-reused-without-second-calibration",
+            "passed": true
+          },
+          {
+            "name": "daily-log-prefix-retained-and-appended",
+            "passed": true
+          },
+          {
+            "name": "new-container-originals-restore-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "actual-readonly-without-capabilities-is-degraded",
+            "passed": true
+          },
+          {
+            "name": "readonly-failure-visible-and-PID1-preserved",
+            "passed": true
+          },
+          {
+            "name": "readonly-disable-with-no-owned-mutations",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "CPU": {
+            "actual_wall_seconds": 8.097367570999978,
+            "used_CPU_seconds": 4.058195,
+            "average_cores": 0.5011746057489196,
+            "nr_throttled_delta": 81,
+            "load": {
+              "count": 0,
+              "mode": "cpu",
+              "rate": 0,
+              "seconds": 8.066496216
+            }
+          },
+          "read": {
+            "count": 25165824,
+            "mode": "read",
+            "rate": 4191163.092084835,
+            "seconds": 6.004495496
+          },
+          "write": {
+            "count": 26214400,
+            "mode": "write",
+            "rate": 4196733.0832095845,
+            "seconds": 6.246381479
+          },
+          "randwrite": {
+            "count": 6356992,
+            "iops": 256.7958743116591,
+            "mode": "randwrite",
+            "rate": 1051835.93738048,
+            "seconds": 6.04370962
+          },
+          "percent": {
+            "host_online_CPUs": 4,
+            "host_memory_bytes": 16715927552,
+            "requested_percentages": {
+              "cpu": 10,
+              "memory": 1,
+              "IO": 20
+            },
+            "expected_controls": {
+              "cpu.max": "40000 100000",
+              "memory.max": "167157760",
+              "io.max": "252:0 rbps=68498042 wbps=71992509 riops=1059 wiops=1955",
+              "pids.max": "17491",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "automatic_IO_state": "calibrated",
+            "profile_sha256": "d953bae402c62ac73d4ff9ed087174dc5481a022819e174b72d9804e4f480d0c"
+          }
+        },
+        "cleanup": {
+          "own_image_absent": true,
+          "all_owned_containers_and_cgroups_absent": true,
+          "own_mount_mapper_and_loop_absent": true,
+          "private_directory_removed": true
+        },
+        "programs": {
+          "crg": "5ee6be6a290d050d184c090ff498b473f67c5acb50ceef3f03ee09d24784dfaa",
+          "hold": "4d5e5104b47f5a0ce3f37ad181a3d527d440ff9503b08062ca5c02ac61c47dbb",
+          "load": "c35ffe8e356a315ead85707e1ef91785cab7aba8548454de1b883edab6498521"
+        },
+        "docker": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "28.0.4",
+              "Details": {
+                "ApiVersion": "1.48",
+                "Arch": "arm64",
+                "BuildTime": "Tue Mar 25 15:07:55 2025",
+                "Experimental": "false",
+                "GitCommit": "6430e49",
+                "GoVersion": "go1.23.7",
+                "KernelVersion": "7.0.0-1017-azure",
+                "MinAPIVersion": "1.24",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "Version": "28.0.4",
+          "ApiVersion": "1.48",
+          "MinAPIVersion": "1.24",
+          "GitCommit": "6430e49",
+          "GoVersion": "go1.23.7",
+          "Os": "linux",
+          "Arch": "arm64",
+          "KernelVersion": "7.0.0-1017-azure",
+          "BuildTime": "2025-03-25T15:07:55.000000000+00:00"
+        },
+        "storage_fixture": {
+          "kind": "ext4 on real dm-linear UUID over exclusive loop file",
+          "sparse_backing_bytes": 2147483648,
+          "physical_independent_device": false,
+          "device": "252:0"
+        },
+        "data_device": "252:0",
+        "device_inventory": {
+          "exposed": true,
+          "is_partition": false,
+          "direct_identity_files": {
+            "dm/uuid": true,
+            "device/wwid": false,
+            "wwid": false
+          }
+        }
+      },
+      "artifact_id": 13794227531,
+      "raw_member_sha256": {
+        "results/report.json": "7514b30290eef7a4c2ac3db65b55834ef41ad2360cf9969f4949f933e21f6f53"
+      }
+    }
+  ],
+  "scope": "Exact integration commit build/package/provenance jobs, native ARM unit/race/helpers/CLI and2 real whole-device controller cells; previous partition effects remain source468fe73/164checks.",
+  "receipt_transport": "named immutable artifact ZIP members over HTTPS ranges with ZIP CRC; no new ELF download/re-execution locally. Local Windows-built two target binary hashes equal the Linux CI manifest.",
+  "limitations": [
+    "Fresh exact candidate steady overhead not yet qualified by this report.",
+    "Not vendor business, physical multi-device,24h+24h,>=7days or stable1.0 acceptance."
+  ]
+}

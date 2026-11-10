@@ -88,3 +88,6 @@ P04/P06独立分支[真实GPT双分区四格164项通过](testing-partition-cgro
 
 
 P04/P06分区实现现已接入组合开发线：[完整生产源码等价和验收冻结合同](test-plan-partition-integration.json)。原164项报告不改来源，当前提交的构建/原生回归/包与开销分别验证；正式97基线和d6共享切换候选、三资源默认20、旧资产均不改，未发布。
+
+
+P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、原生ARM和44项整盘回归](testing-partition-integration.md)通过；两目标Windows/Linux程序摘要相同。原分区164项来源不变，新开销计划尚未启动，main及旧发布资产/正式长测来源不变。

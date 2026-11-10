@@ -118,3 +118,6 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 分区实现已按[逐文件等价合同](test-plan-partition-integration.json)接入本组合开发线，原分支164项实际分区和212个原生race事件来源保持独立。新提交构建、包、原生回归及开销待验证；此前“未合入本线”是历史记录，尚未正式发布。正式长测的固定d6候选不变。
+
+
+组合d3706f3已完成[当前提交CI/两架构跨宿主构建及原生回归](testing-partition-integration.md)，原生ARM212个Go pass事件、实际整盘44项通过；新开销按固定计划待启动，既有正式长测和未发布边界不变。
