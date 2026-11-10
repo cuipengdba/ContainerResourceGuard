@@ -1,0 +1,104 @@
+{
+  "kind": "completed steady-state Agent engineering result, not vendor business acceptance",
+  "observed_utc": "2026-11-10T12:58:54Z",
+  "phase": "passed",
+  "plan": "test-plan-three-resource-steady-overhead.json",
+  "job_sha256": "48b786013f72d6533c53060051eb66f13cfff77ebf51a9e4235f821464e3563e",
+  "source_revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+  "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+  "measurement_elapsed_seconds": 1800.0280543710105,
+  "measurement_started_utc": "2026-11-10T12:24:25.120032+00:00",
+  "criteria": {
+    "actual_seconds": 1800,
+    "warmup_seconds": 45,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "CPU_single_core_percent_max": 0.1,
+    "RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_write_bytes_max": 8388608,
+    "fault_write_bytes_max": 16777216,
+    "host_available_min_bytes": 8589934592,
+    "host_disk_free_min_bytes": 21474836480,
+    "OOM_kill_delta_max": 0,
+    "io_cap_bps": 65536,
+    "io_cap_iops": 8
+  },
+  "namespace_independently_absent": true,
+  "coordinator_gone": true,
+  "cases": {
+    "healthy": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false,
+      "result": {
+        "CPU_single_core_percent": 0.016666577999389108,
+        "max_RSS_bytes": 8499200,
+        "write_bytes_delta": 155648,
+        "wchar_delta": 78558,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.001020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0095761169214,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 1614,
+      "last_daily_log_bytes": 2112,
+      "all_samples_same_Agent_start_identity": true,
+      "all_samples_expected_state": null,
+      "all_samples_expected_export_failure": null
+    },
+    "export-failure": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false,
+      "result": {
+        "CPU_single_core_percent": 0.0172221306133942,
+        "max_RSS_bytes": 8474624,
+        "write_bytes_delta": 45056,
+        "wchar_delta": 14865,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0095746510196,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 1613,
+      "last_daily_log_bytes": 2111,
+      "all_samples_same_Agent_start_identity": true,
+      "all_samples_expected_state": null,
+      "all_samples_expected_export_failure": true
+    },
+    "readonly": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": true,
+      "fixture_external_IO": true,
+      "result": {
+        "CPU_single_core_percent": 0.026666524923256236,
+        "max_RSS_bytes": 9011200,
+        "write_bytes_delta": 1142784,
+        "wchar_delta": 333783,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.09802035,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.00956773106,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 2939,
+      "last_daily_log_bytes": 3436,
+      "all_samples_same_Agent_start_identity": true,
+      "all_samples_expected_state": true,
+      "all_samples_expected_export_failure": null
+    }
+  },
+  "limitations": [
+    "No first calibration in this manual-budget test; startup/warmup are excluded from steady-state measurements.",
+    "Agent process counters do not measure host collector or all container-runtime logging costs.",
+    "Earlier1bc9/74693 long-check receipts remain separate and are not relabelled as this source.",
+    "A successful engineering budget test cannot reverse default20 business failures or close24h/seven-day/hardware gates.",
+    "The existing formal baseline is not modified."
+  ]
+}
