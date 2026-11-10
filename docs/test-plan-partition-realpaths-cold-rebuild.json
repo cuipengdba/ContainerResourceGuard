@@ -1,0 +1,64 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "bb41a1d9538246ae07b7749e301a7238ff45b860bb8e46bd5135e1d6716a907a",
+  "runner_sha256": "aed5e07bf2c7abe3e3d254e88f2af7c96597bbdbf1d3e953c1ecb416f5890bb4",
+  "helper_sha256": {
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualification_sha256": {
+    "identity-qualification.json": "68f95200ca8387e8dad987028309c6e3b98ad3cb3abd6f2b7ccfd1b07c301ec9",
+    "integration-qualification.json": "fc85ee09ca3cd868e5924f74d739f0d52951d412f2773da268eb5746e35337d2",
+    "overhead-qualification.json": "3ed12aabcfae45d4bf8c43ac8bf736525e46a6459da191d8c01f051923217dc3",
+    "business-qualification.json": "6b26d3bea1f2f55a4a42e37c517104a0483836dc7b34ee9c4cadbfb6ff980a64",
+    "fault-qualification.json": "f55d645f1f530b7050d989ed1755b90f3fc371a6dc55529097267635a5e4e928"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prior_driver_sha256": "2677cf466a04ea117ff21124ebd1cdac6cc9782d20ac6dc1f3cb11832b212005",
+  "prior_plan": "test-plan-three-resource-cold-rebuild.json",
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "two_boots_per_case": "fresh initialization then backed-up data/state/log directories reused under a new Pod/container ID",
+    "original_start_cache_mount_PG_parameters_and_probes": true,
+    "PG_API_managed_max_seconds_each_boot": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_inside_startup_seconds": 300,
+    "one_source_qualified_Agent_and_only_three_resource_controls": true,
+    "payload": "16384 rows /64MiB and128 marker rows, sum8256; exact checksums across restart and independent logical restore database",
+    "backup": "Schema-scoped logical dump before rebuild, digest persists; separate database restore without changing original primary data",
+    "identity": "Old cgroup gone before new Pod; unchanged configuration, new identity, old journal isolated, new original controls restored by disable",
+    "logs": "Daily0600/v2 logs; existing same-day content retained and appended after ID change",
+    "node_reserves": "28GiB available before each clone/rebuild,8GiB steady,20GiB free disk"
+  },
+  "cases": [
+    "current/DBS",
+    "current/HISDBS"
+  ],
+  "boots": 4,
+  "expected_checks": 44,
+  "prerequisites": [
+    "Current-source maintenance passed2cases/22checks,exit0 and namespace independently absent before any rebuild Pod.",
+    "Exact current program/source/helper and all5 qualification hashes; original private cache/supervisor pinned.",
+    "Host memory>=28GiB before each cold/rebuild and>=8GiB steady;disk>=20GiB."
+  ],
+  "limitations": [
+    "Manual64 cold-rebuild validation does not prove default20 or automatic30 performance.",
+    "Independent logical restore database is distinct from a separate physical server; previous engine-cycle physical restore evidence remains separate.",
+    "This is cold/backup/rebuild coverage, not a new600-second or long-term campaign.",
+    "No modifications to existing business deployments or baseline; no unsupported hardware waiver.",
+    "Original four-cell88check result remains7638/d6, not currentd370.",
+    "Current7day source qualification is prepared separately; no formal long duration claim here."
+  ],
+  "prelaunch_cache_freshness_check": "Before any upload/launch, strengthened existing cache check: exactly one source-qualified current-cgroup cache run process and status inode/mtime/size changed since this boot gate, in addition to enforce. Same300s/45s deadlines, quotas and44check count; no previous execution or product change."
+}
