@@ -1,0 +1,143 @@
+{
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "CI_run": 42882251278,
+  "phase": "passed",
+  "repo": "cuipengdba/ContainerResourceGuard",
+  "workflow": "cuipengdba/ContainerResourceGuard/.github/workflows/ci.yml",
+  "ref": "refs/heads/next/compatibility-contract",
+  "hosted_only": true,
+  "online_positive_cases": 4,
+  "offline_positive_control_cases": 2,
+  "offline_negative_cases": [
+    "wrong-source",
+    "wrong-signer-workflow",
+    "tampered-package"
+  ],
+  "offline_negative_rule": "Reuse verified exact-source bundle and downloaded trust root, proxy HTTP/HTTPS/ALL to closed loopback; each negative bounded by valid positive controls. Generic nonzero online/network failures do not count as policy rejection.",
+  "artifacts": {
+    "containerresourceguard-next-compatibility-contract-linux-amd64.tar.gz": "d4d1efd190fc02b206dc3298d23797ab2e2b452c755f3d9bec88a94ff01df6c3",
+    "crg-linux-amd64": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+    "containerresourceguard-next-compatibility-contract-linux-arm64.tar.gz": "3827d7e617a86917624e1af187cc7e3aadb289c6ae9514d2bca12d849a1021a5",
+    "crg-linux-arm64": "d26c2336dfa7b98f3d87d0dad8520d6fbb852f40761b70060b455f91f119fc26"
+  },
+  "checks": [
+    {
+      "name": "online-provenance-amd64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "d4d1efd190fc02b206dc3298d23797ab2e2b452c755f3d9bec88a94ff01df6c3",
+      "verified_exact_source_certificate": true,
+      "verified_subject_digest": true,
+      "matching_attestations": 1
+    },
+    {
+      "name": "online-SBOM-amd64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+      "verified_exact_source_certificate": true,
+      "verified_subject_digest": true,
+      "matching_attestations": 1
+    },
+    {
+      "name": "online-provenance-arm64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "3827d7e617a86917624e1af187cc7e3aadb289c6ae9514d2bca12d849a1021a5",
+      "verified_exact_source_certificate": true,
+      "verified_subject_digest": true,
+      "matching_attestations": 1
+    },
+    {
+      "name": "online-SBOM-arm64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "d26c2336dfa7b98f3d87d0dad8520d6fbb852f40761b70060b455f91f119fc26",
+      "verified_exact_source_certificate": true,
+      "verified_subject_digest": true,
+      "matching_attestations": 1
+    },
+    {
+      "name": "offline-positive-before",
+      "exit": 0,
+      "expected_success": true,
+      "passed": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "offline-wrong-source",
+      "exit": 1,
+      "expected_success": false,
+      "passed": true,
+      "stderr_sha256": "92646bdee7b65eaf94b10cc07271d16c3e7c66b4f90e4909f47ed67a79ef47c0"
+    },
+    {
+      "name": "offline-wrong-signer-workflow",
+      "exit": 1,
+      "expected_success": false,
+      "passed": true,
+      "stderr_sha256": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92"
+    },
+    {
+      "name": "offline-tampered-package",
+      "exit": 1,
+      "expected_success": false,
+      "passed": true,
+      "stderr_sha256": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92"
+    },
+    {
+      "name": "offline-positive-after",
+      "exit": 0,
+      "expected_success": true,
+      "passed": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "bundle_sha256": "ad9e40f35cfbab41e2ba941819f78a262c394d266185426ba67b517061476d69",
+  "trusted_root_sha256": "db07310827da2ae2798ec7eefc5daf8432506ce458d5bc30cd2feba03708d239",
+  "network_condition": "HTTP/HTTPS/ALL proxies set to closed loopback and empty NO_PROXY for offline checks; no OS firewall claim.",
+  "trust_bootstrap": "Trusted root fetched via installed GitHub CLI/TUF bootstrap before offline checks; bundle extracted from successful online verification.",
+  "limitations": [
+    "Proof validates selected source/build identity, not runtime/business performance, hardware coverage or stable1.0 acceptance.",
+    "Packages built in clean local checkout; exact package and ELF digests covered by CI attestations.",
+    "Published preview assets are unchanged."
+  ],
+  "completed_utc": "2026-11-10T19:35:13Z",
+  "corrected_invalid_trial": {
+    "phase": "invalid-test-not-policy-rejection",
+    "excluded_name": "offline-wrong-signer-certificate-identity",
+    "cause": "Mutually exclusive signer-workflow and cert-identity flags caused CLI usage rejection. Excluded from accepted checks; replaced with valid signer-workflow-only mismatch and positive controls before/after.",
+    "exit": 1,
+    "original_provisional_report_sha256": "2e32dd0df663fb8aae82917c1d2270faa6ac5e5a30d30c2ec03befde9772a7d3",
+    "stderr_sha256": "bc09584c68f57d56c56beb5b2d6a751b8d9072a6c1264476f7820d7ab2444489"
+  },
+  "correction_raw_receipt_sha256": {
+    "offline-positive-after.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-positive-after.stdout.json": "b9b951550f0e2ddff3727de4cc0ee38d2452e7db97737587a2fc27dc4040b2d9",
+    "offline-positive-before.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-positive-before.stdout.json": "b9b951550f0e2ddff3727de4cc0ee38d2452e7db97737587a2fc27dc4040b2d9",
+    "offline-tampered-package.stderr.txt": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92",
+    "offline-tampered-package.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-wrong-signer-workflow.stderr.txt": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92",
+    "offline-wrong-signer-workflow.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-wrong-source.stderr.txt": "92646bdee7b65eaf94b10cc07271d16c3e7c66b4f90e4909f47ed67a79ef47c0",
+    "offline-wrong-source.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "correction_completed_utc": "2026-11-10T19:41:10Z",
+  "raw_receipt_sha256": {
+    "offline-positive-after.stdout.json": "b9b951550f0e2ddff3727de4cc0ee38d2452e7db97737587a2fc27dc4040b2d9",
+    "offline-positive-before.stdout.json": "b9b951550f0e2ddff3727de4cc0ee38d2452e7db97737587a2fc27dc4040b2d9",
+    "offline-tampered-package.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-wrong-signer-certificate-identity.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-wrong-source.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "online-provenance-amd64.bundle.jsonl": "ad9e40f35cfbab41e2ba941819f78a262c394d266185426ba67b517061476d69",
+    "online-provenance-amd64.stdout.json": "b9b951550f0e2ddff3727de4cc0ee38d2452e7db97737587a2fc27dc4040b2d9",
+    "online-provenance-arm64.bundle.jsonl": "ad9e40f35cfbab41e2ba941819f78a262c394d266185426ba67b517061476d69",
+    "online-provenance-arm64.stdout.json": "b9b951550f0e2ddff3727de4cc0ee38d2452e7db97737587a2fc27dc4040b2d9",
+    "online-SBOM-amd64.bundle.jsonl": "af9885904e3abf433f777e06a7a9c8cb871b2ae2f426413329623f9f6184a9ed",
+    "online-SBOM-amd64.stdout.json": "5f46d6bcd4ab8cfc5b11ae97e998e10a41f6699d1a3ae9b98d6d55da1093693e",
+    "online-SBOM-arm64.bundle.jsonl": "fb04763b0a7079888f743c49fd55176698a58512545a1c16880e266903bbc29a",
+    "online-SBOM-arm64.stdout.json": "77b565433f093d56c25d5e1b86e2d3d1e24113c8c13a49c0fdd5def3daaf29f8",
+    "trusted-root.stdout.json": "db07310827da2ae2798ec7eefc5daf8432506ce458d5bc30cd2feba03708d239"
+  }
+}
