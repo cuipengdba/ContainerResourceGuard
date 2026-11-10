@@ -1,6 +1,6 @@
 # 测试报告
 
-最新三独立百分比、cgroup门禁和每日日志见[工程结果](testing-three-percent-cgroup-logs.md)；深入验证见[Linux6.8双架构](testing-linux6-cgroup-ci.md)及[共享程序切换/独立恢复](testing-shared-program-stage.md)。默认20%业务失败和长期待验收状态以各专项及[任务清单](tasks.md)为准。
+最新三独立百分比、cgroup门禁和每日日志见[工程结果](testing-three-percent-cgroup-logs.md)；深入验证见[原发布包双架构](testing-released-cgroup-ci.md)、[Linux6.8双架构](testing-linux6-cgroup-ci.md)及[共享程序切换/独立恢复](testing-shared-program-stage.md)。默认20%业务失败和长期待验收状态以各专项及[任务清单](tasks.md)为准。
 
 RC2 的新增测试与验收边界见 [v0.1.0-rc.2 报告](testing-rc2.md)。以下保留 RC1 历史结果，不用旧版本结果替代新版验证。
 
@@ -59,7 +59,7 @@ RC2 的新增测试与验收边界见 [v0.1.0-rc.2 报告](testing-rc2.md)。以
 
 辅助停止流程增加约 2 秒 TERM 等待后 KILL，避免忽略 TERM 阻塞业务关闭。不可中断 IO 的实际退出时间仍由内核与运行时处理。
 
-## 未覆盖
+## 初始RC1报告未覆盖（后续证据见页首）
 
 - arm64 已交叉编译，未真机执行。
 - 多设备合并已实现，本轮实机只有一个 LVM 数据设备；多节点、多设备与复杂存储栈另做验收。

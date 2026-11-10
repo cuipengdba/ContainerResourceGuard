@@ -75,3 +75,5 @@ P02/P08[共享程序第二轮工具接口拒绝](testing-shared-program-stage-in
 P02/P08[共享程序切换与独立恢复演练已通过](testing-shared-program-stage.md)：两角色各完整observe600秒和enforce600秒、候选保持120秒、单独恢复进程、原值/身份/备份/profile与清理核对；真实Linux未完成正式基线的只读/显式执行拒绝也通过。首次错误工具上传的源摘要拒绝保留。原24h基线不变，正式enforce及7天未启动。
 
 P06/P09新增[实际发布包原生控制器计划](plan-released-cgroup-ci.md)：直接校验并运行原预览AMD64/ARM64下载资产，计划四格实际6.x/7.x环境，不重建CRG。执行前冻结合同，未有结果不改写原资产覆盖范围；正式业务和长期门槛不变。
+
+P06/P09[原发布预览包AMD64/ARM64实测四格88项通过](testing-released-cgroup-ci.md)：直接运行原下载资产，实际Linux6.8/7.0、Docker28.0.4，三控制/自动百分比/新ID/日志/崩溃恢复和只读降级及自有夹具清理通过；发布标签、资产摘要和prerelease状态未改。只补原包占位容器证据，不关闭ARM厂商业务、物理多设备、分区或长期条件。
