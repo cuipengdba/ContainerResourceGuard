@@ -106,16 +106,20 @@
       "own_pod_removed": true,
       "resource_state": "degraded",
       "automatic_io": {
-        "state": "calibrated"
+        "state": "calibrated",
+        "profile": "/etc/crg/io-profile.json"
       },
       "items": [
         {
+          "file": "cpu.max",
           "state": "skipped"
         },
         {
+          "file": "memory.max",
           "state": "skipped"
         },
         {
+          "file": "io.max",
           "state": "skipped"
         }
       ]
@@ -132,13 +136,17 @@
       "own_pod_removed": true,
       "resource_state": "degraded",
       "automatic_io": {
-        "state": "degraded"
+        "state": "degraded",
+        "reason_code": "calibration_output_unwritable",
+        "profile": "/etc/crg/io-profile.json"
       },
       "items": [
         {
+          "file": "cpu.max",
           "state": "applied"
         },
         {
+          "file": "memory.max",
           "state": "applied"
         }
       ]
@@ -243,17 +251,24 @@
       "own_pod_removed": true,
       "resource_state": "degraded",
       "automatic_io": {
-        "state": "calibrated"
+        "state": "calibrated",
+        "profile": "/etc/crg/io-profile.json"
       },
       "items": [
         {
-          "state": "skipped"
+          "file": "cpu.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
         },
         {
-          "state": "skipped"
+          "file": "memory.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
         },
         {
-          "state": "skipped"
+          "file": "io.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
         }
       ]
     },
@@ -269,14 +284,20 @@
       "own_pod_removed": true,
       "resource_state": "degraded",
       "automatic_io": {
-        "state": "degraded"
+        "state": "degraded",
+        "reason_code": "calibration_output_unwritable",
+        "profile": "/etc/crg/io-profile.json"
       },
       "items": [
         {
-          "state": "applied"
+          "file": "cpu.max",
+          "state": "applied",
+          "reason_code": "unchanged"
         },
         {
-          "state": "applied"
+          "file": "memory.max",
+          "state": "applied",
+          "reason_code": "unchanged"
         }
       ]
     },
