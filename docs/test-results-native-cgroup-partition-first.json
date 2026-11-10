@@ -1,0 +1,793 @@
+{
+  "schema": "crg-native-controller-first-partition-results-v1",
+  "phase": "failed",
+  "frozen_plan": "test-plan-native-cgroup-ci.json",
+  "scope": "native ephemeral VM/Docker/scratch PID1; unsupported partition identity detected before workload",
+  "runs": [
+    {
+      "source_revision": "a0050c1204c17b650cf60231ae7d8b61574156ea",
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42829940608",
+      "cells": [
+        {
+          "report_sha256": "e403b6b1a8e59aff9ea6b1bc56e442588b5550c215e90718c6be54864fe74458",
+          "build_info": {
+            "arch": "amd64",
+            "go_version": "go1.27.3",
+            "io_profile_versions": [
+              1,
+              2
+            ],
+            "journal_versions": [
+              1
+            ],
+            "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+            "os": "linux",
+            "revision": "a0050c1204c17b650cf60231ae7d8b61574156ea",
+            "version": "native-controller-ci",
+            "writer_controls": [
+              "cpu.max",
+              "cpu.weight",
+              "io.max",
+              "io.weight",
+              "memory.max",
+              "memory.high",
+              "memory.swap.max",
+              "pids.max"
+            ]
+          },
+          "report": {
+            "phase": "failed",
+            "source_revision": "a0050c1204c17b650cf60231ae7d8b61574156ea",
+            "driver_sha256": "2299c785ab6d517f975d7295b7d1c77e3e18ca86adc8dc388397b0d918c78e49",
+            "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+            "architecture": "amd64",
+            "machine": "x86_64",
+            "kernel": "7.0.0-1017-azure",
+            "tests": [
+              {
+                "name": "exact-native-program-source",
+                "passed": true
+              },
+              {
+                "name": "local-Docker-only",
+                "passed": true
+              },
+              {
+                "name": "scratch-image-native-and-owned",
+                "passed": true
+              },
+              {
+                "name": "manual-exact-three-actual-controls",
+                "passed": false,
+                "actual_controls": {
+                  "cpu.max": "50000 100000",
+                  "memory.max": "134217728",
+                  "io.max": "",
+                  "pids.max": "17436",
+                  "cpu.weight": "100",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                }
+              }
+            ],
+            "measurements": {},
+            "cleanup": {
+              "own_image_absent": true,
+              "all_owned_containers_and_cgroups_absent": true,
+              "private_directory_removed": true
+            },
+            "programs": {
+              "crg": "911afe055a1e1aed98d39fafefcb79843354e693d609e93b45e604a856100f12",
+              "hold": "a1ae3113eb40a8c03642c75a18e995d1c0d178563bc88b6798e9b6acd236442b",
+              "load": "f5d77cbb713166a16d820878e8ef28491f91f41d9d9acaf3a1b9281e1a64495f"
+            },
+            "docker": {
+              "Platform": {
+                "Name": "Docker Engine - Community"
+              },
+              "Components": [
+                {
+                  "Name": "Engine",
+                  "Version": "28.0.4",
+                  "Details": {
+                    "ApiVersion": "1.48",
+                    "Arch": "amd64",
+                    "BuildTime": "Tue Mar 25 15:07:16 2025",
+                    "Experimental": "false",
+                    "GitCommit": "6430e49",
+                    "GoVersion": "go1.23.7",
+                    "KernelVersion": "7.0.0-1017-azure",
+                    "MinAPIVersion": "1.24",
+                    "Os": "linux"
+                  }
+                },
+                {
+                  "Name": "containerd",
+                  "Version": "v2.4.2",
+                  "Details": {
+                    "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                  }
+                },
+                {
+                  "Name": "runc",
+                  "Version": "1.5.2",
+                  "Details": {
+                    "GitCommit": "v1.5.2-0-g29dd3dc2"
+                  }
+                },
+                {
+                  "Name": "docker-init",
+                  "Version": "0.19.0",
+                  "Details": {
+                    "GitCommit": "de40ad0"
+                  }
+                }
+              ],
+              "Version": "28.0.4",
+              "ApiVersion": "1.48",
+              "MinAPIVersion": "1.24",
+              "GitCommit": "6430e49",
+              "GoVersion": "go1.23.7",
+              "Os": "linux",
+              "Arch": "amd64",
+              "KernelVersion": "7.0.0-1017-azure",
+              "BuildTime": "2025-03-25T15:07:16.000000000+00:00"
+            },
+            "data_device": "8:1",
+            "device_inventory": {
+              "exposed": true,
+              "is_partition": true,
+              "direct_identity_files": {
+                "dm/uuid": false,
+                "device/wwid": false,
+                "wwid": false
+              }
+            },
+            "failure_class": "AssertionError",
+            "failure": "manual-exact-three-actual-controls",
+            "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 264, in <module>\n    record('manual-exact-three-actual-controls', exact(item, s, expected), actual_controls=controls(item))\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 60, in record\n    raise AssertionError(name)\nAssertionError: manual-exact-three-actual-controls\n",
+            "failure_status": [
+              {
+                "time_utc": "2026-11-10T14:01:59Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-0bf4f01c652636b36a1c9ed1f32f61865085db616fef90f155f2cd192e1dd48e.scope",
+                    "identity": "507a1764f0b2b6381c5c1fbdaf875296e7998add96cf8c42a1a2727ec94dfc35",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16760340480,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "manual",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "50000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "134217728"
+                    }
+                  ],
+                  "warnings": [
+                    "manual IO unmanaged for /data: device has no stable UUID/WWID; refusing a portable IO profile"
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "50000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "134217728",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "72be7be1ea2dcf151e1788833faa49de050d7a8e0ed6a3752027911ae18d118c",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "report_sha256": "035918c9100ed4f2ee00022df1fa96b6ab777ba5bd5d31afe8792d3d6379724d",
+          "build_info": {
+            "arch": "arm64",
+            "go_version": "go1.27.3",
+            "io_profile_versions": [
+              1,
+              2
+            ],
+            "journal_versions": [
+              1
+            ],
+            "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+            "os": "linux",
+            "revision": "a0050c1204c17b650cf60231ae7d8b61574156ea",
+            "version": "native-controller-ci",
+            "writer_controls": [
+              "cpu.max",
+              "cpu.weight",
+              "io.max",
+              "io.weight",
+              "memory.max",
+              "memory.high",
+              "memory.swap.max",
+              "pids.max"
+            ]
+          },
+          "report": {
+            "phase": "failed",
+            "source_revision": "a0050c1204c17b650cf60231ae7d8b61574156ea",
+            "driver_sha256": "2299c785ab6d517f975d7295b7d1c77e3e18ca86adc8dc388397b0d918c78e49",
+            "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+            "architecture": "arm64",
+            "machine": "aarch64",
+            "kernel": "7.0.0-1017-azure",
+            "tests": [
+              {
+                "name": "exact-native-program-source",
+                "passed": true
+              },
+              {
+                "name": "local-Docker-only",
+                "passed": true
+              },
+              {
+                "name": "scratch-image-native-and-owned",
+                "passed": true
+              },
+              {
+                "name": "manual-exact-three-actual-controls",
+                "passed": false,
+                "actual_controls": {
+                  "cpu.max": "50000 100000",
+                  "memory.max": "134217728",
+                  "io.max": "",
+                  "pids.max": "17491",
+                  "cpu.weight": "100",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                }
+              }
+            ],
+            "measurements": {},
+            "cleanup": {
+              "own_image_absent": true,
+              "all_owned_containers_and_cgroups_absent": true,
+              "private_directory_removed": true
+            },
+            "programs": {
+              "crg": "4e066f4cbf22dbd768e652aded7c2c0d888c87c26ab7ee8bdf772e24adcdccef",
+              "hold": "c4c5558a9eb56a1782b2376410c2e890131f0d57901012cbf4487bfa76e2e997",
+              "load": "1e692fefa6cabb9575038209c81c6e3f3bb612912d7138fe09fac53397aaa147"
+            },
+            "docker": {
+              "Platform": {
+                "Name": "Docker Engine - Community"
+              },
+              "Components": [
+                {
+                  "Name": "Engine",
+                  "Version": "28.0.4",
+                  "Details": {
+                    "ApiVersion": "1.48",
+                    "Arch": "arm64",
+                    "BuildTime": "Tue Mar 25 15:07:55 2025",
+                    "Experimental": "false",
+                    "GitCommit": "6430e49",
+                    "GoVersion": "go1.23.7",
+                    "KernelVersion": "7.0.0-1017-azure",
+                    "MinAPIVersion": "1.24",
+                    "Os": "linux"
+                  }
+                },
+                {
+                  "Name": "containerd",
+                  "Version": "v2.4.2",
+                  "Details": {
+                    "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                  }
+                },
+                {
+                  "Name": "runc",
+                  "Version": "1.5.2",
+                  "Details": {
+                    "GitCommit": "v1.5.2-0-g29dd3dc2"
+                  }
+                },
+                {
+                  "Name": "docker-init",
+                  "Version": "0.19.0",
+                  "Details": {
+                    "GitCommit": "de40ad0"
+                  }
+                }
+              ],
+              "Version": "28.0.4",
+              "ApiVersion": "1.48",
+              "MinAPIVersion": "1.24",
+              "GitCommit": "6430e49",
+              "GoVersion": "go1.23.7",
+              "Os": "linux",
+              "Arch": "arm64",
+              "KernelVersion": "7.0.0-1017-azure",
+              "BuildTime": "2025-03-25T15:07:55.000000000+00:00"
+            },
+            "data_device": "8:1",
+            "device_inventory": {
+              "exposed": true,
+              "is_partition": true,
+              "direct_identity_files": {
+                "dm/uuid": false,
+                "device/wwid": false,
+                "wwid": false
+              }
+            },
+            "failure_class": "AssertionError",
+            "failure": "manual-exact-three-actual-controls",
+            "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 264, in <module>\n    record('manual-exact-three-actual-controls', exact(item, s, expected), actual_controls=controls(item))\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 60, in record\n    raise AssertionError(name)\nAssertionError: manual-exact-three-actual-controls\n",
+            "failure_status": [
+              {
+                "time_utc": "2026-11-10T14:01:57Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-2f9582e960ca4de4a5b84386d3416e3f6f1de03584076c2c86b14978bbb73551.scope",
+                    "identity": "00ef217f8bc80368e9f1057f987ab9a275c94f98294ad7ac966567a924f66bc3",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16715923456,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "manual",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "50000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "134217728"
+                    }
+                  ],
+                  "warnings": [
+                    "manual IO unmanaged for /data: device has no stable UUID/WWID; refusing a portable IO profile"
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "50000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "134217728",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "72be7be1ea2dcf151e1788833faa49de050d7a8e0ed6a3752027911ae18d118c",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "source_revision": "f2555b00bd40a216a76968425d41e3fec5817436",
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42830043129",
+      "cells": [
+        {
+          "report_sha256": "2e3b91ae5f47717e69bd955b548ee4dfb1c219d83b3620e28fb00ab38b0f4c00",
+          "build_info": {
+            "arch": "amd64",
+            "os": "linux",
+            "revision": "f2555b00bd40a216a76968425d41e3fec5817436",
+            "version": "native-controller-ci"
+          },
+          "report": {
+            "phase": "failed",
+            "source_revision": "f2555b00bd40a216a76968425d41e3fec5817436",
+            "driver_sha256": "2299c785ab6d517f975d7295b7d1c77e3e18ca86adc8dc388397b0d918c78e49",
+            "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+            "architecture": "amd64",
+            "machine": "x86_64",
+            "kernel": "7.0.0-1017-azure",
+            "tests": [
+              {
+                "name": "exact-native-program-source",
+                "passed": true
+              },
+              {
+                "name": "local-Docker-only",
+                "passed": true
+              },
+              {
+                "name": "scratch-image-native-and-owned",
+                "passed": true
+              },
+              {
+                "name": "manual-exact-three-actual-controls",
+                "passed": false,
+                "actual_controls": {
+                  "cpu.max": "50000 100000",
+                  "memory.max": "134217728",
+                  "io.max": "",
+                  "pids.max": "17436",
+                  "cpu.weight": "100",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                }
+              }
+            ],
+            "measurements": {},
+            "cleanup": {
+              "own_image_absent": true,
+              "all_owned_containers_and_cgroups_absent": true,
+              "private_directory_removed": true
+            },
+            "programs": {
+              "crg": "f378147de474092e0c03bbd1b6d44f25b8245fbbd6b4a95e7ea317de1283f078",
+              "hold": "cf1f69b469814cc72ced9bf962b2b6d43f5feeefc1604bdb90b9d392e5c0bc81",
+              "load": "efaf248c2fb4e8578b12ca8473209fd059d439a80b8ab0832123556087696e19"
+            },
+            "docker": {
+              "Platform": {
+                "Name": "Docker Engine - Community"
+              },
+              "Components": [
+                {
+                  "Name": "Engine",
+                  "Version": "28.0.4",
+                  "Details": {
+                    "ApiVersion": "1.48",
+                    "Arch": "amd64",
+                    "BuildTime": "Tue Mar 25 15:07:16 2025",
+                    "Experimental": "false",
+                    "GitCommit": "6430e49",
+                    "GoVersion": "go1.23.7",
+                    "KernelVersion": "7.0.0-1017-azure",
+                    "MinAPIVersion": "1.24",
+                    "Os": "linux"
+                  }
+                },
+                {
+                  "Name": "containerd",
+                  "Version": "v2.4.2",
+                  "Details": {
+                    "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                  }
+                },
+                {
+                  "Name": "runc",
+                  "Version": "1.5.2",
+                  "Details": {
+                    "GitCommit": "v1.5.2-0-g29dd3dc2"
+                  }
+                },
+                {
+                  "Name": "docker-init",
+                  "Version": "0.19.0",
+                  "Details": {
+                    "GitCommit": "de40ad0"
+                  }
+                }
+              ],
+              "Version": "28.0.4",
+              "ApiVersion": "1.48",
+              "MinAPIVersion": "1.24",
+              "GitCommit": "6430e49",
+              "GoVersion": "go1.23.7",
+              "Os": "linux",
+              "Arch": "amd64",
+              "KernelVersion": "7.0.0-1017-azure",
+              "BuildTime": "2025-03-25T15:07:16.000000000+00:00"
+            },
+            "data_device": "259:1",
+            "device_inventory": {
+              "exposed": true,
+              "is_partition": true,
+              "direct_identity_files": {
+                "dm/uuid": false,
+                "device/wwid": false,
+                "wwid": false
+              }
+            },
+            "failure_class": "AssertionError",
+            "failure": "manual-exact-three-actual-controls",
+            "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 264, in <module>\n    record('manual-exact-three-actual-controls', exact(item, s, expected), actual_controls=controls(item))\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 60, in record\n    raise AssertionError(name)\nAssertionError: manual-exact-three-actual-controls\n",
+            "failure_status": [
+              {
+                "time_utc": "2026-11-10T14:02:39Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-0fe11489c1708db678c1b29e084694a55f9bffa1fa969c542617dbc85268ac7a.scope",
+                    "identity": "3d485cb95a1590aa4c9de5512bfbcea16e80b2bade15a9379a9d5f8490b4cea3",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16760348672,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "manual",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "50000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "134217728"
+                    }
+                  ],
+                  "warnings": [
+                    "manual IO unmanaged for /data: device has no stable UUID/WWID; refusing a portable IO profile"
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "259:1",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "50000 100000",
+                    "state": "applied",
+                    "detail": "written and verified"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "134217728",
+                    "state": "applied",
+                    "detail": "written and verified"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "report_sha256": "ad48b3daf15b9bf79f188b384ae7fa695bd151cbe110bf5e4cf3554788d74aa2",
+          "build_info": {
+            "arch": "arm64",
+            "os": "linux",
+            "revision": "f2555b00bd40a216a76968425d41e3fec5817436",
+            "version": "native-controller-ci"
+          },
+          "report": {
+            "phase": "failed",
+            "source_revision": "f2555b00bd40a216a76968425d41e3fec5817436",
+            "driver_sha256": "2299c785ab6d517f975d7295b7d1c77e3e18ca86adc8dc388397b0d918c78e49",
+            "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+            "architecture": "arm64",
+            "machine": "aarch64",
+            "kernel": "7.0.0-1017-azure",
+            "tests": [
+              {
+                "name": "exact-native-program-source",
+                "passed": true
+              },
+              {
+                "name": "local-Docker-only",
+                "passed": true
+              },
+              {
+                "name": "scratch-image-native-and-owned",
+                "passed": true
+              },
+              {
+                "name": "manual-exact-three-actual-controls",
+                "passed": false,
+                "actual_controls": {
+                  "cpu.max": "50000 100000",
+                  "memory.max": "134217728",
+                  "io.max": "",
+                  "pids.max": "17491",
+                  "cpu.weight": "100",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                }
+              }
+            ],
+            "measurements": {},
+            "cleanup": {
+              "own_image_absent": true,
+              "all_owned_containers_and_cgroups_absent": true,
+              "private_directory_removed": true
+            },
+            "programs": {
+              "crg": "f74682006a4035e13bb6771daa5b1638fc2585a71df88a5cced60821f0f7aac3",
+              "hold": "dde05a4fe1febc9d7c524433d9ecc39512933607c9beec884d0606ceea4b3498",
+              "load": "b40eb6584ab3ee597f478759e8665a3257aa88e5c0bb448bc7668c1e0ada40b6"
+            },
+            "docker": {
+              "Platform": {
+                "Name": "Docker Engine - Community"
+              },
+              "Components": [
+                {
+                  "Name": "Engine",
+                  "Version": "28.0.4",
+                  "Details": {
+                    "ApiVersion": "1.48",
+                    "Arch": "arm64",
+                    "BuildTime": "Tue Mar 25 15:07:55 2025",
+                    "Experimental": "false",
+                    "GitCommit": "6430e49",
+                    "GoVersion": "go1.23.7",
+                    "KernelVersion": "7.0.0-1017-azure",
+                    "MinAPIVersion": "1.24",
+                    "Os": "linux"
+                  }
+                },
+                {
+                  "Name": "containerd",
+                  "Version": "v2.4.2",
+                  "Details": {
+                    "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                  }
+                },
+                {
+                  "Name": "runc",
+                  "Version": "1.5.2",
+                  "Details": {
+                    "GitCommit": "v1.5.2-0-g29dd3dc2"
+                  }
+                },
+                {
+                  "Name": "docker-init",
+                  "Version": "0.19.0",
+                  "Details": {
+                    "GitCommit": "de40ad0"
+                  }
+                }
+              ],
+              "Version": "28.0.4",
+              "ApiVersion": "1.48",
+              "MinAPIVersion": "1.24",
+              "GitCommit": "6430e49",
+              "GoVersion": "go1.23.7",
+              "Os": "linux",
+              "Arch": "arm64",
+              "KernelVersion": "7.0.0-1017-azure",
+              "BuildTime": "2025-03-25T15:07:55.000000000+00:00"
+            },
+            "data_device": "8:1",
+            "device_inventory": {
+              "exposed": true,
+              "is_partition": true,
+              "direct_identity_files": {
+                "dm/uuid": false,
+                "device/wwid": false,
+                "wwid": false
+              }
+            },
+            "failure_class": "AssertionError",
+            "failure": "manual-exact-three-actual-controls",
+            "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 264, in <module>\n    record('manual-exact-three-actual-controls', exact(item, s, expected), actual_controls=controls(item))\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/native-cgroup.py\", line 60, in record\n    raise AssertionError(name)\nAssertionError: manual-exact-three-actual-controls\n",
+            "failure_status": [
+              {
+                "time_utc": "2026-11-10T14:02:36Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-f740f7fdcd4d238a1fcedcee71835b0fbe26d01a9d4de3d4de570881a06a3f2f.scope",
+                    "identity": "5120f5ed987adce09ab0d46c63e1c550300736f7f16127fcc62e9364e3378517",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16715923456,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "manual",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "50000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "134217728"
+                    }
+                  ],
+                  "warnings": [
+                    "manual IO unmanaged for /data: device has no stable UUID/WWID; refusing a portable IO profile"
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "50000 100000",
+                    "state": "applied",
+                    "detail": "written and verified"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "134217728",
+                    "state": "applied",
+                    "detail": "written and verified"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "not_executed": [
+    "CPU/IO/memory workload checks",
+    "Agent crash/restart and disable/rebuild",
+    "fresh automatic calibration/profile reuse",
+    "read-only capability-revoked case"
+  ],
+  "no_runtime_patch": "No partition fallback or bypass has been committed. Whole-device mapping and stable partition identity require a separate design.",
+  "limitations": [
+    "Does not invalidate the existing whole-device device-mapper evidence on the original amd64 test node.",
+    "Native compilation/race/helpers and ordinary package CI passed separately; these do not convert the controller failure into pass."
+  ]
+}
