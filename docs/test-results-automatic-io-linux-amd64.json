@@ -1,0 +1,218 @@
+{
+  "date": "2026-11-10",
+  "environment": {
+    "kernel": "5.14.0-570.22.1.el9_6",
+    "architecture": "amd64",
+    "cgroup": "v2",
+    "filesystem": "XFS on one LVM-backed device",
+    "actual_binary_compiler": "go1.27.3",
+    "minimum_toolchain_checks": "Linux go1.22.5 vet, full race/cover and six helper plus six generated-patch fault scenarios on each branch"
+  },
+  "automatic_calibration": {
+    "scope": "two candidate binaries; original-image placeholder PID1 with real resource/config mount paths; not a vendor-business acceptance result",
+    "tests": [
+      {
+        "name": "rc3-zero-directory-zero-output-automatic-calibration",
+        "passed": true,
+        "actual_seconds": 51.27800115593709,
+        "selection": {
+          "directory": "/etc/crg",
+          "filesystem": "xfs",
+          "device": "253:0",
+          "total_bytes": 965520392192,
+          "available_bytes": 362699378688
+        },
+        "profile_version": 1
+      },
+      {
+        "name": "rc3-all-four-percent-IO-limits-applied",
+        "passed": true
+      },
+      {
+        "name": "rc3-selected-real-filesystem-capacity",
+        "passed": true
+      },
+      {
+        "name": "rc3-temporary-file-cleanup-and-business-file-intact",
+        "passed": true
+      },
+      {
+        "name": "rc3-restart-reuses-baseline-under-existing-own-cap",
+        "passed": true
+      },
+      {
+        "name": "rc3-new-container-ID-reuses-profile-isolates-journal",
+        "passed": true
+      },
+      {
+        "name": "rc3-read-only-output-fails-before-benchmark-business-alive",
+        "passed": true,
+        "actual_seconds": 0.7627751308027655
+      },
+      {
+        "name": "rc3-preexisting-IO-cap-never-benchmarked-or-raised",
+        "passed": true
+      },
+      {
+        "name": "rc3-observe-never-benchmarks",
+        "passed": true
+      },
+      {
+        "name": "rc3-explicit-auto-off-never-benchmarks",
+        "passed": true
+      },
+      {
+        "name": "rc3-PID1-business-sentinel-and-OOM-unchanged",
+        "passed": true
+      },
+      {
+        "name": "v10-zero-directory-zero-output-automatic-calibration",
+        "passed": true,
+        "actual_seconds": 48.0271902079694,
+        "selection": {
+          "directory": "/etc/crg",
+          "filesystem": "xfs",
+          "device": "253:0",
+          "total_bytes": 965520392192,
+          "available_bytes": 362689515520
+        },
+        "profile_version": 2
+      },
+      {
+        "name": "v10-all-four-percent-IO-limits-applied",
+        "passed": true
+      },
+      {
+        "name": "v10-selected-real-filesystem-capacity",
+        "passed": true
+      },
+      {
+        "name": "v10-temporary-file-cleanup-and-business-file-intact",
+        "passed": true
+      },
+      {
+        "name": "v10-restart-reuses-baseline-under-existing-own-cap",
+        "passed": true
+      },
+      {
+        "name": "v10-new-container-ID-reuses-profile-isolates-journal",
+        "passed": true
+      },
+      {
+        "name": "v10-read-only-output-fails-before-benchmark-business-alive",
+        "passed": true,
+        "actual_seconds": 0.6134362039156258
+      },
+      {
+        "name": "v10-preexisting-IO-cap-never-benchmarked-or-raised",
+        "passed": true
+      },
+      {
+        "name": "v10-observe-never-benchmarks",
+        "passed": true
+      },
+      {
+        "name": "v10-explicit-auto-off-never-benchmarks",
+        "passed": true
+      },
+      {
+        "name": "v10-PID1-business-sentinel-and-OOM-unchanged",
+        "passed": true
+      }
+    ],
+    "sources": {
+      "rc3": {
+        "revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+        "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615"
+      },
+      "v10": {
+        "revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+        "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9"
+      }
+    },
+    "phase": "passed",
+    "namespace_absent": true
+  },
+  "private_state_filesystem_faults": {
+    "source_revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+    "scope": "own placeholder container and 256KiB private tmpfs state mount; never fill host disk or alter business mounts",
+    "tests": [
+      {
+        "name": "private-256KiB-tmpfs-no-host-mount-change",
+        "passed": true
+      },
+      {
+        "name": "initial-real-controls-managed",
+        "passed": true
+      },
+      {
+        "name": "real-ENOSPC-confined-to-private-state",
+        "passed": true
+      },
+      {
+        "name": "continuous-full-state-no-unlogged-writes-PID1-alive",
+        "passed": true,
+        "actual_seconds": 64.63782570394687,
+        "attempts": 11,
+        "codes": [
+          "storage_full"
+        ]
+      },
+      {
+        "name": "full-state-disable-fails-honestly-retains-limits",
+        "passed": true
+      },
+      {
+        "name": "after-space-recovery-new-plan-applies",
+        "passed": true
+      },
+      {
+        "name": "continuous-readonly-state-no-unlogged-writes-PID1-alive",
+        "passed": true,
+        "actual_seconds": 60.726988966111094,
+        "attempts": 10,
+        "codes": [
+          "filesystem_read_only"
+        ]
+      },
+      {
+        "name": "final-disable-restores-true-runtime-originals",
+        "passed": true
+      },
+      {
+        "name": "host-state-mount-and-directory-remain-unchanged",
+        "passed": true
+      }
+    ],
+    "fault_hold_seconds": 60,
+    "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9",
+    "cleanup": {
+      "namespace_absent": true
+    }
+  },
+  "preserved_failures": [
+    {
+      "candidate_sources": {
+        "rc3": "be76b02780ae618fa92930bcd65ffdc8f3298554",
+        "v10": "98974137576afa9e0af1ccd801498728a456ecfa"
+      },
+      "case": "first automatic calibration",
+      "result": "45s cancellation deadline exceeded; no incomplete profile persisted; resource status degraded",
+      "harness_limitation": "first harness then attempted to read the missing output and recorded FileNotFoundError; underlying status retained privately",
+      "fix": "023becf / 74693ef allows 180s including 3x128MiB prepopulation and 36s measured phases; sample count/method unchanged"
+    },
+    {
+      "candidate_source": "1bc9bcb0a6d5c446f6e36220b5ad4db1bdef8bb7",
+      "case": "real read-only private state mount",
+      "passed_checks_before_failure": 6,
+      "result": "original combined assertion failed; old locking code classified filesystem open failures as contention and discarded errno cause",
+      "fix": "only EAGAIN/EWOULDBLOCK wrap ErrLocked; EROFS/ENOSPC/permission causes retained; new full tmpfs fault run has 9 passing checks"
+    }
+  ],
+  "limits": [
+    "Placeholder PID1 and synthetic file, not DBS/HISDBS business acceptance.",
+    "Actual host has one eligible block device; differing-capacity selection is unit tested, not a two-disk hardware claim.",
+    "No real power-off, arm64 native execution, hidden-ancestor removal or production mutation.",
+    "24h+24h and seven-day release phases remain required; true-path business fixtures have separate evidence."
+  ]
+}

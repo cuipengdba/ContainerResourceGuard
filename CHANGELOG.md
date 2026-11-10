@@ -1,5 +1,12 @@
 # 变更记录
 
+## R25 / R26 开发候选（RC3及1.0，未发布）
+
+- 默认percent/enforce首次自动选择最大合格磁盘文件系统、后台标定并保存；重启/重建按稳定设备身份复用，不要求directory/output参数。observe/manual/只读命令不测速，高级io_calibration:off可关闭。
+- 旧--directory/--output保留为可选维护覆盖；默认首次期限180秒包含36秒测量之外的预填充，失败不阻断业务，不保存不完整profile。
+- 修复状态锁打开错误被误当成竞争：只读/权限/满盘保留原始错误类型。
+- 两线22项自动标定、9项真实状态故障及Linux/CI通过，原失败保留；真实业务和长期门槛独立跟踪。见docs/testing-automatic-io.md。
+
 ## v0.6.0 诊断开发分支（未发布）
 
 - status 按需读取内存分类、events/PSI 与 Swap，未知字段不伪装为 0，不相加重叠计数。
