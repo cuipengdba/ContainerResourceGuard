@@ -42,4 +42,4 @@
 
 最新证据：两候选默认自动标定22项、真实满/只读状态9项检查通过；首轮失败完整保留，Linux/race及CI通过。见[自动IO实测](testing-automatic-io.md)。真实路径业务仍按独立报告判定。
 
-真机路径首轮：DBS自动30%标定/控制成功，但48/29 IOPS额度下未达原300秒就绪预算，业务未通过；本轮HISDBS未执行，手动额度新夹具对照已启动。见[真实路径进展](testing-realpaths-progress.md)。
+真机路径前两轮脚本超时保留；后续证实直接以root运行就绪探针缺libpq库路径，数据库实际已接受连接。修正为postgres原登录环境的新夹具保持30%和300秒预算，DBS约53.12秒就绪且managed，原生/备份验收仍在进行。见[诊断与真实路径进展](testing-realpaths-progress.md)。

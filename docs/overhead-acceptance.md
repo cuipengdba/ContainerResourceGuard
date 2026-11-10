@@ -32,3 +32,5 @@ write_bytes 是该 Agent 的 /proc/PID/io 计数，不代表整节点物理写�
 | 只读 cgroup | 0.02500% | 6488064 B | 1114112 B | 300.108s |
 
 各组均保持同一 Agent 进程、无新增 OOM kill；输出故障标记不变、导出 unavailable、资源协调继续。必要的失败写意图仍持久化，所以只读组写入量较高。详见 [脱敏数值与摘要](test-results-overhead-30min-linux-amd64.json)。这关闭本环境的 30 分钟工程判定，其他负载/内核/架构仍需分别测试。
+
+组合候选长时工程检查已归档：1bc9三组实际30min及其两项10min fuzz、含R26的74693两项10min fuzz通过；不等同业务长期验收，见[源码分别列明的结果](testing-combined-long.md)。
