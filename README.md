@@ -1,5 +1,8 @@
 # ContainerResourceGuard
 
+[171节点DBS/HISDBS本次升级、最终百分比与实测记录](docs/deployment-dbs-hisdbs-upgrade-20261110.zh.md)：CRG rc.3-preview.1 + CCG rc.11，DBS 35/45/60、HISDBS 35/25/60，CCG auto/enforce。
+
+
 
 [v0.1.0-rc.3-preview.1工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。两线38项隔离工程检查通过；发布范围与实测见[最新版本说明](docs/next-version.md)，正式业务与长期验收继续。
 
