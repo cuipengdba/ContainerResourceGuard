@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-10",
+  "source_revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+  "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615",
+  "role": "dbs",
+  "scope": "fresh isolated original image and real container paths, read-only original CCG mount; synthetic data and loopback DCS",
+  "resource_mode": "percent",
+  "percent": 30,
+  "automatic_io_state": "calibrated",
+  "profile_saved": true,
+  "ready_and_managed_seconds": 53.12412758311257,
+  "readiness_probe": "original postgres login environment",
+  "fixed_controls": {
+    "cpu.max": "720000 100000",
+    "memory.max": "20001980416",
+    "io.max": "253:0 rbps=15614453 wbps=14198679 riops=24 wiops=33",
+    "cpu.weight": "4",
+    "pids.max": "406648",
+    "memory.high": "max",
+    "memory.swap.max": "0",
+    "io.weight": "default 100"
+  },
+  "startup_checks": [
+    {
+      "name": "dbs-real-path-original-startup-default-automatic-IO",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    }
+  ],
+  "engine": {
+    "phase": "failed",
+    "checks": [
+      {
+        "name": "fixture_initial_rows",
+        "passed": true
+      },
+      {
+        "name": "physical_backup_finished",
+        "passed": true
+      },
+      {
+        "name": "streaming_new_rows_and_checksum",
+        "passed": true
+      },
+      {
+        "name": "standby_in_recovery",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_initial_checksum",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_is_writable",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_does_not_modify_primary",
+        "passed": true
+      },
+      {
+        "name": "logical_restore_initial_rows",
+        "passed": true
+      }
+    ],
+    "load_seconds": 51.56671806797385,
+    "physical_backup_seconds": 70.74591304990463,
+    "failure": "temporary standby pg_ctl fast stop did not finish within declared 30s; cleanup retry also timed out",
+    "logical_backup_seconds": 0.8951883330009878,
+    "probe_monitor_stopped": true
+  },
+  "native": {
+    "phase": "failed",
+    "requested_duration_seconds": 600,
+    "elapsed_seconds": 367.8050108270254,
+    "sql": {
+      "attempts": 154,
+      "errors": 19,
+      "histogram": [
+        113,
+        2,
+        0,
+        1,
+        0,
+        1,
+        3,
+        3,
+        3,
+        5,
+        4,
+        19
+      ],
+      "max_seconds": 5.016868218081072,
+      "p95_bucket_upper_seconds": null,
+      "sample_coverage": 0.5133333333333333,
+      "successes": 135,
+      "total_seconds": 118.50226747221313
+    },
+    "api": {
+      "attempts": 74,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        73,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0.010096631944179535,
+      "p95_bucket_upper_seconds": 0.01,
+      "sample_coverage": 0.6166666666666667,
+      "successes": 74,
+      "total_seconds": 0.5762209317181259
+    },
+    "interrupted": true,
+    "payload_integrity": true,
+    "primary_not_restarted": true,
+    "threads_stopped": true
+  },
+  "outcome": "failed engine cleanup and interrupted native smoke; never a 600s pass",
+  "HISDBS_executed_in_this_round": false,
+  "namespace_absent": true,
+  "follow_up": "fresh HISDBS-only percent round; fresh manual-budget control afterwards; no automatic cap increase and no deadline or native criterion relaxation"
+}
