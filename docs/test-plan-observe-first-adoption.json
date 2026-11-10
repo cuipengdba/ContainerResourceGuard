@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before launch",
+  "test_job_sha256": "d79bc8e0a8666093ee46d37ecd7510bade268febe8bdc263ce7dbfd2e88b7716",
+  "cases": [
+    "baseline-fixture/DBS",
+    "baseline-fixture/HISDBS",
+    "real-container-paths/DBS",
+    "real-container-paths/HISDBS"
+  ],
+  "sources": {
+    "previous": {
+      "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+      "binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+      "mode": "observe; no online lock protocol advertisement"
+    },
+    "candidate": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "mode": "manual enforce, unreleased combined development program"
+    }
+  },
+  "read_only_inventoried_fixture_sha256": {
+    "crg": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+    "containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "io-profile.json": "33eb53703bb6eb28ef2964ec5514e40cdef92c5bba48741245ecc27c185743e0",
+    "dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prerequisites": [
+    "R35 steady-overhead job terminal and private namespace independently absent before any business clone",
+    "R30 engineering checks passed",
+    "both binary and original cache/helper/supervisor/profile digests match",
+    "28GiB host available memory before each fresh clone;8GiB available memory and20GiB disk free while running"
+  ],
+  "budget": {
+    "original_runtime_cpu_cores": 8,
+    "original_runtime_memory_bytes": 21474836480,
+    "candidate_cpu_cores": 7.2,
+    "candidate_memory_max_bytes": 20001980416,
+    "candidate_read_write_bps": 67108864,
+    "candidate_read_write_iops": 4096
+  },
+  "criteria": {
+    "PG_API_and_observe_max_startup_seconds": 300,
+    "original_PG_shared_buffers": "8960MB",
+    "original_cache_enforce_seconds_after_ready": 45,
+    "original_cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_max_errors": 0,
+    "maximum_request_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "sample_coverage_min": 0.98,
+    "payload_integrity_PG_not_restarted_threads_stopped": true,
+    "candidate_steady_hold_seconds": 120,
+    "one_exact_Agent_and_same_helper_during_steady_hold_and_after_backout": true,
+    "original_business_PID1_cache_helper_and_other_five_controls_unchanged": true,
+    "daily0600_logs_with_v2_and_persistent_location": true,
+    "profile_content_and_mtime_unchanged": true,
+    "private_backups_immutable": true,
+    "OOM_kill_delta_max": 0,
+    "all_handoff_command_intervals_inside_native_measurement": true,
+    "API_confirmed_Pod_and_cgroup_absent_after_each_case_namespace_absent_at_end": true
+  },
+  "procedure": [
+    "Start exact old observe binary under original supervisor/helper and original database/cache; confirm all8 actual control values remain original.",
+    "Start64MiB native SQL/API workload. During its600-second interval use old disable and require actual originals plus no writer. Keep the same helper; do not create or signal another helper or restart business/cache.",
+    "Back up old program/config/private regular state files under0700/0600, including the empty post-disable journal. These backups are evidence, not a journal snapshot to import.",
+    "Atomically replace only own fixture installed binary/config from the host while disabled. Existing read-only container mounts remain read-only; this explicit fixture maintenance is not a product capability to update arbitrary read-only deployments. Enable candidate, wait for exactly one source-qualified child under same helper and exact manual3-resource caps. Hold at least120 actual seconds.",
+    "Use a separately copied exact old reference executable and backed-up old config to disable the compatible three-control candidate journal. Require no writer, actual originals and empty journal before atomically restoring old binary/config and enabling old observe. No private journal restoration/erasure.",
+    "Keep original helper/cache/business and returned old Agent stable through the rest of full600s; validate the final native report and original controls, then remove only disposable fixtures."
+  ],
+  "failure_policy": "Preserve each failure and command intervals; do not change resource budgets, database parameters or original business/native deadlines. No binary-install protocol bypass, unknown-format migration, extra Agent/helper, direct host cgroup writes, forced Pod deletion or production/baseline mutation.",
+  "limitations": [
+    "Specific known old and new source hashes and compatible CPU/memory/IO journal fields only; not a general upgrade from any old binary.",
+    "This explicit first-adoption/old-reference recovery exercise differs from preserving-limits online binary-install. Round13 refusal stays failed; Round15 protocol-qualified development upgrade remains separate.",
+    "The candidate is held for120s inside a600s workload spanning observe/adopt/backout; it is not600s entirely enforced or formal24h evidence.",
+    "Manual64 budget does not reverse default20/automatic30 failures. No new first calibration occurs.",
+    "The original formal baseline is still live and untouched. Passing rehearsal cannot start formal enforce until the entire original baseline has passed and receipts are archived.",
+    "No published-minor upgrade, seven-day or unavailable-hardware gate is closed by this plan."
+  ]
+}

@@ -150,3 +150,5 @@ P01/P03/P08/P10后续验收已在运行前归档[三资源候选测试计划](te
 组合开发源码50671aa在Windows/amd64、Go1.27.3下两个解析器各10分钟fuzz通过，包含12条明确归档的新百分比/默认/非法语料；不是Linux业务或资源开销结论，见[独立结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-three-resource-parser-fuzz-windows.json)。
 
 第18轮默认20%剩余三格补测结束：18项启动/控制/日志通过，三格业务组合均失败；main/HIS有完整失败原生结果，两个组合格仅有未完成快照，不计600秒通过。清理确认，连同第16轮四格均未通过，见[补测结果](testing-three-resource-default20-supplement.md)。
+
+P02/P08旧observe首次接入与旧参考入口恢复已在运行前归档[第19轮四格演练计划](plan-observe-first-adoption.md)；尚无通过结果。等R35终态并清理后执行，不修改原24h基线，不绕过缺协议的在线安装拒绝。
