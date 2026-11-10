@@ -90,3 +90,9 @@ R25真实路径隔离夹具可按`--role dbs`/`--role hisdbs`顺序运行，默�
 该基线仍使用启动快照中的旧observe程序，不能扩成新main/组合程序的24h证据；24h enforce、至少7天验收尚未开始。没有修改基线程序、配置或原有资源值。
 
 后续新程序24h enforce的[前置计划](plan-enforce24h-three-resource.md)已归档；旧程序首次接入[四格68项已通过](testing-observe-first-adoption.md)，原基线尚未完成，正式阶段仍未启动。
+
+## 18小时中间快照（不是完成报告）
+
+2026-11-10 17:33:40 UTC只读观察时，两角色原生负载实际记录65150.798/65147.754秒，SQL/API错误均为0，原生负载与协调入口仍在运行，OOM kill为0。第300秒及6h/12h/18h四个周期各角色10项内容检查和临时fixture清理已完成，全部仍为`content-passed-native-pending`，不把其中任何一个提前接受。见[固定18h快照](test-progress-baseline24h-18h-linux-amd64.json)。
+
+快照保留四周期的原exec诊断数值（包括超过5s的样本），其统计边界和预先冻结的原生组合协议仍按上文区分；没有修改判定或预算。此基线仍是旧observe程序，完整86400秒、最终原生覆盖/延迟/数据校验尚未完成，24h enforce及至少7天尚未开始。

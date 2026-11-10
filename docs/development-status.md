@@ -17,7 +17,7 @@
 | 当前程序稳定开销 | 三场景各1800秒、181样本通过，Agent单核CPU≤0.0267%、RSS≤9011200B，仅占位PID1工程结果 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
 | ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 原发布包原生控制器 | 原AMD64/ARM64资产、实际Linux6.8/7.0四格88项通过；非ARM厂商业务 | [精确下载资产结果](testing-released-cgroup-ci.md) |
-| 长期验收 | 旧observe基线超过12h仍运行，三周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定12h快照及边界](continuous-acceptance.md) |
+| 长期验收 | 旧observe基线已有固定18h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定18h快照及边界](continuous-acceptance.md) |
 
 以下保留早期源码/预算的开发历史，各自结论仅适用于报告中的程序和配置。R29暂缓的扩展资源不因历史实现而恢复为当前交付。
 
@@ -110,3 +110,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 第18轮默认20%剩余三格补测结束：18项启动/控制/日志通过，三格业务组合均失败；main/HIS有完整失败原生结果，两个组合格仅有未完成快照，不计600秒通过。清理确认，连同第16轮四格均未通过，见[补测结果](testing-three-resource-default20-supplement.md)。
 
 当前三资源/日志组合程序的正常、持续导出失败、只读cgroup三组30min工程开销测量已开始，尚未结束；不代替业务性能或正式长期验收。见[冻结计划和启动状态](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-long.md)。
+
+P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/partition-io)开发：文件系统/控制目标分离、同盘共享限额和标定/诊断已接入，Linux race及原整盘四格88项回归通过；[来源及未完成范围](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-io-core.md)。真实分区IO/旧二进制恢复仍待验收，未合入本线、未发布；正式长测程序和预算不变。
