@@ -1,0 +1,116 @@
+{
+  "kind": "native ARM64 execution receipts, not actual controller or vendor business acceptance",
+  "phase": "passed-for-native-scope",
+  "workflow_sha256": "f5702e8343c50c6a013415b13a8d1b1977d4f18193b7198d112b4cd4858e74c6",
+  "cases": {
+    "main": {
+      "source_revision": "041aeb161a1f5d19c66bd09fce49c0986094243c",
+      "native_workflow": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42823972495",
+      "native_workflow_conclusion": "success",
+      "environment": {
+        "kind": "native execution environment, not vendor business acceptance",
+        "source_revision": "041aeb161a1f5d19c66bd09fce49c0986094243c",
+        "runner_label": "ubuntu-24.04-arm",
+        "machine": "aarch64",
+        "kernel": "7.0.0-1017-azure",
+        "system": "Linux",
+        "go": {
+          "CGO_ENABLED": "1",
+          "GOARCH": "arm64",
+          "GOHOSTARCH": "arm64",
+          "GOHOSTOS": "linux",
+          "GOOS": "linux",
+          "GOVERSION": "go1.27.3"
+        },
+        "cgroup_filesystem": "cgroup2fs",
+        "native_runner_assertions_passed": true
+      },
+      "binary_sha256": "e142e30532d080753846d09715ce4f681629edd40274f55345d559e9b12ee9d5",
+      "ELF_machine": 183,
+      "packages_passed": [
+        "github.com/cuipengdba/ContainerResourceGuard/cmd/crg",
+        "github.com/cuipengdba/ContainerResourceGuard/internal/guard",
+        "github.com/cuipengdba/ContainerResourceGuard/internal/runlog"
+      ],
+      "Go_test_pass_events": 101,
+      "helper_scripts_completed": true,
+      "artifact_files_sha256": {
+        "build-info.json": "1b8760760ac1f6e95e0a91bd4b3f71d6df1ee24a134683be30e71969c05d79c3",
+        "crg": "e142e30532d080753846d09715ce4f681629edd40274f55345d559e9b12ee9d5",
+        "environment.json": "b74db3b03eef94c0c35485bc041f3f752ae91ffb3d834fcfd44205bd1108e027",
+        "go-test-race.jsonl": "869c190990ca596b50f24da880f95346eb8a46536ed9404275cb2dd3f1a28090",
+        "integration-patch.log": "4e0c548f38622f6244f5a5dbf92f8dc69d51dab6669c6ef668163dbe8fafe47d",
+        "result.json": "bc98c76193e1eb4d8a9edba677398429c0c97ad6b2caa7e96a406ac1a79e4d5f",
+        "supervisor.log": "fcf9c54d807a56ec35d43082a38345fdb20740cb27c9d9f708ebd194fd468ae0"
+      }
+    },
+    "combined": {
+      "source_revision": "ccfe0f7b0d98b6fe685ede522244f5696863fb60",
+      "native_workflow": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42824227490",
+      "native_workflow_conclusion": "success",
+      "environment": {
+        "kind": "native execution environment, not vendor business acceptance",
+        "source_revision": "ccfe0f7b0d98b6fe685ede522244f5696863fb60",
+        "runner_label": "ubuntu-24.04-arm",
+        "machine": "aarch64",
+        "kernel": "7.0.0-1017-azure",
+        "system": "Linux",
+        "go": {
+          "CGO_ENABLED": "1",
+          "GOARCH": "arm64",
+          "GOHOSTARCH": "arm64",
+          "GOHOSTOS": "linux",
+          "GOOS": "linux",
+          "GOVERSION": "go1.27.3"
+        },
+        "cgroup_filesystem": "cgroup2fs",
+        "native_runner_assertions_passed": true
+      },
+      "binary_sha256": "4c44bb1312e59e6e82e5b4fd99fd6d011dac4e598a5fbbd1a1179bcab70a35d7",
+      "ELF_machine": 183,
+      "packages_passed": [
+        "github.com/cuipengdba/ContainerResourceGuard/cmd/crg",
+        "github.com/cuipengdba/ContainerResourceGuard/internal/guard",
+        "github.com/cuipengdba/ContainerResourceGuard/internal/runlog"
+      ],
+      "Go_test_pass_events": 184,
+      "helper_scripts_completed": true,
+      "artifact_files_sha256": {
+        "build-info.json": "7467e0de500f7bf04279b6ec3fbdcea70e7c3b2adc164d7cce64956c6b8b878a",
+        "crg": "4c44bb1312e59e6e82e5b4fd99fd6d011dac4e598a5fbbd1a1179bcab70a35d7",
+        "environment.json": "0cf71acea0756585b061bc5c527fc8c4512ceab51a9127fcad2a9625a10be5af",
+        "go-test-race.jsonl": "29f7c40186a603d45373486b9cca5db8a3fb0abde2561d3215dcfaa83013d0ba",
+        "integration-patch.log": "4e0c548f38622f6244f5a5dbf92f8dc69d51dab6669c6ef668163dbe8fafe47d",
+        "result.json": "b99c927cd3a98ebd2567930fe86b8a1389802305ec014a1910cdbe767577e2d7",
+        "supervisor.log": "fcf9c54d807a56ec35d43082a38345fdb20740cb27c9d9f708ebd194fd468ae0"
+      }
+    }
+  },
+  "initial_package_failures": [
+    {
+      "source_revision": "041aeb161a1f5d19c66bd09fce49c0986094243c",
+      "workflow": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42823972469",
+      "conclusion": "failure",
+      "failed_step": "Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"",
+      "diagnosed_failure": "Packaged docs/native-arm64-ci.md referenced ../.github/workflows/native-arm64.yml; workflow sources are intentionally absent from the runtime tarball.",
+      "correction": "Replace only the documentation link with the public repository URL; preserve package-link validation and archive the initial failure.",
+      "corrected_full_CI_status": "requires new committed-source run; not asserted by this receipt"
+    },
+    {
+      "source_revision": "ccfe0f7b0d98b6fe685ede522244f5696863fb60",
+      "workflow": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42824227496",
+      "conclusion": "failure",
+      "failed_step": "Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"",
+      "diagnosed_failure": "Packaged docs/native-arm64-ci.md referenced ../.github/workflows/native-arm64.yml; workflow sources are intentionally absent from the runtime tarball.",
+      "correction": "Replace only the documentation link with the public repository URL; preserve package-link validation and archive the initial failure.",
+      "corrected_full_CI_status": "requires new committed-source run; not asserted by this receipt"
+    }
+  ],
+  "limitations": [
+    "ARM64 source execution is distinct from cross compilation, but is not DBS/HISDBS ARM64 business acceptance.",
+    "Native Go tests use isolated test filesystems; successful unit tests do not prove actual kernel CPU/memory/IO enforcement.",
+    "Record actual kernel; do not assume the runner label proves Linux6.x controller behavior.",
+    "Actual ARM64 container resource/fault/recovery/business and independent multi-device gates stay open.",
+    "No release tag/assets, original node deployment or live baseline program is changed."
+  ]
+}
