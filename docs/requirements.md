@@ -79,3 +79,5 @@ P06/P09新增[实际发布包原生控制器计划](plan-released-cgroup-ci.md)�
 P06/P09[原发布预览包AMD64/ARM64实测四格88项通过](testing-released-cgroup-ci.md)：直接运行原下载资产，实际Linux6.8/7.0、Docker28.0.4，三控制/自动百分比/新ID/日志/崩溃恢复和只读降级及自有夹具清理通过；发布标签、资产摘要和prerelease状态未改。只补原包占位容器证据，不关闭ARM厂商业务、物理多设备、分区或长期条件。
 
 P04/P06分区修复在`next/partition-io`独立开发：身份/整盘目标、同盘共享限额、标定与覆盖已接入，Windows测试/vet通过；Linux及真实分区验收仍待执行。见[设计与边界](partition-io.md)和[执行前冻结计划](test-plan-partition-io-core.json)。本分支未合入、未发布，不修改正式长测候选。
+
+分区修复核心已完成[Linux race与整盘回归](testing-partition-io-core.md)：源码af1a34d在Linux6.8双架构各212个Go pass事件、实际6.8/7.0整盘四格88项通过。建模分区测试与真实整盘效果分开记录；真实分区IO及旧二进制恢复仍待验收，未合入/发布。

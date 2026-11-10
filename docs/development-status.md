@@ -17,7 +17,7 @@
 | 当前程序稳定开销 | 三场景各1800秒、181样本通过，Agent单核CPU≤0.0267%、RSS≤9011200B，仅占位PID1工程结果 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
 | ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 原发布包原生控制器 | 原AMD64/ARM64资产、实际Linux6.8/7.0四格88项通过；非ARM厂商业务 | [精确下载资产结果](testing-released-cgroup-ci.md) |
-| 长期验收 | 旧observe基线超过12h仍运行，三周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定12h快照及边界](continuous-acceptance.md) |
+| 长期验收 | 旧observe基线已有固定18h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定18h快照及边界](continuous-acceptance.md) |
 
 以下保留早期源码/预算的开发历史，各自结论仅适用于报告中的程序和配置。R29暂缓的扩展资源不因历史实现而恢复为当前交付。
 
