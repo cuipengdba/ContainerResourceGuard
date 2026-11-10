@@ -15,10 +15,10 @@
 | 备份后新Pod ID | 四格8次原启动、88项通过，数据/日志/原值保持，仅手动64预算 | [冷重建](testing-three-resource-cold-rebuild.md) |
 | 在线维护 | 第13轮已发布预览首次安装拒绝；第15轮两套协议兼容开发构建22项/各600秒通过，不代表两个已发布次版本 | [拒绝记录](testing-three-resource-online-maintenance.md)、[开发构建往返](testing-three-resource-protocol-maintenance.md) |
 | 分区接入前d6程序开销 | 三场景各1800秒、181样本通过；仅其占位PID1工程结果，不能沿用为新分区程序 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
-| 当前分区组合d3706f3 | 原生ARM212个Go pass事件、实际整盘44项及构建身份9项通过；自身三场景1800秒开销通过且清理；真实路径复验另测 | [当前提交与范围](testing-partition-integration.md) |
+| 当前分区组合d3706f3 | 原生ARM212个Go pass事件、实际整盘44项及构建身份9项通过；自身三场景1800秒开销及DBS/HISDBS各600秒/12项通过且清理；当前故障/维护另判 | [当前提交与范围](testing-partition-integration.md) |
 | ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 原发布包原生控制器 | 原AMD64/ARM64资产、实际Linux6.8/7.0四格88项通过；非ARM厂商业务 | [精确下载资产结果](testing-released-cgroup-ci.md) |
-| 长期验收 | 旧observe基线已有固定20h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定20h快照及边界](continuous-acceptance.md) |
+| 长期验收 | 旧observe基线已有固定21h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定21h快照及边界](continuous-acceptance.md) |
 
 以下保留早期源码/预算的开发历史，各自结论仅适用于报告中的程序和配置。R29暂缓的扩展资源不因历史实现而恢复为当前交付。
 
@@ -143,3 +143,6 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 当前d370另按[真实路径维护冻结计划](test-plan-partition-realpaths-maintenance.json)验证50671aa开发程序到当前程序的升级/回退，两角色各600秒、预计22项；必须等当前20场景故障通过且夹具独立不存在后才创建维护Pod。当前未启动，不替代最近两个已发布次版本，也不绕过旧预览缺协议的拒绝。
+
+
+当前同程序故障[中间观察](test-progress-partition-realpaths-faults.json)9场景checked/49项通过，整轮尚未接受；[维护协调已启动但仅等待前置](test-start-partition-realpaths-maintenance.json)，0个Pod/0项。程序、预算和期限保持冻结，正式基线另有[21h固定观察](continuous-acceptance.md)，尚非86400秒通过。

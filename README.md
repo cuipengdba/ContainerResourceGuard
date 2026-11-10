@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+当前源码、已发布下载包、逐项实测与未完成条件，统一从[当前验收入口](docs/current-acceptance.md)查看；[52项原始任务索引](docs/current-task-registry.json)保留全部规划，未将历史构建结果改为当前程序结果。
+
 分区IO增强在独立开发分支完成[真实GPT双分区四格164项检查](docs/testing-partition-cgroup.md)，尚未合入本线或发布；现有下载包的覆盖范围保持单独记录。
 
 [171节点DBS/HISDBS本次升级、最终百分比与实测记录](docs/deployment-dbs-hisdbs-upgrade-20261110.zh.md)：CRG rc.3-preview.1 + CCG rc.11，DBS CPU30/内存25/IO40、HISDBS CPU30/内存35/IO40，CCG auto/enforce。

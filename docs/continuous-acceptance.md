@@ -101,3 +101,8 @@ R25真实路径隔离夹具可按`--role dbs`/`--role hisdbs`顺序运行，默�
 ## 20小时中间快照（不是完成报告）
 
 2026-11-10 19:46:05 UTC只读观察时，DBS/HISDBS原生负载分别记录72957.046/72955.955秒，原SQL/API错误和OOM kill均为0；原生Python和su入口仍在。4个周期各角色10项内容检查和临时fixture清理完成，仍须等待完整86400秒最终覆盖/延迟/数据校验，保持native-pending；原exec超过5秒的诊断保留。见[固定20h观察](test-progress-baseline24h-20h-linux-amd64.json)。基线仍为旧observe程序；尚非新候选的24h证据，24h enforce与至少7天尚未开始。
+
+
+## 21小时中间快照（不是完成报告）
+
+2026-11-10 20:26:50 UTC只读观察，DBS/HISDBS分别记录75658.138/75657.068秒，SQL/API错误和OOM kill均为0，原生Python与su入口保持。4周期内容仍等待完整86400秒最终原生判定，原超过5秒的exec诊断保留。[固定21h观察](test-progress-baseline24h-21h-linux-amd64.json)不代表长期通过；旧fc2 observe来源、固定d6后续enforce以及当前d370短/故障业务分开记录，24h enforce与至少7天仍未开始。
