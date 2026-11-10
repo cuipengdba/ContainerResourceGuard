@@ -23,3 +23,11 @@ PG/API/managed就绪仍限300秒。旧组合/DBS在约22.64秒的瞬时缓存enf
 先归档旧第9/10/11轮完整判定，区分已通过短测、前置检查失败、未执行在线升级及故障矩阵。新的四格完整通过后，才能启动依赖它的原业务在线升级/回退；不能复用旧三格成功冒充新程序已全覆盖。24h基线只读监测其已核对进程，结果完整后再另起等时长enforce；至少7天及未测硬件门槛继续保留。
 
 未发布组合线d6ea657的三项百分比持续热重载15项实际检查通过，包含独立默认/CLI优先/坏配置保持/manual切换/外部冲突及停用；夹具已清理，见[明确程序来源和边界的结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-three-percent-reload.md)。main预览不因此新增热重载功能。
+
+## 新候选在线维护的后置任务
+
+[执行前计划](test-plan-three-resource-online-maintenance.json)固定两个程序摘要、相同manual64预算、原生600秒及维护时间区间、原值/进程/缓存/数据保护与回退判定。仅当新四格全部通过且其namespace独立确认不存在，才创建两业务的顺序隔离夹具。旧第10轮未执行状态不被覆盖；本次新任务也不代表两个已发布次版本的升级门槛。
+
+## 新程序的完整辅助故障矩阵
+
+[运行前计划](test-plan-three-resource-fault-matrix.json)覆盖两程序×两业务×10场景（40场景），改用三个独立30%字段；只在前置维护任务终止且独立确认namespace不存在后创建夹具。原90秒启动、缓存45秒、总12秒TERM及SQL/探针/OOM条件保留。旧源码216项故障结果不外推为新源码通过。

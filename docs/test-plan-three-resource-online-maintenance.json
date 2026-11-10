@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen-before-launch; waits for complete new-source four-cell manual64 matrix and independently absent namespace",
+  "test_job_sha256": "f73417ed2b9dbff7b0a7973ae5aeca1ca237c47f59826a6454fca13d20f37017",
+  "programs": {
+    "rc3": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+    },
+    "v10": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+    }
+  },
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "PG_API_managed_readiness_seconds": 300,
+    "cache_after_API_seconds": 45,
+    "cache_also_inside_original_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "coverage_min": 0.98,
+    "all_maintenance_operations_inside_original_native_600s": true,
+    "same_PID1_cache_PG_start_time_and_payload": true,
+    "journal_original_bytes_and_controls_retained_during_upgrade": true,
+    "final_disable_restores_actual_runtime_originals": true
+  },
+  "operations": [
+    "quiesce",
+    "install combination candidate",
+    "immediate rollback",
+    "install again",
+    "enable combination agent under original helper",
+    "quiesce and rollback",
+    "enable previous released preview",
+    "finish native workload",
+    "disable and read true original controls"
+  ],
+  "limitations": [
+    "previous is one published engineering preview, candidate an unreleased combination binary; does not satisfy last-two-released-minor-version gate",
+    "not24h or7d",
+    "not production deployment",
+    "no test starts if any new matrix cell failed or lacked complete native/engine acceptance"
+  ]
+}
