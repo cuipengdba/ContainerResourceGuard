@@ -88,3 +88,6 @@ P04/P06独立分支[真实GPT双分区四格164项通过](testing-partition-cgro
 
 
 P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、原生ARM和44项整盘回归](testing-partition-integration.md)通过；两目标Windows/Linux程序摘要相同。原分区164项来源不变，新开销计划尚未启动，main及旧发布资产/正式长测来源不变。
+
+
+当前分区组合候选首轮开销夹具漏带可选启动脚本，90秒前置超时，0秒测量、退出1、namespace已清理；[失败和原标准第二次计划](testing-partition-integration.md)均保留。补全夹具，不修改产品、预算或超时。

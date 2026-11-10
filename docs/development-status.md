@@ -118,3 +118,6 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 组合d3706f3已完成[当前提交CI/两架构跨宿主构建及原生回归](testing-partition-integration.md)，原生ARM212个Go pass事件、实际整盘44项通过；新开销按固定计划待启动，既有正式长测和未发布边界不变。
+
+
+当前分区组合候选首轮开销夹具漏带可选启动脚本，90秒前置超时，0秒测量、退出1、namespace已清理；[失败和原标准第二次计划](testing-partition-integration.md)均保留。补全夹具，不修改产品、预算或超时。
