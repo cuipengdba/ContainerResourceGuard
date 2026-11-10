@@ -1,0 +1,22 @@
+{
+  "phase": "failed-before-measurement",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "771e516226ac4851f01148beeb165b8ea179ecdd0754c8255a2b6d9fd56fd6f2",
+  "actual_measured_seconds": 0,
+  "cases_accepted": 0,
+  "startup_deadline_seconds": 90,
+  "error": "startup status deadline",
+  "exit": 1,
+  "namespace_absent": true,
+  "cause": "Private fixture payload omitted examples/optional-agent.sh; supervisor starts business placeholder and conditionally sources this absent file, so no Agent/status is started. Product source unchanged.",
+  "evidence": {
+    "payload_examples": {
+      "supervisor.sh": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9"
+    },
+    "healthy_state_members": [],
+    "healthy_last_logs_empty": true,
+    "supervisor_sha256": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9"
+  },
+  "correction": "Separate fresh attempt includes exact-source optional-agent.sh and checks its digest before any Pod is created. Same program,90s startup deadline,45s warmup,1800s measurement and every original budget/threshold."
+}

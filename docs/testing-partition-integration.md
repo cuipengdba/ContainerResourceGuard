@@ -6,6 +6,6 @@
 
 Windows在全新独立checkout、固定Go1.27.3/目标参数构建，两目标程序及完整build-manifest与本提交Linux CI相同。AMD64程序SHA256为3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9，ARM64为d26c2336dfa7b98f3d87d0dad8520d6fbb852f40761b70060b455f91f119fc26。当前只核对构建证明生成和构建摘要，尚不能说这些新证明已做在线策略验证。原生CLI/控制回归使用各自注明的CI版本字段，和此next-compatibility-contract构建分别列明，不混用程序摘要。
 
-新候选另按[开销冻结计划](test-plan-partition-steady-overhead.json)复验：原45秒预热、1800秒实际测量、三独立占位容器、原CPU/RSS/写入/间隔/OOM阈值均不变，增加每次采样的PID1/Agent/cgroup身份和8项实际控制保持检查。当前尚未启动；前一d6程序结果不直接沿用。
+新候选另按[开销冻结计划](test-plan-partition-steady-overhead.json)复验：原45秒预热、1800秒实际测量、三独立占位容器、原CPU/RSS/写入/间隔/OOM阈值均不变，增加每次采样的PID1/Agent/cgroup身份和8项实际控制保持检查。首轮因测试包漏带optional-agent.sh而在90秒状态等待截止前失败，未进入采样；[失败记录](test-results-partition-steady-overhead-startup-failure.json)及退出1/夹具清理保留。补齐同源码辅助脚本并增加摘要前置检查后，按[第二次冻结计划](test-plan-partition-steady-overhead-retry.json)重测，当前尚未启动；程序、超时和验收阈值均不变，前一d6程序结果不直接沿用。
 
 此接入只在组合开发线，尚未合入main或发布；既有预览资产不改，97正式基线和正式共享切换的d6候选/工具/预算不改。ARM厂商业务、独立物理设备、24h+24h、至少7天和最近两个正式次版本维护仍不据此关闭，默认20%业务失败保持原结论。
