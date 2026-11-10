@@ -75,7 +75,7 @@
 | 任务 ID | 计划版本 | 开发范围 | 状态 |
 |---|---|---|---|
 | P01.1–P01.4 | v0.1.0-rc.3 | DBS/HISDBS 克隆回归、冷启动/原探针、Agent 开销修正、实际接入回退 | 最新三资源两程序×两业务的manual64矩阵24项/各600秒通过，冷重建88项/8次启动通过，40场景故障216项通过；默认20%第16/18轮四格业务组合均失败，两个组合格无完整原生终态，旧预算失败保留。见testing-three-resource-followup.md |
-| P02.1–P02.4 | v0.1.0 | 24h+24h 基线对比、业务指标、故障回归、稳定安装与支持矩阵 | 原24h observe基线已有固定12h快照，仍未最终验收；24h enforce及至少7天未开始。新候选前置计划已归档，旧observe首次接入四格68项已通过；正式基线完整通过及实时切换预检仍是启动前提。见plan-enforce24h-three-resource.md |
+| P02.1–P02.4 | v0.1.0 | 24h+24h 基线对比、业务指标、故障回归、稳定安装与支持矩阵 | 原24h observe基线已有固定18h快照、四周期内容native-pending，仍未最终验收；24h enforce及至少7天未开始。新候选前置计划已归档，旧observe首次接入四格68项已通过；正式基线完整通过及实时切换预检仍是启动前提。见plan-enforce24h-three-resource.md |
 | P03.1–P03.4 | v0.2.0 | 配置热重载、逐项写入、代次/待完成原因、模式与并发规则 | 旧safe-reload13项与三独立百分比组合候选d6ea657的15项持续重载分别归档；坏配置保持、独立默认/CLI优先、切换及外部冲突核对通过，未正式发布。见testing-three-resource-followup.md |
 | P04.1–P04.4 | v0.3.0 | 重复标定/profile 维护、路径覆盖、多设备/映射栈实测 | 开发分支已实现并有单设备短测；多设备/映射栈实测待完成 |
 | P05.1–P05.4 | v0.4.0 | 内存分类、多周期安全下调、原缓存程序共存、长期延后解释 | 已开发按需分类及可选跨周期窗口，11 项真实窗口检查与 Linux race/vet 通过；缓存高峰/长时仍待验收 |
@@ -188,3 +188,5 @@ P02/P08[共享程序切换与独立恢复演练已通过](testing-shared-program
 P06/P09新增[实际发布包原生控制器计划](plan-released-cgroup-ci.md)：直接校验并运行原预览AMD64/ARM64下载资产，计划四格实际6.x/7.x环境，不重建CRG。执行前冻结合同，未有结果不改写原资产覆盖范围；正式业务和长期门槛不变。
 
 P06/P09[原发布预览包AMD64/ARM64实测四格88项通过](testing-released-cgroup-ci.md)：直接运行原下载资产，实际Linux6.8/7.0、Docker28.0.4，三控制/自动百分比/新ID/日志/崩溃恢复和只读降级及自有夹具清理通过；发布标签、资产摘要和prerelease状态未改。只补原包占位容器证据，不关闭ARM厂商业务、物理多设备、分区或长期条件。
+
+P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/partition-io)开发：文件系统/控制目标分离、同盘共享限额和标定/诊断已接入，Linux race及原整盘四格88项回归通过；[来源及未完成范围](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-io-core.md)。真实分区IO/旧二进制恢复仍待验收，未合入本线、未发布；正式长测程序和预算不变。
