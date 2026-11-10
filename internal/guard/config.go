@@ -14,6 +14,8 @@ import (
 )
 
 type Config struct {
+	ResourcePercentages
+	LogDir              string        `json:"log_dir,omitempty"`
 	Percent             float64       `json:"percent,omitempty"`
 	ResourceMode        string        `json:"resource_mode,omitempty"`
 	Limits              *ManualLimits `json:"limits,omitempty"`
@@ -46,6 +48,14 @@ func (c *Config) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	_, c.percentPresent = fields["percent"]
+	for name := range c.ResourcePercentages.fields() {
+		if raw, ok := fields[name]; ok && bytes.Equal(bytes.TrimSpace(raw), []byte("null")) {
+			return errors.New(name + " cannot be null; omit it for default20")
+		}
+	}
+	if raw, ok := fields["percent"]; ok && bytes.Equal(bytes.TrimSpace(raw), []byte("null")) {
+		return errors.New("percent cannot be null")
+	}
 	return nil
 }
 
@@ -126,15 +136,15 @@ func (c *Config) Validate() error {
 	}
 	switch c.ResourceMode {
 	case "percent":
-		if math.IsNaN(c.Percent) || math.IsInf(c.Percent, 0) || c.Percent <= 0 || c.Percent > 100 {
-			return errors.New("percent must be greater than 0 and at most 100")
+		if err := c.validatePercentages(); err != nil {
+			return err
 		}
 		if c.Limits != nil {
 			return errors.New("percent resource_mode cannot include manual limits")
 		}
 	case "manual":
-		if c.percentPresent || c.Percent != 0 {
-			return errors.New("manual resource_mode cannot include percent")
+		if err := c.validatePercentages(); err != nil {
+			return err
 		}
 		if c.Limits == nil {
 			return errors.New("manual resource_mode requires limits")
@@ -193,6 +203,9 @@ func (c *Config) Validate() error {
 	if c.IOCalibration != "auto" && c.IOCalibration != "off" {
 		return errors.New("io_calibration must be auto or off")
 	}
+	if c.LogDir == "" {
+		c.LogDir = "/var/log/crg"
+	}
 	if c.StateDir == "" {
 		c.StateDir = filepath.Join(os.TempDir(), "containerresourceguard")
 	}
@@ -220,6 +233,10 @@ func (c *Config) Validate() error {
 }
 
 func ReadConfig(path string, percent float64) (Config, error) {
+	return ReadConfigPercentages(path, percent, ResourcePercentages{})
+}
+
+func ReadConfigPercentages(path string, percent float64, percentages ResourcePercentages) (Config, error) {
 	var c Config
 	if path != "" {
 		b, e := ReadBoundedFile(path)
@@ -233,6 +250,7 @@ func ReadConfig(path string, percent float64) (Config, error) {
 	if percent != 0 {
 		c.Percent = percent
 	}
+	c.ApplyPercentageOverrides(percentages)
 	return c, c.Validate()
 }
 

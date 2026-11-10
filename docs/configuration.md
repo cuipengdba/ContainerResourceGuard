@@ -12,17 +12,17 @@
 
 CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字节字符串支持整数及 B/KiB/MiB/GiB/TiB/KB/MB/GB/TB 后缀；无后缀表示字节，区分大小写，不接受小数、负数、指数、/s 或超出有符号 64 位范围的数值。IOPS 是正整数。manual 不能填写 percent，percent 模式不能填写 limits。
 
-新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。两者不填写就不改；pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
+新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。manual或旧percent兼容配置中两者不填写就不改；独立百分比模式按相应百分比默认20换算。pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
 
 组合候选已经实现双模式热切换和移除项协调，详见 [热重载](hot-reload.md)。完整候选先校验，再逐项应用；删除维度尝试恢复自有原值，内存/任务安全下调可能延后，需核对实际结果。旧版没有热重载时，先用匹配版本 disable 完成恢复，再改配置并 enable。
 
 ## 最小配置
 
 ```json
-{"percent":20}
+{}
 ```
 
-20 表示 20%，不是 0.2%。允许大于 0 且不超过 100 的数，可有小数。CPU、内存和标定 IO 默认使用同一比例，无需分别指定核数、内存容量或每秒字节数。
+CPU、内存、IO及五个扩展资源项分别默认20%。可写`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`单独调整，其他项各自20。完整字段、换算基准、范围、旧配置兼容见[独立百分比](independent-percentages.md)。
 
 例如 24 个在线逻辑 CPU、64 GiB 宿主机：20% 的请求为 4.8 核 CPU 时间与约 12.8 GiB 内存。内存向下按页对齐，CPU 使用 100000 微秒周期；实际值受既有上限和 cpuset 约束。CPU 不是绑定固定的若干核。
 
@@ -33,7 +33,10 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | JSON 字段 | 默认值 | 含义 |
 |---|---|---|
 | `resource_mode` | `percent` | 开发分支新增；percent 自动换算，manual 分别指定 |
-| `percent` | 无 | 百分比模式必填，范围 `(0,100]`；手动模式不能混用 |
+| `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/内存/标定IO，独立生效 |
+| 其余五个 `*_percent` | 各20 | pids、两种权重、memory high及swap，见独立百分比文档 |
+| `percent` | 不使用 | 仅旧配置兼容入口，不能混用独立百分比；manual禁用 |
+| `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
 | `pids_max` | 不修改 | 开发分支新增；任务数硬上限，包含线程 |
 | `cpu_weight` | 不修改 | 开发分支新增；CPU 相对竞争权重 1–10000 |
@@ -55,15 +58,17 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 | 命令/选项 | 用途 |
 |---|---|
-| `doctor --percent 20` | 只读发现与计算，输出设备及降级原因；不承诺内核一定接受写入 |
-| `run --percent 20` | 只管理自身，持续执行 |
+| `doctor` | 只读发现与计算，输出设备及降级原因；不承诺内核一定接受写入 |
+| `run` | 只管理自身，持续执行 |
 | `run --config FILE` | 从文件读取配置 |
-| `--percent N` | 显式覆盖配置文件的 percent |
+| `--cpu-percent N` / `--memory-percent N` / `--io-percent N` | 独立覆盖对应百分比，其余各自默认20；其余资源也有对应CLI |
+| `--percent N` | 仅旧配置兼容，不能与独立百分比混用 |
+| `--log-dir DIR` | 覆盖每日私有日志目录，详见[日志](logging.md) |
 | `--state-dir DIR` | 覆盖默认状态目录，必须容器独立 |
 | `--io-profile FILE` | 覆盖标定文件路径 |
 | `run --once` | 执行一轮并退出；已写限额继续存在 |
 | `status [--config FILE] [--state-dir DIR] [--format human]` | 身份校验、快照年龄、当时读到的控制值 |
-| `preflight --percent 20 [--format human]` | 计划与控制文件打开权限预检，不写资源值 |
+| `preflight [--format human]` | 计划与控制文件打开权限预检，不写资源值 |
 | `disable [--config FILE] [--state-dir DIR]` | 标记停用、等待 Agent 释放锁、恢复自有原值 |
 | `enable [--config FILE] [--state-dir DIR]` | 删除停用标记，辅助循环下次重试时重启 Agent |
 | `reload [--state-dir DIR] [--config FILE]` | 向同一容器/当前 Agent 会话请求重载；requested不等价已生效 |
@@ -84,7 +89,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 - 既有外部 CPU/内存/IO 限额更严格时保留更严格值。上级内存和 CPU 配额也参与约束；隐藏的祖先仍由内核限制。
 - 内存下调检查 `5% + 16 MiB` 余量、采样增长、可用的 events/PSI，并在日志同步后复查；见 [运维说明](operations.md)。瞬时检查不能保证并发增长后绝不 OOM。
-- 仅显式 memory_high / memory_swap_max 才接管对应值；不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
+- 独立百分比模式默认接管memory high及swap；manual及旧percent配置仅显式绝对值才接管。不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
 - IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
@@ -92,3 +97,5 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
 
 `io_calibration` 默认 `auto`，可选 `off`；percent/enforce首次启动自动选最大合格文件系统，缺基准才测，observe/manual及只读命令不测。默认输出 `/etc/crg/io-profile.json`，详见[自动标定](automatic-io-calibration.md)。RC3写v1汇总；1.0组合候选写v2样本，未发布版本勿混用。
+
+R27/R28覆盖旧默认：各资源独立百分比默认20，运行日志默认启用；手动模式仍按绝对值且省略项不接管。具体示例以[独立百分比](independent-percentages.md)及[日志](logging.md)为准，历史测试使用的旧配置不追改。

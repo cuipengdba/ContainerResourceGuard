@@ -22,23 +22,24 @@ type DiagnosticControl struct {
 // A positive allowlist: never embed config, paths, error text, environment,
 // journal original values, command lines, business logs, or file contents.
 type DiagnosticBundle struct {
-	Schema             string              `json:"schema"`
-	CreatedUTC         string              `json:"created_utc"`
-	Included           []string            `json:"included"`
-	OS                 string              `json:"os"`
-	Arch               string              `json:"arch"`
-	StatusAvailable    bool                `json:"status_available"`
-	SnapshotAgeSeconds int64               `json:"snapshot_age_seconds,omitempty"`
-	WriterLockHeld     bool                `json:"writer_lock_held"`
-	State              string              `json:"state"`
-	Mode               string              `json:"mode"`
-	ResourceMode       string              `json:"resource_mode"`
-	Percent            float64             `json:"percent"`
-	HostCPUs           int                 `json:"host_cpus"`
-	HostMemoryBytes    uint64              `json:"host_memory_bytes"`
-	Controls           []DiagnosticControl `json:"controls"`
-	OmittedControls    int                 `json:"omitted_controls"`
-	Memory             MemorySnapshot      `json:"memory"`
+	Percentages        *ResourcePercentages `json:"percentages,omitempty"`
+	Schema             string               `json:"schema"`
+	CreatedUTC         string               `json:"created_utc"`
+	Included           []string             `json:"included"`
+	OS                 string               `json:"os"`
+	Arch               string               `json:"arch"`
+	StatusAvailable    bool                 `json:"status_available"`
+	SnapshotAgeSeconds int64                `json:"snapshot_age_seconds,omitempty"`
+	WriterLockHeld     bool                 `json:"writer_lock_held"`
+	State              string               `json:"state"`
+	Mode               string               `json:"mode"`
+	ResourceMode       string               `json:"resource_mode"`
+	Percent            float64              `json:"percent"`
+	HostCPUs           int                  `json:"host_cpus"`
+	HostMemoryBytes    uint64               `json:"host_memory_bytes"`
+	Controls           []DiagnosticControl  `json:"controls"`
+	OmittedControls    int                  `json:"omitted_controls"`
+	Memory             MemorySnapshot       `json:"memory"`
 }
 
 func diagnosticState(s string) string {
@@ -59,6 +60,18 @@ func BuildDiagnosticBundle(env Environment, status *StatusView, files Files) Dia
 	r.State, r.Mode, r.ResourceMode = diagnosticState(status.State), diagnosticState(status.Mode), diagnosticState(status.Plan.ResourceMode)
 	if status.Plan.Percent >= 0 && status.Plan.Percent <= 100 {
 		r.Percent = status.Plan.Percent
+	}
+	if status.Plan.Percentages != nil {
+		values := *status.Plan.Percentages
+		valid := true
+		for name, value := range values.fields() {
+			if value == nil || *value < 0 || *value > 100 || *value != *value || *value == 0 && name != "memory_swap_percent" {
+				valid = false
+			}
+		}
+		if valid {
+			r.Percentages = &values
+		}
 	}
 	for _, item := range status.Actual {
 		if len(r.Controls) >= 64 {

@@ -72,7 +72,8 @@ func (m ManualLimits) Validate() error {
 
 func requestedResources(c Config, env Environment) (float64, uint64, bool, bool) {
 	if c.ResourceMode != "manual" {
-		return float64(env.OnlineCPUs) * c.Percent / 100, uint64(float64(env.MemoryBytes) * c.Percent / 100), true, true
+		cpu, memory, _ := c.corePercentages()
+		return float64(env.OnlineCPUs) * cpu / 100, uint64(float64(env.MemoryBytes) * memory / 100), true, true
 	}
 	var cpu float64
 	var mem uint64

@@ -56,6 +56,8 @@ func readBoundedFile(path string, state bool) ([]byte, error) {
 }
 
 type ConfigOverrides struct {
+	ResourcePercentages
+	LogDir    string
 	Percent   float64
 	StateDir  string
 	IOProfile string
@@ -136,6 +138,10 @@ func (w *ConfigWatcher) Poll(env Environment, original map[string]string, force 
 	}
 	if w.Overrides.IOProfile != "" {
 		candidate.IOProfile = w.Overrides.IOProfile
+	}
+	candidate.ApplyPercentageOverrides(w.Overrides.ResourcePercentages)
+	if w.Overrides.LogDir != "" {
+		candidate.LogDir = w.Overrides.LogDir
 	}
 	if err = candidate.Validate(); err != nil {
 		return w.reject(fmt.Errorf("configuration rejected; last good policy retained: %w", err))

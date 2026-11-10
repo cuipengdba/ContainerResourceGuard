@@ -2,21 +2,19 @@
 
 容器内运行的轻量资源控制程序，简称 **CRG**。严格 **一个容器、一份 Agent、独立控制自身资源**。无需 Operator、CRD、Docker socket 或 Kubernetes API 权限。
 
-只设置一个总百分比：
+CPU、内存、IO分别设置百分比，省略的资源项各自默认20%。最小配置`{}`，也可单独调整：
 
 ```json
-{"percent":20}
+{"cpu_percent":30,"memory_percent":40,"io_percent":25}
 ```
 
-- CPU：宿主机在线逻辑 CPU 数 × 20%，转换为整个容器共享的 CPU 时间配额。
-- 内存：宿主机 `MemTotal` × 20%，转换为整个容器的内存硬上限。
-- IO：已标定设备的读写 BPS、读写 IOPS 基准分别 × 20%，通过 `io.max` 设置硬上限。
+其他五项资源参数也各有独立百分比，省略时各自20，详见[独立百分比](docs/independent-percentages.md)。CPU/内存取宿主容量，IO取自动标定基准；不需手动填写核数、字节或测速目录。
 
 **IO 的百分比是特定测试方法的实测基准百分比，不是磁盘固定物理极限。没有可用标定文件就显示 IO 未管理，不用竞争权重冒充硬限速。**
 
 ## 快速使用
 
-当前 RC3 / 1.0 开发候选已改为默认自动选盘：仍只填一个 percent。原 supervisor 异步启动 CRG，首次选择容器内容量最大的合格可写本地磁盘文件系统并保存基准，重启后复用；不必手工指定目录或输出路径。业务和缓存程序独立启动，失败不阻断业务。已发布 RC2 仍是原显式标定行为。
+当前 RC3 / 1.0 开发候选已改为默认自动选盘：CPU、内存、IO独立百分比默认各20。原 supervisor 异步启动 CRG，首次选择容器内容量最大的合格可写本地磁盘文件系统并保存基准，重启后复用；不必手工指定目录或输出路径。业务和缓存程序独立启动，失败不阻断业务。已发布 RC2 仍是原显式标定行为。
 
 测速只使用独立128MiB临时普通文件，不改业务文件；存在真实IO负载，额外设备覆盖不自动假定。只读、无稳定设备身份或已有限速等情况会明确降级。规则与验收状态见[自动IO标定](docs/automatic-io-calibration.md)。
 
@@ -24,19 +22,19 @@
 
 ```bash
 # 只读检查与预览；不写限额
-crg doctor --percent 20
+crg doctor
 
-# 当前容器持续管理；percent 同时作用于三类资源
-crg run --percent 20
+# 当前容器持续管理；各资源默认20%
+crg run
 
-# 也可使用仅包含 percent 的配置文件
+# 也可使用最小{}或分别填写百分比的配置文件
 crg run --config /etc/crg/config.json
 
 # 本容器状态
 crg status --format human
 
 # 安装预检（只打开/关闭写入入口，不写资源值）
-crg preflight --percent 20 --format human
+crg preflight --format human
 ```
 
 先观察时用 `examples/observe.json`。`run` 的默认模式是 **enforce**；`doctor` 始终只读。运行时不热加载配置，修改后仅重启辅助 Agent。
@@ -69,8 +67,8 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 |---|---|
 | [全部需求](docs/requirements.md) | 用户需求、约定与边界，逐项编号 |
 | [开发任务](docs/tasks.md) | 实现、验证状态和证据 |
-| [后续十版规划](docs/roadmap.md) | 从 RC3 到 1.0 的十个版本、48 项任务与发布条件 |
-| [配置](docs/configuration.md) | 一个 percent 的语义与所有可选参数 |
+| [后续十版规划](docs/roadmap.md) | 从 RC3 到 1.0 的十个版本、52 项任务与发布条件 |
+| [配置](docs/configuration.md) | 独立百分比默认20、手动模式与可选参数 |
 | [安装与升级](docs/installation.md) | 架构选择、持久部署、校验、升级和回退 |
 | [安装接入开发](docs/supervisor-install.md) | 摘要预览、私有备份、可选接入和有恢复门槛的卸载 |
 | [可信发布开发](docs/release-provenance.md) | 固定工具链、SBOM、来源证明及离线验证的真实证据 |
@@ -97,3 +95,5 @@ python3 scripts/check-package.py dev
 ```
 
 标准库实现，无第三方运行时依赖。最低 Go 版本见 `go.mod`。MIT License。
+
+运行日志默认每天一个文件，保留最近30个日历日，总量不超过1GB，写日志失败仍放行业务。详见[每日日志](docs/logging.md)。旧percent配置仅作兼容；新功能尚未发布，验收状态见任务清单。
