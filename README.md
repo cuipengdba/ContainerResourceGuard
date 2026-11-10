@@ -74,6 +74,9 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 | [后续十版规划](docs/roadmap.md) | 从 RC3 到 1.0 的十个版本、46 项任务与发布条件 |
 | [配置](docs/configuration.md) | 一个 percent 的语义与所有可选参数 |
 | [安装与升级](docs/installation.md) | 架构选择、持久部署、校验、升级和回退 |
+| [安装接入开发](docs/supervisor-install.md) | 摘要预览、私有备份、可选接入和有恢复门槛的卸载 |
+| [可信发布开发](docs/release-provenance.md) | 固定工具链、SBOM、来源证明及离线验证的真实证据 |
+| [1.0 兼容契约草案](docs/compatibility-contract.md) | 配置/CLI/日志兼容、原因码与维护边界；尚未发布 |
 | [本地运维](docs/operations.md) | 预检、人类可读状态、停用/启用、低频状态与覆盖范围 |
 | [架构](docs/architecture.md) | 一对一发现、写入、恢复和冲突处理 |
 | [容器接入](docs/integration.md) | 原 start.sh / supervisor / 缓存控制关系 |

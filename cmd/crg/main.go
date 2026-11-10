@@ -35,12 +35,23 @@ func main() {
 	if e := mainErr(); e != nil {
 		var reported reportedError
 		if !errors.As(e, &reported) {
-			emit(map[string]any{"state": "degraded", "error": e.Error(), "business_action": "none"})
+			emit(failureOutput(e))
 		}
 		os.Exit(1)
 	}
 }
-func mainErr() error {
+func mainErr() (result error) {
+	stage := "usage_invalid"
+	defer func() {
+		if result == nil {
+			return
+		}
+		var reported reportedError
+		if errors.As(result, &reported) {
+			return
+		}
+		result = &commandError{commandFailureReason(result, stage), result}
+	}()
 	if len(os.Args) < 2 {
 		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|quiesce|binary-install|binary-rollback|supervisor-plan|supervisor-install|supervisor-uninstall|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
@@ -102,6 +113,7 @@ func mainErr() error {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	if cmd == "profile-check" || cmd == "profile-merge" {
+		stage = "profile_operation_failed"
 		path := *profile
 		if path == "" {
 			path = "/etc/crg/io-profile.json"
@@ -144,6 +156,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "calibrate" {
+		stage = "calibration_failed"
 		if *dir == "" {
 			return errors.New("calibrate requires --directory; never benchmarks at business startup")
 		}
@@ -174,6 +187,7 @@ func mainErr() error {
 	}
 	var c guard.Config
 	var e error
+	stage = "config_invalid"
 	if cmd == "reload" || ((cmd == "restore" || cmd == "status" || cmd == "diagnose" || cmd == "upgrade-check" || cmd == "state-backup" || cmd == "quiesce" || cmd == "disable" || cmd == "enable") && *config == "") {
 		c = guard.Config{Percent: 100}
 		if *state != "" {
@@ -197,11 +211,13 @@ func mainErr() error {
 	if e = c.Validate(); e != nil {
 		return e
 	}
+	stage = "discovery_failed"
 	env, e := guard.Discover()
 	if e != nil {
 		return e
 	}
 	if cmd == "supervisor-plan" || cmd == "supervisor-install" || cmd == "supervisor-uninstall" {
+		stage = "supervisor_maintenance_failed"
 		if *config == "" || *supervisorPath == "" {
 			return errors.New("supervisor maintenance requires explicit --config and --supervisor")
 		}
@@ -223,6 +239,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "binary-install" || cmd == "binary-rollback" {
+		stage = "binary_maintenance_failed"
 		if *config == "" || *installDir == "" || *backupDir == "" {
 			return errors.New("binary maintenance requires explicit --config, --install-dir and --backup-dir")
 		}
@@ -240,6 +257,10 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "upgrade-check" || cmd == "state-backup" {
+		stage = "upgrade_check_failed"
+		if cmd == "state-backup" {
+			stage = "state_backup_failed"
+		}
 		if cmd == "upgrade-check" {
 			check, err := guard.CheckUpgrade(c, env)
 			if err != nil {
@@ -265,6 +286,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "diagnose" {
+		stage = "diagnostic_failed"
 		var snapshot *guard.StatusView
 		if v, err := guard.ReadStatus(c, env); err == nil {
 			snapshot = &v
@@ -291,6 +313,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "reload" {
+		stage = "reload_request_failed"
 		request, err := guard.RequestReload(c, env, *config)
 		if err != nil {
 			return err
@@ -299,6 +322,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "status" {
+		stage = "status_unavailable"
 		v, err := guard.ReadStatus(c, env)
 		if err != nil {
 			return err
@@ -311,6 +335,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "preflight" {
+		stage = "preflight_failed"
 		v, err := guard.CheckPreflight(c, env)
 		if err != nil {
 			return err
@@ -327,6 +352,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "doctor" {
+		stage = "plan_failed"
 		p, e := guard.BuildPlan(c, env, nil)
 		if e != nil {
 			return e
@@ -338,7 +364,9 @@ func mainErr() error {
 		}
 		return nil
 	}
+	stage = cmd + "_failed"
 	if cmd == "run" {
+		stage = "runtime_failed"
 		disabled, err := guard.IsDisabled(c, env)
 		if err != nil {
 			return fmt.Errorf("cannot check disable marker; refusing writes: %w", err)
@@ -349,6 +377,7 @@ func mainErr() error {
 		}
 	}
 	if cmd == "disable" || cmd == "quiesce" {
+		stage = cmd + "_failed"
 		if err := guard.Disable(c, env); err != nil {
 			return fmt.Errorf("cannot persist disable marker: %w", err)
 		}
@@ -385,6 +414,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "enable" {
+		stage = "enable_failed"
 		if err := guard.Enable(c); err != nil {
 			return err
 		}
@@ -392,6 +422,7 @@ func mainErr() error {
 		return nil
 	}
 	if cmd == "restore" || cmd == "disable" {
+		stage = "restore_failed"
 		r := engine.Restore()
 		// Explicit restore/disable may wait a bounded period for an opt-in
 		// stability window. This command is never a business startup gate.
@@ -413,10 +444,11 @@ func mainErr() error {
 		if err := guard.AtomicJSON(filepath.Join(c.StateDir, "status.json"), r); err != nil {
 			r.State, r.Error = "degraded", err.Error()
 		}
-		emit(r)
 		if r.State != "restored" {
+			emitIncompleteRestore(r)
 			return reportedError{"restore incomplete; external values or permissions retained"}
 		}
+		emit(r)
 		return nil
 	}
 	overrides := guard.ConfigOverrides{StateDir: *state, IOProfile: *profile}
