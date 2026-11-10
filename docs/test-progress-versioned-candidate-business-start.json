@@ -1,0 +1,51 @@
+{
+  "phase": "pending",
+  "observed_node_utc": "2026-11-10T23:44:13Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "version": "v1.0.0",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "job_sha256": "4bb896692b38ddb6dd7c28a9e019c81b4727f2f0ebcd664ca2f2318331d2de77",
+  "overhead_prerequisite_passed_and_cleaned": true,
+  "overhead_report_sha256": "6c3802781939295fba03b63d465bf371ffac127835173efce83d275dfb8cdc76",
+  "business_phase": "testing-v10-dbs-bw64",
+  "role_phases": {
+    "v10-dbs-bw64": "booting"
+  },
+  "business_checks": [
+    {
+      "name": "v10-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    }
+  ],
+  "DBS_startup_seconds": 23.14054090110585,
+  "native_workloads": {
+    "v10-dbs-bw64/dbs-business/postgresql/basebackup/crg-soak-202611110640/load.json": {
+      "phase": "preparing",
+      "elapsed_seconds": null,
+      "requested_duration_seconds": 600
+    }
+  },
+  "business_namespace_created": true,
+  "business_coordinator_identity_verified": true,
+  "faults_phase": "waiting-for-current-business-acceptance-and-cleanup",
+  "faults_namespace_absent": true,
+  "scope": "Actual DBS startup five checks passed, native workload preparing after independently accepted own binary overhead; not600s business or20case faults acceptance.",
+  "P10_complete": false,
+  "release_accepted": false
+}
