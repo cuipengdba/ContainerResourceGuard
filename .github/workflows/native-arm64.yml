@@ -48,6 +48,7 @@ jobs:
         run: |
           bash tests/supervisor.sh > ci-native-arm64/supervisor.log 2>&1
           python3 tests/integration-patch.py > ci-native-arm64/integration-patch.log 2>&1
+          python3 tests/vendor-enforce-stage-checks.py > ci-native-arm64/vendor-enforce-stage-checks.log 2>&1
       - name: Build and execute native CLI
         run: |
           CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-s -w -X main.version=native-ci -X main.revision=$GITHUB_SHA" -o ci-native-arm64/crg ./cmd/crg
