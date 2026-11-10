@@ -261,3 +261,6 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-postflight-execution.md)：Linux7方法与真实提前执行拒绝通过，独立短数据演练已启动，原七天数据未触碰。恢复/重建/维护组件进入实际演练；七天后的执行、老化辅助故障与最终综合/支持52项审计仍未完成，原任务定义及发布门槛保持。
+
+
+后置执行器独立短数据演练已[36项/两角色各600秒通过并独立确认清理](testing-aged-postflight-execution.md)，实际七天后置和老化辅助故障仍待完整长测。另归档[正式阶段当前12/14只读前置](test-results-formal-stage-current-readiness.json)及[未发布v1.0.0新产物身份](release-candidate-identity.md)；不弱化隔离、来源或52项门槛，不将开发程序时长移给新摘要。
