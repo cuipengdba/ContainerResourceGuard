@@ -1,0 +1,29 @@
+{
+  "kind": "fixed coordinator launch/wait snapshot, not business execution or acceptance",
+  "phase": "waiting-for-exact-source-overhead-terminal-cleanup",
+  "observed_node_utc": "2026-11-10T19:46:05Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "b58b59ca86bda901ad6b6db7b6a55e41d5fdf52e81d06eabccf5960c9d92fb5f",
+  "runner_identity_verified": true,
+  "worker_entry_verified": true,
+  "namespace_independently_absent": true,
+  "business_Pods_created": 0,
+  "cases_measured": 0,
+  "checks_accepted": 0,
+  "declared_test_budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "bandwidth_cases_MiB_per_second": [
+      64
+    ],
+    "read_write_iops": 4096
+  },
+  "prerequisite": "Exact-source overhead passed, exit0 and its namespace independently absent before any business Pod creation.",
+  "scope": "same container paths and read-only CCG mount as read-only deployment inventory; fresh private test-node backing directories and loopback DCS, no production data; original business/image/database parameters",
+  "limitations": [
+    "Only coordinator is running; no600s business result at this observation.",
+    "Formal baseline and fixed staged d6 candidate remain unchanged.",
+    "Default20% business failures and all long/hardware gates remain separate."
+  ]
+}

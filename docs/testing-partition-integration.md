@@ -10,4 +10,4 @@ Windows在全新独立checkout、固定Go1.27.3/目标参数构建，两目标�
 
 此接入只在组合开发线，尚未合入main或发布；既有预览资产不改，97正式基线和正式共享切换的d6候选/工具/预算不改。ARM厂商业务、独立物理设备、24h+24h、至少7天和最近两个正式次版本维护仍不据此关闭，默认20%业务失败保持原结论。
 
-下一步按[当前程序真实路径业务冻结计划](test-plan-partition-realpaths-business.json)分别测试DBS/HISDBS，仍为原手动64MiB/s预算、各600秒及原指标；必须先等本程序开销终态通过且独立确认夹具已清理，才能创建业务Pod。当前计划未启动，不沿用旧d6的业务结果。
+下一步按[当前程序真实路径业务冻结计划](test-plan-partition-realpaths-business.json)分别测试DBS/HISDBS，仍为原手动64MiB/s预算、各600秒及原指标；必须先等本程序开销终态通过且独立确认夹具已清理，才能创建业务Pod。[协调进程已启动并等待前置开销验收](test-start-partition-realpaths-business.json)，开始观察时业务namespace仍不存在、0个Pod、0个测量格，不沿用旧d6的业务结果。
