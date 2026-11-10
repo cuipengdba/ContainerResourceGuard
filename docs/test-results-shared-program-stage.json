@@ -1,0 +1,900 @@
+{
+  "date": "2026-11-10",
+  "phase": "passed",
+  "observed_utc": "2026-11-10T16:07:34Z",
+  "scope": "Actual amd64 original-image two-role shared-program explicit stage and separate terminal recovery; not a product multi-container controller.",
+  "source_sha256": {
+    "vendor-enforce-stage.py": "d044105dc208ea7032b23db7d2bd28e34d678c0ee10eaf34acbefa3da54f273c",
+    "vendor-enforce-stage-checks.py": "c57625e151d0bd2e97b9714354b263bb889bb3b0530aef215ada5e154cc0711c",
+    "vendor-enforce-stage-rehearsal.py": "2f06cb1c18580b409f43e09ac4a32e1f13ad7edc77e396df112172b8b853e700"
+  },
+  "source_commits": {
+    "main": "6e8f2e55bb745727369f45a615a6561993e35ea0",
+    "combined": "b3aae46e75bc5c7aac2f50873544e54e05f7f13d"
+  },
+  "actual_Linux_formal_refusal": {
+    "phase": "passed",
+    "observed_utc": "2026-11-10T15:42:53Z",
+    "stage_source_sha256": "d044105dc208ea7032b23db7d2bd28e34d678c0ee10eaf34acbefa3da54f273c",
+    "manifest_sha256": "49ccbad66974530e4863d9e0a37b9e44771453958bcabe9e8e24f8795599b22d",
+    "results": {
+      "readonly": {
+        "exit": 2,
+        "result": {
+          "schema": "crg-vendor-enforce-stage-report-v1",
+          "phase": "not-ready",
+          "kind": "formal",
+          "checks": {
+            "private-directories": {
+              "passed": true
+            },
+            "original-fixture-sources": {
+              "passed": true
+            },
+            "exact-candidate": {
+              "passed": true
+            },
+            "unchanged-workload-tools": {
+              "passed": true
+            },
+            "workload-tool-interface-before-stage": {
+              "passed": true
+            },
+            "namespace-identity": {
+              "passed": true
+            },
+            "original-reserve": {
+              "passed": true
+            },
+            "other-business-fixtures": {
+              "passed": true
+            },
+            "dbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "dbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "hisdbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "hisdbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "full-prior-acceptance-and-cleanup": {
+              "passed": false,
+              "failure_class": "RuntimeError",
+              "detail": "entire prior campaign not accepted"
+            },
+            "exact-shared-program-rehearsal": {
+              "passed": false,
+              "failure_class": "FileNotFoundError"
+            }
+          },
+          "operations": [],
+          "stage_source_sha256": "d044105dc208ea7032b23db7d2bd28e34d678c0ee10eaf34acbefa3da54f273c",
+          "scope": "lab fixture only; not a production multi-container controller",
+          "manifest_sha256": "49ccbad66974530e4863d9e0a37b9e44771453958bcabe9e8e24f8795599b22d"
+        }
+      },
+      "execute": {
+        "exit": 2,
+        "result": {
+          "schema": "crg-vendor-enforce-stage-report-v1",
+          "phase": "not-ready",
+          "kind": "formal",
+          "checks": {
+            "private-directories": {
+              "passed": true
+            },
+            "original-fixture-sources": {
+              "passed": true
+            },
+            "exact-candidate": {
+              "passed": true
+            },
+            "unchanged-workload-tools": {
+              "passed": true
+            },
+            "workload-tool-interface-before-stage": {
+              "passed": true
+            },
+            "namespace-identity": {
+              "passed": true
+            },
+            "original-reserve": {
+              "passed": true
+            },
+            "other-business-fixtures": {
+              "passed": true
+            },
+            "dbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "dbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "hisdbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "hisdbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "full-prior-acceptance-and-cleanup": {
+              "passed": false,
+              "failure_class": "RuntimeError",
+              "detail": "entire prior campaign not accepted"
+            },
+            "exact-shared-program-rehearsal": {
+              "passed": false,
+              "failure_class": "FileNotFoundError"
+            }
+          },
+          "operations": [],
+          "stage_source_sha256": "d044105dc208ea7032b23db7d2bd28e34d678c0ee10eaf34acbefa3da54f273c",
+          "scope": "lab fixture only; not a production multi-container controller",
+          "manifest_sha256": "49ccbad66974530e4863d9e0a37b9e44771453958bcabe9e8e24f8795599b22d",
+          "failure_class": "RuntimeError",
+          "refused_before_stage_writes": true
+        }
+      }
+    },
+    "same_original_sources_journals_controls_identities_and_directory_entries": true,
+    "output_absent": true,
+    "lock_absent": true,
+    "recovery_directory_absent": true
+  },
+  "first_upload_source_refusal": {
+    "phase": "first-launch-refused-before-clone-creation",
+    "fixture_root_absent": true,
+    "namespace_absent": true,
+    "cause": "Uploaded current-repository campaign and engine sources differed from the original frozen baseline tools; exact source guard refused before business setup.",
+    "corrective_action": "Copied original baseline tool bytes only after verifying all three frozen digests; first uploaded sources/log/handle retained. Stage/launcher source, budgets, durations and gates unchanged.",
+    "correct_tool_sha256": {
+      "vendor-soak-campaign.py": "8932874640816c365963513872567afd0c5b75247102d9866f511b0fb6440aa5",
+      "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+      "vendor-engine-smoke.py": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b"
+    }
+  },
+  "tests": [
+    {
+      "name": "copied-shared-sources-exactly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-startup-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-startup-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "both-full-original-baseline600",
+      "passed": true
+    },
+    {
+      "name": "stage-full-preflight-before-writes",
+      "passed": true
+    },
+    {
+      "name": "candidate-complete-shared-program-stage",
+      "passed": true
+    },
+    {
+      "name": "explicit-old-reference-recovery",
+      "passed": true
+    },
+    {
+      "name": "shared-original-profile-bytes-and-mtime",
+      "passed": true
+    },
+    {
+      "name": "original-formal-baseline-unchanged",
+      "passed": true
+    }
+  ],
+  "candidate_hold_seconds": 120.0008702611085,
+  "candidate_hold_observations": 60,
+  "independent_terminal_verification": {
+    "phase": "passed",
+    "observed_utc": "2026-11-10T16:09:52Z",
+    "stage_receipt_sha256": "9e134b08d2a190e10de052112c0b9364a50b4d91aeff2a6768d011b1db57b93f",
+    "launcher_receipt_sha256": "70a3a6fe9c7eb08cf995fb2a9cb85d5c6bb523e7bc201e0bdf27ae8f900ae9bc",
+    "cross_phase": {
+      "dbs": {
+        "same_PG_start_across_both_phases": true,
+        "same_all_five_final_to_initial_checksum_values": true,
+        "same_original_64MiB_payload": true
+      },
+      "hisdbs": {
+        "same_PG_start_across_both_phases": true,
+        "same_all_five_final_to_initial_checksum_values": true,
+        "same_original_64MiB_payload": true
+      }
+    },
+    "cgroups_independently_absent": {
+      "dbs": true,
+      "hisdbs": true
+    },
+    "namespace_independently_absent": true,
+    "coordinator_entry_gone": true,
+    "persistent_daily_logs": {
+      "dbs": [
+        {
+          "file": "crg-2026-11-10.log",
+          "mode": "0600",
+          "bytes": 1893,
+          "sha256": "edd9fe01935797fa0819d7c5d289888a2697efc92100e6b470692c5437ccd73a",
+          "events": {
+            "agent_heartbeat": 2,
+            "agent_start": 1,
+            "agent_stop": 1,
+            "automatic_io_prepare": 1,
+            "automatic_io_prepared": 1,
+            "cgroup_detected": 1,
+            "resource_status": 2
+          }
+        }
+      ],
+      "hisdbs": [
+        {
+          "file": "crg-2026-11-10.log",
+          "mode": "0600",
+          "bytes": 2554,
+          "sha256": "d9028503eb3c12c78667e8e88985703ded8c9dc1b6c1f8cc8740be9ae06faee4",
+          "events": {
+            "agent_heartbeat": 2,
+            "agent_start": 2,
+            "agent_stop": 2,
+            "automatic_io_prepare": 1,
+            "automatic_io_prepared": 1,
+            "cgroup_detected": 2,
+            "resource_status": 2
+          }
+        }
+      ]
+    },
+    "private_backup_and_restored_sources_profile_verified": true,
+    "after_rehearsal_formal_execute_gate": {
+      "schema": "crg-vendor-enforce-stage-report-v1",
+      "phase": "not-ready",
+      "kind": "formal",
+      "checks": {
+        "private-directories": {
+          "passed": true
+        },
+        "original-fixture-sources": {
+          "passed": true
+        },
+        "exact-candidate": {
+          "passed": true
+        },
+        "unchanged-workload-tools": {
+          "passed": true
+        },
+        "workload-tool-interface-before-stage": {
+          "passed": true
+        },
+        "namespace-identity": {
+          "passed": true
+        },
+        "original-reserve": {
+          "passed": true
+        },
+        "other-business-fixtures": {
+          "passed": true
+        },
+        "dbs-same-original-processes-and-mounts": {
+          "passed": true
+        },
+        "dbs-original-controls-and-observe": {
+          "passed": true
+        },
+        "hisdbs-same-original-processes-and-mounts": {
+          "passed": true
+        },
+        "hisdbs-original-controls-and-observe": {
+          "passed": true
+        },
+        "full-prior-acceptance-and-cleanup": {
+          "passed": false,
+          "failure_class": "RuntimeError",
+          "detail": "entire prior campaign not accepted"
+        },
+        "exact-shared-program-rehearsal": {
+          "passed": true
+        }
+      },
+      "operations": [],
+      "stage_source_sha256": "d044105dc208ea7032b23db7d2bd28e34d678c0ee10eaf34acbefa3da54f273c",
+      "scope": "lab fixture only; not a production multi-container controller",
+      "manifest_sha256": "49ccbad66974530e4863d9e0a37b9e44771453958bcabe9e8e24f8795599b22d",
+      "failure_class": "RuntimeError",
+      "refused_before_stage_writes": true
+    },
+    "formal_baseline_unchanged_after_refusal": true,
+    "formal_output_and_lock_absent": true
+  },
+  "prior_failures_retained": [
+    "test-results-shared-program-stage-first.json",
+    "test-results-shared-program-stage-interface-first.json"
+  ],
+  "qualified_smoke_tools": {
+    "vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c"
+  },
+  "formal_tools_unchanged": {
+    "vendor-soak-campaign.py": "8932874640816c365963513872567afd0c5b75247102d9866f511b0fb6440aa5",
+    "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "vendor-engine-smoke.py": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b"
+  },
+  "previous_agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "candidate_agent_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+  "operations": [
+    {
+      "role": "dbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794326051.573386,
+      "ended_epoch": 1794326052.8624134,
+      "state": "restored"
+    },
+    {
+      "role": "hisdbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794326052.9986556,
+      "ended_epoch": 1794326054.170799,
+      "state": "restored"
+    },
+    {
+      "role": "dbs",
+      "command": "enable",
+      "old_reference": false,
+      "started_epoch": 1794326056.1677809,
+      "ended_epoch": 1794326056.5892437,
+      "state": "enabled"
+    },
+    {
+      "role": "hisdbs",
+      "command": "enable",
+      "old_reference": false,
+      "started_epoch": 1794326058.6991677,
+      "ended_epoch": 1794326059.131978,
+      "state": "enabled"
+    },
+    {
+      "role": "dbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794326796.6317515,
+      "ended_epoch": 1794326798.191602,
+      "state": "restored"
+    },
+    {
+      "role": "hisdbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794326798.2905276,
+      "ended_epoch": 1794326799.3423247,
+      "state": "restored"
+    },
+    {
+      "role": "dbs",
+      "command": "enable",
+      "old_reference": true,
+      "started_epoch": 1794326801.2375965,
+      "ended_epoch": 1794326801.6673882,
+      "state": "enabled"
+    },
+    {
+      "role": "hisdbs",
+      "command": "enable",
+      "old_reference": true,
+      "started_epoch": 1794326808.0489278,
+      "ended_epoch": 1794326808.4852002,
+      "state": "enabled"
+    }
+  ],
+  "backout": {
+    "restored": true
+  },
+  "fixture_cleanup": {
+    "pods": {
+      "dbs": {
+        "pod_absent": true,
+        "cgroup_absent": true
+      },
+      "hisdbs": {
+        "pod_absent": true,
+        "cgroup_absent": true
+      }
+    },
+    "namespace_absent": true
+  },
+  "old_observe600": {
+    "phase": "passed",
+    "test_phase": "smoke",
+    "requested_seconds": 600,
+    "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+    "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "campaign_script_sha256": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "engine_script_sha256": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "cleanup_errors": [],
+    "criteria": {
+      "host_available_min_bytes": 8589934592,
+      "disk_free_min_bytes": 21474836480,
+      "host_sample_seconds": 60,
+      "OOM_kill_delta_max": 0,
+      "backup_offsets_seconds": [
+        30
+      ]
+    },
+    "roles": {
+      "dbs": {
+        "native": {
+          "phase": "passed",
+          "test_phase": "smoke",
+          "requested_duration_seconds": 600,
+          "elapsed_seconds": 600.0504004429094,
+          "sql": {
+            "attempts": 300,
+            "errors": 0,
+            "histogram": [
+              289,
+              4,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              2,
+              2,
+              0,
+              0
+            ],
+            "max_seconds": 1.9931659048888832,
+            "p95_bucket_upper_seconds": 0.001,
+            "sample_coverage": 1.0,
+            "successes": 300,
+            "total_seconds": 5.547661678632721
+          },
+          "api": {
+            "attempts": 120,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              119,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.011269236914813519,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0,
+            "successes": 120,
+            "total_seconds": 1.031246243044734
+          },
+          "payload_integrity": true,
+          "primary_not_restarted": true,
+          "threads_stopped": true,
+          "interrupted": false,
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4800
+          ],
+          "started_utc": "2026-11-10T15:43:58.129161Z",
+          "measurement_finished_utc": "2026-11-10T15:53:58.148207Z",
+          "primary_start_time_initial": "2026-11-10 15:43:24.532952+00",
+          "primary_start_time_final": "2026-11-10 15:43:24.532952+00"
+        },
+        "host_sample_count": 11,
+        "max_host_sample_gap_seconds": 60.08323734509759,
+        "all_PID1_Agent_cache_identity_samples_passed": true
+      },
+      "hisdbs": {
+        "native": {
+          "phase": "passed",
+          "test_phase": "smoke",
+          "requested_duration_seconds": 600,
+          "elapsed_seconds": 600.2840914260596,
+          "sql": {
+            "attempts": 301,
+            "errors": 0,
+            "histogram": [
+              296,
+              1,
+              0,
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.33150912215933204,
+            "p95_bucket_upper_seconds": 0.001,
+            "sample_coverage": 1.0033333333333334,
+            "successes": 301,
+            "total_seconds": 0.6434050742536783
+          },
+          "api": {
+            "attempts": 121,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              121,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.009312833892181516,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0083333333333333,
+            "successes": 121,
+            "total_seconds": 0.9715745905414224
+          },
+          "payload_integrity": true,
+          "primary_not_restarted": true,
+          "threads_stopped": true,
+          "interrupted": false,
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4816
+          ],
+          "started_utc": "2026-11-10T15:44:01.018161Z",
+          "measurement_finished_utc": "2026-11-10T15:54:01.270899Z",
+          "primary_start_time_initial": "2026-11-10 15:43:48.471792+00",
+          "primary_start_time_final": "2026-11-10 15:43:48.471792+00"
+        },
+        "host_sample_count": 11,
+        "max_host_sample_gap_seconds": 60.083311586873606,
+        "all_PID1_Agent_cache_identity_samples_passed": true
+      }
+    },
+    "engine_cycles": [
+      {
+        "offset_seconds": 30.041879846947268,
+        "content_started_epoch": 1794325471.607803,
+        "phase": "passed",
+        "roles": {
+          "dbs": {
+            "checks": 10,
+            "cleanup": true,
+            "native_pending": true,
+            "exec_probe_diagnostic": {
+              "passed_original_5s_criterion": true,
+              "samples": 20,
+              "api_max": 2.075355088803917,
+              "sql_max": 2.0468299039639533
+            }
+          },
+          "hisdbs": {
+            "checks": 10,
+            "cleanup": true,
+            "native_pending": true,
+            "exec_probe_diagnostic": {
+              "passed_original_5s_criterion": true,
+              "samples": 19,
+              "api_max": 2.568712948122993,
+              "sql_max": 2.5919396388344467
+            }
+          }
+        },
+        "content_ended_epoch": 1794325556.7213776,
+        "native_workload_validation": "passed-with-entire-campaign"
+      }
+    ]
+  },
+  "new_enforce600": {
+    "phase": "passed",
+    "test_phase": "smoke",
+    "requested_seconds": 600,
+    "agent_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+    "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "campaign_script_sha256": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "engine_script_sha256": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "cleanup_errors": [],
+    "criteria": {
+      "host_available_min_bytes": 8589934592,
+      "disk_free_min_bytes": 21474836480,
+      "host_sample_seconds": 60,
+      "OOM_kill_delta_max": 0,
+      "backup_offsets_seconds": [
+        30
+      ]
+    },
+    "roles": {
+      "dbs": {
+        "native": {
+          "phase": "passed",
+          "test_phase": "smoke",
+          "requested_duration_seconds": 600,
+          "elapsed_seconds": 600.2836561091244,
+          "sql": {
+            "attempts": 301,
+            "errors": 0,
+            "histogram": [
+              294,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.634190022945404,
+            "p95_bucket_upper_seconds": 0.001,
+            "sample_coverage": 1.0033333333333334,
+            "successes": 301,
+            "total_seconds": 1.8838312118314207
+          },
+          "api": {
+            "attempts": 121,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              121,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.009234543889760971,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0083333333333333,
+            "successes": 121,
+            "total_seconds": 1.0000644063111395
+          },
+          "payload_integrity": true,
+          "primary_not_restarted": true,
+          "threads_stopped": true,
+          "interrupted": false,
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4800
+          ],
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            9616
+          ],
+          "started_utc": "2026-11-10T15:56:31.672442Z",
+          "measurement_finished_utc": "2026-11-10T16:06:31.909523Z",
+          "primary_start_time_initial": "2026-11-10 15:43:24.532952+00",
+          "primary_start_time_final": "2026-11-10 15:43:24.532952+00",
+          "source_run_id": "202611102201"
+        },
+        "host_sample_count": 10,
+        "max_host_sample_gap_seconds": 60.13649518904276,
+        "all_PID1_Agent_cache_identity_samples_passed": true
+      },
+      "hisdbs": {
+        "native": {
+          "phase": "passed",
+          "test_phase": "smoke",
+          "requested_duration_seconds": 600,
+          "elapsed_seconds": 600.2004966088571,
+          "sql": {
+            "attempts": 300,
+            "errors": 0,
+            "histogram": [
+              295,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              1,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.6738431500270963,
+            "p95_bucket_upper_seconds": 0.001,
+            "sample_coverage": 1.0,
+            "successes": 300,
+            "total_seconds": 1.3395297890529037
+          },
+          "api": {
+            "attempts": 120,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              120,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.009142331080511212,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0,
+            "successes": 120,
+            "total_seconds": 0.9628732439596206
+          },
+          "payload_integrity": true,
+          "primary_not_restarted": true,
+          "threads_stopped": true,
+          "interrupted": false,
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4816
+          ],
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            9616
+          ],
+          "started_utc": "2026-11-10T15:56:32.070889Z",
+          "measurement_finished_utc": "2026-11-10T16:06:32.239954Z",
+          "primary_start_time_initial": "2026-11-10 15:43:48.471792+00",
+          "primary_start_time_final": "2026-11-10 15:43:48.471792+00",
+          "source_run_id": "202611102201"
+        },
+        "host_sample_count": 10,
+        "max_host_sample_gap_seconds": 60.13648681412451,
+        "all_PID1_Agent_cache_identity_samples_passed": true
+      }
+    },
+    "engine_cycles": [
+      {
+        "offset_seconds": 30.052913632942364,
+        "content_started_epoch": 1794326223.0792735,
+        "phase": "passed",
+        "roles": {
+          "dbs": {
+            "checks": 10,
+            "cleanup": true,
+            "native_pending": true,
+            "exec_probe_diagnostic": {
+              "passed_original_5s_criterion": true,
+              "samples": 21,
+              "api_max": 2.1585682628210634,
+              "sql_max": 1.2445333909709007
+            }
+          },
+          "hisdbs": {
+            "checks": 10,
+            "cleanup": true,
+            "native_pending": true,
+            "exec_probe_diagnostic": {
+              "passed_original_5s_criterion": true,
+              "samples": 23,
+              "api_max": 1.2719629758503288,
+              "sql_max": 0.5039031580090523
+            }
+          }
+        },
+        "content_ended_epoch": 1794326306.6910312,
+        "native_workload_validation": "passed-with-entire-campaign"
+      }
+    ]
+  },
+  "CI": {
+    "phase": "passed",
+    "runs": [
+      {
+        "branch": "main",
+        "source_revision": "6e8f2e55bb745727369f45a615a6561993e35ea0",
+        "run_id": 42847944430,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42847944430",
+        "workflow": "build-and-test",
+        "conclusion": "success",
+        "stage_oracle_step": "success"
+      },
+      {
+        "branch": "main",
+        "source_revision": "6e8f2e55bb745727369f45a615a6561993e35ea0",
+        "run_id": 42847944444,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42847944444",
+        "workflow": "native-arm64",
+        "conclusion": "success",
+        "stage_oracle_tests": 13,
+        "stage_oracle_tests_log_sha256": "70dda53ed6532662b4a5d5937db093045a2f33eb20893e23b1621d64667776ac",
+        "native_go_pass_events": 101,
+        "scope": "Native ARM64 acceptance-oracle/unit/race/helper/CLI execution; no new business or actual-controller claim."
+      },
+      {
+        "branch": "next/compatibility-contract",
+        "source_revision": "b3aae46e75bc5c7aac2f50873544e54e05f7f13d",
+        "run_id": 42848005156,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42848005156",
+        "workflow": "build-and-test",
+        "conclusion": "success",
+        "stage_oracle_step": "success"
+      },
+      {
+        "branch": "next/compatibility-contract",
+        "source_revision": "b3aae46e75bc5c7aac2f50873544e54e05f7f13d",
+        "run_id": 42848005205,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42848005205",
+        "workflow": "native-arm64",
+        "conclusion": "success",
+        "stage_oracle_tests": 13,
+        "stage_oracle_tests_log_sha256": "b8bd094830e47870d5cf90980e9a2c2e53905e1ccad336bec92e28887bc8169e",
+        "native_go_pass_events": 184,
+        "scope": "Native ARM64 acceptance-oracle/unit/race/helper/CLI execution; no new business or actual-controller claim."
+      }
+    ],
+    "scope": "Shared-stage source commits CI; runtime product code and published preview artifacts unchanged."
+  },
+  "limitations": [
+    "Both two-role phases are smoke600s, not accepted86400s formal baseline/enforce or7days.",
+    "The d6 candidate uses the previous frozen manual64MiB/s budget; this does not accept default20% business performance.",
+    "Original image shared-file baseline layout; R19 real-path four-cell evidence remains separate.",
+    "No ARM64 vendor business, Linux6.x, independent physical multi-device, released-minor upgrade or partition mapping claim.",
+    "The published preview tag/binary assets and product runtime source are unchanged."
+  ]
+}
