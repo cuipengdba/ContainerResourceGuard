@@ -1,0 +1,4536 @@
+{
+  "phase": "real-sibling-partition-native-acceptance-passed",
+  "product_implementation_revision": "af1a34dcfeaf4ab383196ba8a51ce53dd6a04820",
+  "actual_candidate_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+  "first_unsuitable_DM_fixture": {
+    "run_id": 42874296286,
+    "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42874296286",
+    "source_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+    "workflow_conclusion": "failure",
+    "phase": "failed",
+    "cells": [
+      {
+        "runner": "ubuntu-22.04",
+        "architecture": "amd64",
+        "environment": {
+          "driver_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "runner_label": "ubuntu-22.04",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "6.8.0-1070-azure",
+          "expected_kernel_prefix": "6.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "amd64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "amd64",
+          "asset_id": 730823163,
+          "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+          "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "d5a507cdd5359d5534d297380c137bbb49a83a7a73b07a41bf8ca830676cde99",
+        "report": {
+          "phase": "failed",
+          "source_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "driver_sha256": "c0e95bfe8d8de88488743962c96a387b8be46914dd5ee0bc5fd100950f43a07d",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "6.8.0-1070-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            }
+          ],
+          "measurements": {},
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true
+          },
+          "programs": {
+            "crg": "ad0acc87e68a7675aca469cb1252e274e58328eeb32ea92317a9f9ae316fc780",
+            "oldcrg": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+            "hold": "21b8006c73e4896c16d55525aaed26da2335d6571e65dbee65b5f7fa8ccf0f93",
+            "load": "4fe5cd9a8a55ba32f6a3c2a8f53c0d0b742a86376b3203ea869249cf607a4d3c",
+            "shared-load": "98dd2182d62e2b582013506afd10f8b2545eaef3753778076ca2be4cb45236c8"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "amd64",
+                  "BuildTime": "Tue Mar 25 15:07:11 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "6.8.0-1070-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "amd64",
+            "KernelVersion": "6.8.0-1070-azure",
+            "BuildTime": "2025-03-25T15:07:11.000000000+00:00"
+          },
+          "last_failed_command": {
+            "operation": "['partx', '--add']",
+            "exit": 1,
+            "stderr_tail": "partx: /dev/mapper/crg-native-4af33d1d5d6242b9a5077afc60fdc243: error adding partitions 1-2\n"
+          },
+          "failure_class": "RuntimeError",
+          "failure": "fixture command failed",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 439, in <module>\n    prepare_storage()\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 309, in prepare_storage\n    write_gpt(2097152)\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 221, in write_gpt\n    run(['partx', '--add', device])\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 71, in run\n    raise RuntimeError('fixture command failed')\nRuntimeError: fixture command failed\n",
+          "cleanup_errors": [
+            "RuntimeError: partial block fixture retained for VM disposal; no guessed cleanup"
+          ]
+        }
+      },
+      {
+        "runner": "ubuntu-22.04-arm",
+        "architecture": "arm64",
+        "environment": {
+          "driver_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "runner_label": "ubuntu-22.04-arm",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "6.8.0-1070-azure",
+          "expected_kernel_prefix": "6.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "arm64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "arm64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "arm64",
+          "asset_id": 730823217,
+          "archive_sha256": "3e650f035bb87411821e429b611c39e3e42860ddfe78c722555c4de981a0c89a",
+          "binary_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "9b1be4562d1f27de750bbdaf9e65ebb2a604051ca96b9e0459eb6f8a86a07f91",
+        "report": {
+          "phase": "failed",
+          "source_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "driver_sha256": "c0e95bfe8d8de88488743962c96a387b8be46914dd5ee0bc5fd100950f43a07d",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "6.8.0-1070-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            }
+          ],
+          "measurements": {},
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true
+          },
+          "programs": {
+            "crg": "ccc7992496dabb45035192f4b9904f35c7665c838d9fb20138af0d87feda476f",
+            "oldcrg": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+            "hold": "7154706e3f6ed5ccaef4fc355e1eb5c93d6f8eeba1be09bd6e220ed6fc42288e",
+            "load": "94e30d419d4d00138de8bebde503195b80e9de83b8d16d6fb27afb32792aeef4",
+            "shared-load": "0db79ea069d597739b1139732ba6dd769c610c1b2d1f6cb8a4519afb5f6e306f"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "arm64",
+                  "BuildTime": "Tue Mar 25 15:07:33 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "6.8.0-1070-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "arm64",
+            "KernelVersion": "6.8.0-1070-azure",
+            "BuildTime": "2025-03-25T15:07:33.000000000+00:00"
+          },
+          "last_failed_command": {
+            "operation": "['partx', '--add']",
+            "exit": 1,
+            "stderr_tail": "partx: /dev/mapper/crg-native-2a56774f313a427bb6ac7d196c403634: error adding partitions 1-2\n"
+          },
+          "failure_class": "RuntimeError",
+          "failure": "fixture command failed",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 439, in <module>\n    prepare_storage()\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 309, in prepare_storage\n    write_gpt(2097152)\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 221, in write_gpt\n    run(['partx', '--add', device])\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 71, in run\n    raise RuntimeError('fixture command failed')\nRuntimeError: fixture command failed\n",
+          "cleanup_errors": [
+            "RuntimeError: partial block fixture retained for VM disposal; no guessed cleanup"
+          ]
+        }
+      },
+      {
+        "runner": "ubuntu-24.04",
+        "architecture": "amd64",
+        "environment": {
+          "driver_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "runner_label": "ubuntu-24.04",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "7.0.0-1017-azure",
+          "expected_kernel_prefix": "7.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "amd64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "amd64",
+          "asset_id": 730823163,
+          "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+          "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "3fc8e8c12ac9357c00d9d83e462ec1015a89022d3f37607f4ae6af496e230ebe",
+        "report": {
+          "phase": "failed",
+          "source_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "driver_sha256": "c0e95bfe8d8de88488743962c96a387b8be46914dd5ee0bc5fd100950f43a07d",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "7.0.0-1017-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            }
+          ],
+          "measurements": {},
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true
+          },
+          "programs": {
+            "crg": "ad0acc87e68a7675aca469cb1252e274e58328eeb32ea92317a9f9ae316fc780",
+            "oldcrg": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+            "hold": "21b8006c73e4896c16d55525aaed26da2335d6571e65dbee65b5f7fa8ccf0f93",
+            "load": "4fe5cd9a8a55ba32f6a3c2a8f53c0d0b742a86376b3203ea869249cf607a4d3c",
+            "shared-load": "98dd2182d62e2b582013506afd10f8b2545eaef3753778076ca2be4cb45236c8"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "amd64",
+                  "BuildTime": "Tue Mar 25 15:07:16 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "7.0.0-1017-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "amd64",
+            "KernelVersion": "7.0.0-1017-azure",
+            "BuildTime": "2025-03-25T15:07:16.000000000+00:00"
+          },
+          "last_failed_command": {
+            "operation": "['partx', '--add']",
+            "exit": 1,
+            "stderr_tail": "partx: /dev/mapper/crg-native-319b26ce5760408da1fd035c5efe588d: error adding partitions 1-2\n"
+          },
+          "failure_class": "RuntimeError",
+          "failure": "fixture command failed",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 439, in <module>\n    prepare_storage()\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 309, in prepare_storage\n    write_gpt(2097152)\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 221, in write_gpt\n    run(['partx', '--add', device])\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 71, in run\n    raise RuntimeError('fixture command failed')\nRuntimeError: fixture command failed\n",
+          "cleanup_errors": [
+            "RuntimeError: partial block fixture retained for VM disposal; no guessed cleanup"
+          ]
+        }
+      },
+      {
+        "runner": "ubuntu-24.04-arm",
+        "architecture": "arm64",
+        "environment": {
+          "driver_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "runner_label": "ubuntu-24.04-arm",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "7.0.0-1017-azure",
+          "expected_kernel_prefix": "7.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "arm64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "arm64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "arm64",
+          "asset_id": 730823217,
+          "archive_sha256": "3e650f035bb87411821e429b611c39e3e42860ddfe78c722555c4de981a0c89a",
+          "binary_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "cfaf8ecc1a4228330cff4de7321741d8644e36da7cf9b7fe2beedfee27247521",
+        "report": {
+          "phase": "failed",
+          "source_revision": "689c3b30c21bfc7cbbc9f1ffb144b80a5e0326ca",
+          "driver_sha256": "c0e95bfe8d8de88488743962c96a387b8be46914dd5ee0bc5fd100950f43a07d",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "7.0.0-1017-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            }
+          ],
+          "measurements": {},
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true
+          },
+          "programs": {
+            "crg": "ccc7992496dabb45035192f4b9904f35c7665c838d9fb20138af0d87feda476f",
+            "oldcrg": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+            "hold": "7154706e3f6ed5ccaef4fc355e1eb5c93d6f8eeba1be09bd6e220ed6fc42288e",
+            "load": "94e30d419d4d00138de8bebde503195b80e9de83b8d16d6fb27afb32792aeef4",
+            "shared-load": "0db79ea069d597739b1139732ba6dd769c610c1b2d1f6cb8a4519afb5f6e306f"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "arm64",
+                  "BuildTime": "Tue Mar 25 15:07:55 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "7.0.0-1017-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "arm64",
+            "KernelVersion": "7.0.0-1017-azure",
+            "BuildTime": "2025-03-25T15:07:55.000000000+00:00"
+          },
+          "last_failed_command": {
+            "operation": "['partx', '--add']",
+            "exit": 1,
+            "stderr_tail": "partx: /dev/mapper/crg-native-3030f9f317a34d4db618d33eeedbad02: error adding partitions 1-2\n"
+          },
+          "failure_class": "RuntimeError",
+          "failure": "fixture command failed",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 439, in <module>\n    prepare_storage()\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 309, in prepare_storage\n    write_gpt(2097152)\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 221, in write_gpt\n    run(['partx', '--add', device])\n  File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/tests/partition-cgroup.py\", line 71, in run\n    raise RuntimeError('fixture command failed')\nRuntimeError: fixture command failed\n",
+          "cleanup_errors": [
+            "RuntimeError: partial block fixture retained for VM disposal; no guessed cleanup"
+          ]
+        }
+      }
+    ]
+  },
+  "corrected_exclusive_SCSI_fixture": {
+    "run_id": 42877343464,
+    "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42877343464",
+    "source_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+    "workflow_conclusion": "success",
+    "phase": "passed",
+    "cells": [
+      {
+        "runner": "ubuntu-22.04",
+        "architecture": "amd64",
+        "environment": {
+          "driver_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "runner_label": "ubuntu-22.04",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "6.8.0-1070-azure",
+          "expected_kernel_prefix": "6.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "amd64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "amd64",
+          "asset_id": 730823163,
+          "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+          "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "a4b761710e357f3227f729ffa6debb0ec342a151a50ee463ea5c34036e0c17d1",
+        "report": {
+          "phase": "passed",
+          "source_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "driver_sha256": "f229011ab56d671bab7c8e272df65b5b6f7aec3cfd89e20bac3356872cee2699",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "6.8.0-1070-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            },
+            {
+              "name": "actual-two-partition-filesystems-share-one-parent",
+              "passed": true
+            },
+            {
+              "name": "finite-external-own-leaf-baseline-established",
+              "passed": true
+            },
+            {
+              "name": "manual-exact-three-actual-controls",
+              "passed": true,
+              "actual_controls": {
+                "cpu.max": "50000 100000",
+                "memory.max": "134217728",
+                "io.max": "8:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+                "pids.max": "19140",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              }
+            },
+            {
+              "name": "manual-journal-uses-one-whole-device-key",
+              "passed": true
+            },
+            {
+              "name": "two-real-filesystem-paths-covered-by-one-control-target",
+              "passed": true,
+              "coverage": [
+                {
+                  "path": "/data",
+                  "device": "8:1",
+                  "control_device": "8:0",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                },
+                {
+                  "path": "/sibling",
+                  "device": "8:2",
+                  "control_device": "8:0",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                }
+              ]
+            },
+            {
+              "name": "CPU-actual-throttling",
+              "passed": true
+            },
+            {
+              "name": "/data-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-write-budget",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-randwrite-budget",
+              "passed": true
+            },
+            {
+              "name": "memory-limit-and-safe-allocation",
+              "passed": true
+            },
+            {
+              "name": "Agent-crash-retains-kernel-caps-and-PID1",
+              "passed": true
+            },
+            {
+              "name": "same-journal-Agent-restart",
+              "passed": true
+            },
+            {
+              "name": "old-released-disable-restores-eight-finite-originals",
+              "passed": true
+            },
+            {
+              "name": "manual-logs-sentinel-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "independent-percentages-and-real-automatic-profile",
+              "passed": true
+            },
+            {
+              "name": "automatic-profile-binds-filesystem-to-whole-parent",
+              "passed": true
+            },
+            {
+              "name": "percent-disable-before-normal-rebuild",
+              "passed": true
+            },
+            {
+              "name": "new-Docker-ID-discovers-new-journal-identity",
+              "passed": true
+            },
+            {
+              "name": "stable-profile-reused-without-second-calibration",
+              "passed": true
+            },
+            {
+              "name": "daily-log-prefix-retained-and-appended",
+              "passed": true
+            },
+            {
+              "name": "new-container-originals-restore-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "two-real-profiles-form-one-minimum-percentage-cap",
+              "passed": true,
+              "rates": [
+                198045883,
+                197139382,
+                197,
+                197
+              ],
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:43:13Z",
+                "devices": [
+                  {
+                    "device": "8:1",
+                    "identity": "eda7cd4c7ce821f574a0cd22379e40a51c63f143f7abe07f6fbc910926bf191c",
+                    "read_bps": 991349541,
+                    "write_bps": 987056499,
+                    "read_iops": 989,
+                    "write_iops": 989,
+                    "measurements": [
+                      {
+                        "read_bps": 991349541,
+                        "write_bps": 985332734,
+                        "read_iops": 990,
+                        "write_iops": 989,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:28Z"
+                      },
+                      {
+                        "read_bps": 983331456,
+                        "write_bps": 987501196,
+                        "read_iops": 989,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:40Z"
+                      },
+                      {
+                        "read_bps": 992774983,
+                        "write_bps": 987056499,
+                        "read_iops": 989,
+                        "write_iops": 989,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:53Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:2",
+                    "identity": "384c940f7022a55ece03df55cb49085132f229ad998d599a9d239bcdd1a26794",
+                    "read_bps": 990229415,
+                    "write_bps": 985696911,
+                    "read_iops": 990,
+                    "write_iops": 989,
+                    "measurements": [
+                      {
+                        "read_bps": 990229415,
+                        "write_bps": 985696911,
+                        "read_iops": 990,
+                        "write_iops": 989,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:43:09Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "merged-profile-originals-restored",
+              "passed": true
+            },
+            {
+              "name": "mixed-whole-and-partition-baselines-refuse-IO-writes",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:43:15Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-e1338239ec439e6f0e09d8ef46d22bfccb9a872c74ab669bb99c2b43c9820dd0.scope",
+                    "identity": "31384d101ff3d789b044fe4055074ef4bb3ec2e3b93f3a1c848dce411aec412f",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16765382656,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167653376"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: 8:0: whole-device and partition profiles overlap; select one calibrated layer",
+                    "data path /data: no calibrated limit for the filesystem device; no limit inferred",
+                    "data path /sibling: no calibrated limit for the filesystem device; no limit inferred"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:1",
+                      "filesystem_device": "8:1",
+                      "resolved_device": "8:0",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:2",
+                      "filesystem_device": "8:2",
+                      "resolved_device": "8:0",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:0",
+                      "filesystem_device": "8:0",
+                      "resolved_device": "8:0",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "control_device": "8:0",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:2",
+                      "control_device": "8:0",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167653376",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "c0e0e2fbd7626695da370ced081cac989f27f05d13374a8e5423aa432086a15d",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "reused",
+                  "detail": "matching stable device identity; no benchmark performed",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:1",
+                    "identity": "eda7cd4c7ce821f574a0cd22379e40a51c63f143f7abe07f6fbc910926bf191c",
+                    "control_device": "8:0",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/overlap-profile.json"
+                }
+              }
+            },
+            {
+              "name": "overlap-profile-safe-restore",
+              "passed": true
+            },
+            {
+              "name": "offline-owned-partition-growth-preserves-cache-and-data",
+              "passed": true
+            },
+            {
+              "name": "changed-geometry-recalibrates-with-stale-profile-visible",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:43:55Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-d24e2a1355795f0750cfd8285f553b18592f8a9fd74dcaf9ef6bef9e588e5fad.scope",
+                    "identity": "ee5a988f4d05deaf7fe8ce2dc1adf50ea28d4e2ef876175c892be450ab141afe",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16765382656,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167653376"
+                    },
+                    {
+                      "file": "io.max",
+                      "device": "8:0",
+                      "device_identity": "95adab9704ff6d2244978ed741dc85cc1d61e0285a318a781628537a28a25d75",
+                      "value": "rbps=198036370 wbps=197139382 riops=197 wiops=197"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: calibrated device missing or ambiguous; recalibrate explicitly"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:1",
+                      "state": "unavailable",
+                      "detail": "calibrated device missing or ambiguous; recalibrate explicitly"
+                    },
+                    {
+                      "profile_device": "8:2",
+                      "filesystem_device": "8:2",
+                      "resolved_device": "8:0",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    },
+                    {
+                      "profile_device": "8:1",
+                      "filesystem_device": "8:1",
+                      "resolved_device": "8:0",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "control_device": "8:0",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:2",
+                      "control_device": "8:0",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167653376",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "io.max",
+                    "device": "8:0",
+                    "device_identity": "95adab9704ff6d2244978ed741dc85cc1d61e0285a318a781628537a28a25d75",
+                    "value": "rbps=198036370 wbps=197139382 riops=197 wiops=197",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "a80f9361725da0711dff4d36444299fdb0af9512afefccd71ca0baad29b54add",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "calibrated",
+                  "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:1",
+                    "identity": "6a121d9f71cd39abfa8784fab20ce13a0bc07feefac738971b53e4de70a33d11",
+                    "control_device": "8:0",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/both-profile.json"
+                }
+              },
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:43:55Z",
+                "devices": [
+                  {
+                    "device": "8:1",
+                    "identity": "eda7cd4c7ce821f574a0cd22379e40a51c63f143f7abe07f6fbc910926bf191c",
+                    "read_bps": 991349541,
+                    "write_bps": 987056499,
+                    "read_iops": 989,
+                    "write_iops": 989,
+                    "measurements": [
+                      {
+                        "read_bps": 991349541,
+                        "write_bps": 985332734,
+                        "read_iops": 990,
+                        "write_iops": 989,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:28Z"
+                      },
+                      {
+                        "read_bps": 983331456,
+                        "write_bps": 987501196,
+                        "read_iops": 989,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:40Z"
+                      },
+                      {
+                        "read_bps": 992774983,
+                        "write_bps": 987056499,
+                        "read_iops": 989,
+                        "write_iops": 989,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:53Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:2",
+                    "identity": "384c940f7022a55ece03df55cb49085132f229ad998d599a9d239bcdd1a26794",
+                    "read_bps": 990229415,
+                    "write_bps": 985696911,
+                    "read_iops": 990,
+                    "write_iops": 989,
+                    "measurements": [
+                      {
+                        "read_bps": 990229415,
+                        "write_bps": 985696911,
+                        "read_iops": 990,
+                        "write_iops": 989,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:43:09Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:1",
+                    "identity": "6a121d9f71cd39abfa8784fab20ce13a0bc07feefac738971b53e4de70a33d11",
+                    "read_bps": 990181851,
+                    "write_bps": 985984650,
+                    "read_iops": 989,
+                    "write_iops": 989,
+                    "measurements": [
+                      {
+                        "read_bps": 991701469,
+                        "write_bps": 986113973,
+                        "read_iops": 989,
+                        "write_iops": 989,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:18Z"
+                      },
+                      {
+                        "read_bps": 988946164,
+                        "write_bps": 985984650,
+                        "read_iops": 986,
+                        "write_iops": 985,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:30Z"
+                      },
+                      {
+                        "read_bps": 990181851,
+                        "write_bps": 984433241,
+                        "read_iops": 989,
+                        "write_iops": 989,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:42Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "old-partition-profile-reported-unavailable",
+              "passed": true,
+              "inspection": {
+                "version": 2,
+                "created_utc": "2026-11-10T18:43:55Z",
+                "devices": [
+                  {
+                    "profile_device": "8:1",
+                    "state": "unavailable",
+                    "detail": "calibrated device missing or ambiguous; recalibrate explicitly",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.9525930672721218,
+                        "read_iops": 0.10111223458038424,
+                        "write_bps": 0.21968975455780876,
+                        "write_iops": 0.20222446916076847
+                      }
+                    }
+                  },
+                  {
+                    "profile_device": "8:2",
+                    "device": "8:2",
+                    "control_device": "8:0",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 1,
+                      "spread_percent": {
+                        "read_bps": 0,
+                        "read_iops": 0,
+                        "write_bps": 0,
+                        "write_iops": 0
+                      },
+                      "warnings": [
+                        "fewer than three measurements; variability cannot be established reliably"
+                      ]
+                    }
+                  },
+                  {
+                    "profile_device": "8:1",
+                    "device": "8:1",
+                    "control_device": "8:0",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.2782625229110567,
+                        "read_iops": 0.3033367037411527,
+                        "write_bps": 0.17046228863704926,
+                        "write_iops": 0.40444893832153694
+                      }
+                    }
+                  }
+                ],
+                "warnings": [
+                  "3 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+                ]
+              }
+            },
+            {
+              "name": "geometry-originals-data-logs-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "actual-readonly-without-capabilities-is-degraded",
+              "passed": true
+            },
+            {
+              "name": "readonly-failure-visible-and-PID1-preserved",
+              "passed": true
+            },
+            {
+              "name": "readonly-disable-with-no-owned-mutations",
+              "passed": true
+            }
+          ],
+          "measurements": {
+            "CPU": {
+              "actual_wall_seconds": 8.02837754799998,
+              "used_CPU_seconds": 4.042285,
+              "average_cores": 0.5034996144404057,
+              "nr_throttled_delta": 80,
+              "load": {
+                "count": 0,
+                "mode": "cpu",
+                "rate": 0,
+                "seconds": 8.007709451
+              }
+            },
+            "/data/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191641.6725042462,
+              "seconds": 6.003799632
+            },
+            "/data/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4225575.72676208,
+              "seconds": 6.20374532
+            },
+            "/data/randwrite": {
+              "count": 6172672,
+              "iops": 251.13348879362843,
+              "mode": "randwrite",
+              "rate": 1028642.7975255533,
+              "seconds": 6.000789921
+            },
+            "/sibling/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191730.8557134503,
+              "seconds": 6.003682231
+            },
+            "/sibling/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4230967.02299497,
+              "seconds": 6.195839796
+            },
+            "/sibling/randwrite": {
+              "count": 6152192,
+              "iops": 250.17793951753066,
+              "mode": "randwrite",
+              "rate": 1024728.9155346277,
+              "seconds": 6.003724886
+            },
+            "simultaneous-write": {
+              "count": 27262976,
+              "counts": [
+                13631488,
+                13631488
+              ],
+              "filesystem_devices": [
+                "8:1",
+                "8:2"
+              ],
+              "iops": 1032.9263241150638,
+              "mode": "write",
+              "population_seconds_excluded": 16.032029998,
+              "rate": 4230866.2235753015,
+              "seconds": 6.443828417
+            },
+            "simultaneous-randwrite": {
+              "count": 6250496,
+              "counts": [
+                3112960,
+                3137536
+              ],
+              "filesystem_devices": [
+                "8:1",
+                "8:2"
+              ],
+              "iops": 252.16044146708708,
+              "mode": "randwrite",
+              "population_seconds_excluded": 16.032112719,
+              "rate": 1032849.1682491887,
+              "seconds": 6.051702603
+            },
+            "percent": {
+              "host_online_CPUs": 4,
+              "host_memory_bytes": 16765382656,
+              "requested_percentages": {
+                "cpu": 10,
+                "memory": 1,
+                "IO": 20
+              },
+              "expected_controls": {
+                "cpu.max": "40000 100000",
+                "memory.max": "167653376",
+                "io.max": "8:0 rbps=198045883 wbps=197139382 riops=197 wiops=197",
+                "pids.max": "19140",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              },
+              "automatic_IO_state": "calibrated",
+              "profile_sha256": "32030390abbc53f881ebdc0ca4da2e164c98c3c3823060d22992e4327f9aa8f0"
+            }
+          },
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "programs": {
+            "crg": "6252276a0b99638b0bb9f592e5097ee26b8c7aa5fe667f880a18a6e3ffb292c8",
+            "oldcrg": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+            "hold": "ffd5dc6db1bf536d7f0bdbc682e8b849dff0a296260827b10fb8dcaf5d0ce847",
+            "load": "c5d3ef8c4a66386818e4756f4281ae4f9c3c3b18498dc1f4e0c9c681983a9a94",
+            "shared-load": "137d0212f76041a728f1085e00d42885a1cdca54e4067fc04299049bc024c7e2"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "amd64",
+                  "BuildTime": "Tue Mar 25 15:07:11 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "6.8.0-1070-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "amd64",
+            "KernelVersion": "6.8.0-1070-azure",
+            "BuildTime": "2025-03-25T15:07:11.000000000+00:00"
+          },
+          "storage_fixture": {
+            "kind": "two real GPT ext4 partitions on exclusive kernel scsi_debug RAM-backed SCSI disk with actual WWID",
+            "logical_and_backing_bytes": 2684354560,
+            "physical_independent_device": false,
+            "module_vermagic": "6.8.0-1070-azure SMP mod_unload modversions",
+            "control_device": "8:0",
+            "partitions": [
+              {
+                "filesystem_device": "8:1",
+                "partition": 1,
+                "start": 2048,
+                "sectors": 2097152
+              },
+              {
+                "filesystem_device": "8:2",
+                "partition": 2,
+                "start": 2623488,
+                "sectors": 1572864
+              }
+            ]
+          },
+          "data_device": "8:1",
+          "device_inventory": {
+            "exposed": true,
+            "is_partition": true,
+            "direct_identity_files": {
+              "dm/uuid": false,
+              "device/wwid": false,
+              "wwid": false
+            }
+          },
+          "manual_doctor": {
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/system.slice/docker-54af33481995102590c9003d62846125e277b302a04a9a44b4332fd520c43cd7.scope",
+              "identity": "2227cd33bab3546c6c8a46fa175a2d2eddc73e7aa459d11e28d9d991c6f4ddf4",
+              "host_online_cpus": 4,
+              "host_memory_bytes": 16765382656,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-3"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "cpu.max",
+                "value": "50000 100000"
+              },
+              {
+                "file": "memory.max",
+                "value": "134217728"
+              },
+              {
+                "file": "io.max",
+                "device": "8:0",
+                "device_identity": "95adab9704ff6d2244978ed741dc85cc1d61e0285a318a781628537a28a25d75",
+                "value": "rbps=4194304 wbps=4194304 riops=256 wiops=256"
+              }
+            ],
+            "io_devices": [
+              {
+                "profile_device": "",
+                "resolved_device": "8:0",
+                "state": "planned",
+                "detail": "manual shared whole-device limits from data_paths; no benchmark used"
+              }
+            ],
+            "data_paths": [
+              {
+                "path": "/data",
+                "device": "8:1",
+                "control_device": "8:0",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              },
+              {
+                "path": "/sibling",
+                "device": "8:2",
+                "control_device": "8:0",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "runner": "ubuntu-22.04-arm",
+        "architecture": "arm64",
+        "environment": {
+          "driver_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "runner_label": "ubuntu-22.04-arm",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "6.8.0-1070-azure",
+          "expected_kernel_prefix": "6.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "arm64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "arm64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "arm64",
+          "asset_id": 730823217,
+          "archive_sha256": "3e650f035bb87411821e429b611c39e3e42860ddfe78c722555c4de981a0c89a",
+          "binary_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "b5dcc866b6f089b96aeb9a891310af702913b88b9cd0192013c0a34e6aefa99b",
+        "report": {
+          "phase": "passed",
+          "source_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "driver_sha256": "f229011ab56d671bab7c8e272df65b5b6f7aec3cfd89e20bac3356872cee2699",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "6.8.0-1070-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            },
+            {
+              "name": "actual-two-partition-filesystems-share-one-parent",
+              "passed": true
+            },
+            {
+              "name": "finite-external-own-leaf-baseline-established",
+              "passed": true
+            },
+            {
+              "name": "manual-exact-three-actual-controls",
+              "passed": true,
+              "actual_controls": {
+                "cpu.max": "50000 100000",
+                "memory.max": "134217728",
+                "io.max": "8:16 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+                "pids.max": "19086",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              }
+            },
+            {
+              "name": "manual-journal-uses-one-whole-device-key",
+              "passed": true
+            },
+            {
+              "name": "two-real-filesystem-paths-covered-by-one-control-target",
+              "passed": true,
+              "coverage": [
+                {
+                  "path": "/data",
+                  "device": "8:17",
+                  "control_device": "8:16",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                },
+                {
+                  "path": "/sibling",
+                  "device": "8:18",
+                  "control_device": "8:16",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                }
+              ]
+            },
+            {
+              "name": "CPU-actual-throttling",
+              "passed": true
+            },
+            {
+              "name": "/data-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-write-budget",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-randwrite-budget",
+              "passed": true
+            },
+            {
+              "name": "memory-limit-and-safe-allocation",
+              "passed": true
+            },
+            {
+              "name": "Agent-crash-retains-kernel-caps-and-PID1",
+              "passed": true
+            },
+            {
+              "name": "same-journal-Agent-restart",
+              "passed": true
+            },
+            {
+              "name": "old-released-disable-restores-eight-finite-originals",
+              "passed": true
+            },
+            {
+              "name": "manual-logs-sentinel-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "independent-percentages-and-real-automatic-profile",
+              "passed": true
+            },
+            {
+              "name": "automatic-profile-binds-filesystem-to-whole-parent",
+              "passed": true
+            },
+            {
+              "name": "percent-disable-before-normal-rebuild",
+              "passed": true
+            },
+            {
+              "name": "new-Docker-ID-discovers-new-journal-identity",
+              "passed": true
+            },
+            {
+              "name": "stable-profile-reused-without-second-calibration",
+              "passed": true
+            },
+            {
+              "name": "daily-log-prefix-retained-and-appended",
+              "passed": true
+            },
+            {
+              "name": "new-container-originals-restore-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "two-real-profiles-form-one-minimum-percentage-cap",
+              "passed": true,
+              "rates": [
+                187103831,
+                184377233,
+                197,
+                197
+              ],
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:43:31Z",
+                "devices": [
+                  {
+                    "device": "8:17",
+                    "identity": "62e93de7dbf31de7b1e8d88db67842f6a5c131f20c3098eddfd2e15c6048d62c",
+                    "read_bps": 935889645,
+                    "write_bps": 923736903,
+                    "read_iops": 987,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 932009178,
+                        "write_bps": 930906459,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:45Z"
+                      },
+                      {
+                        "read_bps": 935889645,
+                        "write_bps": 923736903,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:58Z"
+                      },
+                      {
+                        "read_bps": 938325987,
+                        "write_bps": 922395254,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:10Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:18",
+                    "identity": "76e23806ba83e67e6ecf2d5684b16786dd8980d7978eee10e24d8c355fe0861e",
+                    "read_bps": 935519155,
+                    "write_bps": 921886169,
+                    "read_iops": 987,
+                    "write_iops": 988,
+                    "measurements": [
+                      {
+                        "read_bps": 935519155,
+                        "write_bps": 921886169,
+                        "read_iops": 987,
+                        "write_iops": 988,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:43:26Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "merged-profile-originals-restored",
+              "passed": true
+            },
+            {
+              "name": "mixed-whole-and-partition-baselines-refuse-IO-writes",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:43:33Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-dabd432c4fb97cba1d380166f45e50dc2427d9b04d581aaa3bb90df1d029752d.scope",
+                    "identity": "3d193de0a8efb884498480cecffa09b9599f901fc6ec8260ee48d297e83aa6f2",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16724647936,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167243776"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: 8:16: whole-device and partition profiles overlap; select one calibrated layer",
+                    "data path /data: no calibrated limit for the filesystem device; no limit inferred",
+                    "data path /sibling: no calibrated limit for the filesystem device; no limit inferred"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:17",
+                      "filesystem_device": "8:17",
+                      "resolved_device": "8:16",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:18",
+                      "filesystem_device": "8:18",
+                      "resolved_device": "8:16",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:16",
+                      "filesystem_device": "8:16",
+                      "resolved_device": "8:16",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:17",
+                      "control_device": "8:16",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:18",
+                      "control_device": "8:16",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167243776",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "c0e0e2fbd7626695da370ced081cac989f27f05d13374a8e5423aa432086a15d",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "reused",
+                  "detail": "matching stable device identity; no benchmark performed",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:17",
+                    "identity": "62e93de7dbf31de7b1e8d88db67842f6a5c131f20c3098eddfd2e15c6048d62c",
+                    "control_device": "8:16",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/overlap-profile.json"
+                }
+              }
+            },
+            {
+              "name": "overlap-profile-safe-restore",
+              "passed": true
+            },
+            {
+              "name": "offline-owned-partition-growth-preserves-cache-and-data",
+              "passed": true
+            },
+            {
+              "name": "changed-geometry-recalibrates-with-stale-profile-visible",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:44:13Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-f562e97bb84c3a22d015ee0bd18728950a979f0cea4bea5af5f9bc311daa3b09.scope",
+                    "identity": "2f204f588794829d1f2ff87f0553360d163c138fe790f5871be04f05c81175e5",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16724647936,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167243776"
+                    },
+                    {
+                      "file": "io.max",
+                      "device": "8:16",
+                      "device_identity": "e8ad644ec6e74bdc55858adb81e48a40a5da079600a5ebb488d814a14508f033",
+                      "value": "rbps=186811892 wbps=184301111 riops=197 wiops=197"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: calibrated device missing or ambiguous; recalibrate explicitly"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:17",
+                      "state": "unavailable",
+                      "detail": "calibrated device missing or ambiguous; recalibrate explicitly"
+                    },
+                    {
+                      "profile_device": "8:18",
+                      "filesystem_device": "8:18",
+                      "resolved_device": "8:16",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    },
+                    {
+                      "profile_device": "8:17",
+                      "filesystem_device": "8:17",
+                      "resolved_device": "8:16",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:17",
+                      "control_device": "8:16",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:18",
+                      "control_device": "8:16",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167243776",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "io.max",
+                    "device": "8:16",
+                    "device_identity": "e8ad644ec6e74bdc55858adb81e48a40a5da079600a5ebb488d814a14508f033",
+                    "value": "rbps=186811892 wbps=184301111 riops=197 wiops=197",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "a80f9361725da0711dff4d36444299fdb0af9512afefccd71ca0baad29b54add",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "calibrated",
+                  "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:17",
+                    "identity": "3d193878c420a8be6dc0d192274ea8ae5b3bc32d11df8a7dfeaec4107165022b",
+                    "control_device": "8:16",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/both-profile.json"
+                }
+              },
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:44:12Z",
+                "devices": [
+                  {
+                    "device": "8:17",
+                    "identity": "62e93de7dbf31de7b1e8d88db67842f6a5c131f20c3098eddfd2e15c6048d62c",
+                    "read_bps": 935889645,
+                    "write_bps": 923736903,
+                    "read_iops": 987,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 932009178,
+                        "write_bps": 930906459,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:45Z"
+                      },
+                      {
+                        "read_bps": 935889645,
+                        "write_bps": 923736903,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:58Z"
+                      },
+                      {
+                        "read_bps": 938325987,
+                        "write_bps": 922395254,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:10Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:18",
+                    "identity": "76e23806ba83e67e6ecf2d5684b16786dd8980d7978eee10e24d8c355fe0861e",
+                    "read_bps": 935519155,
+                    "write_bps": 921886169,
+                    "read_iops": 987,
+                    "write_iops": 988,
+                    "measurements": [
+                      {
+                        "read_bps": 935519155,
+                        "write_bps": 921886169,
+                        "read_iops": 987,
+                        "write_iops": 988,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:43:26Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:17",
+                    "identity": "3d193878c420a8be6dc0d192274ea8ae5b3bc32d11df8a7dfeaec4107165022b",
+                    "read_bps": 934059462,
+                    "write_bps": 921505558,
+                    "read_iops": 987,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 931709424,
+                        "write_bps": 916413031,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:35Z"
+                      },
+                      {
+                        "read_bps": 934059462,
+                        "write_bps": 921505558,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:48Z"
+                      },
+                      {
+                        "read_bps": 934765670,
+                        "write_bps": 924957468,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:44:00Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "old-partition-profile-reported-unavailable",
+              "passed": true,
+              "inspection": {
+                "version": 2,
+                "created_utc": "2026-11-10T18:44:12Z",
+                "devices": [
+                  {
+                    "profile_device": "8:17",
+                    "state": "unavailable",
+                    "detail": "calibrated device missing or ambiguous; recalibrate explicitly",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.6749523337230642,
+                        "read_iops": 0.10131712259371835,
+                        "write_bps": 0.9213884356420476,
+                        "write_iops": 0
+                      }
+                    }
+                  },
+                  {
+                    "profile_device": "8:18",
+                    "device": "8:18",
+                    "control_device": "8:16",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 1,
+                      "spread_percent": {
+                        "read_bps": 0,
+                        "read_iops": 0,
+                        "write_bps": 0,
+                        "write_iops": 0
+                      },
+                      "warnings": [
+                        "fewer than three measurements; variability cannot be established reliably"
+                      ]
+                    }
+                  },
+                  {
+                    "profile_device": "8:17",
+                    "device": "8:17",
+                    "control_device": "8:16",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.3272003683208768,
+                        "read_iops": 0.10131712259371835,
+                        "write_bps": 0.9272257693751208,
+                        "write_iops": 0
+                      }
+                    }
+                  }
+                ],
+                "warnings": [
+                  "3 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+                ]
+              }
+            },
+            {
+              "name": "geometry-originals-data-logs-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "actual-readonly-without-capabilities-is-degraded",
+              "passed": true
+            },
+            {
+              "name": "readonly-failure-visible-and-PID1-preserved",
+              "passed": true
+            },
+            {
+              "name": "readonly-disable-with-no-owned-mutations",
+              "passed": true
+            }
+          ],
+          "measurements": {
+            "CPU": {
+              "actual_wall_seconds": 8.108812229999998,
+              "used_CPU_seconds": 4.057893,
+              "average_cores": 0.5004300118070437,
+              "nr_throttled_delta": 81,
+              "load": {
+                "count": 0,
+                "mode": "cpu",
+                "rate": 0,
+                "seconds": 8.081016663
+              }
+            },
+            "/data/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4192233.8644371564,
+              "seconds": 6.002959007
+            },
+            "/data/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4225269.587198384,
+              "seconds": 6.204192721
+            },
+            "/data/randwrite": {
+              "count": 6172672,
+              "iops": 251.14334813236425,
+              "mode": "randwrite",
+              "rate": 1028683.1896078704,
+              "seconds": 6.000555905
+            },
+            "/sibling/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191747.7925528935,
+              "seconds": 6.003658042
+            },
+            "/sibling/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4225731.685387323,
+              "seconds": 6.203516471
+            },
+            "/sibling/randwrite": {
+              "count": 6180864,
+              "iops": 251.4942324408517,
+              "mode": "randwrite",
+              "rate": 1030120.4310162251,
+              "seconds": 6.000134495
+            },
+            "simultaneous-write": {
+              "count": 27262976,
+              "counts": [
+                13631488,
+                13631488
+              ],
+              "filesystem_devices": [
+                "8:17",
+                "8:18"
+              ],
+              "iops": 1033.0049540124012,
+              "mode": "write",
+              "population_seconds_excluded": 16.024305494,
+              "rate": 4231188.291634795,
+              "seconds": 6.443337928
+            },
+            "simultaneous-randwrite": {
+              "count": 6250496,
+              "counts": [
+                3125248,
+                3125248
+              ],
+              "filesystem_devices": [
+                "8:17",
+                "8:18"
+              ],
+              "iops": 252.50922148908566,
+              "mode": "randwrite",
+              "population_seconds_excluded": 16.022453937,
+              "rate": 1034277.7712192949,
+              "seconds": 6.043343649
+            },
+            "percent": {
+              "host_online_CPUs": 4,
+              "host_memory_bytes": 16724647936,
+              "requested_percentages": {
+                "cpu": 10,
+                "memory": 1,
+                "IO": 20
+              },
+              "expected_controls": {
+                "cpu.max": "40000 100000",
+                "memory.max": "167243776",
+                "io.max": "8:16 rbps=187103831 wbps=184377233 riops=197 wiops=197",
+                "pids.max": "19086",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              },
+              "automatic_IO_state": "calibrated",
+              "profile_sha256": "3f0ec977f67f190229d168732b958681d5391e281e46decec1a12fa43481a0d3"
+            }
+          },
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "programs": {
+            "crg": "1da082dda100ab5cb8523b93df35d1fbf31470f0db445db0d685c4ec3b00eb9a",
+            "oldcrg": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+            "hold": "d2d03bd1f9b4f9dcaf496d989791eb71c54d0aed0e1a0b8fc6acf42a15cc727d",
+            "load": "39c0973a3d704a8716058d6042619ba2c242e07871391ebe9c4011af9e9ca79e",
+            "shared-load": "0352e659d952259df2f20ff29e6d34e5baa7db119769b81928c2f2c57f1d06c5"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "arm64",
+                  "BuildTime": "Tue Mar 25 15:07:33 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "6.8.0-1070-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "arm64",
+            "KernelVersion": "6.8.0-1070-azure",
+            "BuildTime": "2025-03-25T15:07:33.000000000+00:00"
+          },
+          "storage_fixture": {
+            "kind": "two real GPT ext4 partitions on exclusive kernel scsi_debug RAM-backed SCSI disk with actual WWID",
+            "logical_and_backing_bytes": 2684354560,
+            "physical_independent_device": false,
+            "module_vermagic": "6.8.0-1070-azure SMP mod_unload modversions aarch64",
+            "control_device": "8:16",
+            "partitions": [
+              {
+                "filesystem_device": "8:17",
+                "partition": 1,
+                "start": 2048,
+                "sectors": 2097152
+              },
+              {
+                "filesystem_device": "8:18",
+                "partition": 2,
+                "start": 2623488,
+                "sectors": 1572864
+              }
+            ]
+          },
+          "data_device": "8:17",
+          "device_inventory": {
+            "exposed": true,
+            "is_partition": true,
+            "direct_identity_files": {
+              "dm/uuid": false,
+              "device/wwid": false,
+              "wwid": false
+            }
+          },
+          "manual_doctor": {
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/system.slice/docker-b052da5fc45dd753e47986294b736b5555ed85a5db5b76e141f5c012e41e959b.scope",
+              "identity": "34cad5b93928f6a2ac8e6e4da3f5d3b8be415ac871887051c2fa8dc300a98963",
+              "host_online_cpus": 4,
+              "host_memory_bytes": 16724647936,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-3"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "cpu.max",
+                "value": "50000 100000"
+              },
+              {
+                "file": "memory.max",
+                "value": "134217728"
+              },
+              {
+                "file": "io.max",
+                "device": "8:16",
+                "device_identity": "e8ad644ec6e74bdc55858adb81e48a40a5da079600a5ebb488d814a14508f033",
+                "value": "rbps=4194304 wbps=4194304 riops=256 wiops=256"
+              }
+            ],
+            "io_devices": [
+              {
+                "profile_device": "",
+                "resolved_device": "8:16",
+                "state": "planned",
+                "detail": "manual shared whole-device limits from data_paths; no benchmark used"
+              }
+            ],
+            "data_paths": [
+              {
+                "path": "/data",
+                "device": "8:17",
+                "control_device": "8:16",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              },
+              {
+                "path": "/sibling",
+                "device": "8:18",
+                "control_device": "8:16",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "runner": "ubuntu-24.04",
+        "architecture": "amd64",
+        "environment": {
+          "driver_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "runner_label": "ubuntu-24.04",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "7.0.0-1017-azure",
+          "expected_kernel_prefix": "7.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "amd64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "amd64",
+          "asset_id": 730823163,
+          "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+          "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "b5da59a843a21727daa9375195d45dda8230eeaa17a4cebe3910de35007516ac",
+        "report": {
+          "phase": "passed",
+          "source_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "driver_sha256": "f229011ab56d671bab7c8e272df65b5b6f7aec3cfd89e20bac3356872cee2699",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "amd64",
+          "machine": "x86_64",
+          "kernel": "7.0.0-1017-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            },
+            {
+              "name": "actual-two-partition-filesystems-share-one-parent",
+              "passed": true
+            },
+            {
+              "name": "finite-external-own-leaf-baseline-established",
+              "passed": true
+            },
+            {
+              "name": "manual-exact-three-actual-controls",
+              "passed": true,
+              "actual_controls": {
+                "cpu.max": "50000 100000",
+                "memory.max": "134217728",
+                "io.max": "8:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+                "pids.max": "17436",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              }
+            },
+            {
+              "name": "manual-journal-uses-one-whole-device-key",
+              "passed": true
+            },
+            {
+              "name": "two-real-filesystem-paths-covered-by-one-control-target",
+              "passed": true,
+              "coverage": [
+                {
+                  "path": "/data",
+                  "device": "8:1",
+                  "control_device": "8:0",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                },
+                {
+                  "path": "/sibling",
+                  "device": "8:2",
+                  "control_device": "8:0",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                }
+              ]
+            },
+            {
+              "name": "CPU-actual-throttling",
+              "passed": true
+            },
+            {
+              "name": "/data-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-write-budget",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-randwrite-budget",
+              "passed": true
+            },
+            {
+              "name": "memory-limit-and-safe-allocation",
+              "passed": true
+            },
+            {
+              "name": "Agent-crash-retains-kernel-caps-and-PID1",
+              "passed": true
+            },
+            {
+              "name": "same-journal-Agent-restart",
+              "passed": true
+            },
+            {
+              "name": "old-released-disable-restores-eight-finite-originals",
+              "passed": true
+            },
+            {
+              "name": "manual-logs-sentinel-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "independent-percentages-and-real-automatic-profile",
+              "passed": true
+            },
+            {
+              "name": "automatic-profile-binds-filesystem-to-whole-parent",
+              "passed": true
+            },
+            {
+              "name": "percent-disable-before-normal-rebuild",
+              "passed": true
+            },
+            {
+              "name": "new-Docker-ID-discovers-new-journal-identity",
+              "passed": true
+            },
+            {
+              "name": "stable-profile-reused-without-second-calibration",
+              "passed": true
+            },
+            {
+              "name": "daily-log-prefix-retained-and-appended",
+              "passed": true
+            },
+            {
+              "name": "new-container-originals-restore-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "two-real-profiles-form-one-minimum-percentage-cap",
+              "passed": true,
+              "rates": [
+                54984508,
+                55191225,
+                190,
+                196
+              ],
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:42:41Z",
+                "devices": [
+                  {
+                    "device": "8:1",
+                    "identity": "eda7cd4c7ce821f574a0cd22379e40a51c63f143f7abe07f6fbc910926bf191c",
+                    "read_bps": 276035551,
+                    "write_bps": 275956127,
+                    "read_iops": 974,
+                    "write_iops": 982,
+                    "measurements": [
+                      {
+                        "read_bps": 276035551,
+                        "write_bps": 275670288,
+                        "read_iops": 984,
+                        "write_iops": 983,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:41:55Z"
+                      },
+                      {
+                        "read_bps": 276274662,
+                        "write_bps": 276096004,
+                        "read_iops": 947,
+                        "write_iops": 981,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:08Z"
+                      },
+                      {
+                        "read_bps": 275919546,
+                        "write_bps": 275956127,
+                        "read_iops": 974,
+                        "write_iops": 982,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:20Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:2",
+                    "identity": "384c940f7022a55ece03df55cb49085132f229ad998d599a9d239bcdd1a26794",
+                    "read_bps": 274922541,
+                    "write_bps": 276292901,
+                    "read_iops": 954,
+                    "write_iops": 982,
+                    "measurements": [
+                      {
+                        "read_bps": 274922541,
+                        "write_bps": 276292901,
+                        "read_iops": 954,
+                        "write_iops": 982,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:42:37Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "merged-profile-originals-restored",
+              "passed": true
+            },
+            {
+              "name": "mixed-whole-and-partition-baselines-refuse-IO-writes",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:42:44Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-c449b152049db5127425db1c24f3b7cd2d773932dc2f7777cc6cd70dec0d230b.scope",
+                    "identity": "9fcbbddcfffd522e60f60ab748ffcec1b81460c78f83f0a58602359499ab93bf",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16760344576,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167600128"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: 8:0: whole-device and partition profiles overlap; select one calibrated layer",
+                    "data path /data: no calibrated limit for the filesystem device; no limit inferred",
+                    "data path /sibling: no calibrated limit for the filesystem device; no limit inferred"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:1",
+                      "filesystem_device": "8:1",
+                      "resolved_device": "8:0",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:2",
+                      "filesystem_device": "8:2",
+                      "resolved_device": "8:0",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:0",
+                      "filesystem_device": "8:0",
+                      "resolved_device": "8:0",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "control_device": "8:0",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:2",
+                      "control_device": "8:0",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167600128",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "c0e0e2fbd7626695da370ced081cac989f27f05d13374a8e5423aa432086a15d",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "reused",
+                  "detail": "matching stable device identity; no benchmark performed",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:1",
+                    "identity": "eda7cd4c7ce821f574a0cd22379e40a51c63f143f7abe07f6fbc910926bf191c",
+                    "control_device": "8:0",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/overlap-profile.json"
+                }
+              }
+            },
+            {
+              "name": "overlap-profile-safe-restore",
+              "passed": true
+            },
+            {
+              "name": "offline-owned-partition-growth-preserves-cache-and-data",
+              "passed": true
+            },
+            {
+              "name": "changed-geometry-recalibrates-with-stale-profile-visible",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:43:25Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-87d72beabb20de624f870a18cd71cc5693fd026f993ce793b6eb9b980484a95d.scope",
+                    "identity": "a316127f209f226ecf238e2d76f408bbfcd8e7ab20d8c03cca83dbc5fd05037e",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16760344576,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167600128"
+                    },
+                    {
+                      "file": "io.max",
+                      "device": "8:0",
+                      "device_identity": "95adab9704ff6d2244978ed741dc85cc1d61e0285a318a781628537a28a25d75",
+                      "value": "rbps=54984508 wbps=54931649 riops=190 wiops=196"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: calibrated device missing or ambiguous; recalibrate explicitly"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:1",
+                      "state": "unavailable",
+                      "detail": "calibrated device missing or ambiguous; recalibrate explicitly"
+                    },
+                    {
+                      "profile_device": "8:2",
+                      "filesystem_device": "8:2",
+                      "resolved_device": "8:0",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    },
+                    {
+                      "profile_device": "8:1",
+                      "filesystem_device": "8:1",
+                      "resolved_device": "8:0",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:1",
+                      "control_device": "8:0",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:2",
+                      "control_device": "8:0",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167600128",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "io.max",
+                    "device": "8:0",
+                    "device_identity": "95adab9704ff6d2244978ed741dc85cc1d61e0285a318a781628537a28a25d75",
+                    "value": "rbps=54984508 wbps=54931649 riops=190 wiops=196",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "a80f9361725da0711dff4d36444299fdb0af9512afefccd71ca0baad29b54add",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "calibrated",
+                  "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:1",
+                    "identity": "6a121d9f71cd39abfa8784fab20ce13a0bc07feefac738971b53e4de70a33d11",
+                    "control_device": "8:0",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/both-profile.json"
+                }
+              },
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:43:24Z",
+                "devices": [
+                  {
+                    "device": "8:1",
+                    "identity": "eda7cd4c7ce821f574a0cd22379e40a51c63f143f7abe07f6fbc910926bf191c",
+                    "read_bps": 276035551,
+                    "write_bps": 275956127,
+                    "read_iops": 974,
+                    "write_iops": 982,
+                    "measurements": [
+                      {
+                        "read_bps": 276035551,
+                        "write_bps": 275670288,
+                        "read_iops": 984,
+                        "write_iops": 983,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:41:55Z"
+                      },
+                      {
+                        "read_bps": 276274662,
+                        "write_bps": 276096004,
+                        "read_iops": 947,
+                        "write_iops": 981,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:08Z"
+                      },
+                      {
+                        "read_bps": 275919546,
+                        "write_bps": 275956127,
+                        "read_iops": 974,
+                        "write_iops": 982,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:20Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:2",
+                    "identity": "384c940f7022a55ece03df55cb49085132f229ad998d599a9d239bcdd1a26794",
+                    "read_bps": 274922541,
+                    "write_bps": 276292901,
+                    "read_iops": 954,
+                    "write_iops": 982,
+                    "measurements": [
+                      {
+                        "read_bps": 274922541,
+                        "write_bps": 276292901,
+                        "read_iops": 954,
+                        "write_iops": 982,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:42:37Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:1",
+                    "identity": "6a121d9f71cd39abfa8784fab20ce13a0bc07feefac738971b53e4de70a33d11",
+                    "read_bps": 276508221,
+                    "write_bps": 274658246,
+                    "read_iops": 982,
+                    "write_iops": 981,
+                    "measurements": [
+                      {
+                        "read_bps": 276508221,
+                        "write_bps": 278683818,
+                        "read_iops": 970,
+                        "write_iops": 981,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:46Z"
+                      },
+                      {
+                        "read_bps": 271958916,
+                        "write_bps": 274658246,
+                        "read_iops": 982,
+                        "write_iops": 982,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:59Z"
+                      },
+                      {
+                        "read_bps": 277285656,
+                        "write_bps": 273168625,
+                        "read_iops": 983,
+                        "write_iops": 981,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:12Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "old-partition-profile-reported-unavailable",
+              "passed": true,
+              "inspection": {
+                "version": 2,
+                "created_utc": "2026-11-10T18:43:24Z",
+                "devices": [
+                  {
+                    "profile_device": "8:1",
+                    "state": "unavailable",
+                    "detail": "calibrated device missing or ambiguous; recalibrate explicitly",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.1286486464201852,
+                        "read_iops": 3.798767967145791,
+                        "write_bps": 0.1542694502303984,
+                        "write_iops": 0.20366598778004072
+                      }
+                    }
+                  },
+                  {
+                    "profile_device": "8:2",
+                    "device": "8:2",
+                    "control_device": "8:0",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 1,
+                      "spread_percent": {
+                        "read_bps": 0,
+                        "read_iops": 0,
+                        "write_bps": 0,
+                        "write_iops": 0
+                      },
+                      "warnings": [
+                        "fewer than three measurements; variability cannot be established reliably"
+                      ]
+                    }
+                  },
+                  {
+                    "profile_device": "8:1",
+                    "device": "8:1",
+                    "control_device": "8:0",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 1.9264309685750718,
+                        "read_iops": 1.3238289205702647,
+                        "write_bps": 2.0080201779195805,
+                        "write_iops": 0.10193679918450561
+                      }
+                    }
+                  }
+                ],
+                "warnings": [
+                  "3 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+                ]
+              }
+            },
+            {
+              "name": "geometry-originals-data-logs-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "actual-readonly-without-capabilities-is-degraded",
+              "passed": true
+            },
+            {
+              "name": "readonly-failure-visible-and-PID1-preserved",
+              "passed": true
+            },
+            {
+              "name": "readonly-disable-with-no-owned-mutations",
+              "passed": true
+            }
+          ],
+          "measurements": {
+            "CPU": {
+              "actual_wall_seconds": 8.023660520000007,
+              "used_CPU_seconds": 4.022635,
+              "average_cores": 0.5013466098139452,
+              "nr_throttled_delta": 80,
+              "load": {
+                "count": 0,
+                "mode": "cpu",
+                "rate": 0,
+                "seconds": 8.000055616
+              }
+            },
+            "/data/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191629.9866760653,
+              "seconds": 6.003826846
+            },
+            "/data/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4231009.97949952,
+              "seconds": 6.195777301
+            },
+            "/data/randwrite": {
+              "count": 6258688,
+              "iops": 254.61746841851274,
+              "mode": "randwrite",
+              "rate": 1042913.1680207562,
+              "seconds": 6.001158073
+            },
+            "/sibling/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191618.4817353804,
+              "seconds": 6.003840941
+            },
+            "/sibling/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4230970.478330535,
+              "seconds": 6.195832272
+            },
+            "/sibling/randwrite": {
+              "count": 6258688,
+              "iops": 254.62107273209367,
+              "mode": "randwrite",
+              "rate": 1042927.936503382,
+              "seconds": 6.001073203
+            },
+            "simultaneous-write": {
+              "count": 27262976,
+              "counts": [
+                13631488,
+                13631488
+              ],
+              "filesystem_devices": [
+                "8:1",
+                "8:2"
+              ],
+              "iops": 1031.6530476824178,
+              "mode": "write",
+              "population_seconds_excluded": 15.92434414,
+              "rate": 4225650.883307183,
+              "seconds": 6.451781454
+            },
+            "simultaneous-randwrite": {
+              "count": 6361088,
+              "counts": [
+                3145728,
+                3215360
+              ],
+              "filesystem_devices": [
+                "8:1",
+                "8:2"
+              ],
+              "iops": 257.0746929426163,
+              "mode": "randwrite",
+              "population_seconds_excluded": 16.027077846,
+              "rate": 1052977.9422929564,
+              "seconds": 6.041045823
+            },
+            "percent": {
+              "host_online_CPUs": 4,
+              "host_memory_bytes": 16760344576,
+              "requested_percentages": {
+                "cpu": 10,
+                "memory": 1,
+                "IO": 20
+              },
+              "expected_controls": {
+                "cpu.max": "40000 100000",
+                "memory.max": "167600128",
+                "io.max": "8:0 rbps=54984508 wbps=55191225 riops=190 wiops=196",
+                "pids.max": "17436",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              },
+              "automatic_IO_state": "calibrated",
+              "profile_sha256": "a1f307016896bfc2bab1bc9737a58d5cc86b4c1b2dc341704feee9909e493797"
+            }
+          },
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "programs": {
+            "crg": "6252276a0b99638b0bb9f592e5097ee26b8c7aa5fe667f880a18a6e3ffb292c8",
+            "oldcrg": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+            "hold": "ffd5dc6db1bf536d7f0bdbc682e8b849dff0a296260827b10fb8dcaf5d0ce847",
+            "load": "c5d3ef8c4a66386818e4756f4281ae4f9c3c3b18498dc1f4e0c9c681983a9a94",
+            "shared-load": "137d0212f76041a728f1085e00d42885a1cdca54e4067fc04299049bc024c7e2"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "amd64",
+                  "BuildTime": "Tue Mar 25 15:07:16 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "7.0.0-1017-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "amd64",
+            "KernelVersion": "7.0.0-1017-azure",
+            "BuildTime": "2025-03-25T15:07:16.000000000+00:00"
+          },
+          "storage_fixture": {
+            "kind": "two real GPT ext4 partitions on exclusive kernel scsi_debug RAM-backed SCSI disk with actual WWID",
+            "logical_and_backing_bytes": 2684354560,
+            "physical_independent_device": false,
+            "module_vermagic": "7.0.0-1017-azure SMP preempt mod_unload modversions",
+            "control_device": "8:0",
+            "partitions": [
+              {
+                "filesystem_device": "8:1",
+                "partition": 1,
+                "start": 2048,
+                "sectors": 2097152
+              },
+              {
+                "filesystem_device": "8:2",
+                "partition": 2,
+                "start": 2623488,
+                "sectors": 1572864
+              }
+            ]
+          },
+          "data_device": "8:1",
+          "device_inventory": {
+            "exposed": true,
+            "is_partition": true,
+            "direct_identity_files": {
+              "dm/uuid": false,
+              "device/wwid": false,
+              "wwid": false
+            }
+          },
+          "manual_doctor": {
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/system.slice/docker-e46dab78d92fed3e392e3d928b897ffcb389b9189bc9c29dc250bb07acd7833b.scope",
+              "identity": "3f94af5afe8a4f0cc40ae9ab7d2a28078f65db73766fed0164dfeb75d8f96e37",
+              "host_online_cpus": 4,
+              "host_memory_bytes": 16760344576,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-3"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "cpu.max",
+                "value": "50000 100000"
+              },
+              {
+                "file": "memory.max",
+                "value": "134217728"
+              },
+              {
+                "file": "io.max",
+                "device": "8:0",
+                "device_identity": "95adab9704ff6d2244978ed741dc85cc1d61e0285a318a781628537a28a25d75",
+                "value": "rbps=4194304 wbps=4194304 riops=256 wiops=256"
+              }
+            ],
+            "io_devices": [
+              {
+                "profile_device": "",
+                "resolved_device": "8:0",
+                "state": "planned",
+                "detail": "manual shared whole-device limits from data_paths; no benchmark used"
+              }
+            ],
+            "data_paths": [
+              {
+                "path": "/data",
+                "device": "8:1",
+                "control_device": "8:0",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              },
+              {
+                "path": "/sibling",
+                "device": "8:2",
+                "control_device": "8:0",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "runner": "ubuntu-24.04-arm",
+        "architecture": "arm64",
+        "environment": {
+          "driver_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "runner_label": "ubuntu-24.04-arm",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "7.0.0-1017-azure",
+          "expected_kernel_prefix": "7.",
+          "cgroup_filesystem": "cgroup2fs",
+          "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+        },
+        "build_info": {
+          "arch": "arm64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "version": "partition-controller-ci",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "old_build_info": {
+          "arch": "arm64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "old_published_asset": {
+          "version": "v0.1.0-rc.3-preview.1",
+          "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+          "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+          "architecture": "arm64",
+          "asset_id": 730823217,
+          "archive_sha256": "3e650f035bb87411821e429b611c39e3e42860ddfe78c722555c4de981a0c89a",
+          "binary_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+          "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+          "scope": "published bytes selected; not yet execution or controller acceptance"
+        },
+        "raw_report_sha256": "28c86b8b70f41f8b3ca992fded703955a1b3678fa80e7fdd8b638593a155b29d",
+        "report": {
+          "phase": "passed",
+          "source_revision": "468fe73c572b94c0eb5b5b4ba94fb297ec3e63af",
+          "driver_sha256": "f229011ab56d671bab7c8e272df65b5b6f7aec3cfd89e20bac3356872cee2699",
+          "scope": "real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks",
+          "architecture": "arm64",
+          "machine": "aarch64",
+          "kernel": "7.0.0-1017-azure",
+          "tests": [
+            {
+              "name": "exact-native-program-source",
+              "passed": true
+            },
+            {
+              "name": "original-released-preview-for-independent-restore",
+              "passed": true
+            },
+            {
+              "name": "local-Docker-only",
+              "passed": true
+            },
+            {
+              "name": "scratch-image-native-and-owned",
+              "passed": true
+            },
+            {
+              "name": "actual-two-partition-filesystems-share-one-parent",
+              "passed": true
+            },
+            {
+              "name": "finite-external-own-leaf-baseline-established",
+              "passed": true
+            },
+            {
+              "name": "manual-exact-three-actual-controls",
+              "passed": true,
+              "actual_controls": {
+                "cpu.max": "50000 100000",
+                "memory.max": "134217728",
+                "io.max": "8:16 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+                "pids.max": "17491",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              }
+            },
+            {
+              "name": "manual-journal-uses-one-whole-device-key",
+              "passed": true
+            },
+            {
+              "name": "two-real-filesystem-paths-covered-by-one-control-target",
+              "passed": true,
+              "coverage": [
+                {
+                  "path": "/data",
+                  "device": "8:17",
+                  "control_device": "8:16",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                },
+                {
+                  "path": "/sibling",
+                  "device": "8:18",
+                  "control_device": "8:16",
+                  "state": "planned",
+                  "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                }
+              ]
+            },
+            {
+              "name": "CPU-actual-throttling",
+              "passed": true
+            },
+            {
+              "name": "/data-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/data-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-read-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-write-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "/sibling-randwrite-actual-direct-IO-cap",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-write-budget",
+              "passed": true
+            },
+            {
+              "name": "sibling-partitions-share-one-randwrite-budget",
+              "passed": true
+            },
+            {
+              "name": "memory-limit-and-safe-allocation",
+              "passed": true
+            },
+            {
+              "name": "Agent-crash-retains-kernel-caps-and-PID1",
+              "passed": true
+            },
+            {
+              "name": "same-journal-Agent-restart",
+              "passed": true
+            },
+            {
+              "name": "old-released-disable-restores-eight-finite-originals",
+              "passed": true
+            },
+            {
+              "name": "manual-logs-sentinel-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "independent-percentages-and-real-automatic-profile",
+              "passed": true
+            },
+            {
+              "name": "automatic-profile-binds-filesystem-to-whole-parent",
+              "passed": true
+            },
+            {
+              "name": "percent-disable-before-normal-rebuild",
+              "passed": true
+            },
+            {
+              "name": "new-Docker-ID-discovers-new-journal-identity",
+              "passed": true
+            },
+            {
+              "name": "stable-profile-reused-without-second-calibration",
+              "passed": true
+            },
+            {
+              "name": "daily-log-prefix-retained-and-appended",
+              "passed": true
+            },
+            {
+              "name": "new-container-originals-restore-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "two-real-profiles-form-one-minimum-percentage-cap",
+              "passed": true,
+              "rates": [
+                82269484,
+                80972065,
+                197,
+                197
+              ],
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:42:45Z",
+                "devices": [
+                  {
+                    "device": "8:17",
+                    "identity": "62e93de7dbf31de7b1e8d88db67842f6a5c131f20c3098eddfd2e15c6048d62c",
+                    "read_bps": 414876331,
+                    "write_bps": 406061217,
+                    "read_iops": 987,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 414876331,
+                        "write_bps": 406061217,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:41:59Z"
+                      },
+                      {
+                        "read_bps": 415799940,
+                        "write_bps": 406855802,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:11Z"
+                      },
+                      {
+                        "read_bps": 412490009,
+                        "write_bps": 404755751,
+                        "read_iops": 987,
+                        "write_iops": 986,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:24Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:18",
+                    "identity": "76e23806ba83e67e6ecf2d5684b16786dd8980d7978eee10e24d8c355fe0861e",
+                    "read_bps": 411347424,
+                    "write_bps": 404860327,
+                    "read_iops": 988,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 411347424,
+                        "write_bps": 404860327,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:42:40Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "merged-profile-originals-restored",
+              "passed": true
+            },
+            {
+              "name": "mixed-whole-and-partition-baselines-refuse-IO-writes",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:42:47Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-d5f491982776f7f6e3333c093199442d48e563936ba5adde2b95065d17d3159a.scope",
+                    "identity": "6f468486eb2793d17c38b82a9a905d7bdf9025b9cd2ff9633f361eb7054267f8",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16715927552,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167157760"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: 8:16: whole-device and partition profiles overlap; select one calibrated layer",
+                    "data path /data: no calibrated limit for the filesystem device; no limit inferred",
+                    "data path /sibling: no calibrated limit for the filesystem device; no limit inferred"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:17",
+                      "filesystem_device": "8:17",
+                      "resolved_device": "8:16",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:18",
+                      "filesystem_device": "8:18",
+                      "resolved_device": "8:16",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    },
+                    {
+                      "profile_device": "8:16",
+                      "filesystem_device": "8:16",
+                      "resolved_device": "8:16",
+                      "state": "skipped",
+                      "detail": "whole-device and partition profiles overlap; select one calibrated layer"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:17",
+                      "control_device": "8:16",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:18",
+                      "control_device": "8:16",
+                      "state": "unmanaged",
+                      "detail": "no calibrated limit for the filesystem device; no limit inferred"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167157760",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "c0e0e2fbd7626695da370ced081cac989f27f05d13374a8e5423aa432086a15d",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "reused",
+                  "detail": "matching stable device identity; no benchmark performed",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:17",
+                    "identity": "62e93de7dbf31de7b1e8d88db67842f6a5c131f20c3098eddfd2e15c6048d62c",
+                    "control_device": "8:16",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/overlap-profile.json"
+                }
+              }
+            },
+            {
+              "name": "overlap-profile-safe-restore",
+              "passed": true
+            },
+            {
+              "name": "offline-owned-partition-growth-preserves-cache-and-data",
+              "passed": true
+            },
+            {
+              "name": "changed-geometry-recalibrates-with-stale-profile-visible",
+              "passed": true,
+              "status": {
+                "time_utc": "2026-11-10T18:43:27Z",
+                "mode": "enforce",
+                "state": "degraded",
+                "plan": {
+                  "percentages": {
+                    "cpu_percent": 10,
+                    "memory_percent": 1,
+                    "io_percent": 20
+                  },
+                  "environment": {
+                    "cgroup_version": "v2",
+                    "cgroup": "/sys/fs/cgroup/system.slice/docker-d78d4731c24519a7c9c087701f8e23c286a890d04f256074b5bced8941c5f7d2.scope",
+                    "identity": "9e639e36a8953c923313f71134ff71f326337eb8c28c23dd6a54d0b294baefd0",
+                    "host_online_cpus": 4,
+                    "host_memory_bytes": 16715927552,
+                    "cpu_capacity_source": "/sys/devices/system/cpu/online",
+                    "memory_capacity_source": "/proc/meminfo",
+                    "effective_cpuset": "0-3"
+                  },
+                  "resource_mode": "percent",
+                  "settings": [
+                    {
+                      "file": "cpu.max",
+                      "value": "40000 100000"
+                    },
+                    {
+                      "file": "memory.max",
+                      "value": "167157760"
+                    },
+                    {
+                      "file": "io.max",
+                      "device": "8:16",
+                      "device_identity": "e8ad644ec6e74bdc55858adb81e48a40a5da079600a5ebb488d814a14508f033",
+                      "value": "rbps=82269484 wbps=80765002 riops=197 wiops=197"
+                    }
+                  ],
+                  "warnings": [
+                    "IO unmanaged: calibrated device missing or ambiguous; recalibrate explicitly"
+                  ],
+                  "io_devices": [
+                    {
+                      "profile_device": "8:17",
+                      "state": "unavailable",
+                      "detail": "calibrated device missing or ambiguous; recalibrate explicitly"
+                    },
+                    {
+                      "profile_device": "8:18",
+                      "filesystem_device": "8:18",
+                      "resolved_device": "8:16",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    },
+                    {
+                      "profile_device": "8:17",
+                      "filesystem_device": "8:17",
+                      "resolved_device": "8:16",
+                      "state": "planned",
+                      "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+                    }
+                  ],
+                  "data_paths": [
+                    {
+                      "path": "/data",
+                      "device": "8:17",
+                      "control_device": "8:16",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    },
+                    {
+                      "path": "/sibling",
+                      "device": "8:18",
+                      "control_device": "8:16",
+                      "state": "planned",
+                      "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+                    }
+                  ]
+                },
+                "items": [
+                  {
+                    "file": "cpu.max",
+                    "value": "40000 100000",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "memory.max",
+                    "value": "167157760",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  },
+                  {
+                    "file": "io.max",
+                    "device": "8:16",
+                    "device_identity": "e8ad644ec6e74bdc55858adb81e48a40a5da079600a5ebb488d814a14508f033",
+                    "value": "rbps=82269484 wbps=80765002 riops=197 wiops=197",
+                    "state": "applied",
+                    "detail": "written and verified",
+                    "reason_code": "applied"
+                  }
+                ],
+                "configuration": {
+                  "generation": 1,
+                  "accepted_hash": "a80f9361725da0711dff4d36444299fdb0af9512afefccd71ca0baad29b54add",
+                  "source": "/etc/crg/config.json",
+                  "state": "accepted"
+                },
+                "automatic_io": {
+                  "state": "calibrated",
+                  "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+                  "selection": {
+                    "directory": "/data",
+                    "filesystem": "ext4",
+                    "device": "8:17",
+                    "identity": "3d193878c420a8be6dc0d192274ea8ae5b3bc32d11df8a7dfeaec4107165022b",
+                    "control_device": "8:16",
+                    "total_bytes": 1020702720,
+                    "available_bytes": 1003782144
+                  },
+                  "profile": "/etc/crg/both-profile.json"
+                }
+              },
+              "profiles": {
+                "version": 2,
+                "method": "direct-sync-qdepth1-seq1m-random4k",
+                "created_utc": "2026-11-10T18:43:27Z",
+                "devices": [
+                  {
+                    "device": "8:17",
+                    "identity": "62e93de7dbf31de7b1e8d88db67842f6a5c131f20c3098eddfd2e15c6048d62c",
+                    "read_bps": 414876331,
+                    "write_bps": 406061217,
+                    "read_iops": 987,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 414876331,
+                        "write_bps": 406061217,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:41:59Z"
+                      },
+                      {
+                        "read_bps": 415799940,
+                        "write_bps": 406855802,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:11Z"
+                      },
+                      {
+                        "read_bps": 412490009,
+                        "write_bps": 404755751,
+                        "read_iops": 987,
+                        "write_iops": 986,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:24Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:18",
+                    "identity": "76e23806ba83e67e6ecf2d5684b16786dd8980d7978eee10e24d8c355fe0861e",
+                    "read_bps": 411347424,
+                    "write_bps": 404860327,
+                    "read_iops": 988,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 411347424,
+                        "write_bps": 404860327,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 1,
+                        "created_utc": "2026-11-10T18:42:40Z"
+                      }
+                    ]
+                  },
+                  {
+                    "device": "8:17",
+                    "identity": "3d193878c420a8be6dc0d192274ea8ae5b3bc32d11df8a7dfeaec4107165022b",
+                    "read_bps": 413361559,
+                    "write_bps": 403825013,
+                    "read_iops": 987,
+                    "write_iops": 987,
+                    "measurements": [
+                      {
+                        "read_bps": 411554943,
+                        "write_bps": 402904159,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:42:50Z"
+                      },
+                      {
+                        "read_bps": 414012875,
+                        "write_bps": 406333750,
+                        "read_iops": 987,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:02Z"
+                      },
+                      {
+                        "read_bps": 413361559,
+                        "write_bps": 403825013,
+                        "read_iops": 988,
+                        "write_iops": 987,
+                        "seconds_per_phase": 3,
+                        "created_utc": "2026-11-10T18:43:15Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "old-partition-profile-reported-unavailable",
+              "passed": true,
+              "inspection": {
+                "version": 2,
+                "created_utc": "2026-11-10T18:43:27Z",
+                "devices": [
+                  {
+                    "profile_device": "8:17",
+                    "state": "unavailable",
+                    "detail": "calibrated device missing or ambiguous; recalibrate explicitly",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.7978114808386116,
+                        "read_iops": 0.10131712259371835,
+                        "write_bps": 0.5171759606877206,
+                        "write_iops": 0.10131712259371835
+                      }
+                    }
+                  },
+                  {
+                    "profile_device": "8:18",
+                    "device": "8:18",
+                    "control_device": "8:16",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 1,
+                      "spread_percent": {
+                        "read_bps": 0,
+                        "read_iops": 0,
+                        "write_bps": 0,
+                        "write_iops": 0
+                      },
+                      "warnings": [
+                        "fewer than three measurements; variability cannot be established reliably"
+                      ]
+                    }
+                  },
+                  {
+                    "profile_device": "8:17",
+                    "device": "8:17",
+                    "control_device": "8:16",
+                    "state": "resolved",
+                    "detail": "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions",
+                    "quality": {
+                      "samples": 3,
+                      "spread_percent": {
+                        "read_bps": 0.5946203623641743,
+                        "read_iops": 0.10131712259371835,
+                        "write_bps": 0.8492765157169697,
+                        "write_iops": 0
+                      }
+                    }
+                  }
+                ],
+                "warnings": [
+                  "3 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+                ]
+              }
+            },
+            {
+              "name": "geometry-originals-data-logs-and-no-OOM",
+              "passed": true
+            },
+            {
+              "name": "actual-readonly-without-capabilities-is-degraded",
+              "passed": true
+            },
+            {
+              "name": "readonly-failure-visible-and-PID1-preserved",
+              "passed": true
+            },
+            {
+              "name": "readonly-disable-with-no-owned-mutations",
+              "passed": true
+            }
+          ],
+          "measurements": {
+            "CPU": {
+              "actual_wall_seconds": 8.099191542,
+              "used_CPU_seconds": 4.060868,
+              "average_cores": 0.5013917721221366,
+              "nr_throttled_delta": 81,
+              "load": {
+                "count": 0,
+                "mode": "cpu",
+                "rate": 0,
+                "seconds": 8.073661055
+              }
+            },
+            "/data/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191751.7729883576,
+              "seconds": 6.003649557
+            },
+            "/data/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4225595.586647305,
+              "seconds": 6.203716171
+            },
+            "/data/randwrite": {
+              "count": 6283264,
+              "iops": 255.65680713407113,
+              "mode": "randwrite",
+              "rate": 1047170.298775234,
+              "seconds": 6.000230017
+            },
+            "/sibling/read": {
+              "count": 25165824,
+              "mode": "read",
+              "rate": 4191642.549397793,
+              "seconds": 6.003808597
+            },
+            "/sibling/write": {
+              "count": 26214400,
+              "mode": "write",
+              "rate": 4225504.2962003825,
+              "seconds": 6.203850224
+            },
+            "/sibling/randwrite": {
+              "count": 6283264,
+              "iops": 255.65868372426738,
+              "mode": "randwrite",
+              "rate": 1047177.9838927301,
+              "seconds": 6.000186262
+            },
+            "simultaneous-write": {
+              "count": 27262976,
+              "counts": [
+                13631488,
+                13631488
+              ],
+              "filesystem_devices": [
+                "8:17",
+                "8:18"
+              ],
+              "iops": 1031.6434843495688,
+              "mode": "write",
+              "population_seconds_excluded": 15.924616189,
+              "rate": 4225611.711895834,
+              "seconds": 6.451841262
+            },
+            "simultaneous-randwrite": {
+              "count": 6361088,
+              "counts": [
+                3178496,
+                3182592
+              ],
+              "filesystem_devices": [
+                "8:17",
+                "8:18"
+              ],
+              "iops": 257.37479739142725,
+              "mode": "randwrite",
+              "population_seconds_excluded": 16.025210353,
+              "rate": 1054207.170115286,
+              "seconds": 6.034001836
+            },
+            "percent": {
+              "host_online_CPUs": 4,
+              "host_memory_bytes": 16715927552,
+              "requested_percentages": {
+                "cpu": 10,
+                "memory": 1,
+                "IO": 20
+              },
+              "expected_controls": {
+                "cpu.max": "40000 100000",
+                "memory.max": "167157760",
+                "io.max": "8:16 rbps=82269484 wbps=80972065 riops=197 wiops=197",
+                "pids.max": "17491",
+                "cpu.weight": "100",
+                "io.weight": "default 100",
+                "memory.high": "max",
+                "memory.swap.max": "0"
+              },
+              "automatic_IO_state": "calibrated",
+              "profile_sha256": "c9e87638303a2af03a0ab55d4c1731e4a6b364d5a71186b0bd2b5a349b3aa6b4"
+            }
+          },
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "programs": {
+            "crg": "1da082dda100ab5cb8523b93df35d1fbf31470f0db445db0d685c4ec3b00eb9a",
+            "oldcrg": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+            "hold": "d2d03bd1f9b4f9dcaf496d989791eb71c54d0aed0e1a0b8fc6acf42a15cc727d",
+            "load": "39c0973a3d704a8716058d6042619ba2c242e07871391ebe9c4011af9e9ca79e",
+            "shared-load": "0352e659d952259df2f20ff29e6d34e5baa7db119769b81928c2f2c57f1d06c5"
+          },
+          "docker": {
+            "Platform": {
+              "Name": "Docker Engine - Community"
+            },
+            "Components": [
+              {
+                "Name": "Engine",
+                "Version": "28.0.4",
+                "Details": {
+                  "ApiVersion": "1.48",
+                  "Arch": "arm64",
+                  "BuildTime": "Tue Mar 25 15:07:55 2025",
+                  "Experimental": "false",
+                  "GitCommit": "6430e49",
+                  "GoVersion": "go1.23.7",
+                  "KernelVersion": "7.0.0-1017-azure",
+                  "MinAPIVersion": "1.24",
+                  "Os": "linux"
+                }
+              },
+              {
+                "Name": "containerd",
+                "Version": "v2.4.2",
+                "Details": {
+                  "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                }
+              },
+              {
+                "Name": "runc",
+                "Version": "1.5.2",
+                "Details": {
+                  "GitCommit": "v1.5.2-0-g29dd3dc2"
+                }
+              },
+              {
+                "Name": "docker-init",
+                "Version": "0.19.0",
+                "Details": {
+                  "GitCommit": "de40ad0"
+                }
+              }
+            ],
+            "Version": "28.0.4",
+            "ApiVersion": "1.48",
+            "MinAPIVersion": "1.24",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "Os": "linux",
+            "Arch": "arm64",
+            "KernelVersion": "7.0.0-1017-azure",
+            "BuildTime": "2025-03-25T15:07:55.000000000+00:00"
+          },
+          "storage_fixture": {
+            "kind": "two real GPT ext4 partitions on exclusive kernel scsi_debug RAM-backed SCSI disk with actual WWID",
+            "logical_and_backing_bytes": 2684354560,
+            "physical_independent_device": false,
+            "module_vermagic": "7.0.0-1017-azure SMP preempt mod_unload modversions aarch64",
+            "control_device": "8:16",
+            "partitions": [
+              {
+                "filesystem_device": "8:17",
+                "partition": 1,
+                "start": 2048,
+                "sectors": 2097152
+              },
+              {
+                "filesystem_device": "8:18",
+                "partition": 2,
+                "start": 2623488,
+                "sectors": 1572864
+              }
+            ]
+          },
+          "data_device": "8:17",
+          "device_inventory": {
+            "exposed": true,
+            "is_partition": true,
+            "direct_identity_files": {
+              "dm/uuid": false,
+              "device/wwid": false,
+              "wwid": false
+            }
+          },
+          "manual_doctor": {
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/system.slice/docker-7ece652ed8514fbd1b9772886b3fd9f8b5eb12d803b1e85b3d165e1aa4c2b308.scope",
+              "identity": "774eb99a00a9717198026359dcb47ef166eb8cd7cd9d44b11aa9a671e8eb0fed",
+              "host_online_cpus": 4,
+              "host_memory_bytes": 16715927552,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-3"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "cpu.max",
+                "value": "50000 100000"
+              },
+              {
+                "file": "memory.max",
+                "value": "134217728"
+              },
+              {
+                "file": "io.max",
+                "device": "8:16",
+                "device_identity": "e8ad644ec6e74bdc55858adb81e48a40a5da079600a5ebb488d814a14508f033",
+                "value": "rbps=4194304 wbps=4194304 riops=256 wiops=256"
+              }
+            ],
+            "io_devices": [
+              {
+                "profile_device": "",
+                "resolved_device": "8:16",
+                "state": "planned",
+                "detail": "manual shared whole-device limits from data_paths; no benchmark used"
+              }
+            ],
+            "data_paths": [
+              {
+                "path": "/data",
+                "device": "8:17",
+                "control_device": "8:16",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              },
+              {
+                "path": "/sibling",
+                "device": "8:18",
+                "control_device": "8:16",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "total_accepted_controller_checks": 164,
+  "receipt_transport": "HTTPS byte-range reads of named immutable GitHub artifact ZIP members with ZIP CRC verification; full artifact binary download timed out locally. Fixture hashes executed new/old binaries and running /proc/exe; published old asset is independently pinned and checked inside each CI job.",
+  "limitations": [
+    "Kernel scsi_debug RAM-backed SCSI disk with real WWID and actual GPT partitions; not independent physical hardware or disk capacity performance.",
+    "Sequential shared-load iops field is a4KiB-equivalent count and is not used as a sequential operation-rate assertion. Actual IOPS gate uses only4KiB randwrite.",
+    "Geometry cache refresh deliberately retains one stale old profile and reports degraded/unavailable; all3 active controls are separately verified, not claimed fully managed.",
+    "Not merged or released by this evidence archive. Existing published assets, formal97 long-test program/configuration and budgets unchanged.",
+    "Not ARM vendor business, multi-physical-device, node-reboot,24h+24h,>=7days or stable1.0 acceptance."
+  ]
+}

@@ -20,3 +20,12 @@
 Linux6.8官方[DM实现](https://github.com/torvalds/linux/blob/v6.8/drivers/md/dm.c#L2120)设置GENHD_FL_NO_PART，证明该设备类型不适合本轮真实普通分区测试。下一轮改用内核[scsi_debug](https://github.com/torvalds/linux/blob/v6.8/drivers/scsi/scsi_debug.c)创建的独占RAM后端SCSI磁盘，必须有实际WWID、真实GPT分区和原生IO；逻辑容量与实际后端均为2.5GiB，不用虚拟大容量映射回小存储造成文件别名。已有scsi_debug模块/设备时拒绝复用和卸载。模块缺失时只安装当前实际内核的匹配模块包，不换内核或重启。
 
 [SCSI修正冻结计划](test-plan-partition-cgroup-scsi.json)在下一次执行前保存完整摘要；产品代码、原控制预算/计时/门槛、双分区几何、33项固定检查和8项循环IO检查均不变。清理逐项检查自有分区/挂载/SCSI盘/host/模块和临时目录正常消失。原DM计划保留不覆盖；这次存储类型修正不是降低验收标准，也不是独立物理磁盘性能验收。
+
+
+## 真实分区四格结果
+
+[SCSI修正轮工作流](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42877343464)已完成：源码468fe73（产品实现af1a34d）在实际Linux6.8.0-1070-azure／7.0.0-1017-azure、Docker28.0.4、原生AMD64／ARM64四格各41项，共164项通过。两个真实GPT文件系统共享同一整盘限额，分别直接IO及同步双分区写入/随机写验证合计预算；CPU实际节流、内存安全分配、旧发布二进制独立恢复有限原值、换ID复用缓存/日志、真实几何变化重新标定、重叠profile拒绝、只读无权限回退及全部自有测试设备正常清理均通过。原数值、计时和三资源范围未改。
+
+完整[结果、源码、程序摘要及首轮失败](test-results-partition-cgroup.json)归档。首轮DM四格各只有4项准备检查，均因内核禁止DM普通分区而失败，未进入资源效果；保留其部分磁盘准备未完成/交由临时VM销毁的状态，不计作正常清理通过。报告下载出现本地传输超时后，改为对同一不可变artifact的命名ZIP文件作HTTPS范围读取并验证ZIP CRC，未因此重新运行测试。新旧执行程序摘要由夹具及运行中/proc/exe核对；旧资产仍经固定发布合同独立校验，不把未完整下载的本地新ELF称为另一次字节复核。
+
+共享顺序写只以字节速率验收；夹具在顺序模式的iops字段是4KiB等价数，不作为实际顺序操作率。IOPS判定只取实际4KiB随机写。几何变化后旧profile保留，须明确degraded和旧条目unavailable；正确生效的三项限额另行核对，不能称全部profile可用。RAM后端SCSI测试盘不代表物理盘容量基准或多块独立物理设备；ARM厂商业务、正式长测和1.0发布门槛仍独立保留。本分支尚未合入/发布，97固定程序和预算及现有发布资产不变。
