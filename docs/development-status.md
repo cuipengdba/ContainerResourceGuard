@@ -101,3 +101,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 第16轮默认空配置首格main/DBS完整600秒但SQL10次/API57次错误，未通过；Pod清理命令失败使其余三格未执行，终态namespace已移除。保留实际20%限额、失败与诊断，见[默认配置结果](testing-three-resource-default20-business.md)。
 
 第17轮真实路径备份/新Pod ID冷重建四格、8次启动、88项检查通过，数据/独立逻辑恢复库/一对一身份/日志追加及新容器原值恢复核对，全部夹具清理；仅为手动64MiB/s预算。见[冷重建结果](testing-three-resource-cold-rebuild.md)。
+
+组合开发源码50671aa在Windows/amd64、Go1.27.3下两个解析器各10分钟fuzz通过，包含12条明确归档的新百分比/默认/非法语料；不是Linux业务或资源开销结论，见[独立结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-three-resource-parser-fuzz-windows.json)。

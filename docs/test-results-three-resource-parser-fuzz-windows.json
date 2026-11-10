@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-10",
+  "phase": "passed",
+  "source_revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+  "source_archive_sha256": "3584236943dc0c1de755af654557fc3897bfec6a0fac9dcc82f530b9adf59778",
+  "platform": "windows/amd64",
+  "toolchain": "go version go1.27.3 windows/amd64",
+  "started_utc": "2026-11-10T11:47:55.846954+00:00",
+  "ended_utc": "2026-11-10T12:08:44.874655+00:00",
+  "plan": "test-plan-three-resource-parser-fuzz-windows.json",
+  "targets": [
+    {
+      "target": "FuzzDecodeConfig",
+      "phase": "passed",
+      "exit": 0,
+      "wall_seconds": 646.186999999918,
+      "go_reported_seconds": 602.825,
+      "executions": 5601420,
+      "new_interesting": 586,
+      "total_interesting": 602,
+      "log_sha256": "5933e6b6be83adef82a3a1e4a1abdd501b89ee67ebb9f58bd689067cb4053069"
+    },
+    {
+      "target": "FuzzDecodeProfile",
+      "phase": "passed",
+      "exit": 0,
+      "wall_seconds": 602.8289999999106,
+      "go_reported_seconds": 600.979,
+      "executions": 7503502,
+      "new_interesting": 590,
+      "total_interesting": 593,
+      "log_sha256": "bfae935e5cba1387700f6bd505a593fb23d761bb42df9f74659da4128c757566"
+    }
+  ],
+  "limitations": [
+    "Exact50671aa tracked source plus twelve listed seed files only. Windows parser evidence is separate from older Linux source revisions and runtime/cgroup tests.",
+    "Additional seeds include valid and intentionally invalid independent percentage/default/legacy/unknown-field cases; they do not claim every listed input is accepted.",
+    "GOMEMLIMIT256MiB is a soft Go target, not a hard process-memory bound. No CPU hard quota was claimed.",
+    "No source or product implementation changes; finite fuzz cannot prove all inputs are safe or close business/24h/seven-day/hardware gates."
+  ]
+}

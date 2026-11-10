@@ -22,3 +22,14 @@ Go1.22.5最低源码工具链下，两个候选各完成两个解析器的10分�
 | 74693ef（含R26） | IO profile | 1,593,451 | 601.173 |
 
 首次基准创建的磁盘写入另见[自动IO实测](testing-automatic-io.md)，不能按上述稳定状态写入预算判定。有限fuzz不证明所有输入绝对安全；24h+24h、至少7天、厂商业务接口、真实掉电及未测硬件矩阵仍保留独立门槛。
+
+## 三独立百分比当前源码：Windows解析器补充
+
+50671aa原样源码在Windows/amd64、固定Go1.27.3下完成两个解析器各10分钟fuzz；只在独立工作区补充12条明确列出的合法/非法语料，包括`{}`、三个百分比、遗漏默认、越界、null、重复字段、旧新混用及未知字段。未修改产品或原测试源码。[运行前语料与计划](test-plan-three-resource-parser-fuzz-windows.json)及[结果](test-results-three-resource-parser-fuzz-windows.json)单独归档。
+
+| 目标 | 执行次数 | Go报告秒数 | 含编译/收尾墙钟秒 |
+|---|---:|---:|---:|
+| FuzzDecodeConfig | 5601420 | 602.825 | 646.187 |
+| FuzzDecodeProfile | 7503502 | 600.979 | 602.829 |
+
+两项均退出0。GOMAXPROCS/并行worker各2，GOMEMLIMIT256MiB为软目标；未宣称Windows硬资源预算或Linux真机结果。有限fuzz不替代DBS/HISDBS业务、正式长时及硬件验收，也不能把旧74693/1bc9数据合成当前源码的统一执行量。
