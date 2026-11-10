@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+分区IO增强在独立开发分支完成[真实GPT双分区四格164项检查](docs/testing-partition-cgroup.md)，尚未合入本线或发布；现有下载包的覆盖范围保持单独记录。
+
 [171节点DBS/HISDBS本次升级、最终百分比与实测记录](docs/deployment-dbs-hisdbs-upgrade-20261110.zh.md)：CRG rc.3-preview.1 + CCG rc.11，DBS CPU30/内存25/IO40、HISDBS CPU30/内存35/IO40，CCG auto/enforce。
 
 
