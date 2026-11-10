@@ -1,0 +1,85 @@
+name: partition-cgroup
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  controller:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            arch: amd64
+            kernel: '6.'
+          - runner: ubuntu-22.04-arm
+            arch: arm64
+            kernel: '6.'
+          - runner: ubuntu-24.04
+            arch: amd64
+            kernel: '7.'
+          - runner: ubuntu-24.04-arm
+            arch: arm64
+            kernel: '7.'
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 25
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: v0.1.0-rc.3-preview.1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Record actual environment before fixtures
+        run: |
+          mkdir -p ci-partition/download
+          python3 - <<'PY'
+          import json, os, pathlib, platform, subprocess
+          result = {'driver_revision':os.environ['GITHUB_SHA'],'runner_label':'${{ matrix.runner }}','architecture':'${{ matrix.arch }}','machine':platform.machine(),'kernel':platform.release(),'expected_kernel_prefix':'${{ matrix.kernel }}','cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'scope':'real sibling partitions in native VM; not vendor business or independent physical disks'}
+          pathlib.Path('ci-partition/environment.json').write_text(json.dumps(result,indent=2)+'\n')
+          assert result['kernel'].startswith(result['expected_kernel_prefix']), 'actual kernel family differs; no fixture started'
+          assert result['machine'] in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[result['architecture']]
+          assert result['cgroup_filesystem'] == 'cgroup2fs'
+          PY
+      - name: Download and verify the unchanged published executable
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > ci-partition/download/release.json
+          gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$RELEASE_TAG" > ci-partition/download/tag.json
+          gh api "repos/$GITHUB_REPOSITORY/git/tags/54cd5c74852aa680c9779783328bfeaebf5e8744" > ci-partition/download/tag-object.json
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir ci-partition/download \
+            --pattern "containerresourceguard-$RELEASE_TAG-linux-${{ matrix.arch }}.tar.gz" --pattern SHA256SUMS
+          python3 tests/released-package.py --directory ci-partition/download --arch '${{ matrix.arch }}' --output ci-partition/verified
+          ./ci-partition/verified/crg build-info > ci-partition/old-build-info.json
+          python3 - <<'PY'
+          import json, pathlib
+          receipt=json.loads(pathlib.Path('ci-partition/verified/verification.json').read_text())
+          info=json.loads(pathlib.Path('ci-partition/old-build-info.json').read_text())
+          assert info['version']==receipt['version'] and info['revision']==receipt['source_revision'] and info['arch']==receipt['architecture'] and info['os']=='linux'
+          PY
+      - name: Build exact candidate and bounded native fixtures
+        run: |
+          test "$(go env GOHOSTARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOVERSION)" = 'go1.27.3'
+          CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-s -w -X main.version=partition-controller-ci -X main.revision=$GITHUB_SHA" -o ci-partition/crg ./cmd/crg
+          CGO_ENABLED=0 go build -trimpath -o ci-partition/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ci-partition/load ./tests/load
+          CGO_ENABLED=0 go build -trimpath -o ci-partition/shared-load ./tests/partition-load
+          ./ci-partition/crg build-info > ci-partition/build-info.json
+      - name: Actual sibling partition shared budget, geometry invalidation and old binary recovery
+        run: |
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/partition-cgroup.py \
+            --binary "$PWD/ci-partition/crg" --old-binary "$PWD/ci-partition/verified/crg" --holder "$PWD/ci-partition/hold" \
+            --load "$PWD/ci-partition/load" --shared-load "$PWD/ci-partition/shared-load" --output "$PWD/ci-partition/results" \
+            --expected-arch '${{ matrix.arch }}' --source-revision "$GITHUB_SHA"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: partition-cgroup-${{ matrix.runner }}-${{ github.sha }}
+          path: ci-partition/
+          retention-days: 14

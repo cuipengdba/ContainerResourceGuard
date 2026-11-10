@@ -81,3 +81,6 @@ P06/P09[原发布预览包AMD64/ARM64实测四格88项通过](testing-released-c
 P04/P06分区修复在`next/partition-io`独立开发：身份/整盘目标、同盘共享限额、标定与覆盖已接入，Windows测试/vet通过；Linux及真实分区验收仍待执行。见[设计与边界](partition-io.md)和[执行前冻结计划](test-plan-partition-io-core.json)。本分支未合入、未发布，不修改正式长测候选。
 
 分区修复核心已完成[Linux race与整盘回归](testing-partition-io-core.md)：源码af1a34d在Linux6.8双架构各212个Go pass事件、实际6.8/7.0整盘四格88项通过。建模分区测试与真实整盘效果分开记录；真实分区IO及旧二进制恢复仍待验收，未合入/发布。
+
+
+P04/P06真实分区控制验收已建立[运行前冻结计划](testing-partition-cgroup.md)：实际两个GPT分区、合计直接IO预算、有限原值及旧发布包恢复、独立百分比/新ID/几何变化缓存失效、重叠profile拒绝和只读降级；四格计划未执行前不声称通过。分区测试使用CI新建自有设备，97正式长测不变。
