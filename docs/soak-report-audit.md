@@ -22,3 +22,6 @@ python3 tests/soak-report-audit.py \
 自检使用 `python3 tests/soak-report-audit-checks.py`。[本轮结果](test-results-soak-report-audit.json)区分5个unittest方法中的合成正反例与4个节点只读检查：真实七天/24h中间报告均返回pending，错误预期Agent摘要拒绝，已完成600秒短测不能冒充七天。合成七天JSON通过只证明核验算法，不代表墙钟等待或业务运行了七天。
 
 该工具验算报告的一致性，不单凭报告关闭全部运行时条件。运行器真实退出码、namespace精确身份/实际清理、实际老化数据/配置/journal/日志保留和后置操作、最近两个已发布次版本、硬件支持及完整52项仍须独立核对。因此即使报告核验通过，输出固定release_accepted=false、runtime_cleanup_verified=false；未宣布1.0完成。
+
+
+三个分支该工具提交的build-and-test均完成并通过，组合线[CI42905294675](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42905294675)覆盖Linux/race/vet、辅助链、核验器自检、包完整性和重复构建；完整提交/工作流映射已写入本轮JSON。没有替换正在长测的d370或原fc2/d6程序。

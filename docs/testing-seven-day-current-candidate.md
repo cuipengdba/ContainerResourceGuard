@@ -9,3 +9,6 @@
 CPU7.2核、内存20001980416B、读写各64MiB/s与各4096IOPS，其他5项原值保持；原镜像、start.sh、PG及缓存路径不改。这里没有对默认20%业务失败重新下结论。正式fc2的24h observe基线和固定d6的后续等时enforce独立继续，没有将本轮替换进去。
 
 连续七天终态也只关闭连续组件；实际老化数据/配置/journal/日志的后置恢复、重建、升级回退与故障核对，以及原24h+24h、最近两个已发布次版本、硬件/支持边界和52项审计仍需完成。当前P10_complete=false，未发布1.0。
+
+
+后续[固定首周期观察](test-progress-seven-day-current-candidate-first-cycle.json)时，两角色原生实际约900秒、各18份宿主样本；首次周期各10项内容及临时实例清理完成，状态仍content-passed-native-pending。首300秒快照保持其原时刻，不把这两次观察当完整七天。

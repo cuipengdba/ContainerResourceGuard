@@ -8,7 +8,7 @@
 | 当前组合源码d3706f3 | [原生ARM212个Go pass事件、实际整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[自身三场景1800秒开销](testing-partition-steady-overhead.md) | [当前程序真实路径两格600秒/12项通过](testing-partition-realpaths-business.md)，[同程序辅助故障20场景/108项通过且清理](testing-partition-realpaths-faults.md)；当前维护22项、冷重建44项通过，仍未正式发布 |
 | 分区IO | [468fe73实际双分区四格164项](testing-partition-cgroup.md)，与组合生产源码逐文件一致合同独立列明 | 单父盘双分区不等于独立物理多设备；未测复杂栈仍未支持 |
 | 业务与辅助故障 | 原7638/d6的600秒手动预算、冷重建/故障/维护各报告保持自身来源 | 当前d370已按原manual64预算两格复验及20场景辅助故障通过且清理；原[默认20%失败](testing-three-resource-default20-business.md)及[补测](testing-three-resource-default20-supplement.md)不改为通过 |
-| 正式长期 | [旧fc2 observe基线固定21h观察](continuous-acceptance.md)，4周期内容仍待最终原生判定 | 尚未接受完整86400秒；固定d6的等时enforce未开始；[d370独立七天组件已开始](testing-seven-day-current-candidate.md)，仅首300秒观察，未接受 |
+| 正式长期 | [旧fc2 observe基线固定22h观察](continuous-acceptance.md)，4周期内容仍待最终原生判定 | 尚未接受完整86400秒；固定d6的等时enforce未开始；[d370独立七天组件已开始](testing-seven-day-current-candidate.md)，仅首300秒观察，未接受 |
 | 维护/最终支持 | 已有开发构建往返、共享切换/独立恢复、配置/状态兼容草案 | [当前d370开发程序实际维护22项/两格600秒通过](testing-partition-realpaths-maintenance.md)；最近两个已发布次版本、最终支持矩阵、未测硬件及边界审计未完成 |
 
 每份报告中的源码、实际程序摘要、环境、预算、时长和未测范围决定它能证明什么。文件存在或CI绿色不自动关闭整组业务、硬件或发布条件。当前三资源范围不恢复pids/权重/memory.high/Swap新参数；旧代码仅按兼容和恢复所有权规则处理。
@@ -33,3 +33,6 @@
 
 
 [报告只读核验器](soak-report-audit.md)已验证真实中间报告保持pending，拒绝错误摘要及短测冒充；这是验收工具检查，不是持续业务通过或运行时清理证明。
+
+
+当前[环境覆盖索引](environment-coverage.md)区分当前程序、原发布包、分区来源、真实v2与模拟版本门禁；不作为完整1.0支持承诺。正式基线最新固定观察推进到22h，七天首周期内容通过但native-pending。

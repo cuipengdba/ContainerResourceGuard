@@ -18,7 +18,7 @@
 | 当前分区组合d3706f3 | 原生ARM212个Go pass事件、实际整盘44项及构建身份9项通过；自身三场景1800秒开销及DBS/HISDBS各600秒/12项通过且清理；当前辅助故障108项、维护22项/两格600秒、冷重建44项/四次启动通过且清理 | [当前提交与范围](testing-partition-integration.md) |
 | ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 原发布包原生控制器 | 原AMD64/ARM64资产、实际Linux6.8/7.0四格88项通过；非ARM厂商业务 | [精确下载资产结果](testing-released-cgroup-ci.md) |
-| 长期验收 | 旧observe基线已有固定21h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定21h快照及边界](continuous-acceptance.md) |
+| 长期验收 | 旧observe基线已有固定22h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定22h快照及边界](continuous-acceptance.md) |
 
 以下保留早期源码/预算的开发历史，各自结论仅适用于报告中的程序和配置。R29暂缓的扩展资源不因历史实现而恢复为当前交付。
 
@@ -167,3 +167,6 @@ P10.2/P10.5与R24落实：[当前d370七天组件已开始](testing-seven-day-cu
 
 
 R24/P10.2/P10.3验收落实：新增[持续报告只读核验器](soak-report-audit.md)，固定五个工具/程序摘要与86400/604800秒门槛，合成反例及4个真实报告只读检查通过；真实长测中间态仍pending。仅测试/文档/CI变更，不修改当前d370程序或52项任务定义。
+
+
+P06/P10.4补充[环境覆盖索引](environment-coverage.md)，按实际程序/内核/架构/存储列明证据及未测范围；运维示例改为三独立百分比。正式旧observe已有22h观察、七天首周期内容完成但仍native-pending；新报告核验器三分支CI通过，产品长测程序未替换，52项完成审计继续。
