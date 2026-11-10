@@ -1,0 +1,153 @@
+{
+  "kind": "completed exact integrated partition candidate steady-state engineering result; not vendor business acceptance",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T19:58:54Z",
+  "plan": "test-plan-partition-steady-overhead-retry.json",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "1d99fab83a561b6a52dde479de4cc172c3f5116e0b24a5ef60c504572d0d5475",
+  "qualification_sha256": "fc85ee09ca3cd868e5924f74d739f0d52951d412f2773da268eb5746e35337d2",
+  "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+  "architecture": "x86_64",
+  "measurement_started_node_utc": "2026-11-10T19:28:15.223212+00:00",
+  "measurement_elapsed_seconds": 1800.0397583909798,
+  "criteria": {
+    "actual_seconds": 1800,
+    "warmup_seconds": 45,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "CPU_single_core_percent_max": 0.1,
+    "RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_write_bytes_max": 8388608,
+    "fault_write_bytes_max": 16777216,
+    "host_available_min_bytes": 8589934592,
+    "host_disk_free_min_bytes": 21474836480,
+    "OOM_kill_delta_max": 0,
+    "io_cap_bps": 65536,
+    "io_cap_iops": 8
+  },
+  "namespace_independently_absent": true,
+  "coordinator_gone": true,
+  "worker_exit": 0,
+  "cases": {
+    "healthy": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false,
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "134217728",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "result": {
+        "CPU_single_core_percent": 0.02166655336536249,
+        "max_RSS_bytes": 10342400,
+        "write_bytes_delta": 159744,
+        "wchar_delta": 80937,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.001020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0094127729535,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 1621,
+      "last_daily_log_bytes": 2119,
+      "all_sampled8_controls_unchanged": true,
+      "all_samples_same_Agent_start_identity": true,
+      "all_samples_expected_degraded_state": null,
+      "all_samples_expected_export_failure": null
+    },
+    "export-failure": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false,
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "134217728",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "result": {
+        "CPU_single_core_percent": 0.02166655064259,
+        "max_RSS_bytes": 10027008,
+        "write_bytes_delta": 45056,
+        "wchar_delta": 15115,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020343,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0096389749087,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 1620,
+      "last_daily_log_bytes": 2118,
+      "all_sampled8_controls_unchanged": true,
+      "all_samples_same_Agent_start_identity": true,
+      "all_samples_expected_degraded_state": null,
+      "all_samples_expected_export_failure": true
+    },
+    "readonly": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": true,
+      "fixture_external_IO": true,
+      "actual_controls": {
+        "cpu.max": "100000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "result": {
+        "CPU_single_core_percent": 0.03111094001744523,
+        "max_RSS_bytes": 10018816,
+        "write_bytes_delta": 1142784,
+        "wchar_delta": 333970,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.024020346,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0098990451079,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 2944,
+      "last_daily_log_bytes": 3440,
+      "all_sampled8_controls_unchanged": true,
+      "all_samples_same_Agent_start_identity": true,
+      "all_samples_expected_degraded_state": true,
+      "all_samples_expected_export_failure": null
+    }
+  },
+  "raw_report_object_sha256": "48e2d4b23caaede917918825a0cd2bb61d32373026f243faeb22a49e015eca73",
+  "scope": "three isolated placeholder PID1 containers; Agent only, not vendor business performance",
+  "limitations": [
+    "Same candidate program as CI/build-identity qualification; original failure from omitted private helper retained separately, not erased.",
+    "Manual budgets with45s warmup and1800s steady window; no first calibration or business workload.",
+    "Readonly fixture actual CPU1core/memory256MiB remain external originals; only fixture-owned leaf IO cap is set externally. Agent never receives writable cgroup.",
+    "Process counters exclude host collector and some container-runtime logging costs.",
+    "Original d6 overhead remains a separate source-specific result.",
+    "Default20% business failures, exact-source vendor business, formal24h+24h,>=7days, ARM vendor, physical multi-device and published-minor maintenance remain separate."
+  ],
+  "next_business_observation": {
+    "phase": "testing-v10-dbs-bw64",
+    "cases": {
+      "v10-dbs-bw64": "booting"
+    },
+    "checks_recorded": 0,
+    "namespace_absent": false,
+    "accepted_complete_business_cases": 0
+  }
+}
