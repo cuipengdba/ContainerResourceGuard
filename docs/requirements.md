@@ -73,3 +73,5 @@ P06[实际Linux6.8双架构兼容性四格88项通过](testing-linux6-cgroup-ci.
 P02/P08[共享程序第二轮工具接口拒绝](testing-shared-program-stage-interface-first.md)：采样120.001秒/60次通过，但旧campaign不支持managed smoke，原始stderr保留，未初始化新负载；旧入口恢复及独立清理通过。新增写入前CLI能力检查，分别冻结正式原工具与短时支持工具，13项本地通过；全新夹具按[接口修正计划](test-plan-shared-program-stage-interface.json)重验，数字条件均不变。
 
 P02/P08[共享程序切换与独立恢复演练已通过](testing-shared-program-stage.md)：两角色各完整observe600秒和enforce600秒、候选保持120秒、单独恢复进程、原值/身份/备份/profile与清理核对；真实Linux未完成正式基线的只读/显式执行拒绝也通过。首次错误工具上传的源摘要拒绝保留。原24h基线不变，正式enforce及7天未启动。
+
+P06/P09新增[实际发布包原生控制器计划](plan-released-cgroup-ci.md)：直接校验并运行原预览AMD64/ARM64下载资产，计划四格实际6.x/7.x环境，不重建CRG。执行前冻结合同，未有结果不改写原资产覆盖范围；正式业务和长期门槛不变。
