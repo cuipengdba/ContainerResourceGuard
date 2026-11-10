@@ -628,7 +628,7 @@ func (e *Engine) Reconcile(p Plan) Status {
 
 func requestedControl(c Config, file string) bool {
 	if c.independentPercentages() && c.ResourcePercentages.present() {
-		return true
+		return file == "cpu.max" || file == "memory.max" || file == "io.max"
 	}
 	manual := c.ResourceMode == "manual"
 	switch file {

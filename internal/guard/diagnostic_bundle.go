@@ -64,8 +64,8 @@ func BuildDiagnosticBundle(env Environment, status *StatusView, files Files) Dia
 	if status.Plan.Percentages != nil {
 		values := *status.Plan.Percentages
 		valid := true
-		for name, value := range values.fields() {
-			if value == nil || *value < 0 || *value > 100 || *value != *value || *value == 0 && name != "memory_swap_percent" {
+		for _, value := range values.fields() {
+			if value == nil || *value <= 0 || *value > 100 || *value != *value {
 				valid = false
 			}
 		}

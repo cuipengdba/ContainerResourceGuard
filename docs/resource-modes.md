@@ -1,10 +1,12 @@
 # 双资源模式与可选参数设计
 
+> 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
+
 需求日期：2026-11-10。本文是 RC2 之后的设计；交付状态以任务清单和报告为准。`resource_mode` 选择预算算法；现有 `mode` 继续表示 `enforce`（执行）或 `observe`（只观察）。
 
 ## 百分比模式
 
-R28最新要求改为CPU、内存、IO及五个扩展资源分别设置百分比，各自默认20%。最小配置`{}`，示例`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`。完整口径见[独立百分比](independent-percentages.md)。旧percent只作部署兼容，不能与新字段混用。
+R29/R30覆盖R28：只接管CPU、内存、IO，分别设置百分比，各默认20%；额外资源不接管，设置前检查cgroup版本。最小配置`{}`，示例`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`。完整口径见[独立百分比](independent-percentages.md)。旧percent只作部署兼容，不能与新字段混用。
 
 ## 手动模式
 
@@ -32,7 +34,7 @@ R28最新要求改为CPU、内存、IO及五个扩展资源分别设置百分比
 
 ## 五个可选参数
 
-R28独立百分比模式中的五项分别默认20%；下表原绝对值字段用于manual及旧percent兼容配置，省略时不接管。当前RC3已回移三项扩展控制及保护，保留原后续版本的深入验收任务。语义依据 [Linux cgroup v2 官方文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
+R29已暂停新增五项资源控制的交付，当前推荐配置仅三项百分比。下表仅保留原规划及历史兼容说明，默认全部不改，不提供额外百分比。诊断、热重载、安装升级等深入功能继续推进。语义依据 [Linux cgroup v2 官方文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
 
 | 参数 | 接口 | 作用与边界 | 计划版本 |
 |---|---|---|---|

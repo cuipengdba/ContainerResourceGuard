@@ -1,5 +1,7 @@
 # 配置参数
 
+> 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
+
 本页描述 next/compatibility-contract 的组合开发候选，尚未发布。已发布 RC2 不接受后续新增字段；各版本安排见 [双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
 
 ## 手动资源模式（RC3 开发中）
@@ -12,7 +14,7 @@
 
 CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字节字符串支持整数及 B/KiB/MiB/GiB/TiB/KB/MB/GB/TB 后缀；无后缀表示字节，区分大小写，不接受小数、负数、指数、/s 或超出有符号 64 位范围的数值。IOPS 是正整数。manual 不能填写 percent，percent 模式不能填写 limits。
 
-新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。manual或旧percent兼容配置中两者不填写就不改；独立百分比模式按相应百分比默认20换算。pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
+新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。manual或旧percent兼容配置中两者不填写就不改；新三项百分比模式不接受这两项绝对值，不管理这些控制。pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
 
 组合候选已经实现双模式热切换和移除项协调，详见 [热重载](hot-reload.md)。完整候选先校验，再逐项应用；删除维度尝试恢复自有原值，内存/任务安全下调可能延后，需核对实际结果。旧版没有热重载时，先用匹配版本 disable 完成恢复，再改配置并 enable。
 
@@ -22,7 +24,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 {}
 ```
 
-CPU、内存、IO及五个扩展资源项分别默认20%。可写`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`单独调整，其他项各自20。完整字段、换算基准、范围、旧配置兼容见[独立百分比](independent-percentages.md)。
+仅CPU、内存、IO各自默认20%。可写`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`单独调整；其他资源保持原值。完整字段、换算基准、范围、旧配置兼容见[独立百分比](independent-percentages.md)。
 
 例如 24 个在线逻辑 CPU、64 GiB 宿主机：20% 的请求为 4.8 核 CPU 时间与约 12.8 GiB 内存。内存向下按页对齐，CPU 使用 100000 微秒周期；实际值受既有上限和 cpuset 约束。CPU 不是绑定固定的若干核。
 
@@ -34,7 +36,6 @@ CPU、内存、IO及五个扩展资源项分别默认20%。可写`{"cpu_percent"
 |---|---|---|
 | `resource_mode` | `percent` | 开发分支新增；percent 自动换算，manual 分别指定 |
 | `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/内存/标定IO，独立生效 |
-| 其余五个 `*_percent` | 各20 | pids、两种权重、memory high及swap，见独立百分比文档 |
 | `percent` | 不使用 | 仅旧配置兼容入口，不能混用独立百分比；manual禁用 |
 | `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
@@ -61,7 +62,7 @@ CPU、内存、IO及五个扩展资源项分别默认20%。可写`{"cpu_percent"
 | `doctor` | 只读发现与计算，输出设备及降级原因；不承诺内核一定接受写入 |
 | `run` | 只管理自身，持续执行 |
 | `run --config FILE` | 从文件读取配置 |
-| `--cpu-percent N` / `--memory-percent N` / `--io-percent N` | 独立覆盖对应百分比，其余各自默认20；其余资源也有对应CLI |
+| `--cpu-percent N` / `--memory-percent N` / `--io-percent N` | 独立覆盖对应百分比，未设置的一项默认20；仅这三个资源百分比选项 |
 | `--percent N` | 仅旧配置兼容，不能与独立百分比混用 |
 | `--log-dir DIR` | 覆盖每日私有日志目录，详见[日志](logging.md) |
 | `--state-dir DIR` | 覆盖默认状态目录，必须容器独立 |

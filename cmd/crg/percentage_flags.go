@@ -22,16 +22,6 @@ func cliPercentages(flags *flag.FlagSet, values map[string]*float64) guard.Resou
 			p.MemoryPercent = value
 		case "io_percent":
 			p.IOPercent = value
-		case "pids_percent":
-			p.PidsPercent = value
-		case "cpu_weight_percent":
-			p.CPUWeightPercent = value
-		case "io_weight_percent":
-			p.IOWeightPercent = value
-		case "memory_high_percent":
-			p.MemoryHighPercent = value
-		case "memory_swap_percent":
-			p.MemorySwapPercent = value
 		}
 	})
 	return p
