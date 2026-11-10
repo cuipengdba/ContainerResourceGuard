@@ -37,3 +37,5 @@
 历史固定观察保留原时刻：[故障中间采样](test-progress-partition-realpaths-faults.json)、[维护等待](test-start-partition-realpaths-maintenance.json)、[七天首300秒](test-progress-seven-day-current-candidate-start.json)等均未覆盖或删除，终态应沿上表对应的最终报告判断。
 
 另已[固定未发布v1.0.0版本产物身份](release-candidate-identity.md)：精确d370源码、两个目标新摘要、包/完整性检查及AMD64原生版本探测；尚无这些新摘要的业务/长期接受，不改原长测或发布资产。
+
+版本化v1.0.0候选已完成[Linux6.x/7.x、AMD64/ARM64四格88项](testing-versioned-candidate-native.md)，每格八项产物与Windows逐字节一致，夹具已清理；[自身1800秒开销](testing-versioned-candidate-overhead.md)已冻结计划，真实路径及长期接受仍待该新摘要独立完成。

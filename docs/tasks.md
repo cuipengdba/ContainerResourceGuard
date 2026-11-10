@@ -267,3 +267,9 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 已冻结[未发布v1.0.0四格原生控制器/跨宿主产物复验](testing-versioned-candidate-native.md)，固定新摘要、精确d370源码及原22项/格门槛，当前未运行；不改现有长测、原正式阶段或52项定义。
+
+
+版本化候选v1.0.0新摘要：四格原生及跨主机构建[88项终态通过](testing-versioned-candidate-native.md)；继续按[独立1800秒开销计划](testing-versioned-candidate-overhead.md)验证新ELF，不能复用开发版时长，业务/长期及最终发布门槛独立保留。
+
+
+版本化候选[真实DBS/HISDBS路径复验](testing-versioned-candidate-business.md)已冻结：必须先通过新ELF自身开销，继而按原manual64/300/45/600秒及错误/延迟/覆盖/独立恢复标准顺序执行；辅助故障及实际长期仍另判，未宣称发布。
