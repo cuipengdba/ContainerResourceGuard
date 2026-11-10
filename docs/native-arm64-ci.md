@@ -14,6 +14,6 @@ P06/P09新增[原生工作流](https://github.com/cuipengdba/ContainerResourceGu
 
 这比仅交叉编译多了实际原生运行证据，但仍没有ARM64实际资源控制、DBS/HISDBS业务或Linux6.x控制实测；已发布预览的ARM64产物不因后来不同源码的CI被追认为已验收。
 
-P06原生基础CI之后的[实际容器控制器计划](plan-native-cgroup-ci.md)已归档，拟补AMD64/ARM64实际三项控制、自动百分比/新ID及权限回退。当前仅设计，脚本与工作流尚未实现/运行，不关闭资源/业务或硬件门槛。
+P06原生基础CI之后的[实际容器控制器计划](plan-native-cgroup-ci.md)已归档，拟补AMD64/ARM64实际三项控制、自动百分比/新ID及权限回退。一次性驱动/双架构工作流现已实现，摘要与数值条件在首次push前冻结，尚无执行结果，不关闭资源/业务或硬件门槛。
 
 包链接修复后的两线完整构建CI已通过：[main/c3bed5b](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42825125118)、[组合/91b2f54](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42825125168)。两次原链接失败保留；修复提交仅影响文档，与前述原生ARM任务的源修订分开记录。

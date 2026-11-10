@@ -1,0 +1,60 @@
+name: native-cgroup
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, next/compatibility-contract]
+    paths:
+      - .github/workflows/native-cgroup.yml
+      - tests/native-cgroup.py
+      - tests/native-holder/**
+      - tests/load/**
+      - cmd/**
+      - internal/**
+      - go.mod
+      - go.sum
+permissions:
+  contents: read
+jobs:
+  controller:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            arch: amd64
+          - runner: ubuntu-24.04-arm
+            arch: arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Build exact native test programs
+        run: |
+          test "$(go env GOHOSTARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOVERSION)" = 'go1.27.3'
+          mkdir -p ci-native-cgroup
+          CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-s -w -X main.version=native-controller-ci -X main.revision=$GITHUB_SHA" -o ci-native-cgroup/crg ./cmd/crg
+          CGO_ENABLED=0 go build -trimpath -o ci-native-cgroup/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ci-native-cgroup/load ./tests/load
+          ./ci-native-cgroup/crg build-info > ci-native-cgroup/build-info.json
+      - name: Actual own-container controls and recovery
+        run: |
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/native-cgroup.py \
+            --binary "$PWD/ci-native-cgroup/crg" --holder "$PWD/ci-native-cgroup/hold" \
+            --load "$PWD/ci-native-cgroup/load" --output "$PWD/ci-native-cgroup/results" \
+            --expected-arch '${{ matrix.arch }}' --source-revision "$GITHUB_SHA"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: native-cgroup-${{ matrix.arch }}-${{ github.sha }}
+          path: ci-native-cgroup/
+          retention-days: 14
