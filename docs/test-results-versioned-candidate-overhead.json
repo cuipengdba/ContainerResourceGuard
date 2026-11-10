@@ -1,0 +1,139 @@
+{
+  "kind": "completed exact unpublished versioned artifact steady-state engineering qualification; not vendor business acceptance",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T23:44:13Z",
+  "plan": "test-plan-versioned-candidate-overhead.json",
+  "version": "v1.0.0",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "job_sha256": "e8937b2df8bff4bf6d2e2c7987c8de78cb2435e6d69539d3ebf9ebb5c7d12aa6",
+  "qualification_sha256": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634",
+  "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+  "architecture": "x86_64",
+  "measurement_started_node_utc": "2026-11-10T23:13:25.757034+00:00",
+  "measurement_elapsed_seconds": 1800.0304040461779,
+  "criteria": {
+    "actual_seconds": 1800,
+    "warmup_seconds": 45,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "CPU_single_core_percent_max": 0.1,
+    "RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_write_bytes_max": 8388608,
+    "fault_write_bytes_max": 16777216,
+    "host_available_min_bytes": 8589934592,
+    "host_disk_free_min_bytes": 21474836480,
+    "OOM_kill_delta_max": 0,
+    "io_cap_bps": 65536,
+    "io_cap_iops": 8
+  },
+  "namespace_independently_absent": true,
+  "coordinator_gone": true,
+  "worker_exit": 0,
+  "cases": {
+    "healthy": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false,
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "134217728",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "result": {
+        "CPU_single_core_percent": 0.021666550528839652,
+        "max_RSS_bytes": 9592832,
+        "write_bytes_delta": 155648,
+        "wchar_delta": 78713,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020343,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.009648425039,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 1600,
+      "last_daily_log_bytes": 2097,
+      "all_sampled8_controls_unchanged": true,
+      "all_samples_same_Agent_start_identity": true
+    },
+    "export-failure": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false,
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "134217728",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "result": {
+        "CPU_single_core_percent": 0.02222210296130655,
+        "max_RSS_bytes": 10477568,
+        "write_bytes_delta": 45056,
+        "wchar_delta": 15099,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0096601860132,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 1600,
+      "last_daily_log_bytes": 2098,
+      "all_sampled8_controls_unchanged": true,
+      "all_samples_same_Agent_start_identity": true
+    },
+    "readonly": {
+      "passed": true,
+      "sample_count": 181,
+      "cgroup_readonly": true,
+      "fixture_external_IO": true,
+      "actual_controls": {
+        "cpu.max": "100000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "result": {
+        "CPU_single_core_percent": 0.03222204975185625,
+        "max_RSS_bytes": 9830400,
+        "write_bytes_delta": 1138688,
+        "wchar_delta": 331612,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 301.037020414,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0096346030477,
+        "same_Agent_process": true
+      },
+      "first_daily_log_bytes": 2924,
+      "last_daily_log_bytes": 3421,
+      "all_sampled8_controls_unchanged": true,
+      "all_samples_same_Agent_start_identity": true
+    }
+  },
+  "scope": "three isolated placeholder PID1 containers; Agent only, not vendor business performance",
+  "limits": [
+    "Own new versioned dbc48aa5 binary, no old developer runtime reuse.",
+    "Manual fixed budget,45s warmup and1800s; no first calibration or vendor business workload; process counters exclude host collector and some runtime logging costs.",
+    "Readonly Agent never receives writable cgroup; fixture sets only its own leaf IO externally, CPU1core/memory256MiB external originals.",
+    "Original observed baseline and seven-day source retained; no quota, timeout or sampling criterion relaxed.",
+    "Not default20% or automatic30% business acceptance; no actual24h enforce,seven-day,new hardware or published-minor proof."
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}
