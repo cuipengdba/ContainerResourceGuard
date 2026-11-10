@@ -1,0 +1,82 @@
+name: released-cgroup
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  controller:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            arch: amd64
+            kernel: '6.'
+          - runner: ubuntu-22.04-arm
+            arch: arm64
+            kernel: '6.'
+          - runner: ubuntu-24.04
+            arch: amd64
+            kernel: '7.'
+          - runner: ubuntu-24.04-arm
+            arch: arm64
+            kernel: '7.'
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: v0.1.0-rc.3-preview.1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Record actual environment before fixtures
+        run: |
+          mkdir -p ci-released/download
+          python3 - <<'PY'
+          import json, os, pathlib, platform, subprocess
+          result = {'driver_revision':os.environ['GITHUB_SHA'],'runner_label':'${{ matrix.runner }}','architecture':'${{ matrix.arch }}','machine':platform.machine(),'kernel':platform.release(),'expected_kernel_prefix':'${{ matrix.kernel }}','cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'scope':'published preview executable in native scratch VM; not vendor business'}
+          pathlib.Path('ci-released/environment.json').write_text(json.dumps(result,indent=2)+'\n')
+          assert result['kernel'].startswith(result['expected_kernel_prefix']), 'actual kernel family differs; no fixture started'
+          assert result['machine'] in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[result['architecture']]
+          assert result['cgroup_filesystem'] == 'cgroup2fs'
+          PY
+      - name: Download and verify the unchanged published executable
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > ci-released/download/release.json
+          gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$RELEASE_TAG" > ci-released/download/tag.json
+          gh api "repos/$GITHUB_REPOSITORY/git/tags/54cd5c74852aa680c9779783328bfeaebf5e8744" > ci-released/download/tag-object.json
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir ci-released/download \
+            --pattern "containerresourceguard-$RELEASE_TAG-linux-${{ matrix.arch }}.tar.gz" --pattern SHA256SUMS
+          python3 tests/released-package.py --directory ci-released/download --arch '${{ matrix.arch }}' --output ci-released/verified
+          ./ci-released/verified/crg build-info > ci-released/build-info.json
+          python3 - <<'PY'
+          import json, pathlib
+          receipt=json.loads(pathlib.Path('ci-released/verified/verification.json').read_text())
+          info=json.loads(pathlib.Path('ci-released/build-info.json').read_text())
+          assert info['version']==receipt['version'] and info['revision']==receipt['source_revision'] and info['arch']==receipt['architecture'] and info['os']=='linux'
+          PY
+      - name: Build native load fixtures only
+        run: |
+          test "$(go env GOHOSTARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOVERSION)" = 'go1.27.3'
+          CGO_ENABLED=0 go build -trimpath -o ci-released/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ci-released/load ./tests/load
+      - name: Actual published own-container controls and recovery
+        run: |
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/native-cgroup.py \
+            --binary "$PWD/ci-released/verified/crg" --holder "$PWD/ci-released/hold" \
+            --load "$PWD/ci-released/load" --output "$PWD/ci-released/results" \
+            --expected-arch '${{ matrix.arch }}' --source-revision 7638ee9f871287d1056e267034e0c4e46903b66e
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: released-cgroup-${{ matrix.runner }}-${{ github.sha }}
+          path: ci-released/
+          retention-days: 14

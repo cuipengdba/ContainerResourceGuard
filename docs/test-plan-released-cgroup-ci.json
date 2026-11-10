@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-11",
+  "status": "frozen before first released-cgroup execution; not a result",
+  "contract": "v0.1.0-rc.3-preview.1, published source7638ee9/package73bf2aa, both original assets; fixed identities and hashes in verifier",
+  "file_sha256": {
+    ".github/workflows/released-cgroup.yml": "204737e41b41f44f67029d50719d42a9041925ce02f13dc2f7f4bdc9b93f93c6",
+    "tests/released-package.py": "fee2abbd21bca7986488bbac1dfec10fd81d6e09561aa338371c2527f51beb15",
+    "docs/plan-released-cgroup-ci.md": "f1858fe3e9ebe85b45aa58b23577a9323751505c9bd6504d5956d239b9e30586",
+    "tests/native-cgroup.py": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+    "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
+    "tests/load/main.go": "5799de95182dc97ff35544e78633a875cb8d1b81ff452fb01f7b57e6210fbaa9"
+  },
+  "matrix": [
+    {
+      "runner": "ubuntu-22.04",
+      "arch": "amd64",
+      "required_kernel_prefix": "6."
+    },
+    {
+      "runner": "ubuntu-22.04-arm",
+      "arch": "arm64",
+      "required_kernel_prefix": "6."
+    },
+    {
+      "runner": "ubuntu-24.04",
+      "arch": "amd64",
+      "required_kernel_prefix": "7."
+    },
+    {
+      "runner": "ubuntu-24.04-arm",
+      "arch": "arm64",
+      "required_kernel_prefix": "7."
+    }
+  ],
+  "criteria": "Exact unchanged22-check actual controller driver and budgets; hashes of downloaded archive/ELF and executed /proc Agent must equal fixed original asset. Native build-info must equal original version/source/arch. Normal ownership-qualified scratch cleanup required.",
+  "scope": "One published product, four environment cells; no CRG source compilation or replacement of release assets. Test fixture may create several own scratch containers; product still one Agent per container.",
+  "limitations": [
+    "Not ARM vendor business, physical independent multi-device or partition mapping.",
+    "Not memory exhaustion, default20 business performance,24h/7d or1.0 acceptance.",
+    "Actual environment/asset mismatch remains a failure; no kernel gate relaxation or freshly built CRG substitution."
+  ],
+  "preflight_verification": {
+    "positive_original_downloaded_assets": 2,
+    "tamper_refusals": 8,
+    "native_execution": false,
+    "development_corrections": [
+      "Explicit UTF8 for API JSON on Windows.",
+      "Actual tag is annotated: pin tag object54cd5c7 and its commit73bf2aa separately; no release/tag was changed."
+    ]
+  }
+}
