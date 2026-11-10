@@ -118,3 +118,6 @@ P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、�
 
 
 当前同程序故障[中间观察](test-progress-partition-realpaths-faults.json)9场景checked/49项通过，整轮尚未接受；[维护协调已启动但仅等待前置](test-start-partition-realpaths-maintenance.json)，0个Pod/0项。程序、预算和期限保持冻结，正式基线另有[21h固定观察](continuous-acceptance.md)，尚非86400秒通过。
+
+
+当前d370[真实路径辅助故障20场景/108项通过](testing-partition-realpaths-faults.md)，退出0且namespace独立确认清理；升级/回退另按冻结计划判断。仅辅助隔离短测，不追认默认20%/自动30%持续性能，不替代正式长期或未测硬件。
