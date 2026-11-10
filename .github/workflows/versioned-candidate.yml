@@ -1,0 +1,106 @@
+name: versioned-candidate
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  controller:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            arch: amd64
+            kernel: '6.'
+          - runner: ubuntu-22.04-arm
+            arch: arm64
+            kernel: '6.'
+          - runner: ubuntu-24.04
+            arch: amd64
+            kernel: '7.'
+          - runner: ubuntu-24.04-arm
+            arch: arm64
+            kernel: '7.'
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: driver
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710
+          path: frozen
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Verify frozen inputs and actual environment
+        run: |
+          mkdir -p ci-versioned
+          python3 - <<'PY'
+          import pathlib,hashlib,json,os,platform,subprocess
+          p=pathlib.Path('driver/docs/test-plan-versioned-candidate-native.json')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='853810dd1275d1cefd19085645fdb21d4ead411f18d006aa373b9314e68c474f'
+          plan=json.loads(p.read_text());root=pathlib.Path('frozen')
+          assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()==plan['source_revision']
+          contract=root/plan['source_contract_file'];assert hashlib.sha256(contract.read_bytes()).hexdigest()==plan['source_contract_sha256']
+          sources=json.loads(contract.read_text())['production_source_sha256'];assert len(sources)==50
+          assert all(hashlib.sha256((root/n).read_bytes()).hexdigest()==d for n,d in {**sources,**plan['test_sources']}.items())
+          env={'driver_revision':os.environ['GITHUB_SHA'],'source_revision':plan['source_revision'],'plan_sha256':'853810dd1275d1cefd19085645fdb21d4ead411f18d006aa373b9314e68c474f','runner':'${{ matrix.runner }}','arch':'${{ matrix.arch }}','kernel':platform.release(),'machine':platform.machine(),'python':platform.python_version(),'cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'go':json.loads(subprocess.check_output(['go','env','-json','GOHOSTARCH','GOARCH','GOVERSION'],text=True))}
+          pathlib.Path('ci-versioned/environment.json').write_text(json.dumps(env,indent=2)+'\n')
+          assert env['kernel'].startswith('${{ matrix.kernel }}') and env['cgroup_filesystem']=='cgroup2fs'
+          assert env['machine'] in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[env['arch']]
+          assert env['go']['GOHOSTARCH']==env['go']['GOARCH']==env['arch'] and env['go']['GOVERSION']==plan['go_version']
+          PY
+      - name: Build exact versioned artifacts from frozen source
+        working-directory: frozen
+        run: |
+          bash scripts/build.sh v1.0.0
+          python3 scripts/package.py v1.0.0
+          python3 scripts/check-package.py v1.0.0
+          python3 tests/release-integrity.py v1.0.0
+      - name: Require all eight artifacts equal the independent Windows build
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,subprocess
+          plan=json.loads(pathlib.Path('driver/docs/test-plan-versioned-candidate-native.json').read_text())
+          root=pathlib.Path('frozen/dist');actual={n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in plan['expected_files']}
+          receipt={'phase':'passed' if actual==plan['expected_files'] else 'failed','source_revision':plan['source_revision'],'version':plan['version'],'actual':actual,'expected':plan['expected_files'],'exact_eight_files_equal':actual==plan['expected_files']}
+          pathlib.Path('ci-versioned/identity.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          assert receipt['exact_eight_files_equal'], 'exact candidate differs; no controller fixture started'
+          value=json.loads(subprocess.check_output([str(root.resolve()/('crg-linux-${{ matrix.arch }}')),'build-info'],text=True))
+          assert value['version']==plan['version'] and value['revision']==plan['source_revision'] and value['arch']=='${{ matrix.arch }}' and value['go_version']==plan['go_version']
+          pathlib.Path('ci-versioned/build-info.json').write_text(json.dumps(value,indent=2)+'\n')
+          PY
+      - name: Build native load fixtures only
+        working-directory: frozen
+        run: |
+          CGO_ENABLED=0 go build -trimpath -o ../ci-versioned/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ../ci-versioned/load ./tests/load
+      - name: Actual exact-candidate own-container controls and restoration
+        run: |
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 frozen/tests/native-cgroup.py \
+            --binary "$PWD/frozen/dist/crg-linux-${{ matrix.arch }}" --holder "$PWD/ci-versioned/hold" \
+            --load "$PWD/ci-versioned/load" --output "$PWD/ci-versioned/results" \
+            --expected-arch '${{ matrix.arch }}' --source-revision d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710
+      - name: Verify full controller report and cleanup
+        run: |
+          python3 - <<'PY'
+          import pathlib,json
+          report=json.loads(pathlib.Path('ci-versioned/results/report.json').read_text())
+          assert report['phase']=='passed' and len(report['tests'])==22 and all(x['passed'] for x in report['tests'])
+          assert not report.get('cleanup_errors') and report['cleanup']['all_owned_containers_and_cgroups_absent'] and report['cleanup']['private_directory_removed']
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: versioned-candidate-${{ matrix.runner }}-${{ github.sha }}
+          path: |
+            ci-versioned/
+            frozen/dist/
+          retention-days: 14
