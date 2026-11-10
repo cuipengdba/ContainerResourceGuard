@@ -59,7 +59,7 @@ func mainErr() (result error) {
 	config := f.String("config", "", "JSON configuration file")
 	percent := f.Float64("percent", 0, "deprecated shared percentage for legacy configurations")
 	percentageFlags := map[string]*float64{}
-	for _, name := range []string{"cpu_percent", "memory_percent", "io_percent", "pids_percent", "cpu_weight_percent", "io_weight_percent", "memory_high_percent", "memory_swap_percent"} {
+	for _, name := range []string{"cpu_percent", "memory_percent", "io_percent"} {
 		percentageFlags[name] = f.Float64(strings.ReplaceAll(name, "_", "-"), 20, "independent resource percentage; default20")
 	}
 	logDir := f.String("log-dir", "", "daily log directory (default /var/log/crg)")
@@ -99,6 +99,9 @@ func mainErr() (result error) {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	if cmd == "calibrate" {
+		if allowed, err := checkCgroupSupport(runLog, guard.DetectCgroupVersion); err != nil || !allowed {
+			return err
+		}
 		if *dir == "" {
 			selection, err := guard.SelectCalibrationDirectory()
 			if err != nil {
@@ -170,6 +173,9 @@ func mainErr() (result error) {
 	if runLog != nil {
 		runLog.SetDirectory(c.LogDir)
 		runLog.Event("INFO", "agent_start", map[string]any{"version": version, "revision": revision, "resource_mode": c.ResourceMode, "mode": c.Mode})
+	}
+	if allowed, err := checkCgroupSupport(runLog, guard.DetectCgroupVersion); err != nil || !allowed {
+		return err
 	}
 	env, e := guard.Discover()
 	if e != nil {

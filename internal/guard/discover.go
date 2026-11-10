@@ -29,7 +29,7 @@ func membership(s string) (string, error) {
 			return path.Clean(p), nil
 		}
 	}
-	return "", errors.New("cgroup v2 membership unavailable (v1 is observe-only)")
+	return "", errors.New("cgroup v2 membership unavailable (v1 settings are skipped)")
 }
 func unescape(s string) string {
 	r := strings.NewReplacer(`\040`, " ", `\011`, "\t", `\012`, "\n", `\134`, "\\")
@@ -75,18 +75,14 @@ func Resolve(cgroup, mountinfo, pid1 string) (string, error) {
 }
 
 type Environment struct {
-	HostPidsMax           *uint64  `json:"host_pids_max,omitempty"`
-	HostSwapBytes         *uint64  `json:"host_swap_bytes,omitempty"`
-	PidsCapacitySource    string   `json:"pids_capacity_source,omitempty"`
-	SwapCapacitySource    string   `json:"swap_capacity_source,omitempty"`
-	ExtraCapacityWarnings []string `json:"extra_capacity_warnings,omitempty"`
-	Target                string   `json:"cgroup"`
-	Identity              string   `json:"identity"`
-	OnlineCPUs            int      `json:"host_online_cpus"`
-	MemoryBytes           uint64   `json:"host_memory_bytes"`
-	CPUCapacitySource     string   `json:"cpu_capacity_source"`
-	MemoryCapacitySource  string   `json:"memory_capacity_source"`
-	EffectiveCPUs         string   `json:"effective_cpuset,omitempty"`
+	CgroupVersion        string `json:"cgroup_version,omitempty"`
+	Target               string `json:"cgroup"`
+	Identity             string `json:"identity"`
+	OnlineCPUs           int    `json:"host_online_cpus"`
+	MemoryBytes          uint64 `json:"host_memory_bytes"`
+	CPUCapacitySource    string `json:"cpu_capacity_source"`
+	MemoryCapacitySource string `json:"memory_capacity_source"`
+	EffectiveCPUs        string `json:"effective_cpuset,omitempty"`
 }
 
 func Discover() (Environment, error) {
@@ -99,6 +95,11 @@ func Discover() (Environment, error) {
 	if e != nil {
 		return env, e
 	}
+	check := InspectCgroupVersion(cg, mi)
+	if !check.Allowed {
+		return env, &UnsupportedCgroupError{Check: check}
+	}
+	env.CgroupVersion = check.Version
 	p1, e := read("/proc/1/cgroup")
 	if e != nil {
 		return env, e
@@ -160,7 +161,6 @@ func Discover() (Environment, error) {
 	if env.MemoryBytes == 0 {
 		return env, errors.New("host MemTotal unavailable")
 	}
-	discoverPercentageCapacity(&env)
 	env.EffectiveCPUs, _ = read(filepath.Join(env.Target, "cpuset.cpus.effective"))
 	return env, nil
 }

@@ -74,9 +74,6 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		values := c.ResourcePercentages
 		p.Percentages = &values
 	}
-	expanded, extraWarnings := expandPercentageExtras(c, env)
-	c = expanded
-	p.Warnings = append(p.Warnings, extraWarnings...)
 	if p.ResourceMode == "" {
 		p.ResourceMode = "percent"
 	}

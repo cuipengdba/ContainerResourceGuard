@@ -1,5 +1,8 @@
 # ContainerResourceGuard
 
+
+当前候选以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。发布范围与实测见[最新版本说明](docs/next-version.md)。
+
 容器内运行的轻量资源控制程序，简称 **CRG**。严格 **一个容器、一份 Agent、独立控制自身资源**。无需 Operator、CRD、Docker socket 或 Kubernetes API 权限。
 
 CPU、内存、IO分别设置百分比，省略的资源项各自默认20%。最小配置`{}`，也可单独调整：
@@ -8,7 +11,7 @@ CPU、内存、IO分别设置百分比，省略的资源项各自默认20%。最
 {"cpu_percent":30,"memory_percent":40,"io_percent":25}
 ```
 
-其他五项资源参数也各有独立百分比，省略时各自20，详见[独立百分比](docs/independent-percentages.md)。CPU/内存取宿主容量，IO取自动标定基准；不需手动填写核数、字节或测速目录。
+仅限制这三个资源，其他资源保持原值；先识别cgroup，v1跳过、v2校验后设置，详见[独立百分比](docs/independent-percentages.md)。CPU/内存取宿主容量，IO取自动标定基准；不需手动填写核数、字节或测速目录。
 
 **IO 的百分比是特定测试方法的实测基准百分比，不是磁盘固定物理极限。没有可用标定文件就显示 IO 未管理，不用竞争权重冒充硬限速。**
 
