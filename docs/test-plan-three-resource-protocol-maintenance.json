@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before launch",
+  "programs": {
+    "previous": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "release_status": "unreleased combined development binary"
+    },
+    "candidate": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased combined CI artifact",
+      "CI_run": 42795979841
+    }
+  },
+  "test_job_sha256": "4c5b9803610647149fa70059c3f53443562cf33b030b1432f759680ef066892a",
+  "prerequisites": [
+    "round14 terminal and namespace independently absent",
+    "round12 four manual64 cells and original complete native/engine campaigns passed and namespace absent",
+    "both binaries explicitly advertise the exact lock protocol and journal v1"
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "PID1_PG_cache_payload_journal_originals_and_all_eight_controls_preserved_during_maintenance": true,
+    "final_disable_restores_true_runtime_originals": true
+  },
+  "operations": [
+    "quiesce",
+    "install",
+    "immediate rollback",
+    "install again",
+    "enable candidate under unchanged helper",
+    "quiesce and rollback",
+    "enable previous development Agent",
+    "finish native600",
+    "disable and verify original runtime controls"
+  ],
+  "failure_observability": "Persist bounded command-error fields, exit, stderr tail and operation timestamps before terminating the fixture.",
+  "limitations": [
+    "Both programs are unreleased combined development builds, not an upgrade from the published main preview.",
+    "Missing protocol advertisements are never bypassed; round13 failure remains.",
+    "Not a substitute for two released minor versions, default20 performance, 24h+24h, seven days or untested hardware."
+  ]
+}
