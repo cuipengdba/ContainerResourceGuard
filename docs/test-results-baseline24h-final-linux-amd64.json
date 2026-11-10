@@ -1,0 +1,519 @@
+{
+  "kind": "completed original observe baseline under the frozen native combined acceptance protocol; not current versioned candidate qualification",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T23:26:52Z",
+  "source_revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+  "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "campaign_script_sha256": "8932874640816c365963513872567afd0c5b75247102d9866f511b0fb6440aa5",
+  "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+  "engine_script_sha256": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "run_id": "202611100705",
+  "requested_seconds": 86400,
+  "source_run_id": null,
+  "report_file_sha256": "2e3a9804f59d96d8604b1f7643f7de60b026f389d1bbff11244af5aa94ea1ecd",
+  "auditor_source_sha256": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+  "report_audit": {
+    "phase": "passed",
+    "requested_seconds": 86400,
+    "roles": [
+      "dbs",
+      "hisdbs"
+    ],
+    "accepted_engine_cycles": 4,
+    "continuous_report_accepted": true,
+    "release_accepted": false,
+    "runtime_cleanup_verified": false
+  },
+  "criteria": {
+    "host_available_min_bytes": 8589934592,
+    "disk_free_min_bytes": 21474836480,
+    "host_sample_seconds": 60,
+    "OOM_kill_delta_max": 0,
+    "backup_offsets_seconds": [
+      300,
+      21600,
+      43200,
+      64800
+    ]
+  },
+  "timing": {
+    "started_epoch": 1794266739.776173,
+    "both_workers_started_epoch": 1794266753.0855231,
+    "elapsed_seconds_since_both_started": 86400.24073145399,
+    "ended_epoch": 1794353153.3286378
+  },
+  "roles": {
+    "dbs": {
+      "native": {
+        "api": {
+          "attempts": 17280,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            17234,
+            44,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.7081111629959196,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0,
+          "successes": 17280,
+          "total_seconds": 146.01356168906204
+        },
+        "cluster_database_bytes_final": 1622628859,
+        "cluster_database_bytes_initial": 1622260219,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 86400.52156486409,
+        "ended_utc": "2026-11-10T23:25:52.302857Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          691104
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-10T23:25:52.005645Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-09 21:41:09.31553+00",
+        "primary_start_time_initial": "2026-11-09 21:41:09.31553+00",
+        "requested_duration_seconds": 86400,
+        "run_id": "202611100705",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 43194,
+          "errors": 0,
+          "histogram": [
+            43093,
+            67,
+            2,
+            1,
+            3,
+            3,
+            3,
+            6,
+            4,
+            6,
+            6,
+            0
+          ],
+          "max_seconds": 4.4372790770139545,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 0.9998611111111111,
+          "successes": 43194,
+          "total_seconds": 65.3779803540092
+        },
+        "started_utc": "2026-11-09T23:25:51.530706Z",
+        "test_phase": "baseline",
+        "threads_stopped": true
+      },
+      "host_sample_count": 1441,
+      "first_host_sample_elapsed_seconds": 0.0009820361156016588,
+      "last_host_sample_elapsed_seconds": 86400.07736792602,
+      "maximum_host_sample_gap_seconds": 60.37019088002853,
+      "all_sampled_agent_cache_PID1_identities_unchanged": true,
+      "all_fixed_controls_unchanged": true,
+      "actual_controls_retained": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "OOM_kill_delta": 0,
+      "worker_entry_processes_independently_absent": true
+    },
+    "hisdbs": {
+      "native": {
+        "api": {
+          "attempts": 17280,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            17238,
+            40,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.4241307459305972,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0,
+          "successes": 17280,
+          "total_seconds": 145.8479804014787
+        },
+        "cluster_database_bytes_final": 917262482,
+        "cluster_database_bytes_initial": 916951186,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 86400.40843064897,
+        "ended_utc": "2026-11-10T23:25:53.252294Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          691168
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-10T23:25:52.998417Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-09 19:19:45.85566+00",
+        "primary_start_time_initial": "2026-11-09 19:19:45.85566+00",
+        "requested_duration_seconds": 86400,
+        "run_id": "202611100705",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 43198,
+          "errors": 0,
+          "histogram": [
+            43109,
+            68,
+            2,
+            2,
+            0,
+            2,
+            1,
+            3,
+            6,
+            2,
+            3,
+            0
+          ],
+          "max_seconds": 2.6713917239103466,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 0.9999537037037037,
+          "successes": 43198,
+          "total_seconds": 45.202643098076805
+        },
+        "started_utc": "2026-11-09T23:25:52.597229Z",
+        "test_phase": "baseline",
+        "threads_stopped": true
+      },
+      "host_sample_count": 1441,
+      "first_host_sample_elapsed_seconds": 0.0021971240639686584,
+      "last_host_sample_elapsed_seconds": 86400.07857030118,
+      "maximum_host_sample_gap_seconds": 60.369901675963774,
+      "all_sampled_agent_cache_PID1_identities_unchanged": true,
+      "all_fixed_controls_unchanged": true,
+      "actual_controls_retained": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "OOM_kill_delta": 0,
+      "worker_entry_processes_independently_absent": true
+    }
+  },
+  "engine_cycles": [
+    {
+      "offset_seconds": 300.3992700970266,
+      "run_id": "20261110070500",
+      "content_started_epoch": 1794267053.49028,
+      "exit": 0,
+      "phase": "passed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 28,
+            "api_max": 10.013452208135277,
+            "sql_max": 9.239679831080139
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 21,
+            "api_max": 10.013804757036269,
+            "sql_max": 3.4662723089568317
+          }
+        }
+      },
+      "content_ended_epoch": 1794267195.1874158,
+      "native_workload_validation": "passed-with-entire-campaign",
+      "content_phase": "content-passed-native-pending"
+    },
+    {
+      "offset_seconds": 21600.302033577114,
+      "run_id": "20261110070501",
+      "content_started_epoch": 1794288353.4322793,
+      "exit": 0,
+      "phase": "passed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 27,
+            "api_max": 6.847445996012539,
+            "sql_max": 6.236832837108523
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 26,
+            "api_max": 7.39061175705865,
+            "sql_max": 5.087009005015716
+          }
+        }
+      },
+      "content_ended_epoch": 1794288497.7446759,
+      "native_workload_validation": "passed-with-entire-campaign",
+      "content_phase": "content-passed-native-pending"
+    },
+    {
+      "offset_seconds": 43200.464266414056,
+      "run_id": "20261110070502",
+      "content_started_epoch": 1794309953.6345882,
+      "exit": 0,
+      "phase": "passed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 26,
+            "api_max": 7.667435684008524,
+            "sql_max": 9.49793848511763
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 26,
+            "api_max": 5.1217712259385735,
+            "sql_max": 9.13449257495813
+          }
+        }
+      },
+      "content_ended_epoch": 1794310138.7096424,
+      "native_workload_validation": "passed-with-entire-campaign",
+      "content_phase": "content-passed-native-pending"
+    },
+    {
+      "offset_seconds": 64800.02703153598,
+      "run_id": "20261110070503",
+      "content_started_epoch": 1794331553.2359455,
+      "exit": 0,
+      "phase": "passed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 31,
+            "api_max": 5.687123538227752,
+            "sql_max": 6.910124392947182
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": true,
+            "samples": 29,
+            "api_max": 1.7352760268840939,
+            "sql_max": 4.6930736170616
+          }
+        }
+      },
+      "content_ended_epoch": 1794331710.3052764,
+      "native_workload_validation": "passed-with-entire-campaign",
+      "content_phase": "content-passed-native-pending"
+    }
+  ],
+  "exec_diagnostic_failures_retained": [
+    {
+      "offset_seconds": 300.3992700970266,
+      "role": "dbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 28,
+        "api_max": 10.013452208135277,
+        "sql_max": 9.239679831080139
+      }
+    },
+    {
+      "offset_seconds": 300.3992700970266,
+      "role": "hisdbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 21,
+        "api_max": 10.013804757036269,
+        "sql_max": 3.4662723089568317
+      }
+    },
+    {
+      "offset_seconds": 21600.302033577114,
+      "role": "dbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 27,
+        "api_max": 6.847445996012539,
+        "sql_max": 6.236832837108523
+      }
+    },
+    {
+      "offset_seconds": 21600.302033577114,
+      "role": "hisdbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 26,
+        "api_max": 7.39061175705865,
+        "sql_max": 5.087009005015716
+      }
+    },
+    {
+      "offset_seconds": 43200.464266414056,
+      "role": "dbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 26,
+        "api_max": 7.667435684008524,
+        "sql_max": 9.49793848511763
+      }
+    },
+    {
+      "offset_seconds": 43200.464266414056,
+      "role": "hisdbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 26,
+        "api_max": 5.1217712259385735,
+        "sql_max": 9.13449257495813
+      }
+    },
+    {
+      "offset_seconds": 64800.02703153598,
+      "role": "dbs",
+      "diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 31,
+        "api_max": 5.687123538227752,
+        "sql_max": 6.910124392947182
+      }
+    }
+  ],
+  "runtime_inspection": {
+    "coordinator_independently_gone": true,
+    "native_worker_entries_independently_absent": true,
+    "business_Pods_retained_for_same_fixture_future_comparison": true,
+    "original_observe_controls_preserved": true,
+    "formal_stage_full_prior_acceptance_and_cleanup_passed": true
+  },
+  "scope": "synthetic SQL/API and engine cycle in original-image clones; vendor-specific APIs not verified",
+  "limits": [
+    "Original old observe program, CPU8cores/memory20GiB external original caps and empty io.max; no new Agent quota written.",
+    "Native SQL/API acceptance and exec-probe diagnostic metrics use the protocol frozen before the run; exec diagnostics exceeding5s remain failures of that diagnostic, are not deleted or represented as passing.",
+    "Existing independent disposable tests also ran on this node; this baseline is not a whole-node exclusive experiment.",
+    "Not latest v1.0.0 ELF, not default20% acceptance, not24h enforce or>=7day acceptance; no vendor-specific APIs, physical multi-device or ARM vendor proof.",
+    "Original business Pods/data retained; no claim the baseline namespace or main business cgroups were removed."
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}
