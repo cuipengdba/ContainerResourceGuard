@@ -140,3 +140,9 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 当前分区组合程序另按[真实路径故障冻结计划](test-plan-partition-realpaths-faults.json)复验DBS/HISDBS各10场景，原90/45/12秒门槛不变；须先等同程序两格600秒业务通过且夹具独立确认不存在，再创建故障Pod。当前未启动，不沿用旧40场景/216项结果。
+
+
+当前d3706f3完成[DBS/HISDBS两格各600秒真实路径短业务](testing-partition-realpaths-business.md)，12项通过、退出0、namespace独立确认不存在；只适用冻结manual64预算。当前同程序故障矩阵另判，默认20%失败及正式长期/未测硬件条件不变。
+
+
+当前d370另按[真实路径维护冻结计划](test-plan-partition-realpaths-maintenance.json)验证50671aa开发程序到当前程序的升级/回退，两角色各600秒、预计22项；必须等当前20场景故障通过且夹具独立不存在后才创建维护Pod。当前未启动，不替代最近两个已发布次版本，也不绕过旧预览缺协议的拒绝。
