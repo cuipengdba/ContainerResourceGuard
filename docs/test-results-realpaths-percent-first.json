@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-10",
+  "source_revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+  "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615",
+  "scope": "fresh original DBS image, matching real container paths and read-only CCG mount, isolated test-node backing paths and loopback DCS; no production mutation",
+  "resource_mode": "percent",
+  "percent": 30,
+  "resource_result": "managed",
+  "automatic_IO_result": "calibrated",
+  "requested_and_read_back": [
+    {
+      "file": "cpu.max",
+      "value": "720000 100000",
+      "state": "applied"
+    },
+    {
+      "file": "memory.max",
+      "value": "20001980416",
+      "state": "applied"
+    },
+    {
+      "file": "io.max",
+      "device": "253:0",
+      "value": "rbps=34285013 wbps=13370186 riops=48 wiops=29",
+      "state": "applied"
+    }
+  ],
+  "outcome": "failed readiness within declared 300 seconds",
+  "postgres_version_file_created": true,
+  "profile_saved": true,
+  "DBS_business_acceptance_passed": false,
+  "HISDBS_executed_in_this_round": false,
+  "namespace_removed": true,
+  "interpretation": "The controller calibrated and applied its requested limits, while the original workload did not reach readiness within the original budget. Low 48/29 IOPS is an evident capacity constraint; this record alone does not prove it is the sole cause.",
+  "follow_up": "fresh same-path manual-budget control with 7.2 CPU, 20001980416B memory, read/write 16MiB/s and 4096 IOPS; original 300s startup and native 5s/1s/zero-error criteria retained; no implicit raising of the 30% result",
+  "pending_preference": "Asked whether default percent IO should keep four BPS/IOPS caps or only read/write BPS with optional manual IOPS. Current code retains four caps until a reply; elapsed time is not a decision."
+}
