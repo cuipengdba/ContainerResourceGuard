@@ -1,0 +1,67 @@
+{
+  "kind": "read-only sustained-report verifier regression, not sustained-run completion",
+  "phase": "passed",
+  "audit_source_sha256": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+  "selftest_source_sha256": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+  "unit_methods": 5,
+  "synthetic_report_cases_only": true,
+  "negative_evidence_categories": [
+    "wrong source",
+    "short requested/actual duration",
+    "reused source run",
+    "relaxed criteria",
+    "native errors/maximum/p95/histogram/coverage",
+    "interrupted or changed process/payload",
+    "missing host samples/gap/identity/OOM",
+    "missing/pending/outside-native/unclean engine cycle",
+    "JSON duplicate keys/nonfinite/invalid shape"
+  ],
+  "live_read_only_verification": {
+    "phase": "passed",
+    "scope": "read-only real pending reports and wrong-identity/short-duration rejection; no completed24h or7day claim",
+    "observed_node_utc": "2026-11-10T21:19:19Z",
+    "cases": [
+      {
+        "case": "current_seven_day",
+        "expected": "pending",
+        "result": {
+          "phase": "pending",
+          "requested_seconds": 604800,
+          "continuous_report_accepted": false,
+          "release_accepted": false,
+          "runtime_cleanup_verified": false
+        },
+        "report_sha256": "3423fe52fe1da613abfc74d19395125ab512d11e14a8f935cee928da68b456b7"
+      },
+      {
+        "case": "current_live_wrong_expected_program",
+        "expected": "rejected",
+        "reason": "SOURCE_DIGEST"
+      },
+      {
+        "case": "old_formal_baseline",
+        "expected": "pending",
+        "result": {
+          "phase": "pending",
+          "requested_seconds": 86400,
+          "continuous_report_accepted": false,
+          "release_accepted": false,
+          "runtime_cleanup_verified": false
+        },
+        "report_sha256": "9f7f0e135d05ceaa2bf6b25069d3f064aeca8c3fa2acc2655da8e4e4dda58da2"
+      },
+      {
+        "case": "completed_short_run_is_not_seven_days",
+        "expected": "rejected",
+        "reason": "CAMPAIGN_DURATION_OR_PHASE",
+        "report_sha256": "f037ebc91d7267a1f709b7d866f13cb15e9d675de3c28f2a20c25066da205955"
+      }
+    ],
+    "audit_source_sha256": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8"
+  },
+  "product_changed": false,
+  "completed24h_or7day_claim": false,
+  "runtime_cleanup_verified": false,
+  "P10_complete": false,
+  "release_accepted": false
+}

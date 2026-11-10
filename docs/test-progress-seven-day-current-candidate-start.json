@@ -1,0 +1,464 @@
+{
+  "kind": "fixed early observation of exact current candidate seven-day continuous component",
+  "phase": "running-not-accepted",
+  "observed_node_utc": "2026-11-10T21:15:35Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "dbc0b8fb57ea1bb364eccc5508d59d60cfb808f11e191757ced5983e9da5e902",
+  "requested_seconds": 604800,
+  "continuous_component_only": true,
+  "P10_complete": false,
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "bandwidth_cases_MiB_per_second": [
+      64
+    ],
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "host_available_min_bytes": 8589934592,
+    "disk_free_min_bytes": 21474836480,
+    "host_sample_seconds": 60,
+    "OOM_kill_delta_max": 0,
+    "backup_offsets_seconds": [
+      300,
+      21600,
+      43200,
+      64800,
+      86400,
+      108000,
+      129600,
+      151200,
+      172800,
+      194400,
+      216000,
+      237600,
+      259200,
+      280800,
+      302400,
+      324000,
+      345600,
+      367200,
+      388800,
+      410400,
+      432000,
+      453600,
+      475200,
+      496800,
+      518400,
+      540000,
+      561600,
+      583200
+    ]
+  },
+  "runner_process_verified": true,
+  "worker_process_verified": true,
+  "campaign_wrapper_process_verified": true,
+  "namespace_UID_and_ownership_verified": true,
+  "startup_checks": [
+    {
+      "name": "v10-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    }
+  ],
+  "roles": {
+    "dbs": {
+      "native": {
+        "api": {
+          "attempts": 61,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            61,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009220304898917675,
+          "successes": 61,
+          "total_seconds": 0.48728994047269225
+        },
+        "cluster_database_bytes_initial": 139266636,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 300.0997416500468,
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "phase": "running",
+        "primary_start_time_initial": "2026-11-11 05:09:18.231654+08",
+        "requested_duration_seconds": 604800,
+        "run_id": "20261111057",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 151,
+          "errors": 0,
+          "histogram": [
+            148,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.010844405042007565,
+          "successes": 151,
+          "total_seconds": 0.11356583540327847
+        },
+        "started_utc": "2026-11-10T21:10:00.753770Z",
+        "test_phase": "acceptance"
+      },
+      "report_age_seconds": 35.9325966835022,
+      "host_sample_count": 6,
+      "host_sample_first": {
+        "elapsed_seconds": 0.0009926450438797474,
+        "cpu_stat": "usage_usec 9871385\nuser_usec 7141700\nsystem_usec 2729684\ncore_sched.force_idle_usec 0\nnr_periods 515\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "memory_current": 1833635840,
+        "memory_events": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "io_stat": "8:0 rbytes=4096 wbytes=209443840 rios=1 wios=1107 dbytes=0 dios=0\n253:0 rbytes=4096 wbytes=1257249792 rios=1 wios=6261 dbytes=0 dios=0\n",
+        "agent": {
+          "CPU_seconds": 0.02,
+          "RSS_bytes": 7471104,
+          "write_bytes": 45056,
+          "wchar": 18307
+        },
+        "cache": {
+          "CPU_seconds": 0.11,
+          "RSS_bytes": 10223616,
+          "write_bytes": 192512,
+          "wchar": 127032
+        },
+        "agent_same_process": true,
+        "cache_same_process": true,
+        "PID1_same_process": true
+      },
+      "host_sample_last": {
+        "elapsed_seconds": 300.4129397040233,
+        "cpu_stat": "usage_usec 15815721\nuser_usec 10813763\nsystem_usec 5001958\ncore_sched.force_idle_usec 0\nnr_periods 3125\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "memory_current": 1837281280,
+        "memory_events": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "io_stat": "8:0 rbytes=4096 wbytes=211312128 rios=1 wios=1333 dbytes=0 dios=0\n253:0 rbytes=4096 wbytes=1260412416 rios=1 wios=6748 dbytes=0 dios=0\n",
+        "agent": {
+          "CPU_seconds": 0.08,
+          "RSS_bytes": 8822784,
+          "write_bytes": 53248,
+          "wchar": 21017
+        },
+        "cache": {
+          "CPU_seconds": 0.97,
+          "RSS_bytes": 10420224,
+          "write_bytes": 1409024,
+          "wchar": 931811
+        },
+        "agent_same_process": true,
+        "cache_same_process": true,
+        "PID1_same_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "container_restart_count": 0,
+      "source_qualified_one_Agent_and_one_cache": true,
+      "one_native_worker": true
+    },
+    "hisdbs": {
+      "native": {
+        "api": {
+          "attempts": 60,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            59,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.010394464014098048,
+          "successes": 60,
+          "total_seconds": 0.5075964629650116
+        },
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 300.29571223212406,
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "phase": "running",
+        "primary_start_time_initial": "2026-11-11 05:09:41.397357+08",
+        "requested_duration_seconds": 604800,
+        "run_id": "20261111057",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 150,
+          "errors": 0,
+          "histogram": [
+            148,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011020300909876823,
+          "successes": 150,
+          "total_seconds": 0.11330569558776915
+        },
+        "started_utc": "2026-11-10T21:09:59.141862Z",
+        "test_phase": "acceptance"
+      },
+      "report_age_seconds": 37.34870171546936,
+      "host_sample_count": 6,
+      "host_sample_first": {
+        "elapsed_seconds": 0.0022129418794065714,
+        "cpu_stat": "usage_usec 9458758\nuser_usec 7008514\nsystem_usec 2450243\ncore_sched.force_idle_usec 0\nnr_periods 309\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "memory_current": 1744510976,
+        "memory_events": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "io_stat": "8:0 rbytes=4096 wbytes=79854592 rios=1 wios=471 dbytes=0 dios=0\n253:0 rbytes=4096 wbytes=1092836352 rios=1 wios=6179 dbytes=0 dios=0\n",
+        "agent": {
+          "CPU_seconds": 0.01,
+          "RSS_bytes": 6684672,
+          "write_bytes": 45056,
+          "wchar": 18303
+        },
+        "cache": {
+          "CPU_seconds": 0.05,
+          "RSS_bytes": 7471104,
+          "write_bytes": 90112,
+          "wchar": 61056
+        },
+        "agent_same_process": true,
+        "cache_same_process": true,
+        "PID1_same_process": true
+      },
+      "host_sample_last": {
+        "elapsed_seconds": 300.41415293095633,
+        "cpu_stat": "usage_usec 15580397\nuser_usec 10786024\nsystem_usec 4794373\ncore_sched.force_idle_usec 0\nnr_periods 2921\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "memory_current": 1820078080,
+        "memory_events": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "io_stat": "8:0 rbytes=4096 wbytes=135642112 rios=1 wios=947 dbytes=0 dios=0\n253:0 rbytes=4096 wbytes=1227742208 rios=1 wios=6736 dbytes=0 dios=0\n",
+        "agent": {
+          "CPU_seconds": 0.08,
+          "RSS_bytes": 9633792,
+          "write_bytes": 53248,
+          "wchar": 21013
+        },
+        "cache": {
+          "CPU_seconds": 0.86,
+          "RSS_bytes": 9437184,
+          "write_bytes": 1306624,
+          "wchar": 862719
+        },
+        "agent_same_process": true,
+        "cache_same_process": true,
+        "PID1_same_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "container_restart_count": 0,
+      "source_qualified_one_Agent_and_one_cache": true,
+      "one_native_worker": true
+    }
+  },
+  "periodic_cycles_at_observation": [
+    {
+      "offset_seconds": 300.4118613009341,
+      "run_id": "2026111105700",
+      "content_started_epoch": 1794345301.4952648
+    }
+  ],
+  "baseline_unchanged_observation": {
+    "dbs": {
+      "phase": "running",
+      "actual_monotonic_seconds": 78361.32135055307,
+      "SQL_errors": 0,
+      "API_errors": 0
+    },
+    "hisdbs": {
+      "phase": "running",
+      "actual_monotonic_seconds": 78360.24815295707,
+      "SQL_errors": 0,
+      "API_errors": 0
+    }
+  },
+  "limitations": [
+    "Fixed first300s observation only, not completed604800s or terminal result.",
+    "First engine cycle was in flight in this snapshot and has no accepted content or native-envelope result yet.",
+    "Same Linux5.14 AMD64 single-device manual64 budget and private64MiB workload; no default20%/automatic30% or other hardware claim.",
+    "After continuous component, actually aged data/config/journal/log backup/recovery/rebuild/upgrade/fault checks remain required.",
+    "Originalfc2 baseline and fixedd6 formalenforce stay independent; no1.0release claim."
+  ]
+}
