@@ -1,6 +1,6 @@
 # 后续24小时限额阶段的前置计划
 
-本页是P02的准备清单，**没有启动正式enforce**；新增的[固定测试夹具切换工具](plan-shared-program-stage.md)尚待真机拒绝与共享克隆演练，不能用于正式切换。[固定候选、预算与条件](test-plan-enforce24h-three-resource.json)不能作为测试完成证明。旧observe基线仍须实际86400秒、四个完整备份周期及最终原生校验全部通过；12h/零错误快照不能触发切换。
+本页是P02的准备清单，**没有启动正式enforce**；新增的[固定测试夹具切换工具](plan-shared-program-stage.md)已通过真机拒绝与共享克隆演练，但原基线未最终通过，不能用于正式切换。[固定候选、预算与条件](test-plan-enforce24h-three-resource.json)不能作为测试完成证明。旧observe基线仍须实际86400秒、四个完整备份周期及最终原生校验全部通过；12h/零错误快照不能触发切换。
 
 候选暂选已有真实业务/故障/冷重建证据的未发布组合d6ea657二进制，固定手动CPU7.2核、内存20001980416B、读写各64MiB/s及4096IOPS。继续同一两业务容器、同一64MiB数据，显式复用已通过的等时长baseline source run；完整86400秒及原零错误、5秒最大、1秒p95桶、98%覆盖和全部内容/身份/原值条件保持。
 
@@ -15,3 +15,5 @@
 P02/P08[共享程序首轮未通过](testing-shared-program-stage-first.md)：候选保持121.088秒但固定120秒内仅55次采样，原59次门拒绝，未启动新enforce；旧参考入口恢复和独立清理通过。改成固定时刻采样，新增两项虚拟时钟检查，12项本地通过；全新夹具按[修正冻结计划](test-plan-shared-program-stage-cadence.json)重验，不降低预算、时长或覆盖标准。
 
 P02/P08[共享程序第二轮工具接口拒绝](testing-shared-program-stage-interface-first.md)：采样120.001秒/60次通过，但旧campaign不支持managed smoke，原始stderr保留，未初始化新负载；旧入口恢复及独立清理通过。新增写入前CLI能力检查，分别冻结正式原工具与短时支持工具，13项本地通过；全新夹具按[接口修正计划](test-plan-shared-program-stage-interface.json)重验，数字条件均不变。
+
+P02/P08[共享程序切换与独立恢复演练已通过](testing-shared-program-stage.md)：两角色各完整observe600秒和enforce600秒、候选保持120秒、单独恢复进程、原值/身份/备份/profile与清理核对；真实Linux未完成正式基线的只读/显式执行拒绝也通过。首次错误工具上传的源摘要拒绝保留。原24h基线不变，正式enforce及7天未启动。
