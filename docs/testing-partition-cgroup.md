@@ -11,3 +11,12 @@
 离线卸载自有两个分区并删除内核分区映射后，仅将第一分区长度增加1MiB，再读回GPT和sysfs核对；不格式化、不调整文件系统。原文件系统及缓存应原样保留；新容器启动须识别几何变化并重新标定。旧profile会被保留供检查，因此预先要求明确degraded、旧条目unavailable，同时新条目和另一个有效分区共同形成正确的三项实际限额，不能把这一步称为全部profile可用。最后验证只读/无capabilities时无写入、日志和PID1保留，全部自有容器/cgroup/分区/挂载/DM/loop及临时目录清理。
 
 本轮不替代ARM厂商业务、多块独立物理设备或长期验收，不改变97正式长测的固定程序及预算。所有失败和重试均另存，不能覆盖冻结数值或把短测标记成长测通过。
+
+
+## 首轮测试设备失败与替换计划
+
+首轮[四格工作流42874296286](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42874296286)、源码689c3b3均在partx添加DM分区时失败，只有4项来源/环境/镜像检查，未进入产品三项控制或直接IO验收。原始报告保留自有镜像/容器清理和部分磁盘准备未完成状态，不把VM销毁称为正常设备清理。
+
+Linux6.8官方[DM实现](https://github.com/torvalds/linux/blob/v6.8/drivers/md/dm.c#L2120)设置GENHD_FL_NO_PART，证明该设备类型不适合本轮真实普通分区测试。下一轮改用内核[scsi_debug](https://github.com/torvalds/linux/blob/v6.8/drivers/scsi/scsi_debug.c)创建的独占RAM后端SCSI磁盘，必须有实际WWID、真实GPT分区和原生IO；逻辑容量与实际后端均为2.5GiB，不用虚拟大容量映射回小存储造成文件别名。已有scsi_debug模块/设备时拒绝复用和卸载。模块缺失时只安装当前实际内核的匹配模块包，不换内核或重启。
+
+[SCSI修正冻结计划](test-plan-partition-cgroup-scsi.json)在下一次执行前保存完整摘要；产品代码、原控制预算/计时/门槛、双分区几何、33项固定检查和8项循环IO检查均不变。清理逐项检查自有分区/挂载/SCSI盘/host/模块和临时目录正常消失。原DM计划保留不覆盖；这次存储类型修正不是降低验收标准，也不是独立物理磁盘性能验收。

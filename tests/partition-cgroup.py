@@ -156,28 +156,35 @@ def logs(item):
     return paths, events
 
 
-def verify_storage():
-    loop = storage['loop']
-    if not re.fullmatch(r'/dev/loop[0-9]+', loop):
-        raise RuntimeError('not an owned loop device')
-    attached = run(['losetup', '--noheadings', '--raw', '--output', 'BACK-FILE', loop]).stdout.strip()
-    if attached != str(private / 'block.img') or not stat.S_ISBLK(os.stat(loop).st_mode):
-        raise RuntimeError('loop backing file differs')
-    device = Path('/dev/mapper', storage['name'])
-    value = device.stat()
-    if not stat.S_ISBLK(value.st_mode):
-        raise RuntimeError('not the owned mapper block device')
-    root = Path('/sys/dev/block', str(os.major(value.st_rdev)) + ':' + str(os.minor(value.st_rdev)))
-    if root.joinpath('dm/name').read_text().strip() != storage['name'] or root.joinpath('dm/uuid').read_text().strip() != storage['uuid']:
-        raise RuntimeError('mapper ownership UUID/name differs')
-    if sorted(x.name for x in root.joinpath('slaves').iterdir()) != [Path(loop).name]:
-        raise RuntimeError('mapper has an unexpected backing device')
-    loop_device = os.stat(loop).st_rdev
-    expected = ['0', str(4 * 1024**3 // 512), 'linear', str(os.major(loop_device)) + ':' + str(os.minor(loop_device)), '0']
-    if run(['dmsetup', 'table', storage['name']]).stdout.split() != expected:
-        raise RuntimeError('mapper target geometry differs')
-    return device, value.st_rdev
+def debug_hosts():
+    if not Path('/sys/class/scsi_host').exists():
+        return set()
+    return {x.joinpath('device').resolve(strict=True) for x in Path('/sys/class/scsi_host').iterdir()
+            if x.joinpath('proc_name').read_text().strip() == 'scsi_debug'}
 
+
+def verify_storage():
+    if not storage.get('module_owned') or debug_hosts() != {storage['host']}:
+        raise RuntimeError('exclusive owned scsi_debug host differs')
+    params = Path('/sys/module/scsi_debug/parameters')
+    for name, expected in [('dev_size_mb', '2560'), ('num_tgts', '1'), ('max_luns', '1'), ('vpd_use_hostno', '1')]:
+        if params.joinpath(name).read_text().strip() != expected:
+            raise RuntimeError('owned SCSI test parameters changed')
+    device = storage['node']
+    value = device.lstat()
+    root = Path('/sys/dev/block', devstr(value.st_rdev)).resolve(strict=True)
+    real = root.joinpath('device').resolve(strict=True)
+    if (not stat.S_ISBLK(value.st_mode) or value.st_rdev != storage['number'] or root != storage['root'] or
+            storage['host'] not in real.parents or root.joinpath('partition').exists() or
+            root.joinpath('dev').read_text().strip() != devstr(value.st_rdev) or
+            int(root.joinpath('size').read_text()) != 2560 * 1024**2 // 512 or
+            root.joinpath(storage['identity_file']).read_text().strip() != storage['wwid']):
+        raise RuntimeError('owned SCSI disk tree, geometry or stable WWID changed')
+    disks = {x.resolve() for x in Path('/sys/class/block').iterdir()
+             if x.joinpath('device').exists() and storage['host'] in x.joinpath('device').resolve().parents}
+    if disks != {root}:
+        raise RuntimeError('exclusive SCSI test host has unexpected disks')
+    return device, value.st_rdev
 
 
 def devstr(number):
@@ -286,30 +293,52 @@ def unmount_partitions():
 
 
 def prepare_storage():
-    for command in ['sfdisk', 'partx', 'losetup', 'dmsetup', 'mkfs.ext4', 'mount', 'umount', 'blockdev']:
+    for command in ['sfdisk', 'partx', 'modinfo', 'modprobe', 'mkfs.ext4', 'mount', 'umount', 'blockdev']:
         if not shutil.which(command):
             raise RuntimeError('required fixture utility absent: ' + command)
-    storage.update(stage='creating', name='crg-native-' + nonce, uuid='CRG-NATIVE-' + nonce)
-    image = private / 'block.img'
-    descriptor = os.open(image, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o600)
-    try:
-        os.ftruncate(descriptor, 4 * 1024**3)
-    finally:
-        os.close(descriptor)
-    storage['loop'] = run(['losetup', '--find', '--show', '--direct-io=on', '--nooverlap', image]).stdout.strip()
-    if not re.fullmatch(r'/dev/loop[0-9]+', storage['loop']):
-        raise RuntimeError('unexpected owned loop allocation')
-    if run(['losetup', '--noheadings', '--raw', '--output', 'BACK-FILE', storage['loop']]).stdout.strip() != str(image):
-        raise RuntimeError('new loop backing file differs')
-    run(['dmsetup', 'create', storage['name'], '--uuid', storage['uuid'], '--table', '0 ' + str(4 * 1024**3 // 512) + ' linear ' + storage['loop'] + ' 0'])
+    # Refuse to reuse/unload a module or SCSI debug host owned by anyone else.
+    if Path('/sys/module/scsi_debug').exists() or debug_hosts():
+        raise RuntimeError('scsi_debug already in use; no fixture writes permitted')
+    module = run(['modinfo', '-F', 'filename', 'scsi_debug']).stdout.strip()
+    vermagic = run(['modinfo', '-F', 'vermagic', 'scsi_debug']).stdout.strip()
+    if not Path(module).is_file() or not vermagic.startswith(platform.release() + ' '):
+        raise RuntimeError('actual-kernel scsi_debug module unavailable')
+    before_blocks = {x.resolve() for x in Path('/sys/class/block').iterdir()}
+    if Path('/sys/module/scsi_debug').exists() or debug_hosts():
+        raise RuntimeError('SCSI test ownership changed before module load')
+    storage.update(stage='creating', module_file=module, module_vermagic=vermagic)
+    run(['modprobe', 'scsi_debug', 'dev_size_mb=2560', 'num_tgts=1', 'max_luns=1',
+         'add_host=1', 'vpd_use_hostno=1', 'sector_size=512'], timeout=60)
+    storage['module_owned'] = True
+    deadline = time.monotonic() + 10
+    while len(debug_hosts()) != 1 and time.monotonic() < deadline:
+        time.sleep(.1)
+    hosts = debug_hosts()
+    if len(hosts) != 1:
+        raise RuntimeError('exactly one new SCSI debug host required')
+    host = next(iter(hosts))
+    disks = [x.resolve() for x in Path('/sys/class/block').iterdir()
+             if x.joinpath('device').exists() and host in x.joinpath('device').resolve().parents]
+    if len(disks) != 1 or disks[0] in before_blocks:
+        raise RuntimeError('exactly one new owned SCSI test disk required')
+    root = disks[0]
+    major, minor = map(int, root.joinpath('dev').read_text().split(':'))
+    number = os.makedev(major, minor)
+    identity_file = next((x for x in ['device/wwid', 'wwid'] if root.joinpath(x).is_file() and root.joinpath(x).read_text().strip()), None)
+    if identity_file is None:
+        raise RuntimeError('new SCSI test disk lacks actual stable WWID')
+    node = private / 'disk'
+    os.mknod(node, stat.S_IFBLK | 0o600, number)
+    storage.update(host=host, root=root, number=number, node=node, identity_file=identity_file, wwid=root.joinpath(identity_file).read_text().strip())
     device, number = verify_storage()
-    storage['number'] = number
     if run(['blockdev', '--getss', device]).stdout.strip() != '512':
         raise RuntimeError('fixture requires actual512-byte logical sectors')
     write_gpt(2097152)
     mount_partitions(format_new=True)
-    report['storage_fixture'] = {'kind': 'two real GPT ext4 partitions on real dm-linear UUID over exclusive loop file', 'sparse_backing_bytes': 4 * 1024**3, 'physical_independent_device': False,
-                                'control_device': devstr(number), 'partitions': [{'filesystem_device': devstr(x['number']), 'partition': x['index'], 'start': x['start'], 'sectors': x['sectors']} for x in storage['partitions']]}
+    report['storage_fixture'] = {'kind': 'two real GPT ext4 partitions on exclusive kernel scsi_debug RAM-backed SCSI disk with actual WWID',
+                                'logical_and_backing_bytes': 2560 * 1024**2, 'physical_independent_device': False,
+                                'module_vermagic': vermagic, 'control_device': devstr(number),
+                                'partitions': [{'filesystem_device': devstr(x['number']), 'partition': x['index'], 'start': x['start'], 'sectors': x['sectors']} for x in storage['partitions']]}
 
 
 def cleanup_storage():
@@ -318,20 +347,19 @@ def cleanup_storage():
     if storage['stage'] != 'mounted':
         raise RuntimeError('partial block fixture retained for VM disposal; no guessed cleanup')
     unmount_partitions()
-    device, number = verify_storage()
-    run(['dmsetup', 'remove', storage['name']], timeout=30)
+    verify_storage()
+    root, host = storage['root'], storage['host']
+    run(['modprobe', '--remove', 'scsi_debug'], timeout=30)
     deadline = time.monotonic() + 10
-    root = Path('/sys/dev/block', devstr(number))
-    while (root.exists() or device.exists()) and time.monotonic() < deadline:
+    while (root.exists() or host.exists() or Path('/sys/module/scsi_debug').exists()) and time.monotonic() < deadline:
         time.sleep(.1)
-    if root.exists() or device.exists():
-        raise RuntimeError('own mapper cleanup incomplete')
-    if run(['losetup', '--noheadings', '--raw', '--output', 'BACK-FILE', storage['loop']]).stdout.strip() != str(private / 'block.img'):
-        raise RuntimeError('loop owner changed before detach')
-    run(['losetup', '--detach', storage['loop']])
-    if run(['losetup', '--associated', private / 'block.img', '--noheadings', '--raw', '--output', 'NAME']).stdout.strip():
-        raise RuntimeError('own loop file remains associated')
-    report['cleanup']['own_partitions_mounts_mapper_and_loop_absent'] = True
+    if root.exists() or host.exists() or Path('/sys/module/scsi_debug').exists() or debug_hosts():
+        raise RuntimeError('owned SCSI disk, host or module cleanup incomplete')
+    value = storage['node'].lstat()
+    if not stat.S_ISBLK(value.st_mode) or value.st_rdev != storage['number']:
+        raise RuntimeError('private stale SCSI device node changed')
+    storage['node'].unlink()
+    report['cleanup']['own_partitions_mounts_SCSI_disk_host_and_module_absent'] = True
 
 
 def make_folder(name, config):
@@ -643,5 +671,5 @@ finally:
     if report.get('cleanup_errors'):
         report['phase'] = 'failed'
     save()
-print(json.dumps({'phase': report['phase'], 'checks': len(report['tests']), 'failure': report.get('failure')}))
+print(json.dumps({'phase': report['phase'], 'checks': len(report['tests']), 'failure': report.get('failure'), 'last_failed_command': report.get('last_failed_command'), 'cleanup_errors': report.get('cleanup_errors')}))
 raise SystemExit(0 if report['phase'] == 'passed' else 1)
