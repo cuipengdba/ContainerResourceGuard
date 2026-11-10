@@ -201,3 +201,6 @@ P04/P06真实分区控制验收已建立[运行前冻结计划](testing-partitio
 
 
 P04/P06[真实GPT双分区四格164项通过](testing-partition-cgroup.md)：AMD64/ARM64、实际6.8/7.0，原预算和来源分别归档；首轮DM设备失败保留，几何变化保留旧profile时明确降级。核心及真实效果范围补齐，本分支仍未合入/发布，物理设备、厂商业务和长期条件不变。
+
+
+P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、原生ARM和44项整盘回归](testing-partition-integration.md)通过；两目标Windows/Linux程序摘要相同。原分区164项来源不变，新开销计划尚未启动，main及旧发布资产/正式长测来源不变。

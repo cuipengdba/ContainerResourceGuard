@@ -112,3 +112,6 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 组合开发线此前三资源/日志程序的正常、持续导出失败、只读cgroup三组30min工程开销测量已完成并归档；其来源为分区修复前程序，不扩展为本分支分区代码的开销结论，也不代替业务或正式长期验收。见[来源和结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-long.md)。
 
 本分支分区核心已完成Linux race/整盘回归，并完成[真实GPT双分区四格164项检查](testing-partition-cgroup.md)：实现af1a34d、实际运行468fe73，实际6.8/7.0双架构、同盘共享预算、旧发布包恢复与几何变化缓存失效通过。首轮DM设备失败和RAM后端/旧profile降级边界保留。尚未合入或发布，不改变97正式长测程序、预算、既有资产或剩余硬件/长期门槛。
+
+
+组合d3706f3已完成[当前提交CI/两架构跨宿主构建及原生回归](testing-partition-integration.md)，原生ARM212个Go pass事件、实际整盘44项通过；新开销按固定计划待启动，既有正式长测和未发布边界不变。

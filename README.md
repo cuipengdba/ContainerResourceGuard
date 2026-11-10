@@ -1,6 +1,6 @@
 # ContainerResourceGuard
 
-> 本分支`next/partition-io`的分区IO映射与同盘共享限额已完成[真实GPT双分区四格164项检查](docs/testing-partition-cgroup.md)，尚未合入或发布。测试设备、降级状态及剩余验收见[分区设计](docs/partition-io.md)。
+> 本分支`next/partition-io`的分区IO映射与同盘共享限额已完成[真实GPT双分区四格164项检查](docs/testing-partition-cgroup.md)，已按同内容[接入组合开发线](docs/testing-partition-integration.md)，尚未合入main或发布。测试设备、降级状态及剩余验收见[分区设计](docs/partition-io.md)。
 
 
 [v0.1.0-rc.3-preview.1工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。两线38项隔离工程检查通过；发布范围与实测见[最新版本说明](docs/next-version.md)，正式业务与长期验收继续。
