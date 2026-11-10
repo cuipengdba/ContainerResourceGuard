@@ -1,38 +1,37 @@
 # 当前验收入口
 
-本页与[52项任务索引](current-task-registry.json)说明现有证据和剩余工作，不是1.0完成审计。规划40项、双模式追加6项、自动标定追加2项、日志/独立百分比追加4项均保留，共52项；R29取消扩展资源的新交付，不删除历史记录。[原十版条件](roadmap.md)及[最新三资源语义](independent-percentages.md)继续有效。
+当前尚未发布1.0。[52项原始任务索引](current-task-registry.json)、[十版规划](roadmap.md)和[需求档案](requirements.md)保留全部范围；R29暂缓其他资源的新交付，未删除历史任务。当前资源入口仅CPU/内存/IO独立百分比，各自省略默认20；v1/混合/未知跳过，纯v2通过身份和权限检查后设置；每日日志保留30日或总1GB，辅助故障不作为原业务启动前提。
 
-| 范围 | 当前证据 | 仍未完成 |
+## 已发布与当前候选
+
+| 范围 | 可核对的实际证据 | 不能据此宣称 |
 |---|---|---|
-| 已发布预览 | 三独立百分比、cgroup门禁、日文件/30天/1GB；原资产四格原生控制验证 | 不是正式RC3/稳定1.0；默认20%四格业务均未接受 |
-| 当前组合源码d3706f3 | [原生ARM212个Go pass事件、实际整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[自身三场景1800秒开销](testing-partition-steady-overhead.md) | [当前程序真实路径两格600秒/12项通过](testing-partition-realpaths-business.md)，[同程序辅助故障20场景/108项通过且清理](testing-partition-realpaths-faults.md)；当前维护22项、冷重建44项通过，仍未正式发布 |
-| 分区IO | [468fe73实际双分区四格164项](testing-partition-cgroup.md)，与组合生产源码逐文件一致合同独立列明 | 单父盘双分区不等于独立物理多设备；未测复杂栈仍未支持 |
-| 业务与辅助故障 | 原7638/d6的600秒手动预算、冷重建/故障/维护各报告保持自身来源 | 当前d370已按原manual64预算两格复验及20场景辅助故障通过且清理；原[默认20%失败](testing-three-resource-default20-business.md)及[补测](testing-three-resource-default20-supplement.md)不改为通过 |
-| 正式长期 | [旧fc2 observe基线固定22h观察](continuous-acceptance.md)，4周期内容仍待最终原生判定 | 尚未接受完整86400秒；固定d6的等时enforce未开始；[d370独立七天组件已开始](testing-seven-day-current-candidate.md)，仅首300秒观察，未接受 |
-| 维护/最终支持 | 已有开发构建往返、共享切换/独立恢复、配置/状态兼容草案 | [当前d370开发程序实际维护22项/两格600秒通过](testing-partition-realpaths-maintenance.md)；最近两个已发布次版本、最终支持矩阵、未测硬件及边界审计未完成 |
+| [已发布工程预览](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1) | 三独立比例/cgroup门禁/日志；原资产Linux6.8/7.0、AMD64/ARM64四格[88项控制器检查](testing-released-cgroup-ci.md) | 正式RC3或稳定1.0、ARM厂商业务 |
+| 当前未发布d3706f3程序 | [自身CI/原生ARM及整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[三场景各1800秒开销](testing-partition-steady-overhead.md) | 把其他源码结果改名为当前程序，或以工程检查替代完整业务长测 |
+| 当前程序DBS/HISDBS真实路径 | [各600秒/12项业务](testing-partition-realpaths-business.md)、[20场景/108项辅助故障](testing-partition-realpaths-faults.md)、[开发构建维护22项/各600秒](testing-partition-realpaths-maintenance.md)、[四次冷启动44项](testing-partition-realpaths-cold-rebuild.md)，各终态通过且清理 | 默认20%或自动30%持续性能、最近两个已发布次版本维护 |
+| 分区IO增强 | 468fe73的真实GPT双分区四格[164项](testing-partition-cgroup.md)；与组合生产源码逐文件合同独立列明 | 两块独立物理盘，或当前d370实际跑过同一164项 |
+| 版本门禁与权限降级 | [版本输入模拟/真实v2及日志](testing-three-percent-cgroup-logs.md)、当前[真实只读/辅助故障](testing-partition-realpaths-faults.md)分别留档 | 真实v1内核已测，或权限丢失时一定能恢复已生效的配额 |
 
-每份报告中的源码、实际程序摘要、环境、预算、时长和未测范围决定它能证明什么。文件存在或CI绿色不自动关闭整组业务、硬件或发布条件。当前三资源范围不恢复pids/权重/memory.high/Swap新参数；旧代码仅按兼容和恢复所有权规则处理。
+当前程序实际摘要、预算、环境和时长决定证据范围。原[默认20%四格业务失败](testing-three-resource-default20-business.md)及[补测](testing-three-resource-default20-supplement.md)保留；默认20不是已验证的DBS/HISDBS生产推荐额度。当前业务通过的是既定manual64测试预算。
 
+## 长期阶段与后置
 
-当前d370故障矩阵已有[固定中间观察](test-progress-partition-realpaths-faults.json)，仅9场景checked/49项通过，实际标定中断正测，整轮20场景/108项及清理仍待判定；[故障协调等待快照](test-start-partition-realpaths-faults.json)保留原启动时刻。另[维护协调进程仅等待](test-start-partition-realpaths-maintenance.json)，0个维护Pod/0项通过，不提前宣称升级成功。
+| 阶段 | 固定来源与当前证据 | 尚未完成 |
+|---|---|---|
+| 正式24h observe基线 | 原fc2程序，[22h固定观察](test-progress-baseline24h-22h-linux-amd64.json)，4周期内容完成但native-pending；[持续判定](continuous-acceptance.md) | 实际86400秒最终覆盖/延迟/完整性判定 |
+| 正式等时enforce | 固定d6候选、预算及切换方案保留；须先有接受的完整基线再核对实时前置 | 独立24h enforce及对照报告，不能以d370七天替换 |
+| 当前d370七天连续组件 | [已开始及首周期观察](testing-seven-day-current-candidate.md)，首周期两角色各10项内容及临时清理完成，仍native-pending | 实际604800秒、28周期和完整原生判定 |
+| 七天实际老化状态后置 | [只读采集/门禁](testing-aged-postflight-preflight.md)已实现，Linux7方法、两角色真实采集及pending检查通过，原控制保持 | 后置执行器、真实七天后的备份/独立恢复/新Pod/journal隔离/日志追加/升级回退/辅助故障及原值恢复 |
 
+[报告核验器](soak-report-audit.md)和只读前置门禁通过自检不代表真实长测通过；合成报告、真实pending和终态分开记录。采集计划及私有身份记录固定，后续执行另行引用，不能用新的空夹具替代七天实际使用的数据。当前P10_complete=false。
 
-上面的固定中间观察保留原时刻；[故障最终20场景/108项通过且清理](testing-partition-realpaths-faults.md)覆盖其后终态。维护按独立报告判断，仍不关闭已发布次版本或长期门槛。
+## 最终发布仍需核对
 
+- 原24h+24h、至少七天综合验收及真实老化状态后置全部达标。
+- 最近两个已发布次版本的维护兼容，而不只两个未发布开发构建往返。
+- ARM厂商业务、独立物理多设备、未测运行时/内核和节点重启/掉电等原规划范围，按实际证据逐项处理。
+- [环境覆盖索引](environment-coverage.md)、运维/恢复边界、诊断脱敏、冲突及所有权、包来源和全部52项最终审计。
 
-故障通过并清理后，[维护夹具已进入DBS启动阶段](test-start-partition-realpaths-maintenance-execution.json)。这是固定执行开始观察，尚无完整600秒维护结果；上面的0Pod等待观察属于更早时刻。
+环境索引是按源码/程序/内核/架构/存储限定的草案，不是稳定支持承诺。当前不恢复pids/权重/memory.high/Swap的新交付；旧实现仅按已有配置与恢复兼容规则处理。程序发布与生产接入分别记录，业务节点仍保持本任务只读范围。
 
-
-上文维护协调0个Pod是固定启动时刻；[实际维护终态](testing-partition-realpaths-maintenance.md)另列22项通过及清理，最近两个已发布次版本仍未完成。
-
-
-当前[开发程序维护22项/两格600秒](testing-partition-realpaths-maintenance.md)与[冷重建44项/四次启动](testing-partition-realpaths-cold-rebuild.md)均通过且清理。七天组件按独立安排继续；最近两个已发布次版本、正式24h+24h、老化状态后置及最终支持审计尚未关闭。
-
-
-当前d370[七天原生组件已实际开始](testing-seven-day-current-candidate.md)，两业务各原生300秒首观察及6份宿主样本，首次周期在执行；不是604800秒通过。连续组件之后的老化状态后置和最终发布门槛继续。
-
-
-[报告只读核验器](soak-report-audit.md)已验证真实中间报告保持pending，拒绝错误摘要及短测冒充；这是验收工具检查，不是持续业务通过或运行时清理证明。
-
-
-当前[环境覆盖索引](environment-coverage.md)区分当前程序、原发布包、分区来源、真实v2与模拟版本门禁；不作为完整1.0支持承诺。正式基线最新固定观察推进到22h，七天首周期内容通过但native-pending。
+历史固定观察保留原时刻：[故障中间采样](test-progress-partition-realpaths-faults.json)、[维护等待](test-start-partition-realpaths-maintenance.json)、[七天首300秒](test-progress-seven-day-current-candidate-start.json)等均未覆盖或删除，终态应沿上表对应的最终报告判断。

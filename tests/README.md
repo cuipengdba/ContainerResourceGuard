@@ -55,3 +55,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 
 
 持续测试报告另有[只读核验器](../docs/soak-report-audit.md)。运行 `python3 tests/soak-report-audit-checks.py` 验证合成报告正反例；不需要root、容器或Linux，不会启动业务。实际报告的pending与通过分开，不能将核验工具通过等同24h/七天已完成。
+
+
+七天实际老化数据后置另有[身份采集和只读门禁](../docs/testing-aged-postflight-preflight.md)。`python3 tests/vendor-aged-preflight-checks.py`只使用合成报告和临时普通文件；Linux执行全部POSIX检查，Windows明确跳过相关方法。真实七天及后置操作未因此通过。

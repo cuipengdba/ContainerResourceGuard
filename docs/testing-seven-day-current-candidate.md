@@ -12,3 +12,6 @@ CPU7.2核、内存20001980416B、读写各64MiB/s与各4096IOPS，其他5项原�
 
 
 后续[固定首周期观察](test-progress-seven-day-current-candidate-first-cycle.json)时，两角色原生实际约900秒、各18份宿主样本；首次周期各10项内容及临时实例清理完成，状态仍content-passed-native-pending。首300秒快照保持其原时刻，不把这两次观察当完整七天。
+
+
+后置的[私有身份采集与只读门禁](testing-aged-postflight-preflight.md)已实现并完成真实pending检查，原七天运行器仍存活；不提前创建后置Pod，不将合成报告测试作为真实七天。后置操作执行器及实际恢复/升级仍待完成。
