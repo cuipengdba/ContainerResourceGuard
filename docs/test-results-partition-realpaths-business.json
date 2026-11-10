@@ -1,0 +1,339 @@
+{
+  "kind": "exact integrated partition candidate real-path short business acceptance",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T20:21:21Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "b58b59ca86bda901ad6b6db7b6a55e41d5fdf52e81d06eabccf5960c9d92fb5f",
+  "scope": "same container paths and read-only CCG mount as read-only deployment inventory; fresh private test-node backing directories and loopback DCS, no production data; original business/image/database parameters",
+  "declared_test_budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "bandwidth_cases_MiB_per_second": [
+      64
+    ],
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds_each_role": 600,
+    "SQL_API_errors": 0,
+    "maximum_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "minimum_scheduled_sample_fraction": 0.98,
+    "engine_content_checks_each_role": 10
+  },
+  "cases": [
+    {
+      "case": "v10-dbs-bw64",
+      "phase": "short-acceptance-passed",
+      "resource_mode": "manual",
+      "declared_read_write_bps": 67108864,
+      "ready_and_managed_seconds": 26.451978834811598,
+      "cache_enforce_observation_seconds": 0.00015433807857334614,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "own_pod_removed": true,
+      "actual_active_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+      },
+      "expected_active_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+      },
+      "fixed_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "native": {
+        "phase": "passed",
+        "run_id": "202611110510",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.291178651154,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            295,
+            2,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.33387978188693523,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.6632668261881918
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009670116007328033,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.005208854796365
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T19:59:15.337600Z",
+        "measurement_finished_utc": "2026-11-10T20:09:15.550062Z"
+      },
+      "engine_cycles": [
+        {
+          "phase": "passed",
+          "content_phase": "content-passed-native-pending",
+          "exit": 0,
+          "native_workload_validation": "passed-with-entire-campaign",
+          "content_started_epoch": 1794340785.8073819,
+          "content_ended_epoch": 1794340828.3643038,
+          "roles": {
+            "dbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 21,
+                "api_max": 2.0132938311435282,
+                "sql_max": 1.3135678910184652
+              }
+            }
+          }
+        }
+      ],
+      "sample_count": 11,
+      "all_samples_same_Agent_cache_and_PID1": true,
+      "OOM_kill_delta": 0
+    },
+    {
+      "case": "v10-hisdbs-bw64",
+      "phase": "short-acceptance-passed",
+      "resource_mode": "manual",
+      "declared_read_write_bps": 67108864,
+      "ready_and_managed_seconds": 23.86244118004106,
+      "cache_enforce_observation_seconds": 0.00020265299826860428,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "own_pod_removed": true,
+      "actual_active_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+      },
+      "expected_active_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+      },
+      "fixed_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "native": {
+        "phase": "passed",
+        "run_id": "202611110511",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2755268008914,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 300,
+          "errors": 0,
+          "histogram": [
+            293,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            2,
+            1,
+            1,
+            0
+          ],
+          "max_seconds": 3.8151308400556445,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0,
+          "successes": 300,
+          "total_seconds": 7.233745036646724
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009469549171626568,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.009643784724176
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T20:10:05.958473Z",
+        "measurement_finished_utc": "2026-11-10T20:20:06.187387Z"
+      },
+      "engine_cycles": [
+        {
+          "phase": "passed",
+          "content_phase": "content-passed-native-pending",
+          "exit": 0,
+          "native_workload_validation": "passed-with-entire-campaign",
+          "content_started_epoch": 1794341436.252889,
+          "content_ended_epoch": 1794341486.820258,
+          "roles": {
+            "hisdbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 24,
+                "api_max": 1.1812475908081979,
+                "sql_max": 2.5793850088957697
+              }
+            }
+          }
+        }
+      ],
+      "sample_count": 11,
+      "all_samples_same_Agent_cache_and_PID1": true,
+      "OOM_kill_delta": 0
+    }
+  ],
+  "checks": [
+    {
+      "name": "v10-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-600s-native-and-backup-sync-independent-restore",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-600s-native-and-backup-sync-independent-restore",
+      "passed": true
+    }
+  ],
+  "namespace_independently_absent": true,
+  "runner_gone": true,
+  "worker_exit": 0,
+  "raw_report_object_sha256": "409042ee5738cfddb8886cbe2e8535921c685648c2b6560587d4de6b23f12eae",
+  "limitations": [
+    "Manual7.2CPU/20001980416B/read-write64MiBps and4096IOPS only; not default20% or automatic30% business acceptance.",
+    "Current d370 binary tested directly; older7638/d6 reports remain independent.",
+    "Original image/startup/database/cache paths with private synthetic64MiB payload and loopback DCS; no production deployment or vendor-specific backup/sync API claim.",
+    "Existing Linux5.14 AMD64 single-device node only; native ARM/other kernels in separate controller CI do not prove ARM vendor business.",
+    "Formal baseline remains olderfc2 and fixed enforce candidate remains d6; this600s result does not close24h+24h,>=7days or released-minor maintenance."
+  ]
+}
