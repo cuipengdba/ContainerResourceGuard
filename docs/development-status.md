@@ -81,3 +81,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 第13轮DBS/HISDBS首次安装均拒绝，旧预览缺少锁/日志协议广告，安装文件摘要保持、recovery为空，夹具清理；保留失败及原始输出未留存的证据限制，不绕过协议保护。见[维护失败与诊断](testing-three-resource-online-maintenance.md)。
 
 第14轮最新三资源程序×DBS/HISDBS的40场景、216项辅助故障检查通过，全部夹具清理；独立30%配置，只证明辅助隔离，未追认自动30%持续业务性能或第13轮维护。见[新源码完整故障矩阵](testing-three-resource-fault-matrix.md)。
+
+第15轮协议已声明的两套未发布组合程序在线往返通过：DBS/HISDBS各600秒、22项检查，原值/业务/缓存/数据保持，最终恢复真实原值且夹具已清理。第13轮main预览首次安装失败保留，不替代两个已发布次版本或长期门槛。见[独立维护结果](testing-three-resource-protocol-maintenance.md)。
