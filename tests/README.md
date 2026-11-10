@@ -52,3 +52,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 原厂镜像主库的隔离入口为 `vendor-engine-smoke.py`；它会向专用克隆主库写入全新测试 schema、执行备份/流复制/独立恢复并探测 POST /test，不能用于现有业务命名空间。前提、参数和本次实际执行边界见 [原镜像备份短测](../docs/testing-vendor-backup.md)。
 
 真实测量值及未覆盖范围见 [测试报告](../docs/testing.md)。源码中的测试负载不是产品命令，不包含跨容器资源管理功能。
+
+
+持续测试报告另有[只读核验器](../docs/soak-report-audit.md)。运行 `python3 tests/soak-report-audit-checks.py` 验证合成报告正反例；不需要root、容器或Linux，不会启动业务。实际报告的pending与通过分开，不能将核验工具通过等同24h/七天已完成。
