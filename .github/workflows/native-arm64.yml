@@ -1,0 +1,71 @@
+name: native-arm64
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, next/compatibility-contract]
+    paths:
+      - .github/workflows/native-arm64.yml
+      - cmd/**
+      - internal/**
+      - tests/**
+      - go.mod
+      - go.sum
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 20
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Record actual native environment
+        run: |
+          mkdir -p ci-native-arm64
+          python3 - <<'PY'
+          import json, os, pathlib, platform, subprocess
+          go = json.loads(subprocess.check_output(['go','env','-json','GOHOSTOS','GOHOSTARCH','GOOS','GOARCH','GOVERSION','CGO_ENABLED'], text=True))
+          machine = platform.machine()
+          assert machine in ['aarch64','arm64'], 'runner is not native ARM64'
+          assert go['GOHOSTARCH'] == go['GOARCH'] == 'arm64'
+          assert go['GOHOSTOS'] == go['GOOS'] == 'linux'
+          assert go['GOVERSION'] == 'go1.27.3'
+          row = {'kind':'native execution environment, not vendor business acceptance','source_revision':os.environ['GITHUB_SHA'],'runner_label':'ubuntu-24.04-arm','machine':machine,'kernel':platform.release(),'system':platform.system(),'go':go,'cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'native_runner_assertions_passed':True}
+          pathlib.Path('ci-native-arm64/environment.json').write_text(json.dumps(row,indent=2)+'\n')
+          PY
+      - name: Native vet and race checks
+        run: |
+          go vet ./...
+          go test -race -count=1 -json ./... > ci-native-arm64/go-test-race.jsonl
+      - name: Independent business startup helper checks
+        run: |
+          bash tests/supervisor.sh > ci-native-arm64/supervisor.log 2>&1
+          python3 tests/integration-patch.py > ci-native-arm64/integration-patch.log 2>&1
+      - name: Build and execute native CLI
+        run: |
+          CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-s -w -X main.version=native-ci -X main.revision=$GITHUB_SHA" -o ci-native-arm64/crg ./cmd/crg
+          ./ci-native-arm64/crg build-info > ci-native-arm64/build-info.json
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, struct
+          root = pathlib.Path('ci-native-arm64'); data = (root/'crg').read_bytes()
+          assert data[:6] == b'\x7fELF\x02\x01' and struct.unpack_from('<H',data,18)[0] == 183
+          info = json.loads((root/'build-info.json').read_text())
+          assert info['arch'] == 'arm64' and info['os'] == 'linux' and info['revision'] == os.environ['GITHUB_SHA']
+          rows = [json.loads(line) for line in (root/'go-test-race.jsonl').read_text().splitlines()]
+          packages = sorted({x['Package'] for x in rows if x.get('Action') == 'pass' and 'Test' not in x})
+          assert packages and not any(x.get('Action') == 'fail' for x in rows)
+          (root/'result.json').write_text(json.dumps({'phase':'passed','scope':'native unit/race, helper scripts and CLI only; no actual resource writes or vendor business','source_revision':os.environ['GITHUB_SHA'],'binary_sha256':hashlib.sha256(data).hexdigest(),'ELF_machine':183,'packages_passed':packages,'test_pass_events':sum(x.get('Action')=='pass' and 'Test' in x for x in rows),'limitations':['Not cgroup CPU/memory/IO enforcement evidence.','Not ARM64 DBS/HISDBS business, multi-device or long-duration acceptance.','Kernel support conclusions require the recorded environment and appropriate real-controller tests.']},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: native-arm64-${{ github.sha }}
+          path: ci-native-arm64/
+          retention-days: 14
