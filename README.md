@@ -1,7 +1,7 @@
 # ContainerResourceGuard
 
 
-当前候选以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。发布范围与实测见[最新版本说明](docs/next-version.md)。
+[v0.1.0-rc.3-preview.1工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。两线38项隔离工程检查通过；发布范围与实测见[最新版本说明](docs/next-version.md)，正式业务与长期验收继续。
 
 容器内运行的轻量资源控制程序，简称 **CRG**。严格 **一个容器、一份 Agent、独立控制自身资源**。无需 Operator、CRD、Docker socket 或 Kubernetes API 权限。
 
@@ -60,7 +60,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 
 ## 文档
 
-后续设计：[双资源模式与五个可选参数](docs/resource-modes.md)；[容器/Pod 重启 ID 处理](docs/restart-behavior.md)。交付状态以任务和发布报告为准。
+后续设计与历史兼容：[双资源模式（扩展资源暂缓）](docs/resource-modes.md)；[容器/Pod 重启 ID 处理](docs/restart-behavior.md)。交付状态以任务和发布报告为准。
 
 持续开发与验收状态见 [当前进展](docs/development-status.md)。安全热重载已在独立分支通过 13 项真实 cgroup 检查，尚未发布；原镜像业务验收正在推进。
 
@@ -71,7 +71,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 | [全部需求](docs/requirements.md) | 用户需求、约定与边界，逐项编号 |
 | [开发任务](docs/tasks.md) | 实现、验证状态和证据 |
 | [后续十版规划](docs/roadmap.md) | 从 RC3 到 1.0 的十个版本、52 项任务与发布条件 |
-| [配置](docs/configuration.md) | 独立百分比默认20、手动模式与可选参数 |
+| [配置](docs/configuration.md) | 三项独立百分比默认20、手动模式与日志 |
 | [安装与升级](docs/installation.md) | 架构选择、持久部署、校验、升级和回退 |
 | [安装接入开发](docs/supervisor-install.md) | 摘要预览、私有备份、可选接入和有恢复门槛的卸载 |
 | [可信发布开发](docs/release-provenance.md) | 固定工具链、SBOM、来源证明及离线验证的真实证据 |

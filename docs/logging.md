@@ -20,6 +20,6 @@
 
 要在Pod重建后保留30天日志，给该容器挂载独立持久目录；容器可写层/emptyDir随Pod删除时不能凭程序恢复旧日志。本程序只清理自己的日文件，不修改原缓存/DBS/HISDBS日志和Kubernetes节点日志策略。此前有界events.jsonl是独立诊断功能，不能替代这套每日日志，也不因events_enabled=false而关闭本功能。
 
-实现及本地测试已接入；Linux只读/磁盘满、跨日、真实1GB稀疏文件和业务不中断等实测结果另行归档，不提前当作已通过发布门槛。
+实现及Linux单测、只读/磁盘满、30天边界、真实1GB稀疏文件和占位PID1不中断的实测已通过，见[工程结果](testing-three-percent-cgroup-logs.md)；原DBS/HISDBS业务与长期验收仍独立继续。
 
 R30增加`cgroup_detected`事件：记录v1/v2/hybrid/unknown、是否允许资源控制、跳过或继续校验动作及原因。v1跳过时仍写当天日志与stderr，未运行自动标定；v2后续逐项结果及失败仍由resource_status/agent_exit记录。

@@ -1,6 +1,6 @@
 # 下一版：v0.1.0-rc.3-preview.1
 
-当前工程预览候选实现用户最新R27/R29/R30，最终发布和测试结果将在验证完成后写入本页。正式RC3、稳定版及1.0的业务与长期验收未完成，不因本工程预览标签提前关闭。
+当前工程预览候选实现用户最新R27/R29/R30，两套候选的Linux检查和38项隔离实测已通过，见[测试证据](testing-three-percent-cgroup-logs.md)。本次发布main的工程预览包，组合开发线不作为发布物。正式RC3、稳定版及1.0的业务与长期验收未完成，不因本工程预览标签提前关闭。
 
 ## 交付内容
 
@@ -15,3 +15,13 @@
 本预览不改现有业务部署；使用独立配置/状态/日志。若以前跑过八项开发候选，先使用旧候选disable恢复其额外限额后再切换；本版不擅自重置原有外部控制。
 
 深入功能继续在next/compatibility-contract开发，包括安全热重载、诊断/指标、升级/回退及兼容性验证。尚未全部发布，不把开发分支中的额外功能当成本预览支持范围。ARM64目前仅构建，Linux6.x/多设备与长期DBS/HISDBS业务验收仍待条件与实测。
+
+## 下载与配置
+
+[GitHub预览发布及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)。选择对应架构tar.gz及SHA256SUMS，按[安装说明](installation.md)核对。此发布为prerelease；amd64已做上述实测，arm64仅构建。
+
+```json
+{"cpu_percent":30,"memory_percent":40,"io_percent":25}
+```
+
+未写的一项独立默认20；无新配置时也默认三项20%。进程命令为`crg run --config /etc/crg/config.json`。cgroup版本日志事件为`cgroup_detected`，查看每天的`/var/log/crg/crg-YYYY-MM-DD.log`或容器stderr；每个容器分别运行。
