@@ -1,0 +1,531 @@
+{
+  "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
+  "product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "task_count": 52,
+  "latest_requirements": "R29/R30: CPU,memory,IO only; independent percentages each default20; v1/hybrid/unknown skip, purev2 gated;daily30day/1GB logs; helper failure does not gate original business.",
+  "tasks": [
+    {
+      "id": "P01.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立 DBS 与 HISDBS 原镜像、原 supervisor、原缓存程序的隔离克隆回归入口；保留原启动链",
+        "分别记录数据库访问、关键业务 API、缓存程序共存、备份、同步和独立恢复结果；通用 PostgreSQL 冒烟不能替代厂商业务验收"
+      ],
+      "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径复验进行中，随后按冻结计划验证20场景故障；旧结论不改来源。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加固定额度下的冷启动、解包后启动、备份后启动及原健康探针联合测试；采集 IO 积压和就绪时间",
+        "在 20%/30% 候选额度中逐项记录预算、数据量、就绪阈值和失败；不自动临时放宽限额或悄悄修改原探针"
+      ],
+      "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径复验进行中，随后按冻结计划验证20场景故障；旧结论不改来源。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "根据实测修正 CRG 自身启动、日志持久化与退出路径的额外开销；区分业务额度不足和 Agent 缺陷",
+        "已知 30s 启动超时有可复现条件、定位证据和处置结论；不以一次成功复测消除原失败记录，不削弱必要的原值日志持久化"
+      ],
+      "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径复验进行中，随后按冻结计划验证20场景故障；旧结论不改来源。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "补齐实际 supervisor 版本的接入、完整备份和回退方案；修复业务回归发现的接入问题",
+        "克隆环境中缺程序、无权限、坏配置、崩溃、卡死、忽略 TERM 均不决定原业务退出；未知脚本拒绝自动修改"
+      ],
+      "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径复验进行中，随后按冻结计划验证20场景故障；旧结论不改来源。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "双模式 CPU/内存/IO 与旧最小配置兼容"
+      ],
+      "current_scope_note": "三资源双模式已实现；原7638/d6手动64预算业务已通过，当前分区组合d370两格真实路径600秒复验进行中，不混用来源。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.6",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "pids_max、cpu_weight 及危险下调/恢复保护"
+      ],
+      "current_scope_note": "R29已暂缓任务数/CPU权重的新交付；历史代码仅用于既有配置/恢复兼容，不是当前三资源推荐配置。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.7",
+      "archived_definition_file": "tasks.md",
+      "archived_definition": [
+        "v0.1.0-rc.3",
+        "默认最大文件系统选盘、首次后台标定、持久复用；按真机路径覆盖两套原业务与只读挂载",
+        "两线实现及Windows/Linux/race/vet、22项自动标定/9项状态故障通过；真实路径业务短测另判，未发布"
+      ],
+      "current_scope_note": "自动选盘/首次后台标定/稳定缓存已在工程预览提供；旧22项自动/9项状态故障、原路径及冷重建各自留档，d370新增分区映射按独立来源验证。首次标定仍有真实IO负载，业务不等待。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.8",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：默认每日日志、30天及总1GB清理、失败放行",
+        "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
+      ],
+      "current_scope_note": "每日日志/30天/总1GB/失败放行已实现，旧真实只读/满盘/1GB及当前1800秒稳定日志分别留档；最终两业务长期验收未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P01.9",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：仅CPU/内存/IO独立百分比，各默认20；v1跳过、v2校验设置；旧配置兼容及manual保留",
+        "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
+      ],
+      "current_scope_note": "仅三独立百分比各默认20、纯v2门禁和v1/混合/未知跳过已实现；版本模拟与真实v2控制证据分开。完整业务/长期和最终发布尚未接受。",
+      "completion_claim": false
+    },
+    {
+      "id": "P02.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立 observe 基线与 enforce 持续运行的采集、对比和报告工具",
+        "每种目标业务至少 24h 基线及 24h 候选额度运行，覆盖一次完整备份/同步高峰；周期更长则延长，不以满 48h 自动判定通过"
+      ],
+      "current_scope_note": "原fc2 observe基线已有固定20h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce与至少7天未开始。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。",
+      "completion_claim": false
+    },
+    {
+      "id": "P02.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "把关键业务指标纳入回归：错误、延迟分位数、备份/同步时间、恢复校验、OOM、CPU 节流和 IO 压力",
+        "测试前记录负载、数据量和可接受阈值，测试后逐项判断；原缓存程序全程参与，失败不可只归因于资源限制后忽略"
+      ],
+      "current_scope_note": "原fc2 observe基线已有固定20h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce与至少7天未开始。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。",
+      "completion_claim": false
+    },
+    {
+      "id": "P02.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "在克隆业务中补齐容器重建、Agent 重启、权限撤销、状态目录故障、外部改值、停用恢复及旧版回退",
+        "身份不串用、不覆盖外部值、原值可追溯；辅助进程故障不改变原业务退出行为，恢复失败必须可见"
+      ],
+      "current_scope_note": "原fc2 observe基线已有固定20h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce与至少7天未开始。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。",
+      "completion_claim": false
+    },
+    {
+      "id": "P02.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "发布稳定版安装/卸载/回退手册和精确支持矩阵；冻结首版配置语义",
+        "明确镜像、内核、运行时、架构、存储及权限条件；区分“已构建”“已测试”“未支持”，不发布未验证组合的稳定性结论"
+      ],
+      "current_scope_note": "原fc2 observe基线已有固定20h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce与至少7天未开始。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。",
+      "completion_claim": false
+    },
+    {
+      "id": "P03.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加本地配置重载入口与文件替换检测，兼容原子替换、符号链接切换和短暂缺文件；支持CPU/内存/IO独立比例变更，兼容旧percent",
+        "合法新配置成为新代次；重复键、错误类型、半写入文件和无法读取时保留上一份有效配置，不清空预算"
+      ],
+      "current_scope_note": "安全重载已实现并合入组合线；旧13项和d6三比例15项实测分别保留，CLI比例/日志优先、坏配置保持、独立默认、manual切换及冲突已有证据；当前分区程序不冒用旧二进制执行记录，尚未正式发布。",
+      "completion_claim": false
+    },
+    {
+      "id": "P03.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "实现“校验完整候选配置 → 计算计划 → 逐项持久化/写入/回读”的重载流程",
+        "CPU/内存/IO 分别显示成功、延后或冲突；20→30 只放宽 CRG 自己仍拥有的限额，不突破外部约束，不宣称三项同时原子切换"
+      ],
+      "current_scope_note": "安全重载已实现并合入组合线；旧13项和d6三比例15项实测分别保留，CLI比例/日志优先、坏配置保持、独立默认、manual切换及冲突已有证据；当前分区程序不冒用旧二进制执行记录，尚未正式发布。",
+      "completion_claim": false
+    },
+    {
+      "id": "P03.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "显示请求代次、已接受配置、逐项实际值和待完成原因；内存危险下调可在后续周期重试",
+        "30→20 遇到内存压力时保持原实际值并显示未生效，不能显示整体成功；冲突控制项不反复争写"
+      ],
+      "current_scope_note": "安全重载已实现并合入组合线；旧13项和d6三比例15项实测分别保留，CLI比例/日志优先、坏配置保持、独立默认、manual切换及冲突已有证据；当前分区程序不冒用旧二进制执行记录，尚未正式发布。",
+      "completion_claim": false
+    },
+    {
+      "id": "P03.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "规定配置变更的支持范围与模式切换行为，补齐并发重载/重启/disable 测试和文档",
+        "state_dir 变更仍要求受控升级；enforce→observe 不隐式撤销限额，停用恢复继续用明确操作；新增字段不成为必填"
+      ],
+      "current_scope_note": "安全重载已实现并合入组合线；旧13项和d6三比例15项实测分别保留，CLI比例/日志优先、坏配置保持、独立默认、manual切换及冲突已有证据；当前分区程序不冒用旧二进制执行记录，尚未正式发布。",
+      "completion_claim": false
+    },
+    {
+      "id": "P03.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "双模式热重载与切换，明确删除项目的恢复/保留规则"
+      ],
+      "current_scope_note": "已接入组合开发线，尚未发布；历史safe-reload13项与d6三比例15项各自归档，当前程序CI与原生整盘回归另记，未改写真机重载来源。",
+      "completion_claim": false
+    },
+    {
+      "id": "P04.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "扩展默认自动标定工具：自动选盘、重复采样、离散程度、时间/方法/版本记录与基准有效性检查",
+        "顺序读写 BPS 和随机读写 IOPS 分开测量并记录；受竞争影响的结果提示质量不足，不伪称设备物理总量，首次辅助进程自动尝试；后续复用，业务不等待"
+      ],
+      "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
+      "completion_claim": false
+    },
+    {
+      "id": "P04.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供本容器可见设备 profile 的检查、合并、替换和迁移预览工具",
+        "设备编号变更按稳定身份重识别；替盘、重复身份、旧格式和缺样本有明确处理；新机器不直接套用另一机器性能基准"
+      ],
+      "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
+      "completion_claim": false
+    },
+    {
+      "id": "P04.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "完善数据/WAL/备份路径与设备覆盖报告，测试分区、LVM 和选定 device-mapper 栈",
+        "同层/上下层重复配置可解释地拒绝或跳过；NFS、对象存储、Overlay 等不能确认的路径明确显示未覆盖，不猜设备"
+      ],
+      "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
+      "completion_claim": false
+    },
+    {
+      "id": "P04.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立至少两个独立块设备和一个选定映射栈的实机回归",
+        "各设备 BPS/IOPS、共享竞争、profile 缺项/失效分别记录；不把该矩阵外的复杂存储栈宣称已支持"
+      ],
+      "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
+      "completion_claim": false
+    },
+    {
+      "id": "P04.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "io_weight、手动多路径/多设备与替盘回归"
+      ],
+      "current_scope_note": "R29暂缓IO权重交付；三资源IO的多路径/多设备与替盘工作继续。分区同父盘164项不等于独立物理多盘通过。",
+      "completion_claim": false
+    },
+    {
+      "id": "P05.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "展示可获得的匿名内存、文件缓存、内核内存、events/PSI，以及 swap/HugeTLB 等统计范围",
+        "缺失的内核字段显示不可用，不拼成虚假的完整总量；只读诊断，不改变 swap、OOM 策略、数据库参数或缓存回收策略"
+      ],
+      "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。",
+      "completion_claim": false
+    },
+    {
+      "id": "P05.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加多周期稳定窗口、增长趋势和安全重试策略；复用写前复查与持久化保护",
+        "并发分配、慢 fsync、持续缓存压力和恢复较低原值时均有测试；危险下调延后，不能为追求“生效”强制回收或擅自加预算"
+      ],
+      "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。",
+      "completion_claim": false
+    },
+    {
+      "id": "P05.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "结合原缓存程序验证高查询负载、备份、WAL 增长和缓存回收重叠场景",
+        "两个辅助程序互不接管、互不等待，不形成重复回收或重启风暴；记录业务延迟、OOM 和额度未生效时长"
+      ],
+      "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。",
+      "completion_claim": false
+    },
+    {
+      "id": "P05.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加长期延后、原预算不适用和统计不足的可操作解释",
+        "用户能区分“已受控”“等待安全下调”“额度不足”“缺统计”；保持三个独立百分比入口，不增加扩展资源参数，不保证绝不OOM"
+      ],
+      "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。",
+      "completion_claim": false
+    },
+    {
+      "id": "P05.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "memory_high、memory_swap_max 和下调保护"
+      ],
+      "current_scope_note": "R29暂缓memory.high/Swap新交付；内存max、安全下调、压力诊断和原缓存共存继续由P05.1–P05.4验收，历史扩展恢复兼容保留。",
+      "completion_claim": false
+    },
+    {
+      "id": "P06.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立 Linux 内核、cgroup 挂载方式、containerd/runc 和选定容器运行方式的兼容矩阵",
+        "覆盖当前 5.14 环境及选定 6.x 环境；每个宣称组合有版本、权限和结果，未测版本不自动标为兼容"
+      ],
+      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P06.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "在 arm64 真机执行 CPU/内存/IO、故障恢复和业务回归",
+        "arm64 不再仅有交叉编译证据；发布说明逐架构列明业务和存储覆盖范围"
+      ],
+      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P06.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "加强只读/委派不足、私有 cgroup namespace、systemd 路径、祖先约束和宿主容量来源的发现测试",
+        "不能确认自身目标时不写；不能得到可信宿主基数时明确降级，不将容器虚拟容量误称宿主总量，不越权写父组"
+      ],
+      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P06.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加连续重建、路径复用、CPU 在线数变化和只读权限切换的回归",
+        "新身份不使用旧恢复日志；容量变化不突破既有外部约束；各类控制器可用性独立显示"
+      ],
+      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P06.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "双模式下容器/Pod/节点重启及状态保留/丢失组合回归"
+      ],
+      "current_scope_note": "已归档旧来源容量/身份37项及连续重建；原发布包和分区四格新ID另有结果，节点重启、状态丢失全组合及未测硬件仍未完整验收。",
+      "completion_claim": false
+    },
+    {
+      "id": "P07.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供统一原因码和解释：请求比例、宿主基数、上层约束、实际值、外部冲突、profile 覆盖及重载代次",
+        "human/JSON 输出含义一致；状态过期、锁被持有和数据库健康不混为一谈；旧脚本依赖的字段遵守兼容规则"
+      ],
+      "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
+      "completion_claim": false
+    },
+    {
+      "id": "P07.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供按白名单采集的脱敏诊断包和体积上限",
+        "不采集密码、令牌、环境变量全集、业务数据、私有业务脚本或其他容器信息；输出前说明内容，本地生成，不自动上传"
+      ],
+      "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
+      "completion_claim": false
+    },
+    {
+      "id": "P07.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供默认关闭的本容器指标导出，优先采用本地文本文件或 Unix socket",
+        "默认无监听网络端口、无远程控制入口；只报告自身，指标失败不影响业务，不能把 Agent 端点变成业务健康前置条件"
+      ],
+      "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
+      "completion_claim": false
+    },
+    {
+      "id": "P07.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加有大小/保留上限的本地事件记录和低 IO 验证",
+        "高频异常不写满目录；原值日志持久化不能因限流而被省略；说明 CPU/RSS/写入量及开销变化"
+      ],
+      "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
+      "completion_claim": false
+    },
+    {
+      "id": "P08.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供当前容器内的安装检查、拟执行变更、备份和卸载方案；支持已验证 supervisor 模板",
+        "变更限于当前容器，未知脚本/哈希不匹配拒绝改写；程序缺失仍按可选辅助进程处理；不操作其他 Pod 或 Kubernetes API"
+      ],
+      "current_scope_note": "历史31项维护、四格首次接入68项、共享切换/独立恢复及开发构建往返有独立记录；旧main预览缺协议的首次安装拒绝保留。当前d370实际维护、最近两个已发布次版本及最终持久部署验收仍未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P08.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加版本/锁兼容预检及仅重启 Agent 的受控二进制切换",
+        "升级前旧写入者全部停止，保留同一状态目录；新版本失败可回退；不让不同锁协议的旧新版本并行争写"
+      ],
+      "current_scope_note": "历史31项维护、四格首次接入68项、共享切换/独立恢复及开发构建往返有独立记录；旧main预览缺协议的首次安装拒绝保留。当前d370实际维护、最近两个已发布次版本及最终持久部署验收仍未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P08.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加 journal/profile 格式版本检查、迁移备份、预览和不兼容回退处理",
+        "升降级不丢原值；无法安全读取新版状态的旧程序明确拒绝，不删除日志重建、不用 max 批量覆盖"
+      ],
+      "current_scope_note": "历史31项维护、四格首次接入68项、共享切换/独立恢复及开发构建往返有独立记录；旧main预览缺协议的首次安装拒绝保留。当前d370实际维护、最近两个已发布次版本及最终持久部署验收仍未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P08.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "补齐镜像持久化、重建后配置、永久停用和升级操作的演练",
+        "明确只改运行中容器文件不会自动进入新镜像；永久停用由持久配置/启动入口表达，不把旧身份停用标记直接用于新身份"
+      ],
+      "current_scope_note": "历史31项维护、四格首次接入68项、共享切换/独立恢复及开发构建往返有独立记录；旧main预览缺协议的首次安装拒绝保留。当前d370实际维护、最近两个已发布次版本及最终持久部署验收仍未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P09.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "固定发布工具链，提供源码修订/构建来源、SBOM、产物证明和可重复构建核对",
+        "程序修订、打包修订、二进制摘要明确对应；验证过程公开可执行，不把“静态链接”当成完整依赖清单"
+      ],
+      "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。",
+      "completion_claim": false
+    },
+    {
+      "id": "P09.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加本地安装前的完整性/来源校验及离线校验步骤",
+        "校验失败拒绝安装；信任根与验证方式说明清楚，不执行未经校验的远程 shell；凭据和私有 profile 不进入包"
+      ],
+      "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。",
+      "completion_claim": false
+    },
+    {
+      "id": "P09.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "扩展解析器模糊测试、长故障回归及持久化中断验证",
+        "覆盖异常大文件、坏格式、持续权限撤销、慢/满文件系统；强杀与真实掉电证据分开，掉电仅在隔离可恢复测试环境执行"
+      ],
+      "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。",
+      "completion_claim": false
+    },
+    {
+      "id": "P09.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立不同限额下的长期 Agent 开销预算及回归阈值",
+        "工程目标：15s 周期、稳定状态至少 30min，单核平均 CPU ≤0.1%、RSS ≤20MiB，状态文件最多每 5min 一次；另测低 IO/持续异常，不为达标省略必要日志"
+      ],
+      "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "固化配置、CLI/JSON、journal 和 IO profile 的版本与兼容规则",
+        "固定CPU/内存/IO三个独立百分比及各默认20，保留旧单percent兼容；明确废弃周期与格式迁移；验证从最近两个已发布次版本升级及兼容范围内回退，不承诺无法读取新状态的旧版本可直接运行"
+      ],
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "对目标 DBS/HISDBS 业务完成至少 7 天综合验收",
+        "覆盖原缓存程序、实际备份/同步周期、冷启动、重建、恢复、升级和故障；长于 7 天的关键周期补充覆盖，按预先记录的业务阈值判断"
+      ],
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "完整复核目标隔离、权限降级、外部冲突、诊断脱敏、包来源和恢复所有权",
+        "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
+      ],
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "发布支持矩阵、运维手册、问题分级、补丁发布和证据归档规则",
+        "每个对外支持组合有对应报告；未测的架构/存储/内核不包装成全面支持；稳定发布和生产部署分别记录"
+      ],
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.5",
+      "archived_definition_file": "tasks.md",
+      "archived_definition": [
+        "v1.0.0",
+        "组合候选复核自动标定、双模式/故障/重建/升级和两业务共存",
+        "实现已编写，验收中；原24h+24h和至少7天条件不变"
+      ],
+      "current_scope_note": "自动标定在组合候选中实现；当前分区程序CI、源身份、同盘映射证据和自身开销具备，两业务/故障复验继续；正式24h+24h与至少7天尚未接受。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.6",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：默认每日日志、30天及总1GB清理、失败放行",
+        "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
+      ],
+      "current_scope_note": "每日日志/30天/总1GB/失败放行已实现，旧真实只读/满盘/1GB及当前1800秒稳定日志分别留档；最终两业务长期验收未完成。",
+      "completion_claim": false
+    },
+    {
+      "id": "P10.7",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：仅CPU/内存/IO独立百分比，各默认20；v1跳过、v2校验设置；旧配置兼容及manual保留",
+        "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
+      ],
+      "current_scope_note": "仅三独立百分比各默认20、纯v2门禁和v1/混合/未知跳过已实现；版本模拟与真实v2控制证据分开。完整业务/长期和最终发布尚未接受。",
+      "completion_claim": false
+    }
+  ],
+  "limitations": [
+    "Current notes record partial source-qualified evidence, never assert all52 complete.",
+    "Historical superseded extra-resource tasks stay archived; new delivery remains only3 resources.",
+    "No historical binary result is relabelled as current-source runtime evidence.",
+    "Formal baseline remains olderfc2, fixed enforce candidate d6; current d370 short/fault work is separate.",
+    "24h+24h,>=7days,last-two-published-minor maintenance and untested hardware/support gates remain open."
+  ]
+}
