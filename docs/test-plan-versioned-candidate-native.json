@@ -1,0 +1,59 @@
+{
+  "schema": "crg-versioned-candidate-native-plan-v1",
+  "phase": "frozen-before-CI",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "version": "v1.0.0",
+  "go_version": "go1.27.3",
+  "expected_files": {
+    "crg-linux-amd64": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "crg-linux-arm64": "a01a5c2b1f92829b35ead30434832e554bebd3cbe7a709b3a025b118c1bbcf23",
+    "containerresourceguard-v1.0.0-linux-amd64.tar.gz": "d8c04d03a8d1caa282eeda7f27439fe75ee6864174e12890dc201ab4d2e58d18",
+    "containerresourceguard-v1.0.0-linux-arm64.tar.gz": "c742f61846331738d5553f130c5b47d1c125a033ae410c27d11d3210ca7200a5",
+    "sbom-linux-amd64.cdx.json": "51fdfe7e3f31de15a5b7c9fa76a75e3c16178bc4b54bfad60b1c959120eafcf2",
+    "sbom-linux-arm64.cdx.json": "90cb17e6aa8ce6d0dec75e2110c28741171092137ec8e019753d1d18c59d0fb0",
+    "build-manifest.json": "85b22d6287d478662911d7de97a47235e305ef2677aa1f791f1d858e3d3f0a60",
+    "SHA256SUMS": "b7b6ecf5637e3bf37ce637c436f114eca8210e510ea2b60579f961ea251e3f53"
+  },
+  "source_contract_file": "docs/test-plan-partition-integration.json",
+  "source_contract_sha256": "119da4b0844f246019c37ac35eeb690883863ba3e5bcfe436e82b11539124948",
+  "test_sources": {
+    "tests/native-cgroup.py": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+    "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
+    "tests/load/main.go": "5799de95182dc97ff35544e78633a875cb8d1b81ff452fb01f7b57e6210fbaa9"
+  },
+  "matrix": [
+    {
+      "runner": "ubuntu-22.04",
+      "arch": "amd64",
+      "kernel_prefix": "6."
+    },
+    {
+      "runner": "ubuntu-22.04-arm",
+      "arch": "arm64",
+      "kernel_prefix": "6."
+    },
+    {
+      "runner": "ubuntu-24.04",
+      "arch": "amd64",
+      "kernel_prefix": "7."
+    },
+    {
+      "runner": "ubuntu-24.04-arm",
+      "arch": "arm64",
+      "kernel_prefix": "7."
+    }
+  ],
+  "criteria": {
+    "checks_each": 22,
+    "total_checks": 88,
+    "native_not_emulated": true,
+    "exact_eight_files_equal_to_Windows": true,
+    "owned_fixture_cleanup_required": true
+  },
+  "limits": [
+    "Unpublished candidate; this is exact binary/package identity plus actual own-container controller testing.",
+    "No vendor business, physical independent multi-device or long-duration acceptance; no provenance attestation claimed by this workflow."
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}
