@@ -264,3 +264,6 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 后置执行器独立短数据演练已[36项/两角色各600秒通过并独立确认清理](testing-aged-postflight-execution.md)，实际七天后置和老化辅助故障仍待完整长测。另归档[正式阶段当前12/14只读前置](test-results-formal-stage-current-readiness.json)及[未发布v1.0.0新产物身份](release-candidate-identity.md)；不弱化隔离、来源或52项门槛，不将开发程序时长移给新摘要。
+
+
+已冻结[未发布v1.0.0四格原生控制器/跨宿主产物复验](testing-versioned-candidate-native.md)，固定新摘要、精确d370源码及原22项/格门槛，当前未运行；不改现有长测、原正式阶段或52项定义。
