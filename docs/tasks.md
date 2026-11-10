@@ -156,3 +156,5 @@ P02/P08旧observe首次接入与旧参考入口恢复已在运行前归档[第19
 第35组三资源/每日日志程序稳定开销三场景各1800秒、181样本通过，同一Agent、OOM0且夹具清理；只为占位PID1手动预算的Agent开销，见[当前程序结果](testing-three-resource-steady-overhead.md)，不追认默认20%或长期业务通过。
 
 第19轮四格首次接入/旧参考入口恢复演练已启动；[固定启动快照](test-start-observe-first-adoption.json)只确认首格原observe就绪与来源，尚无接入/回退或600秒通过结论。原正式基线不变，24h enforce未启动。
+
+正式24h enforce增加[只读前置核对记录](test-preflight-enforce24h-not-ready.json)：基线原生尚未86400秒、四周期未最终验收，首次接入四格也未结束，核对结论为not-ready。只读取已有证据，不启动负载、不改程序/配置/控制或发送信号；它不是执行器。实际切换仍须重验Pod/进程/cgroup身份、源摘要、原值、备份与宿主预留。该固定快照不替代未来终态。

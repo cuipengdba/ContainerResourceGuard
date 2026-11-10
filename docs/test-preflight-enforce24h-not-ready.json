@@ -1,0 +1,90 @@
+{
+  "observed_utc": "2026-11-10T13:08:29Z",
+  "scope": "read-only receipt preflight; no execution, file writes, process signals or resource changes",
+  "ready_for_separate_live-identity-and-reserve-preflight": false,
+  "checks": {
+    "baseline-full-campaign-terminal-passed": {
+      "passed": false,
+      "phase": "measuring",
+      "requested_seconds": 86400
+    },
+    "baseline-source-and-tools-exact": {
+      "passed": true
+    },
+    "baseline-coordinator-ended": {
+      "passed": false
+    },
+    "baseline-role-set": {
+      "passed": true
+    },
+    "dbs-full-native86400-passed": {
+      "passed": false,
+      "phase": "running",
+      "elapsed_seconds": 49238.26007099496,
+      "SQL_errors": 0,
+      "API_errors": 0
+    },
+    "dbs-host-sampling-complete": {
+      "passed": false,
+      "sample_count": 823
+    },
+    "dbs-baseline-eight-controls-recorded": {
+      "passed": true
+    },
+    "hisdbs-full-native86400-passed": {
+      "passed": false,
+      "phase": "running",
+      "elapsed_seconds": 49237.21227151691,
+      "SQL_errors": 0,
+      "API_errors": 0
+    },
+    "hisdbs-host-sampling-complete": {
+      "passed": false,
+      "sample_count": 823
+    },
+    "hisdbs-baseline-eight-controls-recorded": {
+      "passed": true
+    },
+    "baseline-four-engine-cycles-accepted": {
+      "passed": false,
+      "cycle_phases": [
+        "content-passed-native-pending",
+        "content-passed-native-pending",
+        "content-passed-native-pending"
+      ]
+    },
+    "adoption-four-cells-terminal-passed": {
+      "passed": false,
+      "phase": "waiting-for-steady-overhead-cleanup",
+      "completed_checks": 15
+    },
+    "adoption-sources-exact": {
+      "passed": true
+    },
+    "baseline-dbs-adoption-native-and-recovery-complete": {
+      "passed": false
+    },
+    "adoption-coordinator-ended": {
+      "passed": false
+    },
+    "adoption-namespace-independently-absent": {
+      "passed": false
+    },
+    "current-overhead-completed-and-cleaned": {
+      "passed": true
+    },
+    "candidate-and-installed-sources-exact": {
+      "passed": true
+    },
+    "engineering-prerequisite-passed": {
+      "passed": true
+    }
+  },
+  "limitations": [
+    "Receipt prerequisites only; current Pod/process/cgroup identities, data/source hashes, backups, ownership and host reserves must be revalidated by a future executor before any change.",
+    "No formal enforce executor or workload has been launched by this script."
+  ],
+  "audit_source_sha256": "cd6d142f6629e74d8c7276bcef6a558397cf59e3e5274a43fedd27cd036d70a5",
+  "source_scope": "local exact source sent for read-only remote execution; no on-disk remote executable provenance claimed",
+  "kind": "fixed not-ready prerequisite receipt, not live status or terminal test failure"
+}
