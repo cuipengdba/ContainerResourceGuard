@@ -88,3 +88,5 @@ R25真实路径隔离夹具可按`--role dbs`/`--role hisdbs`顺序运行，默�
 2026-11-10 11:37:25 UTC只读观察时，两套原生负载分别记录43835.768/43834.693秒，SQL/API错误均为0，原生Python及su包装进程仍在，OOM计数为0。300秒、6h、12h三个引擎周期各角色10项内容检查及临时数据清理完成，但均保持`content-passed-native-pending`，须等完整86400秒原生覆盖和最终校验后才能接受。见[固定中间快照](test-progress-baseline24h-12h-linux-amd64.json)。
 
 该基线仍使用启动快照中的旧observe程序，不能扩成新main/组合程序的24h证据；24h enforce、至少7天验收尚未开始。没有修改基线程序、配置或原有资源值。
+
+后续新程序24h enforce的[前置计划](plan-enforce24h-three-resource.md)已归档；旧程序首次接入演练尚未执行，基线尚未完成，因此正式阶段未启动。
