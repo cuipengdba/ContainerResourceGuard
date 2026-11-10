@@ -1,0 +1,67 @@
+{
+  "kind": "Own exact unpublished v1.0.0 artifact steady-state overhead; no developer-binary elapsed-time reuse",
+  "phase": "not-started",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "job_sha256": "e8937b2df8bff4bf6d2e2c7987c8de78cb2435e6d69539d3ebf9ebb5c7d12aa6",
+  "runner_sha256": "d509465a06185185d64573b870149069756fd1d6fe49d4cfeade02ba5828f920",
+  "qualification_sha256": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634",
+  "prior_plan": "test-plan-partition-steady-overhead-retry.json",
+  "prior_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "criteria": {
+    "warmup_seconds": 45,
+    "actual_seconds": 1800,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "single_core_CPU_percent_max": 0.1,
+    "Agent_RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_Agent_write_bytes_max": 8388608,
+    "fault_Agent_write_bytes_max": 16777216,
+    "OOM_kill_delta_max": 0,
+    "same_Agent_process_all_samples": true,
+    "daily0600_logs_report_v2": true,
+    "manual_cpu_cores": 0.25,
+    "manual_memory_max_bytes": 134217728,
+    "io_cap_read_write_bps": 65536,
+    "io_cap_read_write_iops": 8
+  },
+  "prerequisites": [
+    "Exact integration source full CI/native checks passed; locally built ELF hashes equal Linux CI manifest.",
+    "Prior R35 final report passed, namespace absent and previous coordinator entry not live.",
+    "Fresh private output/program/namespace names; root and explicit test marker; native amd64 build-info and binary hash.",
+    "Same8GiB memory/20GiB free-space reserves throughout; original business baseline untouched.",
+    "First failed startup attempt terminal with namespace absent; preserve report and exit1.",
+    "Both exact-source helper scripts present and digest-checked before Pod creation.",
+    "R62 exact versioned candidate four native cells passed all88 checks, same eight artifacts as independent Windows build; no source-only substitution.",
+    "R50b source-specific overhead terminal passed/exit0 and namespace independently absent; original historical failed preparation report retained."
+  ],
+  "cases": [
+    "healthy",
+    "persistent metrics/events symlink failure, marker preserved",
+    "actually read-only cgroup mount; private fixture externally caps only its own leaf IO"
+  ],
+  "scope": "Three independent placeholder PID1 containers, one combined Agent each, original image used only as shell runtime. Not vendor business performance or product cross-container control. Manual CPU/memory/IO only; daily logs persist under each private state directory.",
+  "additional_identity_checks": [
+    "All8 actual own-leaf controls unchanged at each sample;3 active resources only.",
+    "Same PID1 start ticks/membership, same unique Agent and membership at each sample."
+  ],
+  "limitations": [
+    "No first calibration in this manual-budget test; startup/warmup are excluded from steady-state measurements.",
+    "Agent process counters do not measure host collector or all container-runtime logging costs.",
+    "Earlier1bc9/74693 long-check receipts remain separate and are not relabelled as this source.",
+    "A successful engineering budget test cannot reverse default20 business failures or close24h/seven-day/hardware gates.",
+    "The existing formal baseline is not modified.",
+    "This is new ELF dbc48aa5 version v1.0.0, not developer ELF3a1ce7db; all actual elapsed time belongs to this new binary.",
+    "Not vendor business, actual24h+24h,seven-day acceptance, physical multi-device or published-minor compatibility; no release acceptance."
+  ],
+  "attempt": 1,
+  "helper_sha256": {
+    "examples/supervisor.sh": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "previous_attempt": null,
+  "version": "v1.0.0",
+  "P10_complete": false,
+  "release_accepted": false
+}

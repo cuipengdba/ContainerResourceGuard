@@ -1,0 +1,71 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "job_sha256": "4bb896692b38ddb6dd7c28a9e019c81b4727f2f0ebcd664ca2f2318331d2de77",
+  "runner_sha256": "1901858a7c377aa6c228a2e108c6001b0eefb1260a88366bcb5939531a28c76d",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "exact_qualification_sha256": {
+    "identity-qualification.json": "d293d2c400843b1a7765d38ef14aecd8c68333cfc29259b670e0bec8790ca77e",
+    "integration-qualification.json": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634"
+  },
+  "cases": [
+    "current combined candidate / DBS / manual64MiB",
+    "current combined candidate / HISDBS / manual64MiB"
+  ],
+  "scope": "Sequential fresh original-image Pods, real vendor container mount paths and start.sh, original PG parameters and independent cache helper; synthetic64MiB data, private loopback DCS/credentials; no production data or external network.",
+  "prior_criteria": {
+    "readiness_total_seconds": 300,
+    "observation_timeouts": "retry only inside the original total deadline; each call clamped to remaining time",
+    "native_seconds": 600,
+    "native_maximum_seconds": 5,
+    "native_p95_upper_bound_seconds": 1,
+    "maximum_errors": 0,
+    "minimum_sample_coverage": 0.98,
+    "engine_content_checks": 10,
+    "engine_cleanup_required": true,
+    "primary_restart_allowed": false,
+    "payload_integrity_required": true
+  },
+  "additional_startup_rule": "Cache helper must report enforce within45s after PG/API/managed and within original total300s startup deadline.",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096,
+    "other_five_controls": "unchanged originals"
+  },
+  "prerequisites": [
+    "Frozen v1.0.0 package/local14 integrity checks, native AMD64 identity and independent fresh checkout reproduction; four native Linux6/7 AMD64/ARM64 cells88 passed with eight exact artifacts equal Windows.",
+    "This exact versioned binary R63 overhead actual1800s all3 passed, matching job digest, exit0 and namespace independently absent before any business Pod is created.",
+    "Original R12 manual business passed and namespace independently absent.",
+    "Native root/explicit marker; exact payload/helper/binary/build-info hashes; fresh private output/program/namespace.",
+    "Host available memory>=28GiB before each case,>=8GiB throughout; disk>=20GiB."
+  ],
+  "short_campaign_seconds": 600,
+  "case_checks_expected": 6,
+  "engine_content_checks_per_case": 10,
+  "limitations": [
+    "Only named manual budget, no claim default20%/automatic30% business performance.",
+    "Only native5.14 AMD64 and existing single-device real vendor paths; no ARM vendor or independent physical disks.",
+    "Two600s runs do not replace24h baseline+24h enforce,>=7days, latest-two-published-minor upgrade or stable1.0.",
+    "Existing fixed formal d6 candidate/baseline configuration and processes unchanged.",
+    "Unpublished v1.0.0 exact ELF dbc48aa5; prior developer3a1 program business runtime is not reused.",
+    "Original helper scripts,64MiB synthetic data, budget,300/45s readiness and600s/error/latency/coverage/restore criteria unchanged."
+  ],
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "actual_budget_gate": "Require all3 items applied, exact own-leaf720000/100000 CPU,20001980416B memory and67108864B/s+4096IOPS both directions on one resolved device; other5 actual values unchanged. Campaign then samples fixed actual8 controls.",
+  "version": "v1.0.0",
+  "prior_plan": "test-plan-partition-realpaths-business.json",
+  "P10_complete": false,
+  "release_accepted": false
+}
