@@ -15,7 +15,7 @@
 | 备份后新Pod ID | 四格8次原启动、88项通过，数据/日志/原值保持，仅手动64预算 | [冷重建](testing-three-resource-cold-rebuild.md) |
 | 在线维护 | 第13轮已发布预览首次安装拒绝；第15轮两套协议兼容开发构建22项/各600秒通过，不代表两个已发布次版本 | [拒绝记录](testing-three-resource-online-maintenance.md)、[开发构建往返](testing-three-resource-protocol-maintenance.md) |
 | 当前程序稳定开销 | 三场景各1800秒、181样本通过，Agent单核CPU≤0.0267%、RSS≤9011200B，仅占位PID1工程结果 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
-| 当前分区组合d3706f3 | 原生ARM212个Go pass事件、实际整盘44项及构建身份9项通过；自身三场景1800秒开销及DBS/HISDBS各600秒/12项通过且清理；当前故障/维护另判 | [当前提交与范围](testing-partition-integration.md) |
+| 当前分区组合d3706f3 | 原生ARM212个Go pass事件、实际整盘44项及构建身份9项通过；自身三场景1800秒开销及DBS/HISDBS各600秒/12项通过且清理；当前辅助故障20场景/108项通过且清理；维护执行中 | [当前提交与范围](testing-partition-integration.md) |
 | ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 原发布包原生控制器 | 原AMD64/ARM64资产、实际Linux6.8/7.0四格88项通过；非ARM厂商业务 | [精确下载资产结果](testing-released-cgroup-ci.md) |
 | 长期验收 | 旧observe基线已有固定21h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定21h快照及边界](continuous-acceptance.md) |
@@ -143,3 +143,6 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 
 
 当前同程序故障[中间观察](test-progress-partition-realpaths-faults.json)9场景checked/49项通过，整轮尚未接受；[维护协调已启动但仅等待前置](test-start-partition-realpaths-maintenance.json)，0个Pod/0项。程序、预算和期限保持冻结，正式基线另有[21h固定观察](continuous-acceptance.md)，尚非86400秒通过。
+
+
+当前d370[真实路径辅助故障20场景/108项通过](testing-partition-realpaths-faults.md)，退出0且namespace独立确认清理；升级/回退另按冻结计划判断。仅辅助隔离短测，不追认默认20%/自动30%持续性能，不替代正式长期或未测硬件。

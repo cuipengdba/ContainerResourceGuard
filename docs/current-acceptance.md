@@ -5,9 +5,9 @@
 | 范围 | 当前证据 | 仍未完成 |
 |---|---|---|
 | 已发布预览 | 三独立百分比、cgroup门禁、日文件/30天/1GB；原资产四格原生控制验证 | 不是正式RC3/稳定1.0；默认20%四格业务均未接受 |
-| 当前组合源码d3706f3 | [原生ARM212个Go pass事件、实际整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[自身三场景1800秒开销](testing-partition-steady-overhead.md) | [当前程序真实路径两格600秒/12项通过](testing-partition-realpaths-business.md)，后续辅助故障另测；仍未正式发布 |
+| 当前组合源码d3706f3 | [原生ARM212个Go pass事件、实际整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[自身三场景1800秒开销](testing-partition-steady-overhead.md) | [当前程序真实路径两格600秒/12项通过](testing-partition-realpaths-business.md)，[同程序辅助故障20场景/108项通过且清理](testing-partition-realpaths-faults.md)；维护另判，仍未正式发布 |
 | 分区IO | [468fe73实际双分区四格164项](testing-partition-cgroup.md)，与组合生产源码逐文件一致合同独立列明 | 单父盘双分区不等于独立物理多设备；未测复杂栈仍未支持 |
-| 业务与辅助故障 | 原7638/d6的600秒手动预算、冷重建/故障/维护各报告保持自身来源 | 当前d370已按原manual64预算两格复验通过，辅助故障另判；原[默认20%失败](testing-three-resource-default20-business.md)及[补测](testing-three-resource-default20-supplement.md)不改为通过 |
+| 业务与辅助故障 | 原7638/d6的600秒手动预算、冷重建/故障/维护各报告保持自身来源 | 当前d370已按原manual64预算两格复验及20场景辅助故障通过且清理；原[默认20%失败](testing-three-resource-default20-business.md)及[补测](testing-three-resource-default20-supplement.md)不改为通过 |
 | 正式长期 | [旧fc2 observe基线固定21h观察](continuous-acceptance.md)，4周期内容仍待最终原生判定 | 尚未接受完整86400秒；固定d6的等时enforce、至少7天未开始 |
 | 维护/最终支持 | 已有开发构建往返、共享切换/独立恢复、配置/状态兼容草案 | 当前候选实际维护、最近两个已发布次版本、最终支持矩阵、未测硬件及边界审计未完成 |
 
@@ -15,3 +15,9 @@
 
 
 当前d370故障矩阵已有[固定中间观察](test-progress-partition-realpaths-faults.json)，仅9场景checked/49项通过，实际标定中断正测，整轮20场景/108项及清理仍待判定；[故障协调等待快照](test-start-partition-realpaths-faults.json)保留原启动时刻。另[维护协调进程仅等待](test-start-partition-realpaths-maintenance.json)，0个维护Pod/0项通过，不提前宣称升级成功。
+
+
+上面的固定中间观察保留原时刻；[故障最终20场景/108项通过且清理](testing-partition-realpaths-faults.md)覆盖其后终态。维护按独立报告判断，仍不关闭已发布次版本或长期门槛。
+
+
+故障通过并清理后，[维护夹具已进入DBS启动阶段](test-start-partition-realpaths-maintenance-execution.json)。这是固定执行开始观察，尚无完整600秒维护结果；上面的0Pod等待观察属于更早时刻。

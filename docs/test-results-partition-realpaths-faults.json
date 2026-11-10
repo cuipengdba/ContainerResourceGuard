@@ -1,0 +1,814 @@
+{
+  "kind": "exact integrated partition candidate real-path helper fault acceptance",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T20:35:38Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "70d8c717550d0eeffb58e9810fd9fd06be452f23a48dd56d7668c326c974f53f",
+  "build_info": {
+    "arch": "amd64",
+    "go_version": "go1.27.3",
+    "io_profile_versions": [
+      1,
+      2
+    ],
+    "journal_versions": [
+      1
+    ],
+    "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+    "os": "linux",
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "version": "next-compatibility-contract",
+    "writer_controls": [
+      "cpu.max",
+      "cpu.weight",
+      "io.max",
+      "io.weight",
+      "memory.max",
+      "memory.high",
+      "memory.swap.max",
+      "pids.max"
+    ]
+  },
+  "business_prerequisite_report_sha256": "409042ee5738cfddb8886cbe2e8535921c685648c2b6560587d4de6b23f12eae",
+  "role_coverage": {
+    "dbs": 10,
+    "hisdbs": 10
+  },
+  "criteria": {
+    "PG_API_readiness_seconds": 90,
+    "cache_after_API_seconds": 45,
+    "TERM_seconds": 12,
+    "original_database_parameters_retained": true,
+    "automatic_percentages": {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 30
+    }
+  },
+  "cases": [
+    {
+      "case_key": "v10-dbs-missing",
+      "role": "dbs",
+      "case": "missing",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 25.42787315417081,
+      "PG_API_ready_seconds": 25.692151406081393,
+      "TERM_seconds": 4.918776196893305,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-invalid",
+      "role": "dbs",
+      "case": "invalid",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 22.714940626872703,
+      "PG_API_ready_seconds": 22.967297880910337,
+      "TERM_seconds": 4.47519495501183,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-crash",
+      "role": "dbs",
+      "case": "crash",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.640589226968586,
+      "PG_API_ready_seconds": 20.987976256059483,
+      "TERM_seconds": 4.704661316005513,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-hang",
+      "role": "dbs",
+      "case": "hang",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 23.141383494017646,
+      "PG_API_ready_seconds": 23.402489254018292,
+      "TERM_seconds": 5.304179509868845,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-ignoreterm",
+      "role": "dbs",
+      "case": "ignoreterm",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.369232041062787,
+      "PG_API_ready_seconds": 20.623469206038862,
+      "TERM_seconds": 4.494606788037345,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-rollback",
+      "role": "dbs",
+      "case": "rollback",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.086756763979793,
+      "PG_API_ready_seconds": 20.344126262003556,
+      "TERM_seconds": 4.7400292619131505,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-cgroup-readonly",
+      "role": "dbs",
+      "case": "cgroup-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 27.737106918124482,
+      "PG_API_ready_seconds": 28.04473679396324,
+      "TERM_seconds": 3.8198934758547693,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "calibrated"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        },
+        {
+          "file": "memory.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        },
+        {
+          "file": "io.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        }
+      ]
+    },
+    {
+      "case_key": "v10-dbs-profile-readonly",
+      "role": "dbs",
+      "case": "profile-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 21.757543369894847,
+      "PG_API_ready_seconds": 22.018003555946052,
+      "TERM_seconds": 4.102438664995134,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "degraded",
+        "reason_code": "calibration_output_unwritable"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "applied",
+          "reason_code": "unchanged"
+        },
+        {
+          "file": "memory.max",
+          "state": "applied",
+          "reason_code": "unchanged"
+        }
+      ]
+    },
+    {
+      "case_key": "v10-dbs-state-readonly",
+      "role": "dbs",
+      "case": "state-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 22.526694108033553,
+      "PG_API_ready_seconds": 22.789839836070314,
+      "TERM_seconds": 4.035985877970234,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-dbs-cancel-calibration",
+      "role": "dbs",
+      "case": "cancel-calibration",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 22.169243167852983,
+      "PG_API_ready_seconds": 22.430863715009764,
+      "TERM_seconds": 3.784638199955225,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-missing",
+      "role": "hisdbs",
+      "case": "missing",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.530062773032114,
+      "PG_API_ready_seconds": 20.78554971003905,
+      "TERM_seconds": 4.085484215058386,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-invalid",
+      "role": "hisdbs",
+      "case": "invalid",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 25.552748148096725,
+      "PG_API_ready_seconds": 25.809817265020683,
+      "TERM_seconds": 5.767811392899603,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-crash",
+      "role": "hisdbs",
+      "case": "crash",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 21.205774320056662,
+      "PG_API_ready_seconds": 21.45808234787546,
+      "TERM_seconds": 4.053040645085275,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-hang",
+      "role": "hisdbs",
+      "case": "hang",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.270903011085466,
+      "PG_API_ready_seconds": 20.54511270299554,
+      "TERM_seconds": 6.0801507129799575,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-ignoreterm",
+      "role": "hisdbs",
+      "case": "ignoreterm",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 23.369990984909236,
+      "PG_API_ready_seconds": 23.64746537595056,
+      "TERM_seconds": 4.565829667029902,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-rollback",
+      "role": "hisdbs",
+      "case": "rollback",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 23.45079555409029,
+      "PG_API_ready_seconds": 23.71707350597717,
+      "TERM_seconds": 3.726854312000796,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-cgroup-readonly",
+      "role": "hisdbs",
+      "case": "cgroup-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 26.348874859977514,
+      "PG_API_ready_seconds": 26.824161957018077,
+      "TERM_seconds": 3.905072229914367,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "calibrated"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        },
+        {
+          "file": "memory.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        },
+        {
+          "file": "io.max",
+          "state": "skipped",
+          "reason_code": "controller_write"
+        }
+      ]
+    },
+    {
+      "case_key": "v10-hisdbs-profile-readonly",
+      "role": "hisdbs",
+      "case": "profile-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 22.473075456917286,
+      "PG_API_ready_seconds": 22.735769268823788,
+      "TERM_seconds": 4.050687914947048,
+      "main_exit_code": 0,
+      "own_pod_removed": true,
+      "resource_state": "degraded",
+      "automatic_io": {
+        "state": "degraded",
+        "reason_code": "calibration_output_unwritable"
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "state": "applied",
+          "reason_code": "unchanged"
+        },
+        {
+          "file": "memory.max",
+          "state": "applied",
+          "reason_code": "unchanged"
+        }
+      ]
+    },
+    {
+      "case_key": "v10-hisdbs-state-readonly",
+      "role": "hisdbs",
+      "case": "state-readonly",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 21.126606062054634,
+      "PG_API_ready_seconds": 21.395695943152532,
+      "TERM_seconds": 4.189391863998026,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    },
+    {
+      "case_key": "v10-hisdbs-cancel-calibration",
+      "role": "hisdbs",
+      "case": "cancel-calibration",
+      "phase": "checked",
+      "candidate_branch": "v10",
+      "PG_ready_seconds": 20.715562273049727,
+      "PG_API_ready_seconds": 20.97616443806328,
+      "TERM_seconds": 3.707084651105106,
+      "main_exit_code": 0,
+      "own_pod_removed": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "v10-dbs-missing-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-missing-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-missing-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-missing-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-missing-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-invalid-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-invalid-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-invalid-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-invalid-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-invalid-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-crash-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-crash-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-crash-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-crash-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-crash-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-hang-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-hang-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-hang-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-hang-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-hang-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-ignoreterm-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-ignoreterm-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-ignoreterm-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-ignoreterm-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-ignoreterm-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-rollback-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-rollback-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-rollback-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-rollback-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-rollback-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cgroup-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cgroup-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cgroup-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cgroup-readonly-read-only-controls-remain-original",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cgroup-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cgroup-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-profile-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-profile-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-profile-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-profile-readonly-output-permission-skips-measurement",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-profile-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-profile-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-state-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-state-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-state-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-state-readonly-state-readonly-refuses-before-benchmark-or-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-state-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-state-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cancel-calibration-actual-calibration-TERM-before-first-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cancel-calibration-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cancel-calibration-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cancel-calibration-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cancel-calibration-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-cancel-calibration-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-missing-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-missing-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-missing-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-missing-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-missing-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-invalid-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-invalid-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-invalid-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-invalid-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-invalid-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-crash-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-crash-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-crash-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-crash-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-crash-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-hang-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-hang-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-hang-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-hang-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-hang-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-ignoreterm-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-ignoreterm-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-ignoreterm-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-ignoreterm-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-ignoreterm-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-rollback-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-rollback-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-rollback-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-rollback-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-rollback-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cgroup-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cgroup-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cgroup-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cgroup-readonly-read-only-controls-remain-original",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cgroup-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cgroup-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-profile-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-profile-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-profile-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-profile-readonly-output-permission-skips-measurement",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-profile-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-profile-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-state-readonly-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-state-readonly-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-state-readonly-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-state-readonly-state-readonly-refuses-before-benchmark-or-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-state-readonly-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-state-readonly-original-TERM-within12s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cancel-calibration-actual-calibration-TERM-before-first-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cancel-calibration-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cancel-calibration-original-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cancel-calibration-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cancel-calibration-PID1-and-OOM-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-cancel-calibration-original-TERM-within12s",
+      "passed": true
+    }
+  ],
+  "scope": "fresh original DBS/HISDBS images, real container paths, original PG/cache helpers and only3 automatic30% resources; synthetic isolated helper-fault checks, no production mutation",
+  "namespace_independently_absent": true,
+  "runner_gone": true,
+  "worker_exit": 0,
+  "raw_report_object_sha256": "336e5aa56c375cd6d3543914a2234d7b86bb59ba95302bdf257b1d3a536ef15d",
+  "limitations": [
+    "Original images/start.sh/database settings/cache readonly mount with isolated private fixtures; no production mutation.",
+    "10cases per role prove helper fault isolation and shutdown, not sustained automatic30% or default20% business performance.",
+    "cgroup-readonly may still perform initial calibration before resource writes fail; no early permission-preflight claim.",
+    "State-readonly denies before benchmark/control;profile-readonly is specifically output-unwritable;actual cancellation observes owned calibration FD and pinned executable before pidfd TERM.",
+    "Actual cgroupv2/Linux5.14/AMD64/single device only; v1 skip remains separate simulated version evidence.",
+    "Older40case/216checks retain7638/d6 source. Current maintenance,formal24h+24h,>=7days,published-minor and untested hardware gates remain separate."
+  ]
+}
