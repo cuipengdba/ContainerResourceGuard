@@ -1,0 +1,226 @@
+{
+  "date": "2026-11-10",
+  "source_revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+  "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615",
+  "role": "dbs",
+  "scope": "isolated original image, original container paths and read-only CCG; synthetic workload; shared test device",
+  "resource_mode": "manual",
+  "declared_budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 16777216,
+    "read_write_iops": 4096
+  },
+  "ready_and_managed_seconds": 55.62634041393176,
+  "automatic_measurement_performed": false,
+  "fixed_controls": {
+    "cpu.max": "720000 100000",
+    "memory.max": "20001980416",
+    "io.max": "253:0 rbps=16777216 wbps=16777216 riops=4096 wiops=4096",
+    "cpu.weight": "4",
+    "pids.max": "406648",
+    "memory.high": "max",
+    "memory.swap.max": "0",
+    "io.weight": "default 100"
+  },
+  "campaign_phase": "failed",
+  "campaign_failure": "native workload failed",
+  "engine": {
+    "phase": "content-passed-native-pending",
+    "checks": [
+      {
+        "name": "fixture_initial_rows",
+        "passed": true
+      },
+      {
+        "name": "physical_backup_finished",
+        "passed": true
+      },
+      {
+        "name": "streaming_new_rows_and_checksum",
+        "passed": true
+      },
+      {
+        "name": "standby_in_recovery",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_initial_checksum",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_is_writable",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_does_not_modify_primary",
+        "passed": true
+      },
+      {
+        "name": "logical_restore_initial_rows",
+        "passed": true
+      },
+      {
+        "name": "primary_did_not_restart",
+        "passed": true
+      },
+      {
+        "name": "probe_monitor_stopped",
+        "passed": true
+      }
+    ],
+    "temporary_servers_stopped_and_copies_removed": true,
+    "fixture_schema_restore_database_snapshot_removed": true,
+    "physical_backup_seconds": 18.8418081109412,
+    "exec_probe_diagnostic": {
+      "passed_original_5s_criterion": false,
+      "samples": 63,
+      "api_max": 1.0949102418962866,
+      "sql_max": 5.633109526941553
+    }
+  },
+  "native": {
+    "phase": "failed",
+    "requested_duration_seconds": 600,
+    "elapsed_seconds": 600.1295598868746,
+    "criteria": {
+      "api_period_seconds": 5,
+      "maximum_errors": 0,
+      "maximum_seconds": 5,
+      "minimum_scheduled_samples_fraction": 0.98,
+      "p95_upper_bound_seconds": 1,
+      "sql_period_seconds": 2
+    },
+    "sql": {
+      "attempts": 297,
+      "errors": 1,
+      "histogram": [
+        281,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        5,
+        4,
+        2,
+        1
+      ],
+      "max_seconds": 5.004829653073102,
+      "p95_bucket_upper_seconds": 0.02,
+      "sample_coverage": 0.99,
+      "successes": 296,
+      "total_seconds": 22.298368479823694
+    },
+    "api": {
+      "attempts": 121,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        121,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0.009141954127699137,
+      "p95_bucket_upper_seconds": 0.01,
+      "sample_coverage": 1.0083333333333333,
+      "successes": 121,
+      "total_seconds": 0.9455557903274894
+    },
+    "payload_integrity": true,
+    "primary_not_restarted": true,
+    "threads_stopped": true,
+    "interrupted": false
+  },
+  "allowlisted_server_durations": {
+    "scope": "allowlisted duration and synthetic operation kind only, no arbitrary SQL or private data",
+    "slow_operations": [
+      {
+        "time": "2026-11-10 12:37:08.095 CST",
+        "duration_ms": 25330.186,
+        "kind": "engine synthetic fixture load/checkpoint"
+      },
+      {
+        "time": "2026-11-10 12:36:08.274 CST",
+        "duration_ms": 12769.148,
+        "kind": "checkpoint"
+      },
+      {
+        "time": "2026-11-10 12:38:10.738 CST",
+        "duration_ms": 6884.477,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:36:53.673 CST",
+        "duration_ms": 4936.702,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:37:57.853 CST",
+        "duration_ms": 2176.508,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:38:10.739 CST",
+        "duration_ms": 1870.842,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:36:26.259 CST",
+        "duration_ms": 1525.426,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:38:14.107 CST",
+        "duration_ms": 1248.355,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:38:00.888 CST",
+        "duration_ms": 1034.306,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:36:47.522 CST",
+        "duration_ms": 786.479,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:38:15.639 CST",
+        "duration_ms": 780.088,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:38:11.630 CST",
+        "duration_ms": 770.75,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:37:12.378 CST",
+        "duration_ms": 704.042,
+        "kind": "native synthetic UPDATE"
+      },
+      {
+        "time": "2026-11-10 12:36:45.391 CST",
+        "duration_ms": 654.809,
+        "kind": "native synthetic UPDATE"
+      }
+    ]
+  },
+  "namespace_absent": true,
+  "outcome": "failed; completed content checks and 600s do not override the native SQL error and latency violation",
+  "online_upgrade_after_this_round": {
+    "executed": false,
+    "reason": "manual business prerequisite failed before any online-upgrade fixture was created"
+  }
+}

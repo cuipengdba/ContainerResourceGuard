@@ -42,4 +42,6 @@
 
 最新证据：两候选默认自动标定22项、真实满/只读状态9项检查通过；首轮失败完整保留，Linux/race及CI通过。见[自动IO实测](testing-automatic-io.md)。真实路径业务仍按独立报告判定。
 
-真机路径前两轮脚本超时保留；后续证实直接以root运行就绪探针缺libpq库路径，数据库实际已接受连接。修正为postgres原登录环境的新夹具保持30%和300秒预算，DBS约53.12秒、HISDBS约63.62秒就绪且managed，两套后续原生/备份短测均失败并归档；手动预算真机路径对照进行中。见[诊断与真实路径进展](testing-realpaths-progress.md)。
+真机路径前两轮脚本超时保留；后续证实直接以root运行就绪探针缺libpq库路径，数据库实际已接受连接。修正为postgres原登录环境的新夹具保持30%和300秒预算，DBS约53.12秒、HISDBS约63.62秒就绪且managed，两套自动30%业务短测均失败；原路径手动16MiB/s DBS完整600秒也因1次SQL错误失败，HISDBS观察失败另行补齐。新64MiB/s手动矩阵已冻结待执行；在线升级尚未执行。见[诊断与真实路径进展](testing-realpaths-progress.md)。
+
+原路径手动对照的失败、探针修正与新预算冻结计划见[手动测试记录](testing-realpaths-manual.md)。
