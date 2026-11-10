@@ -85,3 +85,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 第15轮协议已声明的两套未发布组合程序在线往返通过：DBS/HISDBS各600秒、22项检查，原值/业务/缓存/数据保持，最终恢复真实原值且夹具已清理。第13轮main预览首次安装失败保留，不替代两个已发布次版本或长期门槛。见[独立维护结果](testing-three-resource-protocol-maintenance.md)。
 
 第16轮默认空配置首格main/DBS完整600秒但SQL10次/API57次错误，未通过；Pod清理命令失败使其余三格未执行，终态namespace已移除。保留实际20%限额、失败与诊断，见[默认配置结果](testing-three-resource-default20-business.md)。
+
+第17轮真实路径备份/新Pod ID冷重建四格、8次启动、88项检查通过，数据/独立逻辑恢复库/一对一身份/日志追加及新容器原值恢复核对，全部夹具清理；仅为手动64MiB/s预算。见[冷重建结果](testing-three-resource-cold-rebuild.md)。
