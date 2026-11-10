@@ -461,6 +461,9 @@ func mainErr() (result error) {
 	// This process is optional and started asynchronously by the existing
 	// supervisor. Calibration never gates business/cache startup or their exit.
 	automaticIO := guard.PrepareAutomaticIO(ctx, c, env)
+	if ctx.Err() != nil {
+		return nil
+	}
 	overrides := guard.ConfigOverrides{StateDir: *state, IOProfile: *profile}
 	if percentProvided {
 		overrides.Percent = *percent
