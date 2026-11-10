@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen-before-launch; queued after maintenance task terminal and owned namespace absent",
+  "test_job_sha256": "e634c32acff5f7d5079a458764651852f782de631b70034eb23c571b415df5f1",
+  "sources": {
+    "rc3": {
+      "revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+      "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615"
+    },
+    "v10": {
+      "revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+      "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9"
+    }
+  },
+  "candidate_role_coverage": {
+    "v10": [
+      "dbs"
+    ],
+    "rc3": [
+      "hisdbs"
+    ]
+  },
+  "purpose": "complete reciprocal real-path optional-agent fault coverage without reclassifying the first20 successful cases as a full four-cell matrix",
+  "cases": [
+    "missing",
+    "invalid",
+    "crash",
+    "hang",
+    "ignoreterm",
+    "rollback",
+    "cgroup-readonly",
+    "profile-readonly",
+    "state-readonly",
+    "cancel-calibration"
+  ],
+  "criteria": {
+    "PG_API_total_readiness_seconds": 90,
+    "cache_after_API_seconds": 45,
+    "TERM_total_seconds": 12,
+    "original_database_parameters": true,
+    "percent": 30,
+    "invalid_case_percent": 0,
+    "original_CCG_readonly": true,
+    "PID1_preserved": true,
+    "OOM_kill_delta": 0,
+    "SQL_and_original_ls_probe_required": true
+  },
+  "observation_behavior": "retry startup observation timeouts only within original90s total budget; calls clamped to remaining time; TERM measured from signal request, never adds a fresh12s after request",
+  "safety": "fresh owned namespace and directories; container-local mounts, self-leaf cgroup identity, no production changes; previous test terminal and independent API confirms namespace absent",
+  "limitations": [
+    "queued is not passed",
+    "fault checks do not replace native600s/24h+24h/>=7d business acceptance",
+    "cgroup-readonly may still benchmark before control writes fail"
+  ]
+}
