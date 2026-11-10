@@ -35,13 +35,14 @@ type Setting struct {
 func (s Setting) Key() string { return s.File + ":" + s.Device }
 
 type Plan struct {
-	Environment  Environment      `json:"environment"`
-	Percent      float64          `json:"percent"`
-	ResourceMode string           `json:"resource_mode,omitempty"`
-	Settings     []Setting        `json:"settings"`
-	Warnings     []string         `json:"warnings,omitempty"`
-	Devices      []DeviceCoverage `json:"io_devices,omitempty"`
-	Paths        []PathCoverage   `json:"data_paths,omitempty"`
+	Percentages  *ResourcePercentages `json:"percentages,omitempty"`
+	Environment  Environment          `json:"environment"`
+	Percent      float64              `json:"percent,omitempty"`
+	ResourceMode string               `json:"resource_mode,omitempty"`
+	Settings     []Setting            `json:"settings"`
+	Warnings     []string             `json:"warnings,omitempty"`
+	Devices      []DeviceCoverage     `json:"io_devices,omitempty"`
+	Paths        []PathCoverage       `json:"data_paths,omitempty"`
 }
 
 func maxNumber(s string) uint64 {
@@ -69,6 +70,13 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		return Plan{}, err
 	}
 	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode}
+	if c.independentPercentages() {
+		values := c.ResourcePercentages
+		p.Percentages = &values
+	}
+	expanded, extraWarnings := expandPercentageExtras(c, env)
+	c = expanded
+	p.Warnings = append(p.Warnings, extraWarnings...)
 	if p.ResourceMode == "" {
 		p.ResourceMode = "percent"
 	}
@@ -141,6 +149,15 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if c.CPUWeight != nil {
 		p.Settings = append(p.Settings, Setting{File: "cpu.weight", Value: strconv.FormatUint(*c.CPUWeight, 10)})
 	}
+	if c.IOWeight != nil {
+		p.Settings = append(p.Settings, Setting{File: "io.weight", Value: "default " + strconv.FormatUint(*c.IOWeight, 10)})
+	}
+	extraSettings, memoryWarnings, extraErr := memoryExtras(c, env, original, wantMem, desiredMem, mem)
+	if extraErr != nil {
+		return p, extraErr
+	}
+	p.Settings = append(p.Settings, extraSettings...)
+	p.Warnings = append(p.Warnings, memoryWarnings...)
 	if c.ResourceMode == "manual" {
 		settings, devices, warnings := manualIO(c, env, original, manualDevice, relatedDevices)
 		p.Settings = append(p.Settings, settings...)
@@ -203,7 +220,8 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 			p.Warnings = append(p.Warnings, "IO unmanaged: "+dev+": "+coverage.Detail)
 			continue
 		}
-		scale := func(n uint64) uint64 { return scaleRate(n, c.Percent) }
+		_, _, ioPercent := c.corePercentages()
+		scale := func(n uint64) uint64 { return scaleRate(n, ioPercent) }
 		if scale(d.ReadBPS) == 0 || scale(d.WriteBPS) == 0 || scale(d.ReadIOPS) == 0 || scale(d.WriteIOPS) == 0 {
 			p.Warnings = append(p.Warnings, "IO unmanaged: percent below whole-unit BPS/IOPS minimum for device "+dev)
 			coverage.State, coverage.Detail = "skipped", "percent below integer BPS/IOPS minimum"

@@ -9,7 +9,7 @@ import (
 )
 
 func TestConfigValidation(t *testing.T) {
-	for _, raw := range []string{`{}`, `{"percent":0}`, `{"percent":101}`, `{"percent":-1}`, `{"percent":20,"cpu":2}`, `{"percent":20} {}`, `{"percent":20,"mode":"wrong"}`, `{"percent":20,"interval_seconds":-1}`} {
+	for _, raw := range []string{`{"percent":0}`, `{"percent":101}`, `{"percent":-1}`, `{"percent":20,"cpu":2}`, `{"percent":20} {}`, `{"percent":20,"mode":"wrong"}`, `{"percent":20,"interval_seconds":-1}`} {
 		var c Config
 		e := Decode([]byte(raw), &c)
 		if e == nil {

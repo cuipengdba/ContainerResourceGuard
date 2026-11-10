@@ -75,13 +75,18 @@ func Resolve(cgroup, mountinfo, pid1 string) (string, error) {
 }
 
 type Environment struct {
-	Target               string `json:"cgroup"`
-	Identity             string `json:"identity"`
-	OnlineCPUs           int    `json:"host_online_cpus"`
-	MemoryBytes          uint64 `json:"host_memory_bytes"`
-	CPUCapacitySource    string `json:"cpu_capacity_source"`
-	MemoryCapacitySource string `json:"memory_capacity_source"`
-	EffectiveCPUs        string `json:"effective_cpuset,omitempty"`
+	HostPidsMax           *uint64  `json:"host_pids_max,omitempty"`
+	HostSwapBytes         *uint64  `json:"host_swap_bytes,omitempty"`
+	PidsCapacitySource    string   `json:"pids_capacity_source,omitempty"`
+	SwapCapacitySource    string   `json:"swap_capacity_source,omitempty"`
+	ExtraCapacityWarnings []string `json:"extra_capacity_warnings,omitempty"`
+	Target                string   `json:"cgroup"`
+	Identity              string   `json:"identity"`
+	OnlineCPUs            int      `json:"host_online_cpus"`
+	MemoryBytes           uint64   `json:"host_memory_bytes"`
+	CPUCapacitySource     string   `json:"cpu_capacity_source"`
+	MemoryCapacitySource  string   `json:"memory_capacity_source"`
+	EffectiveCPUs         string   `json:"effective_cpuset,omitempty"`
 }
 
 func Discover() (Environment, error) {
@@ -155,6 +160,7 @@ func Discover() (Environment, error) {
 	if env.MemoryBytes == 0 {
 		return env, errors.New("host MemTotal unavailable")
 	}
+	discoverPercentageCapacity(&env)
 	env.EffectiveCPUs, _ = read(filepath.Join(env.Target, "cpuset.cpus.effective"))
 	return env, nil
 }

@@ -14,11 +14,16 @@ import (
 )
 
 type Config struct {
+	ResourcePercentages
+	LogDir          string        `json:"log_dir,omitempty"`
 	Percent         float64       `json:"percent,omitempty"`
 	ResourceMode    string        `json:"resource_mode,omitempty"`
 	Limits          *ManualLimits `json:"limits,omitempty"`
 	PidsMax         *uint64       `json:"pids_max,omitempty"`
 	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
+	IOWeight        *uint64       `json:"io_weight,omitempty"`
+	MemoryHigh      string        `json:"memory_high,omitempty"`
+	MemorySwapMax   string        `json:"memory_swap_max,omitempty"`
 	Mode            string        `json:"mode,omitempty"`
 	IOProfile       string        `json:"io_profile,omitempty"`
 	IOCalibration   string        `json:"io_calibration,omitempty"`
@@ -40,6 +45,14 @@ func (c *Config) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	_, c.percentPresent = fields["percent"]
+	for name := range c.ResourcePercentages.fields() {
+		if raw, ok := fields[name]; ok && bytes.Equal(bytes.TrimSpace(raw), []byte("null")) {
+			return errors.New(name + " cannot be null; omit it for default20")
+		}
+	}
+	if raw, ok := fields["percent"]; ok && bytes.Equal(bytes.TrimSpace(raw), []byte("null")) {
+		return errors.New("percent cannot be null")
+	}
 	return nil
 }
 
@@ -110,15 +123,15 @@ func (c *Config) Validate() error {
 	}
 	switch c.ResourceMode {
 	case "percent":
-		if math.IsNaN(c.Percent) || math.IsInf(c.Percent, 0) || c.Percent <= 0 || c.Percent > 100 {
-			return errors.New("percent must be greater than 0 and at most 100")
+		if err := c.validatePercentages(); err != nil {
+			return err
 		}
 		if c.Limits != nil {
 			return errors.New("percent resource_mode cannot include manual limits")
 		}
 	case "manual":
-		if c.percentPresent || c.Percent != 0 {
-			return errors.New("manual resource_mode cannot include percent")
+		if err := c.validatePercentages(); err != nil {
+			return err
 		}
 		if c.Limits == nil {
 			return errors.New("manual resource_mode requires limits")
@@ -138,6 +151,27 @@ func (c *Config) Validate() error {
 	if c.CPUWeight != nil && (*c.CPUWeight < 1 || *c.CPUWeight > 10000) {
 		return errors.New("cpu_weight must be 1..10000 (relative weight, not a hard quota)")
 	}
+	if c.IOWeight != nil && (*c.IOWeight < 1 || *c.IOWeight > 10000) {
+		return errors.New("io_weight must be 1..10000 (relative default weight, not a hard IO cap)")
+	}
+	if c.MemoryHigh != "" {
+		n, err := ParseBytes(c.MemoryHigh)
+		if err != nil || n < 16<<20 {
+			return errors.New("memory_high must be an integer byte quantity of at least 16MiB")
+		}
+		if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
+			max, _ := ParseBytes(c.Limits.MemoryMax)
+			if n > max {
+				return errors.New("memory_high cannot exceed requested memory_max")
+			}
+		}
+	}
+	if c.MemorySwapMax != "" {
+		n, err := ParseBytes(c.MemorySwapMax)
+		if err != nil || n > 0 && n < uint64(os.Getpagesize()) {
+			return errors.New("memory_swap_max must be 0B or at least one page in whole bytes")
+		}
+	}
 	if c.Mode == "" {
 		c.Mode = "enforce"
 	}
@@ -152,6 +186,9 @@ func (c *Config) Validate() error {
 	}
 	if c.IOCalibration != "auto" && c.IOCalibration != "off" {
 		return errors.New("io_calibration must be auto or off")
+	}
+	if c.LogDir == "" {
+		c.LogDir = "/var/log/crg"
 	}
 	if c.StateDir == "" {
 		c.StateDir = filepath.Join(os.TempDir(), "containerresourceguard")
@@ -174,6 +211,10 @@ func (c *Config) Validate() error {
 }
 
 func ReadConfig(path string, percent float64) (Config, error) {
+	return ReadConfigPercentages(path, percent, ResourcePercentages{})
+}
+
+func ReadConfigPercentages(path string, percent float64, percentages ResourcePercentages) (Config, error) {
 	var c Config
 	if path != "" {
 		b, e := os.ReadFile(path)
@@ -187,6 +228,7 @@ func ReadConfig(path string, percent float64) (Config, error) {
 	if percent != 0 {
 		c.Percent = percent
 	}
+	c.ApplyPercentageOverrides(percentages)
 	return c, c.Validate()
 }
 

@@ -11,6 +11,7 @@ import (
 	"os/signal"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"syscall"
 	"time"
 
@@ -39,11 +40,13 @@ func main() {
 		os.Exit(1)
 	}
 }
-func mainErr() error {
+func mainErr() (result error) {
 	if len(os.Args) < 2 {
 		return errors.New("usage: crg doctor|preflight|run|status|disable|enable|restore|calibrate|version|build-info [options]")
 	}
 	cmd := os.Args[1]
+	runLog := newRunLogger(cmd)
+	defer finishRunLogging(runLog, &result)
 	if cmd == "version" {
 		fmt.Println(version)
 		return nil
@@ -54,7 +57,12 @@ func mainErr() error {
 	}
 	f := flag.NewFlagSet(cmd, flag.ContinueOnError)
 	config := f.String("config", "", "JSON configuration file")
-	percent := f.Float64("percent", 0, "shared CPU/memory/IO percent of host capacity/baseline")
+	percent := f.Float64("percent", 0, "deprecated shared percentage for legacy configurations")
+	percentageFlags := map[string]*float64{}
+	for _, name := range []string{"cpu_percent", "memory_percent", "io_percent", "pids_percent", "cpu_weight_percent", "io_weight_percent", "memory_high_percent", "memory_swap_percent"} {
+		percentageFlags[name] = f.Float64(strings.ReplaceAll(name, "_", "-"), 20, "independent resource percentage; default20")
+	}
+	logDir := f.String("log-dir", "", "daily log directory (default /var/log/crg)")
 	state := f.String("state-dir", "", "per-container writable state directory")
 	profile := f.String("io-profile", "", "explicitly calibrated IO profile")
 	once := f.Bool("once", false, "apply or observe once, then exit (limits remain)")
@@ -66,6 +74,10 @@ func mainErr() error {
 	if e := f.Parse(os.Args[2:]); e != nil {
 		return e
 	}
+	if runLog != nil && *logDir != "" {
+		runLog.SetDirectory(*logDir)
+	}
+	overridesPercent := cliPercentages(f, percentageFlags)
 	percentProvided := false
 	f.Visit(func(v *flag.Flag) {
 		if v.Name == "percent" {
@@ -137,10 +149,14 @@ func mainErr() error {
 			return e
 		}
 	} else {
-		c, e = guard.ReadConfig(*config, *percent)
+		c, e = guard.ReadConfigPercentages(*config, *percent, overridesPercent)
 		if e != nil {
 			return e
 		}
+	}
+	c.ApplyPercentageOverrides(overridesPercent)
+	if *logDir != "" {
+		c.LogDir = *logDir
 	}
 	if *state != "" {
 		c.StateDir = *state
@@ -150,6 +166,10 @@ func mainErr() error {
 	}
 	if e = c.Validate(); e != nil {
 		return e
+	}
+	if runLog != nil {
+		runLog.SetDirectory(c.LogDir)
+		runLog.Event("INFO", "agent_start", map[string]any{"version": version, "revision": revision, "resource_mode": c.ResourceMode, "mode": c.Mode})
 	}
 	env, e := guard.Discover()
 	if e != nil {
@@ -255,7 +275,13 @@ func mainErr() error {
 		}
 		return nil
 	}
+	if runLog != nil {
+		runLog.Event("INFO", "automatic_io_prepare", map[string]string{"mode": c.IOCalibration})
+	}
 	automaticIO := guard.PrepareAutomaticIO(ctx, c, env)
+	if runLog != nil {
+		runLog.Event("INFO", "automatic_io_prepared", map[string]any{"result": automaticIO})
+	}
 	if ctx.Err() != nil {
 		return nil
 	}
@@ -294,6 +320,7 @@ func mainErr() error {
 		stable := guard.StableStatus(r)
 		if stable != lastOutput {
 			emit(r)
+			logRunStatus(runLog, r)
 			lastOutput = stable
 		}
 		if *once {
@@ -305,6 +332,9 @@ func mainErr() error {
 			case <-ctx.Done():
 				return nil
 			case <-control.C:
+				if runLog != nil {
+					runLog.Tick()
+				}
 				if disabled, err := guard.IsDisabled(c, env); err != nil {
 					return err
 				} else if disabled {
@@ -321,7 +351,11 @@ func humanPlan(p guard.Plan) {
 	if p.ResourceMode == "manual" {
 		fmt.Println("Requested: manual CPU / memory / per-device IO; omitted dimensions unmanaged")
 	} else {
-		fmt.Printf("Requested: %.4g%% CPU / memory / calibrated IO\n", p.Percent)
+		if p.Percentages != nil {
+			fmt.Printf("Requested: CPU %.4g%%; memory %.4g%%; calibrated IO %.4g%%\n", *p.Percentages.CPUPercent, *p.Percentages.MemoryPercent, *p.Percentages.IOPercent)
+		} else {
+			fmt.Printf("Requested (legacy): %.4g%% CPU / memory / calibrated IO\n", p.Percent)
+		}
 	}
 	fmt.Printf("Cgroup: %s\nHost: %d online CPUs, %d bytes memory\n", p.Environment.Target, p.Environment.OnlineCPUs, p.Environment.MemoryBytes)
 	for _, s := range p.Settings {

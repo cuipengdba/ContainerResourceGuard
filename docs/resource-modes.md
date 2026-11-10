@@ -4,13 +4,7 @@
 
 ## 百分比模式
 
-原最小配置 `{"percent":20}` 继续有效，等价于：
-
-```json
-{"resource_mode":"percent","percent":20}
-```
-
-CPU、内存取可信宿主容量的同一比例，IO 取实测标定基准的同一比例。R26新增默认自动选盘/首次后台标定及复用，不要求分别配置三项限额，见[自动标定](automatic-io-calibration.md)。
+R28最新要求改为CPU、内存、IO及五个扩展资源分别设置百分比，各自默认20%。最小配置`{}`，示例`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`。完整口径见[独立百分比](independent-percentages.md)。旧percent只作部署兼容，不能与新字段混用。
 
 ## 手动模式
 
@@ -38,7 +32,7 @@ CPU、内存取可信宿主容量的同一比例，IO 取实测标定基准的�
 
 ## 五个可选参数
 
-两种模式均可显式使用，默认省略、不推导额外限额。语义依据 [Linux cgroup v2 官方文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
+R28独立百分比模式中的五项分别默认20%；下表原绝对值字段用于manual及旧percent兼容配置，省略时不接管。当前RC3已回移三项扩展控制及保护，保留原后续版本的深入验收任务。语义依据 [Linux cgroup v2 官方文档](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)。
 
 | 参数 | 接口 | 作用与边界 | 计划版本 |
 |---|---|---|---|
@@ -68,3 +62,5 @@ memory_high 要与实际 memory.max 做一致性检查。新增项目全部纳�
 | P06.5 | 双模式下容器/Pod/节点重启及状态保留/丢失组合回归 |
 
 十版顺序不变，总计 46 项任务。P02/P07/P08/P09/P10 的业务、诊断、升级、开销和 1.0 验收同时覆盖两种模式及届时已实现的全部参数。用户已授权规划后直接持续开发到 1.0 并更新 GitHub，发布仍需满足证据条件。
+
+R27/R28新增日志与独立百分比任务后总数52项；旧46/48项数字作为当时规划历史保留。原任务深入验收和发布条件不删除。
