@@ -55,3 +55,5 @@ PG/API/managed就绪仍限300秒。旧组合/DBS在约22.64秒的瞬时缓存enf
 ## 默认20%剩余三格补测
 
 第16轮首格业务失败及清理命令失败保留，其余三格未执行。另冻结[第18轮补测计划](test-plan-three-resource-default20-supplement.json)，只补main/HISDBS、组合/DBS、组合/HISDBS，等待第17轮终止并确认namespace不存在。仍用`{}`、首次自动标定、原300秒启动/600秒负载及既有错误/延迟/内容门槛，不抬高IOPS、不改数据库参数。增加非host namespace实际校验。原120秒Pod删除命令不放宽；失败作为该格失败记录，再仅清理本轮标签namespace，确认旧Pod/cgroup消失后才继续下一格；清理未完成则停止，不改限额或强删。
+
+第17轮真实路径备份/新Pod ID冷重建四格、8次启动、88项检查通过，数据/独立逻辑恢复库/一对一身份/日志追加及新容器原值恢复核对，全部夹具清理；仅为手动64MiB/s预算。见[冷重建结果](testing-three-resource-cold-rebuild.md)。
