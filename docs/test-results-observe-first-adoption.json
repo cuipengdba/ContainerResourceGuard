@@ -1,0 +1,1014 @@
+{
+  "schema": "crg-observe-first-adoption-result-v1",
+  "phase": "passed",
+  "date": "2026-11-10",
+  "observed_utc": "2026-11-10T13:47:28Z",
+  "private_complete_receipt_sha256": "47e2c4af224ffa21c4d172985d3b2b9226c7e08e3e688717931aee724c7b7041",
+  "frozen_test_job_sha256": "d79bc8e0a8666093ee46d37ecd7510bade268febe8bdc263ce7dbfd2e88b7716",
+  "sources": {
+    "previous": {
+      "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+      "binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec"
+    },
+    "candidate": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15"
+    }
+  },
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "scope": "four isolated original-image cases; known old observe -> explicit adoption -> exact old-reference recovery",
+  "roles": {
+    "baseline-dbs": {
+      "phase": "adoption-and-backout-passed",
+      "layout": "baseline",
+      "role": "dbs",
+      "operations": [
+        {
+          "command": "disable",
+          "old_reference": false,
+          "started_epoch": 1794315536.3918571,
+          "ended_epoch": 1794315537.8497784,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794315538.045266,
+          "ended_epoch": 1794315538.2692978,
+          "exit": 0
+        },
+        {
+          "command": "disable",
+          "old_reference": true,
+          "started_epoch": 1794315663.647591,
+          "ended_epoch": 1794315664.9785252,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794315665.1408205,
+          "ended_epoch": 1794315665.3543499,
+          "exit": 0
+        }
+      ],
+      "PG_shared_buffers": "8960MB",
+      "initial_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+        "version": "v0.1.0-rc.3-dev"
+      },
+      "backup_regular_file_count": 6,
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "version": "v0.1.0-rc.3-preview.1",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_hold_seconds": 120.37157066515647,
+      "candidate_hold_observations": 59,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            119,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.27861333498731256,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.229176260298118
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.3569737160578,
+        "ended_utc": "2026-11-10T13:08:56.506406Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-10T13:08:56.237755Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-10 12:58:46.226667+00",
+        "primary_start_time_initial": "2026-11-10 12:58:46.226667+00",
+        "requested_duration_seconds": 600,
+        "run_id": "202611101390",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            299,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011547747068107128,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2157859797589481
+        },
+        "started_utc": "2026-11-10T12:58:55.912153Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "pod_delete_exit": 0,
+      "own_pod_removed": true,
+      "own_cgroup_removed": true
+    },
+    "baseline-hisdbs": {
+      "phase": "adoption-and-backout-passed",
+      "layout": "baseline",
+      "role": "hisdbs",
+      "operations": [
+        {
+          "command": "disable",
+          "old_reference": false,
+          "started_epoch": 1794316179.5051448,
+          "ended_epoch": 1794316180.8871946,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794316181.0573406,
+          "ended_epoch": 1794316181.2882605,
+          "exit": 0
+        },
+        {
+          "command": "disable",
+          "old_reference": true,
+          "started_epoch": 1794316307.2269511,
+          "ended_epoch": 1794316308.1363175,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794316308.331475,
+          "ended_epoch": 1794316308.5524623,
+          "exit": 0
+        }
+      ],
+      "PG_shared_buffers": "8960MB",
+      "initial_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+        "version": "v0.1.0-rc.3-dev"
+      },
+      "backup_regular_file_count": 6,
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "version": "v0.1.0-rc.3-preview.1",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_hold_seconds": 120.39236028492451,
+      "candidate_hold_observations": 59,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.008307680953294039,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.8702825435902923
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.3057281188667,
+        "ended_utc": "2026-11-10T13:19:39.694745Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-10T13:19:39.426160Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-10 13:09:27.478403+00",
+        "primary_start_time_initial": "2026-11-10 13:09:27.478403+00",
+        "requested_duration_seconds": 600,
+        "run_id": "202611101391",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            300,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.012233841000124812,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2156726000830531
+        },
+        "started_utc": "2026-11-10T13:09:39.151811Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "pod_delete_exit": 0,
+      "own_pod_removed": true,
+      "own_cgroup_removed": true
+    },
+    "realpath-dbs": {
+      "phase": "adoption-and-backout-passed",
+      "layout": "realpath",
+      "role": "dbs",
+      "operations": [
+        {
+          "command": "disable",
+          "old_reference": false,
+          "started_epoch": 1794316828.925528,
+          "ended_epoch": 1794316829.999933,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794316831.3452566,
+          "ended_epoch": 1794316831.575567,
+          "exit": 0
+        },
+        {
+          "command": "disable",
+          "old_reference": true,
+          "started_epoch": 1794316956.4623406,
+          "ended_epoch": 1794316957.5541956,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794316957.6830618,
+          "ended_epoch": 1794316957.9299657,
+          "exit": 0
+        }
+      ],
+      "PG_shared_buffers": "8960MB",
+      "initial_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+        "version": "v0.1.0-rc.3-dev"
+      },
+      "backup_regular_file_count": 6,
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "version": "v0.1.0-rc.3-preview.1",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_hold_seconds": 120.38516327412799,
+      "candidate_hold_observations": 59,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.007800450082868338,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.8446282469667494
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.2933701998554,
+        "ended_utc": "2026-11-10T13:30:28.433634Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-10T13:30:28.115836Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-10 13:20:15.171753+00",
+        "primary_start_time_initial": "2026-11-10 13:20:15.171753+00",
+        "requested_duration_seconds": 600,
+        "run_id": "202611101392",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            300,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.010687005938962102,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2144567312207073
+        },
+        "started_utc": "2026-11-10T13:20:27.901122Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "pod_delete_exit": 0,
+      "own_pod_removed": true,
+      "own_cgroup_removed": true
+    },
+    "realpath-hisdbs": {
+      "phase": "adoption-and-backout-passed",
+      "layout": "realpath",
+      "role": "hisdbs",
+      "operations": [
+        {
+          "command": "disable",
+          "old_reference": false,
+          "started_epoch": 1794317466.641879,
+          "ended_epoch": 1794317468.2790458,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794317468.4584649,
+          "ended_epoch": 1794317468.7053494,
+          "exit": 0
+        },
+        {
+          "command": "disable",
+          "old_reference": true,
+          "started_epoch": 1794317594.1034548,
+          "ended_epoch": 1794317595.3196013,
+          "exit": 0
+        },
+        {
+          "command": "enable",
+          "old_reference": false,
+          "started_epoch": 1794317595.4649463,
+          "ended_epoch": 1794317595.6949248,
+          "exit": 0
+        }
+      ],
+      "PG_shared_buffers": "8960MB",
+      "initial_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+        "version": "v0.1.0-rc.3-dev"
+      },
+      "backup_regular_file_count": 6,
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+        "version": "v0.1.0-rc.3-preview.1",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_hold_seconds": 120.38125488208607,
+      "candidate_hold_observations": 59,
+      "native": {
+        "api": {
+          "attempts": 120,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.00789329712279141,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0,
+          "successes": 120,
+          "total_seconds": 0.8378680464811623
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.190605222946,
+        "ended_utc": "2026-11-10T13:41:04.999142Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4800
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-10T13:41:04.696854Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-10 13:30:58.696445+00",
+        "primary_start_time_initial": "2026-11-10 13:30:58.696445+00",
+        "requested_duration_seconds": 600,
+        "run_id": "202611101393",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 300,
+          "errors": 0,
+          "histogram": [
+            298,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.09552601794712245,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0,
+          "successes": 300,
+          "total_seconds": 0.30792530882172287
+        },
+        "started_utc": "2026-11-10T13:31:04.569679Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "pod_delete_exit": 0,
+      "own_pod_removed": true,
+      "own_cgroup_removed": true
+    }
+  },
+  "tests": [
+    {
+      "name": "baseline-dbs-original-startup-and-observe-leave-eight-controls-original",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-original-PG-memory-parameter-preserved",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-original-cache-enforce-within45-and300",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-exact-source-qualified-old-Agent-and-cache",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-same-original-supervisor-helper-parent",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-old-program-lacks-online-protocol-advertisement",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-old-disable-restores-actual-originals-and-stops-writer",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-private-source-config-and-state-backup",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-candidate-resumes-under-same-helper",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-candidate-exact-three-controls-and-no-automatic-calibration",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-candidate-persistent-daily0600-v2-logs",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-candidate-held120s-with-original-business-helper-and-cache",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-old-reference-disable-restores-candidate-originals-before-backout",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-old-observe-resumes-without-restoring-or-deleting-journal",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-private-backup-immutable-after-handoff-and-backout",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-complete-native600s-zero-errors-and-data-PG-preserved",
+      "passed": true
+    },
+    {
+      "name": "baseline-dbs-final-original-controls-helper-cache-and-no-OOM",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-original-startup-and-observe-leave-eight-controls-original",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-original-PG-memory-parameter-preserved",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-original-cache-enforce-within45-and300",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-exact-source-qualified-old-Agent-and-cache",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-same-original-supervisor-helper-parent",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-old-program-lacks-online-protocol-advertisement",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-old-disable-restores-actual-originals-and-stops-writer",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-private-source-config-and-state-backup",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-candidate-resumes-under-same-helper",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-candidate-exact-three-controls-and-no-automatic-calibration",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-candidate-persistent-daily0600-v2-logs",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-candidate-held120s-with-original-business-helper-and-cache",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-old-reference-disable-restores-candidate-originals-before-backout",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-old-observe-resumes-without-restoring-or-deleting-journal",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-private-backup-immutable-after-handoff-and-backout",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-complete-native600s-zero-errors-and-data-PG-preserved",
+      "passed": true
+    },
+    {
+      "name": "baseline-hisdbs-final-original-controls-helper-cache-and-no-OOM",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-original-startup-and-observe-leave-eight-controls-original",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-original-PG-memory-parameter-preserved",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-original-cache-enforce-within45-and300",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-exact-source-qualified-old-Agent-and-cache",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-same-original-supervisor-helper-parent",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-old-program-lacks-online-protocol-advertisement",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-old-disable-restores-actual-originals-and-stops-writer",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-private-source-config-and-state-backup",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-candidate-resumes-under-same-helper",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-candidate-exact-three-controls-and-no-automatic-calibration",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-candidate-persistent-daily0600-v2-logs",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-candidate-held120s-with-original-business-helper-and-cache",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-old-reference-disable-restores-candidate-originals-before-backout",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-old-observe-resumes-without-restoring-or-deleting-journal",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-private-backup-immutable-after-handoff-and-backout",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-complete-native600s-zero-errors-and-data-PG-preserved",
+      "passed": true
+    },
+    {
+      "name": "realpath-dbs-final-original-controls-helper-cache-and-no-OOM",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-original-startup-and-observe-leave-eight-controls-original",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-original-PG-memory-parameter-preserved",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-original-cache-enforce-within45-and300",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-exact-source-qualified-old-Agent-and-cache",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-same-original-supervisor-helper-parent",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-old-program-lacks-online-protocol-advertisement",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-old-disable-restores-actual-originals-and-stops-writer",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-private-source-config-and-state-backup",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-candidate-resumes-under-same-helper",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-candidate-exact-three-controls-and-no-automatic-calibration",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-candidate-persistent-daily0600-v2-logs",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-candidate-held120s-with-original-business-helper-and-cache",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-old-reference-disable-restores-candidate-originals-before-backout",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-old-observe-resumes-without-restoring-or-deleting-journal",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-private-backup-immutable-after-handoff-and-backout",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-complete-native600s-zero-errors-and-data-PG-preserved",
+      "passed": true
+    },
+    {
+      "name": "realpath-hisdbs-final-original-controls-helper-cache-and-no-OOM",
+      "passed": true
+    }
+  ],
+  "independent_cleanup": {
+    "coordinator_ended": true,
+    "namespace_query_exit": 0,
+    "namespace_absent": true
+  },
+  "limitations": [
+    "Specific known old and new source hashes and compatible CPU/memory/IO journal fields only; not a general upgrade from any old binary.",
+    "This explicit first-adoption/old-reference recovery exercise differs from preserving-limits online binary-install. Round13 refusal stays failed; Round15 protocol-qualified development upgrade remains separate.",
+    "The candidate is held for120s inside a600s workload spanning observe/adopt/backout; it is not600s entirely enforced or formal24h evidence.",
+    "Manual64 budget does not reverse default20/automatic30 failures. No new first calibration occurs.",
+    "The original formal baseline is still live and untouched. Passing rehearsal cannot start formal enforce until the entire original baseline has passed and receipts are archived.",
+    "No published-minor upgrade, seven-day or unavailable-hardware gate is closed by this plan."
+  ]
+}

@@ -13,6 +13,7 @@ import platform
 import re
 import shutil
 import signal
+import stat
 import struct
 import subprocess
 import tempfile
@@ -38,6 +39,7 @@ nonce = uuid.uuid4().hex
 tag = 'crg-native-controller:' + nonce
 private = Path(tempfile.mkdtemp(prefix='crg-native-controller-')).resolve()
 containers = []
+storage = {'stage': 'not-created'}
 fields = ['cpu.max', 'memory.max', 'io.max', 'pids.max', 'cpu.weight', 'io.weight', 'memory.high', 'memory.swap.max']
 report = {'phase': 'preparing', 'source_revision': args.source_revision,
           'driver_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
@@ -154,8 +156,90 @@ def logs(item):
     return paths, events
 
 
+def verify_storage():
+    loop = storage['loop']
+    if not re.fullmatch(r'/dev/loop[0-9]+', loop):
+        raise RuntimeError('not an owned loop device')
+    attached = run(['losetup', '--noheadings', '--raw', '--output', 'BACK-FILE', loop]).stdout.strip()
+    if attached != str(private / 'block.img') or not stat.S_ISBLK(os.stat(loop).st_mode):
+        raise RuntimeError('loop backing file differs')
+    device = Path('/dev/mapper', storage['name'])
+    value = device.stat()
+    if not stat.S_ISBLK(value.st_mode):
+        raise RuntimeError('not the owned mapper block device')
+    root = Path('/sys/dev/block', str(os.major(value.st_rdev)) + ':' + str(os.minor(value.st_rdev)))
+    if root.joinpath('dm/name').read_text().strip() != storage['name'] or root.joinpath('dm/uuid').read_text().strip() != storage['uuid']:
+        raise RuntimeError('mapper ownership UUID/name differs')
+    if sorted(x.name for x in root.joinpath('slaves').iterdir()) != [Path(loop).name]:
+        raise RuntimeError('mapper has an unexpected backing device')
+    loop_device = os.stat(loop).st_rdev
+    expected = ['0', str(2 * 1024**3 // 512), 'linear', str(os.major(loop_device)) + ':' + str(os.minor(loop_device)), '0']
+    if run(['dmsetup', 'table', storage['name']]).stdout.split() != expected:
+        raise RuntimeError('mapper target geometry differs')
+    return device, value.st_rdev
+
+
+def prepare_storage():
+    # A real, disposable dm UUID over an exclusive loop file. No existing disk
+    # is formatted, no partition identity is fabricated, and no profile is given.
+    storage.update(stage='creating', name='crg-native-' + nonce, uuid='CRG-NATIVE-' + nonce)
+    image = private / 'block.img'
+    descriptor = os.open(image, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o600)
+    try:
+        os.ftruncate(descriptor, 2 * 1024**3)
+    finally:
+        os.close(descriptor)
+    storage['loop'] = run(['losetup', '--find', '--show', '--direct-io=on', '--nooverlap', image]).stdout.strip()
+    if not re.fullmatch(r'/dev/loop[0-9]+', storage['loop']):
+        raise RuntimeError('unexpected owned loop allocation')
+    if run(['losetup', '--noheadings', '--raw', '--output', 'BACK-FILE', storage['loop']]).stdout.strip() != str(image):
+        raise RuntimeError('new loop backing file differs')
+    run(['dmsetup', 'create', storage['name'], '--uuid', storage['uuid'], '--table', '0 ' + str(2 * 1024**3 // 512) + ' linear ' + storage['loop'] + ' 0'])
+    device, number = verify_storage()
+    run(['mkfs.ext4', '-q', '-m', '0', '-E', 'lazy_itable_init=0,lazy_journal_init=0', device], timeout=90)
+    mount = private / 'blockfs'
+    mount.mkdir(mode=0o700)
+    run(['mount', '-t', 'ext4', '-o', 'nodev,nosuid', device, mount])
+    if not mount.is_mount() or mount.stat().st_dev != number:
+        raise RuntimeError('owned filesystem mount differs')
+    mount.chmod(0o700)
+    storage.update(stage='mounted', directory=mount, number=number)
+    report['storage_fixture'] = {'kind': 'ext4 on real dm-linear UUID over exclusive loop file', 'sparse_backing_bytes': 2 * 1024**3, 'physical_independent_device': False, 'device': str(os.major(number)) + ':' + str(os.minor(number))}
+
+
+def cleanup_storage():
+    if storage['stage'] == 'not-created':
+        return
+    # Partial setup is a retained failure; do not guess owners or detach globals.
+    if storage['stage'] != 'mounted':
+        raise RuntimeError('partial block fixture setup requires VM disposal; private file retained')
+    device, number = verify_storage()
+    mount = storage['directory']
+    if not mount.is_mount() or mount.stat().st_dev != number:
+        raise RuntimeError('cleanup mount ownership differs')
+    run(['umount', mount], timeout=30)
+    if mount.is_mount() or mount.stat().st_dev == number:
+        raise RuntimeError('own mount remains active')
+    verify_storage()
+    run(['dmsetup', 'remove', storage['name']], timeout=30)
+    deadline = time.monotonic() + 10
+    root = Path('/sys/dev/block', str(os.major(number)) + ':' + str(os.minor(number)))
+    while (root.exists() or device.exists()) and time.monotonic() < deadline:
+        time.sleep(.1)
+    if root.exists() or device.exists():
+        raise RuntimeError('own mapper cleanup incomplete')
+    attached = run(['losetup', '--noheadings', '--raw', '--output', 'BACK-FILE', storage['loop']]).stdout.strip()
+    if attached != str(private / 'block.img'):
+        raise RuntimeError('loop ownership changed before detach')
+    run(['losetup', '--detach', storage['loop']])
+    remaining = run(['losetup', '--associated', private / 'block.img', '--noheadings', '--raw', '--output', 'NAME']).stdout.strip()
+    if remaining:
+        raise RuntimeError('own loop backing file still associated')
+    report['cleanup']['own_mount_mapper_and_loop_absent'] = True
+
+
 def make_folder(name, config):
-    folder = private / name
+    folder = storage['directory'] / name
     folder.mkdir(mode=0o700)
     for sub in ['config', 'state', 'data']:
         (folder / sub).mkdir(mode=0o700)
@@ -252,6 +336,7 @@ try:
     run(['docker', 'build', '--network', 'none', '--label', 'crg.native-ci=' + nonce, '-t', tag, str(private)], timeout=120)
     image = json.loads(run(['docker', 'image', 'inspect', tag]).stdout)[0]
     record('scratch-image-native-and-owned', image['Architecture'] == args.expected_arch and image['Config']['Labels']['crg.native-ci'] == nonce)
+    prepare_storage()
     manual = make_folder('manual', {'resource_mode': 'manual', 'limits': {'cpu_cores': .5, 'memory_max': '128MiB', 'io_read_bps': '4MiB', 'io_write_bps': '4MiB', 'io_read_iops': 256, 'io_write_iops': 256}})
     item = launch(manual, 'manual')
     dev = manual.joinpath('data').stat().st_dev
@@ -368,6 +453,11 @@ finally:
     except Exception as error:
         report.setdefault('cleanup_errors', []).append(type(error).__name__ + ': ' + str(error))
     report['cleanup']['all_owned_containers_and_cgroups_absent'] = all(x.get('removed') for x in containers)
+    if report['cleanup']['all_owned_containers_and_cgroups_absent']:
+        try:
+            cleanup_storage()
+        except Exception as error:
+            report.setdefault('cleanup_errors', []).append(type(error).__name__ + ': ' + str(error))
     if not report.get('cleanup_errors') and report['cleanup']['all_owned_containers_and_cgroups_absent']:
         if private.parent != Path(tempfile.gettempdir()).resolve() or not private.name.startswith('crg-native-controller-') or private.is_symlink():
             raise RuntimeError('private temporary cleanup path differs')

@@ -89,4 +89,4 @@ R25真实路径隔离夹具可按`--role dbs`/`--role hisdbs`顺序运行，默�
 
 该基线仍使用启动快照中的旧observe程序，不能扩成新main/组合程序的24h证据；24h enforce、至少7天验收尚未开始。没有修改基线程序、配置或原有资源值。
 
-后续新程序24h enforce的[前置计划](plan-enforce24h-three-resource.md)已归档；旧程序首次接入演练尚未执行，基线尚未完成，因此正式阶段未启动。
+后续新程序24h enforce的[前置计划](plan-enforce24h-three-resource.md)已归档；旧程序首次接入[四格68项已通过](testing-observe-first-adoption.md)，原基线尚未完成，正式阶段仍未启动。
