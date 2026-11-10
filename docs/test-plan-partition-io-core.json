@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-11",
+  "status": "frozen before first Linux execution of partition development source; not a result",
+  "base_revision": "08f254dcb799b8ba462fef2165cb79102904399b",
+  "branch": "next/partition-io",
+  "file_sha256": {
+    "internal/guard/block_device.go": "2baa26d58ccac8d5edf417ae48ab0dfe8a9ebe137c5d19ca087e626585752e36",
+    "internal/guard/block_device_linux_test.go": "fe4b46ca3c19eec267740646b0503ab3c4beb8eb870a6cf1aa27b92a3b9e0d07",
+    "internal/guard/calibration_auto.go": "0a75208c30af8e07ac4e259ee4872a710c05ac34ef8fbeecb3f663b3ce7997be",
+    "internal/guard/calibration_select_linux.go": "e9af7506a76373ea7a88fc11b88475892f6e20a980acf301364a85f81698205b",
+    "internal/guard/coverage.go": "32abb10b61aaabff0bdd128983d0d6f83b2c2d8f6ebf007c3a18ef43b78bff5c",
+    "internal/guard/discover.go": "b47cc1310b3ff2b52f1088153ac48d872efd0622135db01cbbe9d0b44b49d734",
+    "internal/guard/manual.go": "543f917670e081bba58c2bdfeb4d0b2ffec938ca4ebc47ab088588f30e8c62d2",
+    "internal/guard/partition_plan.go": "befa049205cff7b3f30b61d13ae87e3357e7290dd8ee2921ce00dd31cd7d60db",
+    "internal/guard/partition_plan_test.go": "99b2387599de91ac1347841251582a5048a917e9d8db4ec501b65090cc4d4e7d",
+    "internal/guard/plan.go": "22ebfa01c55dc58c62417fe4e217c457874c6b44e5ddba35026a70d85b16d142",
+    "internal/guard/profile_inspect.go": "301c6aeaad98a9e3db4148041a62a2311714596ed5ad87ae8a3dec47993890d8",
+    "tests/native-cgroup.py": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+    ".github/workflows/linux6-cgroup.yml": "1fd7a2c210c23b753683c81c935db28fffb29ab819c73c49b3a960b2f3615b41",
+    ".github/workflows/native-cgroup.yml": "978ec4e1189469b0314c5ec3b1e7238e51c8c70f027e4eeee7ec1d645ccddaec"
+  },
+  "criteria": [
+    "Linux vet/race includes new fake-sysfs partition geometry/identity/renumbering/failure and conservative shared-cap/journal tests; these are models, not partition IO effects.",
+    "Unchanged existing22-check real dm/loop whole-device regression on nativeAMD64/ARM64,actualLinux6.x and7.x. No altered budgets or load durations.",
+    "Real two-partition shared-cap/automatic-cache/old-CLI restoration acceptance is still required separately before claiming support or merging."
+  ],
+  "local_evidence": "Windows go test ./... and go vet ./... passed; Linux-specific symlink/sysfs tests not executed on Windows.",
+  "remaining": [
+    "Actual partition IO fixture/effects and old executable journal recovery.",
+    "Broader vendor/default20 performance,physicalmulti-device,ARMvendor,24h+24h and7days."
+  ],
+  "product_invariants": "Three independent percentages default20; optional helpers never gate business; journal records actual parent target; never write host/other-container cgroup or existing disks."
+}

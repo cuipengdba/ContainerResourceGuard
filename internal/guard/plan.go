@@ -180,66 +180,10 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if e = ValidateProfile(profile); e != nil {
 		return p, e
 	}
-	seen := map[string]bool{}
-	resolved := map[string]DeviceProfile{}
-	for _, d := range profile.Devices {
-		if d.ReadBPS == 0 || d.WriteBPS == 0 || d.ReadIOPS == 0 || d.WriteIOPS == 0 {
-			return p, errors.New("IO profile rates must all be positive")
-		}
-		dev, e := resolveProfileDevice(d)
-		if e != nil {
-			p.Warnings = append(p.Warnings, "IO unmanaged: "+e.Error())
-			p.Devices = append(p.Devices, DeviceCoverage{ProfileDevice: d.Device, State: "unavailable", Detail: e.Error()})
-			continue
-		}
-		if seen[dev] {
-			return p, errors.New("duplicate profile device")
-		}
-		seen[dev] = true
-		resolved[dev] = d
-	}
-	for _, d := range profile.Devices {
-		dev, err := resolveProfileDevice(d)
-		if err != nil {
-			continue
-		}
-		coverage := DeviceCoverage{ProfileDevice: d.Device, Device: dev, State: "planned", Detail: "all four calibrated dimensions; actual write/readback required"}
-		stacked := false
-		for other := range resolved {
-			if other == dev {
-				continue
-			}
-			related, err := relatedDevices(dev, other)
-			if err != nil || related {
-				stacked = true
-				break
-			}
-		}
-		if stacked {
-			coverage.State, coverage.Detail = "skipped", "overlapping or unreadable device stack; use one calibrated layer per path"
-			p.Devices = append(p.Devices, coverage)
-			p.Warnings = append(p.Warnings, "IO unmanaged: "+dev+": "+coverage.Detail)
-			continue
-		}
-		_, _, ioPercent := c.corePercentages()
-		scale := func(n uint64) uint64 { return scaleRate(n, ioPercent) }
-		if scale(d.ReadBPS) == 0 || scale(d.WriteBPS) == 0 || scale(d.ReadIOPS) == 0 || scale(d.WriteIOPS) == 0 {
-			p.Warnings = append(p.Warnings, "IO unmanaged: percent below whole-unit BPS/IOPS minimum for device "+dev)
-			coverage.State, coverage.Detail = "skipped", "percent below integer BPS/IOPS minimum"
-			p.Devices = append(p.Devices, coverage)
-			continue
-		}
-		value := fmt.Sprintf("rbps=%d wbps=%d riops=%d wiops=%d", scale(d.ReadBPS), scale(d.WriteBPS), scale(d.ReadIOPS), scale(d.WriteIOPS))
-		// Keep stricter pre-existing limits for each dimension of this device.
-		prev, _ := read(filepath.Join(env.Target, "io.max"))
-		prev = ioValue(prev, dev)
-		if v, ok := original["io.max:"+dev]; ok {
-			prev = v
-		}
-		value = clampIO(value, prev)
-		p.Settings = append(p.Settings, Setting{File: "io.max", Device: dev, DeviceIdentity: d.Identity, Value: value})
-		p.Devices = append(p.Devices, coverage)
-	}
+	ioSettings, devices, ioWarnings := percentageIO(c, env, original, profile, resolveProfileBinding, relatedDevices)
+	p.Settings = append(p.Settings, ioSettings...)
+	p.Devices = devices
+	p.Warnings = append(p.Warnings, ioWarnings...)
 	p.Paths = pathCoverage(c.DataPaths, p.Settings)
 	for _, v := range p.Paths {
 		if v.State != "planned" {

@@ -1,6 +1,25 @@
-# 独立分支真实分区验证结果
+# 真实分区验收计划（运行前冻结）
 
-开发分支next/partition-io的[运行前计划及边界](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-cgroup.md)和[冻结SCSI合同](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/test-plan-partition-cgroup-scsi.json)保留；本线尚未合入产品实现。
+本轮只针对隔离开发分支，产品实现为af1a34d；[冻结计划](test-plan-partition-cgroup.json)保存代码摘要、四格环境、原值、数值门槛及必需检查。当前尚未执行，不能据此声称分区支持通过。既有[核心/整盘回归](testing-partition-io-core.md)仍独立保留。
+
+每台临时CI VM新建独占4GiB稀疏文件、loop、带随机真实UUID的DM整盘及两个真实GPT分区。格式化仅作用于逐项核对sysfs/设备号/几何/归属的新分区；已有系统盘不写入。容器使用独立PID/挂载/网络命名空间，只控制自己的叶子cgroup。清理也逐项检查归属；部分设备准备失败时保留报告，由临时VM销毁，不猜测清理其他设备。
+
+两个分区分别做直接读/写/随机写；同时写及随机写先各自填充32MiB文件，再用共同计时区间检查合计带宽/IOPS，填充时间明确排除。预算维持4MiB/s和256IOPS，各轴不得因分区数翻倍。只在本测试容器预先设置32MiB/s、2048IOPS的有限外部原值，再由下载并校验的原preview二进制独立恢复全部8项，保留业务PID1及哨兵文件。
+
+百分比使用CPU10、内存1、IO20，自动选最大的1GiB分区，核对实际父盘控制项、三次真实标定、换容器ID后复用缓存和日志。第二分区额外取得真实标定后，合并验证四轴最小基准形成一份共享预算；人为加入重叠整盘profile作为负例时，必须降级并拒绝IO写入。
+
+离线卸载自有两个分区并删除内核分区映射后，仅将第一分区长度增加1MiB，再读回GPT和sysfs核对；不格式化、不调整文件系统。原文件系统及缓存应原样保留；新容器启动须识别几何变化并重新标定。旧profile会被保留供检查，因此预先要求明确degraded、旧条目unavailable，同时新条目和另一个有效分区共同形成正确的三项实际限额，不能把这一步称为全部profile可用。最后验证只读/无capabilities时无写入、日志和PID1保留，全部自有容器/cgroup/分区/挂载/DM/loop及临时目录清理。
+
+本轮不替代ARM厂商业务、多块独立物理设备或长期验收，不改变97正式长测的固定程序及预算。所有失败和重试均另存，不能覆盖冻结数值或把短测标记成长测通过。
+
+
+## 首轮测试设备失败与替换计划
+
+首轮[四格工作流42874296286](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42874296286)、源码689c3b3均在partx添加DM分区时失败，只有4项来源/环境/镜像检查，未进入产品三项控制或直接IO验收。原始报告保留自有镜像/容器清理和部分磁盘准备未完成状态，不把VM销毁称为正常设备清理。
+
+Linux6.8官方[DM实现](https://github.com/torvalds/linux/blob/v6.8/drivers/md/dm.c#L2120)设置GENHD_FL_NO_PART，证明该设备类型不适合本轮真实普通分区测试。下一轮改用内核[scsi_debug](https://github.com/torvalds/linux/blob/v6.8/drivers/scsi/scsi_debug.c)创建的独占RAM后端SCSI磁盘，必须有实际WWID、真实GPT分区和原生IO；逻辑容量与实际后端均为2.5GiB，不用虚拟大容量映射回小存储造成文件别名。已有scsi_debug模块/设备时拒绝复用和卸载。模块缺失时只安装当前实际内核的匹配模块包，不换内核或重启。
+
+[SCSI修正冻结计划](test-plan-partition-cgroup-scsi.json)在下一次执行前保存完整摘要；产品代码、原控制预算/计时/门槛、双分区几何、33项固定检查和8项循环IO检查均不变。清理逐项检查自有分区/挂载/SCSI盘/host/模块和临时目录正常消失。原DM计划保留不覆盖；这次存储类型修正不是降低验收标准，也不是独立物理磁盘性能验收。
 
 
 ## 真实分区四格结果
@@ -10,3 +29,10 @@
 完整[结果、源码、程序摘要及首轮失败](test-results-partition-cgroup.json)归档。首轮DM四格各只有4项准备检查，均因内核禁止DM普通分区而失败，未进入资源效果；保留其部分磁盘准备未完成/交由临时VM销毁的状态，不计作正常清理通过。报告下载出现本地传输超时后，改为对同一不可变artifact的命名ZIP文件作HTTPS范围读取并验证ZIP CRC，未因此重新运行测试。新旧执行程序摘要由夹具及运行中/proc/exe核对；旧资产仍经固定发布合同独立校验，不把未完整下载的本地新ELF称为另一次字节复核。
 
 共享顺序写只以字节速率验收；夹具在顺序模式的iops字段是4KiB等价数，不作为实际顺序操作率。IOPS判定只取实际4KiB随机写。几何变化后旧profile保留，须明确degraded和旧条目unavailable；正确生效的三项限额另行核对，不能称全部profile可用。RAM后端SCSI测试盘不代表物理盘容量基准或多块独立物理设备；ARM厂商业务、正式长测和1.0发布门槛仍独立保留。本分支尚未合入/发布，97固定程序和预算及现有发布资产不变。
+
+
+## 接入组合开发线
+
+已把af1a34d的11个实现/测试文件接入next/compatibility-contract，保留组合线既有代码和开发记录；完整cmd/internal生产源码及go.mod/go.sum逐文件摘要与已验收分区分支相同，见[接入冻结合同](test-plan-partition-integration.json)。原四格164项结果保持来源468fe73，没有改成新候选的执行报告。两个单元测试文件及实际分区驱动、冻结计划也一并接入。
+
+当前还需核对本次提交的构建/race/原生回归、包完整性/复现及新候选开销，不把源码相同等同于新二进制或所有验收完成。旧d6三场景1800秒开销报告继续独立保留；新候选按原45秒预热、1800秒测量和原阈值复验。正式97基线、共享切换的d6候选和发布资产均保持原来源；本次接入不是正式部署或发布。

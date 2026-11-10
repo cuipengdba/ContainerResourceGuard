@@ -14,7 +14,7 @@
 | 新程序默认20% | 第16/18轮四格业务组合均失败；两个组合格只有未完成原生快照 | [首格](testing-three-resource-default20-business.md)、[补测](testing-three-resource-default20-supplement.md) |
 | 备份后新Pod ID | 四格8次原启动、88项通过，数据/日志/原值保持，仅手动64预算 | [冷重建](testing-three-resource-cold-rebuild.md) |
 | 在线维护 | 第13轮已发布预览首次安装拒绝；第15轮两套协议兼容开发构建22项/各600秒通过，不代表两个已发布次版本 | [拒绝记录](testing-three-resource-online-maintenance.md)、[开发构建往返](testing-three-resource-protocol-maintenance.md) |
-| 当前程序稳定开销 | 三场景各1800秒、181样本通过，Agent单核CPU≤0.0267%、RSS≤9011200B，仅占位PID1工程结果 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
+| 分区接入前d6程序开销 | 三场景各1800秒、181样本通过；新分区候选待同阈值复验，不能沿用旧程序结论 | [三资源/日志开销](testing-three-resource-steady-overhead.md) |
 | ARM64原生基础CI | 两线vet/race、辅助脚本与CLI通过；实际内核7.0，无实际资源/厂商业务证明 | [原生CI与包校验](native-arm64-ci.md) |
 | 原发布包原生控制器 | 原AMD64/ARM64资产、实际Linux6.8/7.0四格88项通过；非ARM厂商业务 | [精确下载资产结果](testing-released-cgroup-ci.md) |
 | 长期验收 | 旧observe基线已有固定18h快照，四周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定18h快照及边界](continuous-acceptance.md) |
@@ -115,3 +115,6 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 分区开发线现已完成[真实GPT双分区四格164项验收](testing-partition-cgroup.md)，独立分支实现af1a34d、实际运行468fe73；尚未合入本线或发布，正式长测/物理多设备/ARM厂商业务门槛未关闭。
+
+
+分区实现已按[逐文件等价合同](test-plan-partition-integration.json)接入本组合开发线，原分支164项实际分区和212个原生race事件来源保持独立。新提交构建、包、原生回归及开销待验证；此前“未合入本线”是历史记录，尚未正式发布。正式长测的固定d6候选不变。

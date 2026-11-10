@@ -8,6 +8,7 @@ import (
 type ProfileDeviceView struct {
 	ProfileDevice string         `json:"profile_device"`
 	Device        string         `json:"device,omitempty"`
+	ControlDevice string         `json:"control_device,omitempty"`
 	State         string         `json:"state"`
 	Detail        string         `json:"detail,omitempty"`
 	Quality       ProfileQuality `json:"quality"`
@@ -34,7 +35,28 @@ func LoadProfile(path string) (Profile, error) {
 // Only inspect named profiles and currently visible block-device identities.
 // Never write a cgroup or enable a host IO scheduler/cost controller.
 func InspectProfile(p Profile) (ProfileView, error) {
-	return inspectProfile(p, time.Now(), resolveProfileDevice)
+	bindings := map[string]IOBlockDevice{}
+	v, err := inspectProfile(p, time.Now(), func(d DeviceProfile) (string, error) {
+		b, err := resolveProfileBinding(d)
+		if err == nil {
+			bindings[d.Identity] = b
+		}
+		return b.Device, err
+	})
+	if err != nil {
+		return v, err
+	}
+	for index, d := range p.Devices {
+		if index < len(v.Devices) {
+			if b, ok := bindings[d.Identity]; ok {
+				v.Devices[index].ControlDevice = b.ControlDevice
+				if b.Partition != 0 {
+					v.Devices[index].Detail = "partition baseline; whole-device cap is shared by this container's IO on all sibling partitions"
+				}
+			}
+		}
+	}
+	return v, err
 }
 func inspectProfile(p Profile, now time.Time, resolve func(DeviceProfile) (string, error)) (ProfileView, error) {
 	v := ProfileView{Version: p.Version, CreatedUTC: p.CreatedUTC}

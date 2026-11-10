@@ -1,7 +1,6 @@
 package guard
 
 import (
-	"crypto/sha256"
 	"encoding/hex"
 	"errors"
 	"fmt"
@@ -133,34 +132,6 @@ func Discover() (Environment, error) {
 	discoverCapacity(&env, read, func(path string) bool { _, err := os.Stat(path); return err == nil }, verifyCapacitySource)
 	env.EffectiveCPUs, _ = read(filepath.Join(env.Target, "cpuset.cpus.effective"))
 	return env, nil
-}
-
-func DeviceIdentity(dev string) (string, error) {
-	if !validDevice(dev) {
-		return "", errors.New("invalid device number")
-	}
-	root := filepath.Join("/sys/dev/block", dev)
-	if _, e := os.Stat(root); e != nil {
-		return "", e
-	}
-	var id string
-	for _, p := range []string{"dm/uuid", "device/wwid", "wwid"} {
-		if v, e := read(filepath.Join(root, p)); e == nil && v != "" {
-			id = p + ":" + v
-			break
-		}
-	}
-	if id == "" {
-		return "", errors.New("device has no stable UUID/WWID; refusing a portable IO profile")
-	}
-	size, e := read(filepath.Join(root, "size"))
-	if e != nil {
-		return "", e
-	}
-	// Partition start disambiguates partitions sharing a parent's WWID.
-	start, _ := read(filepath.Join(root, "start"))
-	hash := sha256.Sum256([]byte(id + ":" + size + ":" + start))
-	return hex.EncodeToString(hash[:]), nil
 }
 
 func validDevice(s string) bool {
