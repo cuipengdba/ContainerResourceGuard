@@ -6,6 +6,8 @@
 
 [v0.1.0-rc.3-preview.1工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。两线38项隔离工程检查通过；发布范围与实测见[最新版本说明](docs/next-version.md)，正式业务与长期验收继续。
 
+原发布AMD64/ARM64下载包已在实际Linux6.8/7.0原生环境完成[四格88项控制器检查](docs/testing-released-cgroup-ci.md)，包括实际限额、自动百分比、新ID和恢复；ARM厂商业务及长期条件尚未完成。
+
 容器内运行的轻量资源控制程序，简称 **CRG**。严格 **一个容器、一份 Agent、独立控制自身资源**。无需 Operator、CRD、Docker socket 或 Kubernetes API 权限。
 
 CPU、内存、IO分别设置百分比，省略的资源项各自默认20%。最小配置`{}`，也可单独调整：

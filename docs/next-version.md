@@ -14,11 +14,11 @@
 
 本预览不改现有业务部署；使用独立配置/状态/日志。若以前跑过八项开发候选，先使用旧候选disable恢复其额外限额后再切换；本版不擅自重置原有外部控制。
 
-深入功能继续在next/compatibility-contract开发，包括安全热重载、诊断/指标、升级/回退及兼容性验证。尚未全部发布，不把开发分支中的额外功能当成本预览支持范围。本预览发布物ARM64仍仅构建；后续不同源码/摘要的原生dm/loop控制器结果另记，Linux6.x/物理多设备与长期DBS/HISDBS业务验收仍待实测。
+深入功能继续在next/compatibility-contract开发，包括安全热重载、诊断/指标、升级/回退及兼容性验证。尚未全部发布，不把开发分支中的额外功能当成本预览支持范围。原预览AMD64/ARM64资产现已在[实际Linux6.8/7.0四格原生控制器88项通过](testing-released-cgroup-ci.md)；后续源码CI另记，ARM厂商业务、物理多设备、分区映射与长期DBS/HISDBS业务验收仍未完成。
 
 ## 下载与配置
 
-[GitHub预览发布及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)。选择对应架构tar.gz及SHA256SUMS，按[安装说明](installation.md)核对。此发布为prerelease；amd64已做上述实测，arm64仅构建。
+[GitHub预览发布及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)。选择对应架构tar.gz及SHA256SUMS，按[安装说明](installation.md)核对。此发布仍为prerelease；两架构原资产有上述占位容器控制器实测，ARM厂商业务尚未验收。
 
 ```json
 {"cpu_percent":30,"memory_percent":40,"io_percent":25}
