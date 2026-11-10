@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen-before-launch",
+  "test_job_sha256": "c6559438fbffd5e4457125c31d6a180b710aa15e615cd7f138f6b46a4824bda5",
+  "sources": {
+    "rc3": {
+      "revision": "023becfbed94045b16439b8cbdb61e80520c00bb",
+      "binary_sha256": "b9baa7e3fd39fcccf9d3ca5adf6640c0a7836e05e90aa6744f4da40e01cff615"
+    },
+    "v10": {
+      "revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+      "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9"
+    }
+  },
+  "scope": "same real container paths, original image/database parameters and read-only CCG; each case fresh isolated data, sequential roles, synthetic workload on shared device",
+  "cases": [
+    {
+      "candidate": "v10",
+      "role": "hisdbs",
+      "read_write_bps": 16777216,
+      "purpose": "repeat same-budget HISDBS after fixing premature observation abort"
+    },
+    {
+      "candidate": "rc3",
+      "role": "dbs",
+      "read_write_bps": 67108864,
+      "purpose": "explicit new manual bandwidth policy, not a percentage default"
+    },
+    {
+      "candidate": "rc3",
+      "role": "hisdbs",
+      "read_write_bps": 67108864,
+      "purpose": "explicit new manual bandwidth policy, not a percentage default"
+    },
+    {
+      "candidate": "v10",
+      "role": "dbs",
+      "read_write_bps": 67108864,
+      "purpose": "explicit new manual bandwidth policy, not a percentage default"
+    },
+    {
+      "candidate": "v10",
+      "role": "hisdbs",
+      "read_write_bps": 67108864,
+      "purpose": "explicit new manual bandwidth policy, not a percentage default"
+    }
+  ],
+  "common_controls": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "readiness_total_seconds": 300,
+    "observation_timeouts": "retry only inside the original total deadline; each call clamped to remaining time",
+    "native_seconds": 600,
+    "native_maximum_seconds": 5,
+    "native_p95_upper_bound_seconds": 1,
+    "maximum_errors": 0,
+    "minimum_sample_coverage": 0.98,
+    "engine_content_checks": 10,
+    "engine_cleanup_required": true,
+    "primary_restart_allowed": false,
+    "payload_integrity_required": true
+  },
+  "prerequisites": [
+    "previous fault fixture terminal",
+    "independent API confirmation that previous owned namespace is absent",
+    "candidate binaries match source-qualified digests",
+    "host available memory and disk reserve checks"
+  ],
+  "online_upgrade_follow_up": "only after all four 64MiB/s candidate-role cells pass complete native and engine acceptance and the owned namespace is independently confirmed absent; a 16MiB/s failure stays archived",
+  "release_effect": "short tests do not replace 24h baseline +24h enforce, >=7d, hardware or last-two-published-minor upgrade gates"
+}
