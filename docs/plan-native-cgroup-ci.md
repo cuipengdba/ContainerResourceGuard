@@ -1,6 +1,6 @@
-# 原生容器控制器CI：待实现计划
+# 原生容器控制器CI：运行前冻结计划
 
-P06.1/P06.2/P06.4承接[原生基础CI](native-arm64-ci.md)之后的实际内核控制验证。当前只有设计，**没有控制器工作流或执行结果**；实现后先冻结脚本/工作流摘要与验收条件，再push触发。已有ARM64单测/脚本成功不能关闭本项。
+P06.1/P06.2/P06.4承接[原生基础CI](native-arm64-ci.md)之后的实际内核控制验证。[驱动与工作流摘要及数值条件](test-plan-native-cgroup-ci.json)已在首次push前冻结；[工作流](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/.github/workflows/native-cgroup.yml)及一次性驱动已实现，尚无执行结果。已有ARM64单测/脚本成功不能关闭本项。
 
 ## 环境与隔离
 
@@ -22,7 +22,7 @@ P06.1/P06.2/P06.4承接[原生基础CI](native-arm64-ci.md)之后的实际内核
 
 ## 独立百分比、重建及权限降级
 
-另用新私有状态验证cpu_percent10/memory_percent1/io_percent20和默认自动选盘/标定，不提供目录/profile覆盖。宿主容量由VM实际在线CPU和/proc/meminfo独立采集，Docker初始预算需允许请求值；按真实profile分别计算CPU/内存/四项IO期望，不能用手动预算或伪造profile冒充自动标定。首次就绪仍限原180秒标定预算与其外固定观察窗口，失败保留；具体观察窗口在脚本实现前明确冻结。
+另用新私有状态验证cpu_percent10/memory_percent1/io_percent20和默认自动选盘/标定，不提供目录/profile覆盖。宿主容量由VM实际在线CPU和/proc/meminfo独立采集，Docker初始预算需允许请求值；按真实profile分别计算CPU/内存/四项IO期望，不能用手动预算或伪造profile冒充自动标定。首次就绪保留产品原180秒标定预算，加固定30秒观察窗口，合计210秒；普通启动及重建就绪30秒。失败保留，不延长命令或标定期限。
 
 同一配置/数据/状态/日志/profile下正常移除再创建新容器，检查新ID和身份日志隔离、旧journal归档、稳定设备profile内容/mtime复用、每日日志追加以及新的原值恢复。不运行第二次测速来掩盖复用失败。百分比阶段不以另设IO最低值改变用户预算，也不据此宣称DBS/HISDBS性能。
 

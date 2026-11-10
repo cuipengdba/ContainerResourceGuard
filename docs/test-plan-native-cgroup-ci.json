@@ -1,0 +1,79 @@
+{
+  "schema": "crg-native-controller-ci-plan-v1",
+  "date": "2026-11-10",
+  "status": "frozen before first push/actual execution",
+  "workflow": "native-cgroup",
+  "branches": [
+    "main",
+    "next/compatibility-contract"
+  ],
+  "runners": [
+    {
+      "label": "ubuntu-24.04",
+      "native_arch": "amd64"
+    },
+    {
+      "label": "ubuntu-24.04-arm",
+      "native_arch": "arm64"
+    }
+  ],
+  "toolchain": "go1.27.3",
+  "source_files_sha256": {
+    ".github/workflows/native-cgroup.yml": "978ec4e1189469b0314c5ec3b1e7238e51c8c70f027e4eeee7ec1d645ccddaec",
+    "tests/native-cgroup.py": "2299c785ab6d517f975d7295b7d1c77e3e18ca86adc8dc388397b0d918c78e49",
+    "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
+    "tests/load/main.go": "5799de95182dc97ff35544e78633a875cb8d1b81ff452fb01f7b57e6210fbaa9"
+  },
+  "criteria": {
+    "workflow_minutes": 20,
+    "Agent_normal_ready_seconds": 30,
+    "first_auto_calibration_product_seconds": 180,
+    "first_auto_total_observation_seconds": 210,
+    "manual_CPU_cores": 0.5,
+    "manual_memory_bytes": 134217728,
+    "manual_read_write_BPS": 4194304,
+    "manual_read_write_IOPS": 256,
+    "CPU_load_seconds": 8,
+    "CPU_average_cores_min": 0.2,
+    "CPU_average_cores_max": 0.65,
+    "CPU_throttled_events_must_increase": true,
+    "direct_IO_each_mode_seconds": 6,
+    "direct_IO_modes": [
+      "read",
+      "write",
+      "randwrite"
+    ],
+    "each_IO_command_seconds": 45,
+    "IO_rate_or_random_IOPS_max_factor": 1.35,
+    "memory_safe_allocation_bytes": 33554432,
+    "memory_hold_seconds": 4,
+    "percentages": {
+      "cpu": 10,
+      "memory": 1,
+      "io": 20
+    },
+    "unconfigured_product_defaults_remain_each": 20,
+    "other_five_controls_unchanged": true,
+    "OOM_kill_delta": 0,
+    "normal_Docker_stop_seconds": 10,
+    "own_cgroup_removal_observation_seconds": 10
+  },
+  "coverage": [
+    "native ELF/build-info/exact source",
+    "actual three controllers and direct IO/CPU usage",
+    "unique own Agent crash/restart retaining limits",
+    "explicit disable restores all eight original values",
+    "fresh automatic directory/profile and independent percentages",
+    "normal rebuild new Docker ID/journal identity/profile reuse/daily log append",
+    "true read-only cgroup plus all capabilities revoked/degraded/no mutation",
+    "source-qualified PID1 continuity and labelled normal cleanup"
+  ],
+  "failure_policy": "Keep first failed cell and fixed budgets/deadlines. No fake profile/identity, relaxed IO floor, global Docker prune, host cgroup writes, business images/nodes or released asset replacement.",
+  "limitations": [
+    "placeholder PID1 only, not ARM64 vendor business",
+    "no OOM exhaustion boundary",
+    "not Linux6.x unless actual runner reports6.x",
+    "not multiple independent devices or released-minor upgrades",
+    "not 24h/7day business gates"
+  ]
+}
