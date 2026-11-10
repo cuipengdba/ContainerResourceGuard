@@ -1,0 +1,64 @@
+{
+  "kind": "aged-state executor selftests, live early-execution refusal and independent short retained-state rehearsal; not seven-day postflight acceptance",
+  "phase": "executor-developed-short-rehearsal-running",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "sources": {
+    "tests/vendor-aged-postflight.py": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+    "tests/vendor-aged-postflight-checks.py": "ad6c124e48c55eac6bd63f780eacb95a25069f23c6e1fc3f4d4dbe8bcb309959",
+    "docs/test-plan-aged-postflight-execution.json": "c412ff8d258234fcc05c2f5730f5abcec6940bd163c780f3821fcc170284c44a",
+    "docs/test-plan-aged-postflight-rehearsal.json": "e730299988da119ba208a8889bb42c8d8adcd362cdab1d9d1228e4e1cc27930b"
+  },
+  "Linux_and_live_pending_checks": {
+    "phase": "passed",
+    "observed_node_utc": "2026-11-10T22:29:17Z",
+    "executor_sha256": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+    "test_sha256": "ad6c124e48c55eac6bd63f780eacb95a25069f23c6e1fc3f4d4dbe8bcb309959",
+    "plan_sha256": "c412ff8d258234fcc05c2f5730f5abcec6940bd163c780f3821fcc170284c44a",
+    "Linux_methods": 7,
+    "Linux_POSIX_skips": 0,
+    "Linux_exit": 0,
+    "selftest_stderr": "test_cleanup_checks_uid_without_requiring_live_business (__main__.Checks) ... ok\ntest_native_recomputes_original_thresholds (__main__.Checks) ... ok\ntest_no_report_write_before_exclusive_work_root (__main__.Checks) ... ok\ntest_pending_never_starts_or_verifies_terminal_lineage (__main__.Checks) ... ok\ntest_plan_mode_and_contract_fail_before_runtime_inventory (__main__.Checks) ... ok\ntest_pod_adaptation_preserves_original_settings_and_private_files (__main__.Checks) ... ok\ntest_terminal_readiness_delegates_exact_seal_and_gate (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.008s\n\nOK\n",
+    "execute_option_while_live": {
+      "exit": 2,
+      "result": {
+        "phase": "pending",
+        "postflight_allowed": false,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "actual_controls8_journal_and_inputs8_each_role_unchanged": true,
+      "postflight_root_absent": true,
+      "postflight_namespace_absent": true
+    },
+    "P10_complete": false,
+    "release_accepted": false
+  },
+  "Windows_selftests": {
+    "unit_methods": 7,
+    "POSIX_methods_skipped": 1,
+    "phase": "passed with explicit skip"
+  },
+  "short_rehearsal_fixed_progress": {
+    "observed_node_utc": "2026-11-10T22:27:23Z",
+    "runner_verified_live": true,
+    "worker_verified_live": true,
+    "phase": "testing-dbs",
+    "completed_checks": 9,
+    "all_completed_checks_passed": true,
+    "DBS_boots_observed": 2,
+    "native_phase": "preparing",
+    "terminal_accepted": false
+  },
+  "actual_seven_day_postflight_executed": false,
+  "P10_complete": false,
+  "release_accepted": false,
+  "limitations": [
+    "This short rehearsal reuses the actual completed R51 600s private fixture, not the live seven-day fixture.",
+    "Fresh600s native workload is an additional private64MiB schema; the original retained schema/counter are separately verified before/after backup, restart and maintenance.",
+    "Maintenance is current-to-previous development binary installation and rollback; both remain unreleased, not the two published-minor gate.",
+    "Restore is an independent logical database on the same test node, not an independent physical host.",
+    "Seven-day auxiliary fault postflight and full composite/source/support52task audit remain separate.",
+    "No product source or frozen long-running programs, quotas, timeouts or original formal stage source changed."
+  ]
+}
