@@ -21,7 +21,7 @@
 
 30% 限额引擎回归出现临时备库退出/探测超时；手动 16MiB/s + 256 IOPS 回归出现原主库连接失败与数据库内部重启，两轮均失败。第三轮 16MiB/s + 4096 IOPS 明确新手动预算，两类业务共 20 项短测通过且主库未重启；清理等待 120s 超时保留，后续独立核对确认真实原值/observe 和 SQL 正常，见 [包含失败的报告](testing-vendor-enforce.md)。已开发 [原生持续负载入口与判定条件](continuous-acceptance.md)，已完成 fresh/reuse、600s 原生/周期组合短测；24h observe 基线已于中国时间 2026-11-10 07:25:53 开始，尚未完成。
 
-安装升级的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/install-upgrade) 已实现持锁兼容预检和显式私有原值备份，16 项真实检查、Linux race/vet、强杀/辅助故障与 CI 通过；尚未完成完整安装、二进制切换和迁移演练。三组实际 30 分钟低 IO/持续故障测试已按原判定通过，见 [开销结果与边界](overhead-acceptance.md)。新 CLI 暂停旧版 Agent 的 20 项真实检查通过；显式二进制替换/私有回退入口继续开发验收。main 包内缺失文档引用测试入口已修正，ca19975 的 CI 与两架构本地包校验通过。
+安装升级的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/install-upgrade) 已实现持锁兼容预检和显式私有原值备份，16 项真实检查通过；新 CLI 暂停旧版 Agent 的 20 项检查通过。显式二进制安装/回退已完成 16 项真实往返检查，保留两轮开发失败，限额、真实原值和 PID 1 保留，见该分支的 [升级结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/install-upgrade/docs/testing-upgrade-check.md)。已开发 supervisor 摘要/结构/语法预览、私有备份、原子接入和有资源恢复门槛的卸载，真实接入及持久化演练正在进行，见 [接入设计](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/install-upgrade/docs/supervisor-install.md)。不把已有二进制往返等同厂商业务在线升级或未知日志自动迁移。三组实际 30 分钟低 IO/持续故障测试已按原判定通过，见 [开销结果与边界](overhead-acceptance.md)。
 
 DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化约 251s；首轮重建探测超时保留，后续独立复测两次就绪约 205s/211s，128 行标记校验一致，新身份和旧日志隔离均确认。HISDBS observe 约 20s，20% 超过 300s，30% 初始化约 250s、备份后重建约 204s。详见 [保留失败的冷启动进展](testing-cold-start-progress.md)。实际原 liveness 只执行 ls，不能把它与 SQL/API 就绪条件等同。
 
@@ -30,4 +30,4 @@ DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化�
 24h observe 基线正在运行；24h 限额对照、arm64 真机、实际多设备及 1.0 的至少 7 天目标业务验收均未完成。完成源代码、通过短测或创建版本标签都不能替代持续运行和真实业务证据。业务节点当前只读检查，未修改其部署和控制文件。
 
 
-容器内显式升级/回退完成 16 项真实往返检查，新旧 Agent 经既有 helper 独立启动，限额、原值与 PID 1 保留；两轮开发失败也归档。可信发布开发分支已加入固定 Go 工具链、逐架构 SBOM、离线校验与另路径重复构建检查；Windows 本地双架构产物/12 项恶意包校验/字节复现已通过。首轮 CI 的 SBOM 证明因缺 serialNumber 拒绝，已修正；新的证明生成和验证仍需实测。上述开发分支未合入 main 或发布。
+可信发布的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/release-provenance) 已完成固定工具链、逐架构 SBOM、14 项包完整性正反检查、官方 schema 核对和另路径复现。GitHub 实际生成 provenance 与 SBOM 证明，限定仓库/工作流/源码/ref 的四项在线验证及三个错误身份/篡改反例均通过；预取可信根与 bundle 后，正确离线验证和三个反例通过。首轮缺 serialNumber 的 CI 失败保留。跨宿主首轮校验和因 CRLF/LF 不同；274ec3c 明确输出 LF 后，Windows 新克隆与 Linux CI 的两程序、两包、两 SBOM、清单、校验和共八项字节一致，见 [证据与边界](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/release-provenance/docs/release-provenance.md)。来源证明不代替功能或长期业务验收；这些开发分支仍未合入 main 或发布。
