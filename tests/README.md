@@ -58,3 +58,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 
 
 七天实际老化数据后置另有[身份采集和只读门禁](../docs/testing-aged-postflight-preflight.md)。`python3 tests/vendor-aged-preflight-checks.py`只使用合成报告和临时普通文件；Linux执行全部POSIX检查，Windows明确跳过相关方法。真实七天及后置操作未因此通过。
+
+
+老化数据恢复/重建/维护另有[显式后置执行器与独立短数据演练](../docs/testing-aged-postflight-execution.md)。`python3 -B tests/vendor-aged-postflight-checks.py`仅检查合成/临时文件；正式604800秒及实际老化后置不因此通过。
