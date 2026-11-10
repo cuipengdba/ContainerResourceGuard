@@ -1,0 +1,157 @@
+{
+  "date": "2026-11-10",
+  "kernel": "5.14.0-570.22.1.el9_6",
+  "architecture": "amd64",
+  "cgroup": "v2",
+  "compiler": "go1.22.5",
+  "scope": "own placeholder container using original-image Bash, public supervisor fixture, real cgroup and persisted hook; not vendor business deployment",
+  "source_revision": "ae9ee0f80e41914bea5dc985ef5ed1e9d7747f05",
+  "binary_sha256": "f2699772c8822a377d3357812edc6acf70032189006732bd540ed6d69f3fc141",
+  "checks": [
+    {
+      "name": "preview-read-only-no-backup-no-state-write",
+      "passed": true
+    },
+    {
+      "name": "reject-supervisor-sha256",
+      "passed": true
+    },
+    {
+      "name": "reject-helper-sha256",
+      "passed": true
+    },
+    {
+      "name": "reject-agent-sha256",
+      "passed": true
+    },
+    {
+      "name": "unknown-layout-refused-with-trusted-current-hash",
+      "passed": true
+    },
+    {
+      "name": "symlink-supervisor-refused",
+      "passed": true
+    },
+    {
+      "name": "existing-backup-never-overwritten",
+      "passed": true
+    },
+    {
+      "name": "atomic-install-only-script-no-activation",
+      "passed": true
+    },
+    {
+      "name": "private-backup-exact-original-config-helper",
+      "passed": true
+    },
+    {
+      "name": "already-integrated-refused",
+      "passed": true
+    },
+    {
+      "name": "integrated-fail-open-missing",
+      "passed": true,
+      "elapsed_seconds": 0.9143047630786896
+    },
+    {
+      "name": "integrated-fail-open-denied",
+      "passed": true,
+      "elapsed_seconds": 0.9085757192224264
+    },
+    {
+      "name": "integrated-fail-open-invalid-config",
+      "passed": true,
+      "elapsed_seconds": 1.0357726621441543
+    },
+    {
+      "name": "integrated-fail-open-exit42",
+      "passed": true,
+      "elapsed_seconds": 1.0156645020470023
+    },
+    {
+      "name": "integrated-fail-open-hang",
+      "passed": true,
+      "elapsed_seconds": 1.11425172816962
+    },
+    {
+      "name": "integrated-fail-open-ignore-term",
+      "passed": true,
+      "elapsed_seconds": 3.029820777941495
+    },
+    {
+      "name": "uninstall-without-disable-refused",
+      "passed": true
+    },
+    {
+      "name": "real-owned-limits-applied",
+      "passed": true
+    },
+    {
+      "name": "quiesce-retained-journal-cannot-uninstall",
+      "passed": true
+    },
+    {
+      "name": "disable-restores-real-originals-before-uninstall",
+      "passed": true
+    },
+    {
+      "name": "external-supervisor-preserved",
+      "passed": true
+    },
+    {
+      "name": "damaged-original-backup-refused",
+      "passed": true
+    },
+    {
+      "name": "exact-uninstall-preserves-PID1-backups-and-state",
+      "passed": true
+    },
+    {
+      "name": "persisted-integration-activates-on-planned-recreation",
+      "passed": true
+    },
+    {
+      "name": "old-identity-disable-does-not-permanently-disable-new-container",
+      "passed": true
+    },
+    {
+      "name": "active-resource-writer-refuses-uninstall",
+      "passed": true
+    },
+    {
+      "name": "uninstall-after-recreation-uses-current-owned-state",
+      "passed": true
+    },
+    {
+      "name": "persistent-hook-removal-survives-recreation",
+      "passed": true
+    },
+    {
+      "name": "uninstalled-new-container-rejects-stale-status-no-agent",
+      "passed": true
+    }
+  ],
+  "cleanup": {
+    "namespace_absent": true
+  },
+  "automated_checks": {
+    "go_vet": true,
+    "go_test_race": true,
+    "guard_coverage_percent": 64.1,
+    "optional_helper_scenarios": 6,
+    "generated_patch_scenarios": 6
+  },
+  "preserved_development_failure": {
+    "source_revision": "0797ae1",
+    "phase": "Linux unit fixture",
+    "error": "TestSupervisorAtomicReplacementGuardsAndPreservesMode: supervisor changed before atomic replacement",
+    "cause": "inherited private umask narrowed initial 0750 fixture creation; explicit fixture chmod was missing",
+    "fix_revision": "ae9ee0f80e41914bea5dc985ef5ed1e9d7747f05",
+    "runtime_file_mode_check_relaxed": false
+  },
+  "later_guard": {
+    "source_revision": "77b2909bee3ec7d0bf1f86ab0fe34eb6e1e1fcab",
+    "change": "reject aliased state directory before maintenance backup; Linux alias unit added in 07e43ef",
+    "scope": "not claimed as part of the preceding actual binary; combined candidate validation separate"
+  }
+}
