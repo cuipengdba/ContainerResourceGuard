@@ -1,0 +1,97 @@
+{
+  "phase": "measuring-not-accepted",
+  "observed_node_utc": "2026-11-10T19:29:14Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "1d99fab83a561b6a52dde479de4cc172c3f5116e0b24a5ef60c504572d0d5475",
+  "qualification_sha256": "fc85ee09ca3cd868e5924f74d739f0d52951d412f2773da268eb5746e35337d2",
+  "scope": "three isolated placeholder PID1 containers; Agent only, not vendor business performance",
+  "measurement_started_node_utc_epoch": 1794338895.2232125,
+  "runner_identity_verified": true,
+  "criteria": {
+    "actual_seconds": 1800,
+    "warmup_seconds": 45,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "CPU_single_core_percent_max": 0.1,
+    "RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_write_bytes_max": 8388608,
+    "fault_write_bytes_max": 16777216,
+    "host_available_min_bytes": 8589934592,
+    "host_disk_free_min_bytes": 21474836480,
+    "OOM_kill_delta_max": 0,
+    "io_cap_bps": 65536,
+    "io_cap_iops": 8
+  },
+  "cases": {
+    "healthy": {
+      "samples_at_observation": 6,
+      "last_elapsed_seconds": 50.01055614394136,
+      "state": "managed",
+      "metrics_state": "ready",
+      "events_state": "ready",
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "134217728",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "all_sampled_controls_unchanged": true,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false
+    },
+    "export-failure": {
+      "samples_at_observation": 6,
+      "last_elapsed_seconds": 50.011879537953064,
+      "state": "managed",
+      "metrics_state": "unavailable",
+      "events_state": "unavailable",
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "134217728",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "all_sampled_controls_unchanged": true,
+      "cgroup_readonly": false,
+      "fixture_external_IO": false
+    },
+    "readonly": {
+      "samples_at_observation": 6,
+      "last_elapsed_seconds": 50.013122375821695,
+      "state": "degraded",
+      "metrics_state": "ready",
+      "events_state": "ready",
+      "actual_controls": {
+        "cpu.max": "100000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "all_sampled_controls_unchanged": true,
+      "cgroup_readonly": true,
+      "fixture_external_IO": true
+    }
+  },
+  "limitations": [
+    "Fixed start observation only, not1800s completion or performance acceptance.",
+    "Node UTC is its own clock; duration uses monotonic elapsed seconds.",
+    "Actual8-control readback includes5 external unchanged controls; CRG manages only CPU/memory/IO.",
+    "Only readonly fixture IO cap is external; readonly Agent never receives writable cgroup.",
+    "Original failed attempt retained, product and original thresholds unchanged.",
+    "Not vendor business, physical multi-device or formal24h/seven-day qualification."
+  ]
+}
