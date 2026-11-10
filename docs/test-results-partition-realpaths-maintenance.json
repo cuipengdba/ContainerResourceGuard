@@ -1,0 +1,523 @@
+{
+  "kind": "current-source real-path maintenance between two protocol-advertising development programs",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T20:59:45Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "programs": {
+    "previous": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased protocol-advertising combined development build"
+    },
+    "candidate": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+      "release_status": "unreleased integrated partition development build"
+    }
+  },
+  "build_info": {
+    "previous": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "os": "linux",
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "version": "next-compatibility-contract",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    },
+    "candidate": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "os": "linux",
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "version": "next-compatibility-contract",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    }
+  },
+  "job_sha256": "ea5e9f11bf6f63cfcca10adf96fc0d60aa6ca3caf54f159d18a6df87ce584b78",
+  "fault_prerequisite_report_sha256": "336e5aa56c375cd6d3543914a2234d7b86bb59ba95302bdf257b1d3a536ef15d",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "cases": [
+    {
+      "role": "dbs",
+      "phase": "short-acceptance-passed",
+      "ready_and_managed_seconds": 17.176379600074142,
+      "cache_enforce_observation_seconds": 0.00014139199629426003,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794342944.6150658,
+          "ended_epoch": 1794342945.4725811
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794342945.6778457,
+          "ended_epoch": 1794342946.3459103
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794342946.568075,
+          "ended_epoch": 1794342946.937328
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794342947.1612594,
+          "ended_epoch": 1794342947.8135846
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794342947.814512,
+          "ended_epoch": 1794342948.0801709
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794342951.315529,
+          "ended_epoch": 1794342952.5070343
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794342952.6871245,
+          "ended_epoch": 1794342953.9544666
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794342953.9555695,
+          "ended_epoch": 1794342954.179441
+        }
+      ],
+      "own_pod_removed": true,
+      "all_operations_within_native_measurement": true,
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2467784599867,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            299,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.010915494989603758,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2141775821801275
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.008841821923851967,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9553686582949013
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T20:35:43.112344Z",
+        "measurement_finished_utc": "2026-11-10T20:45:43.327737Z"
+      }
+    },
+    {
+      "role": "hisdbs",
+      "phase": "short-acceptance-passed",
+      "ready_and_managed_seconds": 23.828510890947655,
+      "cache_enforce_observation_seconds": 0.00015075481496751308,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794343594.494439,
+          "ended_epoch": 1794343595.6561298
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794343595.9742546,
+          "ended_epoch": 1794343596.504496
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794343596.7290514,
+          "ended_epoch": 1794343597.0893776
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794343597.3169467,
+          "ended_epoch": 1794343597.89007
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794343597.891409,
+          "ended_epoch": 1794343598.122737
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794343601.36188,
+          "ended_epoch": 1794343601.7146637
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794343601.7160265,
+          "ended_epoch": 1794343602.1896555
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794343602.191034,
+          "ended_epoch": 1794343602.4308288
+        }
+      ],
+      "own_pod_removed": true,
+      "all_operations_within_native_measurement": true,
+      "native": {
+        "phase": "passed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 600.2433378018904,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            297,
+            3,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.010984771884977818,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.21620579506270587
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            120,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.012045388109982014,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9462133937049657
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T20:46:33.346340Z",
+        "measurement_finished_utc": "2026-11-10T20:56:33.526205Z"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "candidate_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "candidate_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "hisdbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    }
+  ],
+  "namespace_independently_absent": true,
+  "runner_gone": true,
+  "worker_exit": 0,
+  "raw_report_object_sha256": "957b78f46c3c69e8c8875da29bd059a6839c78bd7c36490dc00ee1c492bf6eac",
+  "scope": "Exact50671aa development program to integratedd370 program and back, original DBS/HISDBS startup/images/PG/cache paths, private synthetic fixtures and loopback DCS. Whole-device manual IO, not partition/profile format maintenance.",
+  "limitations": [
+    "Both programs unreleased; not recent-two-released-minors acceptance.",
+    "Published preview missing protocol refusal remains; not an online migration from that preview.",
+    "Same manual7.2CPU/20001980416B/64MiBps and4096IOPS; not default20% or automatic30% business validation.",
+    "Native SQL/API and64MiB integrity during maintenance only; engine backups tested separately, no claim of concurrent vendor-specific backup APIs here.",
+    "Linux5.14 AMD64 existing single device only; no ARM vendor/independent physical disks or partition profile maintenance.",
+    "Formal oldfc2 observe and fixedd6 enforce unchanged;24h+24h,>=7days and final support audit remain open."
+  ]
+}

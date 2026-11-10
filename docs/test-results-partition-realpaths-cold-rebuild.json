@@ -1,0 +1,421 @@
+{
+  "kind": "exact current candidate real-path backup and cold rebuild acceptance",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-10T21:02:17Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "bb41a1d9538246ae07b7749e301a7238ff45b860bb8e46bd5135e1d6716a907a",
+  "build_info": {
+    "arch": "amd64",
+    "go_version": "go1.27.3",
+    "io_profile_versions": [
+      1,
+      2
+    ],
+    "journal_versions": [
+      1
+    ],
+    "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+    "os": "linux",
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "version": "next-compatibility-contract",
+    "writer_controls": [
+      "cpu.max",
+      "cpu.weight",
+      "io.max",
+      "io.weight",
+      "memory.max",
+      "memory.high",
+      "memory.swap.max",
+      "pids.max"
+    ]
+  },
+  "maintenance_prerequisite_report_sha256": "957b78f46c3c69e8c8875da29bd059a6839c78bd7c36490dc00ee1c492bf6eac",
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "bandwidth_cases_MiB_per_second": [
+      64
+    ],
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "two_boots_per_case": "fresh initialization then backed-up data/state/log directories reused under a new Pod/container ID",
+    "original_start_cache_mount_PG_parameters_and_probes": true,
+    "PG_API_managed_max_seconds_each_boot": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_inside_startup_seconds": 300,
+    "one_source_qualified_Agent_and_only_three_resource_controls": true,
+    "payload": "16384 rows /64MiB and128 marker rows, sum8256; exact checksums across restart and independent logical restore database",
+    "backup": "Schema-scoped logical dump before rebuild, digest persists; separate database restore without changing original primary data",
+    "identity": "Old cgroup gone before new Pod; unchanged configuration, new identity, old journal isolated, new original controls restored by disable",
+    "logs": "Daily0600/v2 logs; existing same-day content retained and appended after ID change",
+    "node_reserves": "28GiB available before each clone/rebuild,8GiB steady,20GiB free disk"
+  },
+  "cache_freshness_verification": "Before any upload/launch, strengthened existing cache check: exactly one source-qualified current-cgroup cache run process and status inode/mtime/size changed since this boot gate, in addition to enforce. Same300s/45s deadlines, quotas and44check count; no previous execution or product change.",
+  "cases": [
+    {
+      "case": "v10-dbs-manual64-rebuild",
+      "role": "dbs",
+      "phase": "cold-rebuild-passed",
+      "starts": [
+        {
+          "phase": "initialization",
+          "PG_ready_seconds": 28.80748569103889,
+          "API_ready_seconds": 29.09234132198617,
+          "ready_and_managed_seconds": 29.09259034693241,
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "cache_observation_seconds": 5.0364291940350085,
+          "cache_current_source_and_fresh_status": true,
+          "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        {
+          "phase": "after-backup-recreation",
+          "PG_ready_seconds": 25.013577283127233,
+          "API_ready_seconds": 25.275671587092802,
+          "ready_and_managed_seconds": 25.2759130790364,
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "cache_observation_seconds": 0.025483636185526848,
+          "cache_current_source_and_fresh_status": true,
+          "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        }
+      ],
+      "new_container_and_resource_identity": true,
+      "same_config_and_previous_journal_verified": true,
+      "persistent_daily_log_prefix_and_append_verified": true,
+      "payload_before": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687|0",
+      "payload_after": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687|0",
+      "marker_before": "128|8256",
+      "marker_after": "128|8256",
+      "logical_backup_seconds": 0.8994512420613319,
+      "logical_backup_and_independent_restore_checked": true,
+      "controls_after_disable": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "final_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "own_pod_removed": true
+    },
+    {
+      "case": "v10-hisdbs-manual64-rebuild",
+      "role": "hisdbs",
+      "phase": "cold-rebuild-passed",
+      "starts": [
+        {
+          "phase": "initialization",
+          "PG_ready_seconds": 19.98872010083869,
+          "API_ready_seconds": 20.24978644796647,
+          "ready_and_managed_seconds": 20.250027865869924,
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "cache_observation_seconds": 0.025597948115319014,
+          "cache_current_source_and_fresh_status": true,
+          "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        {
+          "phase": "after-backup-recreation",
+          "PG_ready_seconds": 18.21552445483394,
+          "API_ready_seconds": 18.47595948795788,
+          "ready_and_managed_seconds": 18.476208798820153,
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "cache_observation_seconds": 0.025427553104236722,
+          "cache_current_source_and_fresh_status": true,
+          "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        }
+      ],
+      "new_container_and_resource_identity": true,
+      "same_config_and_previous_journal_verified": true,
+      "persistent_daily_log_prefix_and_append_verified": true,
+      "payload_before": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687|0",
+      "payload_after": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687|0",
+      "marker_before": "128|8256",
+      "marker_after": "128|8256",
+      "logical_backup_seconds": 0.9326220061630011,
+      "logical_backup_and_independent_restore_checked": true,
+      "controls_after_disable": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "final_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "own_pod_removed": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-original-PG-API-and-exact-three-manual-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-original-readonly-cache-mount",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-cache-enforce-within-original-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-daily0600-v2-logs-and-no-manual-calibration",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-exactly-one-source-qualified-Agent",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initialization-no-container-OOM",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-initial-64MiB-payload-and128-marker",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-logical-backup-created-and-readable",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-old-container-cgroup-gone-before-new-Pod",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-original-PG-API-and-exact-three-manual-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-original-readonly-cache-mount",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-cache-enforce-within-original-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-daily0600-v2-logs-and-no-manual-calibration",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-exactly-one-source-qualified-Agent",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-after-backup-recreation-no-container-OOM",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-new-container-and-journal-identity-with-same-config",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-data-backup-and-PG-restart-consistent",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-persistent-daily-log-appends-across-ID-change",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-logical-restore-to-independent-database-preserves64MiB-and-marker",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-manual64-rebuild-disable-restores-new-container-runtime-originals",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-original-PG-API-and-exact-three-manual-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-original-readonly-cache-mount",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-cache-enforce-within-original-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-daily0600-v2-logs-and-no-manual-calibration",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-exactly-one-source-qualified-Agent",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initialization-no-container-OOM",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-initial-64MiB-payload-and128-marker",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-logical-backup-created-and-readable",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-old-container-cgroup-gone-before-new-Pod",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-original-PG-API-and-exact-three-manual-controls",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-original-readonly-cache-mount",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-cache-enforce-within-original-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-daily0600-v2-logs-and-no-manual-calibration",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-exactly-one-source-qualified-Agent",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-after-backup-recreation-no-container-OOM",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-new-container-and-journal-identity-with-same-config",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-data-backup-and-PG-restart-consistent",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-persistent-daily-log-appends-across-ID-change",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-logical-restore-to-independent-database-preserves64MiB-and-marker",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-manual64-rebuild-disable-restores-new-container-runtime-originals",
+      "passed": true
+    }
+  ],
+  "namespace_independently_absent": true,
+  "runner_gone": true,
+  "worker_exit": 0,
+  "raw_report_object_sha256": "1d0c0d1b6d737fb9726c428becd7ff4e8035301b0e661071605ad2fff59d6ef4",
+  "limitations": [
+    "Existing Linux5.14 AMD64 single-device node, original images/start/PG/cache with independent private fixtures.",
+    "Current2cases/4boots/44checks, not relabelled older7638/d6 four-cell88checks.",
+    "Manual64 budget only; not default20% or automatic30% performance.",
+    "Independent logical restore database is on the same PG server, not a separate physical recovery host; earlier native engine physical recovery recorded separately.",
+    "No new600s,24h or7day claim, and no node reboot/ARM vendor/physical independent-disk claim.",
+    "Oldfc2 baseline and fixedd6 staged candidate remain unchanged."
+  ]
+}
