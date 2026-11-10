@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen-before-launch; conditional task only",
+  "test_job_sha256": "a02760466f69d211e90c62f4fd57bb21754c574bbfb687e23137e98b8642456f",
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "scope": "fresh real-container-path original-image fixtures; original read-only CCG/cache logic and PID1; one own Agent per container",
+  "declared_manual_controls": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "previous_reader_binary_sha256": "0bed7e8ae27f04d25019aecf7dd009199741fbb903f8947f4969ae579ee2b460",
+  "candidate_source_revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+  "candidate_binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9",
+  "preconditions": [
+    "all four64MiB/s candidate/role native600s and engine campaigns passed; same16MiB/s result stays archived",
+    "matrix terminal and independent API confirms owned namespace absence",
+    "source-qualified binary digests",
+    "real container own-leaf cgroup and cache process identity"
+  ],
+  "operations": [
+    "quiesce optional Agent while keeping controls/journal",
+    "install candidate atomically",
+    "immediate binary rollback",
+    "install candidate again and resume with original optional supervisor",
+    "quiesce, rollback and resume previous reader",
+    "wait for full native600s validation",
+    "disable and restore true runtime CPU8, memory20GiB and empty io.max"
+  ],
+  "criteria": {
+    "readiness_total_seconds": 300,
+    "native_seconds": 600,
+    "maximum_errors": 0,
+    "sql_api_maximum_seconds": 5,
+    "p95_upper_bound_seconds": 1,
+    "minimum_sample_coverage": 0.98,
+    "payload_integrity_required": true,
+    "primary_restart_allowed": false,
+    "maintenance_fully_inside_active_native_measurement": true,
+    "record_each_operation_interval": true,
+    "same_PID1_cache_process_kernel_controls_and_journal": true,
+    "OOM_kill_delta": 0
+  },
+  "limitations": [
+    "previous reader is a development candidate, not two published minor versions",
+    "native maintenance test is conditional and not yet executed",
+    "does not replace24h+24h or >=7d acceptance or hardware gates"
+  ]
+}
