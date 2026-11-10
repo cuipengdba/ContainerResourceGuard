@@ -19,9 +19,9 @@
 | 阶段 | 固定来源与当前证据 | 尚未完成 |
 |---|---|---|
 | 正式24h observe基线 | 原fc2程序，[22h固定观察](test-progress-baseline24h-22h-linux-amd64.json)，4周期内容完成但native-pending；[持续判定](continuous-acceptance.md) | 实际86400秒最终覆盖/延迟/完整性判定 |
-| 正式等时enforce | 固定d6候选、预算及切换方案保留；须先有接受的完整基线再核对实时前置 | 独立24h enforce及对照报告，不能以d370七天替换 |
+| 正式等时enforce | 固定d6候选、预算及切换方案保留；须先有接受的完整基线再核对实时前置 | 独立24h enforce及对照报告；[原隔离门槛](test-results-formal-stage-current-readiness.json)要求其他业务夹具先清理，不能以d370七天替换 |
 | 当前d370七天连续组件 | [已开始及首周期观察](testing-seven-day-current-candidate.md)，首周期两角色各10项内容及临时清理完成，仍native-pending | 实际604800秒、28周期和完整原生判定 |
-| 七天实际老化状态后置 | [只读采集/门禁](testing-aged-postflight-preflight.md)及[恢复/重建/维护执行器](testing-aged-postflight-execution.md)已实现，Linux自检和真实提前执行拒绝通过；独立短数据演练运行中，原控制保持 | 短演练终态、真实七天后的执行及老化辅助故障/最终综合审计 |
+| 七天实际老化状态后置 | [只读采集/门禁](testing-aged-postflight-preflight.md)及[恢复/重建/维护执行器](testing-aged-postflight-execution.md)已实现，Linux自检和真实提前执行拒绝通过；独立短数据演练36项/各600秒终态通过且清理，原控制保持 | 真实七天后的执行及老化辅助故障/最终综合审计 |
 
 [报告核验器](soak-report-audit.md)和只读前置门禁通过自检不代表真实长测通过；合成报告、真实pending和终态分开记录。采集计划及私有身份记录固定，后续执行另行引用，不能用新的空夹具替代七天实际使用的数据。当前P10_complete=false。
 
@@ -35,3 +35,5 @@
 环境索引是按源码/程序/内核/架构/存储限定的草案，不是稳定支持承诺。当前不恢复pids/权重/memory.high/Swap的新交付；旧实现仅按已有配置与恢复兼容规则处理。程序发布与生产接入分别记录，业务节点仍保持本任务只读范围。
 
 历史固定观察保留原时刻：[故障中间采样](test-progress-partition-realpaths-faults.json)、[维护等待](test-start-partition-realpaths-maintenance.json)、[七天首300秒](test-progress-seven-day-current-candidate-start.json)等均未覆盖或删除，终态应沿上表对应的最终报告判断。
+
+另已[固定未发布v1.0.0版本产物身份](release-candidate-identity.md)：精确d370源码、两个目标新摘要、包/完整性检查及AMD64原生版本探测；尚无这些新摘要的业务/长期接受，不改原长测或发布资产。
