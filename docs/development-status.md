@@ -79,3 +79,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 三资源组合开发线50671aa完成当前源码的跨Windows/Linux八项字节复现，以及限定仓库/工作流/源码/ref的四项在线证明验证和三项拒绝反例；不替代正在测试的d6ea657程序业务证据，也不扩大为main预览已具备组合线发布证明。详见[构建身份结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-combined-build-identity.json)。
 
 第13轮DBS/HISDBS首次安装均拒绝，旧预览缺少锁/日志协议广告，安装文件摘要保持、recovery为空，夹具清理；保留失败及原始输出未留存的证据限制，不绕过协议保护。见[维护失败与诊断](testing-three-resource-online-maintenance.md)。
+
+第14轮最新三资源程序×DBS/HISDBS的40场景、216项辅助故障检查通过，全部夹具清理；独立30%配置，只证明辅助隔离，未追认自动30%持续业务性能或第13轮维护。见[新源码完整故障矩阵](testing-three-resource-fault-matrix.md)。

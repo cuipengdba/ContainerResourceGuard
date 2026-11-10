@@ -4,7 +4,7 @@
 
 ## 当前结果
 
-第12轮新源码四格均已完成原生600秒及引擎内容验收，24项通过并确认namespace清理，见[完整结果与范围](testing-three-resource-business-matrix.md)。第13轮首次安装失败并已清理，见[终态和诊断](testing-three-resource-online-maintenance.md)；第14轮故障矩阵已在清理前置满足后开始。下文保留运行前冻结的预算和判定条件。
+第12轮新源码四格均已完成原生600秒及引擎内容验收，24项通过并确认namespace清理，见[完整结果与范围](testing-three-resource-business-matrix.md)。第13轮首次安装失败并已清理，见[终态和诊断](testing-three-resource-online-maintenance.md)；第14轮40场景/216项已通过并清理，见[完整故障矩阵](testing-three-resource-fault-matrix.md)。下文保留运行前冻结的预算和判定条件。
 
 ## 新候选真实路径手动矩阵
 
