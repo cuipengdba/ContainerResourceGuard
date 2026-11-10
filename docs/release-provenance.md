@@ -56,3 +56,11 @@ gh attestation trusted-root > trusted_root.jsonl
 跨宿主复现首轮 cce9018 的两个程序、两个包、两个 SBOM 和清单相等，但 SHA256SUMS 因 Windows CRLF 与 Linux LF 不同；[原始比较](test-results-cross-host-initial.json) 保留这一失败。274ec3c 将校验和明确按 LF 字节输出后，在 Windows 的另一个全新克隆，以同一源码、Go1.27.3 和版本字符串 next-release-provenance 重建，对比 [Linux CI42724489604](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42724489604) 下载产物，八项逐字节均相同，见 [修复后跨宿主结果](test-results-cross-host-reproduced.json)。这证明此配方在这两台构建环境的复现，不扩大为所有编译器/Python/宿主组合的保证。
 
 这些是开发分支的发布工具证据，仍未发布 v0.8/1.0。验证构建证明只证明来源/内容绑定，仍须核对该版本的功能验收、已知问题与正式发布状态。实际安装前验证联动和更长故障回归继续单独归档。
+
+## 三资源组合线的当前构建证据
+
+2026-11-10，组合线50671aa（含R27日志、R29三百分比、R30版本门禁）的[Linux CI42795979841](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42795979841)产物下载后，在Windows另一个全新LF克隆用同一Go1.27.3、提交和版本字符串重建。两程序、两压缩包、两SBOM、清单、校验和共八项逐字节相同；[逐项摘要与验证结果](test-results-combined-build-identity.json)独立记录，不沿用旧274ec3c结果冒充新源码。
+
+四项在线验证限定仓库、ci.yml工作流、50671aa源码及next/compatibility-contract ref，并拒绝自托管runner：两个架构的包provenance、两个程序的CycloneDX SBOM证明全部通过。另三个反例（错误源码、错误工作流、篡改包）均正确拒绝。离线验证仍以此前独立报告的源码为准，本次未扩成当前源码离线验证完成。
+
+这是未发布组合线的构建身份验证。其嵌入50671aa的程序不同于正在业务测试的d6ea657二进制；main已发布工程预览也未因此获得这些组合线证明。ARM64仅构建与验证摘要，未宣称ARM64真机通过，长期业务门槛继续保留。

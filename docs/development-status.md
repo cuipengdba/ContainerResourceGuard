@@ -73,3 +73,9 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 旧源码第9轮已结束：64MiB/s三格通过，组合/DBS在缓存前置检查处停止、未进入负载；依赖的第10轮在线升级未执行。第11轮交叉故障另108项通过，同组旧源码故障矩阵合计216项；完整结果见[手动矩阵](testing-realpaths-manual.md)和[故障覆盖](testing-realpaths-faults.md)。新三资源候选另起四格验收，不混用程序来源。
 
 未发布组合线d6ea657的三项百分比持续热重载15项实际检查通过，包含独立默认/CLI优先/坏配置保持/manual切换/外部冲突及停用；夹具已清理，见[明确程序来源和边界的结果](testing-three-percent-reload.md)。main预览不因此新增热重载功能。
+
+第12轮最新三资源程序四格真实路径业务验收已结束：24项通过，各格完整600秒、SQL/API零错误及10项引擎内容通过，夹具清理确认；仅为预先声明的手动64MiB/s预算。第13轮在线升级/回退已终止：首次安装失败，后续回退及600秒未完成；24h+24h和至少7天仍待完整实测。见[按程序摘要归档的结果](testing-three-resource-business-matrix.md)。
+
+三资源组合开发线50671aa完成当前源码的跨Windows/Linux八项字节复现，以及限定仓库/工作流/源码/ref的四项在线证明验证和三项拒绝反例；不替代正在测试的d6ea657程序业务证据，也不扩大为main预览已具备组合线发布证明。详见[构建身份结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-combined-build-identity.json)。
+
+第13轮DBS/HISDBS首次安装均拒绝，旧预览缺少锁/日志协议广告，安装文件摘要保持、recovery为空，夹具清理；保留失败及原始输出未留存的证据限制，不绕过协议保护。见[维护失败与诊断](testing-three-resource-online-maintenance.md)。

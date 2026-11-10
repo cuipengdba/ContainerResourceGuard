@@ -1,0 +1,122 @@
+{
+  "date": "2026-11-10",
+  "scope": "Unreleased next/compatibility-contract build; not the main preview release and not d6ea657 business test binaries.",
+  "cross_host": {
+    "source_revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+    "CI_run": 42795979841,
+    "same_version_string": "next-compatibility-contract",
+    "builder_hosts": [
+      "Windows amd64",
+      "GitHub hosted Linux amd64"
+    ],
+    "Go_version": "go1.27.3",
+    "artifacts": {
+      "crg-linux-amd64": {
+        "windows_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+        "Linux_CI_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+        "byte_equal": true
+      },
+      "crg-linux-arm64": {
+        "windows_sha256": "1eab41fbabfa9cc93fb2f14265e87f05cf4a019f44d3466ab5989594f0e78b3c",
+        "Linux_CI_sha256": "1eab41fbabfa9cc93fb2f14265e87f05cf4a019f44d3466ab5989594f0e78b3c",
+        "byte_equal": true
+      },
+      "containerresourceguard-next-compatibility-contract-linux-amd64.tar.gz": {
+        "windows_sha256": "fb54c40223a5889d8138f0f5d94a3d6fd078be794653a8ca9c9befbad272a257",
+        "Linux_CI_sha256": "fb54c40223a5889d8138f0f5d94a3d6fd078be794653a8ca9c9befbad272a257",
+        "byte_equal": true
+      },
+      "containerresourceguard-next-compatibility-contract-linux-arm64.tar.gz": {
+        "windows_sha256": "fd107918abba653487821a4807cc9f88a90a41786bdda6dbac9464ed31f12931",
+        "Linux_CI_sha256": "fd107918abba653487821a4807cc9f88a90a41786bdda6dbac9464ed31f12931",
+        "byte_equal": true
+      },
+      "sbom-linux-amd64.cdx.json": {
+        "windows_sha256": "cebe68be85d05409032f797800a80c0a251a8d8c6ae37cbb9aaf12f47f0d2dd8",
+        "Linux_CI_sha256": "cebe68be85d05409032f797800a80c0a251a8d8c6ae37cbb9aaf12f47f0d2dd8",
+        "byte_equal": true
+      },
+      "sbom-linux-arm64.cdx.json": {
+        "windows_sha256": "d1f216fa4e5419ed37a4eaa4669ae7a84ad59023861ad7e7f92170b9da409615",
+        "Linux_CI_sha256": "d1f216fa4e5419ed37a4eaa4669ae7a84ad59023861ad7e7f92170b9da409615",
+        "byte_equal": true
+      },
+      "build-manifest.json": {
+        "windows_sha256": "640a0f2da9e5836356c6e753aa5b499565e4487160db2ffb769548fffa7cf2d1",
+        "Linux_CI_sha256": "640a0f2da9e5836356c6e753aa5b499565e4487160db2ffb769548fffa7cf2d1",
+        "byte_equal": true
+      },
+      "SHA256SUMS": {
+        "windows_sha256": "5102a45caf3c515888db4e7321db567a9cb5f4414404ac79f3abaf940698c027",
+        "Linux_CI_sha256": "5102a45caf3c515888db4e7321db567a9cb5f4414404ac79f3abaf940698c027",
+        "byte_equal": true
+      }
+    },
+    "all_equal": true,
+    "limits": "Unreleased combined branch packaging evidence. These are not the d6ea6572 binaries executing the real-path business tests."
+  },
+  "online_attestations": {
+    "source_revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+    "CI_run": 42795979841,
+    "repository": "cuipengdba/ContainerResourceGuard",
+    "workflow": "cuipengdba/ContainerResourceGuard/.github/workflows/ci.yml",
+    "source_ref": "refs/heads/next/compatibility-contract",
+    "deny_self_hosted_runners": true,
+    "checks": [
+      {
+        "name": "provenance-amd64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "SBOM-amd64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "provenance-arm64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "SBOM-arm64",
+        "exit": 0,
+        "passed": true,
+        "expected_success": true
+      },
+      {
+        "name": "wrong-source",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      },
+      {
+        "name": "wrong-workflow",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      },
+      {
+        "name": "tampered-artifact",
+        "exit": 1,
+        "passed": true,
+        "expected_success": false
+      }
+    ],
+    "artifacts": {
+      "containerresourceguard-next-compatibility-contract-linux-amd64.tar.gz": "fb54c40223a5889d8138f0f5d94a3d6fd078be794653a8ca9c9befbad272a257",
+      "containerresourceguard-next-compatibility-contract-linux-arm64.tar.gz": "fd107918abba653487821a4807cc9f88a90a41786bdda6dbac9464ed31f12931",
+      "crg-linux-amd64": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "crg-linux-arm64": "1eab41fbabfa9cc93fb2f14265e87f05cf4a019f44d3466ab5989594f0e78b3c"
+    }
+  },
+  "limits": [
+    "The pinned recipe reproduced exactly on these two builder hosts; not all Python/Go/compiler/platform combinations.",
+    "ARM64 artifact is built and provenance-verified, not executed on ARM64 hardware.",
+    "Wrong source/workflow/tamper rejection do not prove database acceptance or runtime security.",
+    "Existing 24h+24h, seven-day and two released minor-version upgrade gates remain."
+  ]
+}
