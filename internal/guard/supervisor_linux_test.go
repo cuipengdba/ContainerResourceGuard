@@ -6,6 +6,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"syscall"
 	"testing"
 )
@@ -85,5 +86,30 @@ func TestSupervisorSyntaxNeverRunsSourceOrBashEnvironment(t *testing.T) {
 	cancel()
 	if err := checkedShell(ctx, body); err == nil {
 		t.Fatal("cancelled syntax check accepted")
+	}
+}
+
+func TestSupervisorPlanRejectsAliasedStateBeforeAnyInputOrBackup(t *testing.T) {
+	dir := t.TempDir()
+	state := filepath.Join(dir, "state")
+	alias := filepath.Join(dir, "alias")
+	if err := os.Mkdir(state, 0700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(state, alias); err != nil {
+		t.Fatal(err)
+	}
+	c := Config{Percent: 20, StateDir: alias}
+	if err := c.Validate(); err != nil {
+		t.Fatal(err)
+	}
+	sha := strings.Repeat("0", 64)
+	o := SupervisorOptions{Path: filepath.Join(dir, "missing"), Config: filepath.Join(dir, "config"), Helper: filepath.Join(dir, "helper"), Binary: filepath.Join(dir, "binary"), SourceSHA256: sha, HelperSHA256: sha, BinarySHA256: sha}
+	if _, err := PreviewSupervisor(context.Background(), c, o); err == nil || !strings.Contains(err.Error(), "real clean state directory") {
+		t.Fatal(err)
+	}
+	entries, _ := os.ReadDir(state)
+	if len(entries) != 0 {
+		t.Fatal("preview wrote to state through alias")
 	}
 }
