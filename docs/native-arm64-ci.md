@@ -14,6 +14,8 @@ P06/P09新增[原生工作流](https://github.com/cuipengdba/ContainerResourceGu
 
 这比仅交叉编译多了实际原生运行证据，但仍没有ARM64实际资源控制、DBS/HISDBS业务或Linux6.x控制实测；已发布预览的ARM64产物不因后来不同源码的CI被追认为已验收。
 
-P06原生基础CI之后的[实际容器控制器计划](plan-native-cgroup-ci.md)已归档，拟补AMD64/ARM64实际三项控制、自动百分比/新ID及权限回退。一次性驱动/双架构工作流现已实现，摘要与数值条件在首次push前冻结，尚无执行结果，不关闭资源/业务或硬件门槛。
+P06原生基础CI之后的[实际容器控制器计划](plan-native-cgroup-ci.md)已归档，拟补AMD64/ARM64实际三项控制、自动百分比/新ID及权限回退。一次性驱动/双架构工作流在首次push前冻结；首轮分区失败和后续独占dm/loop实际控制88项通过分别归档，不关闭未测业务或硬件门槛。
 
 包链接修复后的两线完整构建CI已通过：[main/c3bed5b](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42825125118)、[组合/91b2f54](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42825125168)。两次原链接失败保留；修复提交仅影响文档，与前述原生ARM任务的源修订分开记录。
+
+原生控制器第二轮[AMD64/ARM64两线88项通过](testing-native-cgroup-dm-loop.md)：实际三项限额/节流/直接IO、独立自动百分比、新ID/profile复用、Agent崩溃恢复及真实只读降级和清理。存储为独占dm/loop；首轮分区四格失败保留，ARM厂商业务、物理多设备、6.x及长期门槛仍未关闭。

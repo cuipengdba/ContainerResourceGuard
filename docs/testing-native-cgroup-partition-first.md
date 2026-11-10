@@ -9,3 +9,5 @@
 [内核sysfs规则](https://docs.kernel.org/7.0/admin-guide/sysfs-rules.html)要求区分分区与磁盘、按实际设备树核实父级，不能按名称猜测。[内核块cgroup源码](https://github.com/torvalds/linux/blob/v6.19/block/blk-cgroup.c)中的blkg_conf_open_bdev还会拒绝partition设备号。只给分区补一个身份仍不能完成正确的控制设备映射，因此本次没有提交未完整验证的运行时代码。后续P04/P06需同时设计分区稳定身份、整盘控制目标、同盘多分区合并及祖先/现有profile冲突，然后另起实测；当前不宣称该组合支持分区IO。
 
 下一轮拟用临时VM内独立新建、真实dm UUID的可丢弃文件系统验证控制器，先单独冻结夹具源摘要和清理条件。它不是本轮分区通过，也不代表物理多设备、ARM厂商业务或Linux6.x验收。原生基础race/helper/CLI与普通包CI的成功单独保留，不能替代本轮失败。
+
+后续独立dm/loop夹具已完成[四格88项实测](testing-native-cgroup-dm-loop.md)；只证明不同夹具的控制效果，本首轮分区失败不变。

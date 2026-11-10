@@ -1,0 +1,98 @@
+{
+  "observed_utc": "2026-11-10T13:59:25Z",
+  "scope": "read-only receipt preflight; no execution, file writes, process signals or resource changes",
+  "ready_for_separate_live-identity-and-reserve-preflight": false,
+  "checks": {
+    "baseline-full-campaign-terminal-passed": {
+      "passed": false,
+      "phase": "measuring",
+      "requested_seconds": 86400
+    },
+    "baseline-source-and-tools-exact": {
+      "passed": true
+    },
+    "baseline-coordinator-ended": {
+      "passed": false
+    },
+    "baseline-role-set": {
+      "passed": true
+    },
+    "dbs-full-native86400-passed": {
+      "passed": false,
+      "phase": "running",
+      "elapsed_seconds": 52239.69779990311,
+      "SQL_errors": 0,
+      "API_errors": 0
+    },
+    "dbs-host-sampling-complete": {
+      "passed": false,
+      "sample_count": 874
+    },
+    "dbs-baseline-eight-controls-recorded": {
+      "passed": true
+    },
+    "hisdbs-full-native86400-passed": {
+      "passed": false,
+      "phase": "running",
+      "elapsed_seconds": 52238.64239741792,
+      "SQL_errors": 0,
+      "API_errors": 0
+    },
+    "hisdbs-host-sampling-complete": {
+      "passed": false,
+      "sample_count": 874
+    },
+    "hisdbs-baseline-eight-controls-recorded": {
+      "passed": true
+    },
+    "baseline-four-engine-cycles-accepted": {
+      "passed": false,
+      "cycle_phases": [
+        "content-passed-native-pending",
+        "content-passed-native-pending",
+        "content-passed-native-pending"
+      ]
+    },
+    "adoption-four-cells-terminal-passed": {
+      "passed": true,
+      "phase": "passed",
+      "completed_checks": 68
+    },
+    "adoption-sources-exact": {
+      "passed": true
+    },
+    "baseline-dbs-adoption-native-and-recovery-complete": {
+      "passed": true
+    },
+    "baseline-hisdbs-adoption-native-and-recovery-complete": {
+      "passed": true
+    },
+    "realpath-dbs-adoption-native-and-recovery-complete": {
+      "passed": true
+    },
+    "realpath-hisdbs-adoption-native-and-recovery-complete": {
+      "passed": true
+    },
+    "adoption-coordinator-ended": {
+      "passed": true
+    },
+    "adoption-namespace-independently-absent": {
+      "passed": true
+    },
+    "current-overhead-completed-and-cleaned": {
+      "passed": true
+    },
+    "candidate-and-installed-sources-exact": {
+      "passed": true
+    },
+    "engineering-prerequisite-passed": {
+      "passed": true
+    }
+  },
+  "limitations": [
+    "Receipt prerequisites only; current Pod/process/cgroup identities, data/source hashes, backups, ownership and host reserves must be revalidated by a future executor before any change.",
+    "No formal enforce executor or workload has been launched by this script."
+  ],
+  "audit_source_sha256": "cd6d142f6629e74d8c7276bcef6a558397cf59e3e5274a43fedd27cd036d70a5",
+  "private_receipt_sha256": "834190bfd37401107ee53ae4b63d00754a78c5734dc37c1236606b74fe9167d6"
+}
