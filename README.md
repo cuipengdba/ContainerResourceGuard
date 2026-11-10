@@ -94,3 +94,5 @@ python3 scripts/check-package.py dev
 ```
 
 标准库实现，无第三方运行时依赖。最低 Go 版本见 `go.mod`。MIT License。
+
+[DBS/HISDBS 首次双组件接入与参数实测（2026-11-10）](docs/deployment-dbs-hisdbs-20261110.zh.md)
