@@ -125,6 +125,9 @@ func planSupervisor(ctx context.Context, c Config, o SupervisorOptions) (Supervi
 		}
 	}
 	paths := []string{o.Path, o.Helper, o.Binary, o.Config}
+	if !filepath.IsAbs(c.StateDir) || filepath.Clean(c.StateDir) != c.StateDir || resolveDiagnosticGuardPath(c.StateDir) != c.StateDir {
+		return p, nil, nil, 0, errors.New("supervisor maintenance requires a real clean state directory without symlink components")
+	}
 	seen := map[string]bool{}
 	for _, path := range paths {
 		if seen[path] || pathWithin(c.StateDir, path) || (c.IOProfile != "" && resolveDiagnosticGuardPath(c.IOProfile) == path) {
