@@ -1,0 +1,72 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "job_sha256": "70d8c717550d0eeffb58e9810fd9fd06be452f23a48dd56d7668c326c974f53f",
+  "runner_sha256": "6c6370eb8af96ccf02e9aebb3583d26856896130b3de92f349817ffd32ffcdf4",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualified_evidence_sha256": {
+    "identity-qualification.json": "68f95200ca8387e8dad987028309c6e3b98ad3cb3abd6f2b7ccfd1b07c301ec9",
+    "integration-qualification.json": "fc85ee09ca3cd868e5924f74d739f0d52951d412f2773da268eb5746e35337d2",
+    "overhead-qualification.json": "3ed12aabcfae45d4bf8c43ac8bf736525e46a6459da191d8c01f051923217dc3"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prior_fault_driver_sha256": "0b2fe32550abaf5d1ed5b08e044fd43cf443f75e3030b5e281d8b2d24714d0fc",
+  "prior_passed_fault_report": "test-results-three-resource-fault-matrix.json",
+  "criteria": {
+    "PG_API_readiness_seconds": 90,
+    "cache_after_API_seconds": 45,
+    "TERM_seconds": 12,
+    "original_database_parameters_retained": true,
+    "automatic_percentages": {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 30
+    }
+  },
+  "cases": [
+    "missing",
+    "invalid",
+    "crash",
+    "hang",
+    "ignoreterm",
+    "rollback",
+    "cgroup-readonly",
+    "profile-readonly",
+    "state-readonly",
+    "cancel-calibration"
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "case_count": 20,
+  "expected_checks": 108,
+  "scope": "Same original-image real container paths,PG settings and readonly original cache mount; sequential fresh empty test directories/private loopback DCS and credentials. One current Agent per container. Some cases deliberately substitute missing/crash/hang helpers and test supervisor isolation.",
+  "prerequisites": [
+    "Current exact-source R51 two-role manual business complete passed,12checks,exit0 and namespace independently absent.",
+    "Prior R14 fault report passed and namespace independently absent.",
+    "Exact native program/build-info/payload/helper qualification hashes; original private cache/supervisor pinned.",
+    "Host memory>=28GiB before each case,>=8GiB throughout;disk>=20GiB."
+  ],
+  "invariants": [
+    "No quotas/deadlines relaxed: original PG/API90s,cache45s after API,TERM12s.",
+    "Actual calibration cancellation requires observed owned temporary FD and pinned Agent binary before pidfd TERM; next retry deliberately invalid; no original controls/profile on cancellation.",
+    "Only owned fixture namespaces/Pods/processes/mounts; formal baseline and fixed d6 candidate unchanged."
+  ],
+  "limitations": [
+    "Fault smoke proves helper isolation, not600s/24h/seven-day business performance or suitability of automatic30%.",
+    "Default20% failures remain unchanged.",
+    "Linux5.14 AMD64 existing single device only; no ARM vendor or independent physical disks.",
+    "Older40case/216checks remain original7638/d6 source, not relabelled as current candidate."
+  ]
+}
