@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before launch",
+  "job_sha256": "48b786013f72d6533c53060051eb66f13cfff77ebf51a9e4235f821464e3563e",
+  "source_revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+  "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+  "prerequisites": [
+    "Round18 business fixture terminal and namespace independently absent",
+    "R30 engineering report passed",
+    "candidate digest matches",
+    "8GiB host available memory and20GiB disk free during run"
+  ],
+  "cases": [
+    "healthy",
+    "persistent metrics/events symlink failure, marker preserved",
+    "actually read-only cgroup mount; private fixture externally caps only its own leaf IO"
+  ],
+  "scope": "Three independent placeholder PID1 containers, one combined Agent each, original image used only as shell runtime. Not vendor business performance or product cross-container control. Manual CPU/memory/IO only; daily logs persist under each private state directory.",
+  "criteria": {
+    "warmup_seconds": 45,
+    "actual_seconds": 1800,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "single_core_CPU_percent_max": 0.1,
+    "Agent_RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_Agent_write_bytes_max": 8388608,
+    "fault_Agent_write_bytes_max": 16777216,
+    "OOM_kill_delta_max": 0,
+    "same_Agent_process_all_samples": true,
+    "daily0600_logs_report_v2": true,
+    "manual_cpu_cores": 0.25,
+    "manual_memory_max_bytes": 134217728,
+    "io_cap_read_write_bps": 65536,
+    "io_cap_read_write_iops": 8
+  },
+  "limitations": [
+    "No first calibration in this manual-budget test; startup/warmup are excluded from steady-state measurements.",
+    "Agent process counters do not measure host collector or all container-runtime logging costs.",
+    "Earlier1bc9/74693 long-check receipts remain separate and are not relabelled as this source.",
+    "A successful engineering budget test cannot reverse default20 business failures or close24h/seven-day/hardware gates.",
+    "The existing formal baseline is not modified."
+  ]
+}
