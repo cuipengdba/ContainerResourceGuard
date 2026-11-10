@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before workflow execution; not a result",
+  "workflow_sha256": "1fd7a2c210c23b753683c81c935db28fffb29ab819c73c49b3a960b2f3615b41",
+  "source_sha256": {
+    "tests/native-cgroup.py": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+    "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
+    "tests/load/main.go": "5799de95182dc97ff35544e78633a875cb8d1b81ff452fb01f7b57e6210fbaa9"
+  },
+  "runners": [
+    {
+      "label": "ubuntu-22.04",
+      "arch": "amd64"
+    },
+    {
+      "label": "ubuntu-22.04-arm",
+      "arch": "arm64"
+    }
+  ],
+  "environment_gate": "Record actual machine/kernel/Docker/cgroup filesystem; require kernel6.* and purev2 before any scratch fixture. Image labels/documentation alone are not evidence.",
+  "numeric_criteria": "Exactly the existing dm/loop native-controller22-check plan and driver, unchanged budgets/load durations/rate bounds/cgroup identity/recovery/autocal/profile/newID/readonly/owned cleanup gates.",
+  "storage": "Fresh exclusive sparse-file -> DIO loop -> UUID dm-linear -> own ext4; never formats an existing device; normal ownership-qualified cleanup.",
+  "coverage": "Both source lines, actual native Go vet/race and CLI, own scratch-container CPU/memory/directIO and recovery, automatic independent percentages/newID/profile/logging and permission degradation.",
+  "limitations": [
+    "No DBS/HISDBS vendor image or PG workload in these VMs.",
+    "Not independent physical multi-device, partition IO support, OOM exhaustion, released ARM artifact,24h or7d acceptance.",
+    "Ubuntu22 jobs are an explicit bounded compatibility probe, not a change of regular CI base; preserve unsupported/unavailable/environment mismatch as a failure, never change the requirement to pass."
+  ],
+  "official_environment_references": [
+    "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md",
+    "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md",
+    "https://docs.github.com/en/actions/reference/runners/github-hosted-runners"
+  ]
+}
