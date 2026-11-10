@@ -19,6 +19,7 @@ func verifyCgroup(p string) error {
 	}
 	return nil
 }
+
 func groupIdentity(p string) (string, error) {
 	var s syscall.Stat_t
 	if e := syscall.Stat(p, &s); e != nil {
@@ -64,7 +65,19 @@ func fileDevice(path string) (string, error) {
 		return "", e
 	}
 	d := uint64(s.Dev)
+	return linuxDeviceNumber(d), nil
+}
+
+func linuxDeviceNumber(d uint64) string {
 	major := (d>>8)&0xfff | (d>>32)&0xfffff000
 	minor := d&0xff | (d>>12)&0xffffff00
-	return fmt.Sprintf("%d:%d", major, minor), nil
+	return fmt.Sprintf("%d:%d", major, minor)
+}
+
+func openConfigFile(path string) (*os.File, error) {
+	fd, err := syscall.Open(path, syscall.O_RDONLY|syscall.O_NONBLOCK|syscall.O_CLOEXEC, 0)
+	if err != nil {
+		return nil, err
+	}
+	return os.NewFile(uintptr(fd), path), nil
 }

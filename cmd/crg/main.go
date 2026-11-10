@@ -58,9 +58,10 @@ func mainErr() error {
 	state := f.String("state-dir", "", "per-container writable state directory")
 	profile := f.String("io-profile", "", "explicitly calibrated IO profile")
 	once := f.Bool("once", false, "apply or observe once, then exit (limits remain)")
-	dir := f.String("directory", "", "existing block-backed directory for calibration")
+	dir := f.String("directory", "", "optional directory override; default selects largest eligible filesystem")
 	output := f.String("output", "/etc/crg/io-profile.json", "calibration JSON output")
 	seconds := f.Int("seconds", 3, "seconds per calibration phase (1..30)")
+	samples := f.Int("samples", 3, "calibration repetitions (1..9)")
 	format := f.String("format", "json", "output format: json or human (status, doctor, preflight)")
 	if e := f.Parse(os.Args[2:]); e != nil {
 		return e
@@ -87,9 +88,16 @@ func mainErr() error {
 	defer stop()
 	if cmd == "calibrate" {
 		if *dir == "" {
-			return errors.New("calibrate requires --directory; never benchmarks at business startup")
+			selection, err := guard.SelectCalibrationDirectory()
+			if err != nil {
+				return err
+			}
+			*dir = selection.Directory
 		}
-		p, e := guard.Calibrate(ctx, *dir, *seconds)
+		if err := guard.CalibrationOutputReady(*output); err != nil {
+			return err
+		}
+		p, e := guard.CalibrateRepeated(ctx, *dir, *seconds, *samples)
 		if e != nil {
 			return e
 		}
@@ -247,6 +255,7 @@ func mainErr() error {
 		}
 		return nil
 	}
+	automaticIO := guard.PrepareAutomaticIO(ctx, c, env)
 	ticker := time.NewTicker(time.Duration(c.IntervalSeconds) * time.Second)
 	defer ticker.Stop()
 	control := time.NewTicker(time.Second)
@@ -267,6 +276,14 @@ func mainErr() error {
 			return e
 		}
 		r := engine.Apply(p)
+		r.AutomaticIO = automaticIO
+		if automaticIO != nil && automaticIO.State == "degraded" {
+			r.State = "degraded"
+			if r.Error != "" {
+				r.Error += "; "
+			}
+			r.Error += automaticIO.Detail
+		}
 		if _, e = writer.Write(r, time.Now()); e != nil {
 			return fmt.Errorf("status persistence failed; no further writes: %w", e)
 		}

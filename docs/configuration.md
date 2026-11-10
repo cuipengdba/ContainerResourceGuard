@@ -38,7 +38,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `pids_max` | 不修改 | 开发分支新增；任务数硬上限，包含线程 |
 | `cpu_weight` | 不修改 | 开发分支新增；CPU 相对竞争权重 1–10000 |
 | `mode` | `enforce` | `enforce` 写入，`observe` 仅预览 |
-| `io_profile` | `/etc/crg/io-profile.json` | 该节点显式标定产生的设备基准 |
+| `io_profile` | `/etc/crg/io-profile.json` | 默认自动标定/复用的本地设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |
 | `interval_seconds` | 15 | 检查周期，1–3600 秒；仅有变更才输出日志 |
 | `data_paths` | 无 | 可选的容器内绝对路径列表；只读显示 IO 设备覆盖，不改变统一预算 |
@@ -77,3 +77,5 @@ Agent 启动时读取配置；持续运行不会热加载。重启 Agent 可更�
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
+
+`io_calibration` 默认 `auto`，可选 `off`；percent/enforce首次启动自动选最大合格文件系统，缺基准才测，observe/manual及只读命令不测。默认输出 `/etc/crg/io-profile.json`，详见[自动标定](automatic-io-calibration.md)。RC3写v1汇总；1.0组合候选写v2样本，未发布版本勿混用。

@@ -32,7 +32,7 @@ RC2 包内 BUILD.json 保存二进制 SHA256、程序源码修订 source_revisio
 
 节点工具分发目录必须在该工作负载可能调度到的节点存在，或者将程序放进镜像。IO profile 必须对应当前节点的设备身份；不能把其他服务器的 profile 原样当作本机能力。
 
-先显式标定，再分发 profile。每个容器先执行 `crg doctor --percent 20`，检查容量来源和限制预览，再通过现有 supervisor 的可选分支启用。详见 [集成说明](integration.md)。
+默认不需要先手工标定或分发profile；提供容器独立、可写持久的默认profile位置，首次由辅助Agent自动标定，之后复用，见[自动流程](automatic-io-calibration.md)。每个容器先执行 `crg doctor --percent 20`，检查容量来源和限制预览，再通过现有 supervisor 的可选分支启用。详见 [集成说明](integration.md)。
 
 RC2 可执行 `crg preflight --config /etc/crg/config.json --format human` 查看打开权限和换算；不写资源限额，不能代替启用后的真实回读。发布包还包含 supervisor 补丁生成工具，生成时不修改原文件。
 

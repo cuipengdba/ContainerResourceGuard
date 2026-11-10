@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -53,12 +54,13 @@ type ItemStatus struct {
 	Detail string `json:"detail,omitempty"`
 }
 type Status struct {
-	TimeUTC string       `json:"time_utc"`
-	Mode    string       `json:"mode"`
-	State   string       `json:"state"`
-	Plan    Plan         `json:"plan"`
-	Items   []ItemStatus `json:"items"`
-	Error   string       `json:"error,omitempty"`
+	AutomaticIO *AutomaticIOStatus `json:"automatic_io,omitempty"`
+	TimeUTC     string             `json:"time_utc"`
+	Mode        string             `json:"mode"`
+	State       string             `json:"state"`
+	Plan        Plan               `json:"plan"`
+	Items       []ItemStatus       `json:"items"`
+	Error       string             `json:"error,omitempty"`
 }
 type Engine struct {
 	Config       Config
@@ -71,6 +73,13 @@ type Engine struct {
 }
 
 var ErrLocked = errors.New("one agent per container: lock unavailable")
+
+func lockFailure(err error) error {
+	if errors.Is(err, syscall.EAGAIN) || errors.Is(err, syscall.EWOULDBLOCK) {
+		return fmt.Errorf("%w: %w", ErrLocked, err)
+	}
+	return fmt.Errorf("cannot open/acquire resource lock: %w", err)
+}
 
 type Locks struct{ group, state *os.File }
 
@@ -126,7 +135,7 @@ func AtomicJSON(path string, v any) error {
 func OpenEngine(c Config, env Environment) (*Engine, *Locks, error) {
 	group, e := lockGroup(env.Target)
 	if e != nil {
-		return nil, nil, fmt.Errorf("%w: %v", ErrLocked, e)
+		return nil, nil, lockFailure(e)
 	}
 	engine, state, e := openState(c, env)
 	if e != nil {
@@ -146,7 +155,7 @@ func openState(c Config, env Environment) (*Engine, *os.File, error) {
 	}
 	lock, e := lockFile(filepath.Join(c.StateDir, "agent.lock"))
 	if e != nil {
-		return nil, nil, fmt.Errorf("%w: %v", ErrLocked, e)
+		return nil, nil, lockFailure(e)
 	}
 	fail := func(err error) (*Engine, *os.File, error) { lock.Close(); return nil, nil, err }
 	j := Journal{Version: 1, Identity: env.Identity, Target: env.Target, Mutations: map[string]*Mutation{}}

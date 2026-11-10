@@ -21,6 +21,7 @@ type Config struct {
 	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
 	Mode            string        `json:"mode,omitempty"`
 	IOProfile       string        `json:"io_profile,omitempty"`
+	IOCalibration   string        `json:"io_calibration,omitempty"`
 	StateDir        string        `json:"state_dir,omitempty"`
 	IntervalSeconds int           `json:"interval_seconds,omitempty"`
 	DataPaths       []string      `json:"data_paths,omitempty"`
@@ -145,6 +146,12 @@ func (c *Config) Validate() error {
 	}
 	if c.IOProfile == "" {
 		c.IOProfile = "/etc/crg/io-profile.json"
+	}
+	if c.IOCalibration == "" {
+		c.IOCalibration = "auto"
+	}
+	if c.IOCalibration != "auto" && c.IOCalibration != "off" {
+		return errors.New("io_calibration must be auto or off")
 	}
 	if c.StateDir == "" {
 		c.StateDir = filepath.Join(os.TempDir(), "containerresourceguard")
