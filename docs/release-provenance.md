@@ -53,4 +53,6 @@ gh attestation trusted-root > trusted_root.jsonl
 
 对 7844ba5 的真实 CI 产物执行 gh attestation verify：限定本仓库、ci.yml、完整源码 SHA、开发分支 ref，拒绝 self-hosted runner。两种包的 provenance 与两种二进制的 CycloneDX 证明四项通过；错误源码、错误工作流和篡改包三个反例拒绝。先从既有可信 GitHub CLI/TUF 引导获取 root 与 bundle，再把 HTTP/HTTPS/ALL 代理设成不可达本地地址，正确 root/bundle/身份的本地验证通过，错误源码、篡改产物与空信任根拒绝。没有执行操作系统防火墙隔离，不把代理条件夸成物理断网。
 
-这些是开发分支的发布工具证据，仍未发布 v0.8/1.0。验证构建证明只证明来源/内容绑定，仍须核对该版本的功能验收、已知问题与正式发布状态。跨宿主重建、实际安装前验证联动和更长故障回归继续单独归档。
+跨宿主复现首轮 cce9018 的两个程序、两个包、两个 SBOM 和清单相等，但 SHA256SUMS 因 Windows CRLF 与 Linux LF 不同；[原始比较](test-results-cross-host-initial.json) 保留这一失败。274ec3c 将校验和明确按 LF 字节输出后，在 Windows 的另一个全新克隆，以同一源码、Go1.27.3 和版本字符串 next-release-provenance 重建，对比 [Linux CI42724489604](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42724489604) 下载产物，八项逐字节均相同，见 [修复后跨宿主结果](test-results-cross-host-reproduced.json)。这证明此配方在这两台构建环境的复现，不扩大为所有编译器/Python/宿主组合的保证。
+
+这些是开发分支的发布工具证据，仍未发布 v0.8/1.0。验证构建证明只证明来源/内容绑定，仍须核对该版本的功能验收、已知问题与正式发布状态。实际安装前验证联动和更长故障回归继续单独归档。
