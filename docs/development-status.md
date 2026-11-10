@@ -11,7 +11,7 @@
 | 已发布工程预览 | 只三项独立百分比、cgroup版本门禁、每日日志；正式RC3/1.0未发布 | [交付与下载](next-version.md) |
 | 新程序工程检查 | 38项通过；真实控制为v2，v1/混合/未知为隔离proc模拟 | [版本/日志/三资源](testing-three-percent-cgroup-logs.md) |
 | 新程序原业务手动64预算 | 四格各600秒，24项通过 | [业务矩阵](testing-three-resource-business-matrix.md) |
-| 新程序默认20% | 第16轮main/DBS完整600秒失败，SQL10次/API57次错误；其余三格另按第18轮计划补测 | [默认结果](testing-three-resource-default20-business.md) |
+| 新程序默认20% | 第16/18轮四格业务组合均失败；两个组合格只有未完成原生快照 | [首格](testing-three-resource-default20-business.md)、[补测](testing-three-resource-default20-supplement.md) |
 | 备份后新Pod ID | 四格8次原启动、88项通过，数据/日志/原值保持，仅手动64预算 | [冷重建](testing-three-resource-cold-rebuild.md) |
 | 在线维护 | 第13轮已发布预览首次安装拒绝；第15轮两套协议兼容开发构建22项/各600秒通过，不代表两个已发布次版本 | [拒绝记录](testing-three-resource-online-maintenance.md)、[开发构建往返](testing-three-resource-protocol-maintenance.md) |
 | 长期验收 | 旧observe基线超过12h仍运行，三周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定12h快照及边界](continuous-acceptance.md) |
@@ -103,3 +103,5 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 第17轮真实路径备份/新Pod ID冷重建四格、8次启动、88项检查通过，数据/独立逻辑恢复库/一对一身份/日志追加及新容器原值恢复核对，全部夹具清理；仅为手动64MiB/s预算。见[冷重建结果](testing-three-resource-cold-rebuild.md)。
 
 组合开发源码50671aa在Windows/amd64、Go1.27.3下两个解析器各10分钟fuzz通过，包含12条明确归档的新百分比/默认/非法语料；不是Linux业务或资源开销结论，见[独立结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/test-results-three-resource-parser-fuzz-windows.json)。
+
+第18轮默认20%剩余三格补测结束：18项启动/控制/日志通过，三格业务组合均失败；main/HIS有完整失败原生结果，两个组合格仅有未完成快照，不计600秒通过。清理确认，连同第16轮四格均未通过，见[补测结果](testing-three-resource-default20-supplement.md)。

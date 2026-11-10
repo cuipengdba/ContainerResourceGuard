@@ -15,7 +15,7 @@ CPU、内存、IO分别设置百分比，省略的资源项各自默认20%。最
 
 **IO 的百分比是特定测试方法的实测基准百分比，不是磁盘固定物理极限。没有可用标定文件就显示 IO 未管理，不用竞争权重冒充硬限速。**
 
-默认20%已经在原DBS路径实际生效，但本轮600秒业务测试有SQL/API错误，不能作为该业务已验收的推荐配额；详见[默认配置实测](docs/testing-three-resource-default20-business.md)。
+默认20%在DBS/HISDBS四格测试均未通过业务组合验收，不能作为这两类业务已验收的推荐配额；详见[首格失败](docs/testing-three-resource-default20-business.md)和[三格补测](docs/testing-three-resource-default20-supplement.md)。
 
 ## 快速使用
 

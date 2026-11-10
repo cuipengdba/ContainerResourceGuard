@@ -1,0 +1,587 @@
+{
+  "date": "2026-11-10",
+  "observed_utc": "2026-11-10T12:23:29Z",
+  "phase": "failed",
+  "supplement_to": "Round16 main/DBS failure is retained separately; this run covers only its remaining three cells.",
+  "configuration": {},
+  "percentages": {
+    "cpu_percent": 20,
+    "memory_percent": 20,
+    "io_percent": 20
+  },
+  "sources": {
+    "rc3": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+    },
+    "v10": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+    }
+  },
+  "cases": [
+    {
+      "case": "rc3-hisdbs-default20",
+      "phase": "failed",
+      "candidate_branch": "rc3",
+      "first_pg_ready_seconds": 22.943141161929816,
+      "first_api_ready_seconds": 23.408025078941137,
+      "ready_and_managed_seconds": 62.85771452100016,
+      "profile": {
+        "version": 1,
+        "method": "direct-sync-qdepth1-seq1m-random4k",
+        "devices": [
+          {
+            "device": "253:0",
+            "read_bps": 100163460,
+            "write_bps": 45489210,
+            "read_iops": 98,
+            "write_iops": 58
+          }
+        ]
+      },
+      "host_basis": {
+        "host_online_cpus": 24,
+        "host_memory_bytes": 66673278976
+      },
+      "actual_three_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=20032692 wbps=9097842 riops=19 wiops=11"
+      },
+      "final_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=20032692 wbps=9097842 riops=19 wiops=11",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "final_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "pod_delete_command": {
+        "exit": 0
+      },
+      "own_pod_removed": true,
+      "own_cgroup_removed": true,
+      "native_snapshot": {
+        "phase": "failed",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 604.0952929509804,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 286,
+          "errors": 7,
+          "histogram": [
+            257,
+            6,
+            0,
+            1,
+            0,
+            0,
+            0,
+            7,
+            3,
+            0,
+            5,
+            7
+          ],
+          "max_seconds": 5.016905489843339,
+          "p95_bucket_upper_seconds": 1,
+          "sample_coverage": 0.9533333333333334,
+          "successes": 279,
+          "total_seconds": 59.234277634415776
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 8,
+          "histogram": [
+            0,
+            0,
+            112,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0
+          ],
+          "max_seconds": 4.00447264383547,
+          "p95_bucket_upper_seconds": 5,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 113,
+          "total_seconds": 32.834018737310544
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false,
+        "started_utc": "2026-11-10T11:40:18.054316Z",
+        "measurement_finished_utc": "2026-11-10T11:50:18.467356Z"
+      },
+      "native_snapshot_kind": "complete failed final result",
+      "campaign": {
+        "phase": "failed",
+        "failure_class": "RuntimeError",
+        "failure": "workers ended before all scheduled engine cycles finished"
+      },
+      "engine_cycle": {
+        "phase": "failed",
+        "roles": {
+          "hisdbs": {
+            "phase": "streaming",
+            "checks": [
+              {
+                "name": "fixture_initial_rows",
+                "passed": true
+              },
+              {
+                "name": "physical_backup_finished",
+                "passed": true
+              },
+              {
+                "name": "streaming_new_rows_and_checksum",
+                "passed": true
+              },
+              {
+                "name": "standby_in_recovery",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_initial_checksum",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_is_writable",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_does_not_modify_primary",
+                "passed": true
+              }
+            ],
+            "cleanup": null,
+            "native_pending": null
+          }
+        }
+      },
+      "cleanup_failed": false,
+      "namespace_fallback_absent": null,
+      "host_sample_count": 11,
+      "sampled_interval": {
+        "elapsed_seconds": 600.2931227569934,
+        "agent_CPU_seconds_delta": 0.08000000000000002,
+        "agent_peak_RSS_bytes": 7540736,
+        "agent_write_bytes_delta": 16384,
+        "all_observed_identity_checks": true
+      }
+    },
+    {
+      "case": "v10-dbs-default20",
+      "phase": "failed",
+      "candidate_branch": "v10",
+      "first_pg_ready_seconds": 30.27473992202431,
+      "first_api_ready_seconds": 30.52998981694691,
+      "ready_and_managed_seconds": 59.678232522914186,
+      "profile": {
+        "version": 2,
+        "method": "direct-sync-qdepth1-seq1m-random4k",
+        "devices": [
+          {
+            "device": "253:0",
+            "read_bps": 60344760,
+            "write_bps": 45403896,
+            "read_iops": 150,
+            "write_iops": 53
+          }
+        ]
+      },
+      "host_basis": {
+        "host_online_cpus": 24,
+        "host_memory_bytes": 66673278976
+      },
+      "actual_three_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=12068952 wbps=9080779 riops=30 wiops=10"
+      },
+      "final_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=12068952 wbps=9080779 riops=30 wiops=10",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "final_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "pod_delete_command": {
+        "exit": 1
+      },
+      "own_pod_removed": true,
+      "own_cgroup_removed": true,
+      "native_snapshot": {
+        "phase": "running",
+        "requested_duration_seconds": 600,
+        "elapsed_seconds": 300.10593777592294,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 110,
+          "errors": 24,
+          "histogram": [
+            73,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            2,
+            3,
+            5,
+            24
+          ],
+          "max_seconds": 5.015927282860503,
+          "successes": 86,
+          "total_seconds": 141.95925271185115
+        },
+        "api": {
+          "attempts": 61,
+          "errors": 1,
+          "histogram": [
+            0,
+            0,
+            58,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "max_seconds": 4.003694572020322,
+          "successes": 60,
+          "total_seconds": 6.247094439342618
+        },
+        "started_utc": "2026-11-10T11:54:54.496986Z"
+      },
+      "native_snapshot_kind": "last persisted progress snapshot only; Pod has since been removed, not a live/passed run",
+      "campaign": {
+        "phase": "failed",
+        "failure_class": "RuntimeError",
+        "failure": "workload completion deadline",
+        "cleanup_errors": [
+          "worker exec client still running: dbs"
+        ]
+      },
+      "engine_cycle": {
+        "phase": "failed",
+        "roles": {
+          "dbs": {
+            "phase": "streaming",
+            "checks": [
+              {
+                "name": "fixture_initial_rows",
+                "passed": true
+              },
+              {
+                "name": "physical_backup_finished",
+                "passed": true
+              },
+              {
+                "name": "streaming_new_rows_and_checksum",
+                "passed": true
+              },
+              {
+                "name": "standby_in_recovery",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_initial_checksum",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_is_writable",
+                "passed": true
+              },
+              {
+                "name": "independent_restore_does_not_modify_primary",
+                "passed": true
+              }
+            ],
+            "cleanup": null,
+            "native_pending": null
+          }
+        }
+      },
+      "cleanup_failed": true,
+      "namespace_fallback_absent": true,
+      "host_sample_count": 13,
+      "sampled_interval": {
+        "elapsed_seconds": 720.1057177910116,
+        "agent_CPU_seconds_delta": 0.09999999999999998,
+        "agent_peak_RSS_bytes": 8425472,
+        "agent_write_bytes_delta": 16384,
+        "all_observed_identity_checks": true
+      }
+    },
+    {
+      "case": "v10-hisdbs-default20",
+      "phase": "failed",
+      "candidate_branch": "v10",
+      "first_pg_ready_seconds": 30.647719415137544,
+      "first_api_ready_seconds": 30.906081543071195,
+      "ready_and_managed_seconds": 50.35275387018919,
+      "profile": {
+        "version": 2,
+        "method": "direct-sync-qdepth1-seq1m-random4k",
+        "devices": [
+          {
+            "device": "253:0",
+            "read_bps": 58253475,
+            "write_bps": 44546726,
+            "read_iops": 162,
+            "write_iops": 44
+          }
+        ]
+      },
+      "host_basis": {
+        "host_online_cpus": 24,
+        "host_memory_bytes": 66673278976
+      },
+      "actual_three_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=11650695 wbps=8909345 riops=32 wiops=8"
+      },
+      "final_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "13334654976",
+        "io.max": "253:0 rbps=11650695 wbps=8909345 riops=32 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "final_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "pod_delete_command": {
+        "exit": 0
+      },
+      "own_pod_removed": true,
+      "own_cgroup_removed": true,
+      "native_snapshot": {
+        "phase": "running",
+        "requested_duration_seconds": 600,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "sql": {
+          "attempts": 0,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0,
+          "successes": 0,
+          "total_seconds": 0
+        },
+        "api": {
+          "attempts": 0,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0,
+          "successes": 0,
+          "total_seconds": 0
+        },
+        "started_utc": "2026-11-10T12:13:42.503093Z"
+      },
+      "native_snapshot_kind": "last persisted progress snapshot only; Pod has since been removed, not a live/passed run",
+      "campaign": {
+        "phase": "failed",
+        "failure_class": "RuntimeError",
+        "failure": "periodic engine regression or cleanup failed",
+        "cleanup_errors": [
+          "worker exec client still running: hisdbs"
+        ]
+      },
+      "engine_cycle": {
+        "phase": "failed",
+        "roles": {
+          "hisdbs": {
+            "phase": "preparing",
+            "checks": [
+              {
+                "name": "fixture_initial_rows",
+                "passed": true
+              }
+            ],
+            "cleanup": null,
+            "native_pending": null
+          }
+        }
+      },
+      "cleanup_failed": false,
+      "namespace_fallback_absent": null,
+      "host_sample_count": 8,
+      "sampled_interval": {
+        "elapsed_seconds": 420.04940683511086,
+        "agent_CPU_seconds_delta": 0.07,
+        "agent_peak_RSS_bytes": 8679424,
+        "agent_write_bytes_delta": 8192,
+        "all_observed_identity_checks": true
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "rc3-hisdbs-default20-real-path-original-startup-default20-and-automatic-profile",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-default20-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-default20-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-default20-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-default20-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "rc3-hisdbs-default20-600s-native-and-backup-sync-independent-restore",
+      "passed": false
+    },
+    {
+      "name": "v10-dbs-default20-real-path-original-startup-default20-and-automatic-profile",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-default20-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-default20-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-default20-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-default20-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-default20-600s-native-and-backup-sync-independent-restore",
+      "passed": false
+    },
+    {
+      "name": "v10-hisdbs-default20-real-path-original-startup-default20-and-automatic-profile",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-default20-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-default20-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-default20-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-default20-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-default20-600s-native-and-backup-sync-independent-restore",
+      "passed": false
+    }
+  ],
+  "namespace_absent": true,
+  "independent_namespace_absent": true,
+  "job_no_longer_exists": true,
+  "limitations": [
+    "All three startup/control/calibration/daily-log checks passed; all three complete business campaign checks failed. A managed state is not business acceptance.",
+    "Only main/HISDBS has a complete failed final600-second native result here. The two combined cases have only persisted progress snapshots, not complete native acceptance receipts.",
+    "Combined/HISDBS zero counters are from its initial running snapshot; no elapsed duration or final report exists, so they are not evidence of zero-error sustained operation.",
+    "The combined/DBS Pod deletion command failed, its private labelled namespace cleanup then succeeded, and old Pod/cgroup absence was verified before the next independent cell. That cleanup failure remains recorded.",
+    "Fresh automatic calibration gives per-run device baselines and distinct actual IO caps; do not average them or infer one unique cause by comparing different runs.",
+    "No increased limits, changed database parameters, longer business deadlines, original baseline changes, or production deployment changes."
+  ]
+}

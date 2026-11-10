@@ -45,3 +45,5 @@ crg run --cpu-percent 30 --memory-percent 40 --io-percent 25
 每个容器独立Agent、配置、日志和状态；每次启动重新发现自身cgroup，容器/Pod ID变化不需手工改路径。持久卷保留配置、基准、日志和私有原值；不管理其他容器，不修改DBS/HISDBS及原缓存逻辑。
 
 默认空配置第16轮main/DBS已完成600秒，SQL10次/API57次错误，业务验收失败；实际三项换算生效不能代替性能验收，见[具体配额和结果](testing-three-resource-default20-business.md)。
+
+第18轮默认20%剩余三格补测结束：18项启动/控制/日志通过，三格业务组合均失败；main/HIS有完整失败原生结果，两个组合格仅有未完成快照，不计600秒通过。清理确认，连同第16轮四格均未通过，见[补测结果](testing-three-resource-default20-supplement.md)。
