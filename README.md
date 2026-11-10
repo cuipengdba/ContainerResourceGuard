@@ -1,6 +1,6 @@
 # ContainerResourceGuard
 
-[171节点DBS/HISDBS本次升级、最终百分比与实测记录](docs/deployment-dbs-hisdbs-upgrade-20261110.zh.md)：CRG rc.3-preview.1 + CCG rc.11，DBS 35/45/60、HISDBS 35/25/60，CCG auto/enforce。
+[171节点DBS/HISDBS本次升级、最终百分比与实测记录](docs/deployment-dbs-hisdbs-upgrade-20261110.zh.md)：CRG rc.3-preview.1 + CCG rc.11，DBS CPU30/内存25/IO40、HISDBS CPU30/内存35/IO40，CCG auto/enforce。
 
 
 
