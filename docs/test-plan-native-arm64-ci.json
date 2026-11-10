@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before workflow push; no result claimed",
+  "task_ids": [
+    "P06.1",
+    "P06.2",
+    "P09.3"
+  ],
+  "workflow_sha256": "f5702e8343c50c6a013415b13a8d1b1977d4f18193b7198d112b4cd4858e74c6",
+  "runner_label": "ubuntu-24.04-arm",
+  "toolchain": "go1.27.3",
+  "actions_pinned_to_existing_verified_commits": true,
+  "permissions": [
+    "contents:read"
+  ],
+  "timeout_minutes": 20,
+  "cases": [
+    "assert platform machine ARM64, native Go host/target Linux/ARM64 and exact toolchain",
+    "record actual kernel and cgroup filesystem",
+    "native go vet and uncached go test -race",
+    "original helper failure/hang/TERM script checks and generated integration patch checks",
+    "build native CGO-disabled ELF, assert e_machine183, execute build-info and match exact source SHA",
+    "retain result, environment, native executable, race events and helper logs as14-day workflow artifact, including available failure evidence"
+  ],
+  "triggers": [
+    "push main/next compatibility source and workflow paths",
+    "manual workflow_dispatch"
+  ],
+  "scope": "native execution on GitHub-hosted ARM64 VM; unit/race and helper/CLI only, no privileged controller writes",
+  "source": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+  "limitations": [
+    "ARM64 source execution is distinct from cross compilation, but is not DBS/HISDBS ARM64 business acceptance.",
+    "Native Go tests use isolated test filesystems; successful unit tests do not prove actual kernel CPU/memory/IO enforcement.",
+    "Record actual kernel; do not assume the runner label proves Linux6.x controller behavior.",
+    "Actual ARM64 container resource/fault/recovery/business and independent multi-device gates stay open.",
+    "No release tag/assets, original node deployment or live baseline program is changed."
+  ]
+}
