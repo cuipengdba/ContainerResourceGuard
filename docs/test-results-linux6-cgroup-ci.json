@@ -1,0 +1,1063 @@
+{
+  "phase": "passed",
+  "cells": [
+    {
+      "branch": "main",
+      "source_revision": "5226217c311ba2b1978166cd51e1ef4ab69bd26c",
+      "run_id": 42845333794,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42845333794",
+      "architecture": "amd64",
+      "workflow_conclusion": "success",
+      "environment": {
+        "source_revision": "5226217c311ba2b1978166cd51e1ef4ab69bd26c",
+        "runner_label": "ubuntu-22.04",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "6.8.0-1070-azure",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "ephemeral native VM compatibility probe; not vendor business",
+        "Linux6_kernel_gate_passed": true
+      },
+      "report": {
+        "phase": "passed",
+        "source_revision": "5226217c311ba2b1978166cd51e1ef4ab69bd26c",
+        "driver_sha256": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+        "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "6.8.0-1070-azure",
+        "tests": [
+          {
+            "name": "exact-native-program-source",
+            "passed": true
+          },
+          {
+            "name": "local-Docker-only",
+            "passed": true
+          },
+          {
+            "name": "scratch-image-native-and-owned",
+            "passed": true
+          },
+          {
+            "name": "manual-exact-three-actual-controls",
+            "passed": true,
+            "actual_controls": {
+              "cpu.max": "50000 100000",
+              "memory.max": "134217728",
+              "io.max": "252:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+              "pids.max": "19154",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            }
+          },
+          {
+            "name": "CPU-actual-throttling",
+            "passed": true
+          },
+          {
+            "name": "read-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "write-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "randwrite-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "memory-limit-and-safe-allocation",
+            "passed": true
+          },
+          {
+            "name": "Agent-crash-retains-kernel-caps-and-PID1",
+            "passed": true
+          },
+          {
+            "name": "same-journal-Agent-restart",
+            "passed": true
+          },
+          {
+            "name": "manual-disable-restores-eight-originals",
+            "passed": true
+          },
+          {
+            "name": "manual-logs-sentinel-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "independent-percentages-and-real-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "percent-disable-before-normal-rebuild",
+            "passed": true
+          },
+          {
+            "name": "new-Docker-ID-discovers-new-journal-identity",
+            "passed": true
+          },
+          {
+            "name": "stable-profile-reused-without-second-calibration",
+            "passed": true
+          },
+          {
+            "name": "daily-log-prefix-retained-and-appended",
+            "passed": true
+          },
+          {
+            "name": "new-container-originals-restore-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "actual-readonly-without-capabilities-is-degraded",
+            "passed": true
+          },
+          {
+            "name": "readonly-failure-visible-and-PID1-preserved",
+            "passed": true
+          },
+          {
+            "name": "readonly-disable-with-no-owned-mutations",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "CPU": {
+            "actual_wall_seconds": 8.105231343000014,
+            "used_CPU_seconds": 4.056901,
+            "average_cores": 0.5005287114356944,
+            "nr_throttled_delta": 81,
+            "load": {
+              "count": 0,
+              "mode": "cpu",
+              "rate": 0,
+              "seconds": 8.065630784
+            }
+          },
+          "read": {
+            "count": 25165824,
+            "mode": "read",
+            "rate": 4189472.5403682454,
+            "seconds": 6.006913779
+          },
+          "write": {
+            "count": 25165824,
+            "mode": "write",
+            "rate": 4194012.978138449,
+            "seconds": 6.000415587
+          },
+          "randwrite": {
+            "count": 6250496,
+            "iops": 250.67195088658517,
+            "mode": "randwrite",
+            "rate": 1026752.3750916272,
+            "seconds": 6.087636524
+          },
+          "percent": {
+            "host_online_CPUs": 4,
+            "host_memory_bytes": 16765386752,
+            "requested_percentages": {
+              "cpu": 10,
+              "memory": 1,
+              "IO": 20
+            },
+            "expected_controls": {
+              "cpu.max": "40000 100000",
+              "memory.max": "167653376",
+              "io.max": "252:0 rbps=83808296 wbps=83091536 riops=1238 wiops=1928",
+              "pids.max": "19154",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "automatic_IO_state": "calibrated",
+            "profile_sha256": "4956de0ce4e1308bb1c3aef2d6110d20fc3794e29cb4644b3012ef18d24d25fd"
+          }
+        },
+        "cleanup": {
+          "own_image_absent": true,
+          "all_owned_containers_and_cgroups_absent": true,
+          "own_mount_mapper_and_loop_absent": true,
+          "private_directory_removed": true
+        },
+        "programs": {
+          "crg": "21a5fa1ce2ca72fb26021dfc06ed7fbe29df7ba7641337b21d0e5968ae54dcc4",
+          "hold": "2e1ca5787edf5c438bb6c6b3c8264d5ffcc92446e990f4964053097e795ded12",
+          "load": "2951530f557a59c92040f1851fa3828812f77b03115497e21f6c1c6f4ca62487"
+        },
+        "docker": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "28.0.4",
+              "Details": {
+                "ApiVersion": "1.48",
+                "Arch": "amd64",
+                "BuildTime": "Tue Mar 25 15:07:11 2025",
+                "Experimental": "false",
+                "GitCommit": "6430e49",
+                "GoVersion": "go1.23.7",
+                "KernelVersion": "6.8.0-1070-azure",
+                "MinAPIVersion": "1.24",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "Version": "28.0.4",
+          "ApiVersion": "1.48",
+          "MinAPIVersion": "1.24",
+          "GitCommit": "6430e49",
+          "GoVersion": "go1.23.7",
+          "Os": "linux",
+          "Arch": "amd64",
+          "KernelVersion": "6.8.0-1070-azure",
+          "BuildTime": "2025-03-25T15:07:11.000000000+00:00"
+        },
+        "storage_fixture": {
+          "kind": "ext4 on real dm-linear UUID over exclusive loop file",
+          "sparse_backing_bytes": 2147483648,
+          "physical_independent_device": false,
+          "device": "252:0"
+        },
+        "data_device": "252:0",
+        "device_inventory": {
+          "exposed": true,
+          "is_partition": false,
+          "direct_identity_files": {
+            "dm/uuid": true,
+            "device/wwid": false,
+            "wwid": false
+          }
+        }
+      },
+      "raw_receipt_sha256": "b55fb315cec361c302eccdce1b80644a52144215c32557d3d90cf3abb1c65996",
+      "native_Go_test_pass_events": 101
+    },
+    {
+      "branch": "main",
+      "source_revision": "5226217c311ba2b1978166cd51e1ef4ab69bd26c",
+      "run_id": 42845333794,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42845333794",
+      "architecture": "arm64",
+      "workflow_conclusion": "success",
+      "environment": {
+        "source_revision": "5226217c311ba2b1978166cd51e1ef4ab69bd26c",
+        "runner_label": "ubuntu-22.04-arm",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "6.8.0-1070-azure",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "ephemeral native VM compatibility probe; not vendor business",
+        "Linux6_kernel_gate_passed": true
+      },
+      "report": {
+        "phase": "passed",
+        "source_revision": "5226217c311ba2b1978166cd51e1ef4ab69bd26c",
+        "driver_sha256": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+        "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "6.8.0-1070-azure",
+        "tests": [
+          {
+            "name": "exact-native-program-source",
+            "passed": true
+          },
+          {
+            "name": "local-Docker-only",
+            "passed": true
+          },
+          {
+            "name": "scratch-image-native-and-owned",
+            "passed": true
+          },
+          {
+            "name": "manual-exact-three-actual-controls",
+            "passed": true,
+            "actual_controls": {
+              "cpu.max": "50000 100000",
+              "memory.max": "134217728",
+              "io.max": "252:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+              "pids.max": "19086",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            }
+          },
+          {
+            "name": "CPU-actual-throttling",
+            "passed": true
+          },
+          {
+            "name": "read-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "write-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "randwrite-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "memory-limit-and-safe-allocation",
+            "passed": true
+          },
+          {
+            "name": "Agent-crash-retains-kernel-caps-and-PID1",
+            "passed": true
+          },
+          {
+            "name": "same-journal-Agent-restart",
+            "passed": true
+          },
+          {
+            "name": "manual-disable-restores-eight-originals",
+            "passed": true
+          },
+          {
+            "name": "manual-logs-sentinel-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "independent-percentages-and-real-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "percent-disable-before-normal-rebuild",
+            "passed": true
+          },
+          {
+            "name": "new-Docker-ID-discovers-new-journal-identity",
+            "passed": true
+          },
+          {
+            "name": "stable-profile-reused-without-second-calibration",
+            "passed": true
+          },
+          {
+            "name": "daily-log-prefix-retained-and-appended",
+            "passed": true
+          },
+          {
+            "name": "new-container-originals-restore-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "actual-readonly-without-capabilities-is-degraded",
+            "passed": true
+          },
+          {
+            "name": "readonly-failure-visible-and-PID1-preserved",
+            "passed": true
+          },
+          {
+            "name": "readonly-disable-with-no-owned-mutations",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "CPU": {
+            "actual_wall_seconds": 8.028799965000076,
+            "used_CPU_seconds": 4.034252,
+            "average_cores": 0.5024726008353059,
+            "nr_throttled_delta": 80,
+            "load": {
+              "count": 0,
+              "mode": "cpu",
+              "rate": 0,
+              "seconds": 8.000053449
+            }
+          },
+          "read": {
+            "count": 25165824,
+            "mode": "read",
+            "rate": 4191747.3903903896,
+            "seconds": 6.003656283
+          },
+          "write": {
+            "count": 26214400,
+            "mode": "write",
+            "rate": 4189253.430701702,
+            "seconds": 6.257533992
+          },
+          "randwrite": {
+            "count": 6250496,
+            "iops": 252.56819893264142,
+            "mode": "randwrite",
+            "rate": 1034520.8631216149,
+            "seconds": 6.041922663
+          },
+          "percent": {
+            "host_online_CPUs": 4,
+            "host_memory_bytes": 16724647936,
+            "requested_percentages": {
+              "cpu": 10,
+              "memory": 1,
+              "IO": 20
+            },
+            "expected_controls": {
+              "cpu.max": "40000 100000",
+              "memory.max": "167243776",
+              "io.max": "252:0 rbps=68515573 wbps=71747971 riops=1227 wiops=2140",
+              "pids.max": "19086",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "automatic_IO_state": "calibrated",
+            "profile_sha256": "e5781127a8a105b78ef24b7eba905b81d0d8f73d6dbe3a146644bc2b66880ebf"
+          }
+        },
+        "cleanup": {
+          "own_image_absent": true,
+          "all_owned_containers_and_cgroups_absent": true,
+          "own_mount_mapper_and_loop_absent": true,
+          "private_directory_removed": true
+        },
+        "programs": {
+          "crg": "5f5d7f9cb6379de07e30c655b8d369826feba64c5f674372e432d3af9396d545",
+          "hold": "7b750250dc734fd872fd07f34376134c23296fe25861222b75d3cac3f0b7e346",
+          "load": "707ec5719ee24796106e2991a1556b15b5cfc60322d11b0c1567f6bd153c5940"
+        },
+        "docker": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "28.0.4",
+              "Details": {
+                "ApiVersion": "1.48",
+                "Arch": "arm64",
+                "BuildTime": "Tue Mar 25 15:07:33 2025",
+                "Experimental": "false",
+                "GitCommit": "6430e49",
+                "GoVersion": "go1.23.7",
+                "KernelVersion": "6.8.0-1070-azure",
+                "MinAPIVersion": "1.24",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "Version": "28.0.4",
+          "ApiVersion": "1.48",
+          "MinAPIVersion": "1.24",
+          "GitCommit": "6430e49",
+          "GoVersion": "go1.23.7",
+          "Os": "linux",
+          "Arch": "arm64",
+          "KernelVersion": "6.8.0-1070-azure",
+          "BuildTime": "2025-03-25T15:07:33.000000000+00:00"
+        },
+        "storage_fixture": {
+          "kind": "ext4 on real dm-linear UUID over exclusive loop file",
+          "sparse_backing_bytes": 2147483648,
+          "physical_independent_device": false,
+          "device": "252:0"
+        },
+        "data_device": "252:0",
+        "device_inventory": {
+          "exposed": true,
+          "is_partition": false,
+          "direct_identity_files": {
+            "dm/uuid": true,
+            "device/wwid": false,
+            "wwid": false
+          }
+        }
+      },
+      "raw_receipt_sha256": "048b914cc2000bfac7e99ed23dc7b97773b8cbf8c1938d60e68e5e16eba80a14",
+      "native_Go_test_pass_events": 101
+    },
+    {
+      "branch": "next/compatibility-contract",
+      "source_revision": "07e75d3dd779f20403e92da30748398f686a093a",
+      "run_id": 42845393945,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42845393945",
+      "architecture": "amd64",
+      "workflow_conclusion": "success",
+      "environment": {
+        "source_revision": "07e75d3dd779f20403e92da30748398f686a093a",
+        "runner_label": "ubuntu-22.04",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "6.8.0-1070-azure",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "ephemeral native VM compatibility probe; not vendor business",
+        "Linux6_kernel_gate_passed": true
+      },
+      "report": {
+        "phase": "passed",
+        "source_revision": "07e75d3dd779f20403e92da30748398f686a093a",
+        "driver_sha256": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+        "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "6.8.0-1070-azure",
+        "tests": [
+          {
+            "name": "exact-native-program-source",
+            "passed": true
+          },
+          {
+            "name": "local-Docker-only",
+            "passed": true
+          },
+          {
+            "name": "scratch-image-native-and-owned",
+            "passed": true
+          },
+          {
+            "name": "manual-exact-three-actual-controls",
+            "passed": true,
+            "actual_controls": {
+              "cpu.max": "50000 100000",
+              "memory.max": "134217728",
+              "io.max": "252:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+              "pids.max": "19154",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            }
+          },
+          {
+            "name": "CPU-actual-throttling",
+            "passed": true
+          },
+          {
+            "name": "read-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "write-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "randwrite-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "memory-limit-and-safe-allocation",
+            "passed": true
+          },
+          {
+            "name": "Agent-crash-retains-kernel-caps-and-PID1",
+            "passed": true
+          },
+          {
+            "name": "same-journal-Agent-restart",
+            "passed": true
+          },
+          {
+            "name": "manual-disable-restores-eight-originals",
+            "passed": true
+          },
+          {
+            "name": "manual-logs-sentinel-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "independent-percentages-and-real-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "percent-disable-before-normal-rebuild",
+            "passed": true
+          },
+          {
+            "name": "new-Docker-ID-discovers-new-journal-identity",
+            "passed": true
+          },
+          {
+            "name": "stable-profile-reused-without-second-calibration",
+            "passed": true
+          },
+          {
+            "name": "daily-log-prefix-retained-and-appended",
+            "passed": true
+          },
+          {
+            "name": "new-container-originals-restore-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "actual-readonly-without-capabilities-is-degraded",
+            "passed": true
+          },
+          {
+            "name": "readonly-failure-visible-and-PID1-preserved",
+            "passed": true
+          },
+          {
+            "name": "readonly-disable-with-no-owned-mutations",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "CPU": {
+            "actual_wall_seconds": 8.058081455999996,
+            "used_CPU_seconds": 4.056015,
+            "average_cores": 0.5033474806810146,
+            "nr_throttled_delta": 81,
+            "load": {
+              "count": 0,
+              "mode": "cpu",
+              "rate": 0,
+              "seconds": 8.02089885
+            }
+          },
+          "read": {
+            "count": 25165824,
+            "mode": "read",
+            "rate": 4189266.1749203852,
+            "seconds": 6.007208764
+          },
+          "write": {
+            "count": 26214400,
+            "mode": "write",
+            "rate": 4196390.969299529,
+            "seconds": 6.246890909
+          },
+          "randwrite": {
+            "count": 6250496,
+            "iops": 252.01752480851266,
+            "mode": "randwrite",
+            "rate": 1032263.8157111555,
+            "seconds": 6.055133152
+          },
+          "percent": {
+            "host_online_CPUs": 4,
+            "host_memory_bytes": 16765386752,
+            "requested_percentages": {
+              "cpu": 10,
+              "memory": 1,
+              "IO": 20
+            },
+            "expected_controls": {
+              "cpu.max": "40000 100000",
+              "memory.max": "167653376",
+              "io.max": "252:0 rbps=86328968 wbps=53372820 riops=1135 wiops=1394",
+              "pids.max": "19154",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "automatic_IO_state": "calibrated",
+            "profile_sha256": "a568bf60aa307a2a05fac97719871d957fcb34a0dd1f90d8630ffc0aedd9d0dc"
+          }
+        },
+        "cleanup": {
+          "own_image_absent": true,
+          "all_owned_containers_and_cgroups_absent": true,
+          "own_mount_mapper_and_loop_absent": true,
+          "private_directory_removed": true
+        },
+        "programs": {
+          "crg": "8b80a92a42290122ed5c4e14fabe3bf28b52ea04012dc686b1985db973ce2d6e",
+          "hold": "31355547144c2d60f662d06c94ecf857ec216d274916b681fcf5b9575faf9a85",
+          "load": "3f5816376fad0c2da9e3498ff0c26a6f4db5e211575ac9f5af77087db533eb87"
+        },
+        "docker": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "28.0.4",
+              "Details": {
+                "ApiVersion": "1.48",
+                "Arch": "amd64",
+                "BuildTime": "Tue Mar 25 15:07:11 2025",
+                "Experimental": "false",
+                "GitCommit": "6430e49",
+                "GoVersion": "go1.23.7",
+                "KernelVersion": "6.8.0-1070-azure",
+                "MinAPIVersion": "1.24",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "Version": "28.0.4",
+          "ApiVersion": "1.48",
+          "MinAPIVersion": "1.24",
+          "GitCommit": "6430e49",
+          "GoVersion": "go1.23.7",
+          "Os": "linux",
+          "Arch": "amd64",
+          "KernelVersion": "6.8.0-1070-azure",
+          "BuildTime": "2025-03-25T15:07:11.000000000+00:00"
+        },
+        "storage_fixture": {
+          "kind": "ext4 on real dm-linear UUID over exclusive loop file",
+          "sparse_backing_bytes": 2147483648,
+          "physical_independent_device": false,
+          "device": "252:0"
+        },
+        "data_device": "252:0",
+        "device_inventory": {
+          "exposed": true,
+          "is_partition": false,
+          "direct_identity_files": {
+            "dm/uuid": true,
+            "device/wwid": false,
+            "wwid": false
+          }
+        }
+      },
+      "raw_receipt_sha256": "194679b596845b22274ebd1afe45e4f4f6b5d30153bf97a2c03c7345c14a26d6",
+      "native_Go_test_pass_events": 184
+    },
+    {
+      "branch": "next/compatibility-contract",
+      "source_revision": "07e75d3dd779f20403e92da30748398f686a093a",
+      "run_id": 42845393945,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42845393945",
+      "architecture": "arm64",
+      "workflow_conclusion": "success",
+      "environment": {
+        "source_revision": "07e75d3dd779f20403e92da30748398f686a093a",
+        "runner_label": "ubuntu-22.04-arm",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "6.8.0-1070-azure",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "ephemeral native VM compatibility probe; not vendor business",
+        "Linux6_kernel_gate_passed": true
+      },
+      "report": {
+        "phase": "passed",
+        "source_revision": "07e75d3dd779f20403e92da30748398f686a093a",
+        "driver_sha256": "b446cc750e1287a8d1fd7fbd7c70f592d13fe6e6bf3fa5078696c72600426ed8",
+        "scope": "native scratch placeholder PID1, actual own cgroup; not vendor business",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "6.8.0-1070-azure",
+        "tests": [
+          {
+            "name": "exact-native-program-source",
+            "passed": true
+          },
+          {
+            "name": "local-Docker-only",
+            "passed": true
+          },
+          {
+            "name": "scratch-image-native-and-owned",
+            "passed": true
+          },
+          {
+            "name": "manual-exact-three-actual-controls",
+            "passed": true,
+            "actual_controls": {
+              "cpu.max": "50000 100000",
+              "memory.max": "134217728",
+              "io.max": "252:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+              "pids.max": "19086",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            }
+          },
+          {
+            "name": "CPU-actual-throttling",
+            "passed": true
+          },
+          {
+            "name": "read-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "write-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "randwrite-actual-direct-IO-cap",
+            "passed": true
+          },
+          {
+            "name": "memory-limit-and-safe-allocation",
+            "passed": true
+          },
+          {
+            "name": "Agent-crash-retains-kernel-caps-and-PID1",
+            "passed": true
+          },
+          {
+            "name": "same-journal-Agent-restart",
+            "passed": true
+          },
+          {
+            "name": "manual-disable-restores-eight-originals",
+            "passed": true
+          },
+          {
+            "name": "manual-logs-sentinel-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "independent-percentages-and-real-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "percent-disable-before-normal-rebuild",
+            "passed": true
+          },
+          {
+            "name": "new-Docker-ID-discovers-new-journal-identity",
+            "passed": true
+          },
+          {
+            "name": "stable-profile-reused-without-second-calibration",
+            "passed": true
+          },
+          {
+            "name": "daily-log-prefix-retained-and-appended",
+            "passed": true
+          },
+          {
+            "name": "new-container-originals-restore-and-no-OOM",
+            "passed": true
+          },
+          {
+            "name": "actual-readonly-without-capabilities-is-degraded",
+            "passed": true
+          },
+          {
+            "name": "readonly-failure-visible-and-PID1-preserved",
+            "passed": true
+          },
+          {
+            "name": "readonly-disable-with-no-owned-mutations",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "CPU": {
+            "actual_wall_seconds": 8.035218041000007,
+            "used_CPU_seconds": 4.028158,
+            "average_cores": 0.5013128429678162,
+            "nr_throttled_delta": 80,
+            "load": {
+              "count": 0,
+              "mode": "cpu",
+              "rate": 0,
+              "seconds": 8.00405842
+            }
+          },
+          "read": {
+            "count": 25165824,
+            "mode": "read",
+            "rate": 4191020.7445696555,
+            "seconds": 6.00469951
+          },
+          "write": {
+            "count": 26214400,
+            "mode": "write",
+            "rate": 4197348.32330738,
+            "seconds": 6.245463768
+          },
+          "randwrite": {
+            "count": 6250496,
+            "iops": 252.47398592882564,
+            "mode": "randwrite",
+            "rate": 1034133.4737397569,
+            "seconds": 6.044186105
+          },
+          "percent": {
+            "host_online_CPUs": 4,
+            "host_memory_bytes": 16724647936,
+            "requested_percentages": {
+              "cpu": 10,
+              "memory": 1,
+              "IO": 20
+            },
+            "expected_controls": {
+              "cpu.max": "40000 100000",
+              "memory.max": "167243776",
+              "io.max": "252:0 rbps=63083755 wbps=71572545 riops=1122 wiops=1393",
+              "pids.max": "19086",
+              "cpu.weight": "100",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "automatic_IO_state": "calibrated",
+            "profile_sha256": "bf29eaa54532337b0fa528b6575e5754986520b2f5e15b05fb3146e47d8a5b81"
+          }
+        },
+        "cleanup": {
+          "own_image_absent": true,
+          "all_owned_containers_and_cgroups_absent": true,
+          "own_mount_mapper_and_loop_absent": true,
+          "private_directory_removed": true
+        },
+        "programs": {
+          "crg": "fae1e5c1537da0f07ececff0d002af1971f8e65ba020b66091790e4988dfb82d",
+          "hold": "6797ad69518ba9b6a571ac7b37f56df943a63dcd6567e6f10e11c36d97236600",
+          "load": "e11e58a05b66fbd03f8c291762434dfc7b6974b335525f382fc058a002c69d28"
+        },
+        "docker": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "28.0.4",
+              "Details": {
+                "ApiVersion": "1.48",
+                "Arch": "arm64",
+                "BuildTime": "Tue Mar 25 15:07:33 2025",
+                "Experimental": "false",
+                "GitCommit": "6430e49",
+                "GoVersion": "go1.23.7",
+                "KernelVersion": "6.8.0-1070-azure",
+                "MinAPIVersion": "1.24",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "Version": "28.0.4",
+          "ApiVersion": "1.48",
+          "MinAPIVersion": "1.24",
+          "GitCommit": "6430e49",
+          "GoVersion": "go1.23.7",
+          "Os": "linux",
+          "Arch": "arm64",
+          "KernelVersion": "6.8.0-1070-azure",
+          "BuildTime": "2025-03-25T15:07:33.000000000+00:00"
+        },
+        "storage_fixture": {
+          "kind": "ext4 on real dm-linear UUID over exclusive loop file",
+          "sparse_backing_bytes": 2147483648,
+          "physical_independent_device": false,
+          "device": "252:0"
+        },
+        "data_device": "252:0",
+        "device_inventory": {
+          "exposed": true,
+          "is_partition": false,
+          "direct_identity_files": {
+            "dm/uuid": true,
+            "device/wwid": false,
+            "wwid": false
+          }
+        }
+      },
+      "raw_receipt_sha256": "f7e2241401df7677f01cc053b1352bb07c311a9f5363b13686154c1d8c0a3dab",
+      "native_Go_test_pass_events": 184
+    }
+  ],
+  "scope": "Actual recorded Linux6 native scratch cgroup/controller compatibility, no vendor business or physical-device claim.",
+  "date": "2026-11-10",
+  "total_actual_controller_checks": 88,
+  "plan": "test-plan-linux6-cgroup-ci.json",
+  "limitations": [
+    "Actual Linux6.8.0-1070-azure/Docker28.0.4 on native AMD64/ARM64 ephemeral VMs; not all Linux6 kernels or vendor runtimes.",
+    "Scratch placeholder PID1 and exclusive dm-linear/ext4 over loop; not ARM64 DBS/HISDBS, independent physical multi-device or partition mapping.",
+    "Safe bounded32MiB allocation verifies memory limit, not memory-exhaustion/OOM workload acceptance.",
+    "Built exact CI source commits; not retroactive validation of previously released ARM asset.24h/7d and default20% business evidence remain separate."
+  ]
+}
