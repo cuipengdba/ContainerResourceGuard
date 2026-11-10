@@ -19,6 +19,6 @@ CPU 默认读取 `/sys/devices/system/cpu/online`，内存默认 `/proc/meminfo`
 - 当前实机为 amd64、Linux 5.14、cgroup v2、containerd、单 XFS/LVM 数据设备。实际版本及资源/重启结果见对应报告。
 - 新增单位/重复 MemTotal/数量溢出、虚拟容量、显式宿主来源失败、手动模式继续可用的单元测试；Linux 额外核对普通文件被拒绝、原生 proc/sys 文件可读。
 - 该节点没有 `/proc/pressure/*` 全局 PSI 接口。不可把可选 PSI 逻辑或单元样本描述为本机所有 PSI 指标已实测。
-- 6.x 内核、arm64 真机、多种运行时/namespace、节点重启和连续路径复用仍待测。交叉编译不表示真机通过，不扩大稳定支持范围。
+- 后续已补Linux6.8/7.0与AMD64/ARM64原生控制器CI，按原发布包、当前程序和分区来源分别归档，见[环境覆盖索引](environment-coverage.md)。ARM厂商业务、其他运行时/namespace、独立物理多设备及节点重启仍未完整验收；原生CI和交叉编译不扩大稳定支持范围。
 
 这些检查也将进入后续诊断与支持矩阵。版本发布与生产接入分别记录。
