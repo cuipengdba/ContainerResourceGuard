@@ -82,3 +82,6 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 P04/P06真实分区控制验收在独立分支新增[冻结计划和四格手动工作流](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-cgroup.md)，涵盖双分区共享预算、旧发布包恢复和几何变化缓存失效；仍未执行，不将其记录为支持完成。工作流仅在next/partition-io选择运行；本线产品和97正式长测未改。
+
+
+P04/P06独立分支[真实GPT双分区四格164项通过](testing-partition-cgroup.md)：实际6.8/7.0双架构、共享预算、旧发布包恢复和缓存几何失效；首轮DM失败和所有边界保留。分区产品代码尚未合入本线或发布，正式长测和原资产不变。

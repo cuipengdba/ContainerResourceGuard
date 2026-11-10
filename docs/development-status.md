@@ -112,3 +112,6 @@ R25/R26与P01.7/P10.5已归档，十版任务增加到48项。当前RC3及1.0组
 当前三资源/日志组合程序的正常、持续导出失败、只读cgroup三组30min工程开销测量已开始，尚未结束；不代替业务性能或正式长期验收。见[冻结计划和启动状态](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-long.md)。
 
 P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/partition-io)开发：文件系统/控制目标分离、同盘共享限额和标定/诊断已接入，Linux race及原整盘四格88项回归通过；[来源及未完成范围](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-io-core.md)。真实分区IO/旧二进制恢复仍待验收，未合入本线、未发布；正式长测程序和预算不变。
+
+
+分区开发线现已完成[真实GPT双分区四格164项验收](testing-partition-cgroup.md)，独立分支实现af1a34d、实际运行468fe73；尚未合入本线或发布，正式长测/物理多设备/ARM厂商业务门槛未关闭。

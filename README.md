@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+分区IO增强在独立开发分支完成[真实GPT双分区四格164项检查](docs/testing-partition-cgroup.md)，尚未合入本线或发布；正式长测程序和现有下载包保持原来源。
+
 
 [v0.1.0-rc.3-preview.1工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1)以R29/R30为准：只暴露三个独立资源百分比，cgroup v1跳过/v2校验设置，日志保留。两线38项隔离工程检查通过；发布范围与实测见[最新版本说明](docs/next-version.md)，正式业务与长期验收继续。
 
