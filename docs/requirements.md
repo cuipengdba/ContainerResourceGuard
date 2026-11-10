@@ -117,3 +117,6 @@ P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、�
 
 
 当前d370另按[真实路径维护冻结计划](test-plan-partition-realpaths-maintenance.json)验证50671aa开发程序到当前程序的升级/回退，两角色各600秒、预计22项；必须等当前20场景故障通过且夹具独立不存在后才创建维护Pod。当前未启动，不替代最近两个已发布次版本，也不绕过旧预览缺协议的拒绝。
+
+
+当前同程序故障[中间观察](test-progress-partition-realpaths-faults.json)9场景checked/49项通过，整轮尚未接受；[维护协调已启动但仅等待前置](test-start-partition-realpaths-maintenance.json)，0个Pod/0项。程序、预算和期限保持冻结，正式基线另有[21h固定观察](continuous-acceptance.md)，尚非86400秒通过。
