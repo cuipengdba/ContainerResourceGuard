@@ -115,3 +115,6 @@ P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipeng
 
 
 分区开发线现已完成[真实GPT双分区四格164项验收](testing-partition-cgroup.md)，独立分支实现af1a34d、实际运行468fe73；尚未合入本线或发布，正式长测/物理多设备/ARM厂商业务门槛未关闭。
+
+
+组合d3706f3已完成[当前提交CI/两架构跨宿主构建及原生回归](testing-partition-integration.md)，原生ARM212个Go pass事件、实际整盘44项通过；新开销按固定计划待启动，既有正式长测和未发布边界不变。
