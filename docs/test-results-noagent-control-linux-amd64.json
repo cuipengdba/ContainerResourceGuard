@@ -1,0 +1,130 @@
+{
+  "phase": "checked",
+  "cases": [
+    {
+      "role": "dbs",
+      "mode": "enforce",
+      "percent": 30,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": true,
+          "one_shot_apply_seconds": 0.5770859278272837,
+          "resident_agent_expected": false,
+          "probe_exec_timeouts_seconds": [
+            22.472141585079953,
+            38.492348856059834,
+            54.512115540215746,
+            70.53246431401931,
+            86.55244486499578,
+            102.57266862411052,
+            118.59244306315668,
+            134.61181481811218,
+            150.63111813319847,
+            166.6520300740376,
+            182.67240737914108,
+            198.69181877118535
+          ],
+          "pg_ready_seconds": 251.6409138571471,
+          "api_ready_seconds": 251.89509039418772,
+          "elapsed_seconds": 251.89509473810904,
+          "kernel_counters": {
+            "cpu.stat": "usage_usec 11505823\nuser_usec 7740436\nsystem_usec 3765386\ncore_sched.force_idle_usec 0\nnr_periods 1551\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "1490489344\n",
+            "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "io.stat": "8:0 rbytes=12288 wbytes=271872 rios=3 wios=39 dbytes=0 dios=0\n253:0 rbytes=12288 wbytes=790365696 rios=3 wios=5324 dbytes=0 dios=0\n"
+          },
+          "actual_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=11474536 wbps=7616556 riops=32 wiops=32"
+          },
+          "resource_state": "managed",
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000",
+              "state": "applied",
+              "detail": "written and verified"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416",
+              "state": "applied",
+              "detail": "written and verified"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32",
+              "state": "applied",
+              "detail": "written and verified"
+            }
+          ],
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32"
+            }
+          ],
+          "original_ls_probe_exit": 0,
+          "sql_ok": true,
+          "no_resident_crg_verified": true
+        }
+      ],
+      "own_pod_removed": true
+    }
+  ],
+  "started": 1794257727.136256,
+  "criteria": {
+    "first_liveness_delay_seconds": 300,
+    "database_and_api_deadline_seconds": 300,
+    "probe_interval_seconds": 1
+  },
+  "scope": "disposable original-image Pods with original start and optional helpers, cold initialization and data-preserving Pod recreation; no production changes",
+  "calibration_quality": {
+    "version": 2,
+    "created_utc": "2026-11-09T19:49:47Z",
+    "devices": [
+      {
+        "profile_device": "253:0",
+        "device": "253:0",
+        "state": "resolved",
+        "detail": "stable device identity matches; this does not establish current performance",
+        "quality": {
+          "samples": 3,
+          "spread_percent": {
+            "read_bps": 43.686440571614185,
+            "read_iops": 43.51851851851852,
+            "write_bps": 69.73315892379705,
+            "write_iops": 18.34862385321101
+          },
+          "warnings": [
+            "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+            "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+            "read_iops spread exceeds 25%; check device competition and repeat explicitly"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      "1 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+    ]
+  },
+  "legacy_profile_is_lower_median_of_three_samples": true,
+  "resource_binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "ended": 1794257990.1861775,
+  "comparison_boundary": "single fresh-init control with the same 30% caps applied before original start; no resident CRG, original optional/cache behavior retained. Probe exec overhead consumes container budget; this is not a statistically controlled performance guarantee."
+}

@@ -37,7 +37,7 @@ public={}
 with tarfile.open(fileobj=io.BytesIO(snapshot),mode='r:') as source:
     for member in source:
         name=member.name
-        selected=name in ('README.md','LICENSE','THIRD_PARTY_NOTICES.md','CHANGELOG.md','SECURITY.md','tests/README.md') or name.startswith(('docs/','examples/','scripts/'))
+        selected=name in ('README.md','LICENSE','THIRD_PARTY_NOTICES.md','CHANGELOG.md','SECURITY.md','tests/README.md','tests/vendor-engine-smoke.py','tests/vendor-soak-load.py','tests/vendor-soak-campaign.py') or name.startswith(('docs/','examples/','scripts/'))
         if not selected:continue
         if member.isdir():public[name]=None
         elif member.isfile():public[name]=source.extractfile(member).read()

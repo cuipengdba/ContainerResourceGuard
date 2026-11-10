@@ -1,0 +1,310 @@
+{
+  "scope": "explicit manual CPU 7.2, memory 20001980416B, read/write 16MiB/s, read/write 256IOPS; failed short engine test",
+  "campaign": {
+    "phase": "engine-suite-checked",
+    "roles": {
+      "dbs": {
+        "candidate_fully_applied": true,
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "720000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "20001980416"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=16777216 wbps=16777216 riops=256 wiops=256"
+          }
+        ],
+        "PID1_unchanged_on_switch": true,
+        "real_original_controls_restored": true,
+        "observe_config_restored": true,
+        "PID1_unchanged_after_campaign": true,
+        "SQL_after_campaign_ok": true
+      },
+      "hisdbs": {
+        "candidate_fully_applied": true,
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "720000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "20001980416"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=16777216 wbps=16777216 riops=256 wiops=256"
+          }
+        ],
+        "PID1_unchanged_on_switch": true,
+        "real_original_controls_restored": true,
+        "observe_config_restored": true,
+        "PID1_unchanged_after_campaign": true,
+        "SQL_after_campaign_ok": true
+      }
+    },
+    "source": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+    "resource_mode": "manual",
+    "cpu_memory_reference_percent": 30,
+    "workload": "public tests/vendor-engine-smoke.py with independent cleanup fix; same 5s probes/300s phases/30s temporary stop deadline; explicit manual IO budget differs from percent-30",
+    "started": 1794260341.1825867,
+    "engine_suite_exit": 1,
+    "engine_suite_phase": "failed",
+    "ended": 1794260543.3464968
+  },
+  "engine": {
+    "phase": "failed",
+    "started": 1794260385.0956354,
+    "roles": {
+      "dbs": {
+        "checks": [
+          {
+            "name": "fixture_initial_rows",
+            "passed": true,
+            "detail": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687"
+          },
+          {
+            "name": "physical_backup_finished",
+            "passed": true,
+            "detail": null
+          }
+        ],
+        "phase": "streaming",
+        "probes": [
+          {
+            "time": 1794260385.5471087,
+            "api_ok": true,
+            "api_seconds": 0.27081529702991247,
+            "sql_ok": true,
+            "sql_seconds": 0.24425852904096246
+          },
+          {
+            "time": 1794260387.0623085,
+            "api_ok": true,
+            "api_seconds": 0.3994788429699838,
+            "sql_ok": true,
+            "sql_seconds": 0.2294241599738598
+          },
+          {
+            "time": 1794260388.691338,
+            "api_ok": true,
+            "api_seconds": 0.2990749110467732,
+            "sql_ok": true,
+            "sql_seconds": 0.24730962002649903
+          },
+          {
+            "time": 1794260390.2378514,
+            "api_ok": true,
+            "api_seconds": 0.2752358990255743,
+            "sql_ok": true,
+            "sql_seconds": 0.23040745384059846
+          },
+          {
+            "time": 1794260391.743624,
+            "api_ok": true,
+            "api_seconds": 0.2657017461024225,
+            "sql_ok": true,
+            "sql_seconds": 0.23557991278357804
+          },
+          {
+            "time": 1794260393.2450292,
+            "api_ok": true,
+            "api_seconds": 0.2719092408660799,
+            "sql_ok": true,
+            "sql_seconds": 0.23841335205361247
+          },
+          {
+            "time": 1794260394.7554421,
+            "api_ok": true,
+            "api_seconds": 0.6914210899267346,
+            "sql_ok": true,
+            "sql_seconds": 0.23395592300221324
+          },
+          {
+            "time": 1794260396.680945,
+            "api_ok": true,
+            "api_seconds": 0.27201571711339056,
+            "sql_ok": true,
+            "sql_seconds": 0.22843837179243565
+          },
+          {
+            "time": 1794260398.1816492,
+            "api_ok": true,
+            "api_seconds": 0.28089969395659864,
+            "sql_ok": true,
+            "sql_seconds": 0.24978240416385233
+          },
+          {
+            "time": 1794260399.712459,
+            "api_ok": true,
+            "api_seconds": 0.27452489803545177,
+            "sql_ok": true,
+            "sql_seconds": 0.239104449050501
+          },
+          {
+            "time": 1794260401.2262182,
+            "api_ok": true,
+            "api_seconds": 0.2879062101710588,
+            "sql_ok": true,
+            "sql_seconds": 0.25372942420654
+          },
+          {
+            "time": 1794260402.7679796,
+            "api_ok": true,
+            "api_seconds": 0.29444195702672005,
+            "sql_ok": true,
+            "sql_seconds": 0.23630919307470322
+          },
+          {
+            "time": 1794260404.298858,
+            "api_ok": true,
+            "api_seconds": 0.2797816260717809,
+            "sql_ok": true,
+            "sql_seconds": 0.24662364111281931
+          },
+          {
+            "time": 1794260405.825391,
+            "api_ok": true,
+            "api_seconds": 0.26857981691136956,
+            "sql_ok": true,
+            "sql_seconds": 0.23679900402203202
+          },
+          {
+            "time": 1794260407.3308966,
+            "api_ok": true,
+            "api_seconds": 0.3103083590976894,
+            "sql_ok": true,
+            "sql_seconds": 0.24761531897820532
+          },
+          {
+            "time": 1794260408.8889482,
+            "api_ok": true,
+            "api_seconds": 0.2736945531796664,
+            "sql_ok": true,
+            "sql_seconds": 0.23547111405059695
+          },
+          {
+            "time": 1794260410.3982413,
+            "api_ok": true,
+            "api_seconds": 0.2744107299949974,
+            "sql_ok": true,
+            "sql_seconds": 0.24410933000035584
+          },
+          {
+            "time": 1794260411.9168887,
+            "api_ok": true,
+            "api_seconds": 0.27380059589631855,
+            "sql_ok": true,
+            "sql_seconds": 0.3152173769194633
+          },
+          {
+            "time": 1794260413.5060406,
+            "api_ok": true,
+            "api_seconds": 0.3161725848913193,
+            "sql_ok": true,
+            "sql_seconds": 0.24275041301734746
+          },
+          {
+            "time": 1794260415.0650837,
+            "api_ok": true,
+            "api_seconds": 0.2826836861204356,
+            "sql_ok": true,
+            "sql_seconds": 0.2460680129006505
+          },
+          {
+            "time": 1794260416.593986,
+            "api_ok": true,
+            "api_seconds": 0.27860891399905086,
+            "sql_ok": true,
+            "sql_seconds": 0.24376263306476176
+          },
+          {
+            "time": 1794260418.116485,
+            "api_ok": true,
+            "api_seconds": 1.8497328648809344,
+            "sql_ok": false,
+            "sql_seconds": 10.014064118033275
+          },
+          {
+            "time": 1794260430.9804134,
+            "api_ok": true,
+            "api_seconds": 0.2699665247928351,
+            "sql_ok": true,
+            "sql_seconds": 9.679864370031282
+          },
+          {
+            "time": 1794260441.9303753,
+            "api_ok": true,
+            "api_seconds": 0.2733893732074648,
+            "sql_ok": false,
+            "sql_seconds": 10.013966378057376
+          },
+          {
+            "time": 1794260453.2178655,
+            "api_ok": true,
+            "api_seconds": 0.28020013216882944,
+            "sql_ok": false,
+            "sql_seconds": 3.186150901950896
+          },
+          {
+            "time": 1794260457.6843655,
+            "api_ok": true,
+            "api_seconds": 0.281280169961974,
+            "sql_ok": false,
+            "sql_seconds": 0.2428359529003501
+          },
+          {
+            "time": 1794260459.2086394,
+            "api_ok": true,
+            "api_seconds": 0.28370177699252963,
+            "sql_ok": false,
+            "sql_seconds": 0.2314628530293703
+          }
+        ],
+        "load_seconds": 28.87675737007521,
+        "primary_before": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687",
+        "logical_backup_seconds": 0.9520229890476912,
+        "physical_backup_seconds": 41.090661611175165,
+        "probe_monitor_stopped": true
+      }
+    },
+    "scope": "isolated original vendor primary plus engine backup/streaming/independent restore; does not verify undocumented vendor backup/sync APIs",
+    "criteria": {
+      "rows": 16384,
+      "payload_bytes_per_row": 4096,
+      "phase_deadline_seconds": 300,
+      "api_max_seconds": 5,
+      "sql_max_seconds": 5,
+      "expected_api_result": "000",
+      "stream_catchup_seconds": 60
+    },
+    "ended": 1794260460.4466918,
+    "failure": "loopback primary SQL connection refused after physical backup; only two DBS content checks reached; no HISDBS engine run"
+  },
+  "followup": {
+    "OOM_events": {
+      "dbs": 0,
+      "hisdbs": 0
+    },
+    "OOM_kills": {
+      "dbs": 0,
+      "hisdbs": 0
+    },
+    "dbs_primary_log": {
+      "SQL_SELECT_1_seconds": 9.546806,
+      "administrator_fast_shutdown_observed": true,
+      "primary_restarted_inside_same_container": true
+    },
+    "causality": "log correlation does not identify signal sender; no evidence of an OOM; the budget is not accepted for continuous enforcement",
+    "temporary_pidfiles_absent": true
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "phase": "failed",
+  "cases": [
+    {
+      "role": "dbs",
+      "mode": "observe",
+      "percent": 20,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 24.583936790935695,
+          "api_ready_seconds": 24.847685384796932,
+          "elapsed_seconds": 24.847688721958548,
+          "resource_state": "observe",
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+            }
+          ],
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000",
+              "state": "observe"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976",
+              "state": "observe"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+              "state": "observe"
+            }
+          ],
+          "sql_ok": true
+        },
+        {
+          "phase": "after-backup-recreation",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 21.867797516053542,
+          "api_ready_seconds": 22.12006618711166,
+          "elapsed_seconds": 22.120071117999032,
+          "resource_state": "observe",
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+            }
+          ],
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000",
+              "state": "observe"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976",
+              "state": "observe"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+              "state": "observe"
+            }
+          ],
+          "sql_ok": true
+        }
+      ],
+      "backup_before_restart_ok": true,
+      "new_resource_identity": true,
+      "old_journal_isolated": false,
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "mode": "enforce",
+      "percent": 20,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": false,
+          "elapsed_seconds": 300.7556679029949,
+          "resource_state": "managed",
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21"
+            }
+          ],
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "480000 100000",
+              "state": "applied",
+              "detail": "written and verified"
+            },
+            {
+              "file": "memory.max",
+              "value": "13334654976",
+              "state": "applied",
+              "detail": "written and verified"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=7649691 wbps=5077704 riops=21 wiops=21",
+              "state": "applied",
+              "detail": "written and verified"
+            }
+          ]
+        }
+      ],
+      "own_pod_removed": true
+    },
+    {
+      "role": "dbs",
+      "mode": "enforce",
+      "percent": 30,
+      "starts": [
+        {
+          "phase": "initialization",
+          "network_down": true,
+          "passed": true,
+          "pg_ready_seconds": 250.25399064994417,
+          "api_ready_seconds": 250.50651061488315,
+          "elapsed_seconds": 250.50651387893595,
+          "resource_state": "managed",
+          "requested": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32"
+            }
+          ],
+          "resource_items": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000",
+              "state": "applied",
+              "detail": "already at desired value"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416",
+              "state": "applied",
+              "detail": "already at desired value"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32",
+              "state": "applied",
+              "detail": "already at desired value"
+            }
+          ],
+          "sql_ok": true
+        },
+        {
+          "phase": "after-backup-recreation",
+          "network_down": true,
+          "passed": false
+        }
+      ],
+      "backup_before_restart_ok": true
+    }
+  ],
+  "started": 1794253935.916793,
+  "criteria": {
+    "first_liveness_delay_seconds": 300,
+    "database_and_api_deadline_seconds": 300,
+    "probe_interval_seconds": 1
+  },
+  "scope": "disposable original-image Pods with original start and optional helpers, cold initialization and data-preserving Pod recreation; no production changes",
+  "calibration_quality": {
+    "version": 2,
+    "created_utc": "2026-11-09T19:49:47Z",
+    "devices": [
+      {
+        "profile_device": "253:0",
+        "device": "253:0",
+        "state": "resolved",
+        "detail": "stable device identity matches; this does not establish current performance",
+        "quality": {
+          "samples": 3,
+          "spread_percent": {
+            "read_bps": 43.686440571614185,
+            "read_iops": 43.51851851851852,
+            "write_bps": 69.73315892379705,
+            "write_iops": 18.34862385321101
+          },
+          "warnings": [
+            "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+            "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+            "read_iops spread exceeds 25%; check device competition and repeat explicitly"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      "1 device profiles inspected; calibration is an explicit local measurement, not physical capacity"
+    ]
+  },
+  "legacy_profile_is_lower_median_of_three_samples": true,
+  "resource_binary_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "ended": 1794254829.1491017,
+  "incomplete_reason": "DBS 30% data-preserving recreation probe exec exceeded 15s; cleanup wait exceeded 150s; later independently confirmed all own cold Pods absent. HISDBS not reached in this run.",
+  "cleanup_later_verified_all_own_cold_pods_absent": true,
+  "original_probe_policy": [
+    {
+      "container_role": "dbs",
+      "image": "db_puc/dbs:V7.0.12.001.02.56",
+      "probes": {
+        "livenessProbe": {
+          "initialDelaySeconds": 300,
+          "periodSeconds": 120,
+          "timeoutSeconds": 300,
+          "failureThreshold": 3,
+          "successThreshold": 1,
+          "handler": "exec",
+          "program": "ls",
+          "command": [
+            "ls"
+          ]
+        }
+      }
+    },
+    {
+      "container_role": "hisdbs",
+      "image": "db_puc/hisdbs:V7.0.12.001.02",
+      "probes": {
+        "livenessProbe": {
+          "initialDelaySeconds": 300,
+          "periodSeconds": 120,
+          "timeoutSeconds": 300,
+          "failureThreshold": 3,
+          "successThreshold": 1,
+          "handler": "exec",
+          "program": "ls",
+          "command": [
+            "ls"
+          ]
+        }
+      }
+    }
+  ],
+  "scope_note": "300s SQL/API cold-start engineering deadline was chosen before the run from first liveness delay. Original ls liveness is separate and does not test database readiness. No liveness failure is inferred from API timeout."
+}

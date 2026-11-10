@@ -1,0 +1,1770 @@
+{
+  "scope": "same original-image fixtures under explicit percent-30 budget; failed short regression, not long acceptance",
+  "campaign": {
+    "phase": "engine-suite-checked",
+    "roles": {
+      "dbs": {
+        "candidate_fully_applied": true,
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "720000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "20001980416"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32"
+          }
+        ],
+        "PID1_unchanged_on_switch": true,
+        "real_original_controls_restored": true,
+        "observe_config_restored": true,
+        "PID1_unchanged_after_campaign": true,
+        "SQL_after_campaign_ok": true
+      },
+      "hisdbs": {
+        "candidate_fully_applied": true,
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "720000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "20001980416"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=11474536 wbps=7616556 riops=32 wiops=32"
+          }
+        ],
+        "PID1_unchanged_on_switch": true,
+        "real_original_controls_restored": true,
+        "observe_config_restored": true,
+        "PID1_unchanged_after_campaign": true,
+        "SQL_after_campaign_ok": true
+      }
+    },
+    "source": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+    "requested_percent": 30,
+    "workload": "public tests/vendor-engine-smoke.py, unchanged predeclared 5s probes/300s phases",
+    "started": 1794259471.6853087,
+    "engine_suite_exit": 1,
+    "engine_suite_phase": "failed",
+    "ended": 1794259976.826356
+  },
+  "engine": {
+    "phase": "failed",
+    "started": 1794259530.3780684,
+    "roles": {
+      "dbs": {
+        "checks": [
+          {
+            "name": "fixture_initial_rows",
+            "passed": true,
+            "detail": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687"
+          },
+          {
+            "name": "physical_backup_finished",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "streaming_new_rows_and_checksum",
+            "passed": true,
+            "detail": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37"
+          },
+          {
+            "name": "standby_in_recovery",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_initial_checksum",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_is_writable",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_does_not_modify_primary",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "logical_restore_initial_rows",
+            "passed": true,
+            "detail": null
+          }
+        ],
+        "phase": "streaming",
+        "probes": [
+          {
+            "time": 1794259530.7721636,
+            "api_ok": true,
+            "api_seconds": 0.2867390720639378,
+            "sql_ok": true,
+            "sql_seconds": 0.24521088600158691
+          },
+          {
+            "time": 1794259532.3042388,
+            "api_ok": true,
+            "api_seconds": 0.27015614695847034,
+            "sql_ok": true,
+            "sql_seconds": 0.24122155806981027
+          },
+          {
+            "time": 1794259533.8157454,
+            "api_ok": true,
+            "api_seconds": 0.2774679691065103,
+            "sql_ok": true,
+            "sql_seconds": 0.23521084804087877
+          },
+          {
+            "time": 1794259535.3285537,
+            "api_ok": true,
+            "api_seconds": 0.26817830884829164,
+            "sql_ok": true,
+            "sql_seconds": 0.24633039603941143
+          },
+          {
+            "time": 1794259536.8431914,
+            "api_ok": true,
+            "api_seconds": 0.2686826288700104,
+            "sql_ok": true,
+            "sql_seconds": 0.23040759400464594
+          },
+          {
+            "time": 1794259538.3424115,
+            "api_ok": true,
+            "api_seconds": 0.2793290698900819,
+            "sql_ok": true,
+            "sql_seconds": 0.241396649973467
+          },
+          {
+            "time": 1794259539.8632677,
+            "api_ok": true,
+            "api_seconds": 0.2750168580096215,
+            "sql_ok": true,
+            "sql_seconds": 0.2536645201034844
+          },
+          {
+            "time": 1794259541.392052,
+            "api_ok": true,
+            "api_seconds": 0.6239843608345836,
+            "sql_ok": true,
+            "sql_seconds": 1.2865098889451474
+          },
+          {
+            "time": 1794259544.302675,
+            "api_ok": true,
+            "api_seconds": 0.2716031949967146,
+            "sql_ok": true,
+            "sql_seconds": 0.23810705402866006
+          },
+          {
+            "time": 1794259545.8125222,
+            "api_ok": true,
+            "api_seconds": 0.2729113781824708,
+            "sql_ok": true,
+            "sql_seconds": 0.24409801908768713
+          },
+          {
+            "time": 1794259547.3296633,
+            "api_ok": true,
+            "api_seconds": 0.2650481581222266,
+            "sql_ok": true,
+            "sql_seconds": 0.23607039893977344
+          },
+          {
+            "time": 1794259548.830911,
+            "api_ok": true,
+            "api_seconds": 0.27166101592592895,
+            "sql_ok": true,
+            "sql_seconds": 0.24003736092709005
+          },
+          {
+            "time": 1794259550.3427386,
+            "api_ok": true,
+            "api_seconds": 0.27278982987627387,
+            "sql_ok": true,
+            "sql_seconds": 0.2379443987738341
+          },
+          {
+            "time": 1794259551.8535993,
+            "api_ok": true,
+            "api_seconds": 0.2736224760301411,
+            "sql_ok": true,
+            "sql_seconds": 0.2424550298601389
+          },
+          {
+            "time": 1794259553.3698037,
+            "api_ok": true,
+            "api_seconds": 0.27849307586438954,
+            "sql_ok": true,
+            "sql_seconds": 0.23914696415886283
+          },
+          {
+            "time": 1794259554.8875782,
+            "api_ok": true,
+            "api_seconds": 0.26413232600316405,
+            "sql_ok": true,
+            "sql_seconds": 0.2508861480746418
+          },
+          {
+            "time": 1794259556.4027288,
+            "api_ok": true,
+            "api_seconds": 0.27590957493521273,
+            "sql_ok": true,
+            "sql_seconds": 0.24096132698468864
+          },
+          {
+            "time": 1794259557.9197311,
+            "api_ok": true,
+            "api_seconds": 0.6675546308979392,
+            "sql_ok": true,
+            "sql_seconds": 0.7074572369456291
+          },
+          {
+            "time": 1794259560.294876,
+            "api_ok": true,
+            "api_seconds": 0.265244574053213,
+            "sql_ok": true,
+            "sql_seconds": 0.2420482800807804
+          },
+          {
+            "time": 1794259561.8022935,
+            "api_ok": true,
+            "api_seconds": 0.2722091400064528,
+            "sql_ok": true,
+            "sql_seconds": 0.23512008204124868
+          },
+          {
+            "time": 1794259563.3097556,
+            "api_ok": true,
+            "api_seconds": 0.2682326848153025,
+            "sql_ok": true,
+            "sql_seconds": 0.2356980110052973
+          },
+          {
+            "time": 1794259564.8138158,
+            "api_ok": true,
+            "api_seconds": 0.2750206859782338,
+            "sql_ok": true,
+            "sql_seconds": 0.2301747619640082
+          },
+          {
+            "time": 1794259566.3191195,
+            "api_ok": true,
+            "api_seconds": 0.2813520801719278,
+            "sql_ok": true,
+            "sql_seconds": 0.2369462619535625
+          },
+          {
+            "time": 1794259567.8375475,
+            "api_ok": true,
+            "api_seconds": 0.27458040905185044,
+            "sql_ok": true,
+            "sql_seconds": 0.2395134400576353
+          },
+          {
+            "time": 1794259569.3517678,
+            "api_ok": true,
+            "api_seconds": 0.2716119568794966,
+            "sql_ok": true,
+            "sql_seconds": 0.2427917681634426
+          },
+          {
+            "time": 1794259570.8663023,
+            "api_ok": true,
+            "api_seconds": 0.2740009871777147,
+            "sql_ok": true,
+            "sql_seconds": 0.2298644888214767
+          },
+          {
+            "time": 1794259572.3702943,
+            "api_ok": true,
+            "api_seconds": 1.153157303109765,
+            "sql_ok": true,
+            "sql_seconds": 0.24415013287216425
+          },
+          {
+            "time": 1794259574.7677314,
+            "api_ok": true,
+            "api_seconds": 0.27343801804818213,
+            "sql_ok": true,
+            "sql_seconds": 0.2383277069311589
+          },
+          {
+            "time": 1794259576.2796285,
+            "api_ok": true,
+            "api_seconds": 0.27277717506513,
+            "sql_ok": true,
+            "sql_seconds": 0.23875517304986715
+          },
+          {
+            "time": 1794259577.791291,
+            "api_ok": true,
+            "api_seconds": 1.0265809108968824,
+            "sql_ok": true,
+            "sql_seconds": 0.23992737103253603
+          },
+          {
+            "time": 1794259580.0579467,
+            "api_ok": true,
+            "api_seconds": 0.2798456600867212,
+            "sql_ok": true,
+            "sql_seconds": 0.24088202696293592
+          },
+          {
+            "time": 1794259581.578808,
+            "api_ok": true,
+            "api_seconds": 0.28935661399737,
+            "sql_ok": true,
+            "sql_seconds": 0.23778825579211116
+          },
+          {
+            "time": 1794259583.106052,
+            "api_ok": true,
+            "api_seconds": 0.27122125611640513,
+            "sql_ok": true,
+            "sql_seconds": 0.2887597850058228
+          },
+          {
+            "time": 1794259584.6661673,
+            "api_ok": true,
+            "api_seconds": 0.2857559940312058,
+            "sql_ok": true,
+            "sql_seconds": 0.2422588882036507
+          },
+          {
+            "time": 1794259586.1943133,
+            "api_ok": true,
+            "api_seconds": 0.27419168991036713,
+            "sql_ok": true,
+            "sql_seconds": 0.2355658879969269
+          },
+          {
+            "time": 1794259587.7042005,
+            "api_ok": true,
+            "api_seconds": 0.29914184799417853,
+            "sql_ok": true,
+            "sql_seconds": 0.23784247180446982
+          },
+          {
+            "time": 1794259589.2412734,
+            "api_ok": true,
+            "api_seconds": 0.2693684329278767,
+            "sql_ok": true,
+            "sql_seconds": 0.2502332329750061
+          },
+          {
+            "time": 1794259590.7610042,
+            "api_ok": true,
+            "api_seconds": 0.28037177911028266,
+            "sql_ok": true,
+            "sql_seconds": 0.2406586268916726
+          },
+          {
+            "time": 1794259592.282173,
+            "api_ok": true,
+            "api_seconds": 0.265647433931008,
+            "sql_ok": true,
+            "sql_seconds": 0.24011975387111306
+          },
+          {
+            "time": 1794259593.7880552,
+            "api_ok": true,
+            "api_seconds": 0.2699616700410843,
+            "sql_ok": true,
+            "sql_seconds": 0.23752415110357106
+          },
+          {
+            "time": 1794259595.295675,
+            "api_ok": true,
+            "api_seconds": 0.27147040888667107,
+            "sql_ok": true,
+            "sql_seconds": 0.2370467430446297
+          },
+          {
+            "time": 1794259596.804321,
+            "api_ok": true,
+            "api_seconds": 0.26944204000756145,
+            "sql_ok": true,
+            "sql_seconds": 0.2334580789320171
+          },
+          {
+            "time": 1794259598.3073492,
+            "api_ok": true,
+            "api_seconds": 0.2796121428254992,
+            "sql_ok": true,
+            "sql_seconds": 0.23938987217843533
+          },
+          {
+            "time": 1794259599.826478,
+            "api_ok": true,
+            "api_seconds": 0.28663834393955767,
+            "sql_ok": true,
+            "sql_seconds": 0.24084405903704464
+          },
+          {
+            "time": 1794259601.3540516,
+            "api_ok": true,
+            "api_seconds": 0.2794191800057888,
+            "sql_ok": true,
+            "sql_seconds": 0.45841069892048836
+          },
+          {
+            "time": 1794259603.092017,
+            "api_ok": true,
+            "api_seconds": 0.35722376103512943,
+            "sql_ok": true,
+            "sql_seconds": 0.256750751985237
+          },
+          {
+            "time": 1794259604.7061253,
+            "api_ok": true,
+            "api_seconds": 0.2653127850499004,
+            "sql_ok": true,
+            "sql_seconds": 0.23997093620710075
+          },
+          {
+            "time": 1794259606.2115366,
+            "api_ok": true,
+            "api_seconds": 0.3607353870756924,
+            "sql_ok": true,
+            "sql_seconds": 0.24130420293658972
+          },
+          {
+            "time": 1794259607.8137043,
+            "api_ok": true,
+            "api_seconds": 0.27518126904033124,
+            "sql_ok": true,
+            "sql_seconds": 0.22921170899644494
+          },
+          {
+            "time": 1794259609.3182235,
+            "api_ok": true,
+            "api_seconds": 0.28609116398729384,
+            "sql_ok": true,
+            "sql_seconds": 0.23821236309595406
+          },
+          {
+            "time": 1794259610.842653,
+            "api_ok": true,
+            "api_seconds": 0.2737921590451151,
+            "sql_ok": true,
+            "sql_seconds": 0.2337372750043869
+          },
+          {
+            "time": 1794259612.3503098,
+            "api_ok": true,
+            "api_seconds": 0.28466225508600473,
+            "sql_ok": true,
+            "sql_seconds": 0.2360745081678033
+          },
+          {
+            "time": 1794259613.8711724,
+            "api_ok": true,
+            "api_seconds": 0.2757494109682739,
+            "sql_ok": true,
+            "sql_seconds": 0.23821178800426424
+          },
+          {
+            "time": 1794259615.3852665,
+            "api_ok": true,
+            "api_seconds": 0.2725427648983896,
+            "sql_ok": true,
+            "sql_seconds": 0.23869288805872202
+          },
+          {
+            "time": 1794259616.8966353,
+            "api_ok": true,
+            "api_seconds": 0.2800540591124445,
+            "sql_ok": true,
+            "sql_seconds": 0.24397521512582898
+          },
+          {
+            "time": 1794259618.420762,
+            "api_ok": true,
+            "api_seconds": 0.3201353659387678,
+            "sql_ok": true,
+            "sql_seconds": 0.24321265798062086
+          },
+          {
+            "time": 1794259619.984238,
+            "api_ok": true,
+            "api_seconds": 0.2719720881432295,
+            "sql_ok": true,
+            "sql_seconds": 0.2303816881030798
+          },
+          {
+            "time": 1794259621.486719,
+            "api_ok": true,
+            "api_seconds": 0.27853493904694915,
+            "sql_ok": true,
+            "sql_seconds": 0.2224217241164297
+          },
+          {
+            "time": 1794259622.9878063,
+            "api_ok": true,
+            "api_seconds": 0.2847675809171051,
+            "sql_ok": true,
+            "sql_seconds": 0.2275366480462253
+          },
+          {
+            "time": 1794259624.5002406,
+            "api_ok": true,
+            "api_seconds": 0.2738436989020556,
+            "sql_ok": true,
+            "sql_seconds": 0.22994138998910785
+          },
+          {
+            "time": 1794259626.004156,
+            "api_ok": true,
+            "api_seconds": 0.2708982699550688,
+            "sql_ok": true,
+            "sql_seconds": 0.2405032808892429
+          },
+          {
+            "time": 1794259627.5156884,
+            "api_ok": true,
+            "api_seconds": 0.26889817300252616,
+            "sql_ok": true,
+            "sql_seconds": 0.23836117307655513
+          },
+          {
+            "time": 1794259629.0230622,
+            "api_ok": true,
+            "api_seconds": 0.27534414315596223,
+            "sql_ok": true,
+            "sql_seconds": 0.2364514849614352
+          },
+          {
+            "time": 1794259630.534984,
+            "api_ok": true,
+            "api_seconds": 0.27126625389792025,
+            "sql_ok": true,
+            "sql_seconds": 0.2416743969079107
+          },
+          {
+            "time": 1794259632.0480573,
+            "api_ok": true,
+            "api_seconds": 0.2742043798789382,
+            "sql_ok": true,
+            "sql_seconds": 0.23525175685063004
+          },
+          {
+            "time": 1794259633.5576415,
+            "api_ok": true,
+            "api_seconds": 0.28175632492639124,
+            "sql_ok": true,
+            "sql_seconds": 0.2326324328314513
+          },
+          {
+            "time": 1794259635.0721598,
+            "api_ok": true,
+            "api_seconds": 0.2742819068953395,
+            "sql_ok": true,
+            "sql_seconds": 0.2399874108377844
+          },
+          {
+            "time": 1794259636.586557,
+            "api_ok": true,
+            "api_seconds": 0.27063898812048137,
+            "sql_ok": true,
+            "sql_seconds": 0.2411032491363585
+          },
+          {
+            "time": 1794259638.0984275,
+            "api_ok": true,
+            "api_seconds": 0.2772988348733634,
+            "sql_ok": true,
+            "sql_seconds": 0.2412153820041567
+          },
+          {
+            "time": 1794259639.6170585,
+            "api_ok": true,
+            "api_seconds": 0.2706038581673056,
+            "sql_ok": true,
+            "sql_seconds": 0.24147326685488224
+          },
+          {
+            "time": 1794259641.129264,
+            "api_ok": true,
+            "api_seconds": 0.28150689601898193,
+            "sql_ok": true,
+            "sql_seconds": 0.23496625199913979
+          },
+          {
+            "time": 1794259642.645867,
+            "api_ok": true,
+            "api_seconds": 0.27456686296500266,
+            "sql_ok": true,
+            "sql_seconds": 0.23744431091472507
+          },
+          {
+            "time": 1794259644.1580095,
+            "api_ok": true,
+            "api_seconds": 0.280361050972715,
+            "sql_ok": true,
+            "sql_seconds": 0.24067695112898946
+          },
+          {
+            "time": 1794259645.6791763,
+            "api_ok": true,
+            "api_seconds": 0.28332296991720796,
+            "sql_ok": true,
+            "sql_seconds": 0.2454501399770379
+          },
+          {
+            "time": 1794259647.208057,
+            "api_ok": true,
+            "api_seconds": 0.27432861598208547,
+            "sql_ok": true,
+            "sql_seconds": 0.2300591911189258
+          },
+          {
+            "time": 1794259648.7125754,
+            "api_ok": true,
+            "api_seconds": 0.28928020712919533,
+            "sql_ok": true,
+            "sql_seconds": 0.24009310314431787
+          },
+          {
+            "time": 1794259650.2420537,
+            "api_ok": true,
+            "api_seconds": 0.2643846150022,
+            "sql_ok": true,
+            "sql_seconds": 0.23542193695902824
+          },
+          {
+            "time": 1794259651.7419899,
+            "api_ok": true,
+            "api_seconds": 0.27654630481265485,
+            "sql_ok": true,
+            "sql_seconds": 0.23711045901291072
+          },
+          {
+            "time": 1794259653.255777,
+            "api_ok": true,
+            "api_seconds": 0.2804054890293628,
+            "sql_ok": true,
+            "sql_seconds": 0.2549986729864031
+          },
+          {
+            "time": 1794259654.7912965,
+            "api_ok": true,
+            "api_seconds": 0.30518254404887557,
+            "sql_ok": true,
+            "sql_seconds": 0.23494355008006096
+          },
+          {
+            "time": 1794259656.331551,
+            "api_ok": true,
+            "api_seconds": 0.2741865119896829,
+            "sql_ok": true,
+            "sql_seconds": 0.23524141497910023
+          },
+          {
+            "time": 1794259657.8411093,
+            "api_ok": true,
+            "api_seconds": 0.2797494640108198,
+            "sql_ok": true,
+            "sql_seconds": 0.24350569397211075
+          },
+          {
+            "time": 1794259659.3644977,
+            "api_ok": true,
+            "api_seconds": 0.2721125481184572,
+            "sql_ok": true,
+            "sql_seconds": 0.2397686680778861
+          },
+          {
+            "time": 1794259660.876514,
+            "api_ok": true,
+            "api_seconds": 0.2788106689695269,
+            "sql_ok": true,
+            "sql_seconds": 0.23481430113315582
+          },
+          {
+            "time": 1794259662.390269,
+            "api_ok": true,
+            "api_seconds": 0.26990185608156025,
+            "sql_ok": true,
+            "sql_seconds": 0.46147759701125324
+          },
+          {
+            "time": 1794259664.121778,
+            "api_ok": true,
+            "api_seconds": 0.27657718607224524,
+            "sql_ok": true,
+            "sql_seconds": 0.2399487711954862
+          },
+          {
+            "time": 1794259665.6384335,
+            "api_ok": true,
+            "api_seconds": 0.2736851929221302,
+            "sql_ok": true,
+            "sql_seconds": 0.23503637104295194
+          },
+          {
+            "time": 1794259667.1472838,
+            "api_ok": true,
+            "api_seconds": 0.27902413811534643,
+            "sql_ok": true,
+            "sql_seconds": 0.2370042239781469
+          },
+          {
+            "time": 1794259668.6634426,
+            "api_ok": true,
+            "api_seconds": 0.2726464420557022,
+            "sql_ok": true,
+            "sql_seconds": 0.23159183491952717
+          },
+          {
+            "time": 1794259670.1678114,
+            "api_ok": true,
+            "api_seconds": 0.27377964090555906,
+            "sql_ok": true,
+            "sql_seconds": 0.2399878848809749
+          },
+          {
+            "time": 1794259671.681708,
+            "api_ok": true,
+            "api_seconds": 0.27478045388124883,
+            "sql_ok": true,
+            "sql_seconds": 0.2327940259128809
+          },
+          {
+            "time": 1794259673.1894174,
+            "api_ok": true,
+            "api_seconds": 0.2778102080337703,
+            "sql_ok": true,
+            "sql_seconds": 0.23507227492518723
+          },
+          {
+            "time": 1794259674.7024312,
+            "api_ok": true,
+            "api_seconds": 0.2615034650079906,
+            "sql_ok": true,
+            "sql_seconds": 0.23699870496056974
+          },
+          {
+            "time": 1794259676.20105,
+            "api_ok": true,
+            "api_seconds": 0.275740158976987,
+            "sql_ok": true,
+            "sql_seconds": 0.24361671693623066
+          },
+          {
+            "time": 1794259677.72054,
+            "api_ok": true,
+            "api_seconds": 0.27952662692405283,
+            "sql_ok": true,
+            "sql_seconds": 0.23722801310941577
+          },
+          {
+            "time": 1794259679.2374232,
+            "api_ok": true,
+            "api_seconds": 0.27009884687140584,
+            "sql_ok": true,
+            "sql_seconds": 0.23509938991628587
+          },
+          {
+            "time": 1794259680.7427523,
+            "api_ok": true,
+            "api_seconds": 0.2713024881668389,
+            "sql_ok": true,
+            "sql_seconds": 0.24747286504134536
+          },
+          {
+            "time": 1794259682.26166,
+            "api_ok": true,
+            "api_seconds": 0.2991972879972309,
+            "sql_ok": true,
+            "sql_seconds": 0.23236212506890297
+          },
+          {
+            "time": 1794259683.7933497,
+            "api_ok": true,
+            "api_seconds": 0.27023113891482353,
+            "sql_ok": true,
+            "sql_seconds": 0.23797894711606205
+          },
+          {
+            "time": 1794259685.3016865,
+            "api_ok": true,
+            "api_seconds": 0.2644820420537144,
+            "sql_ok": true,
+            "sql_seconds": 0.2898476959671825
+          },
+          {
+            "time": 1794259686.8561456,
+            "api_ok": true,
+            "api_seconds": 0.277012123959139,
+            "sql_ok": true,
+            "sql_seconds": 0.23917523701675236
+          },
+          {
+            "time": 1794259688.3724635,
+            "api_ok": true,
+            "api_seconds": 0.2732151478994638,
+            "sql_ok": true,
+            "sql_seconds": 0.23881489993073046
+          },
+          {
+            "time": 1794259689.8846235,
+            "api_ok": true,
+            "api_seconds": 0.2731131208129227,
+            "sql_ok": true,
+            "sql_seconds": 0.24915019585750997
+          },
+          {
+            "time": 1794259691.407023,
+            "api_ok": true,
+            "api_seconds": 0.2757590019609779,
+            "sql_ok": true,
+            "sql_seconds": 0.24026752496138215
+          },
+          {
+            "time": 1794259692.923177,
+            "api_ok": true,
+            "api_seconds": 1.0886361571028829,
+            "sql_ok": true,
+            "sql_seconds": 0.24419148918241262
+          },
+          {
+            "time": 1794259695.256135,
+            "api_ok": true,
+            "api_seconds": 0.27195181092247367,
+            "sql_ok": true,
+            "sql_seconds": 0.2286002840846777
+          },
+          {
+            "time": 1794259696.7568166,
+            "api_ok": true,
+            "api_seconds": 0.2751034270040691,
+            "sql_ok": true,
+            "sql_seconds": 0.23605336202308536
+          },
+          {
+            "time": 1794259698.2681055,
+            "api_ok": true,
+            "api_seconds": 0.2826969020534307,
+            "sql_ok": true,
+            "sql_seconds": 0.2375234211795032
+          },
+          {
+            "time": 1794259699.7884536,
+            "api_ok": true,
+            "api_seconds": 0.2689228290691972,
+            "sql_ok": true,
+            "sql_seconds": 0.23629748611710966
+          },
+          {
+            "time": 1794259701.293825,
+            "api_ok": true,
+            "api_seconds": 0.2644577210303396,
+            "sql_ok": true,
+            "sql_seconds": 0.2401308659464121
+          },
+          {
+            "time": 1794259702.7985523,
+            "api_ok": true,
+            "api_seconds": 0.2753884410485625,
+            "sql_ok": true,
+            "sql_seconds": 0.24443584610708058
+          },
+          {
+            "time": 1794259704.3185234,
+            "api_ok": true,
+            "api_seconds": 0.2780911640729755,
+            "sql_ok": true,
+            "sql_seconds": 0.2456437200307846
+          },
+          {
+            "time": 1794259705.8424106,
+            "api_ok": true,
+            "api_seconds": 0.2731804479844868,
+            "sql_ok": true,
+            "sql_seconds": 0.24376476602628827
+          },
+          {
+            "time": 1794259707.3594942,
+            "api_ok": true,
+            "api_seconds": 0.27486042212694883,
+            "sql_ok": true,
+            "sql_seconds": 0.2358325810637325
+          },
+          {
+            "time": 1794259708.870318,
+            "api_ok": true,
+            "api_seconds": 0.2778692680876702,
+            "sql_ok": true,
+            "sql_seconds": 0.23024429380893707
+          },
+          {
+            "time": 1794259710.3785584,
+            "api_ok": true,
+            "api_seconds": 0.2981407199986279,
+            "sql_ok": true,
+            "sql_seconds": 0.24000452598556876
+          },
+          {
+            "time": 1794259711.9168344,
+            "api_ok": true,
+            "api_seconds": 0.2787973440717906,
+            "sql_ok": true,
+            "sql_seconds": 0.23363135196268559
+          },
+          {
+            "time": 1794259713.4293914,
+            "api_ok": true,
+            "api_seconds": 0.28059338009916246,
+            "sql_ok": true,
+            "sql_seconds": 3.3455691791605204
+          },
+          {
+            "time": 1794259718.0557027,
+            "api_ok": true,
+            "api_seconds": 0.27668643882498145,
+            "sql_ok": true,
+            "sql_seconds": 0.2538685160689056
+          },
+          {
+            "time": 1794259719.5863974,
+            "api_ok": true,
+            "api_seconds": 0.2749281239230186,
+            "sql_ok": true,
+            "sql_seconds": 0.24407478608191013
+          },
+          {
+            "time": 1794259721.1055322,
+            "api_ok": true,
+            "api_seconds": 0.27603610302321613,
+            "sql_ok": true,
+            "sql_seconds": 0.24455311498604715
+          },
+          {
+            "time": 1794259722.6262414,
+            "api_ok": true,
+            "api_seconds": 1.152852308936417,
+            "sql_ok": true,
+            "sql_seconds": 0.7040429750923067
+          },
+          {
+            "time": 1794259725.4832404,
+            "api_ok": true,
+            "api_seconds": 0.2735690230038017,
+            "sql_ok": true,
+            "sql_seconds": 0.23309733904898167
+          },
+          {
+            "time": 1794259726.990043,
+            "api_ok": true,
+            "api_seconds": 0.27526590204797685,
+            "sql_ok": true,
+            "sql_seconds": 0.2338293099310249
+          },
+          {
+            "time": 1794259728.4992673,
+            "api_ok": true,
+            "api_seconds": 0.27369543397799134,
+            "sql_ok": true,
+            "sql_seconds": 0.2375320519786328
+          },
+          {
+            "time": 1794259730.010626,
+            "api_ok": true,
+            "api_seconds": 0.27677679690532386,
+            "sql_ok": true,
+            "sql_seconds": 0.23804823704995215
+          },
+          {
+            "time": 1794259731.5255818,
+            "api_ok": true,
+            "api_seconds": 0.27516544703394175,
+            "sql_ok": true,
+            "sql_seconds": 0.2472797380760312
+          },
+          {
+            "time": 1794259733.048158,
+            "api_ok": true,
+            "api_seconds": 0.2761072809807956,
+            "sql_ok": true,
+            "sql_seconds": 0.2313032611273229
+          },
+          {
+            "time": 1794259734.5556984,
+            "api_ok": true,
+            "api_seconds": 0.27343580895103514,
+            "sql_ok": true,
+            "sql_seconds": 0.26976527203805745
+          },
+          {
+            "time": 1794259736.0990553,
+            "api_ok": true,
+            "api_seconds": 0.2712282589636743,
+            "sql_ok": true,
+            "sql_seconds": 0.24504683399572968
+          },
+          {
+            "time": 1794259737.6154654,
+            "api_ok": true,
+            "api_seconds": 0.2659283399116248,
+            "sql_ok": true,
+            "sql_seconds": 0.24393979483284056
+          },
+          {
+            "time": 1794259739.1254642,
+            "api_ok": true,
+            "api_seconds": 0.28687083907425404,
+            "sql_ok": true,
+            "sql_seconds": 0.2439328811597079
+          },
+          {
+            "time": 1794259740.6564002,
+            "api_ok": true,
+            "api_seconds": 0.2697909481357783,
+            "sql_ok": true,
+            "sql_seconds": 0.24083996401168406
+          },
+          {
+            "time": 1794259742.167125,
+            "api_ok": true,
+            "api_seconds": 0.2702076639980078,
+            "sql_ok": true,
+            "sql_seconds": 0.2466192999854684
+          },
+          {
+            "time": 1794259743.684052,
+            "api_ok": true,
+            "api_seconds": 0.27575954888015985,
+            "sql_ok": true,
+            "sql_seconds": 0.23212347505614161
+          },
+          {
+            "time": 1794259745.192051,
+            "api_ok": true,
+            "api_seconds": 0.2739910401869565,
+            "sql_ok": true,
+            "sql_seconds": 0.24346866109408438
+          },
+          {
+            "time": 1794259746.7096405,
+            "api_ok": true,
+            "api_seconds": 0.2749659460969269,
+            "sql_ok": true,
+            "sql_seconds": 0.2389501379802823
+          },
+          {
+            "time": 1794259748.2236886,
+            "api_ok": true,
+            "api_seconds": 0.2703032928984612,
+            "sql_ok": true,
+            "sql_seconds": 0.23581827990710735
+          },
+          {
+            "time": 1794259749.729944,
+            "api_ok": true,
+            "api_seconds": 0.27371647697873414,
+            "sql_ok": true,
+            "sql_seconds": 0.23742750310339034
+          },
+          {
+            "time": 1794259751.2412243,
+            "api_ok": true,
+            "api_seconds": 0.28282442199997604,
+            "sql_ok": true,
+            "sql_seconds": 0.23735046992078424
+          },
+          {
+            "time": 1794259752.7615323,
+            "api_ok": true,
+            "api_seconds": 1.5104318319354206,
+            "sql_ok": true,
+            "sql_seconds": 0.439678275026381
+          },
+          {
+            "time": 1794259755.7117956,
+            "api_ok": true,
+            "api_seconds": 0.28346873400732875,
+            "sql_ok": true,
+            "sql_seconds": 0.23925705603323877
+          },
+          {
+            "time": 1794259757.2346544,
+            "api_ok": true,
+            "api_seconds": 0.2726797549985349,
+            "sql_ok": true,
+            "sql_seconds": 0.32815284584648907
+          },
+          {
+            "time": 1794259758.8356175,
+            "api_ok": true,
+            "api_seconds": 0.26503392891027033,
+            "sql_ok": true,
+            "sql_seconds": 0.22754198708571494
+          },
+          {
+            "time": 1794259760.328328,
+            "api_ok": true,
+            "api_seconds": 0.27946590282954276,
+            "sql_ok": true,
+            "sql_seconds": 0.238299431046471
+          },
+          {
+            "time": 1794259761.8462265,
+            "api_ok": true,
+            "api_seconds": 0.27396554686129093,
+            "sql_ok": true,
+            "sql_seconds": 0.23605907894670963
+          },
+          {
+            "time": 1794259763.3563817,
+            "api_ok": true,
+            "api_seconds": 0.27808272815309465,
+            "sql_ok": true,
+            "sql_seconds": 0.23297533905133605
+          },
+          {
+            "time": 1794259764.8675728,
+            "api_ok": true,
+            "api_seconds": 0.268708260031417,
+            "sql_ok": true,
+            "sql_seconds": 0.2353201841469854
+          },
+          {
+            "time": 1794259766.3717313,
+            "api_ok": true,
+            "api_seconds": 0.2831210158765316,
+            "sql_ok": true,
+            "sql_seconds": 0.230610131053254
+          },
+          {
+            "time": 1794259767.8856008,
+            "api_ok": true,
+            "api_seconds": 0.3112023901194334,
+            "sql_ok": true,
+            "sql_seconds": 0.23745051305741072
+          },
+          {
+            "time": 1794259769.4343884,
+            "api_ok": true,
+            "api_seconds": 0.2644629408605397,
+            "sql_ok": true,
+            "sql_seconds": 0.23113625310361385
+          },
+          {
+            "time": 1794259770.9301245,
+            "api_ok": true,
+            "api_seconds": 0.2776258201338351,
+            "sql_ok": true,
+            "sql_seconds": 0.24566699704155326
+          },
+          {
+            "time": 1794259772.4535475,
+            "api_ok": true,
+            "api_seconds": 0.2691049608401954,
+            "sql_ok": true,
+            "sql_seconds": 0.2767148329876363
+          },
+          {
+            "time": 1794259773.999503,
+            "api_ok": true,
+            "api_seconds": 0.2743688279297203,
+            "sql_ok": true,
+            "sql_seconds": 0.23703057202510536
+          },
+          {
+            "time": 1794259775.511039,
+            "api_ok": true,
+            "api_seconds": 0.2760125801432878,
+            "sql_ok": true,
+            "sql_seconds": 0.22947673313319683
+          },
+          {
+            "time": 1794259777.016659,
+            "api_ok": true,
+            "api_seconds": 0.28193246806040406,
+            "sql_ok": true,
+            "sql_seconds": 0.23625106317922473
+          },
+          {
+            "time": 1794259778.534977,
+            "api_ok": true,
+            "api_seconds": 0.2744390098378062,
+            "sql_ok": true,
+            "sql_seconds": 0.24221310415305197
+          },
+          {
+            "time": 1794259780.0517642,
+            "api_ok": true,
+            "api_seconds": 0.2772870189510286,
+            "sql_ok": true,
+            "sql_seconds": 0.23301093094050884
+          },
+          {
+            "time": 1794259781.5621974,
+            "api_ok": true,
+            "api_seconds": 0.2758910150732845,
+            "sql_ok": true,
+            "sql_seconds": 0.234617279144004
+          },
+          {
+            "time": 1794259783.0728366,
+            "api_ok": true,
+            "api_seconds": 1.2469123979099095,
+            "sql_ok": true,
+            "sql_seconds": 0.24363494291901588
+          },
+          {
+            "time": 1794259785.5635092,
+            "api_ok": true,
+            "api_seconds": 0.2697118860669434,
+            "sql_ok": true,
+            "sql_seconds": 0.2368955910205841
+          },
+          {
+            "time": 1794259787.0702474,
+            "api_ok": true,
+            "api_seconds": 0.27441328181885183,
+            "sql_ok": true,
+            "sql_seconds": 0.23938089795410633
+          },
+          {
+            "time": 1794259788.5841696,
+            "api_ok": true,
+            "api_seconds": 0.26996037806384265,
+            "sql_ok": true,
+            "sql_seconds": 0.23706048703752458
+          },
+          {
+            "time": 1794259790.091321,
+            "api_ok": true,
+            "api_seconds": 0.2880568888504058,
+            "sql_ok": true,
+            "sql_seconds": 0.233083370141685
+          },
+          {
+            "time": 1794259791.612596,
+            "api_ok": true,
+            "api_seconds": 0.27563856495544314,
+            "sql_ok": true,
+            "sql_seconds": 0.24197382922284305
+          },
+          {
+            "time": 1794259793.130343,
+            "api_ok": true,
+            "api_seconds": 0.2718022679910064,
+            "sql_ok": true,
+            "sql_seconds": 0.23687800695188344
+          },
+          {
+            "time": 1794259794.6391525,
+            "api_ok": true,
+            "api_seconds": 0.27468426595441997,
+            "sql_ok": true,
+            "sql_seconds": 0.2359326200094074
+          },
+          {
+            "time": 1794259796.1499028,
+            "api_ok": true,
+            "api_seconds": 0.2634953339584172,
+            "sql_ok": true,
+            "sql_seconds": 0.24380479799583554
+          },
+          {
+            "time": 1794259797.6573353,
+            "api_ok": true,
+            "api_seconds": 0.26248545199632645,
+            "sql_ok": true,
+            "sql_seconds": 0.2528979601338506
+          },
+          {
+            "time": 1794259799.1728501,
+            "api_ok": true,
+            "api_seconds": 0.2917574269231409,
+            "sql_ok": true,
+            "sql_seconds": 0.23508888902142644
+          },
+          {
+            "time": 1794259800.6998267,
+            "api_ok": true,
+            "api_seconds": 0.2807787489145994,
+            "sql_ok": true,
+            "sql_seconds": 0.2374553820118308
+          },
+          {
+            "time": 1794259802.218193,
+            "api_ok": true,
+            "api_seconds": 0.27534563303925097,
+            "sql_ok": true,
+            "sql_seconds": 0.24099032417871058
+          },
+          {
+            "time": 1794259803.73466,
+            "api_ok": true,
+            "api_seconds": 0.2735544671304524,
+            "sql_ok": true,
+            "sql_seconds": 0.2357931809965521
+          },
+          {
+            "time": 1794259805.2441385,
+            "api_ok": true,
+            "api_seconds": 0.26974083413369954,
+            "sql_ok": true,
+            "sql_seconds": 0.23381517292000353
+          },
+          {
+            "time": 1794259806.7478325,
+            "api_ok": true,
+            "api_seconds": 0.269465948920697,
+            "sql_ok": true,
+            "sql_seconds": 0.2355382340028882
+          },
+          {
+            "time": 1794259808.2529666,
+            "api_ok": true,
+            "api_seconds": 0.2748172050341964,
+            "sql_ok": true,
+            "sql_seconds": 0.2546567788813263
+          },
+          {
+            "time": 1794259809.7825735,
+            "api_ok": true,
+            "api_seconds": 0.27483907504938543,
+            "sql_ok": true,
+            "sql_seconds": 0.2423821270931512
+          },
+          {
+            "time": 1794259811.2999258,
+            "api_ok": true,
+            "api_seconds": 0.25956944515928626,
+            "sql_ok": true,
+            "sql_seconds": 0.2304233720060438
+          },
+          {
+            "time": 1794259812.790052,
+            "api_ok": true,
+            "api_seconds": 0.27118567493744195,
+            "sql_ok": true,
+            "sql_seconds": 0.6207172500435263
+          },
+          {
+            "time": 1794259814.6820524,
+            "api_ok": true,
+            "api_seconds": 0.2710701010655612,
+            "sql_ok": true,
+            "sql_seconds": 0.23407752509228885
+          },
+          {
+            "time": 1794259816.1873302,
+            "api_ok": true,
+            "api_seconds": 0.27451329701580107,
+            "sql_ok": true,
+            "sql_seconds": 0.24323860695585608
+          },
+          {
+            "time": 1794259817.7052126,
+            "api_ok": true,
+            "api_seconds": 0.308343892917037,
+            "sql_ok": true,
+            "sql_seconds": 0.24133901111781597
+          },
+          {
+            "time": 1794259819.2550344,
+            "api_ok": true,
+            "api_seconds": 0.2716233490500599,
+            "sql_ok": true,
+            "sql_seconds": 0.24425417208112776
+          },
+          {
+            "time": 1794259820.7710466,
+            "api_ok": true,
+            "api_seconds": 0.27553245099261403,
+            "sql_ok": true,
+            "sql_seconds": 0.23157185595482588
+          },
+          {
+            "time": 1794259822.2782815,
+            "api_ok": true,
+            "api_seconds": 0.2726213368587196,
+            "sql_ok": true,
+            "sql_seconds": 0.24331085197627544
+          },
+          {
+            "time": 1794259823.7943456,
+            "api_ok": true,
+            "api_seconds": 0.2890728418715298,
+            "sql_ok": true,
+            "sql_seconds": 0.2386404478456825
+          },
+          {
+            "time": 1794259825.3221889,
+            "api_ok": true,
+            "api_seconds": 0.2675147010013461,
+            "sql_ok": true,
+            "sql_seconds": 0.23414198402315378
+          },
+          {
+            "time": 1794259826.8239741,
+            "api_ok": true,
+            "api_seconds": 0.2754383650608361,
+            "sql_ok": true,
+            "sql_seconds": 0.2378450941760093
+          },
+          {
+            "time": 1794259828.3373485,
+            "api_ok": true,
+            "api_seconds": 0.2713243041653186,
+            "sql_ok": true,
+            "sql_seconds": 0.2342046860139817
+          },
+          {
+            "time": 1794259829.843014,
+            "api_ok": true,
+            "api_seconds": 0.2708612030837685,
+            "sql_ok": true,
+            "sql_seconds": 0.24049040395766497
+          },
+          {
+            "time": 1794259831.3544974,
+            "api_ok": true,
+            "api_seconds": 0.27631679782643914,
+            "sql_ok": true,
+            "sql_seconds": 0.2394191559869796
+          },
+          {
+            "time": 1794259832.8703635,
+            "api_ok": true,
+            "api_seconds": 0.2771337970625609,
+            "sql_ok": true,
+            "sql_seconds": 0.23232619115151465
+          },
+          {
+            "time": 1794259834.3799524,
+            "api_ok": true,
+            "api_seconds": 0.2821526590269059,
+            "sql_ok": true,
+            "sql_seconds": 0.23678639600984752
+          },
+          {
+            "time": 1794259835.8990295,
+            "api_ok": true,
+            "api_seconds": 0.2748195899184793,
+            "sql_ok": true,
+            "sql_seconds": 0.23606588412076235
+          },
+          {
+            "time": 1794259837.4100544,
+            "api_ok": true,
+            "api_seconds": 0.26849162788130343,
+            "sql_ok": true,
+            "sql_seconds": 0.2324744169600308
+          },
+          {
+            "time": 1794259838.911154,
+            "api_ok": true,
+            "api_seconds": 0.2742098979651928,
+            "sql_ok": true,
+            "sql_seconds": 0.2459739139303565
+          },
+          {
+            "time": 1794259840.4314702,
+            "api_ok": true,
+            "api_seconds": 0.2821448058821261,
+            "sql_ok": true,
+            "sql_seconds": 0.23491018288768828
+          },
+          {
+            "time": 1794259841.9486566,
+            "api_ok": true,
+            "api_seconds": 0.2722621629945934,
+            "sql_ok": true,
+            "sql_seconds": 0.24101533112116158
+          },
+          {
+            "time": 1794259843.462053,
+            "api_ok": true,
+            "api_seconds": 0.2698157608974725,
+            "sql_ok": true,
+            "sql_seconds": 0.23315360397100449
+          },
+          {
+            "time": 1794259844.9651532,
+            "api_ok": true,
+            "api_seconds": 0.27473443700000644,
+            "sql_ok": true,
+            "sql_seconds": 0.23981464910320938
+          },
+          {
+            "time": 1794259846.4798322,
+            "api_ok": true,
+            "api_seconds": 0.2712701999116689,
+            "sql_ok": true,
+            "sql_seconds": 0.2403502759989351
+          },
+          {
+            "time": 1794259847.9915817,
+            "api_ok": true,
+            "api_seconds": 0.278199773048982,
+            "sql_ok": true,
+            "sql_seconds": 0.23267694702371955
+          },
+          {
+            "time": 1794259849.502591,
+            "api_ok": true,
+            "api_seconds": 0.31154668307863176,
+            "sql_ok": true,
+            "sql_seconds": 0.26742781908251345
+          },
+          {
+            "time": 1794259851.0817082,
+            "api_ok": true,
+            "api_seconds": 0.27322116820141673,
+            "sql_ok": true,
+            "sql_seconds": 0.24157377379015088
+          },
+          {
+            "time": 1794259852.596631,
+            "api_ok": true,
+            "api_seconds": 0.28130951593630016,
+            "sql_ok": true,
+            "sql_seconds": 0.23910315497778356
+          },
+          {
+            "time": 1794259854.117175,
+            "api_ok": true,
+            "api_seconds": 0.27812081505544484,
+            "sql_ok": true,
+            "sql_seconds": 0.25172943715006113
+          },
+          {
+            "time": 1794259855.647156,
+            "api_ok": true,
+            "api_seconds": 0.27937339805066586,
+            "sql_ok": true,
+            "sql_seconds": 0.24238859792239964
+          },
+          {
+            "time": 1794259857.1690488,
+            "api_ok": true,
+            "api_seconds": 0.27495598909445107,
+            "sql_ok": true,
+            "sql_seconds": 0.23433751706033945
+          },
+          {
+            "time": 1794259858.678486,
+            "api_ok": true,
+            "api_seconds": 0.2843832508660853,
+            "sql_ok": true,
+            "sql_seconds": 0.24389861896634102
+          },
+          {
+            "time": 1794259860.2069006,
+            "api_ok": true,
+            "api_seconds": 0.278610500972718,
+            "sql_ok": true,
+            "sql_seconds": 0.2711347281001508
+          },
+          {
+            "time": 1794259861.7567754,
+            "api_ok": true,
+            "api_seconds": 0.2731058259960264,
+            "sql_ok": true,
+            "sql_seconds": 0.2289221240207553
+          },
+          {
+            "time": 1794259863.258937,
+            "api_ok": true,
+            "api_seconds": 0.27342644101008773,
+            "sql_ok": true,
+            "sql_seconds": 0.23458538483828306
+          },
+          {
+            "time": 1794259864.767057,
+            "api_ok": true,
+            "api_seconds": 0.2759878260549158,
+            "sql_ok": true,
+            "sql_seconds": 0.2397373430430889
+          },
+          {
+            "time": 1794259866.2829146,
+            "api_ok": true,
+            "api_seconds": 0.270332639105618,
+            "sql_ok": true,
+            "sql_seconds": 0.2544251789804548
+          },
+          {
+            "time": 1794259867.8078005,
+            "api_ok": true,
+            "api_seconds": 0.26825883495621383,
+            "sql_ok": true,
+            "sql_seconds": 0.2385492690373212
+          },
+          {
+            "time": 1794259869.3147404,
+            "api_ok": true,
+            "api_seconds": 0.2799212238751352,
+            "sql_ok": true,
+            "sql_seconds": 0.24821973801590502
+          },
+          {
+            "time": 1794259870.8430133,
+            "api_ok": true,
+            "api_seconds": 0.2746805790811777,
+            "sql_ok": true,
+            "sql_seconds": 0.23858668305911124
+          },
+          {
+            "time": 1794259872.3564126,
+            "api_ok": true,
+            "api_seconds": 0.2734327579382807,
+            "sql_ok": true,
+            "sql_seconds": 0.28500406607054174
+          },
+          {
+            "time": 1794259873.9149806,
+            "api_ok": true,
+            "api_seconds": 0.2705137350130826,
+            "sql_ok": true,
+            "sql_seconds": 0.23308809590525925
+          },
+          {
+            "time": 1794259875.4187124,
+            "api_ok": true,
+            "api_seconds": 0.27161895483732224,
+            "sql_ok": true,
+            "sql_seconds": 0.2374710850417614
+          },
+          {
+            "time": 1794259876.9279504,
+            "api_ok": true,
+            "api_seconds": 0.2739577929023653,
+            "sql_ok": true,
+            "sql_seconds": 0.23758626589551568
+          },
+          {
+            "time": 1794259878.4396338,
+            "api_ok": true,
+            "api_seconds": 0.2800481009762734,
+            "sql_ok": true,
+            "sql_seconds": 0.23991025611758232
+          },
+          {
+            "time": 1794259879.9597232,
+            "api_ok": true,
+            "api_seconds": 0.27019662503153086,
+            "sql_ok": true,
+            "sql_seconds": 0.23715974297374487
+          },
+          {
+            "time": 1794259881.467209,
+            "api_ok": true,
+            "api_seconds": 0.2750326020177454,
+            "sql_ok": true,
+            "sql_seconds": 0.23564771795645356
+          },
+          {
+            "time": 1794259882.9780211,
+            "api_ok": true,
+            "api_seconds": 0.3035025920253247,
+            "sql_ok": true,
+            "sql_seconds": 0.233634086092934
+          },
+          {
+            "time": 1794259884.5152874,
+            "api_ok": true,
+            "api_seconds": 0.2773223570547998,
+            "sql_ok": true,
+            "sql_seconds": 0.243067397037521
+          },
+          {
+            "time": 1794259886.0358083,
+            "api_ok": true,
+            "api_seconds": 0.27673688903450966,
+            "sql_ok": true,
+            "sql_seconds": 0.2389456769451499
+          },
+          {
+            "time": 1794259887.5516162,
+            "api_ok": true,
+            "api_seconds": 0.26790016796439886,
+            "sql_ok": true,
+            "sql_seconds": 0.2359089031815529
+          },
+          {
+            "time": 1794259889.055555,
+            "api_ok": true,
+            "api_seconds": 0.2799053031485528,
+            "sql_ok": true,
+            "sql_seconds": 0.2310134549625218
+          },
+          {
+            "time": 1794259890.566599,
+            "api_ok": true,
+            "api_seconds": 0.2881459838245064,
+            "sql_ok": false,
+            "sql_seconds": 10.013958811061457
+          },
+          {
+            "time": 1794259901.8688366,
+            "api_ok": false,
+            "api_seconds": 10.014068409102038,
+            "sql_ok": false,
+            "sql_seconds": 10.013876787154004
+          },
+          {
+            "time": 1794259922.8969245,
+            "api_ok": false,
+            "api_seconds": 10.01391124096699,
+            "sql_ok": false,
+            "sql_seconds": 10.013773638987914
+          },
+          {
+            "time": 1794259943.924744,
+            "api_ok": true,
+            "api_seconds": 9.16599538596347,
+            "sql_ok": true,
+            "sql_seconds": 0.24079535203054547
+          }
+        ],
+        "load_seconds": 48.23435447621159,
+        "primary_before": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687",
+        "logical_backup_seconds": 0.9086300521157682,
+        "physical_backup_seconds": 120.06377604906447,
+        "primary_after": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37"
+      }
+    },
+    "scope": "isolated original vendor primary plus engine backup/streaming/independent restore; does not verify undocumented vendor backup/sync APIs",
+    "criteria": {
+      "rows": 16384,
+      "payload_bytes_per_row": 4096,
+      "phase_deadline_seconds": 300,
+      "api_max_seconds": 5,
+      "sql_max_seconds": 5,
+      "expected_api_result": "000",
+      "stream_catchup_seconds": 60
+    },
+    "ended": 1794259953.8026605,
+    "original_failure": "temporary standby pg_ctl fast stop did not finish within its 30-second deadline",
+    "cleanup_failure": "a later cleanup kubectl exec exceeded 45 seconds and masked the original exception; raw private log retained; public entry fixed to attempt both temporary stops and stop the probe monitor independently",
+    "not_reached": [
+      "HISDBS engine suite",
+      "final DBS all-probes assertion and temporary-copy removal"
+    ]
+  },
+  "probe_boundary": "timings include kubectl exec/login overhead; client timeouts do not identify an application-server error, but fail the predeclared end-to-end criterion"
+}

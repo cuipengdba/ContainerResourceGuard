@@ -1,0 +1,248 @@
+{
+  "scope": "different manual budget, read/write 16MiB/s and 4096IOPS; twenty short engine checks; not acceptance of prior failed percent/manual budgets",
+  "campaign": {
+    "phase": "engine-suite-checked",
+    "roles": {
+      "dbs": {
+        "candidate_fully_applied": true,
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "720000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "20001980416"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=16777216 wbps=16777216 riops=4096 wiops=4096"
+          }
+        ],
+        "PID1_unchanged_on_switch": true,
+        "real_original_controls_restored": true
+      },
+      "hisdbs": {
+        "candidate_fully_applied": true,
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "720000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "20001980416"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=16777216 wbps=16777216 riops=4096 wiops=4096"
+          }
+        ],
+        "PID1_unchanged_on_switch": true,
+        "real_original_controls_restored": true
+      }
+    },
+    "source": "fc2e26d9a5e392633434c76065fe6aac320e9891",
+    "resource_mode": "manual",
+    "cpu_memory_reference_percent": 30,
+    "workload": "public tests/vendor-engine-smoke.py with independent cleanup and primary restart checks; same 5s probes/300s phases/30s temporary stop deadline; explicit 16MiB/s and 4096IOPS budget, not percent-30 nor prior manual256",
+    "started": 1794261133.9839725,
+    "engine_suite_exit": 0,
+    "engine_suite_phase": "passed",
+    "restore_errors": {
+      "dbs": "state deadline dbs restored",
+      "hisdbs": "state deadline hisdbs restored"
+    },
+    "ended": 1794261783.4160914
+  },
+  "engine": {
+    "phase": "passed",
+    "started": 1794261297.55565,
+    "roles": {
+      "dbs": {
+        "checks": [
+          {
+            "name": "fixture_initial_rows",
+            "passed": true,
+            "detail": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687"
+          },
+          {
+            "name": "physical_backup_finished",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "streaming_new_rows_and_checksum",
+            "passed": true,
+            "detail": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37"
+          },
+          {
+            "name": "standby_in_recovery",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_initial_checksum",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_is_writable",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_does_not_modify_primary",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "logical_restore_initial_rows",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "primary_did_not_restart",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "business_probes_during_backup_sync_restore",
+            "passed": true,
+            "detail": {
+              "samples": 81,
+              "api_max": 1.5717463879846036,
+              "sql_max": 0.6110834619030356
+            }
+          }
+        ],
+        "phase": "checked",
+        "primary_start_time_before": "2026-11-09 21:41:09.31553+00",
+        "load_seconds": 19.91625045519322,
+        "primary_before": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687",
+        "logical_backup_seconds": 0.9051805869676173,
+        "physical_backup_seconds": 42.75846479204483,
+        "primary_after": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37",
+        "probe_monitor_stopped": true,
+        "primary_start_time_after": "2026-11-09 21:41:09.31553+00",
+        "temporary_servers_stopped_and_copies_removed": true,
+        "probe_summary": {
+          "samples": 81,
+          "failures": 0,
+          "sql_max": 0.6110834619030356,
+          "api_max": 1.5717463879846036
+        }
+      },
+      "hisdbs": {
+        "checks": [
+          {
+            "name": "fixture_initial_rows",
+            "passed": true,
+            "detail": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687"
+          },
+          {
+            "name": "physical_backup_finished",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "streaming_new_rows_and_checksum",
+            "passed": true,
+            "detail": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37"
+          },
+          {
+            "name": "standby_in_recovery",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_initial_checksum",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_is_writable",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "independent_restore_does_not_modify_primary",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "logical_restore_initial_rows",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "primary_did_not_restart",
+            "passed": true,
+            "detail": null
+          },
+          {
+            "name": "business_probes_during_backup_sync_restore",
+            "passed": true,
+            "detail": {
+              "samples": 72,
+              "api_max": 1.2764925048686564,
+              "sql_max": 0.9283053940162063
+            }
+          }
+        ],
+        "phase": "checked",
+        "primary_start_time_before": "2026-11-09 19:19:45.85566+00",
+        "load_seconds": 21.29427679302171,
+        "primary_before": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687",
+        "logical_backup_seconds": 0.9091763601172715,
+        "physical_backup_seconds": 31.73821471608244,
+        "primary_after": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37",
+        "probe_monitor_stopped": true,
+        "primary_start_time_after": "2026-11-09 19:19:45.85566+00",
+        "temporary_servers_stopped_and_copies_removed": true,
+        "probe_summary": {
+          "samples": 72,
+          "failures": 0,
+          "sql_max": 0.9283053940162063,
+          "api_max": 1.2764925048686564
+        }
+      }
+    },
+    "scope": "isolated original vendor primary plus engine backup/streaming/independent restore; does not verify undocumented vendor backup/sync APIs",
+    "criteria": {
+      "rows": 16384,
+      "payload_bytes_per_row": 4096,
+      "phase_deadline_seconds": 300,
+      "api_max_seconds": 5,
+      "sql_max_seconds": 5,
+      "expected_api_result": "000",
+      "stream_catchup_seconds": 60
+    },
+    "ended": 1794261539.6349144
+  },
+  "independent_restoration_followup": {
+    "scope": "independent followup; original 120s observe wait failures retained; helper documented exponential retry up to 300s",
+    "roles": {
+      "dbs": {
+        "observe_config_restored": true,
+        "real_original_controls_restored": true,
+        "container_started_before_campaign": true,
+        "SQL_ok": true,
+        "restart_count": 0
+      },
+      "hisdbs": {
+        "observe_config_restored": true,
+        "real_original_controls_restored": true,
+        "container_started_before_campaign": true,
+        "SQL_ok": true,
+        "restart_count": 0
+      }
+    },
+    "phase": "passed"
+  },
+  "probe_boundary": "summary timings include kubectl exec and login; original raw per-sample report retained privately"
+}

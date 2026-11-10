@@ -1,0 +1,295 @@
+{
+  "schema": "crg-vendor-campaign-v1",
+  "phase": "passed",
+  "test_phase": "smoke",
+  "requested_seconds": 600,
+  "source_run_id": null,
+  "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+  "engine_script_sha256": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b",
+  "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "scope": "synthetic SQL/API and engine cycle in original-image clones; vendor-specific APIs not verified",
+  "criteria": {
+    "host_available_min_bytes": 8589934592,
+    "disk_free_min_bytes": 21474836480,
+    "host_sample_seconds": 60,
+    "OOM_kill_delta_max": 0,
+    "backup_offsets_seconds": [
+      30
+    ]
+  },
+  "roles": {
+    "dbs": {
+      "fixed_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "workload": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009554006159305573,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.0172450591344386
+        },
+        "cluster_database_bytes_final": 1530083835,
+        "cluster_database_bytes_initial": 1529960955,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.5142024348024,
+        "ended_utc": "2026-11-09T23:20:59.622003Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4800
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-09T23:20:59.346426Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-09 21:41:09.31553+00",
+        "primary_start_time_initial": "2026-11-09 21:41:09.31553+00",
+        "requested_duration_seconds": 600,
+        "run_id": "202611100704",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 300,
+          "errors": 0,
+          "histogram": [
+            289,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            0,
+            1,
+            0
+          ],
+          "max_seconds": 2.8387042740359902,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0,
+          "successes": 300,
+          "total_seconds": 4.76741015794687
+        },
+        "started_utc": "2026-11-09T23:10:58.863613Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "sample_count": 11
+    },
+    "hisdbs": {
+      "fixed_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "workload": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            117,
+            2,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.12868390092626214,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.1868334459140897
+        },
+        "cluster_database_bytes_final": 824774802,
+        "cluster_database_bytes_initial": 824668306,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.297725697048,
+        "ended_utc": "2026-11-09T23:21:02.970070Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-09T23:21:02.657429Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-09 19:19:45.85566+00",
+        "primary_start_time_initial": "2026-11-09 19:19:45.85566+00",
+        "requested_duration_seconds": 600,
+        "run_id": "202611100704",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            295,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            2,
+            1,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.8259756888728589,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 1.9686941234394908
+        },
+        "started_utc": "2026-11-09T23:11:02.430334Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "sample_count": 11
+    }
+  },
+  "backups": [
+    {
+      "offset_seconds": 30.040852688020095,
+      "run_id": "20261110070400",
+      "content_started_epoch": 1794265892.9009411,
+      "exit": 0,
+      "phase": "passed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 30,
+            "api_max": 9.582462969934568,
+            "sql_max": 7.457696244120598
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 24,
+            "api_max": 5.369008797919378,
+            "sql_max": 2.523889338830486
+          }
+        }
+      },
+      "content_ended_epoch": 1794266036.0934126,
+      "native_workload_validation": "passed-with-entire-campaign",
+      "content_phase": "content-passed-native-pending"
+    }
+  ],
+  "started_epoch": 1794265845.0750346,
+  "both_workers_started_epoch": 1794265862.8579338,
+  "elapsed_seconds_since_both_started": 600.3242920839693,
+  "ended_epoch": 1794266463.1842182,
+  "test_tools_source": "ea081f2",
+  "campaign_script_sha256": "49ff80ca89c35985b48ba116de46635309836e45571bf9ea6d6a6a1da1f40d6d"
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "crg-vendor-campaign-v1",
+  "phase": "failed",
+  "test_phase": "smoke",
+  "requested_seconds": 600,
+  "source_run_id": null,
+  "worker_sha256": "7e563e6c951f664c6957b13dd02b36669eb365e40a8cdba1c000ac560fb48aa3",
+  "engine_script_sha256": "a82d3329717c7c18cbc6989cc24e37e764488d538d40e4c85074026d3543f0b5",
+  "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "scope": "synthetic SQL/API and engine cycle in original-image clones; vendor-specific APIs not verified",
+  "criteria": {
+    "host_available_min_bytes": 8589934592,
+    "disk_free_min_bytes": 21474836480,
+    "host_sample_seconds": 60,
+    "OOM_kill_delta_max": 0,
+    "backup_offsets_seconds": [
+      30
+    ]
+  },
+  "roles": {
+    "dbs": {
+      "fixed_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "sample_count": 2
+    },
+    "hisdbs": {
+      "fixed_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "sample_count": 2
+    }
+  },
+  "backups": [
+    {
+      "offset_seconds": 30.041597048053518,
+      "run_id": "20261110070200",
+      "exit": 1,
+      "phase": "failed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": false
+        }
+      }
+    }
+  ],
+  "started_epoch": 1794264392.3318102,
+  "both_workers_started_epoch": 1794264403.7139747,
+  "failure_class": "RuntimeError",
+  "failure": "periodic engine regression or cleanup failed",
+  "ended_epoch": 1794264490.2491655,
+  "detail": {
+    "dbs_exec_probe_samples": 21,
+    "dbs_exec_api_max_seconds": 3.3867831379175186,
+    "dbs_exec_sql_max_seconds": 5.761989649152383,
+    "failure": "one successful SQL exec exceeded fixed 5s end-to-end criterion; native workers interrupted before 600s; HIS engine suite not reached"
+  }
+}

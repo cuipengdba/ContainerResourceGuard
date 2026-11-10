@@ -1,0 +1,278 @@
+{
+  "schema": "crg-vendor-campaign-v1",
+  "phase": "failed",
+  "test_phase": "smoke",
+  "requested_seconds": 600,
+  "source_run_id": null,
+  "worker_sha256": "7e563e6c951f664c6957b13dd02b36669eb365e40a8cdba1c000ac560fb48aa3",
+  "engine_script_sha256": "a82d3329717c7c18cbc6989cc24e37e764488d538d40e4c85074026d3543f0b5",
+  "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "scope": "synthetic SQL/API and engine cycle in original-image clones; vendor-specific APIs not verified",
+  "criteria": {
+    "host_available_min_bytes": 8589934592,
+    "disk_free_min_bytes": 21474836480,
+    "host_sample_seconds": 60,
+    "OOM_kill_delta_max": 0,
+    "backup_offsets_seconds": [
+      30
+    ]
+  },
+  "roles": {
+    "dbs": {
+      "fixed_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "sample_count": 3
+    },
+    "hisdbs": {
+      "fixed_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "cpu.weight": "4",
+        "pids.max": "406648",
+        "memory.high": "max",
+        "memory.swap.max": "0",
+        "io.weight": "default 100"
+      },
+      "sample_count": 3
+    }
+  },
+  "backups": [
+    {
+      "offset_seconds": 30.041780889965594,
+      "run_id": "20261110070300",
+      "exit": 1,
+      "phase": "failed",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": false
+        }
+      }
+    }
+  ],
+  "started_epoch": 1794265224.3330953,
+  "both_workers_started_epoch": 1794265240.1460164,
+  "failure_class": "RuntimeError",
+  "failure": "periodic engine regression or cleanup failed",
+  "ended_epoch": 1794265362.1982548,
+  "native_interrupted_reports": {
+    "dbs": {
+      "api": {
+        "attempts": 25,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          24,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.010287463897839189,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 0.20833333333333334,
+        "successes": 25,
+        "total_seconds": 0.2114775360096246
+      },
+      "cluster_database_bytes_final": 1437751803,
+      "cluster_database_bytes_initial": 1233327832,
+      "criteria": {
+        "api_period_seconds": 5,
+        "maximum_errors": 0,
+        "maximum_seconds": 5,
+        "minimum_scheduled_samples_fraction": 0.98,
+        "p95_upper_bound_seconds": 1,
+        "sql_period_seconds": 2
+      },
+      "elapsed_seconds": 123.46272135386243,
+      "ended_utc": "2026-11-09T23:02:42.091817Z",
+      "final_checksum": [
+        16384,
+        134225920,
+        67108864,
+        "10b3b8214172d3b698258a128e9c6687",
+        992
+      ],
+      "initial_checksum": [
+        16384,
+        134225920,
+        67108864,
+        "10b3b8214172d3b698258a128e9c6687",
+        0
+      ],
+      "interrupted": true,
+      "latency_bucket_upper_seconds": [
+        0.001,
+        0.005,
+        0.01,
+        0.02,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1,
+        2,
+        5,
+        "over-5"
+      ],
+      "payload_integrity": true,
+      "phase": "failed",
+      "primary_not_restarted": true,
+      "primary_start_time_final": "2026-11-09 21:41:09.31553+00",
+      "primary_start_time_initial": "2026-11-09 21:41:09.31553+00",
+      "requested_duration_seconds": 600,
+      "run_id": "202611100703",
+      "schema": "crg-vendor-soak-v1",
+      "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+      "sql": {
+        "attempts": 62,
+        "errors": 0,
+        "histogram": [
+          48,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          3,
+          5,
+          1,
+          0
+        ],
+        "max_seconds": 2.3278520829044282,
+        "p95_bucket_upper_seconds": 2,
+        "sample_coverage": 0.20666666666666667,
+        "successes": 62,
+        "total_seconds": 12.61357018747367
+      },
+      "started_utc": "2026-11-09T23:00:38.385922Z",
+      "test_phase": "smoke",
+      "threads_stopped": true
+    },
+    "hisdbs": {
+      "api": {
+        "attempts": 25,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          24,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.01372641115449369,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 0.20833333333333334,
+        "successes": 25,
+        "total_seconds": 0.21788119431585073
+      },
+      "cluster_database_bytes_final": 732491922,
+      "cluster_database_bytes_initial": 732459154,
+      "criteria": {
+        "api_period_seconds": 5,
+        "maximum_errors": 0,
+        "maximum_seconds": 5,
+        "minimum_scheduled_samples_fraction": 0.98,
+        "p95_upper_bound_seconds": 1,
+        "sql_period_seconds": 2
+      },
+      "elapsed_seconds": 122.22140849079005,
+      "ended_utc": "2026-11-09T23:02:42.121434Z",
+      "final_checksum": [
+        16384,
+        134225920,
+        67108864,
+        "10b3b8214172d3b698258a128e9c6687",
+        992
+      ],
+      "initial_checksum": [
+        16384,
+        134225920,
+        67108864,
+        "10b3b8214172d3b698258a128e9c6687",
+        0
+      ],
+      "interrupted": true,
+      "latency_bucket_upper_seconds": [
+        0.001,
+        0.005,
+        0.01,
+        0.02,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1,
+        2,
+        5,
+        "over-5"
+      ],
+      "payload_integrity": true,
+      "phase": "failed",
+      "primary_not_restarted": true,
+      "primary_start_time_final": "2026-11-09 19:19:45.85566+00",
+      "primary_start_time_initial": "2026-11-09 19:19:45.85566+00",
+      "requested_duration_seconds": 600,
+      "run_id": "202611100703",
+      "schema": "crg-vendor-soak-v1",
+      "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+      "sql": {
+        "attempts": 62,
+        "errors": 0,
+        "histogram": [
+          60,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.011575306067243218,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 0.20666666666666667,
+        "successes": 62,
+        "total_seconds": 0.055151272332295775
+      },
+      "started_utc": "2026-11-09T23:00:39.660541Z",
+      "test_phase": "smoke",
+      "threads_stopped": true
+    }
+  },
+  "exec_probe_failure": {
+    "dbs_samples": 34,
+    "api_max_seconds": 8.738921765005216,
+    "sql_max_seconds": 10.013746269978583,
+    "SQL_exec_timed_out": true
+  }
+}
