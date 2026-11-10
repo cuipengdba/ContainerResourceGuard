@@ -7,16 +7,18 @@ import (
 )
 
 type DeviceCoverage struct {
-	ProfileDevice string `json:"profile_device"`
-	Device        string `json:"resolved_device,omitempty"`
-	State         string `json:"state"`
-	Detail        string `json:"detail"`
+	ProfileDevice    string `json:"profile_device"`
+	FilesystemDevice string `json:"filesystem_device,omitempty"`
+	Device           string `json:"resolved_device,omitempty"`
+	State            string `json:"state"`
+	Detail           string `json:"detail"`
 }
 type PathCoverage struct {
-	Path   string `json:"path"`
-	Device string `json:"device,omitempty"`
-	State  string `json:"state"`
-	Detail string `json:"detail"`
+	Path          string `json:"path"`
+	Device        string `json:"device,omitempty"`
+	ControlDevice string `json:"control_device,omitempty"`
+	State         string `json:"state"`
+	Detail        string `json:"detail"`
 }
 
 func pathCoverage(paths []string, settings []Setting) []PathCoverage {
@@ -28,9 +30,16 @@ func pathCoverage(paths []string, settings []Setting) []PathCoverage {
 			i.Detail = err.Error()
 		} else {
 			i.Device = dev
+			binding, err := ResolveIOBlockDevice(dev)
+			if err != nil {
+				i.Detail = err.Error()
+				r = append(r, i)
+				continue
+			}
+			i.ControlDevice = binding.ControlDevice
 			for _, s := range settings {
-				if s.File == "io.max" && s.Device == dev {
-					i.State, i.Detail = "planned", "filesystem device present in plan; actual enforcement requires readback and workload verification"
+				if s.File == "io.max" && s.Device == binding.ControlDevice && s.DeviceIdentity == binding.ControlIdentity {
+					i.State, i.Detail = "planned", "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
 				}
 			}
 		}

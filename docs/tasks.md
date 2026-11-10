@@ -188,3 +188,5 @@ P02/P08[共享程序切换与独立恢复演练已通过](testing-shared-program
 P06/P09新增[实际发布包原生控制器计划](plan-released-cgroup-ci.md)：直接校验并运行原预览AMD64/ARM64下载资产，计划四格实际6.x/7.x环境，不重建CRG。执行前冻结合同，未有结果不改写原资产覆盖范围；正式业务和长期门槛不变。
 
 P06/P09[原发布预览包AMD64/ARM64实测四格88项通过](testing-released-cgroup-ci.md)：直接运行原下载资产，实际Linux6.8/7.0、Docker28.0.4，三控制/自动百分比/新ID/日志/崩溃恢复和只读降级及自有夹具清理通过；发布标签、资产摘要和prerelease状态未改。只补原包占位容器证据，不关闭ARM厂商业务、物理多设备、分区或长期条件。
+
+P04/P06分区修复在`next/partition-io`独立开发：身份/整盘目标、同盘共享限额、标定与覆盖已接入，Windows测试/vet通过；Linux及真实分区验收仍待执行。见[设计与边界](partition-io.md)和[执行前冻结计划](test-plan-partition-io-core.json)。本分支未合入、未发布，不修改正式长测候选。

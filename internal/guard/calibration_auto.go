@@ -17,6 +17,7 @@ type CalibrationSelection struct {
 	Filesystem     string `json:"filesystem"`
 	Device         string `json:"device"`
 	Identity       string `json:"identity"`
+	ControlDevice  string `json:"control_device,omitempty"`
 	TotalBytes     uint64 `json:"total_bytes"`
 	AvailableBytes uint64 `json:"available_bytes"`
 }
@@ -72,7 +73,11 @@ func prepareAutomaticIO(ctx context.Context, c Config, env Environment,
 	}
 	// An existing cap would measure the inherited cap, rather than a useful
 	// unconstrained baseline. Do not temporarily lift anyone's IO limits.
-	if err = calibrationUncapped(env.Target, selected.Device); err != nil {
+	control := selected.ControlDevice
+	if control == "" {
+		control = selected.Device
+	}
+	if err = calibrationUncapped(env.Target, control); err != nil {
 		return fail("calibration_existing_io_limit", err)
 	}
 	if err = calibrationOutputReady(c.IOProfile); err != nil {

@@ -94,11 +94,11 @@ func manualDevice(path string) (string, string, error) {
 	if _, err = os.Stat(filepath.Join("/sys/dev/block", dev)); err != nil {
 		return "", "", errors.New("filesystem does not resolve to an exposed block device; no backend inferred")
 	}
-	id, err := DeviceIdentity(dev)
+	device, err := ResolveIOBlockDevice(dev)
 	if err != nil {
 		return "", "", err
 	}
-	return dev, id, nil
+	return device.ControlDevice, device.ControlIdentity, nil
 }
 
 func manualIO(c Config, env Environment, original map[string]string, resolve func(string) (string, string, error), related func(string, string) (bool, error)) (settings []Setting, devices []DeviceCoverage, warnings []string) {
@@ -143,7 +143,7 @@ func manualIO(c Config, env Environment, original map[string]string, resolve fun
 	}
 	sort.Strings(names)
 	for _, dev := range names {
-		coverage := DeviceCoverage{Device: dev, State: "planned", Detail: "manual per-device limits from data_paths; no benchmark used"}
+		coverage := DeviceCoverage{Device: dev, State: "planned", Detail: "manual shared whole-device limits from data_paths; no benchmark used"}
 		stacked := false
 		for _, other := range names {
 			if dev == other {
