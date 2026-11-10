@@ -159,6 +159,23 @@ class GateTests(unittest.TestCase):
             self.assertFalse(stage.accepted_native(value, 600))
             self.assertFalse(stage.accepted_campaign(value, 600, 'smoke'))
 
+    def test_scheduled_hold_does_not_add_check_latency_to_every_interval(self):
+        clock = [100.0];observed = []
+        def check():
+            observed.append(clock[0]);clock[0] += .3
+        elapsed, count = stage.observe_for(120, 2, check, now=lambda: clock[0], sleep=lambda s: clock.__setitem__(0, clock[0]+s))
+        self.assertEqual((elapsed, count), (120, 60))
+        self.assertEqual(observed, [100+2*n for n in range(60)])
+
+    def test_slow_hold_checks_skip_slots_without_catching_up_in_bursts(self):
+        clock = [0.0];observed = []
+        def check():
+            observed.append(clock[0]);clock[0] += 2.5
+        elapsed, count = stage.observe_for(120, 2, check, now=lambda: clock[0], sleep=lambda s: clock.__setitem__(0, clock[0]+s))
+        self.assertEqual((elapsed, count), (120, 30))
+        self.assertLess(count, 59)  # Existing coverage gate still refuses.
+        self.assertEqual(observed, [4*n for n in range(30)])
+
 
 if __name__ == '__main__':
     unittest.main()

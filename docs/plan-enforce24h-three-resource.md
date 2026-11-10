@@ -11,3 +11,5 @@
 正式24h enforce增加[只读前置核对记录](test-preflight-enforce24h-not-ready.json)：基线原生尚未86400秒、四周期未最终验收，当时首次接入四格也未结束，核对结论为not-ready；该四格后来已通过，但原基线尚未完整接受。只读取已有证据，不启动负载、不改程序/配置/控制或发送信号；它不是执行器。实际切换仍须重验Pod/进程/cgroup身份、源摘要、原值、备份与宿主预留。该固定快照不替代未来终态。
 
 第19轮完成后的[第二次只读核对](test-preflight-enforce24h-after-adoption.json)独立确认四格68项/完整原生600秒、原值恢复、协调进程结束及namespace缺失均通过。正式基线当时仅约52239秒/874宿主样本、三个周期native-pending，因此仍not-ready；并非新增业务失败，也未启动切换。两次快照分别保留。
+
+P02/P08[共享程序首轮未通过](testing-shared-program-stage-first.md)：候选保持121.088秒但固定120秒内仅55次采样，原59次门拒绝，未启动新enforce；旧参考入口恢复和独立清理通过。改成固定时刻采样，新增两项虚拟时钟检查，12项本地通过；全新夹具按[修正冻结计划](test-plan-shared-program-stage-cadence.json)重验，不降低预算、时长或覆盖标准。

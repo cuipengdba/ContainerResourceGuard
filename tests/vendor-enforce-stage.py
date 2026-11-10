@@ -41,7 +41,7 @@ TOOLS = {
 }
 CONTROLS = ['cpu.max', 'memory.max', 'io.max', 'pids.max', 'cpu.weight', 'io.weight', 'memory.high', 'memory.swap.max']
 FORMAL_NAMESPACE = 'crg-vendor-lab-20261110'
-REHEARSAL_LAUNCHER = '4b0f9f5fa659f0cf89c6f2025045bbf92e227a28b09a26149ad934d67790b573'
+REHEARSAL_LAUNCHER = '107df85230089863615ec3312ab4db96a8a9da6bbe1a19cb0c66d7bf9c373a80'
 
 
 def candidate_config():
@@ -55,6 +55,19 @@ def candidate_config():
 def require(ok, message):
     if not ok:
         raise RuntimeError(message)
+
+
+def observe_for(seconds, interval, observe, now=time.monotonic, sleep=time.sleep):
+    """Anchor samples to scheduled times; slow checks cannot create bursts."""
+    started = now();deadline = started+seconds;due = started;count = 0
+    while now() < deadline:
+        observe();count += 1
+        due += interval
+        current = now()
+        if current >= due:
+            due = started+(math.floor((current-started)/interval)+1)*interval
+        sleep(max(0, min(deadline, due)-current))
+    return now()-started, count
 
 
 def bounded(path, maximum=8*1024**2):
@@ -718,13 +731,12 @@ class Stage:
                     require(logs and all(stat.S_IMODE(p.stat().st_mode) == 0o600 for p in logs), 'persistent daily0600 logs missing')
                     events = [json.loads(line) for p in logs for line in bounded(p).decode().splitlines()]
                     require(any(x.get('event') == 'cgroup_detected' and x.get('fields', {}).get('check', {}).get('cgroup_version') == 'v2' for x in events), 'v2 event missing')
-                started = time.monotonic();observations = 0
-                while time.monotonic()-started < 120:
+                def hold_sample():
                     self.invariant()
                     for role in ['dbs', 'hisdbs']:
                         require(self.actors(role)['crg'] == [self.fixed_agent[role]] and self.snapshot_controls(role) == self.expected[role], 'candidate hold identity/control changed')
-                    observations += 1;time.sleep(2)
-                self.report.update(candidate_hold_seconds=time.monotonic()-started, candidate_hold_observations=observations)
+                elapsed, observations = observe_for(120, 2, hold_sample)
+                self.report.update(candidate_hold_seconds=elapsed, candidate_hold_observations=observations)
                 require(observations >= 59, 'candidate observation coverage insufficient')
                 require(all(digest(self.output/name) == expected for name, expected in self.backup_digests.items()), 'private backup changed')
                 self.report['phase'] = 'candidate-held-ready';self.save()
@@ -745,6 +757,7 @@ class Stage:
                 self.report['phase'] = 'rehearsal-awaiting-recovery';self.save()
             except BaseException as error:
                 self.report.update(phase='failed', failure_class=type(error).__name__)
+                if type(error) is RuntimeError:self.report['failure'] = str(error)
                 # Do not relax controls or interrupt a still-live campaign.
                 # Its original worker/engine cleanup must first become terminal.
                 if self.report.get('backout', {}).get('restored'):

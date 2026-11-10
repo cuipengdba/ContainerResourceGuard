@@ -1,0 +1,375 @@
+{
+  "date": "2026-11-10",
+  "phase": "failed",
+  "scope": "first shared-program disposable two-role stage rehearsal; no new native enforce campaign started",
+  "observed_utc": "2026-11-10T15:17:21Z",
+  "source_sha256": {
+    "vendor-enforce-stage.py": "21e06bf9be1d146fc8c90e0370ce6018bcdf4f60498d9308eb322655e54404f8",
+    "vendor-enforce-stage-checks.py": "b230fd8d121bf445ae98a857028c689eaea6d7001837f920cae1821b72b192bd",
+    "vendor-enforce-stage-rehearsal.py": "4b0f9f5fa659f0cf89c6f2025045bbf92e227a28b09a26149ad934d67790b573"
+  },
+  "actual_Linux_formal_refusal": {
+    "phase": "passed",
+    "observed_utc": "2026-11-10T14:57:53Z",
+    "stage_source_sha256": "21e06bf9be1d146fc8c90e0370ce6018bcdf4f60498d9308eb322655e54404f8",
+    "manifest_sha256": "387c7cfc8bba943d8e5044beb7d252e820503db60616bda38d09c210b4ae21b5",
+    "results": {
+      "readonly": {
+        "exit": 2,
+        "result": {
+          "schema": "crg-vendor-enforce-stage-report-v1",
+          "phase": "not-ready",
+          "kind": "formal",
+          "checks": {
+            "private-directories": {
+              "passed": true
+            },
+            "original-fixture-sources": {
+              "passed": true
+            },
+            "exact-candidate": {
+              "passed": true
+            },
+            "unchanged-workload-tools": {
+              "passed": true
+            },
+            "namespace-identity": {
+              "passed": true
+            },
+            "original-reserve": {
+              "passed": true
+            },
+            "other-business-fixtures": {
+              "passed": true
+            },
+            "dbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "dbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "hisdbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "hisdbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "full-prior-acceptance-and-cleanup": {
+              "passed": false,
+              "failure_class": "RuntimeError",
+              "detail": "entire prior campaign not accepted"
+            },
+            "exact-shared-program-rehearsal": {
+              "passed": false,
+              "failure_class": "FileNotFoundError"
+            }
+          },
+          "operations": [],
+          "stage_source_sha256": "21e06bf9be1d146fc8c90e0370ce6018bcdf4f60498d9308eb322655e54404f8",
+          "scope": "lab fixture only; not a production multi-container controller",
+          "manifest_sha256": "387c7cfc8bba943d8e5044beb7d252e820503db60616bda38d09c210b4ae21b5"
+        }
+      },
+      "execute": {
+        "exit": 2,
+        "result": {
+          "schema": "crg-vendor-enforce-stage-report-v1",
+          "phase": "not-ready",
+          "kind": "formal",
+          "checks": {
+            "private-directories": {
+              "passed": true
+            },
+            "original-fixture-sources": {
+              "passed": true
+            },
+            "exact-candidate": {
+              "passed": true
+            },
+            "unchanged-workload-tools": {
+              "passed": true
+            },
+            "namespace-identity": {
+              "passed": true
+            },
+            "original-reserve": {
+              "passed": true
+            },
+            "other-business-fixtures": {
+              "passed": true
+            },
+            "dbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "dbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "hisdbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "hisdbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "full-prior-acceptance-and-cleanup": {
+              "passed": false,
+              "failure_class": "RuntimeError",
+              "detail": "entire prior campaign not accepted"
+            },
+            "exact-shared-program-rehearsal": {
+              "passed": false,
+              "failure_class": "FileNotFoundError"
+            }
+          },
+          "operations": [],
+          "stage_source_sha256": "21e06bf9be1d146fc8c90e0370ce6018bcdf4f60498d9308eb322655e54404f8",
+          "scope": "lab fixture only; not a production multi-container controller",
+          "manifest_sha256": "387c7cfc8bba943d8e5044beb7d252e820503db60616bda38d09c210b4ae21b5",
+          "failure_class": "RuntimeError",
+          "refused_before_stage_writes": true
+        }
+      }
+    },
+    "same_original_sources_journals_controls_identities_and_directory_entries": true,
+    "output_absent": true,
+    "lock_absent": true,
+    "recovery_directory_absent": true,
+    "scope": "Actual Linux root read-only and explicit-execute refusal; original incomplete baseline unchanged; no stage CLI/control/source writes."
+  },
+  "initial_upload_source_refusal": {
+    "phase": "first-launch-refused-before-clone-creation",
+    "fixture_root_absent": true,
+    "namespace_absent": true,
+    "cause": "Uploaded current-repository campaign and engine sources differed from the original frozen baseline tools; exact source guard refused before business setup.",
+    "corrective_action": "Copied original baseline tool bytes only after verifying all three frozen digests; first uploaded sources/log/handle retained. Stage/launcher source, budgets, durations and gates unchanged.",
+    "correct_tool_sha256": {
+      "vendor-soak-campaign.py": "8932874640816c365963513872567afd0c5b75247102d9866f511b0fb6440aa5",
+      "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+      "vendor-engine-smoke.py": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b"
+    }
+  },
+  "tests": [
+    {
+      "name": "copied-shared-sources-exactly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-startup-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-startup-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "both-full-original-baseline600",
+      "passed": true
+    },
+    {
+      "name": "stage-full-preflight-before-writes",
+      "passed": true
+    },
+    {
+      "name": "candidate-complete-shared-program-stage",
+      "passed": false
+    }
+  ],
+  "original_observe600": {
+    "dbs": {
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          120,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.01375411101616919,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 0.9893322039861232
+      },
+      "elapsed_seconds": 600.2915320461616,
+      "interrupted": false,
+      "payload_integrity": true,
+      "phase": "passed",
+      "primary_not_restarted": true,
+      "sql": {
+        "attempts": 300,
+        "errors": 0,
+        "histogram": [
+          291,
+          3,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "max_seconds": 3.1989234478678554,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0,
+        "successes": 300,
+        "total_seconds": 4.005000671837479
+      },
+      "threads_stopped": true
+    },
+    "hisdbs": {
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          120,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.012760078068822622,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 1.0253076886292547
+      },
+      "elapsed_seconds": 600.2881254928652,
+      "interrupted": false,
+      "payload_integrity": true,
+      "phase": "passed",
+      "primary_not_restarted": true,
+      "sql": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          293,
+          1,
+          0,
+          1,
+          0,
+          0,
+          2,
+          3,
+          0,
+          1,
+          0,
+          0
+        ],
+        "max_seconds": 1.5030423989519477,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 2.8950206874869764
+      },
+      "threads_stopped": true
+    }
+  },
+  "candidate_hold_seconds": 121.08793722605333,
+  "candidate_hold_observations": 55,
+  "required_observations": 59,
+  "cause": "The fixed120s hold used sleep2s after checking; check latency accumulated into each interval, leaving55 samples. The original59-sample gate correctly refused before new campaign launch.",
+  "backout": {
+    "restored": true
+  },
+  "operations": [
+    {
+      "role": "dbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794323646.973322,
+      "ended_epoch": 1794323648.6706917,
+      "state": "restored"
+    },
+    {
+      "role": "hisdbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794323648.782742,
+      "ended_epoch": 1794323650.2463503,
+      "state": "restored"
+    },
+    {
+      "role": "dbs",
+      "command": "enable",
+      "old_reference": false,
+      "started_epoch": 1794323652.0669627,
+      "ended_epoch": 1794323652.4964035,
+      "state": "enabled"
+    },
+    {
+      "role": "hisdbs",
+      "command": "enable",
+      "old_reference": false,
+      "started_epoch": 1794323653.9520626,
+      "ended_epoch": 1794323654.3802352,
+      "state": "enabled"
+    },
+    {
+      "role": "dbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794323777.5120711,
+      "ended_epoch": 1794323778.6772301,
+      "state": "restored"
+    },
+    {
+      "role": "hisdbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794323778.8022304,
+      "ended_epoch": 1794323781.453297,
+      "state": "restored"
+    },
+    {
+      "role": "dbs",
+      "command": "enable",
+      "old_reference": true,
+      "started_epoch": 1794323783.1169944,
+      "ended_epoch": 1794323783.5463965,
+      "state": "enabled"
+    },
+    {
+      "role": "hisdbs",
+      "command": "enable",
+      "old_reference": true,
+      "started_epoch": 1794323788.6946774,
+      "ended_epoch": 1794323789.1538217,
+      "state": "enabled"
+    }
+  ],
+  "fixture_cleanup": {
+    "pods": {
+      "dbs": {
+        "pod_absent": true,
+        "cgroup_absent": true
+      },
+      "hisdbs": {
+        "pod_absent": true,
+        "cgroup_absent": true
+      }
+    },
+    "namespace_absent": true
+  },
+  "coordinator_gone": true,
+  "namespace_independently_absent": true,
+  "corrective_plan": "Anchor2s samples to monotonic schedule; no sample-count,120s hold, resource, native duration, latency or cleanup threshold relaxed. Retain first attempt; next attempt uses fresh root/namespace/run IDs."
+}
