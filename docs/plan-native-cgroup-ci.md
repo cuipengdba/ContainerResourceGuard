@@ -1,6 +1,6 @@
 # 原生容器控制器CI：运行前冻结计划
 
-P06.1/P06.2/P06.4承接[原生基础CI](native-arm64-ci.md)之后的实际内核控制验证。[驱动与工作流摘要及数值条件](test-plan-native-cgroup-ci.json)已在首次push前冻结；[工作流](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/.github/workflows/native-cgroup.yml)及一次性驱动已实现，尚无执行结果。已有ARM64单测/脚本成功不能关闭本项。
+P06.1/P06.2/P06.4承接[原生基础CI](native-arm64-ci.md)之后的实际内核控制验证。[驱动与工作流摘要及数值条件](test-plan-native-cgroup-ci.json)已在首次push前冻结；[工作流](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/.github/workflows/native-cgroup.yml)及一次性驱动已实现；此页保存首轮冻结条件，首轮分区失败与后续独占dm/loop结果分开归档。已有ARM64单测/脚本成功不能关闭本项。
 
 ## 环境与隔离
 
@@ -35,3 +35,5 @@ P06.1/P06.2/P06.4承接[原生基础CI](native-arm64-ci.md)之后的实际内核
 即使全部通过，也只覆盖本次原生临时VM/Docker/占位PID1；不能替代ARM64 DBS/HISDBS原镜像业务、独立多设备/映射栈、真实掉电、24h+24h、至少7天和两个已发布次版本的完整升级。实际内核若不是6.x，Linux6.x门槛继续开放。
 
 首轮两线/双架构已终止：[四格分区IO未通过](testing-native-cgroup-partition-first.md)。此页及JSON是首次push前的历史冻结条件，失败不覆盖；后续独立dm夹具需新计划。
+
+第二轮独立夹具的[四格88项终态结果](testing-native-cgroup-dm-loop.md)已归档；不改写本页首轮失败的设备类型或验收结论。
