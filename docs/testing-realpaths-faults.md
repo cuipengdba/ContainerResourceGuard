@@ -14,3 +14,5 @@
 所有场景还检查PID1身份、OOM计数、SQL/原探针及原业务TERM。这里只证明对应故障下辅助进程不阻断业务；不把90秒启动/12秒停止替代原生600秒或长时性能标准。此次覆盖为RC3/DBS和组合候选/HISDBS，不外推另外两个候选/角色组合。
 
 无权限能够放行业务，并不表示已经成功控制资源。生效的严格IO/内存等额度仍可能使业务变慢；自动30%业务负载失败及手动16MiB/s的SQL错误继续保留于[真实路径记录](testing-realpaths-progress.md)和[手动对照记录](testing-realpaths-manual.md)。
+
+另已冻结[交叉候选/角色故障补齐计划](test-plan-realpaths-faults-reciprocal.json)：组合候选/DBS和RC3/HISDBS，仍为每组10场景。该条件任务等待在线维护任务终止并独立确认自有namespace不存在后才创建夹具，不提前标为通过。

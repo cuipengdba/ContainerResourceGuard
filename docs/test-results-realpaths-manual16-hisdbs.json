@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-10",
+  "source_revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+  "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9",
+  "role": "hisdbs",
+  "scope": "fresh isolated original image and real container paths, original database parameters and read-only CCG, shared test device",
+  "resource_mode": "manual",
+  "declared_budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 16777216,
+    "read_write_iops": 4096
+  },
+  "observation_fix": "retry one-call observation timeouts within unchanged300s total deadline; original native latency criteria retained",
+  "ready_and_managed_seconds": 53.21442396892235,
+  "automatic_measurement_performed": false,
+  "fixed_controls": {
+    "cpu.max": "720000 100000",
+    "memory.max": "20001980416",
+    "io.max": "253:0 rbps=16777216 wbps=16777216 riops=4096 wiops=4096",
+    "cpu.weight": "4",
+    "pids.max": "406648",
+    "memory.high": "max",
+    "memory.swap.max": "0",
+    "io.weight": "default 100"
+  },
+  "campaign_phase": "failed",
+  "campaign_failure": "native workload failed",
+  "engine_cycle": {
+    "offset_seconds": 30.038597683189437,
+    "run_id": "20261110117000",
+    "content_started_epoch": 1794288601.058274,
+    "exit": 0,
+    "phase": "content-passed-native-pending",
+    "roles": {
+      "hisdbs": {
+        "checks": 10,
+        "cleanup": true,
+        "native_pending": true,
+        "exec_probe_diagnostic": {
+          "passed_original_5s_criterion": true,
+          "samples": 66,
+          "api_max": 1.0882733878679574,
+          "sql_max": 1.0541237429715693
+        }
+      }
+    },
+    "content_ended_epoch": 1794288708.7005987
+  },
+  "native": {
+    "phase": "failed",
+    "requested_duration_seconds": 600,
+    "elapsed_seconds": 600.2870104250032,
+    "criteria": {
+      "api_period_seconds": 5,
+      "maximum_errors": 0,
+      "maximum_seconds": 5,
+      "minimum_scheduled_samples_fraction": 0.98,
+      "p95_upper_bound_seconds": 1,
+      "sql_period_seconds": 2
+    },
+    "sql": {
+      "attempts": 297,
+      "errors": 2,
+      "histogram": [
+        280,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        6,
+        4,
+        2,
+        2
+      ],
+      "max_seconds": 5.005085614044219,
+      "p95_bucket_upper_seconds": 0.1,
+      "sample_coverage": 0.99,
+      "successes": 295,
+      "total_seconds": 25.559773608809337
+    },
+    "api": {
+      "attempts": 121,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        121,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0.008679406018927693,
+      "p95_bucket_upper_seconds": 0.01,
+      "sample_coverage": 1.0083333333333333,
+      "successes": 121,
+      "total_seconds": 0.9325336541514844
+    },
+    "payload_integrity": true,
+    "primary_not_restarted": true,
+    "threads_stopped": true,
+    "interrupted": false
+  },
+  "own_pod_removed": true,
+  "matrix_namespace_cleanup": "not yet applicable; other declared candidate-role cases continue",
+  "outcome": "failed: full600s native SQL had2 errors; engine content and API success do not override this failure"
+}
