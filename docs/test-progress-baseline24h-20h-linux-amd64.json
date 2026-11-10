@@ -1,0 +1,275 @@
+{
+  "kind": "fixed intermediate snapshot, not final acceptance or live status",
+  "observed_utc": "2026-11-10T19:46:05Z",
+  "phase": "running-not-accepted",
+  "requested_seconds": 86400,
+  "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "campaign_script_sha256": "8932874640816c365963513872567afd0c5b75247102d9866f511b0fb6440aa5",
+  "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+  "engine_script_sha256": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b",
+  "roles": {
+    "dbs": {
+      "phase": "running",
+      "started_utc": "2026-11-09T23:25:51.530706Z",
+      "elapsed_seconds": 72957.04631758295,
+      "sql": {
+        "attempts": 36472,
+        "errors": 0,
+        "histogram": [
+          36383,
+          58,
+          0,
+          1,
+          3,
+          2,
+          3,
+          6,
+          4,
+          6,
+          6,
+          0
+        ],
+        "max_seconds": 4.4372790770139545,
+        "successes": 36472,
+        "total_seconds": 60.66005499381572
+      },
+      "api": {
+        "attempts": 14591,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          14550,
+          39,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.7081111629959196,
+        "successes": 14591,
+        "total_seconds": 123.40724064013921
+      },
+      "worker_programs": [
+        "python",
+        "su"
+      ],
+      "memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "report_age_seconds": 257.32356333732605,
+      "actual_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      }
+    },
+    "hisdbs": {
+      "phase": "running",
+      "started_utc": "2026-11-09T23:25:52.597229Z",
+      "elapsed_seconds": 72955.95451764693,
+      "sql": {
+        "attempts": 36476,
+        "errors": 0,
+        "histogram": [
+          36408,
+          49,
+          1,
+          2,
+          0,
+          2,
+          1,
+          3,
+          5,
+          2,
+          3,
+          0
+        ],
+        "max_seconds": 2.6713917239103466,
+        "successes": 36476,
+        "total_seconds": 39.9512047721073
+      },
+      "api": {
+        "attempts": 14591,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          14556,
+          33,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.4241307459305972,
+        "successes": 14591,
+        "total_seconds": 123.18239629687741
+      },
+      "worker_programs": [
+        "python",
+        "su"
+      ],
+      "memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "report_age_seconds": 257.5186710357666,
+      "actual_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      }
+    }
+  },
+  "backup_cycles": [
+    {
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "offset_seconds": 300.3992700970266,
+      "run_id": "20261110070500",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 28,
+            "api_max": 10.013452208135277,
+            "sql_max": 9.239679831080139
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 21,
+            "api_max": 10.013804757036269,
+            "sql_max": 3.4662723089568317
+          }
+        }
+      }
+    },
+    {
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "offset_seconds": 21600.302033577114,
+      "run_id": "20261110070501",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 27,
+            "api_max": 6.847445996012539,
+            "sql_max": 6.236832837108523
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 26,
+            "api_max": 7.39061175705865,
+            "sql_max": 5.087009005015716
+          }
+        }
+      }
+    },
+    {
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "offset_seconds": 43200.464266414056,
+      "run_id": "20261110070502",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 26,
+            "api_max": 7.667435684008524,
+            "sql_max": 9.49793848511763
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 26,
+            "api_max": 5.1217712259385735,
+            "sql_max": 9.13449257495813
+          }
+        }
+      }
+    },
+    {
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "offset_seconds": 64800.02703153598,
+      "run_id": "20261110070503",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 31,
+            "api_max": 5.687123538227752,
+            "sql_max": 6.910124392947182
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": true,
+            "samples": 29,
+            "api_max": 1.7352760268840939,
+            "sql_max": 4.6930736170616
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Original observe baseline uses the recorded older Agent binary, not d3706f3, staged d6 candidate or published preview.",
+    "All4 engine content cycles remain native-pending until entire86400s native campaign passes original coverage/latency/integrity criteria.",
+    "Exec diagnostics retain >5s observations; previously frozen native-campaign protocol remains unchanged.",
+    "Node UTC is its own clock; elapsed monotonic duration and final report, not wall-clock estimates, determine acceptance.",
+    "Equal-duration enforce and at least7-day acceptance have not started.",
+    "No configuration/resource/guard/startup changes to the original baseline."
+  ]
+}

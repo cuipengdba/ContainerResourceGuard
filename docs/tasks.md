@@ -213,3 +213,6 @@ P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、�
 
 
 已冻结[当前d3706f3真实路径DBS/HISDBS复验](test-plan-partition-realpaths-business.json)，先满足本程序开销/夹具清理，再顺序运行两格原手动预算600秒。正式基线/固定d6切换候选不改，默认20%失败和长期门槛保留。
+
+
+当前d3706f3真实路径复验的协调进程已启动，先等本程序开销通过且夹具独立确认不存在后才创建业务Pod；[固定等待快照](test-start-partition-realpaths-business.json)0个测量格。正式旧observe基线另有[20h固定观察](continuous-acceptance.md)，尚未完成86400秒，不替代新源码长测。

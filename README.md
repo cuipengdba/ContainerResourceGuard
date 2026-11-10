@@ -46,7 +46,7 @@ crg status --format human
 crg preflight --format human
 ```
 
-先观察时用 `examples/observe.json`。`run` 的默认模式是 **enforce**；`doctor` 始终只读。运行时不热加载配置，修改后仅重启辅助 Agent。
+先观察时用 `examples/observe.json`。`run` 的默认模式是 **enforce**；`doctor` 始终只读。已发布preview.1运行时不热加载配置；本未发布组合/分区开发线已实现[安全热重载](docs/hot-reload.md)，三个独立比例和CLI优先规则另有[明确程序来源的验证](docs/testing-three-percent-reload.md)。
 
 ## 业务优先
 
