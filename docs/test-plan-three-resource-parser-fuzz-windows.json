@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before launch",
+  "source_revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+  "source_archive_sha256": "3584236943dc0c1de755af654557fc3897bfec6a0fac9dcc82f530b9adf59778",
+  "toolchain": "go version go1.27.3 windows/amd64",
+  "platform": "windows/amd64",
+  "targets": [
+    "FuzzDecodeConfig",
+    "FuzzDecodeProfile"
+  ],
+  "per_target_fuzztime_seconds": 600,
+  "per_target_wall_timeout_seconds": 750,
+  "GOMAXPROCS": 2,
+  "parallel_workers": 2,
+  "GOMEMLIMIT": "256MiB (Go soft memory target, not a hard process limit)",
+  "criteria": "Both existing parser fuzz targets must exit0 after their requested10m; a crash, deadline or nonzero exit is retained as failure. No cgroup/business/performance claim.",
+  "additional_private_workspace_corpus": [
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-0",
+      "sha256": "8093511184ad3e258aa13b957e75ff26c7fae64672dae0c0bc0a9fa5b61a05e7",
+      "input": "{}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-1",
+      "sha256": "7f5503be3deeefffe7f0bcfd20b12af208b3ce59bc22220cf1fa507e5d365c27",
+      "input": "{\"cpu_percent\":20,\"memory_percent\":30,\"io_percent\":40}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-2",
+      "sha256": "fc844e4c2dd5fbac350a626bd4fd187d5cfa6965577c116bb09d25a95ed54136",
+      "input": "{\"io_percent\":0.5}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-3",
+      "sha256": "319d8b7cb04c59778bcc3cfb3568011ac97f6981947b7707b0af3880230e124e",
+      "input": "{\"cpu_percent\":0}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-4",
+      "sha256": "a7fbcf84831e8439c1d9ed52938cca2414f6e398a4463682b65785b870b83a56",
+      "input": "{\"memory_percent\":101}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-5",
+      "sha256": "3f438c407c9337a75a9189e543bfe10ac74e778e20174ff5ad686a614470bf5e",
+      "input": "{\"io_percent\":null}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-6",
+      "sha256": "031107599da02874fbb0a794da53c08f97148c56e75e4d5a57d533521460fc80",
+      "input": "{\"cpu_percent\":20,\"cpu_percent\":30}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-7",
+      "sha256": "ddcb1c438b3932c03ace928cf60bb64397551f36c3b2007112739993a362076c",
+      "input": "{\"percent\":20,\"io_percent\":30}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-8",
+      "sha256": "e3c98475610a20d30271b7a0d565f9be946b1e739e3208be58cab8b6ba9d9fc3",
+      "input": "{\"cpu_percent\":20,\"pids_percent\":30}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-9",
+      "sha256": "b40496f3017e75cb86117beffec0cadd44ba7faae09cbdf98d6982c51af68d91",
+      "input": "{\"cpu_percent\":20,\"log_directory\":\"/var/log/crg\"}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-10",
+      "sha256": "9b4a20d61b5e13ac46015caeca8262d9d65e01f338c98de441d35512235459b6",
+      "input": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":0.5,\"memory_max\":\"256MiB\",\"io_read_iops\":14}}"
+    },
+    {
+      "target": "FuzzDecodeProfile",
+      "name": "r34-0",
+      "sha256": "a50f9cdb0d58afa31a433b57cb187020c3137feaf87f4ecaca96aa649bd2946d",
+      "input": "{\"version\":1,\"method\":\"direct-sync-qdepth1-seq1m-random4k\",\"devices\":[{\"device\":\"253:0\",\"read_bps\":75083436,\"write_bps\":49042309,\"read_iops\":150,\"write_iops\":71}]}"
+    }
+  ],
+  "scope": "Exact50671aa tracked source plus explicitly listed seed files only; no product source or existing deployment changes. Exercises current independent percentages and profile parser paths, independent of older long-fuzz source revisions."
+}
