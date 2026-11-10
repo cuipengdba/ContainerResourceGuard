@@ -256,6 +256,9 @@ func mainErr() error {
 		return nil
 	}
 	automaticIO := guard.PrepareAutomaticIO(ctx, c, env)
+	if ctx.Err() != nil {
+		return nil
+	}
 	ticker := time.NewTicker(time.Duration(c.IntervalSeconds) * time.Second)
 	defer ticker.Stop()
 	control := time.NewTicker(time.Second)
