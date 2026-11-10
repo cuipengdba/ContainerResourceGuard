@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-10",
+  "status": "frozen before launch",
+  "test_job_sha256": "2677cf466a04ea117ff21124ebd1cdac6cc9782d20ac6dc1f3cb11832b212005",
+  "sources": {
+    "rc3": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "arm64_build_only_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463"
+    },
+    "v10": {
+      "revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+      "binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+      "arm64_build_only_sha256": "8a91a081da331607d59a241032ad0696891d86ccfb78e065415a8f241cd82900"
+    }
+  },
+  "cases": [
+    "main/DBS",
+    "main/HISDBS",
+    "combined/DBS",
+    "combined/HISDBS"
+  ],
+  "prerequisite": "round16 terminal and namespace independently absent; sequential fresh original-image fixtures only",
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "two_boots_per_case": "fresh initialization then backed-up data/state/log directories reused under a new Pod/container ID",
+    "original_start_cache_mount_PG_parameters_and_probes": true,
+    "PG_API_managed_max_seconds_each_boot": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_inside_startup_seconds": 300,
+    "one_source_qualified_Agent_and_only_three_resource_controls": true,
+    "payload": "16384 rows /64MiB and128 marker rows, sum8256; exact checksums across restart and independent logical restore database",
+    "backup": "Schema-scoped logical dump before rebuild, digest persists; separate database restore without changing original primary data",
+    "identity": "Old cgroup gone before new Pod; unchanged configuration, new identity, old journal isolated, new original controls restored by disable",
+    "logs": "Daily0600/v2 logs; existing same-day content retained and appended after ID change",
+    "node_reserves": "28GiB available before each clone/rebuild,8GiB steady,20GiB free disk"
+  },
+  "limitations": [
+    "Manual64 cold-rebuild validation does not prove default20 or automatic30 performance.",
+    "Independent logical restore database is distinct from a separate physical server; previous engine-cycle physical restore evidence remains separate.",
+    "This is cold/backup/rebuild coverage, not a new600-second or long-term campaign.",
+    "No modifications to existing business deployments or baseline; no unsupported hardware waiver."
+  ]
+}
