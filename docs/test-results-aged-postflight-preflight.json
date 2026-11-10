@@ -1,0 +1,92 @@
+{
+  "kind": "seven-day aged-state capture and read-only postflight gate; not postflight execution",
+  "phase": "preflight-development-verified",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+  "preflight_source_sha256": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+  "selftest_source_sha256": "cb7bad8c7b1490f146a0e24f7fd1a132010e6b3cd535d826d8703f019ac7a139",
+  "plan_sha256": "58a8fe7c07c7655c13e1b54a83ad8afd63646947de9b8b8929f1d089dbe2a8cb",
+  "capture_node_utc": "2026-11-10T21:51:43.061264+00:00",
+  "private_seal_sha256": "d45cd434b6b614141dab56742207fa245c04f59c80d4469c514e7d255fd108bd",
+  "private_seal_raw_content_published": false,
+  "capture_counts": {
+    "dbs": {
+      "directories": 7,
+      "immutable_files": 8,
+      "main_and_DCS_containers": 2,
+      "daily_log_prefixes": 1
+    },
+    "hisdbs": {
+      "directories": 7,
+      "immutable_files": 8,
+      "main_and_DCS_containers": 2,
+      "daily_log_prefixes": 1
+    }
+  },
+  "Linux_selftests": {
+    "phase": "passed",
+    "test_source_sha256": "cb7bad8c7b1490f146a0e24f7fd1a132010e6b3cd535d826d8703f019ac7a139",
+    "preflight_source_sha256": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "unit_methods": 7,
+    "POSIX_cases_skipped": false,
+    "test_exit": 0,
+    "selftest_output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 1.455s\n\nOK\n",
+    "scope": "Synthetic reports and owned temporary filesystem only; no seven-day runtime claim, original fixtures unchanged."
+  },
+  "Windows_selftests": {
+    "unit_methods": 7,
+    "POSIX_methods_skipped": 3,
+    "outcome": "passed with explicit skips; Linux coverage separate"
+  },
+  "initial_Linux_fixture_failure": {
+    "old_selftest_source_sha256": "29bc8226ea8e799fe2a6ec5987d1ffc36134aec5fea3b2fdeeb7cf81b2aa4ca9",
+    "outcome": "failed",
+    "case": "same test combined changed-prefix and truncated-prefix expectations",
+    "actual_rejection": "FILE_SIZE",
+    "incorrect_expected_regex": "AGED_LOG_PREFIX",
+    "correction": "Keep changed-prefix length and add separate truncation-negative case; preflight executable unchanged."
+  },
+  "live_pending_gate": {
+    "phase": "passed",
+    "observed_node_utc": "2026-11-10T21:54:47Z",
+    "guard_result": {
+      "phase": "pending",
+      "runner_identity_verified_live": true,
+      "campaign_phase": "measuring",
+      "postflight_allowed": false,
+      "P10_complete": false
+    },
+    "guard_exit": 2,
+    "private_seal_sha256": "d45cd434b6b614141dab56742207fa245c04f59c80d4469c514e7d255fd108bd",
+    "private_seal_mode": "0o600",
+    "postflight_work_root_absent_before_and_after": true,
+    "postflight_namespace_absent_before_and_after": true,
+    "original_fixture_checks": {
+      "dbs": {
+        "immutable_input_files": 8,
+        "journal_same_digest": true,
+        "same_actual_cgroup": true,
+        "all8_actual_controls_unchanged": true
+      },
+      "hisdbs": {
+        "immutable_input_files": 8,
+        "journal_same_digest": true,
+        "same_actual_cgroup": true,
+        "all8_actual_controls_unchanged": true
+      }
+    },
+    "P10_complete": false,
+    "postflight_executed": false
+  },
+  "postflight_executor_implemented": false,
+  "actual_seven_day_terminal_gate_accepted": false,
+  "product_source_changed": false,
+  "P10_complete": false,
+  "release_accepted": false,
+  "limitations": [
+    "Synthetic604800s reports exercise acceptance/rejection logic, not actual elapsed runtime.",
+    "Private live seal records the still-running original fixture; final readiness and all aged backup/rebuild/upgrade/fault operations remain unexecuted.",
+    "Initial source plan and seal stay immutable; future execution plan must reference them rather than rewriting lineage.",
+    "Current manual64/Linux5.14 AMD64 single-device scope, originalfc2 baseline/fixedd6 formalstage and unavailable hardware gates unchanged."
+  ]
+}
