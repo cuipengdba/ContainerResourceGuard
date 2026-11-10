@@ -4,7 +4,21 @@
 
 本文件区分已发布、开发完成与仍需验收的事项。本次交付`v0.1.0-rc.3-preview.1`工程预览；正式RC3、稳定版、v0.2和1.0仍未发布，原RC2保持历史基线。
 
-## 已完成并有证据
+## 当前结果与边界
+
+| 项目 | 当前结论 | 证据 |
+|---|---|---|
+| 已发布工程预览 | 只三项独立百分比、cgroup版本门禁、每日日志；正式RC3/1.0未发布 | [交付与下载](next-version.md) |
+| 新程序工程检查 | 38项通过；真实控制为v2，v1/混合/未知为隔离proc模拟 | [版本/日志/三资源](testing-three-percent-cgroup-logs.md) |
+| 新程序原业务手动64预算 | 四格各600秒，24项通过 | [业务矩阵](testing-three-resource-business-matrix.md) |
+| 新程序默认20% | 第16轮main/DBS完整600秒失败，SQL10次/API57次错误；其余三格另按第18轮计划补测 | [默认结果](testing-three-resource-default20-business.md) |
+| 备份后新Pod ID | 四格8次原启动、88项通过，数据/日志/原值保持，仅手动64预算 | [冷重建](testing-three-resource-cold-rebuild.md) |
+| 在线维护 | 第13轮已发布预览首次安装拒绝；第15轮两套协议兼容开发构建22项/各600秒通过，不代表两个已发布次版本 | [拒绝记录](testing-three-resource-online-maintenance.md)、[开发构建往返](testing-three-resource-protocol-maintenance.md) |
+| 长期验收 | 旧observe基线超过12h仍运行，三周期内容完成但native-pending；24h enforce和至少7天未开始 | [固定12h快照及边界](continuous-acceptance.md) |
+
+以下保留早期源码/预算的开发历史，各自结论仅适用于报告中的程序和配置。R29暂缓的扩展资源不因历史实现而恢复为当前交付。
+
+## 历史实现与对应证据
 
 - 重启身份设计及百分比/手动两种模式、五个额外可选参数已纳入 [46 项任务的十版规划](roadmap.md)。
 - main 已实现双模式 CPU/内存/IO、可选 pids_max 和 cpu_weight；[22 项分阶段 Linux 验证](testing-dual-modes.md) 已归档，包含新 Pod 身份发现、真实硬限额和恢复原值。原失败记录保留。
@@ -17,7 +31,7 @@
 - [诊断开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/local-diagnostics) 已开发按需内存分类、白名单诊断、输入保护、可选本地指标/有界事件及逐项原因码。已有 16 项原镜像只读诊断、10 项指标检查、11 项真实内存窗口检查和新二进制 17 项指标/事件联合检查，Linux race/vet、短时 fuzz 及强杀回归分别归档；命令级统一原因与长时门槛仍未完成。
 - [原镜像故障及回退](testing-vendor-faults.md) 两轮各 14 场景完成：SQL/API 与 TERM 通过，后轮确认原缓存进程/enforce 与随后 SQL。前轮早期缓存 false 快照保留；所有本次临时 Pod 已移除。
 
-## 当前开发与验收
+## 早期开发与验收记录
 
 接下来使用原镜像克隆补齐 enforce 冷启动、探针、相同负载和辅助故障回归。POST /test 与引擎备份结果不能代替尚未提供的厂商专用业务接口验收。
 

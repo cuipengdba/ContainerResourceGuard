@@ -1,0 +1,179 @@
+{
+  "kind": "fixed intermediate snapshot, not final acceptance or live status",
+  "observed_utc": "2026-11-10T11:37:25Z",
+  "phase": "running-not-accepted",
+  "requested_seconds": 86400,
+  "agent_sha256": "dcebdc56f8e1fdd3c58a4a67abe58d3cc4e6b0d4e486a28c7e80fa8671f45eec",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "campaign_script_sha256": "8932874640816c365963513872567afd0c5b75247102d9866f511b0fb6440aa5",
+  "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+  "engine_script_sha256": "13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b",
+  "roles": {
+    "dbs": {
+      "phase": "running",
+      "started_utc": "2026-11-09T23:25:51.530706Z",
+      "elapsed_seconds": 43835.768139133,
+      "sql": {
+        "attempts": 21913,
+        "errors": 0,
+        "histogram": [
+          21849,
+          40,
+          0,
+          1,
+          3,
+          1,
+          2,
+          3,
+          3,
+          5,
+          6,
+          0
+        ],
+        "max_seconds": 4.4372790770139545,
+        "successes": 21913,
+        "total_seconds": 46.31046366272494
+      },
+      "api": {
+        "attempts": 8767,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          8739,
+          26,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.7081111629959196,
+        "successes": 8767,
+        "total_seconds": 74.61260202410631
+      },
+      "worker_programs": [
+        "python",
+        "su"
+      ],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "report_age_seconds": 58.14822268486023
+    },
+    "hisdbs": {
+      "phase": "running",
+      "started_utc": "2026-11-09T23:25:52.597229Z",
+      "elapsed_seconds": 43834.692501713056,
+      "sql": {
+        "attempts": 21916,
+        "errors": 0,
+        "histogram": [
+          21873,
+          27,
+          1,
+          2,
+          0,
+          2,
+          1,
+          1,
+          4,
+          2,
+          3,
+          0
+        ],
+        "max_seconds": 2.6713917239103466,
+        "successes": 21916,
+        "total_seconds": 28.65623406553641
+      },
+      "api": {
+        "attempts": 8767,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          8744,
+          22,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.4241307459305972,
+        "successes": 8767,
+        "total_seconds": 74.36047586402856
+      },
+      "worker_programs": [
+        "python",
+        "su"
+      ],
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "report_age_seconds": 58.31825232505798
+    }
+  },
+  "backup_cycles": [
+    {
+      "offset_seconds": 300.3992700970266,
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true
+        }
+      }
+    },
+    {
+      "offset_seconds": 21600.302033577114,
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true
+        }
+      }
+    },
+    {
+      "offset_seconds": 43200.464266414056,
+      "phase": "content-passed-native-pending",
+      "exit": 0,
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Original observe baseline uses the recorded older Agent binary, not the newly published main or combined binaries.",
+    "Three engine content cycles remain native-pending; they are not accepted until the entire surrounding86400-second native campaign passes.",
+    "The latest native reports may lag sampling by up to300 seconds; monotonic measured elapsed time, not wall-clock estimates, determines duration.",
+    "Equal-duration enforce and at least seven-day acceptance have not started.",
+    "No restart, configuration, guard or resource-control changes to the original baseline."
+  ]
+}
