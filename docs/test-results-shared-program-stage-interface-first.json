@@ -1,0 +1,374 @@
+{
+  "date": "2026-11-10",
+  "phase": "failed",
+  "scope": "second disposable shared-program rehearsal; corrected scheduled hold passed, managed native campaign never initialized",
+  "source_sha256": {
+    "vendor-enforce-stage.py": "531d6ad283bfbdaeb3d4f26efda83fa2d64f74558896ca6541ba63162d90e60f",
+    "vendor-enforce-stage-checks.py": "173d89e8bab353144fbadf6a30532abfd2f2916000b3a1750c44ead22223692c",
+    "vendor-enforce-stage-rehearsal.py": "107df85230089863615ec3312ab4db96a8a9da6bbe1a19cb0c66d7bf9c373a80"
+  },
+  "actual_Linux_formal_refusal": {
+    "phase": "passed",
+    "observed_utc": "2026-11-10T15:22:03Z",
+    "stage_source_sha256": "531d6ad283bfbdaeb3d4f26efda83fa2d64f74558896ca6541ba63162d90e60f",
+    "manifest_sha256": "442b95531cd9ebfda562791703f35d96334ed232a5e839be76a298a6440c1520",
+    "results": {
+      "readonly": {
+        "exit": 2,
+        "result": {
+          "schema": "crg-vendor-enforce-stage-report-v1",
+          "phase": "not-ready",
+          "kind": "formal",
+          "checks": {
+            "private-directories": {
+              "passed": true
+            },
+            "original-fixture-sources": {
+              "passed": true
+            },
+            "exact-candidate": {
+              "passed": true
+            },
+            "unchanged-workload-tools": {
+              "passed": true
+            },
+            "namespace-identity": {
+              "passed": true
+            },
+            "original-reserve": {
+              "passed": true
+            },
+            "other-business-fixtures": {
+              "passed": true
+            },
+            "dbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "dbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "hisdbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "hisdbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "full-prior-acceptance-and-cleanup": {
+              "passed": false,
+              "failure_class": "RuntimeError",
+              "detail": "entire prior campaign not accepted"
+            },
+            "exact-shared-program-rehearsal": {
+              "passed": false,
+              "failure_class": "FileNotFoundError"
+            }
+          },
+          "operations": [],
+          "stage_source_sha256": "531d6ad283bfbdaeb3d4f26efda83fa2d64f74558896ca6541ba63162d90e60f",
+          "scope": "lab fixture only; not a production multi-container controller",
+          "manifest_sha256": "442b95531cd9ebfda562791703f35d96334ed232a5e839be76a298a6440c1520"
+        }
+      },
+      "execute": {
+        "exit": 2,
+        "result": {
+          "schema": "crg-vendor-enforce-stage-report-v1",
+          "phase": "not-ready",
+          "kind": "formal",
+          "checks": {
+            "private-directories": {
+              "passed": true
+            },
+            "original-fixture-sources": {
+              "passed": true
+            },
+            "exact-candidate": {
+              "passed": true
+            },
+            "unchanged-workload-tools": {
+              "passed": true
+            },
+            "namespace-identity": {
+              "passed": true
+            },
+            "original-reserve": {
+              "passed": true
+            },
+            "other-business-fixtures": {
+              "passed": true
+            },
+            "dbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "dbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "hisdbs-same-original-processes-and-mounts": {
+              "passed": true
+            },
+            "hisdbs-original-controls-and-observe": {
+              "passed": true
+            },
+            "full-prior-acceptance-and-cleanup": {
+              "passed": false,
+              "failure_class": "RuntimeError",
+              "detail": "entire prior campaign not accepted"
+            },
+            "exact-shared-program-rehearsal": {
+              "passed": false,
+              "failure_class": "FileNotFoundError"
+            }
+          },
+          "operations": [],
+          "stage_source_sha256": "531d6ad283bfbdaeb3d4f26efda83fa2d64f74558896ca6541ba63162d90e60f",
+          "scope": "lab fixture only; not a production multi-container controller",
+          "manifest_sha256": "442b95531cd9ebfda562791703f35d96334ed232a5e839be76a298a6440c1520",
+          "failure_class": "RuntimeError",
+          "refused_before_stage_writes": true
+        }
+      }
+    },
+    "same_original_sources_journals_controls_identities_and_directory_entries": true,
+    "output_absent": true,
+    "lock_absent": true,
+    "recovery_directory_absent": true
+  },
+  "tests": [
+    {
+      "name": "copied-shared-sources-exactly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-startup-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-startup-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "both-full-original-baseline600",
+      "passed": true
+    },
+    {
+      "name": "stage-full-preflight-before-writes",
+      "passed": true
+    },
+    {
+      "name": "candidate-complete-shared-program-stage",
+      "passed": false
+    }
+  ],
+  "original_observe600": {
+    "dbs": {
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          120,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.010946396039798856,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 1.0248649616260082
+      },
+      "elapsed_seconds": 600.3124526438769,
+      "interrupted": false,
+      "payload_integrity": true,
+      "phase": "passed",
+      "primary_not_restarted": true,
+      "sql": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          290,
+          5,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "max_seconds": 1.8991814479231834,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 3.3659508731216192
+      },
+      "threads_stopped": true
+    },
+    "hisdbs": {
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          121,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.008799945935606956,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 0.9642919453326613
+      },
+      "elapsed_seconds": 600.3178149070591,
+      "interrupted": false,
+      "payload_integrity": true,
+      "phase": "passed",
+      "primary_not_restarted": true,
+      "sql": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          294,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "max_seconds": 1.747193112038076,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 4.339967923704535
+      },
+      "threads_stopped": true
+    }
+  },
+  "candidate_hold_seconds": 120.00113463005982,
+  "candidate_hold_observations": 60,
+  "required_observations": 59,
+  "cause": "The exact original baseline campaign supports source-run reuse but has no --smoke-enforce interface and always expects observe for smoke. Argparse rejected the managed smoke flag before a work directory/native workload existed. The stage subsequently saw FileNotFoundError for the absent receipt.",
+  "diagnostic": {
+    "observed_utc": "2026-11-10T15:38:42Z",
+    "failure_error_line": "vendor-soak-campaign.py: error: unrecognized arguments: --smoke-enforce",
+    "original_stderr_retained": true,
+    "campaign_log_sha256": "5d3c7de05b3231fea757aae0effe0a5d52e9b15ca3d7a0eba5e83457850ac742",
+    "stage_receipt_sha256": "cfc3c128a3810b7cd4ec064e38d840ccb05decb5fefab59c5f1aa878be4c75a8",
+    "launcher_receipt_sha256": "40ba100a68365eacf293ab29b611d150aa09a923b6f3d93fe855e3189c98e903",
+    "coordinator_gone": true,
+    "namespace_independently_absent": true,
+    "cgroups_independently_absent": {
+      "dbs": true,
+      "hisdbs": true
+    },
+    "no_enforce_workdir": true
+  },
+  "backout": {
+    "restored": true
+  },
+  "operations": [
+    {
+      "role": "dbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794324804.0261102,
+      "ended_epoch": 1794324804.9976842,
+      "state": "restored"
+    },
+    {
+      "role": "hisdbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794324805.142825,
+      "ended_epoch": 1794324806.3649528,
+      "state": "restored"
+    },
+    {
+      "role": "dbs",
+      "command": "enable",
+      "old_reference": false,
+      "started_epoch": 1794324809.8458035,
+      "ended_epoch": 1794324810.3011062,
+      "state": "enabled"
+    },
+    {
+      "role": "hisdbs",
+      "command": "enable",
+      "old_reference": false,
+      "started_epoch": 1794324820.4358928,
+      "ended_epoch": 1794324820.8868482,
+      "state": "enabled"
+    },
+    {
+      "role": "dbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794324945.0416956,
+      "ended_epoch": 1794324946.1371052,
+      "state": "restored"
+    },
+    {
+      "role": "hisdbs",
+      "command": "disable",
+      "old_reference": true,
+      "started_epoch": 1794324946.2321463,
+      "ended_epoch": 1794324947.5646987,
+      "state": "restored"
+    },
+    {
+      "role": "dbs",
+      "command": "enable",
+      "old_reference": true,
+      "started_epoch": 1794324949.6273172,
+      "ended_epoch": 1794324950.0490742,
+      "state": "enabled"
+    },
+    {
+      "role": "hisdbs",
+      "command": "enable",
+      "old_reference": true,
+      "started_epoch": 1794324966.419926,
+      "ended_epoch": 1794324966.8426206,
+      "state": "enabled"
+    }
+  ],
+  "fixture_cleanup": {
+    "pods": {
+      "dbs": {
+        "pod_absent": true,
+        "cgroup_absent": true
+      },
+      "hisdbs": {
+        "pod_absent": true,
+        "cgroup_absent": true
+      }
+    },
+    "namespace_absent": true
+  },
+  "corrective_plan": "Qualify separate fixed smoke-tool sources and their CLI capabilities before any writes. Formal86400s tool bytes remain unchanged; smoke600s source changes are explicit and reviewed, with all numeric criteria unchanged."
+}

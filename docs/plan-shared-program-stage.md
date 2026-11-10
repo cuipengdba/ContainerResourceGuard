@@ -9,3 +9,5 @@
 `--recover`是单独的恢复入口，只读取本次私有记录和不可变旧程序/配置/状态备份；原负载必须终止且清理完成。它用旧程序恢复实际原值，然后恢复旧配置/程序，由同一helper启动旧observe Agent，不导入或删除journal、不修改业务或缓存进程。执行中的负载不能提前恢复或放宽预算。
 
 本地10项验收门检查通过，包括损坏/缺失回执、短时冒充24h、单角色失败、缺周期/覆盖、越界周期及前置失败时禁止任何锁/输出/CLI操作。真实Linux拒绝已通过，首轮共享克隆演练因候选采样覆盖不足未通过并已恢复清理，见[失败和修正计划](testing-shared-program-stage-first.md)。后续成功也只补这套切换/恢复过程的600秒证据；正式24h enforce、至少7天和硬件门槛仍独立保留。
+
+P02/P08[共享程序第二轮工具接口拒绝](testing-shared-program-stage-interface-first.md)：采样120.001秒/60次通过，但旧campaign不支持managed smoke，原始stderr保留，未初始化新负载；旧入口恢复及独立清理通过。新增写入前CLI能力检查，分别冻结正式原工具与短时支持工具，13项本地通过；全新夹具按[接口修正计划](test-plan-shared-program-stage-interface.json)重验，数字条件均不变。

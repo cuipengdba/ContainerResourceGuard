@@ -6,6 +6,7 @@ frozen source hashes and the same pinned Pods/processes. No cgroup writes here:
 only each container's own source-qualified CRG CLI may apply/restore its limits.
 """
 import argparse
+import ast
 import datetime
 import hashlib
 import json
@@ -39,9 +40,14 @@ TOOLS = {
     'vendor-soak-load.py': 'ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461',
     'vendor-engine-smoke.py': '13f25d2282c648d52f3234e86145d8200a4381a26f5246fc6304f3e32ced6b3b',
 }
+SMOKE_TOOLS = {
+    'vendor-soak-campaign.py': 'b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea',
+    'vendor-soak-load.py': TOOLS['vendor-soak-load.py'],
+    'vendor-engine-smoke.py': 'b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c',
+}
 CONTROLS = ['cpu.max', 'memory.max', 'io.max', 'pids.max', 'cpu.weight', 'io.weight', 'memory.high', 'memory.swap.max']
 FORMAL_NAMESPACE = 'crg-vendor-lab-20261110'
-REHEARSAL_LAUNCHER = '107df85230089863615ec3312ab4db96a8a9da6bbe1a19cb0c66d7bf9c373a80'
+REHEARSAL_LAUNCHER = '2f06cb1c18580b409f43e09ac4a32e1f13ad7edc77e396df112172b8b853e700'
 
 
 def candidate_config():
@@ -80,6 +86,24 @@ def bounded(path, maximum=8*1024**2):
 
 def read_json(path):
     return json.loads(bounded(path))
+
+
+def tool_interfaces(root, smoke=False):
+    required = {
+        'vendor-soak-campaign.py': {'--namespace', '--fixture-root', '--work-dir', '--run-id', '--source-run-id', '--test-phase', '--seconds', '--agent-sha256', '--cache-sha256'},
+        'vendor-soak-load.py': {'--run-id', '--source-run-id', '--test-phase', '--seconds'},
+        'vendor-engine-smoke.py': {'--namespace', '--work-dir', '--run-id', '--cleanup-fixture', '--native-campaign-probes'},
+    }
+    if smoke:
+        required['vendor-soak-campaign.py'].add('--smoke-enforce')
+        required['vendor-engine-smoke.py'].add('--role')
+    for name, flags in required.items():
+        tree = ast.parse(bounded(Path(root)/name))
+        actual = {node.args[0].value for node in ast.walk(tree) if isinstance(node, ast.Call) and
+                  isinstance(node.func, ast.Attribute) and node.func.attr == 'add_argument' and
+                  node.args and isinstance(node.args[0], ast.Constant) and isinstance(node.args[0].value, str)}
+        if not flags <= actual:return False
+    return True
 
 
 def digest(path):
@@ -178,13 +202,13 @@ def epoch(text):
 
 
 @evidence_gate
-def accepted_campaign(report, duration, phase, agent_sha256=OLD):
+def accepted_campaign(report, duration, phase, agent_sha256=OLD, tools=TOOLS):
     if not (report.get('phase') == 'passed' and report.get('test_phase') == phase and
             report.get('requested_seconds') == duration and not report.get('cleanup_errors') and
             report.get('agent_sha256') == agent_sha256 and report.get('cache_sha256') == CACHE and
-            report.get('campaign_script_sha256') == TOOLS['vendor-soak-campaign.py'] and
-            report.get('worker_sha256') == TOOLS['vendor-soak-load.py'] and
-            report.get('engine_script_sha256') == TOOLS['vendor-engine-smoke.py'] and
+            report.get('campaign_script_sha256') == tools['vendor-soak-campaign.py'] and
+            report.get('worker_sha256') == tools['vendor-soak-load.py'] and
+            report.get('engine_script_sha256') == tools['vendor-engine-smoke.py'] and
             set(report.get('roles', {})) == {'dbs', 'hisdbs'}):
         return False
     offsets = [300, 21600, 43200, 64800] if phase == 'baseline' else [30]
@@ -243,6 +267,7 @@ class Stage:
         self.base = Path(manifest['fixture_root'])
         self.fixture = self.base/'fixture'
         self.tools = Path(manifest['tools_root'])
+        self.expected_tools = TOOLS if manifest['kind'] == 'formal' else SMOKE_TOOLS
         self.report = {'schema': 'crg-vendor-enforce-stage-report-v1', 'phase': 'checking',
                        'kind': manifest['kind'], 'checks': {}, 'operations': [],
                        'stage_source_sha256': digest(Path(__file__)),
@@ -336,7 +361,7 @@ class Stage:
         duration = 86400 if self.m['kind'] == 'formal' else 600
         phase = 'baseline' if self.m['kind'] == 'formal' else 'smoke'
         baseline = read_json(Path(self.m['baseline_work_dir'])/'report.json')
-        require(accepted_campaign(baseline, duration, phase), 'entire prior campaign not accepted')
+        require(accepted_campaign(baseline, duration, phase, tools=self.expected_tools), 'entire prior campaign not accepted')
         coordinator = self.m['baseline_coordinator']
         require(not entry_live(coordinator['pid'], coordinator['entry']), 'baseline coordinator still live')
         for role in ['dbs', 'hisdbs']:
@@ -381,7 +406,7 @@ class Stage:
                 all(x.get('pod_absent') is True and x.get('cgroup_absent') is True for x in cleanup['pods'].values()),
                 'exact rehearsal launcher or complete fixture cleanup missing')
         campaign = result['campaign_result']
-        require(accepted_campaign(campaign, 600, 'smoke', agent_sha256=NEW),
+        require(accepted_campaign(campaign, 600, 'smoke', agent_sha256=NEW, tools=SMOKE_TOOLS),
                 'full shared-program enforced600s not accepted')
         namespace = result['namespace']
         require(re.fullmatch(r'crg-vendor-lab-stage[a-z0-9-]+', namespace) is not None and
@@ -401,7 +426,8 @@ class Stage:
         self.check('private-directories', lambda: all(safe_directory(p) for p in [self.base, self.fixture, self.tools, Path(self.m['baseline_work_dir'])]))
         self.check('original-fixture-sources', lambda: all(digest(self.fixture/name) == expected for name, expected in FIXTURE_SOURCES.items()))
         self.check('exact-candidate', lambda: digest(self.m['candidate_binary']) == NEW)
-        self.check('unchanged-workload-tools', lambda: all(digest(self.tools/name) == expected for name, expected in TOOLS.items()))
+        self.check('unchanged-workload-tools', lambda: all(digest(self.tools/name) == expected for name, expected in self.expected_tools.items()))
+        self.check('workload-tool-interface-before-stage', lambda: tool_interfaces(self.tools, smoke=self.m['kind'] == 'rehearsal'))
         self.check('namespace-identity', lambda: json.loads(run(['kubectl', 'get', 'namespace', self.m['namespace'], '-o', 'json']).stdout)['metadata']['uid'] == self.m['namespace_uid'])
         self.check('original-reserve', self.reserve)
         self.check('other-business-fixtures', self.no_other_business_fixtures)
@@ -626,13 +652,14 @@ class Stage:
                 require(result.get('phase') in ['passed', 'failed'] and not result.get('cleanup_errors') and
                         math.isfinite(result.get('ended_epoch', math.inf)) and
                         result.get('agent_sha256') == NEW and result.get('cache_sha256') == CACHE and
-                        result.get('campaign_script_sha256') == TOOLS['vendor-soak-campaign.py'] and
-                        result.get('worker_sha256') == TOOLS['vendor-soak-load.py'] and
-                        result.get('engine_script_sha256') == TOOLS['vendor-engine-smoke.py'] and
+                        result.get('campaign_script_sha256') == self.expected_tools['vendor-soak-campaign.py'] and
+                        result.get('worker_sha256') == self.expected_tools['vendor-soak-load.py'] and
+                        result.get('engine_script_sha256') == self.expected_tools['vendor-engine-smoke.py'] and
                         result.get('source_run_id') == self.m['source_run_id'], 'terminal original campaign cleanup not verified')
                 report['campaign_result'] = result
             require(all(safe_directory(p) for p in [self.base, self.fixture, self.tools]), 'private directory check failed')
-            require(all(digest(self.tools/name) == expected for name, expected in TOOLS.items()), 'original workload tools changed')
+            require(all(digest(self.tools/name) == expected for name, expected in self.expected_tools.items()) and
+                    tool_interfaces(self.tools, smoke=self.m['kind'] == 'rehearsal'), 'qualified workload tools changed')
             require(json.loads(run(['kubectl', 'get', 'namespace', self.m['namespace'], '-o', 'json']).stdout)['metadata']['uid'] == self.m['namespace_uid'], 'namespace incarnation changed')
             self.no_other_business_fixtures()
             # Rehydrate only known source/config bytes, never stored journal state.
@@ -659,7 +686,7 @@ class Stage:
             self.output = output
             self.backout()
             if self.m['kind'] == 'rehearsal':
-                require(accepted_campaign(self.report.get('campaign_result', {}), 600, 'smoke', agent_sha256=NEW), 'recovery succeeded; enforced600s evidence failed')
+                require(accepted_campaign(self.report.get('campaign_result', {}), 600, 'smoke', agent_sha256=NEW, tools=SMOKE_TOOLS), 'recovery succeeded; enforced600s evidence failed')
                 self.report['phase'] = 'rehearsal-passed-restored'
             else:
                 self.report['phase'] = 'campaign-terminal-restored'
@@ -751,7 +778,7 @@ class Stage:
                     time.sleep(2)
                 result = read_json(work/'report.json')
                 self.report['campaign_result'] = result
-                accepted = job.returncode == 0 and accepted_campaign(result, 600, 'smoke', agent_sha256=NEW)
+                accepted = job.returncode == 0 and accepted_campaign(result, 600, 'smoke', agent_sha256=NEW, tools=SMOKE_TOOLS)
                 require(not result.get('cleanup_errors') and self.new_native_workers_absent(), 'campaign temporary cleanup still pending')
                 require(accepted, 'shared-program enforced600s campaign failed')
                 self.report['phase'] = 'rehearsal-awaiting-recovery';self.save()

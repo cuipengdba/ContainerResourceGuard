@@ -138,6 +138,10 @@ class GateTests(unittest.TestCase):
         newer = copy.deepcopy(report);newer['agent_sha256'] = stage.NEW
         self.assertFalse(stage.accepted_campaign(newer, 600, 'smoke'))
         self.assertTrue(stage.accepted_campaign(newer, 600, 'smoke', agent_sha256=stage.NEW))
+        newer.update(campaign_script_sha256=stage.SMOKE_TOOLS['vendor-soak-campaign.py'],
+                     engine_script_sha256=stage.SMOKE_TOOLS['vendor-engine-smoke.py'])
+        self.assertFalse(stage.accepted_campaign(newer, 600, 'smoke', agent_sha256=stage.NEW))
+        self.assertTrue(stage.accepted_campaign(newer, 600, 'smoke', agent_sha256=stage.NEW, tools=stage.SMOKE_TOOLS))
         for change in ['native', 'sample_gap', 'sample_identity', 'sample_nonfinite', 'missing_cycle',
                        'outside_interval', 'cleanup', 'pending_cycle', 'source', 'campaign_cleanup']:
             with self.subTest(change=change):
@@ -175,6 +179,19 @@ class GateTests(unittest.TestCase):
         self.assertEqual((elapsed, count), (120, 30))
         self.assertLess(count, 59)  # Existing coverage gate still refuses.
         self.assertEqual(observed, [4*n for n in range(30)])
+
+    def test_source_hash_alone_does_not_prove_required_workload_interface(self):
+        self.assertTrue(stage.tool_interfaces(ROOT/'tests', smoke=True))
+        self.assertEqual({name: stage.digest(ROOT/'tests'/name) for name in stage.SMOKE_TOOLS}, stage.SMOKE_TOOLS)
+        with tempfile.TemporaryDirectory() as folder:
+            # A legacy-shaped source can support the formal phase while
+            # lacking the managed smoke and selected-role interfaces.
+            for name in stage.TOOLS:
+                data = (ROOT/'tests'/name).read_text(encoding='utf-8')
+                data = '\n'.join(line for line in data.splitlines() if "add_argument('--smoke-enforce'" not in line and 'add_argument("--role"' not in line)
+                (Path(folder)/name).write_text(data, encoding='utf-8')
+            self.assertTrue(stage.tool_interfaces(folder, smoke=False))
+            self.assertFalse(stage.tool_interfaces(folder, smoke=True))
 
 
 if __name__ == '__main__':

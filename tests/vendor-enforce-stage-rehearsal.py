@@ -44,7 +44,8 @@ def main():
     stage.require(not BASE.exists() and not OUTPUT.exists(), 'fresh rehearsal paths required')
     stage.require(not stage.run(['kubectl', 'get', 'namespace', NAMESPACE, '--ignore-not-found', '-o', 'json']).stdout.strip(), 'private namespace already exists')
     stage.require(all(stage.digest(SOURCE/'fixture'/name) == expected for name, expected in stage.FIXTURE_SOURCES.items()), 'original fixture sources changed')
-    stage.require(all(stage.digest(tools/name) == expected for name, expected in stage.TOOLS.items()), 'original campaign sources changed')
+    stage.require(all(stage.digest(tools/name) == expected for name, expected in stage.SMOKE_TOOLS.items()) and
+                  stage.tool_interfaces(tools, smoke=True), 'qualified smoke campaign sources or interface differ')
     BASE.mkdir(mode=0o700)
     report = {'phase': 'preparing', 'scope': 'two disposable original-image clones; shared program, separate per-container Agents',
               'launcher_source_sha256': stage.digest(Path(__file__)), 'stage_source_sha256': args.stage_sha256,
@@ -194,7 +195,7 @@ def main():
         command = ['python3', str(tools/'vendor-soak-campaign.py'), '--namespace', NAMESPACE, '--fixture-root', str(BASE), '--work-dir', str(baseline),
                    '--run-id', SOURCE_RUN, '--test-phase', 'smoke', '--seconds', '600', '--agent-sha256', stage.OLD, '--cache-sha256', stage.CACHE]
         prior = wait_child(command, 'baseline.log', 'old-observe600')
-        record('both-full-original-baseline600', prior.returncode == 0 and stage.accepted_campaign(stage.read_json(baseline/'report.json'), 600, 'smoke'))
+        record('both-full-original-baseline600', prior.returncode == 0 and stage.accepted_campaign(stage.read_json(baseline/'report.json'), 600, 'smoke', tools=stage.SMOKE_TOOLS))
         namespace_uid = json.loads(stage.run(['kubectl', 'get', 'namespace', NAMESPACE, '-o', 'json']).stdout)['metadata']['uid']
         manifest = {'schema': 'crg-vendor-enforce-stage-v1', 'kind': 'rehearsal', 'namespace': NAMESPACE, 'namespace_uid': namespace_uid,
                     'fixture_root': str(BASE), 'baseline_work_dir': str(baseline), 'tools_root': str(tools),
