@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-10",
+  "source_revision": "74693efcb01441fdb6a91269bbbedff3e16c4691",
+  "binary_sha256": "c6be514f289bbe9580701afb93ffdc1a21a0dec0a689c86e32f219fcd97651b9",
+  "role": "hisdbs",
+  "scope": "fresh isolated original image and real container paths, original CCG read-only, loopback DCS and synthetic data",
+  "resource_mode": "percent",
+  "percent": 30,
+  "automatic_io_state": "calibrated",
+  "selected_directory": "/data",
+  "selected_filesystem": "xfs",
+  "selected_total_bytes": 965520392192,
+  "profile_saved": true,
+  "ready_and_managed_seconds": 63.61579259694554,
+  "startup_checks": [
+    {
+      "name": "hisdbs-real-path-original-startup-default-automatic-IO",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    }
+  ],
+  "fixed_controls": {
+    "cpu.max": "720000 100000",
+    "memory.max": "20001980416",
+    "io.max": "253:0 rbps=26358923 wbps=13639201 riops=49 wiops=17",
+    "cpu.weight": "4",
+    "pids.max": "406648",
+    "memory.high": "max",
+    "memory.swap.max": "0",
+    "io.weight": "default 100"
+  },
+  "campaign": {
+    "phase": "failed",
+    "failure": "workload completion deadline",
+    "cleanup_errors": [
+      "worker exec client still running: hisdbs"
+    ]
+  },
+  "engine": {
+    "phase": "failed",
+    "checks": [
+      {
+        "name": "fixture_initial_rows",
+        "passed": true
+      },
+      {
+        "name": "physical_backup_finished",
+        "passed": true
+      },
+      {
+        "name": "streaming_new_rows_and_checksum",
+        "passed": true
+      },
+      {
+        "name": "standby_in_recovery",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_initial_checksum",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_is_writable",
+        "passed": true
+      },
+      {
+        "name": "independent_restore_does_not_modify_primary",
+        "passed": true
+      }
+    ],
+    "physical_backup_seconds": 211.94999620504677,
+    "failure": "campaign terminated the engine while logical restore was still executing; temporary instance cleanup reported nonzero exits"
+  },
+  "native_last_snapshot": {
+    "phase": "running",
+    "requested_duration_seconds": 600,
+    "elapsed_seconds": 300.1705716389697,
+    "sql": {
+      "attempts": 94,
+      "errors": 35,
+      "histogram": [
+        47,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0,
+        4,
+        3,
+        35
+      ],
+      "max_seconds": 5.016873111948371,
+      "successes": 59,
+      "total_seconds": 191.91840777755715
+    },
+    "api": {
+      "attempts": 61,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        61,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0.009181497152894735,
+      "successes": 61,
+      "total_seconds": 0.4453077216167003
+    }
+  },
+  "native_final_completed_report_available": false,
+  "outcome": "failed workload completion deadline and incomplete native/engine evidence; never a 600s pass",
+  "initial_cleanup_namespace_absent": false,
+  "namespace_absent": true,
+  "post_cleanup_verification": {
+    "utc": "2026-11-10T04:34:45Z",
+    "namespace_absent": true,
+    "cleanup_limit_change_performed": false,
+    "note": "initial bounded deletion reported false; later read-only check confirmed removal; attempted cleanup IO helper refused before mutation because namespace already absent"
+  },
+  "follow_up": "fresh manual7.2 CPU, same memory, read/write16MiB/s and4096IOPS original-path controls for both roles; known-reader-to-combined online Agent-only upgrade/rollback waits for those controls to pass; no budget/deadline relaxation"
+}
