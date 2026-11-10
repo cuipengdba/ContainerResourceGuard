@@ -130,3 +130,7 @@ P04.1 同步改为自动发现的标定质量与重复样本验证，不再要�
 当前R29/R30的两线Linux/race及38项隔离工程检查通过，结果与未测范围见[三项百分比/版本/日志实测](testing-three-percent-cgroup-logs.md)。本次可交付工程预览，不将正式RC3、24h+24h或1.0长期门槛标为完成。
 
 P01/P03/P08/P10后续验收已在运行前归档[三资源候选测试计划](testing-three-resource-followup.md)：新源码四格手动64MiB/s业务矩阵、三项热重载及后置在线升级，旧失败保留，原时长/延迟门槛不变。
+
+旧源码第9轮已结束：64MiB/s三格通过，组合/DBS在缓存前置检查处停止、未进入负载；依赖的第10轮在线升级未执行。第11轮交叉故障另108项通过，同组旧源码故障矩阵合计216项；完整结果见[手动矩阵](testing-realpaths-manual.md)和[故障覆盖](testing-realpaths-faults.md)。新三资源候选另起四格验收，不混用程序来源。
+
+未发布组合线d6ea657的三项百分比持续热重载15项实际检查通过，包含独立默认/CLI优先/坏配置保持/manual切换/外部冲突及停用；夹具已清理，见[明确程序来源和边界的结果](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-three-percent-reload.md)。main预览不因此新增热重载功能。
