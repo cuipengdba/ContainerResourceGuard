@@ -9,3 +9,5 @@ Windows在全新独立checkout、固定Go1.27.3/目标参数构建，两目标�
 新候选另按[开销冻结计划](test-plan-partition-steady-overhead.json)复验：原45秒预热、1800秒实际测量、三独立占位容器、原CPU/RSS/写入/间隔/OOM阈值均不变，增加每次采样的PID1/Agent/cgroup身份和8项实际控制保持检查。首轮因测试包漏带optional-agent.sh而在90秒状态等待截止前失败，未进入采样；[失败记录](test-results-partition-steady-overhead-startup-failure.json)及退出1/夹具清理保留。补齐同源码辅助脚本并增加摘要前置检查后，按[第二次冻结计划](test-plan-partition-steady-overhead-retry.json)重测，现已进入实际采样；[固定启动观察](test-start-partition-steady-overhead-retry.json)每组6个样本仅证明开始，尚非1800秒验收。程序、超时和验收阈值均不变，前一d6程序结果不直接沿用。
 
 此接入只在组合开发线，尚未合入main或发布；既有预览资产不改，97正式基线和正式共享切换的d6候选/工具/预算不改。ARM厂商业务、独立物理设备、24h+24h、至少7天和最近两个正式次版本维护仍不据此关闭，默认20%业务失败保持原结论。
+
+下一步按[当前程序真实路径业务冻结计划](test-plan-partition-realpaths-business.json)分别测试DBS/HISDBS，仍为原手动64MiB/s预算、各600秒及原指标；必须先等本程序开销终态通过且独立确认夹具已清理，才能创建业务Pod。当前计划未启动，不沿用旧d6的业务结果。
