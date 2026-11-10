@@ -31,3 +31,10 @@ DBS observe 初始化约 25s，20% 在预设 300s 内未就绪，30% 初始化�
 
 
 可信发布的 [开发分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/release-provenance) 已完成固定工具链、逐架构 SBOM、14 项包完整性正反检查、官方 schema 核对和另路径复现。GitHub 实际生成 provenance 与 SBOM 证明，限定仓库/工作流/源码/ref 的四项在线验证及三个错误身份/篡改反例均通过；预取可信根与 bundle 后，正确离线验证和三个反例通过。首轮缺 serialNumber 的 CI 失败保留。跨宿主首轮校验和因 CRLF/LF 不同；274ec3c 明确输出 LF 后，Windows 新克隆与 Linux CI 的两程序、两包、两 SBOM、清单、校验和共八项字节一致，见 [证据与边界](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/release-provenance/docs/release-provenance.md)。来源证明不代替功能或长期业务验收；这些开发分支仍未合入 main 或发布。
+
+
+## 组合候选补充记录
+
+[next/compatibility-contract](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/compatibility-contract) 已组合后续开发代码，并汇入 main 的业务证据与持续测试入口，尚未合入 main 或发布。该分支已经补齐配置表中的五项可选控制和观测参数、热重载/维护手册以及[兼容契约草案](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/compatibility-contract.md)。固定 Go1.27.3 的实际程序完成[31项独立容器维护检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/compatibility-contract/docs/testing-combined-maintenance.md)，包括接入后六种辅助故障、真实限额/原值恢复、持久重建、永久卸载及锁/维护错误码；Go1.22.5最低源码工具链与Go1.27.3 CI分别归档。相同候选的三组30min预算和两个解析器各10min fuzz已启动，不能将启动记录当作完成。
+
+正式24h observe基线仍在运行，24h enforce和至少7天业务验收未开始；最新采样与最终判定分开，未发布1.0。业务节点保持只读，厂商专用接口、真实掉电及未测硬件组合不扩成已验证范围。
