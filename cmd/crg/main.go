@@ -42,7 +42,7 @@ func main() {
 }
 func mainErr() error {
 	if len(os.Args) < 2 {
-		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|quiesce|binary-install|binary-rollback|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
+		return errors.New("usage: crg doctor|preflight|run|status|diagnose|upgrade-check|state-backup|quiesce|binary-install|binary-rollback|supervisor-plan|supervisor-install|supervisor-uninstall|reload|disable|enable|restore|calibrate|profile-check|profile-merge|version|build-info [options]")
 	}
 	cmd := os.Args[1]
 	if cmd == "version" {
@@ -72,6 +72,12 @@ func mainErr() error {
 	backupDir := f.String("backup-dir", "", "private binary recovery directory; fresh for installation")
 	previousSHA := f.String("previous-sha256", "", "trusted expected installed binary SHA256")
 	candidateSHA := f.String("candidate-sha256", "", "trusted expected running candidate SHA256")
+	supervisorPath := f.String("supervisor", "", "explicit existing supervisor file in this container")
+	supervisorSHA := f.String("supervisor-sha256", "", "trusted expected original supervisor SHA256")
+	helperPath := f.String("helper", "", "existing optional helper file")
+	helperSHA := f.String("helper-sha256", "", "trusted expected optional helper SHA256")
+	agentPath := f.String("agent-binary", "", "existing per-container CRG binary")
+	agentSHA := f.String("agent-sha256", "", "trusted expected CRG binary SHA256")
 	if e := f.Parse(os.Args[2:]); e != nil {
 		return e
 	}
@@ -163,7 +169,7 @@ func mainErr() error {
 		emit(p)
 		return nil
 	}
-	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "binary-install" && cmd != "binary-rollback" && cmd != "quiesce" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
+	if cmd != "run" && cmd != "doctor" && cmd != "preflight" && cmd != "status" && cmd != "diagnose" && cmd != "upgrade-check" && cmd != "state-backup" && cmd != "binary-install" && cmd != "binary-rollback" && cmd != "supervisor-plan" && cmd != "supervisor-install" && cmd != "supervisor-uninstall" && cmd != "quiesce" && cmd != "reload" && cmd != "restore" && cmd != "disable" && cmd != "enable" {
 		return errors.New("unknown command")
 	}
 	var c guard.Config
@@ -194,6 +200,27 @@ func mainErr() error {
 	env, e := guard.Discover()
 	if e != nil {
 		return e
+	}
+	if cmd == "supervisor-plan" || cmd == "supervisor-install" || cmd == "supervisor-uninstall" {
+		if *config == "" || *supervisorPath == "" {
+			return errors.New("supervisor maintenance requires explicit --config and --supervisor")
+		}
+		o := guard.SupervisorOptions{Path: *supervisorPath, SourceSHA256: *supervisorSHA, Helper: *helperPath, HelperSHA256: *helperSHA, Binary: *agentPath, BinarySHA256: *agentSHA, Config: *config, BackupDir: *backupDir}
+		var plan guard.SupervisorPlan
+		var err error
+		switch cmd {
+		case "supervisor-plan":
+			plan, err = guard.PreviewSupervisor(ctx, c, o)
+		case "supervisor-install":
+			plan, err = guard.InstallSupervisor(ctx, c, env, o)
+		case "supervisor-uninstall":
+			plan, err = guard.UninstallSupervisor(ctx, c, env, *supervisorPath, *backupDir)
+		}
+		if err != nil {
+			return err
+		}
+		emit(map[string]any{"plan": plan, "business_action": "none", "limits_action": "none", "detail": "maintenance never starts/stops business, never restores/deletes resource state; private supervisor backup may contain secrets"})
+		return nil
 	}
 	if cmd == "binary-install" || cmd == "binary-rollback" {
 		if *config == "" || *installDir == "" || *backupDir == "" {
