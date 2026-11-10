@@ -15,6 +15,7 @@ jobs:
       - run: go test -race -cover ./...
       - run: bash tests/supervisor.sh
       - run: python3 tests/integration-patch.py
+      - run: python3 tests/vendor-enforce-stage-checks.py
       - run: bash scripts/build.sh "${GITHUB_REF_NAME//\//-}"
       - run: python3 scripts/package.py "${GITHUB_REF_NAME//\//-}"
       - run: python3 scripts/check-package.py "${GITHUB_REF_NAME//\//-}"
