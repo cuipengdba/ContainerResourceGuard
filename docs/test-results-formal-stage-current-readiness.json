@@ -1,0 +1,64 @@
+{
+  "kind": "fixed formal-stage read-only preflight while original baseline and other disposable fixtures are live",
+  "phase": "not-ready",
+  "observed_node_utc": "2026-11-10T22:40:10Z",
+  "stage_source_sha256": "d044105dc208ea7032b23db7d2bd28e34d678c0ee10eaf34acbefa3da54f273c",
+  "manifest_sha256": "49ccbad66974530e4863d9e0a37b9e44771453958bcabe9e8e24f8795599b22d",
+  "fixed_candidate_source_revision": "d6ea6572dc423397ca496a5277d2af4496c6970c",
+  "fixed_candidate_binary_sha256": "0a0799f5c992b8b4ddb983bec12a8061965a4fbed4c419d47cd7c7607dbecf15",
+  "checks": {
+    "private-directories": {
+      "passed": true
+    },
+    "original-fixture-sources": {
+      "passed": true
+    },
+    "exact-candidate": {
+      "passed": true
+    },
+    "unchanged-workload-tools": {
+      "passed": true
+    },
+    "workload-tool-interface-before-stage": {
+      "passed": true
+    },
+    "namespace-identity": {
+      "passed": true
+    },
+    "original-reserve": {
+      "passed": true
+    },
+    "other-business-fixtures": {
+      "passed": false,
+      "failure_class": "RuntimeError",
+      "detail": "other disposable business fixtures remain"
+    },
+    "dbs-same-original-processes-and-mounts": {
+      "passed": true
+    },
+    "dbs-original-controls-and-observe": {
+      "passed": true
+    },
+    "hisdbs-same-original-processes-and-mounts": {
+      "passed": true
+    },
+    "hisdbs-original-controls-and-observe": {
+      "passed": true
+    },
+    "full-prior-acceptance-and-cleanup": {
+      "passed": false,
+      "failure_class": "RuntimeError",
+      "detail": "entire prior campaign not accepted"
+    },
+    "exact-shared-program-rehearsal": {
+      "passed": true
+    }
+  },
+  "exit": 2,
+  "operations": [],
+  "stage_executed": false,
+  "sequence": "Archive only actual accepted86400s baseline; retain original Pods/data; await other business fixtures (including existing seven-day run and aged postflight) cleanup; repeat unchanged stage preflight before actual fixed-d6 enforce.",
+  "isolation_gate_weakened": false,
+  "original_baseline_or_fixed_candidate_changed": false,
+  "P10_complete": false
+}
