@@ -69,3 +69,5 @@ P02/P08[共享程序首轮未通过](testing-shared-program-stage-first.md)：�
 P06增加[Linux6实际环境兼容性计划](plan-linux6-cgroup-ci.md)：两线AMD64/ARM64手动任务先断言实际6.*内核，再复用原22项dm/loop控制器与原预算；首次执行前冻结源码和工作流，不改产品或测试机，不提前声称支持。
 
 P06[实际Linux6.8双架构兼容性四格88项通过](testing-linux6-cgroup-ci.md)：两线原生AMD64/ARM64、Docker28.0.4、实际三项控制/直接IO/恢复/自动百分比与新ID/只读降级，原22项驱动和预算不变，夹具清理均确认。只补记录的6.8占位容器组合，ARM厂商业务、物理多设备、分区支持与长期门槛不变。
+
+P02/P08[共享程序第二轮工具接口拒绝](testing-shared-program-stage-interface-first.md)：采样120.001秒/60次通过，但旧campaign不支持managed smoke，原始stderr保留，未初始化新负载；旧入口恢复及独立清理通过。新增写入前CLI能力检查，分别冻结正式原工具与短时支持工具，13项本地通过；全新夹具按[接口修正计划](test-plan-shared-program-stage-interface.json)重验，数字条件均不变。
