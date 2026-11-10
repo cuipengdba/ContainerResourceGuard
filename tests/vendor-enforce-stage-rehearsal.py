@@ -25,9 +25,17 @@ NEW_RUN = '202611101502'
 
 
 def main():
+    global BASE, OUTPUT, NAMESPACE, SOURCE_RUN, NEW_RUN
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--stage-sha256', required=True)
+    parser.add_argument('--attempt', type=int, choices=range(20, 100), default=20)
     args = parser.parse_args()
+    if args.attempt != 20:
+        BASE = Path('/var/tmp/crg-stage-rehearsal-'+str(args.attempt)+'-20261110')
+        OUTPUT = Path('/var/tmp/crg-enforce-stage-'+str(args.attempt)+'-20261110')
+        NAMESPACE = 'crg-vendor-lab-stage'+str(args.attempt)+'-20261110'
+        SOURCE_RUN = '20261110'+str(args.attempt)+'01'
+        NEW_RUN = '20261110'+str(args.attempt)+'02'
     tools = Path(__file__).resolve().parent
     spec = importlib.util.spec_from_file_location('stage_fixture', tools/'vendor-enforce-stage.py')
     stage = importlib.util.module_from_spec(spec);spec.loader.exec_module(stage)
