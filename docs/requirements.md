@@ -186,3 +186,6 @@ R167[完整压力线程诊断](testing-business-pressure-threads.md)已实现并
 
 
 R167完整压力线程联测[已启动并归档开始快照](test-start-business-pressure-threads.json)：固定原运行器/worker/观察器PID及启动ticks；快照时DBS11区间、13项局部检查通过，真实高于20%目标时延后，释放后同gen7自动应用20%再恢复30%。原600秒负载/引擎仍pending、HIS业务尚未执行，不计完整业务通过。协议源码三个固定提交的CI均通过，公开45个来源/证据blob已核对，原发布包和历史失败保持。
+
+
+R167[完整线程压力终态](testing-business-pressure-threads.md)失败：DBS600.269秒/SQL2错/API0错/13局部检查，601样本及实际主库三次慢UPDATE已归档；HIS未执行，CPU无节流/PSI未知不等于根因明确。全清理/原输入和ELF恢复已核对。下步补原生逐错和PG等待证据，不提高配额或放宽原32项/SLA。
