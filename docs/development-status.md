@@ -188,3 +188,6 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 新版本化程序的[冷重建四次启动44项终态](testing-versioned-candidate-cold-rebuild.md)通过并清理，[自身七天测量](plan-seven-day-versioned-candidate.md)实际开始、首周期内容通过但native-pending；[独立实际谱系/只读后置门禁](testing-versioned-aged-preflight.md)已实现，Linux8项通过、真实封存及提前pending核对完成。初次报告结构错误拒绝和原计划/源码已保留，修正后未改业务进程、限额或验收门槛。本程序后置执行绑定、真实604800秒和全部稳定条件继续；工程预发布不关闭52项原任务。
+
+
+版本化候选的[实际老化后置执行器](testing-versioned-aged-postflight-execution.md)已实现并通过Linux10项检查；真实七天默认/execute两次门禁均pending且未创建目标，独立短数据readiness通过并启动原实例演练，首观察DBS13项通过、尚未计两角色600秒终态。绑定本程序R64数据和新R78/R80b谱系，原R57/R59/R60保持；实际七天后置、老化故障和稳定全部条件继续。

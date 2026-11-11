@@ -11,3 +11,6 @@
 首次真实采集被拒绝：适配器把只在终态存在的workload字段用于运行中报告。[原冻结计划](test-plan-versioned-aged-postflight-initial.json)、[原适配器文本](fixtures/vendor-versioned-aged-preflight.py.initial.txt)、[原检查文本](fixtures/vendor-versioned-aged-preflight-checks.py.initial.txt)及失败结果保留。修正按实际运行中报告结构读取固定原生文件，并新增真实结构、错误run_id/phase/PG起点反例；没有放宽任何时长、资源、错误数或清理标准，没有停止或重启七天进程。
 
 本轮Windows8项中1项POSIX绝对路径跳过，Linux8项全部运行通过。合成测试与真实采集分列；后续还需本程序自己的备份/独立恢复、新ID重建、升级/回退和辅助故障执行绑定，以及所有原稳定版条件。
+
+
+后续开发已加入[版本化实际后置执行器](testing-versioned-aged-postflight-execution.md)，Linux10项及真实提前pending通过，另有独立短数据演练；本页原记录与固定采集计划保留当时时点，真实七天后置仍未执行。
