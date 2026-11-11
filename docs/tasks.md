@@ -368,3 +368,6 @@ R142[新压力绑定协议](testing-business-memory-pressure-legacy.md)已冻结
 
 
 R142[真实压力失败记录](test-results-business-memory-pressure-legacy-failure.json)已归档：DBS11段/13项局部主检查、实际高用量延后及释放后同代次重试通过，原600秒API错误3导致整轮失败，HISDBS未执行。原源代码/计划/失败不覆盖；日志17.857秒间隔仅定位线索，需补充请求/线程关联诊断后按原32项验收。两个原七天谱系仍measuring，正式对照/真实老化及硬件范围保持。
+
+
+R155/R157/R158[只读线程诊断工具](testing-thread-observer.md)已实现：Linux隔离sleep19项、两角色各15秒/16样本/47线程读取完成；首次双采集器HIS路径假设错误保留，后续HIS按实际8090监听者完成，没有重跑已完成DBS。仅工具资格，不是压力复现或完整业务接受。后续[完整诊断实施约束](plan-business-pressure-thread-diagnostics.md)保持原32项/两角色600秒及全部SLA，R142根因与长期仍待。

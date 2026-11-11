@@ -101,3 +101,6 @@ R130[压力补测失败](testing-business-memory-pressure.md)：辅助工具在P
 
 
 R142[真实30→20压力失败终态](testing-business-memory-pressure-legacy.md)：DBS实际分配约10.06GiB，延后缩减与释放后同generation7自动重试局部通过；11段/13项后，原生600.315秒API3次错误使整轮失败，HIS未执行。10项引擎内容及控制局部成功不抵消失败；独立清理/原输入和ELF保持。业务HttpTest日志出现17.857秒间隔，根因未定，原32项/全部SLA和长期门槛继续。
+
+
+[单目标只读线程工具](testing-thread-observer.md)现已Linux19项资格、DBS/HISDBS各15秒/16样本/47线程观察完成，原实例和限额保持；PSI不可用明确unknown。首次HIS路径假设错误及DBS完整CPU缺失保留；修正后单独完成HIS观察。未复现压力/未关闭R142，原32项和长期条件继续。

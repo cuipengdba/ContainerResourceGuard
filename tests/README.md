@@ -94,3 +94,6 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 `vendor-business-memory-pressure-legacy.py`绑定实际Python2/linux2验证过的v2内存工具，保留原32项/两角色600秒及全部原SLA；见[新冻结协议](../docs/testing-business-memory-pressure-legacy.md)。原R130失败执行器/计划不修改。
+
+
+`vendor-thread-observer.py`和`vendor-thread-observer-checks.py`是单目标只读诊断工具；Linux19项资格及DBS/HISDBS各15秒实际线程读取见[工具记录](../docs/testing-thread-observer.md)。不接业务启动、不改产品资源或原压力/业务阈值；后续完整压力联测另待。
