@@ -1,0 +1,100 @@
+{
+  "schema": "crg-versioned-business-reload-plan-v1",
+  "mode": "business-reload",
+  "work_root": "/var/tmp/crg-business-reload95-20261111",
+  "namespace": "crg-vendor-lab-reload95-20261111",
+  "run_id": "20261111095",
+  "pins": {
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "binary": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "cache": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "worker": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "previous": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+    "engine": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "profile": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b"
+  },
+  "criteria": {
+    "startup_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "native_seconds_each_role": 600,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "maximum_errors": 0,
+    "maximum_request_seconds": 5,
+    "p95_bucket_seconds": 1,
+    "minimum_coverage": 0.98,
+    "payload_bytes": 67108864,
+    "oom_kill_delta": 0
+  },
+  "policies": [
+    {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 100
+    },
+    {
+      "cpu_percent": 25,
+      "memory_percent": 29,
+      "io_percent": 80
+    }
+  ],
+  "numeric_readbacks": [
+    {
+      "cpu.max": "720000 100000",
+      "memory.max": "20001980416",
+      "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+    },
+    {
+      "cpu.max": "600000 100000",
+      "memory.max": "19335249920",
+      "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108"
+    }
+  ],
+  "executor_sha256": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+  "base_helper_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+  "worker": "/var/tmp/crg-r78-20261111/tests/vendor-soak-load.py",
+  "engine": "/var/tmp/crg-r78-20261111/tests/vendor-engine-smoke.py",
+  "profile": "/var/tmp/crg-r30-20261110/actual/v10/config/io-profile.json",
+  "previous_binary": "/var/tmp/crg-r71-20261111/binaries/previous",
+  "roles": {
+    "dbs": {
+      "folder": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business",
+      "aged_run_id": "202611110640",
+      "pod_sha256": "dac43fba0299014cfd47fd28ad91dd3a6046676be826e390ddb8bdd635d473ff"
+    },
+    "hisdbs": {
+      "folder": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business",
+      "aged_run_id": "202611110641",
+      "pod_sha256": "6272fd88f8f2cc46f7b95ff01d7c883a969dffe10fdc06973735297a1719a372"
+    }
+  },
+  "acceptance_scope": "600s original vendor business reload, same native and engine criteria; not default20 performance or seven-day acceptance",
+  "cold_start_manual_budget": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_max": "20001980416B",
+      "io_read_bps": "64MiB",
+      "io_write_bps": "64MiB",
+      "io_read_iops": 4096,
+      "io_write_iops": 4096
+    },
+    "data_paths": [
+      "/opt/postgresql"
+    ]
+  },
+  "reload_interval_seconds": 1,
+  "extra_controls": "all five actual originals unchanged",
+  "safety": "read-only default, explicit disposable marker, original helper UID/namespace ownership checks, sequential roles, config bytes/profile absence restored only after Pods gone",
+  "cases": [
+    "manual-to-percent during engine",
+    "independent CPU25 memory29 IO80",
+    "IO101 rejected retains entire policy",
+    "partial JSON rejected retains entire policy",
+    "duplicate key rejected retains entire policy",
+    "ConfigMap-style atomic symlink replacement",
+    "percent-to-manual three resources"
+  ],
+  "all_completion_claims": false
+}
