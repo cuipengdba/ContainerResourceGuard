@@ -1,0 +1,709 @@
+{
+  "schema": "crg-published-migration-first-failure-v1",
+  "phase": "failed",
+  "tests": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "version": "v0.1.0-rc.3-preview.1"
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+      "passed": true
+    },
+    {
+      "name": "dbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+      "passed": true
+    },
+    {
+      "name": "dbs-matching-published-old-disable-restores-exact-runtime-controls",
+      "passed": false
+    },
+    {
+      "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "version": "v0.1.0-rc.3-preview.1"
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "hisdbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-matching-published-old-disable-restores-exact-runtime-controls",
+      "passed": false
+    }
+  ],
+  "first_failure_is_test_journal_phase_assertion_not_proven_product_restore_failure": true,
+  "source_review": "matching-old Restore deletes each mutation after successful original-value readback; the first fixture incorrectly required original map to remain nonempty after restore",
+  "actual_cgroup_vector_not_recorded_before_first_failure": true,
+  "native600_accepted": false,
+  "controlled_replacement_or_rollback_executed": false,
+  "cleanup": {
+    "schema": "crg-published-migration-terminal-cleanup-v1",
+    "node_utc": "2026-11-11T21:12:11.724845+00:00",
+    "report": {
+      "resource_mode": "manual",
+      "declared_test_budget": {
+        "cpu_cores": 7.2,
+        "memory_max_bytes": 20001980416,
+        "read_write_bps": 67108864,
+        "read_write_iops": 4096
+      },
+      "phase": "failed",
+      "scope": "Actual published old/current controlled disable-restore migration and rollback, both original vendor paths; not quiescent same-limits install or two-minor stable acceptance",
+      "roles": {
+        "dbs": {
+          "phase": "failed",
+          "resource_mode": "manual",
+          "candidate_branch": "protocol-advertising-combined-development-binaries",
+          "memory_reserve_before_bytes": 37614252032,
+          "original_start_script_unmodified": true,
+          "same_container_mount_paths": true,
+          "original_ccg_readonly": true,
+          "last_readiness_probe": {
+            "exit": 0,
+            "output": "127.0.0.1:5432 - accepting connections\n"
+          },
+          "last_api_probe": {
+            "exit": 0
+          },
+          "ready_and_managed_seconds": 24.756112369010225,
+          "automatic_io": null,
+          "cache_enforce_observation_seconds": 0.000181686133146286,
+          "maintenance_intervals": [
+            {
+              "command": "/staging/crg:quiesce",
+              "started_epoch": 1794431326.9515514,
+              "ended_epoch": 1794431327.3193824
+            },
+            {
+              "command": "/staging/crg:binary-install",
+              "started_epoch": 1794431327.5311756,
+              "ended_epoch": 1794431327.7673652
+            },
+            {
+              "command": "/opt/crg/crg:disable",
+              "started_epoch": 1794431327.9983728,
+              "ended_epoch": 1794431328.5262287
+            }
+          ],
+          "unsupported_protocol_rejection": {
+            "state": "degraded",
+            "reason_code": "binary_maintenance_failed",
+            "error": "previous binary uses an unknown lock protocol"
+          },
+          "error": "dbs-matching-published-old-disable-restores-exact-runtime-controls",
+          "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-published-migration393-tools-20261111/vendor-published-migration.py\", line 258, in run_migration\n    record(role+'-matching-published-old-disable-restores-exact-runtime-controls',old_disabled['state']=='restored' and no_agent() and same())\n  File \"/var/tmp/crg-published-migration393-tools-20261111/vendor-published-migration.py\", line 29, in record\n    if not passed:raise AssertionError(name)\nAssertionError: dbs-matching-published-old-disable-restores-exact-runtime-controls\n",
+          "own_pod_removed": true
+        },
+        "hisdbs": {
+          "phase": "failed",
+          "resource_mode": "manual",
+          "candidate_branch": "protocol-advertising-combined-development-binaries",
+          "memory_reserve_before_bytes": 37305376768,
+          "original_start_script_unmodified": true,
+          "same_container_mount_paths": true,
+          "original_ccg_readonly": true,
+          "last_readiness_probe": {
+            "exit": 0,
+            "output": "127.0.0.1:5432 - accepting connections\n"
+          },
+          "last_api_probe": {
+            "exit": 0
+          },
+          "ready_and_managed_seconds": 28.67611727793701,
+          "automatic_io": null,
+          "cache_enforce_observation_seconds": 5.004442033125088,
+          "maintenance_intervals": [
+            {
+              "command": "/staging/crg:quiesce",
+              "started_epoch": 1794431382.3582163,
+              "ended_epoch": 1794431382.7111835
+            },
+            {
+              "command": "/staging/crg:binary-install",
+              "started_epoch": 1794431382.9291248,
+              "ended_epoch": 1794431383.1556425
+            },
+            {
+              "command": "/opt/crg/crg:disable",
+              "started_epoch": 1794431383.4305701,
+              "ended_epoch": 1794431383.8820024
+            }
+          ],
+          "unsupported_protocol_rejection": {
+            "state": "degraded",
+            "reason_code": "binary_maintenance_failed",
+            "error": "previous binary uses an unknown lock protocol"
+          },
+          "error": "hisdbs-matching-published-old-disable-restores-exact-runtime-controls",
+          "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-published-migration393-tools-20261111/vendor-published-migration.py\", line 258, in run_migration\n    record(role+'-matching-published-old-disable-restores-exact-runtime-controls',old_disabled['state']=='restored' and no_agent() and same())\n  File \"/var/tmp/crg-published-migration393-tools-20261111/vendor-published-migration.py\", line 29, in record\n    if not passed:raise AssertionError(name)\nAssertionError: hisdbs-matching-published-old-disable-restores-exact-runtime-controls\n",
+          "own_pod_removed": true
+        }
+      },
+      "tests": [
+        {
+          "name": "dbs-real-path-original-startup-manual-accepted-budget",
+          "passed": true
+        },
+        {
+          "name": "dbs-original-CCG-mount-stays-readonly",
+          "passed": true
+        },
+        {
+          "name": "dbs-original-cache-independent-enforce",
+          "passed": true
+        },
+        {
+          "name": "dbs-original-reader-is-source-qualified-and-managed",
+          "passed": true,
+          "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+          "previous_build_info": {
+            "arch": "amd64",
+            "os": "linux",
+            "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+            "version": "v0.1.0-rc.3-preview.1"
+          },
+          "candidate_build_info": {
+            "arch": "amd64",
+            "go_version": "go1.27.3",
+            "io_profile_versions": [
+              1,
+              2
+            ],
+            "journal_versions": [
+              1
+            ],
+            "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+            "os": "linux",
+            "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+            "version": "v1.0.0",
+            "writer_controls": [
+              "cpu.max",
+              "cpu.weight",
+              "io.max",
+              "io.weight",
+              "memory.max",
+              "memory.high",
+              "memory.swap.max",
+              "pids.max"
+            ]
+          }
+        },
+        {
+          "name": "dbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+          "passed": true
+        },
+        {
+          "name": "dbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+          "passed": true
+        },
+        {
+          "name": "dbs-matching-published-old-disable-restores-exact-runtime-controls",
+          "passed": false
+        },
+        {
+          "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-original-CCG-mount-stays-readonly",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-original-cache-independent-enforce",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+          "passed": true,
+          "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+          "previous_build_info": {
+            "arch": "amd64",
+            "os": "linux",
+            "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+            "version": "v0.1.0-rc.3-preview.1"
+          },
+          "candidate_build_info": {
+            "arch": "amd64",
+            "go_version": "go1.27.3",
+            "io_profile_versions": [
+              1,
+              2
+            ],
+            "journal_versions": [
+              1
+            ],
+            "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+            "os": "linux",
+            "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+            "version": "v1.0.0",
+            "writer_controls": [
+              "cpu.max",
+              "cpu.weight",
+              "io.max",
+              "io.weight",
+              "memory.max",
+              "memory.high",
+              "memory.swap.max",
+              "pids.max"
+            ]
+          }
+        },
+        {
+          "name": "hisdbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-matching-published-old-disable-restores-exact-runtime-controls",
+          "passed": false
+        }
+      ],
+      "schema": "crg-published-migration-v1",
+      "plan_sha256": "0d715c7933b9b2a2a14d568e20c6a9c4753f15e751c96dcc2fc87b5947703099",
+      "published_programs": {
+        "previous": {
+          "release": "v0.1.0-rc.3-preview.1",
+          "asset_id": 730823163,
+          "asset_name": "containerresourceguard-v0.1.0-rc.3-preview.1-linux-amd64.tar.gz",
+          "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+          "archive_bytes": 1708379,
+          "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "binary_bytes": 3600544,
+          "binary_member": "crg",
+          "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+        },
+        "candidate": {
+          "release": "v1.0.0-preview.2",
+          "asset_id": 734233184,
+          "asset_name": "containerresourceguard-v1.0.0-linux-amd64.tar.gz",
+          "archive_sha256": "d6bdfc89d6699a92d70e46a7aa561ccc54ba581901aed382158eb2a24d72952f",
+          "archive_bytes": 2211930,
+          "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+          "binary_bytes": 4022432,
+          "binary_member": "crg",
+          "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+        }
+      },
+      "sources": {
+        "previous": {
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+          "release_status": "published v0.1.0-rc.3-preview.1 exact official asset"
+        },
+        "candidate": {
+          "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+          "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+          "release_status": "published v1.0.0-preview.2 exact official asset"
+        }
+      },
+      "build_info": {
+        "previous": {
+          "arch": "amd64",
+          "os": "linux",
+          "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+          "version": "v0.1.0-rc.3-preview.1"
+        },
+        "candidate": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+          "version": "v1.0.0",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        }
+      },
+      "job_sha256": "70dd11ab1f239b801d2eaa68e3e0895df2d3848423b1c27f40d5344c0a704672",
+      "fault_prerequisite_report_sha256": "658fef9dca82971a7b463db49d0fbc031eb58bd1fc79a12481cc154217cc82af",
+      "namespace_absent": true
+    },
+    "report_sha256": "b50618aaf9653ce5047e0c1d0dd20e1896adb5aca5560589a19958f6173f4c8e",
+    "exit": {
+      "schema": "crg-published-migration-exit-v1",
+      "job_sha256": "70dd11ab1f239b801d2eaa68e3e0895df2d3848423b1c27f40d5344c0a704672",
+      "plan_sha256": "0d715c7933b9b2a2a14d568e20c6a9c4753f15e751c96dcc2fc87b5947703099",
+      "started_utc": "2026-11-11T21:08:04.418666+00:00",
+      "exit": 1,
+      "ended_utc": "2026-11-11T21:09:55.886624+00:00"
+    },
+    "processes": {
+      "runner": {
+        "pid": 4125089,
+        "same_instance_present": false,
+        "gone": true
+      },
+      "worker": {
+        "pid": 4125090,
+        "same_instance_present": false,
+        "gone": true
+      }
+    },
+    "namespace_absent": true,
+    "network_gate_pod_uids": [
+      "d23985a1-e6ee-48fd-acc1-ba55a80e00a2",
+      "11cfe48b-54da-4130-bc1e-8d04c48feabd"
+    ],
+    "pod_parent_cgroups": {
+      "d23985a1-e6ee-48fd-acc1-ba55a80e00a2": {
+        "pod_cgroup_paths_present": []
+      },
+      "11cfe48b-54da-4130-bc1e-8d04c48feabd": {
+        "pod_cgroup_paths_present": []
+      }
+    },
+    "both_pod_uids_pinned_from_network_gate": true,
+    "roles": {
+      "dbs": {
+        "journal_after_failed_assertion": {
+          "version": 1,
+          "mutation_count": 0,
+          "mutation_files": [],
+          "identity_sha256": "aab97d2ace1c951ebe59e5cceef1d07b1a2312ea1adcfaea1114f205c7222c1c",
+          "target_sha256": "30c8ceea95129f5b9ab20d00d8a422e0639f7a33933fcc9df95b036f990d753d",
+          "journal_sha256": "b48be56991057ca6d93ccdb4ed6517776990a60048681e15a44cb289f57de684",
+          "disabled_marker_present": true
+        },
+        "partial_native": {
+          "api": {
+            "attempts": 0,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0,
+            "successes": 0,
+            "total_seconds": 0
+          },
+          "cluster_database_bytes_initial": 139233868,
+          "criteria": {
+            "api_period_seconds": 5,
+            "maximum_errors": 0,
+            "maximum_seconds": 5,
+            "minimum_scheduled_samples_fraction": 0.98,
+            "p95_upper_bound_seconds": 1,
+            "sql_period_seconds": 2
+          },
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "latency_bucket_upper_seconds": [
+            0.001,
+            0.005,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.25,
+            0.5,
+            1,
+            2,
+            5,
+            "over-5"
+          ],
+          "phase": "running",
+          "primary_start_time_initial": "2026-11-12 05:08:34.442609+08",
+          "requested_duration_seconds": 600,
+          "run_id": "202611113920",
+          "schema": "crg-vendor-soak-v1",
+          "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+          "sql": {
+            "attempts": 0,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0,
+            "successes": 0,
+            "total_seconds": 0
+          },
+          "started_utc": "2026-11-11T21:08:46.351430Z",
+          "test_phase": "smoke"
+        },
+        "native600_accepted": false,
+        "installed_binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361"
+      },
+      "hisdbs": {
+        "journal_after_failed_assertion": {
+          "version": 1,
+          "mutation_count": 0,
+          "mutation_files": [],
+          "identity_sha256": "56819027280d02aa076f8db091693cefc9bff37bdffa68c38216d30aa0610a61",
+          "target_sha256": "f002cfe850941f17e13a136fc45f3b8732e79dd8eae3427da957e9644b184036",
+          "journal_sha256": "011fa45aec7b59db26905c4692bb5161e9566f0e37e2890d197891ac0d51c2ee",
+          "disabled_marker_present": true
+        },
+        "partial_native": {
+          "api": {
+            "attempts": 0,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0,
+            "successes": 0,
+            "total_seconds": 0
+          },
+          "cluster_database_bytes_initial": 139233868,
+          "criteria": {
+            "api_period_seconds": 5,
+            "maximum_errors": 0,
+            "maximum_seconds": 5,
+            "minimum_scheduled_samples_fraction": 0.98,
+            "p95_upper_bound_seconds": 1,
+            "sql_period_seconds": 2
+          },
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "latency_bucket_upper_seconds": [
+            0.001,
+            0.005,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.25,
+            0.5,
+            1,
+            2,
+            5,
+            "over-5"
+          ],
+          "phase": "running",
+          "primary_start_time_initial": "2026-11-12 05:09:25.788602+08",
+          "requested_duration_seconds": 600,
+          "run_id": "202611113921",
+          "schema": "crg-vendor-soak-v1",
+          "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+          "sql": {
+            "attempts": 0,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0,
+            "successes": 0,
+            "total_seconds": 0
+          },
+          "started_utc": "2026-11-11T21:09:40.737734Z",
+          "test_phase": "smoke"
+        },
+        "native600_accepted": false,
+        "installed_binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361"
+      }
+    },
+    "raw_private_journal_not_published": true,
+    "summary": {
+      "phase": "failed",
+      "checks": 14,
+      "exit": 1,
+      "namespace_absent": true,
+      "processes": {
+        "runner": {
+          "pid": 4125089,
+          "same_instance_present": false,
+          "gone": true
+        },
+        "worker": {
+          "pid": 4125090,
+          "same_instance_present": false,
+          "gone": true
+        }
+      },
+      "pod_uids": [
+        "d23985a1-e6ee-48fd-acc1-ba55a80e00a2",
+        "11cfe48b-54da-4130-bc1e-8d04c48feabd"
+      ],
+      "roles": {
+        "dbs": {
+          "mutation_count": 0,
+          "partial_native_phase": "running"
+        },
+        "hisdbs": {
+          "mutation_count": 0,
+          "partial_native_phase": "running"
+        }
+      }
+    }
+  },
+  "raw_evidence": {
+    "path": "docs/test-evidence/published-migration392-failed.json.gz",
+    "gzip_bytes": 20757,
+    "gzip_sha256": "32f7bc850337bb733deb8d1378428e82d08c3c03c0cec4f2ffd9134f47b95dea",
+    "uncompressed_bytes": 89186,
+    "uncompressed_sha256": "8c805f60eab6a517d030354a9772e820e4e8ac8e2772f82f882f09ef94d78b54",
+    "files": 6
+  },
+  "previous_source_sha256": "70dd11ab1f239b801d2eaa68e3e0895df2d3848423b1c27f40d5344c0a704672",
+  "plan_sha256": "0d715c7933b9b2a2a14d568e20c6a9c4753f15e751c96dcc2fc87b5947703099",
+  "historical_failures_and_original_gates_retained": true,
+  "runtime_product_unchanged": true,
+  "stable_release_accepted": false
+}

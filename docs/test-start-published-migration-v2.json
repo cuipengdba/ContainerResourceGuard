@@ -1,0 +1,131 @@
+{
+  "schema": "crg-published-migration-start-v2",
+  "phase": "running",
+  "job_sha256": "cc99af7bde90d0436020517376ddee82e4da31639f1c7a2c02a3e1667a2222bc",
+  "plan_sha256": "663e423022da455f112c346d5eed508d72c5cb889a8e329f59aab502fb15a13d",
+  "launch": {
+    "schema": "crg-published-migration-launch-v1",
+    "pid": 37822,
+    "start_ticks": 137165147,
+    "entry": "/var/tmp/crg-published-migration398-tools-20261111/migration-runner.py",
+    "runner_sha256": "48d2f677a83c243a3a06147d6d9280050ea516592f5a88dcd78037267e9ed25e",
+    "job_sha256": "cc99af7bde90d0436020517376ddee82e4da31639f1c7a2c02a3e1667a2222bc",
+    "plan_sha256": "663e423022da455f112c346d5eed508d72c5cb889a8e329f59aab502fb15a13d",
+    "gates_sha256": "e54b1aae9ecd8d8efde19e48fb017923f0306fab2b8576e58e8287877df9f9db",
+    "node_utc": "2026-11-11T21:15:08.367491+00:00"
+  },
+  "worker": {
+    "pid": 37823,
+    "start_ticks": 137165151,
+    "entry": "/var/tmp/crg-published-migration398-tools-20261111/vendor-published-migration.py",
+    "job_sha256": "cc99af7bde90d0436020517376ddee82e4da31639f1c7a2c02a3e1667a2222bc",
+    "plan_sha256": "663e423022da455f112c346d5eed508d72c5cb889a8e329f59aab502fb15a13d"
+  },
+  "node_utc": "2026-11-11T21:16:17.354274+00:00",
+  "processes": {
+    "runner": {
+      "pid": 37822,
+      "start_ticks": 137165147,
+      "state": "S",
+      "live_same_instance": true
+    },
+    "worker": {
+      "pid": 37823,
+      "start_ticks": 137165151,
+      "state": "S",
+      "live_same_instance": true
+    }
+  },
+  "initial_checks": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "version": "v0.1.0-rc.3-preview.1"
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+      "passed": true
+    },
+    {
+      "name": "dbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+      "passed": true
+    },
+    {
+      "name": "dbs-matching-published-old-disable-restores-exact-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-explicit-manual-migration-after-old-disable-and-private-backup",
+      "passed": true
+    },
+    {
+      "name": "dbs-published-current-Agent-resumes-on-original-helper-and-journal",
+      "passed": true
+    },
+    {
+      "name": "dbs-actual-published-old-reader-restores-current-three-resource-journal",
+      "passed": true
+    },
+    {
+      "name": "dbs-published-old-Agent-resumes-after-explicit-manual-rollback",
+      "passed": true
+    }
+  ],
+  "native600_accepted": false,
+  "both_roles_accepted": false,
+  "expected_checks": 26,
+  "raw_evidence": {
+    "path": "docs/test-evidence/published-migration397-start.json.gz",
+    "gzip_bytes": 24169,
+    "gzip_sha256": "64c4359b3443ff9f6bbf5951dcc5c84f513296447d70e256f18602c27240a58e",
+    "uncompressed_bytes": 100760,
+    "uncompressed_sha256": "38f195ab5402b27e327436e5c2a0f6357295dbc7939e7802b0ae2ca7361a8a63",
+    "files": 5
+  },
+  "prior_failure_retained": "test-results-published-migration-first-failure.json",
+  "stable_release_accepted": false
+}

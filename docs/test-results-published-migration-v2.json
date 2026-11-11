@@ -1,0 +1,441 @@
+{
+  "schema": "crg-published-migration-result-v2",
+  "phase": "passed",
+  "tests": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "version": "v0.1.0-rc.3-preview.1"
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+      "passed": true
+    },
+    {
+      "name": "dbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+      "passed": true
+    },
+    {
+      "name": "dbs-matching-published-old-disable-restores-exact-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-explicit-manual-migration-after-old-disable-and-private-backup",
+      "passed": true
+    },
+    {
+      "name": "dbs-published-current-Agent-resumes-on-original-helper-and-journal",
+      "passed": true
+    },
+    {
+      "name": "dbs-actual-published-old-reader-restores-current-three-resource-journal",
+      "passed": true
+    },
+    {
+      "name": "dbs-published-old-Agent-resumes-after-explicit-manual-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "os": "linux",
+        "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "version": "v0.1.0-rc.3-preview.1"
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "hisdbs-candidate-quiesce-stops-old-writer-and-retains-originals",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-unadvertised-old-protocol-installer-refuses-without-replacement",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-matching-published-old-disable-restores-exact-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-explicit-manual-migration-after-old-disable-and-private-backup",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-published-current-Agent-resumes-on-original-helper-and-journal",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-actual-published-old-reader-restores-current-three-resource-journal",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-published-old-Agent-resumes-after-explicit-manual-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    }
+  ],
+  "programs": {
+    "previous": {
+      "release": "v0.1.0-rc.3-preview.1",
+      "asset_id": 730823163,
+      "asset_name": "containerresourceguard-v0.1.0-rc.3-preview.1-linux-amd64.tar.gz",
+      "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+      "archive_bytes": 1708379,
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "binary_bytes": 3600544,
+      "binary_member": "crg",
+      "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+    },
+    "candidate": {
+      "release": "v1.0.0-preview.2",
+      "asset_id": 734233184,
+      "asset_name": "containerresourceguard-v1.0.0-linux-amd64.tar.gz",
+      "archive_sha256": "d6bdfc89d6699a92d70e46a7aa561ccc54ba581901aed382158eb2a24d72952f",
+      "archive_bytes": 2211930,
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "binary_bytes": 4022432,
+      "binary_member": "crg",
+      "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+    }
+  },
+  "sources": {
+    "previous": {
+      "revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "release_status": "published v0.1.0-rc.3-preview.1 exact official asset"
+    },
+    "candidate": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "release_status": "published v1.0.0-preview.2 exact official asset"
+    }
+  },
+  "job_sha256": "cc99af7bde90d0436020517376ddee82e4da31639f1c7a2c02a3e1667a2222bc",
+  "plan_sha256": "663e423022da455f112c346d5eed508d72c5cb889a8e329f59aab502fb15a13d",
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "final_disable_restores_true_runtime_originals": true,
+    "other_five_controls_unchanged": true,
+    "three_active_controls_match_declared_disable_resume_phase": true,
+    "PID1_PG_cache_payload_and_cgroup_identity_preserved": true,
+    "journal_entries_match_explicit_restore_and_resume_phase": true,
+    "original_map_exactly_recaptured_after_each_resume": true,
+    "private_active_and_disabled_state_backups_preserved": true,
+    "actual_control_vectors_and_failures_recorded": true
+  },
+  "roles": {
+    "dbs": {
+      "checks": {
+        "phase": true,
+        "actual600": true,
+        "uninterrupted": true,
+        "same_primary": true,
+        "64MiB_payload": true,
+        "sql_SLA": true,
+        "api_SLA": true,
+        "13_role_checks": true,
+        "phase_vectors_recorded": true,
+        "all_invariants": true,
+        "both_journal_phases": true,
+        "originals_recaptured": true,
+        "unrelated_controls_constant": true,
+        "declared_cpu_memory_phases": true,
+        "declared_IO_phases": true,
+        "original_protocol_refused": true,
+        "private_active_state_backup": true,
+        "private_state_backup": true,
+        "rollback_binary_retained": true,
+        "final_journal_empty_disabled": true,
+        "leaf_cgroup_absent": true,
+        "independent_private_backups": true,
+        "operations_within_native600": true
+      },
+      "actual_seconds": 600.4049336670432,
+      "SQL_errors": 0,
+      "API_errors": 0
+    },
+    "hisdbs": {
+      "checks": {
+        "phase": true,
+        "actual600": true,
+        "uninterrupted": true,
+        "same_primary": true,
+        "64MiB_payload": true,
+        "sql_SLA": true,
+        "api_SLA": true,
+        "13_role_checks": true,
+        "phase_vectors_recorded": true,
+        "all_invariants": true,
+        "both_journal_phases": true,
+        "originals_recaptured": true,
+        "unrelated_controls_constant": true,
+        "declared_cpu_memory_phases": true,
+        "declared_IO_phases": true,
+        "original_protocol_refused": true,
+        "private_active_state_backup": true,
+        "private_state_backup": true,
+        "rollback_binary_retained": true,
+        "final_journal_empty_disabled": true,
+        "leaf_cgroup_absent": true,
+        "independent_private_backups": true,
+        "operations_within_native600": true
+      },
+      "actual_seconds": 600.3219315512106,
+      "SQL_errors": 0,
+      "API_errors": 0
+    }
+  },
+  "independent_terminal": {
+    "schema": "crg-published-migration-terminal-cleanup-v2",
+    "node_utc": "2026-11-11T21:37:48.263474+00:00",
+    "report_sha256": "c57570ac64d80e7d6a3f6a1aab6fbd34d059fbb2488287e5c27a58ad79cd0195",
+    "exit": {
+      "schema": "crg-published-migration-exit-v1",
+      "job_sha256": "cc99af7bde90d0436020517376ddee82e4da31639f1c7a2c02a3e1667a2222bc",
+      "plan_sha256": "663e423022da455f112c346d5eed508d72c5cb889a8e329f59aab502fb15a13d",
+      "started_utc": "2026-11-11T21:15:08.402740+00:00",
+      "exit": 0,
+      "ended_utc": "2026-11-11T21:37:00.418808+00:00"
+    },
+    "processes": {
+      "runner": {
+        "pid": 37822,
+        "same_instance_present": false,
+        "gone": true
+      },
+      "worker": {
+        "pid": 37823,
+        "same_instance_present": false,
+        "gone": true
+      }
+    },
+    "namespace_absent": true,
+    "network_gate_pod_uids": [
+      "c7d0561b-d9a8-4c6b-839f-b8b64942b092",
+      "77ed0ccb-8704-4b38-9d16-04c8f729d198"
+    ],
+    "pod_parent_cgroups": {
+      "c7d0561b-d9a8-4c6b-839f-b8b64942b092": {
+        "pod_cgroup_paths_present": []
+      },
+      "77ed0ccb-8704-4b38-9d16-04c8f729d198": {
+        "pod_cgroup_paths_present": []
+      }
+    },
+    "both_pod_uids_pinned_from_network_gate": true,
+    "roles": {
+      "dbs": {
+        "journal_after_final_disable": {
+          "version": 1,
+          "mutation_count": 0,
+          "identity_sha256": "3483ee17618b146c8e9c5b967f493fcf7690d2c348da2f4927594e6c95a258ef",
+          "target_sha256": "9938c575b45fe6f0328d7f9efa3a3fa9a8c93a6b96a26f10caec8b41110e7ef9",
+          "journal_sha256": "e4145a4f8c31a1c3d1950eb94a6f2dec3dc8f1990c22d7b0680e8db9c978d2b9",
+          "disabled_marker_present": true
+        },
+        "private_backups": {
+          "active-state-before-disable.json": {
+            "bytes": 1951,
+            "sha256": "29c3d5c5f932417b1d8a24fb91ba2aa73b81e367306af7298216908829702c7a",
+            "mode": "0o600",
+            "raw_excluded": true
+          },
+          "state-before-migration.json": {
+            "bytes": 1183,
+            "sha256": "40d958ba6b10b11781c7b8309ad04beeac140b7d630d2cb19c77e7a5bb1995fb",
+            "mode": "0o600",
+            "raw_excluded": true
+          }
+        },
+        "installed_binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "saved_old_binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "container_cgroup_absent": true,
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "automatic_profile_absent": true
+      },
+      "hisdbs": {
+        "journal_after_final_disable": {
+          "version": 1,
+          "mutation_count": 0,
+          "identity_sha256": "fa319c4b93a3579ea3a7d9324196dedb44193487891bed1030fc328e113fd336",
+          "target_sha256": "2e1174750566bbbc98274c9d880867a46d7a22970122f89b40249ac04a49b97a",
+          "journal_sha256": "b71ecf49b51483c40ef27465d93d2fef15935ba8b7678a232c7cec8931a9b92f",
+          "disabled_marker_present": true
+        },
+        "private_backups": {
+          "active-state-before-disable.json": {
+            "bytes": 1951,
+            "sha256": "90eb16e06e4b6a24b2a4cd34b8a30fd16c6a95d667425664f2a08357eeba14f0",
+            "mode": "0o600",
+            "raw_excluded": true
+          },
+          "state-before-migration.json": {
+            "bytes": 1183,
+            "sha256": "908770bd88c20af3d66a4db50f89b355587f12fc401be638de1fec05fc2601b5",
+            "mode": "0o600",
+            "raw_excluded": true
+          }
+        },
+        "installed_binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "saved_old_binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "container_cgroup_absent": true,
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "automatic_profile_absent": true
+      }
+    },
+    "frozen_inputs_still_match": {
+      "tests/vendor-soak-load.py": true,
+      "tests/vendor-soak-campaign.py": true,
+      "tests/vendor-engine-smoke.py": true,
+      "examples/optional-agent.sh": true,
+      "identity-qualification.json": true,
+      "integration-qualification.json": true,
+      "overhead-qualification.json": true,
+      "business-qualification.json": true,
+      "fault-qualification.json": true,
+      "binaries/previous": true,
+      "binaries/candidate": true,
+      "vendor-published-migration.py": true,
+      "migration-plan.json": true,
+      "released-inventory.json": true,
+      "derivation.json": true,
+      "base-r71-source.py": true
+    },
+    "raw_private_journal_and_backups_not_published": true
+  },
+  "raw_evidence": {
+    "path": "docs/test-evidence/published-migration397-terminal.json.gz",
+    "gzip_bytes": 31405,
+    "gzip_sha256": "5a52bd5aebb6067162e749f59fd74bd737bf2423cc80fbe5044ffb718e8bad4b",
+    "uncompressed_bytes": 196991,
+    "uncompressed_sha256": "a6924ecdfb596bb9084cdce47648ece8a69aa63ac76d418481cbfda3e08f070b",
+    "files": 6
+  },
+  "analysis_path": "docs/test-analysis-published-migration-v2.json",
+  "analysis_sha256": "e9b958a7358cb2da91b4ce4670b9eca3b06e4e856a3db003b77777baac69b7ed",
+  "reviewer_sha256": "6fa4dfc8125bb7c4c71081382deed9e2d0a68b623165335a85683f9267602218",
+  "offline_negative_checks": [
+    {
+      "synthetic_case": "changed source with old digest",
+      "rejected": true
+    },
+    {
+      "synthetic_case": "26-pass coordinator summary but one native report removed, integrity metadata consistent",
+      "accepted": false
+    }
+  ],
+  "first_test_defect_and_failure_retained": "test-results-published-migration-first-failure.json",
+  "original32_percentage_gate_accepted": false,
+  "quiescent_same_controls_gate_replaced": false,
+  "two_prior_published_minor_versions_accepted": false,
+  "runtime_product_unchanged": true,
+  "all_historical_failures_retained": true,
+  "stable_release_accepted": false
+}
