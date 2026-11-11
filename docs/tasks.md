@@ -367,3 +367,6 @@ R130[失败终态](test-results-business-memory-pressure-failure.json)：DBS8区
 
 
 R142[新压力绑定协议](testing-business-memory-pressure-legacy.md)已冻结，业务尚未执行；同一32项/原600秒/原30秒停止与配额，只绑定已验证的v2工具并补握手原文记录。R130/R120失败及全部原范围保持。
+
+
+R142[真实压力失败记录](test-results-business-memory-pressure-legacy-failure.json)已归档：DBS11段/13项局部主检查、实际高用量延后及释放后同代次重试通过，原600秒API错误3导致整轮失败，HISDBS未执行。原源代码/计划/失败不覆盖；日志17.857秒间隔仅定位线索，需补充请求/线程关联诊断后按原32项验收。两个原七天谱系仍measuring，正式对照/真实老化及硬件范围保持。
