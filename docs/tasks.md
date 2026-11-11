@@ -317,3 +317,6 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 版本化候选自身的[短保留数据故障矩阵](testing-versioned-aged-faults.md)现已20场景/152项通过，原进程退出0、namespace及20个不同Pod/容器cgroup独立确认清理，原64MiB数据/输入/journal/日志前缀保留。首个运行中快照保持；三个来源明确分支的完整CI与两个ARM64检查通过。真实七天后置、正式对照及其他稳定条件仍待，未重发或替换既有下载资产。
+
+
+本轮已补齐精确发布候选的[15项工程重载终态](testing-versioned-candidate-reload.md)及当前d370源码[两个10分钟解析器fuzz](testing-d370-parser-fuzz-windows.md)，21,680,191次执行、exit0。同步[修正任务索引中旧24h基线等状态](task-index-review-20261111.md)，保留52项原定义和旧scope_note；未将工程重载或源码fuzz计为厂商业务/实际七天验收。preview.2既有资产保持，长期及原稳定条件继续。

@@ -1,0 +1,197 @@
+{
+  "schema": "crg-versioned-reload-report-v1",
+  "phase": "passed",
+  "scope": "continuous one-Agent original-image placeholder PID1; not vendor business or percentage performance acceptance",
+  "sources": {
+    "v10": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+    }
+  },
+  "version": "v1.0.0",
+  "build_info": {
+    "arch": "amd64",
+    "go_version": "go1.27.3",
+    "io_profile_versions": [
+      1,
+      2
+    ],
+    "journal_versions": [
+      1
+    ],
+    "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+    "os": "linux",
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "version": "v1.0.0",
+    "writer_controls": [
+      "cpu.max",
+      "cpu.weight",
+      "io.max",
+      "io.weight",
+      "memory.max",
+      "memory.high",
+      "memory.swap.max",
+      "pids.max"
+    ]
+  },
+  "executor_sha256": "f95b2606758f8f1e3eaa044af53b76446b96c66d80955041953f90ccfe8bde04",
+  "plan_sha256": "9aa3b4932ae99456d7549d9981bc4b01cce96ce1dfabff6441131e6cde6780ae",
+  "reference_template_sha256": "c96f2edad86977624996006857f1dd55e4535d1672065e79e301982aae1aefeb",
+  "profile_sha256": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+  "criteria": {
+    "checks": 15,
+    "reload_wait_seconds": 60,
+    "interval_seconds": 1,
+    "cpu_outer_cores": 8,
+    "memory_outer_bytes": 21474836480,
+    "host_available_min_bytes": 8589934592,
+    "disk_free_min_bytes": 21474836480
+  },
+  "tests": [
+    {
+      "name": "live-initial-independent-percentages-and-CLI-CPU25",
+      "passed": true
+    },
+    {
+      "name": "live-reload-two-dimensions-and-sticky-CLI",
+      "passed": true
+    },
+    {
+      "name": "bad-config-retains-entire-last-good-policy-and-kernel-values",
+      "passed": true
+    },
+    {
+      "name": "good-config-recovers-and-omitted-dimension-defaults20",
+      "passed": true
+    },
+    {
+      "name": "empty-resource-config-defaults-memory-and-IO-independently",
+      "passed": true
+    },
+    {
+      "name": "same-Agent-and-PID1-through-live-reloads",
+      "passed": true
+    },
+    {
+      "name": "CLI-log-directory-kept-across-file-log-changes",
+      "passed": true
+    },
+    {
+      "name": "live-reload-reuses-device-profile-without-recalibration",
+      "passed": true
+    },
+    {
+      "name": "continuous-agent-disable-restores-three-originals",
+      "passed": true
+    },
+    {
+      "name": "manual-start-manages-only-explicit-core-dimensions",
+      "passed": true
+    },
+    {
+      "name": "manual-to-three-percent-reload-adds-calibrated-IO",
+      "passed": true
+    },
+    {
+      "name": "manual-removal-restores-owned-memory-and-IO",
+      "passed": true
+    },
+    {
+      "name": "external-CPU-change-is-not-overwritten",
+      "passed": true
+    },
+    {
+      "name": "disable-reports-conflict-and-retains-external-CPU",
+      "passed": true
+    },
+    {
+      "name": "all-reloads-preserve-PID1-and-zero-OOM",
+      "passed": true
+    }
+  ],
+  "runtime_original_controls": {
+    "cpu.max": "800000 100000",
+    "memory.max": "21474836480",
+    "io.max": "",
+    "cpu.weight": "1",
+    "io.weight": "default 100",
+    "memory.high": "max",
+    "memory.swap.max": "0",
+    "pids.max": "406648"
+  },
+  "runtime_final_controls": {
+    "cpu.max": "50000 100000",
+    "memory.max": "21474836480",
+    "io.max": "",
+    "cpu.weight": "1",
+    "io.weight": "default 100",
+    "memory.high": "max",
+    "memory.swap.max": "0",
+    "pids.max": "406648"
+  },
+  "started_epoch": 1794372155.1185374,
+  "ended_epoch": 1794372194.2270248,
+  "P10_complete": false,
+  "release_accepted": false,
+  "observed_node_utc": "2026-11-11T05:15:42Z",
+  "environment": {
+    "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+    "platform": "linux/amd64",
+    "private_pid_net_mount_namespaces": true,
+    "network_isolated_before_Agent": true
+  },
+  "runtime_inspection": {
+    "runner_same_instance_gone": true,
+    "worker_same_instance_gone": true,
+    "worker_exit": 0,
+    "namespace_independently_absent": true,
+    "main_cgroup_and_all_Pod_scopes_independently_absent": true,
+    "readonly_binary_and_profile_sources_unchanged": true
+  },
+  "gates": {
+    "observed_utc": "2026-11-11T04:37:40.718582+00:00",
+    "files": {
+      "vendor-versioned-reload.py": "f95b2606758f8f1e3eaa044af53b76446b96c66d80955041953f90ccfe8bde04",
+      "reload-plan.json": "9aa3b4932ae99456d7549d9981bc4b01cce96ce1dfabff6441131e6cde6780ae",
+      "reference.py.txt": "c96f2edad86977624996006857f1dd55e4535d1672065e79e301982aae1aefeb"
+    },
+    "original_15_case_predicates_AST_equal": true,
+    "observations": [
+      {
+        "execute_requested": false,
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "execution_allowed": true,
+          "executed": false,
+          "target_root_absent": true,
+          "namespace_absent": true,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "execute_requested": true,
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "EXPLICIT_LAB_MARKER",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      }
+    ],
+    "actual_execution": false,
+    "target_root_and_namespace_absent": true
+  },
+  "raw_report_sha256": "f446972fc54f5cefbaab62ba2369d2c315f4e5860e68ce5b6dcf6d0a68d32fd0",
+  "raw_observation_sha256": "7d648febc170639dfdb0998d10bb5deeb83666e67a1a972139c3ee0fb5037c37",
+  "runner_log_sha256": "792ca2c209a0668bf9c14b424af0dd11ca329194c6006962f3b3a85b1af06d3c",
+  "limitations": [
+    "Original-image placeholder PID1, not the vendor business startup or a native SQL/API load.",
+    "These preserve the original15 predicates: several positive reload cases check the accepted plan/status and generation, not independent numeric kernel readback for every resource at every step.",
+    "Final external CPU0.5 is intentionally retained after conflict; the disposable Pod and cgroup were subsequently deleted.",
+    "Not missing-profile automatic calibration on hot mode change, not all reload/file-fault interleavings, not default20 performance or seven-day acceptance."
+  ]
+}

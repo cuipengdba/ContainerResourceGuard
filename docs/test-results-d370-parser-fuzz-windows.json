@@ -1,0 +1,70 @@
+{
+  "phase": "passed",
+  "runner_script_sha256": "41f74d32e6c6c6ee4a95a9c39466218801e01781a07b46e983183aa762cb41d4",
+  "targets": [
+    {
+      "target": "FuzzDecodeConfig",
+      "phase": "passed",
+      "go_pid": 31272,
+      "exit": 0,
+      "wall_seconds": 646.2339999997057,
+      "log_sha256": "52f2b7f94d5e2cafb9472583d83a8136612715d62397e7d4d781069a7f5b4fe6",
+      "go_reported_seconds": 601.727,
+      "executions": 10487407,
+      "new_interesting": 678,
+      "total_interesting": 694
+    },
+    {
+      "target": "FuzzDecodeProfile",
+      "phase": "passed",
+      "go_pid": 26232,
+      "exit": 0,
+      "wall_seconds": 603.155999999959,
+      "log_sha256": "ec8269e03e2e52e4677337e75af4c25470514baf5000313ded063b7b9b49f72f",
+      "go_reported_seconds": 601.328,
+      "executions": 11192784,
+      "new_interesting": 699,
+      "total_interesting": 702
+    }
+  ],
+  "started_utc": "2026-11-11T04:48:11.516392+00:00",
+  "ended_utc": "2026-11-11T05:09:01.005449+00:00",
+  "P10_complete": false,
+  "release_accepted": false,
+  "schema": "crg-current-source-parser-fuzz-evidence-v1",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "plan_sha256": "96569609dacfe6d11bedb6f5d9c3ba769d8612ee9f21665188fbabc86b5f2041",
+  "platform": "windows/amd64",
+  "toolchain": "go version go1.27.3 windows/amd64",
+  "criteria": {
+    "targets": [
+      "FuzzDecodeConfig",
+      "FuzzDecodeProfile"
+    ],
+    "per_target_fuzztime_seconds": 600,
+    "per_target_wall_timeout_seconds": 750,
+    "GOMAXPROCS": 2,
+    "parallel_workers": 2,
+    "GOMEMLIMIT": "256MiB (Go soft memory target, not a hard process limit)"
+  },
+  "raw_report_sha256": "4fe672a568f23ed09462cba33f3e55109bc122e5e44d5a20485fc23401e7ec3e",
+  "source_contract_files": 50,
+  "source_contract_unchanged_after_execution": true,
+  "fuzz_target_source_sha256": "0f79622f52012b9de548903085f704d75f844c741c9cceae7be37d9508a6e7ef",
+  "additional_seed_count": 12,
+  "total_executions": 21680191,
+  "runner_and_two_Go_PIDs_independently_absent": true,
+  "actual_exec_session_exit": 0,
+  "actual_exec_session_id": 94185,
+  "log_paths": [
+    "docs/fixtures/fuzz-d370-config-windows.log.txt",
+    "docs/fixtures/fuzz-d370-profile-windows.log.txt"
+  ],
+  "scope": "Exact d370 tracked source plus the same twelve archived additional seeds; current candidate parser source evidence, not execution of any particular release ELF, business, cgroup or long-term acceptance.",
+  "limitations": [
+    "Windows source-level parser fuzz; no Linux release ELF execution or kernel control test.",
+    "Fuzz targets call Decode plus Validate or ValidateProfile, discard validation errors and check for crashes/hangs; successful completion is not proof every malformed input is rejected.",
+    "GOMEMLIMIT256MiB is a Go soft target, not a hard process memory quota.",
+    "No real slow/full filesystems, sustained permission revocation or physical power loss acceptance is implied."
+  ]
+}
