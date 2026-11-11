@@ -1,0 +1,265 @@
+{
+  "schema": "crg-published-migration-plan-v2",
+  "work_root": "/var/tmp/crg-published-migration397-20261111",
+  "tool_root": "/var/tmp/crg-published-migration398-tools-20261111",
+  "namespace": "crg-vendor-lab-published-migration397-20261111",
+  "run_id": "20261111397",
+  "programs": {
+    "previous": {
+      "release": "v0.1.0-rc.3-preview.1",
+      "asset_id": 730823163,
+      "asset_name": "containerresourceguard-v0.1.0-rc.3-preview.1-linux-amd64.tar.gz",
+      "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+      "archive_bytes": 1708379,
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "binary_bytes": 3600544,
+      "binary_member": "crg",
+      "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+    },
+    "candidate": {
+      "release": "v1.0.0-preview.2",
+      "asset_id": 734233184,
+      "asset_name": "containerresourceguard-v1.0.0-linux-amd64.tar.gz",
+      "archive_sha256": "d6bdfc89d6699a92d70e46a7aa561ccc54ba581901aed382158eb2a24d72952f",
+      "archive_bytes": 2211930,
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "binary_bytes": 4022432,
+      "binary_member": "crg",
+      "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+    }
+  },
+  "inputs_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "identity-qualification.json": "d293d2c400843b1a7765d38ef14aecd8c68333cfc29259b670e0bec8790ca77e",
+    "integration-qualification.json": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634",
+    "overhead-qualification.json": "68f1c207bd7e8ba430163d2c8b0228339a707d81159369678b95a1db4230d720",
+    "business-qualification.json": "f680f08aeeccb500c56655dfe5dbf07982e373928d70634fea400232e2090101",
+    "fault-qualification.json": "b26dd6678137d9f25f5f21bd334b030805782bbb33441b68340c597df6b69ca5",
+    "binaries/previous": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+    "binaries/candidate": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+  },
+  "base_source_sha256": "a5fdf31abc4e49472054b7d2e4d3e5999e36dcc7ed0a12500200411d1b80dec1",
+  "base_plan_sha256": "3e067d72321937e5fdcd4bfeeeca5f96b85e54fd3a019ec15a7acc128a7c5179",
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "final_disable_restores_true_runtime_originals": true,
+    "other_five_controls_unchanged": true,
+    "three_active_controls_match_declared_disable_resume_phase": true,
+    "PID1_PG_cache_payload_and_cgroup_identity_preserved": true,
+    "journal_entries_match_explicit_restore_and_resume_phase": true,
+    "original_map_exactly_recaptured_after_each_resume": true,
+    "private_active_and_disabled_state_backups_preserved": true,
+    "actual_control_vectors_and_failures_recorded": true
+  },
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "expected_checks": 26,
+  "intentional_control_transitions": "matching-old disable/restore returns to exact runtime originals before explicit replacement; each resumed Agent reapplies identical manual test budget; five unrelated controls unchanged",
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "original_startup_cache_and_native600_SLA_unchanged": true,
+  "scope": "actual two published asset versions, controlled disable/restore migration and rollback; not quiescent same-controls maintenance or two stable minor releases",
+  "original_quiescent_maintenance_criteria_waived": false,
+  "original32_percentage_and_all_historical_failures_retained": true,
+  "stable_release_accepted": false,
+  "derivation": [
+    {
+      "old": "crg-realpaths71-20261111",
+      "new": "crg-published-migration392-20261111",
+      "count": 1
+    },
+    {
+      "old": "crg-r71-20261111",
+      "new": "crg-published-migration393-tools-20261111",
+      "count": 1
+    },
+    {
+      "old": "crg-vendor-lab-realpaths71-20261111",
+      "new": "crg-vendor-lab-published-migration392-20261111",
+      "count": 1
+    },
+    {
+      "old": "CRG_R71_MAINTENANCE",
+      "new": "CRG_PUBLISHED_MIGRATION",
+      "count": 1
+    },
+    {
+      "old": "20261111071",
+      "new": "20261111392",
+      "count": 1
+    },
+    {
+      "old": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "new": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "count": 3
+    },
+    {
+      "old": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "new": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "count": 1
+    },
+    {
+      "old": "unreleased protocol-advertising combined development build",
+      "new": "published v0.1.0-rc.3-preview.1 exact official asset",
+      "count": 1
+    },
+    {
+      "old": "unpublished exact v1.0.0 versioned candidate",
+      "new": "published v1.0.0-preview.2 exact official asset",
+      "count": 1
+    },
+    {
+      "old": "  if info.get('revision')!=report['sources'][name]['revision'] or info.get('arch')!='amd64' or info.get('lock_protocol')!='cgroup-inode-flock+state-agent-lock-v1' or 1 not in info.get('journal_versions',[]):raise RuntimeError('source or maintenance protocol differs')",
+      "new": "  if info.get('revision')!=report['sources'][name]['revision'] or info.get('arch')!='amd64':raise RuntimeError('published source or architecture differs')\n  if name=='candidate' and (info.get('lock_protocol')!='cgroup-inode-flock+state-agent-lock-v1' or 1 not in info.get('journal_versions',[])):raise RuntimeError('candidate maintenance protocol differs')\n  if name=='previous' and ('lock_protocol' in info or 'journal_versions' in info):raise RuntimeError('old published protocol absence differs')",
+      "count": 1
+    },
+    {
+      "old": "def run(a,check=True,timeout=60,**kw):",
+      "new": "report.update(schema='crg-published-migration-v1',plan_sha256=plan_sha256,published_programs=frozen_plan['programs'],\n scope='Actual published old/current controlled disable-restore migration and rollback, both original vendor paths; not quiescent same-limits install or two-minor stable acceptance')\ndef run(a,check=True,timeout=60,**kw):",
+      "count": 1
+    },
+    {
+      "kind": "explicit block",
+      "old_sha256": "29aeb51142174fe2babb7a6fb6bac289f9861f26651de0c607a77c7fd80020ea",
+      "new_sha256": "f5da78edeea8003a2f421e73cef5d3b53cabd7fd20fab3ef26c7ad53a6aeedf3",
+      "purpose": "per-stage actual controls and original ownership; explicit bounded old/current commands and disabled writer checks; no status emulation"
+    },
+    {
+      "old": "     if found==[expected]:",
+      "new": "     if found==[expected] and all((cg/f).read_text()==v for f,v in expected_controls.items()) and not (folder/'resource-state/disabled.json').exists():",
+      "count": 1
+    },
+    {
+      "kind": "explicit operation block",
+      "old_sha256": "6cdc194d835b4a8a1e7927267558cbd5a2e3314730021355949bef7a601789a1",
+      "new_sha256": "e2cf1e6e1d0b6bf6e993219462ab5cb73a03a4359a75db4a1d7d5935629cb5f7",
+      "purpose": "keep protocol refusal, then prescribed matching-old disable and controlled manual migration/rollback, not bypass installer"
+    },
+    {
+      "old": "   disabled=json.loads(cli('disable').stdout)",
+      "new": "   disabled=json.loads(cli_at('/opt/crg/crg','disable').stdout)",
+      "count": 1
+    },
+    {
+      "old": "except Exception as e:report.update(phase='failed',error=str(e),traceback=traceback.format_exc())",
+      "new": "except BaseException as e:report.update(phase='failed',error=str(e),traceback=traceback.format_exc())",
+      "count": 1
+    },
+    {
+      "old": "len(report['tests'])==22",
+      "new": "len(report['tests'])==26",
+      "count": 1
+    }
+  ],
+  "unchanged_base_helpers_AST": [
+    "run",
+    "create",
+    "ex",
+    "save",
+    "record",
+    "reserve",
+    "delete_pod"
+  ],
+  "original_quiescent_maintenance_reference_criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "PID1_PG_cache_payload_journal_originals_and_all_eight_controls_preserved_during_maintenance": true,
+    "final_disable_restores_true_runtime_originals": true
+  },
+  "previous_failed_source_sha256": "70dd11ab1f239b801d2eaa68e3e0895df2d3848423b1c27f40d5344c0a704672",
+  "previous_failed_plan_sha256": "0d715c7933b9b2a2a14d568e20c6a9c4753f15e751c96dcc2fc87b5947703099",
+  "test_defect_correction": "successful matching-old Restore deletes restored mutations; disabled phase requires empty journal with unchanged identity; resumed Agent must recapture exactly the same original map",
+  "journal_transitions": [
+    "managed: same nonempty original map",
+    "quiescent: same original map and private active backup",
+    "restored-disabled: zero mutations, same cgroup identity, exact runtime originals",
+    "resumed: same nonempty original map and original manual budget"
+  ],
+  "v2_derivation": [
+    {
+      "old_sha256": "2a6268ad9fdbfd19d418540f97dbcda63666a25b37ad635455c089198b606993",
+      "new_sha256": "5bba03fb4bcf88daed89987d7928697b055695a94a7d1696ac4c4d60e7bd526c",
+      "count": 2
+    },
+    {
+      "old_sha256": "66cbdc861f3ea0ced4b6195199d6af43ff2d07f8c019a18dc918066d744d5e9a",
+      "new_sha256": "4395fcd53b42feb383f5a635bcb98a8d9f373c442a558dc58f53d690485f484c",
+      "count": 1
+    },
+    {
+      "old_sha256": "affcbd43607fc6970179f24e74fbbe8ac90d88ed961a886fc5679aec13c119b4",
+      "new_sha256": "68d96773d2f628658fde35fdb35a81f18cb8bc095b57c10418b681d6d8d67e50",
+      "count": 1
+    },
+    {
+      "old_sha256": "fa94ed744d45b031e9e795e78f5ecaf637a9d3bb2c846b6e92f585a907f791cb",
+      "new_sha256": "d19066594114dcebadd61d8ec1b58b6fc8be935deef8acb9647b600df650b1f5",
+      "count": 1
+    },
+    {
+      "old_sha256": "38f2a76cb7b6e9674e86a8ec755320acb609a2c2214c1427a0325c4a02fcc3ad",
+      "new_sha256": "5f1fdddba3478a1fec9d36dd970ef1a3f29ab0065f78b5f021d5808720bfafd2",
+      "count": 1
+    },
+    {
+      "old_sha256": "6dc39ba6039ee937326a1ced946b929c973ba6161ea30c092a868a36fadae789",
+      "new_sha256": "0c773807f951da6444561bddd19dc009897e541fe427b84e6d0ae404cb7c4932",
+      "count": 1
+    },
+    {
+      "old_sha256": "7d81b23ad25e92b3e5083925db1079cf290f7954e05fb6a1a7a33ac053ee4bfc",
+      "new_sha256": "74e8105aa76f27e4c743e20407b938986b37c2529616f85fbf8516ce5ab8c1a8",
+      "count": 1
+    },
+    {
+      "old_sha256": "6e8ae7957a746a9a7d786f8c69e3991486e78a12ca9333d8d24896b9d644ee9a",
+      "new_sha256": "30de334e6d5df58d52de14230a6d2da0a64fda55f6327e31e30749a26a39daf2",
+      "count": 1
+    },
+    {
+      "old_sha256": "c5d93486f328cac710dd78237c82432c00a14121c8d9eb6ea8e974b164aec55b",
+      "new_sha256": "92e5fb8b91c4412a3752392952530c2ff3f9bc7442057b50206f89e7f884a6bc",
+      "count": 1
+    },
+    {
+      "old_sha256": "5b464cb157d71789baa409ea461883823e716da471ac8c26500b545fd8372584",
+      "new_sha256": "10b156c21f27f9b1c0a0a65d186645b3cd9396539f6738270e0f95a1b578d5f7",
+      "count": 1
+    },
+    {
+      "old_sha256": "7e6504c1a44e76c8505a7e618bc1ae153cc17d6e1eac8ead835a8f54f5790471",
+      "new_sha256": "d39994e5eff7c026f81a3751360914c30316408e43e0fcb1d512b3d2d114d65d",
+      "count": 1
+    },
+    {
+      "old_sha256": "09354c701065268d60b4c6f3b6bad556c4c3ec372b2456a1e4c89a2d08013acc",
+      "new_sha256": "2c686a621c04a5894f8515abdedde45f48d373aac3e031529a0259357e3e90ac",
+      "count": 1
+    }
+  ],
+  "executor_sha256": "cc99af7bde90d0436020517376ddee82e4da31639f1c7a2c02a3e1667a2222bc"
+}
