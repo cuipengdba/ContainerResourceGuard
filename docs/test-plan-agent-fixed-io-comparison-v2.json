@@ -1,0 +1,175 @@
+{
+  "schema": "crg-agent-fixed-io-comparison-plan-v2",
+  "work_root": "/var/tmp/crg-agent-activity441-20261111",
+  "tool_root": "/var/tmp/crg-agent-activity442-tools-20261111",
+  "executor_sha256": "383c5b0a5184edcd3aee73b1b017888a6c50d449e44b5e43bcd3275afabecbc4",
+  "clone_helper_sha256": "30e92d64f2faede76efa115ebdedb0ec344567587b6c39c28bb1f8b7cc04de3d",
+  "activity_source_sha256": "bd11d8617637336f6ed30c291764550657158d94db0d1cbff43bb86a982b569f",
+  "original_executor_sha256": "71007a5560f26b48b916d1311bdb1509082ca3074da6ec18576d9812b5a4397a",
+  "original_plan_sha256": "c6581999c64e84ae9e833fd43117e71374159f388ffeea91aa905de5b2ac4098",
+  "prior_failed_report_sha256": "db851a15b3a95b88ed58a4af7981537782e62f5797fff126a40ca93e16c09a67",
+  "source_folder": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business",
+  "source_config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+  "source_pg_control_sha256": "383369440339bcc6a5a403530190b64ba5236e76719cc3140bc4197a63868218",
+  "pins": {
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "binary": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "cache": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "worker": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "previous": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+    "engine": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "profile": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b"
+  },
+  "criteria": {
+    "startup_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "native_seconds_each_role": 600,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "maximum_errors": 0,
+    "maximum_request_seconds": 5,
+    "p95_bucket_seconds": 1,
+    "minimum_coverage": 0.98,
+    "payload_bytes": 67108864,
+    "oom_kill_delta": 0
+  },
+  "qualification_source_sha256": "db3b70a2b58f6817877f51af131cc7a328b2f8852ce515419f2b5af917d7ab7c",
+  "qualification_report_sha256": "882816c6f6ab8b12a611ef5cc1f0b3702946856b1fd56b1d2aac1d2db7c82417",
+  "first_preparation_failure": {
+    "executor_sha256": "de22658443d470023fd97f123ddc012445af5a5ecf1fbcac00b2243c95f0c0bd",
+    "a1_report_sha256": "6a2c971a8c906a7e84334f719f5bf6505d2322623b73564d4667057a1c8236da",
+    "comparison_sha256": "96d83fe9c3f3a4414bc610b7eb88b8e82d463ca2608d1832241f74f6cb907c0f",
+    "original_runtime_reason": "ValueError; exact failed assertion not retained",
+    "correction": "sourced helper is a direct supervisor subshell; verify actual parent birth/group/argv/exe instead of helper source path in argv",
+    "specific_first_failure_cause_confirmed": false,
+    "fresh_four_cold_clones_required": true
+  },
+  "run_id_identical_on_separate_clones": "20261111441",
+  "policy": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_max": "20001980416B",
+      "io_read_bps": "64700080B",
+      "io_write_bps": "37470104B",
+      "io_read_iops": 83,
+      "io_write_iops": 135
+    }
+  },
+  "fixed_numeric": {
+    "cpu.max": "720000 100000",
+    "memory.max": "20001980416",
+    "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+  },
+  "derived_business": {
+    "original_method_sha256": "ebaad53c09392fdde812e31f710403196704dd0e91cafafab80e94ded039ee48",
+    "derived_method_sha256": "9ba8c8dfa6067ab7474cd33dd408e998f311f8e69bcbaef6e32f62ffacb420a4",
+    "removed": [
+      {
+        "kind": "nested_functions",
+        "AST_sha256": "31b2c329f239b84211e0868e530276e6328b63fee7cc5e8bdbde2f5f5c6e1166"
+      },
+      {
+        "kind": "nested_functions",
+        "AST_sha256": "d6978dc9c085b0eb4ecdd3d702a34415ffa80756e287f8203bf265b42a9b75fc"
+      },
+      {
+        "kind": "nested_functions",
+        "AST_sha256": "ec1d71257e3ae1d2f2630e527e68ede79bd5c8da079d9fca3fa34fd17270bc9f"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "f69233ad7f96e9ccd5e0fa7ec60cbc4cf55f16a26aa64f80ce75cff2237b0b28"
+      },
+      {
+        "kind": "reload_overlap_assertions",
+        "AST_sha256": "9760fc57299e445da66364347f033e496815e785f1783b14dc40256d739baf69"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "7e1ef5c0e199dfdfa399ac60822fd2d196ba6e925472eaec035b8519ee751337"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "b1d58b1df2e3f9132ca7fee38ddbfe061b2d2c42645c20b6b2bb18143f98c7f8"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "8bfff776ffd6a448ff563b08b3c7a20812c2210bf2f09b678a7af8ec8a70060c"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "a2e25553cedfe81a8b56c1e3e226be421c58442fddcd164863138150b59a5f71"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "e3c06d7d245349cb437620ca9b29e8cc477b89642adddf8d7ac62dcc6179957e"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "793dcda83d9ed2903ea6c9a588ccb8c2e03f1094838cb4df3a812492177275c7"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "8138cf13a44a887d455258615576d5968e7342288d1e6bf4796e38fa58162342"
+      },
+      {
+        "kind": "pressure_calls",
+        "AST_sha256": "2d273d2f8e8cd6dc5869f4bd7cf91c033f65ca650496eddb404eda0b14ab8ee1"
+      },
+      {
+        "kind": "reload_calls",
+        "AST_sha256": "0e92aa262d254605fb1987f84744fa44c270b4215d335840a36a15e0f91d4a40"
+      }
+    ],
+    "counts": {
+      "nested_functions": 3,
+      "reload_calls": 9,
+      "pressure_calls": 1,
+      "reload_overlap_assertions": 1
+    },
+    "added": "matched Agent identity/state sample in same(); no resource control writes",
+    "changed_completion": "static diagnostic requires zero reload intervals; engine/native600/SLA unchanged",
+    "original32_not_executed_or_replaced": true
+  },
+  "arms": [
+    {
+      "name": "a1",
+      "pause_Agent": false,
+      "namespace": "crg-vendor-lab-agent-activity4411-20261111"
+    },
+    {
+      "name": "b1",
+      "pause_Agent": true,
+      "namespace": "crg-vendor-lab-agent-activity4412-20261111"
+    },
+    {
+      "name": "b2",
+      "pause_Agent": true,
+      "namespace": "crg-vendor-lab-agent-activity4413-20261111"
+    },
+    {
+      "name": "a2",
+      "pause_Agent": false,
+      "namespace": "crg-vendor-lab-agent-activity4414-20261111"
+    }
+  ],
+  "activity_observation": {
+    "lease_seconds": 900,
+    "full_sample_period_seconds": 60,
+    "maximum_sample_gap_seconds": 120,
+    "light_identity_state_check_each_business_loop": true,
+    "same_observer_cost_each_arm": true,
+    "whole_native600_coverage_required": true,
+    "lease_or_early_unwind_ineligible": true
+  },
+  "native_seconds": 600,
+  "payload_bytes": 67108864,
+  "engine_content_checks": 10,
+  "engine_starts_at_native_second": 30,
+  "scope": "DBS static fixed-quota Agent activity diagnostic; not original32/reload/pressure/two-role acceptance",
+  "preplanned_pattern": "eligible full A1 SQL+API errors>0, B1 zero, B2 zero, A2 errors>0; association with shared backend/cache/order confounds",
+  "all_four_structural_and_cleanup_eligibility_before_pattern": true,
+  "stable_release_accepted": false
+}
