@@ -89,3 +89,6 @@
 
 
 [热重载边界R113失败](testing-business-reload-edges.md)：DBS目录配置恢复观测超原60秒，17项局部检查不计完整业务，HIS未执行；清理和配置/profile/ELF保持独立确认。终态Agent已恢复accepted9，测试等待有重复写入/错误起点的时序缺陷，精确旧mark未保存；新协议修正观察、不延长阈值，原失败保留。
+
+
+R120[配置恢复边界联测失败](testing-business-reload-source-recovery.md)：DBS22段/24项局部主检查和五类恢复均通过原门槛，但备库fast stop超30秒，日志restartpoint37.924秒/sync37.713秒，整轮失败；未完成600秒、HIS未执行，运行器/Pod/cgroup及输入恢复独立确认。原失败、配额及SLA保持；[七天固定实际进程观察](test-progress-seven-day-during-source-recovery.json)仍为measuring，未接受稳定版。

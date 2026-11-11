@@ -347,3 +347,9 @@ P03/P05新增[真实业务热重载边界协议](testing-business-reload-source-
 
 
 R113[失败终态](test-results-business-reload-edges-failure.json)保留：目录恢复等待超60秒，仅DBS17项局部检查，无完整600秒/HIS验收。新R120修正测试等待起点、保留原SLA和配置数值；原P03.3的30→20高用量压力场景仍待，不以1%补充替代。
+
+
+R120[失败终态](test-results-business-reload-source-recovery-failure.json)：DBS完成22段配置观察/24项局部主检查、引擎8项内容，临时备库fast stop超过原30秒；restartpoint37.924秒/sync37.713秒。无完整600秒/HIS验收，不覆盖R113或历史失败，不放宽配额/期限。独立清理及输入/ELF恢复已核对；原P03.3的30→20高用量压力、完整并发及长期条件仍待。
+
+
+原P03.3/P05.2[30→20真实高用量压力协议](testing-business-memory-pressure.md)已开发，固定11区间/每角色600秒/32项主检查，尚未执行业务；辅助内存工具Linux7项释放检查通过（每次仅64MiB），不计压力业务接受。原R120失败、限额、30秒备库停止及全部长期条件保持。
