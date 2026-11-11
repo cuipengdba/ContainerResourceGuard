@@ -26,6 +26,7 @@ jobs:
       - run: python3 tests/vendor-aged-postflight-checks.py
       - run: python3 tests/vendor-versioned-aged-postflight-checks.py
       - run: python3 tests/vendor-aged-faults-checks.py
+      - run: python3 tests/vendor-versioned-aged-faults-checks.py
       - run: python3 tests/vendor-enforce-stage-checks.py
       - run: bash scripts/build.sh "${GITHUB_REF_NAME//\//-}"
       - run: python3 scripts/package.py "${GITHUB_REF_NAME//\//-}"
