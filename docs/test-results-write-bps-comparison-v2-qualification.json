@@ -1,0 +1,157 @@
+{
+  "schema": "crg-write-bps-comparison-v2-qualification-v1",
+  "phase": "prerequisites-passed-business-not-accepted",
+  "build_proof": {
+    "schema": "crg-write-bps-comparison-build-proof-v1",
+    "executor_sha256": "bc4b46a8b43a6d6b787f6bc65b1c229774a02102af44a87f6f1b61610fda2a93",
+    "plan_sha256": "b3b355e10ed21aca6e652e1ffb36c2ddadd1a5820393988b5b03de7e10425027",
+    "checks": [
+      "A1 and A2 exact same policy and derived method",
+      "A numeric controls equal original R235",
+      "B differs only write-BPS during policy0",
+      "all explicit substitutions byte reversible; unchanged original method elsewhere"
+    ],
+    "all_original_criteria_unchanged": true,
+    "release_accepted": false
+  },
+  "node_gates": {
+    "schema": "crg-write-bps-comparison-denial-gates-v1",
+    "node_utc": "2026-11-11T16:05:55.142563+00:00",
+    "source_sha256": {
+      "vendor-write-bps-comparison-v2.py": "bc4b46a8b43a6d6b787f6bc65b1c229774a02102af44a87f6f1b61610fda2a93",
+      "comparison-plan.json": "b3b355e10ed21aca6e652e1ffb36c2ddadd1a5820393988b5b03de7e10425027"
+    },
+    "checks": [
+      {
+        "args": [],
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "args": [
+          "--execute"
+        ],
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "explicit lab marker required",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "work_root",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "arms",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "criteria",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "source_pg_control_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "pins",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "executor_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "manual_input_case": "old-mixed-mode",
+        "exit": 1,
+        "expected_error": "manual resource_mode cannot include percentage parameters",
+        "actual_error": "{\n  \"schema\": \"crg-command-error-v1\",\n  \"state\": \"degraded\",\n  \"reason_code\": \"config_invalid\",\n  \"error\": \"manual resource_mode cannot include percentage parameters\",\n  \"business_action\": \"none\"\n}\n",
+        "original_released_ELF": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      {
+        "manual_input_case": "manual-invalid-IO",
+        "exit": 1,
+        "expected_error": "io_write_bps must be a positive byte quantity",
+        "actual_error": "{\n  \"schema\": \"crg-command-error-v1\",\n  \"state\": \"degraded\",\n  \"reason_code\": \"config_invalid\",\n  \"error\": \"io_write_bps must be a positive byte quantity\",\n  \"business_action\": \"none\"\n}\n",
+        "original_released_ELF": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      {
+        "manual_input_case": "partial-JSON",
+        "exit": 1,
+        "expected_error": "EOF",
+        "actual_error": "{\n  \"schema\": \"crg-command-error-v1\",\n  \"state\": \"degraded\",\n  \"reason_code\": \"config_invalid\",\n  \"error\": \"EOF\",\n  \"business_action\": \"none\"\n}\n",
+        "original_released_ELF": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      {
+        "manual_input_case": "duplicate-key",
+        "exit": 1,
+        "expected_error": "duplicate",
+        "actual_error": "{\n  \"schema\": \"crg-command-error-v1\",\n  \"state\": \"degraded\",\n  \"reason_code\": \"config_invalid\",\n  \"error\": \"duplicate or invalid JSON key\",\n  \"business_action\": \"none\"\n}\n",
+        "original_released_ELF": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      }
+    ],
+    "all_gates_passed": true,
+    "comparison_root_absent": true,
+    "workload_started": false
+  },
+  "prior_three_arm_terminal_cleanup_verified_before_v2": true,
+  "initial_CLI_check_rejection": {
+    "command": "plan",
+    "reason_code": "usage_invalid",
+    "error": "unknown command",
+    "executed_workload": false,
+    "resolution": "use existing read-only doctor command with each deliberately invalid config"
+  },
+  "all52_completion_claims_remain_false": true,
+  "stable_release_accepted": false
+}

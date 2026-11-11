@@ -404,3 +404,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 已完成[R235逐秒IO复现](testing-pressure235-IO-timeline.md)：599区间/6错误窗口均在最后切换后，控制读回与配置一致，严格请求内D样本4与IO括区间D样本5分开。基于该线索已启动[完整冷副本写BPS A/B/A诊断](testing-write-bps-comparison.md)，原native/备份/内存压力/SLA保留，两组manual且仅写带宽轨迹不同；8项前置通过、三副本先冻结，首快照A1仅启动2项，非原32/两角色百分比验收。初始跨平台计划及启动校验拒绝均留档，旧失败/原标准/52项不变。
+
+
+[首轮写BPS对照实际失败](testing-write-bps-comparison-failure.md)：A1/B因测试器错误预期提前结束且不足600秒，A2准备失败/实际建表5.47秒，均不作业务通过；三组全部退出/恢复、源保持。已修正手动模式非法IO测试输入并新增精确ELF四项只读校验，[v2](testing-write-bps-comparison-v2.md)12项前置通过、独立三份完整冷副本已冻结并启动，首快照尚无600秒终态。包装CI发现的源码链接已修正，旧CI失败保留；原R235/52项/长期门槛继续。
