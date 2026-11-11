@@ -1,0 +1,1313 @@
+{
+  "schema": "crg-pg-wait-qualified-v1",
+  "phase": "qualified-parser-and-fresh-vendor-PG-only",
+  "node_observed_utc": "2026-11-11T18:22:46.376538+00:00",
+  "sources_sha256": {
+    "tests/vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+    "tests/vendor-pg-wait-checks.py": "e8016d925aa838e69402370e9905e61cb110184bc20890f24303ea0cd0b8130f",
+    "tests/vendor-pg-wait-runtime.py": "2e0c9625926a2ed1d70aa8f35ff8389c4e7555ec8b34050eb252df3fb7408982"
+  },
+  "all_frozen_sources_sha256": {
+    "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+    "vendor-pg-wait-checks.py": "e8016d925aa838e69402370e9905e61cb110184bc20890f24303ea0cd0b8130f",
+    "vendor-pg-wait-runtime.py": "2e0c9625926a2ed1d70aa8f35ff8389c4e7555ec8b34050eb252df3fb7408982",
+    "vendor-device-state-observer.py": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+    "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f"
+  },
+  "runner_sha256": "84b545fb9cdcc814764fc6c21d6f4a57981857a71263b1c06b6f39f16298abbf",
+  "raw_evidence": {
+    "path": "test-evidence/pgwait314-qualification.json.gz",
+    "gzip_bytes": 28367,
+    "gzip_sha256": "5ea6a37e313658f9060c5127c6b912d365e29d0313c4bc91d5206f1c8c579fc9",
+    "uncompressed_bytes": 132935,
+    "uncompressed_sha256": "aaa09ae4f3500c7c3aaf5d6f9f0981edac04b9dd7a6e949803a8239c6bba8185",
+    "exact_node_coordinator_report_sha256": "f57d6bb0c542de0b7f71dd6239ebc01489e2f80139dfb9010e62395a7be9a499",
+    "container_reports_are_parsed_structures_not_byte_exact": true,
+    "frozen_source_versions": 6
+  },
+  "passed_checks": 124,
+  "host": {
+    "exit": 0,
+    "stdout": "{\"phase\": \"passed\", \"checks\": 32, \"reason\": null}\n",
+    "stderr": "",
+    "result": {
+      "schema": "crg-pg-wait-parser-checks-v1",
+      "phase": "passed",
+      "checks": [
+        {
+          "name": "exact-run-app-database-and-row-bound-without-query-body-column",
+          "passed": true
+        },
+        {
+          "name": "backend-start-kept-as-exact-text-not-proc-ticks",
+          "passed": true
+        },
+        {
+          "name": "five-rows-refuse-truncation",
+          "passed": true
+        },
+        {
+          "name": "wrong-database",
+          "passed": true
+        },
+        {
+          "name": "wrong-run",
+          "passed": true
+        },
+        {
+          "name": "invalid-PID",
+          "passed": true
+        },
+        {
+          "name": "nonfinite-backend-start",
+          "passed": true
+        },
+        {
+          "name": "duplicate-PID",
+          "passed": true
+        },
+        {
+          "name": "missing-column",
+          "passed": true
+        },
+        {
+          "name": "unapproved-event",
+          "passed": true
+        },
+        {
+          "name": "unavailable-backend-start",
+          "passed": true
+        },
+        {
+          "name": "run-cannot-inject-SQL",
+          "passed": true
+        },
+        {
+          "name": "native-x86-fsync-FD-only-no-registers",
+          "passed": true
+        },
+        {
+          "name": "unknown-ABI-never-decodes-FD",
+          "passed": true
+        },
+        {
+          "name": "running-is-unknown",
+          "passed": true
+        },
+        {
+          "name": "outside-syscall-is-unknown",
+          "passed": true
+        },
+        {
+          "name": "malformed-syscall-refused",
+          "passed": true
+        },
+        {
+          "name": "actual-PGDATA-WAL-path-allowlisted",
+          "passed": true
+        },
+        {
+          "name": "old-assumed-data-path-redacted",
+          "passed": true
+        },
+        {
+          "name": "path-traversal-redacted",
+          "passed": true
+        },
+        {
+          "name": "unapproved-path-text-not-retained",
+          "passed": true
+        },
+        {
+          "name": "only-current-run-backup-path-allowed",
+          "passed": true
+        },
+        {
+          "name": "other-run-backup-redacted",
+          "passed": true
+        },
+        {
+          "name": "socket-number-not-retained",
+          "passed": true
+        },
+        {
+          "name": "kernel-addresses-offsets-not-retained",
+          "passed": true
+        },
+        {
+          "name": "kernel-stack-eight-frame-bound",
+          "passed": true
+        },
+        {
+          "name": "unknown-stack-format-counted",
+          "passed": true
+        },
+        {
+          "name": "missing-lab-marker-before-PG-proc-reads",
+          "passed": true
+        },
+        {
+          "name": "arbitrary-exception-text-not-retained",
+          "passed": true
+        },
+        {
+          "name": "actual-portable-readlinkat-exe",
+          "passed": true
+        },
+        {
+          "name": "actual-thread-CPU-clock-and-monotonic-clock",
+          "passed": true
+        },
+        {
+          "name": "deleted-allowlisted-path-explicit",
+          "passed": true
+        }
+      ],
+      "python": "3.9.21",
+      "helper_sha256": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+      "signals_or_control_writes": 0,
+      "real_PG_qualification": false
+    }
+  },
+  "roles": {
+    "dbs": {
+      "source_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "components_before": {
+        "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+        "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+        "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+        "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+        "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+        "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+      },
+      "pod_uid": "c9377d17-dd63-4bfe-9d53-1b3c310fd194",
+      "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "container_id": "800ac8d041f6220ddbdbbc7d13697e125a8d0e9c044d5506b308426325b1b9d4",
+      "host_pid": 1826971,
+      "host_start_ticks": 136070401,
+      "host_cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podc9377d17_dd63_4bfe_9d53_1b3c310fd194.slice/cri-containerd-800ac8d041f6220ddbdbbc7d13697e125a8d0e9c044d5506b308426325b1b9d4.scope",
+      "uid": 999,
+      "gid": 998,
+      "read_only_root": true,
+      "drop_all": true,
+      "original_data_mounted": false,
+      "unit": {
+        "exit": 0,
+        "stdout": "{\"phase\": \"passed\", \"reason\": null, \"checks\": 32}\n",
+        "stderr": "",
+        "result": {
+          "python": "2.7.5",
+          "real_PG_qualification": false,
+          "signals_or_control_writes": 0,
+          "phase": "passed",
+          "helper_sha256": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+          "checks": [
+            {
+              "name": "exact-run-app-database-and-row-bound-without-query-body-column",
+              "passed": true
+            },
+            {
+              "name": "backend-start-kept-as-exact-text-not-proc-ticks",
+              "passed": true
+            },
+            {
+              "name": "five-rows-refuse-truncation",
+              "passed": true
+            },
+            {
+              "name": "wrong-database",
+              "passed": true
+            },
+            {
+              "name": "wrong-run",
+              "passed": true
+            },
+            {
+              "name": "invalid-PID",
+              "passed": true
+            },
+            {
+              "name": "nonfinite-backend-start",
+              "passed": true
+            },
+            {
+              "name": "duplicate-PID",
+              "passed": true
+            },
+            {
+              "name": "missing-column",
+              "passed": true
+            },
+            {
+              "name": "unapproved-event",
+              "passed": true
+            },
+            {
+              "name": "unavailable-backend-start",
+              "passed": true
+            },
+            {
+              "name": "run-cannot-inject-SQL",
+              "passed": true
+            },
+            {
+              "name": "native-x86-fsync-FD-only-no-registers",
+              "passed": true
+            },
+            {
+              "name": "unknown-ABI-never-decodes-FD",
+              "passed": true
+            },
+            {
+              "name": "running-is-unknown",
+              "passed": true
+            },
+            {
+              "name": "outside-syscall-is-unknown",
+              "passed": true
+            },
+            {
+              "name": "malformed-syscall-refused",
+              "passed": true
+            },
+            {
+              "name": "actual-PGDATA-WAL-path-allowlisted",
+              "passed": true
+            },
+            {
+              "name": "old-assumed-data-path-redacted",
+              "passed": true
+            },
+            {
+              "name": "path-traversal-redacted",
+              "passed": true
+            },
+            {
+              "name": "unapproved-path-text-not-retained",
+              "passed": true
+            },
+            {
+              "name": "only-current-run-backup-path-allowed",
+              "passed": true
+            },
+            {
+              "name": "other-run-backup-redacted",
+              "passed": true
+            },
+            {
+              "name": "socket-number-not-retained",
+              "passed": true
+            },
+            {
+              "name": "kernel-addresses-offsets-not-retained",
+              "passed": true
+            },
+            {
+              "name": "kernel-stack-eight-frame-bound",
+              "passed": true
+            },
+            {
+              "name": "unknown-stack-format-counted",
+              "passed": true
+            },
+            {
+              "name": "missing-lab-marker-before-PG-proc-reads",
+              "passed": true
+            },
+            {
+              "name": "arbitrary-exception-text-not-retained",
+              "passed": true
+            },
+            {
+              "name": "actual-portable-readlinkat-exe",
+              "passed": true
+            },
+            {
+              "name": "actual-thread-CPU-clock-and-monotonic-clock",
+              "passed": true
+            },
+            {
+              "name": "deleted-allowlisted-path-explicit",
+              "passed": true
+            }
+          ],
+          "schema": "crg-pg-wait-parser-checks-v1"
+        }
+      },
+      "runtime": {
+        "exit": 0,
+        "stdout": "{\"phase\": \"passed\", \"reason\": null, \"checks\": 14}\n",
+        "stderr": "",
+        "result": {
+          "business_acceptance": false,
+          "own_fresh_PG_standard_start_stop": true,
+          "three_sample_costs": [
+            {
+              "seconds": 0.0025714559014886618,
+              "thread_CPU_seconds": 0.0011845530000000049
+            },
+            {
+              "seconds": 0.0025486007798463106,
+              "thread_CPU_seconds": 0.0011946580000000012
+            },
+            {
+              "seconds": 0.0026429679710417986,
+              "thread_CPU_seconds": 0.0012518389999999907
+            }
+          ],
+          "observer_settings": [
+            [
+              "on",
+              "1s",
+              "/opt/postgresql/pgdata",
+              "postgres"
+            ]
+          ],
+          "phase": "passed",
+          "self_maximum_RSS_kib": 13380,
+          "original_data_mounted": false,
+          "actual_allowlisted_backend_FD_metadata": [
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/global/2676",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/global/2677",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/global/2671",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/2601",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/3467",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/2663",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/2685",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/827",
+              "kind": "allowlisted-path"
+            }
+          ],
+          "own_fresh_postgres_stopped": true,
+          "source_sha256": {
+            "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+            "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+            "vendor-pg-wait-runtime.py": "2e0c9625926a2ed1d70aa8f35ff8389c4e7555ec8b34050eb252df3fb7408982"
+          },
+          "target_pid": 82,
+          "role": "dbs",
+          "samples": {
+            "actual-pg-sleep": {
+              "available": true,
+              "collection_seconds": 0.0026812059804797173,
+              "ended_monotonic": 1360712.762476652,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360712.759799192,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.00125613799999999,
+              "targets": [
+                {
+                  "state": "active",
+                  "backend_start_epoch_text": "1794420769.346059",
+                  "wait_event": "PgSleep",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136071245,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Timeout"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "five-real-backends": {
+              "available": false,
+              "collection_seconds": 0.0011385108809918165,
+              "ended_monotonic": 1360718.071450609,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "reason": "PG_WAIT_ROW_BOUND_OR_TRUNCATED",
+              "started_monotonic": 1360718.070315343,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0003396869999999913,
+              "targets": [],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "wrong-cached-start-ticks": {
+              "available": true,
+              "collection_seconds": 0.002408491214737296,
+              "ended_monotonic": 1360717.796268146,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360717.793863349,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0007593020000000034,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420769.346059",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": false,
+                    "separate_reads_not_atomic": true,
+                    "reason": "PG_WAIT_PROCESS_CHANGED"
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "idle": {
+              "available": true,
+              "collection_seconds": 0.00393846002407372,
+              "ended_monotonic": 1360712.750646755,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360712.746711858,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0021584989999999943,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420769.346059",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136071245,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "real-marker-changed": {
+              "available": true,
+              "collection_seconds": 0.0029646658804267645,
+              "ended_monotonic": 1360718.061217041,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360718.058256196,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0012115280000000034,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420769.346059",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": false,
+                    "separate_reads_not_atomic": true,
+                    "reason": "PG_WAIT_BACKEND_CHANGED"
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "other-database-filtered": {
+              "available": true,
+              "collection_seconds": 0.0029380328487604856,
+              "ended_monotonic": 1360715.838620851,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360715.835686647,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.001481928999999993,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420769.346059",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136071245,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "final": {
+              "available": true,
+              "collection_seconds": 0.0029269461520016193,
+              "ended_monotonic": 1360718.075518967,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113140",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360718.072595815,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0014013239999999955,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420769.346059",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136071245,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            }
+          },
+          "helper_signals_or_control_writes": 0,
+          "checks": [
+            {
+              "name": "actual-readonly-one-second-and-vendor-data-directory",
+              "passed": true
+            },
+            {
+              "name": "actual-correct-run-unique-backend-selected",
+              "passed": true
+            },
+            {
+              "name": "actual-backend-open-file-under-real-PGDATA-whitelist",
+              "passed": true
+            },
+            {
+              "name": "actual-PG-and-proc-identity-bound-and-rechecked",
+              "passed": true
+            },
+            {
+              "name": "three-real-samples-within-prespecified-cost",
+              "passed": true
+            },
+            {
+              "name": "actual-PG-wait-context-captured-without-query-body",
+              "passed": true
+            },
+            {
+              "name": "original-test-query-completes-without-cancel-or-signal",
+              "passed": true
+            },
+            {
+              "name": "actual-other-database-and-other-run-excluded",
+              "passed": true
+            },
+            {
+              "name": "actual-proc-start-mismatch-discards-metadata",
+              "passed": true
+            },
+            {
+              "name": "actual-marker-change-after-selection-discards-metadata",
+              "passed": true
+            },
+            {
+              "name": "five-real-backends-explicitly-unknown-not-silently-truncated",
+              "passed": true
+            },
+            {
+              "name": "recovers-with-same-original-backend-after-selection-faults",
+              "passed": true
+            },
+            {
+              "name": "all-records-bounded-and-no-helper-control-actions",
+              "passed": true
+            },
+            {
+              "name": "qualification-Python-RSS-within-128MiB",
+              "passed": true
+            }
+          ],
+          "schema": "crg-pg-wait-real-runtime-v1"
+        }
+      },
+      "components_after": {
+        "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+        "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+        "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+        "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+        "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+        "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+      },
+      "pod_absent": true,
+      "cgroup_absent": true
+    },
+    "hisdbs": {
+      "source_image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "components_before": {
+        "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+        "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+        "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+        "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+        "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+        "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+      },
+      "pod_uid": "20b74547-a44d-4c28-a07a-e787fa675218",
+      "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "container_id": "be65b95f848a1ebe630b1da40f003bf06944dfdfddea4cb185767d61966af2c0",
+      "host_pid": 1840221,
+      "host_start_ticks": 136076071,
+      "host_cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod20b74547_a44d_4c28_a07a_e787fa675218.slice/cri-containerd-be65b95f848a1ebe630b1da40f003bf06944dfdfddea4cb185767d61966af2c0.scope",
+      "uid": 999,
+      "gid": 998,
+      "read_only_root": true,
+      "drop_all": true,
+      "original_data_mounted": false,
+      "unit": {
+        "exit": 0,
+        "stdout": "{\"phase\": \"passed\", \"reason\": null, \"checks\": 32}\n",
+        "stderr": "",
+        "result": {
+          "python": "2.7.5",
+          "real_PG_qualification": false,
+          "signals_or_control_writes": 0,
+          "phase": "passed",
+          "helper_sha256": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+          "checks": [
+            {
+              "name": "exact-run-app-database-and-row-bound-without-query-body-column",
+              "passed": true
+            },
+            {
+              "name": "backend-start-kept-as-exact-text-not-proc-ticks",
+              "passed": true
+            },
+            {
+              "name": "five-rows-refuse-truncation",
+              "passed": true
+            },
+            {
+              "name": "wrong-database",
+              "passed": true
+            },
+            {
+              "name": "wrong-run",
+              "passed": true
+            },
+            {
+              "name": "invalid-PID",
+              "passed": true
+            },
+            {
+              "name": "nonfinite-backend-start",
+              "passed": true
+            },
+            {
+              "name": "duplicate-PID",
+              "passed": true
+            },
+            {
+              "name": "missing-column",
+              "passed": true
+            },
+            {
+              "name": "unapproved-event",
+              "passed": true
+            },
+            {
+              "name": "unavailable-backend-start",
+              "passed": true
+            },
+            {
+              "name": "run-cannot-inject-SQL",
+              "passed": true
+            },
+            {
+              "name": "native-x86-fsync-FD-only-no-registers",
+              "passed": true
+            },
+            {
+              "name": "unknown-ABI-never-decodes-FD",
+              "passed": true
+            },
+            {
+              "name": "running-is-unknown",
+              "passed": true
+            },
+            {
+              "name": "outside-syscall-is-unknown",
+              "passed": true
+            },
+            {
+              "name": "malformed-syscall-refused",
+              "passed": true
+            },
+            {
+              "name": "actual-PGDATA-WAL-path-allowlisted",
+              "passed": true
+            },
+            {
+              "name": "old-assumed-data-path-redacted",
+              "passed": true
+            },
+            {
+              "name": "path-traversal-redacted",
+              "passed": true
+            },
+            {
+              "name": "unapproved-path-text-not-retained",
+              "passed": true
+            },
+            {
+              "name": "only-current-run-backup-path-allowed",
+              "passed": true
+            },
+            {
+              "name": "other-run-backup-redacted",
+              "passed": true
+            },
+            {
+              "name": "socket-number-not-retained",
+              "passed": true
+            },
+            {
+              "name": "kernel-addresses-offsets-not-retained",
+              "passed": true
+            },
+            {
+              "name": "kernel-stack-eight-frame-bound",
+              "passed": true
+            },
+            {
+              "name": "unknown-stack-format-counted",
+              "passed": true
+            },
+            {
+              "name": "missing-lab-marker-before-PG-proc-reads",
+              "passed": true
+            },
+            {
+              "name": "arbitrary-exception-text-not-retained",
+              "passed": true
+            },
+            {
+              "name": "actual-portable-readlinkat-exe",
+              "passed": true
+            },
+            {
+              "name": "actual-thread-CPU-clock-and-monotonic-clock",
+              "passed": true
+            },
+            {
+              "name": "deleted-allowlisted-path-explicit",
+              "passed": true
+            }
+          ],
+          "schema": "crg-pg-wait-parser-checks-v1"
+        }
+      },
+      "runtime": {
+        "exit": 0,
+        "stdout": "{\"phase\": \"passed\", \"reason\": null, \"checks\": 14}\n",
+        "stderr": "",
+        "result": {
+          "business_acceptance": false,
+          "own_fresh_PG_standard_start_stop": true,
+          "three_sample_costs": [
+            {
+              "seconds": 0.0027641570195555687,
+              "thread_CPU_seconds": 0.0012332399999999966
+            },
+            {
+              "seconds": 0.002548848045989871,
+              "thread_CPU_seconds": 0.0011618429999999957
+            },
+            {
+              "seconds": 0.002509393962100148,
+              "thread_CPU_seconds": 0.0011587450000000027
+            }
+          ],
+          "observer_settings": [
+            [
+              "on",
+              "1s",
+              "/opt/postgresql/pgdata",
+              "postgres"
+            ]
+          ],
+          "phase": "passed",
+          "self_maximum_RSS_kib": 13840,
+          "original_data_mounted": false,
+          "actual_allowlisted_backend_FD_metadata": [
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/global/2676",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/global/2677",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/global/2671",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/2601",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/3467",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/2663",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/2685",
+              "kind": "allowlisted-path"
+            },
+            {
+              "deleted": false,
+              "path": "/opt/postgresql/pgdata/base/13037/827",
+              "kind": "allowlisted-path"
+            }
+          ],
+          "own_fresh_postgres_stopped": true,
+          "source_sha256": {
+            "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+            "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+            "vendor-pg-wait-runtime.py": "2e0c9625926a2ed1d70aa8f35ff8389c4e7555ec8b34050eb252df3fb7408982"
+          },
+          "target_pid": 82,
+          "role": "hisdbs",
+          "samples": {
+            "actual-pg-sleep": {
+              "available": true,
+              "collection_seconds": 0.0027983561158180237,
+              "ended_monotonic": 1360767.032395579,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360767.029600896,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0012430200000000113,
+              "targets": [
+                {
+                  "state": "active",
+                  "backend_start_epoch_text": "1794420823.743953",
+                  "wait_event": "PgSleep",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136076685,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Timeout"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "five-real-backends": {
+              "available": false,
+              "collection_seconds": 0.0010668591130524874,
+              "ended_monotonic": 1360772.079736534,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "reason": "PG_WAIT_ROW_BOUND_OR_TRUNCATED",
+              "started_monotonic": 1360772.078672753,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.00031779600000000907,
+              "targets": [],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "wrong-cached-start-ticks": {
+              "available": true,
+              "collection_seconds": 0.0025459928438067436,
+              "ended_monotonic": 1360772.066365243,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360772.063823383,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0008096250000000083,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420823.743953",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": false,
+                    "separate_reads_not_atomic": true,
+                    "reason": "PG_WAIT_PROCESS_CHANGED"
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "idle": {
+              "available": true,
+              "collection_seconds": 0.0039232210256159306,
+              "ended_monotonic": 1360767.020360178,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360767.016440695,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.00217168999999999,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420823.743953",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136076685,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "real-marker-changed": {
+              "available": true,
+              "collection_seconds": 0.002476047957316041,
+              "ended_monotonic": 1360772.069810817,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360772.067337827,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.001031132000000004,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420823.743953",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": false,
+                    "separate_reads_not_atomic": true,
+                    "reason": "PG_WAIT_BACKEND_CHANGED"
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "other-database-filtered": {
+              "available": true,
+              "collection_seconds": 0.0029336789157241583,
+              "ended_monotonic": 1360770.108617126,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360770.105688846,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0015067849999999966,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420823.743953",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136076685,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            },
+            "final": {
+              "available": true,
+              "collection_seconds": 0.002672214061021805,
+              "ended_monotonic": 1360772.083530988,
+              "backend_start_is_not_proc_start_ticks": true,
+              "run_id": "202611113141",
+              "separate_reads_not_atomic": true,
+              "started_monotonic": 1360772.080862503,
+              "missing_values_are_unknown": true,
+              "signals_or_control_writes": 0,
+              "observer_thread_cpu_seconds": 0.0012816079999999896,
+              "targets": [
+                {
+                  "state": "idle",
+                  "backend_start_epoch_text": "1794420823.743953",
+                  "wait_event": "ClientRead",
+                  "kernel_wait": {
+                    "available": true,
+                    "separate_reads_not_atomic": true,
+                    "kernel_stack": {
+                      "available": false,
+                      "reason": "OSError"
+                    },
+                    "process": {
+                      "start_ticks": 136076685,
+                      "state": "S",
+                      "pid": 82
+                    },
+                    "identity_rechecked_after_SQL": true,
+                    "syscall": {
+                      "available": true,
+                      "abi": "linux-x86_64",
+                      "operation": "unknown",
+                      "number": 232
+                    }
+                  },
+                  "pid": 82,
+                  "wait_event_type": "Client"
+                }
+              ],
+              "schema": "crg-pg-wait-snapshot-v1"
+            }
+          },
+          "helper_signals_or_control_writes": 0,
+          "checks": [
+            {
+              "name": "actual-readonly-one-second-and-vendor-data-directory",
+              "passed": true
+            },
+            {
+              "name": "actual-correct-run-unique-backend-selected",
+              "passed": true
+            },
+            {
+              "name": "actual-backend-open-file-under-real-PGDATA-whitelist",
+              "passed": true
+            },
+            {
+              "name": "actual-PG-and-proc-identity-bound-and-rechecked",
+              "passed": true
+            },
+            {
+              "name": "three-real-samples-within-prespecified-cost",
+              "passed": true
+            },
+            {
+              "name": "actual-PG-wait-context-captured-without-query-body",
+              "passed": true
+            },
+            {
+              "name": "original-test-query-completes-without-cancel-or-signal",
+              "passed": true
+            },
+            {
+              "name": "actual-other-database-and-other-run-excluded",
+              "passed": true
+            },
+            {
+              "name": "actual-proc-start-mismatch-discards-metadata",
+              "passed": true
+            },
+            {
+              "name": "actual-marker-change-after-selection-discards-metadata",
+              "passed": true
+            },
+            {
+              "name": "five-real-backends-explicitly-unknown-not-silently-truncated",
+              "passed": true
+            },
+            {
+              "name": "recovers-with-same-original-backend-after-selection-faults",
+              "passed": true
+            },
+            {
+              "name": "all-records-bounded-and-no-helper-control-actions",
+              "passed": true
+            },
+            {
+              "name": "qualification-Python-RSS-within-128MiB",
+              "passed": true
+            }
+          ],
+          "schema": "crg-pg-wait-real-runtime-v1"
+        }
+      },
+      "components_after": {
+        "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+        "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+        "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+        "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+        "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+        "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+      },
+      "pod_absent": true,
+      "cgroup_absent": true
+    }
+  },
+  "independent_cleanup": {
+    "runner_original_instance_gone": true,
+    "namespace_independently_absent": true,
+    "roles_independently_gone": {
+      "dbs": {
+        "pod": true,
+        "cgroup": true,
+        "original_container_process": true,
+        "original_readonly_components_unchanged": true
+      },
+      "hisdbs": {
+        "pod": true,
+        "cgroup": true,
+        "original_container_process": true,
+        "original_readonly_components_unchanged": true
+      }
+    }
+  },
+  "actual_900_seconds_executed": false,
+  "original_32_two_role_acceptance_executed": false,
+  "historical_business_failures_resolved": false,
+  "P10_complete": false,
+  "stable_release_accepted": false
+}
