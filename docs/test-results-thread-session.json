@@ -1,0 +1,294 @@
+{
+  "schema": "crg-thread-session-qualification-index-v1",
+  "phase": "lifecycle-qualified-pressure-not-executed",
+  "source_sha256": {
+    "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+    "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+    "vendor-thread-session-checks.py": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424"
+  },
+  "actual_Linux_qualification": {
+    "raw_qualification_sha256": "6e43bfbb71141f3ce264ea36c239c28e670e28620d18d4d8f7d13cd816c10929",
+    "qualification": {
+      "node_utc": "2026-11-11T11:31:05.220336+00:00",
+      "source_sha256": {
+        "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+        "vendor-thread-session-checks.py": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424"
+      },
+      "started_epoch": 1794396663.6144245,
+      "ended_epoch": 1794396665.2203603,
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 14, \"selftest_target_gone\": true}\n",
+      "stderr": "",
+      "result": {
+        "phase": "passed",
+        "checks": [
+          {
+            "name": "term-first-sample-handshake-and-own-pidfd",
+            "passed": true
+          },
+          {
+            "name": "wrong-start-refuses-signal",
+            "passed": true
+          },
+          {
+            "name": "term-reaped-and-exact-wait4-accounting",
+            "passed": true
+          },
+          {
+            "name": "term-expected-terminal",
+            "passed": true
+          },
+          {
+            "name": "term-target-same-no-control-writes",
+            "passed": true
+          },
+          {
+            "name": "term-second-stop-idempotent",
+            "passed": true
+          },
+          {
+            "name": "natural-first-sample-handshake-and-own-pidfd",
+            "passed": true
+          },
+          {
+            "name": "natural-reaped-and-exact-wait4-accounting",
+            "passed": true
+          },
+          {
+            "name": "natural-expected-terminal",
+            "passed": true
+          },
+          {
+            "name": "natural-target-same-no-control-writes",
+            "passed": true
+          },
+          {
+            "name": "natural-second-stop-idempotent",
+            "passed": true
+          },
+          {
+            "name": "original-business-error-object-preserved",
+            "passed": true
+          },
+          {
+            "name": "diagnostic-failure-not-hidden-on-business-success",
+            "passed": true
+          },
+          {
+            "name": "successful-work-result-preserved",
+            "passed": true
+          }
+        ],
+        "records": {
+          "term": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+              "label": "selftest",
+              "pid": 735768,
+              "start_ticks": 133660677,
+              "executable_sha256": "b326878ee006efade4792f3a110495bbcc94cb0724560d4f486e5469a7a7d830",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-215920.scope",
+              "duration_seconds": 900,
+              "output": "/var/tmp/crg-thread165-checks-20261111/term/selftest-threads.json"
+            },
+            "plan_sha256": "693fb2dcbc6c0e8014cf7c642166578fe1d8bcf153b92408f7692fcd05763e65",
+            "listener_executable_path": null,
+            "launch_epoch": 1794396663.6647613,
+            "observer_pid": 735769,
+            "observer_start_ticks": 133660677,
+            "observer_entry": "/var/tmp/crg-thread165-tools-20261111/vendor-thread-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794396663.7078462
+            },
+            "startup_until_first_sample_seconds": 0.04468573094345629,
+            "term_requested_epoch": 1794396663.7099557,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.050768999999999995,
+            "whole_child_maximum_rss_kib": 15936,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 8,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.15087044099345803,
+            "whole_child_wall_seconds": 0.19584986404515803,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 1, \"elapsed_seconds\": 0.002136623952537775, \"observer_cpu_seconds\": 0.0015108080000000024}\n",
+            "raw_report_path": "/var/tmp/crg-thread165-checks-20261111/term/selftest-threads.json",
+            "raw_report_bytes": 3508,
+            "raw_report_sha256": "3a02126875e4cb35db080a83fb3ccd2905780b2a654eda82a40161f6fa94b84b",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "sample_count": 1,
+            "first_sample_epoch": 1794396663.7078462,
+            "last_sample_epoch": 1794396663.7078462,
+            "maximum_sample_gap_seconds": null,
+            "sampling_cpu_seconds": 0.0015108080000000024,
+            "maximum_collection_seconds": 0.0013329768553376198,
+            "sampling_elapsed_seconds": 0.002136623952537775,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 1
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 1,
+              "io.stat": 0,
+              "memory.current": 1,
+              "memory.stat": 1,
+              "memory.events": 1,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 1,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          },
+          "natural": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+              "label": "selftest",
+              "pid": 735768,
+              "start_ticks": 133660677,
+              "executable_sha256": "b326878ee006efade4792f3a110495bbcc94cb0724560d4f486e5469a7a7d830",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-215920.scope",
+              "duration_seconds": 1,
+              "output": "/var/tmp/crg-thread165-checks-20261111/natural/selftest-threads.json"
+            },
+            "plan_sha256": "524e7f04e4cddf59d0ea298a2fb0a908bc1a62981563acd9ca59401bd572fb00",
+            "listener_executable_path": null,
+            "launch_epoch": 1794396663.861754,
+            "observer_pid": 735785,
+            "observer_start_ticks": 133660697,
+            "observer_entry": "/var/tmp/crg-thread165-tools-20261111/vendor-thread-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794396663.9063494
+            },
+            "startup_until_first_sample_seconds": 0.045411871979013085,
+            "exit": 0,
+            "whole_child_cpu_seconds": 0.052966,
+            "whole_child_maximum_rss_kib": 15744,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.0003335089422762394,
+            "whole_child_wall_seconds": 1.3465530809480697,
+            "terminal_stdout": "{\"phase\": \"observed\", \"sample_count\": 2, \"elapsed_seconds\": 1.0023913369514048, \"observer_cpu_seconds\": 0.002453588999999999}\n",
+            "raw_report_path": "/var/tmp/crg-thread165-checks-20261111/natural/selftest-threads.json",
+            "raw_report_bytes": 6014,
+            "raw_report_sha256": "8e9927da2299651d4f086b2137fe86ca1257be5a00dd9bf8685f95119cea6e29",
+            "report_phase": "observed",
+            "report_reason": null,
+            "sample_count": 2,
+            "first_sample_epoch": 1794396663.9063494,
+            "last_sample_epoch": 1794396664.9070299,
+            "maximum_sample_gap_seconds": 1.0006769590545446,
+            "sampling_cpu_seconds": 0.002453588999999999,
+            "maximum_collection_seconds": 0.0015743521507829428,
+            "sampling_elapsed_seconds": 1.0023913369514048,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 2,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.stat": 2,
+              "memory.events": 2,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 2,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          }
+        },
+        "selftest_scope_controls": {
+          "cpu.max": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "memory.max": {
+            "available": true,
+            "value": "max"
+          },
+          "io.max": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          }
+        },
+        "selftest_target_gone": true,
+        "source_sha256": {
+          "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+          "vendor-thread-session-checks.py": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424",
+          "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce"
+        }
+      }
+    },
+    "observer_instances_now": {
+      "term": {
+        "original_instance_live": false
+      },
+      "natural": {
+        "original_instance_live": false
+      }
+    }
+  },
+  "prior_failed_selftest": {
+    "raw_qualification_sha256": "0848dad276f9c96647254c14cd308d2b930219610452810c1c7edd9557f9ed48",
+    "qualification": {
+      "node_utc": "2026-11-11T11:30:04.744066+00:00",
+      "source_sha256": {
+        "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+        "vendor-thread-session-checks.py": "ac2136c83fe2e824deefcfe62c3bb3c1d53ec93eacfb6cb0e3a2929070e2fcbc"
+      },
+      "started_epoch": 1794396604.5973122,
+      "ended_epoch": 1794396604.7440872,
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/var/tmp/crg-thread164-tools-20261111/vendor-thread-session-checks.py\", line 107, in <module>\n    raise SystemExit(main())\n  File \"/var/tmp/crg-thread164-tools-20261111/vendor-thread-session-checks.py\", line 40, in main\n    before = {n: (group/n).read_bytes() for n in ['cpu.max', 'memory.max', 'io.max']}\n  File \"/var/tmp/crg-thread164-tools-20261111/vendor-thread-session-checks.py\", line 40, in <dictcomp>\n    before = {n: (group/n).read_bytes() for n in ['cpu.max', 'memory.max', 'io.max']}\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1259, in read_bytes\n    with self.open(mode='rb') as f:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1252, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1120, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/sys/fs/cgroup/user.slice/user-0.slice/session-215912.scope/cpu.max'\n",
+      "result": {
+        "phase": "failed",
+        "checks": [],
+        "records": {},
+        "selftest_target_gone": true,
+        "source_sha256": {
+          "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+          "vendor-thread-session-checks.py": "ac2136c83fe2e824deefcfe62c3bb3c1d53ec93eacfb6cb0e3a2929070e2fcbc",
+          "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce"
+        }
+      }
+    },
+    "observer_instances_now": {}
+  },
+  "raw_collected_receipt_sha256": "99ed42bade0540e99ab519c21671073218e484960d5ea9c8b5131f4d3c0f0a73",
+  "scope": "one fresh sleep target, two own observers; no vendor pressure/controller acceptance; missing SSH-scope controllers explicitly unknown",
+  "original_business_method_AST_preserved_except_observer_start": true,
+  "original32_main_checks": 32,
+  "native_seconds_each_role": 600,
+  "business_pressure_executed": false,
+  "R142_failure_resolved": false,
+  "product_code_modified": false,
+  "stable_release_accepted": false
+}

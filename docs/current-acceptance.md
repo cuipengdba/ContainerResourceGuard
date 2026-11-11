@@ -104,3 +104,6 @@ R142[真实30→20压力失败终态](testing-business-memory-pressure-legacy.md
 
 
 [单目标只读线程工具](testing-thread-observer.md)现已Linux19项资格、DBS/HISDBS各15秒/16样本/47线程观察完成，原实例和限额保持；PSI不可用明确unknown。首次HIS路径假设错误及DBS完整CPU缺失保留；修正后单独完成HIS观察。未复现压力/未关闭R142，原32项和长期条件继续。
+
+
+R167[完整压力线程诊断](testing-business-pressure-threads.md)已实现并冻结；新增实际14项生命周期资格通过，首次SSH作用域缺控制文件失败保留。原完整业务方法AST除观察器启动/保存外一致，原32项/两角色各600秒及全部配额、SLA、历史失败不变；此时压力业务尚未执行，52项不宣称完成。
