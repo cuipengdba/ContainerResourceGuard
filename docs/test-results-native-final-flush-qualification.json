@@ -1,0 +1,1495 @@
+{
+  "schema": "crg-native-final-flush-qualification-v1",
+  "phase": "passed-host18-and-both-images8",
+  "host_initial_failure": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session-checks.py\", line 110, in <module>\n    raise SystemExit(main())\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session-checks.py\", line 67, in main\n    p=child('202611112160');s=attach('term','202611112160')\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session-checks.py\", line 61, in attach\n    record={};records[name]=record;s=session.Session(group,entry,run,600,worker_sha,record);sessions.append(s);s.attach();return s\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session.py\", line 92, in attach\n    candidates = [value for value in (self.snapshot(int(v)) for v in pids) if value is not None]\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session.py\", line 92, in <listcomp>\n    candidates = [value for value in (self.snapshot(int(v)) for v in pids) if value is not None]\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session.py\", line 92, in <genexpr>\n    candidates = [value for value in (self.snapshot(int(v)) for v in pids) if value is not None]\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session.py\", line 63, in snapshot\n    args = bounded(proc/'cmdline', 8192).split(b'\\0')\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session.py\", line 29, in bounded\n    require(len(raw) <= maximum, 'NATIVE_SESSION_READ_BOUND')\n  File \"/var/tmp/crg-native217-tools-20261111/vendor-native-session.py\", line 23, in require\n    raise Rejected(reason)\nnative_session.Rejected: NATIVE_SESSION_READ_BOUND\n",
+    "result": {
+      "schema": "crg-native-session-checks-v1",
+      "phase": "failed",
+      "checks": [],
+      "records": {
+        "term": {
+          "phase": "not-attached",
+          "run_id": "202611112160",
+          "requested_seconds": 600,
+          "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+          "signals_sent": 0,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "complete600s_accepted": false
+        }
+      },
+      "selftest_only_children_all_reaped": true,
+      "original_controls_unchanged": true,
+      "source_sha256": {
+        "vendor-native-session-checks.py": "9b73687dc68bc5edfebd2940c16ac6768eeb4ef067f4596047e7b0d503334d22",
+        "vendor-native-session.py": "c92103dbc1be829a9cfb3631541172287ede6988ec1650e34583395a6bea4f36"
+      },
+      "real_PG_or_vendor_business_executed": false,
+      "full600s_accepted": false
+    },
+    "result_sha256": "5609734458a487d99574f66f5d8c8a6c4c104b7df9ef51c0e1991ef67da01142"
+  },
+  "host_initial_failure_sources": {
+    "docs/test-evidence/native-session-217.py": "c92103dbc1be829a9cfb3631541172287ede6988ec1650e34583395a6bea4f36",
+    "docs/test-evidence/native-session-checks-217.py": "9b73687dc68bc5edfebd2940c16ac6768eeb4ef067f4596047e7b0d503334d22"
+  },
+  "host_qualification": {
+    "exit": 0,
+    "stdout": "{\"phase\": \"passed\", \"checks\": 18}\n",
+    "stderr": "",
+    "result": {
+      "schema": "crg-native-session-checks-v1",
+      "phase": "passed",
+      "checks": [
+        {
+          "name": "actual-unique-child-bound-with-start-cgroup-source-exe-and-pidfd",
+          "passed": true
+        },
+        {
+          "name": "oversized-unrelated-argv-cannot-hide-or-select-worker",
+          "passed": true
+        },
+        {
+          "name": "wrong-start-refuses-signal",
+          "passed": true
+        },
+        {
+          "name": "wrong-start-left-child-running",
+          "passed": true
+        },
+        {
+          "name": "no-business-failure-cannot-terminate-load",
+          "passed": true
+        },
+        {
+          "name": "over120second-cleanup-refused",
+          "passed": true
+        },
+        {
+          "name": "wrong-run-does-not-select-other-worker",
+          "passed": true
+        },
+        {
+          "name": "wrong-source-refuses-attach",
+          "passed": true
+        },
+        {
+          "name": "all-refusals-left-correct-child-and-controls-unchanged",
+          "passed": true
+        },
+        {
+          "name": "TERM-allows-own-final-file-with-interrupted-identity",
+          "passed": true
+        },
+        {
+          "name": "cleanup-is-not-complete600s-or-known-exit-code",
+          "passed": true
+        },
+        {
+          "name": "pidfd-close-idempotent",
+          "passed": true
+        },
+        {
+          "name": "unresponsive-own-worker-times-out-with-no-force-kill",
+          "passed": true
+        },
+        {
+          "name": "timeout-keeps-worker-live-for-original-cleanup",
+          "passed": true
+        },
+        {
+          "name": "already-exited-worker-is-never-signaled",
+          "passed": true
+        },
+        {
+          "name": "duplicate-exact-workers-refused",
+          "passed": true
+        },
+        {
+          "name": "duplicate-refusal-signals-neither-worker",
+          "passed": true
+        },
+        {
+          "name": "all-control-values-preserved",
+          "passed": true
+        }
+      ],
+      "records": {
+        "term": {
+          "phase": "worker-exited",
+          "run_id": "202611112160",
+          "requested_seconds": 600,
+          "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+          "signals_sent": 1,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "oversized_unrelated_argv_ignored": 2,
+          "complete600s_accepted": false,
+          "identity": {
+            "pid": 2493936,
+            "start_ticks": 134459051,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-217236.scope",
+            "entry": "/var/tmp/crg-native219-session-checks-20261111/fixture.py",
+            "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+            "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+            "argv_sha256": "7452919d5cc83469c444dc2e25875af04897c90876d03dde0cd8a067f48b28ed"
+          },
+          "pidfd_used": true,
+          "attached_epoch": 1794404647.4375107,
+          "business_error_class": "RuntimeError",
+          "cleanup_started_epoch": 1794404647.4388216,
+          "cleanup_budget_seconds": 5,
+          "term_requested_epoch": 1794404647.4391358,
+          "original_worker_exited": true,
+          "worker_exit_code_unknown": true,
+          "cleanup_ended_epoch": 1794404647.455077,
+          "cleanup_elapsed_seconds": 0.016259900061413646
+        },
+        "wrong-run": {
+          "phase": "not-attached",
+          "run_id": "202611112169",
+          "requested_seconds": 600,
+          "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+          "signals_sent": 0,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "oversized_unrelated_argv_ignored": 2,
+          "complete600s_accepted": false
+        },
+        "wrong-source": {
+          "phase": "not-attached",
+          "run_id": "202611112160",
+          "requested_seconds": 600,
+          "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "signals_sent": 0,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "oversized_unrelated_argv_ignored": 2,
+          "complete600s_accepted": false
+        },
+        "timeout": {
+          "phase": "failed",
+          "run_id": "202611112161",
+          "requested_seconds": 600,
+          "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+          "signals_sent": 1,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "oversized_unrelated_argv_ignored": 2,
+          "complete600s_accepted": false,
+          "identity": {
+            "pid": 2493952,
+            "start_ticks": 134459056,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-217236.scope",
+            "entry": "/var/tmp/crg-native219-session-checks-20261111/fixture.py",
+            "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+            "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+            "argv_sha256": "5084960c99cb042bff79927d71a677a5b5e9312bbc10a22f2f96f882b1761a7d"
+          },
+          "pidfd_used": true,
+          "attached_epoch": 1794404647.4881425,
+          "business_error_class": "RuntimeError",
+          "cleanup_started_epoch": 1794404647.4881608,
+          "cleanup_budget_seconds": 0.2,
+          "term_requested_epoch": 1794404647.4884646,
+          "reason": "NATIVE_SESSION_FINAL_FLUSH_TIMEOUT",
+          "cleanup_elapsed_seconds": 0.20014830003492534
+        },
+        "natural": {
+          "phase": "worker-exited",
+          "run_id": "202611112162",
+          "requested_seconds": 600,
+          "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+          "signals_sent": 0,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "oversized_unrelated_argv_ignored": 2,
+          "complete600s_accepted": false,
+          "identity": {
+            "pid": 2493964,
+            "start_ticks": 134459080,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-217236.scope",
+            "entry": "/var/tmp/crg-native219-session-checks-20261111/fixture.py",
+            "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+            "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+            "argv_sha256": "608b63e8ee4561914d42ffff63863bc88fccf3f24eab484c4417835411039d79"
+          },
+          "pidfd_used": true,
+          "attached_epoch": 1794404647.7225416,
+          "business_error_class": "RuntimeError",
+          "cleanup_started_epoch": 1794404648.7376068,
+          "cleanup_budget_seconds": 1,
+          "original_worker_exited": true,
+          "worker_exit_code_unknown": true,
+          "cleanup_ended_epoch": 1794404648.7376375,
+          "cleanup_elapsed_seconds": 3.614579327404499e-05
+        },
+        "duplicate": {
+          "phase": "not-attached",
+          "run_id": "202611112163",
+          "requested_seconds": 600,
+          "worker_sha256": "2a41ae83a4e3c03a66c4a9d1d3db2548082980342e788bec09a668d2e7e254a9",
+          "signals_sent": 0,
+          "signal_scope": "one exact native test worker only",
+          "forced_kill": false,
+          "oversized_unrelated_argv_ignored": 2,
+          "complete600s_accepted": false
+        }
+      },
+      "selftest_only_children_all_reaped": true,
+      "original_controls_unchanged": true,
+      "source_sha256": {
+        "vendor-native-session-checks.py": "7caf5eff1159417fc1cbfd545ad147448b9acb15ba1b21c51160cd7dd5e21e69",
+        "vendor-native-session.py": "ae53be88970f343624882cd7a11ffc5945bae469a7ad005b4c760592b08aec63"
+      },
+      "real_PG_or_vendor_business_executed": false,
+      "full600s_accepted": false
+    },
+    "result_sha256": "31542e2b42ee3bddfd5dd5679af99247cf3dd5ffd3f390fe1843d928124efc10"
+  },
+  "real_images_qualification": {
+    "node_utc": "2026-11-11T13:55:08.093623+00:00",
+    "runner": {
+      "pid": 2589640,
+      "start_ticks": 134503971,
+      "entry": "/var/tmp/crg-memory167-tools-20261111/native220-runner.py",
+      "source_sha256": "be91573a80299faa11f76e0c4eb5338d369ca157e91548c4c4d5ff190d947310"
+    },
+    "worker": {
+      "pid": 2589641,
+      "start_ticks": 134503974,
+      "entry": "/var/tmp/crg-memory167-tools-20261111/native220-qualification.py",
+      "source_sha256": "5be532493aa19d8af85c4cdfd59d52a35d984ec8fc68804a2136e91c697819f1"
+    },
+    "exit": {
+      "exit": 0,
+      "started_epoch": 1794405096.6359046,
+      "ended_epoch": 1794405228.539093,
+      "worker": {
+        "pid": 2589641,
+        "start_ticks": 134503974,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/native220-qualification.py",
+        "source_sha256": "5be532493aa19d8af85c4cdfd59d52a35d984ec8fc68804a2136e91c697819f1"
+      }
+    },
+    "report": {
+      "schema": "crg-native-stop-qualification-v1",
+      "phase": "passed",
+      "roles": {
+        "dbs": {
+          "components_before": {
+            "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+            "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+            "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+            "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+            "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+            "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+          },
+          "pod": {
+            "pod_uid": "b53e20e1-f3a1-4dc5-9236-02b6b615d69f",
+            "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "security_context": {
+              "runAsUser": 999,
+              "runAsGroup": 998,
+              "fsGroup": 998,
+              "runAsNonRoot": true
+            },
+            "volume_mounts": [
+              {
+                "name": "tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "pgbin",
+                "mountPath": "/opt/postgresql/pgsql/bin",
+                "readOnly": true
+              },
+              {
+                "name": "pglib",
+                "mountPath": "/opt/postgresql/pgsql/lib",
+                "readOnly": true
+              },
+              {
+                "name": "pgshare",
+                "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                "readOnly": true
+              },
+              {
+                "name": "output",
+                "mountPath": "/opt/postgresql/basebackup"
+              }
+            ],
+            "deleted": true
+          },
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-podb53e20e1_f3a1_4dc5_9236_02b6b615d69f.slice/cri-containerd-947337d42c9452f92ca681a47eb574d32590cdb0f4b1777693c9a16a41d21292.scope",
+          "controls_before": {
+            "cpu.max": "100000 100000\n",
+            "memory.max": "536870912\n",
+            "io.max": ""
+          },
+          "runtime_client": {
+            "pid": 2592551,
+            "start_ticks": 134504933
+          },
+          "native_session": {
+            "phase": "worker-exited",
+            "run_id": "202611112200",
+            "requested_seconds": 600,
+            "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+            "signals_sent": 1,
+            "signal_scope": "one exact native test worker only",
+            "forced_kill": false,
+            "oversized_unrelated_argv_ignored": 0,
+            "complete600s_accepted": false,
+            "identity": {
+              "pid": 2593774,
+              "start_ticks": 134505366,
+              "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-podb53e20e1_f3a1_4dc5_9236_02b6b615d69f.slice/cri-containerd-947337d42c9452f92ca681a47eb574d32590cdb0f4b1777693c9a16a41d21292.scope",
+              "entry": "/tmp/crg-native194-tools/vendor-soak-load-diagnostics.py",
+              "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+              "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f",
+              "argv_sha256": "4ff95ac035cce48bd2fe62a30e7656292775e16a17ccaa28882ae7675120fc87"
+            },
+            "pidfd_used": true,
+            "attached_epoch": 1794405118.1883233,
+            "business_error_class": "RuntimeError",
+            "cleanup_started_epoch": 1794405124.1940699,
+            "cleanup_budget_seconds": 120,
+            "term_requested_epoch": 1794405124.1946344,
+            "original_worker_exited": true,
+            "worker_exit_code_unknown": true,
+            "cleanup_ended_epoch": 1794405124.775122,
+            "cleanup_elapsed_seconds": 0.5810630798805505
+          },
+          "original_business_error_object_preserved": true,
+          "runtime_exit": 0,
+          "runtime": {
+            "diagnostic": {
+              "pg_samples": [
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405117.771554,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405117.771554,
+                      "pid": 224,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405117.798773,
+                  "elapsed_seconds": 0.02881247503682971,
+                  "started_monotonic": 1345060.881961308,
+                  "started_epoch": 1794405117.769967
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": null,
+                      "wait_event": "ClientRead",
+                      "query_start_epoch": 1794405117.771554,
+                      "pid": 224,
+                      "state": "idle",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "Client",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405118.771615,
+                  "elapsed_seconds": 0.0015494460240006447,
+                  "started_monotonic": 1345061.882063654,
+                  "started_epoch": 1794405118.770076
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405119.769093,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405119.769093,
+                      "pid": 224,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405119.7715,
+                  "elapsed_seconds": 0.0013450679834932089,
+                  "started_monotonic": 1345062.882153778,
+                  "started_epoch": 1794405119.77016
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405119.769093,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405119.769093,
+                      "pid": 224,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405120.771661,
+                  "elapsed_seconds": 0.0013979650102555752,
+                  "started_monotonic": 1345063.882260589,
+                  "started_epoch": 1794405120.770272
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405121.769165,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405121.769165,
+                      "pid": 224,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405121.771627,
+                  "elapsed_seconds": 0.00126181379891932,
+                  "started_monotonic": 1345064.882362903,
+                  "started_epoch": 1794405121.770372
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": null,
+                      "wait_event": "ClientRead",
+                      "query_start_epoch": 1794405121.769165,
+                      "pid": 224,
+                      "state": "idle",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "Client",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405122.771735,
+                  "elapsed_seconds": 0.0012705270200967789,
+                  "started_monotonic": 1345065.882462512,
+                  "started_epoch": 1794405122.770472
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405123.769291,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405123.769291,
+                      "pid": 224,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405117.769523,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405123.771969,
+                  "elapsed_seconds": 0.0014191428199410439,
+                  "started_monotonic": 1345066.882547849,
+                  "started_epoch": 1794405123.770555
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics."
+              ],
+              "run_id": "202611112200",
+              "maximum_report_bytes": 8388608,
+              "summary": {
+                "pg_samples": 7,
+                "probe_thread_stopped": true,
+                "pg_truncated_samples": 0,
+                "probe_thread_cpu_seconds": 0.006012033,
+                "recorder_cpu_available": true,
+                "diagnostic_complete": true,
+                "request_errors": 0,
+                "pg_errors": 0,
+                "recorder_cpu_seconds": 0.0007841100000000037,
+                "dropped_pg_samples": 0,
+                "request_count": 6,
+                "dropped_requests": 0,
+                "phase": "collected",
+                "recorder_internal_errors": 0,
+                "business_signals_cancellations_or_control_writes": 0
+              },
+              "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+              "requests": [
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345060.897743464,
+                  "sequence": 1,
+                  "iteration": 0,
+                  "backend_pid": 224,
+                  "ended_epoch": 1794405117.78575,
+                  "connection_observed_epoch": 1794405117.771517,
+                  "elapsed_seconds": 0.016964979004114866,
+                  "started_monotonic": 1345060.880778485,
+                  "error": null,
+                  "started_epoch": 1794405117.768866,
+                  "synthetic_first_key": 1,
+                  "stage": "query"
+                },
+                {
+                  "kind": "api",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345060.883196464,
+                  "sequence": 2,
+                  "iteration": 0,
+                  "backend_pid": null,
+                  "ended_epoch": 1794405117.771203,
+                  "connection_observed_epoch": null,
+                  "elapsed_seconds": 0.002245027106255293,
+                  "started_monotonic": 1345060.880951437,
+                  "error": null,
+                  "started_epoch": 1794405117.768985,
+                  "stage": "http-response"
+                },
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345064.046047071,
+                  "sequence": 3,
+                  "iteration": 1,
+                  "backend_pid": 224,
+                  "ended_epoch": 1794405120.934056,
+                  "connection_observed_epoch": 1794405119.76899,
+                  "elapsed_seconds": 1.1651381489355117,
+                  "started_monotonic": 1345062.880908922,
+                  "error": null,
+                  "started_epoch": 1794405119.768958,
+                  "synthetic_first_key": 17,
+                  "stage": "query"
+                },
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345064.978514547,
+                  "sequence": 4,
+                  "iteration": 2,
+                  "backend_pid": 224,
+                  "ended_epoch": 1794405121.866522,
+                  "connection_observed_epoch": 1794405121.769096,
+                  "elapsed_seconds": 0.09748800587840378,
+                  "started_monotonic": 1345064.881026541,
+                  "error": null,
+                  "started_epoch": 1794405121.769068,
+                  "synthetic_first_key": 33,
+                  "stage": "query"
+                },
+                {
+                  "kind": "api",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345065.881878346,
+                  "sequence": 5,
+                  "iteration": 1,
+                  "backend_pid": null,
+                  "ended_epoch": 1794405122.769885,
+                  "connection_observed_epoch": null,
+                  "elapsed_seconds": 0.000821707071736455,
+                  "started_monotonic": 1345065.881056639,
+                  "error": null,
+                  "started_epoch": 1794405122.769098,
+                  "stage": "http-response"
+                },
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345066.90232625,
+                  "sequence": 6,
+                  "iteration": 3,
+                  "backend_pid": 224,
+                  "ended_epoch": 1794405123.790335,
+                  "connection_observed_epoch": 1794405123.769216,
+                  "elapsed_seconds": 0.021179093047976494,
+                  "started_monotonic": 1345066.881147157,
+                  "error": null,
+                  "started_epoch": 1794405123.769189,
+                  "synthetic_first_key": 49,
+                  "stage": "query"
+                }
+              ],
+              "schema": "crg-native-request-pg-diagnostics-v1"
+            },
+            "run_id": "202611112200",
+            "native_started_utc": "2026-11-11T13:51:57.699693Z",
+            "full600s_accepted": false,
+            "native_sha256": "e62f64d319d5fcbdecd192b3a793b04ab36eedede833dfde9484089168dece4f",
+            "native_exit": 1,
+            "role": "dbs",
+            "own_postgres_stopped": true,
+            "phase": "passed",
+            "scope": "fresh PG and mock HTTP; host-initiated native final flush only",
+            "native": {
+              "latency_bucket_upper_seconds": [
+                0.001,
+                0.005,
+                0.01,
+                0.02,
+                0.05,
+                0.1,
+                0.25,
+                0.5,
+                1,
+                2,
+                5,
+                "over-5"
+              ],
+              "run_id": "202611112200",
+              "ended_utc": "2026-11-11T13:52:04.685145Z",
+              "elapsed_seconds": 6.5415968471206725,
+              "api": {
+                "errors": 0,
+                "sample_coverage": 0.016666666666666666,
+                "successes": 2,
+                "total_seconds": 0.003192679025232792,
+                "p95_bucket_upper_seconds": 0.005,
+                "histogram": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "attempts": 2,
+                "max_seconds": 0.002306187991052866
+              },
+              "primary_start_time_final": "2026-11-11 13:51:50.127027+00",
+              "primary_not_restarted": true,
+              "payload_integrity": true,
+              "final_checksum": [
+                16384,
+                134225920,
+                67108864,
+                "10b3b8214172d3b698258a128e9c6687",
+                64
+              ],
+              "cluster_database_bytes_initial": 117262121,
+              "test_phase": "smoke",
+              "cluster_database_bytes_final": 117262121,
+              "criteria": {
+                "api_period_seconds": 5,
+                "minimum_scheduled_samples_fraction": 0.98,
+                "p95_upper_bound_seconds": 1,
+                "sql_period_seconds": 2,
+                "maximum_errors": 0,
+                "maximum_seconds": 5
+              },
+              "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+              "primary_start_time_initial": "2026-11-11 13:51:50.127027+00",
+              "threads_stopped": true,
+              "schema": "crg-vendor-soak-v1",
+              "measurement_finished_utc": "2026-11-11T13:52:04.194688Z",
+              "requested_duration_seconds": 600,
+              "native_diagnostics": {
+                "pg_samples": 7,
+                "request_errors": 0,
+                "probe_thread_stopped": true,
+                "pg_truncated_samples": 0,
+                "probe_thread_cpu_seconds": 0.006012033,
+                "recorder_cpu_available": true,
+                "report_bytes": 6873,
+                "diagnostic_complete": true,
+                "report_sha256": "3296b1be66316a0dab05813e653e058188a98d83b44d59c0d2743e232b93e791",
+                "report_filename": "native-diagnostics.json",
+                "pg_errors": 0,
+                "recorder_cpu_seconds": 0.0007841100000000037,
+                "dropped_pg_samples": 0,
+                "final_report_thread_cpu_seconds": 0.0013372919999999969,
+                "dropped_requests": 0,
+                "phase": "collected",
+                "recorder_internal_errors": 0,
+                "business_signals_cancellations_or_control_writes": 0,
+                "request_count": 6
+              },
+              "sql": {
+                "errors": 0,
+                "sample_coverage": 0.013333333333333334,
+                "successes": 4,
+                "total_seconds": 1.301068956963718,
+                "p95_bucket_upper_seconds": 2,
+                "histogram": [
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "attempts": 4,
+                "max_seconds": 1.1652173209004104
+              },
+              "phase": "failed",
+              "initial_checksum": [
+                16384,
+                134225920,
+                67108864,
+                "10b3b8214172d3b698258a128e9c6687",
+                0
+              ],
+              "interrupted": true,
+              "started_utc": "2026-11-11T13:51:57.699693Z"
+            },
+            "diagnostic_sha256": "3296b1be66316a0dab05813e653e058188a98d83b44d59c0d2743e232b93e791",
+            "checks": [
+              {
+                "name": "new-nonroot-empty-PG-and-output",
+                "passed": true
+              },
+              {
+                "name": "host-TERM-keeps-interrupted-partial-native-failed",
+                "passed": true
+              },
+              {
+                "name": "actual-final-native-and-PG-files-identity-linked",
+                "passed": true
+              },
+              {
+                "name": "actual-partial-SQL-API-counts-match",
+                "passed": true
+              },
+              {
+                "name": "actual-partial-PG-samples-are-available-and-bounded",
+                "passed": true
+              },
+              {
+                "name": "payload-primary-and-workload-threads-preserved",
+                "passed": true
+              },
+              {
+                "name": "original600s-coverage-not-relaxed",
+                "passed": true
+              },
+              {
+                "name": "no-dropped-request-or-PG-diagnostics",
+                "passed": true
+              }
+            ],
+            "worker_pid": 136,
+            "schema": "crg-native-stop-real-pg-v1"
+          },
+          "controls_after": {
+            "cpu.max": "100000 100000\n",
+            "memory.max": "536870912\n",
+            "io.max": ""
+          },
+          "components_after": {
+            "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+            "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+            "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+            "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+            "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+            "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+          }
+        },
+        "hisdbs": {
+          "components_before": {
+            "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+            "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+            "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+            "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+            "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+            "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+          },
+          "pod": {
+            "pod_uid": "0aa0777a-2f3f-4fc4-a041-f7508c64a20a",
+            "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+            "security_context": {
+              "runAsUser": 999,
+              "runAsGroup": 998,
+              "fsGroup": 998,
+              "runAsNonRoot": true
+            },
+            "volume_mounts": [
+              {
+                "name": "tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "pgbin",
+                "mountPath": "/opt/postgresql/pgsql/bin",
+                "readOnly": true
+              },
+              {
+                "name": "pglib",
+                "mountPath": "/opt/postgresql/pgsql/lib",
+                "readOnly": true
+              },
+              {
+                "name": "pgshare",
+                "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                "readOnly": true
+              },
+              {
+                "name": "output",
+                "mountPath": "/opt/postgresql/basebackup"
+              }
+            ],
+            "deleted": true
+          },
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-pod0aa0777a_2f3f_4fc4_a041_f7508c64a20a.slice/cri-containerd-38fcf12d77fde51af7472b0485f809392db4ca3a2f9a9acdbf82137bb5c10f65.scope",
+          "controls_before": {
+            "cpu.max": "100000 100000\n",
+            "memory.max": "536870912\n",
+            "io.max": ""
+          },
+          "runtime_client": {
+            "pid": 2607262,
+            "start_ticks": 134511090
+          },
+          "native_session": {
+            "phase": "worker-exited",
+            "run_id": "202611112201",
+            "requested_seconds": 600,
+            "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+            "signals_sent": 1,
+            "signal_scope": "one exact native test worker only",
+            "forced_kill": false,
+            "oversized_unrelated_argv_ignored": 0,
+            "complete600s_accepted": false,
+            "identity": {
+              "pid": 2608195,
+              "start_ticks": 134511430,
+              "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-pod0aa0777a_2f3f_4fc4_a041_f7508c64a20a.slice/cri-containerd-38fcf12d77fde51af7472b0485f809392db4ca3a2f9a9acdbf82137bb5c10f65.scope",
+              "entry": "/tmp/crg-native194-tools/vendor-soak-load-diagnostics.py",
+              "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+              "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f",
+              "argv_sha256": "79106a14df2ca348868b96fc04adb2280da5bcd4792c10ff736bb59111fb2f6a"
+            },
+            "pidfd_used": true,
+            "attached_epoch": 1794405179.3289905,
+            "business_error_class": "RuntimeError",
+            "cleanup_started_epoch": 1794405185.336056,
+            "cleanup_budget_seconds": 120,
+            "term_requested_epoch": 1794405185.3366358,
+            "original_worker_exited": true,
+            "worker_exit_code_unknown": true,
+            "cleanup_ended_epoch": 1794405185.7665935,
+            "cleanup_elapsed_seconds": 0.43054752284660935
+          },
+          "original_business_error_object_preserved": true,
+          "runtime_exit": 0,
+          "runtime": {
+            "diagnostic": {
+              "pg_samples": [
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405179.15205,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405179.15205,
+                      "pid": 188,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405179.202664,
+                  "elapsed_seconds": 0.0521946931257844,
+                  "started_monotonic": 1345122.262468179,
+                  "started_epoch": 1794405179.150474
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": null,
+                      "wait_event": "ClientRead",
+                      "query_start_epoch": 1794405179.15205,
+                      "pid": 188,
+                      "state": "idle",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "Client",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405180.152023,
+                  "elapsed_seconds": 0.0014419739600270987,
+                  "started_monotonic": 1345123.262578829,
+                  "started_epoch": 1794405180.150589
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405181.149399,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405181.149399,
+                      "pid": 188,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405181.151948,
+                  "elapsed_seconds": 0.00127707002684474,
+                  "started_monotonic": 1345124.2626686,
+                  "started_epoch": 1794405181.150677
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": null,
+                      "wait_event": "ClientRead",
+                      "query_start_epoch": 1794405181.149399,
+                      "pid": 188,
+                      "state": "idle",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "Client",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405182.152124,
+                  "elapsed_seconds": 0.0013402218464761972,
+                  "started_monotonic": 1345125.262781189,
+                  "started_epoch": 1794405182.150791
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405183.149506,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405183.149506,
+                      "pid": 188,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405183.152172,
+                  "elapsed_seconds": 0.0012860270217061043,
+                  "started_monotonic": 1345126.262883667,
+                  "started_epoch": 1794405183.150892
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": null,
+                      "wait_event": "ClientRead",
+                      "query_start_epoch": 1794405183.149506,
+                      "pid": 188,
+                      "state": "idle",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "Client",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405184.152283,
+                  "elapsed_seconds": 0.00129455397836864,
+                  "started_monotonic": 1345127.262986257,
+                  "started_epoch": 1794405184.150994
+                },
+                {
+                  "available": true,
+                  "rows": [
+                    {
+                      "transaction_start_epoch": 1794405185.149653,
+                      "wait_event": "WALSync",
+                      "query_start_epoch": 1794405185.149653,
+                      "pid": 188,
+                      "state": "active",
+                      "identity_available": true,
+                      "query_class": "fixture-update",
+                      "blocking_pids": null,
+                      "backend_start_epoch": 1794405179.149931,
+                      "activity_fields_available": true,
+                      "wait_event_type": "IO",
+                      "blocking_pids_measured": false
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794405185.152393,
+                  "elapsed_seconds": 0.0013376588467508554,
+                  "started_monotonic": 1345128.263053599,
+                  "started_epoch": 1794405185.151064
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics."
+              ],
+              "run_id": "202611112201",
+              "maximum_report_bytes": 8388608,
+              "summary": {
+                "pg_samples": 7,
+                "probe_thread_stopped": true,
+                "pg_truncated_samples": 0,
+                "probe_thread_cpu_seconds": 0.005624096,
+                "recorder_cpu_available": true,
+                "diagnostic_complete": true,
+                "request_errors": 0,
+                "pg_errors": 0,
+                "recorder_cpu_seconds": 0.0008197459999999991,
+                "dropped_pg_samples": 0,
+                "request_count": 6,
+                "dropped_requests": 0,
+                "phase": "collected",
+                "recorder_internal_errors": 0,
+                "business_signals_cancellations_or_control_writes": 0
+              },
+              "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+              "requests": [
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345122.368649517,
+                  "sequence": 1,
+                  "iteration": 0,
+                  "backend_pid": 188,
+                  "ended_epoch": 1794405179.256659,
+                  "connection_observed_epoch": 1794405179.151989,
+                  "elapsed_seconds": 0.10749175306409597,
+                  "started_monotonic": 1345122.261157764,
+                  "error": null,
+                  "started_epoch": 1794405179.149252,
+                  "synthetic_first_key": 1,
+                  "stage": "query"
+                },
+                {
+                  "kind": "api",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345122.263820418,
+                  "sequence": 2,
+                  "iteration": 0,
+                  "backend_pid": null,
+                  "ended_epoch": 1794405179.151827,
+                  "connection_observed_epoch": null,
+                  "elapsed_seconds": 0.002455489942803979,
+                  "started_monotonic": 1345122.261364928,
+                  "error": null,
+                  "started_epoch": 1794405179.149401,
+                  "stage": "http-response"
+                },
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345124.575576344,
+                  "sequence": 3,
+                  "iteration": 1,
+                  "backend_pid": 188,
+                  "ended_epoch": 1794405181.463585,
+                  "connection_observed_epoch": 1794405181.149332,
+                  "elapsed_seconds": 0.3143099690787494,
+                  "started_monotonic": 1345124.261266375,
+                  "error": null,
+                  "started_epoch": 1794405181.149307,
+                  "synthetic_first_key": 17,
+                  "stage": "query"
+                },
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345126.307799667,
+                  "sequence": 4,
+                  "iteration": 2,
+                  "backend_pid": 188,
+                  "ended_epoch": 1794405183.195808,
+                  "connection_observed_epoch": 1794405183.149442,
+                  "elapsed_seconds": 0.046423885971307755,
+                  "started_monotonic": 1345126.261375781,
+                  "error": null,
+                  "started_epoch": 1794405183.149416,
+                  "synthetic_first_key": 33,
+                  "stage": "query"
+                },
+                {
+                  "kind": "api",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345127.262294513,
+                  "sequence": 5,
+                  "iteration": 1,
+                  "backend_pid": null,
+                  "ended_epoch": 1794405184.150302,
+                  "connection_observed_epoch": null,
+                  "elapsed_seconds": 0.0008217168506234884,
+                  "started_monotonic": 1345127.261472796,
+                  "error": null,
+                  "started_epoch": 1794405184.149513,
+                  "stage": "http-response"
+                },
+                {
+                  "kind": "sql",
+                  "within_original_5seconds": true,
+                  "success": true,
+                  "ended_monotonic": 1345128.273275395,
+                  "sequence": 6,
+                  "iteration": 3,
+                  "backend_pid": 188,
+                  "ended_epoch": 1794405185.161284,
+                  "connection_observed_epoch": 1794405185.149576,
+                  "elapsed_seconds": 0.011773334816098213,
+                  "started_monotonic": 1345128.26150206,
+                  "error": null,
+                  "started_epoch": 1794405185.149546,
+                  "synthetic_first_key": 49,
+                  "stage": "query"
+                }
+              ],
+              "schema": "crg-native-request-pg-diagnostics-v1"
+            },
+            "run_id": "202611112201",
+            "native_started_utc": "2026-11-11T13:52:59.056000Z",
+            "full600s_accepted": false,
+            "native_sha256": "709afe3e3a321992f2231f83c67d592604cc27f31094d1bacb4750a4860080ea",
+            "native_exit": 1,
+            "role": "hisdbs",
+            "own_postgres_stopped": true,
+            "phase": "passed",
+            "scope": "fresh PG and mock HTTP; host-initiated native final flush only",
+            "native": {
+              "latency_bucket_upper_seconds": [
+                0.001,
+                0.005,
+                0.01,
+                0.02,
+                0.05,
+                0.1,
+                0.25,
+                0.5,
+                1,
+                2,
+                5,
+                "over-5"
+              ],
+              "run_id": "202611112201",
+              "ended_utc": "2026-11-11T13:53:05.718492Z",
+              "elapsed_seconds": 6.344203869113699,
+              "api": {
+                "errors": 0,
+                "sample_coverage": 0.016666666666666666,
+                "successes": 2,
+                "total_seconds": 0.003412341931834817,
+                "p95_bucket_upper_seconds": 0.005,
+                "histogram": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "attempts": 2,
+                "max_seconds": 0.002519225934520364
+              },
+              "primary_start_time_final": "2026-11-11 13:52:50.845069+00",
+              "primary_not_restarted": true,
+              "payload_integrity": true,
+              "final_checksum": [
+                16384,
+                134225920,
+                67108864,
+                "10b3b8214172d3b698258a128e9c6687",
+                64
+              ],
+              "cluster_database_bytes_initial": 117262121,
+              "test_phase": "smoke",
+              "cluster_database_bytes_final": 117262121,
+              "criteria": {
+                "api_period_seconds": 5,
+                "minimum_scheduled_samples_fraction": 0.98,
+                "p95_upper_bound_seconds": 1,
+                "sql_period_seconds": 2,
+                "maximum_errors": 0,
+                "maximum_seconds": 5
+              },
+              "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+              "primary_start_time_initial": "2026-11-11 13:52:50.845069+00",
+              "threads_stopped": true,
+              "schema": "crg-vendor-soak-v1",
+              "measurement_finished_utc": "2026-11-11T13:53:05.336705Z",
+              "requested_duration_seconds": 600,
+              "native_diagnostics": {
+                "pg_samples": 7,
+                "request_errors": 0,
+                "probe_thread_stopped": true,
+                "pg_truncated_samples": 0,
+                "probe_thread_cpu_seconds": 0.005624096,
+                "recorder_cpu_available": true,
+                "report_bytes": 6863,
+                "diagnostic_complete": true,
+                "report_sha256": "bfdff375a72861323429c1a0bfca779d946e442614ae8283425b443da901450c",
+                "report_filename": "native-diagnostics.json",
+                "pg_errors": 0,
+                "recorder_cpu_seconds": 0.0008197459999999991,
+                "dropped_pg_samples": 0,
+                "final_report_thread_cpu_seconds": 0.0015277740000000026,
+                "dropped_requests": 0,
+                "phase": "collected",
+                "recorder_internal_errors": 0,
+                "business_signals_cancellations_or_control_writes": 0,
+                "request_count": 6
+              },
+              "sql": {
+                "errors": 0,
+                "sample_coverage": 0.013333333333333334,
+                "successes": 4,
+                "total_seconds": 0.4803214902058244,
+                "p95_bucket_upper_seconds": 0.5,
+                "histogram": [
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "attempts": 4,
+                "max_seconds": 0.31439310498535633
+              },
+              "phase": "failed",
+              "initial_checksum": [
+                16384,
+                134225920,
+                67108864,
+                "10b3b8214172d3b698258a128e9c6687",
+                0
+              ],
+              "interrupted": true,
+              "started_utc": "2026-11-11T13:52:59.056000Z"
+            },
+            "diagnostic_sha256": "bfdff375a72861323429c1a0bfca779d946e442614ae8283425b443da901450c",
+            "checks": [
+              {
+                "name": "new-nonroot-empty-PG-and-output",
+                "passed": true
+              },
+              {
+                "name": "host-TERM-keeps-interrupted-partial-native-failed",
+                "passed": true
+              },
+              {
+                "name": "actual-final-native-and-PG-files-identity-linked",
+                "passed": true
+              },
+              {
+                "name": "actual-partial-SQL-API-counts-match",
+                "passed": true
+              },
+              {
+                "name": "actual-partial-PG-samples-are-available-and-bounded",
+                "passed": true
+              },
+              {
+                "name": "payload-primary-and-workload-threads-preserved",
+                "passed": true
+              },
+              {
+                "name": "original600s-coverage-not-relaxed",
+                "passed": true
+              },
+              {
+                "name": "no-dropped-request-or-PG-diagnostics",
+                "passed": true
+              }
+            ],
+            "worker_pid": 112,
+            "schema": "crg-native-stop-real-pg-v1"
+          },
+          "controls_after": {
+            "cpu.max": "100000 100000\n",
+            "memory.max": "536870912\n",
+            "io.max": ""
+          },
+          "components_after": {
+            "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+            "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+            "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+            "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+            "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+            "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+          }
+        }
+      },
+      "source_sha256": {
+        "vendor-native-session.py": "ae53be88970f343624882cd7a11ffc5945bae469a7ad005b4c760592b08aec63",
+        "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+        "vendor-native-diagnostics-qualification.py": "b12a8b5ae1f0f2b105fd4c9a53cc3231a006e3ad1fe0eb1e7cfd1299c49b8e80",
+        "vendor-native-diagnostics-runtime.py": "ed4040a1864efec8631cc70013da5628a66c76c76cea76104b31d02b7bad2f2d",
+        "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+        "vendor-native-stop-runtime.py": "ea05714bd766eace4f938f53bd1500d5aded906489e48df07fa80aadf5866916"
+      },
+      "started_node_utc": "2026-11-11T13:51:36.825043+00:00",
+      "original_runtime_qualification_sha256": "bc9897ed00032b6a6f33fb20e4631b9ba5dda3a144d9c5d5da775e3a210e4c41",
+      "host_lifecycle_qualification_sha256": "31542e2b42ee3bddfd5dd5679af99247cf3dd5ffd3f390fe1843d928124efc10",
+      "full600s_accepted": false,
+      "historical_pressure_failure_resolved": false,
+      "scope": "one exact native worker per fresh PG/mock HTTP pod; synthetic external failure only; not vendor business acceptance",
+      "namespace_uid": "29b17fd8-ce03-4175-919a-a207687bff96",
+      "namespace_absent": true,
+      "all_owned_cgroups_absent": true,
+      "ended_node_utc": "2026-11-11T13:53:48.524732+00:00"
+    },
+    "report_sha256": "665362fa04f3c9b59e006179d9c01c446a2ba0f7b87b11b0213aa84e7dcfbf0f",
+    "runner_process": {
+      "pid": 2589640,
+      "exists": false
+    },
+    "worker_process": {
+      "pid": 2589641,
+      "exists": false
+    },
+    "worker_log_tail": "{\"phase\": \"passed\", \"roles\": {\"dbs\": {\"runtime_checks\": 8, \"signals_sent\": 1}, \"hisdbs\": {\"runtime_checks\": 8, \"signals_sent\": 1}}, \"reason\": null, \"namespace_absent\": true}\n",
+    "namespace_absent": true,
+    "cgroups_absent": true,
+    "source_inputs": {
+      "dbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      "hisdbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      }
+    }
+  },
+  "source_sha256": {
+    "tests/vendor-native-session.py": "ae53be88970f343624882cd7a11ffc5945bae469a7ad005b4c760592b08aec63",
+    "tests/vendor-native-session-checks.py": "7caf5eff1159417fc1cbfd545ad147448b9acb15ba1b21c51160cd7dd5e21e69",
+    "tests/vendor-native-stop-runtime.py": "ea05714bd766eace4f938f53bd1500d5aded906489e48df07fa80aadf5866916",
+    "tests/vendor-native-stop-qualification.py": "5be532493aa19d8af85c4cdfd59d52a35d984ec8fc68804a2136e91c697819f1"
+  },
+  "raw_receipt_sha256": {
+    "crg-r217-native-session97.json": "1d19fcf06d6bccfd3bc9bdb12ce8f0430dd3bea7757552f97bed9ec44775de1e",
+    "crg-r219-native-session97.json": "7bd253181916556b7a1227142a36b4f6c906c90e1acf0efd2c958f6ae0f8f9a9",
+    "crg-r222-native-stop-observations/000.json": "0fce9b73b8a9e3153c4b2175662287bdc8d629fea9bbf1bea6f9ea5b679907e8"
+  },
+  "external_TERM_count": {
+    "dbs": 1,
+    "hisdbs": 1
+  },
+  "collector_internal_zero_signal_counter_does_not_include_external_cleanup_TERM": true,
+  "original_full_pressure_executor_modified": false,
+  "full_pressure_integration_and_business_retest_pending": true,
+  "full600s_accepted": false,
+  "historical_pressure_failure_resolved": false,
+  "stable_release_accepted": false
+}
