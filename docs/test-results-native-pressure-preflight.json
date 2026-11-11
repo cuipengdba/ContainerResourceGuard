@@ -1,0 +1,252 @@
+{
+  "schema": "crg-native-pressure-preflight-v1",
+  "phase": "passed-read-only-12-plus-collection6",
+  "raw_bootstrap_receipt_sha256": "92d952dc69c8969bf40fa606306bfa9f130cb9b78600bbd383d61be180c8eed3",
+  "bootstrap_processes_terminal": {
+    "pressure203-bootstrap-launch.json": {
+      "identity": {
+        "pid": 2042789,
+        "start_ticks": 134257007,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/pressure203-bootstrap-runner.py",
+        "runner_sha256": "e05d4d48e0b28a645a0b3f17d07f2e6b1ea1d05139c5b8d880e5bbb905b5f3a6",
+        "bootstrap_sha256": "06a668550d127d7825c60db71407e09d9123be203c2fae154e018279e8f70d8c"
+      },
+      "exists": false,
+      "same_instance": false
+    },
+    "pressure203-bootstrap-worker.json": {
+      "identity": {
+        "pid": 2042792,
+        "start_ticks": 134257011,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/pressure203-bootstrap.py"
+      },
+      "exists": false,
+      "same_instance": false
+    }
+  },
+  "bootstrap_exit": {
+    "exit": 0,
+    "ended_epoch": 1794402633.1076818,
+    "bootstrap_sha256": "06a668550d127d7825c60db71407e09d9123be203c2fae154e018279e8f70d8c"
+  },
+  "gates": {
+    "node_utc": "2026-11-11T13:10:33.098779+00:00",
+    "files": {
+      "vendor-business-memory-pressure-native-diagnostics.py": "855ed517d136e52d6812ea0eb6f07ad27e54b73841f85b039e0864e6957cdd0c",
+      "pressure-plan.json": "31c9446d799fec1c78aa09e2da6fe991bf33abd86f16a20f811f53489e183e15",
+      "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+      "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+      "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+      "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+      "vendor-thread-session-checks.py": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424",
+      "vendor-memory-pressure-worker-v2.py": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+      "vendor-memory-pressure-selftest-v2.py": "988503022ecc5b96067f0dee98fd12b80981fea862f89bb941d1b3e2bf11f25b",
+      "vendor-api-timed.py": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+      "vendor-engine-timed.py": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+      "vendor-versioned-business-reload.py": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+      "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+      "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+      "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8"
+    },
+    "observations": [
+      {
+        "args": [],
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "executed": false,
+          "stable_release_accepted": false,
+          "scope": "read-only exact30-to20 pressure prerequisites; prior failures retained"
+        },
+        "stderr": ""
+      },
+      {
+        "args": [
+          "--execute"
+        ],
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "EXPLICIT_LAB_MARKER",
+          "executed": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "namespace",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "criteria",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "native_diagnostic_contract",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "diagnostic_worker",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "diagnostic_helper",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "thread_contract",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "thread_observer",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "pressure_contract",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "pressure_worker_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "timed_api_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      }
+    ],
+    "target_absent_after_all_gates": true,
+    "executed": false
+  },
+  "raw_gates_sha256": "d05e4724e920330ab3534ef25e8eea35e52a3343abb2344a488812fe9a5a9be2",
+  "source_image_bindings": {
+    "dbs": {
+      "image": "db_puc/dbs:V7.0.12.001.02.56",
+      "exit": 0,
+      "image_status": {
+        "id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+        "repoTags": [
+          "docker.io/db_puc/dbs:V7.0.12.001.02.56"
+        ],
+        "repoDigests": [],
+        "size": "868300270",
+        "uid": null,
+        "username": "",
+        "spec": null,
+        "pinned": false
+      }
+    },
+    "hisdbs": {
+      "image": "db_puc/hisdbs:V7.0.12.001.02",
+      "exit": 0,
+      "image_status": {
+        "id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+        "repoTags": [
+          "docker.io/db_puc/hisdbs:V7.0.12.001.02"
+        ],
+        "repoDigests": [],
+        "size": "868300271",
+        "uid": null,
+        "username": "",
+        "spec": null,
+        "pinned": false
+      }
+    }
+  },
+  "target_namespace_absent_after_gates": true,
+  "target_work_root_absent_after_gates": true,
+  "collector_qualification": {
+    "node_utc": "2026-11-11T13:14:30.550699+00:00",
+    "source_sha256": "669a66ae40c85978fc0e642ab3ef190848ecc711514d21928d93397da5766002",
+    "exit": 0,
+    "stdout": "{\"phase\": \"passed\", \"checks\": 6}\n",
+    "stderr": "",
+    "result": {
+      "schema": "crg-native-pressure-collection-checks-v1",
+      "phase": "passed",
+      "checks": [
+        {
+          "name": "actual12s-normal-never-accepted-as600s",
+          "passed": true
+        },
+        {
+          "name": "bounded-raw-evidence-retained-on-coverage-rejection",
+          "passed": true
+        },
+        {
+          "name": "original-business-error-object-wins-over-collector-rejection",
+          "passed": true
+        },
+        {
+          "name": "actual-lock-native-failure-and-client-PID-error-retained",
+          "passed": true
+        },
+        {
+          "name": "successful-business-still-exposes-diagnostic-rejection",
+          "passed": true
+        },
+        {
+          "name": "wrong-diagnostic-source-refused-before-counting-acceptance",
+          "passed": true
+        }
+      ],
+      "qualification_report_sha256": "bc9897ed00032b6a6f33fb20e4631b9ba5dda3a144d9c5d5da775e3a210e4c41",
+      "executor_sha256": "855ed517d136e52d6812ea0eb6f07ad27e54b73841f85b039e0864e6957cdd0c",
+      "new_SQL_or_business_or_control_writes": false,
+      "full600s_accepted": false
+    },
+    "result_sha256": "fc25c4941fd95b9f7b47a420ff3378ab344356da2fa29cc6cf8dc81091f57da9"
+  },
+  "full600s_accepted": false,
+  "historical_failure_resolved": false,
+  "stable_release_accepted": false
+}
