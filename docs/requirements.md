@@ -200,3 +200,6 @@ R194[原生请求/PG等待诊断资格](testing-native-request-pg-diagnostics.md
 
 
 R203[完整压力接入原生/PG诊断](testing-business-pressure-native-diagnostics.md)已冻结并实际启动：12项只读前置和6项实际旧报告采集检查通过，开始快照DBS10局部/8区间、压力辅助仍在工作，各600秒/HIS及终态未接受。原完整业务方法AST仅诊断绑定变化，原32项/全部配额/SLA、旧失败与长期条件保持；不以初始报告零计数证明当前零错误。
+
+
+R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostics-failure.md)失败：DBS13局部/11区间通过，但备库停库31.421秒超过原30秒，71个引擎探针另有7次API内部超时；未完成两角色600秒/HIS。提前外部失败导致原生最终诊断未落盘，初始零计数不可当通过。原始185线程样本、日志和输入恢复/进程清理已核对；保留旧失败/原预算/52项和七天任务，不放宽标准。

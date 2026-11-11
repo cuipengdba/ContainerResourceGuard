@@ -1,5 +1,7 @@
 # 当前验收入口
 
+R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostics-failure.md)失败：DBS13局部/11区间通过，但备库停库31.421秒超过原30秒，71个引擎探针另有7次API内部超时；未完成两角色600秒/HIS。提前外部失败导致原生最终诊断未落盘，初始零计数不可当通过。原始185线程样本、日志和输入恢复/进程清理已核对；保留旧失败/原预算/52项和七天任务，不放宽标准。
+
 当前即时交付：[v1.0.0-preview.2](releases/v1.0.0-preview.2.md)，与preview.1同一受测程序；[实际发布/下载核对](test-results-preview2-publication.json)。本版仅刷新文档和证据，稳定1.0尚未发布。
 
 当前尚未发布稳定1.0。[52项原始任务索引](current-task-registry.json)、[十版规划](roadmap.md)和[需求档案](requirements.md)保留全部范围；R29暂缓其他资源的新交付，未删除历史任务。当前资源入口仅CPU/内存/IO独立百分比，各自省略默认20；v1/混合/未知跳过，纯v2通过身份和权限检查后设置；每日日志保留30日或总1GB，辅助故障不作为原业务启动前提。

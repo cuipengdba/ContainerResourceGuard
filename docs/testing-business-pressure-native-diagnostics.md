@@ -1,5 +1,7 @@
 # 完整压力联测接入原生请求及 PG 等待诊断
 
+R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostics-failure.md)失败：DBS13局部/11区间通过，但备库停库31.421秒超过原30秒，71个引擎探针另有7次API内部超时；未完成两角色600秒/HIS。提前外部失败导致原生最终诊断未落盘，初始零计数不可当通过。原始185线程样本、日志和输入恢复/进程清理已核对；保留旧失败/原预算/52项和七天任务，不放宽标准。
+
 R203 使用[冻结计划](test-plan-business-memory-pressure-native-diagnostics.json)和 `tests/vendor-business-memory-pressure-native-diagnostics.py`，已经[实际启动](test-start-business-pressure-native-diagnostics.json)。开始快照只有 DBS 10 项局部检查/8 个区间，内存辅助仍在工作；原两角色各 600 秒、全部 32 项和最后清理尚未接受，HIS 业务在快照时未执行。原生负载初始报告没有实时刷新，不据其中初始零计数断言随后无错误。
 
 原 R167 的源码、计划、601 个只读样本及两次 SQL 失败均保留。新完整业务方法经 AST 比对，只改变诊断 worker 的安装/摘要/入口 marker，增加同目录只读 helper；原源文件与原在线七天 worker 未改。默认只控制三资源、各自比例/默认 20%、手动兼容、纯 v2 写入、日志与业务启动隔离均保持。
