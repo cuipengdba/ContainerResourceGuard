@@ -320,3 +320,6 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 本轮已补齐精确发布候选的[15项工程重载终态](testing-versioned-candidate-reload.md)及当前d370源码[两个10分钟解析器fuzz](testing-d370-parser-fuzz-windows.md)，21,680,191次执行、exit0。同步[修正任务索引中旧24h基线等状态](task-index-review-20261111.md)，保留52项原定义和旧scope_note；未将工程重载或源码fuzz计为厂商业务/实际七天验收。preview.2既有资产保持，长期及原稳定条件继续。
+
+
+本轮保留[CLI契约CI首次子进程终止及同提交复验](testing-cli-contract-ci-20261111.md)，原因尚未确定；仅增强测试失败诊断，原5秒和所有断言、生产程序及业务预算保持。新诊断另由新提交CI核对，不以复验覆盖旧失败。
