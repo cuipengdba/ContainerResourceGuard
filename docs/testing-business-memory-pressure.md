@@ -1,6 +1,6 @@
 # 原业务内存30%降到20%的压力与安全重试
 
-状态：代码与计划已冻结，业务补测尚未执行。[固定计划](test-plan-business-memory-pressure.json)。对应原P03.3及P05.2；保留R113和[R120整轮失败](testing-business-reload-source-recovery.md)。本场景独立补齐原30→20压力要求，不替代来源错误全矩阵、默认20%性能、完整并发或长期验收。
+状态：R130已失败，DBS8段/10项局部检查后，辅助工具平台握手拒绝，尚未分配压力内存；无完整600秒/HISDBS业务接受。[固定计划](test-plan-business-memory-pressure.json)。对应原P03.3及P05.2；保留R113和[R120整轮失败](testing-business-reload-source-recovery.md)。本场景独立补齐原30→20压力要求，不替代来源错误全矩阵、默认20%性能、完整并发或长期验收。
 
 ## 原范围与预算
 
@@ -23,3 +23,11 @@
 Linux测试节点已实际通过7项辅助协议/释放检查，每次最多分配64MiB：超限/非法命令静态拒绝、无标记拒绝、正常释放、EOF、已分配后非法输入、TERM、空闲超时。它们只证明工具释放路径，不代表真实30→20压力或厂商业务通过。压力准备失败、节点余量不足或租约到期均按失败记录，不降目标、不扩大上限。
 
 任一业务失败保留完整原报告、快照和日志；不能以其他角色成功或局部memory_safety检查追认R120备库关闭超时、历史exec延迟、默认20%或稳定1.0。辅助控制通道失效先关闭输入并等固定释放期限，再由原UID清理流程移除本次Pod；不向业务进程发送测试信号。
+
+
+固定开始观察已核对原运行器/worker实际PID与start/entry，7项真实前置门禁和7项有界辅助工具检查通过，三个源码分支完整CI及42个公开blob摘要通过。主程序/原R113/R120执行器及报告保持。旁路[实际七天进程观察](test-progress-seven-day-during-memory-pressure.json)仍measuring，旧程序与发布程序分别计时；完整600秒、精确压力、R120整轮、正式长期及其他稳定条件继续。
+
+
+## R130失败及工具修正
+
+[失败终态](test-results-business-memory-pressure-failure.json)与原[开始快照](test-start-business-memory-pressure.json)分开保留；两种镜像实际Python2.7.5的平台名为linux2，旧工具只允许linux。新v2工具只修正测试平台判断，Linux主机7项、两镜像16项释放协议检查通过并独立清理，见[兼容性记录](testing-memory-pressure-legacy-runtime.md)。原执行器/计划不修改；真实高用量需新协议绑定v2后再执行，不能以64MiB辅助检查替代原压力或32项业务。

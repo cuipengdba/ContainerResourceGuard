@@ -1,0 +1,314 @@
+{
+  "schema": "crg-business-memory-pressure-start-v1",
+  "phase": "running",
+  "observed_node_utc": "2026-11-11T09:56:48.202195+00:00",
+  "source_commit": "567485bc087e5c1644fd2b886479b602c0b7781c",
+  "executor_sha256": "b8bcb65c545794e4f98700eb1e09491b8b5da9e463ae32c92cf22f5b6b661d1b",
+  "plan_sha256": "9ae1a37f376133b8e54b4406b42b10d207c90cdb6eb4247ef96e0b0539579af7",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "launch": {
+    "pid": 3654813,
+    "start_ticks": 133084934,
+    "entry": "/var/tmp/crg-memory130-tools-20261111/pressure-runner.py",
+    "runner_sha256": "c41585fbf58d3e095fa8f942898592652580fc6cae9501036cd0cf86ba4cbd14",
+    "executor_sha256": "b8bcb65c545794e4f98700eb1e09491b8b5da9e463ae32c92cf22f5b6b661d1b",
+    "plan_sha256": "9ae1a37f376133b8e54b4406b42b10d207c90cdb6eb4247ef96e0b0539579af7"
+  },
+  "worker": {
+    "pid": 3654814,
+    "start_ticks": 133084937,
+    "entry": "/var/tmp/crg-memory130-tools-20261111/vendor-business-memory-pressure.py"
+  },
+  "runner_process": {
+    "pid": 3654813,
+    "exists": true,
+    "start_ticks": 133084934,
+    "same_instance": true,
+    "state": "S"
+  },
+  "worker_process": {
+    "pid": 3654814,
+    "exists": true,
+    "start_ticks": 133084937,
+    "same_instance": true,
+    "state": "S"
+  },
+  "exit": null,
+  "gates": {
+    "node_utc": "2026-11-11T09:50:49.361715+00:00",
+    "files": {
+      "vendor-business-memory-pressure.py": "b8bcb65c545794e4f98700eb1e09491b8b5da9e463ae32c92cf22f5b6b661d1b",
+      "vendor-memory-pressure-worker.py": "45e430902d94030075b432eb6b4693a95fd1515d7ef4786ade53f93a0eb8f84c",
+      "vendor-memory-pressure-selftest.py": "73a322f90b3c430ce54638e4eb4d4abe3f78f07ca2ff5b9f35190e5498da3e0c",
+      "pressure-plan.json": "9ae1a37f376133b8e54b4406b42b10d207c90cdb6eb4247ef96e0b0539579af7",
+      "vendor-api-timed.py": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+      "vendor-engine-timed.py": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+      "vendor-versioned-business-reload.py": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+      "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+      "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+      "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8"
+    },
+    "observations": [
+      {
+        "args": [],
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "executed": false,
+          "stable_release_accepted": false,
+          "scope": "read-only exact30-to20 pressure prerequisites; prior failures retained"
+        },
+        "stderr": ""
+      },
+      {
+        "args": [
+          "--execute"
+        ],
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "EXPLICIT_LAB_MARKER",
+          "executed": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "namespace",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "criteria",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "pressure_contract",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "pressure_worker_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "timed_api_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      }
+    ],
+    "target_absent_after_all_gates": true,
+    "executed": false
+  },
+  "helper_selftest": {
+    "node_utc": "2026-11-11T09:42:49.354125+00:00",
+    "exit": 0,
+    "sources": {
+      "vendor-memory-pressure-worker.py": "45e430902d94030075b432eb6b4693a95fd1515d7ef4786ade53f93a0eb8f84c",
+      "vendor-memory-pressure-selftest.py": "73a322f90b3c430ce54638e4eb4d4abe3f78f07ca2ff5b9f35190e5498da3e0c"
+    },
+    "stdout": "{\"phase\": \"passed\", \"checks\": [\"invalid commands and fixed cap rejected without allocation\", \"missing marker rejects before allocation\", \"normal exits and emits release\", \"EOF exits and emits release\", \"invalid-after-allocation exits and emits release\", \"TERM exits and emits release\", \"idle-lease exits and emits release\"], \"maximum_actual_allocation_each_process\": 67108864, \"product_or_cgroup_writes\": false}\n",
+    "stderr": ""
+  },
+  "local_main_checks": [
+    {
+      "name": "dbs-business-reload-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-business-reload-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "dbs-manual-to-percent-during-engine",
+      "passed": true
+    },
+    {
+      "name": "dbs-three-independent-percentages-during-native",
+      "passed": true
+    },
+    {
+      "name": "dbs-invalid-IO-retains-entire-policy",
+      "passed": true
+    },
+    {
+      "name": "dbs-partial-JSON-retains-entire-policy",
+      "passed": true
+    },
+    {
+      "name": "dbs-duplicate-key-retains-entire-policy",
+      "passed": true
+    },
+    {
+      "name": "dbs-ConfigMap-style-symlink-accepts-valid-policy",
+      "passed": true
+    }
+  ],
+  "DBS_intervals_observed": 6,
+  "pressure30_to20_accepted": false,
+  "native600_accepted": false,
+  "HISDBS_complete": false,
+  "source_CI_and_publication": {
+    "phase": "passed",
+    "observed_utc": "2026-11-11T10:02:21.890273+00:00",
+    "remote_heads": {
+      "main": "6f241de69d535e4c9e6207196a962da1983739d6",
+      "next/compatibility-contract": "567485bc087e5c1644fd2b886479b602c0b7781c",
+      "next/partition-io": "936b5888fbec89107b839e7e24c45330bbd419b9"
+    },
+    "CI": [
+      {
+        "run_id": 42999562807,
+        "branch": "main",
+        "head_sha": "6f241de69d535e4c9e6207196a962da1983739d6",
+        "name": "build-and-test",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 1,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42999562807"
+      },
+      {
+        "run_id": 42999562657,
+        "branch": "next/compatibility-contract",
+        "head_sha": "567485bc087e5c1644fd2b886479b602c0b7781c",
+        "name": "build-and-test",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 1,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42999562657"
+      },
+      {
+        "run_id": 42999562749,
+        "branch": "next/partition-io",
+        "head_sha": "936b5888fbec89107b839e7e24c45330bbd419b9",
+        "name": "build-and-test",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 1,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42999562749"
+      },
+      {
+        "run_id": 42990769295,
+        "branch": "main",
+        "head_sha": "50d068aaa58af8476103dbbf0c2fd3a62be3be8b",
+        "name": "native-arm64",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 1,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42990769295"
+      },
+      {
+        "run_id": 42990777633,
+        "branch": "next/compatibility-contract",
+        "head_sha": "4ef648428eadfe5f24f61cd1f68d50ab8f51d2fc",
+        "name": "native-arm64",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 1,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42990777633"
+      },
+      {
+        "run_id": 42970773258,
+        "branch": "next/compatibility-contract",
+        "head_sha": "5c7e02190cff7eec594002e86a0b377a56a540fb",
+        "name": "native-cgroup",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 1,
+        "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42970773258"
+      }
+    ],
+    "published_sources_and_reports_verified": {
+      "main/tests/vendor-business-memory-pressure.py": "b8bcb65c545794e4f98700eb1e09491b8b5da9e463ae32c92cf22f5b6b661d1b",
+      "main/tests/vendor-memory-pressure-worker.py": "45e430902d94030075b432eb6b4693a95fd1515d7ef4786ade53f93a0eb8f84c",
+      "main/tests/vendor-memory-pressure-selftest.py": "73a322f90b3c430ce54638e4eb4d4abe3f78f07ca2ff5b9f35190e5498da3e0c",
+      "main/tests/README.md": "19645d8142f98daa4c94c6226788396668628b3e5e40450fc46eaba468621f4a",
+      "main/docs/test-plan-business-memory-pressure.json": "9ae1a37f376133b8e54b4406b42b10d207c90cdb6eb4247ef96e0b0539579af7",
+      "main/docs/testing-business-memory-pressure.md": "4f3690291d303a29b1e29aacf59177f36fea81cbb05e9a0d1c8fb5d8c97f8bfa",
+      "main/docs/test-results-business-reload-source-recovery-failure.json": "5ced0524c2c4a556c4c6aea3e69b887523ee7af34eee9fd7d07dafd5c2d9a161",
+      "main/docs/test-progress-seven-day-during-source-recovery.json": "9b0ef7b85389a06f88bce9ca33636c6dbce19b7da90d03707a89283ee010fb4a",
+      "main/docs/testing-business-reload-source-recovery.md": "8b3954ca4a433cf72ea9202f9117f69401e98bfb4a62ddae48d82f405655490c",
+      "main/docs/tasks.md": "61c0951614718c83013a1e264d11c4ccab3201886141398330777a8aaaafff64",
+      "main/docs/current-task-registry.json": "8ab8db96bb2a92536723f87c0f258cf3c10578a5f9ffe63fa1219f1c4b4b2904",
+      "main/docs/current-acceptance.md": "d439ff5e1adf145469a992673d512cc305ca40097e22f29a70a029ff8fa83497",
+      "main/docs/requirements.md": "ca85a4927bea1c15c141bfa88686ced51f91e5a61f92d6c9db644cc8aa94f92c",
+      "main/docs/roadmap.md": "beece313a8bdeb5f1bd34ab5b9612ea96e363ac7bc044c0ac2c2ad1bf8347b27",
+      "next/compatibility-contract/tests/vendor-business-memory-pressure.py": "b8bcb65c545794e4f98700eb1e09491b8b5da9e463ae32c92cf22f5b6b661d1b",
+      "next/compatibility-contract/tests/vendor-memory-pressure-worker.py": "45e430902d94030075b432eb6b4693a95fd1515d7ef4786ade53f93a0eb8f84c",
+      "next/compatibility-contract/tests/vendor-memory-pressure-selftest.py": "73a322f90b3c430ce54638e4eb4d4abe3f78f07ca2ff5b9f35190e5498da3e0c",
+      "next/compatibility-contract/tests/README.md": "19645d8142f98daa4c94c6226788396668628b3e5e40450fc46eaba468621f4a",
+      "next/compatibility-contract/docs/test-plan-business-memory-pressure.json": "9ae1a37f376133b8e54b4406b42b10d207c90cdb6eb4247ef96e0b0539579af7",
+      "next/compatibility-contract/docs/testing-business-memory-pressure.md": "4f3690291d303a29b1e29aacf59177f36fea81cbb05e9a0d1c8fb5d8c97f8bfa",
+      "next/compatibility-contract/docs/test-results-business-reload-source-recovery-failure.json": "5ced0524c2c4a556c4c6aea3e69b887523ee7af34eee9fd7d07dafd5c2d9a161",
+      "next/compatibility-contract/docs/test-progress-seven-day-during-source-recovery.json": "9b0ef7b85389a06f88bce9ca33636c6dbce19b7da90d03707a89283ee010fb4a",
+      "next/compatibility-contract/docs/testing-business-reload-source-recovery.md": "8b3954ca4a433cf72ea9202f9117f69401e98bfb4a62ddae48d82f405655490c",
+      "next/compatibility-contract/docs/tasks.md": "39389217b63b7f9b96674f4f106ab4176684aa1725a7ec56a3153b0905bb8586",
+      "next/compatibility-contract/docs/current-task-registry.json": "8ab8db96bb2a92536723f87c0f258cf3c10578a5f9ffe63fa1219f1c4b4b2904",
+      "next/compatibility-contract/docs/current-acceptance.md": "d439ff5e1adf145469a992673d512cc305ca40097e22f29a70a029ff8fa83497",
+      "next/compatibility-contract/docs/requirements.md": "eea4cc4cc5ea615d919dcd14a24bf19069b9c52a98bbefd34dda8883c5c073f5",
+      "next/compatibility-contract/docs/roadmap.md": "beece313a8bdeb5f1bd34ab5b9612ea96e363ac7bc044c0ac2c2ad1bf8347b27",
+      "next/partition-io/tests/vendor-business-memory-pressure.py": "b8bcb65c545794e4f98700eb1e09491b8b5da9e463ae32c92cf22f5b6b661d1b",
+      "next/partition-io/tests/vendor-memory-pressure-worker.py": "45e430902d94030075b432eb6b4693a95fd1515d7ef4786ade53f93a0eb8f84c",
+      "next/partition-io/tests/vendor-memory-pressure-selftest.py": "73a322f90b3c430ce54638e4eb4d4abe3f78f07ca2ff5b9f35190e5498da3e0c",
+      "next/partition-io/tests/README.md": "19645d8142f98daa4c94c6226788396668628b3e5e40450fc46eaba468621f4a",
+      "next/partition-io/docs/test-plan-business-memory-pressure.json": "9ae1a37f376133b8e54b4406b42b10d207c90cdb6eb4247ef96e0b0539579af7",
+      "next/partition-io/docs/testing-business-memory-pressure.md": "4f3690291d303a29b1e29aacf59177f36fea81cbb05e9a0d1c8fb5d8c97f8bfa",
+      "next/partition-io/docs/test-results-business-reload-source-recovery-failure.json": "5ced0524c2c4a556c4c6aea3e69b887523ee7af34eee9fd7d07dafd5c2d9a161",
+      "next/partition-io/docs/test-progress-seven-day-during-source-recovery.json": "9b0ef7b85389a06f88bce9ca33636c6dbce19b7da90d03707a89283ee010fb4a",
+      "next/partition-io/docs/testing-business-reload-source-recovery.md": "8b3954ca4a433cf72ea9202f9117f69401e98bfb4a62ddae48d82f405655490c",
+      "next/partition-io/docs/tasks.md": "55087121bd6a209b24e507aa859ef8196f8e428fadb657d1b27dcef5d646eeba",
+      "next/partition-io/docs/current-task-registry.json": "8ab8db96bb2a92536723f87c0f258cf3c10578a5f9ffe63fa1219f1c4b4b2904",
+      "next/partition-io/docs/current-acceptance.md": "d439ff5e1adf145469a992673d512cc305ca40097e22f29a70a029ff8fa83497",
+      "next/partition-io/docs/requirements.md": "0b9dc1ff05f29d01efabe120165be04d9d42592db7fe4feb2bf1e9c5300f7b39",
+      "next/partition-io/docs/roadmap.md": "beece313a8bdeb5f1bd34ab5b9612ea96e363ac7bc044c0ac2c2ad1bf8347b27"
+    },
+    "release_assets_and_tags_unchanged": [
+      {
+        "tag": "v0.1.0-rc.3-preview.1",
+        "release_id": 440151208,
+        "assets_preserved": 4,
+        "tag_commit": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f"
+      },
+      {
+        "tag": "v1.0.0-preview.1",
+        "release_id": 441132178,
+        "assets_preserved": 6,
+        "tag_commit": "01d311f5637df95891975d3083961b5a03db281b"
+      },
+      {
+        "tag": "v1.0.0-preview.2",
+        "release_id": 441266353,
+        "assets_preserved": 8,
+        "tag_commit": "c1a5c9cbdf8edee729d698fb368472378346b963"
+      }
+    ],
+    "scope": "three evidence heads full CI; explicitly pinned source-identical main/combo native ARM and prior combo native cgroup. Forty-two published source/protocol/evidence blobs and unchanged prerelease assets/tags verified; no new released-ELF/download/long acceptance claim."
+  },
+  "raw_observation_sha256": "d0a00d10e910c19bfda3a6a5cdbf45f40c82017f9d5e04393937808166a9cb9e",
+  "raw_report_sha256": "53dcfb5b73f86da751c96b0cf626fb06c116b475219568e58f1e17a000dc07d1",
+  "stable_release_accepted": false,
+  "seven_day_accepted": false,
+  "scope": "fixed running snapshot after original startup and six transitions; no pressure/native600/second-role terminal acceptance"
+}
