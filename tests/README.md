@@ -82,3 +82,6 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 `vendor-business-reload-edges.py`：原DBS/HISDBS600秒协议中的危险内存延后、六秒安全窗口及缺失/目录/FIFO/超大/悬空链接配置。默认只读，显式隔离marker执行；见[固定协议](../docs/testing-business-reload-edges.md)。
+
+
+`vendor-business-reload-source-recovery.py`：原DBS/HISDBS600秒协议中的危险内存延后、六秒安全窗口及缺失/目录/FIFO/超大/悬空链接配置。默认只读，显式隔离marker执行；见[固定协议](../docs/testing-business-reload-source-recovery.md)。
