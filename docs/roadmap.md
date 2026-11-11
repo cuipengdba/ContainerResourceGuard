@@ -211,3 +211,6 @@ R167[完整线程压力终态](testing-business-pressure-threads.md)失败：DBS
 
 
 R194[原生请求/PG等待诊断资格](testing-native-request-pg-diagnostics.md)完成：Linux23项、两厂商镜像各23项+3入口保护+16真实PG检查通过；正常请求通过，受控锁各保留一次原SQL超时，并取得对应后端/等待/阻塞者。三次先前资格失败和旧源码保留，四Pod cgroup/namespace/运行器独立确认消失，原输入/程序保持。仅采集链路资格，不关闭R167/R142/R120、原32项/两角色600秒或长期条件。
+
+
+R203[完整压力接入原生/PG诊断](testing-business-pressure-native-diagnostics.md)已冻结并实际启动：12项只读前置和6项实际旧报告采集检查通过，开始快照DBS10局部/8区间、压力辅助仍在工作，各600秒/HIS及终态未接受。原完整业务方法AST仅诊断绑定变化，原32项/全部配额/SLA、旧失败与长期条件保持；不以初始报告零计数证明当前零错误。
