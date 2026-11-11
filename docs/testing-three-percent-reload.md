@@ -18,4 +18,7 @@
 
 新增文件监测回归覆盖CLI比例/日志优先、坏配置保持hash/代次、未填回20、manual与CLI比例混用拒绝。该回归补充旧单percent测试，不改变以上实测程序的运行时代码。
 
-本轮不是原DBS/HISDBS业务/性能验收，也没有证明从manual启动且缺profile时热重载会自动标定。该场景当前会明确IO降级，需要受控重启辅助Agent以进入首次自动标定流程；业务独立运行。该行为在[1.0契约草案](compatibility-contract.md)中列明。
+本轮不是原DBS/HISDBS业务/性能验收，也没有证明从manual启动且缺profile时热重载会自动标定。该场景当前会明确IO降级，需要受控重启辅助Agent以进入首次自动标定流程；业务独立运行。该行为在[1.0契约草案](https://github.com/cuipengdba/ContainerResourceGuard/blob/7787ffb0abacf2616fb46905457b260da5282ab3/docs/compatibility-contract.md)中列明。
+
+
+2026-11-11补充：已发布候选自身另做[15项新ELF工程重载补测](testing-versioned-candidate-reload.md)，来源与旧d6结果分开；旧报告保持。
