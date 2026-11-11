@@ -1,0 +1,317 @@
+{
+  "schema": "crg-write-bps-comparison-plan-v1",
+  "work_root": "/var/tmp/crg-writebps261-20261111",
+  "executor_sha256": "66c7e45b14c8a4fbea6301848d781851a58617a9cc65a3915416321e2f70781f",
+  "original_executor_sha256": "0ff4743e1ffb7b1006eddec87a471175eda259aed0e85f60e81fe7424641a62a",
+  "original_plan_sha256": "9fc0b663056d28562be9c80c83dc3dd88fddbc3f03ee9f73595eb33d3af85e33",
+  "prior_failed_report_sha256": "4aadc21b51f0c2c385626cad2ee7db7f2aa2e01ec0afdcb257cf671fa57f1c5f",
+  "source_folder": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business",
+  "source_pg_control_sha256": "cfef4406da71d9924a4773ceb67e120f710721a7aff186676797670a9e7149a8",
+  "run_id_identical_on_separate_clones": "20261111261",
+  "pins": {
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "binary": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "cache": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "worker": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "previous": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+    "engine": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "profile": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b"
+  },
+  "criteria": {
+    "startup_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "native_seconds_each_role": 600,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "maximum_errors": 0,
+    "maximum_request_seconds": 5,
+    "p95_bucket_seconds": 1,
+    "minimum_coverage": 0.98,
+    "payload_bytes": 67108864,
+    "oom_kill_delta": 0
+  },
+  "scope": "DBS-only manual-mode causal diagnostic; not original32/two-role/percentage acceptance",
+  "arms": [
+    {
+      "name": "a1",
+      "write_bps": 37470104,
+      "derived_business": {
+        "original_method_sha256": "e1c736d04db12b7db7543b6b6f78dd30e426548fc457e8892efad731bebb3a78",
+        "derived_method_sha256": "06132b9c119bda2cb2e310d22ec9b5e5da989366ca62017643d4bcede552b3c7",
+        "substitutions": [
+          {
+            "old": "d['plan']['percentages']==POLICIES[1]",
+            "new": "d['plan']['resource_mode']=='manual'",
+            "count": 1
+          },
+          {
+            "old": "policy=dict(POLICIES[0],memory_percent=20)",
+            "new": "policy=dict(POLICIES[0],limits=dict(POLICIES[0]['limits'],memory_max=str(target)+'B'))",
+            "count": 1
+          },
+          {
+            "old": "d['plan']['percentages']==policy",
+            "new": "d['plan']['resource_mode']=='manual'",
+            "count": 2
+          },
+          {
+            "old": "'manual-to-percent-during-engine'",
+            "new": "'manual-boot-to-measured-numeric-during-engine'",
+            "count": 1
+          },
+          {
+            "old": "'three-independent-percentages-during-native'",
+            "new": "'manual-second-policy-during-native'",
+            "count": 1
+          },
+          {
+            "old": "'percent-to-manual-three-resources'",
+            "new": "'manual-return-to-boot-controls'",
+            "count": 1
+          },
+          {
+            "old": "'pressure-test-return-to-percent30'",
+            "new": "'pressure-test-manual-memory30-equivalent'",
+            "count": 1
+          },
+          {
+            "old": "'released-memory20-returns-to-percent30'",
+            "new": "'released-manual-memory20-returns-to30-equivalent'",
+            "count": 1
+          }
+        ],
+        "policies": [
+          {
+            "resource_mode": "manual",
+            "limits": {
+              "cpu_cores": 7.2,
+              "memory_max": "20001980416B",
+              "io_read_bps": "64700080B",
+              "io_write_bps": "37470104B",
+              "io_read_iops": 83,
+              "io_write_iops": 135
+            }
+          },
+          {
+            "resource_mode": "manual",
+            "limits": {
+              "cpu_cores": 6,
+              "memory_max": "19335249920B",
+              "io_read_bps": "51760064B",
+              "io_write_bps": "29976083B",
+              "io_read_iops": 66,
+              "io_write_iops": 108
+            }
+          }
+        ],
+        "numeric_readbacks": [
+          {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+          },
+          {
+            "cpu.max": "600000 100000",
+            "memory.max": "19335249920",
+            "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108"
+          }
+        ]
+      },
+      "namespace": "crg-vendor-lab-writebps261-a1-20261111"
+    },
+    {
+      "name": "b",
+      "write_bps": 67108864,
+      "derived_business": {
+        "original_method_sha256": "e1c736d04db12b7db7543b6b6f78dd30e426548fc457e8892efad731bebb3a78",
+        "derived_method_sha256": "06132b9c119bda2cb2e310d22ec9b5e5da989366ca62017643d4bcede552b3c7",
+        "substitutions": [
+          {
+            "old": "d['plan']['percentages']==POLICIES[1]",
+            "new": "d['plan']['resource_mode']=='manual'",
+            "count": 1
+          },
+          {
+            "old": "policy=dict(POLICIES[0],memory_percent=20)",
+            "new": "policy=dict(POLICIES[0],limits=dict(POLICIES[0]['limits'],memory_max=str(target)+'B'))",
+            "count": 1
+          },
+          {
+            "old": "d['plan']['percentages']==policy",
+            "new": "d['plan']['resource_mode']=='manual'",
+            "count": 2
+          },
+          {
+            "old": "'manual-to-percent-during-engine'",
+            "new": "'manual-boot-to-measured-numeric-during-engine'",
+            "count": 1
+          },
+          {
+            "old": "'three-independent-percentages-during-native'",
+            "new": "'manual-second-policy-during-native'",
+            "count": 1
+          },
+          {
+            "old": "'percent-to-manual-three-resources'",
+            "new": "'manual-return-to-boot-controls'",
+            "count": 1
+          },
+          {
+            "old": "'pressure-test-return-to-percent30'",
+            "new": "'pressure-test-manual-memory30-equivalent'",
+            "count": 1
+          },
+          {
+            "old": "'released-memory20-returns-to-percent30'",
+            "new": "'released-manual-memory20-returns-to30-equivalent'",
+            "count": 1
+          }
+        ],
+        "policies": [
+          {
+            "resource_mode": "manual",
+            "limits": {
+              "cpu_cores": 7.2,
+              "memory_max": "20001980416B",
+              "io_read_bps": "64700080B",
+              "io_write_bps": "67108864B",
+              "io_read_iops": 83,
+              "io_write_iops": 135
+            }
+          },
+          {
+            "resource_mode": "manual",
+            "limits": {
+              "cpu_cores": 6,
+              "memory_max": "19335249920B",
+              "io_read_bps": "51760064B",
+              "io_write_bps": "29976083B",
+              "io_read_iops": 66,
+              "io_write_iops": 108
+            }
+          }
+        ],
+        "numeric_readbacks": [
+          {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=64700080 wbps=67108864 riops=83 wiops=135"
+          },
+          {
+            "cpu.max": "600000 100000",
+            "memory.max": "19335249920",
+            "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108"
+          }
+        ]
+      },
+      "namespace": "crg-vendor-lab-writebps261-b-20261111"
+    },
+    {
+      "name": "a2",
+      "write_bps": 37470104,
+      "derived_business": {
+        "original_method_sha256": "e1c736d04db12b7db7543b6b6f78dd30e426548fc457e8892efad731bebb3a78",
+        "derived_method_sha256": "06132b9c119bda2cb2e310d22ec9b5e5da989366ca62017643d4bcede552b3c7",
+        "substitutions": [
+          {
+            "old": "d['plan']['percentages']==POLICIES[1]",
+            "new": "d['plan']['resource_mode']=='manual'",
+            "count": 1
+          },
+          {
+            "old": "policy=dict(POLICIES[0],memory_percent=20)",
+            "new": "policy=dict(POLICIES[0],limits=dict(POLICIES[0]['limits'],memory_max=str(target)+'B'))",
+            "count": 1
+          },
+          {
+            "old": "d['plan']['percentages']==policy",
+            "new": "d['plan']['resource_mode']=='manual'",
+            "count": 2
+          },
+          {
+            "old": "'manual-to-percent-during-engine'",
+            "new": "'manual-boot-to-measured-numeric-during-engine'",
+            "count": 1
+          },
+          {
+            "old": "'three-independent-percentages-during-native'",
+            "new": "'manual-second-policy-during-native'",
+            "count": 1
+          },
+          {
+            "old": "'percent-to-manual-three-resources'",
+            "new": "'manual-return-to-boot-controls'",
+            "count": 1
+          },
+          {
+            "old": "'pressure-test-return-to-percent30'",
+            "new": "'pressure-test-manual-memory30-equivalent'",
+            "count": 1
+          },
+          {
+            "old": "'released-memory20-returns-to-percent30'",
+            "new": "'released-manual-memory20-returns-to30-equivalent'",
+            "count": 1
+          }
+        ],
+        "policies": [
+          {
+            "resource_mode": "manual",
+            "limits": {
+              "cpu_cores": 7.2,
+              "memory_max": "20001980416B",
+              "io_read_bps": "64700080B",
+              "io_write_bps": "37470104B",
+              "io_read_iops": 83,
+              "io_write_iops": 135
+            }
+          },
+          {
+            "resource_mode": "manual",
+            "limits": {
+              "cpu_cores": 6,
+              "memory_max": "19335249920B",
+              "io_read_bps": "51760064B",
+              "io_write_bps": "29976083B",
+              "io_read_iops": 66,
+              "io_write_iops": 108
+            }
+          }
+        ],
+        "numeric_readbacks": [
+          {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+          },
+          {
+            "cpu.max": "600000 100000",
+            "memory.max": "19335249920",
+            "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108"
+          }
+        ]
+      },
+      "namespace": "crg-vendor-lab-writebps261-a2-20261111"
+    }
+  ],
+  "unchanged_source_roles": {
+    "dbs": {
+      "folder": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business",
+      "aged_run_id": "202611110640",
+      "pod_sha256": "dac43fba0299014cfd47fd28ad91dd3a6046676be826e390ddb8bdd635d473ff"
+    },
+    "hisdbs": {
+      "folder": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business",
+      "aged_run_id": "202611110641",
+      "pod_sha256": "6272fd88f8f2cc46f7b95ff01d7c883a969dffe10fdc06973735297a1719a372"
+    }
+  },
+  "release_accepted": false,
+  "comparison_limits": [
+    "new-inode cold clones differ from R235 reused source",
+    "sequential arms share backend with original unmodified long tests",
+    "cache and IO state are not reset or claimed equal",
+    "no inference from B alone; A must reproduce and repeat for support"
+  ]
+}
