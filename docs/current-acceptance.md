@@ -1,6 +1,6 @@
 # 当前验收入口
 
-当前尚未发布1.0。[52项原始任务索引](current-task-registry.json)、[十版规划](roadmap.md)和[需求档案](requirements.md)保留全部范围；R29暂缓其他资源的新交付，未删除历史任务。当前资源入口仅CPU/内存/IO独立百分比，各自省略默认20；v1/混合/未知跳过，纯v2通过身份和权限检查后设置；每日日志保留30日或总1GB，辅助故障不作为原业务启动前提。
+当前尚未发布稳定1.0。[52项原始任务索引](current-task-registry.json)、[十版规划](roadmap.md)和[需求档案](requirements.md)保留全部范围；R29暂缓其他资源的新交付，未删除历史任务。当前资源入口仅CPU/内存/IO独立百分比，各自省略默认20；v1/混合/未知跳过，纯v2通过身份和权限检查后设置；每日日志保留30日或总1GB，辅助故障不作为原业务启动前提。
 
 ## 已发布与当前候选
 
@@ -38,7 +38,7 @@
 
 ## 版本化v1.0.0候选的独立资格
 
-候选来源与包身份见[固定身份](release-candidate-identity.md)。该未发布程序AMD64摘要dbc48aa5，ARM64摘要a01a5c2b，均与旧开发程序分别计数。
+候选来源与包身份见[固定身份](release-candidate-identity.md)。该版本化程序现已作为工程预发布交付，AMD64摘要dbc48aa5，ARM64摘要a01a5c2b，均与旧开发程序分别计数。
 
 | 已完成项 | 实际结果 |
 |---|---|
@@ -47,6 +47,9 @@
 | 原厂商真实路径业务 | [DBS/HISDBS各600秒、12项](testing-versioned-candidate-business.md)通过，原manual64预算及启动/延迟/覆盖/数据/备份/独立恢复标准保持，退出0/清理 |
 | 自身辅助故障 | [两角色20场景/108项](testing-versioned-candidate-faults.md)通过，原90秒/45秒/12秒及实际标定取消条件保持，退出0/清理 |
 
-新摘要的[在线升级/回退验证已开始](testing-versioned-candidate-maintenance.md)，冷重建和实际长期资格仍分别推进；未将旧开发版3a1、原observe或固定d6阶段的运行时间转给新程序。默认20%和自动30%持续性能未因此通过，当前稳定1.0尚未发布。
+新摘要的[在线升级/回退两角色各600秒、22项终态通过且清理](testing-versioned-candidate-maintenance.md)，[冷重建四次启动44项终态通过](testing-versioned-candidate-cold-rebuild.md)，[自身实际七天原生测量已开始](plan-seven-day-versioned-candidate.md)；未将旧开发版3a1、原observe或固定d6阶段的运行时间转给新程序。默认20%和自动30%持续性能未因此通过，当前稳定1.0尚未发布。
 
 实际老化辅助故障[执行器及冻结计划](testing-aged-faults.md)已实现并通过8项Linux自检；长门禁及提前执行真实返回pending且无工作目录/namespace。明确分开的[短保留数据20场景/152项终态通过并清理](testing-aged-faults.md)，原数据、输入和日志保留。原七天和其恢复/维护后置不因短演练完成而自动通过。
+
+
+新摘要dbc48aa5的[七天首次固定测量观察](test-progress-seven-day-versioned-candidate-start.json)和[自身谱系采集/只读门禁](testing-versioned-aged-preflight.md)已归档：首周期内容通过但native-pending，Linux8项通过、实际谱系已封存，提前后置仍exit2/pending且目标未创建。原R57同时独立确认在线。预发布包不因这些中间证据成为稳定版；真实七天及后置执行尚未完成。
