@@ -561,11 +561,13 @@
         "扩展解析器模糊测试、长故障回归及持久化中断验证",
         "覆盖异常大文件、坏格式、持续权限撤销、慢/满文件系统；强杀与真实掉电证据分开，掉电仅在隔离可恢复测试环境执行"
       ],
-      "current_scope_note": "原506源码fuzz保持历史。当前d370精确源代码在Windows/Go1.27.3完成DecodeConfig及DecodeProfile各请求600秒、实际601.727/601.328秒，合计21680191次执行，均exit0且50生产文件合同不变；仅解析/校验崩溃与挂起覆盖。真实慢/满文件系统、持续权限撤销、强杀和真实掉电仍须按原要求分别核对，不以fuzz或短辅助故障关闭整项。",
+      "current_scope_note": "原506源码fuzz保持历史。当前d370精确源代码在Windows/Go1.27.3完成DecodeConfig及DecodeProfile各请求600秒、实际601.727/601.328秒，合计21680191次执行，均exit0且50生产文件合同不变；仅解析/校验崩溃与挂起覆盖。真实慢/满文件系统、持续权限撤销、强杀和真实掉电仍须按原要求分别核对，不以fuzz或短辅助故障关闭整项。；另保留CLI契约测试一次signal:killed及同提交复验通过，终止原因未定；仅加测试失败诊断，不改5秒或断言。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-d370-parser-fuzz-windows.json",
-        "testing-d370-parser-fuzz-windows.md"
+        "testing-d370-parser-fuzz-windows.md",
+        "test-results-cli-contract-ci-20261111.json",
+        "testing-cli-contract-ci-20261111.md"
       ],
       "scope_note_history": [
         {

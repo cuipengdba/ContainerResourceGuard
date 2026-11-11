@@ -1,0 +1,123 @@
+{
+  "schema": "crg-cli-contract-ci-incident-v1",
+  "original_attempt": {
+    "observed_utc": "2026-11-11T06:03:49.160280+00:00",
+    "run_id": 42967613817,
+    "run_attempt": 1,
+    "head_sha": "0f92af197183af32bc736f0f763cdc609f12c908",
+    "conclusion": "failure",
+    "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967613817",
+    "failure_log_sha256": "4f00e39d7f6630a94ee470f25388991521ed17c91e3faa42a357bdefa835617d",
+    "failed_test": "TestCLICommandFailureJSONAndLegacyBuildFields",
+    "case": [
+      "run",
+      "--percent",
+      "0"
+    ],
+    "observed_failure": "unexpected exit signal: killed",
+    "frozen_child_context_timeout_seconds": 5,
+    "cause": "Not established. The bounded test child was killed; do not attribute to runner scheduling without evidence.",
+    "rerun_scope": "Only failed jobs at the exact same source, same five-second test context and unchanged assertions. Original failure preserved; no code, budget, release or long-running fixture changes."
+  },
+  "exact_same_head_rerun": {
+    "run_id": 42967613817,
+    "branch": "next/compatibility-contract",
+    "head_sha": "0f92af197183af32bc736f0f763cdc609f12c908",
+    "name": "build-and-test",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 2,
+    "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967613817"
+  },
+  "qualified_CI_snapshot": [
+    {
+      "run_id": 42967607809,
+      "branch": "main",
+      "head_sha": "2f3c79b1858bed5fa29a2f0a8b035f7dc423b784",
+      "name": "build-and-test",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967607809"
+    },
+    {
+      "run_id": 42967607752,
+      "branch": "main",
+      "head_sha": "2f3c79b1858bed5fa29a2f0a8b035f7dc423b784",
+      "name": "native-arm64",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967607752"
+    },
+    {
+      "run_id": 42967613817,
+      "branch": "next/compatibility-contract",
+      "head_sha": "0f92af197183af32bc736f0f763cdc609f12c908",
+      "name": "build-and-test",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 2,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967613817"
+    },
+    {
+      "run_id": 42967613695,
+      "branch": "next/compatibility-contract",
+      "head_sha": "0f92af197183af32bc736f0f763cdc609f12c908",
+      "name": "native-arm64",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967613695"
+    },
+    {
+      "run_id": 42967621991,
+      "branch": "next/partition-io",
+      "head_sha": "d09daf03aabc4f49f5941949a2a15a6d4d8d0033",
+      "name": "build-and-test",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/42967621991"
+    }
+  ],
+  "first_failure_preserved": true,
+  "termination_cause_established": false,
+  "scope": "Instrumented CLI test process reported signal:killed; a five-second context was configured but old diagnostics did not capture context.Err or elapsed time, so timeout versus external termination is not proven. Exact-head rerun passed without modified code or assertions.",
+  "test_only_followup": {
+    "path": "cmd/crg/errors_test.go",
+    "branches": [
+      "next/compatibility-contract",
+      "next/partition-io"
+    ],
+    "before_sha256": "7571a89b8f55f339679262e092255751e233511c35ab6e56f3453f468a8c3778",
+    "after_sha256": "783bab0f743bb451fd74a3bef003b3d5f8a226dff74166363d7dc45acc7dcde1",
+    "change": "Capture elapsed and context.Err before cancel, include bounded exec.ExitError stderr and stdout when the original exit assertion fails.",
+    "context_timeout_seconds": 5,
+    "original_exit_JSON_legacy_field_assertions_preserved": true,
+    "runtime_production_files_changed": 0,
+    "followup_CI": "Required at the forthcoming commit; not counted as already passed by the old-head rerun."
+  },
+  "release_assets_and_tags_unchanged": [
+    {
+      "tag": "v0.1.0-rc.3-preview.1",
+      "release_id": 440151208,
+      "assets_preserved": 4,
+      "tag_commit": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f"
+    },
+    {
+      "tag": "v1.0.0-preview.1",
+      "release_id": 441132178,
+      "assets_preserved": 6,
+      "tag_commit": "01d311f5637df95891975d3083961b5a03db281b"
+    },
+    {
+      "tag": "v1.0.0-preview.2",
+      "release_id": 441266353,
+      "assets_preserved": 8,
+      "tag_commit": "c1a5c9cbdf8edee729d698fb368472378346b963"
+    }
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}
