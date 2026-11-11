@@ -121,3 +121,6 @@ R203[原生诊断压力联测终态](../docs/testing-business-pressure-native-di
 
 
 已发布旧版迁移的[方法、首轮缺陷与修订终态](../docs/testing-published-migration.md)保留独立源码及原件；源码仓库使用 `python3 tests/analyze-published-migration.py --evidence docs/test-evidence/published-migration397-terminal.json.gz --require-pass` 只读重放。[相同内核限额下的Agent活动对照](../docs/plan-agent-fixed-io-comparison.md)已归档设计，尚未实现或执行；保持135写IOPS等原主要稳态额度，对比正常活动与精确暂停Agent，不再提高额度或原样重跑IOPS矩阵，不改变正式验收标准。
+
+
+[Agent活动生命周期工具资格](../docs/testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。 从完整源码执行 `python3 tests/analyze-agent-activity-qualification.py` 可只读重放；两个摘要一致但证据不完整/源码变化的合成负例被拒绝。

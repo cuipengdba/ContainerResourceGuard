@@ -441,3 +441,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 [真实已发布旧版受控迁移](testing-published-migration.md)26项通过：DBS/HISDBS各实际600.405/600.322秒、SQL/API错误0，升级与回退后原值记录/实际三资源阶段值、原PID1/PG/缓存及独立清理通过。首轮journal阶段断言缺陷与14项失败原件保留，不补称初始零计数通过。此结果只覆盖0.1旧发布次版本到1.0候选的明确停用/恢复迁移，不替代原同限额维护、两个已发布旧次版本、原32项百分比业务或长期条件。
 
 [相同内核限额下的Agent活动对照](plan-agent-fixed-io-comparison.md)已归档设计，尚未实现或执行；保持135写IOPS等原主要稳态额度，对比正常活动与精确暂停Agent，不再提高额度或原样重跑IOPS矩阵，不改变正式验收标准。
+
+
+[Agent活动生命周期工具资格](testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。

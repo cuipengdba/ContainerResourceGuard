@@ -1,5 +1,9 @@
 # 当前验收入口
 
+[Agent活动生命周期工具资格](testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。
+
+[原七天句柄最新只读快照](test-progress-seven-day-during-agent-qualification.json)仍为measuring：原R57两角色约90382/90367秒、5周期，精确发布候选R78约76868/76866秒、4周期，所记录原实例与SQL/API错误0保持。未重启、未替换进程，尚非实际604800秒及后置通过。
+
 [真实已发布旧版受控迁移](testing-published-migration.md)26项通过：DBS/HISDBS各实际600.405/600.322秒、SQL/API错误0，升级与回退后原值记录/实际三资源阶段值、原PID1/PG/缓存及独立清理通过。首轮journal阶段断言缺陷与14项失败原件保留，不补称初始零计数通过。此结果只覆盖0.1旧发布次版本到1.0候选的明确停用/恢复迁移，不替代原同限额维护、两个已发布旧次版本、原32项百分比业务或长期条件。
 
 [七天原句柄只读快照](test-progress-seven-day-during-published-migration.json)记录服务器UTC 2026-11-11T21:15:43Z：原R57为5周期/DBS86478.878与HIS86464.281秒，精确发布候选R78为4周期/DBS72965.441与HIS72963.549秒，所记录原实例保持、SQL/API错误0；仍为measuring，非604800秒通过，未重启或替换原长期进程。
