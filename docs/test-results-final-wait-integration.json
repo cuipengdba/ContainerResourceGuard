@@ -1,0 +1,313 @@
+{
+  "schema": "crg-final-wait-integration-qualification-v1",
+  "phase": "passed12-and15-readonly-denial-gates",
+  "qualification": {
+    "node_utc": "2026-11-11T14:41:06.095043+00:00",
+    "processes": {
+      "pressure235-bootstrap-v2-launch.json": {
+        "identity": {
+          "pid": 3214193,
+          "start_ticks": 134795228,
+          "entry": "/var/tmp/crg-memory167-tools-20261111/pressure235-bootstrap-runner-v2.py",
+          "runner_sha256": "709ed1b0817ae74dda8bc7b580bd17a944e2e32b18d0df334f1190d5d18784de",
+          "bootstrap_sha256": "c6769004559dff98a28a9930e3a27746f963f36198411c74f13e18f44cda29d4"
+        },
+        "exists": false,
+        "same_instance": false
+      },
+      "pressure235-bootstrap-v2-worker.json": {
+        "identity": {
+          "pid": 3214194,
+          "start_ticks": 134795231,
+          "entry": "/var/tmp/crg-memory167-tools-20261111/pressure235-bootstrap.py"
+        },
+        "exists": false,
+        "same_instance": false
+      }
+    },
+    "exit": {
+      "exit": 0,
+      "started_epoch": 1794408009.2053394,
+      "ended_epoch": 1794408016.8655715,
+      "worker": {
+        "pid": 3214194,
+        "start_ticks": 134795231,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/pressure235-bootstrap.py"
+      }
+    },
+    "exit_sha256": "7ff8577b60b6b37e2cc9727deeb98be77d5fe6041fe1ff21a4c0d3f5e3f405c6",
+    "gates": {
+      "node_utc": "2026-11-11T14:40:16.856660+00:00",
+      "files": {
+        "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+        "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+        "vendor-thread-session-checks.py": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424",
+        "vendor-memory-pressure-worker-v2.py": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+        "vendor-memory-pressure-selftest-v2.py": "988503022ecc5b96067f0dee98fd12b80981fea862f89bb941d1b3e2bf11f25b",
+        "vendor-api-timed.py": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+        "vendor-engine-timed.py": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+        "vendor-versioned-business-reload.py": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+        "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+        "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+        "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+        "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+        "vendor-business-memory-pressure-final-wait.py": "0ff4743e1ffb7b1006eddec87a471175eda259aed0e85f60e81fe7424641a62a",
+        "vendor-thread-wait.py": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+        "vendor-thread-wait-observer.py": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+        "vendor-native-session.py": "ae53be88970f343624882cd7a11ffc5945bae469a7ad005b4c760592b08aec63",
+        "vendor-final-wait-integration-checks.py": "8b0640b748ecaacf4214347bd2e07f838421c14a64e94b487378a7f5d76db58c",
+        "pressure-plan.json": "9fc0b663056d28562be9c80c83dc3dd88fddbc3f03ee9f73595eb33d3af85e33"
+      },
+      "observations": [
+        {
+          "args": [],
+          "exit": 0,
+          "result": {
+            "phase": "ready",
+            "executed": false,
+            "stable_release_accepted": false,
+            "scope": "read-only exact30-to20 pressure prerequisites; prior failures retained"
+          },
+          "stderr": ""
+        },
+        {
+          "args": [
+            "--execute"
+          ],
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "EXPLICIT_LAB_MARKER",
+            "executed": false
+          },
+          "stderr": ""
+        },
+        {
+          "tampered": "namespace",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "criteria",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "wait_contract",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "wait_helper",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "native_final_contract",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "native_diagnostic_contract",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "diagnostic_worker",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "diagnostic_helper",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "thread_contract",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "thread_observer",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "pressure_contract",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "pressure_worker_sha256",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        },
+        {
+          "tampered": "timed_api_sha256",
+          "exit": 1,
+          "result": {
+            "phase": "rejected",
+            "reason": "PLAN_CONTRACT",
+            "executed": false
+          }
+        }
+      ],
+      "target_absent_after_all_gates": true,
+      "executed": false
+    },
+    "gates_sha256": "81a4d90c3476b4a1d9e3bccb7794edb40dd11223e99fdac438ca62371edc6cec",
+    "integration": {
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 12}\n",
+      "stderr": "",
+      "result": {
+        "schema": "crg-final-wait-integration-checks-v1",
+        "phase": "passed",
+        "checks": [
+          {
+            "name": "normal-success-collects-closes-without-early-TERM",
+            "passed": true
+          },
+          {
+            "name": "original-business-object-drains-before-observer-and-collector",
+            "passed": true
+          },
+          {
+            "name": "identity-failure-keeps-original-and-still-collects",
+            "passed": true
+          },
+          {
+            "name": "cleanup-timeout-keeps-original-without-retry-or-kill",
+            "passed": true
+          },
+          {
+            "name": "collector-rejection-keeps-original-and-closes",
+            "passed": true
+          },
+          {
+            "name": "observer-stop-failure-still-collects-and-keeps-original",
+            "passed": true
+          },
+          {
+            "name": "recording-failure-never-masks-business-error",
+            "passed": true
+          },
+          {
+            "name": "pidfd-close-failure-never-masks-business-error",
+            "passed": true
+          },
+          {
+            "name": "successful-business-does-not-hide-diagnostic-failure",
+            "passed": true
+          },
+          {
+            "name": "actual-failed-engine-interval-archived-without-business-pass",
+            "passed": true
+          },
+          {
+            "name": "dbs-actual-interrupted-native-partial-retained-and-rejected-as600s",
+            "passed": true
+          },
+          {
+            "name": "hisdbs-actual-interrupted-native-partial-retained-and-rejected-as600s",
+            "passed": true
+          }
+        ],
+        "executor_sha256": "0ff4743e1ffb7b1006eddec87a471175eda259aed0e85f60e81fe7424641a62a",
+        "lifecycle_branches_use_explicit_doubles": true,
+        "actual_interrupted_PG_reports_replayed": true,
+        "new_process_signals_SQL_business_or_control_writes": false,
+        "full600s_accepted": false
+      },
+      "result_sha256": "d2c2c417efd2ece3687d5a91e15ac0c51968a417c7fc97c6ba58f652b7592a68",
+      "test_source_sha256": "8b0640b748ecaacf4214347bd2e07f838421c14a64e94b487378a7f5d76db58c"
+    },
+    "integration_sha256": "74bd9fa48564686b31d6f8965ffd67f1bf2bc1a484c23c69c010ac66ce3b1a28",
+    "log_tail": "{\"node_utc\": \"2026-11-11T14:40:16.856660+00:00\", \"files\": {\"vendor-native-diagnostics.py\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \"vendor-soak-load-diagnostics.py\": \"50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f\", \"vendor-thread-observer.py\": \"ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1\", \"vendor-thread-session.py\": \"35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce\", \"vendor-thread-session-checks.py\": \"520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424\", \"vendor-memory-pressure-worker-v2.py\": \"741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff\", \"vendor-memory-pressure-selftest-v2.py\": \"988503022ecc5b96067f0dee98fd12b80981fea862f89bb941d1b3e2bf11f25b\", \"vendor-api-timed.py\": \"907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8\", \"vendor-engine-timed.py\": \"5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d\", \"vendor-versioned-business-reload.py\": \"aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7\", \"vendor-versioned-aged-postflight.py\": \"9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad\", \"vendor-versioned-aged-preflight.py\": \"f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab\", \"vendor-aged-preflight.py\": \"b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439\", \"soak-report-audit.py\": \"4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8\", \"vendor-business-memory-pressure-final-wait.py\": \"0ff4743e1ffb7b1006eddec87a471175eda259aed0e85f60e81fe7424641a62a\", \"vendor-thread-wait.py\": \"fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6\", \"vendor-thread-wait-observer.py\": \"c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02\", \"vendor-native-session.py\": \"ae53be88970f343624882cd7a11ffc5945bae469a7ad005b4c760592b08aec63\", \"vendor-final-wait-integration-checks.py\": \"8b0640b748ecaacf4214347bd2e07f838421c14a64e94b487378a7f5d76db58c\", \"pressure-plan.json\": \"9fc0b663056d28562be9c80c83dc3dd88fddbc3f03ee9f73595eb33d3af85e33\"}, \"observations\": [{\"args\": [], \"exit\": 0, \"result\": {\"phase\": \"ready\", \"executed\": false, \"stable_release_accepted\": false, \"scope\": \"read-only exact30-to20 pressure prerequisites; prior failures retained\"}, \"stderr\": \"\"}, {\"args\": [\"--execute\"], \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"EXPLICIT_LAB_MARKER\", \"executed\": false}, \"stderr\": \"\"}, {\"tampered\": \"namespace\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"criteria\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"wait_contract\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"wait_helper\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"native_final_contract\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"native_diagnostic_contract\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"diagnostic_worker\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"diagnostic_helper\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"thread_contract\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"thread_observer\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"pressure_contract\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"pressure_worker_sha256\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}, {\"tampered\": \"timed_api_sha256\", \"exit\": 1, \"result\": {\"phase\": \"rejected\", \"reason\": \"PLAN_CONTRACT\", \"executed\": false}}], \"target_absent_after_all_gates\": true, \"executed\": false}\n"
+  },
+  "prior_launch_only_syntax_failure": {
+    "node_utc": "2026-11-11T14:38:58.199594+00:00",
+    "processes": {
+      "pressure235-bootstrap-launch.json": {
+        "identity": {
+          "pid": 3175160,
+          "start_ticks": 134777205,
+          "entry": "/var/tmp/crg-memory167-tools-20261111/pressure235-bootstrap-runner.py",
+          "runner_sha256": "6d302b30253b6b4e17a8c508c072d879ef2fa32486512076b22ac0bec7d4f3d2",
+          "bootstrap_sha256": "c6769004559dff98a28a9930e3a27746f963f36198411c74f13e18f44cda29d4"
+        },
+        "exists": false,
+        "same_instance": false
+      },
+      "pressure235-bootstrap-worker.json": {
+        "identity_missing": true
+      }
+    },
+    "log_tail": "  File \"/var/tmp/crg-memory167-tools-20261111/pressure235-bootstrap-runner.py\", line 7\n    rc=p.wait();(w/'pressure235-bootstrap.exit.json').write_text(json.dumps({'exit':rc,'started_epoch':start,'ended_epoch':time.time(),'worker':identity})+'\n                                                                                                                                                            ^\nSyntaxError: EOL while scanning string literal\n"
+  },
+  "initial_runner_source_sha256": "6d302b30253b6b4e17a8c508c072d879ef2fa32486512076b22ac0bec7d4f3d2",
+  "corrected_runner_source_sha256": "709ed1b0817ae74dda8bc7b580bd17a944e2e32b18d0df334f1190d5d18784de",
+  "frozen_source_proof": {
+    "schema": "crg-final-wait-freeze-proof-v1",
+    "original_executor_sha256": "855ed517d136e52d6812ea0eb6f07ad27e54b73841f85b039e0864e6957cdd0c",
+    "new_executor_sha256": "0ff4743e1ffb7b1006eddec87a471175eda259aed0e85f60e81fe7424641a62a",
+    "plan_sha256": "9fc0b663056d28562be9c80c83dc3dd88fddbc3f03ee9f73595eb33d3af85e33",
+    "original_complete_business_AST_preserved_except_one_native_worker_binding": true,
+    "pressure_contract_unchanged": true,
+    "thread_historical_qualification_contract_unchanged": true,
+    "quotas_SLA_payload_checks_and600s_unchanged": true,
+    "stable_release_accepted": false
+  },
+  "full600s_accepted": false,
+  "stable_release_accepted": false
+}
