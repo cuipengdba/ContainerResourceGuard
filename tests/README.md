@@ -118,3 +118,6 @@ R203[原生诊断压力联测终态](../docs/testing-business-pressure-native-di
 
 
 [R235完整压力终态](../docs/testing-business-pressure-final-wait-failure.md)已确认失败并清理：DBS实际600.292秒、SQL1/API5错（HIS未执行），13局部/11区间及引擎10内容检查不抵消业务失败。新诊断取得419请求/601PG样本、600线程样本；SQL对应5个LWLock/WALWrite样本，36个D样本均为DBS.log的write/XFS等待，5次原生API超时各重叠4个D样本。因果仍待设备/限额/日志关系核对；原预算/旧失败/52项和长期要求保持。
+
+
+已发布旧版迁移的[方法、首轮缺陷与修订终态](../docs/testing-published-migration.md)保留独立源码及原件；源码仓库使用 `python3 tests/analyze-published-migration.py --evidence docs/test-evidence/published-migration397-terminal.json.gz --require-pass` 只读重放。[相同内核限额下的Agent活动对照](../docs/plan-agent-fixed-io-comparison.md)已归档设计，尚未实现或执行；保持135写IOPS等原主要稳态额度，对比正常活动与精确暂停Agent，不再提高额度或原样重跑IOPS矩阵，不改变正式验收标准。

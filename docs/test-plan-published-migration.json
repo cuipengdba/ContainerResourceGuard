@@ -1,0 +1,190 @@
+{
+  "schema": "crg-published-migration-plan-v1",
+  "work_root": "/var/tmp/crg-published-migration392-20261111",
+  "tool_root": "/var/tmp/crg-published-migration393-tools-20261111",
+  "namespace": "crg-vendor-lab-published-migration392-20261111",
+  "run_id": "20261111392",
+  "programs": {
+    "previous": {
+      "release": "v0.1.0-rc.3-preview.1",
+      "asset_id": 730823163,
+      "asset_name": "containerresourceguard-v0.1.0-rc.3-preview.1-linux-amd64.tar.gz",
+      "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+      "archive_bytes": 1708379,
+      "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "binary_bytes": 3600544,
+      "binary_member": "crg",
+      "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+    },
+    "candidate": {
+      "release": "v1.0.0-preview.2",
+      "asset_id": 734233184,
+      "asset_name": "containerresourceguard-v1.0.0-linux-amd64.tar.gz",
+      "archive_sha256": "d6bdfc89d6699a92d70e46a7aa561ccc54ba581901aed382158eb2a24d72952f",
+      "archive_bytes": 2211930,
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "binary_bytes": 4022432,
+      "binary_member": "crg",
+      "optional_helper_sha256": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+    }
+  },
+  "inputs_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "identity-qualification.json": "d293d2c400843b1a7765d38ef14aecd8c68333cfc29259b670e0bec8790ca77e",
+    "integration-qualification.json": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634",
+    "overhead-qualification.json": "68f1c207bd7e8ba430163d2c8b0228339a707d81159369678b95a1db4230d720",
+    "business-qualification.json": "f680f08aeeccb500c56655dfe5dbf07982e373928d70634fea400232e2090101",
+    "fault-qualification.json": "b26dd6678137d9f25f5f21bd334b030805782bbb33441b68340c597df6b69ca5",
+    "binaries/previous": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+    "binaries/candidate": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+  },
+  "base_source_sha256": "a5fdf31abc4e49472054b7d2e4d3e5999e36dcc7ed0a12500200411d1b80dec1",
+  "base_plan_sha256": "3e067d72321937e5fdcd4bfeeeca5f96b85e54fd3a019ec15a7acc128a7c5179",
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "final_disable_restores_true_runtime_originals": true,
+    "PID1_PG_cache_payload_and_original_ownership_preserved": true,
+    "other_five_controls_unchanged": true,
+    "three_active_controls_match_declared_disable_resume_phase": true
+  },
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "expected_checks": 26,
+  "intentional_control_transitions": "matching-old disable/restore returns to exact runtime originals before explicit replacement; each resumed Agent reapplies identical manual test budget; five unrelated controls unchanged",
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "original_startup_cache_and_native600_SLA_unchanged": true,
+  "scope": "actual two published asset versions, controlled disable/restore migration and rollback; not quiescent same-controls maintenance or two stable minor releases",
+  "original_quiescent_maintenance_criteria_waived": false,
+  "original32_percentage_and_all_historical_failures_retained": true,
+  "stable_release_accepted": false,
+  "derivation": [
+    {
+      "old": "crg-realpaths71-20261111",
+      "new": "crg-published-migration392-20261111",
+      "count": 1
+    },
+    {
+      "old": "crg-r71-20261111",
+      "new": "crg-published-migration393-tools-20261111",
+      "count": 1
+    },
+    {
+      "old": "crg-vendor-lab-realpaths71-20261111",
+      "new": "crg-vendor-lab-published-migration392-20261111",
+      "count": 1
+    },
+    {
+      "old": "CRG_R71_MAINTENANCE",
+      "new": "CRG_PUBLISHED_MIGRATION",
+      "count": 1
+    },
+    {
+      "old": "20261111071",
+      "new": "20261111392",
+      "count": 1
+    },
+    {
+      "old": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "new": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+      "count": 3
+    },
+    {
+      "old": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "new": "7638ee9f871287d1056e267034e0c4e46903b66e",
+      "count": 1
+    },
+    {
+      "old": "unreleased protocol-advertising combined development build",
+      "new": "published v0.1.0-rc.3-preview.1 exact official asset",
+      "count": 1
+    },
+    {
+      "old": "unpublished exact v1.0.0 versioned candidate",
+      "new": "published v1.0.0-preview.2 exact official asset",
+      "count": 1
+    },
+    {
+      "old": "  if info.get('revision')!=report['sources'][name]['revision'] or info.get('arch')!='amd64' or info.get('lock_protocol')!='cgroup-inode-flock+state-agent-lock-v1' or 1 not in info.get('journal_versions',[]):raise RuntimeError('source or maintenance protocol differs')",
+      "new": "  if info.get('revision')!=report['sources'][name]['revision'] or info.get('arch')!='amd64':raise RuntimeError('published source or architecture differs')\n  if name=='candidate' and (info.get('lock_protocol')!='cgroup-inode-flock+state-agent-lock-v1' or 1 not in info.get('journal_versions',[])):raise RuntimeError('candidate maintenance protocol differs')\n  if name=='previous' and ('lock_protocol' in info or 'journal_versions' in info):raise RuntimeError('old published protocol absence differs')",
+      "count": 1
+    },
+    {
+      "old": "def run(a,check=True,timeout=60,**kw):",
+      "new": "report.update(schema='crg-published-migration-v1',plan_sha256=plan_sha256,published_programs=frozen_plan['programs'],\n scope='Actual published old/current controlled disable-restore migration and rollback, both original vendor paths; not quiescent same-limits install or two-minor stable acceptance')\ndef run(a,check=True,timeout=60,**kw):",
+      "count": 1
+    },
+    {
+      "kind": "explicit block",
+      "old_sha256": "29aeb51142174fe2babb7a6fb6bac289f9861f26651de0c607a77c7fd80020ea",
+      "new_sha256": "f5da78edeea8003a2f421e73cef5d3b53cabd7fd20fab3ef26c7ad53a6aeedf3",
+      "purpose": "per-stage actual controls and original ownership; explicit bounded old/current commands and disabled writer checks; no status emulation"
+    },
+    {
+      "old": "     if found==[expected]:",
+      "new": "     if found==[expected] and all((cg/f).read_text()==v for f,v in expected_controls.items()) and not (folder/'resource-state/disabled.json').exists():",
+      "count": 1
+    },
+    {
+      "kind": "explicit operation block",
+      "old_sha256": "6cdc194d835b4a8a1e7927267558cbd5a2e3314730021355949bef7a601789a1",
+      "new_sha256": "e2cf1e6e1d0b6bf6e993219462ab5cb73a03a4359a75db4a1d7d5935629cb5f7",
+      "purpose": "keep protocol refusal, then prescribed matching-old disable and controlled manual migration/rollback, not bypass installer"
+    },
+    {
+      "old": "   disabled=json.loads(cli('disable').stdout)",
+      "new": "   disabled=json.loads(cli_at('/opt/crg/crg','disable').stdout)",
+      "count": 1
+    },
+    {
+      "old": "except Exception as e:report.update(phase='failed',error=str(e),traceback=traceback.format_exc())",
+      "new": "except BaseException as e:report.update(phase='failed',error=str(e),traceback=traceback.format_exc())",
+      "count": 1
+    },
+    {
+      "old": "len(report['tests'])==22",
+      "new": "len(report['tests'])==26",
+      "count": 1
+    }
+  ],
+  "unchanged_base_helpers_AST": [
+    "run",
+    "create",
+    "ex",
+    "save",
+    "record",
+    "reserve",
+    "delete_pod"
+  ],
+  "executor_sha256": "70dd11ab1f239b801d2eaa68e3e0895df2d3848423b1c27f40d5344c0a704672",
+  "original_quiescent_maintenance_reference_criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "PID1_PG_cache_payload_journal_originals_and_all_eight_controls_preserved_during_maintenance": true,
+    "final_disable_restores_true_runtime_originals": true
+  }
+}
