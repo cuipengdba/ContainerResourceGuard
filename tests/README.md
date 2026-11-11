@@ -88,3 +88,9 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 `vendor-business-memory-pressure.py`：原600秒业务中的精确内存30→20高用量延后/释放/同代次重试；`vendor-memory-pressure-worker.py`及Linux自检仅为有界匿名内存测试工具。见[固定协议](../docs/testing-business-memory-pressure.md)，默认只读，必须有隔离执行标记。
+
+
+`vendor-memory-pressure-worker-v2.py`与`vendor-memory-pressure-selftest-v2.py`修正厂商Python2的linux2平台名兼容；旧工具/原失败保持。Linux7项和两镜像16项有界释放检查见[实际运行时结果](../docs/testing-memory-pressure-legacy-runtime.md)，不计真实30→20压力或业务通过。
+
+
+`vendor-business-memory-pressure-legacy.py`绑定实际Python2/linux2验证过的v2内存工具，保留原32项/两角色600秒及全部原SLA；见[新冻结协议](../docs/testing-business-memory-pressure-legacy.md)。原R130失败执行器/计划不修改。

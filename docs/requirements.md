@@ -168,3 +168,12 @@ R21/R29/R30的深入诊断补入[实际原厂商路径分段终态](testing-busi
 
 
 P03.3原“30→20遇高用量延后”按[精确压力协议](testing-business-memory-pressure.md)补齐：有界测试内存/实际memory.current大于真实20%目标、保留30%实际硬限额、释放后同代次重试，不以1%替代；此时业务尚未执行，三个产品参数与一对一/辅助隔离要求保持。
+
+
+精确30→20压力补测已启动，[固定开始记录](test-start-business-memory-pressure.json)归档原进程身份/计划/程序摘要、前置拒绝和辅助释放检查；此记录不是压力或完整业务接受，原R120关闭超时和长期范围保持。
+
+
+已归档[压力测试工具Python2修正](testing-memory-pressure-legacy-runtime.md)：R130失败和原来源保持，仅新工具接受实际linux2平台；有界64MiB协议检查不替代真实30→20高用量要求，也不改变产品三个参数、一对一、辅助隔离或原业务SLA。
+
+
+精确30→20压力按[R142新冻结协议](testing-business-memory-pressure-legacy.md)继续，绑定已在厂商旧Python实测的v2辅助工具，不改原控制/业务阈值；此时业务尚未执行，原失败与长期范围保持。

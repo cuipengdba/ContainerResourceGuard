@@ -92,3 +92,9 @@
 
 
 R120[配置恢复边界联测失败](testing-business-reload-source-recovery.md)：DBS22段/24项局部主检查和五类恢复均通过原门槛，但备库fast stop超30秒，日志restartpoint37.924秒/sync37.713秒，整轮失败；未完成600秒、HIS未执行，运行器/Pod/cgroup及输入恢复独立确认。原失败、配额及SLA保持；[七天固定实际进程观察](test-progress-seven-day-during-source-recovery.json)仍为measuring，未接受稳定版。
+
+
+原P03.3/P05.2[精确30→20压力与释放后重试](testing-business-memory-pressure.md)已启动；[开始快照](test-start-business-memory-pressure.json)仅DBS8项局部主检查，不计32项/两角色600秒完成。辅助工具7项释放、真实前置7项、三个源码分支CI及42份公开文件摘要通过，原R113/R120失败/原预算/30秒停止及全部长期条件保持。
+
+
+R130[压力补测失败](testing-business-memory-pressure.md)：辅助工具在Python2/linux2平台名判断处拒绝，未申请压力内存，仅DBS10项局部检查，无600秒/HIS业务接受。新工具[实际运行时兼容/释放检查](testing-memory-pressure-legacy-runtime.md)通过Linux7项及两镜像16项并独立清理；产品与原执行器/计划保持，真实高用量及R120/长期仍待。

@@ -1,0 +1,476 @@
+{
+  "schema": "crg-memory-pressure-vendor-runtime-result-v1",
+  "phase": "passed",
+  "observation": {
+    "node_utc": "2026-11-11T10:10:43.726784+00:00",
+    "launch": {
+      "pid": 3820410,
+      "start_ticks": 133157490,
+      "entry": "/var/tmp/crg-memory130-tools-20261111/python137-runtime-check.py",
+      "executor_sha256": "788fb7cea97b3c17ca1b18c10e5f9feb7a6b5d9a42234698c375b9b78e89deff"
+    },
+    "process": {
+      "pid": 3820410,
+      "exists": false,
+      "same_instance": false
+    },
+    "report": {
+      "phase": "passed",
+      "started_node_utc": "2026-11-11T10:07:11.838565+00:00",
+      "roles": {
+        "dbs": {
+          "runtime": {
+            "python": [
+              2,
+              7,
+              5
+            ],
+            "platform": "linux2",
+            "pointer_bytes": 8
+          },
+          "checks": [
+            {
+              "case": "old-linux2-rejection",
+              "passed": true,
+              "events": [
+                {
+                  "phase": "rejected",
+                  "reason": "explicit isolated Linux64 fixture marker required",
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-missing-marker",
+              "passed": true,
+              "events": [
+                {
+                  "phase": "rejected",
+                  "reason": "explicit isolated Linux64 fixture marker required",
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-EOF-empty",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 25,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "released",
+                  "reason": "EOF",
+                  "lifetime_seconds": 0.0,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 0,
+              "stderr": ""
+            },
+            {
+              "case": "new-normal",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 31,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 31,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 0,
+                  "pid": 31,
+                  "op": "release"
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 0,
+                  "pid": 31,
+                  "op": "exit"
+                },
+                {
+                  "phase": "released",
+                  "reason": "exit-command",
+                  "lifetime_seconds": 0.0400000000372529,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 0,
+              "stderr": ""
+            },
+            {
+              "case": "new-EOF-allocated",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 37,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 37,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "EOF",
+                  "lifetime_seconds": 0.029999999329447746,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 0,
+              "stderr": ""
+            },
+            {
+              "case": "new-invalid-allocated",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 43,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 43,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "ValueError:command must have only op",
+                  "lifetime_seconds": 0.0400000000372529,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-TERM",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 49,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 49,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "RuntimeError:lease-or-signal-15",
+                  "lifetime_seconds": 0.24000000022351742,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-idle-lease",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 61,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 61,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "RuntimeError:lease-or-signal-14",
+                  "lifetime_seconds": 10.040000000037253,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            }
+          ],
+          "no_business_or_host_mounts": true
+        },
+        "hisdbs": {
+          "runtime": {
+            "python": [
+              2,
+              7,
+              5
+            ],
+            "platform": "linux2",
+            "pointer_bytes": 8
+          },
+          "checks": [
+            {
+              "case": "old-linux2-rejection",
+              "passed": true,
+              "events": [
+                {
+                  "phase": "rejected",
+                  "reason": "explicit isolated Linux64 fixture marker required",
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-missing-marker",
+              "passed": true,
+              "events": [
+                {
+                  "phase": "rejected",
+                  "reason": "explicit isolated Linux64 fixture marker required",
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-EOF-empty",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 25,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "released",
+                  "reason": "EOF",
+                  "lifetime_seconds": 0.0,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 0,
+              "stderr": ""
+            },
+            {
+              "case": "new-normal",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 31,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 31,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 0,
+                  "pid": 31,
+                  "op": "release"
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 0,
+                  "pid": 31,
+                  "op": "exit"
+                },
+                {
+                  "phase": "released",
+                  "reason": "exit-command",
+                  "lifetime_seconds": 0.0400000000372529,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 0,
+              "stderr": ""
+            },
+            {
+              "case": "new-EOF-allocated",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 37,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 37,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "EOF",
+                  "lifetime_seconds": 0.029999999329447746,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 0,
+              "stderr": ""
+            },
+            {
+              "case": "new-invalid-allocated",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 43,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 43,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "ValueError:command must have only op",
+                  "lifetime_seconds": 0.03000000026077032,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-TERM",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 49,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 49,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "RuntimeError:lease-or-signal-15",
+                  "lifetime_seconds": 0.3700000001117587,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            },
+            {
+              "case": "new-idle-lease",
+              "passed": true,
+              "events": [
+                {
+                  "chunk_bytes": 67108864,
+                  "lease_seconds": 10,
+                  "pid": 61,
+                  "lifetime_seconds": 240,
+                  "phase": "ready",
+                  "maximum_bytes": 12884901888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 61,
+                  "op": "allocate"
+                },
+                {
+                  "phase": "released",
+                  "reason": "RuntimeError:lease-or-signal-14",
+                  "lifetime_seconds": 10.03000000026077,
+                  "allocated_bytes": 0
+                }
+              ],
+              "exit": 1,
+              "stderr": "command terminated with exit code 1\n"
+            }
+          ],
+          "no_business_or_host_mounts": true
+        }
+      },
+      "source_sha256": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+      "scope": "cached vendor images with a sleep command and no data/host mounts; maximum64MiB per helper; not vendor business or pressure30-to20 acceptance",
+      "Linux_host_selftest": {
+        "exit": 0,
+        "stdout": "{\"phase\": \"passed\", \"checks\": [\"invalid commands and fixed cap rejected without allocation\", \"missing marker rejects before allocation\", \"normal exits and emits release\", \"EOF exits and emits release\", \"invalid-after-allocation exits and emits release\", \"TERM exits and emits release\", \"idle-lease exits and emits release\"], \"maximum_actual_allocation_each_process\": 67108864, \"product_or_cgroup_writes\": false}\n",
+        "stderr": ""
+      },
+      "namespace_absent": true,
+      "ended_node_utc": "2026-11-11T10:09:05.462826+00:00"
+    },
+    "report_sha256": "b428c37efa823fbd983190850fa26d5af2b3226ddbcf0047c5506b72d5b38c04",
+    "namespace_absent": true,
+    "runtime_containers_running": [],
+    "runtime_log_tail": "{\"phase\": \"passed\", \"checks\": {\"dbs\": 8, \"hisdbs\": 8}, \"namespace_absent\": true, \"reason\": null}\n"
+  },
+  "raw_observation_sha256": "dce95ce338ae701645444890941e82d84ddc65bf1a5d954429ce30349cdd491c",
+  "frozen_executor_source": "import datetime,hashlib,json,os,pathlib,select,subprocess,time,tarfile\nos.umask(0o077)\nw=pathlib.Path('/var/tmp/crg-memory138-tools-20261111');root=pathlib.Path('/var/tmp/crg-python137-20261111');ns='crg-vendor-lab-python137-20261111'\nroot.mkdir(mode=0o700,exist_ok=False);w.mkdir(mode=0o700,exist_ok=False)\npayload=pathlib.Path('/var/tmp/crg-memory130-tools-20261111/legacy136-helper.tar')\nassert hashlib.sha256(payload.read_bytes()).hexdigest()=='a77e214500de78dcf0d154c5ff7572b150a20df2291d0081018eba3ea03fc340'\nwith tarfile.open(payload) as archive:\n assert archive.getnames()==['vendor-memory-pressure-worker-v2.py','vendor-memory-pressure-selftest-v2.py']\n for item in archive.getmembers():\n  assert item.isfile() and item.size<65536\n  with (w/item.name).open('xb') as out:out.write(archive.extractfile(item).read())\nsource=(w/'vendor-memory-pressure-worker-v2.py').read_text();old=pathlib.Path('/var/tmp/crg-memory130-tools-20261111/vendor-memory-pressure-worker.py').read_text()\nassert source==old.replace(\"sys.platform!='linux'\",\"not sys.platform.startswith('linux')\")\nreport={'phase':'running','started_node_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'roles':{},'source_sha256':hashlib.sha256(source.encode()).hexdigest(),\n 'scope':'cached vendor images with a sleep command and no data/host mounts; maximum64MiB per helper; not vendor business or pressure30-to20 acceptance'}\nuid=None;pods={}\ndef save():\n with (root/'report.candidate').open('w') as out:json.dump(report,out,indent=2)\n (root/'report.candidate').replace(root/'report.json')\ndef run(args,check=True,timeout=30,data=None):\n p=subprocess.run(args,input=data,capture_output=True,text=True,timeout=timeout)\n if check:assert p.returncode==0,(args[:4],p.returncode,p.stderr[-500:])\n return p\ndef meta(kind,name):\n p=run(['kubectl','get',kind,name,'-n',ns,'--ignore-not-found','-o','json']);return json.loads(p.stdout) if p.stdout.strip() else None\ndef create(obj):run(['kubectl','create','-f','-'],data=json.dumps(obj))\ndef receive(p,seconds=5):\n ready,_,_=select.select([p.stdout],[],[],seconds);assert ready,'helper response deadline'\n line=p.stdout.readline();assert line and len(line)<4096;return json.loads(line)\ndef send(p,op):\n p.stdin.write(json.dumps({'op':op}).encode()+b'\\n');p.stdin.flush();return receive(p)\ndef one(role,pod,case):\n marked=case!='new-missing-marker';code=old if case=='old-linux2-rejection' else source\n args=['kubectl','exec','-i','-n',ns,pod,'-c',role,'--','env']\n if marked:args+=['CRG_MEMORY_PRESSURE_TEST=authorized-disposable-loopback-only']\n else:args+=['-u','CRG_MEMORY_PRESSURE_TEST']\n args+=['python','-u','-c',code]\n p=subprocess.Popen(args,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,bufsize=0);events=[]\n try:\n  hello=receive(p);events.append(hello)\n  if case in ['old-linux2-rejection','new-missing-marker']:\n   assert hello['phase']=='rejected' and hello['allocated_bytes']==0;p.stdin.close();assert p.wait(5)==1\n  else:\n   assert hello['phase']=='ready' and hello['maximum_bytes']==12<<30 and hello['lease_seconds']==10\n   if case=='new-EOF-empty':p.stdin.close()\n   else:\n    ack=send(p,'allocate');events.append(ack);assert ack['allocated_bytes']==64<<20\n    if case=='new-normal':\n     assert send(p,'ping')['allocated_bytes']==64<<20\n     ack=send(p,'release');events.append(ack);assert ack['allocated_bytes']==0\n     events.append(send(p,'exit'))\n    elif case=='new-EOF-allocated':p.stdin.close()\n    elif case=='new-invalid-allocated':\n     p.stdin.write(b'{\"op\":\"allocate\",\"bytes\":1099511627776}\\n');p.stdin.flush()\n    elif case=='new-TERM':\n     target=int(hello['pid']);assert target>1\n     kill=\"import os,sys,signal,hashlib; p=int(sys.argv[1]); a=open('/proc/%s/cmdline'%p,'rb').read().split(b'\\\\0'); assert any(hashlib.sha256(s).hexdigest()==sys.argv[2] for s in a); os.kill(p,signal.SIGTERM)\"\n     run(['kubectl','exec','-n',ns,pod,'-c',role,'--','python','-c',kill,str(target),report['source_sha256']],timeout=10)\n    else:assert case=='new-idle-lease'\n   released=receive(p,13 if case=='new-idle-lease' else 5);events.append(released)\n   assert released['phase']=='released' and released['allocated_bytes']==0\n   assert p.wait(5)==(1 if case in ['new-invalid-allocated','new-TERM','new-idle-lease'] else 0)\n  return {'case':case,'passed':True,'events':events,'exit':p.returncode,'stderr':p.stderr.read().decode('utf-8','replace')[-500:]}\n finally:\n  if p.poll() is None:\n   if not p.stdin.closed:p.stdin.close()\n   try:p.wait(15)\n   except subprocess.TimeoutExpired:p.kill();p.wait(5)\nsave()\ntry:\n p=run(['python3',str(w/'vendor-memory-pressure-selftest-v2.py')],check=False,timeout=45)\n report['Linux_host_selftest']={'exit':p.returncode,'stdout':p.stdout,'stderr':p.stderr};assert p.returncode==0\n run(['kubectl','get','namespace',ns,'--ignore-not-found','-o','json']).stdout.strip()=='' or (_ for _ in ()).throw(AssertionError('namespace exists'))\n create({'apiVersion':'v1','kind':'Namespace','metadata':{'name':ns,'labels':{'managed-by':'crg-vendor-test'}}});uid=meta('namespace',ns)['metadata']['uid']\n create({'apiVersion':'networking.k8s.io/v1','kind':'NetworkPolicy','metadata':{'name':'deny-all','namespace':ns},'spec':{'podSelector':{},'policyTypes':['Ingress','Egress']}})\n for role in ['dbs','hisdbs']:\n  original=json.loads(run(['kubectl','get','pod',role+'-business','-n','crg-vendor-lab-acceptance78-20261111','-o','json']).stdout)\n  assert original['metadata']['labels'].get('managed-by')=='crg-vendor-test'\n  image=next(c['image'] for c in original['spec']['containers'] if c['name']==role);pod=role+'-python-runtime'\n  obj={'apiVersion':'v1','kind':'Pod','metadata':{'name':pod,'namespace':ns,'labels':{'managed-by':'crg-vendor-test'}},\n   'spec':{'nodeName':original['spec']['nodeName'],'restartPolicy':'Never','automountServiceAccountToken':False,\n    'containers':[{'name':role,'image':image,'imagePullPolicy':'Never','command':['/bin/sh','-c','exec sleep 240'],\n     'resources':{'requests':{'cpu':'1','memory':'256Mi'},'limits':{'cpu':'1','memory':'256Mi'}},\n     'securityContext':{'readOnlyRootFilesystem':True,'allowPrivilegeEscalation':False,'capabilities':{'drop':['ALL']}}}]}}\n  create(obj);pods[pod]=meta('pod',pod)['metadata']['uid'];run(['kubectl','wait','-n',ns,'--for=condition=Ready','pod/'+pod,'--timeout=60s'],timeout=70)\n  command=\"import sys,struct,json; print(json.dumps({'platform':sys.platform,'python':list(sys.version_info[:3]),'pointer_bytes':struct.calcsize('P')}))\"\n  runtime=json.loads(run(['kubectl','exec','-n',ns,pod,'-c',role,'--','python','-c',command]).stdout)\n  assert runtime=={'platform':'linux2','python':[2,7,5],'pointer_bytes':8}\n  item={'runtime':runtime,'checks':[],'no_business_or_host_mounts':True};report['roles'][role]=item;save()\n  for case in ['old-linux2-rejection','new-missing-marker','new-EOF-empty','new-normal','new-EOF-allocated','new-invalid-allocated','new-TERM','new-idle-lease']:\n   item['checks'].append(one(role,pod,case));save()\n  current=meta('pod',pod);assert current['metadata']['uid']==pods[pod] and all(c['restartCount']==0 for c in current['status']['containerStatuses'])\n  run(['kubectl','delete','pod',pod,'-n',ns,'--wait=true','--timeout=45s'],timeout=55);assert meta('pod',pod) is None;pods.pop(pod)\n report['phase']='passed'\nexcept BaseException as error:report.update(phase='failed',reason=type(error).__name__+':'+str(error)[:800])\nfinally:\n if uid is not None:\n  try:\n   current=meta('namespace',ns);assert current['metadata']['uid']==uid and current['metadata']['labels'].get('managed-by')=='crg-vendor-test'\n   run(['kubectl','delete','namespace',ns,'--wait=true','--timeout=90s'],timeout=100)\n   assert meta('namespace',ns) is None;report['namespace_absent']=True\n  except BaseException as error:report.update(phase='failed',cleanup_error=type(error).__name__)\n report['ended_node_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();save()\nprint(json.dumps({'phase':report['phase'],'checks':{k:len(v['checks']) for k,v in report['roles'].items()},'namespace_absent':report.get('namespace_absent'),'reason':report.get('reason')}))\nraise SystemExit(0 if report['phase']=='passed' else 1)\n",
+  "frozen_executor_sha256": "788fb7cea97b3c17ca1b18c10e5f9feb7a6b5d9a42234698c375b9b78e89deff",
+  "helper_source_sha256": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+  "Linux_host_checks": 7,
+  "vendor_image_checks": 16,
+  "maximum_allocation_each_process": 67108864,
+  "exact30_to20_pressure_accepted": false,
+  "vendor_business_accepted": false,
+  "stable_release_accepted": false,
+  "scope": "same cached vendor images, isolated sleep-only read-only-root Pods without data/host mounts; legacy Python runtime/lease/release qualification only"
+}
