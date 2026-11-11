@@ -1,6 +1,6 @@
 # 完整压力联测接入只读线程采样
 
-R167[冻结计划](test-plan-business-memory-pressure-threads.json)及`tests/vendor-business-memory-pressure-threads.py`已实现并已启动隔离联测；[开始快照](test-start-business-pressure-threads.json)只记录局部进展，整轮尚未接受。原R142失败、执行器、计划和原32项主检查全部保留；两角色各600秒、七次重载和四个压力恢复区间、原数据/配额/余量/所有SLA/原10项引擎及30秒备库停止不变。通过AST逐项比对，原完整业务方法仅增加一次观察器启动和一次进度保存。
+R167[冻结计划](test-plan-business-memory-pressure-threads.json)及`tests/vendor-business-memory-pressure-threads.py`已执行并失败；[完整终态](test-results-business-pressure-threads-failure.json)记录DBS实际600秒/两次SQL错误，HIS业务未执行。原开始快照作为历史保留。原R142失败、执行器、计划和原32项主检查全部保留；两角色各600秒、七次重载和四个压力恢复区间、原数据/配额/余量/所有SLA/原10项引擎及30秒备库停止不变。通过AST逐项比对，原完整业务方法仅增加一次观察器启动和一次进度保存。
 
 新增`vendor-thread-session.py`只用于测试，按各自cgroup中8090监听socket的唯一所有者定位，不猜HIS程序路径。固定PID/start/exe后，调用已通过19项及两角色15秒实际观察的原只读采样器。先收到完整首样本握手，才开始原引擎和压力窗口。最多900秒/每秒64线程/32MiB，原业务的超时不延长。主报告只存身份、有界摘要和原始报告SHA256/路径，完整样本单独保存。
 
@@ -17,3 +17,16 @@ R167[冻结计划](test-plan-business-memory-pressure-threads.json)及`tests/ven
 
 
 R167完整压力线程联测[已启动并归档开始快照](test-start-business-pressure-threads.json)：固定原运行器/worker/观察器PID及启动ticks；快照时DBS11区间、13项局部检查通过，真实高于20%目标时延后，释放后同gen7自动应用20%再恢复30%。原600秒负载/引擎仍pending、HIS业务尚未执行，不计完整业务通过。协议源码三个固定提交的CI均通过，公开45个来源/证据blob已核对，原发布包和历史失败保持。
+
+
+## R167完整终态：失败，SQL慢响应已获得服务端证据
+
+[终态结果](test-results-business-pressure-threads-failure.json)：DBS实际600.269469秒，原生SQL297次/2错误，最大5.013924秒、p95桶0.05秒、覆盖99%；API121次/0错误，最大0.010644秒。64MiB完整性、原PG实例和线程停止均保持。11个重载/压力区间和13项局部检查通过；原10项引擎只完成content-passed-native-pending，93个分段API探针最大外层3.975154秒。原零错误/最大5秒未通过，主执行器按NATIVE_COMPLETION_EXIT退出1，HIS业务未执行，整轮不接受。
+
+取得[601个原始只读样本gzip](test-evidence/pressure-thread-dbs.json.gz)，原文9160761字节，解压SHA256为3e919b62b9b02c134da9c45383b031e46f14c417c30be4694d147ad2bcf3afcb。首样本比原生负载开始晚约1.004秒，覆盖全部引擎/重载/压力区间，最大采样间隔1.000684秒，47线程，无race/截断。预定业务结束后TERM观察器保存partial，原报告incomplete/observer-interrupted及退出2保持；不改称自然900秒完成。采样CPU2.750426秒，整个观察器wait4 CPU3.145690秒，峰值RSS76864KiB，末尾写盘/停止0.401589秒；这些开销不证明无业务影响。
+
+601样本中cgroup CPU nr_throttled和throttled_usec增量均0，OOM kill均0；PSI三个文件均不可用。DBS API进程仅一次D/folio_wait_bit_common样本，不能解释SQL根因，也不能排除其他进程IO等待。
+
+独立取到实际主库日志postgresql_2026-11-11_194403.csv，原文件SHA256 a1d62f17e52c34d3cbc3e5a2009132695b50104a6f74147d28c66692342ffb3a。19:46:08.291/.292 CST附近，三个后端对同一合成键769–784的UPDATE记录13661.481、8648.039、3633.872毫秒服务端执行时间。原负载源码在失败时关闭连接并保持iteration，下一次连接重复这一键范围；日志因此显示重叠慢UPDATE，不能仅凭它认定行锁、磁盘或内存回收是初始阻塞原因。原生聚合未记两次错误各自时间/异常，不能硬配成逐请求证明。日志duration倒推的约19:45:54.630至19:46:08.291区间，其周围实际memory.max已恢复30%，CPU无节流；先前压力后的影响、PG等待事件和宿主IO仍需分别证据。
+
+运行器/worker/观察器、Pod namespace及全部所建cgroup独立核对消失；两角色原config字节、profile缺省状态和发布ELF摘要保持。旧R142/R120和其他失败不关闭。下一步先补原生SQL/API逐错误时间与类别、PostgreSQL活动/等待事件及会话身份诊断，保留原600秒、相同请求/重试行为、配额、32项主标准及全部历史证据；补证工具不能成为业务启动条件。暂不直接重复同一盲区的压力轮次。
