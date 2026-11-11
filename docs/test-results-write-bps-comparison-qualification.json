@@ -1,0 +1,247 @@
+{
+  "schema": "crg-write-bps-comparison-qualification-v1",
+  "phase": "readonly-and-denial-gates-passed-not-business-accepted",
+  "build_proof": {
+    "schema": "crg-write-bps-comparison-build-proof-v1",
+    "executor_sha256": "66c7e45b14c8a4fbea6301848d781851a58617a9cc65a3915416321e2f70781f",
+    "plan_sha256": "dc8d8f60b0713817ca47e3d0db55c1a34347900341008c308423553c6611dee1",
+    "checks": [
+      "A1 and A2 exact same policy and derived method",
+      "A numeric controls equal original R235",
+      "B differs only write-BPS during policy0",
+      "all explicit substitutions byte reversible; unchanged original method elsewhere"
+    ],
+    "all_original_criteria_unchanged": true,
+    "release_accepted": false
+  },
+  "linux_denial_gates": {
+    "schema": "crg-write-bps-comparison-denial-gates-v1",
+    "node_utc": "2026-11-11T15:44:25.144951+00:00",
+    "source_sha256": {
+      "vendor-write-bps-comparison.py": "66c7e45b14c8a4fbea6301848d781851a58617a9cc65a3915416321e2f70781f",
+      "comparison-plan.json": "dc8d8f60b0713817ca47e3d0db55c1a34347900341008c308423553c6611dee1"
+    },
+    "checks": [
+      {
+        "args": [],
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "args": [
+          "--execute"
+        ],
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "explicit lab marker required",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "work_root",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "arms",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "criteria",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "source_pg_control_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "pins",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "executor_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "frozen comparison plan mismatch",
+          "executed": false,
+          "release_accepted": false
+        },
+        "stderr": ""
+      }
+    ],
+    "all_gates_passed": true,
+    "comparison_root_absent": true,
+    "workload_started": false
+  },
+  "initial_cross_platform_plan_rejection": {
+    "initial_plan": "test-evidence/writebps261-initial-windows-plan.json",
+    "readonly_diff": {
+      "source_sha256": "66c7e45b14c8a4fbea6301848d781851a58617a9cc65a3915416321e2f70781f",
+      "diff": [
+        {
+          "path": "/source_folder",
+          "a": "\\var\\tmp\\crg-realpaths64-20261111\\v10-dbs-bw64\\dbs-business",
+          "b": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business"
+        },
+        {
+          "path": "/work_root",
+          "a": "\\var\\tmp\\crg-writebps261-20261111",
+          "b": "/var/tmp/crg-writebps261-20261111"
+        }
+      ],
+      "target_exists": false
+    },
+    "workload_started": false
+  },
+  "initial_launcher_gate_rejection": {
+    "reason": "transport JSON and node indented JSON have different raw SHA",
+    "rejected_before_runner_write_or_workload": true,
+    "resolution": "hash actual node indent2 serialization, then verify actual matching process handles"
+  },
+  "source_inventory": {
+    "schema": "crg-write-bps-comparison-source-inventory-v1",
+    "node_utc": "2026-11-11T15:35:10.818663+00:00",
+    "roles": {
+      "dbs": {
+        "crg-config/config.json": {
+          "size": 216,
+          "sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550"
+        },
+        "crg/crg": {
+          "size": 4022432,
+          "sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+        },
+        "pod.json": {
+          "size": 7129,
+          "sha256": "dac43fba0299014cfd47fd28ad91dd3a6046676be826e390ddb8bdd635d473ff"
+        },
+        "postgresql/pgdata/global/pg_control": {
+          "size": 8192,
+          "sha256": "cfef4406da71d9924a4773ceb67e120f710721a7aff186676797670a9e7149a8"
+        },
+        "postmaster_pid_present": false,
+        "profile_present": false,
+        "resolved_root": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business",
+        "resolved_pgdata": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/pgdata",
+        "pgdata_is_symlink": false,
+        "du": {
+          "exit": 0,
+          "stdout": "16917946368\t/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business\n",
+          "stderr": ""
+        },
+        "mount": {
+          "exit": 0,
+          "stdout": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/\",\n         \"source\": \"/dev/mapper/almalinux-root\",\n         \"fstype\": \"xfs\",\n         \"maj:min\": \"253:0\",\n         \"options\": \"rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota\"\n      }\n   ]\n}\n",
+          "stderr": ""
+        },
+        "pg_control": {
+          "exit": 0,
+          "fields": [
+            "pg_control version number:            1300",
+            "Catalog version number:               202107181",
+            "Database cluster state:               shut down",
+            "Latest checkpoint location:           1/A1FA208",
+            "Data page checksum version:           1"
+          ],
+          "stderr": ""
+        }
+      },
+      "hisdbs": {
+        "crg-config/config.json": {
+          "size": 216,
+          "sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550"
+        },
+        "crg/crg": {
+          "size": 4022432,
+          "sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+        },
+        "pod.json": {
+          "size": 7084,
+          "sha256": "6272fd88f8f2cc46f7b95ff01d7c883a969dffe10fdc06973735297a1719a372"
+        },
+        "postgresql/pgdata/global/pg_control": {
+          "size": 8192,
+          "sha256": "6c4316337d323dc311cf02c4b1a2dea79c0d881d3eac4b4f9979cc2303c18368"
+        },
+        "postmaster_pid_present": false,
+        "profile_present": false,
+        "resolved_root": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business",
+        "resolved_pgdata": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/pgdata",
+        "pgdata_is_symlink": false,
+        "du": {
+          "exit": 0,
+          "stdout": "2394628096\t/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business\n",
+          "stderr": ""
+        },
+        "mount": {
+          "exit": 0,
+          "stdout": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/\",\n         \"source\": \"/dev/mapper/almalinux-root\",\n         \"fstype\": \"xfs\",\n         \"maj:min\": \"253:0\",\n         \"options\": \"rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota\"\n      }\n   ]\n}\n",
+          "stderr": ""
+        },
+        "pg_control": {
+          "exit": 0,
+          "fields": [
+            "pg_control version number:            1300",
+            "Catalog version number:               202107181",
+            "Database cluster state:               shut down",
+            "Latest checkpoint location:           0/5921A4E0",
+            "Data page checksum version:           1"
+          ],
+          "stderr": ""
+        }
+      }
+    },
+    "new_workloads_or_control_writes": false,
+    "disk_free_bytes": 192289509376,
+    "xfs_info": {
+      "exit": 0,
+      "stdout": "meta-data=/dev/mapper/almalinux-root isize=512    agcount=52, agsize=4587520 blks\n         =                       sectsz=512   attr=2, projid32bit=1\n         =                       crc=1        finobt=1, sparse=1, rmapbt=0\n         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0\ndata     =                       bsize=4096   blocks=235739136, imaxpct=25\n         =                       sunit=0      swidth=0 blks\nnaming   =version 2              bsize=4096   ascii-ci=0, ftype=1\nlog      =internal log           bsize=4096   blocks=16384, version=2\n         =                       sectsz=512   sunit=0 blks, lazy-count=1\nrealtime =none                   extsz=4096   blocks=0, rtextents=0\n",
+      "stderr": ""
+    },
+    "source_mounts": []
+  },
+  "stable_release_accepted": false
+}

@@ -213,3 +213,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 已补充[R235实际PGDATA及IO映射只读核对](testing-final-wait-io-map.md)：原Pod明确PGDATA=/opt/postgresql/pgdata，实际WAL/日志/备份均为同一XFS253:0→sda2→sda，原标定profile保持。初次/data猜测路径的不存在和纠正完整保留；失败后队列快照不替代故障时刻或证明因果，不计独立物理多盘/业务通过。
+
+
+已完成[R235逐秒IO复现](testing-pressure235-IO-timeline.md)：599区间/6错误窗口均在最后切换后，控制读回与配置一致，严格请求内D样本4与IO括区间D样本5分开。基于该线索已启动[完整冷副本写BPS A/B/A诊断](testing-write-bps-comparison.md)，原native/备份/内存压力/SLA保留，两组manual且仅写带宽轨迹不同；8项前置通过、三副本先冻结，首快照A1仅启动2项，非原32/两角色百分比验收。初始跨平台计划及启动校验拒绝均留档，旧失败/原标准/52项不变。
