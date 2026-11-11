@@ -1,0 +1,1830 @@
+{
+  "schema": "crg-business-reload-edges-failed-result-v1",
+  "phase": "failed",
+  "observed_node_utc": "2026-11-11T09:08:55.159734+00:00",
+  "source_commit": "4ef648428eadfe5f24f61cd1f68d50ab8f51d2fc",
+  "report": {
+    "schema": "crg-business-reload-edges-report-v1",
+    "phase": "failed",
+    "mode": "reload-edges",
+    "plan_sha256": "610595f6007ebf3e74c2ca24f25e45bb6fe2fab1e9dc7a688109eb28eed172b3",
+    "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "executor_sha256": "ab749c81fca0e6a904bf61fc3807231d64fa616f3a3da22da4c4ce3f6934ad33",
+    "criteria": {
+      "startup_seconds": 300,
+      "cache_after_ready_seconds": 45,
+      "native_seconds_each_role": 600,
+      "clone_host_available_bytes": 30064771072,
+      "steady_host_available_bytes": 8589934592,
+      "disk_free_bytes": 21474836480,
+      "maximum_errors": 0,
+      "maximum_request_seconds": 5,
+      "p95_bucket_seconds": 1,
+      "minimum_coverage": 0.98,
+      "payload_bytes": 67108864,
+      "oom_kill_delta": 0
+    },
+    "roles": {
+      "dbs": {
+        "phase": "booting-original-business",
+        "boots": [
+          {
+            "phase": "business-reload",
+            "pod_uid": "678eefcb-a1c8-41e5-b014-455d4f5509a4",
+            "container_id": "85af2364441a26e2afb2e86b4a5a401ccf7b425d8cabc70ced9e60f41286b8ca",
+            "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod678eefcb_a1c8_41e5_b014_455d4f5509a4.slice/cri-containerd-85af2364441a26e2afb2e86b4a5a401ccf7b425d8cabc70ced9e60f41286b8ca.scope",
+            "runtime_original_controls": {
+              "cpu.max": "800000 100000",
+              "memory.max": "21474836480",
+              "io.max": "",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "network_isolated_before_start": true,
+            "ready_seconds": 25.865097483154386,
+            "identity": "cda1e9670a78f96bbed5e1554066166eaedb59440eb199b7960c82c75a96d458",
+            "active_controls": {
+              "cpu.max": "720000 100000",
+              "memory.max": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "primary_start": "2026-11-11 16:50:43.489778+08",
+            "reload_intervals": [
+              {
+                "case": "manual-to-percent-during-engine",
+                "started_epoch": 1794387084.116142,
+                "ended_epoch": 1794387085.451725,
+                "generation": 2,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 30,
+                  "io_percent": 100
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "three-independent-percentages-during-native",
+                "started_epoch": 1794387085.764884,
+                "ended_epoch": 1794387089.2258763,
+                "generation": 3,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80
+                },
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "invalid-IO-retains-entire-policy",
+                "started_epoch": 1794387089.5172698,
+                "ended_epoch": 1794387093.890252,
+                "generation": 3,
+                "configuration_state": "rejected",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 101
+                },
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "partial-JSON-retains-entire-policy",
+                "started_epoch": 1794387094.1882331,
+                "ended_epoch": 1794387096.7809944,
+                "generation": 3,
+                "configuration_state": "rejected",
+                "requested_policy": "malformed JSON",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "duplicate-key-retains-entire-policy",
+                "started_epoch": 1794387097.0887184,
+                "ended_epoch": 1794387100.7179897,
+                "generation": 3,
+                "configuration_state": "rejected",
+                "requested_policy": "malformed JSON",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "ConfigMap-style-symlink-accepts-valid-policy",
+                "started_epoch": 1794387101.031913,
+                "ended_epoch": 1794387102.885417,
+                "generation": 4,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 30,
+                  "io_percent": 100
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "percent-to-manual-three-resources",
+                "started_epoch": 1794387103.1674902,
+                "ended_epoch": 1794387104.2540035,
+                "generation": 5,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "resource_mode": "manual",
+                  "limits": {
+                    "cpu_cores": 7.2,
+                    "memory_max": "20001980416B",
+                    "io_read_bps": "64MiB",
+                    "io_write_bps": "64MiB",
+                    "io_read_iops": 4096,
+                    "io_write_iops": 4096
+                  },
+                  "data_paths": [
+                    "/opt/postgresql"
+                  ]
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "unsafe-memory1-accepted-but-kernel-limit-deferred",
+                "started_epoch": 1794387105.0388393,
+                "ended_epoch": 1794387112.466775,
+                "generation": 6,
+                "configuration_state": "accepted",
+                "accepted_hash": "6a12c8e49614959f1b3907200875e70fbbb5285126764c422a9771dbe7cf80a1",
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true,
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 1,
+                  "io_percent": 100
+                },
+                "requested_memory_bytes": 666730496,
+                "memory_reason_code": "memory_safety",
+                "hold_observations": [
+                  {
+                    "epoch": 1794387106.4180217,
+                    "memory_current": 2353336320,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387106.70753,
+                    "memory_current": 2354061312,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387106.9971313,
+                    "memory_current": 2355171328,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387107.286981,
+                    "memory_current": 2356719616,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387107.5769265,
+                    "memory_current": 2360328192,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387107.8664865,
+                    "memory_current": 2360348672,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387108.1570783,
+                    "memory_current": 2364928000,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387108.4472184,
+                    "memory_current": 2361413632,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387108.7376251,
+                    "memory_current": 2364518400,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387109.0273402,
+                    "memory_current": 2364444672,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387109.3169155,
+                    "memory_current": 2365702144,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387109.6074405,
+                    "memory_current": 2365931520,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387109.897316,
+                    "memory_current": 2366324736,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387110.1871207,
+                    "memory_current": 2366971904,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387110.47688,
+                    "memory_current": 2367606784,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387110.766382,
+                    "memory_current": 2367553536,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387111.0561347,
+                    "memory_current": 2368040960,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387111.3457577,
+                    "memory_current": 2368536576,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387111.6355731,
+                    "memory_current": 2379767808,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387111.9257894,
+                    "memory_current": 2386968576,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387112.215881,
+                    "memory_current": 2398646272,
+                    "memory_max": "20001980416"
+                  }
+                ],
+                "hold_seconds": 6,
+                "journal_applied_memory": "20001980416",
+                "journal_pending": ""
+              },
+              {
+                "case": "unsafe-memory-request-recovery-to-percent30",
+                "started_epoch": 1794387112.7701206,
+                "ended_epoch": 1794387121.0325112,
+                "generation": 7,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 30,
+                  "io_percent": 100
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "safe-memory29-waits-for6s-stable-window",
+                "started_epoch": 1794387121.3829665,
+                "ended_epoch": 1794387139.6326015,
+                "generation": 8,
+                "configuration_state": "accepted",
+                "accepted_hash": "aeab1b35345be70f8221f87e87d3ed6dd696cf25723a32daa64de717b548e74c",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true,
+                "memory_reason_code": "memory_window",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80,
+                  "memory_stable_seconds": 6
+                }
+              },
+              {
+                "case": "safe-memory29-applies-after-stable-window",
+                "started_epoch": 1794387121.3829665,
+                "ended_epoch": 1794387146.7636127,
+                "generation": 8,
+                "configuration_state": "accepted",
+                "accepted_hash": "aeab1b35345be70f8221f87e87d3ed6dd696cf25723a32daa64de717b548e74c",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true,
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80,
+                  "memory_stable_seconds": 6
+                },
+                "observed_applied_epoch": 1794387146.7226799,
+                "observed_elapsed_monotonic": 25.380409406963736,
+                "minimum_stable_seconds": 6,
+                "observations": [
+                  {
+                    "epoch": 1794387139.943964,
+                    "memory_current": 3227844608,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387140.1952574,
+                    "memory_current": 3246485504,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387140.4464476,
+                    "memory_current": 3245486080,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387140.697627,
+                    "memory_current": 3245842432,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387140.9488084,
+                    "memory_current": 3248115712,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387141.199875,
+                    "memory_current": 3248365568,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387141.450876,
+                    "memory_current": 3262013440,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387141.7019286,
+                    "memory_current": 3285037056,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387141.9528964,
+                    "memory_current": 3289415680,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387142.2038908,
+                    "memory_current": 3311828992,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387142.4548812,
+                    "memory_current": 3314376704,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387142.7059069,
+                    "memory_current": 3314946048,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387142.9568937,
+                    "memory_current": 3317997568,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387143.2078924,
+                    "memory_current": 3318366208,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387143.4588778,
+                    "memory_current": 3319058432,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387143.7098882,
+                    "memory_current": 3335651328,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387143.9608917,
+                    "memory_current": 3338350592,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387144.2118697,
+                    "memory_current": 3362422784,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387144.4629014,
+                    "memory_current": 3380088832,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387144.7139351,
+                    "memory_current": 3398176768,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387144.964876,
+                    "memory_current": 3423129600,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387145.2159076,
+                    "memory_current": 3440340992,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387145.4668796,
+                    "memory_current": 3474964480,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387145.7179976,
+                    "memory_current": 3517325312,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387145.969208,
+                    "memory_current": 3532435456,
+                    "memory_max": "20001980416"
+                  },
+                  {
+                    "epoch": 1794387146.220297,
+                    "memory_current": 3540107264,
+                    "memory_max": "19335249920"
+                  },
+                  {
+                    "epoch": 1794387146.4714777,
+                    "memory_current": 3532566528,
+                    "memory_max": "19335249920"
+                  },
+                  {
+                    "epoch": 1794387146.7226799,
+                    "memory_current": 3533746176,
+                    "memory_max": "19335249920"
+                  }
+                ]
+              },
+              {
+                "case": "stable-window-config-removal-retains-valid-percent29",
+                "started_epoch": 1794387147.0436385,
+                "ended_epoch": 1794387148.1226323,
+                "generation": 9,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80
+                },
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "missing-config-retains-last-good-and-responsive-Agent",
+                "started_epoch": 1794387148.437242,
+                "ended_epoch": 1794387153.4211707,
+                "generation": 9,
+                "configuration_state": "rejected",
+                "accepted_hash": "8616814e37f9e7d2276e3945ab20fcd6f46403c0ce2e126bbdea10781b88a5e5",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true,
+                "source_kind": "missing",
+                "rejection_error": "configuration read failed; last good policy retained: no such file or directory",
+                "hold_seconds": 3,
+                "last_good_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80
+                }
+              },
+              {
+                "case": "missing-source-recovery-keeps-generation9",
+                "started_epoch": 1794387153.7214053,
+                "ended_epoch": 1794387154.0476909,
+                "generation": 9,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80
+                },
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "directory-config-retains-last-good-and-responsive-Agent",
+                "started_epoch": 1794387154.3809915,
+                "ended_epoch": 1794387158.2205477,
+                "generation": 9,
+                "configuration_state": "rejected",
+                "accepted_hash": "8616814e37f9e7d2276e3945ab20fcd6f46403c0ce2e126bbdea10781b88a5e5",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true,
+                "source_kind": "directory",
+                "rejection_error": "configuration read failed; last good policy retained: JSON source must resolve to a regular file",
+                "hold_seconds": 3,
+                "last_good_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80
+                }
+              }
+            ],
+            "samples": [
+              {
+                "epoch": 1794387054.7091827,
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_processes": true
+              },
+              {
+                "epoch": 1794387120.8901737,
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_processes": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "tests": [
+      {
+        "name": "dbs-business-reload-original-start-and-three-controls",
+        "passed": true
+      },
+      {
+        "name": "dbs-business-reload-one-current-Agent-fresh-cache-readonly-CCG",
+        "passed": true
+      },
+      {
+        "name": "dbs-manual-to-percent-during-engine",
+        "passed": true
+      },
+      {
+        "name": "dbs-three-independent-percentages-during-native",
+        "passed": true
+      },
+      {
+        "name": "dbs-invalid-IO-retains-entire-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-partial-JSON-retains-entire-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-duplicate-key-retains-entire-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-ConfigMap-style-symlink-accepts-valid-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-percent-to-manual-three-resources",
+        "passed": true
+      },
+      {
+        "name": "dbs-unsafe-memory1-accepted-but-kernel-limit-deferred",
+        "passed": true
+      },
+      {
+        "name": "dbs-unsafe-memory-request-recovery-to-percent30",
+        "passed": true
+      },
+      {
+        "name": "dbs-safe-memory29-waits-for6s-stable-window",
+        "passed": true
+      },
+      {
+        "name": "dbs-safe-memory29-applies-after-stable-window",
+        "passed": true
+      },
+      {
+        "name": "dbs-stable-window-config-removal-retains-valid-percent29",
+        "passed": true
+      },
+      {
+        "name": "dbs-missing-config-retains-last-good-and-responsive-Agent",
+        "passed": true
+      },
+      {
+        "name": "dbs-missing-source-recovery-keeps-generation9",
+        "passed": true
+      },
+      {
+        "name": "dbs-directory-config-retains-last-good-and-responsive-Agent",
+        "passed": true
+      }
+    ],
+    "P10_complete": false,
+    "release_accepted": false,
+    "postflight_executed": false,
+    "scope": "original business600s plus original7 transitions, unsafe memory and stable-window/source-failure cases; no long acceptance",
+    "embedded_version": "v1.0.0",
+    "immutable_template_sha256": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+    "base_helper_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+    "measured_profile_sha256": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "base_reload_executor_sha256": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+    "timed_engine_sha256": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+    "timed_api_sha256": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+    "edge_contract": {
+      "unsafe_memory_percent": 1,
+      "unsafe_memory_bytes": 666730496,
+      "unsafe_hold_seconds": 6,
+      "stable_window_seconds": 6,
+      "source_failure_hold_seconds": 3,
+      "source_failure_wait_seconds": 60,
+      "source_cases": [
+        "missing",
+        "directory",
+        "FIFO",
+        "oversized",
+        "dangling-symlink"
+      ],
+      "source_recovery_keeps_generation": 9,
+      "total_intervals_each_role": 22,
+      "total_main_checks": 54
+    },
+    "historical_failure_resolved": false,
+    "readiness": {
+      "phase": "ready",
+      "executed": false,
+      "stable_release_accepted": false,
+      "scope": "read-only edge prerequisites; not long or historical exec acceptance"
+    },
+    "namespace_uid": "aedbf903-46ce-405d-8404-c7001bd9d3e1",
+    "reason": "RELOAD_DEADLINE_directory-source-recovery-keeps-generation9",
+    "namespace_absent": true,
+    "aged_fixture_retained": true,
+    "ended_utc": "2026-11-11T08:53:57.086633+00:00",
+    "original_config_bytes_and_profile_absence_restored": true
+  },
+  "gates": {
+    "node_utc": "2026-11-11T08:47:55.816842+00:00",
+    "files": {
+      "vendor-business-reload-edges.py": "ab749c81fca0e6a904bf61fc3807231d64fa616f3a3da22da4c4ce3f6934ad33",
+      "edges-plan.json": "610595f6007ebf3e74c2ca24f25e45bb6fe2fab1e9dc7a688109eb28eed172b3",
+      "vendor-api-timed.py": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+      "vendor-engine-timed.py": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+      "vendor-versioned-business-reload.py": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+      "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+      "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+      "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8"
+    },
+    "observations": [
+      {
+        "args": [],
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "executed": false,
+          "stable_release_accepted": false,
+          "scope": "read-only edge prerequisites; not long or historical exec acceptance"
+        },
+        "stderr": ""
+      },
+      {
+        "args": [
+          "--execute"
+        ],
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "EXPLICIT_LAB_MARKER",
+          "executed": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "namespace",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "criteria",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "timed_api_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      }
+    ],
+    "target_absent_after_all_gates": true,
+    "executed": false
+  },
+  "launch": {
+    "pid": 2767487,
+    "start_ticks": 132695548,
+    "entry": "/var/tmp/crg-edges113-tools-20261111/edges-runner.py",
+    "runner_sha256": "3a53db3b3142ca60580b5a8e65f937f50ee43d03ad0f4af0721339031198487c",
+    "executor_sha256": "ab749c81fca0e6a904bf61fc3807231d64fa616f3a3da22da4c4ce3f6934ad33",
+    "plan_sha256": "610595f6007ebf3e74c2ca24f25e45bb6fe2fab1e9dc7a688109eb28eed172b3"
+  },
+  "worker": {
+    "pid": 2767488,
+    "start_ticks": 132695551,
+    "entry": "/var/tmp/crg-edges113-tools-20261111/vendor-business-reload-edges.py"
+  },
+  "runner_process": {
+    "pid": 2767487,
+    "exists": false,
+    "same_instance": false
+  },
+  "worker_process": {
+    "pid": 2767488,
+    "exists": false,
+    "same_instance": false
+  },
+  "exit": {
+    "exit": 1,
+    "executor_sha256": "ab749c81fca0e6a904bf61fc3807231d64fa616f3a3da22da4c4ce3f6934ad33",
+    "plan_sha256": "610595f6007ebf3e74c2ca24f25e45bb6fe2fab1e9dc7a688109eb28eed172b3",
+    "started_epoch": 1794387012.4068158,
+    "ended_epoch": 1794387237.898385
+  },
+  "independent_terminal": {
+    "all_recorded_cgroups_absent": true,
+    "runner_and_worker_absent": true,
+    "namespace_absent": true,
+    "roles": {
+      "dbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      "hisdbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      }
+    }
+  },
+  "partial_native_last_report": {
+    "api": {
+      "attempts": 0,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0,
+      "successes": 0,
+      "total_seconds": 0
+    },
+    "cluster_database_bytes_initial": 508389964,
+    "criteria": {
+      "api_period_seconds": 5,
+      "maximum_errors": 0,
+      "maximum_seconds": 5,
+      "minimum_scheduled_samples_fraction": 0.98,
+      "p95_upper_bound_seconds": 1,
+      "sql_period_seconds": 2
+    },
+    "initial_checksum": [
+      16384,
+      134225920,
+      67108864,
+      "10b3b8214172d3b698258a128e9c6687",
+      0
+    ],
+    "latency_bucket_upper_seconds": [
+      0.001,
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      5,
+      "over-5"
+    ],
+    "phase": "running",
+    "primary_start_time_initial": "2026-11-11 16:50:43.489778+08",
+    "requested_duration_seconds": 600,
+    "run_id": "202611111130",
+    "schema": "crg-vendor-soak-v1",
+    "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+    "sql": {
+      "attempts": 0,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0,
+      "successes": 0,
+      "total_seconds": 0
+    },
+    "started_utc": "2026-11-11T08:50:54.113539Z",
+    "test_phase": "smoke"
+  },
+  "partial_native_last_report_is_stale_after_job_exit": true,
+  "native600_accepted": false,
+  "HISDBS_executed": false,
+  "raw_observation_sha256": "36237ec76014259f1642168fe35c846855c35afae3e370b492359b15f1a41407",
+  "raw_report_sha256": "64dcccdedd1cba727a46cf29555a388fd08650493934fbcf98cf869301a419ac",
+  "failure_diagnostics": {
+    "node_utc": "2026-11-11T09:00:58.424672+00:00",
+    "status": {
+      "time_utc": "2026-11-11T08:52:38Z",
+      "mode": "enforce",
+      "state": "managed",
+      "plan": {
+        "percentages": {
+          "cpu_percent": 25,
+          "memory_percent": 29,
+          "io_percent": 80
+        },
+        "environment": {
+          "cgroup_version": "v2",
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod678eefcb_a1c8_41e5_b014_455d4f5509a4.slice/cri-containerd-85af2364441a26e2afb2e86b4a5a401ccf7b425d8cabc70ced9e60f41286b8ca.scope",
+          "identity": "cda1e9670a78f96bbed5e1554066166eaedb59440eb199b7960c82c75a96d458",
+          "host_online_cpus": 24,
+          "host_memory_bytes": 66673278976,
+          "cpu_capacity_source": "/sys/devices/system/cpu/online",
+          "memory_capacity_source": "/proc/meminfo",
+          "effective_cpuset": "0-23"
+        },
+        "resource_mode": "percent",
+        "settings": [
+          {
+            "file": "cpu.max",
+            "value": "600000 100000"
+          },
+          {
+            "file": "memory.max",
+            "value": "19335249920"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=51760064 wbps=29976083 riops=66 wiops=108"
+          }
+        ],
+        "io_devices": [
+          {
+            "profile_device": "253:0",
+            "filesystem_device": "253:0",
+            "resolved_device": "253:0",
+            "state": "planned",
+            "detail": "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"
+          }
+        ],
+        "data_paths": [
+          {
+            "path": "/opt/postgresql",
+            "device": "253:0",
+            "control_device": "253:0",
+            "state": "planned",
+            "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+          }
+        ]
+      },
+      "items": [
+        {
+          "file": "cpu.max",
+          "value": "600000 100000",
+          "state": "applied",
+          "detail": "already at desired value",
+          "reason_code": "unchanged"
+        },
+        {
+          "file": "memory.max",
+          "value": "19335249920",
+          "state": "applied",
+          "detail": "already at desired value",
+          "reason_code": "unchanged"
+        },
+        {
+          "file": "io.max",
+          "device": "253:0",
+          "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+          "value": "rbps=51760064 wbps=29976083 riops=66 wiops=108",
+          "state": "applied",
+          "detail": "already at desired value",
+          "reason_code": "unchanged"
+        }
+      ],
+      "configuration": {
+        "generation": 9,
+        "accepted_hash": "8616814e37f9e7d2276e3945ab20fcd6f46403c0ce2e126bbdea10781b88a5e5",
+        "source": "/etc/crg/config.json",
+        "state": "accepted"
+      }
+    },
+    "status_mtime_epoch": 1794387158.9218023,
+    "folder_entries": [
+      "postgresql",
+      "dbs",
+      "highgo",
+      "log",
+      "core",
+      "sql",
+      "hbp-runtime",
+      "resource-state",
+      "cache-state",
+      "etcd",
+      "ccg",
+      "crg",
+      "crg-config",
+      "postgres.yml",
+      "localtime",
+      "timezone",
+      "pod.json"
+    ],
+    "logs": [
+      {
+        "relative_path": "log/crg/crg-2026-11-11.log",
+        "last_rows": [
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:33.896261092+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "825d8e506af005d25123409d0b201f15a9598a0d6fed07d4b9a0bdfd8c055821"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:36.621209484+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "0607340fed62013e9a45f9aae44b82ae8f4bfd0bab4252153a86c71169eb93a5"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:40.48146888+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "fbe7865611ec095e04fc306f9238c369acb12b684f6382a8d87a348787337692"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:42.833677115+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "a1bacae5e7c598de9286b80991d5f633a8d2029a79648e112d01712af0361828"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:43.000652849+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "af6fe5109f2f6e756183a27239d0834fd8b14f0c2c850fade57c53acf9f6df7e"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:44.095806259+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "be9ea069f4ad2874ac7e61e552903467c84253ef8782a20b82773cf15981acfd"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:45.064099992+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "85bd1f6f1e8231087f704eef2a44e8e88874fe1361c446bf4554e51944f73084"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:46.323097884+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "ada7b1ae4e064192b516e7f58101b32c21776d01ee85ce8d4f1ce2586f129646"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:46.973313262+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "719bb3d9c8f536c73acfba478c96eb4976d7e1a02f22e625001b9bca8fd591f8"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:47.981891255+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "c0920b03c535f5fb1eb9a0f3a1bb2e434e87028ad560fbdc613f0f3e2517acf7"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:48.981847598+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "afda357ddbacb311bc068ce085b8af5408f86fa261e9e3d1b946f73f290ca22b"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:49.957142851+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "3bcb743ea626991e81e114840cd4ef22ca80a666748f06f22c39286562422f83"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:51:52.110966+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "0e956132a8cd0d28fd4ab8b00381a8cc9e420f47c220a474583ca575fd8693bc"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:00.348039306+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "31d3591417c270fd7517dd3e723df69975632cc2c96c7940e6ef9aac6242b776"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:00.906959039+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "0c431a841b4caa9e92b3e2ccf675e550bc09a759e977727b26353573ee22fe5e"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:19.567599946+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "0ef963063efe0853a56d814b4723a42baa182994695d398bd66e06fa62eb1fb4"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:19.659532985+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "118bc47151a089c37a525e5152480813782d590d0761dc182558c9fd8e50f798"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:26.600386435+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "d86039813c01c320ae4d745eea399dc47ca5c22f5c0fc51909b5db3a465780cc"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:27.377326272+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "b530a2a1502e8a8fb51fe350fbf668d60cf92683df08fa5a5ac10fed7d336c29"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:28.019497861+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "c8053c385a524336da22757e2983ec6cc3c31ba2f341bf246892cb6f6c2fec4a"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:30.131454735+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "41f798ed8b3c6883679906cd0eb9a810f4cbcba040ada97b0688c47ec651e7d2"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:33.97161257+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "3c2d2c53fe234f7bddf0edd40d0bcf42ec2e0ae6cadfa5a29d27b8e44a01511c"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:35.047853088+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "f5765451f92107106152e39624f3fd86487aa1d791d0da3e7871934c7006392e"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:52:41.361967388+08:00",
+            "event": "resource_status",
+            "state": null,
+            "message_sha256": "359412d150b7a5293a7db374ac45dbee4433f8766ab5d75ed8ec3250d52949be"
+          },
+          {
+            "keys": [
+              "time",
+              "level",
+              "event",
+              "fields"
+            ],
+            "time_utc": null,
+            "time": "2026-11-11T16:53:39.886457232+08:00",
+            "event": "agent_stop",
+            "state": null,
+            "message_sha256": "412f4d822b3278dc2963950a3dd1f34b90279711ece430f17c9c68b5b4e42872"
+          }
+        ]
+      }
+    ]
+  },
+  "failure_log_shape": [
+    {
+      "time": "2026-11-11T16:52:00.348039306+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "degraded",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:00.906959039+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "managed",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:19.567599946+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "degraded",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:19.659532985+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "degraded",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:26.600386435+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "managed",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:27.377326272+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "managed",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:28.019497861+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "managed",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:30.131454735+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "degraded",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:33.97161257+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "managed",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:35.047853088+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "degraded",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    },
+    {
+      "time": "2026-11-11T16:52:41.361967388+08:00",
+      "event": "resource_status",
+      "field_keys": [
+        "error",
+        "items",
+        "legacy_percent",
+        "mode",
+        "percentages",
+        "state"
+      ],
+      "state": "managed",
+      "configuration": null,
+      "status_type": "NoneType",
+      "status_keys": null
+    }
+  ],
+  "failure_diagnostics_sha256": "98789be5d7407262e0f70530882d40dec9bf84c7fdbc97f81eb8c3cc5e0e50e9",
+  "failure_log_shape_sha256": "c90a58ccbc54ddfbfd9e626c353f7c5e782d5e1b34920216892d9d2b567477de",
+  "interpretation": {
+    "prior_agent_recovered_state_observed": true,
+    "harness_has_redundant_identical_write_and_post_write_freshness_race": true,
+    "exact_old_wait_mark_not_recorded": true,
+    "exact_nanosecond_failure_order_reconstructed": false,
+    "failure_fixed_or_waived": false,
+    "original_60s_deadline_unchanged": true,
+    "product_code_modified": false,
+    "all_product_defects_excluded": false
+  },
+  "stable_release_accepted": false,
+  "seven_day_accepted": false,
+  "scope": "17 local checks before a failed DBS observation; no complete native600 or HISDBS acceptance; original report/executor/plan retained"
+}
