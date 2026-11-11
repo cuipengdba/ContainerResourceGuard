@@ -258,3 +258,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 ## 2026-11-12 即时发布指令
 
 用户要求立即在GitHub发布供更新环境。已交付v1.0.0-preview.3两架构工程包并校验全部八项公开附件；沿用受测程序，不关闭稳定条件。[发布范围和更新说明](releases/v1.0.0-preview.3.md)、[发布记录](test-results-preview3-publication.json)。
+
+
+[固定IO的Agent活动对照](testing-agent-fixed-io-comparison.md)保留两轮失败：首轮准备ValueError，修订A1实际600.165秒SQL/API错误5/1，SQL覆盖率97%低于98%，9次PG等待超过四目标而缺失；其余三臂未运行，结论inconclusive。九个原实例及四namespace/父叶cgroup独立确认清理。错误边界24项及含两类合成反例的离线26项通过；后续449源/计划冻结，15项只读门禁通过，实际A1运行中快照已归档。继续记录不合格性能/明确溢出只用于观察，严格四臂资格和原32项/两角色/稳定门槛不变。

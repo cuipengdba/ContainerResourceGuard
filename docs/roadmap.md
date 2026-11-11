@@ -270,3 +270,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [Agent活动生命周期工具资格](testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。
+
+
+[固定IO的Agent活动对照](testing-agent-fixed-io-comparison.md)保留两轮失败：首轮准备ValueError，修订A1实际600.165秒SQL/API错误5/1，SQL覆盖率97%低于98%，9次PG等待超过四目标而缺失；其余三臂未运行，结论inconclusive。九个原实例及四namespace/父叶cgroup独立确认清理。错误边界24项及含两类合成反例的离线26项通过；后续449源/计划冻结，15项只读门禁通过，实际A1运行中快照已归档。继续记录不合格性能/明确溢出只用于观察，严格四臂资格和原32项/两角色/稳定门槛不变。
