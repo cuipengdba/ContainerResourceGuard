@@ -85,3 +85,6 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 `vendor-business-reload-source-recovery.py`：原DBS/HISDBS600秒协议中的危险内存延后、六秒安全窗口及缺失/目录/FIFO/超大/悬空链接配置。默认只读，显式隔离marker执行；见[固定协议](../docs/testing-business-reload-source-recovery.md)。
+
+
+`vendor-business-memory-pressure.py`：原600秒业务中的精确内存30→20高用量延后/释放/同代次重试；`vendor-memory-pressure-worker.py`及Linux自检仅为有界匿名内存测试工具。见[固定协议](../docs/testing-business-memory-pressure.md)，默认只读，必须有隔离执行标记。
