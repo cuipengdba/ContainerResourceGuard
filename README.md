@@ -2,6 +2,8 @@
 
 当前源码、已发布下载包、逐项实测与未完成条件，统一从[当前验收入口](docs/current-acceptance.md)查看；[52项原始任务索引](docs/current-task-registry.json)保留全部规划，未将历史构建结果改为当前程序结果。
 
+未发布版本化候选已完成自身[两角色各600秒业务](docs/testing-versioned-candidate-business.md)及[20场景/108项辅助故障](docs/testing-versioned-candidate-faults.md)，原预算和门槛保持；[实际保留数据故障验证](docs/testing-aged-faults.md)继续，真实七天与稳定发布仍另判。
+
 分区IO增强在独立开发分支完成[真实GPT双分区四格164项检查](docs/testing-partition-cgroup.md)，现已[接入组合开发线](docs/partition-io.md)，[当前提交构建/原生回归已通过](docs/testing-partition-integration.md)，[自身三场景1800秒开销通过](docs/testing-partition-steady-overhead.md)，尚未发布；正式长测程序和现有下载包保持原来源。
 
 

@@ -61,3 +61,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 
 
 老化数据恢复/重建/维护另有[显式后置执行器与独立短数据演练](../docs/testing-aged-postflight-execution.md)。`python3 -B tests/vendor-aged-postflight-checks.py`仅检查合成/临时文件；正式604800秒及实际老化后置不因此通过。
+
+
+实际保留数据辅助故障执行器及两套分离计划见[门禁、挂载范围和验收状态](../docs/testing-aged-faults.md)；合成自检命令`python3 tests/vendor-aged-faults-checks.py`。默认只读；Linux自检通过不代表七天或真实故障矩阵通过。

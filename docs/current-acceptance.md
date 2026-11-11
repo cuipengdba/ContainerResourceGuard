@@ -36,8 +36,17 @@
 
 历史固定观察保留原时刻：[故障中间采样](test-progress-partition-realpaths-faults.json)、[维护等待](test-start-partition-realpaths-maintenance.json)、[七天首300秒](test-progress-seven-day-current-candidate-start.json)等均未覆盖或删除，终态应沿上表对应的最终报告判断。
 
-另已[固定未发布v1.0.0版本产物身份](release-candidate-identity.md)：精确d370源码、两个目标新摘要、包/完整性检查及AMD64原生版本探测；尚无这些新摘要的业务/长期接受，不改原长测或发布资产。
+## 版本化v1.0.0候选的独立资格
 
-版本化v1.0.0候选已完成[Linux6.x/7.x、AMD64/ARM64四格88项](testing-versioned-candidate-native.md)，每格八项产物与Windows逐字节一致，夹具已清理；[自身1800秒开销](testing-versioned-candidate-overhead.md)已冻结计划，真实路径及长期接受仍待该新摘要独立完成。
+候选来源与包身份见[固定身份](release-candidate-identity.md)。该未发布程序AMD64摘要dbc48aa5，ARM64摘要a01a5c2b，均与旧开发程序分别计数。
 
-新v1.0.0实际程序dbc48aa5已完成[三场景各1800秒开销终态](testing-versioned-candidate-overhead.md)，全部通过并退出0/独立确认namespace不存在。真实路径、辅助故障和实际长期资格仍须新摘要自身完成，不能复用开发版。
+| 已完成项 | 实际结果 |
+|---|---|
+| 原生架构/内核 | [Linux6.x/7.x、AMD64/ARM64四格88项](testing-versioned-candidate-native.md)，八项产物均与Windows逐字节一致 |
+| 自身运行开销 | [三场景各1800秒](testing-versioned-candidate-overhead.md)通过，运行器退出0，namespace独立确认清理 |
+| 原厂商真实路径业务 | [DBS/HISDBS各600秒、12项](testing-versioned-candidate-business.md)通过，原manual64预算及启动/延迟/覆盖/数据/备份/独立恢复标准保持，退出0/清理 |
+| 自身辅助故障 | [两角色20场景/108项](testing-versioned-candidate-faults.md)通过，原90秒/45秒/12秒及实际标定取消条件保持，退出0/清理 |
+
+新摘要的维护、冷重建和实际长期资格仍分别推进；未将旧开发版3a1、原observe或固定d6阶段的运行时间转给新程序。默认20%和自动30%持续性能未因此通过，当前稳定1.0尚未发布。
+
+实际老化辅助故障[执行器及冻结计划](testing-aged-faults.md)已实现并通过8项Linux自检；长门禁及提前执行真实返回pending且无工作目录/namespace。明确分开的短保留数据演练已经启动，完整20场景/152项尚待实际终态。原七天和其恢复/维护后置不因短演练完成而自动通过。
