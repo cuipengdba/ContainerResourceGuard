@@ -1,0 +1,61 @@
+{
+  "schema": "crg-agent-activity-qualification-evidence-v1",
+  "observed_node_utc": "2026-11-11T22:18:14.785191+00:00",
+  "phase": "qualified",
+  "host_checks": 27,
+  "vendor_checks": 32,
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "actual_binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "artifacts": {
+    "host": {
+      "path": "docs/test-evidence/agent-activity415-host-terminal.json.gz",
+      "bytes": 2280,
+      "sha256": "ebff4c1f6d664839990e6a8c20a4856a90419cda547c4448129886f8ec6478df",
+      "uncompressed_bytes": 17915,
+      "uncompressed_sha256": "b1e826ea1a5326e7a9a429f06c0f3e289f28214a4ccbc7e2b2ab9f5a4b13c875"
+    },
+    "host_source": {
+      "path": "docs/test-evidence/agent-activity415-host-source.json.gz",
+      "bytes": 4025,
+      "sha256": "a9a68abb1c10d2d63eef4cb554279dc5de8ee2d279c3c3ee835649a7eeb5df11",
+      "uncompressed_bytes": 12598,
+      "uncompressed_sha256": "319ba077bdc796e10a80bc84d1e865277b7b1308762438ad5a09353f5a8b20da"
+    },
+    "first_failure": {
+      "path": "docs/test-evidence/agent-activity417-first-failure.json.gz",
+      "bytes": 4244,
+      "sha256": "8f9b5586495d7e3119624fa367f0e0a61511976bb56c01f4a0c9068c13bdded2",
+      "uncompressed_bytes": 28851,
+      "uncompressed_sha256": "e999378636438ff443b9f8d1b6594bb9c3b108cb4b1034d938dbf6ed3869386f"
+    },
+    "vendor_v2": {
+      "path": "docs/test-evidence/agent-activity422-vendor-terminal.json.gz",
+      "bytes": 7182,
+      "sha256": "bb7cfddd7caaceffec28b12a7a987ae17ee195192774b9f9c1cfe24f7a90901b",
+      "uncompressed_bytes": 71388,
+      "uncompressed_sha256": "adec2a97bd56e5f0c045027dec75e7ea5d21a63a24f607e537d0241e77fb7b54"
+    }
+  },
+  "first_failure_preserved": true,
+  "scope": "short owned-process host qualification plus both actual vendor container lifecycle qualification; host shadow controller files distinguished from actual vendor kernel controls",
+  "no_actual_600_second_workload_executed_here": true,
+  "fixed_IO_ABBA_executed": false,
+  "original32_accepted": false,
+  "stable_release_accepted": false,
+  "offline_negative_checks": [
+    {
+      "synthetic_case": "changed Agent tool with old digest",
+      "rejected": true,
+      "reason": "ACTIVITY_SOURCE"
+    },
+    {
+      "synthetic_case": "32 passing summary checks but missing HIS actual paused samples, with consistent digests",
+      "rejected": true,
+      "reason": "'paused_samples'"
+    }
+  ],
+  "reviewer_sha256": "bbe919437a5179ef5d3c5f9b5e0398b3709c243e31c809882dfaacc523e19053"
+}
