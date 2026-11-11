@@ -14,7 +14,7 @@ Windows首次合成检查因夹具将POSIX字符串与Windows原生Path字符串
 
 ## 当前独立短演练
 
-独立短保留数据故障演练已启动。[固定首观察](test-progress-versioned-aged-faults-rehearsal-start.json)只有1个场景/7项通过，原运行器和worker仍在线；尚未宣称20场景/152项完整通过。真实七天后的故障运行尚未开始。
+独立短保留数据故障演练现已[20场景/152项终态通过](test-results-versioned-aged-faults-rehearsal.json)，两角色各10场景；原运行器和worker已退出、exit0，namespace及20个不同Pod/容器ID对应的cgroup scope均独立确认不存在。[固定首观察](test-progress-versioned-aged-faults-rehearsal-start.json)保留当时1场景/7项运行中状态。该结果来自R64/R81短保留数据，真实七天后的故障运行仍未开始。
 
 每个业务分别执行缺失、无效、崩溃、卡住、忽略TERM、原supervisor回退、cgroup只读、profile只读、state只读、真实标定取消，共20场景/152项。原PG/API90秒、缓存45秒、TERM12秒、降级180秒、取消60秒及64MiB数据/PG不重启/唯一缓存进程和新状态/取消FD及cgroup身份标准不变。只复制小型辅助程序和状态，不替换原PG数据库；保留原程序、配置、journal、日志前缀，最后按UID清理并保留数据。
 

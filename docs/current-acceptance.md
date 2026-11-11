@@ -46,6 +46,8 @@
 | 自身运行开销 | [三场景各1800秒](testing-versioned-candidate-overhead.md)通过，运行器退出0，namespace独立确认清理 |
 | 原厂商真实路径业务 | [DBS/HISDBS各600秒、12项](testing-versioned-candidate-business.md)通过，原manual64预算及启动/延迟/覆盖/数据/备份/独立恢复标准保持，退出0/清理 |
 | 自身辅助故障 | [两角色20场景/108项](testing-versioned-candidate-faults.md)通过，原90秒/45秒/12秒及实际标定取消条件保持，退出0/清理 |
+| 自身短保留数据后置 | [36项/两角色各600秒](testing-versioned-aged-postflight-execution.md)通过，四次Pod及cgroup清理；实际七天后置另待 |
+| 自身短保留数据故障 | [20场景/152项](testing-versioned-aged-faults.md)通过，20个Pod及cgroup清理；实际七天故障另待 |
 
 新摘要的[在线升级/回退两角色各600秒、22项终态通过且清理](testing-versioned-candidate-maintenance.md)，[冷重建四次启动44项终态通过](testing-versioned-candidate-cold-rebuild.md)，[自身实际七天原生测量已开始](plan-seven-day-versioned-candidate.md)；未将旧开发版3a1、原observe或固定d6阶段的运行时间转给新程序。默认20%和自动30%持续性能未因此通过，当前稳定1.0尚未发布。
 
@@ -62,3 +64,11 @@
 
 
 版本化候选自己的[保留数据故障执行器](testing-versioned-aged-faults.md)已通过Linux9项与真实长默认/execute两次pending门禁，未提前创建目标；短前置通过并启动，固定首观察只有1场景/7项，20场景/152项待终态。原七天/正式对照/其他稳定门槛保持。
+
+
+## 独立现场记录的限制
+
+另一项[171现场更新记录](https://github.com/cuipengdba/ContainerResourceGuard/blob/c050b34ac15d2b8ea101bbe1b76e796e1ce6eb65/docs/deployment-dbs-hisdbs-update-20261111.zh.md)报告，同一dbc48aa5预发布程序安装后DBS出现两次新的PostgreSQL cgroup OOM kill和SQL/API错误，随后数据库重新启动；HISDBS未报告新增OOM。该记录显示更新前后配置和实际限额保持，但尚未证明新二进制导致或排除其影响。本轮97隔离验收没有独立重测171，不将其短期更新探针作为整体稳定接受，也不以隔离短演练覆盖现场故障。保留这一待核查运行记录，不修改171配置、限额或业务。
+
+
+版本化候选自身的[短保留数据故障矩阵](testing-versioned-aged-faults.md)现已20场景/152项通过，原进程退出0、namespace及20个不同Pod/容器cgroup独立确认清理，原64MiB数据/输入/journal/日志前缀保留。首个运行中快照保持；三个来源明确分支的完整CI与两个ARM64检查通过。真实七天后置、正式对照及其他稳定条件仍待，未重发或替换既有下载资产。
