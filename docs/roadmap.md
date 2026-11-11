@@ -208,3 +208,6 @@ R167完整压力线程联测[已启动并归档开始快照](test-start-business
 
 
 R167[完整线程压力终态](testing-business-pressure-threads.md)失败：DBS600.269秒/SQL2错/API0错/13局部检查，601样本及实际主库三次慢UPDATE已归档；HIS未执行，CPU无节流/PSI未知不等于根因明确。全清理/原输入和ELF恢复已核对。下步补原生逐错和PG等待证据，不提高配额或放宽原32项/SLA。
+
+
+R194[原生请求/PG等待诊断资格](testing-native-request-pg-diagnostics.md)完成：Linux23项、两厂商镜像各23项+3入口保护+16真实PG检查通过；正常请求通过，受控锁各保留一次原SQL超时，并取得对应后端/等待/阻塞者。三次先前资格失败和旧源码保留，四Pod cgroup/namespace/运行器独立确认消失，原输入/程序保持。仅采集链路资格，不关闭R167/R142/R120、原32项/两角色600秒或长期条件。
