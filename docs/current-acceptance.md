@@ -83,3 +83,6 @@
 
 
 本轮HISDBS保留一次[exec API 7.017秒诊断失败](testing-versioned-business-reload.md#保留的exec探测超阈值)，超过原5秒；原生API整段最大0.008936秒/错误0。原因尚未确定，未将诊断失败改成通过或关闭P01.3。
+
+
+[业务exec分段终态](testing-business-exec-timing.md)：26项主检查、DBS/HISDBS各600秒及各10项原备份/同步/恢复通过且独立清理。DBS另有外层5.000814秒超原5秒诊断失败，内层HTTP0.008885秒、区间外4.991929秒，窗口本容器CPU节流增量0、PSI不可用；同脚本日志仅候选关联。原HIS7.017秒根因未定，P01.3不关闭，七天及稳定条件继续。
