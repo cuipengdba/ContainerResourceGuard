@@ -1,0 +1,1862 @@
+{
+  "schema": "crg-device-sessions-qualified-v1",
+  "phase": "qualified-host-only-readonly-orchestration",
+  "node_observed_utc": "2026-11-11T17:49:16.730547+00:00",
+  "sources_sha256": {
+    "tests/vendor-device-session.py": "632a93f267bcb8aeee992d00f5fc4f0aaec63e8bbcd5e393ba83bf14b3474444",
+    "tests/vendor-device-session-checks.py": "4c51fa74eacf9fff5f5178a1dcc931dc2de77aab0cf140f1af9fd7a9becc365d",
+    "tests/vendor-device-business-session.py": "a3bad42812e387acd18079df11af49e4c9d2e646c0ca59e3813dd6442a3ed103",
+    "tests/vendor-device-business-session-checks.py": "d1cca6a5590aab0a63edab4091dc92c48aa2da6fd9c6209548ba2e76a5ff84ad"
+  },
+  "frozen_observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+  "raw_evidence": {
+    "path": "test-evidence/device303-306-sessions.json.gz",
+    "gzip_bytes": 42176,
+    "gzip_sha256": "b81f91815e39eb91b84ea77c28d50c48829e2d35c1e364c9293b77516596a8e7",
+    "uncompressed_bytes": 275362,
+    "uncompressed_sha256": "fa39739f63f385324c6bc8adcca16e349311d60d33c5a4fae25008a557d3a6c4"
+  },
+  "runs": {
+    "303": {
+      "phase": "failed",
+      "exit": 1,
+      "reason": "natural-target-exit-preserves-incomplete-evidence-without-target-signal",
+      "checks": [
+        {
+          "name": "term-first-real-sample-owned-pidfd",
+          "passed": true
+        },
+        {
+          "name": "wrong-child-start-ticks-refuses-signal",
+          "passed": true
+        },
+        {
+          "name": "term-real-report-exact-child-wait4",
+          "passed": true
+        },
+        {
+          "name": "term-expected-terminal-and-signal-counts",
+          "passed": true
+        },
+        {
+          "name": "term-report-and-plan-private",
+          "passed": true
+        },
+        {
+          "name": "term-stop-idempotent-target-unchanged",
+          "passed": true
+        },
+        {
+          "name": "natural-first-real-sample-owned-pidfd",
+          "passed": true
+        },
+        {
+          "name": "natural-real-report-exact-child-wait4",
+          "passed": true
+        },
+        {
+          "name": "natural-expected-terminal-and-signal-counts",
+          "passed": true
+        },
+        {
+          "name": "natural-report-and-plan-private",
+          "passed": true
+        },
+        {
+          "name": "natural-stop-idempotent-target-unchanged",
+          "passed": true
+        },
+        {
+          "name": "natural-target-exit-preserves-incomplete-evidence-without-target-signal",
+          "passed": false
+        }
+      ],
+      "qualification_sha256": "0228e676b5edde9f07ad097f9e6e76b63cdad394cea71e768ba7fe681e15f7ce",
+      "original_controls_unchanged": true,
+      "checker_original_instance_gone": true,
+      "observer_original_instances_gone": [
+        true,
+        true,
+        true
+      ],
+      "records": {
+        "term": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 1,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1419681,
+            "start_ticks": 135879876,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219587.scope",
+            "cgroup_identity": [
+              25,
+              28099272
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 3,
+            "output": "/var/tmp/crg-device303-session-20261111/term/selftest-devices.json"
+          },
+          "plan_sha256": "3cd3484dd4d3b0d1ae32ec53a9b533dc1936d0372e869e403a389d41bd39165a",
+          "launch_epoch": 1794418855.7678545,
+          "observer_pid": 1419700,
+          "observer_start_ticks": 135879888,
+          "observer_entry": "/var/tmp/crg-device303-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418855.809623
+          },
+          "startup_until_first_sample_seconds": 0.04387733805924654,
+          "term_requested_epoch": 1794418855.812392,
+          "exit": 2,
+          "whole_child_cpu_seconds": 0.049044000000000004,
+          "whole_child_maximum_rss_kib": 15552,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 0.12098472006618977,
+          "whole_child_wall_seconds": 0.1650122229475528,
+          "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 1, \"elapsed_seconds\": 0.0028111471328884363, \"observer_cpu_seconds\": 0.0020422689999999993}\n",
+          "raw_report_path": "/var/tmp/crg-device303-session-20261111/term/selftest-devices.json",
+          "raw_report_bytes": 4258,
+          "raw_report_sha256": "78af68f47d5f1bc728d5ade9f462a051413626516ecbbc578e2bc45ca5616685",
+          "report_phase": "incomplete",
+          "report_reason": "observer-interrupted",
+          "full_duration_observed": false,
+          "sample_count": 1,
+          "first_sample_epoch": 1794418855.809623,
+          "last_sample_epoch": 1794418855.809623,
+          "maximum_sample_gap_seconds": null,
+          "sampling_cpu_seconds": 0.0020422689999999993,
+          "sampling_elapsed_seconds": 0.0028111471328884363,
+          "maximum_collection_seconds": 0.0018264399841427803,
+          "device_available_sample_counts": {
+            "253:0": 1,
+            "8:0": 1,
+            "8:2": 1
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 1,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 1,
+            "memory.events": 1,
+            "memory.max": 1,
+            "memory.stat": 1
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        },
+        "natural": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1419681,
+            "start_ticks": 135879876,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219587.scope",
+            "cgroup_identity": [
+              25,
+              28099272
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 1,
+            "output": "/var/tmp/crg-device303-session-20261111/natural/selftest-devices.json"
+          },
+          "plan_sha256": "89fecc08e1d1f0c4c093a7e8ac3acf9fa679c67c30495221277d6a097b7172f9",
+          "launch_epoch": 1794418856.0096626,
+          "observer_pid": 1419727,
+          "observer_start_ticks": 135879912,
+          "observer_entry": "/var/tmp/crg-device303-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418856.051428
+          },
+          "startup_until_first_sample_seconds": 0.04455965803936124,
+          "exit": 0,
+          "whole_child_cpu_seconds": 0.05259899999999999,
+          "whole_child_maximum_rss_kib": 15744,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 6.329198367893696e-05,
+          "whole_child_wall_seconds": 1.170816170051694,
+          "terminal_stdout": "{\"phase\": \"observed\", \"sample_count\": 2, \"elapsed_seconds\": 1.003378374967724, \"observer_cpu_seconds\": 0.005466770000000003}\n",
+          "raw_report_path": "/var/tmp/crg-device303-session-20261111/natural/selftest-devices.json",
+          "raw_report_bytes": 6793,
+          "raw_report_sha256": "23269bed495cea14b1b93bc374e49d9104395cf354702619f184f9c6b24c2c6f",
+          "report_phase": "observed",
+          "report_reason": null,
+          "full_duration_observed": true,
+          "sample_count": 2,
+          "first_sample_epoch": 1794418856.051428,
+          "last_sample_epoch": 1794418857.0520558,
+          "maximum_sample_gap_seconds": 1.0006161681376398,
+          "sampling_cpu_seconds": 0.005466770000000003,
+          "sampling_elapsed_seconds": 1.003378374967724,
+          "maximum_collection_seconds": 0.0025737378746271133,
+          "device_available_sample_counts": {
+            "253:0": 2,
+            "8:0": 2,
+            "8:2": 2
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 2,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 2,
+            "memory.events": 2,
+            "memory.max": 2,
+            "memory.stat": 2
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        },
+        "target-exit": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1419854,
+            "start_ticks": 135880029,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219587.scope",
+            "cgroup_identity": [
+              25,
+              28099272
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 3,
+            "output": "/var/tmp/crg-device303-session-20261111/target-exit/selftest-devices.json"
+          },
+          "plan_sha256": "9c43189090658541501be9a054612b0dd1989afa3e8c10b75571b0bafa0466e3",
+          "launch_epoch": 1794418857.3047414,
+          "observer_pid": 1419873,
+          "observer_start_ticks": 135880041,
+          "observer_entry": "/var/tmp/crg-device303-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418857.3469539
+          },
+          "startup_until_first_sample_seconds": 0.04434441099874675,
+          "exit": 2,
+          "whole_child_cpu_seconds": 0.051778,
+          "whole_child_maximum_rss_kib": 15552,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 6.587989628314972e-05,
+          "whole_child_wall_seconds": 2.1347880519460887,
+          "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 2.0002080220729113, \"observer_cpu_seconds\": 0.004005826000000004}\n",
+          "raw_report_path": "/var/tmp/crg-device303-session-20261111/target-exit/selftest-devices.json",
+          "raw_report_bytes": 6835,
+          "raw_report_sha256": "ef7af7da7e0ac4ed1f702e272d543cddc6600c4a6a9c7afb07c8f1d18ed2cd8d",
+          "report_phase": "incomplete",
+          "report_reason": "read-unavailable",
+          "full_duration_observed": false,
+          "sample_count": 2,
+          "first_sample_epoch": 1794418857.3469539,
+          "last_sample_epoch": 1794418858.3470602,
+          "maximum_sample_gap_seconds": 1.0000936752185225,
+          "sampling_cpu_seconds": 0.004005826000000004,
+          "sampling_elapsed_seconds": 2.0002080220729113,
+          "maximum_collection_seconds": 0.0018476461991667747,
+          "device_available_sample_counts": {
+            "253:0": 2,
+            "8:0": 2,
+            "8:2": 2
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 2,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 2,
+            "memory.events": 2,
+            "memory.max": 2,
+            "memory.stat": 2
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        }
+      }
+    },
+    "305": {
+      "phase": "passed",
+      "exit": 0,
+      "reason": null,
+      "checks": [
+        {
+          "name": "term-first-real-sample-owned-pidfd",
+          "passed": true
+        },
+        {
+          "name": "wrong-child-start-ticks-refuses-signal",
+          "passed": true
+        },
+        {
+          "name": "term-real-report-exact-child-wait4",
+          "passed": true
+        },
+        {
+          "name": "term-expected-terminal-and-signal-counts",
+          "passed": true
+        },
+        {
+          "name": "term-report-and-plan-private",
+          "passed": true
+        },
+        {
+          "name": "term-stop-idempotent-target-unchanged",
+          "passed": true
+        },
+        {
+          "name": "natural-first-real-sample-owned-pidfd",
+          "passed": true
+        },
+        {
+          "name": "natural-real-report-exact-child-wait4",
+          "passed": true
+        },
+        {
+          "name": "natural-expected-terminal-and-signal-counts",
+          "passed": true
+        },
+        {
+          "name": "natural-report-and-plan-private",
+          "passed": true
+        },
+        {
+          "name": "natural-stop-idempotent-target-unchanged",
+          "passed": true
+        },
+        {
+          "name": "target-zombie-incomplete-evidence-preserves-only-original-target-samples",
+          "passed": true
+        },
+        {
+          "name": "target-reaped-incomplete-evidence-preserves-only-original-target-samples",
+          "passed": true
+        },
+        {
+          "name": "wrong-source-rejected-before-spawn",
+          "passed": true
+        },
+        {
+          "name": "shared-root-rejected-before-spawn",
+          "passed": true
+        },
+        {
+          "name": "existing-report-not-overwritten",
+          "passed": true
+        },
+        {
+          "name": "symlink-source-rejected-before-spawn",
+          "passed": true
+        },
+        {
+          "name": "invalid-label-rejected-before-spawn",
+          "passed": true
+        },
+        {
+          "name": "duration-901-rejected-before-spawn",
+          "passed": true
+        },
+        {
+          "name": "actual-startup-rejection-preserves-first-error",
+          "passed": true
+        },
+        {
+          "name": "actual-startup-rejection-reaps-closes-without-target-signal",
+          "passed": true
+        },
+        {
+          "name": "actual-unterminated-line-has-bounded-deadline",
+          "passed": true
+        },
+        {
+          "name": "explicit-double-business-error-object-preserved",
+          "passed": true
+        },
+        {
+          "name": "explicit-double-diagnostic-failure-not-accepted-as-pass",
+          "passed": true
+        },
+        {
+          "name": "explicit-double-success-result-preserved",
+          "passed": true
+        },
+        {
+          "name": "all-target-identities-and-original-controls-unchanged",
+          "passed": true
+        }
+      ],
+      "qualification_sha256": "a25192ef2b7a1622b9e19749cdbad0dbe9e1ade479e5dca7e7f84aa04691ebb2",
+      "original_controls_unchanged": true,
+      "checker_original_instance_gone": true,
+      "observer_original_instances_gone": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "records": {
+        "term": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 1,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1438584,
+            "start_ticks": 135888789,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219602.scope",
+            "cgroup_identity": [
+              25,
+              28101089
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 3,
+            "output": "/var/tmp/crg-device305-session-20261111/term/selftest-devices.json"
+          },
+          "plan_sha256": "a3ef6ff8fa3208c8dd7014426b3e52602ea34af1c4382e8fd1532e2093366051",
+          "launch_epoch": 1794418944.9178076,
+          "observer_pid": 1438643,
+          "observer_start_ticks": 135888803,
+          "observer_entry": "/var/tmp/crg-device305-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418944.9607093
+          },
+          "startup_until_first_sample_seconds": 0.04464033991098404,
+          "term_requested_epoch": 1794418944.963134,
+          "exit": 2,
+          "whole_child_cpu_seconds": 0.04959999999999999,
+          "whole_child_maximum_rss_kib": 15552,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 0.0608262459281832,
+          "whole_child_wall_seconds": 0.10562819894403219,
+          "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 1, \"elapsed_seconds\": 0.0024657039903104305, \"observer_cpu_seconds\": 0.0016464389999999995}\n",
+          "raw_report_path": "/var/tmp/crg-device305-session-20261111/term/selftest-devices.json",
+          "raw_report_bytes": 4261,
+          "raw_report_sha256": "6239b5da975a44f23a8a2ba1245e8b58e76f8668c09d57f170eeea1ee4d6cbd5",
+          "report_phase": "incomplete",
+          "report_reason": "observer-interrupted",
+          "full_duration_observed": false,
+          "sample_count": 1,
+          "first_sample_epoch": 1794418944.9607093,
+          "last_sample_epoch": 1794418944.9607093,
+          "maximum_sample_gap_seconds": null,
+          "sampling_cpu_seconds": 0.0016464389999999995,
+          "sampling_elapsed_seconds": 0.0024657039903104305,
+          "maximum_collection_seconds": 0.0014450948219746351,
+          "device_available_sample_counts": {
+            "253:0": 1,
+            "8:0": 1,
+            "8:2": 1
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 1,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 1,
+            "memory.events": 1,
+            "memory.max": 1,
+            "memory.stat": 1
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        },
+        "natural": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1438584,
+            "start_ticks": 135888789,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219602.scope",
+            "cgroup_identity": [
+              25,
+              28101089
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 1,
+            "output": "/var/tmp/crg-device305-session-20261111/natural/selftest-devices.json"
+          },
+          "plan_sha256": "ef8a38c4546c6973fa8703770f8b0c503aabcdeefde2aa450b22a93016003581",
+          "launch_epoch": 1794418945.0768964,
+          "observer_pid": 1438684,
+          "observer_start_ticks": 135888818,
+          "observer_entry": "/var/tmp/crg-device305-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418945.1190808
+          },
+          "startup_until_first_sample_seconds": 0.04421553993597627,
+          "exit": 0,
+          "whole_child_cpu_seconds": 0.051713999999999996,
+          "whole_child_maximum_rss_kib": 15552,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 6.849993951618671e-05,
+          "whole_child_wall_seconds": 1.1302274479530752,
+          "terminal_stdout": "{\"phase\": \"observed\", \"sample_count\": 2, \"elapsed_seconds\": 1.0032600690610707, \"observer_cpu_seconds\": 0.004223792000000004}\n",
+          "raw_report_path": "/var/tmp/crg-device305-session-20261111/natural/selftest-devices.json",
+          "raw_report_bytes": 6798,
+          "raw_report_sha256": "4ec05d1137c6c7bfc153ea2ed1e088d93565a8386135fb99309ef43ce116cf1c",
+          "report_phase": "observed",
+          "report_reason": null,
+          "full_duration_observed": true,
+          "sample_count": 2,
+          "first_sample_epoch": 1794418945.1190808,
+          "last_sample_epoch": 1794418946.1200547,
+          "maximum_sample_gap_seconds": 1.000962904188782,
+          "sampling_cpu_seconds": 0.004223792000000004,
+          "sampling_elapsed_seconds": 1.0032600690610707,
+          "maximum_collection_seconds": 0.0021057939156889915,
+          "device_available_sample_counts": {
+            "253:0": 2,
+            "8:0": 2,
+            "8:2": 2
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 2,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 2,
+            "memory.events": 2,
+            "memory.max": 2,
+            "memory.stat": 2
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        },
+        "target-zombie": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1438916,
+            "start_ticks": 135888932,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219602.scope",
+            "cgroup_identity": [
+              25,
+              28101089
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 3,
+            "output": "/var/tmp/crg-device305-session-20261111/target-zombie/selftest-devices.json"
+          },
+          "plan_sha256": "1e1c0aabeb0e585dcc8b8cc49c85c5836508d78a2f066c839768a2fa5fe25b94",
+          "launch_epoch": 1794418946.2529998,
+          "observer_pid": 1438922,
+          "observer_start_ticks": 135888936,
+          "observer_entry": "/var/tmp/crg-device305-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418946.2946184
+          },
+          "startup_until_first_sample_seconds": 0.04369354201480746,
+          "exit": 2,
+          "whole_child_cpu_seconds": 0.051812,
+          "whole_child_maximum_rss_kib": 15552,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 7.079006172716618e-05,
+          "whole_child_wall_seconds": 2.0950953729916364,
+          "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 2.0011658270377666, \"observer_cpu_seconds\": 0.004549608999999996}\n",
+          "raw_report_path": "/var/tmp/crg-device305-session-20261111/target-zombie/selftest-devices.json",
+          "raw_report_bytes": 6830,
+          "raw_report_sha256": "17a580c3dcbc16fb7432cb767034ba36c6964a7907a08a342bcaea84760fb449",
+          "report_phase": "incomplete",
+          "report_reason": "PROCESS_INSTANCE",
+          "full_duration_observed": false,
+          "sample_count": 2,
+          "first_sample_epoch": 1794418946.2946184,
+          "last_sample_epoch": 1794418947.2950602,
+          "maximum_sample_gap_seconds": 1.0004293639212847,
+          "sampling_cpu_seconds": 0.004549608999999996,
+          "sampling_elapsed_seconds": 2.0011658270377666,
+          "maximum_collection_seconds": 0.00217640888877213,
+          "device_available_sample_counts": {
+            "253:0": 2,
+            "8:0": 2,
+            "8:2": 2
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 2,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 2,
+            "memory.events": 2,
+            "memory.max": 2,
+            "memory.stat": 2
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        },
+        "target-reaped": {
+          "phase": "collected",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1439126,
+            "start_ticks": 135889146,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219602.scope",
+            "cgroup_identity": [
+              25,
+              28101089
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 3,
+            "output": "/var/tmp/crg-device305-session-20261111/target-reaped/selftest-devices.json"
+          },
+          "plan_sha256": "d029dbb23a8643f728128ed65b5fe73e68380ff6aadea40c0638ae320128aca7",
+          "launch_epoch": 1794418948.3890033,
+          "observer_pid": 1439129,
+          "observer_start_ticks": 135889150,
+          "observer_entry": "/var/tmp/crg-device305-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "first_sample_handshake": {
+            "phase": "observing",
+            "sample_count": 1,
+            "epoch": 1794418948.4323735
+          },
+          "startup_until_first_sample_seconds": 0.04539370792917907,
+          "exit": 2,
+          "whole_child_cpu_seconds": 0.052908,
+          "whole_child_maximum_rss_kib": 15744,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 16,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 7.075490429997444e-05,
+          "whole_child_wall_seconds": 2.1150002118665725,
+          "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 2.000802918104455, \"observer_cpu_seconds\": 0.003910979000000002}\n",
+          "raw_report_path": "/var/tmp/crg-device305-session-20261111/target-reaped/selftest-devices.json",
+          "raw_report_bytes": 6837,
+          "raw_report_sha256": "8efbb0c51e5ae04bc697d650306f1bab120249481a54c563630115c8ee925803",
+          "report_phase": "incomplete",
+          "report_reason": "read-unavailable",
+          "full_duration_observed": false,
+          "sample_count": 2,
+          "first_sample_epoch": 1794418948.4323735,
+          "last_sample_epoch": 1794418949.433059,
+          "maximum_sample_gap_seconds": 1.000673654023558,
+          "sampling_cpu_seconds": 0.003910979000000002,
+          "sampling_elapsed_seconds": 2.000802918104455,
+          "maximum_collection_seconds": 0.0017315850127488375,
+          "device_available_sample_counts": {
+            "253:0": 2,
+            "8:0": 2,
+            "8:2": 2
+          },
+          "cgroup_file_available_sample_counts": {
+            "cpu.max": 0,
+            "cpu.stat": 2,
+            "io.max": 0,
+            "io.stat": 0,
+            "memory.current": 2,
+            "memory.events": 2,
+            "memory.max": 2,
+            "memory.stat": 2
+          },
+          "missing_values_are_unknown": true,
+          "device_layers_must_not_be_added": true,
+          "stable_or_business_acceptance_proven": false
+        },
+        "wrong-source-rejected-before-spawn": {
+          "phase": "start-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "start_error": "DEVICE_SESSION_FROZEN_SOURCE"
+        },
+        "shared-root-rejected-before-spawn": {
+          "phase": "start-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "start_error": "DEVICE_SESSION_PRIVATE_ROOT"
+        },
+        "existing-report-not-overwritten": {
+          "phase": "start-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "start_error": "DEVICE_SESSION_FRESH_REPORT"
+        },
+        "symlink-source-rejected-before-spawn": {
+          "phase": "start-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "start_error": "DEVICE_SESSION_FROZEN_SOURCE"
+        },
+        "invalid-label-rejected-before-spawn": {
+          "phase": "start-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "start_error": "DEVICE_SESSION_LABEL"
+        },
+        "oversized-duration": {
+          "phase": "start-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "start_error": "DEVICE_SESSION_DURATION"
+        },
+        "wrong-target-start": {
+          "phase": "diagnostic-failed",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0,
+          "plan": {
+            "schema": "crg-device-state-observer-plan-v1",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "label": "selftest",
+            "pid": 1438584,
+            "start_ticks": 135888790,
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219602.scope",
+            "cgroup_identity": [
+              25,
+              28101089
+            ],
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "devices": [
+              {
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0",
+                "identity": [
+                  21,
+                  55869
+                ]
+              },
+              {
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                "identity": [
+                  21,
+                  55779
+                ]
+              },
+              {
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                "identity": [
+                  21,
+                  55604
+                ]
+              }
+            ],
+            "duration_seconds": 1,
+            "output": "/var/tmp/crg-device305-session-20261111/wrong-target-start/selftest-devices.json"
+          },
+          "plan_sha256": "e5bcb0d38ac3e43ba69d945f0aead1ecc21bf254599d36946b3e3f041d98b32d",
+          "launch_epoch": 1794418950.5344207,
+          "observer_pid": 1439978,
+          "observer_start_ticks": 135889364,
+          "observer_entry": "/var/tmp/crg-device305-tools-20261111/vendor-device-state-observer.py",
+          "pidfd_used": true,
+          "start_error": "DEVICE_SESSION_FIRST_SAMPLE",
+          "exit": 1,
+          "whole_child_cpu_seconds": 0.045326,
+          "whole_child_maximum_rss_kib": 15360,
+          "whole_child_block_input_units": 0,
+          "whole_child_block_output_units": 0,
+          "observer_original_instance_gone": true,
+          "stop_and_final_flush_seconds": 0.02016381616704166,
+          "whole_child_wall_seconds": 0.061637253034859896,
+          "diagnostic_error": "DEVICE_SESSION_NO_VALID_HANDSHAKE_OR_KILLED",
+          "start_cleanup_error": "DEVICE_SESSION_NO_VALID_HANDSHAKE_OR_KILLED"
+        },
+        "unterminated-handshake": {
+          "phase": "not-started",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0
+        }
+      }
+    },
+    "306": {
+      "phase": "passed",
+      "exit": 0,
+      "reason": null,
+      "checks": [
+        {
+          "name": "normal-original-thread-starts-even-when-device-or-save-fails",
+          "passed": true
+        },
+        {
+          "name": "normal-original-result-or-first-error-kept-and-diagnostic-failure-visible",
+          "passed": true
+        },
+        {
+          "name": "normal-both-owned-children-reaped-and-pidfds-closed",
+          "passed": true
+        },
+        {
+          "name": "normal-stop-idempotent-target-and-controls-unchanged",
+          "passed": true
+        },
+        {
+          "name": "device-start-failed-original-thread-starts-even-when-device-or-save-fails",
+          "passed": true
+        },
+        {
+          "name": "device-start-failed-original-result-or-first-error-kept-and-diagnostic-failure-visible",
+          "passed": true
+        },
+        {
+          "name": "device-start-failed-both-owned-children-reaped-and-pidfds-closed",
+          "passed": true
+        },
+        {
+          "name": "device-start-failed-stop-idempotent-target-and-controls-unchanged",
+          "passed": true
+        },
+        {
+          "name": "business-and-device-failed-original-thread-starts-even-when-device-or-save-fails",
+          "passed": true
+        },
+        {
+          "name": "business-and-device-failed-original-result-or-first-error-kept-and-diagnostic-failure-visible",
+          "passed": true
+        },
+        {
+          "name": "business-and-device-failed-both-owned-children-reaped-and-pidfds-closed",
+          "passed": true
+        },
+        {
+          "name": "business-and-device-failed-stop-idempotent-target-and-controls-unchanged",
+          "passed": true
+        },
+        {
+          "name": "interval-outside-original-thread-starts-even-when-device-or-save-fails",
+          "passed": true
+        },
+        {
+          "name": "interval-outside-original-result-or-first-error-kept-and-diagnostic-failure-visible",
+          "passed": true
+        },
+        {
+          "name": "interval-outside-both-owned-children-reaped-and-pidfds-closed",
+          "passed": true
+        },
+        {
+          "name": "interval-outside-stop-idempotent-target-and-controls-unchanged",
+          "passed": true
+        },
+        {
+          "name": "save-failed-original-thread-starts-even-when-device-or-save-fails",
+          "passed": true
+        },
+        {
+          "name": "save-failed-original-result-or-first-error-kept-and-diagnostic-failure-visible",
+          "passed": true
+        },
+        {
+          "name": "save-failed-both-owned-children-reaped-and-pidfds-closed",
+          "passed": true
+        },
+        {
+          "name": "save-failed-stop-idempotent-target-and-controls-unchanged",
+          "passed": true
+        }
+      ],
+      "qualification_sha256": "6ea7ce43874b68fe0feed2b9516ce51fc50eb4430d1f09e39535f267cec9faf9",
+      "original_controls_unchanged": true,
+      "checker_original_instance_gone": true,
+      "observer_original_instances_gone": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "records": {
+        "normal": {
+          "reload_intervals": [
+            {
+              "started_epoch": 1794419232.1726458,
+              "ended_epoch": 1794419232.2226458
+            }
+          ],
+          "thread_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/normal/selftest-threads.json"
+            },
+            "plan_sha256": "15e2e482eb0260c83f3772fa6baf3c89a14a7a13617552d91dec0319b9530105",
+            "listener_executable_path": null,
+            "launch_epoch": 1794419232.1190746,
+            "observer_pid": 1500868,
+            "observer_start_ticks": 135917523,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-thread-wait-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419232.1707287
+            },
+            "startup_until_first_sample_seconds": 0.053270631935447454,
+            "term_requested_epoch": 1794419233.423397,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.060875,
+            "whole_child_maximum_rss_kib": 16704,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.10111382696777582,
+            "whole_child_wall_seconds": 1.405023701954633,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.2527215089648962, \"observer_cpu_seconds\": 0.0024851690000000023}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/normal/selftest-threads.json",
+            "raw_report_bytes": 6990,
+            "raw_report_sha256": "132e71ab865044067eda46780b88595e528f6b7732fecede919c164f0273178a",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "sample_count": 2,
+            "first_sample_epoch": 1794419232.1707287,
+            "last_sample_epoch": 1794419233.1710289,
+            "maximum_sample_gap_seconds": 1.0002966250758618,
+            "sampling_cpu_seconds": 0.0024851690000000023,
+            "maximum_collection_seconds": 0.0014008581638336182,
+            "sampling_elapsed_seconds": 1.2527215089648962,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 2,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.stat": 2,
+              "memory.events": 2,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 2,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          },
+          "device_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "owned_observer_TERM_count": 1,
+            "owned_observer_KILL_count": 0,
+            "plan": {
+              "schema": "crg-device-state-observer-plan-v1",
+              "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "cgroup_identity": [
+                25,
+                28106887
+              ],
+              "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+              "devices": [
+                {
+                  "major_minor": "253:0",
+                  "sysfs": "/sys/devices/virtual/block/dm-0",
+                  "identity": [
+                    21,
+                    55869
+                  ]
+                },
+                {
+                  "major_minor": "8:2",
+                  "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                  "identity": [
+                    21,
+                    55779
+                  ]
+                },
+                {
+                  "major_minor": "8:0",
+                  "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                  "identity": [
+                    21,
+                    55604
+                  ]
+                }
+              ],
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/normal/selftest-devices.json"
+            },
+            "plan_sha256": "a2349d04ec73719dbe2ab0ddf4bfd8215210472232053c63b2f071124c99adf7",
+            "launch_epoch": 1794419232.0742853,
+            "observer_pid": 1500859,
+            "observer_start_ticks": 135917518,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-device-state-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419232.116354
+            },
+            "startup_until_first_sample_seconds": 0.04437481611967087,
+            "term_requested_epoch": 1794419233.5248263,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.052158,
+            "whole_child_maximum_rss_kib": 15744,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.04034199705347419,
+            "whole_child_wall_seconds": 1.4907548842020333,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.408549167914316, \"observer_cpu_seconds\": 0.0047295489999999996}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/normal/selftest-devices.json",
+            "raw_report_bytes": 6827,
+            "raw_report_sha256": "0870edaba77525e0e8c52e46fe25cd95c2d95989d78b92fc256437ddd4ff4eff",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "full_duration_observed": false,
+            "sample_count": 2,
+            "first_sample_epoch": 1794419232.116354,
+            "last_sample_epoch": 1794419233.1170607,
+            "maximum_sample_gap_seconds": 1.0006948329973966,
+            "sampling_cpu_seconds": 0.0047295489999999996,
+            "sampling_elapsed_seconds": 1.408549167914316,
+            "maximum_collection_seconds": 0.0022547089029103518,
+            "device_available_sample_counts": {
+              "253:0": 2,
+              "8:0": 2,
+              "8:2": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.max": 0,
+              "cpu.stat": 2,
+              "io.max": 0,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.events": 2,
+              "memory.max": 2,
+              "memory.stat": 2
+            },
+            "missing_values_are_unknown": true,
+            "device_layers_must_not_be_added": true,
+            "stable_or_business_acceptance_proven": false,
+            "engine_and_reload_interval_envelopes_covered": true,
+            "integration_phase": "collected-intervals-covered",
+            "sampling_gaps_reviewed": true,
+            "optional_missing_fields_still_unknown": true,
+            "original_business_and_stable_acceptance_proven": false
+          }
+        },
+        "device-start-failed": {
+          "reload_intervals": [
+            {
+              "started_epoch": 1794419233.619798,
+              "ended_epoch": 1794419233.669798
+            }
+          ],
+          "thread_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/device-start-failed/selftest-threads.json"
+            },
+            "plan_sha256": "1129ac56ce1cc215857c2eadf33830874f984f437b4892e1399067db7cbe793c",
+            "listener_executable_path": null,
+            "launch_epoch": 1794419233.5666373,
+            "observer_pid": 1501163,
+            "observer_start_ticks": 135917667,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-thread-wait-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419233.617741
+            },
+            "startup_until_first_sample_seconds": 0.052879760041832924,
+            "term_requested_epoch": 1794419234.871484,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.061225999999999996,
+            "whole_child_maximum_rss_kib": 16704,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.05058282194659114,
+            "whole_child_wall_seconds": 1.3549547190777957,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.253798846853897, \"observer_cpu_seconds\": 0.003320781000000002}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/device-start-failed/selftest-threads.json",
+            "raw_report_bytes": 7004,
+            "raw_report_sha256": "43c62fa074f59726f97a32e0ec98a3ae8e227d294386732d588704bc0919003d",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "sample_count": 2,
+            "first_sample_epoch": 1794419233.617741,
+            "last_sample_epoch": 1794419234.6181767,
+            "maximum_sample_gap_seconds": 1.0004312570672482,
+            "sampling_cpu_seconds": 0.003320781000000002,
+            "maximum_collection_seconds": 0.0015462790615856647,
+            "sampling_elapsed_seconds": 1.253798846853897,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 2,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.stat": 2,
+              "memory.events": 2,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 2,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          },
+          "device_observer": {
+            "phase": "start-failed",
+            "target_signals_or_control_writes": 0,
+            "owned_observer_TERM_count": 0,
+            "owned_observer_KILL_count": 0,
+            "start_error": "DEVICE_SESSION_FROZEN_SOURCE",
+            "integration_errors": [
+              "DEVICE_SESSION_FROZEN_SOURCE",
+              "DEVICE_SESSION_FROZEN_SOURCE"
+            ],
+            "integration_phase": "diagnostic-failed"
+          }
+        },
+        "business-and-device-failed": {
+          "reload_intervals": [
+            {
+              "started_epoch": 1794419234.97649,
+              "ended_epoch": 1794419235.02649
+            }
+          ],
+          "thread_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/business-and-device-failed/selftest-threads.json"
+            },
+            "plan_sha256": "a6527f0faf2841b4a64b88695f86ffc75853da0656c011026c30b4bf4b188204",
+            "listener_executable_path": null,
+            "launch_epoch": 1794419234.9232118,
+            "observer_pid": 1501346,
+            "observer_start_ticks": 135917803,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-thread-wait-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419234.9741764
+            },
+            "startup_until_first_sample_seconds": 0.053004339104518294,
+            "term_requested_epoch": 1794419236.227402,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.06217,
+            "whole_child_maximum_rss_kib": 16896,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.10058840713463724,
+            "whole_child_wall_seconds": 1.404386033071205,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.2532800449989736, \"observer_cpu_seconds\": 0.004108847999999998}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/business-and-device-failed/selftest-threads.json",
+            "raw_report_bytes": 7013,
+            "raw_report_sha256": "4cae4e2acd9c22597c9b8db2d078ef41f626f68d34848b50e7d989c4525581be",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "sample_count": 2,
+            "first_sample_epoch": 1794419234.9741764,
+            "last_sample_epoch": 1794419235.9750276,
+            "maximum_sample_gap_seconds": 1.0008475589565933,
+            "sampling_cpu_seconds": 0.004108847999999998,
+            "maximum_collection_seconds": 0.001978524960577488,
+            "sampling_elapsed_seconds": 1.2532800449989736,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 2,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.stat": 2,
+              "memory.events": 2,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 2,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          },
+          "device_observer": {
+            "phase": "start-failed",
+            "target_signals_or_control_writes": 0,
+            "owned_observer_TERM_count": 0,
+            "owned_observer_KILL_count": 0,
+            "start_error": "DEVICE_SESSION_FROZEN_SOURCE",
+            "integration_errors": [
+              "DEVICE_SESSION_FROZEN_SOURCE",
+              "DEVICE_SESSION_FROZEN_SOURCE"
+            ],
+            "integration_phase": "diagnostic-failed"
+          }
+        },
+        "interval-outside": {
+          "reload_intervals": [
+            {
+              "started_epoch": 1794419226.4814,
+              "ended_epoch": 1794419236.5314
+            }
+          ],
+          "thread_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/interval-outside/selftest-threads.json"
+            },
+            "plan_sha256": "b70f66f6b29b0b4561a3aa083faa7520394638873ed5ace5c0b1663019497ab3",
+            "listener_executable_path": null,
+            "launch_epoch": 1794419236.4281812,
+            "observer_pid": 1501867,
+            "observer_start_ticks": 135917954,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-thread-wait-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419236.4795988
+            },
+            "startup_until_first_sample_seconds": 0.05292043392546475,
+            "term_requested_epoch": 1794419237.7324226,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.060643999999999997,
+            "whole_child_maximum_rss_kib": 16512,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.05049111996777356,
+            "whole_child_wall_seconds": 1.3543213498778641,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.2528756360989064, \"observer_cpu_seconds\": 0.0025721379999999947}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/interval-outside/selftest-threads.json",
+            "raw_report_bytes": 7007,
+            "raw_report_sha256": "65a090439f661bbd5c8b8ca86e3d7c59d7e0f2bb0a52ec41e15d47c79528897d",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "sample_count": 2,
+            "first_sample_epoch": 1794419236.4795988,
+            "last_sample_epoch": 1794419237.480414,
+            "maximum_sample_gap_seconds": 1.000810543075204,
+            "sampling_cpu_seconds": 0.0025721379999999947,
+            "maximum_collection_seconds": 0.0012768411543220282,
+            "sampling_elapsed_seconds": 1.2528756360989064,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 2,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.stat": 2,
+              "memory.events": 2,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 2,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          },
+          "device_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "owned_observer_TERM_count": 1,
+            "owned_observer_KILL_count": 0,
+            "plan": {
+              "schema": "crg-device-state-observer-plan-v1",
+              "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "cgroup_identity": [
+                25,
+                28106887
+              ],
+              "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+              "devices": [
+                {
+                  "major_minor": "253:0",
+                  "sysfs": "/sys/devices/virtual/block/dm-0",
+                  "identity": [
+                    21,
+                    55869
+                  ]
+                },
+                {
+                  "major_minor": "8:2",
+                  "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                  "identity": [
+                    21,
+                    55779
+                  ]
+                },
+                {
+                  "major_minor": "8:0",
+                  "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                  "identity": [
+                    21,
+                    55604
+                  ]
+                }
+              ],
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/interval-outside/selftest-devices.json"
+            },
+            "plan_sha256": "4bf953a9d0898d94c3746bf247b66b4437c71317f6e174d7cfe82de65aa10a6a",
+            "launch_epoch": 1794419236.3828478,
+            "observer_pid": 1501865,
+            "observer_start_ticks": 135917949,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-device-state-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419236.4248028
+            },
+            "startup_until_first_sample_seconds": 0.044902530033141375,
+            "term_requested_epoch": 1794419237.7832198,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.052139,
+            "whole_child_maximum_rss_kib": 15744,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.040318907937034965,
+            "whole_child_wall_seconds": 1.4405634421855211,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.3584935790859163, \"observer_cpu_seconds\": 0.0048174809999999985}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/interval-outside/selftest-devices.json",
+            "raw_report_bytes": 6841,
+            "raw_report_sha256": "447fbb05523f3c3335e2e0bec8aa0d519e85d968354f832311ee0d0815718850",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "full_duration_observed": false,
+            "sample_count": 2,
+            "first_sample_epoch": 1794419236.4248028,
+            "last_sample_epoch": 1794419237.4250684,
+            "maximum_sample_gap_seconds": 1.000253174919635,
+            "sampling_cpu_seconds": 0.0048174809999999985,
+            "sampling_elapsed_seconds": 1.3584935790859163,
+            "maximum_collection_seconds": 0.0026651218067854643,
+            "device_available_sample_counts": {
+              "253:0": 2,
+              "8:0": 2,
+              "8:2": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.max": 0,
+              "cpu.stat": 2,
+              "io.max": 0,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.events": 2,
+              "memory.max": 2,
+              "memory.stat": 2
+            },
+            "missing_values_are_unknown": true,
+            "device_layers_must_not_be_added": true,
+            "stable_or_business_acceptance_proven": false,
+            "engine_and_reload_interval_envelopes_covered": false,
+            "integration_errors": [
+              "DEVICE_BUSINESS_INTERVAL_ENVELOPE"
+            ],
+            "integration_phase": "diagnostic-failed"
+          }
+        },
+        "save-failed": {
+          "reload_intervals": [
+            {
+              "started_epoch": 1794419237.9480379,
+              "ended_epoch": 1794419237.9980378
+            }
+          ],
+          "thread_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "plan": {
+              "schema": "crg-vendor-thread-observer-plan-v1",
+              "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/save-failed/selftest-threads.json"
+            },
+            "plan_sha256": "960c796725ca5c76b4adc22ea0f00321179654f35f3230722a9cac8d8b7242ec",
+            "listener_executable_path": null,
+            "launch_epoch": 1794419237.8948205,
+            "observer_pid": 1502172,
+            "observer_start_ticks": 135918100,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-thread-wait-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419237.9461365
+            },
+            "startup_until_first_sample_seconds": 0.052909755846485496,
+            "term_requested_epoch": 1794419239.1994045,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.061364999999999996,
+            "whole_child_maximum_rss_kib": 16704,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.05050469608977437,
+            "whole_child_wall_seconds": 1.354672244982794,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.253324685851112, \"observer_cpu_seconds\": 0.0030823540000000024}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/save-failed/selftest-threads.json",
+            "raw_report_bytes": 7012,
+            "raw_report_sha256": "39cbff4d45f163400dc0cafd726fa6b0b1efca81cdd05374b60b5cbada11bc0c",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "sample_count": 2,
+            "first_sample_epoch": 1794419237.9461365,
+            "last_sample_epoch": 1794419238.9470274,
+            "maximum_sample_gap_seconds": 1.0008868838194758,
+            "sampling_cpu_seconds": 0.0030823540000000024,
+            "maximum_collection_seconds": 0.0013879628386348486,
+            "sampling_elapsed_seconds": 1.253324685851112,
+            "task_races": 0,
+            "truncated_samples": 0,
+            "maximum_task_count": 1,
+            "task_state_counts": {
+              "S": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.stat": 2,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.stat": 2,
+              "memory.events": 2,
+              "cpu.pressure": 0,
+              "memory.pressure": 0,
+              "io.pressure": 0,
+              "cpu.max": 0,
+              "memory.max": 2,
+              "io.max": 0
+            },
+            "missing_values_are_unknown": true,
+            "full_samples_embedded_in_business_report": false
+          },
+          "device_observer": {
+            "phase": "collected",
+            "target_signals_or_control_writes": 0,
+            "owned_observer_TERM_count": 1,
+            "owned_observer_KILL_count": 0,
+            "plan": {
+              "schema": "crg-device-state-observer-plan-v1",
+              "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+              "label": "selftest",
+              "pid": 1500858,
+              "start_ticks": 135917508,
+              "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219648.scope",
+              "cgroup_identity": [
+                25,
+                28106887
+              ],
+              "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+              "devices": [
+                {
+                  "major_minor": "253:0",
+                  "sysfs": "/sys/devices/virtual/block/dm-0",
+                  "identity": [
+                    21,
+                    55869
+                  ]
+                },
+                {
+                  "major_minor": "8:2",
+                  "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+                  "identity": [
+                    21,
+                    55779
+                  ]
+                },
+                {
+                  "major_minor": "8:0",
+                  "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+                  "identity": [
+                    21,
+                    55604
+                  ]
+                }
+              ],
+              "duration_seconds": 3,
+              "output": "/var/tmp/crg-device306-session-20261111/save-failed/selftest-devices.json"
+            },
+            "plan_sha256": "7f4941b32705851d41b991058523cff2ad4a341fa323730f5cb64af3a4edbfef",
+            "launch_epoch": 1794419237.8497052,
+            "observer_pid": 1502168,
+            "observer_start_ticks": 135918096,
+            "observer_entry": "/var/tmp/crg-device306-tools-20261111/vendor-device-state-observer.py",
+            "pidfd_used": true,
+            "first_sample_handshake": {
+              "phase": "observing",
+              "sample_count": 1,
+              "epoch": 1794419237.8919892
+            },
+            "startup_until_first_sample_seconds": 0.04469738807529211,
+            "integration_errors": [
+              "OSError",
+              "OSError",
+              "OSError"
+            ],
+            "integration_phase": "diagnostic-failed",
+            "term_requested_epoch": 1794419239.250205,
+            "exit": 2,
+            "whole_child_cpu_seconds": 0.05301,
+            "whole_child_maximum_rss_kib": 15744,
+            "whole_child_block_input_units": 0,
+            "whole_child_block_output_units": 16,
+            "observer_original_instance_gone": true,
+            "stop_and_final_flush_seconds": 0.04031271114945412,
+            "whole_child_wall_seconds": 1.440686275018379,
+            "terminal_stdout": "{\"phase\": \"incomplete\", \"sample_count\": 2, \"elapsed_seconds\": 1.3582967531401664, \"observer_cpu_seconds\": 0.0052096210000000046}\n",
+            "raw_report_path": "/var/tmp/crg-device306-session-20261111/save-failed/selftest-devices.json",
+            "raw_report_bytes": 6832,
+            "raw_report_sha256": "0071b602f877c033bcccd91a0cd7284740190f5c5ad3345b024e038a3a0622b1",
+            "report_phase": "incomplete",
+            "report_reason": "observer-interrupted",
+            "full_duration_observed": false,
+            "sample_count": 2,
+            "first_sample_epoch": 1794419237.8919892,
+            "last_sample_epoch": 1794419238.8920696,
+            "maximum_sample_gap_seconds": 1.000068562105298,
+            "sampling_cpu_seconds": 0.0052096210000000046,
+            "sampling_elapsed_seconds": 1.3582967531401664,
+            "maximum_collection_seconds": 0.002619270933791995,
+            "device_available_sample_counts": {
+              "253:0": 2,
+              "8:0": 2,
+              "8:2": 2
+            },
+            "cgroup_file_available_sample_counts": {
+              "cpu.max": 0,
+              "cpu.stat": 2,
+              "io.max": 0,
+              "io.stat": 0,
+              "memory.current": 2,
+              "memory.events": 2,
+              "memory.max": 2,
+              "memory.stat": 2
+            },
+            "missing_values_are_unknown": true,
+            "device_layers_must_not_be_added": true,
+            "stable_or_business_acceptance_proven": false
+          }
+        }
+      }
+    }
+  },
+  "exact_raw_observer_reports": 15,
+  "frozen_source_versions": 9,
+  "target_signals_or_product_control_writes": 0,
+  "host_only_no_vendor_SQL_API_backup_load": true,
+  "actual_900_seconds_executed": false,
+  "original_32_two_role_acceptance_executed": false,
+  "historical_business_failures_resolved": false,
+  "P10_complete": false,
+  "stable_release_accepted": false
+}
