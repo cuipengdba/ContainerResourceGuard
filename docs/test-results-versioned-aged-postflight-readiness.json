@@ -1,0 +1,64 @@
+{
+  "phase": "Linux-selftests-passed-long-execution-pending-short-readiness-passed",
+  "observed_utc": "2026-11-11T02:47:20.382983+00:00",
+  "executor_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+  "files": {
+    "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+    "vendor-versioned-aged-postflight-checks.py": "b1fbc8a067f35426b4edd3e531a0c9971b2cb67a143f9b06f1a2b5cb4d087744",
+    "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+    "vendor-aged-postflight.py": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+    "vendor-aged-postflight-checks.py": "ad6c124e48c55eac6bd63f780eacb95a25069f23c6e1fc3f4d4dbe8bcb309959",
+    "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "execution-plan.json": "364f17464f1b10ffe5d507bbc2095d2ed1a31cea5a7a525de5d3e0eb6a33c91d",
+    "rehearsal-plan.json": "b86b8a5e0a062d4ff4044c32a12a2938e2a8bff5d3bdfb82eab4bee3dec8f419"
+  },
+  "selftests": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_bindings_reject_old_binary_run_and_arbitrary_targets (__main__.Checks) ... ok\ntest_checked_plan_rejects_changed_contract_before_inventory (__main__.Checks) ... ok\ntest_cleanup_and_existing_root_stay_protected (__main__.Checks) ... ok\ntest_execute_pending_marker_and_fresh_gate_precede_any_work (__main__.Checks) ... ok\ntest_original_native_thresholds_are_recomputed (__main__.Checks) ... ok\ntest_pending_uses_exact_lineage_without_inventory_or_writes (__main__.Checks) ... ok\ntest_runtime_methods_remain_equal_to_frozen_template (__main__.Checks) ... ok\ntest_short_requires_own_completed_source_and_stopped_runner (__main__.Checks) ... ok\ntest_source_mount_guard_allows_only_constrained_readonly_ancestors (__main__.Checks) ... ok\ntest_terminal_still_requires_full_lineage_and_unused_sources (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.074s\n\nOK\n"
+  },
+  "readiness": [
+    {
+      "plan": "execution-plan.json",
+      "execute_requested": false,
+      "exit": 2,
+      "result": {
+        "phase": "pending",
+        "postflight_allowed": false,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "stderr": ""
+    },
+    {
+      "plan": "execution-plan.json",
+      "execute_requested": true,
+      "exit": 2,
+      "result": {
+        "phase": "pending",
+        "postflight_allowed": false,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "stderr": ""
+    },
+    {
+      "plan": "rehearsal-plan.json",
+      "execute_requested": false,
+      "exit": 0,
+      "result": {
+        "phase": "ready-for-short-rehearsal",
+        "postflight_allowed": true,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "stderr": ""
+    }
+  ],
+  "both_execution_targets_absent_at_readiness": true,
+  "actual_postflight_executed_at_readiness": false,
+  "subsequent_short_execution_separately_observed": true,
+  "P10_complete": false,
+  "release_accepted": false
+}

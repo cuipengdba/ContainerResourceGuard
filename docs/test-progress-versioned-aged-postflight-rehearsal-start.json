@@ -1,0 +1,264 @@
+{
+  "phase": "short-retained-data-execution-running-not-accepted",
+  "observed_node_utc": "2026-11-11T02:51:30Z",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "embedded_version": "v1.0.0",
+  "executor_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+  "plan_sha256": "b86b8a5e0a062d4ff4044c32a12a2938e2a8bff5d3bdfb82eab4bee3dec8f419",
+  "runner_same_instance_verified_live": true,
+  "worker_same_instance_verified_live": true,
+  "runner_start_ticks": 130530468,
+  "worker_exit_receipt_present": false,
+  "checks_so_far": [
+    {
+      "name": "dbs-aged-reopen-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-reopen-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-journal-rollover-before-data-check",
+      "passed": true
+    },
+    {
+      "name": "dbs-actual-aged64MiB-and-final-counter-reopened",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-schema-logical-backup-readable",
+      "passed": true
+    },
+    {
+      "name": "dbs-independent-database-restores-aged-payload-and-counter",
+      "passed": true
+    },
+    {
+      "name": "dbs-same-data-new-Pod-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-same-data-new-Pod-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-ID-journal-PG-restart-and-same-aged-data",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-online-install-previous-development-binary",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-immediate-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-previous-Agent-managed-with-same-PID1-PG-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-current-Agent-resumed-after-rollback",
+      "passed": true
+    }
+  ],
+  "roles_so_far": {
+    "dbs": {
+      "phase": "booting-retained-data",
+      "boots": [
+        {
+          "phase": "aged-reopen",
+          "pod_uid": "e8820b9c-b955-4930-b101-ad50dfb0e681",
+          "container_id": "4aff2ad8d0bd627246a833eaae523c076f022d9ea9e77d99c21e2b69f2f1a36f",
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pode8820b9c_b955_4930_b101_ad50dfb0e681.slice/cri-containerd-4aff2ad8d0bd627246a833eaae523c076f022d9ea9e77d99c21e2b69f2f1a36f.scope",
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "network_isolated_before_start": true,
+          "ready_seconds": 30.83165388694033,
+          "identity": "eb65fd8be150843ff17157706457c751d30d863a494ec34f779f447e83954960",
+          "active_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "primary_start": "2026-11-11 10:49:57.407206+08"
+        },
+        {
+          "phase": "same-data-new-Pod",
+          "pod_uid": "f6756a45-794a-4c45-b046-1a1a7f4c55a4",
+          "container_id": "94a79f5a9b8edba87d32634105ae4216906787379161f4cdd38fc37c5bda1679",
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podf6756a45_794a_4c45_b046_1a1a7f4c55a4.slice/cri-containerd-94a79f5a9b8edba87d32634105ae4216906787379161f4cdd38fc37c5bda1679.scope",
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "network_isolated_before_start": true,
+          "ready_seconds": 24.80412713997066,
+          "identity": "04aa6f3237bf48e44f1824f78e4440052d40d7a33875d02ef0426a7c9ec7a967",
+          "active_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "primary_start": "2026-11-11 10:50:54.084608+08"
+        }
+      ],
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794365470.2169902,
+          "ended_epoch": 1794365471.1507301
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794365471.4558856,
+          "ended_epoch": 1794365472.3896263
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794365472.7766974,
+          "ended_epoch": 1794365473.373614
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794365473.794514,
+          "ended_epoch": 1794365474.6673124
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794365474.9652348,
+          "ended_epoch": 1794365475.2105372
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794365477.333056,
+          "ended_epoch": 1794365478.3414283
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794365478.686604,
+          "ended_epoch": 1794365479.5500345
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794365479.844684,
+          "ended_epoch": 1794365480.075811
+        }
+      ]
+    }
+  },
+  "native_so_far": {
+    "dbs": {
+      "api": {
+        "attempts": 0,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0,
+        "successes": 0,
+        "total_seconds": 0
+      },
+      "cluster_database_bytes_initial": 231533132,
+      "criteria": {
+        "api_period_seconds": 5,
+        "maximum_errors": 0,
+        "maximum_seconds": 5,
+        "minimum_scheduled_samples_fraction": 0.98,
+        "p95_upper_bound_seconds": 1,
+        "sql_period_seconds": 2
+      },
+      "initial_checksum": [
+        16384,
+        134225920,
+        67108864,
+        "10b3b8214172d3b698258a128e9c6687",
+        0
+      ],
+      "latency_bucket_upper_seconds": [
+        0.001,
+        0.005,
+        0.01,
+        0.02,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1,
+        2,
+        5,
+        "over-5"
+      ],
+      "phase": "running",
+      "primary_start_time_initial": "2026-11-11 10:50:54.084608+08",
+      "requested_duration_seconds": 600,
+      "run_id": "202611110820",
+      "schema": "crg-vendor-soak-v1",
+      "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+      "sql": {
+        "attempts": 0,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0,
+        "successes": 0,
+        "total_seconds": 0
+      },
+      "started_utc": "2026-11-11T02:51:08.933773Z",
+      "test_phase": "smoke"
+    }
+  },
+  "original_R57_and_own_R78_seven_day_runners_independently_verified_live": true,
+  "scope": "Own exact versioned binary, retained R64 short business data. First13checks are not two-role terminal/600s or actual seven-day-aged acceptance.",
+  "P10_complete": false,
+  "release_accepted": false
+}

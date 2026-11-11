@@ -53,3 +53,6 @@
 
 
 新摘要dbc48aa5的[七天首次固定测量观察](test-progress-seven-day-versioned-candidate-start.json)和[自身谱系采集/只读门禁](testing-versioned-aged-preflight.md)已归档：首周期内容通过但native-pending，Linux8项通过、实际谱系已封存，提前后置仍exit2/pending且目标未创建。原R57同时独立确认在线。预发布包不因这些中间证据成为稳定版；真实七天及后置执行尚未完成。
+
+
+版本化候选的[实际老化后置执行器](testing-versioned-aged-postflight-execution.md)已实现并通过Linux10项检查；真实七天默认/execute两次门禁均pending且未创建目标，独立短数据readiness通过并启动原实例演练，首观察DBS13项通过、尚未计两角色600秒终态。绑定本程序R64数据和新R78/R80b谱系，原R57/R59/R60保持；实际七天后置、老化故障和稳定全部条件继续。
