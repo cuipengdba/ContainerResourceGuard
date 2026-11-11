@@ -35,3 +35,6 @@ DBS原生负载实际600.292096秒，未被中断：SQL298次/1错，最大5.005
 正确限额下业务容量不足与Agent缺陷分别判定；当前证据尚未证明其中之一或完整排除Agent影响。R203/R167/R142/R120等历史失败继续保留。原604800秒、正式24h+24h与后置、ARM厂商业务及独立物理多设备仍按原52任务执行。
 
 [本轮期间七天任务固定观察](test-progress-seven-day-during-final-wait.json)：节点14:51:31Z，两条原链路仍为原PID/start实例，SQL/API/OOM均0，约63658秒和49848秒；均未到604800秒，不接受七天通过，不重启长期任务。
+
+
+已补充[R235实际PGDATA及IO映射只读核对](testing-final-wait-io-map.md)：原Pod明确PGDATA=/opt/postgresql/pgdata，实际WAL/日志/备份均为同一XFS253:0→sda2→sda，原标定profile保持。初次/data猜测路径的不存在和纠正完整保留；失败后队列快照不替代故障时刻或证明因果，不计独立物理多盘/业务通过。
