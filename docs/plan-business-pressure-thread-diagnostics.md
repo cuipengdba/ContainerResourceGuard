@@ -1,6 +1,6 @@
 # 完整压力诊断设计与执行状态
 
-目标是解释R142的实际API错误；原失败终态、冻结执行器/计划和全部业务门槛保持。本文是后续实施约束，不是新实测或接受记录。工具[19项及两角色短观察](testing-thread-observer.md)已完成；R167压力重测执行器/冻结计划已实现，实际前置9项通过；压力业务已启动，尚未获得完整接受终态，见[当前冻结协议](testing-business-pressure-threads.md)。
+目标是解释R142的实际API错误；原失败终态、冻结执行器/计划和全部业务门槛保持。本文是后续实施约束，不是新实测或接受记录。工具[19项及两角色短观察](testing-thread-observer.md)已完成；R167压力重测执行器/冻结计划已实现，实际前置9项通过；压力业务已执行并失败（DBS600秒/SQL2错/API0错、HIS未执行），见[当前冻结协议](testing-business-pressure-threads.md)。
 
 1. 新执行根、namespace和run-id，固定R142失败报告55fe93ae、原运行器/worker/cgroup/namespace清理、原配置/profile/ELF恢复，以及本观察器ac5dd6b7来源与实际资格报告。默认只读，marker、计划/工具摘要或预算篡改均拒绝并确认未创建目标。
 2. 沿用原32项主检查、两角色各600秒、原七次重载和四个压力/恢复区间。CPU/内存/IO配额、64MiB原数据、12GiB压力工具上限、64MiB步长、实际用量大于20%目标及256MiB、旧限额下2GiB余量、宿主8GiB余量、6秒保持、60秒准备/延后/释放后重试均不变。原gen7同摘要/无需重写配置自动应用条件保持。
@@ -16,3 +16,6 @@ R167[完整压力线程诊断](testing-business-pressure-threads.md)已实现并
 
 
 R167完整压力线程联测[已启动并归档开始快照](test-start-business-pressure-threads.json)：固定原运行器/worker/观察器PID及启动ticks；快照时DBS11区间、13项局部检查通过，真实高于20%目标时延后，释放后同gen7自动应用20%再恢复30%。原600秒负载/引擎仍pending、HIS业务尚未执行，不计完整业务通过。协议源码三个固定提交的CI均通过，公开45个来源/证据blob已核对，原发布包和历史失败保持。
+
+
+R167[完整线程压力终态](testing-business-pressure-threads.md)失败：DBS600.269秒/SQL2错/API0错/13局部检查，601样本及实际主库三次慢UPDATE已归档；HIS未执行，CPU无节流/PSI未知不等于根因明确。全清理/原输入和ELF恢复已核对。下步补原生逐错和PG等待证据，不提高配额或放宽原32项/SLA。
