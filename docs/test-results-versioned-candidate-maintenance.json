@@ -1,0 +1,583 @@
+{
+  "kind": "own exact versioned candidate online maintenance component terminal",
+  "phase": "passed",
+  "observed_node_utc": "2026-11-11T00:54:16Z",
+  "programs": {
+    "previous": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased protocol-advertising combined development build"
+    },
+    "candidate": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "release_status": "unpublished exact v1.0.0 versioned candidate"
+    }
+  },
+  "build_info": {
+    "previous": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "os": "linux",
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "version": "next-compatibility-contract",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    },
+    "candidate": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "os": "linux",
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "version": "v1.0.0",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    }
+  },
+  "job_sha256": "a5fdf31abc4e49472054b7d2e4d3e5999e36dcc7ed0a12500200411d1b80dec1",
+  "fault_prerequisite_report_sha256": "658fef9dca82971a7b463db49d0fbc031eb58bd1fc79a12481cc154217cc82af",
+  "cases": [
+    {
+      "role": "dbs",
+      "ready_and_managed_seconds": 33.07116565504111,
+      "cache_enforce_observation_seconds": 1.0011269350070506,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "native": {
+        "api": {
+          "attempts": 120,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009311986155807972,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0,
+          "successes": 120,
+          "total_seconds": 0.997690009418875
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.328898905078,
+        "ended_utc": "2026-11-11T00:39:25.727095Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4800
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-11T00:39:25.468941Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-11 08:28:54.96602+08",
+        "primary_start_time_initial": "2026-11-11 08:28:54.96602+08",
+        "requested_duration_seconds": 600,
+        "run_id": "202611110710",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 300,
+          "errors": 0,
+          "histogram": [
+            298,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.01146169495768845,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0,
+          "successes": 300,
+          "total_seconds": 0.21746566332876682
+        },
+        "started_utc": "2026-11-11T00:29:25.157904Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794356967.2576559,
+          "ended_epoch": 1794356968.3267577
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794356968.5436215,
+          "ended_epoch": 1794356969.1839864
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794356969.4046295,
+          "ended_epoch": 1794356972.6497183
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794356973.451688,
+          "ended_epoch": 1794356974.403868
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794356974.4048162,
+          "ended_epoch": 1794356974.637523
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794356983.973338,
+          "ended_epoch": 1794356985.378926
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794356985.3798952,
+          "ended_epoch": 1794356987.996654
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794356987.9976184,
+          "ended_epoch": 1794356988.4974759
+        }
+      ],
+      "own_Pod_removed": true
+    },
+    {
+      "role": "hisdbs",
+      "ready_and_managed_seconds": 21.1657213231083,
+      "cache_enforce_observation_seconds": 0.0001485229004174471,
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "original_ccg_readonly": true,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.008612967794761062,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9554797322489321
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.3990115318447,
+        "ended_utc": "2026-11-11T00:50:10.786342Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-11T00:50:10.483928Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-11 08:39:57.782738+08",
+        "primary_start_time_initial": "2026-11-11 08:39:57.782738+08",
+        "requested_duration_seconds": 600,
+        "run_id": "202611110711",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            297,
+            1,
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.029562507988885045,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2649640741292387
+        },
+        "started_utc": "2026-11-11T00:40:10.148360Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794357611.3574297,
+          "ended_epoch": 1794357612.4758205
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794357612.7988813,
+          "ended_epoch": 1794357613.4843807
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794357613.717646,
+          "ended_epoch": 1794357614.2436554
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794357614.4715815,
+          "ended_epoch": 1794357615.18761
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794357615.1889372,
+          "ended_epoch": 1794357615.4461746
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794357617.6826978,
+          "ended_epoch": 1794357618.5604515
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794357618.5618331,
+          "ended_epoch": 1794357618.9971864
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794357618.998616,
+          "ended_epoch": 1794357619.2270553
+        }
+      ],
+      "own_Pod_removed": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "hisdbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    }
+  ],
+  "namespace_independently_absent": true,
+  "coordinator_gone": true,
+  "worker_exit": 0,
+  "limitations": [
+    "Unpublished candidate dbc48aa5 to/from previous50671aa development binary; NOT two published minor versions.",
+    "Original manual7.2CPU/20001980416B/64MiBps/4096IOPS business budget; not automatic30%/default20% sustained acceptance.",
+    "Isolated AMD64/Linux5.14/single-device real vendor paths, synthetic64MiB; no production mutation,actual aged state,long-term or untested hardware claim."
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}
