@@ -1,0 +1,340 @@
+{
+  "schema": "crg-write-iops-terminal-result-v1",
+  "phase": "diagnostic-completed",
+  "conclusion": "preplanned-IOPS-pattern-observed-with-confounds",
+  "arms": {
+    "a1": {
+      "available": true,
+      "phase": "failed",
+      "reason": "NATIVE_COMPLETION_EXIT",
+      "native_phase": "failed",
+      "native_elapsed_seconds": 600.2985716219991,
+      "SQL_errors": 0,
+      "API_errors": 4,
+      "main_checks": 13,
+      "engine_content_checks": 10,
+      "reload_intervals": 11,
+      "eligibility_checks": {
+        "full600_uninterrupted": true,
+        "native_payload_and_primary": true,
+        "eleven_reload_intervals": true,
+        "all_recorded_main_checks_passed": true,
+        "ten_engine_content_checks": true,
+        "engine_temporary_content_cleaned": true,
+        "native_diagnostics_complete": true,
+        "native_interval_envelopes": true,
+        "thread_interval_envelopes": true,
+        "device_interval_envelopes": true,
+        "device_sampling_gap": true,
+        "diagnostic_cleanup_no_errors": true,
+        "device_no_KILL": true,
+        "recorded_cleanup": true,
+        "native_no_termination": true
+      },
+      "eligible_for_contrast": true,
+      "reasons": [],
+      "D_observations": 25,
+      "D_descriptor_counts": {
+        "/opt/dbs/log/DBS.log": 25
+      },
+      "strict_D_observations_per_error": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "PG_kernel_stack_unknown": 601,
+      "thread_samples": 600,
+      "device_samples": 600,
+      "PG_samples": 601,
+      "maximum_thread_sample_gap_seconds": 1.00070247403346,
+      "maximum_device_sample_gap_seconds": 1.000980757176876,
+      "thread_truncated_samples": 0,
+      "arm_archive_sha256": "9818c38a95d5da9c9a02a04b6aab57ad31ee4f14518163c53aaa37338c17a924",
+      "exact_report_sha256": "6bd2090864fe4bdc82eb0f26921b4e4dc7bbefa0b13755a18cac741f426eb125"
+    },
+    "b": {
+      "available": true,
+      "phase": "passed",
+      "reason": null,
+      "native_phase": "passed",
+      "native_elapsed_seconds": 600.1824936540797,
+      "SQL_errors": 0,
+      "API_errors": 0,
+      "main_checks": 16,
+      "engine_content_checks": 10,
+      "reload_intervals": 11,
+      "eligibility_checks": {
+        "full600_uninterrupted": true,
+        "native_payload_and_primary": true,
+        "eleven_reload_intervals": true,
+        "all_recorded_main_checks_passed": true,
+        "ten_engine_content_checks": true,
+        "engine_temporary_content_cleaned": true,
+        "native_diagnostics_complete": true,
+        "native_interval_envelopes": true,
+        "thread_interval_envelopes": true,
+        "device_interval_envelopes": true,
+        "device_sampling_gap": true,
+        "diagnostic_cleanup_no_errors": true,
+        "device_no_KILL": true,
+        "recorded_cleanup": true,
+        "native_no_termination": true
+      },
+      "eligible_for_contrast": true,
+      "reasons": [],
+      "D_observations": 0,
+      "D_descriptor_counts": {},
+      "strict_D_observations_per_error": [],
+      "PG_kernel_stack_unknown": 600,
+      "thread_samples": 602,
+      "device_samples": 602,
+      "PG_samples": 600,
+      "maximum_thread_sample_gap_seconds": 1.0018954721745104,
+      "maximum_device_sample_gap_seconds": 1.0009054020047188,
+      "thread_truncated_samples": 0,
+      "arm_archive_sha256": "5da334bdbd8423d61c5dc0c95cf98308f66288d1661a48d7611257d43a0e1f4e",
+      "exact_report_sha256": "dd83ba50e870131d720f98ade3a3b7956ad3ab58a74d14923281a2b0a98ee8d4"
+    },
+    "a2": {
+      "available": true,
+      "phase": "failed",
+      "reason": "NATIVE_COMPLETION_EXIT",
+      "native_phase": "failed",
+      "native_elapsed_seconds": 600.3861480220221,
+      "SQL_errors": 3,
+      "API_errors": 0,
+      "main_checks": 13,
+      "engine_content_checks": 10,
+      "reload_intervals": 11,
+      "eligibility_checks": {
+        "full600_uninterrupted": true,
+        "native_payload_and_primary": true,
+        "eleven_reload_intervals": true,
+        "all_recorded_main_checks_passed": true,
+        "ten_engine_content_checks": true,
+        "engine_temporary_content_cleaned": true,
+        "native_diagnostics_complete": true,
+        "native_interval_envelopes": true,
+        "thread_interval_envelopes": true,
+        "device_interval_envelopes": true,
+        "device_sampling_gap": true,
+        "diagnostic_cleanup_no_errors": true,
+        "device_no_KILL": true,
+        "recorded_cleanup": true,
+        "native_no_termination": true
+      },
+      "eligible_for_contrast": true,
+      "reasons": [],
+      "D_observations": 0,
+      "D_descriptor_counts": {},
+      "strict_D_observations_per_error": [
+        0,
+        0,
+        0
+      ],
+      "PG_kernel_stack_unknown": 611,
+      "thread_samples": 601,
+      "device_samples": 602,
+      "PG_samples": 601,
+      "maximum_thread_sample_gap_seconds": 1.0082114809192717,
+      "maximum_device_sample_gap_seconds": 1.0005514430813491,
+      "thread_truncated_samples": 0,
+      "arm_archive_sha256": "cfe2887e86a19a62893c21b45229085d0a109ce33a84df7983f3c99978d2531c",
+      "exact_report_sha256": "b13e284c9c5d7babfe4a6bb4c122d5823897ea6031d4454c04380dd4a2d00842"
+    }
+  },
+  "all_three_structurally_eligible": true,
+  "preplanned_A_fail_B_pass_A_fail_pattern_observed": true,
+  "coordinator_interpretation_not_sufficient_without_independent_eligibility": true,
+  "raw_terminal": {
+    "path": "docs/test-evidence/write-iops360-terminal.json.gz",
+    "gzip_bytes": 167449,
+    "gzip_sha256": "fd1f74922c0145cbd529f416b78059cb83dbb73faadad84d0abaa7bdbd6b0af1",
+    "uncompressed_bytes": 1468425,
+    "uncompressed_sha256": "dd1978581e0cd13f68e94cc53d4f4448239172e4f1277eb15d2fcbdbd7d7b889",
+    "exact_files": 18
+  },
+  "arm_evidence": {
+    "a1": {
+      "raw_evidence": {
+        "path": "docs/test-evidence/write-iops360-a1.json.gz",
+        "gzip_bytes": 634381,
+        "gzip_sha256": "9818c38a95d5da9c9a02a04b6aab57ad31ee4f14518163c53aaa37338c17a924",
+        "uncompressed_bytes": 15246569,
+        "uncompressed_sha256": "3879b16b74095fad75c312ee2eb534dc9b5fc050d17f1dc66e8ff4e62d2756ae",
+        "exact_files": 12
+      },
+      "analysis_path": "docs/test-analysis-write-iops-a1.json",
+      "analysis_sha256": "ae5274bb413128c21da8f46d62d4536e089bb3b58bf4545e1440680d8686457d",
+      "directory_and_archive_review_identical": true
+    },
+    "b": {
+      "raw_evidence": {
+        "path": "docs/test-evidence/write-iops360-b.json.gz",
+        "gzip_bytes": 642160,
+        "gzip_sha256": "5da334bdbd8423d61c5dc0c95cf98308f66288d1661a48d7611257d43a0e1f4e",
+        "uncompressed_bytes": 15469505,
+        "uncompressed_sha256": "7bb1067ad4b673a1b8db3866fe745063afe00e2cb1d6ae4e1f1910dc76dbc347",
+        "exact_files": 12
+      },
+      "analysis_path": "docs/test-analysis-write-iops-b.json",
+      "analysis_sha256": "af3c655be8cb858eeeb875ebfa3634aed15d04e90abd763a571849e9a59b2e51",
+      "directory_and_archive_review_identical": true
+    },
+    "a2": {
+      "raw_evidence": {
+        "path": "docs/test-evidence/write-iops360-a2.json.gz",
+        "gzip_bytes": 638619,
+        "gzip_sha256": "cfe2887e86a19a62893c21b45229085d0a109ce33a84df7983f3c99978d2531c",
+        "uncompressed_bytes": 15306414,
+        "uncompressed_sha256": "437fb839da1c543c3b6f5f2630d983d1dcdb6c0d8d5c3a1e31c34a7ddc2b2331",
+        "exact_files": 12
+      },
+      "analysis_path": "docs/test-analysis-write-iops-a2.json",
+      "analysis_sha256": "7ad8732d2759ef774757545b43cd26f590112641360bf9d01aec4eeda3626f62",
+      "directory_and_archive_review_identical": true
+    }
+  },
+  "sources_sha256": {
+    "tests/analyze-write-iops-arm.py": "457fdf382bedadd6fcd628d1174dccb7d359acb9f7848821e869c6962b57bc38",
+    "tests/analyze-write-iops-comparison.py": "1bf45c40f1d2fccf03904fd131aec33546b353fe9ae9878be9917b2e4812bfca",
+    "tests/vendor-write-iops-comparison.py": "30e92d64f2faede76efa115ebdedb0ec344567587b6c39c28bb1f8b7cc04de3d",
+    "docs/test-plan-write-iops-comparison.json": "3ae2a159dc9d40eea442e70f15cffcc09f91357545ab4311625bd2275b65599a"
+  },
+  "analysis_result_path": "docs/test-analysis-write-iops-comparison.json",
+  "analysis_result_sha256": "709110f92d2c9aba4b10f91020cb414c8ecf417e4e025dd75686873d40796110",
+  "independent_terminal": {
+    "schema": "crg-write-iops-independent-terminal-v1",
+    "node_utc": "2026-11-11T20:31:58.538559+00:00",
+    "phase": "diagnostic-completed",
+    "reason": null,
+    "exit": {
+      "exit": 0,
+      "started_epoch": 1794427034.0658412,
+      "ended_epoch": 1794429044.654706,
+      "executor_sha256": "30e92d64f2faede76efa115ebdedb0ec344567587b6c39c28bb1f8b7cc04de3d",
+      "plan_sha256": "3ae2a159dc9d40eea442e70f15cffcc09f91357545ab4311625bd2275b65599a"
+    },
+    "report_sha256": "4947fb91c1f473e669206185afe6387e84867b85f1f0173cb9e91d77cf730c0d",
+    "instances": {
+      "comparison-launch.json": {
+        "pid": 3172794,
+        "expected_start_ticks": 136697714,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "comparison-worker.json": {
+        "pid": 3172803,
+        "expected_start_ticks": 136697717,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "a1-0-thread_observer": {
+        "pid": 3190858,
+        "expected_start_ticks": 136704696,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "a1-0-device_observer": {
+        "pid": 3190857,
+        "expected_start_ticks": 136704681,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "a1-0-native": {
+        "pid": 3189161,
+        "expected_start_ticks": 136703905,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "b-0-thread_observer": {
+        "pid": 3346083,
+        "expected_start_ticks": 136770608,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "b-0-device_observer": {
+        "pid": 3346065,
+        "expected_start_ticks": 136770600,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "b-0-native": {
+        "pid": 3344538,
+        "expected_start_ticks": 136769872,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "a2-0-thread_observer": {
+        "pid": 3504229,
+        "expected_start_ticks": 136837043,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "a2-0-device_observer": {
+        "pid": 3504228,
+        "expected_start_ticks": 136837034,
+        "exists": false,
+        "original_instance_gone": true
+      },
+      "a2-0-native": {
+        "pid": 3501807,
+        "expected_start_ticks": 136836005,
+        "exists": false,
+        "original_instance_gone": true
+      }
+    },
+    "arms": {
+      "a1": {
+        "namespace": "crg-vendor-lab-writeiops360-a1-20261111",
+        "namespace_independently_absent": true,
+        "executed": true,
+        "report_sha256": "6bd2090864fe4bdc82eb0f26921b4e4dc7bbefa0b13755a18cac741f426eb125",
+        "phase": "failed",
+        "reason": "NATIVE_COMPLETION_EXIT",
+        "cgroups_independently_absent": [
+          "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podcbf81e1f_72cd_40f7_9f47_82ccfe19ec59.slice/cri-containerd-87198f434efda678d347ac80f33384b02d5c01464c9419c3a82be6fa64563ebb.scope"
+        ]
+      },
+      "b": {
+        "namespace": "crg-vendor-lab-writeiops360-b-20261111",
+        "namespace_independently_absent": true,
+        "executed": true,
+        "report_sha256": "dd83ba50e870131d720f98ade3a3b7956ad3ab58a74d14923281a2b0a98ee8d4",
+        "phase": "passed",
+        "reason": null,
+        "cgroups_independently_absent": [
+          "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb7f31a21_727e_4e61_a2c5_f224c78020e8.slice/cri-containerd-1ba07b44ad116c072a44e96b1a2c4c5c10787c04330659a814fc9a54f1ffdacd.scope"
+        ]
+      },
+      "a2": {
+        "namespace": "crg-vendor-lab-writeiops360-a2-20261111",
+        "namespace_independently_absent": true,
+        "executed": true,
+        "report_sha256": "b13e284c9c5d7babfe4a6bb4c122d5823897ea6031d4454c04380dd4a2d00842",
+        "phase": "failed",
+        "reason": "NATIVE_COMPLETION_EXIT",
+        "cgroups_independently_absent": [
+          "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pode0571fa7_fba6_4e0c_afb9_ae35e3921dee.slice/cri-containerd-29b00c2f98294ad4ca09e2e1f30ef3fc662062c9e931b0e994f881fb58726e6c.scope"
+        ]
+      }
+    },
+    "all_recorded_original_instances_independently_gone": true,
+    "all_three_namespaces_independently_absent": true,
+    "source_critical_bytes_and_clean_state_preserved": true,
+    "clone_program_configuration_and_profile_restored": true,
+    "prior_R342_report_unchanged": true,
+    "all_three_clones_frozen_before_any_arm": true
+  },
+  "offline_integrity_and_incomplete_matrix_checks": [
+    "changed-arm-report-old-digest-rejected",
+    "synthetic-missing-arm-overrides-false-positive-coordinator-summary"
+  ],
+  "shared_backend_cache_and_order_confounds_remain": true,
+  "original32_two_roles_percentage_quotas_and_SLA_unchanged": true,
+  "all_historical_failures_retained": true,
+  "runtime_product_unchanged": true,
+  "stable_release_accepted": false,
+  "P10_complete": false
+}

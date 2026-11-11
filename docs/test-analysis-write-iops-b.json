@@ -1,0 +1,116 @@
+{
+  "schema": "crg-write-iops-arm-offline-review-v1",
+  "terminal_phase": "passed",
+  "terminal_reason": null,
+  "main_checks": 16,
+  "roles": {
+    "dbs": {
+      "native_phase": "passed",
+      "native_elapsed_seconds": 600.1824936540797,
+      "native_SQL": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          290,
+          5,
+          0,
+          0,
+          2,
+          0,
+          1,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.40377746196463704,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 1.4716182814445347
+      },
+      "native_API": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          118,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.5347959951031953,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 2.1875628230627626
+      },
+      "requests": 422,
+      "reload_intervals": 11,
+      "engine_content_checks": 10,
+      "PG_samples": 600,
+      "PG_wait_available_samples": 600,
+      "PG_kernel_stack_available": 0,
+      "PG_kernel_stack_unknown": 600,
+      "thread_samples": 602,
+      "D_observations": 0,
+      "D_tid_instances": [],
+      "D_descriptor_counts": {},
+      "device_samples": 602,
+      "device_report_phase": "incomplete",
+      "device_report_reason": "observer-interrupted",
+      "device_counter_intervals": 601,
+      "maximum_cgroup_rates_per_second_by_layer": {
+        "253:0": {
+          "rbytes": 66528555.369900316,
+          "wbytes": 67174166.22586544,
+          "rios": 81.99818865672057,
+          "wios": 828.9989555884738
+        },
+        "8:0": {
+          "rbytes": 32757988.64043296,
+          "wbytes": 11155471.550248364,
+          "rios": 138.02685132787795,
+          "wios": 264.00220073172653
+        },
+        "8:2": null
+      },
+      "whole_device_observer_cpu_seconds": 1.6739819999999999,
+      "whole_thread_observer_cpu_seconds": 3.465142,
+      "native_internal_thread_cpu_seconds": 1.5739565599999992,
+      "error_windows": [],
+      "IO_causality_proven": false
+    }
+  },
+  "inputs_sha256": {
+    "report.json": "dd83ba50e870131d720f98ade3a3b7956ad3ab58a74d14923281a2b0a98ee8d4",
+    "dbs/threads.json": "b1d4ead296cc6641d1f85e246af0a20335e4bf9b1b3f25f1c01c46a7a51def0c",
+    "dbs/devices.json": "a9e6c8438a17b84ed5d30fd7748b8ee7152b51a0f9cc0e7d2199c9253831befd",
+    "dbs/native-diagnostics.json": "30709d40095800dbe0eec2c875f00ca0c3219d2ee7c579533695a4a67da1819d",
+    "dbs/native.log": "9ba5c056f0ecb3beb50b0507054dc9c56664d9db0716d39826a63494584bc9c7",
+    "dbs/engine.log": "182bb8db6e05a9d785d9875f3317b73bbd9a9b9ceb6e004873f41d527f81c5b7",
+    "dbs/timing-context.json": "8cc61be42bc874308ef08113a2ff688d1aa6ec7158dd24ceaeb12ece98bf84f9",
+    "dbs/device-plan.json": "747931410bfd721b58cedd3c072597b8af25a72c1ea435f5511fe25223cc25c9",
+    "dbs/thread-plan.json": "9d9fb84997d5d1ed401bb9f12dfdf3b1422384a82d91a33bfdc2786e42195e13",
+    "dbs/engine/business-backup.json": "836e1b5c8af7d13b917ad9e17f746ae398c1c2508f7ea82bf981ffde9f843ca0",
+    "dbs/native/load.json": "858221371682a79db6101646577db7ba7770c85c368beb63542dde7d866510db",
+    "dbs/native/native-diagnostics.json": "30709d40095800dbe0eec2c875f00ca0c3219d2ee7c579533695a4a67da1819d"
+  },
+  "limits": [
+    "Overlap is observation, not IO causality.",
+    "Device layers are not independent disks and must not be summed.",
+    "PG snapshots select this run native SQL client; other API database backends are not covered.",
+    "Optional unavailable fields stay unknown; no unavailable value becomes zero.",
+    "Device/PG/thread reads are separate snapshots; counter brackets are not request-owned IO."
+  ],
+  "original_business_gate_waived": false,
+  "stable_release_accepted": false
+}
