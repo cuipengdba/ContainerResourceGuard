@@ -70,3 +70,6 @@ Versioned seven-day lineage: `python3 tests/vendor-versioned-aged-preflight-chec
 
 
 Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-checks.py` runs ten contract cases, including preserved runtime method ASTs, original native thresholds, immutable R78/R64 bindings, pending execution refusal, fresh-gate/marker protection, constrained mount consumers and UID cleanup. Windows skips the POSIX containment case; Linux must run all ten. Actual seven-day postflight and the independent short retained-data exercise have separate plans/results; neither synthetic tests nor short data qualify seven-day completion.
+
+
+精确版本化候选保留数据故障入口和两套分离计划见[实际门禁与演练](../docs/testing-versioned-aged-faults.md)，合成检查命令`python3 tests/vendor-versioned-aged-faults-checks.py`。默认只读，Linux9项不表示真实矩阵或七天通过。

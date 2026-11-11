@@ -1,0 +1,72 @@
+{
+  "kind": "Exact candidate fault executor Linux selftests and actual read-only gates",
+  "phase": "Linux9-and-actual-gates-passed",
+  "observed_node_utc": "2026-11-11T03:56:09.999552+00:00",
+  "source_files_sha256": {
+    "vendor-versioned-aged-faults.py": "818f96fb5cdae9dc3101c051fb72c1ee923455ee1902805015e2f19bfb13fa6a",
+    "vendor-versioned-aged-faults-checks.py": "46ca953b230f9b8f00b768f54598e7be46466bb3c7aba4d94c4ad3e30d709c7e",
+    "vendor-aged-faults.py": "28b7a8ac0f45fde2ce9096fc59565e08829e5dbe2466310047967128f0bd2696",
+    "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+    "vendor-versioned-aged-postflight-checks.py": "b1fbc8a067f35426b4edd3e531a0c9971b2cb67a143f9b06f1a2b5cb4d087744",
+    "vendor-aged-postflight.py": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+    "vendor-aged-postflight-checks.py": "ad6c124e48c55eac6bd63f780eacb95a25069f23c6e1fc3f4d4dbe8bcb309959",
+    "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+    "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "fault-plan.json": "41e0b616bb80d451a81080d87ecb4178640d8b0fab4911da72dbdcda675a135c",
+    "short-plan.json": "e896ddad80c9ebb17c944f56f6e59c200c36d09ffe7c5e038180c57a4c2daa1a"
+  },
+  "Linux_selftests": {
+    "methods": 9,
+    "all_ran_without_skips": true,
+    "exit": 0
+  },
+  "actual_readiness": [
+    {
+      "plan": "fault-plan.json",
+      "execute_requested": false,
+      "exit": 2,
+      "result": {
+        "phase": "pending",
+        "fault_execution_allowed": false,
+        "runner_identity_verified_live": true,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "stderr": ""
+    },
+    {
+      "plan": "fault-plan.json",
+      "execute_requested": true,
+      "exit": 2,
+      "result": {
+        "phase": "pending",
+        "fault_execution_allowed": false,
+        "runner_identity_verified_live": true,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "stderr": ""
+    },
+    {
+      "plan": "short-plan.json",
+      "execute_requested": false,
+      "exit": 0,
+      "result": {
+        "phase": "ready-for-short-rehearsal",
+        "fault_execution_allowed": true,
+        "seven_day_accepted": false,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      "stderr": ""
+    }
+  ],
+  "both_targets_absent_after_readiness": true,
+  "actual_fault_execution_during_readiness": false,
+  "initial_Windows_fixture_correction": "Initial synthetic fixture compared POSIX strings with Windows-native Path strings; corrected only fixture path construction. All runtime thresholds and frozen old executors unchanged.",
+  "original_fault_runtime_template_sha256": "28b7a8ac0f45fde2ce9096fc59565e08829e5dbe2466310047967128f0bd2696",
+  "seven_day_accepted": false,
+  "P10_complete": false,
+  "release_accepted": false
+}
