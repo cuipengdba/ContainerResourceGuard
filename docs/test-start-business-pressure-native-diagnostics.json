@@ -1,0 +1,5598 @@
+{
+  "schema": "crg-native-pressure-start-v1",
+  "phase": "started-not-accepted",
+  "observed_node_utc": "2026-11-11T13:17:59.560445+00:00",
+  "raw_observation_sha256": "15f8cfa26fc06d84394b11c235e4c1dffd7ed48eeb503eba8b1b09e15a6027b9",
+  "runner": {
+    "pid": 2114929,
+    "start_ticks": 134290566,
+    "entry": "/var/tmp/crg-memory203-tools-20261111/pressure-runner.py",
+    "runner_sha256": "b76f3787adcf562f94afcade28ab879f6bb7aa2c64b7c8bfec8532aff4af2bd2",
+    "executor_sha256": "855ed517d136e52d6812ea0eb6f07ad27e54b73841f85b039e0864e6957cdd0c",
+    "plan_sha256": "31c9446d799fec1c78aa09e2da6fe991bf33abd86f16a20f811f53489e183e15"
+  },
+  "worker": {
+    "pid": 2114958,
+    "start_ticks": 134290570,
+    "entry": "/var/tmp/crg-memory203-tools-20261111/vendor-business-memory-pressure-native-diagnostics.py"
+  },
+  "runner_process": {
+    "pid": 2114929,
+    "exists": true,
+    "start_ticks": 134290566,
+    "same_instance": true,
+    "state": "S"
+  },
+  "worker_process": {
+    "pid": 2114958,
+    "exists": true,
+    "start_ticks": 134290570,
+    "same_instance": true,
+    "state": "S"
+  },
+  "main_report_sha256": "c91072712580986429e53f7ae6ec296d16bd360e3092940f80ae45a0337abae2",
+  "main_report": {
+    "schema": "crg-business-memory-pressure-native-diagnostics-report-v1",
+    "phase": "testing-dbs",
+    "mode": "memory-pressure-native-diagnostics",
+    "plan_sha256": "31c9446d799fec1c78aa09e2da6fe991bf33abd86f16a20f811f53489e183e15",
+    "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "executor_sha256": "855ed517d136e52d6812ea0eb6f07ad27e54b73841f85b039e0864e6957cdd0c",
+    "criteria": {
+      "startup_seconds": 300,
+      "cache_after_ready_seconds": 45,
+      "native_seconds_each_role": 600,
+      "clone_host_available_bytes": 30064771072,
+      "steady_host_available_bytes": 8589934592,
+      "disk_free_bytes": 21474836480,
+      "maximum_errors": 0,
+      "maximum_request_seconds": 5,
+      "p95_bucket_seconds": 1,
+      "minimum_coverage": 0.98,
+      "payload_bytes": 67108864,
+      "oom_kill_delta": 0
+    },
+    "roles": {
+      "dbs": {
+        "phase": "booting-original-business",
+        "boots": [
+          {
+            "phase": "business-reload",
+            "pod_uid": "b348e92f-275e-49c2-afd9-8aa3cf972469",
+            "container_id": "38ad33fb303c4c50078574c3795596bc9169903af142dd6ca119e4a5f47f59f2",
+            "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb348e92f_275e_49c2_afd9_8aa3cf972469.slice/cri-containerd-38ad33fb303c4c50078574c3795596bc9169903af142dd6ca119e4a5f47f59f2.scope",
+            "runtime_original_controls": {
+              "cpu.max": "800000 100000",
+              "memory.max": "21474836480",
+              "io.max": "",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "network_isolated_before_start": true,
+            "ready_seconds": 28.871953011024743,
+            "identity": "89a718f7169b50df49737090ee3281fd55e8b93096c7b3f4f50c6f68ea742475",
+            "active_controls": {
+              "cpu.max": "720000 100000",
+              "memory.max": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "primary_start": "2026-11-11 21:16:38.733123+08",
+            "reload_intervals": [
+              {
+                "case": "manual-to-percent-during-engine",
+                "started_epoch": 1794403043.5422087,
+                "ended_epoch": 1794403045.418686,
+                "generation": 2,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 30,
+                  "io_percent": 100
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "three-independent-percentages-during-native",
+                "started_epoch": 1794403045.6929357,
+                "ended_epoch": 1794403047.775404,
+                "generation": 3,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 80
+                },
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "invalid-IO-retains-entire-policy",
+                "started_epoch": 1794403049.2015526,
+                "ended_epoch": 1794403050.3050919,
+                "generation": 3,
+                "configuration_state": "rejected",
+                "requested_policy": {
+                  "cpu_percent": 25,
+                  "memory_percent": 29,
+                  "io_percent": 101
+                },
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "partial-JSON-retains-entire-policy",
+                "started_epoch": 1794403050.5693483,
+                "ended_epoch": 1794403051.4714708,
+                "generation": 3,
+                "configuration_state": "rejected",
+                "requested_policy": "malformed JSON",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "duplicate-key-retains-entire-policy",
+                "started_epoch": 1794403051.7630625,
+                "ended_epoch": 1794403052.5824292,
+                "generation": 3,
+                "configuration_state": "rejected",
+                "requested_policy": "malformed JSON",
+                "expected_numeric": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "600000 100000",
+                  "memory.max": "19335249920",
+                  "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "ConfigMap-style-symlink-accepts-valid-policy",
+                "started_epoch": 1794403052.872295,
+                "ended_epoch": 1794403061.4764533,
+                "generation": 4,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 30,
+                  "io_percent": 100
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "percent-to-manual-three-resources",
+                "started_epoch": 1794403061.755635,
+                "ended_epoch": 1794403062.3421342,
+                "generation": 5,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "resource_mode": "manual",
+                  "limits": {
+                    "cpu_cores": 7.2,
+                    "memory_max": "20001980416B",
+                    "io_read_bps": "64MiB",
+                    "io_write_bps": "64MiB",
+                    "io_read_iops": 4096,
+                    "io_write_iops": 4096
+                  },
+                  "data_paths": [
+                    "/opt/postgresql"
+                  ]
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              },
+              {
+                "case": "pressure-test-return-to-percent30",
+                "started_epoch": 1794403062.615166,
+                "ended_epoch": 1794403063.7189932,
+                "generation": 6,
+                "configuration_state": "accepted",
+                "requested_policy": {
+                  "cpu_percent": 30,
+                  "memory_percent": 30,
+                  "io_percent": 100
+                },
+                "expected_numeric": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_Agent_PID1_cache": true,
+                "PG_not_restarted": true
+              }
+            ],
+            "samples": [
+              {
+                "epoch": 1794403015.1881669,
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_processes": true
+              },
+              {
+                "epoch": 1794403075.2017586,
+                "actual_kernel_readbacks": {
+                  "cpu.max": "720000 100000",
+                  "memory.max": "20001980416",
+                  "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+                  "pids.max": "406648",
+                  "cpu.weight": "4",
+                  "io.weight": "default 100",
+                  "memory.high": "max",
+                  "memory.swap.max": "0"
+                },
+                "same_processes": true
+              }
+            ],
+            "thread_observer": {
+              "phase": "observing",
+              "target_signals_or_control_writes": 0,
+              "plan": {
+                "schema": "crg-vendor-thread-observer-plan-v1",
+                "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+                "label": "dbs",
+                "pid": 2120471,
+                "start_ticks": 134292441,
+                "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+                "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb348e92f_275e_49c2_afd9_8aa3cf972469.slice/cri-containerd-38ad33fb303c4c50078574c3795596bc9169903af142dd6ca119e4a5f47f59f2.scope",
+                "duration_seconds": 900,
+                "output": "/var/tmp/crg-business-pressure203-20261111/dbs-threads.json"
+              },
+              "plan_sha256": "79ef9d0596908f3fd17b70db96cabc99453f8317285b06dfdd6855a5196d2c97",
+              "listener_executable_path": "/opt/dbs/bin/dbs",
+              "launch_epoch": 1794403014.9592466,
+              "observer_pid": 2129029,
+              "observer_start_ticks": 134295807,
+              "observer_entry": "/var/tmp/crg-memory203-tools-20261111/vendor-thread-observer.py",
+              "pidfd_used": true,
+              "first_sample_handshake": {
+                "phase": "observing",
+                "sample_count": 1,
+                "epoch": 1794403015.1082706
+              },
+              "startup_until_first_sample_seconds": 0.15525758801959455
+            },
+            "pressure30to20": {
+              "started_epoch": 1794403065.6296046,
+              "target_memory_bytes": 13334654976,
+              "old_memory_limit": 20001980416,
+              "events": [
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 0,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.107048
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.1749952
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 67108864,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.1758232
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 134217728,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.241854
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 134217728,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.2427158
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 201326592,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.308699
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 201326592,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.3095834
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 268435456,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.3765113
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 268435456,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.3775349
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 335544320,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.443718
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 335544320,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.444593
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 402653184,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.5112782
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 402653184,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.512095
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 469762048,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.578943
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 469762048,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.57979
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 536870912,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.6471694
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 536870912,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.6480932
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 603979776,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.7240553
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 603979776,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.7256007
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 671088640,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.7923043
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 671088640,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.7930975
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 738197504,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.8590162
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 738197504,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.8598895
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 805306368,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.9259572
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 805306368,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.9267726
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 872415232,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403067.993098
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 872415232,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403067.9939482
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 939524096,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.0610313
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 939524096,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.0619092
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1006632960,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.1291032
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1006632960,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.130013
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1073741824,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.1981182
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1073741824,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.1989586
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1140850688,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.2656496
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1140850688,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.2665427
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1207959552,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.3328083
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1207959552,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.3336694
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1275068416,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.4000967
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1275068416,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.4009607
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1342177280,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.4682176
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1342177280,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.4690926
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1409286144,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.535242
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1409286144,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.5361013
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1476395008,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.6018558
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1476395008,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.6026754
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1543503872,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.6684473
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1543503872,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.6692603
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1610612736,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.7356915
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1610612736,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.7364924
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1677721600,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.8023593
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1677721600,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.8031943
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1744830464,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.8694386
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1744830464,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.870365
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1811939328,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403068.9383595
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1811939328,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403068.93921
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1879048192,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.009805
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1879048192,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.0106142
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1946157056,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.077334
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 1946157056,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.0782492
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2013265920,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.1466079
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2013265920,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.1475174
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2080374784,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.2144594
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2080374784,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.2154043
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2147483648,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.29086
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2147483648,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.292423
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2214592512,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.3601344
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2214592512,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.3609922
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2281701376,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.4283845
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2281701376,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.4291983
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2348810240,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.4950557
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2348810240,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.4958692
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2415919104,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.5620716
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2415919104,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.562971
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2483027968,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.6290243
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2483027968,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.6298985
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2550136832,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.696241
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2550136832,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.6970367
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2617245696,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.7630227
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2617245696,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.763841
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2684354560,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.8295271
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2684354560,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.8304336
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2751463424,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.896217
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2751463424,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.8970447
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2818572288,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403069.9628005
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2818572288,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403069.9635758
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2885681152,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.0292335
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2885681152,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.030085
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2952790016,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.0960736
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 2952790016,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.0968986
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3019898880,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.1632047
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3019898880,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.1640425
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3087007744,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.2303207
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3087007744,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.2312934
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3154116608,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.297685
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3154116608,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.2986035
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3221225472,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.364797
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3221225472,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.365592
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3288334336,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.4317899
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3288334336,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.4327745
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3355443200,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.4993877
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3355443200,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.5002074
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3422552064,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.566314
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3422552064,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.5671566
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3489660928,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.6339996
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3489660928,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.6348646
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3556769792,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.7015362
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3556769792,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.702442
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3623878656,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.7698457
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3623878656,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.7708929
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3690987520,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.8374624
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3690987520,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.8383214
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3758096384,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.9080236
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3758096384,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.9088361
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3825205248,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403070.9755554
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3825205248,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403070.9764564
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3892314112,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.0447056
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3892314112,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.0455403
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3959422976,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.1110363
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 3959422976,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.1118748
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4026531840,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.1807342
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4026531840,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.1816566
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4093640704,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.247457
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4093640704,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.2485127
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4160749568,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.3149807
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4160749568,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.315956
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4227858432,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.3826516
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4227858432,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.3835948
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4294967296,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.4506888
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4294967296,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.4515388
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4362076160,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.5171843
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4362076160,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.5180519
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4429185024,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.583887
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4429185024,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.5846972
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4496293888,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.6503706
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4496293888,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.6511796
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4563402752,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.716782
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4563402752,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.7176404
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4630511616,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.783468
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4630511616,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.784322
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4697620480,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.8498282
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4697620480,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.8506193
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4764729344,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.9163308
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4764729344,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.9171731
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4831838208,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403071.983729
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4831838208,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403071.9846554
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4898947072,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.0588536
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4898947072,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.0596862
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4966055936,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.1263883
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 4966055936,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.1272159
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5033164800,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.1958532
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5033164800,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.1967084
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5100273664,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.263642
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5100273664,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.2644997
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5167382528,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.3306856
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5167382528,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.3315241
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5234491392,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.3989663
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5234491392,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.3998108
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5301600256,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.4665399
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5301600256,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.467393
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5368709120,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.53302
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5368709120,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.5341115
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5435817984,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.5999591
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5435817984,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.6008396
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5502926848,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.6671178
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5502926848,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.6679165
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5570035712,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.7338648
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5570035712,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.7352083
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5637144576,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.801191
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5637144576,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.8020625
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5704253440,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.8676195
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5704253440,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.868447
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5771362304,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403072.9338524
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5771362304,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403072.9348373
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5838471168,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.000928
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5838471168,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.0017865
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5905580032,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.0676172
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5905580032,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.0684052
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5972688896,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.1344333
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 5972688896,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.1352756
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6039797760,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.2017062
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6039797760,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.2025166
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6106906624,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.268207
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6106906624,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.2689855
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6174015488,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.3346033
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6174015488,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.3355613
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6241124352,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.4018278
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6241124352,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.402763
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6308233216,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.4686832
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6308233216,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.469485
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6375342080,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.535223
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6375342080,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.5362365
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6442450944,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.602205
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6442450944,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.6029823
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6509559808,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.6686094
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6509559808,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.6694498
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6576668672,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.7351198
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6576668672,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.7360172
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6643777536,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.8016627
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6643777536,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.8024938
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6710886400,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.868108
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6710886400,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.868828
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6777995264,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403073.9343874
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6777995264,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403073.9352453
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6845104128,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.001214
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6845104128,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.0020475
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6912212992,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.0684917
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6912212992,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.0693176
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6979321856,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.1361403
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 6979321856,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.1369715
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7046430720,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.203753
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7046430720,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.204605
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7113539584,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.2711198
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7113539584,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.2719467
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7180648448,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.3392189
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7180648448,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.3400521
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7247757312,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.4070354
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7247757312,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.407848
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7314866176,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.4756386
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7314866176,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.4764693
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7381975040,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.5450191
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7381975040,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.545877
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7449083904,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.6147752
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7449083904,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.6155863
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7516192768,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.682343
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7516192768,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.6832542
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7583301632,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.7541869
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7583301632,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.7550411
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7650410496,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.8224392
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7650410496,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.8232067
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7717519360,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.8904104
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7717519360,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.8912175
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7784628224,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403074.9585366
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7784628224,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403074.959428
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7851737088,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403075.025838
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7851737088,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403075.0266392
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7918845952,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403075.0935674
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7918845952,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403075.094404
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7985954816,
+                  "pid": 2734,
+                  "op": "allocate",
+                  "observed_epoch": 1794403075.1618547
+                },
+                {
+                  "phase": "ack",
+                  "allocated_bytes": 7985954816,
+                  "pid": 2734,
+                  "op": "ping",
+                  "observed_epoch": 1794403075.1627612
+                }
+              ],
+              "host_samples": [
+                {
+                  "epoch": 1794403067.1476147,
+                  "memory_current": 3640414208,
+                  "host_available": 36729094144,
+                  "allocated_bytes": 0
+                },
+                {
+                  "epoch": 1794403067.214587,
+                  "memory_current": 3708121088,
+                  "host_available": 36667162624,
+                  "allocated_bytes": 67108864
+                },
+                {
+                  "epoch": 1794403067.2816179,
+                  "memory_current": 3775406080,
+                  "host_available": 36600070144,
+                  "allocated_bytes": 134217728
+                },
+                {
+                  "epoch": 1794403067.3491995,
+                  "memory_current": 3842777088,
+                  "host_available": 36527656960,
+                  "allocated_bytes": 201326592
+                },
+                {
+                  "epoch": 1794403067.4167364,
+                  "memory_current": 3909898240,
+                  "host_available": 36466245632,
+                  "allocated_bytes": 268435456
+                },
+                {
+                  "epoch": 1794403067.484103,
+                  "memory_current": 3977138176,
+                  "host_available": 36401217536,
+                  "allocated_bytes": 335544320
+                },
+                {
+                  "epoch": 1794403067.551974,
+                  "memory_current": 4048723968,
+                  "host_available": 36329996288,
+                  "allocated_bytes": 402653184
+                },
+                {
+                  "epoch": 1794403067.619463,
+                  "memory_current": 4112044032,
+                  "host_available": 36257226752,
+                  "allocated_bytes": 469762048
+                },
+                {
+                  "epoch": 1794403067.6882799,
+                  "memory_current": 4179132416,
+                  "host_available": 36187181056,
+                  "allocated_bytes": 536870912
+                },
+                {
+                  "epoch": 1794403067.7652225,
+                  "memory_current": 4246122496,
+                  "host_available": 36116332544,
+                  "allocated_bytes": 603979776
+                },
+                {
+                  "epoch": 1794403067.8320158,
+                  "memory_current": 4313673728,
+                  "host_available": 36052455424,
+                  "allocated_bytes": 671088640
+                },
+                {
+                  "epoch": 1794403067.8990662,
+                  "memory_current": 4380872704,
+                  "host_available": 35985362944,
+                  "allocated_bytes": 738197504
+                },
+                {
+                  "epoch": 1794403067.9661276,
+                  "memory_current": 4447977472,
+                  "host_available": 35918270464,
+                  "allocated_bytes": 805306368
+                },
+                {
+                  "epoch": 1794403068.0338018,
+                  "memory_current": 4515098624,
+                  "host_available": 35847049216,
+                  "allocated_bytes": 872415232
+                },
+                {
+                  "epoch": 1794403068.1007152,
+                  "memory_current": 4582502400,
+                  "host_available": 35792576512,
+                  "allocated_bytes": 939524096
+                },
+                {
+                  "epoch": 1794403068.1711352,
+                  "memory_current": 4649746432,
+                  "host_available": 35725484032,
+                  "allocated_bytes": 1006632960
+                },
+                {
+                  "epoch": 1794403068.2384036,
+                  "memory_current": 4716990464,
+                  "host_available": 35658805248,
+                  "allocated_bytes": 1073741824
+                },
+                {
+                  "epoch": 1794403068.3058598,
+                  "memory_current": 4784238592,
+                  "host_available": 35590586368,
+                  "allocated_bytes": 1140850688
+                },
+                {
+                  "epoch": 1794403068.3729916,
+                  "memory_current": 4851478528,
+                  "host_available": 35523493888,
+                  "allocated_bytes": 1207959552
+                },
+                {
+                  "epoch": 1794403068.4407172,
+                  "memory_current": 4918722560,
+                  "host_available": 35455885312,
+                  "allocated_bytes": 1275068416
+                },
+                {
+                  "epoch": 1794403068.5084076,
+                  "memory_current": 4986368000,
+                  "host_available": 35388186624,
+                  "allocated_bytes": 1342177280
+                },
+                {
+                  "epoch": 1794403068.575044,
+                  "memory_current": 5053214720,
+                  "host_available": 35321094144,
+                  "allocated_bytes": 1409286144
+                },
+                {
+                  "epoch": 1794403068.6417263,
+                  "memory_current": 5121900544,
+                  "host_available": 35254001664,
+                  "allocated_bytes": 1476395008
+                },
+                {
+                  "epoch": 1794403068.7088304,
+                  "memory_current": 5187969024,
+                  "host_available": 35185446912,
+                  "allocated_bytes": 1543503872
+                },
+                {
+                  "epoch": 1794403068.7755425,
+                  "memory_current": 5254995968,
+                  "host_available": 35121528832,
+                  "allocated_bytes": 1610612736
+                },
+                {
+                  "epoch": 1794403068.8426957,
+                  "memory_current": 5322326016,
+                  "host_available": 35053404160,
+                  "allocated_bytes": 1677721600
+                },
+                {
+                  "epoch": 1794403068.9110556,
+                  "memory_current": 5389570048,
+                  "host_available": 34983731200,
+                  "allocated_bytes": 1744830464
+                },
+                {
+                  "epoch": 1794403068.9794474,
+                  "memory_current": 5456814080,
+                  "host_available": 34933153792,
+                  "allocated_bytes": 1811939328
+                },
+                {
+                  "epoch": 1794403069.0501747,
+                  "memory_current": 5524316160,
+                  "host_available": 34864513024,
+                  "allocated_bytes": 1879048192
+                },
+                {
+                  "epoch": 1794403069.1192787,
+                  "memory_current": 5595586560,
+                  "host_available": 34799804416,
+                  "allocated_bytes": 1946157056
+                },
+                {
+                  "epoch": 1794403069.1871948,
+                  "memory_current": 5658427392,
+                  "host_available": 34729926656,
+                  "allocated_bytes": 2013265920
+                },
+                {
+                  "epoch": 1794403069.257174,
+                  "memory_current": 5725663232,
+                  "host_available": 34657685504,
+                  "allocated_bytes": 2080374784
+                },
+                {
+                  "epoch": 1794403069.3319983,
+                  "memory_current": 5793034240,
+                  "host_available": 34590076928,
+                  "allocated_bytes": 2147483648
+                },
+                {
+                  "epoch": 1794403069.4012115,
+                  "memory_current": 5863993344,
+                  "host_available": 34516688896,
+                  "allocated_bytes": 2214592512
+                },
+                {
+                  "epoch": 1794403069.4681876,
+                  "memory_current": 5927399424,
+                  "host_available": 34458288128,
+                  "allocated_bytes": 2281701376
+                },
+                {
+                  "epoch": 1794403069.535117,
+                  "memory_current": 5994770432,
+                  "host_available": 34390679552,
+                  "allocated_bytes": 2348810240
+                },
+                {
+                  "epoch": 1794403069.6020198,
+                  "memory_current": 6061887488,
+                  "host_available": 34323587072,
+                  "allocated_bytes": 2415919104
+                },
+                {
+                  "epoch": 1794403069.6692457,
+                  "memory_current": 6129270784,
+                  "host_available": 34255572992,
+                  "allocated_bytes": 2483027968
+                },
+                {
+                  "epoch": 1794403069.7361014,
+                  "memory_current": 6196629504,
+                  "host_available": 34203377664,
+                  "allocated_bytes": 2550136832
+                },
+                {
+                  "epoch": 1794403069.8027387,
+                  "memory_current": 6263754752,
+                  "host_available": 34135928832,
+                  "allocated_bytes": 2617245696
+                },
+                {
+                  "epoch": 1794403069.8693485,
+                  "memory_current": 6331121664,
+                  "host_available": 34068836352,
+                  "allocated_bytes": 2684354560
+                },
+                {
+                  "epoch": 1794403069.936097,
+                  "memory_current": 6398242816,
+                  "host_available": 33993486336,
+                  "allocated_bytes": 2751463424
+                },
+                {
+                  "epoch": 1794403070.0024605,
+                  "memory_current": 6465486848,
+                  "host_available": 33923813376,
+                  "allocated_bytes": 2818572288
+                },
+                {
+                  "epoch": 1794403070.0691128,
+                  "memory_current": 6532861952,
+                  "host_available": 33856204800,
+                  "allocated_bytes": 2885681152
+                },
+                {
+                  "epoch": 1794403070.1363258,
+                  "memory_current": 6600245248,
+                  "host_available": 33788596224,
+                  "allocated_bytes": 2952790016
+                },
+                {
+                  "epoch": 1794403070.2029233,
+                  "memory_current": 6667354112,
+                  "host_available": 33721503744,
+                  "allocated_bytes": 3019898880
+                },
+                {
+                  "epoch": 1794403070.2706716,
+                  "memory_current": 6734471168,
+                  "host_available": 33653895168,
+                  "allocated_bytes": 3087007744
+                },
+                {
+                  "epoch": 1794403070.3379009,
+                  "memory_current": 6801842176,
+                  "host_available": 33585152000,
+                  "allocated_bytes": 3154116608
+                },
+                {
+                  "epoch": 1794403070.404742,
+                  "memory_current": 6869348352,
+                  "host_available": 33518059520,
+                  "allocated_bytes": 3221225472
+                },
+                {
+                  "epoch": 1794403070.4723792,
+                  "memory_current": 6936383488,
+                  "host_available": 33442205696,
+                  "allocated_bytes": 3288334336
+                },
+                {
+                  "epoch": 1794403070.5394444,
+                  "memory_current": 7003623424,
+                  "host_available": 33372532736,
+                  "allocated_bytes": 3355443200
+                },
+                {
+                  "epoch": 1794403070.6069825,
+                  "memory_current": 7070818304,
+                  "host_available": 33300283392,
+                  "allocated_bytes": 3422552064
+                },
+                {
+                  "epoch": 1794403070.673999,
+                  "memory_current": 7146397696,
+                  "host_available": 33231568896,
+                  "allocated_bytes": 3489660928
+                },
+                {
+                  "epoch": 1794403070.742256,
+                  "memory_current": 7205306368,
+                  "host_available": 33163706368,
+                  "allocated_bytes": 3556769792
+                },
+                {
+                  "epoch": 1794403070.8102381,
+                  "memory_current": 7272550400,
+                  "host_available": 33088393216,
+                  "allocated_bytes": 3623878656
+                },
+                {
+                  "epoch": 1794403070.8809288,
+                  "memory_current": 7339798528,
+                  "host_available": 33018204160,
+                  "allocated_bytes": 3690987520
+                },
+                {
+                  "epoch": 1794403070.948182,
+                  "memory_current": 7406989312,
+                  "host_available": 32949907456,
+                  "allocated_bytes": 3758096384
+                },
+                {
+                  "epoch": 1794403071.01752,
+                  "memory_current": 7476596736,
+                  "host_available": 32873529344,
+                  "allocated_bytes": 3825205248
+                },
+                {
+                  "epoch": 1794403071.084313,
+                  "memory_current": 7541391360,
+                  "host_available": 32806436864,
+                  "allocated_bytes": 3892314112
+                },
+                {
+                  "epoch": 1794403071.1536157,
+                  "memory_current": 7608897536,
+                  "host_available": 32738828288,
+                  "allocated_bytes": 3959422976
+                },
+                {
+                  "epoch": 1794403071.2204463,
+                  "memory_current": 7676665856,
+                  "host_available": 32684994560,
+                  "allocated_bytes": 4026531840
+                },
+                {
+                  "epoch": 1794403071.288043,
+                  "memory_current": 7743602688,
+                  "host_available": 32616353792,
+                  "allocated_bytes": 4093640704
+                },
+                {
+                  "epoch": 1794403071.3555655,
+                  "memory_current": 7811084288,
+                  "host_available": 32558592000,
+                  "allocated_bytes": 4160749568
+                },
+                {
+                  "epoch": 1794403071.423736,
+                  "memory_current": 7878213632,
+                  "host_available": 32499118080,
+                  "allocated_bytes": 4227858432
+                },
+                {
+                  "epoch": 1794403071.4904995,
+                  "memory_current": 7945584640,
+                  "host_available": 32431509504,
+                  "allocated_bytes": 4294967296
+                },
+                {
+                  "epoch": 1794403071.5571587,
+                  "memory_current": 8012697600,
+                  "host_available": 32363900928,
+                  "allocated_bytes": 4362076160
+                },
+                {
+                  "epoch": 1794403071.623661,
+                  "memory_current": 8079949824,
+                  "host_available": 32296808448,
+                  "allocated_bytes": 4429185024
+                },
+                {
+                  "epoch": 1794403071.690122,
+                  "memory_current": 8147324928,
+                  "host_available": 32229715968,
+                  "allocated_bytes": 4496293888
+                },
+                {
+                  "epoch": 1794403071.7566795,
+                  "memory_current": 8214433792,
+                  "host_available": 32161341440,
+                  "allocated_bytes": 4563402752
+                },
+                {
+                  "epoch": 1794403071.8231385,
+                  "memory_current": 8281788416,
+                  "host_available": 32094662656,
+                  "allocated_bytes": 4630511616
+                },
+                {
+                  "epoch": 1794403071.8895025,
+                  "memory_current": 8348897280,
+                  "host_available": 32027570176,
+                  "allocated_bytes": 4697620480
+                },
+                {
+                  "epoch": 1794403071.9568233,
+                  "memory_current": 8416182272,
+                  "host_available": 31958929408,
+                  "allocated_bytes": 4764729344
+                },
+                {
+                  "epoch": 1794403072.02453,
+                  "memory_current": 8483352576,
+                  "host_available": 31886778368,
+                  "allocated_bytes": 4831838208
+                },
+                {
+                  "epoch": 1794403072.098721,
+                  "memory_current": 8550682624,
+                  "host_available": 31826919424,
+                  "allocated_bytes": 4898947072
+                },
+                {
+                  "epoch": 1794403072.1685681,
+                  "memory_current": 8622497792,
+                  "host_available": 31752527872,
+                  "allocated_bytes": 4966055936
+                },
+                {
+                  "epoch": 1794403072.2368908,
+                  "memory_current": 8692441088,
+                  "host_available": 31681003520,
+                  "allocated_bytes": 5033164800
+                },
+                {
+                  "epoch": 1794403072.3040395,
+                  "memory_current": 8759762944,
+                  "host_available": 31612878848,
+                  "allocated_bytes": 5100273664
+                },
+                {
+                  "epoch": 1794403072.3709261,
+                  "memory_current": 8826888192,
+                  "host_available": 31545786368,
+                  "allocated_bytes": 5167382528
+                },
+                {
+                  "epoch": 1794403072.4390326,
+                  "memory_current": 8894132224,
+                  "host_available": 31478177792,
+                  "allocated_bytes": 5234491392
+                },
+                {
+                  "epoch": 1794403072.5064328,
+                  "memory_current": 8961372160,
+                  "host_available": 31411351552,
+                  "allocated_bytes": 5301600256
+                },
+                {
+                  "epoch": 1794403072.5732627,
+                  "memory_current": 9028489216,
+                  "host_available": 31344259072,
+                  "allocated_bytes": 5368709120
+                },
+                {
+                  "epoch": 1794403072.6404264,
+                  "memory_current": 9095917568,
+                  "host_available": 31277580288,
+                  "allocated_bytes": 5435817984
+                },
+                {
+                  "epoch": 1794403072.7070918,
+                  "memory_current": 9163108352,
+                  "host_available": 31208951808,
+                  "allocated_bytes": 5502926848
+                },
+                {
+                  "epoch": 1794403072.774216,
+                  "memory_current": 9230221312,
+                  "host_available": 31141384192,
+                  "allocated_bytes": 5570035712
+                },
+                {
+                  "epoch": 1794403072.8409636,
+                  "memory_current": 9297657856,
+                  "host_available": 31089258496,
+                  "allocated_bytes": 5637144576
+                },
+                {
+                  "epoch": 1794403072.9073172,
+                  "memory_current": 9364766720,
+                  "host_available": 31022166016,
+                  "allocated_bytes": 5704253440
+                },
+                {
+                  "epoch": 1794403072.9741507,
+                  "memory_current": 9431957504,
+                  "host_available": 30955073536,
+                  "allocated_bytes": 5771362304
+                },
+                {
+                  "epoch": 1794403073.040868,
+                  "memory_current": 9499443200,
+                  "host_available": 30887981056,
+                  "allocated_bytes": 5838471168
+                },
+                {
+                  "epoch": 1794403073.107436,
+                  "memory_current": 9566601216,
+                  "host_available": 30821404672,
+                  "allocated_bytes": 5905580032
+                },
+                {
+                  "epoch": 1794403073.1747591,
+                  "memory_current": 9633943552,
+                  "host_available": 30753796096,
+                  "allocated_bytes": 5972688896
+                },
+                {
+                  "epoch": 1794403073.2414734,
+                  "memory_current": 9701060608,
+                  "host_available": 30686187520,
+                  "allocated_bytes": 6039797760
+                },
+                {
+                  "epoch": 1794403073.3079638,
+                  "memory_current": 9768431616,
+                  "host_available": 30619095040,
+                  "allocated_bytes": 6106906624
+                },
+                {
+                  "epoch": 1794403073.3750358,
+                  "memory_current": 9835425792,
+                  "host_available": 30551486464,
+                  "allocated_bytes": 6174015488
+                },
+                {
+                  "epoch": 1794403073.4416783,
+                  "memory_current": 9902796800,
+                  "host_available": 30483877888,
+                  "allocated_bytes": 6241124352
+                },
+                {
+                  "epoch": 1794403073.508362,
+                  "memory_current": 9970167808,
+                  "host_available": 30416785408,
+                  "allocated_bytes": 6308233216
+                },
+                {
+                  "epoch": 1794403073.5754158,
+                  "memory_current": 10037157888,
+                  "host_available": 30349176832,
+                  "allocated_bytes": 6375342080
+                },
+                {
+                  "epoch": 1794403073.6418521,
+                  "memory_current": 10105311232,
+                  "host_available": 30282084352,
+                  "allocated_bytes": 6442450944
+                },
+                {
+                  "epoch": 1794403073.7084236,
+                  "memory_current": 10172186624,
+                  "host_available": 30214467584,
+                  "allocated_bytes": 6509559808
+                },
+                {
+                  "epoch": 1794403073.7749393,
+                  "memory_current": 10238914560,
+                  "host_available": 30146494464,
+                  "allocated_bytes": 6576668672
+                },
+                {
+                  "epoch": 1794403073.8413026,
+                  "memory_current": 10306281472,
+                  "host_available": 30079918080,
+                  "allocated_bytes": 6643777536
+                },
+                {
+                  "epoch": 1794403073.9076035,
+                  "memory_current": 10373525504,
+                  "host_available": 30012825600,
+                  "allocated_bytes": 6710886400
+                },
+                {
+                  "epoch": 1794403073.974419,
+                  "memory_current": 10441150464,
+                  "host_available": 29946871808,
+                  "allocated_bytes": 6777995264
+                },
+                {
+                  "epoch": 1794403074.0409484,
+                  "memory_current": 10508279808,
+                  "host_available": 29883088896,
+                  "allocated_bytes": 6845104128
+                },
+                {
+                  "epoch": 1794403074.1082847,
+                  "memory_current": 10575679488,
+                  "host_available": 29819564032,
+                  "allocated_bytes": 6912212992
+                },
+                {
+                  "epoch": 1794403074.1761882,
+                  "memory_current": 10642788352,
+                  "host_available": 29751185408,
+                  "allocated_bytes": 6979321856
+                },
+                {
+                  "epoch": 1794403074.243618,
+                  "memory_current": 10709827584,
+                  "host_available": 29684092928,
+                  "allocated_bytes": 7046430720
+                },
+                {
+                  "epoch": 1794403074.3112893,
+                  "memory_current": 10777186304,
+                  "host_available": 29616742400,
+                  "allocated_bytes": 7113539584
+                },
+                {
+                  "epoch": 1794403074.3792024,
+                  "memory_current": 10844147712,
+                  "host_available": 29557616640,
+                  "allocated_bytes": 7180648448
+                },
+                {
+                  "epoch": 1794403074.4477415,
+                  "memory_current": 10911404032,
+                  "host_available": 29489971200,
+                  "allocated_bytes": 7247757312
+                },
+                {
+                  "epoch": 1794403074.516738,
+                  "memory_current": 10979020800,
+                  "host_available": 29454237696,
+                  "allocated_bytes": 7314866176
+                },
+                {
+                  "epoch": 1794403074.5869563,
+                  "memory_current": 11046395904,
+                  "host_available": 29421096960,
+                  "allocated_bytes": 7381975040
+                },
+                {
+                  "epoch": 1794403074.6544926,
+                  "memory_current": 11113496576,
+                  "host_available": 29355606016,
+                  "allocated_bytes": 7449083904
+                },
+                {
+                  "epoch": 1794403074.7261634,
+                  "memory_current": 11180859392,
+                  "host_available": 29289938944,
+                  "allocated_bytes": 7516192768
+                },
+                {
+                  "epoch": 1794403074.7944727,
+                  "memory_current": 11247996928,
+                  "host_available": 29222129664,
+                  "allocated_bytes": 7583301632
+                },
+                {
+                  "epoch": 1794403074.8621256,
+                  "memory_current": 11314982912,
+                  "host_available": 29155037184,
+                  "allocated_bytes": 7650410496
+                },
+                {
+                  "epoch": 1794403074.930556,
+                  "memory_current": 11382226944,
+                  "host_available": 29085884416,
+                  "allocated_bytes": 7717519360
+                },
+                {
+                  "epoch": 1794403074.998347,
+                  "memory_current": 11449884672,
+                  "host_available": 29017169920,
+                  "allocated_bytes": 7784628224
+                },
+                {
+                  "epoch": 1794403075.0660722,
+                  "memory_current": 11517059072,
+                  "host_available": 28949561344,
+                  "allocated_bytes": 7851737088
+                },
+                {
+                  "epoch": 1794403075.1334383,
+                  "memory_current": 11583770624,
+                  "host_available": 28886601728,
+                  "allocated_bytes": 7918845952
+                }
+              ],
+              "worker_sha256": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+              "maximum_helper_bytes": 12884901888,
+              "maximum_group_bytes": 17854496768,
+              "host_reserve_bytes": 8589934592,
+              "direct_control_file_writes": false,
+              "hello": {
+                "chunk_bytes": 67108864,
+                "lease_seconds": 10,
+                "pid": 2734,
+                "lifetime_seconds": 240,
+                "phase": "ready",
+                "maximum_bytes": 12884901888
+              },
+              "process": {
+                "pid": 2142573,
+                "start_ticks": 134300999,
+                "entry": "/tmp/crg-memory-pressure-202611112030.py"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "tests": [
+      {
+        "name": "dbs-business-reload-original-start-and-three-controls",
+        "passed": true
+      },
+      {
+        "name": "dbs-business-reload-one-current-Agent-fresh-cache-readonly-CCG",
+        "passed": true
+      },
+      {
+        "name": "dbs-manual-to-percent-during-engine",
+        "passed": true
+      },
+      {
+        "name": "dbs-three-independent-percentages-during-native",
+        "passed": true
+      },
+      {
+        "name": "dbs-invalid-IO-retains-entire-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-partial-JSON-retains-entire-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-duplicate-key-retains-entire-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-ConfigMap-style-symlink-accepts-valid-policy",
+        "passed": true
+      },
+      {
+        "name": "dbs-percent-to-manual-three-resources",
+        "passed": true
+      },
+      {
+        "name": "dbs-pressure-test-return-to-percent30",
+        "passed": true
+      }
+    ],
+    "P10_complete": false,
+    "release_accepted": false,
+    "postflight_executed": false,
+    "scope": "original32/two600s/quotas unchanged with qualified native request/PG and thread diagnostics; all prior failures retained",
+    "embedded_version": "v1.0.0",
+    "immutable_template_sha256": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+    "base_helper_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+    "measured_profile_sha256": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "base_reload_executor_sha256": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+    "timed_engine_sha256": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+    "timed_api_sha256": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+    "pressure_contract": {
+      "old_memory_percent": 30,
+      "requested_memory_percent": 20,
+      "old_memory_bytes": 20001980416,
+      "requested_memory_bytes": 13334654976,
+      "chunk_bytes": 67108864,
+      "maximum_helper_bytes": 12884901888,
+      "group_reserve_below_old_limit_bytes": 2147483648,
+      "pressure_above_target_bytes": 268435456,
+      "helper_lease_seconds": 10,
+      "helper_lifetime_seconds": 240,
+      "prepare_seconds": 60,
+      "defer_wait_seconds": 60,
+      "hold_seconds": 6,
+      "retry_wait_seconds": 60,
+      "total_intervals_each_role": 11,
+      "total_main_checks": 32,
+      "configuration_write_reference": "before-mutation"
+    },
+    "pressure_worker_sha256": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+    "thread_contract": {
+      "schema": "crg-pressure-thread-session-contract-v1",
+      "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+      "session_sha256": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+      "session_selftest_sha256": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424",
+      "session_qualification": "/var/tmp/crg-thread165-tools-20261111/qualification.json",
+      "session_qualification_sha256": "6e43bfbb71141f3ce264ea36c239c28e670e28620d18d4d8f7d13cd816c10929",
+      "observer_qualification": "/var/tmp/crg-thread155-tools-20261111/qualification.json",
+      "observer_qualification_sha256": "b305850e2a463e206ba0b13ae1ed7273c15c7a7131b95e9dc1361dda1aa14b83",
+      "prior_failed_report": "/var/tmp/crg-business-pressure142-20261111/report.json",
+      "prior_failed_report_sha256": "55fe93aef6b6469f6ad107680020cd47af626c844f4f09b9c3dcc51a1ad8fede",
+      "prior_DBS_short_observation": "/var/tmp/crg-thread157-live-20261111/dbs-threads.json",
+      "prior_DBS_short_observation_sha256": "2b13ca6b27ebcba7972fc805d0cc033f3ebcf4c223cef74cb682ef441e78cfe7",
+      "prior_HIS_short_observation": "/var/tmp/crg-thread158-live-20261111/hisdbs-threads.json",
+      "prior_HIS_short_observation_sha256": "3b3317ed2889985682e8abd0c6092a8cee8cd4756c65c54791d260475711ba0c",
+      "duration_seconds": 900,
+      "maximum_report_bytes": 33554432,
+      "maximum_threads": 64,
+      "sample_period_seconds": 1,
+      "listener_port": 8090,
+      "start_before_engine_and_pressure": true,
+      "start_handshake_seconds": 15,
+      "term_wait_seconds": 15,
+      "kill_wait_seconds": 5,
+      "whole_child_CPU_source": "wait4-specific-child",
+      "business_error_precedence": true,
+      "business_quotas_and_SLA_unchanged": true
+    },
+    "native_diagnostic_contract": {
+      "schema": "crg-native-pressure-diagnostics-contract-v1",
+      "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+      "helper_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+      "qualification_report": "/var/tmp/crg-native194-qualification-20261111/report.json",
+      "qualification_report_sha256": "bc9897ed00032b6a6f33fb20e4631b9ba5dda3a144d9c5d5da775e3a210e4c41",
+      "qualification_source_sha256": {
+        "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+        "vendor-native-diagnostics-checks.py": "38106a8c5f13f34e873d65f08f0c813da799e593339cc5c860c7961b3ee4ed42",
+        "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "vendor-native-diagnostics-runtime.py": "ed4040a1864efec8631cc70013da5628a66c76c76cea76104b31d02b7bad2f2d",
+        "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461"
+      },
+      "qualification_image_ids": {
+        "dbs": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+        "hisdbs": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+      },
+      "qualification_namespace": "crg-vendor-lab-native194-20261111",
+      "qualification_launch": "/var/tmp/crg-memory167-tools-20261111/native194-launch.json",
+      "qualification_executor_sha256": "b12a8b5ae1f0f2b105fd4c9a53cc3231a006e3ad1fe0eb1e7cfd1299c49b8e80",
+      "prior_failed_report": "/var/tmp/crg-business-pressure167-20261111/report.json",
+      "prior_failed_report_sha256": "eaff819cd53966a6854de60ce5585713180e7202c6bbe0dab1cf54c820cbdcd0",
+      "prior_native_failed_report": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/basebackup/crg-soak-202611111670/load.json",
+      "prior_native_failed_report_sha256": "564ae4ee6f6357c68e10481ef6e4f5882657bfdec0a5a5f3b42e92bffc49ca52",
+      "maximum_report_bytes": 8388608,
+      "maximum_requests": 1024,
+      "maximum_PG_samples": 901,
+      "maximum_PG_rows": 16,
+      "PG_period_seconds": 1,
+      "minimum_PG_sample_fraction": 0.98,
+      "maximum_PG_start_gap_seconds": 3,
+      "maximum_internal_CPU_fraction_one_core": 0.05,
+      "maximum_errors_in_main_summary": 32,
+      "collector_failure_does_not_change_original_native_result": true,
+      "original_business_failure_precedence": true
+    },
+    "historical_failure_resolved": false,
+    "readiness": {
+      "phase": "ready",
+      "executed": false,
+      "stable_release_accepted": false,
+      "scope": "read-only exact30-to20 pressure prerequisites; prior failures retained"
+    },
+    "namespace_uid": "5d7736bc-fabc-4050-840e-2889afd8f8c9"
+  },
+  "actual_business_images": {
+    "dbs": {
+      "query_exit": 0,
+      "pod_uid": "b348e92f-275e-49c2-afd9-8aa3cf972469",
+      "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "matches_qualified_image": true,
+      "restart_count": 0
+    }
+  },
+  "execution_prechecks": {
+    "node_utc": "2026-11-11T13:16:02.555315+00:00",
+    "collector_checks_result_sha256": "fc25c4941fd95b9f7b47a420ff3378ab344356da2fa29cc6cf8dc81091f57da9",
+    "collector_checks": 6,
+    "original_source_inputs": {
+      "dbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      },
+      "hisdbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      }
+    },
+    "source_image_bindings": {
+      "dbs": {
+        "image": "db_puc/dbs:V7.0.12.001.02.56",
+        "cached_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5"
+      },
+      "hisdbs": {
+        "image": "db_puc/hisdbs:V7.0.12.001.02",
+        "cached_image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+      }
+    }
+  },
+  "thread_progress": {
+    "dbs": {
+      "record": {
+        "phase": "observing",
+        "target_signals_or_control_writes": 0,
+        "plan": {
+          "schema": "crg-vendor-thread-observer-plan-v1",
+          "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+          "label": "dbs",
+          "pid": 2120471,
+          "start_ticks": 134292441,
+          "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb348e92f_275e_49c2_afd9_8aa3cf972469.slice/cri-containerd-38ad33fb303c4c50078574c3795596bc9169903af142dd6ca119e4a5f47f59f2.scope",
+          "duration_seconds": 900,
+          "output": "/var/tmp/crg-business-pressure203-20261111/dbs-threads.json"
+        },
+        "plan_sha256": "79ef9d0596908f3fd17b70db96cabc99453f8317285b06dfdd6855a5196d2c97",
+        "listener_executable_path": "/opt/dbs/bin/dbs",
+        "launch_epoch": 1794403014.9592466,
+        "observer_pid": 2129029,
+        "observer_start_ticks": 134295807,
+        "observer_entry": "/var/tmp/crg-memory203-tools-20261111/vendor-thread-observer.py",
+        "pidfd_used": true,
+        "first_sample_handshake": {
+          "phase": "observing",
+          "sample_count": 1,
+          "epoch": 1794403015.1082706
+        },
+        "startup_until_first_sample_seconds": 0.15525758801959455
+      },
+      "process": {
+        "pid": 2129029,
+        "exists": true,
+        "start_ticks": 134295807,
+        "same_instance": true,
+        "state": "S"
+      },
+      "raw_file_bytes_now": 0
+    }
+  },
+  "pressure_progress": {
+    "dbs": {
+      "recorded": {
+        "started_epoch": 1794403065.6296046,
+        "target_memory_bytes": 13334654976,
+        "old_memory_limit": 20001980416,
+        "events": [
+          {
+            "phase": "ack",
+            "allocated_bytes": 0,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.107048
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 67108864,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.1749952
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 67108864,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.1758232
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 134217728,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.241854
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 134217728,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.2427158
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 201326592,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.308699
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 201326592,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.3095834
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 268435456,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.3765113
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 268435456,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.3775349
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 335544320,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.443718
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 335544320,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.444593
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 402653184,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.5112782
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 402653184,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.512095
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 469762048,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.578943
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 469762048,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.57979
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 536870912,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.6471694
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 536870912,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.6480932
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 603979776,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.7240553
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 603979776,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.7256007
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 671088640,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.7923043
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 671088640,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.7930975
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 738197504,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.8590162
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 738197504,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.8598895
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 805306368,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.9259572
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 805306368,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.9267726
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 872415232,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403067.993098
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 872415232,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403067.9939482
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 939524096,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.0610313
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 939524096,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.0619092
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1006632960,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.1291032
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1006632960,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.130013
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1073741824,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.1981182
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1073741824,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.1989586
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1140850688,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.2656496
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1140850688,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.2665427
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1207959552,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.3328083
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1207959552,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.3336694
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1275068416,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.4000967
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1275068416,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.4009607
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1342177280,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.4682176
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1342177280,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.4690926
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1409286144,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.535242
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1409286144,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.5361013
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1476395008,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.6018558
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1476395008,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.6026754
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1543503872,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.6684473
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1543503872,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.6692603
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1610612736,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.7356915
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1610612736,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.7364924
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1677721600,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.8023593
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1677721600,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.8031943
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1744830464,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.8694386
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1744830464,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.870365
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1811939328,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403068.9383595
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1811939328,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403068.93921
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1879048192,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.009805
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1879048192,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.0106142
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1946157056,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.077334
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 1946157056,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.0782492
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2013265920,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.1466079
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2013265920,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.1475174
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2080374784,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.2144594
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2080374784,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.2154043
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2147483648,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.29086
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2147483648,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.292423
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2214592512,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.3601344
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2214592512,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.3609922
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2281701376,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.4283845
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2281701376,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.4291983
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2348810240,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.4950557
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2348810240,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.4958692
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2415919104,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.5620716
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2415919104,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.562971
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2483027968,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.6290243
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2483027968,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.6298985
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2550136832,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.696241
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2550136832,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.6970367
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2617245696,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.7630227
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2617245696,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.763841
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2684354560,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.8295271
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2684354560,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.8304336
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2751463424,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.896217
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2751463424,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.8970447
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2818572288,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403069.9628005
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2818572288,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403069.9635758
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2885681152,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.0292335
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2885681152,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.030085
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2952790016,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.0960736
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 2952790016,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.0968986
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3019898880,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.1632047
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3019898880,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.1640425
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3087007744,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.2303207
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3087007744,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.2312934
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3154116608,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.297685
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3154116608,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.2986035
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3221225472,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.364797
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3221225472,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.365592
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3288334336,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.4317899
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3288334336,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.4327745
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3355443200,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.4993877
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3355443200,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.5002074
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3422552064,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.566314
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3422552064,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.5671566
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3489660928,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.6339996
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3489660928,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.6348646
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3556769792,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.7015362
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3556769792,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.702442
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3623878656,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.7698457
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3623878656,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.7708929
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3690987520,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.8374624
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3690987520,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.8383214
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3758096384,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.9080236
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3758096384,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.9088361
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3825205248,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403070.9755554
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3825205248,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403070.9764564
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3892314112,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.0447056
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3892314112,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.0455403
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3959422976,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.1110363
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 3959422976,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.1118748
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4026531840,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.1807342
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4026531840,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.1816566
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4093640704,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.247457
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4093640704,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.2485127
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4160749568,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.3149807
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4160749568,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.315956
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4227858432,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.3826516
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4227858432,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.3835948
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4294967296,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.4506888
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4294967296,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.4515388
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4362076160,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.5171843
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4362076160,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.5180519
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4429185024,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.583887
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4429185024,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.5846972
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4496293888,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.6503706
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4496293888,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.6511796
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4563402752,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.716782
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4563402752,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.7176404
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4630511616,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.783468
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4630511616,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.784322
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4697620480,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.8498282
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4697620480,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.8506193
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4764729344,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.9163308
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4764729344,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.9171731
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4831838208,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403071.983729
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4831838208,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403071.9846554
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4898947072,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.0588536
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4898947072,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.0596862
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4966055936,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.1263883
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 4966055936,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.1272159
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5033164800,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.1958532
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5033164800,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.1967084
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5100273664,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.263642
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5100273664,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.2644997
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5167382528,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.3306856
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5167382528,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.3315241
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5234491392,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.3989663
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5234491392,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.3998108
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5301600256,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.4665399
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5301600256,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.467393
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5368709120,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.53302
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5368709120,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.5341115
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5435817984,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.5999591
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5435817984,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.6008396
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5502926848,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.6671178
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5502926848,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.6679165
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5570035712,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.7338648
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5570035712,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.7352083
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5637144576,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.801191
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5637144576,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.8020625
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5704253440,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.8676195
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5704253440,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.868447
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5771362304,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403072.9338524
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5771362304,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403072.9348373
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5838471168,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.000928
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5838471168,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.0017865
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5905580032,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.0676172
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5905580032,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.0684052
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5972688896,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.1344333
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 5972688896,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.1352756
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6039797760,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.2017062
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6039797760,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.2025166
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6106906624,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.268207
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6106906624,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.2689855
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6174015488,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.3346033
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6174015488,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.3355613
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6241124352,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.4018278
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6241124352,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.402763
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6308233216,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.4686832
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6308233216,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.469485
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6375342080,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.535223
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6375342080,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.5362365
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6442450944,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.602205
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6442450944,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.6029823
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6509559808,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.6686094
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6509559808,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.6694498
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6576668672,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.7351198
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6576668672,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.7360172
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6643777536,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.8016627
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6643777536,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.8024938
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6710886400,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.868108
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6710886400,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.868828
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6777995264,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403073.9343874
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6777995264,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403073.9352453
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6845104128,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.001214
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6845104128,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.0020475
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6912212992,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.0684917
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6912212992,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.0693176
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6979321856,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.1361403
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 6979321856,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.1369715
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7046430720,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.203753
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7046430720,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.204605
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7113539584,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.2711198
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7113539584,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.2719467
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7180648448,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.3392189
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7180648448,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.3400521
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7247757312,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.4070354
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7247757312,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.407848
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7314866176,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.4756386
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7314866176,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.4764693
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7381975040,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.5450191
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7381975040,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.545877
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7449083904,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.6147752
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7449083904,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.6155863
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7516192768,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.682343
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7516192768,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.6832542
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7583301632,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.7541869
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7583301632,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.7550411
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7650410496,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.8224392
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7650410496,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.8232067
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7717519360,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.8904104
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7717519360,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.8912175
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7784628224,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403074.9585366
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7784628224,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403074.959428
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7851737088,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403075.025838
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7851737088,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403075.0266392
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7918845952,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403075.0935674
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7918845952,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403075.094404
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7985954816,
+            "pid": 2734,
+            "op": "allocate",
+            "observed_epoch": 1794403075.1618547
+          },
+          {
+            "phase": "ack",
+            "allocated_bytes": 7985954816,
+            "pid": 2734,
+            "op": "ping",
+            "observed_epoch": 1794403075.1627612
+          }
+        ],
+        "host_samples": [
+          {
+            "epoch": 1794403067.1476147,
+            "memory_current": 3640414208,
+            "host_available": 36729094144,
+            "allocated_bytes": 0
+          },
+          {
+            "epoch": 1794403067.214587,
+            "memory_current": 3708121088,
+            "host_available": 36667162624,
+            "allocated_bytes": 67108864
+          },
+          {
+            "epoch": 1794403067.2816179,
+            "memory_current": 3775406080,
+            "host_available": 36600070144,
+            "allocated_bytes": 134217728
+          },
+          {
+            "epoch": 1794403067.3491995,
+            "memory_current": 3842777088,
+            "host_available": 36527656960,
+            "allocated_bytes": 201326592
+          },
+          {
+            "epoch": 1794403067.4167364,
+            "memory_current": 3909898240,
+            "host_available": 36466245632,
+            "allocated_bytes": 268435456
+          },
+          {
+            "epoch": 1794403067.484103,
+            "memory_current": 3977138176,
+            "host_available": 36401217536,
+            "allocated_bytes": 335544320
+          },
+          {
+            "epoch": 1794403067.551974,
+            "memory_current": 4048723968,
+            "host_available": 36329996288,
+            "allocated_bytes": 402653184
+          },
+          {
+            "epoch": 1794403067.619463,
+            "memory_current": 4112044032,
+            "host_available": 36257226752,
+            "allocated_bytes": 469762048
+          },
+          {
+            "epoch": 1794403067.6882799,
+            "memory_current": 4179132416,
+            "host_available": 36187181056,
+            "allocated_bytes": 536870912
+          },
+          {
+            "epoch": 1794403067.7652225,
+            "memory_current": 4246122496,
+            "host_available": 36116332544,
+            "allocated_bytes": 603979776
+          },
+          {
+            "epoch": 1794403067.8320158,
+            "memory_current": 4313673728,
+            "host_available": 36052455424,
+            "allocated_bytes": 671088640
+          },
+          {
+            "epoch": 1794403067.8990662,
+            "memory_current": 4380872704,
+            "host_available": 35985362944,
+            "allocated_bytes": 738197504
+          },
+          {
+            "epoch": 1794403067.9661276,
+            "memory_current": 4447977472,
+            "host_available": 35918270464,
+            "allocated_bytes": 805306368
+          },
+          {
+            "epoch": 1794403068.0338018,
+            "memory_current": 4515098624,
+            "host_available": 35847049216,
+            "allocated_bytes": 872415232
+          },
+          {
+            "epoch": 1794403068.1007152,
+            "memory_current": 4582502400,
+            "host_available": 35792576512,
+            "allocated_bytes": 939524096
+          },
+          {
+            "epoch": 1794403068.1711352,
+            "memory_current": 4649746432,
+            "host_available": 35725484032,
+            "allocated_bytes": 1006632960
+          },
+          {
+            "epoch": 1794403068.2384036,
+            "memory_current": 4716990464,
+            "host_available": 35658805248,
+            "allocated_bytes": 1073741824
+          },
+          {
+            "epoch": 1794403068.3058598,
+            "memory_current": 4784238592,
+            "host_available": 35590586368,
+            "allocated_bytes": 1140850688
+          },
+          {
+            "epoch": 1794403068.3729916,
+            "memory_current": 4851478528,
+            "host_available": 35523493888,
+            "allocated_bytes": 1207959552
+          },
+          {
+            "epoch": 1794403068.4407172,
+            "memory_current": 4918722560,
+            "host_available": 35455885312,
+            "allocated_bytes": 1275068416
+          },
+          {
+            "epoch": 1794403068.5084076,
+            "memory_current": 4986368000,
+            "host_available": 35388186624,
+            "allocated_bytes": 1342177280
+          },
+          {
+            "epoch": 1794403068.575044,
+            "memory_current": 5053214720,
+            "host_available": 35321094144,
+            "allocated_bytes": 1409286144
+          },
+          {
+            "epoch": 1794403068.6417263,
+            "memory_current": 5121900544,
+            "host_available": 35254001664,
+            "allocated_bytes": 1476395008
+          },
+          {
+            "epoch": 1794403068.7088304,
+            "memory_current": 5187969024,
+            "host_available": 35185446912,
+            "allocated_bytes": 1543503872
+          },
+          {
+            "epoch": 1794403068.7755425,
+            "memory_current": 5254995968,
+            "host_available": 35121528832,
+            "allocated_bytes": 1610612736
+          },
+          {
+            "epoch": 1794403068.8426957,
+            "memory_current": 5322326016,
+            "host_available": 35053404160,
+            "allocated_bytes": 1677721600
+          },
+          {
+            "epoch": 1794403068.9110556,
+            "memory_current": 5389570048,
+            "host_available": 34983731200,
+            "allocated_bytes": 1744830464
+          },
+          {
+            "epoch": 1794403068.9794474,
+            "memory_current": 5456814080,
+            "host_available": 34933153792,
+            "allocated_bytes": 1811939328
+          },
+          {
+            "epoch": 1794403069.0501747,
+            "memory_current": 5524316160,
+            "host_available": 34864513024,
+            "allocated_bytes": 1879048192
+          },
+          {
+            "epoch": 1794403069.1192787,
+            "memory_current": 5595586560,
+            "host_available": 34799804416,
+            "allocated_bytes": 1946157056
+          },
+          {
+            "epoch": 1794403069.1871948,
+            "memory_current": 5658427392,
+            "host_available": 34729926656,
+            "allocated_bytes": 2013265920
+          },
+          {
+            "epoch": 1794403069.257174,
+            "memory_current": 5725663232,
+            "host_available": 34657685504,
+            "allocated_bytes": 2080374784
+          },
+          {
+            "epoch": 1794403069.3319983,
+            "memory_current": 5793034240,
+            "host_available": 34590076928,
+            "allocated_bytes": 2147483648
+          },
+          {
+            "epoch": 1794403069.4012115,
+            "memory_current": 5863993344,
+            "host_available": 34516688896,
+            "allocated_bytes": 2214592512
+          },
+          {
+            "epoch": 1794403069.4681876,
+            "memory_current": 5927399424,
+            "host_available": 34458288128,
+            "allocated_bytes": 2281701376
+          },
+          {
+            "epoch": 1794403069.535117,
+            "memory_current": 5994770432,
+            "host_available": 34390679552,
+            "allocated_bytes": 2348810240
+          },
+          {
+            "epoch": 1794403069.6020198,
+            "memory_current": 6061887488,
+            "host_available": 34323587072,
+            "allocated_bytes": 2415919104
+          },
+          {
+            "epoch": 1794403069.6692457,
+            "memory_current": 6129270784,
+            "host_available": 34255572992,
+            "allocated_bytes": 2483027968
+          },
+          {
+            "epoch": 1794403069.7361014,
+            "memory_current": 6196629504,
+            "host_available": 34203377664,
+            "allocated_bytes": 2550136832
+          },
+          {
+            "epoch": 1794403069.8027387,
+            "memory_current": 6263754752,
+            "host_available": 34135928832,
+            "allocated_bytes": 2617245696
+          },
+          {
+            "epoch": 1794403069.8693485,
+            "memory_current": 6331121664,
+            "host_available": 34068836352,
+            "allocated_bytes": 2684354560
+          },
+          {
+            "epoch": 1794403069.936097,
+            "memory_current": 6398242816,
+            "host_available": 33993486336,
+            "allocated_bytes": 2751463424
+          },
+          {
+            "epoch": 1794403070.0024605,
+            "memory_current": 6465486848,
+            "host_available": 33923813376,
+            "allocated_bytes": 2818572288
+          },
+          {
+            "epoch": 1794403070.0691128,
+            "memory_current": 6532861952,
+            "host_available": 33856204800,
+            "allocated_bytes": 2885681152
+          },
+          {
+            "epoch": 1794403070.1363258,
+            "memory_current": 6600245248,
+            "host_available": 33788596224,
+            "allocated_bytes": 2952790016
+          },
+          {
+            "epoch": 1794403070.2029233,
+            "memory_current": 6667354112,
+            "host_available": 33721503744,
+            "allocated_bytes": 3019898880
+          },
+          {
+            "epoch": 1794403070.2706716,
+            "memory_current": 6734471168,
+            "host_available": 33653895168,
+            "allocated_bytes": 3087007744
+          },
+          {
+            "epoch": 1794403070.3379009,
+            "memory_current": 6801842176,
+            "host_available": 33585152000,
+            "allocated_bytes": 3154116608
+          },
+          {
+            "epoch": 1794403070.404742,
+            "memory_current": 6869348352,
+            "host_available": 33518059520,
+            "allocated_bytes": 3221225472
+          },
+          {
+            "epoch": 1794403070.4723792,
+            "memory_current": 6936383488,
+            "host_available": 33442205696,
+            "allocated_bytes": 3288334336
+          },
+          {
+            "epoch": 1794403070.5394444,
+            "memory_current": 7003623424,
+            "host_available": 33372532736,
+            "allocated_bytes": 3355443200
+          },
+          {
+            "epoch": 1794403070.6069825,
+            "memory_current": 7070818304,
+            "host_available": 33300283392,
+            "allocated_bytes": 3422552064
+          },
+          {
+            "epoch": 1794403070.673999,
+            "memory_current": 7146397696,
+            "host_available": 33231568896,
+            "allocated_bytes": 3489660928
+          },
+          {
+            "epoch": 1794403070.742256,
+            "memory_current": 7205306368,
+            "host_available": 33163706368,
+            "allocated_bytes": 3556769792
+          },
+          {
+            "epoch": 1794403070.8102381,
+            "memory_current": 7272550400,
+            "host_available": 33088393216,
+            "allocated_bytes": 3623878656
+          },
+          {
+            "epoch": 1794403070.8809288,
+            "memory_current": 7339798528,
+            "host_available": 33018204160,
+            "allocated_bytes": 3690987520
+          },
+          {
+            "epoch": 1794403070.948182,
+            "memory_current": 7406989312,
+            "host_available": 32949907456,
+            "allocated_bytes": 3758096384
+          },
+          {
+            "epoch": 1794403071.01752,
+            "memory_current": 7476596736,
+            "host_available": 32873529344,
+            "allocated_bytes": 3825205248
+          },
+          {
+            "epoch": 1794403071.084313,
+            "memory_current": 7541391360,
+            "host_available": 32806436864,
+            "allocated_bytes": 3892314112
+          },
+          {
+            "epoch": 1794403071.1536157,
+            "memory_current": 7608897536,
+            "host_available": 32738828288,
+            "allocated_bytes": 3959422976
+          },
+          {
+            "epoch": 1794403071.2204463,
+            "memory_current": 7676665856,
+            "host_available": 32684994560,
+            "allocated_bytes": 4026531840
+          },
+          {
+            "epoch": 1794403071.288043,
+            "memory_current": 7743602688,
+            "host_available": 32616353792,
+            "allocated_bytes": 4093640704
+          },
+          {
+            "epoch": 1794403071.3555655,
+            "memory_current": 7811084288,
+            "host_available": 32558592000,
+            "allocated_bytes": 4160749568
+          },
+          {
+            "epoch": 1794403071.423736,
+            "memory_current": 7878213632,
+            "host_available": 32499118080,
+            "allocated_bytes": 4227858432
+          },
+          {
+            "epoch": 1794403071.4904995,
+            "memory_current": 7945584640,
+            "host_available": 32431509504,
+            "allocated_bytes": 4294967296
+          },
+          {
+            "epoch": 1794403071.5571587,
+            "memory_current": 8012697600,
+            "host_available": 32363900928,
+            "allocated_bytes": 4362076160
+          },
+          {
+            "epoch": 1794403071.623661,
+            "memory_current": 8079949824,
+            "host_available": 32296808448,
+            "allocated_bytes": 4429185024
+          },
+          {
+            "epoch": 1794403071.690122,
+            "memory_current": 8147324928,
+            "host_available": 32229715968,
+            "allocated_bytes": 4496293888
+          },
+          {
+            "epoch": 1794403071.7566795,
+            "memory_current": 8214433792,
+            "host_available": 32161341440,
+            "allocated_bytes": 4563402752
+          },
+          {
+            "epoch": 1794403071.8231385,
+            "memory_current": 8281788416,
+            "host_available": 32094662656,
+            "allocated_bytes": 4630511616
+          },
+          {
+            "epoch": 1794403071.8895025,
+            "memory_current": 8348897280,
+            "host_available": 32027570176,
+            "allocated_bytes": 4697620480
+          },
+          {
+            "epoch": 1794403071.9568233,
+            "memory_current": 8416182272,
+            "host_available": 31958929408,
+            "allocated_bytes": 4764729344
+          },
+          {
+            "epoch": 1794403072.02453,
+            "memory_current": 8483352576,
+            "host_available": 31886778368,
+            "allocated_bytes": 4831838208
+          },
+          {
+            "epoch": 1794403072.098721,
+            "memory_current": 8550682624,
+            "host_available": 31826919424,
+            "allocated_bytes": 4898947072
+          },
+          {
+            "epoch": 1794403072.1685681,
+            "memory_current": 8622497792,
+            "host_available": 31752527872,
+            "allocated_bytes": 4966055936
+          },
+          {
+            "epoch": 1794403072.2368908,
+            "memory_current": 8692441088,
+            "host_available": 31681003520,
+            "allocated_bytes": 5033164800
+          },
+          {
+            "epoch": 1794403072.3040395,
+            "memory_current": 8759762944,
+            "host_available": 31612878848,
+            "allocated_bytes": 5100273664
+          },
+          {
+            "epoch": 1794403072.3709261,
+            "memory_current": 8826888192,
+            "host_available": 31545786368,
+            "allocated_bytes": 5167382528
+          },
+          {
+            "epoch": 1794403072.4390326,
+            "memory_current": 8894132224,
+            "host_available": 31478177792,
+            "allocated_bytes": 5234491392
+          },
+          {
+            "epoch": 1794403072.5064328,
+            "memory_current": 8961372160,
+            "host_available": 31411351552,
+            "allocated_bytes": 5301600256
+          },
+          {
+            "epoch": 1794403072.5732627,
+            "memory_current": 9028489216,
+            "host_available": 31344259072,
+            "allocated_bytes": 5368709120
+          },
+          {
+            "epoch": 1794403072.6404264,
+            "memory_current": 9095917568,
+            "host_available": 31277580288,
+            "allocated_bytes": 5435817984
+          },
+          {
+            "epoch": 1794403072.7070918,
+            "memory_current": 9163108352,
+            "host_available": 31208951808,
+            "allocated_bytes": 5502926848
+          },
+          {
+            "epoch": 1794403072.774216,
+            "memory_current": 9230221312,
+            "host_available": 31141384192,
+            "allocated_bytes": 5570035712
+          },
+          {
+            "epoch": 1794403072.8409636,
+            "memory_current": 9297657856,
+            "host_available": 31089258496,
+            "allocated_bytes": 5637144576
+          },
+          {
+            "epoch": 1794403072.9073172,
+            "memory_current": 9364766720,
+            "host_available": 31022166016,
+            "allocated_bytes": 5704253440
+          },
+          {
+            "epoch": 1794403072.9741507,
+            "memory_current": 9431957504,
+            "host_available": 30955073536,
+            "allocated_bytes": 5771362304
+          },
+          {
+            "epoch": 1794403073.040868,
+            "memory_current": 9499443200,
+            "host_available": 30887981056,
+            "allocated_bytes": 5838471168
+          },
+          {
+            "epoch": 1794403073.107436,
+            "memory_current": 9566601216,
+            "host_available": 30821404672,
+            "allocated_bytes": 5905580032
+          },
+          {
+            "epoch": 1794403073.1747591,
+            "memory_current": 9633943552,
+            "host_available": 30753796096,
+            "allocated_bytes": 5972688896
+          },
+          {
+            "epoch": 1794403073.2414734,
+            "memory_current": 9701060608,
+            "host_available": 30686187520,
+            "allocated_bytes": 6039797760
+          },
+          {
+            "epoch": 1794403073.3079638,
+            "memory_current": 9768431616,
+            "host_available": 30619095040,
+            "allocated_bytes": 6106906624
+          },
+          {
+            "epoch": 1794403073.3750358,
+            "memory_current": 9835425792,
+            "host_available": 30551486464,
+            "allocated_bytes": 6174015488
+          },
+          {
+            "epoch": 1794403073.4416783,
+            "memory_current": 9902796800,
+            "host_available": 30483877888,
+            "allocated_bytes": 6241124352
+          },
+          {
+            "epoch": 1794403073.508362,
+            "memory_current": 9970167808,
+            "host_available": 30416785408,
+            "allocated_bytes": 6308233216
+          },
+          {
+            "epoch": 1794403073.5754158,
+            "memory_current": 10037157888,
+            "host_available": 30349176832,
+            "allocated_bytes": 6375342080
+          },
+          {
+            "epoch": 1794403073.6418521,
+            "memory_current": 10105311232,
+            "host_available": 30282084352,
+            "allocated_bytes": 6442450944
+          },
+          {
+            "epoch": 1794403073.7084236,
+            "memory_current": 10172186624,
+            "host_available": 30214467584,
+            "allocated_bytes": 6509559808
+          },
+          {
+            "epoch": 1794403073.7749393,
+            "memory_current": 10238914560,
+            "host_available": 30146494464,
+            "allocated_bytes": 6576668672
+          },
+          {
+            "epoch": 1794403073.8413026,
+            "memory_current": 10306281472,
+            "host_available": 30079918080,
+            "allocated_bytes": 6643777536
+          },
+          {
+            "epoch": 1794403073.9076035,
+            "memory_current": 10373525504,
+            "host_available": 30012825600,
+            "allocated_bytes": 6710886400
+          },
+          {
+            "epoch": 1794403073.974419,
+            "memory_current": 10441150464,
+            "host_available": 29946871808,
+            "allocated_bytes": 6777995264
+          },
+          {
+            "epoch": 1794403074.0409484,
+            "memory_current": 10508279808,
+            "host_available": 29883088896,
+            "allocated_bytes": 6845104128
+          },
+          {
+            "epoch": 1794403074.1082847,
+            "memory_current": 10575679488,
+            "host_available": 29819564032,
+            "allocated_bytes": 6912212992
+          },
+          {
+            "epoch": 1794403074.1761882,
+            "memory_current": 10642788352,
+            "host_available": 29751185408,
+            "allocated_bytes": 6979321856
+          },
+          {
+            "epoch": 1794403074.243618,
+            "memory_current": 10709827584,
+            "host_available": 29684092928,
+            "allocated_bytes": 7046430720
+          },
+          {
+            "epoch": 1794403074.3112893,
+            "memory_current": 10777186304,
+            "host_available": 29616742400,
+            "allocated_bytes": 7113539584
+          },
+          {
+            "epoch": 1794403074.3792024,
+            "memory_current": 10844147712,
+            "host_available": 29557616640,
+            "allocated_bytes": 7180648448
+          },
+          {
+            "epoch": 1794403074.4477415,
+            "memory_current": 10911404032,
+            "host_available": 29489971200,
+            "allocated_bytes": 7247757312
+          },
+          {
+            "epoch": 1794403074.516738,
+            "memory_current": 10979020800,
+            "host_available": 29454237696,
+            "allocated_bytes": 7314866176
+          },
+          {
+            "epoch": 1794403074.5869563,
+            "memory_current": 11046395904,
+            "host_available": 29421096960,
+            "allocated_bytes": 7381975040
+          },
+          {
+            "epoch": 1794403074.6544926,
+            "memory_current": 11113496576,
+            "host_available": 29355606016,
+            "allocated_bytes": 7449083904
+          },
+          {
+            "epoch": 1794403074.7261634,
+            "memory_current": 11180859392,
+            "host_available": 29289938944,
+            "allocated_bytes": 7516192768
+          },
+          {
+            "epoch": 1794403074.7944727,
+            "memory_current": 11247996928,
+            "host_available": 29222129664,
+            "allocated_bytes": 7583301632
+          },
+          {
+            "epoch": 1794403074.8621256,
+            "memory_current": 11314982912,
+            "host_available": 29155037184,
+            "allocated_bytes": 7650410496
+          },
+          {
+            "epoch": 1794403074.930556,
+            "memory_current": 11382226944,
+            "host_available": 29085884416,
+            "allocated_bytes": 7717519360
+          },
+          {
+            "epoch": 1794403074.998347,
+            "memory_current": 11449884672,
+            "host_available": 29017169920,
+            "allocated_bytes": 7784628224
+          },
+          {
+            "epoch": 1794403075.0660722,
+            "memory_current": 11517059072,
+            "host_available": 28949561344,
+            "allocated_bytes": 7851737088
+          },
+          {
+            "epoch": 1794403075.1334383,
+            "memory_current": 11583770624,
+            "host_available": 28886601728,
+            "allocated_bytes": 7918845952
+          }
+        ],
+        "worker_sha256": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+        "maximum_helper_bytes": 12884901888,
+        "maximum_group_bytes": 17854496768,
+        "host_reserve_bytes": 8589934592,
+        "direct_control_file_writes": false,
+        "hello": {
+          "chunk_bytes": 67108864,
+          "lease_seconds": 10,
+          "pid": 2734,
+          "lifetime_seconds": 240,
+          "phase": "ready",
+          "maximum_bytes": 12884901888
+        },
+        "process": {
+          "pid": 2142573,
+          "start_ticks": 134300999,
+          "entry": "/tmp/crg-memory-pressure-202611112030.py"
+        }
+      },
+      "interval_count": 8,
+      "group_exists": true,
+      "live_helper_processes": [
+        {
+          "pid": 2142573,
+          "start_ticks": 134300999,
+          "entry": "/tmp/crg-memory-pressure-202611112030.py",
+          "state": "S"
+        }
+      ],
+      "memory_current": 13630468096,
+      "memory_max": "20001980416",
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+    }
+  },
+  "DBS_native_initial_report": {
+    "api": {
+      "attempts": 0,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0,
+      "successes": 0,
+      "total_seconds": 0
+    },
+    "cluster_database_bytes_initial": 1470558354,
+    "criteria": {
+      "api_period_seconds": 5,
+      "maximum_errors": 0,
+      "maximum_seconds": 5,
+      "minimum_scheduled_samples_fraction": 0.98,
+      "p95_upper_bound_seconds": 1,
+      "sql_period_seconds": 2
+    },
+    "initial_checksum": [
+      16384,
+      134225920,
+      67108864,
+      "10b3b8214172d3b698258a128e9c6687",
+      0
+    ],
+    "latency_bucket_upper_seconds": [
+      0.001,
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      5,
+      "over-5"
+    ],
+    "native_diagnostics": {
+      "business_signals_cancellations_or_control_writes": 0,
+      "dropped_pg_samples": 0,
+      "dropped_requests": 0,
+      "pg_errors": 0,
+      "pg_samples": 0,
+      "pg_truncated_samples": 0,
+      "phase": "not-started",
+      "probe_thread_cpu_seconds": null,
+      "probe_thread_stopped": false,
+      "recorder_cpu_available": true,
+      "recorder_cpu_seconds": 0.0,
+      "recorder_internal_errors": 0,
+      "request_count": 0,
+      "request_errors": 0
+    },
+    "phase": "running",
+    "primary_start_time_initial": "2026-11-11 21:16:38.733123+08",
+    "requested_duration_seconds": 600,
+    "run_id": "202611112030",
+    "schema": "crg-vendor-soak-v1",
+    "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+    "sql": {
+      "attempts": 0,
+      "errors": 0,
+      "histogram": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0,
+      "successes": 0,
+      "total_seconds": 0
+    },
+    "started_utc": "2026-11-11T13:16:53.539414Z",
+    "test_phase": "smoke"
+  },
+  "native_initial_report_is_not_current_per_request_progress": true,
+  "HISDBS_business_executed_at_snapshot": false,
+  "full600s_accepted": false,
+  "original_business_AST_preserved_except_diagnostic_binding": true,
+  "original_main_checks": 32,
+  "historical_failure_resolved": false,
+  "stable_release_accepted": false
+}
