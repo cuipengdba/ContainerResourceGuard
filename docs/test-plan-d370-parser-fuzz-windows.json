@@ -1,0 +1,145 @@
+{
+  "platform": "windows/amd64",
+  "targets": [
+    "FuzzDecodeConfig",
+    "FuzzDecodeProfile"
+  ],
+  "per_target_fuzztime_seconds": 600,
+  "per_target_wall_timeout_seconds": 750,
+  "GOMAXPROCS": 2,
+  "parallel_workers": 2,
+  "GOMEMLIMIT": "256MiB (Go soft memory target, not a hard process limit)",
+  "criteria": "Both existing parser fuzz targets must exit0 after their requested10m; a crash, deadline or nonzero exit is retained as failure. No cgroup/business/performance claim.",
+  "additional_private_workspace_corpus": [
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-0",
+      "sha256": "8093511184ad3e258aa13b957e75ff26c7fae64672dae0c0bc0a9fa5b61a05e7",
+      "input": "{}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-1",
+      "sha256": "7f5503be3deeefffe7f0bcfd20b12af208b3ce59bc22220cf1fa507e5d365c27",
+      "input": "{\"cpu_percent\":20,\"memory_percent\":30,\"io_percent\":40}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-2",
+      "sha256": "fc844e4c2dd5fbac350a626bd4fd187d5cfa6965577c116bb09d25a95ed54136",
+      "input": "{\"io_percent\":0.5}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-3",
+      "sha256": "319d8b7cb04c59778bcc3cfb3568011ac97f6981947b7707b0af3880230e124e",
+      "input": "{\"cpu_percent\":0}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-4",
+      "sha256": "a7fbcf84831e8439c1d9ed52938cca2414f6e398a4463682b65785b870b83a56",
+      "input": "{\"memory_percent\":101}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-5",
+      "sha256": "3f438c407c9337a75a9189e543bfe10ac74e778e20174ff5ad686a614470bf5e",
+      "input": "{\"io_percent\":null}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-6",
+      "sha256": "031107599da02874fbb0a794da53c08f97148c56e75e4d5a57d533521460fc80",
+      "input": "{\"cpu_percent\":20,\"cpu_percent\":30}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-7",
+      "sha256": "ddcb1c438b3932c03ace928cf60bb64397551f36c3b2007112739993a362076c",
+      "input": "{\"percent\":20,\"io_percent\":30}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-8",
+      "sha256": "e3c98475610a20d30271b7a0d565f9be946b1e739e3208be58cab8b6ba9d9fc3",
+      "input": "{\"cpu_percent\":20,\"pids_percent\":30}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-9",
+      "sha256": "b40496f3017e75cb86117beffec0cadd44ba7faae09cbdf98d6982c51af68d91",
+      "input": "{\"cpu_percent\":20,\"log_directory\":\"/var/log/crg\"}"
+    },
+    {
+      "target": "FuzzDecodeConfig",
+      "name": "r34-10",
+      "sha256": "9b4a20d61b5e13ac46015caeca8262d9d65e01f338c98de441d35512235459b6",
+      "input": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":0.5,\"memory_max\":\"256MiB\",\"io_read_iops\":14}}"
+    },
+    {
+      "target": "FuzzDecodeProfile",
+      "name": "r34-0",
+      "sha256": "a50f9cdb0d58afa31a433b57cb187020c3137feaf87f4ecaca96aa649bd2946d",
+      "input": "{\"version\":1,\"method\":\"direct-sync-qdepth1-seq1m-random4k\",\"devices\":[{\"device\":\"253:0\",\"read_bps\":75083436,\"write_bps\":49042309,\"read_iops\":150,\"write_iops\":71}]}"
+    }
+  ],
+  "date": "2026-11-11",
+  "status": "frozen before launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "source_archive_sha256": "beaccd23fd7bb9d81d093d82cafd51aada714dc93c62e8d7e387463b1aa49a9d",
+  "toolchain": "go version go1.27.3 windows/amd64",
+  "production_source_sha256": {
+    "cmd/crg/cgroup_gate.go": "1f79536032fc1c37ea0166df58b5c7c1e36db4a07faed642558c45ec9069fbfe",
+    "cmd/crg/errors.go": "4ee18876d2f8eead180477bc4b8e7402934c09d326d01fc7d89c81bf9e140e71",
+    "cmd/crg/main.go": "8ae2b6fa3e6eca55fd24ccb2fa901c3a40d070ab2bb3894d197546d933a484d5",
+    "cmd/crg/percentage_flags.go": "79a6dbea86c891512c7061527e3bfc153cf32b4640407a4d1745b1c088c075ea",
+    "cmd/crg/run_logging.go": "06c29f195df6d96fa7ceee1c97c87d264f8928193c788ce6990fb70eea4ffdb0",
+    "go.mod": "52c805337a180bfc5eb3bcbb94ef1f3c1ed61fee9c2eda11a5ceb9002533e3d0",
+    "internal/guard/binary.go": "c7023d6337eb046b6001bfa4bf42fd3cad8fde7f7e9f3689623e302f705b2b90",
+    "internal/guard/binary_linux.go": "bc01c53e02121c6f6ebeb8206b7750de69ec78db0d73dcf727f487e6eb8c78ed",
+    "internal/guard/binary_other.go": "4a1854721f3405b2d78a7113452c83aabadf7287e6110c5b378062e85ddb68d7",
+    "internal/guard/block_device.go": "2baa26d58ccac8d5edf417ae48ab0dfe8a9ebe137c5d19ca087e626585752e36",
+    "internal/guard/calibrate_linux.go": "8349aabb2000fefd08cd3c3acf9d39025ff07a09de8068765477b7b563c7de6b",
+    "internal/guard/calibrate_other.go": "669ae9f280f7f20030b8d52d4cf71a4d79daf022fa0712df1e435814526c7cff",
+    "internal/guard/calibration_auto.go": "0a75208c30af8e07ac4e259ee4872a710c05ac34ef8fbeecb3f663b3ce7997be",
+    "internal/guard/calibration_select_linux.go": "e9af7506a76373ea7a88fc11b88475892f6e20a980acf301364a85f81698205b",
+    "internal/guard/calibration_select_other.go": "710c05cd142edfbb908299957141ef454ba8f4100101ac32b5f8762451d17841",
+    "internal/guard/capacity.go": "78efb10c78cda02ea083668b8a6fbd456cf4866bf1887636f3b7ed4ffd19e32b",
+    "internal/guard/cgroup_version.go": "71b65bce656c5c45a20db309db4a1b9d068d61960c816de96c6a94bc97c3cfea",
+    "internal/guard/config.go": "6a2ac3ddccb8f6627eb279d4820b743ddaec6bcbc39f04757e53a4af37aff16f",
+    "internal/guard/control.go": "0f1526fc049acc58f5f8cf0537d620fb64cea14243f76b313f02b48fb5e82116",
+    "internal/guard/coverage.go": "32abb10b61aaabff0bdd128983d0d6f83b2c2d8f6ebf007c3a18ef43b78bff5c",
+    "internal/guard/diagnostic_bundle.go": "d53d8a436f27cf73ac34bfe0d9063558f9a6a32397a2279f267fd4d7405c7ae7",
+    "internal/guard/diagnostics.go": "3ce58448947f89ec6b0e71b6b2a68ade03bbac7c4d641f4d1baaac365f3c5f8a",
+    "internal/guard/discover.go": "b47cc1310b3ff2b52f1088153ac48d872efd0622135db01cbbe9d0b44b49d734",
+    "internal/guard/engine.go": "990f6c6a627e22c8fb79d01460410bc34d6e5682d4caac2aed55496f83279091",
+    "internal/guard/events.go": "0982c1a45527cf6ffe7d9745c0e70bb69b51ecd2b2f0060499e934780c9731cd",
+    "internal/guard/io_weight.go": "0f3faeac99d294be5d637709c660655e4bbd3091556f55e12c6a1fd61b054297",
+    "internal/guard/manual.go": "543f917670e081bba58c2bdfeb4d0b2ffec938ca4ebc47ab088588f30e8c62d2",
+    "internal/guard/memory.go": "1fad1c01d610ecdde6663e5c77abeaabe4f0f231c665159f218e71805bcff5c1",
+    "internal/guard/memory_extra.go": "fcbea47ff298f2d76b140088c4cd3c20b5ccee9409e0d9366976476e27acd867",
+    "internal/guard/memory_view.go": "1c528cd8030f236dcdcbc7f1e171cf6beebebc2fa4fbe260456c1bc175021899",
+    "internal/guard/memory_window.go": "9e25e8654a7e90d641b87a65503e7ca6d0863f561fd7f5bfa22b0e39f45cdaab",
+    "internal/guard/metrics.go": "95a0ba70ce853bb553c55f0610062e830e625c4abeb772324ef5ccd497b07bd8",
+    "internal/guard/partition_plan.go": "befa049205cff7b3f30b61d13ae87e3357e7290dd8ee2921ce00dd31cd7d60db",
+    "internal/guard/percentages.go": "8b5d7d910f08e3ef2998bb5be89f8600ea004d65f05114f2b253bfabd3341bda",
+    "internal/guard/pids.go": "2242aa022c2851e59783ac39514ec9793d935d05aa0e59339f32d046f33dd4b9",
+    "internal/guard/plan.go": "22ebfa01c55dc58c62417fe4e217c457874c6b44e5ddba35026a70d85b16d142",
+    "internal/guard/platform_linux.go": "9ebdda6b402295bf4aa3c697e8c586b587ea6800d891b00986b68820b7c5d129",
+    "internal/guard/platform_other.go": "a7bb1538acbdadfe7cd49c8c1d60f1032837410071ebecee66a6d0ec413530e4",
+    "internal/guard/profile.go": "92507d0b101df35e058c90b44df37840ce120867d9ca52bf82b027e7f2331cb8",
+    "internal/guard/profile_inspect.go": "301c6aeaad98a9e3db4148041a62a2311714596ed5ad87ae8a3dec47993890d8",
+    "internal/guard/reasons.go": "a82ed72b7195698af92e4903937d0de3de032a524bd8069ff4ccdeec73f9f1ca",
+    "internal/guard/reload.go": "634929f0728b4bee4c8f759eeb95917a13ddeef25323ab471536ad602b275831",
+    "internal/guard/reload_control.go": "27ac52f2a24def7cacc03d114605b3aededa047c632dacae1499a103872e7d98",
+    "internal/guard/supervisor.go": "6daa9faf7a7b650b926237250008271001a0a18eff5d58fad5dee1e04ad70d7e",
+    "internal/guard/supervisor_linux.go": "2c3f9fabcc7a4a82d7f39c375bd860177a2b481585029d84b7daf8dcc07b0522",
+    "internal/guard/supervisor_other.go": "89eec523a3006d8b1e814be1d8c277c05bbcd1c63deaa0c20ba528dfafb021dd",
+    "internal/guard/upgrade.go": "c10936a03593e748f4c1de1fa10775a4dcd282e70282131fbb808c286ebeb1ce",
+    "internal/runlog/log.go": "41d55bb33882f7d2cbc01c64e82d84af5492631cccabcdea5e3deaf6ccda486e",
+    "internal/runlog/sink_linux.go": "64fc3a43bf4beeec67e1bee55453858cdd637fcbeea6db6cc6f2b2dae040f4f4",
+    "internal/runlog/sink_other.go": "46d05c89d88015522544246640a148dddf4c65050c9e242d01e9cc7eaf3d90e4"
+  },
+  "scope": "Exact d370 tracked source plus the same twelve archived additional seeds; current candidate parser source evidence, not execution of any particular release ELF, business, cgroup or long-term acceptance."
+}
