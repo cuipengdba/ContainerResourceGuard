@@ -1,0 +1,930 @@
+{
+  "schema": "crg-thread-observer-qualification-v1",
+  "phase": "tool-qualified-and-two-short-read-only-observations",
+  "source_sha256": {
+    "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+    "vendor-thread-observer-checks.py": "46d2cc20c75cef57772643fbcc6dc069afdabb46e25576c7932edadbccc4bd2a"
+  },
+  "selftest_qualification": {
+    "node_utc": "2026-11-11T10:56:37.684132+00:00",
+    "qualification": {
+      "node_utc": "2026-11-11T10:54:56.047831+00:00",
+      "source_sha256": {
+        "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "vendor-thread-observer-checks.py": "46d2cc20c75cef57772643fbcc6dc069afdabb46e25576c7932edadbccc4bd2a"
+      },
+      "started_epoch": 1794394491.7848527,
+      "ended_epoch": 1794394496.0478578,
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 19, \"source_sha256\": \"ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1\", \"business_processes_used\": false}\n",
+      "stderr": "",
+      "checks_result": {
+        "phase": "passed",
+        "checks": [
+          {
+            "case": "proc-stat-final-parenthesis-fields",
+            "passed": true
+          },
+          {
+            "case": "v1-hybrid-parent-membership-rejected",
+            "passed": true
+          },
+          {
+            "case": "default-read-only-no-output",
+            "passed": true
+          },
+          {
+            "case": "missing-marker",
+            "passed": true
+          },
+          {
+            "case": "wrong-plan-digest",
+            "passed": true
+          },
+          {
+            "case": "wrong-observer-source",
+            "passed": true
+          },
+          {
+            "case": "wrong-process-start",
+            "passed": true
+          },
+          {
+            "case": "wrong-executable",
+            "passed": true
+          },
+          {
+            "case": "wrong-cgroup",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-0",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-1",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-2",
+            "passed": true
+          },
+          {
+            "case": "actual-bounded-private-observation",
+            "passed": true
+          },
+          {
+            "case": "existing-output-not-replaced",
+            "passed": true
+          },
+          {
+            "case": "symlink-output-not-followed",
+            "passed": true
+          },
+          {
+            "case": "bounded-file-read",
+            "passed": true
+          },
+          {
+            "case": "missing-observation-is-unknown",
+            "passed": true
+          },
+          {
+            "case": "own-observer-TERM-flushes-without-target-signal",
+            "passed": true
+          },
+          {
+            "case": "original-target-exit-stops-no-rebinding",
+            "passed": true
+          }
+        ],
+        "source_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "target_was_fresh_sleep_fixture": true,
+        "original_controls_unchanged": true,
+        "business_processes_used": false,
+        "normal_observation": {
+          "sample_count": 3,
+          "elapsed_seconds": 2.002001291839406,
+          "observer_cpu_seconds": 0.004430422999999996,
+          "maximum_collection_seconds": 0.0017718488816171885
+        },
+        "actual_cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-215557.scope",
+        "python": "3.9.21",
+        "kernel": "5.14.0-570.22.1.el9_6.x86_64"
+      },
+      "checks_progress": {
+        "phase": "running",
+        "checks": [
+          {
+            "case": "proc-stat-final-parenthesis-fields",
+            "passed": true
+          },
+          {
+            "case": "v1-hybrid-parent-membership-rejected",
+            "passed": true
+          },
+          {
+            "case": "default-read-only-no-output",
+            "passed": true
+          },
+          {
+            "case": "missing-marker",
+            "passed": true
+          },
+          {
+            "case": "wrong-plan-digest",
+            "passed": true
+          },
+          {
+            "case": "wrong-observer-source",
+            "passed": true
+          },
+          {
+            "case": "wrong-process-start",
+            "passed": true
+          },
+          {
+            "case": "wrong-executable",
+            "passed": true
+          },
+          {
+            "case": "wrong-cgroup",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-0",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-1",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-2",
+            "passed": true
+          },
+          {
+            "case": "actual-bounded-private-observation",
+            "passed": true
+          },
+          {
+            "case": "existing-output-not-replaced",
+            "passed": true
+          },
+          {
+            "case": "symlink-output-not-followed",
+            "passed": true
+          },
+          {
+            "case": "bounded-file-read",
+            "passed": true
+          },
+          {
+            "case": "missing-observation-is-unknown",
+            "passed": true
+          },
+          {
+            "case": "own-observer-TERM-flushes-without-target-signal",
+            "passed": true
+          },
+          {
+            "case": "original-target-exit-stops-no-rebinding",
+            "passed": true
+          }
+        ]
+      }
+    },
+    "qualification_sha256": "b305850e2a463e206ba0b13ae1ed7273c15c7a7131b95e9dc1361dda1aa14b83",
+    "reports": {
+      "normal.json": {
+        "sha256": "fd2f5e5be337f843065f87ee9642605301484a5045d9db2135c6324b0e17e842",
+        "report": {
+          "schema": "crg-vendor-thread-observer-report-v1",
+          "phase": "observed",
+          "plan": {
+            "schema": "crg-vendor-thread-observer-plan-v1",
+            "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+            "label": "selftest",
+            "pid": 271854,
+            "start_ticks": 133443494,
+            "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-215557.scope",
+            "duration_seconds": 2,
+            "output": "/var/tmp/crg-thread155-checks-20261111/normal.json"
+          },
+          "process_and_cgroup_identity_pinned": true,
+          "sample_period_seconds": 1,
+          "maximum_threads": 64,
+          "maximum_seconds": 900,
+          "maximum_report_bytes": 33554432,
+          "started_epoch": 1794394492.6719518,
+          "samples": [
+            {
+              "epoch": 1794394492.6719573,
+              "monotonic": 1334435.78395192,
+              "process": {
+                "pid": 271854,
+                "state": "S",
+                "minor_faults": 760,
+                "major_faults": 0,
+                "user_ticks": 0,
+                "system_ticks": 0,
+                "threads": 1,
+                "start_ticks": 133443494,
+                "block_io_ticks": 0
+              },
+              "cgroup": {
+                "cpu.stat": {
+                  "available": true,
+                  "value": "usage_usec 1108984\nuser_usec 876085\nsystem_usec 232899\ncore_sched.force_idle_usec 0"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": "26755072"
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": "anon 25444352\nfile 200704\nkernel 942080\nkernel_stack 81920\npagetables 319488\nsec_pagetables 0\npercpu 2080\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 12288\nfile_writeback 36864\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 25354240\ninactive_file 200704\nactive_file 0\nunevictable 0\nslab_reclaimable 68840\nslab_unreclaimable 364328\nslab 433168\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 56077\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+                },
+                "cpu.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "io.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "cpu.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": "max"
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "status": {
+                "State": "S (sleeping)",
+                "VmRSS": "7296 kB",
+                "RssAnon": "2496 kB",
+                "RssFile": "4800 kB",
+                "RssShmem": "0 kB",
+                "VmSwap": "0 kB",
+                "Threads": "1",
+                "voluntary_ctxt_switches": "1",
+                "nonvoluntary_ctxt_switches": "0"
+              },
+              "tasks": [
+                {
+                  "stat": {
+                    "pid": 271854,
+                    "state": "S",
+                    "minor_faults": 760,
+                    "major_faults": 0,
+                    "user_ticks": 0,
+                    "system_ticks": 0,
+                    "threads": 1,
+                    "start_ticks": 133443494,
+                    "block_io_ticks": 0
+                  },
+                  "wchan": {
+                    "available": true,
+                    "value": "do_select"
+                  },
+                  "schedstat": {
+                    "available": true,
+                    "value": "11281483 0 1"
+                  }
+                }
+              ],
+              "task_races": 0,
+              "task_count": 1,
+              "tasks_truncated": false,
+              "collection_seconds": 0.0011962309945374727,
+              "observer_cpu_seconds": 0.0011566419999999994
+            },
+            {
+              "epoch": 1794394493.672031,
+              "monotonic": 1334436.784020895,
+              "process": {
+                "pid": 271854,
+                "state": "S",
+                "minor_faults": 760,
+                "major_faults": 0,
+                "user_ticks": 0,
+                "system_ticks": 0,
+                "threads": 1,
+                "start_ticks": 133443494,
+                "block_io_ticks": 0
+              },
+              "cgroup": {
+                "cpu.stat": {
+                  "available": true,
+                  "value": "usage_usec 1110297\nuser_usec 876357\nsystem_usec 233940\ncore_sched.force_idle_usec 0"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": "26857472"
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": "anon 25477120\nfile 200704\nkernel 933888\nkernel_stack 81920\npagetables 319488\nsec_pagetables 0\npercpu 2080\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 0\nfile_writeback 0\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 25468928\ninactive_file 200704\nactive_file 0\nunevictable 0\nslab_reclaimable 76648\nslab_unreclaimable 355120\nslab 431768\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 56089\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+                },
+                "cpu.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "io.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "cpu.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": "max"
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "status": {
+                "State": "S (sleeping)",
+                "VmRSS": "7296 kB",
+                "RssAnon": "2496 kB",
+                "RssFile": "4800 kB",
+                "RssShmem": "0 kB",
+                "VmSwap": "0 kB",
+                "Threads": "1",
+                "voluntary_ctxt_switches": "1",
+                "nonvoluntary_ctxt_switches": "0"
+              },
+              "tasks": [
+                {
+                  "stat": {
+                    "pid": 271854,
+                    "state": "S",
+                    "minor_faults": 760,
+                    "major_faults": 0,
+                    "user_ticks": 0,
+                    "system_ticks": 0,
+                    "threads": 1,
+                    "start_ticks": 133443494,
+                    "block_io_ticks": 0
+                  },
+                  "wchan": {
+                    "available": true,
+                    "value": "do_select"
+                  },
+                  "schedstat": {
+                    "available": true,
+                    "value": "11281483 0 1"
+                  }
+                }
+              ],
+              "task_races": 0,
+              "task_count": 1,
+              "tasks_truncated": false,
+              "collection_seconds": 0.0010450060945004225,
+              "observer_cpu_seconds": 0.0010389510000000032
+            },
+            {
+              "epoch": 1794394494.6720462,
+              "monotonic": 1334437.784035885,
+              "process": {
+                "pid": 271854,
+                "state": "S",
+                "minor_faults": 760,
+                "major_faults": 0,
+                "user_ticks": 0,
+                "system_ticks": 0,
+                "threads": 1,
+                "start_ticks": 133443494,
+                "block_io_ticks": 0
+              },
+              "cgroup": {
+                "cpu.stat": {
+                  "available": true,
+                  "value": "usage_usec 1111487\nuser_usec 877507\nsystem_usec 233979\ncore_sched.force_idle_usec 0"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": "26873856"
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": "anon 25485312\nfile 200704\nkernel 933888\nkernel_stack 81920\npagetables 319488\nsec_pagetables 0\npercpu 2080\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 0\nfile_writeback 0\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 25485312\ninactive_file 200704\nactive_file 0\nunevictable 0\nslab_reclaimable 76648\nslab_unreclaimable 355120\nslab 431768\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 56091\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+                },
+                "cpu.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "io.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "cpu.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": "max"
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "status": {
+                "State": "S (sleeping)",
+                "VmRSS": "7296 kB",
+                "RssAnon": "2496 kB",
+                "RssFile": "4800 kB",
+                "RssShmem": "0 kB",
+                "VmSwap": "0 kB",
+                "Threads": "1",
+                "voluntary_ctxt_switches": "1",
+                "nonvoluntary_ctxt_switches": "0"
+              },
+              "tasks": [
+                {
+                  "stat": {
+                    "pid": 271854,
+                    "state": "S",
+                    "minor_faults": 760,
+                    "major_faults": 0,
+                    "user_ticks": 0,
+                    "system_ticks": 0,
+                    "threads": 1,
+                    "start_ticks": 133443494,
+                    "block_io_ticks": 0
+                  },
+                  "wchan": {
+                    "available": true,
+                    "value": "do_select"
+                  },
+                  "schedstat": {
+                    "available": true,
+                    "value": "11281483 0 1"
+                  }
+                }
+              ],
+              "task_races": 0,
+              "task_count": 1,
+              "tasks_truncated": false,
+              "collection_seconds": 0.0017718488816171885,
+              "observer_cpu_seconds": 0.0017650770000000038
+            }
+          ],
+          "target_signals_or_control_writes": 0,
+          "ended_epoch": 1794394494.673949,
+          "elapsed_seconds": 2.002001291839406,
+          "observer_cpu_seconds": 0.004430422999999996,
+          "sample_count": 3,
+          "maximum_collection_seconds": 0.0017718488816171885
+        }
+      },
+      "own-observer-term.json": {
+        "sha256": "ae22d4aa12f8848b3f55c0981e4380e53544b7c62590258c0364d40cb07af0fa",
+        "report": {
+          "schema": "crg-vendor-thread-observer-report-v1",
+          "phase": "incomplete",
+          "plan": {
+            "schema": "crg-vendor-thread-observer-plan-v1",
+            "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+            "label": "selftest",
+            "pid": 271854,
+            "start_ticks": 133443494,
+            "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-215557.scope",
+            "duration_seconds": 30,
+            "output": "/var/tmp/crg-thread155-checks-20261111/own-observer-term.json"
+          },
+          "process_and_cgroup_identity_pinned": true,
+          "sample_period_seconds": 1,
+          "maximum_threads": 64,
+          "maximum_seconds": 900,
+          "maximum_report_bytes": 33554432,
+          "started_epoch": 1794394494.9096022,
+          "samples": [
+            {
+              "epoch": 1794394494.9096076,
+              "monotonic": 1334438.021602276,
+              "process": {
+                "pid": 271854,
+                "state": "S",
+                "minor_faults": 760,
+                "major_faults": 0,
+                "user_ticks": 0,
+                "system_ticks": 0,
+                "threads": 1,
+                "start_ticks": 133443494,
+                "block_io_ticks": 0
+              },
+              "cgroup": {
+                "cpu.stat": {
+                  "available": true,
+                  "value": "usage_usec 1266925\nuser_usec 1002854\nsystem_usec 264071\ncore_sched.force_idle_usec 0"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": "26714112"
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": "anon 25485312\nfile 233472\nkernel 954368\nkernel_stack 81920\npagetables 323584\nsec_pagetables 0\npercpu 2080\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 20480\nfile_writeback 0\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 25473024\ninactive_file 233472\nactive_file 0\nunevictable 0\nslab_reclaimable 85016\nslab_unreclaimable 367472\nslab 452488\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 63427\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+                },
+                "cpu.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "io.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "cpu.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": "max"
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "status": {
+                "State": "S (sleeping)",
+                "VmRSS": "7296 kB",
+                "RssAnon": "2496 kB",
+                "RssFile": "4800 kB",
+                "RssShmem": "0 kB",
+                "VmSwap": "0 kB",
+                "Threads": "1",
+                "voluntary_ctxt_switches": "1",
+                "nonvoluntary_ctxt_switches": "0"
+              },
+              "tasks": [
+                {
+                  "stat": {
+                    "pid": 271854,
+                    "state": "S",
+                    "minor_faults": 760,
+                    "major_faults": 0,
+                    "user_ticks": 0,
+                    "system_ticks": 0,
+                    "threads": 1,
+                    "start_ticks": 133443494,
+                    "block_io_ticks": 0
+                  },
+                  "wchan": {
+                    "available": true,
+                    "value": "do_select"
+                  },
+                  "schedstat": {
+                    "available": true,
+                    "value": "11281483 0 1"
+                  }
+                }
+              ],
+              "task_races": 0,
+              "task_count": 1,
+              "tasks_truncated": false,
+              "collection_seconds": 0.0013831660617142916,
+              "observer_cpu_seconds": 0.001379699000000005
+            }
+          ],
+          "target_signals_or_control_writes": 0,
+          "reason": "observer-interrupted",
+          "ended_epoch": 1794394494.9114306,
+          "elapsed_seconds": 0.0018329489976167679,
+          "observer_cpu_seconds": 0.0015645869999999992,
+          "sample_count": 1,
+          "maximum_collection_seconds": 0.0013831660617142916
+        }
+      },
+      "target-exit.json": {
+        "sha256": "1c23586936b77dead0e1191e613a5d1242107dea88a2858a97b69673540213c3",
+        "report": {
+          "schema": "crg-vendor-thread-observer-report-v1",
+          "phase": "incomplete",
+          "plan": {
+            "schema": "crg-vendor-thread-observer-plan-v1",
+            "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+            "label": "selftest",
+            "pid": 271854,
+            "start_ticks": 133443494,
+            "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f",
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-215557.scope",
+            "duration_seconds": 30,
+            "output": "/var/tmp/crg-thread155-checks-20261111/target-exit.json"
+          },
+          "process_and_cgroup_identity_pinned": true,
+          "sample_period_seconds": 1,
+          "maximum_threads": 64,
+          "maximum_seconds": 900,
+          "maximum_report_bytes": 33554432,
+          "started_epoch": 1794394494.9871726,
+          "samples": [
+            {
+              "epoch": 1794394494.987178,
+              "monotonic": 1334438.099172571,
+              "process": {
+                "pid": 271854,
+                "state": "S",
+                "minor_faults": 760,
+                "major_faults": 0,
+                "user_ticks": 0,
+                "system_ticks": 0,
+                "threads": 1,
+                "start_ticks": 133443494,
+                "block_io_ticks": 0
+              },
+              "cgroup": {
+                "cpu.stat": {
+                  "available": true,
+                  "value": "usage_usec 1319477\nuser_usec 1047519\nsystem_usec 271957\ncore_sched.force_idle_usec 0"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": "26906624"
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": "anon 25497600\nfile 241664\nkernel 954368\nkernel_stack 81920\npagetables 315392\nsec_pagetables 0\npercpu 2080\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 24576\nfile_writeback 0\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 25456640\ninactive_file 241664\nactive_file 0\nunevictable 0\nslab_reclaimable 86656\nslab_unreclaimable 372280\nslab 458936\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 65950\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+                },
+                "cpu.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "io.pressure": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "cpu.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": "max"
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "status": {
+                "State": "S (sleeping)",
+                "VmRSS": "7296 kB",
+                "RssAnon": "2496 kB",
+                "RssFile": "4800 kB",
+                "RssShmem": "0 kB",
+                "VmSwap": "0 kB",
+                "Threads": "1",
+                "voluntary_ctxt_switches": "1",
+                "nonvoluntary_ctxt_switches": "0"
+              },
+              "tasks": [
+                {
+                  "stat": {
+                    "pid": 271854,
+                    "state": "S",
+                    "minor_faults": 760,
+                    "major_faults": 0,
+                    "user_ticks": 0,
+                    "system_ticks": 0,
+                    "threads": 1,
+                    "start_ticks": 133443494,
+                    "block_io_ticks": 0
+                  },
+                  "wchan": {
+                    "available": true,
+                    "value": "do_select"
+                  },
+                  "schedstat": {
+                    "available": true,
+                    "value": "11281483 0 1"
+                  }
+                }
+              ],
+              "task_races": 0,
+              "task_count": 1,
+              "tasks_truncated": false,
+              "collection_seconds": 0.001080881105735898,
+              "observer_cpu_seconds": 0.0010772039999999983
+            }
+          ],
+          "target_signals_or_control_writes": 0,
+          "reason": "ProcessLookupError",
+          "ended_epoch": 1794394495.9880805,
+          "elapsed_seconds": 1.000911529874429,
+          "observer_cpu_seconds": 0.001317332999999997,
+          "sample_count": 1,
+          "maximum_collection_seconds": 0.001080881105735898
+        }
+      }
+    },
+    "target_original_instance_live": false
+  },
+  "roles": {
+    "dbs": {
+      "phase": "observed",
+      "plan": {
+        "schema": "crg-vendor-thread-observer-plan-v1",
+        "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "label": "dbs",
+        "pid": 383569,
+        "start_ticks": 129853676,
+        "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda143d136_8e11_4cb9_b83a_c57b139903e7.slice/cri-containerd-486e08b5e04f8c06daaf4ea20447088d7767ce64db910233d477ab5e02f07289.scope",
+        "duration_seconds": 15,
+        "output": "/var/tmp/crg-thread157-live-20261111/dbs-threads.json"
+      },
+      "sample_count": 16,
+      "actual_seconds": 15.005000388948247,
+      "thread_count_each_sample": 47,
+      "task_races": 0,
+      "maximum_sample_gap_seconds": 1.0005237641744316,
+      "maximum_collection_seconds": 0.0050670490600168705,
+      "sampling_CPU_seconds": 0.07033088700000001,
+      "sampling_CPU_excludes_executable_hash_and_final_write_fsync": true,
+      "compressed_report": "test-evidence/thread-observer-dbs.json.gz",
+      "compressed_sha256": "8d526f5f6b0ce33ae7a13e708e8e8cb2d587d8d76bbf03acd72ce118f79d3988",
+      "raw_report_sha256": "2b13ca6b27ebcba7972fc805d0cc033f3ebcf4c223cef74cb682ef441e78cfe7",
+      "raw_report_bytes": 247854,
+      "PSI_available": false,
+      "observed_wchan_values": [
+        "__do_sys_pause",
+        "do_select",
+        "ep_poll",
+        "futex_wait_queue"
+      ],
+      "pressure_or_business_acceptance": false,
+      "complete_process_CPU_unavailable": true,
+      "original_collector_finished_DBS_then_failed_HIS_discovery": true,
+      "actual_controls_at_followup": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      }
+    },
+    "hisdbs": {
+      "phase": "observed",
+      "plan": {
+        "schema": "crg-vendor-thread-observer-plan-v1",
+        "observer_sha256": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+        "label": "hisdbs",
+        "pid": 392379,
+        "start_ticks": 129856865,
+        "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5cb4d41d_a8e0_4b55_9ffd_d7701d6456ff.slice/cri-containerd-51d985ad065a6539ae285bd45605189c12f54e655d0be5bd4280323052b0db97.scope",
+        "duration_seconds": 15,
+        "output": "/var/tmp/crg-thread158-live-20261111/hisdbs-threads.json"
+      },
+      "sample_count": 16,
+      "actual_seconds": 15.0051138731651,
+      "thread_count_each_sample": 47,
+      "task_races": 0,
+      "maximum_sample_gap_seconds": 1.0005743959918618,
+      "maximum_collection_seconds": 0.005471620010212064,
+      "sampling_CPU_seconds": 0.07566736800000001,
+      "sampling_CPU_excludes_executable_hash_and_final_write_fsync": true,
+      "compressed_report": "test-evidence/thread-observer-hisdbs.json.gz",
+      "compressed_sha256": "d4990a15c3347a832807ba7ec267cb84c590d68edf713f121cb0738dbb30bf41",
+      "raw_report_sha256": "3b3317ed2889985682e8abd0c6092a8cee8cd4756c65c54791d260475711ba0c",
+      "raw_report_bytes": 247800,
+      "PSI_available": false,
+      "observed_wchan_values": [
+        "__do_sys_pause",
+        "do_select",
+        "ep_poll",
+        "futex_wait_queue"
+      ],
+      "pressure_or_business_acceptance": false,
+      "complete_process_CPU_seconds": 0.23396799999999995,
+      "complete_process_wall_seconds": 15.335931095993146,
+      "listener_owner_unique": true,
+      "listener_port": 8090,
+      "actual_executable_path": "/opt/dbs/bin/hisdbs",
+      "before_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "after_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "observer_pid": 365819,
+      "observer_start_ticks": 133486899,
+      "observer_original_instance_gone": true
+    }
+  },
+  "original_collector_failure": {
+    "phase": "failed",
+    "source_sha256": "7cb584134da288ca548a918eab305ca0128404542d46bdad5216a23377f39340",
+    "reason": "HISDBS listener selector incorrectly assumed role-specific executable path; zero candidate; HIS observer was not launched",
+    "DBS_completed_first": true,
+    "HIS_observer_started": false,
+    "DBS_complete_process_CPU_not_persisted": true,
+    "failure_waived": false,
+    "corrected_followup": "HIS-only unique8090-listener selection; completed DBS observation not rerun"
+  },
+  "raw_selftest_receipt_sha256": "960c494f13155c47a3d8a7feac1b4bf1b25d4c911f1461cc95a49de838ecdadb",
+  "raw_DBS_receipt_sha256": "ab5a743ace060366d0ed9e7c4c56570ebbbfe63cec22de99ca1185deb15c7a00",
+  "raw_HIS_receipt_sha256": "a3eaa5c344605ed0e3873dea109b80b0f1c1d552aa91e49bdc1cf1d77bbff892",
+  "product_code_modified": false,
+  "release_program_or_assets_changed": false,
+  "R142_failure_resolved": false,
+  "original_SLA_relaxed": false,
+  "seven_day_accepted": false,
+  "stable_release_accepted": false,
+  "scope": "19 real Linux sleep-fixture checks and15s per existing isolated vendor API-listener process; no pressure reproduction, full600s overhead or business acceptance; original collector failure retained"
+}
