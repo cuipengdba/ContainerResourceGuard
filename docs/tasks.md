@@ -335,3 +335,6 @@ R95[厂商业务热重载](testing-versioned-business-reload.md)现已24项/两�
 
 
 R95另保留HISDBS一次exec API7.017秒超原5秒的诊断失败；原生连续测量通过是另一范围。已固定时间、最后manual64回读及原探测数据；根因待查，不因主协议通过关闭P01.3。
+
+
+P01.3已冻结[exec/容器内请求分段诊断](testing-business-exec-timing.md)，保留旧7.017秒失败和原5秒门槛；原600秒/引擎/资源预算不变，此时尚未执行。
