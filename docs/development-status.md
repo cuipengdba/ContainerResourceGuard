@@ -191,3 +191,9 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 版本化候选的[实际老化后置执行器](testing-versioned-aged-postflight-execution.md)已实现并通过Linux10项检查；真实七天默认/execute两次门禁均pending且未创建目标，独立短数据readiness通过并启动原实例演练，首观察DBS13项通过、尚未计两角色600秒终态。绑定本程序R64数据和新R78/R80b谱系，原R57/R59/R60保持；实际七天后置、老化故障和稳定全部条件继续。
+
+
+版本化候选自己的[短保留数据后置演练](testing-versioned-aged-postflight-execution.md)现已36项/DBS600.332秒/HISDBS600.307秒通过，16个维护区间完整覆盖、原进程退出0、namespace和四Pod容器scope独立确认清理。原13项开始快照保留；这不是实际七天后置，P10/稳定版仍未接受。
+
+
+版本化候选自己的[保留数据故障执行器](testing-versioned-aged-faults.md)已通过Linux9项与真实长默认/execute两次pending门禁，未提前创建目标；短前置通过并启动，固定首观察只有1场景/7项，20场景/152项待终态。原七天/正式对照/其他稳定门槛保持。
