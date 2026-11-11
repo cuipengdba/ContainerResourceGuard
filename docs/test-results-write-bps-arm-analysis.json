@@ -1,0 +1,44 @@
+{
+  "schema": "crg-write-bps-arm-offline-qualification-v1",
+  "phase": "passed-offline-evidence-analysis-only",
+  "analysis_source_sha256": "8cb107bb9f777dbddcd3ea5234ec6309600d706a257cee7d5ee939ddaa1e1ad1",
+  "host_platform": "win32",
+  "checks": [
+    {
+      "name": "a1-actual-compressed-evidence-equals-uncompressed-and-repeat-output",
+      "passed": true
+    },
+    {
+      "name": "b-actual-compressed-evidence-equals-uncompressed-and-repeat-output",
+      "passed": true
+    },
+    {
+      "name": "a2-actual-compressed-evidence-equals-uncompressed-and-repeat-output",
+      "passed": true
+    },
+    {
+      "name": "existing-output-refused-without-changing-bytes-all-three-arms",
+      "passed": true
+    },
+    {
+      "name": "actual-SQL-backend-start-join-WAL-then-BufferContent-and-strict-API-D-counts",
+      "passed": true
+    },
+    {
+      "name": "wrong-arm-input-refused-before-output",
+      "passed": true
+    },
+    {
+      "name": "altered-manifest-digest-refused-before-output",
+      "passed": true
+    },
+    {
+      "name": "decompressed-32MiB-bound-enforced-before-JSON-parse",
+      "passed": true
+    }
+  ],
+  "actual_completed_arms": 3,
+  "new_live_node_actions": false,
+  "new_product_or_business_acceptance": false,
+  "stable_release_accepted": false
+}
