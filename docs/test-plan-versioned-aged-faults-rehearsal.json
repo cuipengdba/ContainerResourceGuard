@@ -1,0 +1,54 @@
+{
+  "schema": "crg-versioned-aged-fault-plan-v1",
+  "criteria": {
+    "PG_API_readiness_seconds": 90,
+    "cache_after_API_seconds": 45,
+    "TERM_seconds": 12,
+    "degraded_observation_seconds": 180,
+    "calibration_cancel_observation_seconds": 60,
+    "payload_bytes": 67108864,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "automatic_percentages": {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 30
+    }
+  },
+  "cases": [
+    "missing",
+    "invalid",
+    "crash",
+    "hang",
+    "ignoreterm",
+    "rollback",
+    "cgroup-readonly",
+    "profile-readonly",
+    "state-readonly",
+    "cancel-calibration"
+  ],
+  "pins": {
+    "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+    "binary": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "cache": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "worker": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "previous": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9"
+  },
+  "executor_sha256": "818f96fb5cdae9dc3101c051fb72c1ee923455ee1902805015e2f19bfb13fa6a",
+  "original_supervisors": {
+    "dbs": {
+      "path": "/var/tmp/crg-business-20261110/fixture/dbs/supervisor.original.sh",
+      "sha256": "74d4f464bd34e67d28a323bb73909c51d5f5e66c67044969d88a2c7c1dfefcdc"
+    },
+    "hisdbs": {
+      "path": "/var/tmp/crg-business-20261110/fixture/hisdbs/supervisor.original.sh",
+      "sha256": "74d4f464bd34e67d28a323bb73909c51d5f5e66c67044969d88a2c7c1dfefcdc"
+    }
+  },
+  "mode": "short-rehearsal",
+  "work_root": "/var/tmp/crg-aged-fault-rehearsal84-20261111",
+  "namespace": "crg-vendor-lab-agedfaultshort84-20261111",
+  "postflight_plan": "/var/tmp/crg-aged81-tools-20261111/rehearsal-plan.json",
+  "postflight_plan_sha256": "b86b8a5e0a062d4ff4044c32a12a2938e2a8bff5d3bdfb82eab4bee3dec8f419"
+}
