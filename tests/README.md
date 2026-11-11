@@ -67,3 +67,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 
 
 Versioned seven-day lineage: `python3 tests/vendor-versioned-aged-preflight-checks.py` checks the separate exact-R78 adapter. Run all eight methods on Linux; Windows skips the POSIX absolute-path case. It reuses the hash-pinned original read-only reader/auditor and never changes the original R57 plan/seal. Tests use synthetic data; actual capture/readiness is separately recorded.
+
+
+Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-checks.py` runs ten contract cases, including preserved runtime method ASTs, original native thresholds, immutable R78/R64 bindings, pending execution refusal, fresh-gate/marker protection, constrained mount consumers and UID cleanup. Windows skips the POSIX containment case; Linux must run all ten. Actual seven-day postflight and the independent short retained-data exercise have separate plans/results; neither synthetic tests nor short data qualify seven-day completion.
