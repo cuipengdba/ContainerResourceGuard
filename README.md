@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+当前可下载版本：[v1.0.0-preview.2](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.2)。[功能与更新步骤](docs/releases/v1.0.0-preview.2.md)、[实际发布和全部八项下载校验](docs/test-results-preview2-publication.json)。程序与preview.1相同，本版补充最新验证证据和文档；稳定1.0及长期验收继续。
+
 当前可下载版本：[v1.0.0-preview.1](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.1)。[更新步骤、功能与内嵌v1.0.0候选身份](docs/releases/v1.0.0-preview.1.md)；[实际发布/下载校验及CI](docs/test-results-preview1-publication.json)。这是预发布版，稳定1.0及长期验收继续；下文历史记录按原时点保留。
 
 当前源码、已发布下载包、逐项实测与未完成条件，统一从[当前验收入口](docs/current-acceptance.md)查看；[52项原始任务索引](docs/current-task-registry.json)保留全部规划，未将历史构建结果改为当前程序结果。
