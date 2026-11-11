@@ -1,0 +1,167 @@
+{
+  "kind": "fixed first own-version online maintenance observation",
+  "phase": "testing-dbs",
+  "observed_node_utc": "2026-11-11T00:29:46Z",
+  "job_sha256": "a5fdf31abc4e49472054b7d2e4d3e5999e36dcc7ed0a12500200411d1b80dec1",
+  "runner_identity_verified_live": true,
+  "programs": {
+    "previous": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased protocol-advertising combined development build"
+    },
+    "candidate": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "release_status": "unpublished exact v1.0.0 versioned candidate"
+    }
+  },
+  "build_info": {
+    "previous": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "os": "linux",
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "version": "next-compatibility-contract",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    },
+    "candidate": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "os": "linux",
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "version": "v1.0.0",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    }
+  },
+  "fault_prerequisite_report_sha256": "658fef9dca82971a7b463db49d0fbc031eb58bd1fc79a12481cc154217cc82af",
+  "observed_checks": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "candidate_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+        "version": "next-compatibility-contract",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    }
+  ],
+  "planned_checks": 22,
+  "native": [],
+  "namespace_absent": false,
+  "limitations": [
+    "Still running; observed intermediate operations are not completed600s/two-role acceptance.",
+    "Previous50671aa is an unreleased development build; not two published minor versions."
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}

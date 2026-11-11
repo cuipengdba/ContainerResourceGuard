@@ -1,6 +1,6 @@
 # 实际保留数据上的辅助故障执行器
 
-[执行器](../tests/vendor-aged-faults.py)已实现，按[七天后计划](test-plan-aged-faults.json)等待原七天组件及其实际[恢复/重建/维护后置](testing-aged-postflight-execution.md)终态通过并清理后，再在同一数据目录上验证辅助故障。默认调用只读，不创建报告、锁或工作目录；真实七天仍运行时，即使传--execute也返回pending/退出2，不能提前执行。
+[执行器源码](https://github.com/cuipengdba/ContainerResourceGuard/blob/ddad4be878f1e2a88a5de222a7d3396a61ce4bf8/tests/vendor-aged-faults.py)已实现，按[七天后计划](test-plan-aged-faults.json)等待原七天组件及其实际[恢复/重建/维护后置](testing-aged-postflight-execution.md)终态通过并清理后，再在同一数据目录上验证辅助故障。默认调用只读，不创建报告、锁或工作目录；真实七天仍运行时，即使传--execute也返回pending/退出2，不能提前执行。
 
 另有明确分开的[短演练计划](test-plan-aged-faults-rehearsal.json)：使用已完成R51业务、R60恢复/重建/维护的实际64MiB保留目录，未创建空数据库替代。该短演练已启动，首个[固定观察](test-progress-aged-faults-rehearsal-start.json)仍在运行；20场景/152项是完整计划数量，尚未作为通过成绩。它不接受七天组件，也不关闭P10或稳定发布。
 
