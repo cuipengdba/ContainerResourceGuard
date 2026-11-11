@@ -256,3 +256,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [设备/唯一轮次PG等待完整压力终态](testing-business-pressure-device-pgwait.md)失败：DBS实际600.412秒/SQL0错/API3次超时，HIS未执行；13局部/11区间/10引擎内容不抵消失败。422请求、601PG、598线程和599设备样本完整归档，22个DBS.log写D观测，3错误各重叠4个严格D样本；PG栈未知、全设备队列不等于本组因果。5原实例/namespace/cgroup及原输入恢复独立核对，46原始文件及可重放分析归档，旧失败/原32项门槛/52任务/长期条件不变。
+
+
+[写IOPS单变量A/B/A诊断](testing-write-iops-comparison.md)已冻结并启动：三完整冷副本先冻结，主策略仅135/4096/135写IOPS变化，CPU/内存/BPS/第二策略及原600秒/64MiB/11区间/SLA保持；预先规定三组完整600秒且A错/B零/A再错方记录模式，仍保留共享后端混杂。首次Windows路径计划拒绝原件保留，修正后12项前置通过；开始快照A1仅2项启动局部，不是原32/两角色百分比验收。旧失败/52任务/长期及产品程序不变。
