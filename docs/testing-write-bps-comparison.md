@@ -1,6 +1,8 @@
 # 写带宽 A/B/A 隔离诊断
 
-[冻结计划](test-plan-write-bps-comparison.json)、[执行器](../tests/vendor-write-bps-comparison.py)、[资格记录](test-results-write-bps-comparison-qualification.json)及[启动快照](test-start-write-bps-comparison.json)用于定位R235超时。当前只是已启动的DBS因果诊断，**不代表原32项/DBS与HISDBS各600秒/百分比验收通过**。产品二进制和每容器一份Agent保持，测试协调器不属于产品。
+实际终态为[三组均失败、未形成有效对照](testing-write-bps-comparison-failure.md)；下文启动快照按原时点保留，后续见[独立v2](testing-write-bps-comparison-v2.md)。
+
+[冻结计划](test-plan-write-bps-comparison.json)、[执行器](https://github.com/cuipengdba/ContainerResourceGuard/blob/dbe5ecee372c28eed59118aee30339471dfbc7f2/tests/vendor-write-bps-comparison.py)、[资格记录](test-results-write-bps-comparison-qualification.json)及[启动快照](test-start-write-bps-comparison.json)用于定位R235超时。当前只是已启动的DBS因果诊断，**不代表原32项/DBS与HISDBS各600秒/百分比验收通过**。产品二进制和每容器一份Agent保持，测试协调器不属于产品。
 
 固定A1→B→A2三组：A为37470104 B/s写带宽，B为67108864 B/s（64 MiB/s），A2重复A。只在原第一策略对应区间改变wbps；原第二策略、启动manual64策略均不变。读BPS/读写IOPS/CPU/内存、11个重载区间与代数、30%→20%实际内存压力/延迟/释放自动重试、64MiB负载、600秒、备份/同步/独立恢复及所有原时限相同。两组都明确用manual配置数值，不伪造实测IO profile；百分比模式的原验收另行保留。源码中的每个适配点及出现次数入计划，离线检查证明适配点以外的原业务方法字节未变；这不是实际业务通过证明。
 
