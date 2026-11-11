@@ -425,3 +425,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [设备与唯一轮次PG等待完整压力接入](testing-business-pressure-device-pgwait.md)已另建冻结执行器并实际启动：18项前置通过，原业务方法AST仅诊断依赖/worker/标记变化，原32项、每角色600秒、64MiB、11区间及配额/SLA不变。开始快照DBS13局部/11区间且原四个实例存活，不代表完整业务通过；等待同一运行器终态与独立清理。全部历史失败、52任务及长期条件保持，产品和preview.2程序不变。
+
+
+[设备/唯一轮次PG等待完整压力终态](testing-business-pressure-device-pgwait.md)失败：DBS实际600.412秒/SQL0错/API3次超时，HIS未执行；13局部/11区间/10引擎内容不抵消失败。422请求、601PG、598线程和599设备样本完整归档，22个DBS.log写D观测，3错误各重叠4个严格D样本；PG栈未知、全设备队列不等于本组因果。5原实例/namespace/cgroup及原输入恢复独立核对，46原始文件及可重放分析归档，旧失败/原32项门槛/52任务/长期条件不变。

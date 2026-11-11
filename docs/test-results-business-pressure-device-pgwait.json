@@ -1,0 +1,119 @@
+{
+  "schema": "crg-pressure342-terminal-result-v1",
+  "phase": "failed",
+  "reason": "NATIVE_COMPLETION_EXIT",
+  "actual_main_checks": 13,
+  "required_main_checks": 32,
+  "DBS_native_seconds": 600.4118954690639,
+  "DBS_SQL_errors": 0,
+  "DBS_API_errors": 3,
+  "HISDBS_executed": false,
+  "reload_intervals": 11,
+  "engine_content_checks": 10,
+  "PG_samples": 601,
+  "native_request_events": 422,
+  "thread_samples": 598,
+  "device_samples": 599,
+  "D_observations": 22,
+  "D_descriptor": "/opt/dbs/log/DBS.log",
+  "strict_D_observations_each_API_error": [
+    4,
+    4,
+    4
+  ],
+  "PG_selected_client_in_error_windows": "idle/ClientRead; does not cover other API PG backends",
+  "PG_kernel_stack_available": 0,
+  "PG_kernel_stack_unknown": 601,
+  "raw_evidence": {
+    "path": "test-evidence/pressure342-terminal.json.gz",
+    "gzip_sha256": "986aeec28752c4a84603adf11453a38a28d07b78124bc1e355c61c4c8c19a4c5",
+    "gzip_bytes": 781742,
+    "uncompressed_sha256": "b475680a4c4d196056f62be690444002d8272febf0825213ab6da2a9fb173de9",
+    "uncompressed_bytes": 15835066,
+    "byte_exact_files": 46
+  },
+  "analysis_source_sha256": "1f9a08c6481b7a1913180b864b1535aa45bbb7170e85c8f0d80d20593e80a3bb",
+  "analysis_result_sha256": "36d4572e4e2cbfda756a515ab852d6c367ccbd29cd4acfc280a95b0cea30bf27",
+  "analysis_reproduced_from_archive_and_directory_identically": true,
+  "changed_report_digest_rejected": true,
+  "independent_terminal": {
+    "schema": "crg-pressure342-independent-terminal-v1",
+    "node_utc": "2026-11-11T19:29:32.162810+00:00",
+    "exit": {
+      "exit": 1,
+      "executor_sha256": "71007a5560f26b48b916d1311bdb1509082ca3074da6ec18576d9812b5a4397a",
+      "plan_sha256": "c6581999c64e84ae9e833fd43117e71374159f388ffeea91aa905de5b2ac4098",
+      "started_epoch": 1794424550.8565545,
+      "ended_epoch": 1794425310.1887214
+    },
+    "report_sha256": "db851a15b3a95b88ed58a4af7981537782e62f5797fff126a40ca93e16c09a67",
+    "phase": "failed",
+    "reason": "NATIVE_COMPLETION_EXIT",
+    "instances": {
+      "pressure-launch.json": {
+        "pid": 2628918,
+        "expected_start_ticks": 136449393,
+        "exists": false,
+        "original_instance_gone": true,
+        "original_instance_not_live": true
+      },
+      "pressure-worker.json": {
+        "pid": 2628925,
+        "expected_start_ticks": 136449396,
+        "exists": false,
+        "original_instance_gone": true,
+        "original_instance_not_live": true
+      },
+      "dbs-0-thread_observer": {
+        "pid": 2660036,
+        "expected_start_ticks": 136463947,
+        "exists": false,
+        "original_instance_gone": true,
+        "original_instance_not_live": true
+      },
+      "dbs-0-device_observer": {
+        "pid": 2660025,
+        "expected_start_ticks": 136463926,
+        "exists": false,
+        "original_instance_gone": true,
+        "original_instance_not_live": true
+      },
+      "dbs-0-native": {
+        "pid": 2655440,
+        "expected_start_ticks": 136461464,
+        "exists": false,
+        "original_instance_gone": true,
+        "original_instance_not_live": true
+      }
+    },
+    "roles": {
+      "dbs": {
+        "all_recorded_cgroups_absent": true,
+        "cgroups": [
+          "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podbdfdd421_a00a_4919_bb25_6287758c118b.slice/cri-containerd-a36b5eaf988810df5c48cba485915dac42eef5dc8ac54158747185c62b815f80.scope"
+        ]
+      }
+    },
+    "namespace_independently_absent": true,
+    "independent_original_inputs": {
+      "dbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      },
+      "hisdbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      }
+    },
+    "all_original_recorded_instances_independently_gone": true
+  },
+  "original_32_two_600s_all_quotas_SLA_and_errors0_preserved": true,
+  "original_business_failure_preserved_despite_diagnostics_complete": true,
+  "all_historical_failures_retained": true,
+  "IO_causality_proven": false,
+  "product_program_unchanged": true,
+  "stable_release_accepted": false,
+  "P10_complete": false
+}
