@@ -1,0 +1,120 @@
+{
+  "node_utc": "2026-11-11T11:38:00.462774+00:00",
+  "raw_gates_sha256": "5d075b09ab163cb8692645e2eec0dabda3cfecd3e6c7366ad827b9beb964c6ae",
+  "gates": {
+    "node_utc": "2026-11-11T11:36:33.005937+00:00",
+    "files": {
+      "vendor-business-memory-pressure-threads.py": "e751601a052ad342e2a61c5712ea6baaba97df57216fb4a23587be262c51f945",
+      "pressure-plan.json": "0cefd1fd149f20b5f0dd32f0c1fba8b47fc4067441d2376bf845e18719bfb532",
+      "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1",
+      "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+      "vendor-thread-session-checks.py": "520d790872a095f9762e70775a130bc0cf4a544b1db38d176b796090aa085424",
+      "vendor-memory-pressure-worker-v2.py": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+      "vendor-memory-pressure-selftest-v2.py": "988503022ecc5b96067f0dee98fd12b80981fea862f89bb941d1b3e2bf11f25b",
+      "vendor-api-timed.py": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+      "vendor-engine-timed.py": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+      "vendor-versioned-business-reload.py": "aaef6058f12693a62a1885d0e988c2295a7d748ba2e31896d8af807153e3e3b7",
+      "vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+      "vendor-versioned-aged-preflight.py": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+      "vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8"
+    },
+    "observations": [
+      {
+        "args": [],
+        "exit": 0,
+        "result": {
+          "phase": "ready",
+          "executed": false,
+          "stable_release_accepted": false,
+          "scope": "read-only exact30-to20 pressure prerequisites; prior failures retained"
+        },
+        "stderr": ""
+      },
+      {
+        "args": [
+          "--execute"
+        ],
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "EXPLICIT_LAB_MARKER",
+          "executed": false
+        },
+        "stderr": ""
+      },
+      {
+        "tampered": "namespace",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "criteria",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "thread_contract",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "thread_observer",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "pressure_contract",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "pressure_worker_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      },
+      {
+        "tampered": "timed_api_sha256",
+        "exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "PLAN_CONTRACT",
+          "executed": false
+        }
+      }
+    ],
+    "target_absent_after_all_gates": true,
+    "executed": false
+  },
+  "namespace_absent_now": true,
+  "work_root_absent_now": true,
+  "schema": "crg-pressure-thread-preflight-result-v1",
+  "phase": "nine-gates-passed-no-business-execution",
+  "raw_collected_receipt_sha256": "2c2af35bbc252d5dba5ac26d93e264db188edcdb5bf8f4550ec3d5a790094c77",
+  "business_pressure_executed": false,
+  "stable_release_accepted": false
+}

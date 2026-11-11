@@ -97,3 +97,6 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 `vendor-thread-observer.py`和`vendor-thread-observer-checks.py`是单目标只读诊断工具；Linux19项资格及DBS/HISDBS各15秒实际线程读取见[工具记录](../docs/testing-thread-observer.md)。不接业务启动、不改产品资源或原压力/业务阈值；后续完整压力联测另待。
+
+
+R167[完整压力线程诊断](../docs/testing-business-pressure-threads.md)已实现并冻结；新增实际14项生命周期资格通过，首次SSH作用域缺控制文件失败保留。原完整业务方法AST除观察器启动/保存外一致，原32项/两角色各600秒及全部配额、SLA、历史失败不变；此时压力业务尚未执行，52项不宣称完成。
