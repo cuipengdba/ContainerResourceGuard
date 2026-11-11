@@ -284,3 +284,9 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 版本化候选自身[三场景1800秒开销](testing-versioned-candidate-overhead.md)终态通过，实际CPU/RSS/写入/日志及身份控制稳定，清理确认；下一阶段真实路径与辅助故障按各自冻结计划继续，不提前关闭长期和发布门槛。
+
+
+新v1.0.0程序dbc48aa5已完成[DBS/HISDBS各600秒、合计12项真实路径业务终态](testing-versioned-candidate-business.md)，原manual64预算、原启动/延迟/覆盖/数据/备份/独立恢复标准不变，退出0及namespace独立清理确认；辅助故障及实际长期仍另判。
+
+
+本轮新v1.0.0程序dbc48aa5的[DBS/HISDBS各600秒业务](testing-versioned-candidate-business.md)及[20场景/108项辅助故障](testing-versioned-candidate-faults.md)终态通过，退出0且namespace独立确认清理；只对应既定预算和环境。另完成[实际保留数据辅助故障执行器](testing-aged-faults.md)、两套冻结计划与8项Linux自检，真实长门禁/提前执行pending且无写入，独立短数据20场景/152项演练已启动、尚未终态。原七天、正式阶段、未测环境及52项发布审计保持，未发布稳定1.0。

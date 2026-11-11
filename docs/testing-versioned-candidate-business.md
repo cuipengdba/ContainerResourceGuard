@@ -1,10 +1,7 @@
-# 版本化候选DBS/HISDBS真实路径复验
+# 版本化候选DBS/HISDBS真实路径终态
 
-[冻结计划](test-plan-versioned-candidate-business.json)针对真实v1.0.0候选AMD64程序dbc48aa5。先接受[四格原生88项](testing-versioned-candidate-native.md)及[自身三场景1800秒开销](testing-versioned-candidate-overhead.md)，才能创建业务Pod；运行器已启动但停留在前置等待；[固定观察](test-progress-versioned-candidate-start.json)确认业务namespace尚未创建、0项业务检查，不能写成业务已开始或通过。使用测试节点原镜像、原start.sh、原PG参数、原CCG只读挂载与真实容器路径，各自独立Agent。宿主背板、私有DCS、凭据和64MiB合成数据均为新隔离夹具，先断开测试Pod外部网络再释放启动门禁。
+真实v1.0.0候选AMD64程序dbc48aa5，在自身1800秒开销通过且清理后，按[原冻结计划](test-plan-versioned-candidate-business.json)完成DBS/HISDBS各实际600秒业务，合计12项外层检查通过。原生SQL/API零错误、最大5秒及p95桶上界1秒、≥98%覆盖、64MiB完整性/主库未重启，原备份/同步10项内容及独立恢复/临时清理均通过。见[逐角色实际结果](test-results-versioned-candidate-business.json)。运行器退出0，业务Pod删除，namespace独立确认不存在。
 
-DBS/HISDBS按原manual64预算顺序执行：CPU7.2核、内存20001980416B、双向64MiB/s及各4096IOPS，其他5项实际原值保持。启动总300秒、缓存45秒及各实际600秒SQL和/test测量不变；零错误、最大5秒、p95桶上界1秒、样本覆盖98%，原备份/同步内容10项及独立恢复、原生主库不重启、数据完整性和每日0600/v2日志均需通过。开始前每格内存保留28GiB，运行中8GiB/磁盘20GiB门槛不变。
+原镜像/start.sh、PG参数、缓存进程和CCG只读挂载与真实路径保留，一容器一Agent；三个实际资源值符合manual7.2核、20001980416B内存、双向64MiB/s及各4096IOPS，其他5项原值保持。原总启动300秒、缓存45秒和每日0600/v2日志检查未放宽。
 
-该轮不会重用开发版3a1ce7db的600秒时长，也不能将manual64结果解释成默认20%或自动30%的业务性能。只验证现有5.14/AMD64/单设备环境，不代表ARM厂商业务、两块物理盘、24h+24h、七天或稳定发布。现有长测及正式候选不修改。
-
-
-自身开销现已[三组各实际1800秒通过并清理](testing-versioned-candidate-overhead.md)。节点23:44:13Z的[新固定观察](test-progress-versioned-candidate-business-start.json)确认运行器已自动进入DBS真实路径，23.14秒启动及原缓存/控制/CCG只读/日志共5项检查通过，原启动期限未修改；原生负载仍preparing，尚非600秒接受。HISDBS及辅助故障仍须顺序前置，原早期“未创建”观察只代表其原采样时刻。
+本结果仅属于实际新ELF，开发版旧600秒、原observe24h及d370七天结果独立保留。默认20%失败并未因此逆转，不能将manual64成绩写成自动30%业务性能；ARM厂商业务、物理多设备、实际长期及维护兼容条件独立继续，尚未发布稳定1.0。后续[自身辅助故障](testing-versioned-candidate-faults.md)另有固定计划及终态，不提前宣称通过。

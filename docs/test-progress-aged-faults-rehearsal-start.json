@@ -1,0 +1,73 @@
+{
+  "kind": "fixed first actual retained-data auxiliary fault rehearsal observation",
+  "observed_node_utc": "2026-11-11T00:20:52Z",
+  "phase": "testing-dbs-missing",
+  "mode": "short-rehearsal",
+  "executor_sha256": "28b7a8ac0f45fde2ce9096fc59565e08829e5dbe2466310047967128f0bd2696",
+  "plan_sha256": "56a3c48a6a4ce661005ec5d129778fa72422c4d34a5df005746fbf21f84b4ebe",
+  "runner_sha256": "800c0667da2597dcac19f7aee31b4dfe0fcc4dac1dc5219e51a7d92cb7353d82",
+  "runner_identity_verified_live": true,
+  "completed_case_count": 0,
+  "observed_checks": [
+    {
+      "name": "dbs-missing-original-PG-and-API-ready-within90s",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-original-fresh-cache-enforce-and-CCG-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-SQL-after-cache-and-original-ls-probe",
+      "passed": true
+    },
+    {
+      "name": "dbs-missing-actual-aged64MiB-and-final-counter-reopened",
+      "passed": true
+    }
+  ],
+  "planned_cases": 20,
+  "planned_checks": 152,
+  "namespace_absent": false,
+  "readiness_and_selftests": {
+    "phase": "linux-eight-checks-and-readiness-passed",
+    "executor_sha256": "28b7a8ac0f45fde2ce9096fc59565e08829e5dbe2466310047967128f0bd2696",
+    "long_plan_sha256": "9e9629e57577817616ca67ec7854f9634a6970cc3fee59af8b708a5e156742a2",
+    "short_plan_sha256": "56a3c48a6a4ce661005ec5d129778fa72422c4d34a5df005746fbf21f84b4ebe",
+    "observations": [
+      {
+        "phase": "pending",
+        "fault_execution_allowed": false,
+        "runner_identity_verified_live": true,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      {
+        "phase": "pending",
+        "fault_execution_allowed": false,
+        "runner_identity_verified_live": true,
+        "P10_complete": false,
+        "release_accepted": false
+      },
+      {
+        "phase": "ready-for-short-rehearsal",
+        "fault_execution_allowed": true,
+        "seven_day_accepted": false,
+        "P10_complete": false,
+        "release_accepted": false
+      }
+    ],
+    "early_execute_no_root_or_namespace": true,
+    "actual_fault_execution": false
+  },
+  "scope": "Actual R51 retained64MiB data after R60 reopening/rebuild/maintenance; NOT seven-day data acceptance.",
+  "initial_preflight_correction": {
+    "previous_executor_sha256": "3e5d1fa76447d42b1ca2624a99cfa620dee0b5fa5e4bc2759e85877ff9677461",
+    "phase": "rejected",
+    "reason": "overbroad ancestor hostPath conflict classified constrained readonly node root monitor as another data consumer",
+    "actual_fault_execution": false,
+    "correction": "Exact/descendant mounts still rejected, writable or unconstrained ancestor rejected; generic constrained readonly ancestor monitors allowed without Pod-name whitelist."
+  },
+  "P10_complete": false,
+  "release_accepted": false
+}
