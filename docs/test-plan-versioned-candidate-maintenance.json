@@ -1,0 +1,98 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "programs": {
+    "previous": {
+      "revision": "50671aa7c037679546d569846eccc5aacc5a34b7",
+      "binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+      "release_status": "unreleased protocol-advertising combined development build"
+    },
+    "candidate": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "release_status": "unpublished exact v1.0.0 versioned candidate"
+    }
+  },
+  "job_sha256": "a5fdf31abc4e49472054b7d2e4d3e5999e36dcc7ed0a12500200411d1b80dec1",
+  "runner_sha256": "623747b52a3b0334560b6e393e0bf670c6df85272d9c1f86224a436a7fc0f383",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualification_sha256": {
+    "identity-qualification.json": "d293d2c400843b1a7765d38ef14aecd8c68333cfc29259b670e0bec8790ca77e",
+    "integration-qualification.json": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634",
+    "overhead-qualification.json": "68f1c207bd7e8ba430163d2c8b0228339a707d81159369678b95a1db4230d720",
+    "business-qualification.json": "f680f08aeeccb500c56655dfe5dbf07982e373928d70634fea400232e2090101",
+    "fault-qualification.json": "b26dd6678137d9f25f5f21bd334b030805782bbb33441b68340c597df6b69ca5"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prior_maintenance_driver_sha256": "ea5e9f11bf6f63cfcca10adf96fc0d60aa6ca3caf54f159d18a6df87ce584b78",
+  "prior_plan": "test-plan-partition-realpaths-maintenance.json",
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "PID1_PG_cache_payload_journal_originals_and_all_eight_controls_preserved_during_maintenance": true,
+    "final_disable_restores_true_runtime_originals": true
+  },
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "operations": [
+    "quiesce",
+    "install",
+    "immediate rollback",
+    "install again",
+    "enable candidate under unchanged helper",
+    "quiesce and rollback",
+    "enable previous development Agent",
+    "finish native600",
+    "disable and verify original runtime controls"
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "expected_checks": 22,
+  "prerequisites": [
+    "Own versioned binary R64 business12/2x600s complete and cleaned; job4bb89669,exit0; own R63 three1800s actual overhead chain matches and independently absent.",
+    "Own versioned R66 faults20/108 complete and cleaned; jobf21f4b4b,exit0,exact dbc48aa5/version/native package chain; independently absent namespace.",
+    "Previous development binary prior maintenance report passed and namespace independently absent.",
+    "All payload/program/source/helper/qualification hashes and both advertised lock/journal protocols match.",
+    "Host memory>=28GiB before each role and>=8GiB throughout;disk>=20GiB."
+  ],
+  "invariants": [
+    "Original PG/API/managed300s,cache45s afterready andwithin300s,native600s unchanged.",
+    "All operations/Agent resumes fully inside active600s native window; final disable after measurement restores actual runtime originals.",
+    "Same private journal bytes,all8 actual controls,PID1,PG,cache,payload and no new OOM; only own disposable Pods.",
+    "Current three-resource manual budget only; legacy extra controls remain unchanged."
+  ],
+  "limitations": [
+    "Both programs unreleased development builds; not the recent-two-released-minors gate.",
+    "Published main preview missing protocol is still a rejected first migration path; no bypass.",
+    "Linux5.14 AMD64 single device; no partition/profile-format maintenance, ARM vendor,physical independent disks or deployment support inferred.",
+    "Default20% failures and formal24h+24h/>=7days remain open.",
+    "Formal olderobserve and fixed d6 enforce candidate unchanged.",
+    "New exact v1.0.0 ELF dbc48aa5; no old3a1 runtime relabelled.",
+    "Previous50671aa remains an unreleased development build; not two published minor versions."
+  ],
+  "version": "v1.0.0",
+  "P10_complete": false,
+  "release_accepted": false
+}
