@@ -64,3 +64,6 @@ PG_BINDIR=/path/to/pgsql/bin CRG_PG_WORK=/disposable/new-run \
 
 
 实际保留数据辅助故障执行器及两套分离计划见[门禁、挂载范围和验收状态](../docs/testing-aged-faults.md)；合成自检命令`python3 tests/vendor-aged-faults-checks.py`。默认只读；Linux自检通过不代表七天或真实故障矩阵通过。
+
+
+Versioned seven-day lineage: `python3 tests/vendor-versioned-aged-preflight-checks.py` checks the separate exact-R78 adapter. Run all eight methods on Linux; Windows skips the POSIX absolute-path case. It reuses the hash-pinned original read-only reader/auditor and never changes the original R57 plan/seal. Tests use synthetic data; actual capture/readiness is separately recorded.
