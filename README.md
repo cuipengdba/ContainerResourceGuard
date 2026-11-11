@@ -116,3 +116,6 @@ python3 scripts/check-package.py dev
 运行日志默认每天一个文件，保留最近30个日历日，总量不超过1GB，写日志失败仍放行业务。详见[每日日志](docs/logging.md)。旧percent配置仅作兼容；上述功能已随工程预览发布，后续深入功能仍在开发，正式业务/长期验收状态见任务清单。
 
 当前组合程序已启动[DBS/HISDBS七天持续组件](docs/testing-seven-day-current-candidate.md)，首300秒采样正常；完整604800秒和后置验收尚未完成。
+
+
+当前精确候选已完成[DBS/HISDBS业务exec分段诊断](docs/testing-business-exec-timing.md)：26项主检查/各600秒及67条有效分段，清理与原配置恢复完成；一次外层超5秒诊断失败和历史延迟待查继续保留，稳定版与长期条件未因此完成。
