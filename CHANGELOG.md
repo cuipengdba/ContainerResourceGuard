@@ -1,5 +1,11 @@
 # 变更记录
 
+## v1.0.0-preview.1（工程预发布，2026-11-11）
+
+- 按用户先行交付指令发布精确受测d370候选；三独立百分比、cgroup v1跳过/v2校验、每日日志和已有深入功能一并交付。
+- 两架构发布包已重新下载校验，发布提交CI通过；程序内嵌v1.0.0，GitHub为prerelease，未关闭稳定/长期条件。
+- [更新说明](docs/releases/v1.0.0-preview.1.md)及[发布记录](docs/test-results-preview1-publication.json)。
+
 ## v0.1.0-rc.3-preview.1（工程预览，2026-11-10）
 
 - R29：仅CPU、内存、IO三个独立百分比，各默认20%；取消扩展百分比及默认控制，保留旧percent和manual兼容。
