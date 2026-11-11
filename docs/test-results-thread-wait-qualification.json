@@ -1,0 +1,808 @@
+{
+  "schema": "crg-thread-wait-qualification-v1",
+  "phase": "passed-helper24-observer19-selector10-and-short-readonly-both-roles",
+  "unit_and_selection_qualifications": {
+    "helper": {
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 24}\n",
+      "stderr": "",
+      "result": {
+        "schema": "crg-thread-wait-checks-v1",
+        "phase": "passed",
+        "checks": [
+          {
+            "name": "native-x86-64-fsync-FD-decoded",
+            "passed": true
+          },
+          {
+            "name": "other-registers-pointers-PC-SP-never-recorded",
+            "passed": true
+          },
+          {
+            "name": "running-is-explicit-unknown",
+            "passed": true
+          },
+          {
+            "name": "outside-systemcall-is-explicit-unknown",
+            "passed": true
+          },
+          {
+            "name": "unknown-ABI-does-not-decode-FD",
+            "passed": true
+          },
+          {
+            "name": "futex-pointer-never-treated-as-file-descriptor",
+            "passed": true
+          },
+          {
+            "name": "malformed-syscall-refused-with-fixed-reason",
+            "passed": true
+          },
+          {
+            "name": "kernel-symbols-retained-with-addresses-offsets-discarded",
+            "passed": true
+          },
+          {
+            "name": "kernel-frames-bounded-and-truncation-explicit",
+            "passed": true
+          },
+          {
+            "name": "approved-vendor-log-path-retained",
+            "passed": true
+          },
+          {
+            "name": "unapproved-path-redacted",
+            "passed": true
+          },
+          {
+            "name": "deleted-suffix-reported-without-path-corruption",
+            "passed": true
+          },
+          {
+            "name": "path-traversal-redacted",
+            "passed": true
+          },
+          {
+            "name": "path-newlines-redacted",
+            "passed": true
+          },
+          {
+            "name": "actual-child-ELF-ABI-detected",
+            "passed": true
+          },
+          {
+            "name": "actual-blocked-pipe-read-systemcall-captured",
+            "passed": true
+          },
+          {
+            "name": "actual-pipe-metadata-has-no-inode-or-contents",
+            "passed": true
+          },
+          {
+            "name": "actual-kernel-stack-or-explicit-unknown",
+            "passed": true
+          },
+          {
+            "name": "actual-child-same-start-and-no-signal",
+            "passed": true
+          },
+          {
+            "name": "changed-task-start-discards-capture",
+            "passed": true
+          },
+          {
+            "name": "permission-denial-is-unknown-with-no-arbitrary-message",
+            "passed": true
+          },
+          {
+            "name": "syscall-race-discards-FD-and-stack-inference",
+            "passed": true
+          },
+          {
+            "name": "original-controls-unchanged",
+            "passed": true
+          },
+          {
+            "name": "own-child-exits-naturally-with-no-signals",
+            "passed": true
+          }
+        ],
+        "actual_pipe_capture": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 0,
+            "abi": "linux-x86_64",
+            "operation": "read",
+            "FD_argument_available": true,
+            "fd": 0
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "pipe_read",
+              "vfs_read",
+              "ksys_read",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "pipe"
+          },
+          "state_before": "S",
+          "state_after": "S",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        },
+        "actual_capture_seconds": 0.00026084715500473976,
+        "own_child_reaped": true,
+        "original_controls_unchanged": true,
+        "actual_fixture_state": "S interruptible pipe wait; not D or vendor business",
+        "full_pressure_or_business_accepted": false,
+        "source_sha256": {
+          "vendor-thread-wait.py": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+          "vendor-thread-wait-checks.py": "44cb9b19f7ed02aa32ee600c4b91e0335bf0671e3edb0df7a9d6c544ce9b7170",
+          "vendor-thread-observer.py": "ac5dd6b7293949a6ea25da99fbcc8048b4ef628ddaba2c7be61a8c7536d579f1"
+        }
+      },
+      "result_sha256": "395e977eb799c9560f00b8f0a8b65abe593a90045e00117e0d0521687076988f"
+    },
+    "observer": {
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 19, \"source_sha256\": \"c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02\", \"business_processes_used\": false}\n",
+      "stderr": "",
+      "result": {
+        "phase": "passed",
+        "checks": [
+          {
+            "case": "proc-stat-final-parenthesis-fields",
+            "passed": true
+          },
+          {
+            "case": "v1-hybrid-parent-membership-rejected",
+            "passed": true
+          },
+          {
+            "case": "default-read-only-no-output",
+            "passed": true
+          },
+          {
+            "case": "missing-marker",
+            "passed": true
+          },
+          {
+            "case": "wrong-plan-digest",
+            "passed": true
+          },
+          {
+            "case": "wrong-observer-source",
+            "passed": true
+          },
+          {
+            "case": "wrong-process-start",
+            "passed": true
+          },
+          {
+            "case": "wrong-executable",
+            "passed": true
+          },
+          {
+            "case": "wrong-cgroup",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-0",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-1",
+            "passed": true
+          },
+          {
+            "case": "duration-bound-2",
+            "passed": true
+          },
+          {
+            "case": "actual-bounded-private-observation",
+            "passed": true
+          },
+          {
+            "case": "existing-output-not-replaced",
+            "passed": true
+          },
+          {
+            "case": "symlink-output-not-followed",
+            "passed": true
+          },
+          {
+            "case": "bounded-file-read",
+            "passed": true
+          },
+          {
+            "case": "missing-observation-is-unknown",
+            "passed": true
+          },
+          {
+            "case": "own-observer-TERM-flushes-without-target-signal",
+            "passed": true
+          },
+          {
+            "case": "original-target-exit-stops-no-rebinding",
+            "passed": true
+          }
+        ],
+        "source_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+        "target_was_fresh_sleep_fixture": true,
+        "original_controls_unchanged": true,
+        "business_processes_used": false,
+        "normal_observation": {
+          "sample_count": 3,
+          "elapsed_seconds": 2.0019329481292516,
+          "observer_cpu_seconds": 0.0036931679999999967,
+          "maximum_collection_seconds": 0.0014273750130087137
+        },
+        "actual_cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-217551.scope",
+        "python": "3.9.21",
+        "kernel": "5.14.0-570.22.1.el9_6.x86_64"
+      },
+      "result_sha256": "9d590cd4ff9b57ea099efcf969e1f7dd4103578a7822e88ea3273dc64cc0515a"
+    },
+    "selector": {
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 10}\n",
+      "stderr": "",
+      "result": {
+        "schema": "crg-thread-wait-selector-checks-v1",
+        "phase": "passed",
+        "checks": [
+          {
+            "name": "actual-S-wait-is-not-selected-as-D",
+            "passed": true
+          },
+          {
+            "name": "synthetic-D-selector-exercises-real-proc-capture",
+            "passed": true
+          },
+          {
+            "name": "selector-retains-real-S-read-and-pipe-facts",
+            "passed": true
+          },
+          {
+            "name": "raced-task-start-stays-explicit-unknown",
+            "passed": true
+          },
+          {
+            "name": "synthetic64-tasks-at-most8-proc-captures",
+            "passed": true
+          },
+          {
+            "name": "extra-metadata-retains-original32KiB-row-bound",
+            "passed": true
+          },
+          {
+            "name": "near-full-row-omits-wait-details-explicitly",
+            "passed": true
+          },
+          {
+            "name": "bound-process-and-controls-stay-unchanged",
+            "passed": true
+          },
+          {
+            "name": "metadata-only-path-creates-no-observer-report",
+            "passed": true
+          },
+          {
+            "name": "own-fixture-exits-without-signals",
+            "passed": true
+          }
+        ],
+        "examples": {
+          "actual_S": {
+            "epoch": 1794406795.3782506,
+            "monotonic": 1346738.490242319,
+            "process": {
+              "pid": 2954901,
+              "state": "S",
+              "minor_faults": 760,
+              "major_faults": 0,
+              "user_ticks": 0,
+              "system_ticks": 0,
+              "threads": 1,
+              "start_ticks": 134673842,
+              "block_io_ticks": 0
+            },
+            "cgroup": {
+              "cpu.stat": {
+                "available": true,
+                "value": "usage_usec 339230\nuser_usec 255825\nsystem_usec 83404\ncore_sched.force_idle_usec 0"
+              },
+              "io.stat": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "memory.current": {
+                "available": true,
+                "value": "20422656"
+              },
+              "memory.stat": {
+                "available": true,
+                "value": "anon 19341312\nfile 32768\nkernel 741376\nkernel_stack 65536\npagetables 253952\nsec_pagetables 0\npercpu 1664\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 32768\nfile_writeback 0\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 19283968\ninactive_file 32768\nactive_file 0\nunevictable 0\nslab_reclaimable 41920\nslab_unreclaimable 286384\nslab 328304\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 18034\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+              },
+              "memory.events": {
+                "available": true,
+                "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+              },
+              "cpu.pressure": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "memory.pressure": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "io.pressure": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "cpu.max": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "memory.max": {
+                "available": true,
+                "value": "max"
+              },
+              "io.max": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              }
+            },
+            "status": {
+              "State": "S (sleeping)",
+              "VmRSS": "7104 kB",
+              "RssAnon": "2496 kB",
+              "RssFile": "4608 kB",
+              "RssShmem": "0 kB",
+              "VmSwap": "0 kB",
+              "Threads": "1",
+              "voluntary_ctxt_switches": "1",
+              "nonvoluntary_ctxt_switches": "0"
+            },
+            "tasks": [
+              {
+                "stat": {
+                  "pid": 2954901,
+                  "state": "S",
+                  "minor_faults": 760,
+                  "major_faults": 0,
+                  "user_ticks": 0,
+                  "system_ticks": 0,
+                  "threads": 1,
+                  "start_ticks": 134673842,
+                  "block_io_ticks": 0
+                },
+                "wchan": {
+                  "available": true,
+                  "value": "pipe_read"
+                },
+                "schedstat": {
+                  "available": true,
+                  "value": "11273790 0 1"
+                }
+              }
+            ],
+            "task_races": 0,
+            "task_count": 1,
+            "tasks_truncated": false,
+            "wait_sampling": {
+              "D_tasks": 0,
+              "attempted": 0,
+              "recorded": 0,
+              "available": 0,
+              "unknown": 0,
+              "omitted": 0,
+              "maximum_tasks": 8,
+              "maximum_extra_bytes": 8192,
+              "only_initial_D_tasks_attempted": true
+            },
+            "collection_seconds": 0.002765942132100463,
+            "observer_cpu_seconds": 0.002751671000000004
+          },
+          "synthetic_D_selector_actual_S": {
+            "epoch": 1794406795.3782506,
+            "monotonic": 1346738.490242319,
+            "process": {
+              "pid": 2954901,
+              "state": "S",
+              "minor_faults": 760,
+              "major_faults": 0,
+              "user_ticks": 0,
+              "system_ticks": 0,
+              "threads": 1,
+              "start_ticks": 134673842,
+              "block_io_ticks": 0
+            },
+            "cgroup": {
+              "cpu.stat": {
+                "available": true,
+                "value": "usage_usec 339230\nuser_usec 255825\nsystem_usec 83404\ncore_sched.force_idle_usec 0"
+              },
+              "io.stat": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "memory.current": {
+                "available": true,
+                "value": "20422656"
+              },
+              "memory.stat": {
+                "available": true,
+                "value": "anon 19341312\nfile 32768\nkernel 741376\nkernel_stack 65536\npagetables 253952\nsec_pagetables 0\npercpu 1664\nsock 0\nvmalloc 0\nshmem 0\nzswap 0\nzswapped 0\nfile_mapped 0\nfile_dirty 32768\nfile_writeback 0\nswapcached 0\nanon_thp 0\nfile_thp 0\nshmem_thp 0\ninactive_anon 0\nactive_anon 19283968\ninactive_file 32768\nactive_file 0\nunevictable 0\nslab_reclaimable 41920\nslab_unreclaimable 286384\nslab 328304\nworkingset_refault_anon 0\nworkingset_refault_file 0\nworkingset_activate_anon 0\nworkingset_activate_file 0\nworkingset_restore_anon 0\nworkingset_restore_file 0\nworkingset_nodereclaim 0\npgscan 0\npgsteal 0\npgscan_kswapd 0\npgscan_direct 0\npgscan_khugepaged 0\npgsteal_kswapd 0\npgsteal_direct 0\npgsteal_khugepaged 0\npgfault 18034\npgmajfault 0\npgrefill 0\npgactivate 0\npgdeactivate 0\npglazyfree 0\npglazyfreed 0\nzswpin 0\nzswpout 0\nzswpwb 0\nthp_fault_alloc 0\nthp_collapse_alloc 0\nthp_swpout 0\nthp_swpout_fallback 0"
+              },
+              "memory.events": {
+                "available": true,
+                "value": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+              },
+              "cpu.pressure": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "memory.pressure": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "io.pressure": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "cpu.max": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              },
+              "memory.max": {
+                "available": true,
+                "value": "max"
+              },
+              "io.max": {
+                "available": false,
+                "reason": "FileNotFoundError"
+              }
+            },
+            "status": {
+              "State": "S (sleeping)",
+              "VmRSS": "7104 kB",
+              "RssAnon": "2496 kB",
+              "RssFile": "4608 kB",
+              "RssShmem": "0 kB",
+              "VmSwap": "0 kB",
+              "Threads": "1",
+              "voluntary_ctxt_switches": "1",
+              "nonvoluntary_ctxt_switches": "0"
+            },
+            "tasks": [
+              {
+                "stat": {
+                  "pid": 2954901,
+                  "state": "D",
+                  "minor_faults": 760,
+                  "major_faults": 0,
+                  "user_ticks": 0,
+                  "system_ticks": 0,
+                  "threads": 1,
+                  "start_ticks": 134673842,
+                  "block_io_ticks": 0
+                },
+                "wchan": {
+                  "available": true,
+                  "value": "pipe_read"
+                },
+                "schedstat": {
+                  "available": true,
+                  "value": "11273790 0 1"
+                },
+                "wait_detail": {
+                  "available": true,
+                  "syscall": {
+                    "available": true,
+                    "number": 0,
+                    "abi": "linux-x86_64",
+                    "operation": "read",
+                    "FD_argument_available": true,
+                    "fd": 0
+                  },
+                  "kernel_stack": {
+                    "available": true,
+                    "frames": [
+                      "pipe_read",
+                      "vfs_read",
+                      "ksys_read",
+                      "do_syscall_64",
+                      "entry_SYSCALL_64_after_hwframe"
+                    ],
+                    "unknown_lines": 0,
+                    "truncated": false,
+                    "addresses_and_offsets_recorded": false
+                  },
+                  "descriptor": {
+                    "available": true,
+                    "kind": "pipe"
+                  },
+                  "state_before": "S",
+                  "state_after": "S",
+                  "task_identity_rechecked": true,
+                  "separate_reads_not_atomic": true
+                }
+              }
+            ],
+            "task_races": 0,
+            "task_count": 1,
+            "tasks_truncated": false,
+            "wait_sampling": {
+              "D_tasks": 1,
+              "attempted": 1,
+              "recorded": 1,
+              "available": 1,
+              "unknown": 0,
+              "omitted": 0,
+              "maximum_tasks": 8,
+              "maximum_extra_bytes": 8192,
+              "only_initial_D_tasks_attempted": true
+            },
+            "collection_seconds": 0.002765942132100463,
+            "observer_cpu_seconds": 0.002751671000000004
+          },
+          "synthetic_64_selector_summary": {
+            "D_tasks": 64,
+            "attempted": 8,
+            "recorded": 8,
+            "available": 8,
+            "unknown": 0,
+            "omitted": 56,
+            "maximum_tasks": 8,
+            "maximum_extra_bytes": 8192,
+            "only_initial_D_tasks_attempted": true
+          }
+        },
+        "actual_D_or_vendor_acceptance": false,
+        "actual_fixture_state": "S pipe wait; D selector inputs are synthetic",
+        "own_child_reaped": true,
+        "original_controls_unchanged": true,
+        "source_sha256": {
+          "vendor-thread-wait.py": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+          "vendor-thread-wait-observer.py": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+          "vendor-thread-wait-selection-checks.py": "b4b5258831b875fa0d6c105310b4e93ff8abc25116f0012bd7fe11b2d666f57c"
+        }
+      },
+      "result_sha256": "7d3afe0a6971db1af03b64de4b2754abeb43726a6b3b49f4f14792c8dccf128a"
+    }
+  },
+  "live_observation": {
+    "node_utc": "2026-11-11T14:19:26.960160+00:00",
+    "read_only_business_observation": true,
+    "roles": {
+      "dbs": {
+        "plan": {
+          "schema": "crg-vendor-thread-observer-plan-v1",
+          "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+          "label": "dbs",
+          "pid": 383569,
+          "start_ticks": 129853676,
+          "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda143d136_8e11_4cb9_b83a_c57b139903e7.slice/cri-containerd-486e08b5e04f8c06daaf4ea20447088d7767ce64db910233d477ab5e02f07289.scope",
+          "duration_seconds": 15,
+          "output": "/var/tmp/crg-wait232-live-20261111/dbs-threads.json"
+        },
+        "preflight": {
+          "exit": 0,
+          "stdout": "{\"phase\": \"ready\", \"executed\": false, \"output_created\": false}\n",
+          "stderr": ""
+        },
+        "observer_pid": 2948494,
+        "observer_start_ticks": 134671068,
+        "observer_original_instance_gone": true,
+        "exit": 0,
+        "stdout": "{\"phase\": \"observing\", \"sample_count\": 1, \"epoch\": 1794406767.7317522}\n{\"phase\": \"observed\", \"sample_count\": 16, \"elapsed_seconds\": 15.0054143499583, \"observer_cpu_seconds\": 0.078822594}\n",
+        "stderr": "",
+        "outer_wall_seconds": 15.542907286901027,
+        "whole_child_CPU_seconds": 0.246873,
+        "whole_child_block_input_units": 0,
+        "whole_child_block_output_units": 496,
+        "listener_port": 8090,
+        "listener_owner_unique": true,
+        "same_business_process_after": true,
+        "same_Agent_after": true,
+        "before_controls": {
+          "cpu.max": "720000 100000",
+          "memory.max": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0"
+        },
+        "after_controls": {
+          "cpu.max": "720000 100000",
+          "memory.max": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0"
+        },
+        "report_sha256": "2fa9003344b125177c72078a06b6e14fd6dcdcf1f55beef9189c51c4777d01e1",
+        "report_bytes": 251757,
+        "report": {
+          "schema": "crg-vendor-thread-wait-observer-report-v1",
+          "phase": "observed",
+          "plan": {
+            "schema": "crg-vendor-thread-observer-plan-v1",
+            "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+            "label": "dbs",
+            "pid": 383569,
+            "start_ticks": 129853676,
+            "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+            "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda143d136_8e11_4cb9_b83a_c57b139903e7.slice/cri-containerd-486e08b5e04f8c06daaf4ea20447088d7767ce64db910233d477ab5e02f07289.scope",
+            "duration_seconds": 15,
+            "output": "/var/tmp/crg-wait232-live-20261111/dbs-threads.json"
+          },
+          "process_and_cgroup_identity_pinned": true,
+          "sample_period_seconds": 1,
+          "maximum_threads": 64,
+          "maximum_seconds": 900,
+          "maximum_report_bytes": 33554432,
+          "started_epoch": 1794406767.731744,
+          "target_signals_or_control_writes": 0,
+          "wait_contract": {
+            "schema": "crg-thread-wait-contract-v1",
+            "helper_sha256": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+            "maximum_wait_tasks_per_sample": 8,
+            "maximum_wait_bytes_per_sample": 8192,
+            "maximum_kernel_frames": 12,
+            "maximum_stack_read_bytes": 4096,
+            "decoded_ABI": "native-ELF64-little-endian-x86_64-only",
+            "syscall_registers_recorded": false,
+            "kernel_addresses_or_offsets_recorded": false,
+            "FD_contents_read": false,
+            "FD_metadata_allowlist": true,
+            "separate_proc_reads_are_not_atomic": true,
+            "missing_or_raced_values_are_unknown": true,
+            "signals_or_control_writes": 0
+          },
+          "ended_epoch": 1794406782.7371535,
+          "elapsed_seconds": 15.0054143499583,
+          "observer_cpu_seconds": 0.078822594,
+          "sample_count": 16,
+          "maximum_collection_seconds": 0.005043382989242673
+        },
+        "observed_D_samples": 0,
+        "sample_count": 16
+      },
+      "hisdbs": {
+        "plan": {
+          "schema": "crg-vendor-thread-observer-plan-v1",
+          "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+          "label": "hisdbs",
+          "pid": 392379,
+          "start_ticks": 129856865,
+          "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5cb4d41d_a8e0_4b55_9ffd_d7701d6456ff.slice/cri-containerd-51d985ad065a6539ae285bd45605189c12f54e655d0be5bd4280323052b0db97.scope",
+          "duration_seconds": 15,
+          "output": "/var/tmp/crg-wait232-live-20261111/hisdbs-threads.json"
+        },
+        "preflight": {
+          "exit": 0,
+          "stdout": "{\"phase\": \"ready\", \"executed\": false, \"output_created\": false}\n",
+          "stderr": ""
+        },
+        "observer_pid": 2951921,
+        "observer_start_ticks": 134672684,
+        "observer_original_instance_gone": true,
+        "exit": 0,
+        "stdout": "{\"phase\": \"observing\", \"sample_count\": 1, \"epoch\": 1794406783.890927}\n{\"phase\": \"observed\", \"sample_count\": 16, \"elapsed_seconds\": 15.005561594851315, \"observer_cpu_seconds\": 0.07828048900000001}\n",
+        "stderr": "",
+        "outer_wall_seconds": 15.209228081163019,
+        "whole_child_CPU_seconds": 0.24539799999999998,
+        "whole_child_block_input_units": 0,
+        "whole_child_block_output_units": 496,
+        "listener_port": 8090,
+        "listener_owner_unique": true,
+        "same_business_process_after": true,
+        "same_Agent_after": true,
+        "before_controls": {
+          "cpu.max": "720000 100000",
+          "memory.max": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0"
+        },
+        "after_controls": {
+          "cpu.max": "720000 100000",
+          "memory.max": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "max",
+          "memory.swap.max": "0"
+        },
+        "report_sha256": "3ea5e1fb867c5c6163a4daeb16535d67d69ac367ad2becbc07b7027cbf50ff5c",
+        "report_bytes": 251258,
+        "report": {
+          "schema": "crg-vendor-thread-wait-observer-report-v1",
+          "phase": "observed",
+          "plan": {
+            "schema": "crg-vendor-thread-observer-plan-v1",
+            "observer_sha256": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+            "label": "hisdbs",
+            "pid": 392379,
+            "start_ticks": 129856865,
+            "executable_sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+            "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5cb4d41d_a8e0_4b55_9ffd_d7701d6456ff.slice/cri-containerd-51d985ad065a6539ae285bd45605189c12f54e655d0be5bd4280323052b0db97.scope",
+            "duration_seconds": 15,
+            "output": "/var/tmp/crg-wait232-live-20261111/hisdbs-threads.json"
+          },
+          "process_and_cgroup_identity_pinned": true,
+          "sample_period_seconds": 1,
+          "maximum_threads": 64,
+          "maximum_seconds": 900,
+          "maximum_report_bytes": 33554432,
+          "started_epoch": 1794406783.8909197,
+          "target_signals_or_control_writes": 0,
+          "wait_contract": {
+            "schema": "crg-thread-wait-contract-v1",
+            "helper_sha256": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+            "maximum_wait_tasks_per_sample": 8,
+            "maximum_wait_bytes_per_sample": 8192,
+            "maximum_kernel_frames": 12,
+            "maximum_stack_read_bytes": 4096,
+            "decoded_ABI": "native-ELF64-little-endian-x86_64-only",
+            "syscall_registers_recorded": false,
+            "kernel_addresses_or_offsets_recorded": false,
+            "FD_contents_read": false,
+            "FD_metadata_allowlist": true,
+            "separate_proc_reads_are_not_atomic": true,
+            "missing_or_raced_values_are_unknown": true,
+            "signals_or_control_writes": 0
+          },
+          "ended_epoch": 1794406798.8964767,
+          "elapsed_seconds": 15.005561594851315,
+          "observer_cpu_seconds": 0.07828048900000001,
+          "sample_count": 16,
+          "maximum_collection_seconds": 0.004873323952779174
+        },
+        "observed_D_samples": 0,
+        "sample_count": 16
+      }
+    },
+    "qualification_sha256": "538ce785a66d5dc0e1bc95a04bfb689e0cb291310aff97707ca904b1c9cbb765",
+    "completed_node_utc": "2026-11-11T14:19:58.951169+00:00",
+    "phase": "observed-both-roles",
+    "business_or_pressure_acceptance": false,
+    "full_receipt_evidence": {
+      "path": "test-evidence/thread-wait232-observation.json.gz",
+      "uncompressed_sha256": "478bcb49dbd89c8e4e45746e41033198faf0d97c0c735cf9dc22cd4cc28bcb3b",
+      "uncompressed_bytes": 1148769
+    }
+  },
+  "source_sha256": {
+    "tests/vendor-thread-wait.py": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+    "tests/vendor-thread-wait-checks.py": "44cb9b19f7ed02aa32ee600c4b91e0335bf0671e3edb0df7a9d6c544ce9b7170",
+    "tests/vendor-thread-wait-observer.py": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+    "tests/vendor-thread-wait-observer-checks.py": "1186348ffc1d9e88b02fadd2134266ebcf8edc7146d8c77f83624ef2d82808aa",
+    "tests/vendor-thread-wait-selection-checks.py": "b4b5258831b875fa0d6c105310b4e93ff8abc25116f0012bd7fe11b2d666f57c"
+  },
+  "selector_D_inputs_are_synthetic_actual_fixture_is_interruptible_pipe_read": true,
+  "actual_vendor_D_wait_not_observed_in_this_short_run": true,
+  "full_pressure_or_business_accepted": false,
+  "stable_release_accepted": false
+}
