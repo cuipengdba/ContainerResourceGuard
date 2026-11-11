@@ -1,0 +1,550 @@
+{
+  "schema": "crg-seven-day-fixed-observation-v1",
+  "observed_node_utc": "2026-11-11T13:34:14Z",
+  "raw_receipt_sha256": "106d5858ea46eaa3ebd7275e779f989a3794130ba4f3edc6ed6a43b936578bc9",
+  "observation": {
+    "schema": "crg-targeted-seven-day-freshness-observation-v1",
+    "observed_node_utc": "2026-11-11T13:34:14Z",
+    "native_report_flush_seconds": 300,
+    "host_sample_period_seconds": 60,
+    "maximum_host_sample_gap_seconds": 120,
+    "lineages": {
+      "seven_day": {
+        "runner": {
+          "pid": 1330896,
+          "exists": true,
+          "start_ticks": 128487483,
+          "expected_start_matches": true,
+          "expected_entry_matches": true,
+          "state": "S"
+        },
+        "workers": [
+          {
+            "pid": 1330897,
+            "exists": true,
+            "start_ticks": 128487487,
+            "expected_start_matches": true,
+            "expected_entry_matches": true,
+            "state": "S"
+          }
+        ],
+        "campaign_process": {
+          "pid": 1346019,
+          "exists": true,
+          "start_ticks": 128492666,
+          "expected_start_matches": true,
+          "expected_entry_matches": true,
+          "state": "S"
+        },
+        "roles": {
+          "dbs": {
+            "native_phase": "running",
+            "native_started_utc": "2026-11-10T21:10:00.753770Z",
+            "native_elapsed_seconds": 58853.98850165913,
+            "native_requested_seconds": 604800,
+            "native_report_age_seconds": 200.0568563938141,
+            "native_SQL": {
+              "attempts": 29425,
+              "errors": 0,
+              "histogram": [
+                29361,
+                48,
+                1,
+                1,
+                0,
+                1,
+                4,
+                5,
+                2,
+                1,
+                1,
+                0
+              ],
+              "max_seconds": 2.540801821043715,
+              "successes": 29425,
+              "total_seconds": 27.511428301455453
+            },
+            "native_API": {
+              "attempts": 11771,
+              "errors": 0,
+              "histogram": [
+                0,
+                0,
+                11737,
+                33,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "max_seconds": 0.052181564969941974,
+              "successes": 11771,
+              "total_seconds": 96.64433675887994
+            },
+            "same_process_instances": [
+              {
+                "pid": 1333268,
+                "exists": true,
+                "start_ticks": 128488226,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "agent",
+                "executable_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9"
+              },
+              {
+                "pid": 1337192,
+                "exists": true,
+                "start_ticks": 128489726,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "cache",
+                "executable_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+              },
+              {
+                "pid": 1346528,
+                "exists": true,
+                "start_ticks": 128492794,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "native",
+                "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f"
+              }
+            ],
+            "host_sample_count": 985,
+            "host_first_elapsed_seconds": 0.0009926450438797474,
+            "host_last_elapsed_seconds": 59040.271567245014,
+            "maximum_actual_host_sample_gap_seconds": 60.46588523685932,
+            "host_gaps_above120": 0,
+            "all_sampled_PID1_Agent_cache_same": true,
+            "sampled_OOM_kill_values": [
+              0
+            ],
+            "actual_controls": {
+              "cpu.max": "720000 100000",
+              "memory.max": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "current_memory_events": {
+              "low": 0,
+              "high": 0,
+              "max": 0,
+              "oom": 0,
+              "oom_kill": 0,
+              "oom_group_kill": 0
+            }
+          },
+          "hisdbs": {
+            "native_phase": "running",
+            "native_started_utc": "2026-11-10T21:09:59.141862Z",
+            "native_elapsed_seconds": 58843.46243849001,
+            "native_requested_seconds": 604800,
+            "native_report_age_seconds": 212.2373411655426,
+            "native_SQL": {
+              "attempts": 29419,
+              "errors": 0,
+              "histogram": [
+                29355,
+                46,
+                2,
+                1,
+                0,
+                1,
+                4,
+                6,
+                1,
+                0,
+                3,
+                0
+              ],
+              "max_seconds": 4.1716811140067875,
+              "successes": 29419,
+              "total_seconds": 32.22787350323051
+            },
+            "native_API": {
+              "attempts": 11769,
+              "errors": 0,
+              "histogram": [
+                0,
+                0,
+                11733,
+                33,
+                0,
+                1,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0
+              ],
+              "max_seconds": 0.492659626994282,
+              "successes": 11769,
+              "total_seconds": 98.62626882083714
+            },
+            "same_process_instances": [
+              {
+                "pid": 1339757,
+                "exists": true,
+                "start_ticks": 128490644,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "agent",
+                "executable_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9"
+              },
+              {
+                "pid": 1344125,
+                "exists": true,
+                "start_ticks": 128492144,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "cache",
+                "executable_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+              },
+              {
+                "pid": 1346767,
+                "exists": true,
+                "start_ticks": 128492837,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "native",
+                "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f"
+              }
+            ],
+            "host_sample_count": 985,
+            "host_first_elapsed_seconds": 0.0022129418794065714,
+            "host_last_elapsed_seconds": 59040.272785207955,
+            "maximum_actual_host_sample_gap_seconds": 60.46591781289317,
+            "host_gaps_above120": 0,
+            "all_sampled_PID1_Agent_cache_same": true,
+            "sampled_OOM_kill_values": [
+              0
+            ],
+            "actual_controls": {
+              "cpu.max": "720000 100000",
+              "memory.max": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "current_memory_events": {
+              "low": 0,
+              "high": 0,
+              "max": 0,
+              "oom": 0,
+              "oom_kill": 0,
+              "oom_group_kill": 0
+            }
+          }
+        },
+        "phase": "measuring",
+        "agent_sha256": "3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9",
+        "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "cycles": [
+          {
+            "phase": "content-passed-native-pending",
+            "exit": 0,
+            "offset_seconds": 300.4118613009341
+          },
+          {
+            "phase": "content-passed-native-pending",
+            "exit": 0,
+            "offset_seconds": 21600.312223406043
+          },
+          {
+            "phase": "content-passed-native-pending",
+            "exit": 0,
+            "offset_seconds": 43200.02822934301
+          }
+        ]
+      },
+      "versioned_seven_day": {
+        "runner": {
+          "pid": 379384,
+          "exists": true,
+          "start_ticks": 129852222,
+          "expected_start_matches": true,
+          "expected_entry_matches": true,
+          "state": "S"
+        },
+        "workers": [
+          {
+            "pid": 379386,
+            "exists": true,
+            "start_ticks": 129852225,
+            "expected_start_matches": true,
+            "expected_entry_matches": true,
+            "state": "S"
+          }
+        ],
+        "campaign_process": {
+          "pid": 396801,
+          "exists": true,
+          "start_ticks": 129858421,
+          "expected_start_matches": true,
+          "expected_entry_matches": true,
+          "state": "S"
+        },
+        "roles": {
+          "dbs": {
+            "native_phase": "running",
+            "native_started_utc": "2026-11-11T00:57:35.625611Z",
+            "native_elapsed_seconds": 45344.84642327507,
+            "native_requested_seconds": 604800,
+            "native_report_age_seconds": 54.427751779556274,
+            "native_SQL": {
+              "attempts": 22672,
+              "errors": 0,
+              "histogram": [
+                22624,
+                33,
+                1,
+                1,
+                1,
+                1,
+                0,
+                4,
+                2,
+                5,
+                0,
+                0
+              ],
+              "max_seconds": 1.5970332720316947,
+              "successes": 22672,
+              "total_seconds": 25.391847897320986
+            },
+            "native_API": {
+              "attempts": 9069,
+              "errors": 0,
+              "histogram": [
+                0,
+                0,
+                9039,
+                28,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "max_seconds": 0.1747680981643498,
+              "successes": 9069,
+              "total_seconds": 75.20113800093532
+            },
+            "same_process_instances": [
+              {
+                "pid": 382414,
+                "exists": true,
+                "start_ticks": 129853062,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "agent",
+                "executable_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+              },
+              {
+                "pid": 386059,
+                "exists": true,
+                "start_ticks": 129854562,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "cache",
+                "executable_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+              },
+              {
+                "pid": 397169,
+                "exists": true,
+                "start_ticks": 129858531,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "native",
+                "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f"
+              }
+            ],
+            "host_sample_count": 757,
+            "host_first_elapsed_seconds": 0.0009668779093772173,
+            "host_last_elapsed_seconds": 45360.13718102197,
+            "maximum_actual_host_sample_gap_seconds": 60.25298801600002,
+            "host_gaps_above120": 0,
+            "all_sampled_PID1_Agent_cache_same": true,
+            "sampled_OOM_kill_values": [
+              0
+            ],
+            "actual_controls": {
+              "cpu.max": "720000 100000",
+              "memory.max": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "current_memory_events": {
+              "low": 0,
+              "high": 0,
+              "max": 0,
+              "oom": 0,
+              "oom_kill": 0,
+              "oom_group_kill": 0
+            }
+          },
+          "hisdbs": {
+            "native_phase": "running",
+            "native_started_utc": "2026-11-11T00:57:37.268180Z",
+            "native_elapsed_seconds": 45343.231186330086,
+            "native_requested_seconds": 604800,
+            "native_report_age_seconds": 54.43896222114563,
+            "native_SQL": {
+              "attempts": 22671,
+              "errors": 0,
+              "histogram": [
+                22613,
+                43,
+                2,
+                1,
+                0,
+                2,
+                4,
+                3,
+                2,
+                1,
+                0,
+                0
+              ],
+              "max_seconds": 1.2541321800090373,
+              "successes": 22671,
+              "total_seconds": 20.069149357499555
+            },
+            "native_API": {
+              "attempts": 9069,
+              "errors": 0,
+              "histogram": [
+                0,
+                0,
+                9041,
+                26,
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "max_seconds": 0.10750331007875502,
+              "successes": 9069,
+              "total_seconds": 72.03118389402516
+            },
+            "same_process_instances": [
+              {
+                "pid": 390854,
+                "exists": true,
+                "start_ticks": 129856263,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "agent",
+                "executable_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+              },
+              {
+                "pid": 394663,
+                "exists": true,
+                "start_ticks": 129857764,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "cache",
+                "executable_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+              },
+              {
+                "pid": 397443,
+                "exists": true,
+                "start_ticks": 129858574,
+                "expected_start_matches": true,
+                "expected_entry_matches": true,
+                "state": "S",
+                "kind": "native",
+                "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f"
+              }
+            ],
+            "host_sample_count": 757,
+            "host_first_elapsed_seconds": 0.002176114823669195,
+            "host_last_elapsed_seconds": 45360.13837691699,
+            "maximum_actual_host_sample_gap_seconds": 60.25296116806567,
+            "host_gaps_above120": 0,
+            "all_sampled_PID1_Agent_cache_same": true,
+            "sampled_OOM_kill_values": [
+              0
+            ],
+            "actual_controls": {
+              "cpu.max": "720000 100000",
+              "memory.max": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.high": "max",
+              "memory.swap.max": "0"
+            },
+            "current_memory_events": {
+              "low": 0,
+              "high": 0,
+              "max": 0,
+              "oom": 0,
+              "oom_kill": 0,
+              "oom_group_kill": 0
+            }
+          }
+        },
+        "phase": "measuring",
+        "agent_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "cycles": [
+          {
+            "phase": "content-passed-native-pending",
+            "exit": 0,
+            "offset_seconds": 300.4061911199242
+          },
+          {
+            "phase": "content-passed-native-pending",
+            "exit": 0,
+            "offset_seconds": 21600.03676715796
+          },
+          {
+            "phase": "content-passed-native-pending",
+            "exit": 0,
+            "offset_seconds": 43200.32375253993
+          }
+        ]
+      }
+    },
+    "seven_day_accepted": false
+  },
+  "jobs_restarted": false,
+  "seven_day_accepted": false,
+  "stable_release_accepted": false
+}
