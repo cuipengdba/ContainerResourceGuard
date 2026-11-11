@@ -1,0 +1,39 @@
+{
+  "schema": "crg-agent-activity-qualification-analysis-v1",
+  "phase": "qualified",
+  "host_checks": 27,
+  "vendor_checks": 32,
+  "roles": {
+    "dbs": {
+      "checks": 16,
+      "normal_and_exception_same_Agent_resume": true,
+      "actual_eight_controls_preserved_during_pause": true,
+      "original_business_probes_and_PG_cache_identity_preserved": true,
+      "runtime_originals_restored": true,
+      "root_psql_diagnostic": {
+        "exit": 127,
+        "stdout": "",
+        "stderr": "/opt/postgresql/pgsql/bin/psql: error while loading shared libraries: libpq.so.5: cannot open shared object file: No such file or directory\ncommand terminated with exit code 127\n"
+      }
+    },
+    "hisdbs": {
+      "checks": 16,
+      "normal_and_exception_same_Agent_resume": true,
+      "actual_eight_controls_preserved_during_pause": true,
+      "original_business_probes_and_PG_cache_identity_preserved": true,
+      "runtime_originals_restored": true,
+      "root_psql_diagnostic": {
+        "exit": 127,
+        "stdout": "",
+        "stderr": "/opt/postgresql/pgsql/bin/psql: error while loading shared libraries: libpq.so.5: cannot open shared object file: No such file or directory\ncommand terminated with exit code 127\n"
+      }
+    }
+  },
+  "independent_terminal_cleanup": true,
+  "first_failure_preserved": true,
+  "scope": "short lifecycle qualification only; host shadow files and actual vendor kernel evidence distinguished",
+  "fixed_IO_ABBA_executed": false,
+  "native600_business_accepted": false,
+  "original32_accepted": false,
+  "stable_release_accepted": false
+}

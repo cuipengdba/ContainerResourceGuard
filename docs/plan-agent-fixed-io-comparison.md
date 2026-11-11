@@ -1,5 +1,7 @@
 # 相同内核限额下的 Agent 活动对照计划
 
+当前进展：[Agent活动生命周期工具资格](testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。
+
 此计划落实 P01.3/P03.3/P05.2 的下一步定位，不是已执行结果。[写 IOPS 对照](testing-write-iops-comparison.md)出现预定总错误模式，但 A1 是 API/DBS.log 写等待，A2 是 SQL/LWLock 等待，故障类型不同。继续提高 IOPS 或原样重跑不能区分配置约束与 CRG 周期工作的影响。
 
 计划使用同一发布 ELF、同一已冻结 DBS 数据来源、相同手动配置及内核值，以四份事先冻结的独立完整冷副本按 A1/B1/B2/A2 顺序执行。A 为正常活动 Agent；B 为仅暂停本容器精确 Agent 实例的用户态执行，已写入的内核硬限额仍保持。B 的辅助循环仍阻塞等待同一子进程，不通过关闭限制或重试新 Agent 获得更高额度。每个测试容器始终只有一份本地 Agent。
