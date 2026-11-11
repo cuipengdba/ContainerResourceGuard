@@ -1,0 +1,839 @@
+{
+  "schema": "crg-final-wait-IO-map-followup-v1",
+  "phase": "readonly-device-and-real-PGDATA-mapping-established",
+  "initial_guessed_data_path_probe_not_a_negative_database_finding": {
+    "schema": "crg-postfailure-readonly-IO-map-v1",
+    "node_utc": "2026-11-11T15:07:06.052179+00:00",
+    "roles": {
+      "dbs": {
+        "paths": {
+          "dbs/log/DBS.log": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/dbs/log/DBS.log",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 3015654,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/data": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/data",
+            "exists_or_symlink": false,
+            "symlink": false
+          },
+          "postgresql/data/pg_wal": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/data/pg_wal",
+            "exists_or_symlink": false,
+            "symlink": false
+          },
+          "postgresql/basebackup": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/basebackup",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 4096,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          }
+        },
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      "hisdbs": {
+        "paths": {
+          "dbs/log/DBS.log": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/dbs/log/DBS.log",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 1816421,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/data": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/data",
+            "exists_or_symlink": false,
+            "symlink": false
+          },
+          "postgresql/data/pg_wal": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/data/pg_wal",
+            "exists_or_symlink": false,
+            "symlink": false
+          },
+          "postgresql/basebackup": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/basebackup",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 4096,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          }
+        },
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      }
+    },
+    "devices": {
+      "253:0": {
+        "available": true,
+        "sysfs": "/sys/devices/virtual/block/dm-0",
+        "uevent": {
+          "available": true,
+          "value": "MAJOR=253\nMINOR=0\nDEVNAME=dm-0\nDEVTYPE=disk\nDISKSEQ=2\n"
+        },
+        "size_sectors": {
+          "available": true,
+          "value": "1885913088\n"
+        },
+        "partition": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_name": {
+          "available": true,
+          "value": "almalinux-root\n"
+        },
+        "dm_suspended": {
+          "available": true,
+          "value": "0\n"
+        },
+        "queue": {
+          "scheduler": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "rotational": {
+            "available": true,
+            "value": "1\n"
+          },
+          "nr_requests": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "nomerges": {
+            "available": true,
+            "value": "0\n"
+          },
+          "max_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "max_hw_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "write_cache": {
+            "available": true,
+            "value": "write through\n"
+          },
+          "wbt_lat_usec": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          }
+        },
+        "slaves": [
+          {
+            "name": "sda2",
+            "device": "8:2"
+          }
+        ]
+      },
+      "8:0": {
+        "available": true,
+        "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+        "uevent": {
+          "available": true,
+          "value": "MAJOR=8\nMINOR=0\nDEVNAME=sda\nDEVTYPE=disk\nDISKSEQ=1\n"
+        },
+        "size_sectors": {
+          "available": true,
+          "value": "1953525168\n"
+        },
+        "partition": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_name": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_suspended": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "queue": {
+          "scheduler": {
+            "available": true,
+            "value": "none [mq-deadline] kyber bfq \n"
+          },
+          "rotational": {
+            "available": true,
+            "value": "1\n"
+          },
+          "nr_requests": {
+            "available": true,
+            "value": "256\n"
+          },
+          "nomerges": {
+            "available": true,
+            "value": "0\n"
+          },
+          "max_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "max_hw_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "write_cache": {
+            "available": true,
+            "value": "write through\n"
+          },
+          "wbt_lat_usec": {
+            "available": true,
+            "value": "75000\n"
+          }
+        },
+        "slaves": []
+      },
+      "8:2": {
+        "available": true,
+        "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+        "uevent": {
+          "available": true,
+          "value": "MAJOR=8\nMINOR=2\nDEVNAME=sda2\nDEVTYPE=partition\nDISKSEQ=1\nPARTN=2\n"
+        },
+        "size_sectors": {
+          "available": true,
+          "value": "1951424512\n"
+        },
+        "partition": {
+          "available": true,
+          "value": "2\n"
+        },
+        "dm_name": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_suspended": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "queue": {
+          "scheduler": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "rotational": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "nr_requests": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "nomerges": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "max_sectors_kb": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "max_hw_sectors_kb": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "write_cache": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "wbt_lat_usec": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          }
+        },
+        "slaves": [],
+        "parent_device": "8:0"
+      }
+    },
+    "new_signals_workloads_or_control_writes": false,
+    "diskstats": [
+      "   8       0 sda 9483878 34907 3658365918 508115088 66344392 11836223 4351254119 395691488 0 421152567 903806576 0 0 0 0 0 0",
+      "   8       2 sda2 9483404 34907 3658234819 508086210 66344378 11836223 4351249982 395689402 0 455479186 903775612 0 0 0 0 0 0",
+      " 253       0 dm-0 3807793 0 3658225643 184355615 73318382 0 4351249982 3268105085 0 456687020 3452460700 0 0 0 0 0 0"
+    ],
+    "profile_sha256": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "profile": {
+      "version": 2,
+      "method": "direct-sync-qdepth1-seq1m-random4k",
+      "created_utc": "2026-11-10T08:51:45Z",
+      "devices": [
+        {
+          "device": "253:0",
+          "identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+          "read_bps": 64700080,
+          "write_bps": 37470104,
+          "read_iops": 83,
+          "write_iops": 135,
+          "measurements": [
+            {
+              "read_bps": 66988685,
+              "write_bps": 38961279,
+              "read_iops": 67,
+              "write_iops": 128,
+              "seconds_per_phase": 3,
+              "created_utc": "2026-11-10T08:51:45Z"
+            },
+            {
+              "read_bps": 55850024,
+              "write_bps": 37470104,
+              "read_iops": 124,
+              "write_iops": 135,
+              "seconds_per_phase": 3,
+              "created_utc": "2026-11-10T08:52:02Z"
+            },
+            {
+              "read_bps": 64700080,
+              "write_bps": 33856604,
+              "read_iops": 83,
+              "write_iops": 149,
+              "seconds_per_phase": 3,
+              "created_utc": "2026-11-10T08:52:18Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "source_PGDATA_and_directory_inventory": {
+    "node_utc": "2026-11-11T15:08:28.530952+00:00",
+    "roles": {
+      "dbs": {
+        "postgresql_children": [
+          {
+            "name": "basebackup",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          },
+          {
+            "name": "pg_audit_logs",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          },
+          {
+            "name": "pg_log",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          },
+          {
+            "name": "pgdata",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": true
+          },
+          {
+            "name": "pgsql",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          }
+        ],
+        "PGDATA_env": [
+          {
+            "name": "PGDATA",
+            "value": "/opt/postgresql/pgdata"
+          }
+        ]
+      },
+      "hisdbs": {
+        "postgresql_children": [
+          {
+            "name": "basebackup",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          },
+          {
+            "name": "pg_audit_logs",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          },
+          {
+            "name": "pg_log",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          },
+          {
+            "name": "pgdata",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": true
+          },
+          {
+            "name": "pgsql",
+            "symlink": false,
+            "directory": true,
+            "PG_VERSION_exists": false
+          }
+        ],
+        "PGDATA_env": [
+          {
+            "name": "PGDATA",
+            "value": "/opt/postgresql/pgdata"
+          }
+        ]
+      }
+    }
+  },
+  "actual_PGDATA_and_device_map": {
+    "schema": "crg-postfailure-readonly-IO-map-v1",
+    "node_utc": "2026-11-11T15:09:23.620267+00:00",
+    "roles": {
+      "dbs": {
+        "paths": {
+          "dbs/log/DBS.log": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/dbs/log/DBS.log",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 3015654,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/pgdata": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/pgdata",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 4096,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/pgdata/pg_wal": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/pgdata/pg_wal",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 12288,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/basebackup": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/postgresql/basebackup",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 4096,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          }
+        },
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      },
+      "hisdbs": {
+        "paths": {
+          "dbs/log/DBS.log": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/dbs/log/DBS.log",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 1816421,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/pgdata": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/pgdata",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 4096,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/pgdata/pg_wal": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/pgdata/pg_wal",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 8192,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          },
+          "postgresql/basebackup": {
+            "path": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/postgresql/basebackup",
+            "exists_or_symlink": true,
+            "symlink": false,
+            "device": "253:0",
+            "size_bytes": 4096,
+            "mount_query_exit": 0,
+            "mount": {
+              "filesystems": [
+                {
+                  "target": "/",
+                  "source": "/dev/mapper/almalinux-root",
+                  "fstype": "xfs",
+                  "maj:min": "253:0"
+                }
+              ]
+            }
+          }
+        },
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "profile_absent": true,
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+      }
+    },
+    "devices": {
+      "253:0": {
+        "available": true,
+        "sysfs": "/sys/devices/virtual/block/dm-0",
+        "uevent": {
+          "available": true,
+          "value": "MAJOR=253\nMINOR=0\nDEVNAME=dm-0\nDEVTYPE=disk\nDISKSEQ=2\n"
+        },
+        "size_sectors": {
+          "available": true,
+          "value": "1885913088\n"
+        },
+        "partition": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_name": {
+          "available": true,
+          "value": "almalinux-root\n"
+        },
+        "dm_suspended": {
+          "available": true,
+          "value": "0\n"
+        },
+        "queue": {
+          "scheduler": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "rotational": {
+            "available": true,
+            "value": "1\n"
+          },
+          "nr_requests": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "nomerges": {
+            "available": true,
+            "value": "0\n"
+          },
+          "max_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "max_hw_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "write_cache": {
+            "available": true,
+            "value": "write through\n"
+          },
+          "wbt_lat_usec": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          }
+        },
+        "slaves": [
+          {
+            "name": "sda2",
+            "device": "8:2"
+          }
+        ]
+      },
+      "8:0": {
+        "available": true,
+        "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda",
+        "uevent": {
+          "available": true,
+          "value": "MAJOR=8\nMINOR=0\nDEVNAME=sda\nDEVTYPE=disk\nDISKSEQ=1\n"
+        },
+        "size_sectors": {
+          "available": true,
+          "value": "1953525168\n"
+        },
+        "partition": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_name": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_suspended": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "queue": {
+          "scheduler": {
+            "available": true,
+            "value": "none [mq-deadline] kyber bfq \n"
+          },
+          "rotational": {
+            "available": true,
+            "value": "1\n"
+          },
+          "nr_requests": {
+            "available": true,
+            "value": "256\n"
+          },
+          "nomerges": {
+            "available": true,
+            "value": "0\n"
+          },
+          "max_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "max_hw_sectors_kb": {
+            "available": true,
+            "value": "256\n"
+          },
+          "write_cache": {
+            "available": true,
+            "value": "write through\n"
+          },
+          "wbt_lat_usec": {
+            "available": true,
+            "value": "75000\n"
+          }
+        },
+        "slaves": []
+      },
+      "8:2": {
+        "available": true,
+        "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2",
+        "uevent": {
+          "available": true,
+          "value": "MAJOR=8\nMINOR=2\nDEVNAME=sda2\nDEVTYPE=partition\nDISKSEQ=1\nPARTN=2\n"
+        },
+        "size_sectors": {
+          "available": true,
+          "value": "1951424512\n"
+        },
+        "partition": {
+          "available": true,
+          "value": "2\n"
+        },
+        "dm_name": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "dm_suspended": {
+          "available": false,
+          "reason": "FileNotFoundError"
+        },
+        "queue": {
+          "scheduler": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "rotational": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "nr_requests": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "nomerges": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "max_sectors_kb": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "max_hw_sectors_kb": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "write_cache": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          },
+          "wbt_lat_usec": {
+            "available": false,
+            "reason": "FileNotFoundError"
+          }
+        },
+        "slaves": [],
+        "parent_device": "8:0"
+      }
+    },
+    "new_signals_workloads_or_control_writes": false,
+    "diskstats": [
+      "   8       0 sda 9483879 34907 3658365926 508115096 66351329 11837322 4351408065 396895010 0 421200275 905010106 0 0 0 0 0 0",
+      "   8       2 sda2 9483405 34907 3658234827 508086218 66351315 11837322 4351403928 396892924 1 455530985 904979142 0 0 0 0 0 0",
+      " 253       0 dm-0 3807794 0 3658225651 184355623 73326387 0 4351403928 3269658830 1 456739031 3454014453 0 0 0 0 0 0"
+    ],
+    "profile_sha256": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "profile": {
+      "version": 2,
+      "method": "direct-sync-qdepth1-seq1m-random4k",
+      "created_utc": "2026-11-10T08:51:45Z",
+      "devices": [
+        {
+          "device": "253:0",
+          "identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+          "read_bps": 64700080,
+          "write_bps": 37470104,
+          "read_iops": 83,
+          "write_iops": 135,
+          "measurements": [
+            {
+              "read_bps": 66988685,
+              "write_bps": 38961279,
+              "read_iops": 67,
+              "write_iops": 128,
+              "seconds_per_phase": 3,
+              "created_utc": "2026-11-10T08:51:45Z"
+            },
+            {
+              "read_bps": 55850024,
+              "write_bps": 37470104,
+              "read_iops": 124,
+              "write_iops": 135,
+              "seconds_per_phase": 3,
+              "created_utc": "2026-11-10T08:52:02Z"
+            },
+            {
+              "read_bps": 64700080,
+              "write_bps": 33856604,
+              "read_iops": 83,
+              "write_iops": 149,
+              "seconds_per_phase": 3,
+              "created_utc": "2026-11-10T08:52:18Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw_receipt_sha256": {
+    "crg-r252-io-map97.json": "4b2bf302a156f72bd2cfe5f2d4dd9e430166b24ee1e20c1f6f6844d9f23b156e",
+    "crg-r253-io-path-inventory97.json": "db7355050dac84d95c31770651167e49491f1bd5e26b3d9d2d943960254288b1",
+    "crg-r254-io-map-realpg97.json": "2b3198f7e2df3e85a65711951d0033e4c4ce3829f6c05eae87e5bcea0a77d600"
+  },
+  "no_new_benchmark_signals_control_changes_or_SQL": true,
+  "snapshot_after_pressure_does_not_reconstruct_past_queue_or_prove_cause": true,
+  "stable_release_accepted": false
+}
