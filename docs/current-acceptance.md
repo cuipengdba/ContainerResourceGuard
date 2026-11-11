@@ -9,7 +9,7 @@
 | 范围 | 可核对的实际证据 | 不能据此宣称 |
 |---|---|---|
 | [已发布工程预览](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v0.1.0-rc.3-preview.1) | 三独立比例/cgroup门禁/日志；原资产Linux6.8/7.0、AMD64/ARM64四格[88项控制器检查](testing-released-cgroup-ci.md) | 正式RC3或稳定1.0、ARM厂商业务 |
-| 当前未发布d3706f3程序 | [自身CI/原生ARM及整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[三场景各1800秒开销](testing-partition-steady-overhead.md) | 把其他源码结果改名为当前程序，或以工程检查替代完整业务长测 |
+| d3706f3程序（现已工程预发布） | [自身CI/原生ARM及整盘44项](testing-partition-integration.md)、[构建身份9项](testing-partition-build-identity.md)、[三场景各1800秒开销](testing-partition-steady-overhead.md) | 把其他源码结果改名为当前程序，或以工程检查替代完整业务长测 |
 | 当前程序DBS/HISDBS真实路径 | [各600秒/12项业务](testing-partition-realpaths-business.md)、[20场景/108项辅助故障](testing-partition-realpaths-faults.md)、[开发构建维护22项/各600秒](testing-partition-realpaths-maintenance.md)、[四次冷启动44项](testing-partition-realpaths-cold-rebuild.md)，各终态通过且清理 | 默认20%或自动30%持续性能、最近两个已发布次版本维护 |
 | 分区IO增强 | 468fe73的真实GPT双分区四格[164项](testing-partition-cgroup.md)；与组合生产源码逐文件合同独立列明 | 两块独立物理盘，或当前d370实际跑过同一164项 |
 | 版本门禁与权限降级 | [版本输入模拟/真实v2及日志](testing-three-percent-cgroup-logs.md)、当前[真实只读/辅助故障](testing-partition-realpaths-faults.md)分别留档 | 真实v1内核已测，或权限丢失时一定能恢复已生效的配额 |
@@ -77,3 +77,9 @@
 
 
 本轮已补齐精确发布候选的[15项工程重载终态](testing-versioned-candidate-reload.md)及当前d370源码[两个10分钟解析器fuzz](testing-d370-parser-fuzz-windows.md)，21,680,191次执行、exit0。同步[修正任务索引中旧24h基线等状态](task-index-review-20261111.md)，保留52项原定义和旧scope_note；未将工程重载或源码fuzz计为厂商业务/实际七天验收。preview.2既有资产保持，长期及原稳定条件继续。
+
+
+精确版本化候选[真实DBS/HISDBS业务热重载联测](testing-versioned-business-reload.md)现已24项主检查通过；两角色各600秒、14次配置观察均有8文件实际回读，原引擎各10项/原生阈值/同一业务与辅助进程/原值恢复及清理通过。仅覆盖本协议场景；实际七天、正式对照和原稳定条件继续。
+
+
+本轮HISDBS保留一次[exec API 7.017秒诊断失败](testing-versioned-business-reload.md#保留的exec探测超阈值)，超过原5秒；原生API整段最大0.008936秒/错误0。原因尚未确定，未将诊断失败改成通过或关闭P01.3。
