@@ -254,3 +254,7 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [Agent活动生命周期工具资格](testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。
+
+## 2026-11-12 即时发布指令
+
+用户要求立即在GitHub发布供更新环境。已交付v1.0.0-preview.3两架构工程包并校验全部八项公开附件；沿用受测程序，不关闭稳定条件。[发布范围和更新说明](releases/v1.0.0-preview.3.md)、[发布记录](test-results-preview3-publication.json)。
