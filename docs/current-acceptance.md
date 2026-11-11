@@ -98,3 +98,6 @@ R120[配置恢复边界联测失败](testing-business-reload-source-recovery.md)
 
 
 R130[压力补测失败](testing-business-memory-pressure.md)：辅助工具在Python2/linux2平台名判断处拒绝，未申请压力内存，仅DBS10项局部检查，无600秒/HIS业务接受。新工具[实际运行时兼容/释放检查](testing-memory-pressure-legacy-runtime.md)通过Linux7项及两镜像16项并独立清理；产品与原执行器/计划保持，真实高用量及R120/长期仍待。
+
+
+R142[真实30→20压力失败终态](testing-business-memory-pressure-legacy.md)：DBS实际分配约10.06GiB，延后缩减与释放后同generation7自动重试局部通过；11段/13项后，原生600.315秒API3次错误使整轮失败，HIS未执行。10项引擎内容及控制局部成功不抵消失败；独立清理/原输入和ELF保持。业务HttpTest日志出现17.857秒间隔，根因未定，原32项/全部SLA和长期门槛继续。
