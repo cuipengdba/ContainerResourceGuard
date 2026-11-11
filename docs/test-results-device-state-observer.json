@@ -1,0 +1,1314 @@
+{
+  "schema": "crg-device-state-observer-qualified-v1",
+  "phase": "qualified-readonly-diagnostics-not-business-acceptance",
+  "node_observed_utc": "2026-11-11T17:19:46.943093+00:00",
+  "sources_sha256": {
+    "tests/vendor-device-state-observer.py": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+    "tests/vendor-device-state-observer-checks.py": "129fbebd900958f1f58ffd52ec111b80e4813bf0fa9d482a5ec0fabcfe662ba5",
+    "tests/vendor-device-state-lifecycle-checks.py": "468d24d725a2865a315da590b8bfaf09dfbee27af5b2408f953e8cf46cb789f9"
+  },
+  "roles": {
+    "host": {
+      "python": "3.9.21",
+      "checks": [
+        {
+          "name": "actual-libc-monotonic-and-process-CPU-clocks",
+          "passed": true
+        },
+        {
+          "name": "synthetic-17-field-stat-names-and-fixed512byte-sector-label",
+          "passed": true
+        },
+        {
+          "name": "synthetic-old11-field-layout-does-not-invent-newer-fields",
+          "passed": true
+        },
+        {
+          "name": "unrecognized-stat-layout-refused",
+          "passed": true
+        },
+        {
+          "name": "negative-stat-counter-refused",
+          "passed": true
+        },
+        {
+          "name": "oversized-uint64-refused",
+          "passed": true
+        },
+        {
+          "name": "wrong-meminfo-unit-refused",
+          "passed": true
+        },
+        {
+          "name": "meminfo-byte-conversion-and-unselected-fields-not-retained",
+          "passed": true
+        },
+        {
+          "name": "cgroup-IO-selected-devices-and-fields-only",
+          "passed": true
+        },
+        {
+          "name": "duplicate-selected-IO-device-refused",
+          "passed": true
+        },
+        {
+          "name": "synthetic-counter-reset-remains-unknown",
+          "passed": true
+        },
+        {
+          "name": "inflight-gauge-may-decrease-without-false-reset",
+          "passed": true
+        },
+        {
+          "name": "layout-change-remains-unknown",
+          "passed": true
+        },
+        {
+          "name": "process-comm-parentheses-and-spaces-do-not-shift-startticks",
+          "passed": true
+        },
+        {
+          "name": "hybrid-membership-refused",
+          "passed": true
+        },
+        {
+          "name": "membership-parent-traversal-refused",
+          "passed": true
+        },
+        {
+          "name": "actual-preflight-creates-no-output",
+          "passed": true
+        },
+        {
+          "name": "execute-marker-missing-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-duration901-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-source-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-process-start-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-group-inode-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-device-inode-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-device-path-outside-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-duplicate-device-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-too-many-devices-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-boot-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "wrong-plan-digest-refused",
+          "passed": true
+        },
+        {
+          "name": "duplicate-JSON-key-refused",
+          "passed": true
+        },
+        {
+          "name": "symlink-output-refused-without-changing-target",
+          "passed": true
+        },
+        {
+          "child_CPU_seconds": 0.05600500000000003,
+          "child_high_water_RSS_kib": 15552,
+          "controls_unchanged": true,
+          "maximum_collection_seconds": 0.0023097179364413023,
+          "name": "actual-three-second-four-sample-read-only-observation",
+          "passed": true,
+          "report_bytes": 11935,
+          "report_mode": "0600",
+          "report_sha256": "cf73183bbb9a7808b91476484c631b039a6793f11baa9a07092c020ae6ecb3dd",
+          "same_parent_instance": true,
+          "whole_wall_seconds": 3.0837597199715674
+        },
+        {
+          "name": "existing-real-report-refused-without-overwrite",
+          "passed": true
+        }
+      ],
+      "actual_plan": {
+        "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+        "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219311.scope",
+        "cgroup_identity": [
+          25,
+          28064561
+        ],
+        "devices": [
+          {
+            "identity": [
+              21,
+              55869
+            ],
+            "major_minor": "253:0",
+            "sysfs": "/sys/devices/virtual/block/dm-0"
+          },
+          {
+            "identity": [
+              21,
+              55779
+            ],
+            "major_minor": "8:2",
+            "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2"
+          },
+          {
+            "identity": [
+              21,
+              55604
+            ],
+            "major_minor": "8:0",
+            "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda"
+          }
+        ],
+        "duration_seconds": 3,
+        "label": "selftest",
+        "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+        "output": "/var/tmp/crg-device295-host-20261111/real-observation.json",
+        "pid": 1061056,
+        "schema": "crg-device-state-observer-plan-v1",
+        "start_ticks": 135712973
+      },
+      "actual_sample_count": 4,
+      "cost": {
+        "child_CPU_seconds": 0.05600500000000003,
+        "child_high_water_RSS_kib": 15552,
+        "controls_unchanged": true,
+        "maximum_collection_seconds": 0.0023097179364413023,
+        "name": "actual-three-second-four-sample-read-only-observation",
+        "passed": true,
+        "report_bytes": 11935,
+        "report_mode": "0600",
+        "report_sha256": "cf73183bbb9a7808b91476484c631b039a6793f11baa9a07092c020ae6ecb3dd",
+        "same_parent_instance": true,
+        "whole_wall_seconds": 3.0837597199715674
+      },
+      "fresh_process_cgroup_and_boot_pinned": true
+    },
+    "dbs": {
+      "python": "2.7.5",
+      "checks": [
+        {
+          "name": "actual-libc-monotonic-and-process-CPU-clocks",
+          "passed": true
+        },
+        {
+          "name": "synthetic-17-field-stat-names-and-fixed512byte-sector-label",
+          "passed": true
+        },
+        {
+          "name": "synthetic-old11-field-layout-does-not-invent-newer-fields",
+          "passed": true
+        },
+        {
+          "name": "unrecognized-stat-layout-refused",
+          "passed": true
+        },
+        {
+          "name": "negative-stat-counter-refused",
+          "passed": true
+        },
+        {
+          "name": "oversized-uint64-refused",
+          "passed": true
+        },
+        {
+          "name": "wrong-meminfo-unit-refused",
+          "passed": true
+        },
+        {
+          "name": "meminfo-byte-conversion-and-unselected-fields-not-retained",
+          "passed": true
+        },
+        {
+          "name": "cgroup-IO-selected-devices-and-fields-only",
+          "passed": true
+        },
+        {
+          "name": "duplicate-selected-IO-device-refused",
+          "passed": true
+        },
+        {
+          "name": "synthetic-counter-reset-remains-unknown",
+          "passed": true
+        },
+        {
+          "name": "inflight-gauge-may-decrease-without-false-reset",
+          "passed": true
+        },
+        {
+          "name": "layout-change-remains-unknown",
+          "passed": true
+        },
+        {
+          "name": "process-comm-parentheses-and-spaces-do-not-shift-startticks",
+          "passed": true
+        },
+        {
+          "name": "hybrid-membership-refused",
+          "passed": true
+        },
+        {
+          "name": "membership-parent-traversal-refused",
+          "passed": true
+        },
+        {
+          "name": "actual-preflight-creates-no-output",
+          "passed": true
+        },
+        {
+          "name": "execute-marker-missing-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-duration901-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-source-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-process-start-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-group-inode-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-device-inode-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-device-path-outside-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-duplicate-device-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-too-many-devices-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-boot-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "wrong-plan-digest-refused",
+          "passed": true
+        },
+        {
+          "name": "duplicate-JSON-key-refused",
+          "passed": true
+        },
+        {
+          "name": "symlink-output-refused-without-changing-target",
+          "passed": true
+        },
+        {
+          "child_CPU_seconds": 0.057299000000000044,
+          "child_high_water_RSS_kib": 11928,
+          "controls_unchanged": true,
+          "maximum_collection_seconds": 0.003885813057422638,
+          "name": "actual-three-second-four-sample-read-only-observation",
+          "passed": true,
+          "report_bytes": 12407,
+          "report_mode": "0600",
+          "report_sha256": "92cf93afd5bb8536151923421c719da388bd529c18da8928daaac5d2b8f194b8",
+          "same_parent_instance": true,
+          "whole_wall_seconds": 3.06994716799818
+        },
+        {
+          "name": "existing-real-report-refused-without-overwrite",
+          "passed": true
+        }
+      ],
+      "actual_plan": {
+        "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+        "cgroup": "/sys/fs/cgroup",
+        "cgroup_identity": [
+          25,
+          28064793
+        ],
+        "devices": [
+          {
+            "identity": [
+              2097183,
+              55869
+            ],
+            "major_minor": "253:0",
+            "sysfs": "/sys/devices/virtual/block/dm-0"
+          },
+          {
+            "identity": [
+              2097183,
+              55779
+            ],
+            "major_minor": "8:2",
+            "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2"
+          },
+          {
+            "identity": [
+              2097183,
+              55604
+            ],
+            "major_minor": "8:0",
+            "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda"
+          }
+        ],
+        "duration_seconds": 3,
+        "label": "selftest",
+        "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+        "output": "/var/tmp/crg-device295-checks/real-observation.json",
+        "pid": 25,
+        "schema": "crg-device-state-observer-plan-v1",
+        "start_ticks": 135713881
+      },
+      "actual_sample_count": 4,
+      "cost": {
+        "child_CPU_seconds": 0.057299000000000044,
+        "child_high_water_RSS_kib": 11928,
+        "controls_unchanged": true,
+        "maximum_collection_seconds": 0.003885813057422638,
+        "name": "actual-three-second-four-sample-read-only-observation",
+        "passed": true,
+        "report_bytes": 12407,
+        "report_mode": "0600",
+        "report_sha256": "92cf93afd5bb8536151923421c719da388bd529c18da8928daaac5d2b8f194b8",
+        "same_parent_instance": true,
+        "whole_wall_seconds": 3.06994716799818
+      },
+      "fresh_process_cgroup_and_boot_pinned": true,
+      "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "source_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "Pod_security_config": {
+        "uid": 999,
+        "gid": 998,
+        "read_only_root": true,
+        "drop_all_capabilities": true
+      },
+      "original_data_mounted": false,
+      "pod_absent": true,
+      "cgroup_absent": true
+    },
+    "hisdbs": {
+      "python": "2.7.5",
+      "checks": [
+        {
+          "name": "actual-libc-monotonic-and-process-CPU-clocks",
+          "passed": true
+        },
+        {
+          "name": "synthetic-17-field-stat-names-and-fixed512byte-sector-label",
+          "passed": true
+        },
+        {
+          "name": "synthetic-old11-field-layout-does-not-invent-newer-fields",
+          "passed": true
+        },
+        {
+          "name": "unrecognized-stat-layout-refused",
+          "passed": true
+        },
+        {
+          "name": "negative-stat-counter-refused",
+          "passed": true
+        },
+        {
+          "name": "oversized-uint64-refused",
+          "passed": true
+        },
+        {
+          "name": "wrong-meminfo-unit-refused",
+          "passed": true
+        },
+        {
+          "name": "meminfo-byte-conversion-and-unselected-fields-not-retained",
+          "passed": true
+        },
+        {
+          "name": "cgroup-IO-selected-devices-and-fields-only",
+          "passed": true
+        },
+        {
+          "name": "duplicate-selected-IO-device-refused",
+          "passed": true
+        },
+        {
+          "name": "synthetic-counter-reset-remains-unknown",
+          "passed": true
+        },
+        {
+          "name": "inflight-gauge-may-decrease-without-false-reset",
+          "passed": true
+        },
+        {
+          "name": "layout-change-remains-unknown",
+          "passed": true
+        },
+        {
+          "name": "process-comm-parentheses-and-spaces-do-not-shift-startticks",
+          "passed": true
+        },
+        {
+          "name": "hybrid-membership-refused",
+          "passed": true
+        },
+        {
+          "name": "membership-parent-traversal-refused",
+          "passed": true
+        },
+        {
+          "name": "actual-preflight-creates-no-output",
+          "passed": true
+        },
+        {
+          "name": "execute-marker-missing-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-duration901-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-source-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-process-start-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-group-inode-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-device-inode-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-device-path-outside-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-duplicate-device-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-too-many-devices-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-boot-mismatch-refused-before-output",
+          "passed": true
+        },
+        {
+          "name": "wrong-plan-digest-refused",
+          "passed": true
+        },
+        {
+          "name": "duplicate-JSON-key-refused",
+          "passed": true
+        },
+        {
+          "name": "symlink-output-refused-without-changing-target",
+          "passed": true
+        },
+        {
+          "child_CPU_seconds": 0.05760500000000007,
+          "child_high_water_RSS_kib": 12108,
+          "controls_unchanged": true,
+          "maximum_collection_seconds": 0.004521548980847001,
+          "name": "actual-three-second-four-sample-read-only-observation",
+          "passed": true,
+          "report_bytes": 11994,
+          "report_mode": "0600",
+          "report_sha256": "555eda1b918ac2478573785b1c45939ec3d55da0a15bcde1da7327e648ec58f8",
+          "same_parent_instance": true,
+          "whole_wall_seconds": 3.0705469080712646
+        },
+        {
+          "name": "existing-real-report-refused-without-overwrite",
+          "passed": true
+        }
+      ],
+      "actual_plan": {
+        "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+        "cgroup": "/sys/fs/cgroup",
+        "cgroup_identity": [
+          25,
+          28065796
+        ],
+        "devices": [
+          {
+            "identity": [
+              2097183,
+              55869
+            ],
+            "major_minor": "253:0",
+            "sysfs": "/sys/devices/virtual/block/dm-0"
+          },
+          {
+            "identity": [
+              2097183,
+              55779
+            ],
+            "major_minor": "8:2",
+            "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2"
+          },
+          {
+            "identity": [
+              2097183,
+              55604
+            ],
+            "major_minor": "8:0",
+            "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda"
+          }
+        ],
+        "duration_seconds": 3,
+        "label": "selftest",
+        "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+        "output": "/var/tmp/crg-device295-checks/real-observation.json",
+        "pid": 25,
+        "schema": "crg-device-state-observer-plan-v1",
+        "start_ticks": 135717914
+      },
+      "actual_sample_count": 4,
+      "cost": {
+        "child_CPU_seconds": 0.05760500000000007,
+        "child_high_water_RSS_kib": 12108,
+        "controls_unchanged": true,
+        "maximum_collection_seconds": 0.004521548980847001,
+        "name": "actual-three-second-four-sample-read-only-observation",
+        "passed": true,
+        "report_bytes": 11994,
+        "report_mode": "0600",
+        "report_sha256": "555eda1b918ac2478573785b1c45939ec3d55da0a15bcde1da7327e648ec58f8",
+        "same_parent_instance": true,
+        "whole_wall_seconds": 3.0705469080712646
+      },
+      "fresh_process_cgroup_and_boot_pinned": true,
+      "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "source_image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "Pod_security_config": {
+        "uid": 999,
+        "gid": 998,
+        "read_only_root": true,
+        "drop_all_capabilities": true
+      },
+      "original_data_mounted": false,
+      "pod_absent": true,
+      "cgroup_absent": true
+    }
+  },
+  "raw_evidence": {
+    "path": "test-evidence/device295-qualification.json.gz",
+    "gzip_sha256": "a9e13acbc1d4887a1d441e28be3d0adc52ee64a36dfb56a5d4de6070f770219d",
+    "gzip_bytes": 8336,
+    "uncompressed_sha256": "b188b04ffe44abd4673e3618bd85ae18f09611227cff3b13f7792a734c40d460",
+    "uncompressed_bytes": 68819
+  },
+  "runner": {
+    "pid": 1061055,
+    "start_ticks": 135712970,
+    "entry": "/var/tmp/crg-device295-tools-20261111/runtime-runner.py",
+    "runner_sha256": "20a689ff802b5363d14c35ccaf47ed11d0583a6c774ed63b3ae25b7773aff5fa",
+    "payload_sha256": "6059a16e1afff68b82c95f59f76a5437302b36fe23f5a21365fd740186954775"
+  },
+  "runner_gone": true,
+  "namespace_independently_absent": true,
+  "two_owned_Pod_cgroups_independently_absent": true,
+  "lifecycle": {
+    "schema": "crg-device-observer-lifecycle-qualification-v1",
+    "phase": "passed",
+    "checks": [
+      {
+        "name": "actual-target-natural-exit-stops-and-discards-changed-row",
+        "passed": true,
+        "target_pid": 1147511,
+        "target_start_ticks": 135752786,
+        "observer_pid": 1147512,
+        "observer_start_ticks": 135752786,
+        "exit": 2,
+        "raw_report_sha256": "57c676a6054e6a57c030334df12a8a2697e78aa24f4d16e8892402fa64ffe048",
+        "report": {
+          "block_device_opens_signals_and_control_writes": 0,
+          "elapsed_seconds": 2.0002275370061398,
+          "ended_epoch": 1794417586.7992013,
+          "interpretation": {
+            "causal_chain_or_stable_acceptance_proven": false,
+            "device_counters_are_shared_not_one_request_or_container": true,
+            "in_flight_is_a_gauge_not_monotonic_counter": true,
+            "kernel_counter_resets_or_field_changes_require_unknown_delta": true,
+            "missing_optional_fields_are_unknown": true,
+            "parent_child_devices_must_not_be_added": true,
+            "separate_reads_are_not_atomic": true
+          },
+          "maximum_collection_seconds": 0.0022179719526320696,
+          "maximum_devices": 4,
+          "maximum_report_bytes": 8388608,
+          "maximum_seconds": 900,
+          "observer_cpu_seconds": 0.004721841999999997,
+          "phase": "incomplete",
+          "plan": {
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219374.scope",
+            "cgroup_identity": [
+              25,
+              28073024
+            ],
+            "devices": [
+              {
+                "identity": [
+                  21,
+                  55869
+                ],
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0"
+              },
+              {
+                "identity": [
+                  21,
+                  55779
+                ],
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2"
+              },
+              {
+                "identity": [
+                  21,
+                  55604
+                ],
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda"
+              }
+            ],
+            "duration_seconds": 3,
+            "label": "selftest",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "output": "/var/tmp/crg-device298-lifecycle-20261111/target-exit.json",
+            "pid": 1147511,
+            "schema": "crg-device-state-observer-plan-v1",
+            "start_ticks": 135752786
+          },
+          "reason": "PROCESS_INSTANCE",
+          "sample_count": 2,
+          "sample_period_seconds": 1,
+          "samples": [
+            {
+              "cgroup": {
+                "cpu.max": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "cpu.stat": {
+                  "available": true,
+                  "value": {
+                    "system_usec": 188710,
+                    "usage_usec": 875052,
+                    "user_usec": 686342
+                  }
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": 24215552
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": {
+                    "high": 0,
+                    "low": 0,
+                    "max": 0,
+                    "oom": 0,
+                    "oom_group_kill": 0,
+                    "oom_kill": 0
+                  }
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": null
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": {
+                    "anon": 22859776,
+                    "file": 12288,
+                    "file_dirty": 12288,
+                    "file_writeback": 0,
+                    "shmem": 0
+                  }
+                }
+              },
+              "collection_seconds": 0.0019210800528526306,
+              "devices": {
+                "253:0": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 461529241,
+                    "read_ms": 185499661,
+                    "read_sectors_512bytes": 3676513427,
+                    "reads_completed": 3835625,
+                    "reads_merged": 0,
+                    "weighted_io_ms": 3580565239,
+                    "write_ms": 3395065578,
+                    "write_sectors_512bytes": 4453658991,
+                    "writes_completed": 74117152,
+                    "writes_merged": 0
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 425649130,
+                    "read_ms": 511519242,
+                    "read_sectors_512bytes": 3676653702,
+                    "reads_completed": 9540762,
+                    "reads_merged": 35061,
+                    "weighted_io_ms": 1030077091,
+                    "write_ms": 518557849,
+                    "write_sectors_512bytes": 4453663128,
+                    "writes_completed": 67177816,
+                    "writes_merged": 11934671
+                  }
+                },
+                "8:2": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 460326808,
+                    "read_ms": 511490363,
+                    "read_sectors_512bytes": 3676522603,
+                    "reads_completed": 9540288,
+                    "reads_merged": 35061,
+                    "weighted_io_ms": 1030046127,
+                    "write_ms": 518555763,
+                    "write_sectors_512bytes": 4453658991,
+                    "writes_completed": 67177802,
+                    "writes_merged": 11934671
+                  }
+                }
+              },
+              "ended_epoch": 1794417584.8009083,
+              "ended_monotonic": 1357527.912906728,
+              "epoch": 1794417584.7989967,
+              "host_memory_bytes": {
+                "available": true,
+                "value": {
+                  "Dirty": 1421312,
+                  "MemAvailable": 37619920896,
+                  "Writeback": 0
+                }
+              },
+              "host_vmstat_raw_units": {
+                "available": true,
+                "value": {
+                  "nr_dirtied": 496276371,
+                  "nr_dirty": 347,
+                  "nr_dirty_background_threshold": 860295,
+                  "nr_dirty_threshold": 1722694,
+                  "nr_writeback": 0,
+                  "nr_written": 487785130,
+                  "pgmajfault": 38490,
+                  "pgpgin": 1838326851,
+                  "pgpgout": 2226831564,
+                  "pswpin": 0,
+                  "pswpout": 0
+                }
+              },
+              "monotonic": 1357527.910988973,
+              "observer_cpu_seconds": 0.001914423999999998,
+              "process": {
+                "pid": 1147511,
+                "start_ticks": 135752786,
+                "state": "S"
+              }
+            },
+            {
+              "cgroup": {
+                "cpu.max": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "cpu.stat": {
+                  "available": true,
+                  "value": {
+                    "system_usec": 188710,
+                    "usage_usec": 877080,
+                    "user_usec": 688370
+                  }
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": 24031232
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": {
+                    "high": 0,
+                    "low": 0,
+                    "max": 0,
+                    "oom": 0,
+                    "oom_group_kill": 0,
+                    "oom_kill": 0
+                  }
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": null
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": {
+                    "anon": 22880256,
+                    "file": 12288,
+                    "file_dirty": 0,
+                    "file_writeback": 0,
+                    "shmem": 0
+                  }
+                }
+              },
+              "collection_seconds": 0.0022179719526320696,
+              "devices": {
+                "253:0": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 461530005,
+                    "read_ms": 185499661,
+                    "read_sectors_512bytes": 3676513427,
+                    "reads_completed": 3835625,
+                    "reads_merged": 0,
+                    "weighted_io_ms": 3580603830,
+                    "write_ms": 3395104169,
+                    "write_sectors_512bytes": 4453662558,
+                    "writes_completed": 74117334,
+                    "writes_merged": 0
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 425649875,
+                    "read_ms": 511519242,
+                    "read_sectors_512bytes": 3676653702,
+                    "reads_completed": 9540762,
+                    "reads_merged": 35061,
+                    "weighted_io_ms": 1030106897,
+                    "write_ms": 518587655,
+                    "write_sectors_512bytes": 4453666695,
+                    "writes_completed": 67177962,
+                    "writes_merged": 11934707
+                  }
+                },
+                "8:2": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 460327572,
+                    "read_ms": 511490363,
+                    "read_sectors_512bytes": 3676522603,
+                    "reads_completed": 9540288,
+                    "reads_merged": 35061,
+                    "weighted_io_ms": 1030075933,
+                    "write_ms": 518585569,
+                    "write_sectors_512bytes": 4453662558,
+                    "writes_completed": 67177948,
+                    "writes_merged": 11934707
+                  }
+                }
+              },
+              "ended_epoch": 1794417585.801256,
+              "ended_monotonic": 1357528.913256183,
+              "epoch": 1794417585.799063,
+              "host_memory_bytes": {
+                "available": true,
+                "value": {
+                  "Dirty": 69632,
+                  "MemAvailable": 37603053568,
+                  "Writeback": 24576
+                }
+              },
+              "host_vmstat_raw_units": {
+                "available": true,
+                "value": {
+                  "nr_dirtied": 496276479,
+                  "nr_dirty": 17,
+                  "nr_dirty_background_threshold": 859884,
+                  "nr_dirty_threshold": 1721871,
+                  "nr_writeback": 6,
+                  "nr_written": 487785549,
+                  "pgmajfault": 38490,
+                  "pgpgin": 1838326851,
+                  "pgpgout": 2226833347,
+                  "pswpin": 0,
+                  "pswpout": 0
+                }
+              },
+              "monotonic": 1357528.911042592,
+              "observer_cpu_seconds": 0.0021861190000000003,
+              "process": {
+                "pid": 1147511,
+                "start_ticks": 135752786,
+                "state": "S"
+              }
+            }
+          ],
+          "schema": "crg-device-state-observer-report-v1",
+          "started_epoch": 1794417584.7989852
+        }
+      },
+      {
+        "name": "pidfd-TERM-only-owned-observer-flushes-partial-without-signalling-target",
+        "passed": true,
+        "observer_pid": 1148129,
+        "observer_start_ticks": 135752994,
+        "exit": 2,
+        "raw_report_sha256": "e9fd39568806f650057d41bf3851e26efdb448041f9a2f62b132c39340d95e81",
+        "report": {
+          "block_device_opens_signals_and_control_writes": 0,
+          "elapsed_seconds": 0.002760297851637006,
+          "ended_epoch": 1794417586.8784003,
+          "interpretation": {
+            "causal_chain_or_stable_acceptance_proven": false,
+            "device_counters_are_shared_not_one_request_or_container": true,
+            "in_flight_is_a_gauge_not_monotonic_counter": true,
+            "kernel_counter_resets_or_field_changes_require_unknown_delta": true,
+            "missing_optional_fields_are_unknown": true,
+            "parent_child_devices_must_not_be_added": true,
+            "separate_reads_are_not_atomic": true
+          },
+          "maximum_collection_seconds": 0.0022130589932203293,
+          "maximum_devices": 4,
+          "maximum_report_bytes": 8388608,
+          "maximum_seconds": 900,
+          "observer_cpu_seconds": 0.0024318669999999973,
+          "phase": "incomplete",
+          "plan": {
+            "boot_id": "d78c2361-ce2a-41d4-8cac-4a9174f61cc1",
+            "cgroup": "/sys/fs/cgroup/user.slice/user-0.slice/session-219374.scope",
+            "cgroup_identity": [
+              25,
+              28073024
+            ],
+            "devices": [
+              {
+                "identity": [
+                  21,
+                  55869
+                ],
+                "major_minor": "253:0",
+                "sysfs": "/sys/devices/virtual/block/dm-0"
+              },
+              {
+                "identity": [
+                  21,
+                  55779
+                ],
+                "major_minor": "8:2",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda/sda2"
+              },
+              {
+                "identity": [
+                  21,
+                  55604
+                ],
+                "major_minor": "8:0",
+                "sysfs": "/sys/devices/pci0000:ad/0000:ad:00.0/0000:ae:00.0/host0/target0:0:0/0:0:0:0/block/sda"
+              }
+            ],
+            "duration_seconds": 3,
+            "label": "selftest",
+            "observer_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "output": "/var/tmp/crg-device298-lifecycle-20261111/observer-stop.json",
+            "pid": 1147510,
+            "schema": "crg-device-state-observer-plan-v1",
+            "start_ticks": 135752782
+          },
+          "reason": "observer-interrupted",
+          "sample_count": 1,
+          "sample_period_seconds": 1,
+          "samples": [
+            {
+              "cgroup": {
+                "cpu.max": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "cpu.stat": {
+                  "available": true,
+                  "value": {
+                    "system_usec": 196882,
+                    "usage_usec": 932308,
+                    "user_usec": 735426
+                  }
+                },
+                "io.max": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "io.stat": {
+                  "available": false,
+                  "reason": "read-unavailable"
+                },
+                "memory.current": {
+                  "available": true,
+                  "value": 21278720
+                },
+                "memory.events": {
+                  "available": true,
+                  "value": {
+                    "high": 0,
+                    "low": 0,
+                    "max": 0,
+                    "oom": 0,
+                    "oom_group_kill": 0,
+                    "oom_kill": 0
+                  }
+                },
+                "memory.max": {
+                  "available": true,
+                  "value": null
+                },
+                "memory.stat": {
+                  "available": true,
+                  "value": {
+                    "anon": 20373504,
+                    "file": 24576,
+                    "file_dirty": 4096,
+                    "file_writeback": 0,
+                    "shmem": 0
+                  }
+                }
+              },
+              "collection_seconds": 0.0022130589932203293,
+              "devices": {
+                "253:0": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 461530384,
+                    "read_ms": 185499661,
+                    "read_sectors_512bytes": 3676513427,
+                    "reads_completed": 3835625,
+                    "reads_merged": 0,
+                    "weighted_io_ms": 3580604493,
+                    "write_ms": 3395104832,
+                    "write_sectors_512bytes": 4453662935,
+                    "writes_completed": 74117358,
+                    "writes_merged": 0
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 425650209,
+                    "read_ms": 511519242,
+                    "read_sectors_512bytes": 3676653702,
+                    "reads_completed": 9540762,
+                    "reads_merged": 35061,
+                    "weighted_io_ms": 1030107560,
+                    "write_ms": 518588317,
+                    "write_sectors_512bytes": 4453667072,
+                    "writes_completed": 67177986,
+                    "writes_merged": 11934707
+                  }
+                },
+                "8:2": {
+                  "available": true,
+                  "value": {
+                    "discard_ms": 0,
+                    "discard_sectors_512bytes": 0,
+                    "discards_completed": 0,
+                    "discards_merged": 0,
+                    "flush_ms": 0,
+                    "flushes_completed": 0,
+                    "in_flight": 0,
+                    "io_ms": 460327951,
+                    "read_ms": 511490363,
+                    "read_sectors_512bytes": 3676522603,
+                    "reads_completed": 9540288,
+                    "reads_merged": 35061,
+                    "weighted_io_ms": 1030076595,
+                    "write_ms": 518586231,
+                    "write_sectors_512bytes": 4453662935,
+                    "writes_completed": 67177972,
+                    "writes_merged": 11934707
+                  }
+                }
+              },
+              "ended_epoch": 1794417586.8778672,
+              "ended_monotonic": 1357529.989865492,
+              "epoch": 1794417586.8756633,
+              "host_memory_bytes": {
+                "available": true,
+                "value": {
+                  "Dirty": 393216,
+                  "MemAvailable": 37602562048,
+                  "Writeback": 0
+                }
+              },
+              "host_vmstat_raw_units": {
+                "available": true,
+                "value": {
+                  "nr_dirtied": 496276580,
+                  "nr_dirty": 96,
+                  "nr_dirty_background_threshold": 859873,
+                  "nr_dirty_threshold": 1721848,
+                  "nr_writeback": 0,
+                  "nr_written": 487785568,
+                  "pgmajfault": 38490,
+                  "pgpgin": 1838326851,
+                  "pgpgout": 2226833536,
+                  "pswpin": 0,
+                  "pswpout": 0
+                }
+              },
+              "monotonic": 1357529.987655534,
+              "observer_cpu_seconds": 0.0022061849999999994,
+              "process": {
+                "pid": 1147510,
+                "start_ticks": 135752782,
+                "state": "S"
+              }
+            }
+          ],
+          "schema": "crg-device-state-observer-report-v1",
+          "started_epoch": 1794417586.8756518
+        }
+      }
+    ],
+    "observer_source_sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+    "lifecycle_source_sha256": "468d24d725a2865a315da590b8bfaf09dfbee27af5b2408f953e8cf46cb789f9",
+    "target_signals": 0,
+    "owned_observer_TERM_count": 1,
+    "KILL_count": 0,
+    "observer_instances": [
+      {
+        "pid": 1147512,
+        "start_ticks": 135752786,
+        "entry": "/var/tmp/crg-device295-tools-20261111/vendor-device-state-observer.py"
+      },
+      {
+        "pid": 1148129,
+        "start_ticks": 135752994,
+        "entry": "/var/tmp/crg-device295-tools-20261111/vendor-device-state-observer.py"
+      }
+    ]
+  },
+  "lifecycle_observer_instances_independently_gone": [
+    true,
+    true
+  ],
+  "device_nodes_opened": 0,
+  "product_controls_written": 0,
+  "original_business_data_mounted": false,
+  "sampling_limits": {
+    "maximum_seconds": 900,
+    "maximum_devices": 4,
+    "read_bytes": 65536,
+    "sample_bytes": 8192,
+    "report_bytes": 8388608
+  },
+  "qualification_budget_each_real_child": {
+    "maximum_CPU_seconds": 1,
+    "maximum_collection_seconds": 0.1,
+    "maximum_child_high_water_RSS_kib": 131072
+  },
+  "actual_duration_is_short_not_900_or_full_pressure": true,
+  "original_32_two_role_acceptance_executed": false,
+  "historical_failure_resolved": false,
+  "P10_complete": false,
+  "stable_release_accepted": false
+}

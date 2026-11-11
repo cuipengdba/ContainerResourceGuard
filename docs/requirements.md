@@ -224,3 +224,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [写BPS对照v2终态](testing-write-bps-comparison-v2-result.md)：三组均实际600秒，A1 SQL4/API4错、B SQL0/API1错、A2同原上限SQL0/API0且16项组内通过；未形成预定A失败/B改善/A再失败模式，不能认定仅写带宽是原因。三namespace/cgroup及已固定负载/API/观察进程独立确认退出，配置和原源关键摘要保持；15份原始结构报告及8项离线复现/拒绝检查归档。原32项/两角色百分比、52任务和长期条件继续，不改变配额或原时限。
+
+
+[有界设备状态采集器](testing-device-state-observer.md)已实现：节点Python3.9与DBS/HISDBS原镜像Python2.7各32项实际通过（每份3秒/4样本），另2项节点真实自然退出/观察器pidfd TERM部分报告检查通过；原进程/两Pod scope/namespace独立确认退出。仅只读诊断资格，未接入原32项完整压力，不关闭历史失败；三资源比例、产品程序、52项和长期handle保持。
