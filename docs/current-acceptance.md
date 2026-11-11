@@ -1,5 +1,7 @@
 # 当前验收入口
 
+2026-11-12即时交付：[v1.0.0-preview.3](releases/v1.0.0-preview.3.md)，[八项公开下载校验](test-results-preview3-publication.json)。沿用受测程序并更新文档，稳定1.0及原验收条件继续；下方历史记录保留原时点。
+
 [Agent活动生命周期工具资格](testing-agent-activity-qualification.md)已实际完成：宿主机27项、原DBS/HISDBS各16项/共32项通过，正常和异常恢复均为同一Agent；暂停期间实际八项控制值、SQL/API、原PG/缓存身份保持，原进程/watchdog/两Pod父叶cgroup及namespace独立确认清理。首轮root直接psql缺libpq.so.5的退出127失败原件保留，修订采用原postgres登录环境；没有改配额/SLA。此项仅短生命周期工具资格，四臂固定83/135 IOPS对照执行器和完整600秒测量尚未完成，不代替原32项压力/两角色业务或稳定条件。
 
 [原七天句柄最新只读快照](test-progress-seven-day-during-agent-qualification.json)仍为measuring：原R57两角色约90382/90367秒、5周期，精确发布候选R78约76868/76866秒、4周期，所记录原实例与SQL/API错误0保持。未重启、未替换进程，尚非实际604800秒及后置通过。

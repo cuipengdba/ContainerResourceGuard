@@ -1,5 +1,7 @@
 # 安装、升级与回退
 
+2026-11-12即时交付：[v1.0.0-preview.3](releases/v1.0.0-preview.3.md)，[八项公开下载校验](test-results-preview3-publication.json)。沿用受测程序并更新文档，稳定1.0及原验收条件继续；下方历史记录保留原时点。
+
 当前即时交付：[v1.0.0-preview.2](releases/v1.0.0-preview.2.md)，与preview.1同一受测程序；[实际发布/下载核对](test-results-preview2-publication.json)。本版仅刷新文档和证据，稳定1.0尚未发布。
 
 CRG 是放进既有业务容器的静态二进制，不需要安装 Operator、不修改 Kubernetes 控制平面。首次持久接入仍要发布原 supervisor 的可选子进程管理逻辑，并在计划内重启时加载。
