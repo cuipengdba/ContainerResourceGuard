@@ -176,3 +176,6 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 原fc2 observe的DBS/HISDBS已[各实际86400秒终态通过](testing-baseline24h-final.md)，原生SQL/API零错误、四轮内容随完整窗口接受、工作线程/协调入口已退出，原exec超5秒诊断保留。原固定d6阶段重新只读前置13/14，通过完整前序但仍需其他业务夹具先正常清理；无阶段切换/写限额。原24h enforce及七天/当前v1.0.0新摘要资格仍独立，未发布1.0。
+
+
+本轮新v1.0.0程序dbc48aa5的[DBS/HISDBS各600秒业务](testing-versioned-candidate-business.md)及[20场景/108项辅助故障](testing-versioned-candidate-faults.md)终态通过，退出0且namespace独立确认清理；只对应既定预算和环境。另完成[实际保留数据辅助故障执行器](testing-aged-faults.md)、两套冻结计划与8项Linux自检，真实长门禁/提前执行pending且无写入，独立短数据20场景/152项演练已启动、尚未终态。原七天、正式阶段、未测环境及52项发布审计保持，未发布稳定1.0。
