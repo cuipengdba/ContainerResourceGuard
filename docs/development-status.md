@@ -179,3 +179,9 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 [实际短保留数据辅助故障20场景/152项终态通过](testing-aged-faults.md)，20次新容器ID、各场景旧64MiB及counter/PG/缓存/PID1/无OOM/TERM符合原条件，原输入/source journal及daily0600日志前缀保持；退出0且namespace独立确认清理。仅属于开发程序3a1的短演练，真实七天后阶段和新dbc程序的长期仍独立验收。
+
+
+新v1.0.0程序dbc48aa5已完成[自身在线升级/回退两角色各600秒、22项终态](testing-versioned-candidate-maintenance.md)，八段维护均被实际原生测量覆盖，原业务/缓存/journal/控制保持，最终disable还原真正原值；退出0且namespace独立确认清理。对端50671aa未发布开发构建，不能关闭两个已发布次版本条件，实际长期及未测环境另判。
+
+
+新版本化程序的[冷重建四次启动44项终态](testing-versioned-candidate-cold-rebuild.md)通过并清理，[自身七天测量](plan-seven-day-versioned-candidate.md)实际开始、首周期内容通过但native-pending；[独立实际谱系/只读后置门禁](testing-versioned-aged-preflight.md)已实现，Linux8项通过、真实封存及提前pending核对完成。初次报告结构错误拒绝和原计划/源码已保留，修正后未改业务进程、限额或验收门槛。本程序后置执行绑定、真实604800秒和全部稳定条件继续；工程预发布不关闭52项原任务。
