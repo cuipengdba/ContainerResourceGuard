@@ -1,0 +1,3320 @@
+{
+  "schema": "crg-final-wait-failure-analysis-v1",
+  "phase": "failed-with-specific-wait-evidence",
+  "terminal_receipt_sha256": "0df55da086fcd86dfb5bb9de3ae14cda0be12f315cae49e1351caaecbc6809ca",
+  "main_report_sha256": "4aadc21b51f0c2c385626cad2ee7db7f2aa2e01ec0afdcb257cf671fa57f1c5f",
+  "thread_raw_sha256": "c97d1fa67473d368178aca0a392739d67e05b7da8ee4c13c0d62adcab96fd866",
+  "native_report_sha256": "b908552da8254dff34cb8a860c0a7b4a5721617e612c2f4e044e0b218be37ce6",
+  "native_diagnostic_sha256": "856ac0612a6408ffcce7d41fd7b2263551d48f9bc7365b5e93c719dfa25b7a78",
+  "native_elapsed_seconds": 600.2920964490622,
+  "SQL": {
+    "attempts": 298,
+    "errors": 1,
+    "histogram": [
+      275,
+      12,
+      0,
+      0,
+      1,
+      1,
+      2,
+      1,
+      4,
+      0,
+      1,
+      1
+    ],
+    "max_seconds": 5.005026560975239,
+    "p95_bucket_upper_seconds": 0.005,
+    "sample_coverage": 0.9933333333333333,
+    "successes": 297,
+    "total_seconds": 13.02017178433016
+  },
+  "API": {
+    "attempts": 121,
+    "errors": 5,
+    "histogram": [
+      0,
+      0,
+      112,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      0
+    ],
+    "max_seconds": 4.004503923933953,
+    "p95_bucket_upper_seconds": 5,
+    "sample_coverage": 1.0083333333333333,
+    "successes": 116,
+    "total_seconds": 27.805524667724967
+  },
+  "errors": [
+    {
+      "request": {
+        "backend_pid": 1800,
+        "connection_observed_epoch": 1794408290.463282,
+        "elapsed_seconds": 5.004942347994074,
+        "ended_epoch": 1794408295.468169,
+        "ended_monotonic": 1348238.580161339,
+        "error": {
+          "class": "RuntimeError",
+          "code": "sql-readiness-deadline"
+        },
+        "iteration": 48,
+        "kind": "sql",
+        "sequence": 69,
+        "stage": "query",
+        "started_epoch": 1794408290.463258,
+        "started_monotonic": 1348233.575218991,
+        "success": false,
+        "synthetic_first_key": 769,
+        "within_original_5seconds": false
+      },
+      "overlapping_API_process_D_samples": [],
+      "io_and_memory_bracket": {
+        "available": true,
+        "first_epoch": 1794408289.970036,
+        "last_epoch": 1794408295.9700313,
+        "bracket_seconds": 5.999995231628418,
+        "io_deltas_by_device_do_not_add_parent_and_child": {
+          "8:0": {
+            "rbytes": 58978304,
+            "wbytes": 0,
+            "rios": 250,
+            "wios": 0
+          },
+          "253:0": {
+            "rbytes": 125607936,
+            "wbytes": 224051200,
+            "rios": 104,
+            "wios": 234
+          }
+        },
+        "memory_first": {
+          "file": 3430957056,
+          "file_dirty": 139067392,
+          "file_writeback": 296071168,
+          "anon": 92950528,
+          "shmem": 809459712
+        },
+        "memory_last": {
+          "file": 3680243712,
+          "file_dirty": 262742016,
+          "file_writeback": 58347520,
+          "anon": 91848704,
+          "shmem": 809459712
+        },
+        "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+        "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+      }
+    },
+    {
+      "request": {
+        "backend_pid": null,
+        "connection_observed_epoch": null,
+        "elapsed_seconds": 4.0037544020451605,
+        "ended_epoch": 1794408318.464121,
+        "ended_monotonic": 1348261.576112742,
+        "error": {
+          "class": "timeout",
+          "code": "socket-timeout"
+        },
+        "iteration": 24,
+        "kind": "api",
+        "sequence": 83,
+        "stage": "http-request",
+        "started_epoch": 1794408314.4604,
+        "started_monotonic": 1348257.57235834,
+        "success": false,
+        "within_original_5seconds": true
+      },
+      "overlapping_API_process_D_samples": [
+        {
+          "epoch": 1794408314.9700336,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408315.9700367,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408316.970041,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408317.9700313,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        }
+      ],
+      "io_and_memory_bracket": {
+        "available": true,
+        "first_epoch": 1794408313.9700367,
+        "last_epoch": 1794408318.9700441,
+        "bracket_seconds": 5.000007390975952,
+        "io_deltas_by_device_do_not_add_parent_and_child": {
+          "8:0": {
+            "rbytes": 14024704,
+            "wbytes": 0,
+            "rios": 347,
+            "wios": 0
+          },
+          "253:0": {
+            "rbytes": 18292736,
+            "wbytes": 190611456,
+            "rios": 378,
+            "wios": 108
+          }
+        },
+        "memory_first": {
+          "file": 4860694528,
+          "file_dirty": 147456,
+          "file_writeback": 847228928,
+          "anon": 96964608,
+          "shmem": 809467904
+        },
+        "memory_last": {
+          "file": 4898516992,
+          "file_dirty": 19660800,
+          "file_writeback": 663031808,
+          "anon": 90120192,
+          "shmem": 809467904
+        },
+        "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+        "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+      }
+    },
+    {
+      "request": {
+        "backend_pid": null,
+        "connection_observed_epoch": null,
+        "elapsed_seconds": 4.003660595044494,
+        "ended_epoch": 1794408323.464159,
+        "ended_monotonic": 1348266.576151798,
+        "error": {
+          "class": "timeout",
+          "code": "socket-timeout"
+        },
+        "iteration": 25,
+        "kind": "api",
+        "sequence": 86,
+        "stage": "http-request",
+        "started_epoch": 1794408319.460533,
+        "started_monotonic": 1348262.572491203,
+        "success": false,
+        "within_original_5seconds": true
+      },
+      "overlapping_API_process_D_samples": [
+        {
+          "epoch": 1794408319.9700289,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408320.9700348,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408321.9700348,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408322.970031,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        }
+      ],
+      "io_and_memory_bracket": {
+        "available": true,
+        "first_epoch": 1794408318.9700441,
+        "last_epoch": 1794408323.9700298,
+        "bracket_seconds": 4.999985694885254,
+        "io_deltas_by_device_do_not_add_parent_and_child": {
+          "8:0": {
+            "rbytes": 8093696,
+            "wbytes": 0,
+            "rios": 279,
+            "wios": 0
+          },
+          "253:0": {
+            "rbytes": 9093120,
+            "wbytes": 187719680,
+            "rios": 301,
+            "wios": 116
+          }
+        },
+        "memory_first": {
+          "file": 4898516992,
+          "file_dirty": 19660800,
+          "file_writeback": 663031808,
+          "anon": 90120192,
+          "shmem": 809467904
+        },
+        "memory_last": {
+          "file": 4917514240,
+          "file_dirty": 29601792,
+          "file_writeback": 484519936,
+          "anon": 98369536,
+          "shmem": 809467904
+        },
+        "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+        "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+      }
+    },
+    {
+      "request": {
+        "backend_pid": null,
+        "connection_observed_epoch": null,
+        "elapsed_seconds": 4.00355623383075,
+        "ended_epoch": 1794408328.46417,
+        "ended_monotonic": 1348271.576162784,
+        "error": {
+          "class": "timeout",
+          "code": "socket-timeout"
+        },
+        "iteration": 26,
+        "kind": "api",
+        "sequence": 90,
+        "stage": "http-request",
+        "started_epoch": 1794408324.460647,
+        "started_monotonic": 1348267.57260655,
+        "success": false,
+        "within_original_5seconds": true
+      },
+      "overlapping_API_process_D_samples": [
+        {
+          "epoch": 1794408324.9700289,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408325.9700298,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408326.9700341,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408327.9700346,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        }
+      ],
+      "io_and_memory_bracket": {
+        "available": true,
+        "first_epoch": 1794408323.9700298,
+        "last_epoch": 1794408328.97003,
+        "bracket_seconds": 5.000000238418579,
+        "io_deltas_by_device_do_not_add_parent_and_child": {
+          "8:0": {
+            "rbytes": 46587904,
+            "wbytes": 0,
+            "rios": 251,
+            "wios": 0
+          },
+          "253:0": {
+            "rbytes": 93413376,
+            "wbytes": 140759040,
+            "rios": 122,
+            "wios": 66
+          }
+        },
+        "memory_first": {
+          "file": 4917514240,
+          "file_dirty": 29601792,
+          "file_writeback": 484519936,
+          "anon": 98369536,
+          "shmem": 809467904
+        },
+        "memory_last": {
+          "file": 5105446912,
+          "file_dirty": 123129856,
+          "file_writeback": 359821312,
+          "anon": 98123776,
+          "shmem": 809467904
+        },
+        "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+        "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+      }
+    },
+    {
+      "request": {
+        "backend_pid": null,
+        "connection_observed_epoch": null,
+        "elapsed_seconds": 4.004430760862306,
+        "ended_epoch": 1794408333.465161,
+        "ended_monotonic": 1348276.577153985,
+        "error": {
+          "class": "timeout",
+          "code": "socket-timeout"
+        },
+        "iteration": 27,
+        "kind": "api",
+        "sequence": 93,
+        "stage": "http-request",
+        "started_epoch": 1794408329.460763,
+        "started_monotonic": 1348272.572723224,
+        "success": false,
+        "within_original_5seconds": true
+      },
+      "overlapping_API_process_D_samples": [
+        {
+          "epoch": 1794408329.9700315,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408330.9700334,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408331.9700344,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408332.9700296,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        }
+      ],
+      "io_and_memory_bracket": {
+        "available": true,
+        "first_epoch": 1794408328.97003,
+        "last_epoch": 1794408333.9701276,
+        "bracket_seconds": 5.0000975131988525,
+        "io_deltas_by_device_do_not_add_parent_and_child": {
+          "8:0": {
+            "rbytes": 3465216,
+            "wbytes": 0,
+            "rios": 87,
+            "wios": 0
+          },
+          "253:0": {
+            "rbytes": 4505600,
+            "wbytes": 202964992,
+            "rios": 93,
+            "wios": 70
+          }
+        },
+        "memory_first": {
+          "file": 5105446912,
+          "file_dirty": 123129856,
+          "file_writeback": 359821312,
+          "anon": 98123776,
+          "shmem": 809467904
+        },
+        "memory_last": {
+          "file": 5113982976,
+          "file_dirty": 128155648,
+          "file_writeback": 147214336,
+          "anon": 96960512,
+          "shmem": 809467904
+        },
+        "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+        "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+      }
+    },
+    {
+      "request": {
+        "backend_pid": null,
+        "connection_observed_epoch": null,
+        "elapsed_seconds": 4.003891730913892,
+        "ended_epoch": 1794408358.465183,
+        "ended_monotonic": 1348301.577175983,
+        "error": {
+          "class": "timeout",
+          "code": "socket-timeout"
+        },
+        "iteration": 32,
+        "kind": "api",
+        "sequence": 111,
+        "stage": "http-request",
+        "started_epoch": 1794408354.461325,
+        "started_monotonic": 1348297.573284252,
+        "success": false,
+        "within_original_5seconds": true
+      },
+      "overlapping_API_process_D_samples": [
+        {
+          "epoch": 1794408354.9700806,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408355.9700294,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408356.9700286,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        },
+        {
+          "epoch": 1794408357.970028,
+          "tid": 3248986,
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "operation": "write"
+        }
+      ],
+      "io_and_memory_bracket": {
+        "available": true,
+        "first_epoch": 1794408353.9700274,
+        "last_epoch": 1794408358.9700286,
+        "bracket_seconds": 5.0000011920928955,
+        "io_deltas_by_device_do_not_add_parent_and_child": {
+          "8:0": {
+            "rbytes": 0,
+            "wbytes": 202752,
+            "rios": 0,
+            "wios": 41
+          },
+          "253:0": {
+            "rbytes": 0,
+            "wbytes": 96606208,
+            "rios": 0,
+            "wios": 279
+          }
+        },
+        "memory_first": {
+          "file": 5518876672,
+          "file_dirty": 32768,
+          "file_writeback": 215941120,
+          "anon": 95928320,
+          "shmem": 809467904
+        },
+        "memory_last": {
+          "file": 5518893056,
+          "file_dirty": 28672,
+          "file_writeback": 141910016,
+          "anon": 95604736,
+          "shmem": 809476096
+        },
+        "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+        "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+      }
+    }
+  ],
+  "SQL_backend_wait_samples": [
+    {
+      "sample_started_epoch": 1794408290.469155,
+      "sample_ended_epoch": 1794408290.470329,
+      "activity_fields_available": true,
+      "backend_start_epoch": 1794408194.458534,
+      "blocking_pids": null,
+      "blocking_pids_measured": false,
+      "identity_available": true,
+      "pid": 1800,
+      "query_class": "fixture-update",
+      "query_start_epoch": 1794408290.463341,
+      "state": "active",
+      "transaction_start_epoch": 1794408290.463341,
+      "wait_event": "WALWrite",
+      "wait_event_type": "LWLock"
+    },
+    {
+      "sample_started_epoch": 1794408291.46927,
+      "sample_ended_epoch": 1794408291.47052,
+      "activity_fields_available": true,
+      "backend_start_epoch": 1794408194.458534,
+      "blocking_pids": null,
+      "blocking_pids_measured": false,
+      "identity_available": true,
+      "pid": 1800,
+      "query_class": "fixture-update",
+      "query_start_epoch": 1794408290.463341,
+      "state": "active",
+      "transaction_start_epoch": 1794408290.463341,
+      "wait_event": "WALWrite",
+      "wait_event_type": "LWLock"
+    },
+    {
+      "sample_started_epoch": 1794408292.469385,
+      "sample_ended_epoch": 1794408292.470631,
+      "activity_fields_available": true,
+      "backend_start_epoch": 1794408194.458534,
+      "blocking_pids": null,
+      "blocking_pids_measured": false,
+      "identity_available": true,
+      "pid": 1800,
+      "query_class": "fixture-update",
+      "query_start_epoch": 1794408290.463341,
+      "state": "active",
+      "transaction_start_epoch": 1794408290.463341,
+      "wait_event": "WALWrite",
+      "wait_event_type": "LWLock"
+    },
+    {
+      "sample_started_epoch": 1794408293.469511,
+      "sample_ended_epoch": 1794408293.470789,
+      "activity_fields_available": true,
+      "backend_start_epoch": 1794408194.458534,
+      "blocking_pids": null,
+      "blocking_pids_measured": false,
+      "identity_available": true,
+      "pid": 1800,
+      "query_class": "fixture-update",
+      "query_start_epoch": 1794408290.463341,
+      "state": "active",
+      "transaction_start_epoch": 1794408290.463341,
+      "wait_event": "WALWrite",
+      "wait_event_type": "LWLock"
+    },
+    {
+      "sample_started_epoch": 1794408294.469622,
+      "sample_ended_epoch": 1794408294.470849,
+      "activity_fields_available": true,
+      "backend_start_epoch": 1794408194.458534,
+      "blocking_pids": null,
+      "blocking_pids_measured": false,
+      "identity_available": true,
+      "pid": 1800,
+      "query_class": "fixture-update",
+      "query_start_epoch": 1794408290.463341,
+      "state": "active",
+      "transaction_start_epoch": 1794408290.463341,
+      "wait_event": "WALWrite",
+      "wait_event_type": "LWLock"
+    }
+  ],
+  "D_sample_count": 36,
+  "D_thread_ids": [
+    3248986
+  ],
+  "D_runs": [
+    {
+      "first_epoch": 1794408312.97003,
+      "last_epoch": 1794408336.970038,
+      "samples": 25,
+      "span_seconds": 24.00000786781311
+    },
+    {
+      "first_epoch": 1794408352.9700284,
+      "last_epoch": 1794408362.9700375,
+      "samples": 11,
+      "span_seconds": 10.000009059906006
+    }
+  ],
+  "D_syscall_descriptor_counts": [
+    {
+      "operation": "write",
+      "path": "/opt/dbs/log/DBS.log",
+      "samples": 36
+    }
+  ],
+  "D_kernel_stack_variants": [
+    {
+      "frames": [
+        "folio_wait_bit_common",
+        "__filemap_get_folio",
+        "iomap_write_begin",
+        "iomap_write_iter",
+        "iomap_file_buffered_write",
+        "xfs_file_buffered_write",
+        "vfs_write",
+        "ksys_write",
+        "do_syscall_64",
+        "entry_SYSCALL_64_after_hwframe"
+      ],
+      "samples": 12
+    },
+    {
+      "frames": [
+        "folio_wait_bit",
+        "folio_wait_writeback",
+        "truncate_inode_partial_folio",
+        "truncate_inode_pages_range",
+        "iomap_write_begin",
+        "iomap_write_iter",
+        "iomap_file_buffered_write",
+        "xfs_file_buffered_write",
+        "vfs_write",
+        "ksys_write",
+        "do_syscall_64",
+        "entry_SYSCALL_64_after_hwframe"
+      ],
+      "samples": 24
+    }
+  ],
+  "D_complete_samples": [
+    {
+      "epoch": 1794408312.97003,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338972526 83553 227"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408313.9700367,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408314.9700336,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408315.9700367,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408316.970041,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408317.9700313,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408318.9700441,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408319.9700289,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408320.9700348,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408321.9700348,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408322.970031,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408323.9700298,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408324.9700289,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408325.9700298,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408326.9700341,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408327.9700346,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408328.97003,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408329.9700315,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408330.9700334,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408331.9700344,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408332.9700296,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408333.9701276,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408334.9700363,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408335.9700277,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408336.970038,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 61635,
+          "major_faults": 0,
+          "user_ticks": 13,
+          "system_ticks": 19,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "338976767 83553 228"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit",
+              "folio_wait_writeback",
+              "truncate_inode_partial_folio",
+              "truncate_inode_pages_range",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408352.9700284,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408353.9700274,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408354.9700806,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408355.9700294,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408356.9700286,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408357.970028,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408358.9700286,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408359.9700372,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408360.9700298,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408361.9700298,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    },
+    {
+      "epoch": 1794408362.9700375,
+      "task": {
+        "stat": {
+          "pid": 3248986,
+          "state": "D",
+          "minor_faults": 76717,
+          "major_faults": 0,
+          "user_ticks": 17,
+          "system_ticks": 24,
+          "threads": 47,
+          "start_ticks": 134811044,
+          "block_io_ticks": 0
+        },
+        "wchan": {
+          "available": true,
+          "value": "folio_wait_bit_common"
+        },
+        "schedstat": {
+          "available": true,
+          "value": "418314537 128945 265"
+        },
+        "wait_detail": {
+          "available": true,
+          "syscall": {
+            "available": true,
+            "number": 1,
+            "abi": "linux-x86_64",
+            "operation": "write",
+            "FD_argument_available": true,
+            "fd": 3
+          },
+          "kernel_stack": {
+            "available": true,
+            "frames": [
+              "folio_wait_bit_common",
+              "__filemap_get_folio",
+              "iomap_write_begin",
+              "iomap_write_iter",
+              "iomap_file_buffered_write",
+              "xfs_file_buffered_write",
+              "vfs_write",
+              "ksys_write",
+              "do_syscall_64",
+              "entry_SYSCALL_64_after_hwframe"
+            ],
+            "unknown_lines": 0,
+            "truncated": false,
+            "addresses_and_offsets_recorded": false
+          },
+          "descriptor": {
+            "available": true,
+            "kind": "allowlisted-path",
+            "path": "/opt/dbs/log/DBS.log",
+            "deleted": false
+          },
+          "state_before": "D",
+          "state_after": "D",
+          "task_identity_rechecked": true,
+          "separate_reads_not_atomic": true
+        }
+      }
+    }
+  ],
+  "D_window_io_and_memory": {
+    "available": true,
+    "first_epoch": 1794408312.97003,
+    "last_epoch": 1794408362.9700375,
+    "bracket_seconds": 50.00000739097595,
+    "io_deltas_by_device_do_not_add_parent_and_child": {
+      "8:0": {
+        "rbytes": 121192448,
+        "wbytes": 5368832,
+        "rios": 1573,
+        "wios": 197
+      },
+      "253:0": {
+        "rbytes": 316948480,
+        "wbytes": 1220328448,
+        "rios": 1509,
+        "wios": 2356
+      }
+    },
+    "memory_first": {
+      "file": 4857466880,
+      "file_dirty": 7102464,
+      "file_writeback": 873906176,
+      "anon": 97341440,
+      "shmem": 809467904
+    },
+    "memory_last": {
+      "file": 5518897152,
+      "file_dirty": 32768,
+      "file_writeback": 16887808,
+      "anon": 95784960,
+      "shmem": 809476096
+    },
+    "io_max_first": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+    "io_max_last": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+  },
+  "pressure_timing": {
+    "started_epoch": 1794408244.174621,
+    "release_started_epoch": 1794408265.3022022,
+    "ended_epoch": 1794408267.0957575
+  },
+  "all_D_samples_after_pressure_helper_release": true,
+  "thread_task_state_counts": {
+    "S": 28158,
+    "R": 6,
+    "D": 36
+  },
+  "CPU_throttled_usec_delta": 0,
+  "memory_event_deltas": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "engine": {
+    "phase": "content-passed-native-pending",
+    "report_sha256": "de34e594dfe2ad8b6c36cfec5b720988daa990d5f6ef4d10d9092c863b196cb2",
+    "content_checks": 10,
+    "load_seconds": 10.626093046972528,
+    "logical_backup_seconds": 6.226779194083065,
+    "physical_backup_seconds": 120.25355000793934,
+    "probe_count": 87,
+    "failed_or_above5s_API_probes": [
+      {
+        "time": 1794408312.1688185,
+        "api_outer_started_epoch": 1794408312.1692584,
+        "api_ok": false,
+        "api_inner": {
+          "pre_request_wall_seconds": 0.02668905258178711,
+          "request_finished_monotonic": 1348260.55307712,
+          "python_finished_epoch": 1794408317.44109,
+          "python_entered_epoch": 1794408312.408814,
+          "request_ok": false,
+          "request_started_monotonic": 1348255.547494309,
+          "request_seconds": 5.005582811078057,
+          "request_started_epoch": 1794408312.435503,
+          "failure_class": "timeout",
+          "schema": "crg-inner-api-timing-v1"
+        },
+        "api_seconds": 5.282457503955811,
+        "api_cgroup_before": {
+          "cpu.stat": "usage_usec 30555231\nuser_usec 15753590\nsystem_usec 14801641\ncore_sched.force_idle_usec 0\nnr_periods 1522\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "4976128000\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=395567104 wbytes=376160768 rios=2617 wios=2171 dbytes=0 dios=0\n253:0 rbytes=1322446848 wbytes=2170458624 rios=4258 wios=7312 dbytes=0 dios=0\n"
+        },
+        "api_cgroup_after": {
+          "cpu.stat": "usage_usec 30789651\nuser_usec 15856745\nsystem_usec 14932906\ncore_sched.force_idle_usec 0\nnr_periods 1574\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5017669632\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=410836992 wbytes=376160768 rios=2989 wios=2171 dbytes=0 dios=0\n253:0 rbytes=1341730816 wbytes=2366788096 rios=4664 wios=7449 dbytes=0 dios=0\n"
+        },
+        "api_outside_inner_request_seconds": 0.27687469287775457,
+        "sql_outer_started_epoch": 1794408317.45217,
+        "sql_ok": true,
+        "sql_seconds": 0.4621527111157775
+      },
+      {
+        "time": 1794408318.914414,
+        "api_outer_started_epoch": 1794408318.9148633,
+        "api_ok": false,
+        "api_inner": {
+          "pre_request_wall_seconds": 0.02714705467224121,
+          "request_finished_monotonic": 1348267.296077234,
+          "python_finished_epoch": 1794408324.184089,
+          "python_entered_epoch": 1794408319.151104,
+          "request_ok": false,
+          "request_started_monotonic": 1348262.290242766,
+          "request_seconds": 5.005834467941895,
+          "request_started_epoch": 1794408319.178251,
+          "failure_class": "timeout",
+          "schema": "crg-inner-api-timing-v1"
+        },
+        "api_seconds": 5.279490927001461,
+        "api_cgroup_before": {
+          "cpu.stat": "usage_usec 30872127\nuser_usec 15893674\nsystem_usec 14978452\ncore_sched.force_idle_usec 0\nnr_periods 1589\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5024419840\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=413483008 wbytes=376160768 rios=3089 wios=2171 dbytes=0 dios=0\n253:0 rbytes=1345171456 wbytes=2424267264 rios=4777 wios=7474 dbytes=0 dios=0\n"
+        },
+        "api_cgroup_after": {
+          "cpu.stat": "usage_usec 31071284\nuser_usec 15985472\nsystem_usec 15085811\ncore_sched.force_idle_usec 0\nnr_periods 1642\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5047017472\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=421855232 wbytes=376160768 rios=3384 wios=2171 dbytes=0 dios=0\n253:0 rbytes=1354567680 wbytes=2618814976 rios=5095 wios=7592 dbytes=0 dios=0\n"
+        },
+        "api_outside_inner_request_seconds": 0.27365645905956626,
+        "sql_outer_started_epoch": 1794408324.1947632,
+        "sql_ok": true,
+        "sql_seconds": 0.23347778408788145
+      },
+      {
+        "time": 1794408325.4283621,
+        "api_outer_started_epoch": 1794408325.4287906,
+        "api_ok": false,
+        "api_inner": {
+          "pre_request_wall_seconds": 0.027194976806640625,
+          "request_finished_monotonic": 1348274.027493839,
+          "python_finished_epoch": 1794408330.915506,
+          "python_entered_epoch": 1794408325.882363,
+          "request_ok": false,
+          "request_started_monotonic": 1348269.021549105,
+          "request_seconds": 5.0059447339735925,
+          "request_started_epoch": 1794408325.909558,
+          "failure_class": "timeout",
+          "schema": "crg-inner-api-timing-v1"
+        },
+        "api_seconds": 5.497057624161243,
+        "api_cgroup_before": {
+          "cpu.stat": "usage_usec 31165353\nuser_usec 16027769\nsystem_usec 15137584\ncore_sched.force_idle_usec 0\nnr_periods 1654\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5079744512\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=435539968 wbytes=376160768 rios=3491 wios=2171 dbytes=0 dios=0\n253:0 rbytes=1374449664 wbytes=2665202176 rios=5176 wios=7623 dbytes=0 dios=0\n"
+        },
+        "api_cgroup_after": {
+          "cpu.stat": "usage_usec 31494322\nuser_usec 16177562\nsystem_usec 15316760\ncore_sched.force_idle_usec 0\nnr_periods 1708\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5239537664\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=470147072 wbytes=376160768 rios=3650 wios=2171 dbytes=0 dios=0\n253:0 rbytes=1450651648 wbytes=2792505856 rios=5233 wios=7671 dbytes=0 dios=0\n"
+        },
+        "api_outside_inner_request_seconds": 0.4911128901876509,
+        "sql_outer_started_epoch": 1794408330.926273,
+        "sql_ok": true,
+        "sql_seconds": 0.8400063049048185
+      },
+      {
+        "time": 1794408351.7671096,
+        "api_outer_started_epoch": 1794408351.7675493,
+        "api_ok": false,
+        "api_inner": {
+          "pre_request_wall_seconds": 0.026979923248291016,
+          "request_finished_monotonic": 1348300.140119859,
+          "python_finished_epoch": 1794408357.028133,
+          "python_entered_epoch": 1794408351.995764,
+          "request_ok": false,
+          "request_started_monotonic": 1348295.134735808,
+          "request_seconds": 5.00538405100815,
+          "request_started_epoch": 1794408352.022744,
+          "failure_class": "timeout",
+          "schema": "crg-inner-api-timing-v1"
+        },
+        "api_seconds": 5.271156466798857,
+        "api_cgroup_before": {
+          "cpu.stat": "usage_usec 33991096\nuser_usec 17407125\nsystem_usec 16583971\ncore_sched.force_idle_usec 0\nnr_periods 1914\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5648785408\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=519315456 wbytes=381179904 rios=4250 wios=2310 dbytes=0 dios=0\n253:0 rbytes=1642336256 wbytes=3145734144 rios=5832 wios=9033 dbytes=0 dios=0\n"
+        },
+        "api_cgroup_after": {
+          "cpu.stat": "usage_usec 34139807\nuser_usec 17484065\nsystem_usec 16655741\ncore_sched.force_idle_usec 0\nnr_periods 1961\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+          "cpu.pressure": null,
+          "io.pressure": null,
+          "memory.pressure": null,
+          "memory.current": "5645004800\n",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "io.stat": "8:0 rbytes=519315456 wbytes=381430272 rios=4250 wios=2357 dbytes=0 dios=0\n253:0 rbytes=1642336256 wbytes=3259390464 rios=5832 wios=9373 dbytes=0 dios=0\n"
+        },
+        "api_outside_inner_request_seconds": 0.2657724157907069,
+        "sql_outer_started_epoch": 1794408357.0396917,
+        "sql_ok": true,
+        "sql_seconds": 0.24743250105530024
+      }
+    ]
+  },
+  "read_only_samples_do_not_prove_request_thread_role_lock_holder_or_full_causal_chain": true,
+  "not_a_product_fix_or_stable_acceptance": true
+}
