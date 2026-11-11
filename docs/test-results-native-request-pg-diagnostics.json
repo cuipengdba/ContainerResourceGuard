@@ -1,0 +1,4138 @@
+{
+  "schema": "crg-native-request-pg-diagnostic-qualification-v1",
+  "phase": "passed",
+  "scope": "isolated collector qualification; not full vendor business pressure acceptance",
+  "observed_node_utc": "2026-11-11T12:55:50.938254+00:00",
+  "source_sha256": {
+    "tests/vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+    "tests/vendor-native-diagnostics-checks.py": "38106a8c5f13f34e873d65f08f0c813da799e593339cc5c860c7961b3ee4ed42",
+    "tests/vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+    "tests/vendor-native-diagnostics-runtime.py": "ed4040a1864efec8631cc70013da5628a66c76c76cea76104b31d02b7bad2f2d",
+    "tests/vendor-native-diagnostics-runtime-legacy.py": "29f021880e988ccf49dd085768ef2fe30f23e717c8b852cbd84e5705b66ca055",
+    "tests/vendor-native-diagnostics-qualification.py": "b12a8b5ae1f0f2b105fd4c9a53cc3231a006e3ad1fe0eb1e7cfd1299c49b8e80",
+    "docs/test-evidence/native-diagnostics-qualification-185.py": "d080f2d6c22a85f5c491698425309be90ceb23a2e60b0505eea3b114b8a137e8",
+    "docs/test-evidence/native-diagnostics-qualification-188.py": "81f6149740bb1e370dc80c924280d7d52d403acd0bca555bd3be94fd3106daac",
+    "docs/test-evidence/native-diagnostics-qualification-191.py": "d27df59906f66506c1f82ea60403282eee17b0da2615af683d44ad5060e423bc"
+  },
+  "original_worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+  "original_function_AST_preserved_except_declared_observation": [
+    "stats",
+    "save",
+    "Connection",
+    "ready",
+    "connect",
+    "query",
+    "checksum",
+    "sample",
+    "sql_load",
+    "api_load",
+    "handle_stop"
+  ],
+  "original_build_proof_sha256": "985159f81d34f36ee149745396a3fe785dea517f1fae415b71efe0b456368fe3",
+  "host_unit_checks": 23,
+  "each_image_unit_checks": 23,
+  "each_image_guard_checks": 3,
+  "each_image_real_PG_checks": 16,
+  "qualification_history": {
+    "185": {
+      "raw_terminal_receipt_sha256": "d15a31bd718eda65968f839ad45b6ec3177cb0b6492cccaf84f257caa518d816",
+      "report_sha256": "de02e49bb546e60ac126bb378868616ecba9c6fa2f0ad83971272dd3259857b2",
+      "launch": {
+        "pid": 1435528,
+        "start_ticks": 133981093,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/native185-qualification.py",
+        "executor_sha256": "d080f2d6c22a85f5c491698425309be90ceb23a2e60b0505eea3b114b8a137e8",
+        "payload_sha256": "ac936cd8f116c56bb7c699027a3423f9e0f2a9ead77416002e4c7fe13fdee108"
+      },
+      "report": {
+        "schema": "crg-native-diagnostic-runtime-qualification-v1",
+        "phase": "failed",
+        "source_sha256": {
+          "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+          "vendor-native-diagnostics-checks.py": "38106a8c5f13f34e873d65f08f0c813da799e593339cc5c860c7961b3ee4ed42",
+          "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461"
+        },
+        "roles": {},
+        "started_node_utc": "2026-11-11T12:24:27.934015+00:00",
+        "scope": "mock callback selftest and CLI guards in Linux3.9 and both cached Python2 images; real PG activity/wait/native execution not yet qualified; no product or original input changes",
+        "host_selftest": {
+          "exit": 0,
+          "stdout": "{\"phase\": \"passed\", \"checks\": 23, \"python_version\": \"3.9.21\"}\n",
+          "stderr": "",
+          "result": {
+            "schema": "crg-native-diagnostics-selftest-v1",
+            "phase": "passed",
+            "checks": [
+              {
+                "name": "arbitrary-error-message-not-retained",
+                "passed": true
+              },
+              {
+                "name": "known-readiness-deadline-distinct",
+                "passed": true
+              },
+              {
+                "name": "unknown-exception-class-explicit",
+                "passed": true
+              },
+              {
+                "name": "PG-session-identity-and-lock-blockers",
+                "passed": true
+              },
+              {
+                "name": "PG-missing-identity-and-blockers-unknown",
+                "passed": true
+              },
+              {
+                "name": "measured-empty-blockers-distinct-from-unknown",
+                "passed": true
+              },
+              {
+                "name": "PG-row-truncation-explicit",
+                "passed": true
+              },
+              {
+                "name": "reject-PG-row-count",
+                "passed": true
+              },
+              {
+                "name": "reject-PG-column-count",
+                "passed": true
+              },
+              {
+                "name": "reject-PG-backend-pid",
+                "passed": true
+              },
+              {
+                "name": "reject-PG-arbitrary-event",
+                "passed": true
+              },
+              {
+                "name": "reject-PG-nonfinite-identity",
+                "passed": true
+              },
+              {
+                "name": "request-error-time-stage-PID-and-original-key",
+                "passed": true
+              },
+              {
+                "name": "recorder-failure-isolated-and-sanitized",
+                "passed": true
+              },
+              {
+                "name": "request-cap-does-not-stop-business",
+                "passed": true
+              },
+              {
+                "name": "PG-budget-stops-probe-only",
+                "passed": true
+              },
+              {
+                "name": "probe-never-stops-original-workload",
+                "passed": true
+              },
+              {
+                "name": "actual-thread-bounded-read-only-query-and-stop",
+                "passed": true
+              },
+              {
+                "name": "private-bounded-final-artifact-and-digest",
+                "passed": true
+              },
+              {
+                "name": "existing-output-not-replaced",
+                "passed": true
+              },
+              {
+                "name": "symlink-target-not-replaced",
+                "passed": true
+              },
+              {
+                "name": "PG-query-error-explicit-unknown-no-raw-message",
+                "passed": true
+              },
+              {
+                "name": "missing-CPU-clock-not-zero",
+                "passed": true
+              }
+            ],
+            "python_version": "3.9.21",
+            "platform": "linux",
+            "diagnostic_source_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+            "business_or_database_processes_used": false,
+            "original_worker_or_product_modified": false
+          }
+        },
+        "namespace_uid": "841e4e82-0fc3-4a08-bc4b-83e7912a7a06",
+        "reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native185-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: No such file or directory\\ncommand terminated with exit code 1\\n')",
+        "namespace_absent": true,
+        "ended_node_utc": "2026-11-11T12:25:20.493578+00:00"
+      }
+    },
+    "188": {
+      "raw_terminal_receipt_sha256": "7608e921d6fe92ab8cfe11fd1c515e2c45ffe6bb9cbba8ecbcabd22259142379",
+      "report_sha256": "e0c76f8ec3757df8248de026fe5baedb0add9e15a64632d84465d227552573c3",
+      "launch": {
+        "pid": 1632686,
+        "start_ticks": 134072985,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/native188-qualification.py",
+        "executor_sha256": "81f6149740bb1e370dc80c924280d7d52d403acd0bca555bd3be94fd3106daac",
+        "payload_sha256": "59a26b20b52d67a412c7281e8941b4f43b19546640d06c0bb29fdc1caf968bc9"
+      },
+      "report": {
+        "schema": "crg-native-diagnostic-runtime-qualification-v2",
+        "phase": "failed",
+        "source_sha256": {
+          "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+          "vendor-native-diagnostics-checks.py": "38106a8c5f13f34e873d65f08f0c813da799e593339cc5c860c7961b3ee4ed42",
+          "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+          "vendor-native-diagnostics-runtime.py": "29f021880e988ccf49dd085768ef2fe30f23e717c8b852cbd84e5705b66ca055"
+        },
+        "roles": {
+          "dbs": {
+            "components_before": {
+              "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+              "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+              "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+              "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+              "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+              "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+            },
+            "source_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "checks": [],
+            "unit_pod": {
+              "pod_uid": "5d8bbf68-01c9-411b-aabc-150e226e4162",
+              "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+              "security_context": {},
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                }
+              ]
+            }
+          }
+        },
+        "started_node_utc": "2026-11-11T12:39:46.802012+00:00",
+        "prior_qualification": {
+          "path": "/var/tmp/crg-native185-qualification-20261111/report.json",
+          "sha256": "de02e49bb546e60ac126bb378868616ecba9c6fa2f0ad83971272dd3259857b2",
+          "phase": "failed",
+          "host_checks": 23,
+          "retained_reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native185-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: No such file or directory\\ncommand terminated with exit code 1\\n')"
+        },
+        "scope": "real Python2 image units and fresh emptyDir PG normal/controlled-lock; no original PG data/config or vendor business startup; original seven-day processes unchanged",
+        "namespace_uid": "0957bd1f-111e-430e-adb7-9fdf8ac04fe5",
+        "reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native188-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: Permission denied\\ncommand terminated with exit code 1\\n')",
+        "namespace_absent": true,
+        "ended_node_utc": "2026-11-11T12:40:38.156039+00:00"
+      }
+    },
+    "191": {
+      "raw_terminal_receipt_sha256": "28a600e431afd79ddb21a1060572c1ab3a12826b4f7467a332a8b339b2d50b8e",
+      "report_sha256": "469fa7fc39cb538ac052caccef9e4951411a0b55707ed7f10a64b05efe61130e",
+      "launch": {
+        "pid": 1685182,
+        "start_ticks": 134096696,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/native191-qualification.py",
+        "executor_sha256": "d27df59906f66506c1f82ea60403282eee17b0da2615af683d44ad5060e423bc",
+        "payload_sha256": "59a26b20b52d67a412c7281e8941b4f43b19546640d06c0bb29fdc1caf968bc9"
+      },
+      "report": {
+        "schema": "crg-native-diagnostic-runtime-qualification-v2",
+        "phase": "failed",
+        "source_sha256": {
+          "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+          "vendor-native-diagnostics-checks.py": "38106a8c5f13f34e873d65f08f0c813da799e593339cc5c860c7961b3ee4ed42",
+          "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+          "vendor-native-diagnostics-runtime.py": "29f021880e988ccf49dd085768ef2fe30f23e717c8b852cbd84e5705b66ca055"
+        },
+        "roles": {
+          "dbs": {
+            "components_before": {
+              "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+              "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+              "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+              "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+              "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+              "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+            },
+            "source_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "checks": [
+              {
+                "case": "missing-diagnostic-marker",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: explicit native diagnostic test marker missing\ncommand terminated with exit code 2\n"
+              },
+              {
+                "case": "over900seconds",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: diagnostic qualification is smoke-only, at most900s, fresh schema\ncommand terminated with exit code 2\n"
+              },
+              {
+                "case": "tampered-helper",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: frozen diagnostic helper digest mismatch\ncommand terminated with exit code 2\n"
+              }
+            ],
+            "unit_pod": {
+              "pod_uid": "12702275-8f3f-4535-b61c-81eb480bf434",
+              "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+              "security_context": {
+                "runAsUser": 999,
+                "runAsGroup": 998,
+                "fsGroup": 998,
+                "runAsNonRoot": true
+              },
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                },
+                {
+                  "name": "output",
+                  "mountPath": "/opt/postgresql/basebackup"
+                }
+              ],
+              "deleted": true
+            },
+            "runtime": {
+              "postgres_gid": 998,
+              "python": "2.7.5",
+              "platform": "linux2",
+              "postgres_uid": 999,
+              "PQbackendPID_available": true,
+              "libpq_version": 140019
+            },
+            "selftest": {
+              "exit": 0,
+              "stdout": "{\"phase\": \"passed\", \"checks\": 23, \"python_version\": \"2.7.5\"}\n",
+              "stderr": "",
+              "result": {
+                "platform": "linux2",
+                "original_worker_or_product_modified": false,
+                "python_version": "2.7.5",
+                "business_or_database_processes_used": false,
+                "phase": "passed",
+                "diagnostic_source_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                "checks": [
+                  {
+                    "name": "arbitrary-error-message-not-retained",
+                    "passed": true
+                  },
+                  {
+                    "name": "known-readiness-deadline-distinct",
+                    "passed": true
+                  },
+                  {
+                    "name": "unknown-exception-class-explicit",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-session-identity-and-lock-blockers",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-missing-identity-and-blockers-unknown",
+                    "passed": true
+                  },
+                  {
+                    "name": "measured-empty-blockers-distinct-from-unknown",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-row-truncation-explicit",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-row-count",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-column-count",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-backend-pid",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-arbitrary-event",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-nonfinite-identity",
+                    "passed": true
+                  },
+                  {
+                    "name": "request-error-time-stage-PID-and-original-key",
+                    "passed": true
+                  },
+                  {
+                    "name": "recorder-failure-isolated-and-sanitized",
+                    "passed": true
+                  },
+                  {
+                    "name": "request-cap-does-not-stop-business",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-budget-stops-probe-only",
+                    "passed": true
+                  },
+                  {
+                    "name": "probe-never-stops-original-workload",
+                    "passed": true
+                  },
+                  {
+                    "name": "actual-thread-bounded-read-only-query-and-stop",
+                    "passed": true
+                  },
+                  {
+                    "name": "private-bounded-final-artifact-and-digest",
+                    "passed": true
+                  },
+                  {
+                    "name": "existing-output-not-replaced",
+                    "passed": true
+                  },
+                  {
+                    "name": "symlink-target-not-replaced",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-query-error-explicit-unknown-no-raw-message",
+                    "passed": true
+                  },
+                  {
+                    "name": "missing-CPU-clock-not-zero",
+                    "passed": true
+                  }
+                ],
+                "schema": "crg-native-diagnostics-selftest-v1"
+              }
+            },
+            "pg_pod": {
+              "pod_uid": "aa2b24a7-759e-4ebb-9496-f1dbd8e13c97",
+              "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+              "security_context": {
+                "runAsUser": 999,
+                "runAsGroup": 998,
+                "fsGroup": 998,
+                "runAsNonRoot": true
+              },
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                },
+                {
+                  "name": "output",
+                  "mountPath": "/opt/postgresql/basebackup"
+                }
+              ]
+            },
+            "real_pg_process": {
+              "exit": 1,
+              "stdout": "",
+              "stderr": "  File \"/tmp/crg-native191-tools/vendor-native-diagnostics-runtime.py\", line 89\n    exec(compile(tree, worker, 'exec'), scope)\nSyntaxError: unqualified exec is not allowed in function 'connection_functions' it contains a nested function with free variables\ncommand terminated with exit code 1\n"
+            }
+          }
+        },
+        "started_node_utc": "2026-11-11T12:43:43.908272+00:00",
+        "prior_qualification": {
+          "path": "/var/tmp/crg-native185-qualification-20261111/report.json",
+          "sha256": "de02e49bb546e60ac126bb378868616ecba9c6fa2f0ad83971272dd3259857b2",
+          "phase": "failed",
+          "host_checks": 23,
+          "retained_reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native185-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: No such file or directory\\ncommand terminated with exit code 1\\n')"
+        },
+        "scope": "real Python2 image units and fresh emptyDir PG normal/controlled-lock; no original PG data/config or vendor business startup; original seven-day processes unchanged",
+        "prior_root_mount_failure": {
+          "path": "/var/tmp/crg-native188-qualification-20261111/report.json",
+          "sha256": "e0c76f8ec3757df8248de026fe5baedb0add9e15a64632d84465d227552573c3",
+          "reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native188-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: Permission denied\\ncommand terminated with exit code 1\\n')"
+        },
+        "namespace_uid": "78b5a4a4-0b5b-4eda-97c2-d5b5b80e8fd6",
+        "reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native191-20261111'], 1, 'cat: /tmp/crg-native188-runtime/report.json: No such file or directory\\ncommand terminated with exit code 1\\n')",
+        "namespace_absent": true,
+        "ended_node_utc": "2026-11-11T12:45:16.982695+00:00"
+      }
+    },
+    "194": {
+      "raw_terminal_receipt_sha256": "91449dc279fd409ac03eeebff557af4a403b4c9b182a4861f9c40833f02d220d",
+      "report_sha256": "bc9897ed00032b6a6f33fb20e4631b9ba5dda3a144d9c5d5da775e3a210e4c41",
+      "launch": {
+        "pid": 1744567,
+        "start_ticks": 134123122,
+        "entry": "/var/tmp/crg-memory167-tools-20261111/native194-qualification.py",
+        "executor_sha256": "b12a8b5ae1f0f2b105fd4c9a53cc3231a006e3ad1fe0eb1e7cfd1299c49b8e80",
+        "payload_sha256": "a32b8f5d2b4f733675b315a8b288c81cb6a43eaf3f666dbe6a16087a295e9022"
+      },
+      "report": {
+        "schema": "crg-native-diagnostic-runtime-qualification-v2",
+        "phase": "passed",
+        "source_sha256": {
+          "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+          "vendor-native-diagnostics-checks.py": "38106a8c5f13f34e873d65f08f0c813da799e593339cc5c860c7961b3ee4ed42",
+          "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+          "vendor-native-diagnostics-runtime.py": "ed4040a1864efec8631cc70013da5628a66c76c76cea76104b31d02b7bad2f2d"
+        },
+        "roles": {
+          "dbs": {
+            "components_before": {
+              "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+              "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+              "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+              "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+              "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+              "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+            },
+            "source_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "checks": [
+              {
+                "case": "missing-diagnostic-marker",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: explicit native diagnostic test marker missing\ncommand terminated with exit code 2\n"
+              },
+              {
+                "case": "over900seconds",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: diagnostic qualification is smoke-only, at most900s, fresh schema\ncommand terminated with exit code 2\n"
+              },
+              {
+                "case": "tampered-helper",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: frozen diagnostic helper digest mismatch\ncommand terminated with exit code 2\n"
+              }
+            ],
+            "unit_pod": {
+              "pod_uid": "2a63a7e8-cc0b-46f8-a240-f1c85b24b27c",
+              "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+              "security_context": {
+                "runAsUser": 999,
+                "runAsGroup": 998,
+                "fsGroup": 998,
+                "runAsNonRoot": true
+              },
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                },
+                {
+                  "name": "output",
+                  "mountPath": "/opt/postgresql/basebackup"
+                }
+              ],
+              "deleted": true
+            },
+            "runtime": {
+              "postgres_gid": 998,
+              "python": "2.7.5",
+              "platform": "linux2",
+              "postgres_uid": 999,
+              "PQbackendPID_available": true,
+              "libpq_version": 140019
+            },
+            "selftest": {
+              "exit": 0,
+              "stdout": "{\"phase\": \"passed\", \"checks\": 23, \"python_version\": \"2.7.5\"}\n",
+              "stderr": "",
+              "result": {
+                "platform": "linux2",
+                "original_worker_or_product_modified": false,
+                "python_version": "2.7.5",
+                "business_or_database_processes_used": false,
+                "phase": "passed",
+                "diagnostic_source_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                "checks": [
+                  {
+                    "name": "arbitrary-error-message-not-retained",
+                    "passed": true
+                  },
+                  {
+                    "name": "known-readiness-deadline-distinct",
+                    "passed": true
+                  },
+                  {
+                    "name": "unknown-exception-class-explicit",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-session-identity-and-lock-blockers",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-missing-identity-and-blockers-unknown",
+                    "passed": true
+                  },
+                  {
+                    "name": "measured-empty-blockers-distinct-from-unknown",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-row-truncation-explicit",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-row-count",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-column-count",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-backend-pid",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-arbitrary-event",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-nonfinite-identity",
+                    "passed": true
+                  },
+                  {
+                    "name": "request-error-time-stage-PID-and-original-key",
+                    "passed": true
+                  },
+                  {
+                    "name": "recorder-failure-isolated-and-sanitized",
+                    "passed": true
+                  },
+                  {
+                    "name": "request-cap-does-not-stop-business",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-budget-stops-probe-only",
+                    "passed": true
+                  },
+                  {
+                    "name": "probe-never-stops-original-workload",
+                    "passed": true
+                  },
+                  {
+                    "name": "actual-thread-bounded-read-only-query-and-stop",
+                    "passed": true
+                  },
+                  {
+                    "name": "private-bounded-final-artifact-and-digest",
+                    "passed": true
+                  },
+                  {
+                    "name": "existing-output-not-replaced",
+                    "passed": true
+                  },
+                  {
+                    "name": "symlink-target-not-replaced",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-query-error-explicit-unknown-no-raw-message",
+                    "passed": true
+                  },
+                  {
+                    "name": "missing-CPU-clock-not-zero",
+                    "passed": true
+                  }
+                ],
+                "schema": "crg-native-diagnostics-selftest-v1"
+              }
+            },
+            "pg_pod": {
+              "pod_uid": "e71c4201-1007-44ca-9b03-dbcf94780bc3",
+              "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+              "security_context": {
+                "runAsUser": 999,
+                "runAsGroup": 998,
+                "fsGroup": 998,
+                "runAsNonRoot": true
+              },
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                },
+                {
+                  "name": "output",
+                  "mountPath": "/opt/postgresql/basebackup"
+                }
+              ],
+              "deleted": true
+            },
+            "real_pg_process": {
+              "exit": 0,
+              "stdout": "{\"phase\": \"passed\", \"reason\": null, \"checks\": 16}\n",
+              "stderr": ""
+            },
+            "real_pg": {
+              "role": "dbs",
+              "phase": "passed",
+              "scope": "fresh PG and mock HTTP only; not vendor business acceptance",
+              "cases": {
+                "own-table-lock": {
+                  "load": {
+                    "latency_bucket_upper_seconds": [
+                      0.001,
+                      0.005,
+                      0.01,
+                      0.02,
+                      0.05,
+                      0.1,
+                      0.25,
+                      0.5,
+                      1,
+                      2,
+                      5,
+                      "over-5"
+                    ],
+                    "run_id": "2026111118801",
+                    "ended_utc": "2026-11-11T12:49:41.215411Z",
+                    "elapsed_seconds": 16.08340535010211,
+                    "api": {
+                      "errors": 0,
+                      "sample_coverage": 1.25,
+                      "successes": 4,
+                      "total_seconds": 0.005382041912525892,
+                      "p95_bucket_upper_seconds": 0.005,
+                      "histogram": [
+                        3,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "attempts": 4,
+                      "max_seconds": 0.00262273196130991
+                    },
+                    "primary_start_time_final": "2026-11-11 12:48:57.94567+00",
+                    "primary_not_restarted": true,
+                    "payload_integrity": true,
+                    "final_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      112
+                    ],
+                    "cluster_database_bytes_initial": 209446697,
+                    "test_phase": "smoke",
+                    "cluster_database_bytes_final": 209446697,
+                    "criteria": {
+                      "api_period_seconds": 5,
+                      "minimum_scheduled_samples_fraction": 0.98,
+                      "p95_upper_bound_seconds": 1,
+                      "sql_period_seconds": 2,
+                      "maximum_errors": 0,
+                      "maximum_seconds": 5
+                    },
+                    "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+                    "primary_start_time_initial": "2026-11-11 12:48:57.94567+00",
+                    "threads_stopped": true,
+                    "schema": "crg-vendor-soak-v1",
+                    "measurement_finished_utc": "2026-11-11T12:49:40.692696Z",
+                    "requested_duration_seconds": 16,
+                    "native_diagnostics": {
+                      "pg_samples": 17,
+                      "request_errors": 1,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.013207762999999999,
+                      "recorder_cpu_available": true,
+                      "report_bytes": 14359,
+                      "diagnostic_complete": true,
+                      "report_sha256": "29ef384d0f8fe86f723b7d4b5c83fe71f32c89ab94e7cd1dfdaa3cf3648a1ab5",
+                      "report_filename": "native-diagnostics.json",
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.0013701959999999978,
+                      "dropped_pg_samples": 0,
+                      "final_report_thread_cpu_seconds": 0.0024848500000000107,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0,
+                      "request_count": 11
+                    },
+                    "sql": {
+                      "errors": 1,
+                      "sample_coverage": 0.875,
+                      "successes": 6,
+                      "total_seconds": 6.475244325818494,
+                      "p95_bucket_upper_seconds": null,
+                      "histogram": [
+                        0,
+                        0,
+                        0,
+                        3,
+                        0,
+                        1,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0,
+                        1
+                      ],
+                      "attempts": 7,
+                      "max_seconds": 5.00467306911014
+                    },
+                    "phase": "failed",
+                    "initial_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      0
+                    ],
+                    "interrupted": false,
+                    "started_utc": "2026-11-11T12:49:24.640663Z"
+                  },
+                  "run_id": "2026111118801",
+                  "actual_blocker_backend_pid": 88,
+                  "diagnostics": {
+                    "pg_samples": [
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401364.69069,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401364.69069,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401364.694775,
+                        "elapsed_seconds": 0.005816115066409111,
+                        "started_monotonic": 1341307.800957227,
+                        "started_epoch": 1794401364.688963
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401364.69069,
+                            "pid": 83,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401365.690464,
+                        "elapsed_seconds": 0.0014172811061143875,
+                        "started_monotonic": 1341308.801044033,
+                        "started_epoch": 1794401365.689055
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401366.690911,
+                        "elapsed_seconds": 0.0017627868801355362,
+                        "started_monotonic": 1341309.80114909,
+                        "started_epoch": 1794401366.689159
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401367.690618,
+                        "elapsed_seconds": 0.0013476831372827291,
+                        "started_monotonic": 1341310.801267502,
+                        "started_epoch": 1794401367.689279
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401368.69071,
+                        "elapsed_seconds": 0.001321353018283844,
+                        "started_monotonic": 1341311.80138573,
+                        "started_epoch": 1794401368.689396
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401369.690813,
+                        "elapsed_seconds": 0.0013256999664008617,
+                        "started_monotonic": 1341312.8014849,
+                        "started_epoch": 1794401369.689494
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401370.691125,
+                        "elapsed_seconds": 0.0015185859519988298,
+                        "started_monotonic": 1341313.801604761,
+                        "started_epoch": 1794401370.689616
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401371.691065,
+                        "elapsed_seconds": 0.0013443510979413986,
+                        "started_monotonic": 1341314.801718582,
+                        "started_epoch": 1794401371.689729
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401366.687722,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401366.687722,
+                            "pid": 83,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401364.688237,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          },
+                          {
+                            "transaction_start_epoch": 1794401371.694428,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401371.694428,
+                            "pid": 89,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401372.69126,
+                        "elapsed_seconds": 0.0014208939392119646,
+                        "started_monotonic": 1341315.801836562,
+                        "started_epoch": 1794401372.689848
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401371.694428,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401373.69126,
+                        "elapsed_seconds": 0.0013135098852217197,
+                        "started_monotonic": 1341316.801944588,
+                        "started_epoch": 1794401373.689956
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401373.692507,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401374.691433,
+                        "elapsed_seconds": 0.001369240926578641,
+                        "started_monotonic": 1341317.802062107,
+                        "started_epoch": 1794401374.690071
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401373.692507,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401375.691461,
+                        "elapsed_seconds": 0.0012875718530267477,
+                        "started_monotonic": 1341318.802171156,
+                        "started_epoch": 1794401375.690182
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401375.69258,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401376.691623,
+                        "elapsed_seconds": 0.00132359704002738,
+                        "started_monotonic": 1341319.802296977,
+                        "started_epoch": 1794401376.690308
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401375.69258,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401377.691726,
+                        "elapsed_seconds": 0.001301049953326583,
+                        "started_monotonic": 1341320.802422609,
+                        "started_epoch": 1794401377.690434
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401377.692702,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401378.691894,
+                        "elapsed_seconds": 0.0013434200081974268,
+                        "started_monotonic": 1341321.802548213,
+                        "started_epoch": 1794401378.69056
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401377.692702,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401379.691934,
+                        "elapsed_seconds": 0.0012781380210071802,
+                        "started_monotonic": 1341322.802652895,
+                        "started_epoch": 1794401379.690662
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401379.692776,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401371.692931,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401380.692199,
+                        "elapsed_seconds": 0.001429406926035881,
+                        "started_monotonic": 1341323.802767351,
+                        "started_epoch": 1794401380.690778
+                      }
+                    ],
+                    "limits": [
+                      "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                      "PG state sampled separately; no sample does not prove no wait.",
+                      "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                      "No original request is retried, canceled or extended by diagnostics."
+                    ],
+                    "run_id": "2026111118801",
+                    "maximum_report_bytes": 8388608,
+                    "summary": {
+                      "pg_samples": 17,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.013207762999999999,
+                      "recorder_cpu_available": true,
+                      "diagnostic_complete": true,
+                      "request_errors": 1,
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.0013701959999999978,
+                      "dropped_pg_samples": 0,
+                      "request_count": 11,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0
+                    },
+                    "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+                    "requests": [
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341307.815541558,
+                        "sequence": 1,
+                        "iteration": 0,
+                        "backend_pid": 83,
+                        "ended_epoch": 1794401364.703548,
+                        "connection_observed_epoch": 1794401364.690655,
+                        "elapsed_seconds": 0.01606816193088889,
+                        "started_monotonic": 1341307.799473396,
+                        "error": null,
+                        "started_epoch": 1794401364.687561,
+                        "synthetic_first_key": 1,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341307.802180768,
+                        "sequence": 2,
+                        "iteration": 0,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401364.690188,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0025478580500930548,
+                        "started_monotonic": 1341307.79963291,
+                        "error": null,
+                        "started_epoch": 1794401364.687663,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": false,
+                        "success": false,
+                        "ended_monotonic": 1341314.80417608,
+                        "sequence": 3,
+                        "iteration": 1,
+                        "backend_pid": 83,
+                        "ended_epoch": 1794401371.692183,
+                        "connection_observed_epoch": 1794401366.687653,
+                        "elapsed_seconds": 5.004588914103806,
+                        "started_monotonic": 1341309.799587166,
+                        "error": {
+                          "code": "sql-readiness-deadline",
+                          "class": "RuntimeError"
+                        },
+                        "started_epoch": 1794401366.687627,
+                        "synthetic_first_key": 17,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341312.800647723,
+                        "sequence": 4,
+                        "iteration": 1,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401369.688655,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0009030110668390989,
+                        "started_monotonic": 1341312.799744712,
+                        "error": null,
+                        "started_epoch": 1794401369.687785,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341315.93568199,
+                        "sequence": 5,
+                        "iteration": 1,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401372.82369,
+                        "connection_observed_epoch": 1794401371.694383,
+                        "elapsed_seconds": 1.131390914088115,
+                        "started_monotonic": 1341314.804291076,
+                        "error": null,
+                        "started_epoch": 1794401371.692305,
+                        "synthetic_first_key": 17,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341316.818250929,
+                        "sequence": 6,
+                        "iteration": 2,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401373.706258,
+                        "connection_observed_epoch": 1794401373.692452,
+                        "elapsed_seconds": 0.013871530070900917,
+                        "started_monotonic": 1341316.804379399,
+                        "error": null,
+                        "started_epoch": 1794401373.692413,
+                        "synthetic_first_key": 33,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341317.800678211,
+                        "sequence": 7,
+                        "iteration": 2,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401374.688685,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0008212961256504059,
+                        "started_monotonic": 1341317.799856915,
+                        "error": null,
+                        "started_epoch": 1794401374.687898,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341318.817168258,
+                        "sequence": 8,
+                        "iteration": 3,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401375.705175,
+                        "connection_observed_epoch": 1794401375.692527,
+                        "elapsed_seconds": 0.012695558834820986,
+                        "started_monotonic": 1341318.804472699,
+                        "error": null,
+                        "started_epoch": 1794401375.692503,
+                        "synthetic_first_key": 49,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341321.049191245,
+                        "sequence": 9,
+                        "iteration": 4,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401377.9372,
+                        "connection_observed_epoch": 1794401377.692643,
+                        "elapsed_seconds": 0.24461248610168695,
+                        "started_monotonic": 1341320.804578759,
+                        "error": null,
+                        "started_epoch": 1794401377.692615,
+                        "synthetic_first_key": 65,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341322.800822599,
+                        "sequence": 10,
+                        "iteration": 3,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401379.68883,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0008446020074188709,
+                        "started_monotonic": 1341322.799977997,
+                        "error": null,
+                        "started_epoch": 1794401379.688024,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341322.856181105,
+                        "sequence": 11,
+                        "iteration": 5,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401379.744189,
+                        "connection_observed_epoch": 1794401379.692726,
+                        "elapsed_seconds": 0.051504415925592184,
+                        "started_monotonic": 1341322.804676689,
+                        "error": null,
+                        "started_epoch": 1794401379.692704,
+                        "synthetic_first_key": 81,
+                        "stage": "query"
+                      }
+                    ],
+                    "schema": "crg-native-request-pg-diagnostics-v1"
+                  },
+                  "requested_seconds": 16,
+                  "diagnostics_sha256": "29ef384d0f8fe86f723b7d4b5c83fe71f32c89ab94e7cd1dfdaa3cf3648a1ab5",
+                  "load_sha256": "026fdd59a17a6546d36d5887fcf0328c8c1c531ab5ff180a67cd1ca17cd457f5",
+                  "exit": 1,
+                  "fault_started_epoch": 1794401364.726234,
+                  "fault_finished_observed_epoch": 1794401381.304254,
+                  "worker_pid": 79
+                },
+                "normal": {
+                  "load": {
+                    "latency_bucket_upper_seconds": [
+                      0.001,
+                      0.005,
+                      0.01,
+                      0.02,
+                      0.05,
+                      0.1,
+                      0.25,
+                      0.5,
+                      1,
+                      2,
+                      5,
+                      "over-5"
+                    ],
+                    "run_id": "2026111118800",
+                    "ended_utc": "2026-11-11T12:49:20.375930Z",
+                    "elapsed_seconds": 12.089228749042377,
+                    "api": {
+                      "errors": 0,
+                      "sample_coverage": 1.25,
+                      "successes": 3,
+                      "total_seconds": 0.004176841117441654,
+                      "p95_bucket_upper_seconds": 0.005,
+                      "histogram": [
+                        1,
+                        2,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "attempts": 3,
+                      "max_seconds": 0.0022481251507997513
+                    },
+                    "primary_start_time_final": "2026-11-11 12:48:57.94567+00",
+                    "primary_not_restarted": true,
+                    "payload_integrity": true,
+                    "final_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      112
+                    ],
+                    "cluster_database_bytes_initial": 117262121,
+                    "test_phase": "smoke",
+                    "cluster_database_bytes_final": 117262121,
+                    "criteria": {
+                      "api_period_seconds": 5,
+                      "minimum_scheduled_samples_fraction": 0.98,
+                      "p95_upper_bound_seconds": 1,
+                      "sql_period_seconds": 2,
+                      "maximum_errors": 0,
+                      "maximum_seconds": 5
+                    },
+                    "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+                    "primary_start_time_initial": "2026-11-11 12:48:57.94567+00",
+                    "threads_stopped": true,
+                    "schema": "crg-vendor-soak-v1",
+                    "measurement_finished_utc": "2026-11-11T12:49:20.019472Z",
+                    "requested_duration_seconds": 12,
+                    "native_diagnostics": {
+                      "pg_samples": 13,
+                      "request_errors": 0,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.009569172,
+                      "recorder_cpu_available": true,
+                      "report_bytes": 11509,
+                      "diagnostic_complete": true,
+                      "report_sha256": "03e84ceaf4950382aef2bad9851f389107e13cb86ee0783f917734e7a8fb2aa7",
+                      "report_filename": "native-diagnostics.json",
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.0011767049999999956,
+                      "dropped_pg_samples": 0,
+                      "final_report_thread_cpu_seconds": 0.0020058909999999958,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0,
+                      "request_count": 10
+                    },
+                    "sql": {
+                      "errors": 0,
+                      "sample_coverage": 1.1666666666666667,
+                      "successes": 7,
+                      "total_seconds": 0.2025208401028067,
+                      "p95_bucket_upper_seconds": 0.1,
+                      "histogram": [
+                        0,
+                        0,
+                        0,
+                        4,
+                        2,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "attempts": 7,
+                      "max_seconds": 0.09327430999837816
+                    },
+                    "phase": "passed",
+                    "initial_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      0
+                    ],
+                    "interrupted": false,
+                    "started_utc": "2026-11-11T12:49:07.945540Z"
+                  },
+                  "run_id": "2026111118800",
+                  "requested_seconds": 12,
+                  "diagnostics_sha256": "03e84ceaf4950382aef2bad9851f389107e13cb86ee0783f917734e7a8fb2aa7",
+                  "load_sha256": "4d5834aae066a363c1105a9b1ae81a7c18fbf7c9bdf60997dc63566fb07fbcfb",
+                  "exit": 0,
+                  "diagnostics": {
+                    "pg_samples": [
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401348.018225,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401348.018225,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401348.058142,
+                        "elapsed_seconds": 0.04155418579466641,
+                        "started_monotonic": 1341291.128587593,
+                        "started_epoch": 1794401348.016594
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401348.018225,
+                            "pid": 75,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401349.018133,
+                        "elapsed_seconds": 0.0014394319150596857,
+                        "started_monotonic": 1341292.128691496,
+                        "started_epoch": 1794401349.016702
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401350.015698,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401350.015698,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401350.018047,
+                        "elapsed_seconds": 0.0012558209709823132,
+                        "started_monotonic": 1341293.128788474,
+                        "started_epoch": 1794401350.016797
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401350.015698,
+                            "pid": 75,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401351.0182,
+                        "elapsed_seconds": 0.0013245211448520422,
+                        "started_monotonic": 1341294.128873288,
+                        "started_epoch": 1794401351.016885
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401352.015791,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401352.015791,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401352.018245,
+                        "elapsed_seconds": 0.0012669980060309172,
+                        "started_monotonic": 1341295.128975909,
+                        "started_epoch": 1794401352.016984
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401352.015791,
+                            "pid": 75,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401353.018327,
+                        "elapsed_seconds": 0.0012834970839321613,
+                        "started_monotonic": 1341296.129040723,
+                        "started_epoch": 1794401353.017049
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401354.015909,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401354.015909,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401354.018404,
+                        "elapsed_seconds": 0.001256671966984868,
+                        "started_monotonic": 1341297.129144825,
+                        "started_epoch": 1794401354.017154
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401354.015909,
+                            "pid": 75,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401355.018573,
+                        "elapsed_seconds": 0.0013122349046170712,
+                        "started_monotonic": 1341298.129258092,
+                        "started_epoch": 1794401355.017269
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401356.01602,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401356.01602,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401356.018624,
+                        "elapsed_seconds": 0.001263636164367199,
+                        "started_monotonic": 1341299.129357752,
+                        "started_epoch": 1794401356.017366
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401356.01602,
+                            "pid": 75,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401357.018827,
+                        "elapsed_seconds": 0.0013596289791166782,
+                        "started_monotonic": 1341300.129465412,
+                        "started_epoch": 1794401357.017476
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401358.016353,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401358.016353,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401358.018875,
+                        "elapsed_seconds": 0.0013036190066486597,
+                        "started_monotonic": 1341301.129569405,
+                        "started_epoch": 1794401358.017578
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401358.016353,
+                            "pid": 75,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401359.019013,
+                        "elapsed_seconds": 0.0013077401090413332,
+                        "started_monotonic": 1341302.12970382,
+                        "started_epoch": 1794401359.017714
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401360.016408,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401360.016408,
+                            "pid": 75,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401348.016204,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401360.019105,
+                        "elapsed_seconds": 0.0012964080087840557,
+                        "started_monotonic": 1341303.12980583,
+                        "started_epoch": 1794401360.017815
+                      }
+                    ],
+                    "limits": [
+                      "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                      "PG state sampled separately; no sample does not prove no wait.",
+                      "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                      "No original request is retried, canceled or extended by diagnostics."
+                    ],
+                    "run_id": "2026111118800",
+                    "maximum_report_bytes": 8388608,
+                    "summary": {
+                      "pg_samples": 13,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.009569172,
+                      "recorder_cpu_available": true,
+                      "diagnostic_complete": true,
+                      "request_errors": 0,
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.0011767049999999956,
+                      "dropped_pg_samples": 0,
+                      "request_count": 10,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0
+                    },
+                    "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+                    "requests": [
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341291.159364916,
+                        "sequence": 1,
+                        "iteration": 0,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401348.047372,
+                        "connection_observed_epoch": 1794401348.018185,
+                        "elapsed_seconds": 0.03190002194605768,
+                        "started_monotonic": 1341291.127464894,
+                        "error": null,
+                        "started_epoch": 1794401348.015553,
+                        "synthetic_first_key": 1,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341291.129820717,
+                        "sequence": 2,
+                        "iteration": 0,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401348.017829,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.002181312069296837,
+                        "started_monotonic": 1341291.127639405,
+                        "error": null,
+                        "started_epoch": 1794401348.01567,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341293.14982493,
+                        "sequence": 3,
+                        "iteration": 1,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401350.037832,
+                        "connection_observed_epoch": 1794401350.015635,
+                        "elapsed_seconds": 0.022256374824792147,
+                        "started_monotonic": 1341293.127568555,
+                        "error": null,
+                        "started_epoch": 1794401350.015609,
+                        "synthetic_first_key": 17,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341295.139968735,
+                        "sequence": 4,
+                        "iteration": 2,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401352.027976,
+                        "connection_observed_epoch": 1794401352.015729,
+                        "elapsed_seconds": 0.012302840827032924,
+                        "started_monotonic": 1341295.127665894,
+                        "error": null,
+                        "started_epoch": 1794401352.015705,
+                        "synthetic_first_key": 33,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341296.12858475,
+                        "sequence": 5,
+                        "iteration": 1,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401353.016592,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.000836163992062211,
+                        "started_monotonic": 1341296.127748586,
+                        "error": null,
+                        "started_epoch": 1794401353.015791,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341297.138698641,
+                        "sequence": 6,
+                        "iteration": 3,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401354.026705,
+                        "connection_observed_epoch": 1794401354.01584,
+                        "elapsed_seconds": 0.010923410998657346,
+                        "started_monotonic": 1341297.12777523,
+                        "error": null,
+                        "started_epoch": 1794401354.015816,
+                        "synthetic_first_key": 49,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341299.221060866,
+                        "sequence": 7,
+                        "iteration": 4,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401356.109069,
+                        "connection_observed_epoch": 1794401356.015943,
+                        "elapsed_seconds": 0.09318726207129657,
+                        "started_monotonic": 1341299.127873604,
+                        "error": null,
+                        "started_epoch": 1794401356.015913,
+                        "synthetic_first_key": 65,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341301.128837561,
+                        "sequence": 8,
+                        "iteration": 2,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401358.016844,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0009661659132689238,
+                        "started_monotonic": 1341301.127871395,
+                        "error": null,
+                        "started_epoch": 1794401358.015914,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341301.144605735,
+                        "sequence": 9,
+                        "iteration": 5,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401358.032613,
+                        "connection_observed_epoch": 1794401358.016256,
+                        "elapsed_seconds": 0.016432358184829354,
+                        "started_monotonic": 1341301.128173377,
+                        "error": null,
+                        "started_epoch": 1794401358.016221,
+                        "synthetic_first_key": 81,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341303.143290621,
+                        "sequence": 10,
+                        "iteration": 6,
+                        "backend_pid": 75,
+                        "ended_epoch": 1794401360.031298,
+                        "connection_observed_epoch": 1794401360.016344,
+                        "elapsed_seconds": 0.01501332689076662,
+                        "started_monotonic": 1341303.128277294,
+                        "error": null,
+                        "started_epoch": 1794401360.016318,
+                        "synthetic_first_key": 97,
+                        "stage": "query"
+                      }
+                    ],
+                    "schema": "crg-native-request-pg-diagnostics-v1"
+                  },
+                  "worker_pid": 71
+                }
+              },
+              "own_postgres_stopped": true,
+              "checks": [
+                {
+                  "name": "own-nonroot-empty-data-and-output",
+                  "passed": true
+                },
+                {
+                  "name": "actual-observer-read-only-one-second-timeout",
+                  "passed": true
+                },
+                {
+                  "name": "normal-complete-bounded-identity-linked-artifact",
+                  "passed": true
+                },
+                {
+                  "name": "normal-native-and-diagnostic-request-counts-match",
+                  "passed": true
+                },
+                {
+                  "name": "normal-CPU-under-five-percent-one-core",
+                  "passed": true
+                },
+                {
+                  "name": "normal-original-integrity-time-and-process-criteria",
+                  "passed": true
+                },
+                {
+                  "name": "normal-PG-samples-have-real-session-identity",
+                  "passed": true
+                },
+                {
+                  "name": "normal-original-native-gate-passes",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-complete-bounded-identity-linked-artifact",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-native-and-diagnostic-request-counts-match",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-CPU-under-five-percent-one-core",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-original-integrity-time-and-process-criteria",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-PG-samples-have-real-session-identity",
+                  "passed": true
+                },
+                {
+                  "name": "controlled-lock-retains-original-native-failure",
+                  "passed": true
+                },
+                {
+                  "name": "real-SQL-deadline-error-captured-with-PID-stage-time",
+                  "passed": true
+                },
+                {
+                  "name": "actual-lock-wait-and-blocker-correlate-to-client-PID",
+                  "passed": true
+                }
+              ],
+              "observer_connection": {
+                "application_name": "crg-disposable-observer",
+                "statement_timeout": "1s",
+                "transaction_read_only": "on",
+                "backend_pid": 69
+              },
+              "schema": "crg-native-diagnostics-real-pg-qualification-v1"
+            },
+            "real_pg_report_sha256": "0e2efb46c5bc556b2e2209fc15afa064bd0de2f7dfa9f52cab42c2ea2f7479fd",
+            "components_after": {
+              "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+              "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+              "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+              "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+              "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+              "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+            }
+          },
+          "hisdbs": {
+            "components_before": {
+              "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+              "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+              "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+              "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+              "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+              "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+            },
+            "source_image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+            "checks": [
+              {
+                "case": "missing-diagnostic-marker",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: explicit native diagnostic test marker missing\ncommand terminated with exit code 2\n"
+              },
+              {
+                "case": "over900seconds",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: diagnostic qualification is smoke-only, at most900s, fresh schema\ncommand terminated with exit code 2\n"
+              },
+              {
+                "case": "tampered-helper",
+                "passed": true,
+                "exit": 2,
+                "own_workload_output_absent": true,
+                "stderr": "usage: vendor-soak-load-diagnostics.py [-h] --run-id RUN_ID --seconds SECONDS\n                                       [--source-run-id SOURCE_RUN_ID]\n                                       [--test-phase {smoke,baseline,enforce,acceptance}]\nvendor-soak-load-diagnostics.py: error: frozen diagnostic helper digest mismatch\ncommand terminated with exit code 2\n"
+              }
+            ],
+            "unit_pod": {
+              "pod_uid": "a3857fc6-d5ca-45ff-8753-4f0b31290eff",
+              "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+              "security_context": {
+                "runAsUser": 999,
+                "runAsGroup": 998,
+                "fsGroup": 998,
+                "runAsNonRoot": true
+              },
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                },
+                {
+                  "name": "output",
+                  "mountPath": "/opt/postgresql/basebackup"
+                }
+              ],
+              "deleted": true
+            },
+            "runtime": {
+              "postgres_gid": 998,
+              "python": "2.7.5",
+              "platform": "linux2",
+              "postgres_uid": 999,
+              "PQbackendPID_available": true,
+              "libpq_version": 140019
+            },
+            "selftest": {
+              "exit": 0,
+              "stdout": "{\"phase\": \"passed\", \"checks\": 23, \"python_version\": \"2.7.5\"}\n",
+              "stderr": "",
+              "result": {
+                "platform": "linux2",
+                "original_worker_or_product_modified": false,
+                "python_version": "2.7.5",
+                "business_or_database_processes_used": false,
+                "phase": "passed",
+                "diagnostic_source_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                "checks": [
+                  {
+                    "name": "arbitrary-error-message-not-retained",
+                    "passed": true
+                  },
+                  {
+                    "name": "known-readiness-deadline-distinct",
+                    "passed": true
+                  },
+                  {
+                    "name": "unknown-exception-class-explicit",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-session-identity-and-lock-blockers",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-missing-identity-and-blockers-unknown",
+                    "passed": true
+                  },
+                  {
+                    "name": "measured-empty-blockers-distinct-from-unknown",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-row-truncation-explicit",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-row-count",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-column-count",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-backend-pid",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-arbitrary-event",
+                    "passed": true
+                  },
+                  {
+                    "name": "reject-PG-nonfinite-identity",
+                    "passed": true
+                  },
+                  {
+                    "name": "request-error-time-stage-PID-and-original-key",
+                    "passed": true
+                  },
+                  {
+                    "name": "recorder-failure-isolated-and-sanitized",
+                    "passed": true
+                  },
+                  {
+                    "name": "request-cap-does-not-stop-business",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-budget-stops-probe-only",
+                    "passed": true
+                  },
+                  {
+                    "name": "probe-never-stops-original-workload",
+                    "passed": true
+                  },
+                  {
+                    "name": "actual-thread-bounded-read-only-query-and-stop",
+                    "passed": true
+                  },
+                  {
+                    "name": "private-bounded-final-artifact-and-digest",
+                    "passed": true
+                  },
+                  {
+                    "name": "existing-output-not-replaced",
+                    "passed": true
+                  },
+                  {
+                    "name": "symlink-target-not-replaced",
+                    "passed": true
+                  },
+                  {
+                    "name": "PG-query-error-explicit-unknown-no-raw-message",
+                    "passed": true
+                  },
+                  {
+                    "name": "missing-CPU-clock-not-zero",
+                    "passed": true
+                  }
+                ],
+                "schema": "crg-native-diagnostics-selftest-v1"
+              }
+            },
+            "pg_pod": {
+              "pod_uid": "9435b8b6-0347-4230-928f-a6903bbbe081",
+              "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+              "security_context": {
+                "runAsUser": 999,
+                "runAsGroup": 998,
+                "fsGroup": 998,
+                "runAsNonRoot": true
+              },
+              "volume_mounts": [
+                {
+                  "name": "tmp",
+                  "mountPath": "/tmp"
+                },
+                {
+                  "name": "pgbin",
+                  "mountPath": "/opt/postgresql/pgsql/bin",
+                  "readOnly": true
+                },
+                {
+                  "name": "pglib",
+                  "mountPath": "/opt/postgresql/pgsql/lib",
+                  "readOnly": true
+                },
+                {
+                  "name": "pgshare",
+                  "mountPath": "/opt/postgresql/pgsql/share/postgresql",
+                  "readOnly": true
+                },
+                {
+                  "name": "output",
+                  "mountPath": "/opt/postgresql/basebackup"
+                }
+              ],
+              "deleted": true
+            },
+            "real_pg_process": {
+              "exit": 0,
+              "stdout": "{\"phase\": \"passed\", \"reason\": null, \"checks\": 16}\n",
+              "stderr": ""
+            },
+            "real_pg": {
+              "role": "hisdbs",
+              "phase": "passed",
+              "scope": "fresh PG and mock HTTP only; not vendor business acceptance",
+              "cases": {
+                "own-table-lock": {
+                  "load": {
+                    "latency_bucket_upper_seconds": [
+                      0.001,
+                      0.005,
+                      0.01,
+                      0.02,
+                      0.05,
+                      0.1,
+                      0.25,
+                      0.5,
+                      1,
+                      2,
+                      5,
+                      "over-5"
+                    ],
+                    "run_id": "2026111118811",
+                    "ended_utc": "2026-11-11T12:51:54.111666Z",
+                    "elapsed_seconds": 16.118972680997103,
+                    "api": {
+                      "errors": 0,
+                      "sample_coverage": 1.25,
+                      "successes": 4,
+                      "total_seconds": 0.005137138068675995,
+                      "p95_bucket_upper_seconds": 0.005,
+                      "histogram": [
+                        2,
+                        2,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "attempts": 4,
+                      "max_seconds": 0.0023412799928337336
+                    },
+                    "primary_start_time_final": "2026-11-11 12:51:10.656164+00",
+                    "primary_not_restarted": true,
+                    "payload_integrity": true,
+                    "final_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      112
+                    ],
+                    "cluster_database_bytes_initial": 209446697,
+                    "test_phase": "smoke",
+                    "cluster_database_bytes_final": 209446697,
+                    "criteria": {
+                      "api_period_seconds": 5,
+                      "minimum_scheduled_samples_fraction": 0.98,
+                      "p95_upper_bound_seconds": 1,
+                      "sql_period_seconds": 2,
+                      "maximum_errors": 0,
+                      "maximum_seconds": 5
+                    },
+                    "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+                    "primary_start_time_initial": "2026-11-11 12:51:10.656164+00",
+                    "threads_stopped": true,
+                    "schema": "crg-vendor-soak-v1",
+                    "measurement_finished_utc": "2026-11-11T12:51:53.713729Z",
+                    "requested_duration_seconds": 16,
+                    "native_diagnostics": {
+                      "pg_samples": 17,
+                      "request_errors": 1,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.013026701,
+                      "recorder_cpu_available": true,
+                      "report_bytes": 14346,
+                      "diagnostic_complete": true,
+                      "report_sha256": "873698ed23d3b9c0f1ff030ae8ceabbda04b3d13abff8ae8a84c7802eb28ae02",
+                      "report_filename": "native-diagnostics.json",
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.0013248959999999867,
+                      "dropped_pg_samples": 0,
+                      "final_report_thread_cpu_seconds": 0.0024786379999999913,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0,
+                      "request_count": 11
+                    },
+                    "sql": {
+                      "errors": 1,
+                      "sample_coverage": 0.875,
+                      "successes": 6,
+                      "total_seconds": 6.303586257155985,
+                      "p95_bucket_upper_seconds": null,
+                      "histogram": [
+                        0,
+                        0,
+                        0,
+                        1,
+                        3,
+                        0,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0,
+                        1
+                      ],
+                      "attempts": 7,
+                      "max_seconds": 5.004468084080145
+                    },
+                    "phase": "failed",
+                    "initial_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      0
+                    ],
+                    "interrupted": false,
+                    "started_utc": "2026-11-11T12:51:37.658146Z"
+                  },
+                  "run_id": "2026111118811",
+                  "actual_blocker_backend_pid": 88,
+                  "diagnostics": {
+                    "pg_samples": [
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401497.71189,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401497.71189,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401497.715547,
+                        "elapsed_seconds": 0.005817439174279571,
+                        "started_monotonic": 1341440.821727736,
+                        "started_epoch": 1794401497.709734
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401497.71189,
+                            "pid": 84,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401498.711241,
+                        "elapsed_seconds": 0.0014001908712089062,
+                        "started_monotonic": 1341441.821838153,
+                        "started_epoch": 1794401498.70985
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401499.712055,
+                        "elapsed_seconds": 0.0020980420522391796,
+                        "started_monotonic": 1341442.821957967,
+                        "started_epoch": 1794401499.709968
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401500.711407,
+                        "elapsed_seconds": 0.001350803067907691,
+                        "started_monotonic": 1341443.822053879,
+                        "started_epoch": 1794401500.710065
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401501.711513,
+                        "elapsed_seconds": 0.001341481925919652,
+                        "started_monotonic": 1341444.822168789,
+                        "started_epoch": 1794401501.71018
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401502.7116,
+                        "elapsed_seconds": 0.0013304369058459997,
+                        "started_monotonic": 1341445.822266821,
+                        "started_epoch": 1794401502.710276
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401503.71171,
+                        "elapsed_seconds": 0.0013305360917001963,
+                        "started_monotonic": 1341446.822377137,
+                        "started_epoch": 1794401503.710389
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401504.711864,
+                        "elapsed_seconds": 0.001379497116431594,
+                        "started_monotonic": 1341447.822482761,
+                        "started_epoch": 1794401504.710494
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401499.708874,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401499.708874,
+                            "pid": 84,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401497.710055,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          },
+                          {
+                            "transaction_start_epoch": 1794401504.715398,
+                            "wait_event": "relation",
+                            "query_start_epoch": 1794401504.715398,
+                            "pid": 89,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": [
+                              88
+                            ],
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Lock",
+                            "blocking_pids_measured": true
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401505.712063,
+                        "elapsed_seconds": 0.001467997906729579,
+                        "started_monotonic": 1341448.82259302,
+                        "started_epoch": 1794401505.710604
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401504.715398,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401506.711992,
+                        "elapsed_seconds": 0.0012871979270130396,
+                        "started_monotonic": 1341449.822702267,
+                        "started_epoch": 1794401506.710714
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401506.713392,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401507.712081,
+                        "elapsed_seconds": 0.0012751109898090363,
+                        "started_monotonic": 1341450.822803756,
+                        "started_epoch": 1794401507.710813
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401506.713392,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401508.712284,
+                        "elapsed_seconds": 0.0013596611097455025,
+                        "started_monotonic": 1341451.822922628,
+                        "started_epoch": 1794401508.710934
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401508.713505,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401509.712366,
+                        "elapsed_seconds": 0.0013109731953591108,
+                        "started_monotonic": 1341452.823052483,
+                        "started_epoch": 1794401509.711064
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401508.713505,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401510.712542,
+                        "elapsed_seconds": 0.0013635519426316023,
+                        "started_monotonic": 1341453.823176348,
+                        "started_epoch": 1794401510.711188
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401510.713596,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401511.71259,
+                        "elapsed_seconds": 0.001298016868531704,
+                        "started_monotonic": 1341454.823289171,
+                        "started_epoch": 1794401511.7113
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401510.713596,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401512.7127,
+                        "elapsed_seconds": 0.001306312158703804,
+                        "started_monotonic": 1341455.823391476,
+                        "started_epoch": 1794401512.7114
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401512.713673,
+                            "pid": 89,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401504.713887,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401513.712801,
+                        "elapsed_seconds": 0.0013011309783905745,
+                        "started_monotonic": 1341456.823497861,
+                        "started_epoch": 1794401513.711509
+                      }
+                    ],
+                    "limits": [
+                      "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                      "PG state sampled separately; no sample does not prove no wait.",
+                      "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                      "No original request is retried, canceled or extended by diagnostics."
+                    ],
+                    "run_id": "2026111118811",
+                    "maximum_report_bytes": 8388608,
+                    "summary": {
+                      "pg_samples": 17,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.013026701,
+                      "recorder_cpu_available": true,
+                      "diagnostic_complete": true,
+                      "request_errors": 1,
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.0013248959999999867,
+                      "dropped_pg_samples": 0,
+                      "request_count": 11,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0
+                    },
+                    "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+                    "requests": [
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341440.845590731,
+                        "sequence": 1,
+                        "iteration": 0,
+                        "backend_pid": 84,
+                        "ended_epoch": 1794401497.733598,
+                        "connection_observed_epoch": 1794401497.71183,
+                        "elapsed_seconds": 0.02501496789045632,
+                        "started_monotonic": 1341440.820575763,
+                        "error": null,
+                        "started_epoch": 1794401497.708663,
+                        "synthetic_first_key": 1,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341440.822989045,
+                        "sequence": 2,
+                        "iteration": 0,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401497.710996,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.002276162849739194,
+                        "started_monotonic": 1341440.820712882,
+                        "error": null,
+                        "started_epoch": 1794401497.708746,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": false,
+                        "success": false,
+                        "ended_monotonic": 1341447.825104579,
+                        "sequence": 3,
+                        "iteration": 1,
+                        "backend_pid": 84,
+                        "ended_epoch": 1794401504.713111,
+                        "connection_observed_epoch": 1794401499.708787,
+                        "elapsed_seconds": 5.004395159194246,
+                        "started_monotonic": 1341442.82070942,
+                        "error": {
+                          "code": "sql-readiness-deadline",
+                          "class": "RuntimeError"
+                        },
+                        "started_epoch": 1794401499.708756,
+                        "synthetic_first_key": 17,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341445.821773744,
+                        "sequence": 4,
+                        "iteration": 1,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401502.709782,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0009446209296584129,
+                        "started_monotonic": 1341445.820829123,
+                        "error": null,
+                        "started_epoch": 1794401502.708872,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341448.88218214,
+                        "sequence": 5,
+                        "iteration": 1,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401505.77019,
+                        "connection_observed_epoch": 1794401504.715363,
+                        "elapsed_seconds": 1.0569745008833706,
+                        "started_monotonic": 1341447.825207639,
+                        "error": null,
+                        "started_epoch": 1794401504.713221,
+                        "synthetic_first_key": 17,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341449.873253353,
+                        "sequence": 6,
+                        "iteration": 2,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401506.761261,
+                        "connection_observed_epoch": 1794401506.713338,
+                        "elapsed_seconds": 0.047967151971533895,
+                        "started_monotonic": 1341449.825286201,
+                        "error": null,
+                        "started_epoch": 1794401506.713316,
+                        "synthetic_first_key": 33,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341450.821761913,
+                        "sequence": 7,
+                        "iteration": 2,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401507.709769,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0008259019814431667,
+                        "started_monotonic": 1341450.820936011,
+                        "error": null,
+                        "started_epoch": 1794401507.708978,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341451.838452735,
+                        "sequence": 8,
+                        "iteration": 3,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401508.72646,
+                        "connection_observed_epoch": 1794401508.71344,
+                        "elapsed_seconds": 0.013071147026494145,
+                        "started_monotonic": 1341451.825381588,
+                        "error": null,
+                        "started_epoch": 1794401508.713414,
+                        "synthetic_first_key": 49,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341453.86221775,
+                        "sequence": 9,
+                        "iteration": 4,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401510.750226,
+                        "connection_observed_epoch": 1794401510.713536,
+                        "elapsed_seconds": 0.036741905845701694,
+                        "started_monotonic": 1341453.825475844,
+                        "error": null,
+                        "started_epoch": 1794401510.713509,
+                        "synthetic_first_key": 65,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341455.821895388,
+                        "sequence": 10,
+                        "iteration": 3,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401512.709902,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0008383949752897024,
+                        "started_monotonic": 1341455.821056993,
+                        "error": null,
+                        "started_epoch": 1794401512.709098,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341455.944472399,
+                        "sequence": 11,
+                        "iteration": 5,
+                        "backend_pid": 89,
+                        "ended_epoch": 1794401512.832481,
+                        "connection_observed_epoch": 1794401512.71362,
+                        "elapsed_seconds": 0.11890080408193171,
+                        "started_monotonic": 1341455.825571595,
+                        "error": null,
+                        "started_epoch": 1794401512.713598,
+                        "synthetic_first_key": 81,
+                        "stage": "query"
+                      }
+                    ],
+                    "schema": "crg-native-request-pg-diagnostics-v1"
+                  },
+                  "requested_seconds": 16,
+                  "diagnostics_sha256": "873698ed23d3b9c0f1ff030ae8ceabbda04b3d13abff8ae8a84c7802eb28ae02",
+                  "load_sha256": "1cce5fabd642275878e02171e2edad37446095189325098cbf9be03fe54531f5",
+                  "exit": 1,
+                  "fault_started_epoch": 1794401497.711895,
+                  "fault_finished_observed_epoch": 1794401514.189794,
+                  "worker_pid": 79
+                },
+                "normal": {
+                  "load": {
+                    "latency_bucket_upper_seconds": [
+                      0.001,
+                      0.005,
+                      0.01,
+                      0.02,
+                      0.05,
+                      0.1,
+                      0.25,
+                      0.5,
+                      1,
+                      2,
+                      5,
+                      "over-5"
+                    ],
+                    "run_id": "2026111118810",
+                    "ended_utc": "2026-11-11T12:51:30.500037Z",
+                    "elapsed_seconds": 12.445592969888821,
+                    "api": {
+                      "errors": 0,
+                      "sample_coverage": 1.25,
+                      "successes": 3,
+                      "total_seconds": 0.004158533876761794,
+                      "p95_bucket_upper_seconds": 0.005,
+                      "histogram": [
+                        2,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "attempts": 3,
+                      "max_seconds": 0.002259241882711649
+                    },
+                    "primary_start_time_final": "2026-11-11 12:51:10.656164+00",
+                    "primary_not_restarted": true,
+                    "payload_integrity": true,
+                    "final_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      112
+                    ],
+                    "cluster_database_bytes_initial": 117262121,
+                    "test_phase": "smoke",
+                    "cluster_database_bytes_final": 117262121,
+                    "criteria": {
+                      "api_period_seconds": 5,
+                      "minimum_scheduled_samples_fraction": 0.98,
+                      "p95_upper_bound_seconds": 1,
+                      "sql_period_seconds": 2,
+                      "maximum_errors": 0,
+                      "maximum_seconds": 5
+                    },
+                    "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+                    "primary_start_time_initial": "2026-11-11 12:51:10.656164+00",
+                    "threads_stopped": true,
+                    "schema": "crg-vendor-soak-v1",
+                    "measurement_finished_utc": "2026-11-11T12:51:29.694043Z",
+                    "requested_duration_seconds": 12,
+                    "native_diagnostics": {
+                      "pg_samples": 13,
+                      "request_errors": 0,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.009673113,
+                      "recorder_cpu_available": true,
+                      "report_bytes": 11498,
+                      "diagnostic_complete": true,
+                      "report_sha256": "1ef8466e505909382330c7febc1309970f346e399e053071bbc91ac397060fb9",
+                      "report_filename": "native-diagnostics.json",
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.001173774000000009,
+                      "dropped_pg_samples": 0,
+                      "final_report_thread_cpu_seconds": 0.002026757000000004,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0,
+                      "request_count": 10
+                    },
+                    "sql": {
+                      "errors": 0,
+                      "sample_coverage": 1.1666666666666667,
+                      "successes": 7,
+                      "total_seconds": 1.6181147149764001,
+                      "p95_bucket_upper_seconds": 1,
+                      "histogram": [
+                        0,
+                        0,
+                        0,
+                        1,
+                        2,
+                        2,
+                        0,
+                        1,
+                        1,
+                        0,
+                        0,
+                        0
+                      ],
+                      "attempts": 7,
+                      "max_seconds": 0.9997353381477296
+                    },
+                    "phase": "passed",
+                    "initial_checksum": [
+                      16384,
+                      134225920,
+                      67108864,
+                      "10b3b8214172d3b698258a128e9c6687",
+                      0
+                    ],
+                    "interrupted": false,
+                    "started_utc": "2026-11-11T12:51:17.662498Z"
+                  },
+                  "run_id": "2026111118810",
+                  "requested_seconds": 12,
+                  "diagnostics_sha256": "1ef8466e505909382330c7febc1309970f346e399e053071bbc91ac397060fb9",
+                  "load_sha256": "1ee45f0d1394b1878d9f35c1bf9248e1f23197108d8ec171f150c43c203dd1d5",
+                  "exit": 0,
+                  "diagnostics": {
+                    "pg_samples": [
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401477.692952,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401477.692952,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401477.728964,
+                        "elapsed_seconds": 0.03779192012734711,
+                        "started_monotonic": 1341420.803171181,
+                        "started_epoch": 1794401477.691177
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401477.692952,
+                            "pid": 76,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401478.692743,
+                        "elapsed_seconds": 0.0014461609534919262,
+                        "started_monotonic": 1341421.803294871,
+                        "started_epoch": 1794401478.691306
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401479.690303,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401479.690303,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401479.692908,
+                        "elapsed_seconds": 0.0015071029774844646,
+                        "started_monotonic": 1341422.80339861,
+                        "started_epoch": 1794401479.691408
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401479.690303,
+                            "pid": 76,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401480.692834,
+                        "elapsed_seconds": 0.00131203792989254,
+                        "started_monotonic": 1341423.803519,
+                        "started_epoch": 1794401480.69153
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401481.690415,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401481.690415,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401481.692859,
+                        "elapsed_seconds": 0.0012365919537842274,
+                        "started_monotonic": 1341424.80362046,
+                        "started_epoch": 1794401481.69163
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401481.690415,
+                            "pid": 76,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401482.693021,
+                        "elapsed_seconds": 0.0012979370076209307,
+                        "started_monotonic": 1341425.80372107,
+                        "started_epoch": 1794401482.69173
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401483.690522,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401483.690522,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401483.693094,
+                        "elapsed_seconds": 0.0012711079325526953,
+                        "started_monotonic": 1341426.803821086,
+                        "started_epoch": 1794401483.69183
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401483.690522,
+                            "pid": 76,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401484.693306,
+                        "elapsed_seconds": 0.0013611619360744953,
+                        "started_monotonic": 1341427.803942431,
+                        "started_epoch": 1794401484.691954
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401485.690629,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401485.690629,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401485.693318,
+                        "elapsed_seconds": 0.0012779401149600744,
+                        "started_monotonic": 1341428.804037538,
+                        "started_epoch": 1794401485.692046
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401485.690629,
+                            "pid": 76,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401486.693462,
+                        "elapsed_seconds": 0.0013247299939393997,
+                        "started_monotonic": 1341429.804135224,
+                        "started_epoch": 1794401486.692144
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401487.690823,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401487.690823,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401487.693469,
+                        "elapsed_seconds": 0.001237260177731514,
+                        "started_monotonic": 1341430.804230817,
+                        "started_epoch": 1794401487.69224
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": null,
+                            "wait_event": "ClientRead",
+                            "query_start_epoch": 1794401487.690823,
+                            "pid": 76,
+                            "state": "idle",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "Client",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401488.69371,
+                        "elapsed_seconds": 0.001364059979096055,
+                        "started_monotonic": 1341431.804343581,
+                        "started_epoch": 1794401488.692354
+                      },
+                      {
+                        "available": true,
+                        "rows": [
+                          {
+                            "transaction_start_epoch": 1794401489.690937,
+                            "wait_event": "WALSync",
+                            "query_start_epoch": 1794401489.690937,
+                            "pid": 76,
+                            "state": "active",
+                            "identity_available": true,
+                            "query_class": "fixture-update",
+                            "blocking_pids": null,
+                            "backend_start_epoch": 1794401477.690781,
+                            "activity_fields_available": true,
+                            "wait_event_type": "IO",
+                            "blocking_pids_measured": false
+                          }
+                        ],
+                        "truncated": false,
+                        "ended_epoch": 1794401489.693707,
+                        "elapsed_seconds": 0.0012340899556875229,
+                        "started_monotonic": 1341432.80447049,
+                        "started_epoch": 1794401489.69248
+                      }
+                    ],
+                    "limits": [
+                      "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                      "PG state sampled separately; no sample does not prove no wait.",
+                      "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                      "No original request is retried, canceled or extended by diagnostics."
+                    ],
+                    "run_id": "2026111118810",
+                    "maximum_report_bytes": 8388608,
+                    "summary": {
+                      "pg_samples": 13,
+                      "probe_thread_stopped": true,
+                      "pg_truncated_samples": 0,
+                      "probe_thread_cpu_seconds": 0.009673113,
+                      "recorder_cpu_available": true,
+                      "diagnostic_complete": true,
+                      "request_errors": 0,
+                      "pg_errors": 0,
+                      "recorder_cpu_seconds": 0.001173774000000009,
+                      "dropped_pg_samples": 0,
+                      "request_count": 10,
+                      "dropped_requests": 0,
+                      "phase": "collected",
+                      "recorder_internal_errors": 0,
+                      "business_signals_cancellations_or_control_writes": 0
+                    },
+                    "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+                    "requests": [
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341420.824399626,
+                        "sequence": 1,
+                        "iteration": 0,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401477.712407,
+                        "connection_observed_epoch": 1794401477.692915,
+                        "elapsed_seconds": 0.022338550072163343,
+                        "started_monotonic": 1341420.802061076,
+                        "error": null,
+                        "started_epoch": 1794401477.690149,
+                        "synthetic_first_key": 1,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341420.804433888,
+                        "sequence": 2,
+                        "iteration": 0,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401477.692441,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.002200264949351549,
+                        "started_monotonic": 1341420.802233623,
+                        "error": null,
+                        "started_epoch": 1794401477.690363,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341422.847975191,
+                        "sequence": 3,
+                        "iteration": 1,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401479.735983,
+                        "connection_observed_epoch": 1794401479.690236,
+                        "elapsed_seconds": 0.04580518486909568,
+                        "started_monotonic": 1341422.802170006,
+                        "error": null,
+                        "started_epoch": 1794401479.69021,
+                        "synthetic_first_key": 17,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341424.821859282,
+                        "sequence": 4,
+                        "iteration": 2,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401481.709867,
+                        "connection_observed_epoch": 1794401481.690349,
+                        "elapsed_seconds": 0.01957649108953774,
+                        "started_monotonic": 1341424.802282791,
+                        "error": null,
+                        "started_epoch": 1794401481.690324,
+                        "synthetic_first_key": 33,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341425.803181078,
+                        "sequence": 5,
+                        "iteration": 1,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401482.691188,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0008377600461244583,
+                        "started_monotonic": 1341425.802343318,
+                        "error": null,
+                        "started_epoch": 1794401482.690385,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341426.870412196,
+                        "sequence": 6,
+                        "iteration": 3,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401483.75842,
+                        "connection_observed_epoch": 1794401483.690458,
+                        "elapsed_seconds": 0.06802233192138374,
+                        "started_monotonic": 1341426.802389864,
+                        "error": null,
+                        "started_epoch": 1794401483.690432,
+                        "synthetic_first_key": 49,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341429.802149642,
+                        "sequence": 7,
+                        "iteration": 4,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401486.690158,
+                        "connection_observed_epoch": 1794401485.690562,
+                        "elapsed_seconds": 0.9996545570902526,
+                        "started_monotonic": 1341428.802495085,
+                        "error": null,
+                        "started_epoch": 1794401485.690537,
+                        "synthetic_first_key": 65,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "api",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341430.803369767,
+                        "sequence": 8,
+                        "iteration": 2,
+                        "backend_pid": null,
+                        "ended_epoch": 1794401487.691376,
+                        "connection_observed_epoch": null,
+                        "elapsed_seconds": 0.0009339931420981884,
+                        "started_monotonic": 1341430.802435774,
+                        "error": null,
+                        "started_epoch": 1794401487.690478,
+                        "stage": "http-response"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341430.884573861,
+                        "sequence": 9,
+                        "iteration": 5,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401487.772582,
+                        "connection_observed_epoch": 1794401487.690756,
+                        "elapsed_seconds": 0.08186656911857426,
+                        "started_monotonic": 1341430.802707292,
+                        "error": null,
+                        "started_epoch": 1794401487.690728,
+                        "synthetic_first_key": 81,
+                        "stage": "query"
+                      },
+                      {
+                        "kind": "sql",
+                        "within_original_5seconds": true,
+                        "success": true,
+                        "ended_monotonic": 1341433.183140187,
+                        "sequence": 10,
+                        "iteration": 6,
+                        "backend_pid": 76,
+                        "ended_epoch": 1794401490.071149,
+                        "connection_observed_epoch": 1794401489.69087,
+                        "elapsed_seconds": 0.38033289602026343,
+                        "started_monotonic": 1341432.802807291,
+                        "error": null,
+                        "started_epoch": 1794401489.690846,
+                        "synthetic_first_key": 97,
+                        "stage": "query"
+                      }
+                    ],
+                    "schema": "crg-native-request-pg-diagnostics-v1"
+                  },
+                  "worker_pid": 71
+                }
+              },
+              "own_postgres_stopped": true,
+              "checks": [
+                {
+                  "name": "own-nonroot-empty-data-and-output",
+                  "passed": true
+                },
+                {
+                  "name": "actual-observer-read-only-one-second-timeout",
+                  "passed": true
+                },
+                {
+                  "name": "normal-complete-bounded-identity-linked-artifact",
+                  "passed": true
+                },
+                {
+                  "name": "normal-native-and-diagnostic-request-counts-match",
+                  "passed": true
+                },
+                {
+                  "name": "normal-CPU-under-five-percent-one-core",
+                  "passed": true
+                },
+                {
+                  "name": "normal-original-integrity-time-and-process-criteria",
+                  "passed": true
+                },
+                {
+                  "name": "normal-PG-samples-have-real-session-identity",
+                  "passed": true
+                },
+                {
+                  "name": "normal-original-native-gate-passes",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-complete-bounded-identity-linked-artifact",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-native-and-diagnostic-request-counts-match",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-CPU-under-five-percent-one-core",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-original-integrity-time-and-process-criteria",
+                  "passed": true
+                },
+                {
+                  "name": "own-table-lock-PG-samples-have-real-session-identity",
+                  "passed": true
+                },
+                {
+                  "name": "controlled-lock-retains-original-native-failure",
+                  "passed": true
+                },
+                {
+                  "name": "real-SQL-deadline-error-captured-with-PID-stage-time",
+                  "passed": true
+                },
+                {
+                  "name": "actual-lock-wait-and-blocker-correlate-to-client-PID",
+                  "passed": true
+                }
+              ],
+              "observer_connection": {
+                "application_name": "crg-disposable-observer",
+                "statement_timeout": "1s",
+                "transaction_read_only": "on",
+                "backend_pid": 69
+              },
+              "schema": "crg-native-diagnostics-real-pg-qualification-v1"
+            },
+            "real_pg_report_sha256": "54a611a2bc02a9883da74390c4796c87aeca83e317bf7b9566e9506522eaba91",
+            "components_after": {
+              "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+              "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+              "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+              "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+              "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+              "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+            }
+          }
+        },
+        "started_node_utc": "2026-11-11T12:48:08.171576+00:00",
+        "prior_qualification": {
+          "path": "/var/tmp/crg-native185-qualification-20261111/report.json",
+          "sha256": "de02e49bb546e60ac126bb378868616ecba9c6fa2f0ad83971272dd3259857b2",
+          "phase": "failed",
+          "host_checks": 23,
+          "retained_reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native185-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: No such file or directory\\ncommand terminated with exit code 1\\n')"
+        },
+        "scope": "real Python2 image units and fresh emptyDir PG normal/controlled-lock; no original PG data/config or vendor business startup; original seven-day processes unchanged",
+        "prior_root_mount_failure": {
+          "path": "/var/tmp/crg-native188-qualification-20261111/report.json",
+          "sha256": "e0c76f8ec3757df8248de026fe5baedb0add9e15a64632d84465d227552573c3",
+          "reason": "AssertionError:(['kubectl', 'exec', '-i', '-n', 'crg-vendor-lab-native188-20261111'], 1, 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: Permission denied\\ncommand terminated with exit code 1\\n')"
+        },
+        "namespace_uid": "3cdbb71e-db2b-4ee8-9fa4-fb333c92afc8",
+        "namespace_absent": true,
+        "ended_node_utc": "2026-11-11T12:52:37.065852+00:00"
+      }
+    }
+  },
+  "independent_terminal": {
+    "node_utc": "2026-11-11T12:55:50.938254+00:00",
+    "runs": {
+      "185": {
+        "phase": "failed",
+        "report_sha256": "de02e49bb546e60ac126bb378868616ecba9c6fa2f0ad83971272dd3259857b2",
+        "process": {
+          "pid": 1435528,
+          "exists": false,
+          "same_instance": false
+        },
+        "namespace_query_exit": 0,
+        "namespace_absent": true
+      },
+      "188": {
+        "phase": "failed",
+        "report_sha256": "e0c76f8ec3757df8248de026fe5baedb0add9e15a64632d84465d227552573c3",
+        "process": {
+          "pid": 1632686,
+          "exists": false,
+          "same_instance": false
+        },
+        "namespace_query_exit": 0,
+        "namespace_absent": true
+      },
+      "191": {
+        "phase": "failed",
+        "report_sha256": "469fa7fc39cb538ac052caccef9e4951411a0b55707ed7f10a64b05efe61130e",
+        "process": {
+          "pid": 1685182,
+          "exists": false,
+          "same_instance": false
+        },
+        "namespace_query_exit": 0,
+        "namespace_absent": true
+      },
+      "194": {
+        "phase": "passed",
+        "report_sha256": "bc9897ed00032b6a6f33fb20e4631b9ba5dda3a144d9c5d5da775e3a210e4c41",
+        "process": {
+          "pid": 1744567,
+          "exists": false,
+          "same_instance": false
+        },
+        "namespace_query_exit": 0,
+        "namespace_absent": true
+      }
+    },
+    "original_inputs": {
+      "dbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      },
+      "hisdbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      }
+    },
+    "original_qualification_pod_cgroups": {
+      "2a63a7e8-cc0b-46f8-a240-f1c85b24b27c": [],
+      "e71c4201-1007-44ca-9b03-dbcf94780bc3": [],
+      "a3857fc6-d5ca-45ff-8753-4f0b31290eff": [],
+      "9435b8b6-0347-4230-928f-a6903bbbe081": []
+    },
+    "meminfo": {
+      "MemTotal": 66673278976,
+      "MemAvailable": 37872459776
+    }
+  },
+  "independent_terminal_receipt_sha256": "d0c72b5d0d930cf19ff25dbfb85ecbb4dcde9fb4036d478fdb5256f25f2496ba",
+  "full_600s_pressure_executed_with_this_collector": false,
+  "historical_business_failures_resolved": false,
+  "original_SLA_or_quota_relaxed": false,
+  "original_long_workers_replaced": false,
+  "product_or_release_assets_changed": false,
+  "stable_release_accepted": false
+}
