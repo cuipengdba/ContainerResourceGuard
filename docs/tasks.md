@@ -353,3 +353,12 @@ R120[失败终态](test-results-business-reload-source-recovery-failure.json)：
 
 
 原P03.3/P05.2[30→20真实高用量压力协议](testing-business-memory-pressure.md)已开发，固定11区间/每角色600秒/32项主检查，尚未执行业务；辅助内存工具Linux7项释放检查通过（每次仅64MiB），不计压力业务接受。原R120失败、限额、30秒备库停止及全部长期条件保持。
+
+
+R130[实际补测已启动](test-start-business-memory-pressure.json)：原运行器/worker身份已核对，固定开始观察只有DBS8项/六段原重载。7项真实前置和7项辅助工具释放检查通过；三个源码分支完整CI及42份公开文件摘要通过。压力30→20、各600秒/两角色终态仍待；原失败及全部门槛保持。
+
+
+R130[失败终态](test-results-business-memory-pressure-failure.json)：DBS8区间/10项后在辅助工具平台握手拒绝，未分配压力内存、无600秒/HIS业务。实测两镜像Python2.7.5/linux2；v2仅修正测试判断，Linux7项/实际镜像16项协议与释放检查通过且独立清理。原32项/真实高用量/全部原SLA仍需新绑定协议执行。
+
+
+R142[新压力绑定协议](testing-business-memory-pressure-legacy.md)已冻结，业务尚未执行；同一32项/原600秒/原30秒停止与配额，只绑定已验证的v2工具并补握手原文记录。R130/R120失败及全部原范围保持。
