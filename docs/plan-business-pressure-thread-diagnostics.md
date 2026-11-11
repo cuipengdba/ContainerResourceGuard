@@ -34,3 +34,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 已归档[完整压力等待诊断/失败收尾接入](testing-business-pressure-final-wait.md)：只读采集24项、观察器19项、选取预算10项，两业务API各16个短样本（未见D）及同实例/控制值保持；12项接入与15项只读/拒绝检查实际通过，原生部分PG报告仍拒绝作600秒。新R235完整32项/每角色600秒/11区间原配额SLA未变并已启动，固定启动快照不代表通过；原R203停库/API失败、所有52任务和长期要求保持。
+
+
+[R235完整压力终态](testing-business-pressure-final-wait-failure.md)已确认失败并清理：DBS实际600.292秒、SQL1/API5错（HIS未执行），13局部/11区间及引擎10内容检查不抵消业务失败。新诊断取得419请求/601PG样本、600线程样本；SQL对应5个LWLock/WALWrite样本，36个D样本均为DBS.log的write/XFS等待，5次原生API超时各重叠4个D样本。因果仍待设备/限额/日志关系核对；原预算/旧失败/52项和长期要求保持。
