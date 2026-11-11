@@ -1,5 +1,7 @@
 # 开发任务与验收跟踪
 
+2026-11-12即时交付：[v1.0.0-preview.3](releases/v1.0.0-preview.3.md)。复用已实测程序、更新文档和证据，稳定1.0及原验收门槛继续；下方历史记录保留原时点。
+
 当前即时交付：[v1.0.0-preview.2](releases/v1.0.0-preview.2.md)，与preview.1同一受测程序；[实际发布/下载核对](test-results-preview2-publication.json)。本版仅刷新文档和证据，稳定1.0尚未发布。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
