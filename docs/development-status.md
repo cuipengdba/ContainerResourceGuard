@@ -176,3 +176,6 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 本轮新v1.0.0程序dbc48aa5的[DBS/HISDBS各600秒业务](testing-versioned-candidate-business.md)及[20场景/108项辅助故障](testing-versioned-candidate-faults.md)终态通过，退出0且namespace独立确认清理；只对应既定预算和环境。另完成[实际保留数据辅助故障执行器](testing-aged-faults.md)、两套冻结计划与8项Linux自检，真实长门禁/提前执行pending且无写入，独立短数据20场景/152项演练已启动、尚未终态。原七天、正式阶段、未测环境及52项发布审计保持，未发布稳定1.0。
+
+
+[实际短保留数据辅助故障20场景/152项终态通过](testing-aged-faults.md)，20次新容器ID、各场景旧64MiB及counter/PG/缓存/PID1/无OOM/TERM符合原条件，原输入/source journal及daily0600日志前缀保持；退出0且namespace独立确认清理。仅属于开发程序3a1的短演练，真实七天后阶段和新dbc程序的长期仍独立验收。
