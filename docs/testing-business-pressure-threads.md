@@ -1,6 +1,6 @@
 # 完整压力联测接入只读线程采样
 
-R167[冻结计划](test-plan-business-memory-pressure-threads.json)及`tests/vendor-business-memory-pressure-threads.py`已实现，压力业务尚未执行。原R142失败、执行器、计划和原32项主检查全部保留；两角色各600秒、七次重载和四个压力恢复区间、原数据/配额/余量/所有SLA/原10项引擎及30秒备库停止不变。通过AST逐项比对，原完整业务方法仅增加一次观察器启动和一次进度保存。
+R167[冻结计划](test-plan-business-memory-pressure-threads.json)及`tests/vendor-business-memory-pressure-threads.py`已实现并已启动隔离联测；[开始快照](test-start-business-pressure-threads.json)只记录局部进展，整轮尚未接受。原R142失败、执行器、计划和原32项主检查全部保留；两角色各600秒、七次重载和四个压力恢复区间、原数据/配额/余量/所有SLA/原10项引擎及30秒备库停止不变。通过AST逐项比对，原完整业务方法仅增加一次观察器启动和一次进度保存。
 
 新增`vendor-thread-session.py`只用于测试，按各自cgroup中8090监听socket的唯一所有者定位，不猜HIS程序路径。固定PID/start/exe后，调用已通过19项及两角色15秒实际观察的原只读采样器。先收到完整首样本握手，才开始原引擎和压力窗口。最多900秒/每秒64线程/32MiB，原业务的超时不延长。主报告只存身份、有界摘要和原始报告SHA256/路径，完整样本单独保存。
 
@@ -14,3 +14,6 @@ R167[冻结计划](test-plan-business-memory-pressure-threads.json)及`tests/ven
 
 
 [实际前置9项](test-results-pressure-thread-preflight.json)通过：默认只读、缺少隔离marker、namespace/criteria/线程协议/观察器路径/压力协议/工具摘要/API摘要篡改拒绝，目标root及namespace独立核对仍不存在。此时新压力业务尚未启动。[原七天固定进程](test-progress-seven-day-during-thread-session.json)继续各自原计时，无原生SQL/API错误，仍未604800秒。
+
+
+R167完整压力线程联测[已启动并归档开始快照](test-start-business-pressure-threads.json)：固定原运行器/worker/观察器PID及启动ticks；快照时DBS11区间、13项局部检查通过，真实高于20%目标时延后，释放后同gen7自动应用20%再恢复30%。原600秒负载/引擎仍pending、HIS业务尚未执行，不计完整业务通过。协议源码三个固定提交的CI均通过，公开45个来源/证据blob已核对，原发布包和历史失败保持。
