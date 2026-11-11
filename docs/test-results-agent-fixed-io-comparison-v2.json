@@ -1,0 +1,59 @@
+{
+  "schema": "crg-agent-fixed-io-failure-evidence-v2",
+  "phase": "independently-reviewed-inconclusive",
+  "artifacts": {
+    "first_preparation_failure": {
+      "path": "docs/test-evidence/agent-activity435-first-preparation-failure.json.gz",
+      "bytes": 17908,
+      "sha256": "8d8a5262e28d9acd120135ab217616ab26e54a29e37b04dc3a384c358b04ddd8",
+      "uncompressed_bytes": 70867,
+      "uncompressed_sha256": "e8228edf65f8e54a1d1177bf902ec57309bd6f8b058a9a40427824b873031c88"
+    },
+    "v2_a1": {
+      "path": "docs/test-evidence/agent-activity441-a1.json.gz",
+      "bytes": 666695,
+      "sha256": "2b160f6cb47b3584d4a54f9ada49d740781e635654271883393be0b566ad716c",
+      "uncompressed_bytes": 15281235,
+      "uncompressed_sha256": "29edc83360340db87e5574588607202d42acdd3d806b2a8b0d18e9210f68ea72"
+    },
+    "v2_terminal": {
+      "path": "docs/test-evidence/agent-activity441-terminal.json.gz",
+      "bytes": 70607,
+      "sha256": "dffd6d2d21e101db180820bc12fdf370789000c23439d92ac949c98772c5e86f",
+      "uncompressed_bytes": 434353,
+      "uncompressed_sha256": "a62d7c25459ec63485089477402c7b943af852d503a1733b5ce0de0b461e7695"
+    }
+  },
+  "executors": {
+    "vendor-agent-fixed-io-comparison.py": "de22658443d470023fd97f123ddc012445af5a5ecf1fbcac00b2243c95f0c0bd",
+    "vendor-agent-fixed-io-comparison-v2.py": "383c5b0a5184edcd3aee73b1b017888a6c50d449e44b5e43bcd3275afabecbc4"
+  },
+  "plans": {
+    "test-plan-agent-fixed-io-comparison.json": "33f019f1abb6edd31817d88eb59f29324d8b53444d73d5ca36e30a5703f47119",
+    "test-plan-agent-fixed-io-comparison-v2.json": "29091fe288487d2d2de99bf949b3186a814b9f3102370ffcf7823b4bc45094d5"
+  },
+  "reviewer_sha256": "ae6c688f2d075576cee1958ccedd55572879e8f4154640c0b746af9330caf749",
+  "first_preparation_failure_preserved": true,
+  "v2_actual_seconds": 600.1651385030709,
+  "v2_SQL_errors": 5,
+  "v2_API_errors": 1,
+  "v2_SQL_sample_coverage": 0.97,
+  "original_minimum_sample_coverage": 0.98,
+  "v2_PG_wait_overflow_samples": 9,
+  "unchanged_maximum_PG_wait_targets": 4,
+  "v2_engine_content_checks": 10,
+  "v2_B1_B2_A2_executed": false,
+  "all_four_cold_clones_frozen_before_any_arm": true,
+  "independently_gone_instances": 9,
+  "all_four_namespaces_independently_absent": true,
+  "source_and_clone_configuration_program_profile_restored": true,
+  "scope": "static fixed-quota diagnostic failures; not original32/reload/pressure/two-role acceptance",
+  "original32_accepted": false,
+  "seven_day_accepted": false,
+  "stable_release_accepted": false,
+  "offline_check_reports": [
+    "test-results-agent-fixed-io-boundary-checks.json",
+    "test-results-agent-fixed-io-offline-checks.json"
+  ],
+  "offline_checks_source_sha256": "c53ec0d8763e9d5908a72f5323a721105e1cb40f755768e345d89cb27141bc89"
+}

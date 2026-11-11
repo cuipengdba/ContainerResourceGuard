@@ -1,0 +1,140 @@
+{
+  "schema": "crg-agent-fixed-io-independent-review-v2",
+  "all_four_structurally_eligible": false,
+  "arms": {
+    "a1": {
+      "arm": "a1",
+      "eligible": false,
+      "checks": {
+        "original_full600": true,
+        "original_64MiB_and_same_primary": true,
+        "original_request_criteria": true,
+        "fixed_original_numeric_values": true,
+        "no_reload_or_pressure_substitution": true,
+        "terminal_reason": false,
+        "all_recorded_checks_passed": true,
+        "ten_original_engine_content_checks": true,
+        "engine_cleanup": true,
+        "engine_inside_native600": true,
+        "exact_activity_owner": true,
+        "activity_session_closed": true,
+        "same_watchdog_normal_close": true,
+        "full600_activity_envelope": true,
+        "no_activity_or_diagnostic_errors": false,
+        "actual_sourced_helper_identity": true,
+        "actual_session_initial_kernel": true,
+        "matched_full_activity_samples": true,
+        "activity_sample_gaps_and_endpoints": true,
+        "native_diagnostics_complete": false,
+        "request_counts_and_schedule": false,
+        "PG_coverage": true,
+        "thread_complete": true,
+        "device_complete": true,
+        "device_no_KILL_or_control_writes": true
+      },
+      "reasons": [
+        "terminal_reason",
+        "no_activity_or_diagnostic_errors",
+        "native_diagnostics_complete",
+        "request_counts_and_schedule"
+      ],
+      "phase": "failed",
+      "reason": "ACTIVITY:NATIVE_COMPLETION_EXIT",
+      "native_phase": "failed",
+      "actual_seconds": 600.1651385030709,
+      "SQL_errors": 5,
+      "API_errors": 1,
+      "activity_samples": 12,
+      "initial_actual_controls": {
+        "cpu.max": "720000 100000\n",
+        "memory.max": "20001980416\n",
+        "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135\n",
+        "cpu.weight": "4\n",
+        "pids.max": "406648\n",
+        "io.weight": "default 100\n",
+        "memory.high": "max\n",
+        "memory.swap.max": "0\n"
+      },
+      "engine_content_checks": 10,
+      "D_observations": 13,
+      "D_descriptor_counts": {
+        "/opt/dbs/log/DBS.log": 13
+      },
+      "strict_D_samples_per_error": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ],
+      "PG_kernel_stack_unknown": 620,
+      "PG_samples": 599,
+      "thread_samples": 599,
+      "device_samples": 600,
+      "report_sha256": "2124c64cb82309ee2c67e3983595dfd7d223d5115fd4e659d930fab68286f3ac",
+      "Agent_activity_sample_interval": {
+        "seconds": 616.4268860816956,
+        "CPU_ticks_delta": 113,
+        "clock_ticks_per_second": 100,
+        "CPU_seconds": 1.13,
+        "process_io": {
+          "available": true,
+          "deltas": {
+            "rchar": 6469870,
+            "wchar": 11336,
+            "syscr": 69722,
+            "syscw": 19,
+            "read_bytes": 0,
+            "write_bytes": 24576,
+            "cancelled_write_bytes": 0
+          }
+        },
+        "scope": "Agent sample endpoints include preparation and final collection; not exclusive native600 or device-owned IO"
+      },
+      "independent_instances_gone": 7,
+      "stable_release_accepted": false
+    },
+    "b1": {
+      "arm": "b1",
+      "eligible": false,
+      "available": false,
+      "reason": "not-executed"
+    },
+    "b2": {
+      "arm": "b2",
+      "eligible": false,
+      "available": false,
+      "reason": "not-executed"
+    },
+    "a2": {
+      "arm": "a2",
+      "eligible": false,
+      "available": false,
+      "reason": "not-executed"
+    }
+  },
+  "SQL_plus_API_errors": null,
+  "preplanned_A_error_B_zero_B_zero_A_error": false,
+  "conclusion": "inconclusive",
+  "coordinator_interpretation": {
+    "all_four_eligible": false,
+    "conclusion": "inconclusive",
+    "stable_release_accepted": false
+  },
+  "first_preparation_failure_preserved": true,
+  "first_specific_assertion_unproven": true,
+  "terminal_archive_sha256": "dffd6d2d21e101db180820bc12fdf370789000c23439d92ac949c98772c5e86f",
+  "fixed_numeric": {
+    "cpu.max": "720000 100000",
+    "memory.max": "20001980416",
+    "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+  },
+  "shared_backend_cache_and_order_confounds_remain": true,
+  "Agent_causality_or_product_defect_proven": false,
+  "original32_two_role_acceptance_waived": false,
+  "original32_accepted": false,
+  "seven_day_accepted": false,
+  "stable_release_accepted": false,
+  "P10_complete": false
+}
