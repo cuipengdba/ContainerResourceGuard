@@ -1,0 +1,71 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "job_sha256": "63e2b354447236192e60acf13fe82e1863f4756d277a006c0b76a4a854563b27",
+  "runner_sha256": "17670bba0a7d9fbc66a057ea2eacadf1c9916aade2db3bc219288e5ec044fd57",
+  "helper_sha256": {
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualification_sha256": {
+    "identity-qualification.json": "d293d2c400843b1a7765d38ef14aecd8c68333cfc29259b670e0bec8790ca77e",
+    "integration-qualification.json": "6c7500a860f5c1a633ca8f24ca1c8b3ada09b697bbbea0496bcb58183a45a634",
+    "overhead-qualification.json": "68f1c207bd7e8ba430163d2c8b0228339a707d81159369678b95a1db4230d720",
+    "business-qualification.json": "f680f08aeeccb500c56655dfe5dbf07982e373928d70634fea400232e2090101",
+    "fault-qualification.json": "b26dd6678137d9f25f5f21bd334b030805782bbb33441b68340c597df6b69ca5",
+    "maintenance-plan.json": "3e067d72321937e5fdcd4bfeeeca5f96b85e54fd3a019ec15a7acc128a7c5179"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prior_driver_sha256": "bb41a1d9538246ae07b7749e301a7238ff45b860bb8e46bd5135e1d6716a907a",
+  "prior_plan": "test-plan-partition-realpaths-cold-rebuild.json",
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_max_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "two_boots_per_case": "fresh initialization then backed-up data/state/log directories reused under a new Pod/container ID",
+    "original_start_cache_mount_PG_parameters_and_probes": true,
+    "PG_API_managed_max_seconds_each_boot": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_inside_startup_seconds": 300,
+    "one_source_qualified_Agent_and_only_three_resource_controls": true,
+    "payload": "16384 rows /64MiB and128 marker rows, sum8256; exact checksums across restart and independent logical restore database",
+    "backup": "Schema-scoped logical dump before rebuild, digest persists; separate database restore without changing original primary data",
+    "identity": "Old cgroup gone before new Pod; unchanged configuration, new identity, old journal isolated, new original controls restored by disable",
+    "logs": "Daily0600/v2 logs; existing same-day content retained and appended after ID change",
+    "node_reserves": "28GiB available before each clone/rebuild,8GiB steady,20GiB free disk"
+  },
+  "cases": [
+    "current/DBS",
+    "current/HISDBS"
+  ],
+  "boots": 4,
+  "expected_checks": 44,
+  "prerequisites": [
+    "Own versioned R71 maintenance22/2x600s complete passed, joba5fdf31a/exit0,matching candidate dbc48aa5/version; runtime native and all8 maintenance intervals present; namespace independently absent.",
+    "Own exact R66faults108/R64business12/R63overhead3x1800 actual chain,job/exit/report references and independently absent namespaces; no previous developer runtime reused.",
+    "Frozen exact versioned package/native88 evidence,all input hashes and original private cache/supervisors; maintenance-plan input is a contract, never a passing result.",
+    "Host>=28GiB available before each clone/rebuild,>=8GiB steady and>=20GiB free disk; original quotas/startup300/cache45 and44checks unchanged."
+  ],
+  "limitations": [
+    "Manual64 cold-rebuild validation does not prove default20 or automatic30 performance.",
+    "Independent logical restore database is distinct from a separate physical server; previous engine-cycle physical restore evidence remains separate.",
+    "This is cold/backup/rebuild coverage, not a new600-second or long-term campaign.",
+    "No modifications to existing business deployments or baseline; no unsupported hardware waiver.",
+    "Original four-cell88check result remains7638/d6, not currentd370.",
+    "Current7day source qualification is prepared separately; no formal long duration claim here.",
+    "Own new versioned dbc48aa5 ELF; not the old3a1 four-boot result.",
+    "Maintenance still covers an unreleased previous build, not two published minor versions."
+  ],
+  "prelaunch_cache_freshness_check": "Before any upload/launch, strengthened existing cache check: exactly one source-qualified current-cgroup cache run process and status inode/mtime/size changed since this boot gate, in addition to enforce. Same300s/45s deadlines, quotas and44check count; no previous execution or product change.",
+  "version": "v1.0.0",
+  "P10_complete": false,
+  "release_accepted": false
+}

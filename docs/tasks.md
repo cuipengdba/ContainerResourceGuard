@@ -294,3 +294,15 @@ R24/P10.2/P10.3/P10.5新增[实际保留数据的后置执行器](testing-aged-p
 
 
 [实际短保留数据辅助故障20场景/152项终态通过](testing-aged-faults.md)，20次新容器ID、各场景旧64MiB及counter/PG/缓存/PID1/无OOM/TERM符合原条件，原输入/source journal及daily0600日志前缀保持；退出0且namespace独立确认清理。仅属于开发程序3a1的短演练，真实七天后阶段和新dbc程序的长期仍独立验收。
+
+
+新v1.0.0程序dbc48aa5已冻结[自身四次冷启动/44项验证](testing-versioned-candidate-cold-rebuild.md)，须等自身在线维护22项/各600秒实际通过且清理，再核对完整前置链后创建Pod；原预算/300秒/45秒、数据/marker/备份/独立恢复/新ID/日志/原值恢复条件不变。当前未启动，旧3a1成绩不改名。
+
+
+已冻结[版本化候选自身七天连续组件](plan-seven-day-versioned-candidate.md)：新dbc48aa5、完整604800秒/28周期及实际老化后置另行留证，必须先有自身维护/冷重建终态及完整前置链。当前尚未启动，原R57程序和计时不变，源程序/预算/门槛不放宽，P10与稳定发布仍另判。
+
+
+新v1.0.0程序dbc48aa5已完成[自身在线升级/回退两角色各600秒、22项终态](testing-versioned-candidate-maintenance.md)，八段维护均被实际原生测量覆盖，原业务/缓存/journal/控制保持，最终disable还原真正原值；退出0且namespace独立确认清理。对端50671aa未发布开发构建，不能关闭两个已发布次版本条件，实际长期及未测环境另判。
+
+
+新版本化程序的[冷重建四次启动44项终态](testing-versioned-candidate-cold-rebuild.md)通过并清理，[自身七天测量](plan-seven-day-versioned-candidate.md)实际开始、首周期内容通过但native-pending；[独立实际谱系/只读后置门禁](testing-versioned-aged-preflight.md)已实现，Linux8项通过、真实封存及提前pending核对完成。初次报告结构错误拒绝和原计划/源码已保留，修正后未改业务进程、限额或验收门槛。本程序后置执行绑定、真实604800秒和全部稳定条件继续；工程预发布不关闭52项原任务。

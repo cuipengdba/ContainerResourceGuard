@@ -1,0 +1,95 @@
+{
+  "phase": "lineage-captured-readiness-pending",
+  "observed_utc": "2026-11-11T02:19:41.157359+00:00",
+  "capture_utc": "2026-11-11T02:19:41.486232+00:00",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "embedded_version": "v1.0.0",
+  "plan_sha256": "1a7b17e7e6da84b7869ba8df9165c2437138da7605a46aba84d7b22761f14f5a",
+  "preflight_sha256": "f5e498829fd2c2d2dedb440ccb8b2f785204ef2dc89041cf7c4364e485f945ab",
+  "base_preflight_sha256": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+  "auditor_sha256": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+  "private_lineage_seal_sha256": "eef8831f1f111bd86309b0f78f11703239d74ce1b9552156cbb13f90af82d31c",
+  "private_seal_mode": 384,
+  "selftests": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_capture_delegates_full_live_check_and_binds_native_start (__main__.Checks) ... ok\ntest_component_delegates_actual_audit_and_checks_embedded_version (__main__.Checks) ... ok\ntest_exact_contract_rejects_old_run_source_and_targets (__main__.Checks) ... ok\ntest_load_plan_pins_digest_and_immutable_reader (__main__.Checks) ... ok\ntest_original_criteria_cannot_be_relaxed (__main__.Checks) ... ok\ntest_pending_never_calls_postflight_or_changes_files (__main__.Checks) ... ok\ntest_pending_rejects_mixed_or_unpinned_seal (__main__.Checks) ... ok\ntest_terminal_still_requires_full_lineage_and_is_not_release (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.022s\n\nOK\n"
+  },
+  "roles": {
+    "dbs": {
+      "directories_sealed": 7,
+      "immutable_inputs_sealed": 8,
+      "daily_log_prefixes_sealed": 1,
+      "native_started_utc": "2026-11-11T00:57:35.625611Z",
+      "primary_start": "2026-11-11 08:56:48.916924+08",
+      "actual_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "original_journal_and_actual_container_identities_sealed": true
+    },
+    "hisdbs": {
+      "directories_sealed": 7,
+      "immutable_inputs_sealed": 8,
+      "daily_log_prefixes_sealed": 1,
+      "native_started_utc": "2026-11-11T00:57:37.268180Z",
+      "primary_start": "2026-11-11 08:57:18.021855+08",
+      "actual_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "original_journal_and_actual_container_identities_sealed": true
+    }
+  },
+  "readiness": {
+    "exit": 2,
+    "result": {
+      "phase": "pending",
+      "runner_identity_verified_live": true,
+      "campaign_phase": "measuring",
+      "postflight_allowed": false,
+      "P10_complete": false
+    }
+  },
+  "postflight_root_absent": true,
+  "postflight_namespace_absent": true,
+  "initial_attempt": {
+    "phase": "rejected",
+    "plan_sha256": "29d886d513b50361db7f11a9be7e66fef6ae78ac9b99ff2b037592fcecffa079",
+    "preflight_sha256": "cab3ad5d806ed0612f743e352777686f314c94debb745b8e89b5219fc61cb810",
+    "selftests": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_capture_delegates_full_live_check_and_binds_native_start (__main__.Checks) ... ok\ntest_component_delegates_actual_audit_and_checks_embedded_version (__main__.Checks) ... ok\ntest_exact_contract_rejects_old_run_source_and_targets (__main__.Checks) ... ok\ntest_load_plan_pins_digest_and_immutable_reader (__main__.Checks) ... ok\ntest_original_criteria_cannot_be_relaxed (__main__.Checks) ... ok\ntest_pending_never_calls_postflight_or_changes_files (__main__.Checks) ... ok\ntest_pending_rejects_mixed_or_unpinned_seal (__main__.Checks) ... ok\ntest_terminal_still_requires_full_lineage_and_is_not_release (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.031s\n\nOK\n"
+    },
+    "capture_exit": 1,
+    "result": {
+      "phase": "rejected",
+      "reason": "INPUT_SHAPE_READ_OR_INVENTORY",
+      "postflight_allowed": false,
+      "P10_complete": false
+    },
+    "receipt_sha256": "ce8bd84ba5cbdc912f9771aff551cb1dcc41b51b7f774070b5e95ee3bd4d9438",
+    "cause": "Adapter expected final campaign role.workload in a measuring report; measuring role only has fixed_controls/samples. Corrected adapter binds the actual running native file and rejects wrong run/phase/primary. No runtime criteria changed."
+  },
+  "limitations": [
+    "This revision only implements exact versioned capture/readiness, not postflight execution. No actual seven-day completion claimed.",
+    "Original R57 plan/seal/component remain separate. R78 elapsed time is never transferred from another ELF.",
+    "Manual64MiBps isolated AMD64 vendor paths, not default20/automatic30 performance or untested hardware acceptance."
+  ],
+  "P10_complete": false,
+  "release_accepted": false
+}
