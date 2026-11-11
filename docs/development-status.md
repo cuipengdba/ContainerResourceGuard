@@ -194,3 +194,11 @@ R24/P10.2/P10.3/P10.5增加[七天老化身份采集与只读前置门禁](testi
 
 
 版本化候选自己的[保留数据故障执行器](testing-versioned-aged-faults.md)已通过Linux9项与真实长默认/execute两次pending门禁，未提前创建目标；短前置通过并启动，固定首观察只有1场景/7项，20场景/152项待终态。原七天/正式对照/其他稳定门槛保持。
+
+
+## 独立现场记录的限制
+
+另一项[171现场更新记录](https://github.com/cuipengdba/ContainerResourceGuard/blob/c050b34ac15d2b8ea101bbe1b76e796e1ce6eb65/docs/deployment-dbs-hisdbs-update-20261111.zh.md)报告，同一dbc48aa5预发布程序安装后DBS出现两次新的PostgreSQL cgroup OOM kill和SQL/API错误，随后数据库重新启动；HISDBS未报告新增OOM。该记录显示更新前后配置和实际限额保持，但尚未证明新二进制导致或排除其影响。本轮97隔离验收没有独立重测171，不将其短期更新探针作为整体稳定接受，也不以隔离短演练覆盖现场故障。保留这一待核查运行记录，不修改171配置、限额或业务。
+
+
+版本化候选自身的[短保留数据故障矩阵](testing-versioned-aged-faults.md)现已20场景/152项通过，原进程退出0、namespace及20个不同Pod/容器cgroup独立确认清理，原64MiB数据/输入/journal/日志前缀保留。首个运行中快照保持；三个来源明确分支的完整CI与两个ARM64检查通过。真实七天后置、正式对照及其他稳定条件仍待，未重发或替换既有下载资产。
