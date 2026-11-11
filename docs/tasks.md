@@ -368,3 +368,6 @@ R142[真实压力失败记录](test-results-business-memory-pressure-legacy-fail
 
 
 R155/R157/R158[只读线程诊断工具](testing-thread-observer.md)已实现：Linux隔离sleep19项、两角色各15秒/16样本/47线程读取完成；首次双采集器HIS路径假设错误保留，后续HIS按实际8090监听者完成，没有重跑已完成DBS。仅工具资格，不是压力复现或完整业务接受。后续[完整诊断实施约束](plan-business-pressure-thread-diagnostics.md)保持原32项/两角色600秒及全部SLA，R142根因与长期仍待。
+
+
+R167[完整压力线程诊断](testing-business-pressure-threads.md)已实现并冻结；新增实际14项生命周期资格通过，首次SSH作用域缺控制文件失败保留。原完整业务方法AST除观察器启动/保存外一致，原32项/两角色各600秒及全部配额、SLA、历史失败不变；此时压力业务尚未执行，52项不宣称完成。
