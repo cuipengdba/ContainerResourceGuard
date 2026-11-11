@@ -73,3 +73,6 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 精确版本化候选保留数据故障入口和两套分离计划见[实际门禁与演练](../docs/testing-versioned-aged-faults.md)，合成检查命令`python3 tests/vendor-versioned-aged-faults-checks.py`。默认只读，Linux9项不表示真实矩阵或七天通过。
+
+
+`vendor-versioned-business-reload.py`：精确候选原DBS/HISDBS启动链下的600秒重载及引擎联测；默认只读，执行须固定计划SHA和显式测试marker。范围见[协议](../docs/testing-versioned-business-reload.md)。
