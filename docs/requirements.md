@@ -212,3 +212,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [R235完整压力终态](testing-business-pressure-final-wait-failure.md)已确认失败并清理：DBS实际600.292秒、SQL1/API5错（HIS未执行），13局部/11区间及引擎10内容检查不抵消业务失败。新诊断取得419请求/601PG样本、600线程样本；SQL对应5个LWLock/WALWrite样本，36个D样本均为DBS.log的write/XFS等待，5次原生API超时各重叠4个D样本。因果仍待设备/限额/日志关系核对；原预算/旧失败/52项和长期要求保持。
+
+
+已补充[R235实际PGDATA及IO映射只读核对](testing-final-wait-io-map.md)：原Pod明确PGDATA=/opt/postgresql/pgdata，实际WAL/日志/备份均为同一XFS253:0→sda2→sda，原标定profile保持。初次/data猜测路径的不存在和纠正完整保留；失败后队列快照不替代故障时刻或证明因果，不计独立物理多盘/业务通过。

@@ -127,3 +127,6 @@ R194[原生请求/PG等待诊断资格](testing-native-request-pg-diagnostics.md
 
 
 R203[完整压力接入原生/PG诊断](testing-business-pressure-native-diagnostics.md)已冻结并实际启动：12项只读前置和6项实际旧报告采集检查通过，开始快照DBS10局部/8区间、压力辅助仍在工作，各600秒/HIS及终态未接受。原完整业务方法AST仅诊断绑定变化，原32项/全部配额/SLA、旧失败与长期条件保持；不以初始报告零计数证明当前零错误。
+
+
+已补充[R235实际PGDATA及IO映射只读核对](testing-final-wait-io-map.md)：原Pod明确PGDATA=/opt/postgresql/pgdata，实际WAL/日志/备份均为同一XFS253:0→sda2→sda，原标定profile保持。初次/data猜测路径的不存在和纠正完整保留；失败后队列快照不替代故障时刻或证明因果，不计独立物理多盘/业务通过。
