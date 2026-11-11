@@ -1,6 +1,6 @@
 # 完整压力接入设备与唯一轮次 PG 等待诊断
 
-原 32 项完整压力执行器已经接入已资格的设备会话与新版 PG 等待 worker，并在隔离节点实际启动。[开始快照](test-start-business-pressure-device-pgwait.json)只证明启动时的局部进展，不是业务通过或稳定版发布证据。
+原 32 项完整压力执行器已经接入已资格的设备会话与新版 PG 等待 worker，并在隔离节点实际完成一轮。**终态失败：DBS实际600.412秒，SQL0错、API3次超时；HISDBS按原失败流程未执行。** [终态与独立清理](test-results-business-pressure-device-pgwait.json)、[逐窗口复核](test-analysis-business-pressure-device-pgwait.json)。[开始快照](test-start-business-pressure-device-pgwait.json)只证明启动时的局部进展，不是业务通过或稳定版发布证据。
 
 ## 固定协议和变化
 
@@ -21,3 +21,23 @@
 ## 后续判定
 
 继续等待原句柄自然终态；失败时保留原错误、全部请求/线程/PG/设备报告，独立核对原进程退出、namespace/cgroup清理及原配置/缺省profile恢复。采集链资格、局部检查或某次未复现都不关闭 R235/R203 等历史失败。所有52项原任务、真实七天原句柄及后置、正式24h对照、ARM厂商业务、独立物理多设备等原稳定条件继续，产品及preview.2下载程序没有变化。
+
+## 实际终态和逐窗口观察
+
+原运行器自然结束、exit1，原因 NATIVE_COMPLETION_EXIT。DBS 13项局部、11个重载区间及10项引擎内容通过，但不能抵消原生API3次约4.004秒的socket超时；SQL301请求0错，API121请求3错。原600秒真实运行结束，未向业务native发送TERM，未以部分报告充当600秒；HISDBS未执行。
+
+完整原生诊断有422请求及601个PG/PG等待样本，诊断完整、0丢弃/0采集错，原内部线程CPU合计1.576秒。线程598样本、设备599样本，分别覆盖全部引擎/重载包络，最大采样间隔约1.003秒；各900秒观察器由自己的pidfd TERM结束为部分报告，未使用KILL，不宣称观察满900秒。设备观察器完整子进程CPU1.659秒、线程3.417秒，各记录自身wait4数据，不把它们算进原native内部线程统计。
+
+共22个D线程观测，均为同一TID/启动ticks，捕获write/FD3/DBS.log及XFS buffered-write/folio等待。3个API错误各有4个严格请求内D观测，均在最后重载之后。其独立设备括区间和PG快照已逐项保留。同期选中的本轮native SQL客户端共12个快照均idle/ClientRead，不能据此判断其他API数据库后端；PG内核栈601次均不可用并保留unknown。
+
+错误窗口的dm-0本容器wios约0～64/s，端点是原135wiops配置；dm-0端点in_flight在9～125之间。这些是不同层和时间区间的观测，既不能证明没有限流，也不能把全设备队列归因于本容器。三层分别保存，未相加、不把1秒速率峰值当限额违例；没有完成IO因果判定，不修改原配额或SLA。
+
+节点独立复核5个已记录原实例全部消失、namespace及Pod cgroup不存在，两个原输入目录的配置字节/精确ELF和缺省profile状态恢复。46份原始文本文件逐字节保存、SHA256核对；离线分析从原目录和压缩原件运行结果一致，改动原报告却保留旧摘要的负例明确拒绝。
+
+复现：从源码仓库运行下列命令，只读本地归档，不连接节点：
+
+```bash
+python3 tests/analyze-pressure-device-pg.py --evidence docs/test-evidence/pressure342-terminal.json.gz --output /tmp/pressure342-review-new.json
+```
+
+本轮仍未满足原32项/两角色各600秒，旧失败和全部52任务不关闭。后续先根据日志写入等待、设备及原限额的联合证据设计有明确对照的诊断；不重复无变化的完整测试或提高配额冒充解决。七天原句柄、正式24h及后置、ARM厂商业务和独立物理设备等原稳定要求继续，preview.2安装包不变。
