@@ -1,0 +1,60 @@
+{
+  "schema": "crg-write-iops-start-v1",
+  "phase": "diagnostic-started-not-yet-completed",
+  "node_utc": "2026-11-11T19:58:41.061824+00:00",
+  "launch": {
+    "pid": 3172794,
+    "start_ticks": 136697714,
+    "entry": "/var/tmp/crg-writeiops361-tools-20261111/comparison-runner.py",
+    "runner_sha256": "0c6d8f468bfd4cc4113299c62019ee2de0bd29516d643a51924be2b9ed90799f",
+    "executor_sha256": "30e92d64f2faede76efa115ebdedb0ec344567587b6c39c28bb1f8b7cc04de3d",
+    "plan_sha256": "3ae2a159dc9d40eea442e70f15cffcc09f91357545ab4311625bd2275b65599a",
+    "exists": true,
+    "state": "S",
+    "actual_start_ticks": 136697714,
+    "same_instance": true
+  },
+  "worker": {
+    "pid": 3172803,
+    "start_ticks": 136697717,
+    "entry": "/var/tmp/crg-writeiops361-tools-20261111/vendor-write-iops-comparison.py",
+    "exists": true,
+    "state": "S",
+    "actual_start_ticks": 136697717,
+    "same_instance": true
+  },
+  "executor_sha256": "30e92d64f2faede76efa115ebdedb0ec344567587b6c39c28bb1f8b7cc04de3d",
+  "plan_sha256": "3ae2a159dc9d40eea442e70f15cffcc09f91357545ab4311625bd2275b65599a",
+  "readonly_and_denial_gates": 12,
+  "baseline_three_complete_clones_frozen_before_A1": true,
+  "initial_A1_main_checks": 2,
+  "initial_A1_reload_intervals": 0,
+  "contrast": {
+    "axis": "policy-A write IOPS only",
+    "A1_A2_wiops": 135,
+    "B_wiops": 4096,
+    "unchanged_policy_B_wiops": 108,
+    "unchanged_boot_wiops": 4096,
+    "support_pattern": "valid full600s A1 errors, B zero errors, A2 errors; otherwise inconclusive",
+    "meaning": "diagnostic contrast only; no automatic product budget increase or original gate waiver"
+  },
+  "comparison_limits": [
+    "new-inode cold clones differ from R342 reused source",
+    "sequential arms share backend with original unmodified long tests",
+    "cache and IO state are not reset or claimed equal",
+    "no inference from B alone; A must reproduce and repeat for support"
+  ],
+  "original32_two_roles_percentage_acceptance_unmodified": true,
+  "initial_windows_path_rejection_preserved": true,
+  "runtime_product_unchanged": true,
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "P10_complete": false,
+  "raw_evidence": {
+    "path": "test-evidence/write-iops360-start.json.gz",
+    "gzip_bytes": 21009,
+    "gzip_sha256": "c9e2baedd388aa50c57c5716cc85bbb272fe5e1d56833d866d390f232dc63838",
+    "uncompressed_bytes": 94455,
+    "uncompressed_sha256": "1782d7cc993de04fef7210d2573e69d5e6a88ce9c6ef4ec088af38a0de49ee3a"
+  }
+}
