@@ -1,0 +1,101 @@
+{
+  "schema": "crg-pressure-final-wait-start-v1",
+  "phase": "started-not-business-accepted",
+  "observed_node_utc": "2026-11-11T14:43:25.186105+00:00",
+  "launch": {
+    "pid": 3241593,
+    "start_ticks": 134808114,
+    "entry": "/var/tmp/crg-memory235-tools-20261111/pressure-runner.py",
+    "runner_sha256": "637dcacace237ecf2d340d701048afaad9d2c80e356d9f434791fed478c2baf4",
+    "executor_sha256": "0ff4743e1ffb7b1006eddec87a471175eda259aed0e85f60e81fe7424641a62a",
+    "plan_sha256": "9fc0b663056d28562be9c80c83dc3dd88fddbc3f03ee9f73595eb33d3af85e33"
+  },
+  "worker": {
+    "pid": 3241597,
+    "start_ticks": 134808118,
+    "entry": "/var/tmp/crg-memory235-tools-20261111/vendor-business-memory-pressure-final-wait.py"
+  },
+  "runner_process": {
+    "pid": 3241593,
+    "exists": true,
+    "start_ticks": 134808114,
+    "same_instance": true,
+    "state": "S"
+  },
+  "worker_process": {
+    "pid": 3241597,
+    "exists": true,
+    "start_ticks": 134808118,
+    "same_instance": true,
+    "state": "S"
+  },
+  "observed_report_phase": "testing-dbs",
+  "observed_main_check_count": 2,
+  "native_final_progress": {
+    "dbs": {
+      "phase": "attached",
+      "run_id": "202611112350",
+      "requested_seconds": 600,
+      "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+      "signals_sent": 0,
+      "signal_scope": "one exact native test worker only",
+      "forced_kill": false,
+      "oversized_unrelated_argv_ignored": 0,
+      "complete600s_accepted": false,
+      "identity": {
+        "pid": 3255081,
+        "start_ticks": 134812860,
+        "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod82317865_b4d4_4000_b74e_b3b7e9b75593.slice/cri-containerd-6738aa861b07a6a1e585ae75a2145c97b9e09f76635c8d692da74afd8e0c131b.scope",
+        "entry": "/tmp/crg-business-reload-202611112350.py",
+        "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f",
+        "argv_sha256": "e10386cc3c77c6af8e8120314a190cae78be43dd00b5a34843590f5e2086bb16"
+      },
+      "pidfd_used": true,
+      "attached_epoch": 1794408195.2977517
+    }
+  },
+  "actual_business_images": {
+    "dbs": {
+      "query_exit": 0,
+      "pod_uid": "82317865-b4d4-4000-b74e-b3b7e9b75593",
+      "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "matches_qualified_image": true,
+      "restart_count": 0
+    }
+  },
+  "execution_prechecks": {
+    "node_utc": "2026-11-11T14:42:18.030632+00:00",
+    "integration_checks_result_sha256": "d2c2c417efd2ece3687d5a91e15ac0c51968a417c7fc97c6ba58f652b7592a68",
+    "integration_checks": 12,
+    "readonly_denial_gates": 15,
+    "original_source_inputs": {
+      "dbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      },
+      "hisdbs": {
+        "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "program_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "profile_absent": true
+      }
+    },
+    "source_image_bindings": {
+      "dbs": {
+        "image": "db_puc/dbs:V7.0.12.001.02.56",
+        "cached_image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5"
+      },
+      "hisdbs": {
+        "image": "db_puc/hisdbs:V7.0.12.001.02",
+        "cached_image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+      }
+    }
+  },
+  "namespace": "crg-vendor-lab-pressure235-20261111",
+  "work_root": "/var/tmp/crg-business-pressure235-20261111",
+  "plan_sha256": "9fc0b663056d28562be9c80c83dc3dd88fddbc3f03ee9f73595eb33d3af85e33",
+  "both600s_accepted": false,
+  "stable_release_accepted": false,
+  "observation_is_fixed_start_snapshot_not_current_terminal_claim": true
+}
