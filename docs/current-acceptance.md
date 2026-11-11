@@ -1,5 +1,7 @@
 # 当前验收入口
 
+已完成[提前失败原生负载最终清理资格](testing-native-final-flush.md)：Linux18项、DBS/HISDBS两原镜像各8项实际通过并退出/清理；精确pidfd仅向本轮worker发TERM，实际部分诊断落盘，原600秒/failed/interrupted保持。首轮长无关参数拒绝及旧源码保留。尚待完整压力工具接入与原业务复测，R203停库和API失败/全部52项/长期标准不因此解除。
+
 R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostics-failure.md)失败：DBS13局部/11区间通过，但备库停库31.421秒超过原30秒，71个引擎探针另有7次API内部超时；未完成两角色600秒/HIS。提前外部失败导致原生最终诊断未落盘，初始零计数不可当通过。原始185线程样本、日志和输入恢复/进程清理已核对；保留旧失败/原预算/52项和七天任务，不放宽标准。
 
 当前即时交付：[v1.0.0-preview.2](releases/v1.0.0-preview.2.md)，与preview.1同一受测程序；[实际发布/下载核对](test-results-preview2-publication.json)。本版仅刷新文档和证据，稳定1.0尚未发布。
