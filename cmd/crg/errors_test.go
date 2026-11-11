@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"syscall"
 	"testing"
+	"time"
 
 	"github.com/cuipengdba/ContainerResourceGuard/internal/guard"
 )
@@ -69,11 +70,17 @@ func TestCLICommandFailureJSONAndLegacyBuildFields(t *testing.T) {
 		ctx, cancel := context.WithTimeout(context.Background(), 5e9)
 		cmd := exec.CommandContext(ctx, exe, append([]string{"-test.run=^TestCLIContractHelper$", "--"}, tc.args...)...)
 		cmd.Env = append(os.Environ(), "CRG_TEST_CLI_HELPER=1")
+		started := time.Now()
 		out, runErr := cmd.Output()
+		elapsed, contextErr := time.Since(started), ctx.Err()
 		cancel()
 		var exit *exec.ExitError
 		if !errors.As(runErr, &exit) || exit.ExitCode() != 1 {
-			t.Fatalf("%v: unexpected exit %v", tc.args, runErr)
+			var stderr []byte
+			if exit != nil {
+				stderr = exit.Stderr
+			}
+			t.Fatalf("%v: unexpected exit %v; context=%v elapsed=%s stdout=%q stderr=%q", tc.args, runErr, contextErr, elapsed, out, stderr)
 		}
 		var object map[string]any
 		decoder := json.NewDecoder(bytes.NewReader(out))
