@@ -76,3 +76,6 @@ Versioned postflight execution: `python3 tests/vendor-versioned-aged-postflight-
 
 
 `vendor-versioned-business-reload.py`：精确候选原DBS/HISDBS启动链下的600秒重载及引擎联测；默认只读，执行须固定计划SHA和显式测试marker。范围见[协议](../docs/testing-versioned-business-reload.md)。
+
+
+`vendor-business-exec-timing.py`/`vendor-engine-timed.py`/`vendor-api-timed.py`：独立测试目标上的exec/容器内请求分段，复用固定R95函数和原业务判据；默认只读。见[诊断协议](../docs/testing-business-exec-timing.md)。
