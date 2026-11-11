@@ -1,0 +1,4196 @@
+{
+  "schema": "crg-write-iops-arm-offline-review-v1",
+  "terminal_phase": "failed",
+  "terminal_reason": "NATIVE_COMPLETION_EXIT",
+  "main_checks": 13,
+  "roles": {
+    "dbs": {
+      "native_phase": "failed",
+      "native_elapsed_seconds": 600.2985716219991,
+      "native_SQL": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          285,
+          4,
+          0,
+          1,
+          1,
+          0,
+          2,
+          0,
+          4,
+          3,
+          1,
+          0
+        ],
+        "max_seconds": 2.1672085791360587,
+        "p95_bucket_upper_seconds": 0.005,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 10.483445441816002
+      },
+      "native_API": {
+        "attempts": 121,
+        "errors": 4,
+        "histogram": [
+          0,
+          0,
+          113,
+          1,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          4,
+          0
+        ],
+        "max_seconds": 4.004563844064251,
+        "p95_bucket_upper_seconds": 0.25,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 117,
+        "total_seconds": 17.990327058825642
+      },
+      "requests": 422,
+      "reload_intervals": 11,
+      "engine_content_checks": 10,
+      "PG_samples": 601,
+      "PG_wait_available_samples": 601,
+      "PG_kernel_stack_available": 0,
+      "PG_kernel_stack_unknown": 601,
+      "thread_samples": 600,
+      "D_observations": 25,
+      "D_tid_instances": [
+        [
+          3181914,
+          136701296
+        ]
+      ],
+      "D_descriptor_counts": {
+        "/opt/dbs/log/DBS.log": 25
+      },
+      "device_samples": 600,
+      "device_report_phase": "incomplete",
+      "device_report_reason": "observer-interrupted",
+      "device_counter_intervals": 599,
+      "maximum_cgroup_rates_per_second_by_layer": {
+        "253:0": {
+          "rbytes": 67109063.0318403,
+          "wbytes": 74378826.59028938,
+          "rios": 112.99918403180932,
+          "wios": 176.99904914315303
+        },
+        "8:0": {
+          "rbytes": 31227960.99600704,
+          "wbytes": 10362383.04547444,
+          "rios": 125.00022814534336,
+          "wios": 63.99984031955505
+        },
+        "8:2": null
+      },
+      "whole_device_observer_cpu_seconds": 1.606761,
+      "whole_thread_observer_cpu_seconds": 3.352514,
+      "native_internal_thread_cpu_seconds": 1.5765992640000004,
+      "error_windows": [
+        {
+          "request": {
+            "backend_pid": null,
+            "connection_observed_epoch": null,
+            "elapsed_seconds": 4.003690157085657,
+            "ended_epoch": 1794427235.727124,
+            "ended_monotonic": 1367178.839116327,
+            "error": {
+              "class": "timeout",
+              "code": "socket-timeout"
+            },
+            "iteration": 26,
+            "kind": "api",
+            "sequence": 92,
+            "stage": "http-request",
+            "started_epoch": 1794427231.723467,
+            "started_monotonic": 1367174.83542617,
+            "success": false,
+            "within_original_5seconds": true
+          },
+          "strict_request_D_observations": [
+            {
+              "epoch": 1794427232.0040278,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427233.004026,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427234.0040355,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427235.004028,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            }
+          ],
+          "PG_samples_with_independent_wait_intervals": [
+            {
+              "available": true,
+              "elapsed_seconds": 0.004112324910238385,
+              "ended_epoch": 1794427231.740954,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0027655160520225763,
+                "ended_monotonic": 1367174.852889715,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013423029999999891,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367174.85012819,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427229.895068,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427231.736852,
+              "started_monotonic": 1367174.848840112,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004033270990476012,
+              "ended_epoch": 1794427232.740989,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0026907220017164946,
+                "ended_monotonic": 1367175.852919209,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013420959999999593,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367175.850233401,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427231.89519,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427232.736964,
+              "started_monotonic": 1367175.848953489,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004058946156874299,
+              "ended_epoch": 1794427233.741114,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002724373945966363,
+                "ended_monotonic": 1367176.853049733,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013649609999999979,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367176.850329538,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427231.89519,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427233.737064,
+              "started_monotonic": 1367176.849053243,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.003984438022598624,
+              "ended_epoch": 1794427234.741152,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0026499179657548666,
+                "ended_monotonic": 1367177.853090401,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013073989999999869,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367177.850444502,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427233.895294,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427234.737176,
+              "started_monotonic": 1367177.849165423,
+              "truncated": false
+            }
+          ],
+          "device_counter_brackets": [
+            {
+              "started_epoch": 1794427230.8075025,
+              "ended_epoch": 1794427231.8070686,
+              "seconds": 0.9995662041474134,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 167936,
+                    "rios": 13,
+                    "wbytes": 31657984,
+                    "wios": 152
+                  },
+                  "rates_per_second": {
+                    "rbytes": 168008.8815560167,
+                    "rios": 13.005641793470234,
+                    "wbytes": 31671723.062108614,
+                    "wios": 152.06596558519044
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 167936,
+                    "rios": 13,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 168008.8815560167,
+                    "rios": 13.005641793470234,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 14,
+                    "writes_completed": 184,
+                    "read_sectors_512bytes": 376,
+                    "write_sectors_512bytes": 83328,
+                    "io_ms": 999,
+                    "weighted_io_ms": 24557
+                  },
+                  "in_flight_at_start": 13,
+                  "in_flight_at_end": 20
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 14,
+                    "writes_completed": 272,
+                    "read_sectors_512bytes": 376,
+                    "write_sectors_512bytes": 79744,
+                    "io_ms": 952,
+                    "weighted_io_ms": 34783
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 14,
+                    "writes_completed": 272,
+                    "read_sectors_512bytes": 376,
+                    "write_sectors_512bytes": 79744,
+                    "io_ms": 999,
+                    "weighted_io_ms": 34783
+                  },
+                  "in_flight_at_start": 32,
+                  "in_flight_at_end": 13
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 7,
+                  "nr_throttled": 0,
+                  "system_usec": 8259,
+                  "throttled_usec": 0,
+                  "usage_usec": 18463,
+                  "user_usec": 10205
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427231.8070686,
+              "ended_epoch": 1794427232.8070555,
+              "seconds": 0.9999876639340073,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 14958592,
+                    "wios": 87
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 14958776.532454474,
+                    "wios": 87.00107325098107
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 243,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 30491,
+                    "io_ms": 998,
+                    "weighted_io_ms": 13392
+                  },
+                  "in_flight_at_start": 20,
+                  "in_flight_at_end": 204
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 184,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 30491,
+                    "io_ms": 897,
+                    "weighted_io_ms": 12850
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 184,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 30491,
+                    "io_ms": 998,
+                    "weighted_io_ms": 12849
+                  },
+                  "in_flight_at_start": 13,
+                  "in_flight_at_end": 140
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 2257,
+                  "throttled_usec": 0,
+                  "usage_usec": 13530,
+                  "user_usec": 11273
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427232.8070555,
+              "ended_epoch": 1794427233.807386,
+              "seconds": 1.0003310770262033,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 21786624,
+                    "wios": 14
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 21779413.336600065,
+                    "wios": 13.995366455693224
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 367,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 27749,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 123066
+                  },
+                  "in_flight_at_start": 204,
+                  "in_flight_at_end": 63
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 308,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 30821,
+                    "io_ms": 998,
+                    "weighted_io_ms": 101507
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 308,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 30821,
+                    "io_ms": 1001,
+                    "weighted_io_ms": 101508
+                  },
+                  "in_flight_at_start": 140,
+                  "in_flight_at_end": 84
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 7,
+                  "nr_throttled": 0,
+                  "system_usec": 3229,
+                  "throttled_usec": 0,
+                  "usage_usec": 11409,
+                  "user_usec": 8180
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427233.807386,
+              "ended_epoch": 1794427234.807398,
+              "seconds": 1.0000116259325296,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 32301056,
+                    "wios": 19
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 32300680.474468146,
+                    "wios": 18.999779109849992
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 290,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 72772,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 72960
+                  },
+                  "in_flight_at_start": 63,
+                  "in_flight_at_end": 61
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 328,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 70724,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 78511
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 328,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 70724,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 78511
+                  },
+                  "in_flight_at_start": 84,
+                  "in_flight_at_end": 86
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 8,
+                  "nr_throttled": 0,
+                  "system_usec": 6219,
+                  "throttled_usec": 0,
+                  "usage_usec": 20409,
+                  "user_usec": 14189
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427234.807398,
+              "ended_epoch": 1794427235.8070655,
+              "seconds": 0.9996670391410589,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 34873344,
+                    "wios": 26
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 34884959.32602131,
+                    "wios": 26.0086598657288
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 228,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 54775,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 77874
+                  },
+                  "in_flight_at_start": 61,
+                  "in_flight_at_end": 36
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 279,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 53751,
+                    "io_ms": 981,
+                    "weighted_io_ms": 92321
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 279,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 53751,
+                    "io_ms": 999,
+                    "weighted_io_ms": 92321
+                  },
+                  "in_flight_at_start": 86,
+                  "in_flight_at_end": 85
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 8,
+                  "nr_throttled": 0,
+                  "system_usec": 2982,
+                  "throttled_usec": 0,
+                  "usage_usec": 14967,
+                  "user_usec": 11985
+                }
+              }
+            }
+          ],
+          "all_error_after_last_reload": true
+        },
+        {
+          "request": {
+            "backend_pid": null,
+            "connection_observed_epoch": null,
+            "elapsed_seconds": 4.004008740885183,
+            "ended_epoch": 1794427240.727559,
+            "ended_monotonic": 1367183.839551142,
+            "error": {
+              "class": "timeout",
+              "code": "socket-timeout"
+            },
+            "iteration": 27,
+            "kind": "api",
+            "sequence": 96,
+            "stage": "http-request",
+            "started_epoch": 1794427236.723584,
+            "started_monotonic": 1367179.835542401,
+            "success": false,
+            "within_original_5seconds": true
+          },
+          "strict_request_D_observations": [
+            {
+              "epoch": 1794427237.004031,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427238.004032,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427239.0040324,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427240.004279,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            }
+          ],
+          "PG_samples_with_independent_wait_intervals": [
+            {
+              "available": true,
+              "elapsed_seconds": 0.0040319920517504215,
+              "ended_epoch": 1794427236.741425,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0026982841081917286,
+                "ended_monotonic": 1367179.853359487,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013606270000000031,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367179.850665436,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427235.89541,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427236.737402,
+              "started_monotonic": 1367179.849391161,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004055164055898786,
+              "ended_epoch": 1794427237.741573,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002732053864747286,
+                "ended_monotonic": 1367180.853505932,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013855139999999766,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367180.850778148,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427235.89541,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427237.737528,
+              "started_monotonic": 1367180.849516925,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004330361960455775,
+              "ended_epoch": 1794427238.741977,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.00293489801697433,
+                "ended_monotonic": 1367181.853911775,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013665379999999727,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367181.850981015,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427237.895523,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427238.737656,
+              "started_monotonic": 1367181.849645083,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004214271903038025,
+              "ended_epoch": 1794427239.741986,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002792365849018097,
+                "ended_monotonic": 1367182.8539213,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013845949999999885,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367182.851133021,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427237.895523,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427239.737781,
+              "started_monotonic": 1367182.849769501,
+              "truncated": false
+            }
+          ],
+          "device_counter_brackets": [
+            {
+              "started_epoch": 1794427235.8070655,
+              "ended_epoch": 1794427236.807061,
+              "seconds": 0.9999953918159008,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 63381504,
+                    "wios": 44
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 63381796.07498485,
+                    "wios": 44.00020276103473
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 116,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 154754,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 33180
+                  },
+                  "in_flight_at_start": 36,
+                  "in_flight_at_end": 35
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 376,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 156290,
+                    "io_ms": 968,
+                    "weighted_io_ms": 84062
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 376,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 156290,
+                    "io_ms": 1000,
+                    "weighted_io_ms": 84061
+                  },
+                  "in_flight_at_start": 85,
+                  "in_flight_at_end": 43
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 6805,
+                  "throttled_usec": 0,
+                  "usage_usec": 15667,
+                  "user_usec": 8863
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427236.807061,
+              "ended_epoch": 1794427237.807929,
+              "seconds": 1.0008677190635353,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 36839424,
+                    "wios": 32
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 36807485.443200134,
+                    "wios": 31.972257063042147
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 115,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 80327,
+                    "io_ms": 1001,
+                    "weighted_io_ms": 29205
+                  },
+                  "in_flight_at_start": 35,
+                  "in_flight_at_end": 6
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 245,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 78791,
+                    "io_ms": 894,
+                    "weighted_io_ms": 41267
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 245,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 78791,
+                    "io_ms": 1001,
+                    "weighted_io_ms": 41268
+                  },
+                  "in_flight_at_start": 43,
+                  "in_flight_at_end": 6
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 9,
+                  "nr_throttled": 0,
+                  "system_usec": 28025,
+                  "throttled_usec": 0,
+                  "usage_usec": 51012,
+                  "user_usec": 22986
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427237.807929,
+              "ended_epoch": 1794427238.8070736,
+              "seconds": 0.9991402740124613,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 36724736,
+                    "wios": 27
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 36756336.37759053,
+                    "wios": 27.0232325753123
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 102,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 73491,
+                    "io_ms": 999,
+                    "weighted_io_ms": 6249
+                  },
+                  "in_flight_at_start": 6,
+                  "in_flight_at_end": 4
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 225,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 73491,
+                    "io_ms": 907,
+                    "weighted_io_ms": 13305
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 225,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 73491,
+                    "io_ms": 999,
+                    "weighted_io_ms": 13304
+                  },
+                  "in_flight_at_start": 6,
+                  "in_flight_at_end": 4
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 9,
+                  "nr_throttled": 0,
+                  "system_usec": 4751,
+                  "throttled_usec": 0,
+                  "usage_usec": 17501,
+                  "user_usec": 12751
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427238.8070736,
+              "ended_epoch": 1794427239.8071218,
+              "seconds": 1.0000534439459443,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 38932480,
+                    "wios": 48
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 38930399.405838564,
+                    "wios": 47.997434827687606
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 97,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 66745,
+                    "io_ms": 999,
+                    "weighted_io_ms": 4567
+                  },
+                  "in_flight_at_start": 4,
+                  "in_flight_at_end": 24
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 207,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 68793,
+                    "io_ms": 907,
+                    "weighted_io_ms": 11483
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 207,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 68793,
+                    "io_ms": 999,
+                    "weighted_io_ms": 11483
+                  },
+                  "in_flight_at_start": 4,
+                  "in_flight_at_end": 22
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 8,
+                  "nr_throttled": 0,
+                  "system_usec": 26166,
+                  "throttled_usec": 0,
+                  "usage_usec": 77325,
+                  "user_usec": 51158
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427239.8071218,
+              "ended_epoch": 1794427240.8070576,
+              "seconds": 0.9999356041662395,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 3067904,
+                    "wios": 130
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 3068101.5729588526,
+                    "wios": 130.00837199751064
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 233,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 17354,
+                    "io_ms": 997,
+                    "weighted_io_ms": 10120
+                  },
+                  "in_flight_at_start": 24,
+                  "in_flight_at_end": 14
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 151,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 15306,
+                    "io_ms": 897,
+                    "weighted_io_ms": 6691
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 151,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 15306,
+                    "io_ms": 998,
+                    "weighted_io_ms": 6692
+                  },
+                  "in_flight_at_start": 22,
+                  "in_flight_at_end": 2
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 7415,
+                  "throttled_usec": 0,
+                  "usage_usec": 17917,
+                  "user_usec": 10503
+                }
+              }
+            }
+          ],
+          "all_error_after_last_reload": true
+        },
+        {
+          "request": {
+            "backend_pid": null,
+            "connection_observed_epoch": null,
+            "elapsed_seconds": 4.004484863951802,
+            "ended_epoch": 1794427245.728158,
+            "ended_monotonic": 1367188.840150374,
+            "error": {
+              "class": "timeout",
+              "code": "socket-timeout"
+            },
+            "iteration": 28,
+            "kind": "api",
+            "sequence": 99,
+            "stage": "http-request",
+            "started_epoch": 1794427241.723707,
+            "started_monotonic": 1367184.83566551,
+            "success": false,
+            "within_original_5seconds": true
+          },
+          "strict_request_D_observations": [
+            {
+              "epoch": 1794427242.004031,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427243.0040298,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427244.0040314,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427245.0040286,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            }
+          ],
+          "PG_samples_with_independent_wait_intervals": [
+            {
+              "available": true,
+              "elapsed_seconds": 0.0042700208723545074,
+              "ended_epoch": 1794427241.742297,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002912038005888462,
+                "ended_monotonic": 1367184.854217044,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0014855950000000062,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367184.851310169,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427239.895638,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427241.738039,
+              "started_monotonic": 1367184.85002736,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.00407966086640954,
+              "ended_epoch": 1794427242.74223,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0027199690230190754,
+                "ended_monotonic": 1367185.854166199,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013370799999999905,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367185.851450456,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427241.895754,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427242.73816,
+              "started_monotonic": 1367185.850148644,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.0040882600005716085,
+              "ended_epoch": 1794427243.742356,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002755081979557872,
+                "ended_monotonic": 1367186.854292031,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.001364501000000018,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367186.851540982,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427241.895754,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427243.738277,
+              "started_monotonic": 1367186.850265897,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004050312098115683,
+              "ended_epoch": 1794427244.742439,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002732242923229933,
+                "ended_monotonic": 1367187.854376329,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013381029999999794,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367187.851648013,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427243.895863,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427244.738399,
+              "started_monotonic": 1367187.850386526,
+              "truncated": false
+            }
+          ],
+          "device_counter_brackets": [
+            {
+              "started_epoch": 1794427240.8070576,
+              "ended_epoch": 1794427241.8070598,
+              "seconds": 1.0000023108441383,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 20275200,
+                    "wios": 72
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 20275153.147281196,
+                    "wios": 71.99983361960652
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 173,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 58540,
+                    "io_ms": 954,
+                    "weighted_io_ms": 6458
+                  },
+                  "in_flight_at_start": 14,
+                  "in_flight_at_end": 7
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 214,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 59564,
+                    "io_ms": 871,
+                    "weighted_io_ms": 13979
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 214,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 59564,
+                    "io_ms": 954,
+                    "weighted_io_ms": 13979
+                  },
+                  "in_flight_at_start": 2,
+                  "in_flight_at_end": 28
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 3548,
+                  "throttled_usec": 0,
+                  "usage_usec": 17934,
+                  "user_usec": 14386
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427241.8070598,
+              "ended_epoch": 1794427242.8077993,
+              "seconds": 1.000739409122616,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 37740544,
+                    "wios": 20
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 37712658.91595943,
+                    "wios": 19.985222743985585
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 76,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 83933,
+                    "io_ms": 1001,
+                    "weighted_io_ms": 6295
+                  },
+                  "in_flight_at_start": 7,
+                  "in_flight_at_end": 2
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 224,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 85469,
+                    "io_ms": 915,
+                    "weighted_io_ms": 17672
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 224,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 85469,
+                    "io_ms": 1001,
+                    "weighted_io_ms": 17671
+                  },
+                  "in_flight_at_start": 28,
+                  "in_flight_at_end": 4
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 5030,
+                  "throttled_usec": 0,
+                  "usage_usec": 16066,
+                  "user_usec": 11036
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427242.8077993,
+              "ended_epoch": 1794427243.807056,
+              "seconds": 0.99925716384314,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 41672704,
+                    "wios": 30
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 41703683.00360931,
+                    "wios": 30.022301651178655
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 89,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 78467,
+                    "io_ms": 998,
+                    "weighted_io_ms": 5035
+                  },
+                  "in_flight_at_start": 2,
+                  "in_flight_at_end": 9
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 221,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 75907,
+                    "io_ms": 886,
+                    "weighted_io_ms": 12671
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 221,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 75907,
+                    "io_ms": 998,
+                    "weighted_io_ms": 12672
+                  },
+                  "in_flight_at_start": 4,
+                  "in_flight_at_end": 32
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 6073,
+                  "throttled_usec": 0,
+                  "usage_usec": 16159,
+                  "user_usec": 10086
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427243.807056,
+              "ended_epoch": 1794427244.8070633,
+              "seconds": 1.000007000984624,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 24838144,
+                    "wios": 63
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 24837970.10975317,
+                    "wios": 62.999558941056534
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 150,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 62702,
+                    "io_ms": 999,
+                    "weighted_io_ms": 7035
+                  },
+                  "in_flight_at_start": 9,
+                  "in_flight_at_end": 3
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 216,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 62702,
+                    "io_ms": 877,
+                    "weighted_io_ms": 12063
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 216,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 62702,
+                    "io_ms": 999,
+                    "weighted_io_ms": 12062
+                  },
+                  "in_flight_at_start": 32,
+                  "in_flight_at_end": 3
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 9,
+                  "nr_throttled": 0,
+                  "system_usec": 24043,
+                  "throttled_usec": 0,
+                  "usage_usec": 59139,
+                  "user_usec": 35096
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427244.8070633,
+              "ended_epoch": 1794427245.807066,
+              "seconds": 1.0000014679972082,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 26628096,
+                    "wios": 98
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 26628056.910086796,
+                    "wios": 97.99985613648478
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 158,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 48229,
+                    "io_ms": 999,
+                    "weighted_io_ms": 6172
+                  },
+                  "in_flight_at_start": 3,
+                  "in_flight_at_end": 28
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 203,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 48229,
+                    "io_ms": 870,
+                    "weighted_io_ms": 9008
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 203,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 48229,
+                    "io_ms": 999,
+                    "weighted_io_ms": 9008
+                  },
+                  "in_flight_at_start": 3,
+                  "in_flight_at_end": 17
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 8,
+                  "nr_throttled": 0,
+                  "system_usec": 28102,
+                  "throttled_usec": 0,
+                  "usage_usec": 73217,
+                  "user_usec": 45114
+                }
+              }
+            }
+          ],
+          "all_error_after_last_reload": true
+        },
+        {
+          "request": {
+            "backend_pid": null,
+            "connection_observed_epoch": null,
+            "elapsed_seconds": 4.004366966895759,
+            "ended_epoch": 1794427250.728164,
+            "ended_monotonic": 1367193.840155955,
+            "error": {
+              "class": "timeout",
+              "code": "socket-timeout"
+            },
+            "iteration": 29,
+            "kind": "api",
+            "sequence": 103,
+            "stage": "http-request",
+            "started_epoch": 1794427246.723836,
+            "started_monotonic": 1367189.835788988,
+            "success": false,
+            "within_original_5seconds": true
+          },
+          "strict_request_D_observations": [
+            {
+              "epoch": 1794427247.0040367,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427248.004113,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427249.0040324,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            },
+            {
+              "epoch": 1794427250.0041134,
+              "tid": 3181914,
+              "start_ticks": 136701296,
+              "wchan": {
+                "available": true,
+                "value": "folio_wait_bit_common"
+              },
+              "wait_detail": {
+                "available": true,
+                "syscall": {
+                  "available": true,
+                  "number": 1,
+                  "abi": "linux-x86_64",
+                  "operation": "write",
+                  "FD_argument_available": true,
+                  "fd": 3
+                },
+                "kernel_stack": {
+                  "available": true,
+                  "frames": [
+                    "folio_wait_bit_common",
+                    "__filemap_get_folio",
+                    "iomap_write_begin",
+                    "iomap_write_iter",
+                    "iomap_file_buffered_write",
+                    "xfs_file_buffered_write",
+                    "vfs_write",
+                    "ksys_write",
+                    "do_syscall_64",
+                    "entry_SYSCALL_64_after_hwframe"
+                  ],
+                  "unknown_lines": 0,
+                  "truncated": false,
+                  "addresses_and_offsets_recorded": false
+                },
+                "descriptor": {
+                  "available": true,
+                  "kind": "allowlisted-path",
+                  "path": "/opt/dbs/log/DBS.log",
+                  "deleted": false
+                },
+                "state_before": "D",
+                "state_after": "D",
+                "task_identity_rechecked": true,
+                "separate_reads_not_atomic": true
+              }
+            }
+          ],
+          "PG_samples_with_independent_wait_intervals": [
+            {
+              "available": true,
+              "elapsed_seconds": 0.004076641984283924,
+              "ended_epoch": 1794427246.742705,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.002708759857341647,
+                "ended_monotonic": 1367189.854640209,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013171339999999976,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367189.851935706,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427245.895977,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427246.738638,
+              "started_monotonic": 1367189.850626376,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004060207866132259,
+              "ended_epoch": 1794427247.742814,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0027171620167791843,
+                "ended_monotonic": 1367190.854747665,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013474090000000216,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367190.852034675,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427245.895977,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427247.738763,
+              "started_monotonic": 1367190.850751734,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004149510990828276,
+              "ended_epoch": 1794427248.743003,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0028219521045684814,
+                "ended_monotonic": 1367191.85493844,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.001487885000000022,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367191.852120502,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427247.896159,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427248.73887,
+              "started_monotonic": 1367191.850859726,
+              "truncated": false
+            },
+            {
+              "available": true,
+              "elapsed_seconds": 0.004067705012857914,
+              "ended_epoch": 1794427249.743039,
+              "pg_wait": {
+                "available": true,
+                "backend_start_is_not_proc_start_ticks": true,
+                "collection_seconds": 0.0027294729370623827,
+                "ended_monotonic": 1367192.854969757,
+                "missing_values_are_unknown": true,
+                "observer_thread_cpu_seconds": 0.0013493139999999904,
+                "run_id": "202611113600",
+                "schema": "crg-pg-wait-snapshot-v1",
+                "separate_reads_not_atomic": true,
+                "signals_or_control_writes": 0,
+                "started_monotonic": 1367192.852244354,
+                "targets": [
+                  {
+                    "backend_start_epoch_text": "1794427101.721293",
+                    "kernel_wait": {
+                      "available": true,
+                      "identity_rechecked_after_SQL": true,
+                      "kernel_stack": {
+                        "available": false,
+                        "reason": "OSError"
+                      },
+                      "process": {
+                        "pid": 1942,
+                        "start_ticks": 136704483,
+                        "state": "S"
+                      },
+                      "separate_reads_not_atomic": true,
+                      "syscall": {
+                        "abi": "linux-x86_64",
+                        "available": true,
+                        "number": 232,
+                        "operation": "unknown"
+                      }
+                    },
+                    "pid": 1942,
+                    "state": "idle",
+                    "wait_event": "ClientRead",
+                    "wait_event_type": "Client"
+                  }
+                ]
+              },
+              "rows": [
+                {
+                  "activity_fields_available": true,
+                  "backend_start_epoch": 1794427101.721293,
+                  "backend_start_epoch_text": "1794427101.721293",
+                  "blocking_pids": null,
+                  "blocking_pids_measured": false,
+                  "identity_available": true,
+                  "pid": 1942,
+                  "query_class": "fixture-update",
+                  "query_start_epoch": 1794427247.896159,
+                  "state": "idle",
+                  "transaction_start_epoch": null,
+                  "wait_event": "ClientRead",
+                  "wait_event_type": "Client"
+                }
+              ],
+              "started_epoch": 1794427249.73898,
+              "started_monotonic": 1367192.850969693,
+              "truncated": false
+            }
+          ],
+          "device_counter_brackets": [
+            {
+              "started_epoch": 1794427245.807066,
+              "ended_epoch": 1794427246.80713,
+              "seconds": 1.0000641881488264,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 18776064,
+                    "wios": 93
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 18774858.87656424,
+                    "wios": 92.99403088530558
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 195,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 42704,
+                    "io_ms": 998,
+                    "weighted_io_ms": 9513
+                  },
+                  "in_flight_at_start": 28,
+                  "in_flight_at_end": 14
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 196,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 42704,
+                    "io_ms": 885,
+                    "weighted_io_ms": 8547
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 196,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 42704,
+                    "io_ms": 998,
+                    "weighted_io_ms": 8547
+                  },
+                  "in_flight_at_start": 17,
+                  "in_flight_at_end": 2
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 7104,
+                  "throttled_usec": 0,
+                  "usage_usec": 20307,
+                  "user_usec": 13203
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427246.80713,
+              "ended_epoch": 1794427247.8070645,
+              "seconds": 0.9999355829786509,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 19849216,
+                    "wios": 96
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 19850494.709741507,
+                    "wios": 96.00618443243222
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 197,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 39700,
+                    "io_ms": 998,
+                    "weighted_io_ms": 7485
+                  },
+                  "in_flight_at_start": 14,
+                  "in_flight_at_end": 18
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 184,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 39700,
+                    "io_ms": 880,
+                    "weighted_io_ms": 9049
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 184,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 39700,
+                    "io_ms": 998,
+                    "weighted_io_ms": 9049
+                  },
+                  "in_flight_at_start": 2,
+                  "in_flight_at_end": 6
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 9,
+                  "nr_throttled": 0,
+                  "system_usec": 7415,
+                  "throttled_usec": 0,
+                  "usage_usec": 17843,
+                  "user_usec": 10428
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427247.8070645,
+              "ended_epoch": 1794427248.8070664,
+              "seconds": 1.0000009110663086,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 5394432,
+                    "wios": 130
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 5394427.0853192285,
+                    "wios": 129.9998815614878
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 245,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 13665,
+                    "io_ms": 995,
+                    "weighted_io_ms": 9897
+                  },
+                  "in_flight_at_start": 18,
+                  "in_flight_at_end": 24
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 158,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 13665,
+                    "io_ms": 915,
+                    "weighted_io_ms": 5905
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 158,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 13665,
+                    "io_ms": 995,
+                    "weighted_io_ms": 5906
+                  },
+                  "in_flight_at_start": 6,
+                  "in_flight_at_end": 12
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 65072,
+                  "throttled_usec": 0,
+                  "usage_usec": 110124,
+                  "user_usec": 45053
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427248.8070664,
+              "ended_epoch": 1794427249.8070683,
+              "seconds": 1.0000016978010535,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 10317824,
+                    "wios": 121
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 10317806.482417284,
+                    "wios": 120.99979456642131
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 235,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 23643,
+                    "io_ms": 995,
+                    "weighted_io_ms": 8216
+                  },
+                  "in_flight_at_start": 24,
+                  "in_flight_at_end": 21
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 166,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 23643,
+                    "io_ms": 892,
+                    "weighted_io_ms": 5521
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 166,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 23643,
+                    "io_ms": 995,
+                    "weighted_io_ms": 5520
+                  },
+                  "in_flight_at_start": 12,
+                  "in_flight_at_end": 10
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 10,
+                  "nr_throttled": 0,
+                  "system_usec": 76740,
+                  "throttled_usec": 0,
+                  "usage_usec": 372503,
+                  "user_usec": 295763
+                }
+              }
+            },
+            {
+              "started_epoch": 1794427249.8070683,
+              "ended_epoch": 1794427250.8070571,
+              "seconds": 0.9999898672103882,
+              "control_endpoints_equal": true,
+              "io_max_start": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "io_max_end": {
+                "253:0": {
+                  "rbps": 64700080,
+                  "riops": 83,
+                  "wbps": 37470104,
+                  "wiops": 135
+                }
+              },
+              "cgroup_io_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 4743168,
+                    "wios": 130
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 4743216.06201044,
+                    "wios": 130.00131727599722
+                  }
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "rbytes": 0,
+                    "rios": 0,
+                    "wbytes": 0,
+                    "wios": 0
+                  },
+                  "rates_per_second": {
+                    "rbytes": 0.0,
+                    "rios": 0.0,
+                    "wbytes": 0.0,
+                    "wios": 0.0
+                  }
+                }
+              },
+              "device_raw_delta_by_layer": {
+                "253:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 259,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 11089,
+                    "io_ms": 993,
+                    "weighted_io_ms": 8530
+                  },
+                  "in_flight_at_start": 21,
+                  "in_flight_at_end": 14
+                },
+                "8:0": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 154,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 11089,
+                    "io_ms": 893,
+                    "weighted_io_ms": 3909
+                  },
+                  "in_flight_at_start": 0,
+                  "in_flight_at_end": 0
+                },
+                "8:2": {
+                  "available": true,
+                  "deltas": {
+                    "reads_completed": 0,
+                    "writes_completed": 154,
+                    "read_sectors_512bytes": 0,
+                    "write_sectors_512bytes": 11089,
+                    "io_ms": 993,
+                    "weighted_io_ms": 3910
+                  },
+                  "in_flight_at_start": 10,
+                  "in_flight_at_end": 6
+                }
+              },
+              "cpu_delta": {
+                "available": true,
+                "deltas": {
+                  "nr_periods": 9,
+                  "nr_throttled": 0,
+                  "system_usec": 31104,
+                  "throttled_usec": 0,
+                  "usage_usec": 63137,
+                  "user_usec": 32033
+                }
+              }
+            }
+          ],
+          "all_error_after_last_reload": true
+        }
+      ],
+      "IO_causality_proven": false
+    }
+  },
+  "inputs_sha256": {
+    "report.json": "6bd2090864fe4bdc82eb0f26921b4e4dc7bbefa0b13755a18cac741f426eb125",
+    "dbs/threads.json": "edadf51277bf0c26bf7336be8ab01d41f6de4682ba9ca9a07e65d08748b430ca",
+    "dbs/devices.json": "cfcfa79dfbaf68f0639c50adbef12fc0ef39852fe44d415934e1a83e8662ff9f",
+    "dbs/native-diagnostics.json": "fc30cc4eaee1155be77e6c0e480b48d31ba116222c82771e3c2c1824a101989b",
+    "dbs/native.log": "b43d5d1789437fc1d4f53a3792817a8c1523531d64e5ee62a1a0a16506e1c077",
+    "dbs/engine.log": "182bb8db6e05a9d785d9875f3317b73bbd9a9b9ceb6e004873f41d527f81c5b7",
+    "dbs/timing-context.json": "cfca3e0cb51e27c2a6a7f6fd0166fe2fb78f6184d0304e5479cb08b2b2f3f186",
+    "dbs/device-plan.json": "f7c2cc20bae3adb14f87db89fa6d8aa44ff0bad58e8bcfbc41e2a397180ce67d",
+    "dbs/thread-plan.json": "1d86b3d264ba6c45f910fc12311bb9b4cb94fadb4389c156edb22d9a9c7a6589",
+    "dbs/engine/business-backup.json": "3d6a9fff054d8014171a092bc89b5427544fd7de7bf279d2940f574b1c985f57",
+    "dbs/native/load.json": "89f79ca948109190aab67e5ff21184dc19c60f09a0ca269a33d2f63a415506b9",
+    "dbs/native/native-diagnostics.json": "fc30cc4eaee1155be77e6c0e480b48d31ba116222c82771e3c2c1824a101989b"
+  },
+  "limits": [
+    "Overlap is observation, not IO causality.",
+    "Device layers are not independent disks and must not be summed.",
+    "PG snapshots select this run native SQL client; other API database backends are not covered.",
+    "Optional unavailable fields stay unknown; no unavailable value becomes zero.",
+    "Device/PG/thread reads are separate snapshots; counter brackets are not request-owned IO."
+  ],
+  "original_business_gate_waived": false,
+  "stable_release_accepted": false
+}
