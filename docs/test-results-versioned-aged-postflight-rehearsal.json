@@ -1,0 +1,617 @@
+{
+  "schema": "crg-versioned-aged-execution-report-v1",
+  "phase": "passed",
+  "mode": "short-rehearsal",
+  "plan_sha256": "b86b8a5e0a062d4ff4044c32a12a2938e2a8bff5d3bdfb82eab4bee3dec8f419",
+  "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "executor_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+  "criteria": {
+    "startup_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "native_seconds_each_role": 600,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "maximum_errors": 0,
+    "maximum_request_seconds": 5,
+    "p95_bucket_seconds": 1,
+    "minimum_coverage": 0.98,
+    "payload_bytes": 67108864,
+    "oom_kill_delta": 0
+  },
+  "tests": [
+    {
+      "name": "dbs-aged-reopen-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-reopen-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-journal-rollover-before-data-check",
+      "passed": true
+    },
+    {
+      "name": "dbs-actual-aged64MiB-and-final-counter-reopened",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-schema-logical-backup-readable",
+      "passed": true
+    },
+    {
+      "name": "dbs-independent-database-restores-aged-payload-and-counter",
+      "passed": true
+    },
+    {
+      "name": "dbs-same-data-new-Pod-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-same-data-new-Pod-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-ID-journal-PG-restart-and-same-aged-data",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-online-install-previous-development-binary",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-immediate-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-previous-Agent-managed-with-same-PID1-PG-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-state-current-Agent-resumed-after-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-600s-native-and-all-eight-maintenance-intervals-covered",
+      "passed": true
+    },
+    {
+      "name": "dbs-aged-payload-counter-after-native-maintenance",
+      "passed": true
+    },
+    {
+      "name": "dbs-disable-restores-new-runtime-originals-and-no-OOM",
+      "passed": true
+    },
+    {
+      "name": "dbs-same-aged-directories-config-private-inputs-and-program-restored",
+      "passed": true
+    },
+    {
+      "name": "dbs-daily0600-logs-retain-original-prefixes-and-append",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-reopen-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-reopen-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-journal-rollover-before-data-check",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-actual-aged64MiB-and-final-counter-reopened",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-schema-logical-backup-readable",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-independent-database-restores-aged-payload-and-counter",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-same-data-new-Pod-original-start-and-three-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-same-data-new-Pod-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-new-ID-journal-PG-restart-and-same-aged-data",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-state-online-install-previous-development-binary",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-state-immediate-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-state-previous-Agent-managed-with-same-PID1-PG-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-state-current-Agent-resumed-after-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-600s-native-and-all-eight-maintenance-intervals-covered",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-aged-payload-counter-after-native-maintenance",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-disable-restores-new-runtime-originals-and-no-OOM",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-same-aged-directories-config-private-inputs-and-program-restored",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-daily0600-logs-retain-original-prefixes-and-append",
+      "passed": true
+    }
+  ],
+  "P10_complete": false,
+  "release_accepted": false,
+  "postflight_executed": true,
+  "embedded_version": "v1.0.0",
+  "immutable_template_sha256": "0bd77b3d99ec599a1f546b3a786df2b9c6b34bdf5c3f2e98f42fa7a8f937463c",
+  "aged_fixture_retained": true,
+  "ended_utc": "2026-11-11T03:14:18.889227+00:00",
+  "kind": "Exact versioned candidate own retained short data postflight; not seven-day acceptance",
+  "observed_node_utc": "2026-11-11T03:34:18Z",
+  "raw_observation_sha256": "2916885f48a969b1884e253c1475f94d797c485a436666eb04f0a1d1d3035d8d",
+  "runner_sha256": "357fba0514cd5ee61e5a3c204af2afb57098c1ee00c20ec27da361037099e207",
+  "exit": {
+    "exit": 0,
+    "executor_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+    "plan_sha256": "b86b8a5e0a062d4ff4044c32a12a2938e2a8bff5d3bdfb82eab4bee3dec8f419",
+    "started_epoch": 1794365361.6036453,
+    "ended_epoch": 1794366858.975585
+  },
+  "runner_same_instance_gone": true,
+  "worker_same_instance_gone": true,
+  "namespace_independently_absent": true,
+  "four_Pod_main_and_all_container_cgroup_scopes_independently_absent": {
+    "dbs": [
+      {
+        "main_cgroup_absent": true,
+        "all_pod_container_scopes_absent": true
+      },
+      {
+        "main_cgroup_absent": true,
+        "all_pod_container_scopes_absent": true
+      }
+    ],
+    "hisdbs": [
+      {
+        "main_cgroup_absent": true,
+        "all_pod_container_scopes_absent": true
+      },
+      {
+        "main_cgroup_absent": true,
+        "all_pod_container_scopes_absent": true
+      }
+    ]
+  },
+  "first_pending_observation_preserved_sha256": "fed76b0c31b96744347c01d786d34767bb02910ae77abb2d8d9109111a842809",
+  "eight_maintenance_intervals_each_inside_full_native_measurement_independently_recomputed": true,
+  "seven_day_accepted": false,
+  "roles": {
+    "dbs": {
+      "phase": "postflight-component-passed",
+      "boots": [
+        {
+          "phase": "aged-reopen",
+          "network_isolated_before_start": true,
+          "ready_seconds": 30.83165388694033,
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "active_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          }
+        },
+        {
+          "phase": "same-data-new-Pod",
+          "network_isolated_before_start": true,
+          "ready_seconds": 24.80412713997066,
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "active_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          }
+        }
+      ],
+      "different_Pod_UID_container_ID_journal_identity_and_PG_start": true,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.00919263786636293,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.0121267207432538
+        },
+        "cluster_database_bytes_final": 231606860,
+        "cluster_database_bytes_initial": 231533132,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.3321584959049,
+        "ended_utc": "2026-11-11T03:01:09.504822Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-11T03:01:09.234537Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-11 10:50:54.084608+08",
+        "primary_start_time_initial": "2026-11-11 10:50:54.084608+08",
+        "requested_duration_seconds": 600,
+        "run_id": "202611110820",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            298,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "max_seconds": 1.3240505179855973,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 1.6664750238414854
+        },
+        "started_utc": "2026-11-11T02:51:08.933773Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794365470.2169902,
+          "ended_epoch": 1794365471.1507301
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794365471.4558856,
+          "ended_epoch": 1794365472.3896263
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794365472.7766974,
+          "ended_epoch": 1794365473.373614
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794365473.794514,
+          "ended_epoch": 1794365474.6673124
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794365474.9652348,
+          "ended_epoch": 1794365475.2105372
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794365477.333056,
+          "ended_epoch": 1794365478.3414283
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794365478.686604,
+          "ended_epoch": 1794365479.5500345
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794365479.844684,
+          "ended_epoch": 1794365480.075811
+        }
+      ]
+    },
+    "hisdbs": {
+      "phase": "postflight-component-passed",
+      "boots": [
+        {
+          "phase": "aged-reopen",
+          "network_isolated_before_start": true,
+          "ready_seconds": 22.497600323986262,
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "active_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          }
+        },
+        {
+          "phase": "same-data-new-Pod",
+          "network_isolated_before_start": true,
+          "ready_seconds": 29.542567442869768,
+          "runtime_original_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          },
+          "active_controls": {
+            "cpu.max": "720000 100000",
+            "memory.max": "20001980416",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "max",
+            "memory.swap.max": "0"
+          }
+        }
+      ],
+      "different_Pod_UID_container_ID_journal_identity_and_PG_start": true,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009498108876869082,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.0142783224582672
+        },
+        "cluster_database_bytes_final": 231606860,
+        "cluster_database_bytes_initial": 231533132,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.3066625369247,
+        "ended_utc": "2026-11-11T03:13:52.820808Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-11T03:13:52.549303Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-11 11:03:35.227385+08",
+        "primary_start_time_initial": "2026-11-11 11:03:35.227385+08",
+        "requested_duration_seconds": 600,
+        "run_id": "202611110821",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            300,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.01111408811993897,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.21576241496950388
+        },
+        "started_utc": "2026-11-11T03:03:52.274015Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "started_epoch": 1794366233.8636923,
+          "ended_epoch": 1794366234.7597692
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794366235.0766137,
+          "ended_epoch": 1794366237.1527867
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794366239.2638016,
+          "ended_epoch": 1794366240.865345
+        },
+        {
+          "command": "binary-install",
+          "started_epoch": 1794366242.0694711,
+          "ended_epoch": 1794366244.6119108
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794366245.0192058,
+          "ended_epoch": 1794366245.2545063
+        },
+        {
+          "command": "quiesce",
+          "started_epoch": 1794366251.6640456,
+          "ended_epoch": 1794366252.8811417
+        },
+        {
+          "command": "binary-rollback",
+          "started_epoch": 1794366253.3098273,
+          "ended_epoch": 1794366253.8067877
+        },
+        {
+          "command": "enable",
+          "started_epoch": 1794366254.235523,
+          "ended_epoch": 1794366254.473632
+        }
+      ]
+    }
+  }
+}

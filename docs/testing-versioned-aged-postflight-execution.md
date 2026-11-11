@@ -12,8 +12,8 @@
 
 ## 当前独立短演练
 
-已启动一次。[首个固定观察](test-progress-versioned-aged-postflight-rehearsal-start.json)记录运行器及worker原实例在线、DBS前13项通过，正在其新原生窗口内；尚未计为完整600秒、两角色或终态通过。与原七天及新候选七天的两个运行器同时独立确认在线。
+独立短保留数据演练已[终态36项通过](test-results-versioned-aged-postflight-rehearsal.json)：DBS实际600.332秒、HISDBS实际600.307秒，各8个维护区间均独立重算位于完整原生窗口内。运行器与worker原实例已退出、exit0；namespace及四次Pod的主cgroup/所有容器scope均独立确认不存在。[首个固定观察](test-progress-versioned-aged-postflight-rehearsal-start.json)保留当时13项pending，不覆盖为终态。原七天及新候选七天的原实例仍分别在线，短演练不接受七天。
 
-实际复用本程序R64的64MiB/最终counter，重新开启原镜像/start.sh/PG及只读CCG；备份原schema并独立逻辑恢复、同数据再次新Pod ID/原journal隔离，在全新各600秒原生窗口内进行8段Agent安装/回退/恢复，核对PG/PID1/缓存/journal及八项控制保持；最终disable还原真正运行时原值、无OOM、日志0600前缀保留并追加，按UID清理所有本轮Pod/namespace。预期两角色共36项，原启动300秒/缓存45秒/错误0/最大5秒/p95桶1秒/覆盖≥98%及宿主保留量不放宽。
+实际复用本程序R64的64MiB/最终counter，重新开启原镜像/start.sh/PG及只读CCG；备份原schema并独立逻辑恢复、同数据再次新Pod ID/原journal隔离，在全新各600秒原生窗口内进行8段Agent安装/回退/恢复，核对PG/PID1/缓存/journal及八项控制保持；最终disable还原真正运行时原值、无OOM、日志0600前缀保留并追加，按UID清理所有本轮Pod/namespace。两角色共36项已通过，原启动300秒/缓存45秒/错误0/最大5秒/p95桶1秒/覆盖≥98%及宿主保留量不放宽。
 
 实际七天门禁通过后才可运行七天计划，短数据不能充当老化数据或转移计时。执行器的加入不表示真实后置已执行：仍需完整604800秒/28周期及其真实备份恢复/新ID/维护、老化辅助故障和全部稳定条件。旧对端50671aa是未发布开发程序，不构成最近两个已发布次版本条件；默认20%/自动30%持续性能和未测硬件结论保持。
