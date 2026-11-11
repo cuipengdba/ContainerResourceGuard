@@ -1,0 +1,541 @@
+{
+  "schema": "crg-write-bps-comparison-v2-terminal-v1",
+  "phase": "diagnostic-completed-two-failed-one-passed",
+  "node_observed_utc": "2026-11-11T16:43:01.289162+00:00",
+  "comparison": {
+    "schema": "crg-write-bps-comparison-v1",
+    "phase": "diagnostic-completed",
+    "started_utc": "2026-11-11T16:07:34.354212+00:00",
+    "executor_sha256": "bc4b46a8b43a6d6b787f6bc65b1c229774a02102af44a87f6f1b61610fda2a93",
+    "plan_sha256": "b3b355e10ed21aca6e652e1ffb36c2ddadd1a5820393988b5b03de7e10425027",
+    "release_accepted": false,
+    "original_release_acceptance_executed": false,
+    "clones": {
+      "a1": {
+        "folder": "/var/tmp/crg-writebps272-20261111/clones/a1/dbs-business",
+        "metadata_sha256": "df104d1af0ce211dbd4b942274b4f93b67ee75f8f76abaf104236f417eb91146",
+        "critical_content_sha_verified": true,
+        "distinct_regular_file_inodes": true
+      },
+      "b": {
+        "folder": "/var/tmp/crg-writebps272-20261111/clones/b/dbs-business",
+        "metadata_sha256": "df104d1af0ce211dbd4b942274b4f93b67ee75f8f76abaf104236f417eb91146",
+        "critical_content_sha_verified": true,
+        "distinct_regular_file_inodes": true
+      },
+      "a2": {
+        "folder": "/var/tmp/crg-writebps272-20261111/clones/a2/dbs-business",
+        "metadata_sha256": "df104d1af0ce211dbd4b942274b4f93b67ee75f8f76abaf104236f417eb91146",
+        "critical_content_sha_verified": true,
+        "distinct_regular_file_inodes": true
+      }
+    },
+    "arms": {
+      "a1": {
+        "phase": "failed",
+        "reason": "NATIVE_COMPLETION_EXIT",
+        "report_path": "/var/tmp/crg-writebps272-20261111/runs/a1/report.json",
+        "report_sha256": "3595048910f14dbe0a918ec9da012539344ef9b9fe2f941203325e39925ec335",
+        "checks": 13,
+        "namespace_absent": true,
+        "clone_config_restored": true
+      },
+      "b": {
+        "phase": "failed",
+        "reason": "NATIVE_COMPLETION_EXIT",
+        "report_path": "/var/tmp/crg-writebps272-20261111/runs/b/report.json",
+        "report_sha256": "36a8b89c6aa8786b66910575ce723524164e9198d73f9823650cb4251d47e2b1",
+        "checks": 13,
+        "namespace_absent": true,
+        "clone_config_restored": true
+      },
+      "a2": {
+        "phase": "passed",
+        "reason": null,
+        "report_path": "/var/tmp/crg-writebps272-20261111/runs/a2/report.json",
+        "report_sha256": "830b3591a6b47ebf5710f0ab6f28bfa73f77f08f8b5ae520fd0000d598e1ee1c",
+        "checks": 16,
+        "namespace_absent": true,
+        "clone_config_restored": true
+      }
+    },
+    "prior_R235_failure_unchanged": true,
+    "source_manifest": {
+      "metadata_sha256": "df104d1af0ce211dbd4b942274b4f93b67ee75f8f76abaf104236f417eb91146",
+      "entries": 25338,
+      "content_verification": "cp --reflink=always exit0 + entire tree metadata + distinct regular-file inodes + critical content SHA; not full-content SHA"
+    },
+    "baseline_frozen_before_any_arm": true,
+    "ended_utc": "2026-11-11T16:40:51.525213+00:00"
+  },
+  "exit": {
+    "sha256": "1490112cc6abf651f6aefc5ca95dc634e6e5094b0f2946785e5cb4d5a0266985",
+    "bytes": 264,
+    "value": {
+      "exit": 0,
+      "started_epoch": 1794413250.6380427,
+      "ended_epoch": 1794415251.584759,
+      "executor_sha256": "bc4b46a8b43a6d6b787f6bc65b1c229774a02102af44a87f6f1b61610fda2a93",
+      "plan_sha256": "b3b355e10ed21aca6e652e1ffb36c2ddadd1a5820393988b5b03de7e10425027"
+    }
+  },
+  "runner": {
+    "identity": {
+      "pid": 176383,
+      "start_ticks": 135319371,
+      "entry": "/var/tmp/crg-writebps275-tools-20261111/comparison-runner.py",
+      "runner_sha256": "81e6d9473ccb8189918e25d7eeddc93fa5322716f432b46e22931ead0fe6a742",
+      "executor_sha256": "bc4b46a8b43a6d6b787f6bc65b1c229774a02102af44a87f6f1b61610fda2a93",
+      "plan_sha256": "b3b355e10ed21aca6e652e1ffb36c2ddadd1a5820393988b5b03de7e10425027"
+    },
+    "gone": true
+  },
+  "worker": {
+    "identity": {
+      "pid": 176395,
+      "start_ticks": 135319375,
+      "entry": "/var/tmp/crg-writebps275-tools-20261111/vendor-write-bps-comparison-v2.py",
+      "executor_sha256": "bc4b46a8b43a6d6b787f6bc65b1c229774a02102af44a87f6f1b61610fda2a93"
+    },
+    "gone": true
+  },
+  "original_source": {
+    "config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+    "pg_control_sha256": "cfef4406da71d9924a4773ceb67e120f710721a7aff186676797670a9e7149a8",
+    "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+    "profile_absent": true,
+    "postmaster_pid_absent": true
+  },
+  "arms": {
+    "a1": {
+      "write_bps": 37470104,
+      "arm_phase": "failed",
+      "arm_reason": "NATIVE_COMPLETION_EXIT",
+      "native_phase": "failed",
+      "native_seconds": 600.266549239168,
+      "SQL": {
+        "attempts": 293,
+        "errors": 4,
+        "histogram": [
+          271,
+          7,
+          0,
+          0,
+          0,
+          2,
+          2,
+          1,
+          2,
+          1,
+          3,
+          4
+        ],
+        "max_seconds": 5.013975543901324,
+        "p95_bucket_upper_seconds": 0.1,
+        "sample_coverage": 0.9766666666666667,
+        "successes": 289,
+        "total_seconds": 33.53522428194992
+      },
+      "API": {
+        "attempts": 121,
+        "errors": 4,
+        "histogram": [
+          0,
+          0,
+          115,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          4,
+          0
+        ],
+        "max_seconds": 4.004338408121839,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 117,
+        "total_seconds": 17.348010728834197
+      },
+      "D_samples": 22,
+      "local_checks": 13,
+      "reload_intervals": 11,
+      "all_native_criteria_passed": false,
+      "native_final_flush": {
+        "phase": "worker-exited",
+        "run_id": "202611112720",
+        "requested_seconds": 600,
+        "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "signals_sent": 0,
+        "signal_scope": "one exact native test worker only",
+        "forced_kill": false,
+        "oversized_unrelated_argv_ignored": 0,
+        "complete600s_accepted": false,
+        "identity": {
+          "pid": 190808,
+          "start_ticks": 135324728,
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod0c06e3dc_d9c4_47af_985b_f2c93ab5af5a.slice/cri-containerd-80ce82b9a0307306916f3626014c814d1792dfd8c1a72aae96cabc063f1b3802.scope",
+          "entry": "/tmp/crg-business-reload-202611112720.py",
+          "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f",
+          "argv_sha256": "6f428e02012070ac9af03fb7cdd8d230b52a7e44c2f04e995ce35fdc6ad7e62b"
+        },
+        "pidfd_used": true,
+        "attached_epoch": 1794413312.9878607,
+        "business_error_class": "Rejected",
+        "cleanup_started_epoch": 1794413914.3477795,
+        "cleanup_budget_seconds": 120,
+        "original_worker_exited": true,
+        "worker_exit_code_unknown": true,
+        "cleanup_ended_epoch": 1794413914.3478086,
+        "cleanup_elapsed_seconds": 3.4324824810028076e-05
+      },
+      "independent_cleanup": {
+        "namespace_absent": true,
+        "all_cgroups_absent": true,
+        "clone_config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "clone_profile_absent": true,
+        "native_workers_gone": [
+          true
+        ],
+        "thread_observers_gone": [
+          true
+        ],
+        "API_processes_gone": [
+          true
+        ]
+      },
+      "engine_phase": "content-passed-native-pending",
+      "engine_content_checks": 10,
+      "engine_separate_failed_or_above5s_API_probes": 3
+    },
+    "b": {
+      "write_bps": 67108864,
+      "arm_phase": "failed",
+      "arm_reason": "NATIVE_COMPLETION_EXIT",
+      "native_phase": "failed",
+      "native_seconds": 600.2407372440211,
+      "SQL": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          283,
+          10,
+          0,
+          0,
+          1,
+          1,
+          0,
+          3,
+          2,
+          1,
+          0,
+          0
+        ],
+        "max_seconds": 1.006947792135179,
+        "p95_bucket_upper_seconds": 0.005,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 3.8260153259616345
+      },
+      "API": {
+        "attempts": 121,
+        "errors": 1,
+        "histogram": [
+          0,
+          0,
+          117,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "max_seconds": 4.004338731057942,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 120,
+        "total_seconds": 7.352223270572722
+      },
+      "D_samples": 9,
+      "local_checks": 13,
+      "reload_intervals": 11,
+      "all_native_criteria_passed": false,
+      "native_final_flush": {
+        "phase": "worker-exited",
+        "run_id": "202611112720",
+        "requested_seconds": 600,
+        "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "signals_sent": 0,
+        "signal_scope": "one exact native test worker only",
+        "forced_kill": false,
+        "oversized_unrelated_argv_ignored": 0,
+        "complete600s_accepted": false,
+        "identity": {
+          "pid": 345241,
+          "start_ticks": 135390717,
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod32086c5e_5101_4d04_8e0e_9ae0fa995c31.slice/cri-containerd-cb83294956589a1a07f4f38b90df9bbdfcfe364ddd5cd9ae18f4ab33a594300f.scope",
+          "entry": "/tmp/crg-business-reload-202611112720.py",
+          "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f",
+          "argv_sha256": "6f428e02012070ac9af03fb7cdd8d230b52a7e44c2f04e995ce35fdc6ad7e62b"
+        },
+        "pidfd_used": true,
+        "attached_epoch": 1794413970.8709598,
+        "business_error_class": "Rejected",
+        "cleanup_started_epoch": 1794414571.371139,
+        "cleanup_budget_seconds": 120,
+        "original_worker_exited": true,
+        "worker_exit_code_unknown": true,
+        "cleanup_ended_epoch": 1794414571.3711708,
+        "cleanup_elapsed_seconds": 3.719888627529144e-05
+      },
+      "independent_cleanup": {
+        "namespace_absent": true,
+        "all_cgroups_absent": true,
+        "clone_config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "clone_profile_absent": true,
+        "native_workers_gone": [
+          true
+        ],
+        "thread_observers_gone": [
+          true
+        ],
+        "API_processes_gone": [
+          true
+        ]
+      },
+      "engine_phase": "content-passed-native-pending",
+      "engine_content_checks": 10,
+      "engine_separate_failed_or_above5s_API_probes": 2
+    },
+    "a2": {
+      "write_bps": 37470104,
+      "arm_phase": "passed",
+      "arm_reason": null,
+      "native_phase": "passed",
+      "native_seconds": 600.2262659459375,
+      "SQL": {
+        "attempts": 299,
+        "errors": 0,
+        "histogram": [
+          283,
+          6,
+          0,
+          0,
+          0,
+          0,
+          2,
+          3,
+          1,
+          1,
+          3,
+          0
+        ],
+        "max_seconds": 4.841333494056016,
+        "p95_bucket_upper_seconds": 0.005,
+        "sample_coverage": 0.9966666666666667,
+        "successes": 299,
+        "total_seconds": 13.494097313378006
+      },
+      "API": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          120,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "max_seconds": 1.3940775708761066,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 2.4229398395400494
+      },
+      "D_samples": 5,
+      "local_checks": 16,
+      "reload_intervals": 11,
+      "all_native_criteria_passed": true,
+      "native_final_flush": {
+        "phase": "attached",
+        "run_id": "202611112720",
+        "requested_seconds": 600,
+        "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+        "signals_sent": 0,
+        "signal_scope": "one exact native test worker only",
+        "forced_kill": false,
+        "oversized_unrelated_argv_ignored": 0,
+        "complete600s_accepted": false,
+        "identity": {
+          "pid": 501240,
+          "start_ticks": 135456634,
+          "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pode9c5c627_e86d_44e5_ae87_4345274cedde.slice/cri-containerd-043c7836cf282cfdb0023c8a3cb1a774c94b6df2e22f236d05001d0dd16e76ac.scope",
+          "entry": "/tmp/crg-business-reload-202611112720.py",
+          "worker_sha256": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+          "executable_sha256": "ee19e68dc57a920583b1f4d17522c8c54c051d2d37b4850170b86b42b9f8241f",
+          "argv_sha256": "6f428e02012070ac9af03fb7cdd8d230b52a7e44c2f04e995ce35fdc6ad7e62b"
+        },
+        "pidfd_used": true,
+        "attached_epoch": 1794414631.0349472
+      },
+      "independent_cleanup": {
+        "namespace_absent": true,
+        "all_cgroups_absent": true,
+        "clone_config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "clone_profile_absent": true,
+        "native_workers_gone": [
+          true
+        ],
+        "thread_observers_gone": [
+          true
+        ],
+        "API_processes_gone": [
+          true
+        ]
+      },
+      "engine_phase": "content-passed-native-pending",
+      "engine_content_checks": 10,
+      "engine_separate_failed_or_above5s_API_probes": 0
+    }
+  },
+  "evidence": {
+    "a1": {
+      "report.json": {
+        "path": "test-evidence/writebps272/a1/report.json.gz",
+        "uncompressed_sha256": "3595048910f14dbe0a918ec9da012539344ef9b9fe2f941203325e39925ec335",
+        "uncompressed_bytes": 399681,
+        "gzip_sha256": "daf3921bf2a210fd460c6cd475e230f7ab5825244e23250fa352660ecf10c9db",
+        "gzip_bytes": 42248
+      },
+      "native.json": {
+        "path": "test-evidence/writebps272/a1/native.json.gz",
+        "uncompressed_sha256": "49d8724e41096e72809f52e61897da6c20efb190342fb529d850aeecf9ca40a7",
+        "uncompressed_bytes": 2945,
+        "gzip_sha256": "900c9c22c6312e38f421d1be9ccb8b247580c937f24a2e398bae224dfe6c4a08",
+        "gzip_bytes": 1096
+      },
+      "request-pg.json": {
+        "path": "test-evidence/writebps272/a1/request-pg.json.gz",
+        "uncompressed_sha256": "c51b8ff613d5dc486e2fa4aee24f2012788900eba5ef1e0bd8895d62699a4e81",
+        "uncompressed_bytes": 488514,
+        "gzip_sha256": "160ff58e9cf23f22762f49909e257b270c9142a61bcaf5d4f71abc84bdd5512e",
+        "gzip_bytes": 45442
+      },
+      "threads.json": {
+        "path": "test-evidence/writebps272/a1/threads.json.gz",
+        "uncompressed_sha256": "308edfe6e469304d9f9cbac44aa221ec69d8ee93bf275c335f8dd2b0ec8baa8d",
+        "uncompressed_bytes": 9291061,
+        "gzip_sha256": "d0b2b6ed6046196db0941e5c69695621ab7c9e4afc65ed55c2eba1d733810ae5",
+        "gzip_bytes": 251340
+      },
+      "engine.json": {
+        "path": "test-evidence/writebps272/a1/engine.json.gz",
+        "uncompressed_sha256": "70ffcf73367647e2224763a9392ad10056047a2a6e3e53f6f1e9ff1cdce5b7b9",
+        "uncompressed_bytes": 183362,
+        "gzip_sha256": "bd8cb20ae5a0a1c2511baec9a4c60701e46d679aa59d9bb63f76b14f4f0413ba",
+        "gzip_bytes": 20814
+      }
+    },
+    "b": {
+      "report.json": {
+        "path": "test-evidence/writebps272/b/report.json.gz",
+        "uncompressed_sha256": "36a8b89c6aa8786b66910575ce723524164e9198d73f9823650cb4251d47e2b1",
+        "uncompressed_bytes": 385566,
+        "gzip_sha256": "b485dfd095478f02d2af1748eab15052084f4317da1a76329a5ce9b4e4d2f411",
+        "gzip_bytes": 41263
+      },
+      "native.json": {
+        "path": "test-evidence/writebps272/b/native.json.gz",
+        "uncompressed_sha256": "cc4a58d6fc849645e4d8e1b5200f96c876ca00ee1742faa51610c15ded1bb90a",
+        "uncompressed_bytes": 2957,
+        "gzip_sha256": "711e83ba9b3707768561dc2772934f99590f6564c562dd27a8dac50a6dea8de4",
+        "gzip_bytes": 1099
+      },
+      "request-pg.json": {
+        "path": "test-evidence/writebps272/b/request-pg.json.gz",
+        "uncompressed_sha256": "c8d0f7eb678f8d662ef05b78754856a557a43b5d404a2ed6b1280c0bfd6fb045",
+        "uncompressed_bytes": 475295,
+        "gzip_sha256": "12e46885c245d38293b5bf15089af90e253bcad10e7c89d4f95f3b3dfc993a67",
+        "gzip_bytes": 45356
+      },
+      "threads.json": {
+        "path": "test-evidence/writebps272/b/threads.json.gz",
+        "uncompressed_sha256": "1086a14f1d315d50b260545743f30c6ece02a7d3c2e8e41141440d259242ee16",
+        "uncompressed_bytes": 9253483,
+        "gzip_sha256": "0aab4598ee8a830472b32685c8ac316759f1842a5bdba406ddcb9c4bad892f58",
+        "gzip_bytes": 249721
+      },
+      "engine.json": {
+        "path": "test-evidence/writebps272/b/engine.json.gz",
+        "uncompressed_sha256": "955b043420cee5586edbd2790d40b9a3a0b705a98587707dd4b99f454eea275a",
+        "uncompressed_bytes": 176741,
+        "gzip_sha256": "05216265aeba941efe5479e91816e3885cb3ae6ceea0b082ea77dec8cfe74399",
+        "gzip_bytes": 20533
+      }
+    },
+    "a2": {
+      "report.json": {
+        "path": "test-evidence/writebps272/a2/report.json.gz",
+        "uncompressed_sha256": "830b3591a6b47ebf5710f0ab6f28bfa73f77f08f8b5ae520fd0000d598e1ee1c",
+        "uncompressed_bytes": 395861,
+        "gzip_sha256": "2b58390655c656550aa4195240d20f83a1950e5ed0894771addcc2265028fd36",
+        "gzip_bytes": 42282
+      },
+      "native.json": {
+        "path": "test-evidence/writebps272/a2/native.json.gz",
+        "uncompressed_sha256": "ea89d36bcb62d51627b5454351f491ba09442010a6fed5040d2c30d8978495b7",
+        "uncompressed_bytes": 2959,
+        "gzip_sha256": "ac8b9261a9fd9cb0360a3fdefe0dc1e412f7c7a1bb83925ce7053e9a89e9a09d",
+        "gzip_bytes": 1098
+      },
+      "request-pg.json": {
+        "path": "test-evidence/writebps272/a2/request-pg.json.gz",
+        "uncompressed_sha256": "7bd253e5317f27c70f9ad7f6640493b8680269e0938b8e0a3e2755944839f81d",
+        "uncompressed_bytes": 475221,
+        "gzip_sha256": "fa7f454257f17185989af8a45d3bcac0073dc8dfec01ef5cf0e46a30ad16c711",
+        "gzip_bytes": 45334
+      },
+      "threads.json": {
+        "path": "test-evidence/writebps272/a2/threads.json.gz",
+        "uncompressed_sha256": "25d9355880ebf76ea4197a0c61e6fa469a811fcb457208b7b977559535210c79",
+        "uncompressed_bytes": 9266394,
+        "gzip_sha256": "fea1cc4005ed8be3144607a6f154e23b61e39a4300f3a79ef96bb54d557ed6e3",
+        "gzip_bytes": 252047
+      },
+      "engine.json": {
+        "path": "test-evidence/writebps272/a2/engine.json.gz",
+        "uncompressed_sha256": "64b292e75d12d3d3cf33130ce8a411e8b98413ddb5bf408c6a31d85df3704263",
+        "uncompressed_bytes": 188050,
+        "gzip_sha256": "8ead6c482aec774beafbbce022b6da0a26eee870684ff99b70a6bc53c2f4d088",
+        "gzip_bytes": 21717
+      }
+    }
+  },
+  "offline_analysis_source_sha256": "8cb107bb9f777dbddcd3ea5234ec6309600d706a257cee7d5ee939ddaa1e1ad1",
+  "comparison_interpretation": {
+    "A1_failed_B_improved_but_failed_A2_passed_same_low_limit": true,
+    "prespecified_A_failure_B_improvement_A_failure_pattern_observed": false,
+    "write_BPS_as_sole_cause_proven": false,
+    "cache_IO_state_equalized_or_randomized": false,
+    "new_clone_inode_cgroups_and_sequential_time_are_different": true,
+    "original32_two_role_percentage_acceptance_executed": false
+  },
+  "private_receipt_sha256": "9bb007818b09a7bdf5c2e3050820d74c447938aaf6792b68a2f859acbd487d38",
+  "stable_release_accepted": false,
+  "P10_complete": false
+}

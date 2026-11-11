@@ -221,3 +221,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [首轮写BPS对照实际失败](testing-write-bps-comparison-failure.md)：A1/B因测试器错误预期提前结束且不足600秒，A2准备失败/实际建表5.47秒，均不作业务通过；三组全部退出/恢复、源保持。已修正手动模式非法IO测试输入并新增精确ELF四项只读校验，[v2](testing-write-bps-comparison-v2.md)12项前置通过、独立三份完整冷副本已冻结并启动，首快照尚无600秒终态。包装CI发现的源码链接已修正，旧CI失败保留；原R235/52项/长期门槛继续。
+
+
+[写BPS对照v2终态](testing-write-bps-comparison-v2-result.md)：三组均实际600秒，A1 SQL4/API4错、B SQL0/API1错、A2同原上限SQL0/API0且16项组内通过；未形成预定A失败/B改善/A再失败模式，不能认定仅写带宽是原因。三namespace/cgroup及已固定负载/API/观察进程独立确认退出，配置和原源关键摘要保持；15份原始结构报告及8项离线复现/拒绝检查归档。原32项/两角色百分比、52任务和长期条件继续，不改变配额或原时限。
