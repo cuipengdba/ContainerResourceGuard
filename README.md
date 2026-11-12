@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+当前可下载版本：[v1.0.0-preview.4](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.4)。内存改用memory.high，不新增硬限额；[配置、迁移及验证范围](docs/releases/v1.0.0-preview.4.md)。稳定1.0及完整业务/长期条件继续。
+
 > 2026-11-12已选定的新内存语义：百分比及手动内存写memory.high，不新增memory.max；允许超目标，外部硬限额保留。旧硬限额仅凭同身份journal及仍持有的值恢复。下述旧版实现/测试保持历史来源，不能替代新策略验证。见[内存策略](docs/memory-reclaim-policy.md)。
 
 当前可下载版本：[v1.0.0-preview.3](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.3)。[功能、更新步骤和限制](docs/releases/v1.0.0-preview.3.md)、[八项公开附件下载校验](docs/test-results-preview3-publication.json)。程序与preview.1/preview.2相同，本版同步最新升级/回退及Agent工具验证文档；稳定1.0和长期验收继续。
