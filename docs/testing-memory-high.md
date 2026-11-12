@@ -19,3 +19,11 @@
 ## 第二轮日志缺项
 
 [第二轮失败](test-results-memory-high-v2.json)保留：DBS九项通过，包括真实缓存回收、96MiB匿名工作集允许超过64MiB high且OOM计数不增、释放测试分配后CLI恢复、外部high和硬限额冲突保护。第十项发现每日resource_status未包含策略字段和计划警告；该项失败，HISDBS尚未运行。现已补充memory_policy与warnings，保持原日志轮转及其他行为；新程序另建固定计划验证，不把旧失败改成通过。两次失败的原namespace/cgroup及runner/worker均已观测退出。
+
+## 当前程序通过的范围
+
+[第三轮固定计划](test-plan-memory-high-v3.json)、[完整结果与独立清理](test-results-memory-high-v3.json)：源码180c86ad7986a76526a41575cc1c176d5da98a9c、preview.4精确AMD64程序在97/5.14两原镜像共30项通过。六个独立占位Pod覆盖自有旧max迁移、真实干净文件缓存回收、匿名工作集超high且无新增OOM事件、释放测试分配后写入者恢复、外部high/max冲突、新ID及旧journal归档、百分比计划、原值恢复、日志和无权限降级；未挂原业务数据或启动业务。两次原失败保留。三轮namespace/所有自有父叶cgroup和原进程均经另一个只读观察者确认消失。
+
+同一源码的[原生AMD64/ARM64实际控制器回归](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43156593022)各22项，共44项通过，实际内核7.0.0-1017-azure；仍使用原CPU/IO负载与恢复/新ID/只读/清理检查，内存期望按用户指定改为high，外部max保持。CI程序链接版本为native-controller-ci，不能说与preview.4字节相同。发布两架构程序另做相同固定工具链的二次构建，逐字节一致。Linux构建/竞态及原生ARM64检查通过。
+
+此30+44项只覆盖工程控制行为。脏页+受限IO、真实数据库缓存高峰、完整两角色业务和新策略长期验证继续；不把旧硬限额七天任务计入新策略，不关闭稳定1.0的原门槛。

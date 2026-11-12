@@ -463,3 +463,5 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 2026-11-12完成[只读proc错误元数据运行时资格](testing-proc-read-error.md)：宿主与两厂商镜像各24项，共72项，两个新自身探针read为EACCES/13；旧2410个泛化OSError仍未知。后续PG目标集成/资格任务单独归档，不改变旧采样器、原配额/SLA/长期句柄或发布附件，稳定1.0仍待。
 
 2026-11-12用户已明确选择[内存百分比改用memory.high](memory-reclaim-policy.md)，不新增memory.max。CPU/内存/IO仍独立默认20%；手动规范字段limits.memory_high，旧memory_max只作带警告的high别名。已实现核心计划、所有权迁移、外部边界及低于用量回收目标，本地Go测试通过；真机、Linux和新预览交付另行记录，不冒用旧长期结果，不关闭原52项或稳定1.0门槛。
+
+2026-11-12内存high新策略：[两原镜像隔离30项、两架构实际控制器44项通过及失败原件](testing-memory-high.md)。仅工程控制资格；完整业务、新策略长期及原52项/稳定条件不关闭，preview.4正在准备。
