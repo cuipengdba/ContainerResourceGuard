@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+> 2026-11-12已选定的新内存语义：百分比及手动内存写memory.high，不新增memory.max；允许超目标，外部硬限额保留。旧硬限额仅凭同身份journal及仍持有的值恢复。下述旧版实现/测试保持历史来源，不能替代新策略验证。见[内存策略](docs/memory-reclaim-policy.md)。
+
 当前可下载版本：[v1.0.0-preview.3](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.3)。[功能、更新步骤和限制](docs/releases/v1.0.0-preview.3.md)、[八项公开附件下载校验](docs/test-results-preview3-publication.json)。程序与preview.1/preview.2相同，本版同步最新升级/回退及Agent工具验证文档；稳定1.0和长期验收继续。
 
 此前预发布版本：[v1.0.0-preview.1](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.1)。[更新步骤、功能与内嵌v1.0.0候选身份](docs/releases/v1.0.0-preview.1.md)；[实际发布/下载校验及CI](docs/test-results-preview1-publication.json)。这是预发布版，稳定1.0及长期验收继续；下文历史记录按原时点保留。
@@ -78,7 +80,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 
 持续开发与验收状态见 [当前进展](docs/development-status.md)。安全热重载已在独立分支通过 13 项真实 cgroup 检查，尚未发布；原镜像业务验收正在推进。
 
-开发分支已加入手动模式入口，例如 `{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_max":"4GiB"}}`。完整示例见 [manual.json](examples/manual.json)，无需 IO 的示例见 [manual-cpu-memory.json](examples/manual-cpu-memory.json)。新增功能已完成 [Linux 隔离限额与恢复验证](docs/testing-dual-modes.md)，厂商业务验收仍未完成；已发布 RC2 仅支持原字段。
+开发分支已加入手动模式入口，例如 `{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_high":"4GiB"}}`。完整示例见 [manual.json](examples/manual.json)，无需 IO 的示例见 [manual-cpu-memory.json](examples/manual-cpu-memory.json)。新增功能已完成 [Linux 隔离限额与恢复验证](docs/testing-dual-modes.md)，厂商业务验收仍未完成；已发布 RC2 仅支持原字段。
 
 | 文档 | 内容 |
 |---|---|

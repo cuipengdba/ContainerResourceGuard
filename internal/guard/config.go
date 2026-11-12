@@ -172,10 +172,10 @@ func (c *Config) Validate() error {
 		if err != nil || n < 16<<20 {
 			return errors.New("memory_high must be an integer byte quantity of at least 16MiB")
 		}
-		if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
-			max, _ := ParseBytes(c.Limits.MemoryMax)
+		if c.ResourceMode == "manual" && c.Limits.memoryTarget() != "" {
+			max, _ := ParseBytes(c.Limits.memoryTarget())
 			if n > max {
-				return errors.New("memory_high cannot exceed requested memory_max")
+				return errors.New("memory_high cannot exceed requested manual memory target")
 			}
 		}
 	}

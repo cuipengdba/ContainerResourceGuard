@@ -6,8 +6,23 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"os"
+	"path/filepath"
 	"syscall"
 )
+
+func openControlForWrite(path string) (*os.File, error) {
+	flags := syscall.O_WRONLY | syscall.O_NOFOLLOW | syscall.O_CLOEXEC
+	if filepath.Base(path) == "memory.high" {
+		// Kernels supporting nonblocking high updates leave synchronous reclaim
+		// to the workload. Older kernels may still perform reclaim in write().
+		flags |= syscall.O_NONBLOCK
+	}
+	fd, err := syscall.Open(path, flags, 0)
+	if err != nil {
+		return nil, err
+	}
+	return os.NewFile(uintptr(fd), path), nil
+}
 
 func verifyCgroup(p string) error {
 	var s syscall.Statfs_t

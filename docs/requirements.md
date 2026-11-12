@@ -273,3 +273,5 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux6-current-integration.md)：原22项驱动/预算不变、同次attempt1，真实三资源/独立百分比/新ID/恢复/只读降级及独立夹具清理；主线源码未变沿用旧来源。本次不关闭ARM厂商业务、独立物理多设备、原32项双角色业务与长期/旧次版本迁移条件。
 
 2026-11-12新增[内存回收优先需求及OOM边界](memory-reclaim-policy.md)：用户希望达到目标后释放内存、避免OOM。已明确memory.max回收不足仍可能OOM，memory.high可回收/节流但允许超目标；已提出语义选择，答复前不改变默认硬限额或发布包。后续实现/迁移/故障与业务验证任务独立归档，仍只控制CPU、内存、IO。
+
+2026-11-12用户已明确选择[内存百分比改用memory.high](memory-reclaim-policy.md)，不新增memory.max。CPU/内存/IO仍独立默认20%；手动规范字段limits.memory_high，旧memory_max只作带警告的high别名。已实现核心计划、所有权迁移、外部边界及低于用量回收目标，本地Go测试通过；真机、Linux和新预览交付另行记录，不冒用旧长期结果，不关闭原52项或稳定1.0门槛。

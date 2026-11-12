@@ -36,6 +36,7 @@ type Setting struct {
 func (s Setting) Key() string { return s.File + ":" + s.Device }
 
 type Plan struct {
+	MemoryPolicy string               `json:"memory_policy,omitempty"`
 	Percentages  *ResourcePercentages `json:"percentages,omitempty"`
 	Environment  Environment          `json:"environment"`
 	Percent      float64              `json:"percent,omitempty"`
@@ -70,7 +71,10 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if err := c.Validate(); err != nil {
 		return Plan{}, err
 	}
-	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode}
+	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode, MemoryPolicy: "high-reclaim-throttle"}
+	if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
+		p.Warnings = append(p.Warnings, "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit")
+	}
 	if c.independentPercentages() {
 		values := c.ResourcePercentages
 		p.Percentages = &values
@@ -115,6 +119,12 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if wantMem && mem < desiredMem {
 		p.Warnings = append(p.Warnings, "memory constrained by existing limits")
 	}
+	if cap := externalMemoryCap(env, "memory.high", original); cap < mem {
+		mem = cap
+		if wantMem {
+			p.Warnings = append(p.Warnings, "memory target constrained by existing memory.high")
+		}
+	}
 	quota := uint64(cpu * 100000)
 	if wantCPU && quota < 1000 {
 		p.Warnings = append(p.Warnings, "CPU target below kernel minimum quota; CPU skipped")
@@ -123,8 +133,8 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	}
 	if wantMem && mem < 16<<20 {
 		p.Warnings = append(p.Warnings, "memory target below 16 MiB; memory skipped")
-	} else if wantMem {
-		p.Settings = append(p.Settings, Setting{File: "memory.max", Value: strconv.FormatUint(mem, 10)})
+	} else if wantMem && c.MemoryHigh == "" {
+		p.Settings = append(p.Settings, Setting{File: "memory.high", Value: strconv.FormatUint(mem, 10)})
 	}
 	if c.PidsMax != nil {
 		n := *c.PidsMax

@@ -1,5 +1,7 @@
 # 跨周期内存稳定窗口（开发功能）
 
+> 2026-11-12已选定的新内存语义：百分比及手动内存写memory.high，不新增memory.max；允许超目标，外部硬限额保留。旧硬限额仅凭同身份journal及仍持有的值恢复。下述旧版实现/测试保持历史来源，不能替代新策略验证。见[内存策略](memory-reclaim-policy.md)。
+
 此功能位于 next/local-diagnostics，承接 P05.2/P05.4，不属于已发布 RC2。最小配置仍为 `{"percent":20}`；新增的可选运维参数 memory_stable_seconds 默认 0，保留现有瞬时安全预检。
 
 ```json

@@ -7,7 +7,7 @@
 ## 手动资源模式（RC3 开发中）
 
 ```json
-{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_max":"4GiB"}}
+{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_high":"4GiB"}}
 ```
 
 省略的资源不接管，不要求 IO 标定。需要手动 IO 时添加 `limits.io_read_bps`、`io_write_bps`、`io_read_iops`、`io_write_iops` 及 `data_paths`；各路径必须能确认当前块设备和稳定身份，相同设备去重。BPS/IOPS 按每设备应用，不能解释为多设备合计。
@@ -40,9 +40,9 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
 | `io_weight` | 不修改 | IO 默认竞争权重 1–10000；保留每设备覆盖，需要内核后端支持，不是硬上限 |
-| `memory_high` | 不修改 | 字节字符串，至少16MiB；页对齐，并受请求/当前及祖先 memory.max/high 约束；下调可能延后 |
+| `memory_high` | 不单独填写 | 旧绝对值兼容参数；推荐手动使用limits.memory_high，百分比自动生成memory.high，允许低于当前用量 |
 | `memory_swap_max` | 不修改 | 字节字符串，0B或至少一页；仅限制交换空间，不包含普通内存；有用量时保留余量，0B须已无swap用量 |
-| `memory_stable_seconds` | 0 | 0保留瞬时安全检查，或2–3600秒的可选连续稳定窗口；至少3个分隔样本，等待期间不写新意图 |
+| `memory_stable_seconds` | 0 | 仅历史硬限额降低/恢复：0保留瞬时安全检查，或2–3600秒连续稳定窗口；不阻止memory.high回收目标；至少3个分隔样本，等待期间不写新意图 |
 | `metrics_enabled` | false | 当前 state_dir 的有界 metrics.prom，默认无监听端口；导出失败不停止资源协调 |
 | `events_enabled` | false | 当前 state_dir 的有界 events.jsonl，最多64条/64KiB，默认无监听端口；不包含原值/路径/原始错误 |
 | `mode` | `enforce` | `enforce` 协调写入；`observe` 不新增写入，也不撤销此前已生效限额 |
@@ -87,11 +87,11 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 ## 安全计算
 
 - 既有外部 CPU/内存/IO 限额更严格时保留更严格值。上级内存和 CPU 配额也参与约束；隐藏的祖先仍由内核限制。
-- 内存下调检查 `5% + 16 MiB` 余量、采样增长、可用的 events/PSI，并在日志同步后复查；见 [运维说明](operations.md)。瞬时检查不能保证并发增长后绝不 OOM。
-- 独立百分比模式默认接管memory high及swap；manual及旧percent配置仅显式绝对值才接管。不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
+- 内存百分比写memory.high，允许超过并可能节流；旧硬限额降低/恢复仍检查余量、增长及可用events/PSI。原有外部memory.max仍可能导致OOM，见[内存策略与升级](memory-reclaim-policy.md)。
+- 独立百分比及旧percent配置的内存预算均写memory.high；manual使用limits.memory_high，旧limits.memory_max作为带警告的high别名。默认不设置Swap。不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
 - IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
-- 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
+- 同一台机器上两个容器各设 20%，表示各自资源目标（内存high不是硬上限）；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
 
