@@ -1,5 +1,7 @@
 # 固定 IO 下的 Agent 活动对照：失败原件与继续验证
 
+[固定IO后续449进展](test-progress-agent-fixed-io-comparison-v3.json)：A1/B1分别实际600.307/600.350秒，SQL/API均0、原十项引擎检查及每臂七个实例/namespace/父叶cgroup独立清理复核合格；2026-11-11T23:59:37Z原runner/worker和B2 Agent/watchdog存活。全四臂尚未完成，不计有效ABBA、原32项压力/两角色或稳定验收。新只读分析器按完整证据独立判定，两个真实臂复核及16个合成反例共18项通过；原两轮失败和严格资格保持。
+
 当前结论仍为 **inconclusive**。首轮在准备阶段失败；第二轮 A1 实际运行600.165秒，SQL错误5、API错误1，SQL采样覆盖率97%低于原98%，并有9次PG等待采样因超过四目标上限而失败。B1/B2/A2未执行。这些不是有效四臂对照，也不是产品性能修复或稳定版验收通过。[结果索引](test-results-agent-fixed-io-comparison-v2.json)、[独立分析](test-analysis-agent-fixed-io-comparison-v2.json)。
 
 ## 原件和实际观察
@@ -40,3 +42,19 @@ python3 tests/agent-fixed-io-offline-checks.py
 [原七天句柄只读快照](test-progress-seven-day-during-fixed-agent-comparison.json)在2026-11-11T23:40:13Z仍存活：R57两角色约95185/95173秒、5周期；精确发布程序R78约81670/81668秒、4周期。SQL/API错误0，最大宿主采样间隔约60.47/60.33秒，未达到实际604800秒及后置条件。
 
 本次不修改产品程序、已发布preview.3附件、52项原始任务定义、原32项压力/两角色业务、七天句柄、正式24h对照和未测硬件条件。稳定v1.0.0仍未验收。
+
+## 后续449已完成的两个臂
+
+[固定IO后续449进展](test-progress-agent-fixed-io-comparison-v3.json)：A1/B1分别实际600.307/600.350秒，SQL/API均0、原十项引擎检查及每臂七个实例/namespace/父叶cgroup独立清理复核合格；2026-11-11T23:59:37Z原runner/worker和B2 Agent/watchdog存活。全四臂尚未完成，不计有效ABBA、原32项压力/两角色或稳定验收。新只读分析器按完整证据独立判定，两个真实臂复核及16个合成反例共18项通过；原两轮失败和严格资格保持。
+
+[部分独立分析](test-analysis-agent-fixed-io-comparison-v3-progress.json)记录A1/B1各25项资格条件。A1活动采样端点约619.410秒累计CPU1.19秒，记账write_bytes增加24576字节；B1端点约620.310秒CPU和进程IO记账均无进展，实际STOP/CONT各1次且正常恢复。此处端点包含准备和末尾采集，不是独占600秒的设备IO。B1有2个DBS.log线程D样本但无请求错误；不能仅据D状态或零错误证明因果。
+
+[18项证据读取检查](test-results-agent-fixed-io-v3-evidence-checks.json)中，2项重放实际A1/B1，16项使用临时合成反例；包含同摘要重绑后的不足600秒、缺失/错位进程清理、helper父身份、实际配额、活动覆盖，以及B1未恢复/CPU继续增长/watchdog提前恢复。合成结果不计厂商负载。公开检查命令：
+
+```bash
+python3 tests/analyze-agent-fixed-io-comparison-v3.py --arm-evidence docs/test-evidence/agent-activity449-a1.json.gz --arm a1
+python3 tests/analyze-agent-fixed-io-comparison-v3.py --arm-evidence docs/test-evidence/agent-activity449-b1.json.gz --arm b1
+python3 tests/agent-fixed-io-v3-evidence-checks.py
+```
+
+[V3只读分析器](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/tests/analyze-agent-fixed-io-comparison-v3.py)、[证据拒绝检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/tests/agent-fixed-io-v3-evidence-checks.py)。这些测试源码不在安装包内，应使用完整仓库。B2/A2及最终独立清理仍待实际结果，未发布新的产品程序。
