@@ -517,3 +517,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [high真实压力第四轮终态](testing-memory-high-pressure.md)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。两角色high生效/high事件和原硬上限保持可观察，但整体失败。原配额/SLA不放宽；DBS原超时和BrokenPipe/终态stdout缺失、租约假设均保留。完整线程/设备/PG证据、配置恢复和独立清理归档，原52项与稳定条件仍未关闭。
+
+
+[压力SQL续租9项](testing-pressure-SQL-lease.md)真实资格通过且独立清理；原10秒租约/SQL30秒超时/异常保持，未分配内存或访问业务库。第五轮完整high压力新夹具已启动，原CPU/IO与600秒/SLA/32项不变，辅助退出stdout有界保留。第四轮DBS原因未证实且原超时保留，不计已修复或完整验收，原52项仍开放。
