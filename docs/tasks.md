@@ -472,3 +472,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 已冻结[memory.high在线维护迁移](testing-memory-high-maintenance.md)：使用精确发布程序，预先定义旧硬上限→high→旧策略的完整八项和journal原值，保留原300/45/600秒及全部业务SLA。迁移改变journal后自动回退必须拒绝，再用当前静默状态的显式反向安装建立新收据；每角色9个区间、13项，共26项。尚未启动，35项纯合同检查不算业务通过，前一未发布构建不冒充两个已发布次版本。
+
+
+已冻结[memory.high保留数据冷重建44项](testing-memory-high-cold-rebuild.md)：两角色四次新ID，门禁前预声明完整high控制和journal原值；原300/45秒、64MiB/marker、备份/独立数据库恢复、同日日志追加与原缓存新鲜度要求保持。当前尚未启动，不借用旧源结果或计时。
