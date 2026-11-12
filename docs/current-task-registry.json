@@ -1533,7 +1533,7 @@
   },
   "memory_reclaim_preference_request": {
     "date": "2026-11-12",
-    "phase": "preview4-published-native88-overhead1800-manual-business600-fault20-qualified",
+    "phase": "preview4-published-native88-overhead1800-business600-fault20-maintenance26-qualified",
     "design": "docs/memory-reclaim-policy.md",
     "user_request": "达到内存目标后释放内存，不希望OOM；说明其他cgroup内存控制参数",
     "choices": [
@@ -1551,7 +1551,7 @@
       "next/partition-io"
     ],
     "main_source_backport": false,
-    "verification": "docs/test-results-memory-high-faults-v2.json",
+    "verification": "docs/test-results-memory-high-maintenance.json",
     "published_version": "v1.0.0-preview.4",
     "publication": "docs/test-results-preview4-publication.json"
   },
@@ -1589,7 +1589,9 @@
     "faults_verification": "docs/test-results-memory-high-faults-v2.json",
     "followup_plan": "docs/plan-memory-high-followup.md",
     "maintenance_plan": "docs/test-plan-memory-high-maintenance.json",
-    "maintenance_phase": "frozen-not-launched",
-    "maintenance_accepted": false
+    "maintenance_phase": "passed-26-checks-two-roles-native600-policy-roundtrip",
+    "maintenance_accepted": true,
+    "maintenance_verification": "docs/test-results-memory-high-maintenance.json",
+    "published_minor_migrations_accepted": false
   }
 }
