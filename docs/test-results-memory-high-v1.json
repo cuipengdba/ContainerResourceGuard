@@ -1,0 +1,399 @@
+{
+  "schema": "crg-vendor-memory-high-result-v1",
+  "phase": "failed",
+  "accepted_vendor_business": false,
+  "actual_checks_before_failure": 5,
+  "runtime_report": {
+    "schema": "crg-vendor-memory-high-v1",
+    "phase": "failed",
+    "plan_sha256": "906b76291bcfb3dae49adc03b4488d3bcc2d67d008b1cf692e91023cca8efa6e",
+    "source_revision": "e7b1a38c4fe5ad8ad237093c11cf8dc92b68c403",
+    "binary_sha256": "4a51e23ef35260a28caf3b1c64fbe549b4c6e05f41ff517b38b4a6275a78e181",
+    "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+    "scope": "isolated placeholder PID1 in original vendor images; no original business data or service startup",
+    "tests": [
+      {
+        "name": "dbs-published-legacy-hard-cap",
+        "passed": true
+      },
+      {
+        "name": "dbs-owned-hard-cap-restored-before-high",
+        "passed": true,
+        "status": {
+          "time_utc": "2026-11-12T04:27:39Z",
+          "mode": "enforce",
+          "state": "degraded",
+          "plan": {
+            "memory_policy": "high-reclaim-throttle",
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope",
+              "identity": "0f722809e3a1213f11b2ecb0f55c94402511a473928d264f9a684c2df6400c4e",
+              "host_online_cpus": 24,
+              "host_memory_bytes": 66673278976,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-23"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "memory.high",
+                "value": "268435456"
+              }
+            ],
+            "warnings": [
+              "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit"
+            ]
+          },
+          "items": [
+            {
+              "file": "memory.high",
+              "value": "268435456",
+              "state": "applied",
+              "detail": "written and verified",
+              "reason_code": "applied"
+            },
+            {
+              "file": "memory.max",
+              "value": "268435456",
+              "state": "restored",
+              "reason_code": "restored"
+            }
+          ],
+          "configuration": {
+            "generation": 1,
+            "accepted_hash": "e6e634c8eb18d057db81c5e91342b9da3f956469d336f47076185904e402f319",
+            "source": "/work/legacy.json",
+            "state": "accepted"
+          }
+        }
+      },
+      {
+        "name": "dbs-clean-cache-fixture",
+        "passed": true,
+        "before": {
+          "current": 169172992,
+          "stat": {
+            "anon": 286720,
+            "file": 167788544,
+            "kernel": 1097728,
+            "kernel_stack": 32768,
+            "pagetables": 102400,
+            "sec_pagetables": 0,
+            "percpu": 832,
+            "sock": 0,
+            "vmalloc": 0,
+            "shmem": 0,
+            "zswap": 0,
+            "zswapped": 0,
+            "file_mapped": 0,
+            "file_dirty": 0,
+            "file_writeback": 0,
+            "swapcached": 0,
+            "anon_thp": 0,
+            "file_thp": 0,
+            "shmem_thp": 0,
+            "inactive_anon": 0,
+            "active_anon": 286720,
+            "inactive_file": 167788544,
+            "active_file": 0,
+            "unevictable": 0,
+            "slab_reclaimable": 646160,
+            "slab_unreclaimable": 271208,
+            "slab": 917368,
+            "workingset_refault_anon": 0,
+            "workingset_refault_file": 0,
+            "workingset_activate_anon": 0,
+            "workingset_activate_file": 0,
+            "workingset_restore_anon": 0,
+            "workingset_restore_file": 0,
+            "workingset_nodereclaim": 0,
+            "pgscan": 0,
+            "pgsteal": 0,
+            "pgscan_kswapd": 0,
+            "pgscan_direct": 0,
+            "pgscan_khugepaged": 0,
+            "pgsteal_kswapd": 0,
+            "pgsteal_direct": 0,
+            "pgsteal_khugepaged": 0,
+            "pgfault": 4314,
+            "pgmajfault": 0,
+            "pgrefill": 0,
+            "pgactivate": 0,
+            "pgdeactivate": 0,
+            "pglazyfree": 0,
+            "pglazyfreed": 0,
+            "zswpin": 0,
+            "zswpout": 0,
+            "zswpwb": 0,
+            "thp_fault_alloc": 0,
+            "thp_collapse_alloc": 0,
+            "thp_swpout": 0,
+            "thp_swpout_fallback": 0
+          },
+          "events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "controls": {
+            "memory.max": "536870912",
+            "memory.high": "268435456",
+            "cpu.max": "200000 100000",
+            "io.max": "",
+            "memory.swap.max": "0",
+            "pids.max": "406648",
+            "cpu.weight": "2",
+            "io.weight": "default 100"
+          },
+          "monotonic": 1397604.971048004
+        }
+      },
+      {
+        "name": "dbs-below-usage-high-reclaims-file-cache",
+        "passed": true,
+        "after": {
+          "current": 35590144,
+          "stat": {
+            "anon": 290816,
+            "file": 34361344,
+            "kernel": 925696,
+            "kernel_stack": 32768,
+            "pagetables": 102400,
+            "sec_pagetables": 0,
+            "percpu": 832,
+            "sock": 0,
+            "vmalloc": 0,
+            "shmem": 0,
+            "zswap": 0,
+            "zswapped": 0,
+            "file_mapped": 0,
+            "file_dirty": 0,
+            "file_writeback": 0,
+            "swapcached": 0,
+            "anon_thp": 0,
+            "file_thp": 0,
+            "shmem_thp": 0,
+            "inactive_anon": 0,
+            "active_anon": 221184,
+            "inactive_file": 34361344,
+            "active_file": 0,
+            "unevictable": 0,
+            "slab_reclaimable": 480000,
+            "slab_unreclaimable": 269144,
+            "slab": 749144,
+            "workingset_refault_anon": 0,
+            "workingset_refault_file": 0,
+            "workingset_activate_anon": 0,
+            "workingset_activate_file": 0,
+            "workingset_restore_anon": 0,
+            "workingset_restore_file": 0,
+            "workingset_nodereclaim": 0,
+            "pgscan": 32576,
+            "pgsteal": 32576,
+            "pgscan_kswapd": 0,
+            "pgscan_direct": 32576,
+            "pgscan_khugepaged": 0,
+            "pgsteal_kswapd": 0,
+            "pgsteal_direct": 32576,
+            "pgsteal_khugepaged": 0,
+            "pgfault": 5546,
+            "pgmajfault": 0,
+            "pgrefill": 1,
+            "pgactivate": 0,
+            "pgdeactivate": 0,
+            "pglazyfree": 0,
+            "pglazyfreed": 0,
+            "zswpin": 0,
+            "zswpout": 0,
+            "zswpwb": 0,
+            "thp_fault_alloc": 0,
+            "thp_collapse_alloc": 0,
+            "thp_swpout": 0,
+            "thp_swpout_fallback": 0
+          },
+          "events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "controls": {
+            "memory.max": "536870912",
+            "memory.high": "67108864",
+            "cpu.max": "200000 100000",
+            "io.max": "",
+            "memory.swap.max": "0",
+            "pids.max": "406648",
+            "cpu.weight": "2",
+            "io.weight": "default 100"
+          },
+          "monotonic": 1397608.897613468
+        },
+        "status": {
+          "time_utc": "2026-11-12T04:27:42Z",
+          "mode": "enforce",
+          "state": "managed",
+          "plan": {
+            "memory_policy": "high-reclaim-throttle",
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope",
+              "identity": "0f722809e3a1213f11b2ecb0f55c94402511a473928d264f9a684c2df6400c4e",
+              "host_online_cpus": 24,
+              "host_memory_bytes": 66673278976,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-23"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "memory.high",
+                "value": "67108864"
+              }
+            ]
+          },
+          "items": [
+            {
+              "file": "memory.high",
+              "value": "67108864",
+              "state": "applied",
+              "detail": "written and verified",
+              "reason_code": "applied"
+            }
+          ],
+          "configuration": {
+            "generation": 1,
+            "accepted_hash": "be5e74c0feac18fb4a53c72e995b0900794c7f8d9d400572c9131582c7d3d7e5",
+            "source": "/work/high.json",
+            "state": "accepted"
+          }
+        }
+      },
+      {
+        "name": "dbs-restore-retains-runtime-hard-limit",
+        "passed": true
+      }
+    ],
+    "roles": {
+      "dbs": {
+        "boots": [
+          {
+            "name": "dbs-first",
+            "uid": "2bb30f51-ec74-48e6-82fe-f3491e224293",
+            "container_id": "a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a",
+            "main": {
+              "pid": 1502239,
+              "start_ticks": 139760079
+            },
+            "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope",
+            "original": {
+              "memory.max": "536870912",
+              "memory.high": "max",
+              "cpu.max": "200000 100000",
+              "io.max": "",
+              "memory.swap.max": "0",
+              "pids.max": "406648",
+              "cpu.weight": "2",
+              "io.weight": "default 100"
+            },
+            "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "privileged": true
+          }
+        ]
+      }
+    },
+    "owned_cgroups": [
+      "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope",
+      "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice"
+    ],
+    "owned_processes": [
+      {
+        "pid": 1502239,
+        "start_ticks": 139760079
+      },
+      {
+        "pid": 1504521,
+        "start_ticks": 139760967
+      }
+    ],
+    "cleanup": {
+      "namespace_absent": true,
+      "all_owned_cgroups_absent": true
+    },
+    "stable_release_accepted": false,
+    "commands": [
+      {
+        "exit": 0,
+        "stdout": "{\n  \"time_utc\": \"2026-11-12T04:27:39Z\",\n  \"mode\": \"enforce\",\n  \"state\": \"managed\",\n  \"plan\": {\n    \"environment\": {\n      \"cgroup_version\": \"v2\",\n      \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope\",\n      \"identity\": \"0f722809e3a1213f11b2ecb0f55c94402511a473928d264f9a684c2df6400c4e\",\n      \"host_online_cpus\": 24,\n      \"host_memory_bytes\": 66673278976,\n      \"cpu_capacity_source\": \"/sys/devices/system/cpu/online\",\n      \"memory_capacity_source\": \"/proc/meminfo\",\n      \"effective_cpuset\": \"0-23\"\n    },\n    \"resource_mode\": \"manual\",\n    \"settings\": [\n      {\n        \"file\": \"memory.max\",\n        \"value\": \"268435456\"\n      }\n    ]\n  },\n  \"items\": [\n    {\n      \"file\": \"memory.max\",\n      \"value\": \"268435456\",\n      \"state\": \"applied\",\n      \"detail\": \"written and verified\",\n      \"reason_code\": \"applied\"\n    }\n  ],\n  \"configuration\": {\n    \"generation\": 1,\n    \"accepted_hash\": \"e6e634c8eb18d057db81c5e91342b9da3f956469d336f47076185904e402f319\",\n    \"source\": \"/work/legacy.json\",\n    \"state\": \"accepted\"\n  }\n}\n",
+        "stderr": "{\"time\":\"2026-11-12T04:27:38.808669147Z\",\"level\":\"INFO\",\"event\":\"agent_start\",\"fields\":{\"mode\":\"enforce\",\"resource_mode\":\"manual\",\"revision\":\"d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710\",\"version\":\"v1.0.0\"}}\n{\"time\":\"2026-11-12T04:27:38.80906701Z\",\"level\":\"INFO\",\"event\":\"cgroup_detected\",\"fields\":{\"business_action\":\"none\",\"check\":{\"cgroup_version\":\"v2\",\"resource_control_allowed\":true,\"resource_action\":\"verify_self_then_apply\",\"reason\":\"cgroup v2 detected; self identity, permissions and resource safety checks still required\"}}}\n{\"time\":\"2026-11-12T04:27:38.809906974Z\",\"level\":\"INFO\",\"event\":\"automatic_io_prepare\",\"fields\":{\"mode\":\"off\"}}\n{\"time\":\"2026-11-12T04:27:38.809976969Z\",\"level\":\"INFO\",\"event\":\"automatic_io_prepared\",\"fields\":{\"result\":null}}\n{\"time\":\"2026-11-12T04:27:39.192628744Z\",\"level\":\"INFO\",\"event\":\"resource_status\",\"fields\":{\"error\":\"\",\"items\":[{\"controller\":\"memory.max\",\"detail\":\"written and verified\",\"state\":\"applied\"}],\"legacy_percent\":0,\"mode\":\"enforce\",\"percentages\":null,\"state\":\"managed\"}}\n{\"time\":\"2026-11-12T04:27:39.192797982Z\",\"level\":\"INFO\",\"event\":\"agent_stop\",\"fields\":{\"business_action\":\"none\"}}\n",
+        "elapsed_seconds": 0.6274233961012214
+      },
+      {
+        "exit": 0,
+        "stdout": "{\n  \"time_utc\": \"2026-11-12T04:27:39Z\",\n  \"mode\": \"enforce\",\n  \"state\": \"degraded\",\n  \"plan\": {\n    \"memory_policy\": \"high-reclaim-throttle\",\n    \"environment\": {\n      \"cgroup_version\": \"v2\",\n      \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope\",\n      \"identity\": \"0f722809e3a1213f11b2ecb0f55c94402511a473928d264f9a684c2df6400c4e\",\n      \"host_online_cpus\": 24,\n      \"host_memory_bytes\": 66673278976,\n      \"cpu_capacity_source\": \"/sys/devices/system/cpu/online\",\n      \"memory_capacity_source\": \"/proc/meminfo\",\n      \"effective_cpuset\": \"0-23\"\n    },\n    \"resource_mode\": \"manual\",\n    \"settings\": [\n      {\n        \"file\": \"memory.high\",\n        \"value\": \"268435456\"\n      }\n    ],\n    \"warnings\": [\n      \"legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit\"\n    ]\n  },\n  \"items\": [\n    {\n      \"file\": \"memory.high\",\n      \"value\": \"268435456\",\n      \"state\": \"applied\",\n      \"detail\": \"written and verified\",\n      \"reason_code\": \"applied\"\n    },\n    {\n      \"file\": \"memory.max\",\n      \"value\": \"268435456\",\n      \"state\": \"restored\",\n      \"reason_code\": \"restored\"\n    }\n  ],\n  \"configuration\": {\n    \"generation\": 1,\n    \"accepted_hash\": \"e6e634c8eb18d057db81c5e91342b9da3f956469d336f47076185904e402f319\",\n    \"source\": \"/work/legacy.json\",\n    \"state\": \"accepted\"\n  }\n}\n",
+        "stderr": "{\"time\":\"2026-11-12T04:27:39.405302603Z\",\"level\":\"INFO\",\"event\":\"agent_start\",\"fields\":{\"mode\":\"enforce\",\"resource_mode\":\"manual\",\"revision\":\"e7b1a38c4fe5ad8ad237093c11cf8dc92b68c403\",\"version\":\"v1.0.0-preview.4\"}}\n{\"time\":\"2026-11-12T04:27:39.405572604Z\",\"level\":\"INFO\",\"event\":\"cgroup_detected\",\"fields\":{\"business_action\":\"none\",\"check\":{\"cgroup_version\":\"v2\",\"resource_control_allowed\":true,\"resource_action\":\"verify_self_then_apply\",\"reason\":\"cgroup v2 detected; self identity, permissions and resource safety checks still required\"}}}\n{\"time\":\"2026-11-12T04:27:39.406358972Z\",\"level\":\"INFO\",\"event\":\"automatic_io_prepare\",\"fields\":{\"mode\":\"off\"}}\n{\"time\":\"2026-11-12T04:27:39.40642151Z\",\"level\":\"INFO\",\"event\":\"automatic_io_prepared\",\"fields\":{\"result\":null}}\n{\"time\":\"2026-11-12T04:27:39.651496933Z\",\"level\":\"INFO\",\"event\":\"resource_status\",\"fields\":{\"error\":\"\",\"items\":[{\"controller\":\"memory.high\",\"detail\":\"written and verified\",\"state\":\"applied\"},{\"controller\":\"memory.max\",\"detail\":\"\",\"state\":\"restored\"}],\"legacy_percent\":0,\"mode\":\"enforce\",\"percentages\":null,\"state\":\"degraded\"}}\n{\"time\":\"2026-11-12T04:27:39.651683858Z\",\"level\":\"INFO\",\"event\":\"agent_stop\",\"fields\":{\"business_action\":\"none\"}}\n",
+        "elapsed_seconds": 0.45723965181969106
+      },
+      {
+        "exit": 0,
+        "stdout": "{\n  \"time_utc\": \"2026-11-12T04:27:42Z\",\n  \"mode\": \"enforce\",\n  \"state\": \"managed\",\n  \"plan\": {\n    \"memory_policy\": \"high-reclaim-throttle\",\n    \"environment\": {\n      \"cgroup_version\": \"v2\",\n      \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope\",\n      \"identity\": \"0f722809e3a1213f11b2ecb0f55c94402511a473928d264f9a684c2df6400c4e\",\n      \"host_online_cpus\": 24,\n      \"host_memory_bytes\": 66673278976,\n      \"cpu_capacity_source\": \"/sys/devices/system/cpu/online\",\n      \"memory_capacity_source\": \"/proc/meminfo\",\n      \"effective_cpuset\": \"0-23\"\n    },\n    \"resource_mode\": \"manual\",\n    \"settings\": [\n      {\n        \"file\": \"memory.high\",\n        \"value\": \"67108864\"\n      }\n    ]\n  },\n  \"items\": [\n    {\n      \"file\": \"memory.high\",\n      \"value\": \"67108864\",\n      \"state\": \"applied\",\n      \"detail\": \"written and verified\",\n      \"reason_code\": \"applied\"\n    }\n  ],\n  \"configuration\": {\n    \"generation\": 1,\n    \"accepted_hash\": \"be5e74c0feac18fb4a53c72e995b0900794c7f8d9d400572c9131582c7d3d7e5\",\n    \"source\": \"/work/high.json\",\n    \"state\": \"accepted\"\n  }\n}\n",
+        "stderr": "{\"time\":\"2026-11-12T04:27:42.060491126Z\",\"level\":\"INFO\",\"event\":\"agent_start\",\"fields\":{\"mode\":\"enforce\",\"resource_mode\":\"manual\",\"revision\":\"e7b1a38c4fe5ad8ad237093c11cf8dc92b68c403\",\"version\":\"v1.0.0-preview.4\"}}\n{\"time\":\"2026-11-12T04:27:42.060771444Z\",\"level\":\"INFO\",\"event\":\"cgroup_detected\",\"fields\":{\"business_action\":\"none\",\"check\":{\"cgroup_version\":\"v2\",\"resource_control_allowed\":true,\"resource_action\":\"verify_self_then_apply\",\"reason\":\"cgroup v2 detected; self identity, permissions and resource safety checks still required\"}}}\n{\"time\":\"2026-11-12T04:27:42.061564761Z\",\"level\":\"INFO\",\"event\":\"automatic_io_prepare\",\"fields\":{\"mode\":\"off\"}}\n{\"time\":\"2026-11-12T04:27:42.061629747Z\",\"level\":\"INFO\",\"event\":\"automatic_io_prepared\",\"fields\":{\"result\":null}}\n{\"time\":\"2026-11-12T04:27:43.776801163Z\",\"level\":\"INFO\",\"event\":\"resource_status\",\"fields\":{\"error\":\"\",\"items\":[{\"controller\":\"memory.high\",\"detail\":\"written and verified\",\"state\":\"applied\"}],\"legacy_percent\":0,\"mode\":\"enforce\",\"percentages\":null,\"state\":\"managed\"}}\n{\"time\":\"2026-11-12T04:27:43.776993061Z\",\"level\":\"INFO\",\"event\":\"agent_stop\",\"fields\":{\"business_action\":\"none\"}}\n",
+        "elapsed_seconds": 1.9227560050785542
+      },
+      {
+        "exit": 0,
+        "stdout": "{\n  \"time_utc\": \"2026-11-12T04:27:46Z\",\n  \"mode\": \"restore\",\n  \"state\": \"restored\",\n  \"plan\": {\n    \"environment\": {\n      \"cgroup_version\": \"v2\",\n      \"cgroup\": \"/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2bb30f51_ec74_48e6_82fe_f3491e224293.slice/cri-containerd-a331edbc54e61b90a5ab3bff785c29a434cafc5451e9a47cbf0c2e0e778d550a.scope\",\n      \"identity\": \"0f722809e3a1213f11b2ecb0f55c94402511a473928d264f9a684c2df6400c4e\",\n      \"host_online_cpus\": 24,\n      \"host_memory_bytes\": 66673278976,\n      \"cpu_capacity_source\": \"/sys/devices/system/cpu/online\",\n      \"memory_capacity_source\": \"/proc/meminfo\",\n      \"effective_cpuset\": \"0-23\"\n    },\n    \"settings\": null\n  },\n  \"items\": [\n    {\n      \"file\": \"memory.high\",\n      \"value\": \"67108864\",\n      \"state\": \"restored\",\n      \"reason_code\": \"restored\"\n    }\n  ]\n}\n",
+        "stderr": "{\"details\":{\"business_action\":\"none\",\"check\":{\"cgroup_version\":\"v2\",\"resource_control_allowed\":true,\"resource_action\":\"verify_self_then_apply\",\"reason\":\"cgroup v2 detected; self identity, permissions and resource safety checks still required\"}},\"event\":\"cgroup_detected\",\"level\":\"INFO\"}\n",
+        "elapsed_seconds": 0.35526184481568635
+      }
+    ],
+    "error_type": "TimeoutExpired",
+    "error": "Command '['kubectl', 'exec', '-n', 'crg-memory-high520-20261112', 'dbs-first', '--', '/tools/crg', 'run', '--config', '/work/high.json', '--once']' timed out after 35 seconds",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-memory-high520-tools-20261112/vendor-memory-high.py\", line 85, in <module>\n    call(pod,'high.json');time.sleep(2);anon_after=sample(g);record(role+'-anonymous-working-set-may-exceed-high',proc(probe['pid'])==probe and anon_after['current']>64<<20 and anon_after['controls']['memory.high']==str(64<<20) and anon_after['events']['oom']==initial['events']['oom'] and anon_after['events']['oom_kill']==initial['events']['oom_kill'],before=anon_before,after=anon_after,probe=probe)\n  File \"/var/tmp/crg-memory-high520-tools-20261112/vendor-memory-high.py\", line 34, in call\n    start=time.monotonic();q=ex(pod,*command,check=False,timeout=35)\n  File \"/var/tmp/crg-memory-high520-tools-20261112/vendor-memory-high.py\", line 30, in ex\n    def ex(pod,*cmd,**kw):return run(['kubectl','exec','-n',ns,pod,'--',*cmd],**kw)\n  File \"/var/tmp/crg-memory-high520-tools-20261112/vendor-memory-high.py\", line 17, in run\n    q=subprocess.run([str(x) for x in cmd],input=input,capture_output=True,text=True,timeout=timeout)\n  File \"/usr/lib64/python3.9/subprocess.py\", line 507, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n  File \"/usr/lib64/python3.9/subprocess.py\", line 1134, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n  File \"/usr/lib64/python3.9/subprocess.py\", line 1996, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n  File \"/usr/lib64/python3.9/subprocess.py\", line 1178, in _check_timeout\n    raise TimeoutExpired(\nsubprocess.TimeoutExpired: Command '['kubectl', 'exec', '-n', 'crg-memory-high520-20261112', 'dbs-first', '--', '/tools/crg', 'run', '--config', '/work/high.json', '--once']' timed out after 35 seconds\n"
+  },
+  "exact_evidence": {
+    "path": "test-evidence/memory-high-v1.json.gz",
+    "sha256": "df4f8acad0785f3a53944308d4fe5555665517d8b77bb8bbb50e13abd31b5ca8",
+    "bytes": 5130,
+    "uncompressed_sha256": "3fde3d7e4272c5ce175002c2da3882c953cdf8446fe7cb617be4ff21038b3538"
+  },
+  "cleanup_observation": {
+    "node_utc": "2026-11-12T04:28:56.231547+00:00",
+    "phase": "failed",
+    "reason": "Command '['kubectl', 'exec', '-n', 'crg-memory-high520-20261112', 'dbs-first', '--', '/tools/crg', 'run', '--config', '/work/high.json', '--once']' timed out after 35 seconds",
+    "checks": 5,
+    "passed": 5,
+    "processes": {
+      "launch.json": {
+        "absent": true,
+        "pid": 1500937
+      },
+      "worker.json": {
+        "absent": true,
+        "pid": 1500943
+      }
+    },
+    "cleanup": {
+      "namespace_absent": true,
+      "all_owned_cgroups_absent": true
+    }
+  },
+  "v2_result": "pending",
+  "native_old_driver_failure": {
+    "run": 43154931487,
+    "attempt": 1,
+    "source_revision": "e7b1a38c4fe5ad8ad237093c11cf8dc92b68c403",
+    "both_architectures_failure": "manual-exact-three-actual-controls",
+    "reason": "historical driver expected memory.max and used legacy alias; new semantic requires a separately versioned high driver"
+  },
+  "original_gates_preserved": true,
+  "stable_release_accepted": false
+}

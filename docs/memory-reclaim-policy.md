@@ -1,6 +1,6 @@
 # 内存百分比使用 memory.high
 
-> 本次实现位于next/compatibility-contract及next/partition-io；main既有程序尚未回移。下载发布附件应核对BUILD.json与版本说明，不能从main源码推断新策略已生效。
+> 实现位于next/compatibility-contract及next/partition-io，main现有程序尚未回移；安装发布包请核对BUILD.json。
 
 2026-11-12用户已明确选择：“memory.high 限制内存用这个，别用 memory.max 这个了。”本需求覆盖旧版默认硬限额语义，保留CPU、内存、IO三个独立百分比、各默认20%；其他资源不新增控制。
 
@@ -20,12 +20,12 @@ CRG不新增memory.max硬限额。Kubernetes、运行时、祖先及其他管理
 
 high可设置为低于当前用量，以启动回收压力；它不再使用原memory.max的下调余量/稳定窗口。`memory_stable_seconds`仍保护需要降低的历史硬限额恢复，不把等待窗口用来阻止high生效。内核支持时以O_NONBLOCK打开high，避免写入者同步回收；旧内核（包括上游5.14实现）可能仍在write中回收，因此不承诺所有内核上的写入时延有界。原PID1与CRG辅助启动解耦，但资源节流本身仍可能影响业务。
 
-日志继续一天一个文件，保留30天，目录总量超过1GB时从最旧日志清理，失败降级stderr。`resource_status.plan.memory_policy`为`high-reclaim-throttle`，实际项目显示memory.high；兼容别名、恢复、冲突和写入失败均可见。
+日志继续一天一个文件，保留30天，目录总量超过1GB时从最旧日志清理，失败降级stderr。`resource_status.fields.memory_policy`为`high-reclaim-throttle`，实际项目显示memory.high；兼容别名、恢复、冲突和写入失败均可见。
 
 ## 验证和交付任务
 
 - 已实现：百分比及手动high计划、旧max别名警告、外部high/max约束、自有旧max恢复、冲突保护、high低于用量、缺接口不回退硬限额；本地Go测试已通过。
-- 待真机：两厂商镜像的真实v2写入、旧发布程序迁移、干净文件缓存回收、匿名工作集超目标、外部限额与权限不足、新ID及停用恢复，分别记录events/oom_kill、用量和延迟。
+- 已验证：[两厂商镜像30项及两架构实际控制器44项](testing-memory-high.md)，覆盖真实回收、旧发布程序迁移、匿名工作集超目标与释放后的恢复、外部限额/冲突、权限不足、新ID、恢复和日志；无新增OOM事件仅限这些测试。
 - 待交付：当前源码Linux检查、测试证据归档、GitHub同步及新预览附件。已发布preview.3仍使用旧memory.max程序，不能把本地修改说成已更新发布包。
 - 后续深入验证：脏页与IO受限、缓存回收高峰和两角色完整业务/故障/长期验证；现存旧策略长期任务保留原句柄和来源，不能冒充新策略验证。
 
