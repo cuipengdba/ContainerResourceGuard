@@ -1530,5 +1530,19 @@
     "scope": "native scratch whole-device controls and recovery only",
     "changes_original_task_definitions": false,
     "stable_release_accepted": false
+  },
+  "memory_reclaim_preference_request": {
+    "date": "2026-11-12",
+    "phase": "requirements-recorded-semantic-choice-pending",
+    "design": "docs/memory-reclaim-policy.md",
+    "user_request": "达到内存目标后释放内存，不希望OOM；说明其他cgroup内存控制参数",
+    "choices": [
+      "reclaim-first-soft-target-may-exceed",
+      "strict-hard-cap-OOM-possible"
+    ],
+    "runtime_change_implemented": false,
+    "published_assets_changed": false,
+    "all_original_task_definitions_and_gates_preserved": true,
+    "completion_claim": false
   }
 }
