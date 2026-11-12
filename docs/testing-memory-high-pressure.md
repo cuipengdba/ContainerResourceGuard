@@ -50,4 +50,17 @@ DBS的release命令遇到BrokenPipe；同一进程在进入该命令前已消失
 
 [冻结计划](test-plan-memory-high-pressure-v5.json)、[完整输入](test-evidence/memory-high-pressure-v5-frozen.json.gz)及[精确测试源](../tests/memory-high-pressure-frozen-v5/README.md)保留实际preview.4程序、原83/135 IOPS等CPU/IO预算、全部原帮助脚本、租约10秒/寿命240秒、两角色各600秒/原SLA/11区间/32项框架。在原PG身份SQL及30秒超时保持的前提下，主线程继续串行ping，辅助终态stdout在成功/失败时有界保留，区间结束时间移到身份检查完成后。使用[9项真实续租资格](testing-pressure-SQL-lease.md)的新模块；只完善测试生命周期，不声称第四轮DBS原因已证实或原超时已消除。
 
-第五轮新夹具已进入DBS native与原引擎活动，运行中；尚非32项完整业务或稳定1.0通过。原第四轮27项局部/HIS600.513及DBS145.053/错误2/5、前三轮准备失败继续独立保留。
+第五轮已终态失败，详见下方原始结果；尚非32项完整业务或稳定1.0通过。原第四轮27项局部/HIS600.513及DBS145.053/错误2/5、前三轮准备失败继续独立保留。
+
+
+## 第五轮终态：两角色跑满600秒，仍有API超时
+
+[精确结果和完整诊断](test-results-memory-high-pressure-v5.json)：DBS实际600.289秒，HISDBS实际600.447秒；两者SQL错误0、API错误各1，均未中断且11个重载区间和10项引擎内容检查完成。 原定32项主检查仅实际记录26项通过，两个native的零错误门槛失败，不能把引擎内容通过或完整时长算作业务通过。两角色各保存601个PG样本，原请求/线程/设备/PG无丢样或诊断错误，测试未发送业务信号或取消请求。
+
+两角色都在实际用量超过20%目标+256MiB时将memory.high从30%降至20%，出现high事件并完成释放后同generation7恢复；外部memory.max=21474836480保持、journal不拥有max，采样未见oom/oom_kill增加。这只能证明本轮生效和观察结果，不能保证所有负载不OOM或不影响延迟。
+
+已通过9项资格的续租模块在实际厂商PG身份SQL期间工作；辅助终态stdout均保留、退出0且分配释放，两边未再出现BrokenPipe。两次原SQL实际等待小于1秒；15秒续租机制资格另有实测，不能倒推第四轮的确切退出原因，也不能声称本轮无API错误。原CPU/IO预算、83/135 IOPS、SQL超时30秒、压力辅助10秒租约/240秒寿命及原业务超时和SLA保持。
+
+DBS这次API socket超时在压力准备前4.435秒结束、在high下调前27.638秒结束，时间上重叠百分比转手动区间；该窗口内6个线程样本观察到同一dbs线程write(fd3)到/opt/dbs/log/DBS.log，内核栈包含folio_wait_bit_common与xfs缓冲写，memory.events.high当时为0。不能将时间重叠直接认定为这条API的阻塞链，或证明Agent/某个IO参数是唯一原因；完整HISDBS时间线同样存入结果，旧IOPS和Agent活动对照的限制仍保留。下一步只针对这个已观察到的日志写等待设计可判读对照，不放宽正式配额/验收，不再用相同完整重跑代替定位。
+
+两角色Pod、父叶cgroup、已记录原实例、namespace及runner/worker已独立确认消失，原配置字节/profile缺省恢复。前四轮失败、原52项及七天/真实次版本迁移等稳定条件继续保留，preview.4资产和tag未替换。

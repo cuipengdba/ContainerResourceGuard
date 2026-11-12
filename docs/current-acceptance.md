@@ -1,5 +1,7 @@
 # 当前验收入口
 
+[最新第五轮high压力终态](testing-memory-high-pressure.md)：DBS实际600.289秒，HISDBS实际600.447秒；两者SQL错误0、API错误各1，均未中断且11个重载区间和10项引擎内容检查完成。整体失败、实际26/预定32；完整原件及独立清理归档，旧失败和全部稳定门槛保持。
+
 [精确preview.4真实high压力终态](testing-memory-high-pressure.md)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。两角色均观察到high下调和high事件，原20GiB硬上限保持；整体失败，完整请求/线程/PG/设备及独立清理归档，不能计稳定通过。
 
 已发布[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[八项公开下载校验](test-results-preview4-publication.json)。每容器分别更新，保留原配置/profile/state_dir/journal，核对旧硬限额恢复；源码构建使用发布标签。完整业务和长期门槛继续。
