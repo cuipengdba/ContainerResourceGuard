@@ -499,3 +499,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 冻结[PG v2集成诊断资格101项](testing-native-diagnostics-v3.md)：保留每运行时15回调检查/每角色26新PG+模拟HTTP检查及所有原故障/线程CPU/报告/采样边界；增加每角色两项实际栈错误元数据检查，原请求worker只更换诊断模块和摘要。尚未运行，不计600秒持续业务/受限IO因果或真实high压力通过；原52项和三个长任务保持。
+
+
+[集成诊断资格第一轮](testing-native-diagnostics-v3.md)未通过：宿主/DBS回调30项通过，DBS正常请求原生门槛失败；具体runtime报告因取证顺序未保留，原因未知，HISDBS未跑，独立清理已确认。[第二轮](test-plan-native-diagnostics-v3-v2.json)只修正先存报告后判断成功，四份集成源码/101项/场景时长/全部预算与原标准不变；冻结未启动，不抵消第一轮失败，不关闭原52项。

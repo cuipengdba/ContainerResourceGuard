@@ -1,0 +1,1999 @@
+{
+  "schema": "crg-native-diagnostics-v3-first-attempt-result-v1",
+  "phase": "failed",
+  "plan": "test-plan-native-diagnostics-v3.json",
+  "plan_sha256": "ece9ec83d94c39448541b6614685eb12e0d8f1d8b01da0818931ee56d1905c52",
+  "job_sha256": "abcd6b1ac6984b9ee0966f8e6598db2fb8a5087974b3acc80467668d05df93d0",
+  "observed_node_utc": "2026-11-12T11:34:38.293269+00:00",
+  "report": {
+    "schema": "crg-native-v3-runtime-qualification-v1",
+    "plan_sha256": "ece9ec83d94c39448541b6614685eb12e0d8f1d8b01da0818931ee56d1905c52",
+    "kernel_release": "5.14.0-570.22.1.el9_6.x86_64",
+    "phase": "failed",
+    "frozen": {
+      "files": {
+        "vendor-native-diagnostics-v3.py": "29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd",
+        "vendor-soak-load-diagnostics-v3.py": "bbb86c6af6c472674ebf108686052d5676207b8470b69dbf34fdeb5197cff29b",
+        "vendor-native-diagnostics-v3-checks.py": "83b0c5658c7ecb515fe98d6142d12e95d29b96f900789042b532794f0ab822d1",
+        "vendor-native-diagnostics-v3-runtime.py": "45655d52a845f56d4a4e858b2d0d46a5d464c4790c3e4ad10d8cb721caba273a",
+        "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+        "vendor-pg-wait-v2.py": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+        "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+        "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+        "vendor-device-state-observer.py": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+        "vendor-native-v3-qualification.py": "abcd6b1ac6984b9ee0966f8e6598db2fb8a5087974b3acc80467668d05df93d0"
+      }
+    },
+    "roles": {
+      "dbs": {
+        "source_image_id_sha256": "312c95083a26f7a49d251dc13fa5cf557c4c1744449f88c551ecabde27800488",
+        "components_before": {
+          "bin/postgres": "20af592a38cf5d950a0e28bf0e2fd4e807fd5bd1dd895a9d9b4b5a6151e37bcb",
+          "bin/initdb": "c235346ef1d2f14fa4964407965522ea0cdce51fe5428f067b0e75ceaf3db194",
+          "bin/pg_ctl": "d1e8bb6e1979fc5b01d9f1aa9f7b7f06e12ff8ef6e865562ac21d777c0a3fe57",
+          "bin/psql": "c2d5b1cf6eaa9835b7d1cd21f9d78edf08e17982b0c01880c088356c53e4455a",
+          "lib/libpq.so.5": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+          "share/postgresql/postgres.bki": "81c046c0abda4616954da1cb24aeec39616d1672dd3d3de130ae6659abc9bfeb"
+        },
+        "pod_uid": "35822b76-d450-4fdd-90a7-8f3444f6535c",
+        "image_id_sha256": "312c95083a26f7a49d251dc13fa5cf557c4c1744449f88c551ecabde27800488",
+        "exact_source_image_match": true,
+        "container_id": "526a07e76e26536f1341010cd995c16f02c98381076e59bb61e0628e1e4130b0",
+        "host_pid": 3011448,
+        "host_start_ticks": 142309630,
+        "host_cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod35822b76_d450_4fdd_90a7_8f3444f6535c.slice/cri-containerd-526a07e76e26536f1341010cd995c16f02c98381076e59bb61e0628e1e4130b0.scope",
+        "uid": 999,
+        "gid": 998,
+        "read_only_root": true,
+        "drop_all": true,
+        "original_data_mounted": false,
+        "copy_frozen_sources": {
+          "exit": 0,
+          "stdout": "{\"vendor-native-diagnostics.py\": {\"sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-device-state-observer.py\": {\"sha256\": \"0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-pg-wait.py\": {\"sha256\": \"09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-native-diagnostics-v3-checks.py\": {\"sha256\": \"83b0c5658c7ecb515fe98d6142d12e95d29b96f900789042b532794f0ab822d1\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-native-v3-qualification.py\": {\"sha256\": \"abcd6b1ac6984b9ee0966f8e6598db2fb8a5087974b3acc80467668d05df93d0\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-native-diagnostics-v3.py\": {\"sha256\": \"29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-soak-load-diagnostics-v3.py\": {\"sha256\": \"bbb86c6af6c472674ebf108686052d5676207b8470b69dbf34fdeb5197cff29b\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-pg-wait-v2.py\": {\"sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-native-diagnostics-v3-runtime.py\": {\"sha256\": \"45655d52a845f56d4a4e858b2d0d46a5d464c4790c3e4ad10d8cb721caba273a\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}, \"vendor-proc-read-error.py\": {\"sha256\": \"cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab\", \"projected_source_is_symlink\": true, \"uid\": 999, \"regular\": true, \"mode\": \"0400\"}}\n",
+          "stderr": ""
+        },
+        "private_regular_sources": {
+          "vendor-native-diagnostics.py": {
+            "sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-device-state-observer.py": {
+            "sha256": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-pg-wait.py": {
+            "sha256": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-native-diagnostics-v3-checks.py": {
+            "sha256": "83b0c5658c7ecb515fe98d6142d12e95d29b96f900789042b532794f0ab822d1",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-native-v3-qualification.py": {
+            "sha256": "abcd6b1ac6984b9ee0966f8e6598db2fb8a5087974b3acc80467668d05df93d0",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-native-diagnostics-v3.py": {
+            "sha256": "29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-soak-load-diagnostics-v3.py": {
+            "sha256": "bbb86c6af6c472674ebf108686052d5676207b8470b69dbf34fdeb5197cff29b",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-pg-wait-v2.py": {
+            "sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-native-diagnostics-v3-runtime.py": {
+            "sha256": "45655d52a845f56d4a4e858b2d0d46a5d464c4790c3e4ad10d8cb721caba273a",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          },
+          "vendor-proc-read-error.py": {
+            "sha256": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+            "projected_source_is_symlink": true,
+            "uid": 999,
+            "regular": true,
+            "mode": "0400"
+          }
+        },
+        "unit": {
+          "exit": 0,
+          "stdout": "{\"phase\": \"passed\", \"checks\": 15}\n",
+          "stderr": "",
+          "report_read": {
+            "exit": 0,
+            "stderr": ""
+          },
+          "result": {
+            "python": "2.7.5",
+            "real_PG_or_business_used": false,
+            "callbacks_are_test_doubles": true,
+            "phase": "passed",
+            "cases": {
+              "collection-exception": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": true,
+                      "elapsed_seconds": 9.894371032714844e-05,
+                      "started_monotonic": 1794483155.968705,
+                      "pg_wait": {
+                        "available": false,
+                        "reason": "PG_WAIT_COLLECTION_UNAVAILABLE",
+                        "signals_or_control_writes": 0,
+                        "targets": [],
+                        "error": {
+                          "source_frames": [
+                            {
+                              "source": "vendor-native-diagnostics-v3.py",
+                              "line": 92
+                            }
+                          ],
+                          "class": "RuntimeError"
+                        }
+                      },
+                      "truncated": false,
+                      "started_epoch": 1794483155.968705,
+                      "rows": [
+                        {
+                          "transaction_start_epoch": null,
+                          "query_start_epoch": 1794390001.0,
+                          "pid": 123,
+                          "identity_available": true,
+                          "wait_event": "transactionid",
+                          "query_class": "fixture-update",
+                          "state": "active",
+                          "blocking_pids": [
+                            124
+                          ],
+                          "backend_start_epoch": 1794390000.123456,
+                          "backend_start_epoch_text": "1794390000.123456",
+                          "activity_fields_available": true,
+                          "wait_event_type": "Lock",
+                          "blocking_pids_measured": true
+                        }
+                      ],
+                      "ended_epoch": 1794483155.968803
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "5cf06b42f920002607045ce1bd289083f3ee037684dc89e0bb734bb49917ba26",
+                    "request_errors": 0,
+                    "pg_wait_samples": 0,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "collected",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.0005399910000000036,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 2118,
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.000233539,
+                    "pg_wait_errors": 1
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "5cf06b42f920002607045ce1bd289083f3ee037684dc89e0bb734bb49917ba26",
+                  "request_errors": 0,
+                  "pg_wait_samples": 0,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "collected",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.0005399910000000036,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 2118,
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.000233539,
+                  "pg_wait_errors": 1
+                }
+              },
+              "initialization-failure": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": true,
+                      "elapsed_seconds": 9.703636169433594e-05,
+                      "started_monotonic": 1794483155.902351,
+                      "pg_wait": {
+                        "available": false,
+                        "reason": "PG_WAIT_INITIALIZATION_UNAVAILABLE",
+                        "signals_or_control_writes": 0,
+                        "targets": [],
+                        "error": {
+                          "source_frames": [
+                            {
+                              "source": "vendor-native-diagnostics-v3.py",
+                              "line": 85
+                            }
+                          ],
+                          "class": "RuntimeError"
+                        }
+                      },
+                      "truncated": false,
+                      "started_epoch": 1794483155.902352,
+                      "rows": [
+                        {
+                          "transaction_start_epoch": null,
+                          "query_start_epoch": 1794390001.0,
+                          "pid": 123,
+                          "identity_available": true,
+                          "wait_event": "transactionid",
+                          "query_class": "fixture-update",
+                          "state": "active",
+                          "blocking_pids": [
+                            124
+                          ],
+                          "backend_start_epoch": 1794390000.123456,
+                          "backend_start_epoch_text": "1794390000.123456",
+                          "activity_fields_available": true,
+                          "wait_event_type": "Lock",
+                          "blocking_pids_measured": true
+                        }
+                      ],
+                      "ended_epoch": 1794483155.902448
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "092b6885a2a05c23d8c5b4b0bdbb1d066752b42da09306f1c8ba3e6f269b95d3",
+                    "request_errors": 0,
+                    "pg_wait_samples": 0,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "collected",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.0005012780000000008,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 2122,
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.000219205,
+                    "pg_wait_errors": 1
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "092b6885a2a05c23d8c5b4b0bdbb1d066752b42da09306f1c8ba3e6f269b95d3",
+                  "request_errors": 0,
+                  "pg_wait_samples": 0,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "collected",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.0005012780000000008,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 2122,
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.000219205,
+                  "pg_wait_errors": 1
+                }
+              },
+              "unknown-optional-metadata": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": true,
+                      "elapsed_seconds": 7.200241088867188e-05,
+                      "started_monotonic": 1794483156.210739,
+                      "pg_wait": {
+                        "available": true,
+                        "targets": [
+                          {
+                            "kernel_wait": {
+                              "available": false,
+                              "reason": "OSError"
+                            }
+                          }
+                        ]
+                      },
+                      "truncated": false,
+                      "started_epoch": 1794483156.21074,
+                      "rows": [
+                        {
+                          "transaction_start_epoch": null,
+                          "query_start_epoch": 1794390001.0,
+                          "pid": 123,
+                          "identity_available": true,
+                          "wait_event": "transactionid",
+                          "query_class": "fixture-update",
+                          "state": "active",
+                          "blocking_pids": [
+                            124
+                          ],
+                          "backend_start_epoch": 1794390000.123456,
+                          "backend_start_epoch_text": "1794390000.123456",
+                          "activity_fields_available": true,
+                          "wait_event_type": "Lock",
+                          "blocking_pids_measured": true
+                        }
+                      ],
+                      "ended_epoch": 1794483156.210811
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": true,
+                    "report_sha256": "f17e61ca9029a3ffa5dabd55ccf33b91d63d32764330f52976347eeef300e343",
+                    "request_errors": 0,
+                    "pg_wait_samples": 1,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "collected",
+                    "pg_wait_unknown_targets": 1,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.000543334999999999,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 1991,
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.000400925,
+                    "pg_wait_errors": 0
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": true,
+                  "report_sha256": "f17e61ca9029a3ffa5dabd55ccf33b91d63d32764330f52976347eeef300e343",
+                  "request_errors": 0,
+                  "pg_wait_samples": 1,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "collected",
+                  "pg_wait_unknown_targets": 1,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.000543334999999999,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 1991,
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.000400925,
+                  "pg_wait_errors": 0
+                }
+              },
+              "collection-unavailable": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": true,
+                      "elapsed_seconds": 7.390975952148438e-05,
+                      "started_monotonic": 1794483156.110476,
+                      "pg_wait": {
+                        "available": false,
+                        "reason": "bounded-query-failed",
+                        "targets": []
+                      },
+                      "truncated": false,
+                      "started_epoch": 1794483156.110477,
+                      "rows": [
+                        {
+                          "transaction_start_epoch": null,
+                          "query_start_epoch": 1794390001.0,
+                          "pid": 123,
+                          "identity_available": true,
+                          "wait_event": "transactionid",
+                          "query_class": "fixture-update",
+                          "state": "active",
+                          "blocking_pids": [
+                            124
+                          ],
+                          "backend_start_epoch": 1794390000.123456,
+                          "backend_start_epoch_text": "1794390000.123456",
+                          "activity_fields_available": true,
+                          "wait_event_type": "Lock",
+                          "blocking_pids_measured": true
+                        }
+                      ],
+                      "ended_epoch": 1794483156.11055
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "75281a47cdeb20600223958207f8ab276c5948f7760c6e7b5bae2c7aa8214436",
+                    "request_errors": 0,
+                    "pg_wait_samples": 0,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "collected",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.0005028440000000023,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 1971,
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.000203695,
+                    "pg_wait_errors": 1
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "75281a47cdeb20600223958207f8ab276c5948f7760c6e7b5bae2c7aa8214436",
+                  "request_errors": 0,
+                  "pg_wait_samples": 0,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "collected",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.0005028440000000023,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 1971,
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.000203695,
+                  "pg_wait_errors": 1
+                }
+              },
+              "actual-missing-PG-marker": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": true,
+                      "elapsed_seconds": 0.0104827880859375,
+                      "started_monotonic": 1794483156.421142,
+                      "pg_wait": {
+                        "available": false,
+                        "reason": "PG_WAIT_INITIALIZATION_UNAVAILABLE",
+                        "signals_or_control_writes": 0,
+                        "targets": [],
+                        "error": {
+                          "source_frames": [
+                            {
+                              "source": "vendor-native-diagnostics-v3.py",
+                              "line": 85
+                            },
+                            {
+                              "source": "vendor-native-diagnostics-v3.py",
+                              "line": 45
+                            },
+                            {
+                              "source": "vendor-pg-wait.py",
+                              "line": 145
+                            },
+                            {
+                              "source": "vendor-pg-wait.py",
+                              "line": 37
+                            }
+                          ],
+                          "class": "Rejected"
+                        }
+                      },
+                      "truncated": false,
+                      "started_epoch": 1794483156.421142,
+                      "rows": [
+                        {
+                          "transaction_start_epoch": null,
+                          "query_start_epoch": 1794390001.0,
+                          "pid": 123,
+                          "identity_available": true,
+                          "wait_event": "transactionid",
+                          "query_class": "fixture-update",
+                          "state": "active",
+                          "blocking_pids": [
+                            124
+                          ],
+                          "backend_start_epoch": 1794390000.123456,
+                          "backend_start_epoch_text": "1794390000.123456",
+                          "activity_fields_available": true,
+                          "wait_event_type": "Lock",
+                          "blocking_pids_measured": true
+                        }
+                      ],
+                      "ended_epoch": 1794483156.431625
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "fd7544599a1b348f91941121703d4624a12d1d3ca528d74806c9fed36f315b08",
+                    "request_errors": 0,
+                    "pg_wait_samples": 0,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "collected",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.0005873509999999998,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 2253,
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.010535223,
+                    "pg_wait_errors": 1
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "fd7544599a1b348f91941121703d4624a12d1d3ca528d74806c9fed36f315b08",
+                  "request_errors": 0,
+                  "pg_wait_samples": 0,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "collected",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.0005873509999999998,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 2253,
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.010535223,
+                  "pg_wait_errors": 1
+                }
+              },
+              "report-budget": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 0,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "f54cb0b0ce9480c0bb13ff1219a188e24abf8af7b9581f86d08b09085703c12a",
+                    "request_errors": 0,
+                    "pg_wait_samples": 0,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "capacity-exceeded",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.00039557999999999954,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 1340,
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 1,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.000153071,
+                    "pg_wait_errors": 0
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 0,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "f54cb0b0ce9480c0bb13ff1219a188e24abf8af7b9581f86d08b09085703c12a",
+                  "request_errors": 0,
+                  "pg_wait_samples": 0,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "capacity-exceeded",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.00039557999999999954,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 1340,
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 1,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.000153071,
+                  "pg_wait_errors": 0
+                }
+              },
+              "normal": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": true,
+                      "elapsed_seconds": 0.000782012939453125,
+                      "started_monotonic": 1794483155.803125,
+                      "pg_wait": {
+                        "available": true,
+                        "targets": [],
+                        "signals_or_control_writes": 0
+                      },
+                      "truncated": false,
+                      "started_epoch": 1794483155.803126,
+                      "rows": [
+                        {
+                          "transaction_start_epoch": null,
+                          "query_start_epoch": 1794390001.0,
+                          "pid": 123,
+                          "identity_available": true,
+                          "wait_event": "transactionid",
+                          "query_class": "fixture-update",
+                          "state": "active",
+                          "blocking_pids": [
+                            124
+                          ],
+                          "backend_start_epoch": 1794390000.123456,
+                          "backend_start_epoch_text": "1794390000.123456",
+                          "activity_fields_available": true,
+                          "wait_event_type": "Lock",
+                          "blocking_pids_measured": true
+                        }
+                      ],
+                      "ended_epoch": 1794483155.803907
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "8f05d9f86f8919036f480b0628cb54ea4ca1a803982874207abe7351d54ef1a1",
+                    "request_errors": 0,
+                    "pg_wait_samples": 1,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "report-write-failed",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.00034074199999999805,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 1967,
+                    "report_write_error": {
+                      "code": "unclassified",
+                      "class": "OSError"
+                    },
+                    "pg_errors": 0,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.001101362,
+                    "pg_wait_errors": 0
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "8f05d9f86f8919036f480b0628cb54ea4ca1a803982874207abe7351d54ef1a1",
+                  "request_errors": 0,
+                  "pg_wait_samples": 1,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "report-write-failed",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.00034074199999999805,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 1967,
+                  "report_write_error": {
+                    "code": "unclassified",
+                    "class": "OSError"
+                  },
+                  "pg_errors": 0,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.001101362,
+                  "pg_wait_errors": 0
+                }
+              },
+              "native-query-failure": {
+                "workload_stop_was_unset": true,
+                "all_diagnostic_connections_closed": true,
+                "data": {
+                  "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+                  "pg_samples": [
+                    {
+                      "available": false,
+                      "elapsed_seconds": 3.0994415283203125e-05,
+                      "started_monotonic": 1794483156.285948,
+                      "pg_wait": {
+                        "available": false,
+                        "reason": "NATIVE_ACTIVITY_UNAVAILABLE",
+                        "targets": []
+                      },
+                      "error": {
+                        "code": "unclassified-runtime",
+                        "class": "RuntimeError"
+                      },
+                      "started_epoch": 1794483156.285949,
+                      "ended_epoch": 1794483156.285979
+                    }
+                  ],
+                  "limits": [
+                    "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                    "PG state sampled separately; no sample does not prove no wait.",
+                    "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                    "No original request is retried, canceled or extended by diagnostics.",
+                    "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+                  ],
+                  "run_id": "202611113220",
+                  "maximum_report_bytes": 8388608,
+                  "summary": {
+                    "pg_samples": 1,
+                    "report_filename": "native-diagnostics.json",
+                    "pg_truncated_samples": 0,
+                    "diagnostic_complete": false,
+                    "report_sha256": "b3136de99cb698967c131a68d136be122e9a9b2e56fa72ea5f6d5034f1769ebc",
+                    "request_errors": 0,
+                    "pg_wait_samples": 0,
+                    "recorder_cpu_seconds": 0.0,
+                    "recorder_internal_errors": 0,
+                    "phase": "collected",
+                    "pg_wait_unknown_targets": 0,
+                    "business_signals_cancellations_or_control_writes": 0,
+                    "final_report_thread_cpu_seconds": 0.00046711900000000195,
+                    "recorder_cpu_available": true,
+                    "probe_thread_stopped": true,
+                    "report_bytes": 1652,
+                    "pg_errors": 1,
+                    "dropped_pg_samples": 0,
+                    "request_count": 0,
+                    "dropped_requests": 0,
+                    "probe_thread_cpu_seconds": 0.00015775499999999998,
+                    "pg_wait_errors": 1
+                  },
+                  "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "unique_application_name": "crg-disposable-soak-202611113220",
+                  "requests": [],
+                  "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+                  "schema": "crg-native-request-pg-diagnostics-v3"
+                },
+                "summary": {
+                  "pg_samples": 1,
+                  "report_filename": "native-diagnostics.json",
+                  "pg_truncated_samples": 0,
+                  "diagnostic_complete": false,
+                  "report_sha256": "b3136de99cb698967c131a68d136be122e9a9b2e56fa72ea5f6d5034f1769ebc",
+                  "request_errors": 0,
+                  "pg_wait_samples": 0,
+                  "recorder_cpu_seconds": 0.0,
+                  "recorder_internal_errors": 0,
+                  "phase": "collected",
+                  "pg_wait_unknown_targets": 0,
+                  "business_signals_cancellations_or_control_writes": 0,
+                  "final_report_thread_cpu_seconds": 0.00046711900000000195,
+                  "recorder_cpu_available": true,
+                  "probe_thread_stopped": true,
+                  "report_bytes": 1652,
+                  "pg_errors": 1,
+                  "dropped_pg_samples": 0,
+                  "request_count": 0,
+                  "dropped_requests": 0,
+                  "probe_thread_cpu_seconds": 0.00015775499999999998,
+                  "pg_wait_errors": 1
+                }
+              }
+            },
+            "helper_sha256": "29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd",
+            "checks": [
+              {
+                "name": "unique-run-in-native-selection",
+                "passed": true
+              },
+              {
+                "name": "decimal-backend-identity-preserved",
+                "passed": true
+              },
+              {
+                "name": "normal-probe-closes-and-keeps-business-stop-unset",
+                "passed": true
+              },
+              {
+                "name": "normal-bounded-complete-report",
+                "passed": true
+              },
+              {
+                "name": "existing-final-report-not-replaced",
+                "passed": true
+              },
+              {
+                "name": "initialization-failure-keeps-native-sample-and-redacts",
+                "passed": true
+              },
+              {
+                "name": "initialization-failure-visible-in-final-artifact",
+                "passed": true
+              },
+              {
+                "name": "collection-exception-does-not-stop-business",
+                "passed": true
+              },
+              {
+                "name": "failed-wait-query-closes-only-observer-connection",
+                "passed": true
+              },
+              {
+                "name": "unreadable-optional-metadata-stays-unknown",
+                "passed": true
+              },
+              {
+                "name": "native-query-failure-not-hidden-by-wait-layer",
+                "passed": true
+              },
+              {
+                "name": "capacity-stops-probe-without-business-stop",
+                "passed": true
+              },
+              {
+                "name": "dependency-hash-mismatch-rejected",
+                "passed": true
+              },
+              {
+                "name": "dynamic-module-alive-during-and-after-sampler-construction",
+                "passed": true
+              },
+              {
+                "name": "actual-missing-marker-fails-open-before-PG-proc-access",
+                "passed": true
+              }
+            ],
+            "schema": "crg-native-v2-checks-v1"
+          },
+          "exact_utf8": "{\n  \"python\": \"2.7.5\", \n  \"real_PG_or_business_used\": false, \n  \"callbacks_are_test_doubles\": true, \n  \"phase\": \"passed\", \n  \"cases\": {\n    \"collection-exception\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": true, \n            \"elapsed_seconds\": 9.894371032714844e-05, \n            \"started_monotonic\": 1794483155.968705, \n            \"pg_wait\": {\n              \"available\": false, \n              \"reason\": \"PG_WAIT_COLLECTION_UNAVAILABLE\", \n              \"signals_or_control_writes\": 0, \n              \"targets\": [], \n              \"error\": {\n                \"source_frames\": [\n                  {\n                    \"source\": \"vendor-native-diagnostics-v3.py\", \n                    \"line\": 92\n                  }\n                ], \n                \"class\": \"RuntimeError\"\n              }\n            }, \n            \"truncated\": false, \n            \"started_epoch\": 1794483155.968705, \n            \"rows\": [\n              {\n                \"transaction_start_epoch\": null, \n                \"query_start_epoch\": 1794390001.0, \n                \"pid\": 123, \n                \"identity_available\": true, \n                \"wait_event\": \"transactionid\", \n                \"query_class\": \"fixture-update\", \n                \"state\": \"active\", \n                \"blocking_pids\": [\n                  124\n                ], \n                \"backend_start_epoch\": 1794390000.123456, \n                \"backend_start_epoch_text\": \"1794390000.123456\", \n                \"activity_fields_available\": true, \n                \"wait_event_type\": \"Lock\", \n                \"blocking_pids_measured\": true\n              }\n            ], \n            \"ended_epoch\": 1794483155.968803\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"5cf06b42f920002607045ce1bd289083f3ee037684dc89e0bb734bb49917ba26\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 0, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"collected\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.0005399910000000036, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 2118, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.000233539, \n          \"pg_wait_errors\": 1\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"5cf06b42f920002607045ce1bd289083f3ee037684dc89e0bb734bb49917ba26\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 0, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"collected\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.0005399910000000036, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 2118, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.000233539, \n        \"pg_wait_errors\": 1\n      }\n    }, \n    \"initialization-failure\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": true, \n            \"elapsed_seconds\": 9.703636169433594e-05, \n            \"started_monotonic\": 1794483155.902351, \n            \"pg_wait\": {\n              \"available\": false, \n              \"reason\": \"PG_WAIT_INITIALIZATION_UNAVAILABLE\", \n              \"signals_or_control_writes\": 0, \n              \"targets\": [], \n              \"error\": {\n                \"source_frames\": [\n                  {\n                    \"source\": \"vendor-native-diagnostics-v3.py\", \n                    \"line\": 85\n                  }\n                ], \n                \"class\": \"RuntimeError\"\n              }\n            }, \n            \"truncated\": false, \n            \"started_epoch\": 1794483155.902352, \n            \"rows\": [\n              {\n                \"transaction_start_epoch\": null, \n                \"query_start_epoch\": 1794390001.0, \n                \"pid\": 123, \n                \"identity_available\": true, \n                \"wait_event\": \"transactionid\", \n                \"query_class\": \"fixture-update\", \n                \"state\": \"active\", \n                \"blocking_pids\": [\n                  124\n                ], \n                \"backend_start_epoch\": 1794390000.123456, \n                \"backend_start_epoch_text\": \"1794390000.123456\", \n                \"activity_fields_available\": true, \n                \"wait_event_type\": \"Lock\", \n                \"blocking_pids_measured\": true\n              }\n            ], \n            \"ended_epoch\": 1794483155.902448\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"092b6885a2a05c23d8c5b4b0bdbb1d066752b42da09306f1c8ba3e6f269b95d3\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 0, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"collected\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.0005012780000000008, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 2122, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.000219205, \n          \"pg_wait_errors\": 1\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"092b6885a2a05c23d8c5b4b0bdbb1d066752b42da09306f1c8ba3e6f269b95d3\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 0, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"collected\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.0005012780000000008, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 2122, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.000219205, \n        \"pg_wait_errors\": 1\n      }\n    }, \n    \"unknown-optional-metadata\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": true, \n            \"elapsed_seconds\": 7.200241088867188e-05, \n            \"started_monotonic\": 1794483156.210739, \n            \"pg_wait\": {\n              \"available\": true, \n              \"targets\": [\n                {\n                  \"kernel_wait\": {\n                    \"available\": false, \n                    \"reason\": \"OSError\"\n                  }\n                }\n              ]\n            }, \n            \"truncated\": false, \n            \"started_epoch\": 1794483156.21074, \n            \"rows\": [\n              {\n                \"transaction_start_epoch\": null, \n                \"query_start_epoch\": 1794390001.0, \n                \"pid\": 123, \n                \"identity_available\": true, \n                \"wait_event\": \"transactionid\", \n                \"query_class\": \"fixture-update\", \n                \"state\": \"active\", \n                \"blocking_pids\": [\n                  124\n                ], \n                \"backend_start_epoch\": 1794390000.123456, \n                \"backend_start_epoch_text\": \"1794390000.123456\", \n                \"activity_fields_available\": true, \n                \"wait_event_type\": \"Lock\", \n                \"blocking_pids_measured\": true\n              }\n            ], \n            \"ended_epoch\": 1794483156.210811\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": true, \n          \"report_sha256\": \"f17e61ca9029a3ffa5dabd55ccf33b91d63d32764330f52976347eeef300e343\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 1, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"collected\", \n          \"pg_wait_unknown_targets\": 1, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.000543334999999999, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 1991, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.000400925, \n          \"pg_wait_errors\": 0\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": true, \n        \"report_sha256\": \"f17e61ca9029a3ffa5dabd55ccf33b91d63d32764330f52976347eeef300e343\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 1, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"collected\", \n        \"pg_wait_unknown_targets\": 1, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.000543334999999999, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 1991, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.000400925, \n        \"pg_wait_errors\": 0\n      }\n    }, \n    \"collection-unavailable\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": true, \n            \"elapsed_seconds\": 7.390975952148438e-05, \n            \"started_monotonic\": 1794483156.110476, \n            \"pg_wait\": {\n              \"available\": false, \n              \"reason\": \"bounded-query-failed\", \n              \"targets\": []\n            }, \n            \"truncated\": false, \n            \"started_epoch\": 1794483156.110477, \n            \"rows\": [\n              {\n                \"transaction_start_epoch\": null, \n                \"query_start_epoch\": 1794390001.0, \n                \"pid\": 123, \n                \"identity_available\": true, \n                \"wait_event\": \"transactionid\", \n                \"query_class\": \"fixture-update\", \n                \"state\": \"active\", \n                \"blocking_pids\": [\n                  124\n                ], \n                \"backend_start_epoch\": 1794390000.123456, \n                \"backend_start_epoch_text\": \"1794390000.123456\", \n                \"activity_fields_available\": true, \n                \"wait_event_type\": \"Lock\", \n                \"blocking_pids_measured\": true\n              }\n            ], \n            \"ended_epoch\": 1794483156.11055\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"75281a47cdeb20600223958207f8ab276c5948f7760c6e7b5bae2c7aa8214436\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 0, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"collected\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.0005028440000000023, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 1971, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.000203695, \n          \"pg_wait_errors\": 1\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"75281a47cdeb20600223958207f8ab276c5948f7760c6e7b5bae2c7aa8214436\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 0, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"collected\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.0005028440000000023, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 1971, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.000203695, \n        \"pg_wait_errors\": 1\n      }\n    }, \n    \"actual-missing-PG-marker\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": true, \n            \"elapsed_seconds\": 0.0104827880859375, \n            \"started_monotonic\": 1794483156.421142, \n            \"pg_wait\": {\n              \"available\": false, \n              \"reason\": \"PG_WAIT_INITIALIZATION_UNAVAILABLE\", \n              \"signals_or_control_writes\": 0, \n              \"targets\": [], \n              \"error\": {\n                \"source_frames\": [\n                  {\n                    \"source\": \"vendor-native-diagnostics-v3.py\", \n                    \"line\": 85\n                  }, \n                  {\n                    \"source\": \"vendor-native-diagnostics-v3.py\", \n                    \"line\": 45\n                  }, \n                  {\n                    \"source\": \"vendor-pg-wait.py\", \n                    \"line\": 145\n                  }, \n                  {\n                    \"source\": \"vendor-pg-wait.py\", \n                    \"line\": 37\n                  }\n                ], \n                \"class\": \"Rejected\"\n              }\n            }, \n            \"truncated\": false, \n            \"started_epoch\": 1794483156.421142, \n            \"rows\": [\n              {\n                \"transaction_start_epoch\": null, \n                \"query_start_epoch\": 1794390001.0, \n                \"pid\": 123, \n                \"identity_available\": true, \n                \"wait_event\": \"transactionid\", \n                \"query_class\": \"fixture-update\", \n                \"state\": \"active\", \n                \"blocking_pids\": [\n                  124\n                ], \n                \"backend_start_epoch\": 1794390000.123456, \n                \"backend_start_epoch_text\": \"1794390000.123456\", \n                \"activity_fields_available\": true, \n                \"wait_event_type\": \"Lock\", \n                \"blocking_pids_measured\": true\n              }\n            ], \n            \"ended_epoch\": 1794483156.431625\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"fd7544599a1b348f91941121703d4624a12d1d3ca528d74806c9fed36f315b08\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 0, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"collected\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.0005873509999999998, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 2253, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.010535223, \n          \"pg_wait_errors\": 1\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"fd7544599a1b348f91941121703d4624a12d1d3ca528d74806c9fed36f315b08\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 0, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"collected\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.0005873509999999998, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 2253, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.010535223, \n        \"pg_wait_errors\": 1\n      }\n    }, \n    \"report-budget\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 0, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"f54cb0b0ce9480c0bb13ff1219a188e24abf8af7b9581f86d08b09085703c12a\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 0, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"capacity-exceeded\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.00039557999999999954, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 1340, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 1, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.000153071, \n          \"pg_wait_errors\": 0\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 0, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"f54cb0b0ce9480c0bb13ff1219a188e24abf8af7b9581f86d08b09085703c12a\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 0, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"capacity-exceeded\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.00039557999999999954, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 1340, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 1, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.000153071, \n        \"pg_wait_errors\": 0\n      }\n    }, \n    \"normal\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": true, \n            \"elapsed_seconds\": 0.000782012939453125, \n            \"started_monotonic\": 1794483155.803125, \n            \"pg_wait\": {\n              \"available\": true, \n              \"targets\": [], \n              \"signals_or_control_writes\": 0\n            }, \n            \"truncated\": false, \n            \"started_epoch\": 1794483155.803126, \n            \"rows\": [\n              {\n                \"transaction_start_epoch\": null, \n                \"query_start_epoch\": 1794390001.0, \n                \"pid\": 123, \n                \"identity_available\": true, \n                \"wait_event\": \"transactionid\", \n                \"query_class\": \"fixture-update\", \n                \"state\": \"active\", \n                \"blocking_pids\": [\n                  124\n                ], \n                \"backend_start_epoch\": 1794390000.123456, \n                \"backend_start_epoch_text\": \"1794390000.123456\", \n                \"activity_fields_available\": true, \n                \"wait_event_type\": \"Lock\", \n                \"blocking_pids_measured\": true\n              }\n            ], \n            \"ended_epoch\": 1794483155.803907\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"8f05d9f86f8919036f480b0628cb54ea4ca1a803982874207abe7351d54ef1a1\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 1, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"report-write-failed\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.00034074199999999805, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 1967, \n          \"report_write_error\": {\n            \"code\": \"unclassified\", \n            \"class\": \"OSError\"\n          }, \n          \"pg_errors\": 0, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.001101362, \n          \"pg_wait_errors\": 0\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"8f05d9f86f8919036f480b0628cb54ea4ca1a803982874207abe7351d54ef1a1\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 1, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"report-write-failed\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.00034074199999999805, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 1967, \n        \"report_write_error\": {\n          \"code\": \"unclassified\", \n          \"class\": \"OSError\"\n        }, \n        \"pg_errors\": 0, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.001101362, \n        \"pg_wait_errors\": 0\n      }\n    }, \n    \"native-query-failure\": {\n      \"workload_stop_was_unset\": true, \n      \"all_diagnostic_connections_closed\": true, \n      \"data\": {\n        \"frozen_pg_wait_sha256\": \"7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275\", \n        \"pg_samples\": [\n          {\n            \"available\": false, \n            \"elapsed_seconds\": 3.0994415283203125e-05, \n            \"started_monotonic\": 1794483156.285948, \n            \"pg_wait\": {\n              \"available\": false, \n              \"reason\": \"NATIVE_ACTIVITY_UNAVAILABLE\", \n              \"targets\": []\n            }, \n            \"error\": {\n              \"code\": \"unclassified-runtime\", \n              \"class\": \"RuntimeError\"\n            }, \n            \"started_epoch\": 1794483156.285949, \n            \"ended_epoch\": 1794483156.285979\n          }\n        ], \n        \"limits\": [\n          \"No arbitrary SQL, error messages, connection parameters or response bodies.\", \n          \"PG state sampled separately; no sample does not prove no wait.\", \n          \"Blocking PID zero can denote a prepared transaction; it is not a process target.\", \n          \"No original request is retried, canceled or extended by diagnostics.\", \n          \"PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed.\"\n        ], \n        \"run_id\": \"202611113220\", \n        \"maximum_report_bytes\": 8388608, \n        \"summary\": {\n          \"pg_samples\": 1, \n          \"report_filename\": \"native-diagnostics.json\", \n          \"pg_truncated_samples\": 0, \n          \"diagnostic_complete\": false, \n          \"report_sha256\": \"b3136de99cb698967c131a68d136be122e9a9b2e56fa72ea5f6d5034f1769ebc\", \n          \"request_errors\": 0, \n          \"pg_wait_samples\": 0, \n          \"recorder_cpu_seconds\": 0.0, \n          \"recorder_internal_errors\": 0, \n          \"phase\": \"collected\", \n          \"pg_wait_unknown_targets\": 0, \n          \"business_signals_cancellations_or_control_writes\": 0, \n          \"final_report_thread_cpu_seconds\": 0.00046711900000000195, \n          \"recorder_cpu_available\": true, \n          \"probe_thread_stopped\": true, \n          \"report_bytes\": 1652, \n          \"pg_errors\": 1, \n          \"dropped_pg_samples\": 0, \n          \"request_count\": 0, \n          \"dropped_requests\": 0, \n          \"probe_thread_cpu_seconds\": 0.00015775499999999998, \n          \"pg_wait_errors\": 1\n        }, \n        \"worker_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \n        \"unique_application_name\": \"crg-disposable-soak-202611113220\", \n        \"requests\": [], \n        \"frozen_base_sha256\": \"83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab\", \n        \"schema\": \"crg-native-request-pg-diagnostics-v3\"\n      }, \n      \"summary\": {\n        \"pg_samples\": 1, \n        \"report_filename\": \"native-diagnostics.json\", \n        \"pg_truncated_samples\": 0, \n        \"diagnostic_complete\": false, \n        \"report_sha256\": \"b3136de99cb698967c131a68d136be122e9a9b2e56fa72ea5f6d5034f1769ebc\", \n        \"request_errors\": 0, \n        \"pg_wait_samples\": 0, \n        \"recorder_cpu_seconds\": 0.0, \n        \"recorder_internal_errors\": 0, \n        \"phase\": \"collected\", \n        \"pg_wait_unknown_targets\": 0, \n        \"business_signals_cancellations_or_control_writes\": 0, \n        \"final_report_thread_cpu_seconds\": 0.00046711900000000195, \n        \"recorder_cpu_available\": true, \n        \"probe_thread_stopped\": true, \n        \"report_bytes\": 1652, \n        \"pg_errors\": 1, \n        \"dropped_pg_samples\": 0, \n        \"request_count\": 0, \n        \"dropped_requests\": 0, \n        \"probe_thread_cpu_seconds\": 0.00015775499999999998, \n        \"pg_wait_errors\": 1\n      }\n    }\n  }, \n  \"helper_sha256\": \"29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd\", \n  \"checks\": [\n    {\n      \"name\": \"unique-run-in-native-selection\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"decimal-backend-identity-preserved\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"normal-probe-closes-and-keeps-business-stop-unset\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"normal-bounded-complete-report\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"existing-final-report-not-replaced\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"initialization-failure-keeps-native-sample-and-redacts\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"initialization-failure-visible-in-final-artifact\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"collection-exception-does-not-stop-business\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"failed-wait-query-closes-only-observer-connection\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"unreadable-optional-metadata-stays-unknown\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"native-query-failure-not-hidden-by-wait-layer\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"capacity-stops-probe-without-business-stop\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"dependency-hash-mismatch-rejected\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"dynamic-module-alive-during-and-after-sampler-construction\", \n      \"passed\": true\n    }, \n    {\n      \"name\": \"actual-missing-marker-fails-open-before-PG-proc-access\", \n      \"passed\": true\n    }\n  ], \n  \"schema\": \"crg-native-v2-checks-v1\"\n}\n",
+          "sha256": "beee25739d0431e65365d48937e1816e38b63c07f7ea28e163f57350ae0dc1dc"
+        },
+        "runtime": {
+          "exit": 1,
+          "stdout": "{\"phase\": \"failed\", \"reason\": \"AssertionError:normal-original-native-gate-passes\", \"checks\": 10}\n",
+          "stderr": "command terminated with exit code 1\n",
+          "report_read": {
+            "exit": 0,
+            "stderr": ""
+          }
+        }
+      }
+    },
+    "owned_cgroups": [
+      "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod35822b76_d450_4fdd_90a7_8f3444f6535c.slice/cri-containerd-526a07e76e26536f1341010cd995c16f02c98381076e59bb61e0628e1e4130b0.scope"
+    ],
+    "namespace": "crg-vendor-lab-native600-20261112",
+    "started_node_utc": "2026-11-12T11:32:23.262168+00:00",
+    "original_database_or_product_mounted": false,
+    "scope": "integrated PG v2 reader: callback faults plus new PG/mock HTTP normal, lock and missing-marker; not vendor business acceptance",
+    "host": {
+      "exit": 0,
+      "stdout": "{\"phase\": \"passed\", \"checks\": 15}\n",
+      "stderr": "",
+      "result": {
+        "schema": "crg-native-v2-checks-v1",
+        "phase": "passed",
+        "checks": [
+          {
+            "name": "unique-run-in-native-selection",
+            "passed": true
+          },
+          {
+            "name": "decimal-backend-identity-preserved",
+            "passed": true
+          },
+          {
+            "name": "normal-probe-closes-and-keeps-business-stop-unset",
+            "passed": true
+          },
+          {
+            "name": "normal-bounded-complete-report",
+            "passed": true
+          },
+          {
+            "name": "existing-final-report-not-replaced",
+            "passed": true
+          },
+          {
+            "name": "initialization-failure-keeps-native-sample-and-redacts",
+            "passed": true
+          },
+          {
+            "name": "initialization-failure-visible-in-final-artifact",
+            "passed": true
+          },
+          {
+            "name": "collection-exception-does-not-stop-business",
+            "passed": true
+          },
+          {
+            "name": "failed-wait-query-closes-only-observer-connection",
+            "passed": true
+          },
+          {
+            "name": "unreadable-optional-metadata-stays-unknown",
+            "passed": true
+          },
+          {
+            "name": "native-query-failure-not-hidden-by-wait-layer",
+            "passed": true
+          },
+          {
+            "name": "capacity-stops-probe-without-business-stop",
+            "passed": true
+          },
+          {
+            "name": "dependency-hash-mismatch-rejected",
+            "passed": true
+          },
+          {
+            "name": "dynamic-module-alive-during-and-after-sampler-construction",
+            "passed": true
+          },
+          {
+            "name": "actual-missing-marker-fails-open-before-PG-proc-access",
+            "passed": true
+          }
+        ],
+        "cases": {
+          "normal": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "report-write-failed",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.000545694,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 1,
+                "pg_wait_errors": 0,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "bd893c4c1f85660e0b4c5cd87b67a96a70701f575bdd0726c7a3719bc868e4ef",
+                "report_bytes": 1971,
+                "final_report_thread_cpu_seconds": 0.00015428000000000663,
+                "report_write_error": {
+                  "class": "other",
+                  "code": "unclassified"
+                }
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.3069212,
+                  "started_monotonic": 1794483143.3069205,
+                  "pg_wait": {
+                    "available": true,
+                    "targets": [],
+                    "signals_or_control_writes": 0
+                  },
+                  "available": true,
+                  "rows": [
+                    {
+                      "pid": 123,
+                      "backend_start_epoch": 1794390000.123456,
+                      "identity_available": true,
+                      "activity_fields_available": true,
+                      "state": "active",
+                      "wait_event_type": "Lock",
+                      "wait_event": "transactionid",
+                      "query_start_epoch": 1794390001.0,
+                      "transaction_start_epoch": null,
+                      "blocking_pids": [
+                        124
+                      ],
+                      "blocking_pids_measured": true,
+                      "query_class": "fixture-update",
+                      "backend_start_epoch_text": "1794390000.123456"
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794483143.3073604,
+                  "elapsed_seconds": 0.0004401206970214844
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "report-write-failed",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.000545694,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 1,
+              "pg_wait_errors": 0,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "bd893c4c1f85660e0b4c5cd87b67a96a70701f575bdd0726c7a3719bc868e4ef",
+              "report_bytes": 1971,
+              "final_report_thread_cpu_seconds": 0.00015428000000000663,
+              "report_write_error": {
+                "class": "other",
+                "code": "unclassified"
+              }
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "initialization-failure": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "collected",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.000203636,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 0,
+                "pg_wait_errors": 1,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "cb31185323b2c0d75ccdad9c8614284450ed9a1891d4988879273b6bdc10c1ad",
+                "report_bytes": 2124,
+                "final_report_thread_cpu_seconds": 0.0003284939999999986
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.370282,
+                  "started_monotonic": 1794483143.3702812,
+                  "pg_wait": {
+                    "available": false,
+                    "reason": "PG_WAIT_INITIALIZATION_UNAVAILABLE",
+                    "error": {
+                      "class": "RuntimeError",
+                      "source_frames": [
+                        {
+                          "source": "vendor-native-diagnostics-v3.py",
+                          "line": 85
+                        }
+                      ]
+                    },
+                    "targets": [],
+                    "signals_or_control_writes": 0
+                  },
+                  "available": true,
+                  "rows": [
+                    {
+                      "pid": 123,
+                      "backend_start_epoch": 1794390000.123456,
+                      "identity_available": true,
+                      "activity_fields_available": true,
+                      "state": "active",
+                      "wait_event_type": "Lock",
+                      "wait_event": "transactionid",
+                      "query_start_epoch": 1794390001.0,
+                      "transaction_start_epoch": null,
+                      "blocking_pids": [
+                        124
+                      ],
+                      "blocking_pids_measured": true,
+                      "query_class": "fixture-update",
+                      "backend_start_epoch_text": "1794390000.123456"
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794483143.3703694,
+                  "elapsed_seconds": 8.821487426757812e-05
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "collected",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.000203636,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 0,
+              "pg_wait_errors": 1,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "cb31185323b2c0d75ccdad9c8614284450ed9a1891d4988879273b6bdc10c1ad",
+              "report_bytes": 2124,
+              "final_report_thread_cpu_seconds": 0.0003284939999999986
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "collection-exception": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "collected",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.00019152200000000001,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 0,
+                "pg_wait_errors": 1,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "798ae6938527d65049ca4e633284bf152c0d051f65fd10c923637368db62c81b",
+                "report_bytes": 2131,
+                "final_report_thread_cpu_seconds": 0.0003058810000000009
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.5284016,
+                  "started_monotonic": 1794483143.528401,
+                  "pg_wait": {
+                    "available": false,
+                    "reason": "PG_WAIT_COLLECTION_UNAVAILABLE",
+                    "error": {
+                      "class": "RuntimeError",
+                      "source_frames": [
+                        {
+                          "source": "vendor-native-diagnostics-v3.py",
+                          "line": 92
+                        }
+                      ]
+                    },
+                    "targets": [],
+                    "signals_or_control_writes": 0
+                  },
+                  "available": true,
+                  "rows": [
+                    {
+                      "pid": 123,
+                      "backend_start_epoch": 1794390000.123456,
+                      "identity_available": true,
+                      "activity_fields_available": true,
+                      "state": "active",
+                      "wait_event_type": "Lock",
+                      "wait_event": "transactionid",
+                      "query_start_epoch": 1794390001.0,
+                      "transaction_start_epoch": null,
+                      "blocking_pids": [
+                        124
+                      ],
+                      "blocking_pids_measured": true,
+                      "query_class": "fixture-update",
+                      "backend_start_epoch_text": "1794390000.123456"
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794483143.5284944,
+                  "elapsed_seconds": 9.369850158691406e-05
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "collected",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.00019152200000000001,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 0,
+              "pg_wait_errors": 1,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "798ae6938527d65049ca4e633284bf152c0d051f65fd10c923637368db62c81b",
+              "report_bytes": 2131,
+              "final_report_thread_cpu_seconds": 0.0003058810000000009
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "collection-unavailable": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "collected",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.000156167,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 0,
+                "pg_wait_errors": 1,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "b3626d56a7fa83479b689fb7ae58d8daa4bb3ac339d7a03bcd76a64362f20c43",
+                "report_bytes": 1975,
+                "final_report_thread_cpu_seconds": 0.0003076750000000003
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.6535237,
+                  "started_monotonic": 1794483143.6535227,
+                  "pg_wait": {
+                    "available": false,
+                    "reason": "bounded-query-failed",
+                    "targets": []
+                  },
+                  "available": true,
+                  "rows": [
+                    {
+                      "pid": 123,
+                      "backend_start_epoch": 1794390000.123456,
+                      "identity_available": true,
+                      "activity_fields_available": true,
+                      "state": "active",
+                      "wait_event_type": "Lock",
+                      "wait_event": "transactionid",
+                      "query_start_epoch": 1794390001.0,
+                      "transaction_start_epoch": null,
+                      "blocking_pids": [
+                        124
+                      ],
+                      "blocking_pids_measured": true,
+                      "query_class": "fixture-update",
+                      "backend_start_epoch_text": "1794390000.123456"
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794483143.6535873,
+                  "elapsed_seconds": 6.508827209472656e-05
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "collected",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.000156167,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 0,
+              "pg_wait_errors": 1,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "b3626d56a7fa83479b689fb7ae58d8daa4bb3ac339d7a03bcd76a64362f20c43",
+              "report_bytes": 1975,
+              "final_report_thread_cpu_seconds": 0.0003076750000000003
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "unknown-optional-metadata": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "collected",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.00018065200000000003,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 1,
+                "pg_wait_errors": 0,
+                "pg_wait_unknown_targets": 1,
+                "diagnostic_complete": true,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "ee6fd7de615952e6caac2fa9008b63d23e61f247f78cba35a4d08d88758d41c6",
+                "report_bytes": 2004,
+                "final_report_thread_cpu_seconds": 0.00036660300000000007
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.703562,
+                  "started_monotonic": 1794483143.703561,
+                  "pg_wait": {
+                    "available": true,
+                    "targets": [
+                      {
+                        "kernel_wait": {
+                          "available": false,
+                          "reason": "OSError"
+                        }
+                      }
+                    ]
+                  },
+                  "available": true,
+                  "rows": [
+                    {
+                      "pid": 123,
+                      "backend_start_epoch": 1794390000.123456,
+                      "identity_available": true,
+                      "activity_fields_available": true,
+                      "state": "active",
+                      "wait_event_type": "Lock",
+                      "wait_event": "transactionid",
+                      "query_start_epoch": 1794390001.0,
+                      "transaction_start_epoch": null,
+                      "blocking_pids": [
+                        124
+                      ],
+                      "blocking_pids_measured": true,
+                      "query_class": "fixture-update",
+                      "backend_start_epoch_text": "1794390000.123456"
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794483143.7036254,
+                  "elapsed_seconds": 6.461143493652344e-05
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "collected",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.00018065200000000003,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 1,
+              "pg_wait_errors": 0,
+              "pg_wait_unknown_targets": 1,
+              "diagnostic_complete": true,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "ee6fd7de615952e6caac2fa9008b63d23e61f247f78cba35a4d08d88758d41c6",
+              "report_bytes": 2004,
+              "final_report_thread_cpu_seconds": 0.00036660300000000007
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "native-query-failure": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "collected",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 1,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.000125478,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 0,
+                "pg_wait_errors": 1,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "db9cd39d7b32bf35a85674a45c70aaf186e35be99838dbcd0a5de9f52732f333",
+                "report_bytes": 1644,
+                "final_report_thread_cpu_seconds": 0.0002969929999999954
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.7872622,
+                  "started_monotonic": 1794483143.7872612,
+                  "pg_wait": {
+                    "available": false,
+                    "reason": "NATIVE_ACTIVITY_UNAVAILABLE",
+                    "targets": []
+                  },
+                  "available": false,
+                  "error": {
+                    "class": "RuntimeError",
+                    "code": "unclassified-runtime"
+                  },
+                  "ended_epoch": 1794483143.7872856,
+                  "elapsed_seconds": 2.4557113647460938e-05
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "collected",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 1,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.000125478,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 0,
+              "pg_wait_errors": 1,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "db9cd39d7b32bf35a85674a45c70aaf186e35be99838dbcd0a5de9f52732f333",
+              "report_bytes": 1644,
+              "final_report_thread_cpu_seconds": 0.0002969929999999954
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "report-budget": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "capacity-exceeded",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 0,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 1,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.000133025,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 0,
+                "pg_wait_errors": 0,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "fdc5f95e7c8de74c4d7fafeb0f666a8c15adf2ca7ff15cc792566ada79e4e23c",
+                "report_bytes": 1340,
+                "final_report_thread_cpu_seconds": 0.0002704970000000015
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "capacity-exceeded",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 0,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 1,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.000133025,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 0,
+              "pg_wait_errors": 0,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "fdc5f95e7c8de74c4d7fafeb0f666a8c15adf2ca7ff15cc792566ada79e4e23c",
+              "report_bytes": 1340,
+              "final_report_thread_cpu_seconds": 0.0002704970000000015
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          },
+          "actual-missing-PG-marker": {
+            "data": {
+              "schema": "crg-native-request-pg-diagnostics-v3",
+              "run_id": "202611113220",
+              "worker_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "summary": {
+                "phase": "collected",
+                "request_count": 0,
+                "request_errors": 0,
+                "dropped_requests": 0,
+                "pg_samples": 1,
+                "pg_errors": 0,
+                "pg_truncated_samples": 0,
+                "dropped_pg_samples": 0,
+                "recorder_internal_errors": 0,
+                "recorder_cpu_seconds": 0.0,
+                "recorder_cpu_available": true,
+                "probe_thread_cpu_seconds": 0.01160399,
+                "probe_thread_stopped": true,
+                "business_signals_cancellations_or_control_writes": 0,
+                "pg_wait_samples": 0,
+                "pg_wait_errors": 1,
+                "pg_wait_unknown_targets": 0,
+                "diagnostic_complete": false,
+                "report_filename": "native-diagnostics.json",
+                "report_sha256": "3dc5780613805f7980632250a3fabf7de8999d3d1aa3aeb9c176042c366a625a",
+                "report_bytes": 2257,
+                "final_report_thread_cpu_seconds": 0.0002991379999999974
+              },
+              "maximum_report_bytes": 8388608,
+              "requests": [],
+              "pg_samples": [
+                {
+                  "started_epoch": 1794483143.9394126,
+                  "started_monotonic": 1794483143.9394116,
+                  "pg_wait": {
+                    "available": false,
+                    "reason": "PG_WAIT_INITIALIZATION_UNAVAILABLE",
+                    "error": {
+                      "class": "Rejected",
+                      "source_frames": [
+                        {
+                          "source": "vendor-native-diagnostics-v3.py",
+                          "line": 85
+                        },
+                        {
+                          "source": "vendor-native-diagnostics-v3.py",
+                          "line": 45
+                        },
+                        {
+                          "source": "vendor-pg-wait.py",
+                          "line": 145
+                        },
+                        {
+                          "source": "vendor-pg-wait.py",
+                          "line": 37
+                        }
+                      ]
+                    },
+                    "targets": [],
+                    "signals_or_control_writes": 0
+                  },
+                  "available": true,
+                  "rows": [
+                    {
+                      "pid": 123,
+                      "backend_start_epoch": 1794390000.123456,
+                      "identity_available": true,
+                      "activity_fields_available": true,
+                      "state": "active",
+                      "wait_event_type": "Lock",
+                      "wait_event": "transactionid",
+                      "query_start_epoch": 1794390001.0,
+                      "transaction_start_epoch": null,
+                      "blocking_pids": [
+                        124
+                      ],
+                      "blocking_pids_measured": true,
+                      "query_class": "fixture-update",
+                      "backend_start_epoch_text": "1794390000.123456"
+                    }
+                  ],
+                  "truncated": false,
+                  "ended_epoch": 1794483143.9509566,
+                  "elapsed_seconds": 0.011545419692993164
+                }
+              ],
+              "limits": [
+                "No arbitrary SQL, error messages, connection parameters or response bodies.",
+                "PG state sampled separately; no sample does not prove no wait.",
+                "Blocking PID zero can denote a prepared transaction; it is not a process target.",
+                "No original request is retried, canceled or extended by diagnostics.",
+                "PG wait snapshots have separate monotonic intervals; no atomic join or IO causality is claimed."
+              ],
+              "frozen_base_sha256": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+              "frozen_pg_wait_sha256": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+              "unique_application_name": "crg-disposable-soak-202611113220"
+            },
+            "summary": {
+              "phase": "collected",
+              "request_count": 0,
+              "request_errors": 0,
+              "dropped_requests": 0,
+              "pg_samples": 1,
+              "pg_errors": 0,
+              "pg_truncated_samples": 0,
+              "dropped_pg_samples": 0,
+              "recorder_internal_errors": 0,
+              "recorder_cpu_seconds": 0.0,
+              "recorder_cpu_available": true,
+              "probe_thread_cpu_seconds": 0.01160399,
+              "probe_thread_stopped": true,
+              "business_signals_cancellations_or_control_writes": 0,
+              "pg_wait_samples": 0,
+              "pg_wait_errors": 1,
+              "pg_wait_unknown_targets": 0,
+              "diagnostic_complete": false,
+              "report_filename": "native-diagnostics.json",
+              "report_sha256": "3dc5780613805f7980632250a3fabf7de8999d3d1aa3aeb9c176042c366a625a",
+              "report_bytes": 2257,
+              "final_report_thread_cpu_seconds": 0.0002991379999999974
+            },
+            "workload_stop_was_unset": true,
+            "all_diagnostic_connections_closed": true
+          }
+        },
+        "helper_sha256": "29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd",
+        "python": "3.9.21",
+        "callbacks_are_test_doubles": true,
+        "real_PG_or_business_used": false
+      }
+    },
+    "namespace_uid": "c93ed3b1-b749-4b21-a482-ddbe35770ee3",
+    "reason_class": "AssertionError",
+    "reason": "NATIVE_RUNTIME_COMMAND_OR_REPORT",
+    "namespace_absent": true,
+    "all_owned_cgroups_absent": true,
+    "ended_node_utc": "2026-11-12T11:33:47.297757+00:00"
+  },
+  "host_and_DBS_callback_checks_passed": 30,
+  "DBS_runtime_stdout": {
+    "phase": "failed",
+    "reason": "AssertionError:normal-original-native-gate-passes",
+    "checks": 10
+  },
+  "DBS_runtime_native_metrics_missing": true,
+  "root_cause_unproven": true,
+  "HISDBS_not_run": true,
+  "independent_cleanup": {
+    "dbs": {
+      "leaf_absent": true,
+      "pod_parent_absent": true,
+      "original_PID1_absent": true
+    }
+  },
+  "coordinators_gone": true,
+  "exact_evidence": {
+    "path": "test-evidence/native-diagnostics-v3-v1.json.gz",
+    "sha256": "44a6e2bb598d8c0903a15bdd97098db0ffef912fb87a277b67426e74b3f58425",
+    "uncompressed_sha256": "5e70dd8ee528757e8c43a6a28c6141bf93b57392d252fe6a049be98007e31c05"
+  },
+  "qualification_accepted": false,
+  "business_accepted": false,
+  "stable_release_accepted": false
+}
