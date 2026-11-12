@@ -1,0 +1,585 @@
+{
+  "schema": "crg-memory-high-pressure-attempt3-result-v1",
+  "phase": "failed-before-native-engine-and-pressure",
+  "plan": "test-plan-memory-high-pressure-v3.json",
+  "plan_sha256": "f88c03697d12fc188997e3766122bc74e019d613d37cc00dc2426c1a503bef34",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "checks": [
+    {
+      "name": "v10-dbs-bw64-original-start-and-three-controls-with-v2-daily-logs",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-start-and-three-controls-with-v2-daily-logs",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-one-current-Agent-fresh-cache-readonly-CCG",
+      "passed": true
+    }
+  ],
+  "report": {
+    "resource_mode": "manual",
+    "declared_test_budget": {
+      "cpu_cores": 7.2,
+      "memory_high_bytes": 20001980416,
+      "bandwidth_cases_MiB_per_second": [
+        64
+      ],
+      "read_write_iops": 4096
+    },
+    "phase": "failed",
+    "scope": "memory.high full32: same original CPU/IO/SLA budgets; two high apply/release checks replace obsolete hard-max defer/retry; same container paths and read-only CCG mount as read-only deployment inventory; fresh private test-node backing directories and loopback DCS, no production data; original business/image/database parameters",
+    "roles": {
+      "v10-dbs-bw64": {
+        "phase": "failed",
+        "resource_mode": "manual",
+        "candidate_branch": "v10",
+        "memory_reserve_before_bytes": 34862968832,
+        "declared_read_write_bps": 67108864,
+        "original_start_script_unmodified": true,
+        "same_container_mount_paths": true,
+        "original_ccg_readonly": true,
+        "last_readiness_probe": {
+          "exit": 0,
+          "output": "127.0.0.1:5432 - accepting connections\n"
+        },
+        "last_api_probe": {
+          "exit": 0
+        },
+        "ready_and_managed_seconds": 22.50601998483762,
+        "automatic_io": null,
+        "cache_enforce_observation_seconds": 0.00023391307331621647,
+        "actual_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "expected_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "fixture_identity": {
+          "pod_uid": "985c2cac-ad31-4876-a797-c2194338bbf3",
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod985c2cac_ad31_4876_a797_c2194338bbf3.slice/cri-containerd-85cc6aab1b4fbeb6eda97630fe1679650d84e6de5d08ab6f0525cac3cc77de3b.scope",
+          "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod985c2cac_ad31_4876_a797_c2194338bbf3.slice",
+          "processes": [
+            {
+              "pid": 4073113,
+              "start_ticks": 142792630,
+              "program": "bash",
+              "is_main": true
+            },
+            {
+              "pid": 4073923,
+              "start_ticks": 142792934,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4073936,
+              "start_ticks": 142792934,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4073941,
+              "start_ticks": 142792934,
+              "program": "crg",
+              "is_main": false
+            },
+            {
+              "pid": 4075178,
+              "start_ticks": 142793354,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4075180,
+              "start_ticks": 142793354,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4075197,
+              "start_ticks": 142793354,
+              "program": "sleep",
+              "is_main": false
+            },
+            {
+              "pid": 4075198,
+              "start_ticks": 142793354,
+              "program": "su",
+              "is_main": false
+            },
+            {
+              "pid": 4075207,
+              "start_ticks": 142793355,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4075219,
+              "start_ticks": 142793356,
+              "program": "dbs",
+              "is_main": false
+            },
+            {
+              "pid": 4075220,
+              "start_ticks": 142793362,
+              "program": "sleep",
+              "is_main": false
+            },
+            {
+              "pid": 4075284,
+              "start_ticks": 142793408,
+              "program": "dbs",
+              "is_main": false
+            },
+            {
+              "pid": 4077829,
+              "start_ticks": 142794435,
+              "program": "containercacheguard",
+              "is_main": false
+            },
+            {
+              "pid": 4079126,
+              "start_ticks": 142794763,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079214,
+              "start_ticks": 142794812,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079338,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079339,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079340,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079341,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079342,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079343,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079344,
+              "start_ticks": 142794845,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079381,
+              "start_ticks": 142794853,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4079534,
+              "start_ticks": 142795035,
+              "program": "sleep",
+              "is_main": false
+            }
+          ]
+        },
+        "external_memory_max_bytes": 21474836480,
+        "original_config_sha256": "3b50949bc4c4553bd4f24a51f926eaa9712cf92380586bbf38cc89a22c28b2d1",
+        "identity": "e5f7328e34a80750c5be0372ba7271fd7c1def78c65ecec5a8b6d36f52efcf31",
+        "primary_start": "2026-11-12 20:53:25.24243+08",
+        "reload_intervals": [],
+        "samples": [],
+        "runtime_original_controls": {
+          "cpu.max": "800000 100000",
+          "memory.high": "max",
+          "io.max": "",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.max": "21474836480",
+          "memory.swap.max": "0"
+        },
+        "thread_observer": {
+          "phase": "not-started",
+          "target_signals_or_control_writes": 0
+        },
+        "device_observer": {
+          "phase": "not-started",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0
+        },
+        "native_request_pg": {
+          "phase": "failed",
+          "reason": "FileNotFoundError"
+        },
+        "diagnostic_cleanup_errors": [
+          "FileNotFoundError"
+        ],
+        "error": "name 'here' is not defined",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-business-pressure.py\", line 199, in <module>\n    execution.business_native(role,folder,group,item)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 162, in business_native\n    return session.preserve_business_error(lambda:session.preserve_business_error(work,finish,diagnostic_error),close,diagnostic_error)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-thread-session.py\", line 76, in preserve_business_error\n    result = work()\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 162, in <lambda>\n    return session.preserve_business_error(lambda:session.preserve_business_error(work,finish,diagnostic_error),close,diagnostic_error)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-thread-session.py\", line 76, in preserve_business_error\n    result = work()\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 157, in work\n    try:return self._business_native_original(role,folder,group,row)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 235, in _business_native_original\n    self.ex(role,'/bin/bash','-c','set -Ce; umask 077; cat > '+helper_path+'; chmod 0444 '+helper_path,data=(here/name).read_text())\nNameError: name 'here' is not defined\n",
+        "own_pod_removed": true,
+        "own_leaf_absent": true,
+        "own_parent_absent": true,
+        "original_config_and_profile_absence_restored": true
+      },
+      "v10-hisdbs-bw64": {
+        "phase": "failed",
+        "resource_mode": "manual",
+        "candidate_branch": "v10",
+        "memory_reserve_before_bytes": 34677608448,
+        "declared_read_write_bps": 67108864,
+        "original_start_script_unmodified": true,
+        "same_container_mount_paths": true,
+        "original_ccg_readonly": true,
+        "last_readiness_probe": {
+          "exit": 0,
+          "output": "127.0.0.1:5432 - accepting connections\n"
+        },
+        "last_api_probe": {
+          "exit": 0
+        },
+        "ready_and_managed_seconds": 22.5907108199317,
+        "automatic_io": null,
+        "cache_enforce_observation_seconds": 11.011368311010301,
+        "actual_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "expected_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "fixture_identity": {
+          "pod_uid": "3f8cebda-fced-470d-b089-95c569d88f0c",
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod3f8cebda_fced_470d_b089_95c569d88f0c.slice/cri-containerd-e553086296dfcc764b79a6553a9d80b30dacf089d0bfd625571adee37e7705ba.scope",
+          "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod3f8cebda_fced_470d_b089_95c569d88f0c.slice",
+          "processes": [
+            {
+              "pid": 4083371,
+              "start_ticks": 142796292,
+              "program": "bash",
+              "is_main": true
+            },
+            {
+              "pid": 4083884,
+              "start_ticks": 142796496,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4083894,
+              "start_ticks": 142796496,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4083895,
+              "start_ticks": 142796496,
+              "program": "crg",
+              "is_main": false
+            },
+            {
+              "pid": 4085171,
+              "start_ticks": 142796912,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4085174,
+              "start_ticks": 142796912,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4085186,
+              "start_ticks": 142796912,
+              "program": "sleep",
+              "is_main": false
+            },
+            {
+              "pid": 4085198,
+              "start_ticks": 142796912,
+              "program": "su",
+              "is_main": false
+            },
+            {
+              "pid": 4085200,
+              "start_ticks": 142796913,
+              "program": "bash",
+              "is_main": false
+            },
+            {
+              "pid": 4085212,
+              "start_ticks": 142796914,
+              "program": "hisdbs",
+              "is_main": false
+            },
+            {
+              "pid": 4085214,
+              "start_ticks": 142796920,
+              "program": "sleep",
+              "is_main": false
+            },
+            {
+              "pid": 4085253,
+              "start_ticks": 142796965,
+              "program": "hisdbs",
+              "is_main": false
+            },
+            {
+              "pid": 4089109,
+              "start_ticks": 142798341,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089198,
+              "start_ticks": 142798382,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089200,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089201,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089202,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089203,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089204,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089205,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089206,
+              "start_ticks": 142798398,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4089207,
+              "start_ticks": 142798402,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4090596,
+              "start_ticks": 142798907,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4091916,
+              "start_ticks": 142799380,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4091919,
+              "start_ticks": 142799381,
+              "program": "postgres",
+              "is_main": false
+            },
+            {
+              "pid": 4092481,
+              "start_ticks": 142799798,
+              "program": "containercacheguard",
+              "is_main": false
+            },
+            {
+              "pid": 4092482,
+              "start_ticks": 142799798,
+              "program": "sleep",
+              "is_main": false
+            }
+          ]
+        },
+        "external_memory_max_bytes": 21474836480,
+        "original_config_sha256": "3b50949bc4c4553bd4f24a51f926eaa9712cf92380586bbf38cc89a22c28b2d1",
+        "identity": "4a66f3920457f136b8f42027c717b265179b1a5cdf9e18655d971c72c6714620",
+        "primary_start": "2026-11-12 20:54:00.823713+08",
+        "reload_intervals": [],
+        "samples": [],
+        "runtime_original_controls": {
+          "cpu.max": "800000 100000",
+          "memory.high": "max",
+          "io.max": "",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.max": "21474836480",
+          "memory.swap.max": "0"
+        },
+        "thread_observer": {
+          "phase": "not-started",
+          "target_signals_or_control_writes": 0
+        },
+        "device_observer": {
+          "phase": "not-started",
+          "target_signals_or_control_writes": 0,
+          "owned_observer_TERM_count": 0,
+          "owned_observer_KILL_count": 0
+        },
+        "native_request_pg": {
+          "phase": "failed",
+          "reason": "FileNotFoundError"
+        },
+        "diagnostic_cleanup_errors": [
+          "FileNotFoundError"
+        ],
+        "error": "name 'here' is not defined",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-business-pressure.py\", line 199, in <module>\n    execution.business_native(role,folder,group,item)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 162, in business_native\n    return session.preserve_business_error(lambda:session.preserve_business_error(work,finish,diagnostic_error),close,diagnostic_error)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-thread-session.py\", line 76, in preserve_business_error\n    result = work()\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 162, in <lambda>\n    return session.preserve_business_error(lambda:session.preserve_business_error(work,finish,diagnostic_error),close,diagnostic_error)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-thread-session.py\", line 76, in preserve_business_error\n    result = work()\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 157, in work\n    try:return self._business_native_original(role,folder,group,row)\n  File \"/var/tmp/crg-high618-tools-20261112/vendor-memory-high-pressure-core.py\", line 235, in _business_native_original\n    self.ex(role,'/bin/bash','-c','set -Ce; umask 077; cat > '+helper_path+'; chmod 0444 '+helper_path,data=(here/name).read_text())\nNameError: name 'here' is not defined\n",
+        "own_pod_removed": true,
+        "own_leaf_absent": true,
+        "own_parent_absent": true,
+        "original_config_and_profile_absence_restored": true
+      }
+    },
+    "tests": [
+      {
+        "name": "v10-dbs-bw64-original-start-and-three-controls-with-v2-daily-logs",
+        "passed": true
+      },
+      {
+        "name": "v10-dbs-bw64-one-current-Agent-fresh-cache-readonly-CCG",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-original-start-and-three-controls-with-v2-daily-logs",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-one-current-Agent-fresh-cache-readonly-CCG",
+        "passed": true
+      }
+    ],
+    "plan_sha256": "f88c03697d12fc188997e3766122bc74e019d613d37cc00dc2426c1a503bef34",
+    "first_attempt_failure_before_native_preserved": true,
+    "second_attempt_failed_before_worker_preserved": true,
+    "native_tool_qualification_sha256": "5ff9a180a136d75c17a3a55c8ef51eddcb69f0c128367945ebf77249d643ca73",
+    "original_failure_still_unproven": true,
+    "sources": {
+      "v10": {
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+      }
+    },
+    "build_info": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+      "os": "linux",
+      "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "version": "v1.0.0-preview.4",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    },
+    "job_sha256": "f25f25303951f7851d598febdc49c0395a9b15e0a748bf7e5218bcaf0dcb6290",
+    "memory_policy": "high-reclaim-throttle",
+    "overhead_report_sha256": "d8ecf8413376e8813a3558f60bf3ea8d310c0148d13c6c7ba57ea530b5c87dbf",
+    "namespace_absent": true
+  },
+  "exit": {
+    "exit": 1,
+    "job_sha256": "f25f25303951f7851d598febdc49c0395a9b15e0a748bf7e5218bcaf0dcb6290",
+    "plan_sha256": "f88c03697d12fc188997e3766122bc74e019d613d37cc00dc2426c1a503bef34",
+    "started_epoch": 1794487974.4973428,
+    "ended_epoch": 1794488068.2207837
+  },
+  "independent_cleanup": {
+    "v10-dbs-bw64": {
+      "leaf_absent": true,
+      "parent_absent": true,
+      "original_processes_gone": true
+    },
+    "v10-hisdbs-bw64": {
+      "leaf_absent": true,
+      "parent_absent": true,
+      "original_processes_gone": true
+    }
+  },
+  "reason": "Extracted original business method used module-global here, which the new adapter omitted; supplying the source directory resolves this NameError. No original helper or product source changed.",
+  "native_or_engine_or_pressure_started": false,
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "exact_evidence": {
+    "path": "test-evidence/memory-high-pressure-v3.json.gz",
+    "sha256": "c4e60dad9e298cf5365530f5555fc14fd61ee2321bc302dba80f22323f61cad9",
+    "uncompressed_sha256": "a7ced84a9374cb6ea60a48d25b9c0559a00633d1179748ea4d0ecd17a4258abf"
+  }
+}

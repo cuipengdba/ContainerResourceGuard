@@ -29,4 +29,9 @@
 
 ## 第三轮
 
-[第三轮冻结计划](test-plan-memory-high-pressure-v3.json)、[全部输入源](test-evidence/memory-high-pressure-v3-frozen.json.gz)及[精确源码副本](../tests/memory-high-pressure-frozen-v3/README.md)只修正启动器摘要绑定，精确替换路径/namespace/run ID，不再全局替换数字；启动前逐个核对全部帮助脚本摘要、CPU/IO数值、原native标准和high压力契约相等。首次本地绑定检查还发现退出记录内残留旧摘要，已在首次第三轮启动前一并修正并再次验证。前两轮失败不覆盖。使用全新隔离夹具，运行中，尚非32项完整压力/两角色600秒或稳定1.0通过。
+[第三轮冻结计划](test-plan-memory-high-pressure-v3.json)、[全部输入源](test-evidence/memory-high-pressure-v3-frozen.json.gz)及[精确源码副本](../tests/memory-high-pressure-frozen-v3/README.md)只修正启动器摘要绑定，精确替换路径/namespace/run ID，不再全局替换数字；启动前逐个核对全部帮助脚本摘要、CPU/IO数值、原native标准和high压力契约相等。首次本地绑定检查还发现退出记录内残留旧摘要，已在首次第三轮启动前一并修正并再次验证。前两轮失败不覆盖。第三轮仍在准备阶段失败：[四项启动检查与原NameError](test-results-memory-high-pressure-v3.json)保留；抽取的方法引用here但新适配器未定义它，native/引擎/压力未开始，两角色原进程及namespace/父叶cgroup独立清理且配置/profile恢复。
+
+
+## 第四轮
+
+[冻结计划](test-plan-memory-high-pressure-v4.json)、[完整输入](test-evidence/memory-high-pressure-v4-frozen.json.gz)及[精确测试源](../tests/memory-high-pressure-frozen-v4/README.md)补齐源目录变量，静态符号表分析确认核心/驱动无未定义全局，精确核对全部帮助脚本、原CPU/IO/SLA和压力契约不变。第四轮已进入DBS原启动链和600秒native活动，最早快照仅两项启动检查；这不是完整压力、两角色业务或稳定1.0通过，实际终态另行归档。前三轮失败保持。
