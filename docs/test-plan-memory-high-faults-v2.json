@@ -1,0 +1,91 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+  "job_sha256": "31e6e2edb2e66fef6388591a4b627f00fd2320a05be028722936e63c6c219a50",
+  "runner_sha256": "8069e9e026ff42fc5e5f16043b5e003d7d07f16bbfd4ff52f4a1ac69ae365604",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualified_evidence_sha256": {
+    "identity-qualification.json": "5bcb84aaf61dd3f7d9d1978483fc30be13aab726ca13f79c78802cc005d9ef70",
+    "integration-qualification.json": "0671b09e69a6f70741aa28636cc54e9144f5a16fc7c7ee37d07088c5481dec1c",
+    "overhead-plan.json": "bf6dd9e74bbc63ceddda7bf81afc1a7980f896f0e13142d28ebaf96f064ae8e5"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prior_fault_driver_sha256": "f21f4b4bdb5e3f01316ad954b030d408310c6ac40b503fe9c620fca53461f289",
+  "prior_passed_fault_report": "test-results-versioned-candidate-faults.json",
+  "criteria": {
+    "PG_API_readiness_seconds": 90,
+    "cache_after_API_seconds": 45,
+    "TERM_seconds": 12,
+    "original_database_parameters_retained": true,
+    "automatic_percentages": {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 30
+    }
+  },
+  "cases": [
+    "missing",
+    "invalid",
+    "crash",
+    "hang",
+    "ignoreterm",
+    "rollback",
+    "cgroup-readonly",
+    "profile-readonly",
+    "state-readonly",
+    "cancel-calibration"
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "case_count": 20,
+  "expected_checks": 108,
+  "scope": "Same original-image real container paths,PG settings and readonly original cache mount; sequential fresh empty test directories/private loopback DCS and credentials. One current Agent per container. Some cases deliberately substitute missing/crash/hang helpers and test supervisor isolation.",
+  "prerequisites": [
+    "Exact published preview4 R551 manual business12 checks and2x600s passed, job0fbcb37e/exit0 and independently absent namespace; own R542 overhead1800s/3 cases passed, jobf78e7152/exit0, actual terminal report digest equals the business reference and namespace independently absent.",
+    "Prior R14 fault report passed and namespace independently absent.",
+    "Exact native program/build-info/payload/helper qualification hashes; original private cache/supervisor pinned.",
+    "Host memory>=28GiB before each case,>=8GiB throughout;disk>=20GiB."
+  ],
+  "invariants": [
+    "No quotas/deadlines relaxed: original PG/API90s,cache45s after API,TERM12s.",
+    "Actual calibration cancellation requires observed owned temporary FD and pinned Agent binary before pidfd TERM; next retry deliberately invalid; no original controls/profile on cancellation.",
+    "Only owned fixture namespaces/Pods/processes/mounts; formal baseline and fixed d6 candidate unchanged.",
+    "For all20 fixtures external memory.max and other unrelated values remain unchanged; only profile-readonly may apply cpu.max/memory.high, with no io.max because profile output is unwritable.",
+    "Persist owned Pod/parent/leaf and original PID/start-ticks identities before business gate and after readiness, plus coordinator worker identity, for independent terminal cleanup.",
+    "Percent memory target uses memory.high; it is reclaim/throttle and may be exceeded, not a new hard cap.",
+    "Fix driver-only percentage arithmetic: memory.high expected bytes are floored to the actual host page size, exactly as the unchanged published program; same requested30%, program,108checks and90/45/12s. First attempt remains failed."
+  ],
+  "limitations": [
+    "Fault smoke proves helper isolation, not600s/24h/seven-day business performance or suitability of automatic30%.",
+    "Default20% failures remain unchanged.",
+    "Linux5.14 AMD64 existing single device only; no ARM vendor or independent physical disks.",
+    "Older40case/216checks remain original7638/d6 source, not relabelled as current candidate.",
+    "Exact preview4 source180c86ad and ELF6088721c only; old hard-cap source runtimes remain independent.",
+    "Overhead-plan input is a frozen contract, never a passing result; actual R542/R551 terminal receipts are mandatory before fault Pods.",
+    "This is short auxiliary-fault isolation; no genuine high-pressure/default-percent performance or aged-state/long-term acceptance is claimed."
+  ],
+  "version": "v1.0.0-preview.4",
+  "P10_complete": false,
+  "release_accepted": false,
+  "schema": "crg-memory-high-fault-plan-v2",
+  "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+  "memory_policy": "high-reclaim-throttle",
+  "tools": "/var/tmp/crg-high560-tools-20261112",
+  "output": "/var/tmp/crg-high560-faults-20261112",
+  "namespace": "crg-vendor-lab-high560-20261112",
+  "attempt": 2,
+  "prior_plan": "test-plan-memory-high-faults.json",
+  "previous_failed_attempt": "test-results-memory-high-faults-v1.json"
+}
