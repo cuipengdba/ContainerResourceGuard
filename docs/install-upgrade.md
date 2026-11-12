@@ -1,5 +1,7 @@
 # 安装升级开发：兼容预检与私有状态备份
 
+当前公开preview.3→preview.4的受测步骤见[专用升级文档](upgrade-preview3-preview4.zh.md)，[实际26项](testing-public-preview-memory-high-maintenance.md)已通过；下面是原2026-11-10开发归档，不改写当时未发布状态。
+
 2026-11-10，next/install-upgrade 开发分支。尚未合入 main、尚未发布 v0.7.0。此页归档 P08.2/P08.3 的第一部分，不把预检写成完整安装器、在线升级或状态导入已实现。
 
 ## 已有入口

@@ -1,5 +1,7 @@
 # 安装、升级与回退
 
+preview.3到preview.4的已发布包内程序迁移实测与受控操作见[专用升级步骤](upgrade-preview3-preview4.zh.md)及[26项终态](testing-public-preview-memory-high-maintenance.md)。下述开发记录保留原时点；不把过期快照自动回退与显式反向安装混用。
+
 已发布[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[八项公开下载校验](test-results-preview4-publication.json)。每容器分别更新，保留原配置/profile/state_dir/journal，核对旧硬限额恢复；源码构建使用发布标签。完整业务和长期门槛继续。
 
 2026-11-12即时交付：[v1.0.0-preview.3](releases/v1.0.0-preview.3.md)，[八项公开下载校验](test-results-preview3-publication.json)。沿用受测程序并更新文档，稳定1.0及原验收条件继续；下方历史记录保留原时点。
