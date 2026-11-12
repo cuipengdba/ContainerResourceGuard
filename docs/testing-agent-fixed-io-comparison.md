@@ -84,3 +84,5 @@ python3 tests/agent-fixed-io-v3-evidence-checks.py
 ```
 
 [原长期进程实际快照](test-progress-seven-day-during-final-agent-review.json)在2026-11-12T00:16:37Z仍为measuring：R57约97587/97575秒、5周期，精确发布R78约83771/83769秒、4周期，原实例/SQL/API错误0保持。尚非实际604800秒及后置通过。preview.3既有标签和八份附件不变，产品程序不因本轮诊断改变，稳定v1.0.0仍未验收。
+
+2026-11-12完成[只读proc错误元数据运行时资格](testing-proc-read-error.md)：宿主与两厂商镜像各24项，共72项，两个新自身探针read为EACCES/13；旧2410个泛化OSError仍未知。后续PG目标集成/资格任务单独归档，不改变旧采样器、原配额/SLA/长期句柄或发布附件，稳定1.0仍待。

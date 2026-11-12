@@ -281,3 +281,5 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 [固定IO四臂449终态](test-results-agent-fixed-io-comparison-v3.json)：A1/B1/B2/A2的SQL,API错误依次为0,0/0,0/2,5/1,0；B2暂停Agent时仍实际600.294秒/SQL2/API5，原业务失败保留。独立结论为preplanned-association-not-observed，不作Agent因果或产品性能修复；30个原实例、四namespace和父叶cgroup独立清理，原来源和副本恢复。只读分析器修正业务失败出口无重复摘要的读取缺陷，旧源码/错误原件保留，3个真实臂及17个合成反例共20项复核通过。对照结构资格不等于原业务SLA通过；原32项/两角色/配额/门槛、52任务和长期条件保持。
 
 2026-11-12新增[内存回收优先需求及OOM边界](memory-reclaim-policy.md)：用户希望达到目标后释放内存、避免OOM。已明确memory.max回收不足仍可能OOM，memory.high可回收/节流但允许超目标；已提出语义选择，答复前不改变默认硬限额或发布包。后续实现/迁移/故障与业务验证任务独立归档，仍只控制CPU、内存、IO。
+
+2026-11-12完成[只读proc错误元数据运行时资格](testing-proc-read-error.md)：宿主与两厂商镜像各24项，共72项，两个新自身探针read为EACCES/13；旧2410个泛化OSError仍未知。后续PG目标集成/资格任务单独归档，不改变旧采样器、原配额/SLA/长期句柄或发布附件，稳定1.0仍待。

@@ -1,0 +1,599 @@
+{
+  "schema": "crg-proc-read-error-runtime-public-v1",
+  "phase": "passed",
+  "plan": "test-plan-proc-read-error-runtime.json",
+  "plan_sha256": "72c252f68c8a2213d61191cc07b2436286284666a71fd37dc355f60499988ce7",
+  "source_sha256": {
+    "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+    "vendor-proc-read-error-checks.py": "57221391f0844904706469d6daf71f83413dd0d47f3c5678f05200751540bd3e",
+    "vendor-proc-read-error-runtime.py": "e772b09aa28642b4ccce49dd63133d10bf32474e59e25be711ce9f40200565ed"
+  },
+  "runtime_report": {
+    "schema": "crg-proc-read-error-runtime-v1",
+    "phase": "passed",
+    "plan_sha256": "72c252f68c8a2213d61191cc07b2436286284666a71fd37dc355f60499988ce7",
+    "source_sha256": {
+      "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+      "vendor-proc-read-error-checks.py": "57221391f0844904706469d6daf71f83413dd0d47f3c5678f05200751540bd3e",
+      "vendor-proc-read-error-runtime.py": "e772b09aa28642b4ccce49dd63133d10bf32474e59e25be711ce9f40200565ed"
+    },
+    "roles": {
+      "dbs": {
+        "source_pod_uid": "a143d136-8e11-4cb9-b83a-c57b139903e7",
+        "source_image_id_sha256": "312c95083a26f7a49d251dc13fa5cf557c4c1744449f88c551ecabde27800488",
+        "source_image_content_digest": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+        "pod_uid": "eb3db3ef-6206-4c85-8bce-c7f2484c965d",
+        "image_id_sha256": "312c95083a26f7a49d251dc13fa5cf557c4c1744449f88c551ecabde27800488",
+        "exact_source_image_match": true,
+        "container_id": "ecd835b9bb4cefe32d58979b7c05ee8f1bd0a6366741011598ccb9a9d35dc3b0",
+        "main": {
+          "pid": 329589,
+          "start_ticks": 139215930,
+          "state": "S"
+        },
+        "leaf": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podeb3db3ef_6206_4c85_8bce_c7f2484c965d.slice/cri-containerd-ecd835b9bb4cefe32d58979b7c05ee8f1bd0a6366741011598ccb9a9d35dc3b0.scope",
+        "actual_isolation": {
+          "securityContext": {
+            "fsGroup": 998,
+            "runAsGroup": 998,
+            "runAsNonRoot": true,
+            "runAsUser": 999
+          },
+          "automountServiceAccountToken": false,
+          "restartPolicy": "Never",
+          "volumes": [
+            {
+              "emptyDir": {
+                "sizeLimit": "16Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 292,
+                "name": "frozen-proc-error"
+              },
+              "name": "tools"
+            }
+          ],
+          "resources": {
+            "limits": {
+              "cpu": "500m",
+              "memory": "128Mi"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "32Mi"
+            }
+          },
+          "command": [
+            "/bin/sh",
+            "-c",
+            "exec sleep 170"
+          ],
+          "containerSecurityContext": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": true
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/tmp",
+              "name": "tmp"
+            },
+            {
+              "mountPath": "/crg-tools",
+              "name": "tools",
+              "readOnly": true
+            }
+          ],
+          "hostNetwork": false,
+          "hostPID": false
+        },
+        "checks": {
+          "exit": 0,
+          "result": {
+            "python": "2.7.5",
+            "self_stack_probe": {
+              "available": false,
+              "exception_messages_filenames_or_stack_contents_recorded": false,
+              "errno_name": "EACCES",
+              "errno": 13,
+              "reason": "OSError",
+              "stage": "read"
+            },
+            "own_identity": {
+              "egid": 998,
+              "euid": 999,
+              "CAP_SYS_ADMIN_effective": false
+            },
+            "signals_cgroup_writes_or_DB_commands": 0,
+            "phase": "passed",
+            "scope": "synthetic privacy/boundary cases plus own files and own process; not business or historic errno proof",
+            "helper_sha256": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+            "checks": [
+              {
+                "name": "preserve-number-EPERM",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EACCES",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-ENOENT",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-ESRCH",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EINVAL",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EOPNOTSUPP",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EIO",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EAGAIN",
+                "passed": true
+              },
+              {
+                "name": "unknown-positive-errno-explicit",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-negative",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-zero",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-too-large",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-boolean",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-text",
+                "passed": true
+              },
+              {
+                "name": "non-OS-error-remains-unknown",
+                "passed": true
+              },
+              {
+                "name": "arbitrary-class-name-not-returned",
+                "passed": true
+              },
+              {
+                "name": "messages-filenames-not-returned-and-bounded",
+                "passed": true
+              },
+              {
+                "name": "stage-not-arbitrary-output",
+                "passed": true
+              },
+              {
+                "name": "actual-missing-file-errno",
+                "passed": true
+              },
+              {
+                "name": "actual-symlink-refusal-errno",
+                "passed": true
+              },
+              {
+                "name": "actual-read-failure-stage-and-errno",
+                "passed": true
+              },
+              {
+                "name": "actual-own-stack-structured-without-content",
+                "passed": true
+              },
+              {
+                "name": "actual-identity-context-bounded",
+                "passed": true
+              },
+              {
+                "name": "marker-required-before-own-proc-read",
+                "passed": true
+              }
+            ],
+            "schema": "crg-proc-read-error-checks-v1"
+          }
+        },
+        "leaf_absent": true,
+        "original_main_gone": true
+      },
+      "hisdbs": {
+        "source_pod_uid": "5cb4d41d-a8e0-4b55-9ffd-d7701d6456ff",
+        "source_image_id_sha256": "049c808491d9a3bcf79797b6a9dd2edec0444c0cbf920f078cce7e94c8a28891",
+        "source_image_content_digest": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+        "pod_uid": "739ded43-d2e3-4c4e-ad66-96746bb0889e",
+        "image_id_sha256": "049c808491d9a3bcf79797b6a9dd2edec0444c0cbf920f078cce7e94c8a28891",
+        "exact_source_image_match": true,
+        "container_id": "65bca41cf7d64c3ff0e0af091807a0db8739ff42d87acdba6ecaa550a58e5300",
+        "main": {
+          "pid": 330639,
+          "start_ticks": 139216273,
+          "state": "S"
+        },
+        "leaf": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod739ded43_d2e3_4c4e_ad66_96746bb0889e.slice/cri-containerd-65bca41cf7d64c3ff0e0af091807a0db8739ff42d87acdba6ecaa550a58e5300.scope",
+        "actual_isolation": {
+          "securityContext": {
+            "fsGroup": 998,
+            "runAsGroup": 998,
+            "runAsNonRoot": true,
+            "runAsUser": 999
+          },
+          "automountServiceAccountToken": false,
+          "restartPolicy": "Never",
+          "volumes": [
+            {
+              "emptyDir": {
+                "sizeLimit": "16Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 292,
+                "name": "frozen-proc-error"
+              },
+              "name": "tools"
+            }
+          ],
+          "resources": {
+            "limits": {
+              "cpu": "500m",
+              "memory": "128Mi"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "32Mi"
+            }
+          },
+          "command": [
+            "/bin/sh",
+            "-c",
+            "exec sleep 170"
+          ],
+          "containerSecurityContext": {
+            "allowPrivilegeEscalation": false,
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": true
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/tmp",
+              "name": "tmp"
+            },
+            {
+              "mountPath": "/crg-tools",
+              "name": "tools",
+              "readOnly": true
+            }
+          ],
+          "hostNetwork": false,
+          "hostPID": false
+        },
+        "checks": {
+          "exit": 0,
+          "result": {
+            "python": "2.7.5",
+            "self_stack_probe": {
+              "available": false,
+              "exception_messages_filenames_or_stack_contents_recorded": false,
+              "errno_name": "EACCES",
+              "errno": 13,
+              "reason": "OSError",
+              "stage": "read"
+            },
+            "own_identity": {
+              "egid": 998,
+              "euid": 999,
+              "CAP_SYS_ADMIN_effective": false
+            },
+            "signals_cgroup_writes_or_DB_commands": 0,
+            "phase": "passed",
+            "scope": "synthetic privacy/boundary cases plus own files and own process; not business or historic errno proof",
+            "helper_sha256": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+            "checks": [
+              {
+                "name": "preserve-number-EPERM",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EACCES",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-ENOENT",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-ESRCH",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EINVAL",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EOPNOTSUPP",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EIO",
+                "passed": true
+              },
+              {
+                "name": "preserve-number-EAGAIN",
+                "passed": true
+              },
+              {
+                "name": "unknown-positive-errno-explicit",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-negative",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-zero",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-too-large",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-boolean",
+                "passed": true
+              },
+              {
+                "name": "invalid-errno-text",
+                "passed": true
+              },
+              {
+                "name": "non-OS-error-remains-unknown",
+                "passed": true
+              },
+              {
+                "name": "arbitrary-class-name-not-returned",
+                "passed": true
+              },
+              {
+                "name": "messages-filenames-not-returned-and-bounded",
+                "passed": true
+              },
+              {
+                "name": "stage-not-arbitrary-output",
+                "passed": true
+              },
+              {
+                "name": "actual-missing-file-errno",
+                "passed": true
+              },
+              {
+                "name": "actual-symlink-refusal-errno",
+                "passed": true
+              },
+              {
+                "name": "actual-read-failure-stage-and-errno",
+                "passed": true
+              },
+              {
+                "name": "actual-own-stack-structured-without-content",
+                "passed": true
+              },
+              {
+                "name": "actual-identity-context-bounded",
+                "passed": true
+              },
+              {
+                "name": "marker-required-before-own-proc-read",
+                "passed": true
+              }
+            ],
+            "schema": "crg-proc-read-error-checks-v1"
+          }
+        },
+        "leaf_absent": true,
+        "original_main_gone": true
+      }
+    },
+    "started_node_utc": "2026-11-12T02:56:49.736187+00:00",
+    "kernel_release": "5.14.0-570.22.1.el9_6.x86_64",
+    "scope": "host Python3 and two native vendor Python2 images; own-process proc reads only; no business or historic errno proof",
+    "business_DB_commands_or_business_signals_or_explicit_cgroup_writes": 0,
+    "namespace": "crg-vendor-lab-procerr502-20261112",
+    "namespace_uid": "7bb02477-4526-45d4-beec-28414dc66812",
+    "host": {
+      "exit": 0,
+      "result": {
+        "schema": "crg-proc-read-error-checks-v1",
+        "phase": "passed",
+        "helper_sha256": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+        "python": "3.9.21",
+        "checks": [
+          {
+            "name": "preserve-number-EPERM",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-EACCES",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-ENOENT",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-ESRCH",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-EINVAL",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-EOPNOTSUPP",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-EIO",
+            "passed": true
+          },
+          {
+            "name": "preserve-number-EAGAIN",
+            "passed": true
+          },
+          {
+            "name": "unknown-positive-errno-explicit",
+            "passed": true
+          },
+          {
+            "name": "invalid-errno-negative",
+            "passed": true
+          },
+          {
+            "name": "invalid-errno-zero",
+            "passed": true
+          },
+          {
+            "name": "invalid-errno-too-large",
+            "passed": true
+          },
+          {
+            "name": "invalid-errno-boolean",
+            "passed": true
+          },
+          {
+            "name": "invalid-errno-text",
+            "passed": true
+          },
+          {
+            "name": "non-OS-error-remains-unknown",
+            "passed": true
+          },
+          {
+            "name": "arbitrary-class-name-not-returned",
+            "passed": true
+          },
+          {
+            "name": "messages-filenames-not-returned-and-bounded",
+            "passed": true
+          },
+          {
+            "name": "stage-not-arbitrary-output",
+            "passed": true
+          },
+          {
+            "name": "actual-missing-file-errno",
+            "passed": true
+          },
+          {
+            "name": "actual-symlink-refusal-errno",
+            "passed": true
+          },
+          {
+            "name": "actual-read-failure-stage-and-errno",
+            "passed": true
+          },
+          {
+            "name": "actual-own-stack-structured-without-content",
+            "passed": true
+          },
+          {
+            "name": "actual-identity-context-bounded",
+            "passed": true
+          },
+          {
+            "name": "marker-required-before-own-proc-read",
+            "passed": true
+          }
+        ],
+        "signals_cgroup_writes_or_DB_commands": 0,
+        "scope": "synthetic privacy/boundary cases plus own files and own process; not business or historic errno proof",
+        "self_stack_probe": {
+          "available": true,
+          "bytes": 253,
+          "raw_stack_recorded": false
+        },
+        "own_identity": {
+          "euid": 0,
+          "egid": 0,
+          "CAP_SYS_ADMIN_effective": true
+        }
+      }
+    },
+    "namespace_absent": true,
+    "ended_node_utc": "2026-11-12T02:57:45.174976+00:00"
+  },
+  "independent_cleanup": {
+    "observed_node_utc": "2026-11-12T03:01:23.117132+00:00",
+    "roles": {
+      "dbs": {
+        "leaf_absent": true,
+        "main": {
+          "original_instance_gone": true,
+          "pid_absent": true
+        }
+      },
+      "hisdbs": {
+        "leaf_absent": true,
+        "main": {
+          "original_instance_gone": true,
+          "pid_absent": true
+        }
+      }
+    },
+    "processes": {
+      "runner": {
+        "original_instance_gone": true,
+        "pid_absent": true
+      },
+      "worker": {
+        "original_instance_gone": true,
+        "pid_absent": true
+      }
+    },
+    "namespace_absent": true
+  },
+  "checks_per_runtime": 24,
+  "runtimes": 3,
+  "accepted_checks": 72,
+  "scope": "error metadata privacy/bounds and own-process reads only; not PostgreSQL target sampling or business/SLA acceptance",
+  "historical_generic_OSError_errno_remains_unknown": true,
+  "old_frozen_sampler_or_workloads_changed": false,
+  "published_product_assets_changed": false,
+  "original_business_or_long_term_gates_closed": false,
+  "stable_release_accepted": false,
+  "exact_evidence": {
+    "path": "docs/test-evidence/proc-read-error-runtime.json.gz",
+    "bytes": 11115,
+    "sha256": "717891cd1e9ecb78a6cedb8dce0fb3599f8e40f1e4a2cbfe5583b17885f1035d",
+    "uncompressed_bytes": 51475,
+    "uncompressed_sha256": "0e5a794f6bde7f24ed0d8be5249a30f891f236965870e37474a1643272d71bd3",
+    "files": 15
+  }
+}
