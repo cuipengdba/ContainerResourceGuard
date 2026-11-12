@@ -486,3 +486,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [memory.high独立七天组件已进入真实测量](testing-memory-high-seven-day.md)：精确preview.4程序、自己的计时/数据/句柄，10项启动检查通过，首个实际请求快照已记录；完整604800秒/28轮、老化postflight及全部其他原稳定条件尚未接受。只读观察字段修正保留原错误，业务作业未重启，旧源时长不移入。
+
+
+已冻结[实际公开preview.3→preview.4包内程序维护](testing-public-preview-memory-high-maintenance.md)：两个实际tar/manifest/ELF与当前GitHub八附件摘要绑定，原26项/各600秒/9区间及全部SLA保持。开发构建旧结果独立保留；当前尚未启动，不把预发布tag冒充已发布次版本。

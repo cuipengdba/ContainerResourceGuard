@@ -1,0 +1,142 @@
+{
+  "phase": "frozen-before-launch",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "programs": {
+    "previous": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "release_status": "published v1.0.0-preview.3 program (embedded version v1.0.0)",
+      "tag": "v1.0.0-preview.3"
+    },
+    "candidate": {
+      "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "release_status": "published v1.0.0-preview.4 memory.high program",
+      "tag": "v1.0.0-preview.4"
+    }
+  },
+  "job_sha256": "780832f2f14ff3b039da32d0fa185c3740133917b0445d804d621d0812628148",
+  "runner_sha256": "bc7d8a00de13b485aeff26d1b9ebbb98794893ac6e2fb0a067859aed58ece59d",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualification_sha256": {
+    "identity-qualification.json": "5bcb84aaf61dd3f7d9d1978483fc30be13aab726ca13f79c78802cc005d9ef70",
+    "integration-qualification.json": "0671b09e69a6f70741aa28636cc54e9144f5a16fc7c7ee37d07088c5481dec1c",
+    "overhead-qualification.json": "9d5cd893c6fcd081f1e9c1a5e82d3f99d12df482afbaa541e2a4a5d44ebe512d",
+    "business-qualification.json": "2858b12ddc94028642488bb0a1b4248866b97266d31276e369441c3f93db15cf",
+    "fault-qualification.json": "dfafd57db8c5d307ac2adf19deaa486770b081d603f64c7b6841a0ee63e374f5",
+    "prior-maintenance-qualification.json": "92ad1ceda5eccfef1cfc9a8d77d76e4961a7f95d6c0a857523c5e8f07e45eaba"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prior_maintenance_driver_sha256": "a5fdf31abc4e49472054b7d2e4d3e5999e36dcc7ed0a12500200411d1b80dec1",
+  "prior_plan": "test-plan-memory-high-maintenance.json",
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "PID1_PG_cache_payload_journal_originals_and_all_eight_controls_preserved_during_maintenance": "PID1/PG/cache/payload/config and true runtime originals preserved. CPU/IO/other4 controls constant; only predeclared max/high transitions on Agent resume, full exact journal per policy. Pure file swaps/quiesce preserve raw journal and all8.",
+    "final_disable_restores_true_runtime_originals": true
+  },
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_target_bytes": 20001980416,
+    "external_runtime_memory_max_bytes": 21474836480,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "operations": [
+    "quiesce old",
+    "install high",
+    "immediate automatic rollback with unchanged state",
+    "install high again",
+    "enable high and verify exact migration",
+    "quiesce high",
+    "automatic rollback refuses changed snapshot",
+    "explicit reverse install old using new current-state receipt",
+    "enable old and verify exact original hard-policy journal",
+    "finish native600",
+    "disable and verify complete pre-gate runtime restoration"
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "expected_checks": 26,
+  "prerequisites": [
+    "Own exact preview4 native88/package identity, overhead3x1800/business2x600/fault20x108 terminal passed; actual report hash chain,exit0 and independently absent namespaces mandatory.",
+    "Original previous50671aa and prior R54 maintenance remain separately qualified and cleaned; not two published minor versions.",
+    "Own immutable pre-gate runtime originals and both doctor plans, exact source binaries/helpers and35 read-only contract checks.",
+    "Host memory>=28GiB before each role,>=8GiB throughout,disk>=20GiB.",
+    "Own completed high-policy R569 maintenance26 actual report/exit0 must equal archived qualification and independent namespace absence.",
+    "Both actual public AMD64 tarballs/manifests and eight current GitHub asset metadata per release must match prior downloaded publication receipts; exact regular crg member must equal the tested ELF before any fixture."
+  ],
+  "invariants": [
+    "No production or original business data mounted; real container paths/private credentials/DCS,original startup/PG/cache/no-restart/SQL/API/64MiB integrity and timing retained.",
+    "Expected full8 control vectors and complete journals constructed before the business gate; never adopt observed post-transition values as expected.",
+    "Only journal-owned memory.max may be restored; existing runtime/external cap retained. Automatic changed-snapshot guard is not bypassed.",
+    "One source-qualified Agent per business container; independent final Pod/parent/leaf/process/coordinator cleanup."
+  ],
+  "limitations": [
+    "Actual published preview.3 to preview.4 package ELF migration; these are two prereleases, not two actually published minor versions.",
+    "Only package program installation/state migration is tested here; no claim that every distribution installer path has been exercised.",
+    "Same named manual budget and original synthetic64MiB real vendor paths; not default-percent,real high-pressure,aged-state,long-term or production acceptance.",
+    "ExistingAMD64/Linux5.14/single physical disk only; all original hardware/stable/52-task gates remain open.",
+    "Previous506 development maintenance retained as separate prior evidence; its result/source is not relabelled as published preview3."
+  ],
+  "version": "v1.0.0-preview.4",
+  "P10_complete": false,
+  "release_accepted": false,
+  "schema": "crg-public-preview-memory-policy-maintenance-plan-v1",
+  "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+  "contract_sha256": {
+    "tests/vendor-memory-policy-maintenance-contract.py": "62007955e4ee7561e895621cbff9234c589afdf79b1246a244a6a0a96c05032f",
+    "tests/vendor-memory-policy-maintenance-contract-checks.py": "5faaaafa51c23eb62fa87d434e024bb67a8a202f203dd89252a89546c93d66eb"
+  },
+  "expected_intervals_per_role": 9,
+  "pure_contract_checks": 35,
+  "tools": "/var/tmp/crg-public583-tools-20261112",
+  "output": "/var/tmp/crg-public583-maintenance-20261112",
+  "namespace": "crg-vendor-lab-public583-20261112",
+  "original_criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_seconds": 600,
+    "SQL_API_errors": 0,
+    "SQL_API_max_seconds": 5,
+    "p95_upper_bucket_seconds": 1,
+    "coverage_min": 0.98,
+    "all_operations_and_agent_resumes_fully_within_native600": true,
+    "PID1_PG_cache_payload_journal_originals_and_all_eight_controls_preserved_during_maintenance": true,
+    "final_disable_restores_true_runtime_originals": true
+  },
+  "semantic_changes_required_by_user": [
+    "Old program writes its own20,001,980,416B max; high program restores still-owned max to original20GiB and writes high=20,001,980,416B; old resume reverses only these predeclared memory changes.",
+    "Compatibility limits.memory_max input stays byte-identical; new program emits exactly the alias warning and may say degraded despite all3 applied; no unrelated warnings or skipped dimensions accepted.",
+    "Automatic rollback with changed policy journal MUST refuse, retaining binary/receipt/kernel/journal. Explicit reverse install uses the exact previous source program and a fresh receipt of current quiescent high state, never overwrites journal or bypasses original guard.",
+    "Original immediate automatic rollback before Agent resume still succeeds with unchanged state. Nine observed command intervals replace the old eight because the post-migration rollback includes mandatory refusal plus explicit reverse installation. Two added assertions per role yield26 checks; original business300/45/600,zero errors/5s/1s/98% and host reserves unchanged."
+  ],
+  "prior_driver_sha256": "14871bfd3614e9c617ed7322b22d03469805863b50ce666cbf34a492f7c5d41d",
+  "public_artifact_binding": "test-inputs/public-preview3-preview4-artifacts.json",
+  "public_artifact_binding_sha256": "f9358a08bbf473d6df2035903f8b10a939480419b5ea9a1389483862233c300c",
+  "selected_public_asset_sha256": {
+    "public-artifacts/previous/build-manifest.json": "85b22d6287d478662911d7de97a47235e305ef2677aa1f791f1d858e3d3f0a60",
+    "public-artifacts/previous/containerresourceguard-v1.0.0-linux-amd64.tar.gz": "a0f274ac5889d2648d5687325f0b153b84b5d50f347d3c43165d54a1b37f048a",
+    "public-artifacts/candidate/build-manifest.json": "da0a5724f34307dfa242024ed780445608b98ca54a718040246cd78f614523db",
+    "public-artifacts/candidate/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz": "bf2c9db3e0a129b1f9cbdeb84f1e9dbcecb47923f7b1310ebfe03ad258829f4d"
+  }
+}
