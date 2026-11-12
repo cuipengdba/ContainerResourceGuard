@@ -1,0 +1,26 @@
+{
+  "schema": "crg-proc-read-error-runtime-plan-v1",
+  "namespace": "crg-vendor-lab-procerr502-20261112",
+  "source_namespace": "crg-vendor-lab-acceptance78-20261111",
+  "output_directory": "/var/tmp/crg-procerr502-results-20261112",
+  "tool_directory": "/var/tmp/crg-procerr502-tools-20261112",
+  "source_sha256": {
+    "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+    "vendor-proc-read-error-checks.py": "57221391f0844904706469d6daf71f83413dd0d47f3c5678f05200751540bd3e",
+    "vendor-proc-read-error-runtime.py": "e772b09aa28642b4ccce49dd63133d10bf32474e59e25be711ce9f40200565ed"
+  },
+  "checks_per_runtime": 24,
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "run_as": {
+    "uid": 999,
+    "gid": 998
+  },
+  "whole_deadline_seconds": 240,
+  "pod_active_deadline_seconds": 180,
+  "planned_scope": "host Python3 plus two native Python2.7.5 vendor images; 24 checks each, own-process stack only, no business startup or old sampler mutation",
+  "historical_generic_OSError_errno_remains_unknown": true,
+  "original_quota_SLA_and_gates_unchanged": true
+}
