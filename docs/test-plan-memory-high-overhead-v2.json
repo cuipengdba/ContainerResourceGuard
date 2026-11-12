@@ -1,0 +1,82 @@
+{
+  "kind": "Exact published preview.4 memory.high Agent steady-state overhead",
+  "phase": "frozen-not-launched",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+  "job_sha256": "f78e7152bc78fd8344e2bf113e4f98b94f4cfd0391969137df68924f51749e2c",
+  "runner_sha256": "c950450778ce87a40dbaab22d16777d26d6e19211b26ac45aa0fa696c252e857",
+  "qualification_sha256": "0671b09e69a6f70741aa28636cc54e9144f5a16fc7c7ee37d07088c5481dec1c",
+  "prior_plan": "test-plan-memory-high-overhead.json",
+  "prior_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "criteria": {
+    "warmup_seconds": 45,
+    "actual_seconds": 1800,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "single_core_CPU_percent_max": 0.1,
+    "Agent_RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_Agent_write_bytes_max": 8388608,
+    "fault_Agent_write_bytes_max": 16777216,
+    "OOM_kill_delta_max": 0,
+    "same_Agent_process_all_samples": true,
+    "daily0600_logs_report_v2": true,
+    "manual_cpu_cores": 0.25,
+    "io_cap_read_write_bps": 65536,
+    "io_cap_read_write_iops": 8,
+    "manual_memory_high_bytes": 134217728,
+    "external_memory_max_bytes": 268435456
+  },
+  "prerequisites": [
+    "Exact integration source full CI/native checks passed; locally built ELF hashes equal Linux CI manifest.",
+    "Prior R35 final report passed, namespace absent and previous coordinator entry not live.",
+    "Fresh private output/program/namespace names; root and explicit test marker; native amd64 build-info and binary hash.",
+    "Same8GiB memory/20GiB free-space reserves throughout; original business baseline untouched.",
+    "First failed startup attempt terminal with namespace absent; preserve report and exit1.",
+    "Both exact-source helper scripts present and digest-checked before Pod creation.",
+    "R538 exact preview.4 memory.high versioned candidate four native cells passed all88 checks, same eight artifacts as independent Windows build; no source-only substitution.",
+    "R50b source-specific overhead terminal passed/exit0 and namespace independently absent; original historical failed preparation report retained.",
+    "Old R63 overhead is terminal passed/exit0 and independently absent. No old elapsed time transferred.",
+    "Exact preview.4 memory.high build-info; daily resource_status must identify high-reclaim-throttle.",
+    "Failed R539 pre-Pod check remains terminal exit1 with original report intact and namespace independently absent; new paths, same criteria."
+  ],
+  "cases": [
+    "healthy",
+    "persistent metrics/events symlink failure, marker preserved",
+    "actually read-only cgroup mount; private fixture externally caps only its own leaf IO"
+  ],
+  "scope": "Three independent placeholder PID1 containers, one combined Agent each, original image used only as shell runtime. Not vendor business performance or product cross-container control. Manual CPU/memory/IO only; daily logs persist under each private state directory.",
+  "additional_identity_checks": [
+    "All8 actual own-leaf controls unchanged at each sample;3 active resources only.",
+    "Same PID1 start ticks/membership, same unique Agent and membership at each sample."
+  ],
+  "limitations": [
+    "No first calibration in this manual-budget test; startup/warmup are excluded from steady-state measurements.",
+    "Agent process counters do not measure host collector or all container-runtime logging costs.",
+    "Earlier1bc9/74693 long-check receipts remain separate and are not relabelled as this source.",
+    "A successful engineering budget test cannot reverse default20 business failures or close24h/seven-day/hardware gates.",
+    "The existing formal baseline is not modified.",
+    "Not vendor business, actual24h+24h,seven-day acceptance, physical multi-device or published-minor compatibility; no release acceptance.",
+    "Only new ELF6088721c measurements count here. memory.high128MiB and runtime memory.max256MiB; no claim that high is a hard cap or eliminates system OOM."
+  ],
+  "attempt": 2,
+  "helper_sha256": {
+    "examples/supervisor.sh": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "previous_attempt": {
+    "phase": "failed-before-Pod-create",
+    "error": "wrong memory policy",
+    "cause": "Driver compared build-info descriptive string with short plan policy name; no resource fixture or measurement started.",
+    "report": "test-results-memory-high-overhead-v1.json",
+    "job_sha256": "50de5e77f3a34eb1658f0f20eee364b06aca9329000c021c0d98d1e10046da77"
+  },
+  "version": "v1.0.0-preview.4",
+  "P10_complete": false,
+  "release_accepted": false,
+  "memory_policy": "high-reclaim-throttle",
+  "tools": "/var/tmp/crg-high542-tools-20261112",
+  "output": "/var/tmp/crg-high542-overhead-20261112",
+  "namespace": "crg-high542-overhead-20261112",
+  "expected_build_info_memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained"
+}
