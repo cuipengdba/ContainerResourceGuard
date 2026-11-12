@@ -36,3 +36,5 @@ high可设置为低于当前用量，以启动回收压力；它不再使用原m
 ## 发布程序的后续复验
 
 精确preview.4两架构发布文件完成[Linux6/7四格88项和八文件一致性](testing-memory-high-native.md)、[新检出重建与节点身份](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)和[DBS/HISDBS真实路径各600秒及备份/同步/独立恢复](testing-memory-high-business.md)。两次准备脚本错误及原stderr/失败收据保留；不计入业务通过。新策略故障、实际压力、默认百分比和长期门槛仍独立开放。
+
+精确发布程序的[两角色20场景/108项辅助故障](testing-memory-high-faults.md)已另行完整通过，保持原90/45/12秒标准及外部硬上限；包括真实标定取消和独立清理。首轮测试漏算页对齐的失败原件保留。该项不代替真实压力、老化状态故障或新策略长期验收。

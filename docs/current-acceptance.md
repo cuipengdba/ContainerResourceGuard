@@ -182,5 +182,5 @@ R203[完整压力接入原生/PG诊断](testing-business-pressure-native-diagnos
 已补充[R235实际PGDATA及IO映射只读核对](testing-final-wait-io-map.md)：原Pod明确PGDATA=/opt/postgresql/pgdata，实际WAL/日志/备份均为同一XFS253:0→sda2→sda，原标定profile保持。初次/data猜测路径的不存在和纠正完整保留；失败后队列快照不替代故障时刻或证明因果，不计独立物理多盘/业务通过。
 
 <!-- memory-high-preview4-current:start -->
-2026-11-12 preview.4：memory.high新策略[原生四格88项](testing-memory-high-native.md)、[发布身份及新检出重建](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)、[DBS/HISDBS真实路径各600秒及十项备份/同步/独立恢复](testing-memory-high-business.md)均通过；命名手动预算、SQL/API零错误、原5秒/1秒/98%与启动300/缓存45秒标准保持，独立清理已确认。两次准备驱动错误原件保留。内存使用memory.high，外部memory.max保持；不能冒充默认百分比/high回收压力/脏页/受限IO/辅助故障或长期接受，旧硬策略时长也不计入。52项定义及原稳定门槛和未完成状态保持，稳定版尚未接受。
+2026-11-12 preview.4：memory.high新策略[原生四格88项](testing-memory-high-native.md)、[发布身份及新检出重建](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)、[两角色真实路径各600秒及备份/同步/独立恢复](testing-memory-high-business.md)、[20场景/108项辅助故障](testing-memory-high-faults.md)均通过，均为同一发布程序；业务使用命名手动预算，故障保持原90/45/12秒标准，独立清理确认。准备及测试计算错误原件保留。内存使用memory.high，外部memory.max保持；不能冒充默认百分比/high回收压力/脏页/受限IO/老化故障或长期接受，旧硬策略时长不计入。52项定义及原稳定门槛和未完成状态保持，稳定版尚未接受。
 <!-- memory-high-preview4-current:end -->
