@@ -1,0 +1,2137 @@
+{
+  "schema": "crg-full-pressure-diagnostic-integration-public-v1",
+  "analysis": {
+    "schema": "crg-full-pressure-diagnostic-integration-result-v1",
+    "phase": "original-full-pressure-completed-optional-diagnostic-start-failed",
+    "terminal_observer_receipt": "186-crg-r822-observe-full-pressure97.json",
+    "job_sha256": "207f6167d9a98bfd6acebb48bfb297bf477d768d4a63e2515f419c772a8c4f64",
+    "plan_sha256": "ee17a2d9440a4102511365a61568fef91ab8da0669a4fab7da92cd363a826cfb",
+    "original_checks": 32,
+    "passed_checks": 29,
+    "failed_checks": [],
+    "roles": {
+      "v10-dbs-bw64": {
+        "phase": "failed",
+        "error": "NATIVE_COMPLETION_EXIT",
+        "native": {
+          "api": {
+            "attempts": 121,
+            "errors": 2,
+            "histogram": [
+              0,
+              0,
+              117,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            "max_seconds": 4.003930874867365,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0083333333333333,
+            "successes": 119,
+            "total_seconds": 9.308922860072926
+          },
+          "cluster_database_bytes_final": 139364940,
+          "cluster_database_bytes_initial": 139233868,
+          "criteria": {
+            "api_period_seconds": 5,
+            "maximum_errors": 0,
+            "maximum_seconds": 5,
+            "minimum_scheduled_samples_fraction": 0.98,
+            "p95_upper_bound_seconds": 1,
+            "sql_period_seconds": 2
+          },
+          "elapsed_seconds": 600.3193880568724,
+          "ended_utc": "2026-11-12T21:49:57.496272Z",
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4816
+          ],
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "interrupted": false,
+          "latency_bucket_upper_seconds": [
+            0.001,
+            0.005,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.25,
+            0.5,
+            1,
+            2,
+            5,
+            "over-5"
+          ],
+          "measurement_finished_utc": "2026-11-12T21:49:56.977423Z",
+          "native_diagnostics": {
+            "business_signals_cancellations_or_control_writes": 0,
+            "diagnostic_complete": true,
+            "dropped_pg_samples": 0,
+            "dropped_requests": 0,
+            "final_report_thread_cpu_seconds": 0.17176350399999996,
+            "pg_errors": 0,
+            "pg_samples": 601,
+            "pg_truncated_samples": 0,
+            "pg_wait_errors": 0,
+            "pg_wait_samples": 601,
+            "pg_wait_unknown_targets": 0,
+            "phase": "collected",
+            "probe_thread_cpu_seconds": 1.4032717270000001,
+            "probe_thread_stopped": true,
+            "recorder_cpu_available": true,
+            "recorder_cpu_seconds": 0.04218553199999895,
+            "recorder_internal_errors": 0,
+            "report_bytes": 1075265,
+            "report_filename": "native-diagnostics.json",
+            "report_sha256": "4d7adece0869569db41f136d83000b27a6a40e473ca6656503b645b54d763fd4",
+            "request_count": 422,
+            "request_errors": 2
+          },
+          "payload_integrity": true,
+          "phase": "failed",
+          "primary_not_restarted": true,
+          "primary_start_time_final": "2026-11-13 05:39:40.014992+08",
+          "primary_start_time_initial": "2026-11-13 05:39:40.014992+08",
+          "requested_duration_seconds": 600,
+          "run_id": "202611128170",
+          "schema": "crg-vendor-soak-v1",
+          "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+          "sql": {
+            "attempts": 301,
+            "errors": 0,
+            "histogram": [
+              283,
+              10,
+              0,
+              1,
+              0,
+              1,
+              2,
+              2,
+              1,
+              1,
+              0,
+              0
+            ],
+            "max_seconds": 1.8287439849227667,
+            "p95_bucket_upper_seconds": 0.005,
+            "sample_coverage": 1.0033333333333334,
+            "successes": 301,
+            "total_seconds": 4.276917896931991
+          },
+          "started_utc": "2026-11-12T21:39:56.721526Z",
+          "test_phase": "smoke",
+          "threads_stopped": true
+        },
+        "reload_intervals": [
+          {
+            "case": "manual-to-percent-during-engine",
+            "started_epoch": 1794519626.7250319,
+            "ended_epoch": 1794519637.8291645,
+            "generation": 2,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "three-independent-percentages-during-native",
+            "started_epoch": 1794519637.8305976,
+            "ended_epoch": 1794519640.0712206,
+            "generation": 3,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 25,
+              "memory_percent": 29,
+              "io_percent": 80
+            },
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "invalid-IO-retains-entire-policy",
+            "started_epoch": 1794519640.072681,
+            "ended_epoch": 1794519662.3057115,
+            "generation": 3,
+            "configuration_state": "rejected",
+            "requested_policy": {
+              "cpu_percent": 25,
+              "memory_percent": 29,
+              "io_percent": 101
+            },
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "partial-JSON-retains-entire-policy",
+            "started_epoch": 1794519662.3073213,
+            "ended_epoch": 1794519663.7147994,
+            "generation": 3,
+            "configuration_state": "rejected",
+            "requested_policy": "malformed JSON",
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "duplicate-key-retains-entire-policy",
+            "started_epoch": 1794519663.7166126,
+            "ended_epoch": 1794519664.7305486,
+            "generation": 3,
+            "configuration_state": "rejected",
+            "requested_policy": "malformed JSON",
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "ConfigMap-style-symlink-accepts-valid-policy",
+            "started_epoch": 1794519664.7322736,
+            "ended_epoch": 1794519666.893122,
+            "generation": 4,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "percent-to-manual-three-resources",
+            "started_epoch": 1794519666.8948812,
+            "ended_epoch": 1794519667.8369985,
+            "generation": 5,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "resource_mode": "manual",
+              "limits": {
+                "cpu_cores": 7.2,
+                "memory_high": "20001980416B",
+                "io_read_bps": "64MiB",
+                "io_write_bps": "64MiB",
+                "io_read_iops": 4096,
+                "io_write_iops": 4096
+              },
+              "data_paths": [
+                "/opt/postgresql"
+              ]
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "pressure-test-return-to-percent30",
+            "started_epoch": 1794519667.8389163,
+            "ended_epoch": 1794519669.653851,
+            "generation": 6,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "memory-high30-to20-applies-and-reclaims-or-throttles-under-real-pressure",
+            "started_epoch": 1794519669.6558352,
+            "ended_epoch": 1794519712.776703,
+            "generation": 7,
+            "configuration_state": "accepted",
+            "accepted_hash": "90d1cd13f28e1b960f33fcf401800f401bd0a08c03230bfc809470a4be7f463a",
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true,
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 20,
+              "io_percent": 100
+            },
+            "target_memory_high_bytes": 13334654976,
+            "initial_current_above_target": true,
+            "hold_seconds": 6,
+            "events_high_delta": 324,
+            "external_memory_max_unchanged": true
+          },
+          {
+            "case": "memory-high20-release-recovers-same-generation7-without-config-rewrite",
+            "started_epoch": 1794519712.7932646,
+            "ended_epoch": 1794519714.1106405,
+            "generation": 7,
+            "configuration_state": "accepted",
+            "accepted_hash": "90d1cd13f28e1b960f33fcf401800f401bd0a08c03230bfc809470a4be7f463a",
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true,
+            "target_memory_high_bytes": 13334654976,
+            "accepted_hash_before_release": "90d1cd13f28e1b960f33fcf401800f401bd0a08c03230bfc809470a4be7f463a",
+            "no_configuration_rewrite": true,
+            "pressure_worker_gone": true,
+            "external_memory_max_unchanged": true
+          },
+          {
+            "case": "released-memory20-returns-to-percent30",
+            "started_epoch": 1794519714.1463556,
+            "ended_epoch": 1794519716.6041927,
+            "generation": 8,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          }
+        ],
+        "diagnostic_errors": [
+          {
+            "action": "start",
+            "error_class": "TypeError"
+          },
+          {
+            "action": "collector-stop",
+            "error_class": "TypeError"
+          },
+          {
+            "action": "finish",
+            "error_class": "TypeError"
+          }
+        ],
+        "original_workload_continued_after_optional_start_failure": true,
+        "full_BPF_diagnostic_accepted": false
+      },
+      "v10-hisdbs-bw64": {
+        "phase": "short-acceptance-passed",
+        "error": null,
+        "native": {
+          "api": {
+            "attempts": 121,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              118,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "max_seconds": 3.8089748709462583,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0083333333333333,
+            "successes": 121,
+            "total_seconds": 4.837595453951508
+          },
+          "cluster_database_bytes_final": 139373132,
+          "cluster_database_bytes_initial": 139233868,
+          "criteria": {
+            "api_period_seconds": 5,
+            "maximum_errors": 0,
+            "maximum_seconds": 5,
+            "minimum_scheduled_samples_fraction": 0.98,
+            "p95_upper_bound_seconds": 1,
+            "sql_period_seconds": 2
+          },
+          "elapsed_seconds": 600.3931842679158,
+          "ended_utc": "2026-11-12T22:01:05.309847Z",
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4816
+          ],
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "interrupted": false,
+          "latency_bucket_upper_seconds": [
+            0.001,
+            0.005,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.25,
+            0.5,
+            1,
+            2,
+            5,
+            "over-5"
+          ],
+          "measurement_finished_utc": "2026-11-12T22:01:04.738778Z",
+          "native_diagnostics": {
+            "business_signals_cancellations_or_control_writes": 0,
+            "diagnostic_complete": true,
+            "dropped_pg_samples": 0,
+            "dropped_requests": 0,
+            "final_report_thread_cpu_seconds": 0.17395415400000003,
+            "pg_errors": 0,
+            "pg_samples": 601,
+            "pg_truncated_samples": 0,
+            "pg_wait_errors": 0,
+            "pg_wait_samples": 601,
+            "pg_wait_unknown_targets": 0,
+            "phase": "collected",
+            "probe_thread_cpu_seconds": 1.39661119,
+            "probe_thread_stopped": true,
+            "recorder_cpu_available": true,
+            "recorder_cpu_seconds": 0.04422533099999992,
+            "recorder_internal_errors": 0,
+            "report_bytes": 1075112,
+            "report_filename": "native-diagnostics.json",
+            "report_sha256": "25e480f57119672299718a6652fb722eb24d4b9e40c1fe33bcc95a2b21f13b83",
+            "request_count": 422,
+            "request_errors": 0
+          },
+          "payload_integrity": true,
+          "phase": "passed",
+          "primary_not_restarted": true,
+          "primary_start_time_final": "2026-11-13 05:50:37.960252+08",
+          "primary_start_time_initial": "2026-11-13 05:50:37.960252+08",
+          "requested_duration_seconds": 600,
+          "run_id": "202611128171",
+          "schema": "crg-vendor-soak-v1",
+          "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+          "sql": {
+            "attempts": 301,
+            "errors": 0,
+            "histogram": [
+              285,
+              8,
+              0,
+              1,
+              0,
+              0,
+              1,
+              5,
+              1,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.7584746398497373,
+            "p95_bucket_upper_seconds": 0.005,
+            "sample_coverage": 1.0033333333333334,
+            "successes": 301,
+            "total_seconds": 3.008709974354133
+          },
+          "started_utc": "2026-11-12T21:51:04.424271Z",
+          "test_phase": "smoke",
+          "threads_stopped": true
+        },
+        "reload_intervals": [
+          {
+            "case": "manual-to-percent-during-engine",
+            "started_epoch": 1794520294.4292767,
+            "ended_epoch": 1794520308.3296974,
+            "generation": 2,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "three-independent-percentages-during-native",
+            "started_epoch": 1794520308.3511462,
+            "ended_epoch": 1794520326.1145957,
+            "generation": 3,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 25,
+              "memory_percent": 29,
+              "io_percent": 80
+            },
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "invalid-IO-retains-entire-policy",
+            "started_epoch": 1794520326.136355,
+            "ended_epoch": 1794520328.377593,
+            "generation": 3,
+            "configuration_state": "rejected",
+            "requested_policy": {
+              "cpu_percent": 25,
+              "memory_percent": 29,
+              "io_percent": 101
+            },
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "partial-JSON-retains-entire-policy",
+            "started_epoch": 1794520328.435292,
+            "ended_epoch": 1794520329.789556,
+            "generation": 3,
+            "configuration_state": "rejected",
+            "requested_policy": "malformed JSON",
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "duplicate-key-retains-entire-policy",
+            "started_epoch": 1794520329.8114197,
+            "ended_epoch": 1794520331.001927,
+            "generation": 3,
+            "configuration_state": "rejected",
+            "requested_policy": "malformed JSON",
+            "expected_numeric": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "600000 100000",
+              "memory.high": "19335249920",
+              "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "ConfigMap-style-symlink-accepts-valid-policy",
+            "started_epoch": 1794520331.0255861,
+            "ended_epoch": 1794520333.4116945,
+            "generation": 4,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "percent-to-manual-three-resources",
+            "started_epoch": 1794520333.4335399,
+            "ended_epoch": 1794520336.540642,
+            "generation": 5,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "resource_mode": "manual",
+              "limits": {
+                "cpu_cores": 7.2,
+                "memory_high": "20001980416B",
+                "io_read_bps": "64MiB",
+                "io_write_bps": "64MiB",
+                "io_read_iops": 4096,
+                "io_write_iops": 4096
+              },
+              "data_paths": [
+                "/opt/postgresql"
+              ]
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "pressure-test-return-to-percent30",
+            "started_epoch": 1794520336.5631685,
+            "ended_epoch": 1794520338.5324845,
+            "generation": 6,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          },
+          {
+            "case": "memory-high30-to20-applies-and-reclaims-or-throttles-under-real-pressure",
+            "started_epoch": 1794520338.556003,
+            "ended_epoch": 1794520372.3553455,
+            "generation": 7,
+            "configuration_state": "accepted",
+            "accepted_hash": "90d1cd13f28e1b960f33fcf401800f401bd0a08c03230bfc809470a4be7f463a",
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true,
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 20,
+              "io_percent": 100
+            },
+            "target_memory_high_bytes": 13334654976,
+            "initial_current_above_target": true,
+            "hold_seconds": 6,
+            "events_high_delta": 179,
+            "external_memory_max_unchanged": true
+          },
+          {
+            "case": "memory-high20-release-recovers-same-generation7-without-config-rewrite",
+            "started_epoch": 1794520372.3902788,
+            "ended_epoch": 1794520373.6790361,
+            "generation": 7,
+            "configuration_state": "accepted",
+            "accepted_hash": "90d1cd13f28e1b960f33fcf401800f401bd0a08c03230bfc809470a4be7f463a",
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true,
+            "target_memory_high_bytes": 13334654976,
+            "accepted_hash_before_release": "90d1cd13f28e1b960f33fcf401800f401bd0a08c03230bfc809470a4be7f463a",
+            "no_configuration_rewrite": true,
+            "pressure_worker_gone": true,
+            "external_memory_max_unchanged": true
+          },
+          {
+            "case": "released-memory20-returns-to-percent30",
+            "started_epoch": 1794520373.9044678,
+            "ended_epoch": 1794520376.1206822,
+            "generation": 8,
+            "configuration_state": "accepted",
+            "requested_policy": {
+              "cpu_percent": 30,
+              "memory_percent": 30,
+              "io_percent": 100
+            },
+            "expected_numeric": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "actual_kernel_readbacks": {
+              "cpu.max": "720000 100000",
+              "memory.high": "20001980416",
+              "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.max": "21474836480",
+              "memory.swap.max": "0"
+            },
+            "same_Agent_PID1_cache": true,
+            "PG_not_restarted": true
+          }
+        ],
+        "diagnostic_errors": [
+          {
+            "action": "start",
+            "error_class": "TypeError"
+          },
+          {
+            "action": "collector-stop",
+            "error_class": "TypeError"
+          },
+          {
+            "action": "finish",
+            "error_class": "TypeError"
+          }
+        ],
+        "original_workload_continued_after_optional_start_failure": true,
+        "full_BPF_diagnostic_accepted": false
+      }
+    },
+    "recorded_original_process_instances": 57,
+    "all_recorded_original_processes_and_namespace_and_leaves_absent": true,
+    "BPF_objects_created": 0,
+    "BPF_collector_started": false,
+    "transport_shim_installed_in_native_workload": false,
+    "actual_artifact_transfer": {
+      "schema": "crg-full-pressure-exact-download-v1",
+      "phase": "passed",
+      "files": [
+        {
+          "filename": "dbs-device-plan.json",
+          "bytes": 957,
+          "sha256": "bf8d8cf5ed36b498b76b485985941252adc45c7c3b25a87de61e84e22dcb7063",
+          "download_sha256": "bf8d8cf5ed36b498b76b485985941252adc45c7c3b25a87de61e84e22dcb7063",
+          "download_bytes": 957
+        },
+        {
+          "filename": "dbs-devices.json",
+          "bytes": 1705058,
+          "sha256": "40963afb74694231d71f31c22ca90202e8f3af2ea48473cff2c0e5d840cfc3bf",
+          "download_sha256": "40963afb74694231d71f31c22ca90202e8f3af2ea48473cff2c0e5d840cfc3bf",
+          "download_bytes": 1705058
+        },
+        {
+          "filename": "dbs-engine/business-backup.json",
+          "bytes": 75745,
+          "sha256": "7b38ca1e1fe0eb420d8169b50772727c1a75f750ebe93a59f2238757c6debf84",
+          "download_sha256": "7b38ca1e1fe0eb420d8169b50772727c1a75f750ebe93a59f2238757c6debf84",
+          "download_bytes": 75745
+        },
+        {
+          "filename": "dbs-engine.log",
+          "bytes": 97,
+          "sha256": "182bb8db6e05a9d785d9875f3317b73bbd9a9b9ceb6e004873f41d527f81c5b7",
+          "download_sha256": "182bb8db6e05a9d785d9875f3317b73bbd9a9b9ceb6e004873f41d527f81c5b7",
+          "download_bytes": 97
+        },
+        {
+          "filename": "dbs-full-readonly-preflight-bpf.json",
+          "bytes": 13000,
+          "sha256": "765e9a891d3e7eced53d02a5bf6596079a9989c4b79145e418f9b35cec14e751",
+          "download_sha256": "765e9a891d3e7eced53d02a5bf6596079a9989c4b79145e418f9b35cec14e751",
+          "download_bytes": 13000
+        },
+        {
+          "filename": "dbs-full-readonly-preflight-plan.json",
+          "bytes": 916,
+          "sha256": "0a76f602fe812e71ec50fcd8533704c1a9fa14b34bb043f58ea146a88617dcc0",
+          "download_sha256": "0a76f602fe812e71ec50fcd8533704c1a9fa14b34bb043f58ea146a88617dcc0",
+          "download_bytes": 916
+        },
+        {
+          "filename": "dbs-native-diagnostics.json",
+          "bytes": 1075265,
+          "sha256": "4d7adece0869569db41f136d83000b27a6a40e473ca6656503b645b54d763fd4",
+          "download_sha256": "4d7adece0869569db41f136d83000b27a6a40e473ca6656503b645b54d763fd4",
+          "download_bytes": 1075265
+        },
+        {
+          "filename": "dbs-native.log",
+          "bytes": 141,
+          "sha256": "09cea6df14fa41650f06cdc062496241f4719ad7d0d2880f5845a66e589a8d35",
+          "download_sha256": "09cea6df14fa41650f06cdc062496241f4719ad7d0d2880f5845a66e589a8d35",
+          "download_bytes": 141
+        },
+        {
+          "filename": "dbs-pressure-helper.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_bytes": 0
+        },
+        {
+          "filename": "dbs-thread-plan.json",
+          "bytes": 596,
+          "sha256": "1bf79125aba6c48938802814c8f7dd8962ae3be539b0dde0d15684a18fe26e1d",
+          "download_sha256": "1bf79125aba6c48938802814c8f7dd8962ae3be539b0dde0d15684a18fe26e1d",
+          "download_bytes": 596
+        },
+        {
+          "filename": "dbs-thread-stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_bytes": 0
+        },
+        {
+          "filename": "dbs-threads.json",
+          "bytes": 9296628,
+          "sha256": "92044c0b1b6858b920a4d7417fafe98097e1bf7ef045a2017a261d6b24c14517",
+          "download_sha256": "92044c0b1b6858b920a4d7417fafe98097e1bf7ef045a2017a261d6b24c14517",
+          "download_bytes": 9296628
+        },
+        {
+          "filename": "dbs-timing-context.json",
+          "bytes": 303,
+          "sha256": "87734fe06869562372c6a315a95cba2f3dca09c751fc4723dc56beb8bdc9f309",
+          "download_sha256": "87734fe06869562372c6a315a95cba2f3dca09c751fc4723dc56beb8bdc9f309",
+          "download_bytes": 303
+        },
+        {
+          "filename": "hisdbs-device-plan.json",
+          "bytes": 963,
+          "sha256": "45122579178d5af27db2e6c7eceb9d38ef82b66e21bcdecd95fd5b712092ed0a",
+          "download_sha256": "45122579178d5af27db2e6c7eceb9d38ef82b66e21bcdecd95fd5b712092ed0a",
+          "download_bytes": 963
+        },
+        {
+          "filename": "hisdbs-devices.json",
+          "bytes": 1708746,
+          "sha256": "04fac64f262dd4536bf9dc7730d77810089a5a86a612b6c4998ca6d074c1d6f8",
+          "download_sha256": "04fac64f262dd4536bf9dc7730d77810089a5a86a612b6c4998ca6d074c1d6f8",
+          "download_bytes": 1708746
+        },
+        {
+          "filename": "hisdbs-engine/business-backup.json",
+          "bytes": 86964,
+          "sha256": "dbcfa7b806b049926b56f160bf3040a00e96d619aca9b818800dd25621bb5d0a",
+          "download_sha256": "dbcfa7b806b049926b56f160bf3040a00e96d619aca9b818800dd25621bb5d0a",
+          "download_bytes": 86964
+        },
+        {
+          "filename": "hisdbs-engine.log",
+          "bytes": 100,
+          "sha256": "dc9ad81c0f3281594135c1f065dc2a140cb7785812e3fe751cb6e22459d6fb42",
+          "download_sha256": "dc9ad81c0f3281594135c1f065dc2a140cb7785812e3fe751cb6e22459d6fb42",
+          "download_bytes": 100
+        },
+        {
+          "filename": "hisdbs-full-readonly-preflight-bpf.json",
+          "bytes": 13000,
+          "sha256": "72dbb79c633b4f062616736c62cf5f674eaa57d9837cda5e79f8b99c2948c848",
+          "download_sha256": "72dbb79c633b4f062616736c62cf5f674eaa57d9837cda5e79f8b99c2948c848",
+          "download_bytes": 13000
+        },
+        {
+          "filename": "hisdbs-full-readonly-preflight-plan.json",
+          "bytes": 928,
+          "sha256": "68efc51e008669eb4c2e360daf73d3614fa2e673d68101489da9c86e28f734ef",
+          "download_sha256": "68efc51e008669eb4c2e360daf73d3614fa2e673d68101489da9c86e28f734ef",
+          "download_bytes": 928
+        },
+        {
+          "filename": "hisdbs-native-diagnostics.json",
+          "bytes": 1075112,
+          "sha256": "25e480f57119672299718a6652fb722eb24d4b9e40c1fe33bcc95a2b21f13b83",
+          "download_sha256": "25e480f57119672299718a6652fb722eb24d4b9e40c1fe33bcc95a2b21f13b83",
+          "download_bytes": 1075112
+        },
+        {
+          "filename": "hisdbs-native.log",
+          "bytes": 105,
+          "sha256": "29d8146cbfcf83b4b03f46a04265ecb73401241905d0af9676a7e5c3805c3f85",
+          "download_sha256": "29d8146cbfcf83b4b03f46a04265ecb73401241905d0af9676a7e5c3805c3f85",
+          "download_bytes": 105
+        },
+        {
+          "filename": "hisdbs-pressure-helper.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_bytes": 0
+        },
+        {
+          "filename": "hisdbs-thread-plan.json",
+          "bytes": 602,
+          "sha256": "33fc55bfeb970612600e9bf6e4a6ba07f5054bd3b541c338452889566bd46600",
+          "download_sha256": "33fc55bfeb970612600e9bf6e4a6ba07f5054bd3b541c338452889566bd46600",
+          "download_bytes": 602
+        },
+        {
+          "filename": "hisdbs-thread-stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "download_bytes": 0
+        },
+        {
+          "filename": "hisdbs-threads.json",
+          "bytes": 9294146,
+          "sha256": "021f990eaa32649fab612d8967601d627efc396f0f36580de63f484f42706b9c",
+          "download_sha256": "021f990eaa32649fab612d8967601d627efc396f0f36580de63f484f42706b9c",
+          "download_bytes": 9294146
+        },
+        {
+          "filename": "hisdbs-timing-context.json",
+          "bytes": 303,
+          "sha256": "5f9e361d5f29fb052922c321ce77f7cb0d153ae10118da54a8048f4c4545874a",
+          "download_sha256": "5f9e361d5f29fb052922c321ce77f7cb0d153ae10118da54a8048f4c4545874a",
+          "download_bytes": 303
+        },
+        {
+          "filename": "report.json",
+          "bytes": 711970,
+          "sha256": "3a11ad3443cfc5397736381e5063980325b8e99d31ae0ceabcd9af6fb93b71c2",
+          "download_sha256": "3a11ad3443cfc5397736381e5063980325b8e99d31ae0ceabcd9af6fb93b71c2",
+          "download_bytes": 711970
+        }
+      ],
+      "total_bytes": 25061645,
+      "original_bytes_preserved": true,
+      "terminal_observer_receipt": "186-crg-r822-observe-full-pressure97.json",
+      "artifact_index_sha256": "b4a13d60c86e597468c69971c770fd1370e90e01b477c5f189569bd391bb0a19",
+      "destination_directory": "crg-r826-downloaded-full817-attempt1",
+      "recorded_utc": "2026-11-12T22:08:20.108489+00:00",
+      "read_only_remote_download_no_remote_job_restart": true
+    },
+    "artifact_index": {
+      "schema": "crg-full-pressure-artifact-index-v1",
+      "root": "/var/tmp/crg-high817-pressure-20261112",
+      "job_sha256": "207f6167d9a98bfd6acebb48bfb297bf477d768d4a63e2515f419c772a8c4f64",
+      "plan_sha256": "ee17a2d9440a4102511365a61568fef91ab8da0669a4fab7da92cd363a826cfb",
+      "artifacts": [
+        {
+          "filename": "dbs-device-plan.json",
+          "bytes": 957,
+          "sha256": "bf8d8cf5ed36b498b76b485985941252adc45c7c3b25a87de61e84e22dcb7063"
+        },
+        {
+          "filename": "dbs-devices.json",
+          "bytes": 1705058,
+          "sha256": "40963afb74694231d71f31c22ca90202e8f3af2ea48473cff2c0e5d840cfc3bf"
+        },
+        {
+          "filename": "dbs-engine/business-backup.json",
+          "bytes": 75745,
+          "sha256": "7b38ca1e1fe0eb420d8169b50772727c1a75f750ebe93a59f2238757c6debf84"
+        },
+        {
+          "filename": "dbs-engine.log",
+          "bytes": 97,
+          "sha256": "182bb8db6e05a9d785d9875f3317b73bbd9a9b9ceb6e004873f41d527f81c5b7"
+        },
+        {
+          "filename": "dbs-full-readonly-preflight-bpf.json",
+          "bytes": 13000,
+          "sha256": "765e9a891d3e7eced53d02a5bf6596079a9989c4b79145e418f9b35cec14e751"
+        },
+        {
+          "filename": "dbs-full-readonly-preflight-plan.json",
+          "bytes": 916,
+          "sha256": "0a76f602fe812e71ec50fcd8533704c1a9fa14b34bb043f58ea146a88617dcc0"
+        },
+        {
+          "filename": "dbs-native-diagnostics.json",
+          "bytes": 1075265,
+          "sha256": "4d7adece0869569db41f136d83000b27a6a40e473ca6656503b645b54d763fd4"
+        },
+        {
+          "filename": "dbs-native.log",
+          "bytes": 141,
+          "sha256": "09cea6df14fa41650f06cdc062496241f4719ad7d0d2880f5845a66e589a8d35"
+        },
+        {
+          "filename": "dbs-pressure-helper.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "filename": "dbs-thread-plan.json",
+          "bytes": 596,
+          "sha256": "1bf79125aba6c48938802814c8f7dd8962ae3be539b0dde0d15684a18fe26e1d"
+        },
+        {
+          "filename": "dbs-thread-stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "filename": "dbs-threads.json",
+          "bytes": 9296628,
+          "sha256": "92044c0b1b6858b920a4d7417fafe98097e1bf7ef045a2017a261d6b24c14517"
+        },
+        {
+          "filename": "dbs-timing-context.json",
+          "bytes": 303,
+          "sha256": "87734fe06869562372c6a315a95cba2f3dca09c751fc4723dc56beb8bdc9f309"
+        },
+        {
+          "filename": "hisdbs-device-plan.json",
+          "bytes": 963,
+          "sha256": "45122579178d5af27db2e6c7eceb9d38ef82b66e21bcdecd95fd5b712092ed0a"
+        },
+        {
+          "filename": "hisdbs-devices.json",
+          "bytes": 1708746,
+          "sha256": "04fac64f262dd4536bf9dc7730d77810089a5a86a612b6c4998ca6d074c1d6f8"
+        },
+        {
+          "filename": "hisdbs-engine/business-backup.json",
+          "bytes": 86964,
+          "sha256": "dbcfa7b806b049926b56f160bf3040a00e96d619aca9b818800dd25621bb5d0a"
+        },
+        {
+          "filename": "hisdbs-engine.log",
+          "bytes": 100,
+          "sha256": "dc9ad81c0f3281594135c1f065dc2a140cb7785812e3fe751cb6e22459d6fb42"
+        },
+        {
+          "filename": "hisdbs-full-readonly-preflight-bpf.json",
+          "bytes": 13000,
+          "sha256": "72dbb79c633b4f062616736c62cf5f674eaa57d9837cda5e79f8b99c2948c848"
+        },
+        {
+          "filename": "hisdbs-full-readonly-preflight-plan.json",
+          "bytes": 928,
+          "sha256": "68efc51e008669eb4c2e360daf73d3614fa2e673d68101489da9c86e28f734ef"
+        },
+        {
+          "filename": "hisdbs-native-diagnostics.json",
+          "bytes": 1075112,
+          "sha256": "25e480f57119672299718a6652fb722eb24d4b9e40c1fe33bcc95a2b21f13b83"
+        },
+        {
+          "filename": "hisdbs-native.log",
+          "bytes": 105,
+          "sha256": "29d8146cbfcf83b4b03f46a04265ecb73401241905d0af9676a7e5c3805c3f85"
+        },
+        {
+          "filename": "hisdbs-pressure-helper.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "filename": "hisdbs-thread-plan.json",
+          "bytes": 602,
+          "sha256": "33fc55bfeb970612600e9bf6e4a6ba07f5054bd3b541c338452889566bd46600"
+        },
+        {
+          "filename": "hisdbs-thread-stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "filename": "hisdbs-threads.json",
+          "bytes": 9294146,
+          "sha256": "021f990eaa32649fab612d8967601d627efc396f0f36580de63f484f42706b9c"
+        },
+        {
+          "filename": "hisdbs-timing-context.json",
+          "bytes": 303,
+          "sha256": "5f9e361d5f29fb052922c321ce77f7cb0d153ae10118da54a8048f4c4545874a"
+        },
+        {
+          "filename": "report.json",
+          "bytes": 711970,
+          "sha256": "3a11ad3443cfc5397736381e5063980325b8e99d31ae0ceabcd9af6fb93b71c2"
+        }
+      ],
+      "total_bytes": 25061645,
+      "complete": true
+    },
+    "preflight": {
+      "phase": "passed",
+      "units": {
+        "Go-pairing-output-duration-and-fixed-vendor-scope": {
+          "exit": 0,
+          "stdout": "=== RUN   TestNestedAndInterleavedFunctionsPreserveAllFrames\n--- PASS: TestNestedAndInterleavedFunctionsPreserveAllFrames (0.00s)\n=== RUN   TestMissingOrMismatchedFramesNeverBecomeComplete\n=== RUN   TestMissingOrMismatchedFramesNeverBecomeComplete/missing-return\n=== RUN   TestMissingOrMismatchedFramesNeverBecomeComplete/out-of-order-return\n=== RUN   TestMissingOrMismatchedFramesNeverBecomeComplete/clock-regression\n=== RUN   TestMissingOrMismatchedFramesNeverBecomeComplete/cross-cgroup\n=== RUN   TestMissingOrMismatchedFramesNeverBecomeComplete/missing-entry\n--- PASS: TestMissingOrMismatchedFramesNeverBecomeComplete (0.00s)\n    --- PASS: TestMissingOrMismatchedFramesNeverBecomeComplete/missing-return (0.00s)\n    --- PASS: TestMissingOrMismatchedFramesNeverBecomeComplete/out-of-order-return (0.00s)\n    --- PASS: TestMissingOrMismatchedFramesNeverBecomeComplete/clock-regression (0.00s)\n    --- PASS: TestMissingOrMismatchedFramesNeverBecomeComplete/cross-cgroup (0.00s)\n    --- PASS: TestMissingOrMismatchedFramesNeverBecomeComplete/missing-entry (0.00s)\n=== RUN   TestDepthBoundMakesStreamIncomplete\n--- PASS: TestDepthBoundMakesStreamIncomplete (0.00s)\n=== RUN   TestPerfBudgetRejectsOverBudgetBeforeAllocation\n--- PASS: TestPerfBudgetRejectsOverBudgetBeforeAllocation (0.00s)\n=== RUN   TestPerfMappingMeasurementNeverExportsAddresses\n--- PASS: TestPerfMappingMeasurementNeverExportsAddresses (0.00s)\n=== RUN   TestReportCompactEncodingRetainsEveryFieldAndRecord\n--- PASS: TestReportCompactEncodingRetainsEveryFieldAndRecord (0.00s)\n=== RUN   TestReportExact32MiBBoundAndOneByteOverflow\n--- PASS: TestReportExact32MiBBoundAndOneByteOverflow (0.22s)\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/encode\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/bound\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/invalid-bound\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/short\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/write\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/sync\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/close\n--- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/encode (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/bound (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/invalid-bound (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/short (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/write (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/sync (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/close (0.00s)\n=== RUN   TestLongDiagnosticDurationBoundaries\n--- PASS: TestLongDiagnosticDurationBoundaries (0.00s)\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/namespace\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/namespaceUID\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/podUID\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/CID\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/PID1\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/role\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/pod\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/root\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/root-dotdot\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/leaf\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/delay\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/exe\n=== RUN   TestFullVendorScopeIsOnlyTheFreshFixedFixture/probe\n--- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/namespace (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/namespaceUID (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/podUID (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/CID (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/PID1 (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/role (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/pod (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/root (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/root-dotdot (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/leaf (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/delay (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/exe (0.00s)\n    --- PASS: TestFullVendorScopeIsOnlyTheFreshFixedFixture/probe (0.00s)\nPASS\n"
+        },
+        "full-factory16": {
+          "exit": 0,
+          "stdout": "{\"schema\": \"crg-full-pressure-factory-unit-v1\", \"phase\": \"passed\", \"source_sha256\": \"5cc7ca5fb712946f54aa08af00a570d19632f5792c0b0ad649a6f4e06a376e8e\", \"hook_sha256\": \"babb481f90262678416d276d7b81ab95a600a7fea53589266de1898ec50f1d4e\", \"original_core_sha256\": \"7f331574f797a96eaed11605164c8b7ef56927e457ee417b9ac12ebff15c8a38\", \"cases\": [{\"variant\": \"original-full-pressure-core-bytes-retained\", \"passed\": true}, {\"variant\": \"matched-success\", \"single_original_launch_and_exception_identity_preserved\": true}, {\"variant\": \"matched-Popen-error\", \"single_original_launch_and_exception_identity_preserved\": true}, {\"variant\": \"unmatched-Popen-error\", \"single_original_launch_and_exception_identity_preserved\": true}, {\"variant\": \"annotation-preparation-error\", \"single_original_launch_and_exception_identity_preserved\": true}, {\"variant\": \"success\", \"original_full_request_window_success_and_late_failure_evidence_retained\": true}, {\"variant\": \"body-error-after-headers\", \"original_full_request_window_success_and_late_failure_evidence_retained\": true}, {\"variant\": \"missing-annotation\", \"original_full_request_window_success_and_late_failure_evidence_retained\": true}, {\"variant\": \"header-outside-native-window\", \"original_full_request_window_success_and_late_failure_evidence_retained\": true}, {\"variant\": \"duplicate-annotation\", \"original_full_request_window_success_and_late_failure_evidence_retained\": true}, {\"variant\": \"raw-artifact-exact-bytes-and-bound\", \"passed\": true}, {\"variant\": \"helper-start-permission\", \"ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception\": true}, {\"variant\": \"helper-save-permission\", \"ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception\": true}, {\"variant\": \"helper-start-and-business-error\", \"ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception\": true}, {\"variant\": \"collector-stop-error\", \"ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception\": true}, {\"variant\": \"failed-diagnostic-check-stays-failed-after-wrapper-finally\", \"passed\": true}], \"synthetic_only_not_vendor_runtime_qualification\": true, \"original_full600_and11_intervals_not_executed\": true}\n",
+          "result": {
+            "schema": "crg-full-pressure-factory-unit-v1",
+            "phase": "passed",
+            "source_sha256": "5cc7ca5fb712946f54aa08af00a570d19632f5792c0b0ad649a6f4e06a376e8e",
+            "hook_sha256": "babb481f90262678416d276d7b81ab95a600a7fea53589266de1898ec50f1d4e",
+            "original_core_sha256": "7f331574f797a96eaed11605164c8b7ef56927e457ee417b9ac12ebff15c8a38",
+            "cases": [
+              {
+                "variant": "original-full-pressure-core-bytes-retained",
+                "passed": true
+              },
+              {
+                "variant": "matched-success",
+                "single_original_launch_and_exception_identity_preserved": true
+              },
+              {
+                "variant": "matched-Popen-error",
+                "single_original_launch_and_exception_identity_preserved": true
+              },
+              {
+                "variant": "unmatched-Popen-error",
+                "single_original_launch_and_exception_identity_preserved": true
+              },
+              {
+                "variant": "annotation-preparation-error",
+                "single_original_launch_and_exception_identity_preserved": true
+              },
+              {
+                "variant": "success",
+                "original_full_request_window_success_and_late_failure_evidence_retained": true
+              },
+              {
+                "variant": "body-error-after-headers",
+                "original_full_request_window_success_and_late_failure_evidence_retained": true
+              },
+              {
+                "variant": "missing-annotation",
+                "original_full_request_window_success_and_late_failure_evidence_retained": true
+              },
+              {
+                "variant": "header-outside-native-window",
+                "original_full_request_window_success_and_late_failure_evidence_retained": true
+              },
+              {
+                "variant": "duplicate-annotation",
+                "original_full_request_window_success_and_late_failure_evidence_retained": true
+              },
+              {
+                "variant": "raw-artifact-exact-bytes-and-bound",
+                "passed": true
+              },
+              {
+                "variant": "helper-start-permission",
+                "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+              },
+              {
+                "variant": "helper-save-permission",
+                "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+              },
+              {
+                "variant": "helper-start-and-business-error",
+                "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+              },
+              {
+                "variant": "collector-stop-error",
+                "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+              },
+              {
+                "variant": "failed-diagnostic-check-stays-failed-after-wrapper-finally",
+                "passed": true
+              }
+            ],
+            "synthetic_only_not_vendor_runtime_qualification": true,
+            "original_full600_and11_intervals_not_executed": true
+          }
+        },
+        "artifact-transfer12": {
+          "exit": 0,
+          "stdout": "{\"schema\": \"crg-bounded-artifact-transfer-unit-v1\", \"phase\": \"passed\", \"source_sha256\": \"cb68e0ed60534514d22542e7b21f93625014851f49d5b58c7f8da3574b83a0f2\", \"large_exact_bytes\": 22400000, \"chunk_bytes\": 1048576, \"maximum_file_bytes\": 33554432, \"maximum_total_bytes\": 268435456, \"cases\": [{\"variant\": \"exact-large\", \"accepted\": true, \"failure_class\": null}, {\"variant\": \"truncated\", \"accepted\": false, \"failure_class\": \"ARTIFACT_TRUNCATED_OR_OVERSIZED_READ\"}, {\"variant\": \"trailing\", \"accepted\": false, \"failure_class\": \"ARTIFACT_TRAILING_BYTES\"}, {\"variant\": \"tampered\", \"accepted\": false, \"failure_class\": \"ARTIFACT_HASH_MISMATCH\"}, {\"variant\": \"path-traversal\", \"accepted\": false, \"failure_class\": \"ARTIFACT_FILENAME\"}, {\"variant\": \"absolute-path\", \"accepted\": false, \"failure_class\": \"ARTIFACT_FILENAME\"}, {\"variant\": \"duplicate\", \"accepted\": false, \"failure_class\": \"ARTIFACT_FILENAME\"}, {\"variant\": \"wrong-root\", \"accepted\": false, \"failure_class\": \"FIXED_ARTIFACT_ROOT\"}, {\"variant\": \"invalid-hash\", \"accepted\": false, \"failure_class\": \"ARTIFACT_SHA256\"}, {\"variant\": \"incomplete-index\", \"accepted\": false, \"failure_class\": \"INCOMPLETE_ARTIFACT_INDEX\"}, {\"variant\": \"too-many\", \"accepted\": false, \"failure_class\": \"ARTIFACT_COUNT\"}, {\"variant\": \"total-overflow\", \"accepted\": false, \"failure_class\": \"ARTIFACT_TOTAL\"}], \"synthetic_only_not_full_vendor_pressure\": true}\n",
+          "result": {
+            "schema": "crg-bounded-artifact-transfer-unit-v1",
+            "phase": "passed",
+            "source_sha256": "cb68e0ed60534514d22542e7b21f93625014851f49d5b58c7f8da3574b83a0f2",
+            "large_exact_bytes": 22400000,
+            "chunk_bytes": 1048576,
+            "maximum_file_bytes": 33554432,
+            "maximum_total_bytes": 268435456,
+            "cases": [
+              {
+                "variant": "exact-large",
+                "accepted": true,
+                "failure_class": null
+              },
+              {
+                "variant": "truncated",
+                "accepted": false,
+                "failure_class": "ARTIFACT_TRUNCATED_OR_OVERSIZED_READ"
+              },
+              {
+                "variant": "trailing",
+                "accepted": false,
+                "failure_class": "ARTIFACT_TRAILING_BYTES"
+              },
+              {
+                "variant": "tampered",
+                "accepted": false,
+                "failure_class": "ARTIFACT_HASH_MISMATCH"
+              },
+              {
+                "variant": "path-traversal",
+                "accepted": false,
+                "failure_class": "ARTIFACT_FILENAME"
+              },
+              {
+                "variant": "absolute-path",
+                "accepted": false,
+                "failure_class": "ARTIFACT_FILENAME"
+              },
+              {
+                "variant": "duplicate",
+                "accepted": false,
+                "failure_class": "ARTIFACT_FILENAME"
+              },
+              {
+                "variant": "wrong-root",
+                "accepted": false,
+                "failure_class": "FIXED_ARTIFACT_ROOT"
+              },
+              {
+                "variant": "invalid-hash",
+                "accepted": false,
+                "failure_class": "ARTIFACT_SHA256"
+              },
+              {
+                "variant": "incomplete-index",
+                "accepted": false,
+                "failure_class": "INCOMPLETE_ARTIFACT_INDEX"
+              },
+              {
+                "variant": "too-many",
+                "accepted": false,
+                "failure_class": "ARTIFACT_COUNT"
+              },
+              {
+                "variant": "total-overflow",
+                "accepted": false,
+                "failure_class": "ARTIFACT_TOTAL"
+              }
+            ],
+            "synthetic_only_not_full_vendor_pressure": true
+          }
+        }
+      },
+      "business_started": true
+    },
+    "current_full_runtime_factory_sha256": "5cc7ca5fb712946f54aa08af00a570d19632f5792c0b0ad649a6f4e06a376e8e",
+    "fixed_factory_replay": {
+      "schema": "crg-actual-null-preflight-replay-v1",
+      "phase": "passed",
+      "actual_preflight_receipt": "180-crg-r823-read-preflight-failure97.json",
+      "actual_preflight_sha256": "765e9a891d3e7eced53d02a5bf6596079a9989c4b79145e418f9b35cec14e751",
+      "root_cause": "null function_pairs passed to len during metadata projection",
+      "cases": [
+        {
+          "variant": "original-frozen",
+          "source_sha256": "5cc7ca5fb712946f54aa08af00a570d19632f5792c0b0ad649a6f4e06a376e8e",
+          "caught_error_class": "TypeError",
+          "original_report_bytes_unchanged": true,
+          "accepted": false
+        },
+        {
+          "variant": "fixed",
+          "source_sha256": "0c1c27036ea8bb0d6aff4e6b52fa74eedb81819733741798963cd620e0c99abf",
+          "caught_error_class": null,
+          "original_report_bytes_unchanged": true,
+          "accepted": true
+        }
+      ],
+      "runtime_full_job817_not_modified_or_restarted": true,
+      "fixed_factory_full_runtime_qualification_not_yet_accepted": true
+    },
+    "fixed_factory_units": {
+      "schema": "crg-full-pressure-factory-unit-v1",
+      "phase": "passed",
+      "source_sha256": "0c1c27036ea8bb0d6aff4e6b52fa74eedb81819733741798963cd620e0c99abf",
+      "hook_sha256": "babb481f90262678416d276d7b81ab95a600a7fea53589266de1898ec50f1d4e",
+      "original_core_sha256": "7f331574f797a96eaed11605164c8b7ef56927e457ee417b9ac12ebff15c8a38",
+      "actual_null_preflight_sha256": "765e9a891d3e7eced53d02a5bf6596079a9989c4b79145e418f9b35cec14e751",
+      "cases": [
+        {
+          "variant": "original-full-pressure-core-bytes-retained",
+          "passed": true
+        },
+        {
+          "variant": "matched-success",
+          "single_original_launch_and_exception_identity_preserved": true
+        },
+        {
+          "variant": "matched-Popen-error",
+          "single_original_launch_and_exception_identity_preserved": true
+        },
+        {
+          "variant": "unmatched-Popen-error",
+          "single_original_launch_and_exception_identity_preserved": true
+        },
+        {
+          "variant": "annotation-preparation-error",
+          "single_original_launch_and_exception_identity_preserved": true
+        },
+        {
+          "variant": "success",
+          "original_full_request_window_success_and_late_failure_evidence_retained": true
+        },
+        {
+          "variant": "body-error-after-headers",
+          "original_full_request_window_success_and_late_failure_evidence_retained": true
+        },
+        {
+          "variant": "missing-annotation",
+          "original_full_request_window_success_and_late_failure_evidence_retained": true
+        },
+        {
+          "variant": "header-outside-native-window",
+          "original_full_request_window_success_and_late_failure_evidence_retained": true
+        },
+        {
+          "variant": "duplicate-annotation",
+          "original_full_request_window_success_and_late_failure_evidence_retained": true
+        },
+        {
+          "variant": "raw-artifact-exact-bytes-and-bound",
+          "passed": true
+        },
+        {
+          "variant": "helper-start-permission",
+          "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+        },
+        {
+          "variant": "helper-save-permission",
+          "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+        },
+        {
+          "variant": "helper-start-and-business-error",
+          "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+        },
+        {
+          "variant": "collector-stop-error",
+          "ordinary_diagnostic_failure_does_not_skip_original_business_or_replace_exception": true
+        },
+        {
+          "variant": "failed-diagnostic-check-stays-failed-after-wrapper-finally",
+          "passed": true
+        },
+        {
+          "variant": "actual-null-preflight-projection-retains-exact-raw-artifact",
+          "passed": true
+        }
+      ],
+      "synthetic_only_not_vendor_runtime_qualification": true,
+      "original_full600_and11_intervals_not_executed": true,
+      "unit_source_sha256": "5e18ea682f06d53c68ee0effb73eee598705e2be781593f073fe3394c8ee36de"
+    },
+    "same_fixed_job_no_restart_or_hotpatch": true,
+    "diagnostic_failure_did_not_skip_either_original600_or11_intervals": true,
+    "full_BPF_diagnostic_accepted": false,
+    "fixed_factory_full_runtime_accepted": false,
+    "business_accepted": false,
+    "causal_attribution_accepted": false,
+    "stable_release_accepted": false,
+    "product_source_or_release_assets_changed": false,
+    "recorded_checks": 29,
+    "planned_check_names": [
+      "dbs-600s-native-surrounds-reload-backup-stream-restore",
+      "dbs-ConfigMap-style-symlink-accepts-valid-policy",
+      "dbs-duplicate-key-retains-entire-policy",
+      "dbs-invalid-IO-retains-entire-policy",
+      "dbs-manual-to-percent-during-engine",
+      "dbs-memory-high20-release-recovers-same-generation7-without-config-rewrite",
+      "dbs-memory-high30-to20-applies-and-reclaims-or-throttles-under-real-pressure",
+      "dbs-partial-JSON-retains-entire-policy",
+      "dbs-percent-to-manual-three-resources",
+      "dbs-pressure-test-return-to-percent30",
+      "dbs-released-memory20-returns-to-percent30",
+      "dbs-same-Agent-PID1-PG-cache-profile-and-zero-OOM",
+      "dbs-three-independent-percentages-during-native",
+      "hisdbs-600s-native-surrounds-reload-backup-stream-restore",
+      "hisdbs-ConfigMap-style-symlink-accepts-valid-policy",
+      "hisdbs-duplicate-key-retains-entire-policy",
+      "hisdbs-invalid-IO-retains-entire-policy",
+      "hisdbs-manual-to-percent-during-engine",
+      "hisdbs-memory-high20-release-recovers-same-generation7-without-config-rewrite",
+      "hisdbs-memory-high30-to20-applies-and-reclaims-or-throttles-under-real-pressure",
+      "hisdbs-partial-JSON-retains-entire-policy",
+      "hisdbs-percent-to-manual-three-resources",
+      "hisdbs-pressure-test-return-to-percent30",
+      "hisdbs-released-memory20-returns-to-percent30",
+      "hisdbs-same-Agent-PID1-PG-cache-profile-and-zero-OOM",
+      "hisdbs-three-independent-percentages-during-native",
+      "v10-dbs-bw64-explicit-disable-restores-true-runtime-originals",
+      "v10-dbs-bw64-one-current-Agent-fresh-cache-readonly-CCG",
+      "v10-dbs-bw64-original-start-and-three-controls-with-v2-daily-logs",
+      "v10-hisdbs-bw64-explicit-disable-restores-true-runtime-originals",
+      "v10-hisdbs-bw64-one-current-Agent-fresh-cache-readonly-CCG",
+      "v10-hisdbs-bw64-original-start-and-three-controls-with-v2-daily-logs"
+    ],
+    "unrecorded_checks_after_original_business_error": [
+      "dbs-600s-native-surrounds-reload-backup-stream-restore",
+      "dbs-same-Agent-PID1-PG-cache-profile-and-zero-OOM",
+      "v10-dbs-bw64-explicit-disable-restores-true-runtime-originals"
+    ],
+    "business_failures": {
+      "v10-dbs-bw64": "NATIVE_COMPLETION_EXIT"
+    }
+  },
+  "compact_report_output_actual_linux_checks": 5,
+  "native_transport_actual_image_checks": 9,
+  "completed_prerequisite_reports": [
+    {
+      "schema": "crg-compact-report-output-qualification-v1",
+      "phase": "passed",
+      "checks": [
+        {
+          "name": "all-frozen-source-and-ELF-hashes-match",
+          "passed": true
+        },
+        {
+          "name": "Linux-unit-compact-exact-bound-overflow-and-all-output-failures",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-rejection-writes-complete-compact-report-before-finished",
+          "passed": true
+        },
+        {
+          "name": "actual-CLI-write-failure-is-nonzero-and-explicit-not-finished",
+          "passed": true
+        },
+        {
+          "name": "all-three-executed-children-reaped-and-no-BPF-load-attempt",
+          "passed": true
+        }
+      ],
+      "source_sha256": {
+        "direct-bpf": "fce6f27f4703bccc6e1ddb8774c118f27aa547a79c812ea898427e98c7d747e9",
+        "function.go": "7f2bbf21dce9cea88efba5105735aeaafc225f4ee8c92505a1a819a7b3cadfa3",
+        "function_test.go": "9a81dae13e502e5b26f1849fe78f90c583a8dba5ae98b1c96cce4c1e231255ea",
+        "go.mod": "1976a956e26aa76e24c7224a3db77930a66b4e520c6ea769891dc397f623d769",
+        "go.sum": "877b0097d31e9e1d597ae22d6178fa987f23207aa03109c14e674280bd487e25",
+        "kernel.go": "12f2f98680beb78416a57f6ed5f957bcab2cfe468dc767939ae4a9258575231b",
+        "layout.go": "13c950072bb5a317912ff52609aa0f3a67803d3a644a18bbfdf00a2ff4beb1f7",
+        "main.go": "2e9c4802800e9980ff630f1dabb56cce9dcb41ea9980dde432a325de874761e2",
+        "pairing.test": "2958053dd8759ee83453127a2723d077db4c8ea8da60cf9af13a54833fbfb7cc",
+        "perf_budget.go": "d11c17e9a0dd74e2f76f5c62a3466c28edece462c265fb598c90ee158a98ecba",
+        "perf_budget_test.go": "f7ce8b248fb4f1fec42a29f0b0dfa57d5aab0caaacf6fc6418735ce7de28508e",
+        "report_output.go": "0e4330ebcbba877e1e0c87b13a6ae14ece7c21ee53327bd0d07f090c81a1edb3",
+        "report_output_test.go": "ffbe6fc9680c5a40ea8aa7e1284c37b7238a8df7e4ded3e85b69a93da87e880b",
+        "scope.go": "6615f50303f6b633cb7cba30d3b4cd7ef9cd2f6437247db4dd13bf388aaaa568",
+        "session_limits.go": "b5700a7edc6b0c0aed208ce7e8a174152edd28118cc4ddbb0be4575af343fe7d",
+        "session_limits_test.go": "21377494c83a0a162f9bfdd08bdca79045308a547e95b195f80e4ec45672a49e",
+        "vendor.go": "1c9abe3ff3c5c5e35494d201b778c6f4645cb879086f9feac1ea521cd5103d5b",
+        "wait.go": "ca193465c2be29125f98fa9bca7e8fb987617b83bf644937d04f7af5e6a5d9fb",
+        "checks.py": "a2c186339882cd6bb6e35d2ce3a95fb1586fc447806203fe83e349823e5eefd9"
+      },
+      "product_or_BPF_execution": false,
+      "children": {
+        "go-unit": {
+          "identity": {
+            "pid": 2411384,
+            "start_ticks": 145780916,
+            "parent_pid": 2411254
+          },
+          "entry": "/var/tmp/crg-report812-tools-20261112/pairing.test",
+          "exit": 0,
+          "stdout": "=== RUN   TestReportCompactEncodingRetainsEveryFieldAndRecord\n--- PASS: TestReportCompactEncodingRetainsEveryFieldAndRecord (0.00s)\n=== RUN   TestReportExact32MiBBoundAndOneByteOverflow\n--- PASS: TestReportExact32MiBBoundAndOneByteOverflow (0.23s)\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/encode\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/bound\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/invalid-bound\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/short\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/write\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/sync\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/close\n--- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/encode (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/bound (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/invalid-bound (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/short (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/write (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/sync (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/close (0.00s)\nPASS\n",
+          "stderr": ""
+        },
+        "cli-rejection": {
+          "identity": {
+            "pid": 2411522,
+            "start_ticks": 145780941,
+            "parent_pid": 2411254
+          },
+          "entry": "/var/tmp/crg-report812-tools-20261112/direct-bpf",
+          "exit": 1,
+          "stdout": "{\"complete_report_written\":true,\"intended_report_bytes\":986,\"phase\":\"finished\",\"report_limit_bytes\":33554432}\n",
+          "stderr": ""
+        },
+        "cli-file-size-failure": {
+          "identity": {
+            "pid": 2411722,
+            "start_ticks": 145781003,
+            "parent_pid": 2411254
+          },
+          "entry": "/var/tmp/crg-report812-tools-20261112/direct-bpf",
+          "exit": 1,
+          "stdout": "{\"complete_report_written\":false,\"intended_report_bytes\":986,\"phase\":\"failed\",\"reason\":\"REPORT_WRITE\",\"report_limit_bytes\":33554432}\n",
+          "stderr": ""
+        }
+      },
+      "unit": {
+        "identity": {
+          "pid": 2411384,
+          "start_ticks": 145780916,
+          "parent_pid": 2411254
+        },
+        "entry": "/var/tmp/crg-report812-tools-20261112/pairing.test",
+        "exit": 0,
+        "stdout": "=== RUN   TestReportCompactEncodingRetainsEveryFieldAndRecord\n--- PASS: TestReportCompactEncodingRetainsEveryFieldAndRecord (0.00s)\n=== RUN   TestReportExact32MiBBoundAndOneByteOverflow\n--- PASS: TestReportExact32MiBBoundAndOneByteOverflow (0.23s)\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/encode\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/bound\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/invalid-bound\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/short\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/write\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/sync\n=== RUN   TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/close\n--- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/encode (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/bound (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/invalid-bound (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/short (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/write (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/sync (0.00s)\n    --- PASS: TestReportAllOutputFailuresAreExplicitAndCloseKeepsFirstError/close (0.00s)\nPASS\n",
+        "stderr": ""
+      },
+      "output_files": {
+        "cli-rejection": {
+          "path": "/var/tmp/crg-report812-tools-20261112/cli-rejection.json",
+          "sha256": "c0706b8d7ac267a43f20619fe1e3dbdc5c663084336422206ac593dac43ea51e",
+          "bytes": 986,
+          "terminal": {
+            "complete_report_written": true,
+            "intended_report_bytes": 986,
+            "phase": "finished",
+            "report_limit_bytes": 33554432
+          }
+        },
+        "cli-file-size-failure": {
+          "path": "/var/tmp/crg-report812-tools-20261112/cli-file-size-failure.json",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "terminal": {
+            "complete_report_written": false,
+            "intended_report_bytes": 986,
+            "phase": "failed",
+            "reason": "REPORT_WRITE",
+            "report_limit_bytes": 33554432
+          }
+        }
+      },
+      "ended_utc": "2026-11-12T21:11:06.930539+00:00"
+    },
+    {
+      "schema": "crg-native-transport-image-unit-qualification-v1",
+      "phase": "passed",
+      "checks": [
+        {
+          "name": "all-frozen-Python-sources-match",
+          "passed": true
+        },
+        {
+          "name": "host-nine-units-include-full-pipe-and-exact-business-exceptions",
+          "passed": true
+        },
+        {
+          "name": "dbs-uses-existing-original-image-without-pull",
+          "passed": true
+        },
+        {
+          "name": "dbs-original-Python27-nine-units-retain-payload-timeout-and-body-error",
+          "passed": true
+        },
+        {
+          "name": "dbs-own-unit-PID1-and-leaf-independently-gone",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-uses-existing-original-image-without-pull",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-original-Python27-nine-units-retain-payload-timeout-and-body-error",
+          "passed": true
+        },
+        {
+          "name": "hisdbs-own-unit-PID1-and-leaf-independently-gone",
+          "passed": true
+        },
+        {
+          "name": "own-namespace-independently-gone",
+          "passed": true
+        }
+      ],
+      "roles": {
+        "dbs": {
+          "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+          "pod_uid": "7a8c736a-0d4e-4342-9e84-60890d0c430f",
+          "container_id": "96167d23e852a8f37f498f9c2512b1c3840769d699d956cfdb5a674af8e8506f",
+          "init": {
+            "pid": 2521651,
+            "start_ticks": 145830196
+          },
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod7a8c736a_0d4e_4342_9e84_60890d0c430f.slice/cri-containerd-96167d23e852a8f37f498f9c2512b1c3840769d699d956cfdb5a674af8e8506f.scope",
+          "unit": {
+            "Python": "2.7.5",
+            "cases": [
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "success"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "urlopen-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "body-error-after-headers"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "sink-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "clock-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "non-target-URL"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "non-target-URL-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "connection-metadata-error"
+              },
+              {
+                "passed": true,
+                "variant": "full-pipe-drops-annotation-without-blocking-or-changing-stdout-flags"
+              }
+            ],
+            "headers_return_not_business_success": true,
+            "native_worker_source_unchanged": true,
+            "phase": "passed",
+            "schema": "crg-native-transport-shim-unit-v1",
+            "source_sha256": "16c83bf475f2a65b3c44c62640b7e19cfaa4b42e38571de90b4098ffa21173f4",
+            "synthetic_only_not_original_full_pressure": true
+          },
+          "init_absent": true,
+          "own_leaf_absent": true
+        },
+        "hisdbs": {
+          "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+          "pod_uid": "9bde6ae2-522b-46a0-bae4-ec154be43618",
+          "container_id": "2ee133953e588bb8470d05bdcd27e970cefde84c270e136bd783205713c1a627",
+          "init": {
+            "pid": 2524476,
+            "start_ticks": 145831056
+          },
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod9bde6ae2_522b_46a0_bae4_ec154be43618.slice/cri-containerd-2ee133953e588bb8470d05bdcd27e970cefde84c270e136bd783205713c1a627.scope",
+          "unit": {
+            "Python": "2.7.5",
+            "cases": [
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "success"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "urlopen-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "body-error-after-headers"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "sink-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "clock-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "non-target-URL"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "non-target-URL-error"
+              },
+              {
+                "original_call_return_or_exact_exception_preserved": true,
+                "payload_and_four_second_timeout_unchanged": true,
+                "variant": "connection-metadata-error"
+              },
+              {
+                "passed": true,
+                "variant": "full-pipe-drops-annotation-without-blocking-or-changing-stdout-flags"
+              }
+            ],
+            "headers_return_not_business_success": true,
+            "native_worker_source_unchanged": true,
+            "phase": "passed",
+            "schema": "crg-native-transport-shim-unit-v1",
+            "source_sha256": "16c83bf475f2a65b3c44c62640b7e19cfaa4b42e38571de90b4098ffa21173f4",
+            "synthetic_only_not_original_full_pressure": true
+          },
+          "init_absent": true,
+          "own_leaf_absent": true
+        }
+      },
+      "source_sha256": {
+        "sitecustomize.py": "16c83bf475f2a65b3c44c62640b7e19cfaa4b42e38571de90b4098ffa21173f4",
+        "transport-unit.py": "df02b00541e0fe8587f77eb9200ea77ecb0dcbd1a8b81a1ee6d66cd1bc0e1266",
+        "checks.py": "07a2b06702e994318b1e85c733b87c8f4c74f5e172bab8a8902a05a663237510"
+      },
+      "original_vendor_services_or_workload_started": false,
+      "namespace": "crg-vendor-lab-transport815-20261112",
+      "host_unit": {
+        "Python": "3.9.21",
+        "cases": [
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "success"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "urlopen-error"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "body-error-after-headers"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "sink-error"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "clock-error"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "non-target-URL"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "non-target-URL-error"
+          },
+          {
+            "original_call_return_or_exact_exception_preserved": true,
+            "payload_and_four_second_timeout_unchanged": true,
+            "variant": "connection-metadata-error"
+          },
+          {
+            "passed": true,
+            "variant": "full-pipe-drops-annotation-without-blocking-or-changing-stdout-flags"
+          }
+        ],
+        "headers_return_not_business_success": true,
+        "native_worker_source_unchanged": true,
+        "phase": "passed",
+        "schema": "crg-native-transport-shim-unit-v1",
+        "source_sha256": "16c83bf475f2a65b3c44c62640b7e19cfaa4b42e38571de90b4098ffa21173f4",
+        "synthetic_only_not_original_full_pressure": true
+      },
+      "namespace_uid": "afc64fb8-abe4-417d-8707-ff26d71b74d3",
+      "namespace_absent": true,
+      "ended_utc": "2026-11-12T21:19:43.335795+00:00"
+    }
+  ],
+  "frozen_source_families": [
+    "tests/compact-report-output-host-frozen-v1",
+    "tests/native-transport-shim-frozen-v1",
+    "tests/full-pressure-diagnostics-frozen-v1",
+    "tests/full-pressure-diagnostics-null-fix-v1"
+  ],
+  "exact_evidence": {
+    "path": "test-evidence/full-pressure-diagnostic-integration.json.gz",
+    "sha256": "ce2d8dd80cb58b0786bb849add24ad1df84de5c34352a3033cc629f646582cf3",
+    "uncompressed_sha256": "db3553f346aae92c87db5dab213af59f6576088e39fb1f1ec279220d921f4c23"
+  },
+  "original_full600_and11_intervals_executed": true,
+  "original_workload_failures_preserved": true,
+  "optional_failure_did_not_skip_business": true,
+  "full_BPF_diagnostic_accepted": false,
+  "fixed_factory_full_runtime_accepted": false,
+  "business_accepted": false,
+  "causal_attribution_accepted": false,
+  "stable_release_accepted": false,
+  "product_source_dependencies_or_release_assets_changed": false
+}
