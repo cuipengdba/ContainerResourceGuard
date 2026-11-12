@@ -1,0 +1,132 @@
+{
+  "phase": "frozen-before-launch",
+  "kind": "continuous component of comprehensive seven-day acceptance; not whole P10 or release gate completion",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+  "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+  "runner_sha256": "d27e6adba1e887d4683cf8b14de4c4d1ee80fd11e3850d02bcf2e5513fc9ff82",
+  "campaign_wrapper_sha256": "b39729ec610d9accb0d9c2ad9065e103fe5ab14a03b896dafb0fa49056518846",
+  "helper_sha256": {
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "qualification_sha256": {
+    "identity-qualification.json": "5bcb84aaf61dd3f7d9d1978483fc30be13aab726ca13f79c78802cc005d9ef70",
+    "integration-qualification.json": "0671b09e69a6f70741aa28636cc54e9144f5a16fc7c7ee37d07088c5481dec1c",
+    "overhead-qualification.json": "9d5cd893c6fcd081f1e9c1a5e82d3f99d12df482afbaa541e2a4a5d44ebe512d",
+    "business-qualification.json": "2858b12ddc94028642488bb0a1b4248866b97266d31276e369441c3f93db15cf",
+    "fault-qualification.json": "dfafd57db8c5d307ac2adf19deaa486770b081d603f64c7b6841a0ee63e374f5",
+    "maintenance-plan.json": "42ca7a5ae9951e79d0ccc8bd6d4908e26e095785833b0f31206c12511c98ebf6",
+    "cold-plan.json": "dbf9373664a7b8f578f6920e1ec1245287b96aeb3978b947d6dc44ac80ab0983",
+    "maintenance-qualification.json": "92ad1ceda5eccfef1cfc9a8d77d76e4961a7f95d6c0a857523c5e8f07e45eaba",
+    "cold-qualification.json": "1332052eb262bf0c226adf5e571a70ea9840c4a0b5142c779a474843d60a7b02"
+  },
+  "private_original_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "prerequisites": [
+    "Exact published preview4 identity/native88,overhead3x1800,business2x600,fault20x108,maintenance26 and cold4boots44 complete passed; actual job/exit/report hash chain and independently absent namespaces.",
+    "Both current cold and maintenance qualification JSON must match the actual terminal runtime report/exit exactly; cold to maintenance reference retained.",
+    "Canonical memory_high config and pre-gate own doctor/runtime originals define full8 controls and exact journal before business startup.",
+    "Host available>=28GiB before each Pod,>=8GiB steady,disk>=20GiB; all original startup300/cache45/native604800/28cycles/sampling/SQL/API criteria retained."
+  ],
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "resource_mode": "manual",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_high_bytes": 20001980416,
+    "external_runtime_memory_max_bytes": 21474836480,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096
+  },
+  "criteria": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "native_actual_seconds_each_role": 604800,
+    "SQL_period_seconds": 2,
+    "API_period_seconds": 5,
+    "errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "coverage_min": 0.98,
+    "payload_bytes_each_role": 67108864,
+    "same_primary_PID1_Agent_cache_and_actual8_controls": true,
+    "OOM_kill_delta": 0,
+    "host_sample_seconds": 60,
+    "maximum_host_sample_gap_seconds": 120,
+    "backup_offsets_seconds": [
+      300,
+      21600,
+      43200,
+      64800,
+      86400,
+      108000,
+      129600,
+      151200,
+      172800,
+      194400,
+      216000,
+      237600,
+      259200,
+      280800,
+      302400,
+      324000,
+      345600,
+      367200,
+      388800,
+      410400,
+      432000,
+      453600,
+      475200,
+      496800,
+      518400,
+      540000,
+      561600,
+      583200
+    ],
+    "engine_cycles_each_role": 28,
+    "engine_content_checks_each_role_each_cycle": 10,
+    "maximum_engine_cycle_seconds": 1800
+  },
+  "component_checks": 11,
+  "end_state": "After actual continuous component, remove only exact UID-owned test namespace and keep aged database/config/state/log directories for required postflight. Report P10_complete=false.",
+  "postflight_required": [
+    "Verify aged data/config/journal/daily logs and backup; recreate current Pods using retained seven-day fixture and verify fresh cache status/new IDs/old journal isolation/true runtime originals.",
+    "Perform source-qualified Agent upgrade/rollback and stop/restore without losing aged payload; all operations within a fresh declared native smoke window.",
+    "Recheck helper-fault isolation and logging, preserve failures and full source/runtime boundary.",
+    "Complete independent original24h observe/equal24h enforce,>=7day composite audit, released-minor maintenance and final support/52-task audit before1.0."
+  ],
+  "parallel_scope": "New exact preview4 high-policy namespace and own seven-day timer/retained-data lineage under original host reserves. Existing R57/R78 hard-policy components remain on their own handles/source/timers and are not stopped, changed or credited. Formal24h stage retains its original no-other-business-fixture gate.",
+  "limitations": [
+    "Exact same preview4 published ELF and named manual64MiB/s budget on existing AMD64/Linux5.14/single physical disk; not default percentages or high-pressure/dirty-IO acceptance.",
+    "Each role must actually measure604800seconds and28engine cycles; startup,planned duration or previous-source elapsed time does not count.",
+    "Fresh synthetic64MiB schemas,loopbackSQL/API,real vendor paths and original startup/PG/cache; no production mutation or unknown vendor-specific API claim.",
+    "Aged retained data must later pass its own rebuild,maintenance,fault,logging and restore postflight; previous-source postflight cannot be transferred.",
+    "Formal24hobserve+24henforce,actual published-minor migrations,ARM vendor and multiplephysical-device gates and all original52 completion definitions remain open.",
+    "No source replacement,quota/deadline relaxation or automatic failure suppression during measurement; continuous component alone cannot close stable1.0."
+  ],
+  "version": "v1.0.0-preview.4",
+  "P10_complete": false,
+  "release_accepted": false,
+  "schema": "crg-memory-high-seven-day-plan-v1",
+  "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+  "prior_driver_sha256": "e619d2dac2062ac842c1b89c043b066523d73bfefadd755705272d0ab124f22e",
+  "prior_plan": "test-plan-seven-day-versioned-candidate.json",
+  "memory_policy": "high-reclaim-throttle",
+  "tools": "/var/tmp/crg-high576-tools-20261112",
+  "output": "/var/tmp/crg-high576-seven-20261112",
+  "namespace": "crg-vendor-lab-high576-20261112",
+  "semantic_changes_required_by_user": [
+    "Only manual memory target moves from memory.max to memory.high; external runtime20GiB cap remains. Canonical limits.memory_high avoids legacy alias warning.",
+    "Pre-gate complete control/journal expectation verifies onlyCPU/IO/high and true runtime originals; full8 remain fixed during continuous component.",
+    "Own new policy maintenance26/9intervals and cold44 replace only prerequisite references, not original continuous duration,28cycles,SQL/API or host criteria."
+  ]
+}

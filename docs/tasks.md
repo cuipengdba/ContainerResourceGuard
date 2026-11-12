@@ -480,3 +480,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 已冻结[memory.high保留数据冷重建44项](testing-memory-high-cold-rebuild.md)：两角色四次新ID，门禁前预声明完整high控制和journal原值；原300/45秒、64MiB/marker、备份/独立数据库恢复、同日日志追加与原缓存新鲜度要求保持。当前尚未启动，不借用旧源结果或计时。
+
+
+已冻结[memory.high独立七天连续组件](testing-memory-high-seven-day.md)：自身维护26/冷重建44及完整前置实际终态链，精确发布程序、每角色实际604800秒/28轮/原全部SLA与宿主保留标准，旧源任务保持独立。尚未启动，冻结源码不算运行证据；自身七天老化postflight及其他原稳定门槛保持。
