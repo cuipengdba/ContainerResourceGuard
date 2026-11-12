@@ -287,3 +287,5 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 2026-11-12用户已明确选择[内存百分比改用memory.high](memory-reclaim-policy.md)，不新增memory.max。CPU/内存/IO仍独立默认20%；手动规范字段limits.memory_high，旧memory_max只作带警告的high别名。已实现核心计划、所有权迁移、外部边界及低于用量回收目标，本地Go测试通过；真机、Linux和新预览交付另行记录，不冒用旧长期结果，不关闭原52项或稳定1.0门槛。
 
 2026-11-12内存high新策略：[两原镜像隔离30项、两架构实际控制器44项通过及失败原件](testing-memory-high.md)。仅工程控制资格；完整业务、新策略长期及原52项/稳定条件不关闭，preview.4正在准备。
+
+2026-11-12已交付[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[两架构等八项公开附件逐字节校验](test-results-preview4-publication.json)。独立百分比各默认20、旧自有硬限额迁移、版本门禁、一对一、自动IO标定和日志保留；30+44项仅工程控制范围，原52项与稳定1.0门槛继续。
