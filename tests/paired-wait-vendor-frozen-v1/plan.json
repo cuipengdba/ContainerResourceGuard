@@ -1,0 +1,71 @@
+{
+  "schema": "crg-owned-vendor-paired-wait-plan-v1",
+  "tools": "/var/tmp/crg-bpf733-tools-20261112",
+  "output": "/var/tmp/crg-bpf733-diagnostic-20261112",
+  "namespace": "crg-vendor-lab-bpf733-20261112",
+  "job_sha256": "84d39db0546b4b17c22456db1e299a335d75b55a08c003a7c28ab254044169ab",
+  "source_sha256": {
+    "main.go": "1fe0913ac7b7a537900ebe14ba2442765d7c7abd68dbb1fd2a49f7221b21ece6",
+    "vendor.go": "0f808b12e6e349a174f2b45576a6d02b18b10adfe07aa354fa202613c026a32b",
+    "go.mod": "1976a956e26aa76e24c7224a3db77930a66b4e520c6ea769891dc397f623d769",
+    "go.sum": "877b0097d31e9e1d597ae22d6178fa987f23207aa03109c14e674280bd487e25",
+    "direct-bpf": "b99b242adcdc37511b64404198590818e78c0d3d9a3eb3e66e2ee819f500436a",
+    "native-transport.py": "5314ec94a51140421ab59d4fb43c7d5bb28cbbec115592fc6ad0093766751f02",
+    "engine-original.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "qual-client.py": "139ec040f6f947772fcb5fb6fd85a9a3dcca4fc7f46036e73946709fe01f18e4",
+    "vendor-diagnostic.py": "f73b9acf0faa9b3faae0e5af8501045c4fcdc68b91bdabfbbd7b0509a9743243",
+    "binaries/crg-linux-amd64": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "runner.py": "6a87f7e529a391a67ff42ee32d0a184c4961264bb3cda4228693eff8a72f4683",
+    "kernel.go": "961fc8b2a8c7fbfb5fc577851effe7de8e30c16102fdaf781297d8e016ae81f3",
+    "layout.go": "13c950072bb5a317912ff52609aa0f3a67803d3a644a18bbfdf00a2ff4beb1f7",
+    "wait.go": "7fc78e649fae56755f71f7ae3df8ad1b64556af4dc22399035f55830f566de7d",
+    "function.go": "21f8dcc733e9099c3596c20cdc3169a0cd8937ab1bd21cebfc4cf40b859e8c38",
+    "function_test.go": "9a81dae13e502e5b26f1849fe78f90c583a8dba5ae98b1c96cce4c1e231255ea"
+  },
+  "original_fixture_driver_sha256": "e57a35d5454804fd6be9d4d4792380418628f2bab8821126f2ca655712e541ef",
+  "legacy_core_sha256": "7f331574f797a96eaed11605164c8b7ef56927e457ee417b9ac12ebff15c8a38",
+  "planned_main_checks": 26,
+  "per_role_native_seconds": 120,
+  "formal_business_seconds_unchanged": 600,
+  "formal_business_accepted": false,
+  "formal_limits_SLA_and_historical_failures_unchanged": true,
+  "one_bounded_diagnostic_per_role": true,
+  "qualifier_pre_request_hold_seconds": 0,
+  "normal_fast_request_binding_required": true,
+  "prior_host_wait_qualification": {
+    "receipt": "crg-r344-observations/149-crg-r709-observe-wait97.json",
+    "checks": 28,
+    "balance_dirty_pages": 1930,
+    "folio_wait_writeback": 69,
+    "kernel_source_sha256": "06be27812d1f07b933d07666e89525ec50f42b859f57207d92381f100481f016",
+    "layout_source_sha256": "13c950072bb5a317912ff52609aa0f3a67803d3a644a18bbfdf00a2ff4beb1f7",
+    "wait_source_sha256": "7fc78e649fae56755f71f7ae3df8ad1b64556af4dc22399035f55830f566de7d"
+  },
+  "prior_ring_overflow_failure_retained": "crg-r704-frozen.json",
+  "failure_persistence_unit": "crg-r706-persistence-test.json",
+  "pause_fields_recorded_as_raw_integers_not_duration_interpretation": true,
+  "prior_host_paired_qualification": {
+    "result": "crg-r740-analysis738.json",
+    "checks": 35,
+    "runtime_function_counts": {
+      "balance_dirty_pages": 1584,
+      "iomap_file_buffered_write": 34,
+      "xfs_file_buffered_write": 34,
+      "rwsem_down_write_slowpath": 4,
+      "folio_wait_writeback": 61
+    },
+    "frozen_host": "crg-r738-frozen.json",
+    "exact_shared_sources": {
+      "kernel.go": "961fc8b2a8c7fbfb5fc577851effe7de8e30c16102fdaf781297d8e016ae81f3",
+      "layout.go": "13c950072bb5a317912ff52609aa0f3a67803d3a644a18bbfdf00a2ff4beb1f7",
+      "wait.go": "7fc78e649fae56755f71f7ae3df8ad1b64556af4dc22399035f55830f566de7d",
+      "function.go": "21f8dcc733e9099c3596c20cdc3169a0cd8937ab1bd21cebfc4cf40b859e8c38",
+      "function_test.go": "9a81dae13e502e5b26f1849fe78f90c583a8dba5ae98b1c96cce4c1e231255ea"
+    }
+  },
+  "original_22_checks_preserved_and_four_new_timing_checks_added": true,
+  "failure_summaries_saved_before_strict_assertions": true,
+  "original_full600_and_4s_and_zero_error_criteria_unchanged": true,
+  "product_source_or_release_assets_changed": false
+}
