@@ -447,3 +447,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [固定IO的Agent活动对照](testing-agent-fixed-io-comparison.md)保留两轮失败：首轮准备ValueError，修订A1实际600.165秒SQL/API错误5/1，SQL覆盖率97%低于98%，9次PG等待超过四目标而缺失；其余三臂未运行，结论inconclusive。九个原实例及四namespace/父叶cgroup独立确认清理。错误边界24项及含两类合成反例的离线26项通过；后续449源/计划冻结，15项只读门禁通过，实际A1运行中快照已归档。继续记录不合格性能/明确溢出只用于观察，严格四臂资格和原32项/两角色/稳定门槛不变。
+
+
+[固定IO后续449进展](test-progress-agent-fixed-io-comparison-v3.json)：A1/B1分别实际600.307/600.350秒，SQL/API均0、原十项引擎检查及每臂七个实例/namespace/父叶cgroup独立清理复核合格；2026-11-11T23:59:37Z原runner/worker和B2 Agent/watchdog存活。全四臂尚未完成，不计有效ABBA、原32项压力/两角色或稳定验收。新只读分析器按完整证据独立判定，两个真实臂复核及16个合成反例共18项通过；原两轮失败和严格资格保持。
