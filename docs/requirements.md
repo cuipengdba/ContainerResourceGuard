@@ -323,3 +323,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [原镜像启动/FIFO资格](testing-native-startup-private-fifo.md)：最终19项通过，保留原9传输/19参数并新增13通道用例；两镜像各4次真实postgres启动及自有HTTP，缺失/无读取端/写满均不阻断，stdout标志未改。843、848、850三轮失败与完整源码原件保留。仅测试诊断器资格，完整工厂接收端及BPF启动边界待完成，产品/preview.4及原52项完成声明不变。用户内存选择保持memory.high，不新增memory.max。
+
+
+[私有接收端与工厂接线](testing-private-fifo-receiver-factory.md)：867真实接收资格15项通过，保留17工厂用例、新18接收及8通道故障用例，两个原镜像各3次postgres启动；873工厂启动路径9项通过，采集器/K8s身份为模拟而FIFO/线程/FD真实。生产程序/preview.4不变，完整600秒联调、接收端长期CPU及BPF边界仍待验收；原52项和全部失败保留。
