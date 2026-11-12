@@ -36,6 +36,9 @@ func TestMemoryExtrasValidationZeroSwapAndPlanCaps(t *testing.T) {
 
 func TestMemoryHighAndSwapApplyRestoreAndExternalConflict(t *testing.T) {
 	e, f := fixture(t)
+	cpu := 1.0
+	e.Config.ResourceMode = "manual"
+	e.Config.Limits = &ManualLimits{CPUCores: &cpu}
 	e.Pause = func(time.Duration) {}
 	high := filepath.Join(e.Env.Target, "memory.high")
 	swap := filepath.Join(e.Env.Target, "memory.swap.max")
@@ -65,7 +68,7 @@ func TestMemoryHighAndSwapApplyRestoreAndExternalConflict(t *testing.T) {
 	}
 }
 
-func TestUnsafeHighAndSwapDecreasesDoNotForceReclaim(t *testing.T) {
+func TestHighAllowsReclaimBelowUsageWhileSwapDecreaseStaysProtected(t *testing.T) {
 	e, f := fixture(t)
 	e.Pause = func(time.Duration) {}
 	high := filepath.Join(e.Env.Target, "memory.high")
@@ -75,7 +78,7 @@ func TestUnsafeHighAndSwapDecreasesDoNotForceReclaim(t *testing.T) {
 	f.data[filepath.Join(e.Env.Target, "memory.current")] = "524288000"
 	f.data[filepath.Join(e.Env.Target, "memory.swap.current")] = "134217728"
 	r := e.Apply(Plan{Settings: []Setting{{File: "memory.high", Value: "536870912"}, {File: "memory.swap.max", Value: "0"}}})
-	if r.State != "degraded" || len(f.writes) != 0 || !strings.Contains(r.Items[0].Detail, "unsafe memory") || !strings.Contains(r.Items[1].Detail, "unsafe swap") {
+	if r.State != "degraded" || len(f.writes) != 1 || r.Items[0].State != "applied" || !strings.Contains(r.Items[1].Detail, "unsafe swap") {
 		t.Fatal(r)
 	}
 	f.data[filepath.Join(e.Env.Target, "memory.current")] = "1048576"

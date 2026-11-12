@@ -1,5 +1,7 @@
 # 安全配置热重载（v0.2 开发中）
 
+> 2026-11-12已选定的新内存语义：百分比及手动内存写memory.high，不新增memory.max；允许超目标，外部硬限额保留。旧硬限额仅凭同身份journal及仍持有的值恢复。下述旧版实现/测试保持历史来源，不能替代新策略验证。见[内存策略](memory-reclaim-policy.md)。
+
 当前适用未发布的`next/compatibility-contract`及同内容分区开发线；原`next/safe-reload`为历史来源。已发布RC2及v0.1.0-rc.3-preview.1没有此功能。只管理CPU/内存/IO，三个独立百分比各默认20%；设置前仍须通过纯cgroup v2门禁，v1/混合/未知跳过并记录日志。十版顺序和所有发布验收条件继续有效。
 
 ## 用法
@@ -13,7 +15,7 @@
 ## 两种模式与移除项
 
 - 百分比模式可只填`{}`，或`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`。合法修改只影响对应项；省略的一项独立恢复默认20%，无须重启业务或Agent。旧单percent仅兼容原部署。
-- 手动模式如 `{"resource_mode":"manual","limits":{"cpu_cores":2,"memory_max":"8GiB"}}`，只管理明确填写的维度。允许与百分比模式切换；手动模式不得同时填写 `percent`。
+- 手动模式如 `{"resource_mode":"manual","limits":{"cpu_cores":2,"memory_high":"8GiB"}}`，只管理明确填写的维度。允许与百分比模式切换；手动模式不得同时填写 `percent`。
 - 移除明确管理的手动CPU/内存/IO维度时，只恢复仍由CRG拥有的原值；恢复更低内存上限仍必须通过安全预检，否则保留现值并报告未完成。历史扩展控制不作为当前配置推荐；曾运行过八项候选时，按[迁移规则](independent-percentages.md)使用对应旧程序恢复。
 - 临时无法解析仍请求的维度（例如 IO 标定文件丢失）保留已有受管限额，报告 `retained`，不能误判为要求取消限额。
 - 更换 IO 设备范围暂保留旧设备限额并报告。需要清除时先显式 `disable`，核对恢复结果，再调整范围和 `enable`；多设备维护工具由 v0.3 承接。

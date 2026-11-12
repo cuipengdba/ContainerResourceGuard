@@ -21,7 +21,7 @@ type RealFiles struct{}
 
 func (RealFiles) Read(p string) (string, error) { return read(p) }
 func (RealFiles) Write(p, v string) error {
-	f, e := os.OpenFile(p, os.O_WRONLY, 0)
+	f, e := openControlForWrite(p)
 	if e != nil {
 		return e
 	}
@@ -272,7 +272,12 @@ func (e *Engine) write(s Setting, value string) error {
 func (e *Engine) Originals() map[string]string {
 	r := map[string]string{}
 	for k, m := range e.Journal.Mutations {
-		r[k] = m.Original
+		// A baseline applies only while the recorded value is still ours.
+		// In particular, never hide a changed external hard cap during upgrade.
+		cur, err := e.current(m.Setting)
+		if !m.Conflict && err == nil && (cur == m.Applied || m.Pending != "" && cur == m.Pending) {
+			r[k] = m.Original
+		}
 	}
 	return r
 }
@@ -346,7 +351,7 @@ func (e *Engine) applyOne(s Setting) (string, string, string) {
 		_ = e.save()
 		return "conflict", "current value differs from the last owned value; refusing overwrite", "external_conflict"
 	}
-	if (s.File == "memory.max" || s.File == "memory.high") && maxNumber(s.Value) < maxNumber(current) {
+	if s.File == "memory.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.memoryDecreasePreflight(s.File, s.Value, current); err != nil {
 			return "skipped", err.Error(), errorReason(err, "memory_safety")
 		}
@@ -372,7 +377,7 @@ func (e *Engine) applyOne(s Setting) (string, string, string) {
 	}
 	// A slow journal fsync may outlive the preflight. Recheck usage immediately
 	// before lowering memory.max, without attempting forced cache reclaim.
-	if (s.File == "memory.max" || s.File == "memory.high") && maxNumber(s.Value) < maxNumber(current) {
+	if s.File == "memory.max" && maxNumber(s.Value) < maxNumber(current) {
 		if err := e.memoryHeadroom(s.Value, 0); err != nil {
 			return "skipped", err.Error(), "memory_safety"
 		}
@@ -490,7 +495,7 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 		} else {
 			// A multi-cycle wait must not rewrite intent every second. Once the
 			// window is safe, retain the original post-fsync instantaneous check.
-			if e.Config.MemoryStableSeconds > 0 && (m.File == "memory.max" || m.File == "memory.high") && maxNumber(m.Original) < maxNumber(cur) {
+			if e.Config.MemoryStableSeconds > 0 && m.File == "memory.max" && maxNumber(m.Original) < maxNumber(cur) {
 				if err := e.memoryDecreasePreflight(m.File, m.Original, cur); err != nil {
 					item.State, item.Detail, item.ReasonCode = "skipped", err.Error(), errorReason(err, "memory_safety")
 					r.State = "degraded"
@@ -508,7 +513,7 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 					m.Conflict = true
 					err = errors.New("value changed while saving restore intent; external value retained")
 				}
-				if err == nil && (m.File == "memory.max" || m.File == "memory.high") && maxNumber(m.Original) < maxNumber(cur) {
+				if err == nil && m.File == "memory.max" && maxNumber(m.Original) < maxNumber(cur) {
 					err = reasonError("memory_safety", e.memoryPreflight(m.Original))
 				}
 				if err == nil && m.File == "pids.max" && maxNumber(m.Original) < maxNumber(cur) {
@@ -627,15 +632,18 @@ func (e *Engine) Reconcile(p Plan) Status {
 }
 
 func requestedControl(c Config, file string) bool {
+	// Historical hard caps are removed through the ordinary ownership-checked
+	// restoration path. A new policy never keeps one as a requested dimension.
+	if file == "memory.max" {
+		return false
+	}
 	if c.independentPercentages() && c.ResourcePercentages.present() {
-		return file == "cpu.max" || file == "memory.max" || file == "io.max"
+		return file == "cpu.max" || file == "memory.high" || file == "io.max"
 	}
 	manual := c.ResourceMode == "manual"
 	switch file {
 	case "cpu.max":
 		return !manual || c.Limits != nil && c.Limits.CPUCores != nil
-	case "memory.max":
-		return !manual || c.Limits != nil && c.Limits.MemoryMax != ""
 	case "io.max":
 		return !manual || c.Limits != nil && c.Limits.HasIO()
 	case "pids.max":
@@ -645,7 +653,7 @@ func requestedControl(c Config, file string) bool {
 	case "io.weight":
 		return c.IOWeight != nil
 	case "memory.high":
-		return c.MemoryHigh != ""
+		return !manual || c.MemoryHigh != "" || c.Limits != nil && c.Limits.memoryTarget() != ""
 	case "memory.swap.max":
 		return c.MemorySwapMax != ""
 	}

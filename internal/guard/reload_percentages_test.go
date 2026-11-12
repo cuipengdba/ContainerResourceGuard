@@ -40,7 +40,7 @@ func TestReloadIndependentDefaultsCLIOverridesAndLastGoodPolicy(t *testing.T) {
 			t.Fatal(err)
 		}
 		for _, setting := range p.Settings {
-			if setting.File != "cpu.max" && setting.File != "memory.max" && setting.File != "io.max" {
+			if setting.File != "cpu.max" && setting.File != "memory.high" && setting.File != "io.max" {
 				t.Fatal("reload implicitly controls another resource", setting)
 			}
 		}

@@ -1533,17 +1533,24 @@
   },
   "memory_reclaim_preference_request": {
     "date": "2026-11-12",
-    "phase": "requirements-recorded-semantic-choice-pending",
+    "phase": "memory-high-selected-implemented-local-tests-real-tests-pending",
     "design": "docs/memory-reclaim-policy.md",
     "user_request": "达到内存目标后释放内存，不希望OOM；说明其他cgroup内存控制参数",
     "choices": [
       "reclaim-first-soft-target-may-exceed",
       "strict-hard-cap-OOM-possible"
     ],
-    "runtime_change_implemented": false,
+    "runtime_change_implemented": true,
     "published_assets_changed": false,
     "all_original_task_definitions_and_gates_preserved": true,
-    "completion_claim": false
+    "completion_claim": false,
+    "selected_semantics": "reclaim-first-soft-target-may-exceed",
+    "user_selection": "memory.high 限制内存用这个，别用memory.max",
+    "implementation_branches": [
+      "next/compatibility-contract",
+      "next/partition-io"
+    ],
+    "main_source_backport": false
   },
   "proc_read_error_qualification": {
     "date": "2026-11-12",
