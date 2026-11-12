@@ -1,0 +1,38 @@
+{
+  "schema": "crg-vendor-memory-high-plan-v1",
+  "source_revision": "e7b1a38c4fe5ad8ad237093c11cf8dc92b68c403",
+  "version": "v1.0.0-preview.4",
+  "files": {
+    "crg": "4a51e23ef35260a28caf3b1c64fbe549b4c6e05f41ff517b38b4a6275a78e181",
+    "vendor-memory-high-v2.py": "085a8a1c521e6c129327f87d6441efdc84be6a8568c92fa6124f33009f0013bc",
+    "legacy-crg": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+  },
+  "tools": "/var/tmp/crg-memory-high524-tools-20261112",
+  "output": "/var/tmp/crg-memory-high524-results-20261112",
+  "namespace": "crg-memory-high524-20261112",
+  "roles": {
+    "dbs": {
+      "image": "db_puc/dbs:V7.0.12.001.02.56",
+      "image_id": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "node": "k8smaster-3297",
+      "old_binary": "/var/tmp/crg-realpaths64-20261111/v10-dbs-bw64/dbs-business/crg/crg",
+      "old_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+    },
+    "hisdbs": {
+      "image": "db_puc/hisdbs:V7.0.12.001.02",
+      "image_id": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "node": "k8smaster-3297",
+      "old_binary": "/var/tmp/crg-realpaths64-20261111/v10-hisdbs-bw64/hisdbs-business/crg/crg",
+      "old_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8"
+    }
+  },
+  "expected_role_count": 2,
+  "pods_per_role": 3,
+  "business_acceptance": false,
+  "external_hard_limit_bytes": 536870912,
+  "clean_cache_bytes": 167772160,
+  "anonymous_working_set_bytes": 100663296,
+  "high_target_bytes": 67108864,
+  "minimum_observed_cache_reclaim_bytes": 33554432,
+  "all_original_gates_preserved": true
+}
