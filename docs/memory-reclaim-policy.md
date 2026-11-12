@@ -30,3 +30,7 @@ high可设置为低于当前用量，以启动回收压力；它不再使用原m
 原52项定义、既有失败和稳定1.0发布门槛保留。此语义变更列入内存开发主题，不补造历史次版本，也不因单次回收演示关闭业务验收。
 
 接口依据：[Linux内核cgroup v2](https://docs.kernel.org/admin-guide/cgroup-v2.html)、[上游5.14内存控制器实现](https://github.com/torvalds/linux/blob/v5.14/mm/memcontrol.c)、[Kubernetes资源管理](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)。
+
+## 发布程序的后续复验
+
+精确preview.4两架构发布文件完成[Linux6/7四格88项和八文件一致性](testing-memory-high-native.md)、[新检出重建与节点身份](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)和[DBS/HISDBS真实路径各600秒及备份/同步/独立恢复](testing-memory-high-business.md)。两次准备脚本错误及原stderr/失败收据保留；不计入业务通过。新策略故障、实际压力、默认百分比和长期门槛仍独立开放。

@@ -1,0 +1,183 @@
+{
+  "node_utc": "2026-11-12T06:29:10Z",
+  "phase": "failed-before-campaign-worker-start",
+  "report": {
+    "resource_mode": "manual",
+    "declared_test_budget": {
+      "cpu_cores": 7.2,
+      "memory_high_bytes": 20001980416,
+      "bandwidth_cases_MiB_per_second": [
+        64
+      ],
+      "read_write_iops": 4096
+    },
+    "phase": "failed",
+    "scope": "same container paths and read-only CCG mount as read-only deployment inventory; fresh private test-node backing directories and loopback DCS, no production data; original business/image/database parameters",
+    "roles": {
+      "v10-dbs-bw64": {
+        "phase": "failed",
+        "resource_mode": "manual",
+        "candidate_branch": "v10",
+        "memory_reserve_before_bytes": 37134794752,
+        "declared_read_write_bps": 67108864,
+        "original_start_script_unmodified": true,
+        "same_container_mount_paths": true,
+        "original_ccg_readonly": true,
+        "last_readiness_probe": {
+          "exit": 0,
+          "output": "127.0.0.1:5432 - accepting connections\n"
+        },
+        "last_api_probe": {
+          "exit": 0
+        },
+        "ready_and_managed_seconds": 18.759701010072604,
+        "automatic_io": null,
+        "cache_enforce_observation_seconds": 0.00014878693036735058,
+        "actual_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "expected_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "error": "[Errno 2] No such file or directory: '/var/tmp/crg-high544-realpaths-20261112/v10-dbs-bw64/campaign-dbs/report.json'",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-high544-tools-20261112/business-job.py\", line 154, in <module>\n    native=json.loads((campaign/'report.json').read_text());record(key+'-600s-native-and-backup-sync-independent-restore',job.returncode==0 and native['phase']=='passed')\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1266, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1252, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1120, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/var/tmp/crg-high544-realpaths-20261112/v10-dbs-bw64/campaign-dbs/report.json'\n",
+        "own_pod_removed": true
+      },
+      "v10-hisdbs-bw64": {
+        "phase": "failed",
+        "resource_mode": "manual",
+        "candidate_branch": "v10",
+        "memory_reserve_before_bytes": 37103124480,
+        "declared_read_write_bps": 67108864,
+        "original_start_script_unmodified": true,
+        "same_container_mount_paths": true,
+        "original_ccg_readonly": true,
+        "last_readiness_probe": {
+          "exit": 0,
+          "output": "127.0.0.1:5432 - accepting connections\n"
+        },
+        "last_api_probe": {
+          "exit": 0
+        },
+        "ready_and_managed_seconds": 21.89018671005033,
+        "automatic_io": null,
+        "cache_enforce_observation_seconds": 12.011762029957026,
+        "actual_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "expected_active_controls": {
+          "cpu.max": "720000 100000",
+          "memory.high": "20001980416",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+        },
+        "error": "[Errno 2] No such file or directory: '/var/tmp/crg-high544-realpaths-20261112/v10-hisdbs-bw64/campaign-hisdbs/report.json'",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-high544-tools-20261112/business-job.py\", line 154, in <module>\n    native=json.loads((campaign/'report.json').read_text());record(key+'-600s-native-and-backup-sync-independent-restore',job.returncode==0 and native['phase']=='passed')\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1266, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1252, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/usr/lib64/python3.9/pathlib.py\", line 1120, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/var/tmp/crg-high544-realpaths-20261112/v10-hisdbs-bw64/campaign-hisdbs/report.json'\n",
+        "own_pod_removed": true
+      }
+    },
+    "tests": [
+      {
+        "name": "v10-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+        "passed": true
+      },
+      {
+        "name": "v10-dbs-bw64-original-CCG-mount-stays-readonly",
+        "passed": true
+      },
+      {
+        "name": "v10-dbs-bw64-original-cache-independent-enforce",
+        "passed": true
+      },
+      {
+        "name": "v10-dbs-bw64-only-three-resource-controls-and-other-values-preserved",
+        "passed": true
+      },
+      {
+        "name": "v10-dbs-bw64-daily-logs-report-v2-before-business-campaign",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-real-path-original-startup-manual-accepted-budget",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-original-CCG-mount-stays-readonly",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-original-cache-independent-enforce",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-only-three-resource-controls-and-other-values-preserved",
+        "passed": true
+      },
+      {
+        "name": "v10-hisdbs-bw64-daily-logs-report-v2-before-business-campaign",
+        "passed": true
+      }
+    ],
+    "sources": {
+      "v10": {
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+      }
+    },
+    "build_info": {
+      "arch": "amd64",
+      "go_version": "go1.27.3",
+      "io_profile_versions": [
+        1,
+        2
+      ],
+      "journal_versions": [
+        1
+      ],
+      "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+      "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+      "os": "linux",
+      "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "version": "v1.0.0-preview.4",
+      "writer_controls": [
+        "cpu.max",
+        "cpu.weight",
+        "io.max",
+        "io.weight",
+        "memory.max",
+        "memory.high",
+        "memory.swap.max",
+        "pids.max"
+      ]
+    },
+    "job_sha256": "708c61937263d08a560c7ba929696ff7a8d473323cc294dc8892aea107e83973",
+    "memory_policy": "high-reclaim-throttle",
+    "overhead_report_sha256": "d8ecf8413376e8813a3558f60bf3ea8d310c0148d13c6c7ba57ea530b5c87dbf",
+    "namespace_absent": true
+  },
+  "exit": {
+    "exit": 1,
+    "job_sha256": "708c61937263d08a560c7ba929696ff7a8d473323cc294dc8892aea107e83973",
+    "started_epoch": 1794463903.7849245,
+    "ended_epoch": 1794464650.3872297
+  },
+  "namespace_absent": true,
+  "campaign_logs": {
+    "dbs": {
+      "sha256": "b463b1cf0f44bcf9b923f469157cce7031fe4c5a5027116464fefaf8b82e2aea",
+      "exact_utf8": "usage: vendor-soak-campaign.py [-h] --namespace NAMESPACE --fixture-root\n                               FIXTURE_ROOT --work-dir WORK_DIR\n                               [--role {dbs,hisdbs}] [--smoke-enforce]\n                               --run-id RUN_ID [--source-run-id SOURCE_RUN_ID]\n                               --test-phase\n                               {smoke,baseline,enforce,acceptance} --seconds\n                               SECONDS --agent-sha256 AGENT_SHA256\n                               --cache-sha256 CACHE_SHA256\nvendor-soak-campaign.py: error: only disposable crg-vendor-lab-* namespaces are accepted\n"
+    },
+    "hisdbs": {
+      "sha256": "b463b1cf0f44bcf9b923f469157cce7031fe4c5a5027116464fefaf8b82e2aea",
+      "exact_utf8": "usage: vendor-soak-campaign.py [-h] --namespace NAMESPACE --fixture-root\n                               FIXTURE_ROOT --work-dir WORK_DIR\n                               [--role {dbs,hisdbs}] [--smoke-enforce]\n                               --run-id RUN_ID [--source-run-id SOURCE_RUN_ID]\n                               --test-phase\n                               {smoke,baseline,enforce,acceptance} --seconds\n                               SECONDS --agent-sha256 AGENT_SHA256\n                               --cache-sha256 CACHE_SHA256\nvendor-soak-campaign.py: error: only disposable crg-vendor-lab-* namespaces are accepted\n"
+    }
+  },
+  "runtime_owned_sandboxes": [],
+  "runtime_parents_absent": true,
+  "runtime_parent_inspection_coverage": "No retained runtime sandboxes; empty parent list is not independent proof of all first-attempt PID/parent identities. Namespace absence was observed. This failed attempt is not business acceptance."
+}
