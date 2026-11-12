@@ -489,3 +489,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 已冻结[实际公开preview.3→preview.4包内程序维护](testing-public-preview-memory-high-maintenance.md)：两个实际tar/manifest/ELF与当前GitHub八附件摘要绑定，原26项/各600秒/9区间及全部SLA保持。开发构建旧结果独立保留；当前尚未启动，不把预发布tag冒充已发布次版本。
+
+
+[实际已发布preview.3→preview.4包内程序维护26项](testing-public-preview-memory-high-maintenance.md)通过：实际公开tar/manifest/ELF摘要绑定、两角色各600秒/各9命令区间/原全部SLA、hard/high往返及独立清理。旧506开发构建结果独立保留，这两个预发布tag不代替两个实际已发布次版本；[专用逐容器升级回退步骤](upgrade-preview3-preview4.zh.md)已归档，原52项及其他稳定条件保持。

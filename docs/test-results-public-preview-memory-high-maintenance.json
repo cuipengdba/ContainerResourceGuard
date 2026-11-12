@@ -1,0 +1,3387 @@
+{
+  "schema": "crg-public-preview-memory-high-maintenance-result-v1",
+  "phase": "passed",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+  "version": "v1.0.0-preview.4",
+  "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+  "plan": "test-plan-public-preview-memory-high-maintenance.json",
+  "plan_sha256": "c2cac5c063795872a089a158eace24325a61cff99c92a64acc42bc8b0cd77132",
+  "job_sha256": "780832f2f14ff3b039da32d0fa185c3740133917b0445d804d621d0812628148",
+  "programs": {
+    "previous": {
+      "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+      "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "release_status": "published v1.0.0-preview.3 program (embedded version v1.0.0)",
+      "tag": "v1.0.0-preview.3"
+    },
+    "candidate": {
+      "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "release_status": "published v1.0.0-preview.4 memory.high program",
+      "tag": "v1.0.0-preview.4"
+    }
+  },
+  "observed_node_utc": "2026-11-12T10:48:54Z",
+  "checks": [
+    {
+      "name": "dbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "candidate_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "version": "v1.0.0-preview.4",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "dbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "dbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "dbs-changed-policy-snapshot-automatic-rollback-refuses",
+      "passed": true
+    },
+    {
+      "name": "dbs-explicit-reverse-install-preserves-current-high-state",
+      "passed": true
+    },
+    {
+      "name": "dbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "dbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+      "passed": true,
+      "previous_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+      "candidate_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "previous_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate_build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "version": "v1.0.0-preview.4",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    {
+      "name": "hisdbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-install-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-online-immediate-rollback-preserves-originals-and-business",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-new-Agent-resumes-with-original-supervisor-and-cache",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-changed-policy-snapshot-automatic-rollback-refuses",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-explicit-reverse-install-preserves-current-high-state",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-old-Agent-resumes-after-online-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-600s-native-SQL-API-across-upgrade-and-rollback",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-final-disable-restores-true-runtime-controls",
+      "passed": true
+    }
+  ],
+  "pure_contract_checks": {
+    "phase": "passed",
+    "checks": [
+      {
+        "name": "predeclared-valid-hard",
+        "passed": true
+      },
+      {
+        "name": "predeclared-status-hard",
+        "passed": true
+      },
+      {
+        "name": "hard-foreign-identity",
+        "passed": true
+      },
+      {
+        "name": "hard-foreign-target",
+        "passed": true
+      },
+      {
+        "name": "hard-foreign-version",
+        "passed": true
+      },
+      {
+        "name": "hard-journal-original",
+        "passed": true
+      },
+      {
+        "name": "hard-journal-applied",
+        "passed": true
+      },
+      {
+        "name": "hard-journal-pending",
+        "passed": true
+      },
+      {
+        "name": "hard-journal-conflict",
+        "passed": true
+      },
+      {
+        "name": "hard-extra-resource",
+        "passed": true
+      },
+      {
+        "name": "hard-changed-cpu.weight",
+        "passed": true
+      },
+      {
+        "name": "hard-changed-memory.max",
+        "passed": true
+      },
+      {
+        "name": "hard-changed-memory.high",
+        "passed": true
+      },
+      {
+        "name": "hard-changed-io.max",
+        "passed": true
+      },
+      {
+        "name": "hard-unknown-warning",
+        "passed": true
+      },
+      {
+        "name": "hard-partial-dimension",
+        "passed": true
+      },
+      {
+        "name": "predeclared-valid-high",
+        "passed": true
+      },
+      {
+        "name": "predeclared-status-high",
+        "passed": true
+      },
+      {
+        "name": "high-foreign-identity",
+        "passed": true
+      },
+      {
+        "name": "high-foreign-target",
+        "passed": true
+      },
+      {
+        "name": "high-foreign-version",
+        "passed": true
+      },
+      {
+        "name": "high-journal-original",
+        "passed": true
+      },
+      {
+        "name": "high-journal-applied",
+        "passed": true
+      },
+      {
+        "name": "high-journal-pending",
+        "passed": true
+      },
+      {
+        "name": "high-journal-conflict",
+        "passed": true
+      },
+      {
+        "name": "high-extra-resource",
+        "passed": true
+      },
+      {
+        "name": "high-changed-cpu.weight",
+        "passed": true
+      },
+      {
+        "name": "high-changed-memory.max",
+        "passed": true
+      },
+      {
+        "name": "high-changed-memory.high",
+        "passed": true
+      },
+      {
+        "name": "high-changed-io.max",
+        "passed": true
+      },
+      {
+        "name": "high-unknown-warning",
+        "passed": true
+      },
+      {
+        "name": "high-partial-dimension",
+        "passed": true
+      },
+      {
+        "name": "stale-hard-journal-with-high-controls",
+        "passed": true
+      },
+      {
+        "name": "unreviewed-existing-high",
+        "passed": true
+      },
+      {
+        "name": "duplicate-settings",
+        "passed": true
+      }
+    ],
+    "count": 35,
+    "scope": "pure policy migration contract; no runtime acceptance"
+  },
+  "cases": [
+    {
+      "role": "dbs",
+      "ready_and_managed_seconds": 24.464612991083413,
+      "cache_enforce_observation_seconds": 10.009369066916406,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.008548361016437411,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.8859104686416686
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.2642602699343,
+        "ended_utc": "2026-11-12T10:29:33.522768Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-12T10:29:33.221263Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-12 18:19:12.947907+08",
+        "primary_start_time_initial": "2026-11-12 18:19:12.947907+08",
+        "requested_duration_seconds": 600,
+        "run_id": "202611125830",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            298,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011273883981630206,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2192876823246479
+        },
+        "started_utc": "2026-11-12T10:19:33.020449Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478775.1078413,
+          "ended_epoch": 1794478776.9981241
+        },
+        {
+          "command": "binary-install",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478777.2239137,
+          "ended_epoch": 1794478777.816076
+        },
+        {
+          "command": "binary-rollback",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478778.0468283,
+          "ended_epoch": 1794478778.4401965
+        },
+        {
+          "command": "binary-install",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478778.6817884,
+          "ended_epoch": 1794478779.3494816
+        },
+        {
+          "command": "enable",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478779.351365,
+          "ended_epoch": 1794478779.5827
+        },
+        {
+          "command": "quiesce",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478782.830463,
+          "ended_epoch": 1794478783.9033096
+        },
+        {
+          "command": "binary-rollback",
+          "executor": "/staging/crg",
+          "expected_refusal": true,
+          "exit": 1,
+          "started_epoch": 1794478783.905397,
+          "ended_epoch": 1794478784.1175427
+        },
+        {
+          "command": "binary-install",
+          "executor": "/recovery/second/previous-crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478784.6716802,
+          "ended_epoch": 1794478785.786486
+        },
+        {
+          "command": "enable",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794478786.0153048,
+          "ended_epoch": 1794478786.3196476
+        }
+      ],
+      "policy_snapshots": [
+        {
+          "policy": "hard",
+          "epoch": 1794478765.898284,
+          "controls": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "20001980416\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "journal": {
+            "version": 1,
+            "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.max:": {
+                "file": "memory.max",
+                "value": "20001980416",
+                "original": "21474836480",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "journal_sha256": "297a174ae69096d5414c7a2c21370c8f3b30f1fa6ef006e8a796d946c49b04e6",
+          "state": "managed",
+          "warnings": []
+        },
+        {
+          "policy": "high",
+          "epoch": 1794478782.610633,
+          "controls": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "21474836480\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "20001980416\n",
+            "memory.swap.max": "0\n"
+          },
+          "journal": {
+            "version": 1,
+            "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.high:": {
+                "file": "memory.high",
+                "value": "20001980416",
+                "original": "max",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "journal_sha256": "4ba497aa3dae8996c76ae92336813cba80b13b63a9d0520c107d9788d03e25ae",
+          "state": "degraded",
+          "warnings": [
+            "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit"
+          ]
+        },
+        {
+          "policy": "hard",
+          "epoch": 1794478794.3544362,
+          "controls": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "20001980416\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "journal": {
+            "version": 1,
+            "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.max:": {
+                "file": "memory.max",
+                "value": "20001980416",
+                "original": "21474836480",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "journal_sha256": "297a174ae69096d5414c7a2c21370c8f3b30f1fa6ef006e8a796d946c49b04e6",
+          "state": "managed",
+          "warnings": []
+        }
+      ],
+      "configuration_bytes_unchanged": true,
+      "final_pre_gate_runtime_controls_restored": true,
+      "final_matching_empty_journal": true,
+      "independent_cleanup": {
+        "pod_uid": "4bdb3938-9e1a-48a7-9b79-198be9645628",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice",
+        "group_absent": true,
+        "pod_parent_absent": true,
+        "original_processes": [
+          {
+            "pid": 2032311,
+            "start_ticks": 141867186,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2032894,
+            "start_ticks": 141867390,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2033035,
+            "start_ticks": 141867490,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2033046,
+            "start_ticks": 141867491,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2033047,
+            "start_ticks": 141867491,
+            "program": "crg",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034517,
+            "start_ticks": 141867907,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034520,
+            "start_ticks": 141867907,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034532,
+            "start_ticks": 141867907,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034544,
+            "start_ticks": 141867907,
+            "program": "su",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034546,
+            "start_ticks": 141867908,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034557,
+            "start_ticks": 141867909,
+            "program": "dbs",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034570,
+            "start_ticks": 141867915,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2034627,
+            "start_ticks": 141867960,
+            "program": "dbs",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038775,
+            "start_ticks": 141869553,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038852,
+            "start_ticks": 141869592,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038954,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038955,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038956,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038957,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038958,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038959,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038960,
+            "start_ticks": 141869613,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2038969,
+            "start_ticks": 141869618,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2040212,
+            "start_ticks": 141870117,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2040329,
+            "start_ticks": 141870158,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2040330,
+            "start_ticks": 141870159,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2041618,
+            "start_ticks": 141870792,
+            "program": "containercacheguard",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2041619,
+            "start_ticks": 141870792,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          }
+        ],
+        "original_processes_absent": true
+      }
+    },
+    {
+      "role": "hisdbs",
+      "ready_and_managed_seconds": 23.79167402489111,
+      "cache_enforce_observation_seconds": 10.009493071120232,
+      "native": {
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.00871863798238337,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9297296216245741
+        },
+        "cluster_database_bytes_final": 139332172,
+        "cluster_database_bytes_initial": 139233868,
+        "criteria": {
+          "api_period_seconds": 5,
+          "maximum_errors": 0,
+          "maximum_seconds": 5,
+          "minimum_scheduled_samples_fraction": 0.98,
+          "p95_upper_bound_seconds": 1,
+          "sql_period_seconds": 2
+        },
+        "elapsed_seconds": 600.3306335359812,
+        "ended_utc": "2026-11-12T10:40:31.402199Z",
+        "final_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          4816
+        ],
+        "initial_checksum": [
+          16384,
+          134225920,
+          67108864,
+          "10b3b8214172d3b698258a128e9c6687",
+          0
+        ],
+        "interrupted": false,
+        "latency_bucket_upper_seconds": [
+          0.001,
+          0.005,
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.25,
+          0.5,
+          1,
+          2,
+          5,
+          "over-5"
+        ],
+        "measurement_finished_utc": "2026-11-12T10:40:31.098010Z",
+        "payload_integrity": true,
+        "phase": "passed",
+        "primary_not_restarted": true,
+        "primary_start_time_final": "2026-11-12 18:30:12.069305+08",
+        "primary_start_time_initial": "2026-11-12 18:30:12.069305+08",
+        "requested_duration_seconds": 600,
+        "run_id": "202611125831",
+        "schema": "crg-vendor-soak-v1",
+        "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            298,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011282010935246944,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.2208650973625481
+        },
+        "started_utc": "2026-11-12T10:30:30.831908Z",
+        "test_phase": "smoke",
+        "threads_stopped": true
+      },
+      "maintenance_intervals": [
+        {
+          "command": "quiesce",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479432.899306,
+          "ended_epoch": 1794479433.6346662
+        },
+        {
+          "command": "binary-install",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479433.8556836,
+          "ended_epoch": 1794479434.6774602
+        },
+        {
+          "command": "binary-rollback",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479434.8981965,
+          "ended_epoch": 1794479435.453068
+        },
+        {
+          "command": "binary-install",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479435.6861072,
+          "ended_epoch": 1794479436.6394181
+        },
+        {
+          "command": "enable",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479436.6425679,
+          "ended_epoch": 1794479436.889706
+        },
+        {
+          "command": "quiesce",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479440.8435287,
+          "ended_epoch": 1794479442.7383928
+        },
+        {
+          "command": "binary-rollback",
+          "executor": "/staging/crg",
+          "expected_refusal": true,
+          "exit": 1,
+          "started_epoch": 1794479442.741878,
+          "ended_epoch": 1794479442.9807158
+        },
+        {
+          "command": "binary-install",
+          "executor": "/recovery/second/previous-crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479443.8987308,
+          "ended_epoch": 1794479445.2809618
+        },
+        {
+          "command": "enable",
+          "executor": "/staging/crg",
+          "expected_refusal": false,
+          "exit": 0,
+          "started_epoch": 1794479445.5155027,
+          "ended_epoch": 1794479445.7394304
+        }
+      ],
+      "policy_snapshots": [
+        {
+          "policy": "hard",
+          "epoch": 1794479424.0366209,
+          "controls": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "20001980416\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "journal": {
+            "version": 1,
+            "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.max:": {
+                "file": "memory.max",
+                "value": "20001980416",
+                "original": "21474836480",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "journal_sha256": "7b272787f713aca08ec8f54e83d7c265909a25932368b40639569ceff38fded8",
+          "state": "managed",
+          "warnings": []
+        },
+        {
+          "policy": "high",
+          "epoch": 1794479439.932529,
+          "controls": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "21474836480\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "20001980416\n",
+            "memory.swap.max": "0\n"
+          },
+          "journal": {
+            "version": 1,
+            "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.high:": {
+                "file": "memory.high",
+                "value": "20001980416",
+                "original": "max",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "journal_sha256": "70d998830a18b06caeb02575b3eda4ee063d1ca3724fb889b938ae4e6b469f21",
+          "state": "degraded",
+          "warnings": [
+            "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit"
+          ]
+        },
+        {
+          "policy": "hard",
+          "epoch": 1794479454.8522072,
+          "controls": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "20001980416\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "journal": {
+            "version": 1,
+            "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.max:": {
+                "file": "memory.max",
+                "value": "20001980416",
+                "original": "21474836480",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "journal_sha256": "7b272787f713aca08ec8f54e83d7c265909a25932368b40639569ceff38fded8",
+          "state": "managed",
+          "warnings": []
+        }
+      ],
+      "configuration_bytes_unchanged": true,
+      "final_pre_gate_runtime_controls_restored": true,
+      "final_matching_empty_journal": true,
+      "independent_cleanup": {
+        "pod_uid": "490ffdc0-94ce-4416-9d77-882d9d7d1e71",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice",
+        "group_absent": true,
+        "pod_parent_absent": true,
+        "original_processes": [
+          {
+            "pid": 2180214,
+            "start_ticks": 141933051,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2180923,
+            "start_ticks": 141933254,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2181094,
+            "start_ticks": 141933354,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2181104,
+            "start_ticks": 141933355,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2181105,
+            "start_ticks": 141933355,
+            "program": "crg",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182466,
+            "start_ticks": 141933771,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182469,
+            "start_ticks": 141933771,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182481,
+            "start_ticks": 141933771,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182489,
+            "start_ticks": 141933771,
+            "program": "su",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182495,
+            "start_ticks": 141933771,
+            "program": "bash",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182514,
+            "start_ticks": 141933772,
+            "program": "hisdbs",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182515,
+            "start_ticks": 141933779,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2182865,
+            "start_ticks": 141933824,
+            "program": "hisdbs",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2188907,
+            "start_ticks": 141935427,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2188990,
+            "start_ticks": 141935505,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189062,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189063,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189064,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189065,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189066,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189067,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189068,
+            "start_ticks": 141935547,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2189148,
+            "start_ticks": 141935567,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2190582,
+            "start_ticks": 141936061,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2191050,
+            "start_ticks": 141936228,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2191054,
+            "start_ticks": 141936229,
+            "program": "postgres",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2191650,
+            "start_ticks": 141936656,
+            "program": "containercacheguard",
+            "exists": false,
+            "original_absent": true
+          },
+          {
+            "pid": 2191651,
+            "start_ticks": 141936656,
+            "program": "sleep",
+            "exists": false,
+            "original_absent": true
+          }
+        ],
+        "original_processes_absent": true
+      }
+    }
+  ],
+  "report": {
+    "resource_mode": "manual",
+    "declared_test_budget": {
+      "cpu_cores": 7.2,
+      "memory_target_bytes": 20001980416,
+      "read_write_bps": 67108864,
+      "read_write_iops": 4096
+    },
+    "phase": "passed",
+    "scope": "same container paths and read-only CCG mount as read-only deployment inventory; fresh private test-node backing directories and loopback DCS, no production data; original business/image/database parameters",
+    "roles": {
+      "dbs": {
+        "phase": "short-acceptance-passed",
+        "resource_mode": "manual",
+        "candidate_branch": "published-preview3-to-preview4-package-programs",
+        "memory_reserve_before_bytes": 34706661376,
+        "original_start_script_unmodified": true,
+        "same_container_mount_paths": true,
+        "original_ccg_readonly": true,
+        "fixture_identity": {
+          "pod_uid": "4bdb3938-9e1a-48a7-9b79-198be9645628",
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+          "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice",
+          "processes": [
+            {
+              "pid": 2032311,
+              "start_ticks": 141867186,
+              "program": "bash"
+            },
+            {
+              "pid": 2032894,
+              "start_ticks": 141867390,
+              "program": "sleep"
+            },
+            {
+              "pid": 2033035,
+              "start_ticks": 141867490,
+              "program": "bash"
+            },
+            {
+              "pid": 2033046,
+              "start_ticks": 141867491,
+              "program": "bash"
+            },
+            {
+              "pid": 2033047,
+              "start_ticks": 141867491,
+              "program": "crg"
+            },
+            {
+              "pid": 2034517,
+              "start_ticks": 141867907,
+              "program": "bash"
+            },
+            {
+              "pid": 2034520,
+              "start_ticks": 141867907,
+              "program": "bash"
+            },
+            {
+              "pid": 2034532,
+              "start_ticks": 141867907,
+              "program": "sleep"
+            },
+            {
+              "pid": 2034544,
+              "start_ticks": 141867907,
+              "program": "su"
+            },
+            {
+              "pid": 2034546,
+              "start_ticks": 141867908,
+              "program": "bash"
+            },
+            {
+              "pid": 2034557,
+              "start_ticks": 141867909,
+              "program": "dbs"
+            },
+            {
+              "pid": 2034570,
+              "start_ticks": 141867915,
+              "program": "sleep"
+            },
+            {
+              "pid": 2034627,
+              "start_ticks": 141867960,
+              "program": "dbs"
+            },
+            {
+              "pid": 2038775,
+              "start_ticks": 141869553,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038852,
+              "start_ticks": 141869592,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038954,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038955,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038956,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038957,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038958,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038959,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038960,
+              "start_ticks": 141869613,
+              "program": "postgres"
+            },
+            {
+              "pid": 2038969,
+              "start_ticks": 141869618,
+              "program": "postgres"
+            },
+            {
+              "pid": 2040212,
+              "start_ticks": 141870117,
+              "program": "postgres"
+            },
+            {
+              "pid": 2040329,
+              "start_ticks": 141870158,
+              "program": "postgres"
+            },
+            {
+              "pid": 2040330,
+              "start_ticks": 141870159,
+              "program": "postgres"
+            },
+            {
+              "pid": 2041618,
+              "start_ticks": 141870792,
+              "program": "containercacheguard"
+            },
+            {
+              "pid": 2041619,
+              "start_ticks": 141870792,
+              "program": "sleep"
+            }
+          ]
+        },
+        "original_controls": {
+          "cpu.max": "800000 100000\n",
+          "memory.max": "21474836480\n",
+          "io.max": "",
+          "pids.max": "406648\n",
+          "cpu.weight": "4\n",
+          "io.weight": "default 100\n",
+          "memory.high": "max\n",
+          "memory.swap.max": "0\n"
+        },
+        "predeclared_controls": {
+          "original": {
+            "cpu.max": "800000 100000\n",
+            "memory.max": "21474836480\n",
+            "io.max": "",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "hard": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "20001980416\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "high": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "21474836480\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "20001980416\n",
+            "memory.swap.max": "0\n"
+          }
+        },
+        "predeclared_journals": {
+          "hard": {
+            "version": 1,
+            "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.max:": {
+                "file": "memory.max",
+                "value": "20001980416",
+                "original": "21474836480",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "high": {
+            "version": 1,
+            "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.high:": {
+                "file": "memory.high",
+                "value": "20001980416",
+                "original": "max",
+                "applied": "20001980416"
+              }
+            }
+          }
+        },
+        "original_config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "last_readiness_probe": {
+          "exit": 0,
+          "output": "127.0.0.1:5432 - accepting connections\n"
+        },
+        "last_api_probe": {
+          "exit": 0
+        },
+        "ready_and_managed_seconds": 24.464612991083413,
+        "automatic_io": null,
+        "cache_enforce_observation_seconds": 10.009369066916406,
+        "policy_snapshots": [
+          {
+            "policy": "hard",
+            "epoch": 1794478765.898284,
+            "controls": {
+              "cpu.max": "720000 100000\n",
+              "memory.max": "20001980416\n",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+              "pids.max": "406648\n",
+              "cpu.weight": "4\n",
+              "io.weight": "default 100\n",
+              "memory.high": "max\n",
+              "memory.swap.max": "0\n"
+            },
+            "journal": {
+              "version": 1,
+              "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+              "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+              "mutations": {
+                "cpu.max:": {
+                  "file": "cpu.max",
+                  "value": "720000 100000",
+                  "original": "800000 100000",
+                  "applied": "720000 100000"
+                },
+                "io.max:253:0": {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "original": "rbps=max wbps=max riops=max wiops=max",
+                  "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+                },
+                "memory.max:": {
+                  "file": "memory.max",
+                  "value": "20001980416",
+                  "original": "21474836480",
+                  "applied": "20001980416"
+                }
+              }
+            },
+            "journal_sha256": "297a174ae69096d5414c7a2c21370c8f3b30f1fa6ef006e8a796d946c49b04e6",
+            "state": "managed",
+            "warnings": []
+          },
+          {
+            "policy": "high",
+            "epoch": 1794478782.610633,
+            "controls": {
+              "cpu.max": "720000 100000\n",
+              "memory.max": "21474836480\n",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+              "pids.max": "406648\n",
+              "cpu.weight": "4\n",
+              "io.weight": "default 100\n",
+              "memory.high": "20001980416\n",
+              "memory.swap.max": "0\n"
+            },
+            "journal": {
+              "version": 1,
+              "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+              "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+              "mutations": {
+                "cpu.max:": {
+                  "file": "cpu.max",
+                  "value": "720000 100000",
+                  "original": "800000 100000",
+                  "applied": "720000 100000"
+                },
+                "io.max:253:0": {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "original": "rbps=max wbps=max riops=max wiops=max",
+                  "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+                },
+                "memory.high:": {
+                  "file": "memory.high",
+                  "value": "20001980416",
+                  "original": "max",
+                  "applied": "20001980416"
+                }
+              }
+            },
+            "journal_sha256": "4ba497aa3dae8996c76ae92336813cba80b13b63a9d0520c107d9788d03e25ae",
+            "state": "degraded",
+            "warnings": [
+              "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit"
+            ]
+          },
+          {
+            "policy": "hard",
+            "epoch": 1794478794.3544362,
+            "controls": {
+              "cpu.max": "720000 100000\n",
+              "memory.max": "20001980416\n",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+              "pids.max": "406648\n",
+              "cpu.weight": "4\n",
+              "io.weight": "default 100\n",
+              "memory.high": "max\n",
+              "memory.swap.max": "0\n"
+            },
+            "journal": {
+              "version": 1,
+              "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+              "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+              "mutations": {
+                "cpu.max:": {
+                  "file": "cpu.max",
+                  "value": "720000 100000",
+                  "original": "800000 100000",
+                  "applied": "720000 100000"
+                },
+                "io.max:253:0": {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "original": "rbps=max wbps=max riops=max wiops=max",
+                  "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+                },
+                "memory.max:": {
+                  "file": "memory.max",
+                  "value": "20001980416",
+                  "original": "21474836480",
+                  "applied": "20001980416"
+                }
+              }
+            },
+            "journal_sha256": "297a174ae69096d5414c7a2c21370c8f3b30f1fa6ef006e8a796d946c49b04e6",
+            "state": "managed",
+            "warnings": []
+          }
+        ],
+        "maintenance_intervals": [
+          {
+            "command": "quiesce",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478775.1078413,
+            "ended_epoch": 1794478776.9981241
+          },
+          {
+            "command": "binary-install",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478777.2239137,
+            "ended_epoch": 1794478777.816076
+          },
+          {
+            "command": "binary-rollback",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478778.0468283,
+            "ended_epoch": 1794478778.4401965
+          },
+          {
+            "command": "binary-install",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478778.6817884,
+            "ended_epoch": 1794478779.3494816
+          },
+          {
+            "command": "enable",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478779.351365,
+            "ended_epoch": 1794478779.5827
+          },
+          {
+            "command": "quiesce",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478782.830463,
+            "ended_epoch": 1794478783.9033096
+          },
+          {
+            "command": "binary-rollback",
+            "executor": "/staging/crg",
+            "expected_refusal": true,
+            "exit": 1,
+            "started_epoch": 1794478783.905397,
+            "ended_epoch": 1794478784.1175427
+          },
+          {
+            "command": "binary-install",
+            "executor": "/recovery/second/previous-crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478784.6716802,
+            "ended_epoch": 1794478785.786486
+          },
+          {
+            "command": "enable",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794478786.0153048,
+            "ended_epoch": 1794478786.3196476
+          }
+        ],
+        "expected_rollback_refusal": {
+          "exit": 1,
+          "stdout": "{\n  \"schema\": \"crg-command-error-v1\",\n  \"state\": \"degraded\",\n  \"reason_code\": \"binary_maintenance_failed\",\n  \"error\": \"state or effective configuration changed since installation; automatic rollback refused\",\n  \"business_action\": \"none\"\n}\n",
+          "stderr": "{\"details\":{\"business_action\":\"none\",\"check\":{\"cgroup_version\":\"v2\",\"resource_control_allowed\":true,\"resource_action\":\"verify_self_then_apply\",\"reason\":\"cgroup v2 detected; self identity, permissions and resource safety checks still required\"}},\"event\":\"cgroup_detected\",\"level\":\"INFO\"}\ncommand terminated with exit code 1\n",
+          "started_epoch": 1794478783.905397,
+          "ended_epoch": 1794478784.1175427
+        },
+        "native": {
+          "api": {
+            "attempts": 121,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              121,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.008548361016437411,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0083333333333333,
+            "successes": 121,
+            "total_seconds": 0.8859104686416686
+          },
+          "cluster_database_bytes_final": 139332172,
+          "cluster_database_bytes_initial": 139233868,
+          "criteria": {
+            "api_period_seconds": 5,
+            "maximum_errors": 0,
+            "maximum_seconds": 5,
+            "minimum_scheduled_samples_fraction": 0.98,
+            "p95_upper_bound_seconds": 1,
+            "sql_period_seconds": 2
+          },
+          "elapsed_seconds": 600.2642602699343,
+          "ended_utc": "2026-11-12T10:29:33.522768Z",
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4816
+          ],
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "interrupted": false,
+          "latency_bucket_upper_seconds": [
+            0.001,
+            0.005,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.25,
+            0.5,
+            1,
+            2,
+            5,
+            "over-5"
+          ],
+          "measurement_finished_utc": "2026-11-12T10:29:33.221263Z",
+          "payload_integrity": true,
+          "phase": "passed",
+          "primary_not_restarted": true,
+          "primary_start_time_final": "2026-11-12 18:19:12.947907+08",
+          "primary_start_time_initial": "2026-11-12 18:19:12.947907+08",
+          "requested_duration_seconds": 600,
+          "run_id": "202611125830",
+          "schema": "crg-vendor-soak-v1",
+          "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+          "sql": {
+            "attempts": 301,
+            "errors": 0,
+            "histogram": [
+              298,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.011273883981630206,
+            "p95_bucket_upper_seconds": 0.001,
+            "sample_coverage": 1.0033333333333334,
+            "successes": 301,
+            "total_seconds": 0.2192876823246479
+          },
+          "started_utc": "2026-11-12T10:19:33.020449Z",
+          "test_phase": "smoke",
+          "threads_stopped": true
+        },
+        "final_controls": {
+          "cpu.max": "800000 100000\n",
+          "memory.max": "21474836480\n",
+          "io.max": "",
+          "pids.max": "406648\n",
+          "cpu.weight": "4\n",
+          "io.weight": "default 100\n",
+          "memory.high": "max\n",
+          "memory.swap.max": "0\n"
+        },
+        "final_journal": {
+          "version": 1,
+          "identity": "cfc5af259ae41d55c49a2b207a3964129760725c2bff3c84d05fe641b1202084",
+          "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod4bdb3938_9e1a_48a7_9b79_198be9645628.slice/cri-containerd-d672f4c666d0115bb84637b96cd89cf9ecab58f0339a899e8ba3ea9b3af2c2d3.scope",
+          "mutations": {}
+        },
+        "config_bytes_unchanged": true,
+        "own_pod_removed": true
+      },
+      "hisdbs": {
+        "phase": "short-acceptance-passed",
+        "resource_mode": "manual",
+        "candidate_branch": "published-preview3-to-preview4-package-programs",
+        "memory_reserve_before_bytes": 34544631808,
+        "original_start_script_unmodified": true,
+        "same_container_mount_paths": true,
+        "original_ccg_readonly": true,
+        "fixture_identity": {
+          "pod_uid": "490ffdc0-94ce-4416-9d77-882d9d7d1e71",
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+          "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice",
+          "processes": [
+            {
+              "pid": 2180214,
+              "start_ticks": 141933051,
+              "program": "bash"
+            },
+            {
+              "pid": 2180923,
+              "start_ticks": 141933254,
+              "program": "sleep"
+            },
+            {
+              "pid": 2181094,
+              "start_ticks": 141933354,
+              "program": "bash"
+            },
+            {
+              "pid": 2181104,
+              "start_ticks": 141933355,
+              "program": "bash"
+            },
+            {
+              "pid": 2181105,
+              "start_ticks": 141933355,
+              "program": "crg"
+            },
+            {
+              "pid": 2182466,
+              "start_ticks": 141933771,
+              "program": "bash"
+            },
+            {
+              "pid": 2182469,
+              "start_ticks": 141933771,
+              "program": "bash"
+            },
+            {
+              "pid": 2182481,
+              "start_ticks": 141933771,
+              "program": "sleep"
+            },
+            {
+              "pid": 2182489,
+              "start_ticks": 141933771,
+              "program": "su"
+            },
+            {
+              "pid": 2182495,
+              "start_ticks": 141933771,
+              "program": "bash"
+            },
+            {
+              "pid": 2182514,
+              "start_ticks": 141933772,
+              "program": "hisdbs"
+            },
+            {
+              "pid": 2182515,
+              "start_ticks": 141933779,
+              "program": "sleep"
+            },
+            {
+              "pid": 2182865,
+              "start_ticks": 141933824,
+              "program": "hisdbs"
+            },
+            {
+              "pid": 2188907,
+              "start_ticks": 141935427,
+              "program": "postgres"
+            },
+            {
+              "pid": 2188990,
+              "start_ticks": 141935505,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189062,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189063,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189064,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189065,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189066,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189067,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189068,
+              "start_ticks": 141935547,
+              "program": "postgres"
+            },
+            {
+              "pid": 2189148,
+              "start_ticks": 141935567,
+              "program": "postgres"
+            },
+            {
+              "pid": 2190582,
+              "start_ticks": 141936061,
+              "program": "postgres"
+            },
+            {
+              "pid": 2191050,
+              "start_ticks": 141936228,
+              "program": "postgres"
+            },
+            {
+              "pid": 2191054,
+              "start_ticks": 141936229,
+              "program": "postgres"
+            },
+            {
+              "pid": 2191650,
+              "start_ticks": 141936656,
+              "program": "containercacheguard"
+            },
+            {
+              "pid": 2191651,
+              "start_ticks": 141936656,
+              "program": "sleep"
+            }
+          ]
+        },
+        "original_controls": {
+          "cpu.max": "800000 100000\n",
+          "memory.max": "21474836480\n",
+          "io.max": "",
+          "pids.max": "406648\n",
+          "cpu.weight": "4\n",
+          "io.weight": "default 100\n",
+          "memory.high": "max\n",
+          "memory.swap.max": "0\n"
+        },
+        "predeclared_controls": {
+          "original": {
+            "cpu.max": "800000 100000\n",
+            "memory.max": "21474836480\n",
+            "io.max": "",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "hard": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "20001980416\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "max\n",
+            "memory.swap.max": "0\n"
+          },
+          "high": {
+            "cpu.max": "720000 100000\n",
+            "memory.max": "21474836480\n",
+            "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+            "pids.max": "406648\n",
+            "cpu.weight": "4\n",
+            "io.weight": "default 100\n",
+            "memory.high": "20001980416\n",
+            "memory.swap.max": "0\n"
+          }
+        },
+        "predeclared_journals": {
+          "hard": {
+            "version": 1,
+            "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.max:": {
+                "file": "memory.max",
+                "value": "20001980416",
+                "original": "21474836480",
+                "applied": "20001980416"
+              }
+            }
+          },
+          "high": {
+            "version": 1,
+            "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+            "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+            "mutations": {
+              "cpu.max:": {
+                "file": "cpu.max",
+                "value": "720000 100000",
+                "original": "800000 100000",
+                "applied": "720000 100000"
+              },
+              "io.max:253:0": {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                "original": "rbps=max wbps=max riops=max wiops=max",
+                "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              },
+              "memory.high:": {
+                "file": "memory.high",
+                "value": "20001980416",
+                "original": "max",
+                "applied": "20001980416"
+              }
+            }
+          }
+        },
+        "original_config_sha256": "08ed1a0de3a2b9f74e3af3608600e9716ecc80c36921148c2cb21d9c9de46550",
+        "last_readiness_probe": {
+          "exit": 0,
+          "output": "127.0.0.1:5432 - accepting connections\n"
+        },
+        "last_api_probe": {
+          "exit": 0
+        },
+        "ready_and_managed_seconds": 23.79167402489111,
+        "automatic_io": null,
+        "cache_enforce_observation_seconds": 10.009493071120232,
+        "policy_snapshots": [
+          {
+            "policy": "hard",
+            "epoch": 1794479424.0366209,
+            "controls": {
+              "cpu.max": "720000 100000\n",
+              "memory.max": "20001980416\n",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+              "pids.max": "406648\n",
+              "cpu.weight": "4\n",
+              "io.weight": "default 100\n",
+              "memory.high": "max\n",
+              "memory.swap.max": "0\n"
+            },
+            "journal": {
+              "version": 1,
+              "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+              "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+              "mutations": {
+                "cpu.max:": {
+                  "file": "cpu.max",
+                  "value": "720000 100000",
+                  "original": "800000 100000",
+                  "applied": "720000 100000"
+                },
+                "io.max:253:0": {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "original": "rbps=max wbps=max riops=max wiops=max",
+                  "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+                },
+                "memory.max:": {
+                  "file": "memory.max",
+                  "value": "20001980416",
+                  "original": "21474836480",
+                  "applied": "20001980416"
+                }
+              }
+            },
+            "journal_sha256": "7b272787f713aca08ec8f54e83d7c265909a25932368b40639569ceff38fded8",
+            "state": "managed",
+            "warnings": []
+          },
+          {
+            "policy": "high",
+            "epoch": 1794479439.932529,
+            "controls": {
+              "cpu.max": "720000 100000\n",
+              "memory.max": "21474836480\n",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+              "pids.max": "406648\n",
+              "cpu.weight": "4\n",
+              "io.weight": "default 100\n",
+              "memory.high": "20001980416\n",
+              "memory.swap.max": "0\n"
+            },
+            "journal": {
+              "version": 1,
+              "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+              "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+              "mutations": {
+                "cpu.max:": {
+                  "file": "cpu.max",
+                  "value": "720000 100000",
+                  "original": "800000 100000",
+                  "applied": "720000 100000"
+                },
+                "io.max:253:0": {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "original": "rbps=max wbps=max riops=max wiops=max",
+                  "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+                },
+                "memory.high:": {
+                  "file": "memory.high",
+                  "value": "20001980416",
+                  "original": "max",
+                  "applied": "20001980416"
+                }
+              }
+            },
+            "journal_sha256": "70d998830a18b06caeb02575b3eda4ee063d1ca3724fb889b938ae4e6b469f21",
+            "state": "degraded",
+            "warnings": [
+              "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit"
+            ]
+          },
+          {
+            "policy": "hard",
+            "epoch": 1794479454.8522072,
+            "controls": {
+              "cpu.max": "720000 100000\n",
+              "memory.max": "20001980416\n",
+              "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+              "pids.max": "406648\n",
+              "cpu.weight": "4\n",
+              "io.weight": "default 100\n",
+              "memory.high": "max\n",
+              "memory.swap.max": "0\n"
+            },
+            "journal": {
+              "version": 1,
+              "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+              "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+              "mutations": {
+                "cpu.max:": {
+                  "file": "cpu.max",
+                  "value": "720000 100000",
+                  "original": "800000 100000",
+                  "applied": "720000 100000"
+                },
+                "io.max:253:0": {
+                  "file": "io.max",
+                  "device": "253:0",
+                  "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                  "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+                  "original": "rbps=max wbps=max riops=max wiops=max",
+                  "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+                },
+                "memory.max:": {
+                  "file": "memory.max",
+                  "value": "20001980416",
+                  "original": "21474836480",
+                  "applied": "20001980416"
+                }
+              }
+            },
+            "journal_sha256": "7b272787f713aca08ec8f54e83d7c265909a25932368b40639569ceff38fded8",
+            "state": "managed",
+            "warnings": []
+          }
+        ],
+        "maintenance_intervals": [
+          {
+            "command": "quiesce",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479432.899306,
+            "ended_epoch": 1794479433.6346662
+          },
+          {
+            "command": "binary-install",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479433.8556836,
+            "ended_epoch": 1794479434.6774602
+          },
+          {
+            "command": "binary-rollback",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479434.8981965,
+            "ended_epoch": 1794479435.453068
+          },
+          {
+            "command": "binary-install",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479435.6861072,
+            "ended_epoch": 1794479436.6394181
+          },
+          {
+            "command": "enable",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479436.6425679,
+            "ended_epoch": 1794479436.889706
+          },
+          {
+            "command": "quiesce",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479440.8435287,
+            "ended_epoch": 1794479442.7383928
+          },
+          {
+            "command": "binary-rollback",
+            "executor": "/staging/crg",
+            "expected_refusal": true,
+            "exit": 1,
+            "started_epoch": 1794479442.741878,
+            "ended_epoch": 1794479442.9807158
+          },
+          {
+            "command": "binary-install",
+            "executor": "/recovery/second/previous-crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479443.8987308,
+            "ended_epoch": 1794479445.2809618
+          },
+          {
+            "command": "enable",
+            "executor": "/staging/crg",
+            "expected_refusal": false,
+            "exit": 0,
+            "started_epoch": 1794479445.5155027,
+            "ended_epoch": 1794479445.7394304
+          }
+        ],
+        "last_policy_actual_controls": {
+          "cpu.max": "720000 100000\n",
+          "memory.max": "21474836480\n",
+          "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096\n",
+          "pids.max": "406648\n",
+          "cpu.weight": "4\n",
+          "io.weight": "default 100\n",
+          "memory.high": "20001980416\n",
+          "memory.swap.max": "0\n"
+        },
+        "last_policy_actual_journal": {
+          "version": 1,
+          "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+          "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+          "mutations": {
+            "cpu.max:": {
+              "file": "cpu.max",
+              "value": "720000 100000",
+              "original": "800000 100000",
+              "applied": "720000 100000"
+            },
+            "io.max:253:0": {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "original": "rbps=max wbps=max riops=max wiops=max",
+              "applied": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+            },
+            "memory.high:": {
+              "file": "memory.high",
+              "value": "20001980416",
+              "original": "max",
+              "applied": "20001980416"
+            }
+          }
+        },
+        "last_policy_actual_status": {
+          "time_utc": "2026-11-12T10:30:38Z",
+          "mode": "enforce",
+          "state": "degraded",
+          "plan": {
+            "memory_policy": "high-reclaim-throttle",
+            "environment": {
+              "cgroup_version": "v2",
+              "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+              "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+              "host_online_cpus": 24,
+              "host_memory_bytes": 66673278976,
+              "cpu_capacity_source": "/sys/devices/system/cpu/online",
+              "memory_capacity_source": "/proc/meminfo",
+              "effective_cpuset": "0-23"
+            },
+            "resource_mode": "manual",
+            "settings": [
+              {
+                "file": "cpu.max",
+                "value": "720000 100000"
+              },
+              {
+                "file": "memory.high",
+                "value": "20001980416"
+              },
+              {
+                "file": "io.max",
+                "device": "253:0",
+                "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+              }
+            ],
+            "warnings": [
+              "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit"
+            ],
+            "io_devices": [
+              {
+                "profile_device": "",
+                "resolved_device": "253:0",
+                "state": "planned",
+                "detail": "manual shared whole-device limits from data_paths; no benchmark used"
+              }
+            ],
+            "data_paths": [
+              {
+                "path": "/opt/postgresql",
+                "device": "253:0",
+                "control_device": "253:0",
+                "state": "planned",
+                "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+              }
+            ]
+          },
+          "items": [
+            {
+              "file": "cpu.max",
+              "value": "720000 100000",
+              "state": "applied",
+              "detail": "already at desired value",
+              "reason_code": "unchanged"
+            },
+            {
+              "file": "memory.high",
+              "value": "20001980416",
+              "state": "applied",
+              "detail": "written and verified",
+              "reason_code": "applied"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+              "state": "applied",
+              "detail": "already at desired value",
+              "reason_code": "unchanged"
+            },
+            {
+              "file": "memory.max",
+              "value": "20001980416",
+              "state": "restored",
+              "reason_code": "restored"
+            }
+          ],
+          "configuration": {
+            "generation": 1,
+            "accepted_hash": "6f3a90ac6ea74c181b713564142f475f3f49066785f20c17bea07b8aa09ec166",
+            "source": "/etc/crg/config.json",
+            "state": "accepted"
+          }
+        },
+        "expected_rollback_refusal": {
+          "exit": 1,
+          "stdout": "{\n  \"schema\": \"crg-command-error-v1\",\n  \"state\": \"degraded\",\n  \"reason_code\": \"binary_maintenance_failed\",\n  \"error\": \"state or effective configuration changed since installation; automatic rollback refused\",\n  \"business_action\": \"none\"\n}\n",
+          "stderr": "{\"details\":{\"business_action\":\"none\",\"check\":{\"cgroup_version\":\"v2\",\"resource_control_allowed\":true,\"resource_action\":\"verify_self_then_apply\",\"reason\":\"cgroup v2 detected; self identity, permissions and resource safety checks still required\"}},\"event\":\"cgroup_detected\",\"level\":\"INFO\"}\ncommand terminated with exit code 1\n",
+          "started_epoch": 1794479442.741878,
+          "ended_epoch": 1794479442.9807158
+        },
+        "native": {
+          "api": {
+            "attempts": 121,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              121,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.00871863798238337,
+            "p95_bucket_upper_seconds": 0.01,
+            "sample_coverage": 1.0083333333333333,
+            "successes": 121,
+            "total_seconds": 0.9297296216245741
+          },
+          "cluster_database_bytes_final": 139332172,
+          "cluster_database_bytes_initial": 139233868,
+          "criteria": {
+            "api_period_seconds": 5,
+            "maximum_errors": 0,
+            "maximum_seconds": 5,
+            "minimum_scheduled_samples_fraction": 0.98,
+            "p95_upper_bound_seconds": 1,
+            "sql_period_seconds": 2
+          },
+          "elapsed_seconds": 600.3306335359812,
+          "ended_utc": "2026-11-12T10:40:31.402199Z",
+          "final_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            4816
+          ],
+          "initial_checksum": [
+            16384,
+            134225920,
+            67108864,
+            "10b3b8214172d3b698258a128e9c6687",
+            0
+          ],
+          "interrupted": false,
+          "latency_bucket_upper_seconds": [
+            0.001,
+            0.005,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.25,
+            0.5,
+            1,
+            2,
+            5,
+            "over-5"
+          ],
+          "measurement_finished_utc": "2026-11-12T10:40:31.098010Z",
+          "payload_integrity": true,
+          "phase": "passed",
+          "primary_not_restarted": true,
+          "primary_start_time_final": "2026-11-12 18:30:12.069305+08",
+          "primary_start_time_initial": "2026-11-12 18:30:12.069305+08",
+          "requested_duration_seconds": 600,
+          "run_id": "202611125831",
+          "schema": "crg-vendor-soak-v1",
+          "scope": "synthetic loopback SQL and POST /test; no vendor-specific backup APIs",
+          "sql": {
+            "attempts": 301,
+            "errors": 0,
+            "histogram": [
+              298,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0.011282010935246944,
+            "p95_bucket_upper_seconds": 0.001,
+            "sample_coverage": 1.0033333333333334,
+            "successes": 301,
+            "total_seconds": 0.2208650973625481
+          },
+          "started_utc": "2026-11-12T10:30:30.831908Z",
+          "test_phase": "smoke",
+          "threads_stopped": true
+        },
+        "final_controls": {
+          "cpu.max": "800000 100000\n",
+          "memory.max": "21474836480\n",
+          "io.max": "",
+          "pids.max": "406648\n",
+          "cpu.weight": "4\n",
+          "io.weight": "default 100\n",
+          "memory.high": "max\n",
+          "memory.swap.max": "0\n"
+        },
+        "final_journal": {
+          "version": 1,
+          "identity": "a82d0af7ef6dff85e76173d77d9dc224c021402c0c9648d3c5d706b05fb2d7e6",
+          "target": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod490ffdc0_94ce_4416_9d77_882d9d7d1e71.slice/cri-containerd-42ad5bbfdcd18c9257c4816613d3617c70eb605d15a5dc17f3870dab277be15e.scope",
+          "mutations": {}
+        },
+        "config_bytes_unchanged": true,
+        "own_pod_removed": true
+      }
+    },
+    "tests": [
+      {
+        "name": "dbs-real-path-original-startup-manual-accepted-budget",
+        "passed": true
+      },
+      {
+        "name": "dbs-original-CCG-mount-stays-readonly",
+        "passed": true
+      },
+      {
+        "name": "dbs-original-cache-independent-enforce",
+        "passed": true
+      },
+      {
+        "name": "dbs-original-reader-is-source-qualified-and-managed",
+        "passed": true,
+        "previous_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "candidate_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+        "previous_build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+          "version": "v1.0.0",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "candidate_build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+          "os": "linux",
+          "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+          "version": "v1.0.0-preview.4",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        }
+      },
+      {
+        "name": "dbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+        "passed": true
+      },
+      {
+        "name": "dbs-online-install-preserves-originals-and-business",
+        "passed": true
+      },
+      {
+        "name": "dbs-online-immediate-rollback-preserves-originals-and-business",
+        "passed": true
+      },
+      {
+        "name": "dbs-new-Agent-resumes-with-original-supervisor-and-cache",
+        "passed": true
+      },
+      {
+        "name": "dbs-changed-policy-snapshot-automatic-rollback-refuses",
+        "passed": true
+      },
+      {
+        "name": "dbs-explicit-reverse-install-preserves-current-high-state",
+        "passed": true
+      },
+      {
+        "name": "dbs-old-Agent-resumes-after-online-rollback",
+        "passed": true
+      },
+      {
+        "name": "dbs-600s-native-SQL-API-across-upgrade-and-rollback",
+        "passed": true
+      },
+      {
+        "name": "dbs-final-disable-restores-true-runtime-controls",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-real-path-original-startup-manual-accepted-budget",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-original-CCG-mount-stays-readonly",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-original-cache-independent-enforce",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-original-reader-is-source-qualified-and-managed",
+        "passed": true,
+        "previous_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "candidate_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+        "previous_build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "os": "linux",
+          "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+          "version": "v1.0.0",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "candidate_build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+          "os": "linux",
+          "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+          "version": "v1.0.0-preview.4",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        }
+      },
+      {
+        "name": "hisdbs-online-quiesce-keeps-originals-controls-PID1-and-cache",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-online-install-preserves-originals-and-business",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-online-immediate-rollback-preserves-originals-and-business",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-new-Agent-resumes-with-original-supervisor-and-cache",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-changed-policy-snapshot-automatic-rollback-refuses",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-explicit-reverse-install-preserves-current-high-state",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-old-Agent-resumes-after-online-rollback",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-600s-native-SQL-API-across-upgrade-and-rollback",
+        "passed": true
+      },
+      {
+        "name": "hisdbs-final-disable-restores-true-runtime-controls",
+        "passed": true
+      }
+    ],
+    "public_artifact_binding": {
+      "schema": "crg-public-preview-upgrade-artifact-binding-v1",
+      "observed_utc": "2026-11-12T10:21:06.568012+00:00",
+      "programs": {
+        "previous": {
+          "tag": "v1.0.0-preview.3",
+          "release_id": 442280241,
+          "release_url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.3",
+          "package_revision": "dc9073f87b8fe4acc2a58e811eac4d910111aad6",
+          "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+          "embedded_version": "v1.0.0",
+          "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+          "local_public_downloads_verified": true,
+          "current_eight_asset_metadata_matches_publication": true,
+          "selected_assets": {
+            "public-artifacts/previous/build-manifest.json": {
+              "name": "build-manifest.json",
+              "id": 737203889,
+              "bytes": 3337,
+              "sha256": "85b22d6287d478662911d7de97a47235e305ef2677aa1f791f1d858e3d3f0a60",
+              "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.3/build-manifest.json"
+            },
+            "public-artifacts/previous/containerresourceguard-v1.0.0-linux-amd64.tar.gz": {
+              "name": "containerresourceguard-v1.0.0-linux-amd64.tar.gz",
+              "id": 737203891,
+              "bytes": 7851913,
+              "sha256": "a0f274ac5889d2648d5687325f0b153b84b5d50f347d3c43165d54a1b37f048a",
+              "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.3/containerresourceguard-v1.0.0-linux-amd64.tar.gz"
+            }
+          }
+        },
+        "candidate": {
+          "tag": "v1.0.0-preview.4",
+          "release_id": 442515524,
+          "release_url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.4",
+          "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+          "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+          "embedded_version": "v1.0.0-preview.4",
+          "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+          "local_public_downloads_verified": true,
+          "current_eight_asset_metadata_matches_publication": true,
+          "selected_assets": {
+            "public-artifacts/candidate/build-manifest.json": {
+              "name": "build-manifest.json",
+              "id": 738138367,
+              "bytes": 3347,
+              "sha256": "da0a5724f34307dfa242024ed780445608b98ca54a718040246cd78f614523db",
+              "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.4/build-manifest.json"
+            },
+            "public-artifacts/candidate/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz": {
+              "name": "containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz",
+              "id": 738138548,
+              "bytes": 11445152,
+              "sha256": "bf2c9db3e0a129b1f9cbdeb84f1e9dbcecb47923f7b1310ebfe03ad258829f4d",
+              "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.4/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz"
+            }
+          }
+        }
+      },
+      "both_tags_are_prereleases_not_released_minors": true
+    },
+    "pure_contract_checks": {
+      "phase": "passed",
+      "checks": [
+        {
+          "name": "predeclared-valid-hard",
+          "passed": true
+        },
+        {
+          "name": "predeclared-status-hard",
+          "passed": true
+        },
+        {
+          "name": "hard-foreign-identity",
+          "passed": true
+        },
+        {
+          "name": "hard-foreign-target",
+          "passed": true
+        },
+        {
+          "name": "hard-foreign-version",
+          "passed": true
+        },
+        {
+          "name": "hard-journal-original",
+          "passed": true
+        },
+        {
+          "name": "hard-journal-applied",
+          "passed": true
+        },
+        {
+          "name": "hard-journal-pending",
+          "passed": true
+        },
+        {
+          "name": "hard-journal-conflict",
+          "passed": true
+        },
+        {
+          "name": "hard-extra-resource",
+          "passed": true
+        },
+        {
+          "name": "hard-changed-cpu.weight",
+          "passed": true
+        },
+        {
+          "name": "hard-changed-memory.max",
+          "passed": true
+        },
+        {
+          "name": "hard-changed-memory.high",
+          "passed": true
+        },
+        {
+          "name": "hard-changed-io.max",
+          "passed": true
+        },
+        {
+          "name": "hard-unknown-warning",
+          "passed": true
+        },
+        {
+          "name": "hard-partial-dimension",
+          "passed": true
+        },
+        {
+          "name": "predeclared-valid-high",
+          "passed": true
+        },
+        {
+          "name": "predeclared-status-high",
+          "passed": true
+        },
+        {
+          "name": "high-foreign-identity",
+          "passed": true
+        },
+        {
+          "name": "high-foreign-target",
+          "passed": true
+        },
+        {
+          "name": "high-foreign-version",
+          "passed": true
+        },
+        {
+          "name": "high-journal-original",
+          "passed": true
+        },
+        {
+          "name": "high-journal-applied",
+          "passed": true
+        },
+        {
+          "name": "high-journal-pending",
+          "passed": true
+        },
+        {
+          "name": "high-journal-conflict",
+          "passed": true
+        },
+        {
+          "name": "high-extra-resource",
+          "passed": true
+        },
+        {
+          "name": "high-changed-cpu.weight",
+          "passed": true
+        },
+        {
+          "name": "high-changed-memory.max",
+          "passed": true
+        },
+        {
+          "name": "high-changed-memory.high",
+          "passed": true
+        },
+        {
+          "name": "high-changed-io.max",
+          "passed": true
+        },
+        {
+          "name": "high-unknown-warning",
+          "passed": true
+        },
+        {
+          "name": "high-partial-dimension",
+          "passed": true
+        },
+        {
+          "name": "stale-hard-journal-with-high-controls",
+          "passed": true
+        },
+        {
+          "name": "unreviewed-existing-high",
+          "passed": true
+        },
+        {
+          "name": "duplicate-settings",
+          "passed": true
+        }
+      ],
+      "count": 35,
+      "scope": "pure policy migration contract; no runtime acceptance"
+    },
+    "sources": {
+      "previous": {
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "release_status": "published v1.0.0-preview.3 program (embedded version v1.0.0)"
+      },
+      "candidate": {
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+        "release_status": "published v1.0.0-preview.4 memory.high program"
+      }
+    },
+    "build_info": {
+      "previous": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "os": "linux",
+        "revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "version": "v1.0.0-preview.4",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    "job_sha256": "780832f2f14ff3b039da32d0fa185c3740133917b0445d804d621d0812628148",
+    "memory_policy_migration": {
+      "previous": "legacy-hard-cap",
+      "candidate": "high-reclaim-throttle",
+      "automatic_rollback_after_changed_journal": "must-refuse",
+      "explicit_reverse_install": "new quiescent current-state receipt, no journal overwrite"
+    },
+    "fault_prerequisite_report_sha256": "4f1e78a5b5f5b7d54275d6c77d6cde4a46289ffa0a2bb0c12822b4f7c07d969a",
+    "own_policy_maintenance_prerequisite_report_sha256": "67d5830bcaa8d5a1f92ecf08794ae3eae327b4f00878ac023a4a3865e1a032af",
+    "namespace_absent": true
+  },
+  "exit": {
+    "exit": 0,
+    "job_sha256": "780832f2f14ff3b039da32d0fa185c3740133917b0445d804d621d0812628148",
+    "started_epoch": 1794478721.8083036,
+    "ended_epoch": 1794480048.8963518
+  },
+  "namespace_independently_absent": true,
+  "independent_coordinators": [
+    {
+      "pid": 2029743,
+      "start_ticks": 141866488,
+      "entry": "/var/tmp/crg-public583-tools-20261112/maintenance-runner.py",
+      "job_sha256": "780832f2f14ff3b039da32d0fa185c3740133917b0445d804d621d0812628148",
+      "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "exists": false,
+      "original_absent": true
+    },
+    {
+      "pid": 2029746,
+      "start_ticks": 141866492,
+      "entry": "/var/tmp/crg-public583-tools-20261112/maintenance-job.py",
+      "exists": false,
+      "original_absent": true
+    }
+  ],
+  "exact_evidence": {
+    "path": "test-evidence/public-preview-memory-high-maintenance.json.gz",
+    "sha256": "9bc7150dda9a91fd137fcddf807260e2fe84f218aef93ed8b638cc4cbcd4a7d3",
+    "uncompressed_sha256": "9f0386d4dfb3f636990dc8f5dedf5ee24bfeb85af2724818d8cdd932973bbf6e"
+  },
+  "maintenance_policy_migration_accepted": true,
+  "published_minor_migrations_accepted": false,
+  "default_percent_business_accepted": false,
+  "new_policy_pressure_business_accepted": false,
+  "new_policy_long_term_accepted": false,
+  "stable_release_accepted": false,
+  "limitations": [
+    "Actual published preview.3 to preview.4 package ELF migration; these are two prereleases, not two actually published minor versions.",
+    "Only package program installation/state migration is tested here; no claim that every distribution installer path has been exercised.",
+    "Same named manual budget and original synthetic64MiB real vendor paths; not default-percent,real high-pressure,aged-state,long-term or production acceptance.",
+    "ExistingAMD64/Linux5.14/single physical disk only; all original hardware/stable/52-task gates remain open.",
+    "Previous506 development maintenance retained as separate prior evidence; its result/source is not relabelled as published preview3."
+  ],
+  "public_preview_package_migration_accepted": true,
+  "public_artifact_binding": {
+    "schema": "crg-public-preview-upgrade-artifact-binding-v1",
+    "observed_utc": "2026-11-12T10:21:06.568012+00:00",
+    "programs": {
+      "previous": {
+        "tag": "v1.0.0-preview.3",
+        "release_id": 442280241,
+        "release_url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.3",
+        "package_revision": "dc9073f87b8fe4acc2a58e811eac4d910111aad6",
+        "source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+        "embedded_version": "v1.0.0",
+        "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+        "local_public_downloads_verified": true,
+        "current_eight_asset_metadata_matches_publication": true,
+        "selected_assets": {
+          "public-artifacts/previous/build-manifest.json": {
+            "name": "build-manifest.json",
+            "id": 737203889,
+            "bytes": 3337,
+            "sha256": "85b22d6287d478662911d7de97a47235e305ef2677aa1f791f1d858e3d3f0a60",
+            "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.3/build-manifest.json"
+          },
+          "public-artifacts/previous/containerresourceguard-v1.0.0-linux-amd64.tar.gz": {
+            "name": "containerresourceguard-v1.0.0-linux-amd64.tar.gz",
+            "id": 737203891,
+            "bytes": 7851913,
+            "sha256": "a0f274ac5889d2648d5687325f0b153b84b5d50f347d3c43165d54a1b37f048a",
+            "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.3/containerresourceguard-v1.0.0-linux-amd64.tar.gz"
+          }
+        }
+      },
+      "candidate": {
+        "tag": "v1.0.0-preview.4",
+        "release_id": 442515524,
+        "release_url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.4",
+        "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+        "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "embedded_version": "v1.0.0-preview.4",
+        "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+        "local_public_downloads_verified": true,
+        "current_eight_asset_metadata_matches_publication": true,
+        "selected_assets": {
+          "public-artifacts/candidate/build-manifest.json": {
+            "name": "build-manifest.json",
+            "id": 738138367,
+            "bytes": 3347,
+            "sha256": "da0a5724f34307dfa242024ed780445608b98ca54a718040246cd78f614523db",
+            "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.4/build-manifest.json"
+          },
+          "public-artifacts/candidate/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz": {
+            "name": "containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz",
+            "id": 738138548,
+            "bytes": 11445152,
+            "sha256": "bf2c9db3e0a129b1f9cbdeb84f1e9dbcecb47923f7b1310ebfe03ad258829f4d",
+            "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.4/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz"
+          }
+        }
+      }
+    },
+    "both_tags_are_prereleases_not_released_minors": true
+  },
+  "previous_development_build_qualification": "test-results-memory-high-maintenance.json"
+}
