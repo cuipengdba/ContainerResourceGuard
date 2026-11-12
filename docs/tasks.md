@@ -456,3 +456,5 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 2026-11-12新增[内存回收优先需求及OOM边界](memory-reclaim-policy.md)：用户希望达到目标后释放内存、避免OOM。已明确memory.max回收不足仍可能OOM，memory.high可回收/节流但允许超目标；已提出语义选择，答复前不改变默认硬限额或发布包。后续实现/迁移/故障与业务验证任务独立归档，仍只控制CPU、内存、IO。
 
 2026-11-12完成[只读proc错误元数据运行时资格](testing-proc-read-error.md)：宿主与两厂商镜像各24项，共72项，两个新自身探针read为EACCES/13；旧2410个泛化OSError仍未知。后续PG目标集成/资格任务单独归档，不改变旧采样器、原配额/SLA/长期句柄或发布附件，稳定1.0仍待。
+
+2026-11-12用户已选择memory.high，不再新增memory.max。组合及分区开发候选已实现百分比回收目标、手动high与所有权迁移；本地Go测试通过，真机/Linux/发布交付待完成。main程序尚未回移；详见[内存策略](memory-reclaim-policy.md)。原52项及稳定1.0门槛不变。

@@ -1,42 +1,34 @@
-# 内存达到目标后的回收与 OOM 边界
+# 内存百分比使用 memory.high
 
-2026-11-12用户新增要求：内存达到设置上限后希望释放内存，不希望OOM，并询问其他cgroup内存控制参数。该要求已归档；本页为待确定语义的设计，不表示已修改或发布程序。CPU、内存、IO仍是三个资源，三个百分比仍独立，其余资源不增加控制。
+> 本次实现位于next/compatibility-contract及next/partition-io；main既有程序尚未回移。下载发布附件应核对BUILD.json与版本说明，不能从main源码推断新策略已生效。
 
-## 当前行为
+2026-11-12用户已明确选择：“memory.high 限制内存用这个，别用 memory.max 这个了。”本需求覆盖旧版默认硬限额语义，保留CPU、内存、IO三个独立百分比、各默认20%；其他资源不新增控制。
 
-当前发布的preview.3中，memory_percent默认换算为memory.max。memory.max是硬上限：内核先尝试回收，仍不能满足分配时可能触发本cgroup的OOM。程序已有的下调余量、增长检查和稳定窗口仅降低设置时的风险，不能保证后续业务分配永不OOM。已有绝对值memory_high兼容参数也不等于新的百分比回收优先模式。
+## 当前开发合同
 
-## 关键参数
+`memory_percent`按宿主机MemTotal换算并按页向下对齐，写入本容器的`memory.high`。例如`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`分别控制CPU、内存回收目标、标定IO。手动模式使用`{"resource_mode":"manual","limits":{"memory_high":"4GiB"}}`；旧`limits.memory_max`仅作配置别名，实际也写high并记录兼容警告，两种名称不能同时填写。
 
-| 文件 | 含义 | 与本需求的关系 |
-|---|---|---|
-| memory.high | 超过阈值后对分配任务节流并施加回收压力；该阈值自身不调用OOM killer，极端情况可超过 | 适合作为回收优先目标，但不是严格使用上限，可能增加业务延迟 |
-| memory.max | 内存硬上限，回收不足时可能OOM | 严格上限与任意负载下绝不OOM不能同时保证 |
-| memory.reclaim | 对当前cgroup主动请求回收；可能多回收、少回收或返回EAGAIN | 仅在实际内核提供且有权限时作为有界的可选能力；不能当作保证释放多少内存的命令 |
-| memory.low | 尽力保护阈值，减少该组被回收的机会 | 不是内存使用上限，默认不新增设置 |
-| memory.min | 更强的回收保护 | 保护过量可增加系统OOM压力，默认不新增设置 |
-| memory.swap.max | 该组Swap使用硬上限 | 只有已有Swap可用且平台允许时才有作用；不启用宿主Swap，不放宽外部值 |
-| memory.oom.group | 发生OOM时是否把该组作为整体处理 | 不能关闭OOM，不作为本需求的解决办法 |
+high是回收/节流目标，允许用量超过，不能描述成严格内存使用上限。内核可回收干净文件缓存、回写脏页或在允许时换出匿名页，不能任意释放数据库仍在使用的堆与共享内存。不可回收工作集可能持续超目标并导致明显延迟；不新增数据库缓存命令、不杀业务、不写宿主drop_caches或memory.reclaim。
 
-memory.current、memory.stat、memory.events及memory.pressure用于观测；其中events的high/max/oom/oom_kill用于区分回收节流和实际OOM，不把观测文件说成限额开关。各接口及其内核可用性以实际检测为准，不能只凭cgroup v2就认为所有可选文件存在。
+CRG不新增memory.max硬限额。Kubernetes、运行时、祖先及其他管理者原有memory.max仍有效，更严格的现有high也不被放宽。缺少high或无写权限时仅该项降级，绝不回退到新增max。high自身不触发OOM killer；外部硬限额、宿主内存耗尽及其他内核路径仍可能OOM，不能保证绝不OOM。
 
-上述边界依据[Linux内核cgroup v2接口](https://docs.kernel.org/admin-guide/cgroup-v2.html)；Kubernetes自身的内存limit仍可能造成[内存压力下的OOM终止](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)。即便CRG不新增硬上限，也不能承诺外部硬限额或宿主机内存耗尽时绝不OOM。
+## 旧版升级及恢复
 
-## 待确定的两种语义
+沿用原state_dir及journal。仅当当前容器身份吻合、旧memory.max当前值仍等于CRG记录的applied/pending值且无冲突时，先通过已有恢复路径恢复其原值，再设置high。原值可能是Kubernetes的有限硬上限，不得一律写max。外部已经改值则保留外部值、记录冲突和降级；journal丢失或不可信时不猜测原值，也不放宽现存硬限额。恢复失败不能宣称旧硬限额已经解除。
 
-已向用户提出语义选择，答复前不修改默认运行行为或已发布资产：
+新的high同样保存原值、写前意图和回读结果。重载、删除手动内存项或disable只恢复仍拥有的值；新Pod/容器ID每次自发现，旧身份journal不能套用。observe不执行迁移或写入。
 
-- 回收优先：memory_percent换算为memory.high目标，允许短时超过该比例，尊重Kubernetes/祖先及原外部memory.max；不能保证绝不OOM。主要依靠内核回收/节流，不能把数据库正在使用的堆、共享内存任意释放。应用自身缓存缩减需要其已验证的接口，不注入未知数据库命令。
-- 严格上限：保留memory_percent对应memory.max，可另有提前回收目标，但回收不足仍可能OOM；不能把提前回收宣传为永不OOM。
+high可设置为低于当前用量，以启动回收压力；它不再使用原memory.max的下调余量/稳定窗口。`memory_stable_seconds`仍保护需要降低的历史硬限额恢复，不把等待窗口用来阻止high生效。内核支持时以O_NONBLOCK打开high，避免写入者同步回收；旧内核（包括上游5.14实现）可能仍在write中回收，因此不承诺所有内核上的写入时延有界。原PID1与CRG辅助启动解耦，但资源节流本身仍可能影响业务。
 
-若选择回收优先，后续实现仍需解决：旧CRG硬限额转为新策略时，仅按原journal和所有权恢复其自身旧写值，不得把外部硬限额放宽为max；已有外部memory.high更严时保留更严值；转换、冲突、重启新ID、停用恢复和配置重载都必须可观测。保留旧硬限额未恢复却宣称进入回收优先模式，属于错误状态。
+日志继续一天一个文件，保留30天，目录总量超过1GB时从最旧日志清理，失败降级stderr。`resource_status.plan.memory_policy`为`high-reclaim-throttle`，实际项目显示memory.high；兼容别名、恢复、冲突和写入失败均可见。
 
-## 后续开发与验证任务
+## 验证和交付任务
 
-1. 用户确定百分比是可超过的回收目标还是严格上限；随后冻结配置兼容、缺省值及升级合同。没有选择前不擅自改变既有百分比含义。
-2. 在仍严格每容器一对一、自发现纯v2目标、v1跳过的基础上实现所选内存策略；权限不足、可选接口缺失和辅助失败可降级并记录，不能阻断原PID1启动。
-3. 验证可回收文件缓存、脏页/IO受限、不可回收工作集、Swap不可用、外部硬限额更小、原值和冲突、重启/重载/恢复及日志。分开记录实际回收量、节流/延迟和OOM事件；不能用一个缓存演示证明任意数据库内存都可释放。
-4. memory.reclaim如后续采用，必须另行验证阻塞/取消边界及调用频率，不让其阻塞业务启动或Agent关键恢复；不写宿主drop_caches、不杀业务进程、不越权写父组。
-5. 原硬模式、原32项双角色业务、所有失败、七天/后置、24h配对和其他稳定发布条件保留原来源；新增策略单独取得证据，不重写历史报告或替换正在运行的长期任务。
+- 已实现：百分比及手动high计划、旧max别名警告、外部high/max约束、自有旧max恢复、冲突保护、high低于用量、缺接口不回退硬限额；本地Go测试已通过。
+- 待真机：两厂商镜像的真实v2写入、旧发布程序迁移、干净文件缓存回收、匿名工作集超目标、外部限额与权限不足、新ID及停用恢复，分别记录events/oom_kill、用量和延迟。
+- 待交付：当前源码Linux检查、测试证据归档、GitHub同步及新预览附件。已发布preview.3仍使用旧memory.max程序，不能把本地修改说成已更新发布包。
+- 后续深入验证：脏页与IO受限、缓存回收高峰和两角色完整业务/故障/长期验证；现存旧策略长期任务保留原句柄和来源，不能冒充新策略验证。
 
-十版路线中的v0.4内存开发主题补充本需求，作为后续候选的待验收内存语义变更；不补造历史发布版，不以本设计关闭P05或稳定1.0。
+原52项定义、既有失败和稳定1.0发布门槛保留。此语义变更列入内存开发主题，不补造历史次版本，也不因单次回收演示关闭业务验收。
+
+接口依据：[Linux内核cgroup v2](https://docs.kernel.org/admin-guide/cgroup-v2.html)、[上游5.14内存控制器实现](https://github.com/torvalds/linux/blob/v5.14/mm/memcontrol.c)、[Kubernetes资源管理](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)。
