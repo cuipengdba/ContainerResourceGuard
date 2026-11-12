@@ -8,10 +8,15 @@
 
 ## 独立冻结的新轮
 
-[冻结计划](test-plan-pg-wait-v2-qualification-v3.json)保持原四份v2源码、原32项解析/14项真实PG基线及新增12项解析/4项真实PG检查；预期宿主44、两角色各44解析与各18真实PG，共168项。原每目标1900B、每样本8192B、4目标/5行截断检测、栈4096B/8帧、正常wall0.25秒/线程CPU0.1秒/RSS128MiB及540秒整轮上限不变。新轮未运行、未计通过。
+[冻结计划](test-plan-pg-wait-v2-qualification-v3.json)保持原四份v2源码、原32项解析/14项真实PG基线及新增12项解析/4项真实PG检查；预期宿主44、两角色各44解析与各18真实PG，共168项。原每目标1900B、每样本8192B、4目标/5行截断检测、栈4096B/8帧、正常wall0.25秒/线程CPU0.1秒/RSS128MiB及540秒整轮上限不变。本轮因驱动残留旧namespace常量，在创建输出目录和namespace前拒绝，退出1、未超时，未执行新轮168项；独立观察确认目录/namespace未创建且协调进程均已消失。未计通过。
 
 新增驱动修复测试装载与取证流程：先单独记录投射ConfigMap源的诊断命令退出码/stdout/stderr，不计资格通过且不预设原因；随后将逐项SHA256锁定的源复制到全新UID999私有0700目录、常规0400文件，保留读取器O_NOFOLLOW保护，再执行同一原生44/18项。每个unit/runtime子命令的输出先写报告，之后才取结果文件；资格自身退出与外层runner退出使用不同文件，避免重复创建掩盖结果。投射文件与私有常规文件验证同一精确源码。
 
 两角色使用原厂商镜像中Python2、同一已核对摘要的PG二进制/库/share只读挂载，新的512MiB emptyDir数据目录与真实容器PG路径；以UID999/GID998、drop ALL、只读根、网络隔离、无ServiceAccount运行。原数据、配置、凭据、Agent与缓存不挂载。每次仅一个512MiB/1核实例、宿主至少8GiB+512MiB可用内存，结束验证Namespace/Pod父叶cgroup/原PID1及外层协调进程清理。新测试不能冒用此前PID、时间或结果。
 
 冻结源码包括计划、驱动、runner和全部依赖的exact_utf8及SHA256，见[新轮精确源码](test-evidence/pg-wait-v2-qualification-v3-frozen.json.gz)。它只证明输入固定，不能代替实际原生运行或完整业务验收。
+
+
+## v3实际失败及后续修正
+
+[精确原观察及观察源码](test-evidence/pg-wait-v2-qualification-v3-failure.json.gz)保留本轮guard失败；不修改已冻结作业，不冒用最初v2宿主44项作为本轮结果。另经源码检查发现原runtime驱动仍加载v1读取器，却断言v2新增errno/schema；这个引用错误尚未在本轮执行到。新建[独立v4资格轮](testing-pg-wait-v2-qualification-v4.md)修正namespace常量，并生成仅改变helper引用的独立runtime-v3；原四份v2文件及18项断言保持。
