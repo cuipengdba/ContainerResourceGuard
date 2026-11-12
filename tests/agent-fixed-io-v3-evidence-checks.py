@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the V3 evidence reader using real A1/B1 and local synthetic negatives.
+"""Check the V3 evidence reader using real A1/B1/B2 and synthetic negatives.
 
 No node connection, signals, controller writes or vendor workload are executed.
 Changed fixtures have consistently recomputed artifact digests; they are never
@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[1])
     parser.add_argument('--evidence',type=Path)
     parser.add_argument('--b1-evidence',type=Path)
+    parser.add_argument('--b2-evidence',type=Path)
     args=parser.parse_args();repo=args.repo.resolve()
     evidence=args.evidence or repo/'docs/test-evidence/agent-activity449-a1.json.gz'
     path=repo/'tests/analyze-agent-fixed-io-comparison-v3.py'
@@ -34,6 +35,12 @@ def main():
     b1=reader.review_arm(b1_files,b1_proof,'b1')
     assert b1['eligible'] and b1['SQL_errors']==b1['API_errors']==0
     rows.append({'name':'actual-B1-full-paused-and-resumed-evidence-independently-eligible','passed':True,'synthetic':False})
+    b2_files,b2_proof=reader.read_evidence(args.b2_evidence or repo/'docs/test-evidence/agent-activity449-b2.json.gz')
+    b2=reader.review_arm(b2_files,b2_proof,'b2')
+    assert b2['phase']==b2['native_phase']=='failed' and b2['reason']=='NATIVE_COMPLETION_EXIT'
+    assert b2['actual_seconds']>=600 and b2['SQL_errors']==2 and b2['API_errors']==5
+    assert 'native' not in json.loads(b2_files['arms/b2/report.json'])['roles']['dbs']['boots'][0]
+    rows.append({'name':'actual-failed-B2-retains-full-raw-native-without-duplicate-summary','passed':True,'synthetic':False})
     with tempfile.TemporaryDirectory(prefix='crg-v3-evidence-negatives-') as folder:
         target=Path(folder)/'synthetic.json.gz'
 
@@ -85,6 +92,8 @@ def main():
         exercise('changed-native-not-bound-to-snapshot-rejected',unbound_native,'EXACT_NATIVE_REPORT_BINDING')
         def unequal_native(files,proof):rebind(files,proof,lambda report:report['roles']['dbs']['boots'][0]['native'].update(elapsed_seconds=599))
         exercise('boot-and-raw-native-disagreement-rejected',unequal_native,'NATIVE_BOOT_AND_RAW_EQUAL')
+        def missing_passed_native(files,proof):rebind(files,proof,lambda report:report['roles']['dbs']['boots'][0].pop('native'))
+        exercise('missing-duplicate-on-passed-arm-still-rejected',missing_passed_native,'FAILED_NATIVE_RAW_REQUIRED_WITHOUT_DUPLICATE')
         def short_native(files,proof):rebind(files,proof,native_change=lambda native:native.update(elapsed_seconds=599))
         exercise('fully-rebound-short-native-remains-ineligible',short_native,failed_check='original_full600')
         def missing_activity(files,proof):rebind(files,proof,lambda report:report['roles']['dbs']['boots'][0]['agent_activity'].update(samples=[]))
@@ -107,7 +116,7 @@ def main():
         exercise('B1-early-watchdog-resume-ineligible',watchdog_resume,failed_check='same_watchdog_normal_close',arm='b1')
     out={'schema':'crg-agent-fixed-io-v3-evidence-checks-v1','phase':'passed','observed_local_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
          'reader_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'tests':rows,
-         'scope':'two real A1/B1 replays and sixteen local synthetic rejection cases; no new vendor workload',
+         'scope':'three real A1/B1/B2 replays and seventeen local synthetic rejection cases; failed B2 remains a business failure; no new vendor workload',
          'whole_ABBA_accepted':False,'original32_accepted':False,'stable_release_accepted':False}
     print(json.dumps(out,indent=2));return 0
 

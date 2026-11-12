@@ -1,8 +1,10 @@
 # 固定 IO 下的 Agent 活动对照：失败原件与继续验证
 
+[固定IO四臂449终态](test-results-agent-fixed-io-comparison-v3.json)：A1/B1/B2/A2的SQL,API错误依次为0,0/0,0/2,5/1,0；B2暂停Agent时仍实际600.294秒/SQL2/API5，原业务失败保留。独立结论为preplanned-association-not-observed，不作Agent因果或产品性能修复；30个原实例、四namespace和父叶cgroup独立清理，原来源和副本恢复。只读分析器修正业务失败出口无重复摘要的读取缺陷，旧源码/错误原件保留，3个真实臂及17个合成反例共20项复核通过。对照结构资格不等于原业务SLA通过；原32项/两角色/配额/门槛、52任务和长期条件保持。
+
 [固定IO后续449进展](test-progress-agent-fixed-io-comparison-v3.json)：A1/B1分别实际600.307/600.350秒，SQL/API均0、原十项引擎检查及每臂七个实例/namespace/父叶cgroup独立清理复核合格；2026-11-11T23:59:37Z原runner/worker和B2 Agent/watchdog存活。全四臂尚未完成，不计有效ABBA、原32项压力/两角色或稳定验收。新只读分析器按完整证据独立判定，两个真实臂复核及16个合成反例共18项通过；原两轮失败和严格资格保持。
 
-当前结论仍为 **inconclusive**。首轮在准备阶段失败；第二轮 A1 实际运行600.165秒，SQL错误5、API错误1，SQL采样覆盖率97%低于原98%，并有9次PG等待采样因超过四目标上限而失败。B1/B2/A2未执行。这些不是有效四臂对照，也不是产品性能修复或稳定版验收通过。[结果索引](test-results-agent-fixed-io-comparison-v2.json)、[独立分析](test-analysis-agent-fixed-io-comparison-v2.json)。
+前两轮结论为 **inconclusive**。首轮在准备阶段失败；第二轮 A1 实际运行600.165秒，SQL错误5、API错误1，SQL采样覆盖率97%低于原98%，并有9次PG等待采样因超过四目标上限而失败。B1/B2/A2未执行。这些不是有效四臂对照，也不是产品性能修复或稳定版验收通过。[结果索引](test-results-agent-fixed-io-comparison-v2.json)、[独立分析](test-analysis-agent-fixed-io-comparison-v2.json)。
 
 ## 原件和实际观察
 
@@ -58,3 +60,27 @@ python3 tests/agent-fixed-io-v3-evidence-checks.py
 ```
 
 [V3只读分析器](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/tests/analyze-agent-fixed-io-comparison-v3.py)、[证据拒绝检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/tests/agent-fixed-io-v3-evidence-checks.py)。这些测试源码不在安装包内，应使用完整仓库。B2/A2及最终独立清理仍待实际结果，未发布新的产品程序。
+
+## 后续449完整四臂结果
+
+[固定IO四臂449终态](test-results-agent-fixed-io-comparison-v3.json)：A1/B1/B2/A2的SQL,API错误依次为0,0/0,0/2,5/1,0；B2暂停Agent时仍实际600.294秒/SQL2/API5，原业务失败保留。独立结论为preplanned-association-not-observed，不作Agent因果或产品性能修复；30个原实例、四namespace和父叶cgroup独立清理，原来源和副本恢复。只读分析器修正业务失败出口无重复摘要的读取缺陷，旧源码/错误原件保留，3个真实臂及17个合成反例共20项复核通过。对照结构资格不等于原业务SLA通过；原32项/两角色/配额/门槛、52任务和长期条件保持。
+
+| 臂 | 实际秒数 | SQL错误 | API错误 | 原业务结果 | 对照结构资格 |
+|---|---:|---:|---:|---|---|
+| a1 | 600.3067028289661 | 0 | 0 | passed | True |
+| b1 | 600.3501063410658 | 0 | 0 | passed | True |
+| b2 | 600.294336708961 | 2 | 5 | failed | True |
+| a2 | 600.3254991818685 | 1 | 0 | failed | True |
+
+[逐臂独立分析](test-analysis-agent-fixed-io-comparison-v3.json)与[固定原件索引](test-results-agent-fixed-io-comparison-v3.json)保留完整native、逐请求/PG、线程、设备、引擎、Session及独立清理。eligible仅表示数据适合本次诊断对照；B2的failed和2/5错误没有改成业务通过。B2约616.736秒活动采样端点间CPU ticks及进程IO记账无进展，25个DBS.log线程D样本，其中五个API错误区间各有4个严格重叠样本；两个SQL错误区间没有该DBS线程D样本。原内核限额始终有效，暂停Agent不等于解除资源限额。共享设备、缓存和顺序混杂仍在，不能据此认定完整根因或排除所有Agent影响。
+
+旧读取器e23ba74e在B2原业务异常路径抛出KeyError(native)：原始600秒native文件完整且摘要绑定，但原包装器在异常前未保存boot.native重复副本。[旧源码/退出原件](test-evidence/agent-activity449-reader-failure.json.gz)保留。修订只在原报告failed/NATIVE_COMPLETION_EXIT且原始native确为failed、原始文件摘要绑定时允许缺少重复副本；存在副本仍必须逐值一致。源/计划、数值额度、原业务条件和严格四臂资格不变。[20项复核](test-results-agent-fixed-io-v3-evidence-checks-v2.json)含实际失败B2重放和“通过臂缺重复摘要仍拒绝”的反例。旧18项报告及旧进度索引继续对应原提交版本。
+
+从完整源码复核最终证据：
+
+```bash
+python3 tests/analyze-agent-fixed-io-comparison-v3.py --terminal docs/test-evidence/agent-activity449-terminal.json.gz --a1 docs/test-evidence/agent-activity449-a1.json.gz --b1 docs/test-evidence/agent-activity449-b1.json.gz --b2 docs/test-evidence/agent-activity449-b2.json.gz --a2 docs/test-evidence/agent-activity449-a2.json.gz
+python3 tests/agent-fixed-io-v3-evidence-checks.py
+```
+
+[原长期进程实际快照](test-progress-seven-day-during-final-agent-review.json)在2026-11-12T00:16:37Z仍为measuring：R57约97587/97575秒、5周期，精确发布R78约83771/83769秒、4周期，原实例/SQL/API错误0保持。尚非实际604800秒及后置通过。preview.3既有标签和八份附件不变，产品程序不因本轮诊断改变，稳定v1.0.0仍未验收。

@@ -3,6 +3,8 @@
 
 Eligibility comes from full native/engine/activity/diagnostic/cleanup evidence,
 before looking for the frozen ABBA error pattern. This is not release acceptance.
+An eligible diagnostic arm may retain a failed business phase and SQL/API errors;
+eligibility never converts those errors into a business SLA pass.
 """
 import argparse
 import collections
@@ -158,7 +160,12 @@ def review_arm(files, independent, name):
     devices=json.loads(files[prefix+'dbs/devices.json']);threads=json.loads(files[prefix+'dbs/threads.json']);engine=json.loads(files[prefix+'dbs/engine/business-backup.json'])
     boots=report.get('roles',{}).get('dbs',{}).get('boots',[]);need(len(boots)==1,'ONE_ORIGINAL_BOOT');boot=boots[0]
     record=boot.get('agent_activity',{});session=record.get('session',{});samples=record.get('samples',[]);activity=record.get('plan',{})
-    need(boot['native']==native,'NATIVE_BOOT_AND_RAW_EQUAL')
+    if 'native' in boot:
+        need(boot['native']==native,'NATIVE_BOOT_AND_RAW_EQUAL')
+    else:
+        # The original business exception leaves before assigning this duplicate.
+        # The byte-exact raw native report remains bound to the frozen snapshot.
+        need(report['phase']=='failed' and report.get('reason')=='NATIVE_COMPLETION_EXIT' and native['phase']=='failed','FAILED_NATIVE_RAW_REQUIRED_WITHOUT_DUPLICATE')
     identities={kind:{'pid':boot[kind]['observer_pid'],'start_ticks':boot[kind]['observer_start_ticks']} for kind in ['thread_observer','device_observer']}
     identities.update(native=boot['native_final_flush']['identity'],Agent=activity,PID1={'pid':activity['container_pid'],'start_ticks':activity['container_start_ticks']},helper=record['helper'],watchdog={'pid':session['watchdog_pid'],'start_ticks':session['watchdog_start_ticks']})
     need(set(independent['instances'])=={name+'-0-'+kind for kind in identities},'ALL_SEVEN_INDEPENDENT_ARM_IDENTITIES')
