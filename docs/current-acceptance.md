@@ -186,3 +186,6 @@ R203[完整压力接入原生/PG诊断](testing-business-pressure-native-diagnos
 <!-- memory-high-preview4-current:start -->
 2026-11-12 preview.4：memory.high精确发布程序已通过[原生四格88项](testing-memory-high-native.md)、[身份与重建](test-results-memory-high-identity.json)、[三场景各1800秒开销](testing-memory-high-overhead.md)、[两角色各600秒真实路径业务](testing-memory-high-business.md)、[20场景/108项故障](testing-memory-high-faults.md)、[在线维护26项](testing-memory-high-maintenance.md)、[保留数据四次新ID/44项冷重建](testing-memory-high-cold-rebuild.md)。命名手动预算、原时限及独立清理保持；旧硬上限到high往返、过期快照拒绝、journal归属与原值恢复均实测。前一维护程序仍为未发布协议构建。默认百分比、真实回收/脏页与受限IO、老化故障、新策略实际长期和其他原稳定门槛继续独立判定，旧源时间不转移，52项未关闭，稳定版尚未接受。
 <!-- memory-high-preview4-current:end -->
+
+
+[memory.high独立七天组件已进入真实测量](testing-memory-high-seven-day.md)：精确preview.4程序、自己的计时/数据/句柄，10项启动检查通过，首个实际请求快照已记录；完整604800秒/28轮、老化postflight及全部其他原稳定条件尚未接受。只读观察字段修正保留原错误，业务作业未重启，旧源时长不移入。
