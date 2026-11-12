@@ -1,0 +1,81 @@
+{
+  "schema": "crg-native-v3-runtime-plan-v1",
+  "tool_directory": "/var/tmp/crg-native600-tools-20261112",
+  "output_directory": "/var/tmp/crg-native600-results-20261112",
+  "namespace": "crg-vendor-lab-native600-20261112",
+  "source_namespace": "crg-vendor-lab-acceptance78-20261111",
+  "source_sha256": {
+    "vendor-native-diagnostics-v3.py": "29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd",
+    "vendor-soak-load-diagnostics-v3.py": "bbb86c6af6c472674ebf108686052d5676207b8470b69dbf34fdeb5197cff29b",
+    "vendor-native-diagnostics-v3-checks.py": "83b0c5658c7ecb515fe98d6142d12e95d29b96f900789042b532794f0ab822d1",
+    "vendor-native-diagnostics-v3-runtime.py": "45655d52a845f56d4a4e858b2d0d46a5d464c4790c3e4ad10d8cb721caba273a",
+    "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+    "vendor-pg-wait-v2.py": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+    "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+    "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+    "vendor-device-state-observer.py": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+    "vendor-native-v3-qualification.py": "abcd6b1ac6984b9ee0966f8e6598db2fb8a5087974b3acc80467668d05df93d0"
+  },
+  "parser_checks_per_runtime": 15,
+  "real_PG_checks_per_role": 28,
+  "whole_deadline_seconds": 540,
+  "original_unit_checks_per_runtime": 15,
+  "original_real_PG_checks_per_role": 26,
+  "extra_integrated_PG_v2_metadata_checks_per_role": 2,
+  "planned_total_checks": 101,
+  "preserved_original_source_sha256": {
+    "vendor-native-diagnostics-v2.py": "22ca072fa1f2c801668d46b77fb2cb8227388819a0bcd27723811a60f4d3cd62",
+    "vendor-native-diagnostics-v2-checks.py": "70ee1f97a72a35326f8b27e72580459d68981c9e214bd80209aa76d0eeeb7434",
+    "vendor-native-diagnostics-v2-runtime.py": "3bbdd581d4cd60e4c1be1b2391e201ab117a6d002a5579cff08793f63949cb38",
+    "vendor-soak-load-diagnostics-v2.py": "a9483aebec862e8254b6b6a144ad1e1889021252697a276922afbfd8459d5857"
+  },
+  "PG_v2_prerequisite": {
+    "result": "test-results-pg-wait-v2-qualification-v4.json",
+    "sha256": "84c9b3dfd877c7e8eb5e6c7273ae3f6ac33cb6cd8bedb54a5c8a10043e1cbbec",
+    "checks": 168,
+    "job_sha256": "9760aecebafee44bd63eb6a19267ecc75e7c44de8366720a1cbfb8482a3eeeb8"
+  },
+  "cases": [
+    {
+      "name": "normal",
+      "seconds": 12
+    },
+    {
+      "name": "own-table-lock",
+      "seconds": 16
+    },
+    {
+      "name": "missing-pg-marker",
+      "seconds": 12
+    }
+  ],
+  "unit_runtimes": [
+    "host-Python3",
+    "dbs-native-Python2.7.5",
+    "hisdbs-native-Python2.7.5"
+  ],
+  "original_limits": {
+    "maximum_report_bytes": 8388608,
+    "maximum_requests": 1024,
+    "maximum_PG_samples": 901,
+    "maximum_PG_rows": 16,
+    "PG_period_seconds": 1,
+    "diagnostic_query_timeout_seconds": 1,
+    "internal_thread_CPU_fraction_of_one_core": 0.05
+  },
+  "isolation": {
+    "uid": 999,
+    "gid": 998,
+    "drop_all": true,
+    "read_only_root": true,
+    "per_pod_memory_limit_bytes": 536870912,
+    "per_pod_CPU_cores": 1,
+    "private_regular_source_mode": "0400",
+    "private_regular_source_parent_mode": "0700",
+    "original_business_data_or_Agent_mounted": false
+  },
+  "resource_program_changed": false,
+  "original_business_SLA_quotas_or_long_handles_changed": false,
+  "business_acceptance_claim": false,
+  "restricted_IO_root_cause_claim": false
+}
