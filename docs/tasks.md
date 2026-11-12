@@ -514,3 +514,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [high完整压力第四轮](testing-memory-high-pressure.md)：第三轮源目录全局缺失的准备失败原件/四项启动和独立清理归档；第四轮补齐变量并静态核查全局，原帮助脚本、CPU/IO配额、600秒与压力契约逐一相等。已进入DBS原native活动，未接受完整32项/两角色或稳定发布；前三轮失败和52项原定义保持。
+
+
+[high真实压力第四轮终态](testing-memory-high-pressure.md)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。两角色high生效/high事件和原硬上限保持可观察，但整体失败。原配额/SLA不放宽；DBS原超时和BrokenPipe/终态stdout缺失、租约假设均保留。完整线程/设备/PG证据、配置恢复和独立清理归档，原52项与稳定条件仍未关闭。

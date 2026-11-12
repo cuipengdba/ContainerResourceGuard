@@ -1,5 +1,7 @@
 # 当前验收入口
 
+[精确preview.4真实high压力终态](testing-memory-high-pressure.md)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。两角色均观察到high下调和high事件，原20GiB硬上限保持；整体失败，完整请求/线程/PG/设备及独立清理归档，不能计稳定通过。
+
 已发布[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[八项公开下载校验](test-results-preview4-publication.json)。每容器分别更新，保留原配置/profile/state_dir/journal，核对旧硬限额恢复；源码构建使用发布标签。完整业务和长期门槛继续。
 
 P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux6-current-integration.md)：原22项驱动/预算不变、同次attempt1，真实三资源/独立百分比/新ID/恢复/只读降级及独立夹具清理；主线源码未变沿用旧来源。本次不关闭ARM厂商业务、独立物理多设备、原32项双角色业务与长期/旧次版本迁移条件。
