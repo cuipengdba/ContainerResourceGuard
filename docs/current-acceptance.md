@@ -1,5 +1,7 @@
 # 当前验收入口
 
+2026-11-12：[直接BPF诊断自建探针14项通过](testing-direct-bpf-host.md)，正常18事件有精确回环连接/同TID阻塞写关联，真实输出失败标记不完整，30个内核对象独立确认释放。尚未接入厂商副本或解决原API超时；当前仍使用memory.high版preview.4，所有原业务/长期/52项验收条件保持。
+
 [最新第五轮high压力终态](testing-memory-high-pressure.md)：DBS实际600.289秒，HISDBS实际600.447秒；两者SQL错误0、API错误各1，均未中断且11个重载区间和10项引擎内容检查完成。整体失败、实际26/预定32；完整原件及独立清理归档，旧失败和全部稳定门槛保持。
 
 [精确preview.4真实high压力终态](testing-memory-high-pressure.md)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。两角色均观察到high下调和high事件，原20GiB硬上限保持；整体失败，完整请求/线程/PG/设备及独立清理归档，不能计稳定通过。
