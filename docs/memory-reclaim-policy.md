@@ -18,7 +18,7 @@ CRG不新增memory.max硬限额。Kubernetes、运行时、祖先及其他管理
 
 high可设置为低于当前用量，以启动回收压力；它不再使用原memory.max的下调余量/稳定窗口。`memory_stable_seconds`仍保护需要降低的历史硬限额恢复，不把等待窗口用来阻止high生效。内核支持时以O_NONBLOCK打开high，避免写入者同步回收；旧内核（包括上游5.14实现）可能仍在write中回收，因此不承诺所有内核上的写入时延有界。原PID1与CRG辅助启动解耦，但资源节流本身仍可能影响业务。
 
-日志继续一天一个文件，保留30天，目录总量超过1GB时从最旧日志清理，失败降级stderr。`resource_status.plan.memory_policy`为`high-reclaim-throttle`，实际项目显示memory.high；兼容别名、恢复、冲突和写入失败均可见。
+日志继续一天一个文件，保留30天，目录总量超过1GB时从最旧日志清理，失败降级stderr。`resource_status.fields.memory_policy`为`high-reclaim-throttle`，实际项目显示memory.high；兼容别名、恢复、冲突和写入失败均可见。
 
 ## 验证和交付任务
 
