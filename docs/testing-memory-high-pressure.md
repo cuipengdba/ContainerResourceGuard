@@ -22,6 +22,11 @@
 
 ## 第二轮
 
-[第二轮冻结计划](test-plan-memory-high-pressure-v2.json)与[完整源码](test-evidence/memory-high-pressure-v2-frozen.json.gz)只修正测试适配器的stdin转发，并使用新的目录/namespace/run ID，逐个核对原帮助脚本字节不变。原配额、所有上述标准及32项结构保持。启动前还要求首轮退出1及独立清理证据。已启动，尚未完成，不能计为真实压力、两角色完整业务、长期或稳定1.0通过。
+[第二轮冻结计划](test-plan-memory-high-pressure-v2.json)与[完整源码](test-evidence/memory-high-pressure-v2-frozen.json.gz)只修正测试适配器的stdin转发，并使用新的目录/namespace/run ID，逐个核对原帮助脚本字节不变。原配额、所有上述标准及32项结构保持。启动前还要求首轮退出1及独立清理证据。第二轮只启动了外层runner，其摘要断言在创建business worker前拒绝，实际没有进入业务；[失败与原stderr](test-results-memory-high-pressure-v2.json)保留，namespace不存在、runner原实例消失。
 
 [第二轮精确测试源副本](../tests/memory-high-pressure-frozen-v2/README.md)用于审阅；公开产品包保持原发布资产，不因测试夹具变更而重打标签。
+
+
+## 第三轮
+
+[第三轮冻结计划](test-plan-memory-high-pressure-v3.json)、[全部输入源](test-evidence/memory-high-pressure-v3-frozen.json.gz)及[精确源码副本](../tests/memory-high-pressure-frozen-v3/README.md)只修正启动器摘要绑定，精确替换路径/namespace/run ID，不再全局替换数字；启动前逐个核对全部帮助脚本摘要、CPU/IO数值、原native标准和high压力契约相等。首次本地绑定检查还发现退出记录内残留旧摘要，已在首次第三轮启动前一并修正并再次验证。前两轮失败不覆盖。使用全新隔离夹具，运行中，尚非32项完整压力/两角色600秒或稳定1.0通过。
