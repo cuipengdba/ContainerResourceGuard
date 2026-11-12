@@ -1,5 +1,7 @@
 # 当前交付与后续验收
 
+[厂商副本直接BPF诊断](testing-direct-bpf-vendor.md)：两角色各120秒/SQL和API0错，18项范围/持有连接/恢复清理通过，但正常快速连接端口关联0/50，仍未资格、未证明原API超时原因。16字段BTF只读布局可用，内核端点采集尚未实现；原完整600秒、七天及全部52条件保持。
+
 当前可更新包是[memory.high版v1.0.0-preview.4](releases/v1.0.0-preview.4.md)，详见[配置](configuration.md)、[内存策略和旧max迁移](memory-reclaim-policy.md)及[公开preview.3→4更新手册](upgrade-preview3-preview4.zh.md)。当前仍为工程预览；[正式验收入口](current-acceptance.md)和[52项任务注册表](current-task-registry.json)优先于下方历史快照。
 
 只控制CPU/内存/IO，分别设置百分比、缺省各20%；内存回收目标使用high，原外部硬上限不放宽。一容器一Agent、自动自身ID发现、v1跳过/v2校验、自动IO标定及每日30天/1GB日志保留。最新完整high压力两角色各600秒/SQL零错误但API各一次超时，尚未通过；[连接与日志写诊断](testing-perf-metadata.md)资格未通过，不能以实验工具替代业务验收。
