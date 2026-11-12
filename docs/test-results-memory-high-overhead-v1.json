@@ -1,0 +1,75 @@
+{
+  "utc": "2026-11-12T05:49:01Z",
+  "launch": {
+    "pid": 2517080,
+    "start_ticks": 140232357,
+    "entry": "/var/tmp/crg-high539-tools-20261112/overhead-runner.py",
+    "job_sha256": "50de5e77f3a34eb1658f0f20eee364b06aca9329000c021c0d98d1e10046da77",
+    "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+    "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+  },
+  "runner": {
+    "pid": 2517080,
+    "exists": false
+  },
+  "report": {
+    "phase": "failed",
+    "source": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+    "scope": "three isolated placeholder PID1 containers; Agent only, not vendor business performance",
+    "criteria": {
+      "actual_seconds": 1800,
+      "warmup_seconds": 45,
+      "sample_period_seconds": 10,
+      "interval_seconds": 15,
+      "CPU_single_core_percent_max": 0.1,
+      "RSS_max_bytes": 20971520,
+      "stable_status_min_write_interval_seconds": 299,
+      "healthy_write_bytes_max": 8388608,
+      "fault_write_bytes_max": 16777216,
+      "host_available_min_bytes": 8589934592,
+      "host_disk_free_min_bytes": 21474836480,
+      "OOM_kill_delta_max": 0,
+      "io_cap_bps": 65536,
+      "io_cap_iops": 8
+    },
+    "cases": {},
+    "started": 1794462380.5415213,
+    "memory_policy": "high-reclaim-throttle",
+    "external_memory_max_bytes": 268435456,
+    "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+    "architecture": "x86_64",
+    "job_sha256": "50de5e77f3a34eb1658f0f20eee364b06aca9329000c021c0d98d1e10046da77",
+    "qualification_sha256": "0671b09e69a6f70741aa28636cc54e9144f5a16fc7c7ee37d07088c5481dec1c",
+    "error": "wrong memory policy",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-high539-tools-20261112/overhead-job.py\", line 83, in <module>\n    if info.get('memory_policy')!='high-reclaim-throttle':raise RuntimeError('wrong memory policy')\nRuntimeError: wrong memory policy\n",
+    "ended": 1794462380.9873695
+  },
+  "exit": {
+    "exit": 1,
+    "job_sha256": "50de5e77f3a34eb1658f0f20eee364b06aca9329000c021c0d98d1e10046da77",
+    "started_epoch": 1794462380.4978743,
+    "ended_epoch": 1794462380.9963014
+  },
+  "namespace_absent": true,
+  "owned_fixture_identity": [],
+  "summary": {
+    "node_utc": "2026-11-12T05:49:01Z",
+    "phase": "failed",
+    "error": "wrong memory policy",
+    "measurement_elapsed_seconds": null,
+    "runner": {
+      "pid": 2517080,
+      "exists": false
+    },
+    "workers": null,
+    "exit": {
+      "exit": 1,
+      "job_sha256": "50de5e77f3a34eb1658f0f20eee364b06aca9329000c021c0d98d1e10046da77",
+      "started_epoch": 1794462380.4978743,
+      "ended_epoch": 1794462380.9963014
+    },
+    "namespace_absent": true,
+    "owned_fixture_identity": [],
+    "cases": {}
+  }
+}

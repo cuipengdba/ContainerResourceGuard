@@ -274,3 +274,7 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 2026-11-12内存high新策略：[两原镜像隔离30项、两架构实际控制器44项通过及失败原件](testing-memory-high.md)。仅工程控制资格；完整业务、新策略长期及原52项/稳定条件不关闭，preview.4正在准备。
 
 2026-11-12已交付[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[两架构等八项公开附件逐字节校验](test-results-preview4-publication.json)。独立百分比各默认20、旧自有硬限额迁移、版本门禁、一对一、自动IO标定和日志保留；30+44项仅工程控制范围，原52项与稳定1.0门槛继续。
+
+<!-- memory-high-preview4-current:start -->
+2026-11-12 preview.4 新内存策略接受进度：[原生 Linux6/7、AMD64/ARM64 四组88项](testing-memory-high-native.md)通过，每组八文件与发布构建完全一致；[两个全新检出与节点身份](test-results-memory-high-identity.json)及14项包完整性通过。[三场景1800秒开销](testing-memory-high-overhead.md)正在采样，首次创建Pod前的错误断言失败原件保留、第二次标准保持；[两角色真实路径业务](testing-memory-high-business.md)协调器只等待新版开销终态，尚无业务接受结论。冻结驱动原件和逐格CI收据见[归档](test-evidence/memory-high-release-frozen.json.gz)。内存使用memory.high，外部memory.max保持；旧硬策略时长不计入。52项定义、原硬件/业务/长期条件和未完成状态保持，稳定版尚未接受。
+<!-- memory-high-preview4-current:end -->
