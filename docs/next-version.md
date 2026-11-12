@@ -1,4 +1,12 @@
-# 下一版：v0.1.0-rc.3-preview.1
+# 当前交付与后续验收
+
+当前可更新包是[memory.high版v1.0.0-preview.4](releases/v1.0.0-preview.4.md)，详见[配置](configuration.md)、[内存策略和旧max迁移](memory-reclaim-policy.md)及[公开preview.3→4更新手册](upgrade-preview3-preview4.zh.md)。当前仍为工程预览；[正式验收入口](current-acceptance.md)和[52项任务注册表](current-task-registry.json)优先于下方历史快照。
+
+只控制CPU/内存/IO，分别设置百分比、缺省各20%；内存回收目标使用high，原外部硬上限不放宽。一容器一Agent、自动自身ID发现、v1跳过/v2校验、自动IO标定及每日30天/1GB日志保留。最新完整high压力两角色各600秒/SQL零错误但API各一次超时，尚未通过；[连接与日志写诊断](testing-perf-metadata.md)资格未通过，不能以实验工具替代业务验收。
+
+后续继续完成原十版及全部52任务，包括默认百分比、真实压力/受限IO、各自七天及老化后置、正式24h对照、实际已发布次版本迁移和未测硬件条件；不补造历史版本或改变门槛。以下保留旧计划原文及来源时点。
+
+# 历史下一版计划：v0.1.0-rc.3-preview.1
 
 当前工程预览候选实现用户最新R27/R29/R30，两套候选的Linux检查和38项隔离实测已通过，见[测试证据](testing-three-percent-cgroup-logs.md)。本次发布main的工程预览包，组合开发线不作为发布物。正式RC3、稳定版及1.0的业务与长期验收未完成，不因本工程预览标签提前关闭。
 
