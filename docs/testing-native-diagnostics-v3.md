@@ -1,0 +1,15 @@
+# 集成PG v2读取器的原生诊断资格
+
+本轮把[独立资格168项已通过的PG v2读取器](testing-pg-wait-v2-qualification-v4.md)接入实际诊断线程与测试客户端。新建native-diagnostics-v3/soak-load-diagnostics-v3源，旧v2原件及其历史结果保持，已发布CRG程序和现有三个长任务不变。这仍是诊断集成资格，不是完整厂商业务或受限IO因果验收。
+
+## 冻结范围
+
+[计划](test-plan-native-diagnostics-v3.json)保留旧集成工具每运行时15项回调/故障隔离检查，以及每角色26项新PG+模拟HTTP检查，新增每角色两项实际PG栈read/EACCES/13且无私有消息/路径/栈内容的集成断言。预计宿主15、两厂商Python2各15+28，共101项，尚未运行，不能计通过。[精确冻结源码](test-evidence/native-diagnostics-v3-frozen.json.gz)记录全部依赖、计划、runner和本地inert入口检查；inert不能代替原生资格。
+
+新worker相对原worker只更换诊断模块文件名及锁定摘要。原64MiB新测试schema、SQL每2秒/API每5秒、5秒最大耗时、p95桶上界1秒、零错误和98%覆盖标准不改；三个短资格场景保持正常12秒、受控锁16秒、缺少PG权限标记12秒。受控锁场景必须保留原SQL超时失败并关联真实backend/锁等待，缺少标记时必须使诊断失败可见且原请求继续、业务stop不被置位。短资格时长不能计600秒、24小时或七天。
+
+原诊断8MiB报告、1024请求、901样本/16行、1秒采样/只读查询时限、内部三类线程CPU合计不超过单核5%的边界保持。PG模块按已验证的SHA256从同一私有常规目录载入；O_NOFOLLOW、Python2模块生命周期引用、请求错误优先及未知元数据规则保留。测试源保留独立版本，不把历史generic OSError补写为errno13，也不把权限错误当受限IO业务延迟根因。
+
+两角色顺序运行原厂商镜像Python2与核对摘要的只读PG bin/lib/share；新emptyDir PG数据与模拟HTTP服务，不挂载原业务数据、配置、Agent或缓存。UID999/GID998、drop ALL、只读根、无ServiceAccount/hostPID/hostNetwork，每Pod最多512MiB/1核；源为私有0700目录下常规0400文件。沿用540秒整轮上限和每次宿主至少8GiB+512MiB可用内存；退出后独立核对Namespace、Pod父/叶cgroup、原PID1与协调进程清理。
+
+后续完整受限IO/真实high压力轮仍须预先冻结源、预算、600秒负载、备份/同步/独立恢复及所有原业务标准。本轮通过也不抵消此前默认20%或135写IOPS失败，不关闭原52项及其他稳定门槛。
