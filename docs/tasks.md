@@ -492,3 +492,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [实际已发布preview.3→preview.4包内程序维护26项](testing-public-preview-memory-high-maintenance.md)通过：实际公开tar/manifest/ELF摘要绑定、两角色各600秒/各9命令区间/原全部SLA、hard/high往返及独立清理。旧506开发构建结果独立保留，这两个预发布tag不代替两个实际已发布次版本；[专用逐容器升级回退步骤](upgrade-preview3-preview4.zh.md)已归档，原52项及其他稳定条件保持。
+
+
+[PG等待诊断v2的新资格轮](testing-pg-wait-v2-qualification-v3.md)已冻结：原宿主44项后缺失原生报告的失败和源码保留，原四份v2源码/32+14基线/边界均不改；新驱动用私有常规源、先记录子命令再读报告、独立退出文件补齐取证，尚未运行，不宣称根因或业务通过。原52项和长期/稳定条件保持。
