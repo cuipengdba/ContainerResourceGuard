@@ -35,3 +35,12 @@
 ## 第四轮
 
 [冻结计划](test-plan-memory-high-pressure-v4.json)、[完整输入](test-evidence/memory-high-pressure-v4-frozen.json.gz)及[精确测试源](../tests/memory-high-pressure-frozen-v4/README.md)补齐源目录变量，静态符号表分析确认核心/驱动无未定义全局，精确核对全部帮助脚本、原CPU/IO/SLA和压力契约不变。第四轮已进入DBS原启动链和600秒native活动，最早快照仅两项启动检查；这不是完整压力、两角色业务或稳定1.0通过，实际终态另行归档。前三轮失败保持。
+
+
+## 第四轮实际终态：整体失败，真实high生效已观察
+
+[完整原请求/线程/设备/PG证据及独立清理](test-results-memory-high-pressure-v4.json)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。只记录实际27项主检查，不冒充预定32项通过。两角色均在memory.current实际高于20%目标+256MiB时接受generation7并回读memory.high=13334654976，high事件增加（DBS 9124，HISDBS 526），采样的原memory.max=21474836480及oom/oom_kill=0保持，journal不拥有memory.max。high生效后仍观察到用量超过high，符合非硬上限语义；这些事实不等于业务SLA或全系统永不OOM。
+
+DBS的release命令遇到BrokenPipe；同一进程在进入该命令前已消失，finally确认辅助已退出。原同步PG身份SQL在压力检查中可能超过辅助10秒租约，且该调用期间没有心跳；原辅助的终态stdout未被保存，因此只能列为租约退出假设，不补称已证明。原租约/240秒寿命/配额保持；后续仅完善有界心跳与原终态保留，不能以修正测试驱动抹去真实SQL/API超时。逐请求时间线至少一个API错误在压力准备和high写入之前，另一个SQL跨越写入时点，不能把全部7次错误归因于high。原业务错误优先，失败收尾仅向绑定的合成native进程发TERM，145秒中断不能算600秒通过。
+
+两个Pod/父叶cgroup、原PID1及所有已记录原进程、namespace、runner/worker经独立观察消失；原配置字节/profile缺省恢复。两角色完整压力业务、default20%、原52项和稳定1.0仍未接受；已发布产品资产/版本没有因测试变化而替换。

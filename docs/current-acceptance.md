@@ -1,5 +1,7 @@
 # 当前验收入口
 
+[精确preview.4真实high压力终态](testing-memory-high-pressure.md)：DBS实际145.053秒后按原失败收尾，SQL/API错误2/5、9区间；HISDBS实际600.513秒，SQL/API错误0/0、11区间，角色状态short-acceptance-passed。两角色均观察到high下调和high事件，原20GiB硬上限保持；整体失败，完整请求/线程/PG/设备及独立清理归档，不能计稳定通过。
+
 已发布[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[八项公开下载校验](test-results-preview4-publication.json)。每容器分别更新，保留原配置/profile/state_dir/journal，核对旧硬限额恢复；源码构建使用发布标签。完整业务和长期门槛继续。
 
 > 2026-11-12已选定的新内存语义：百分比及手动内存写memory.high，不新增memory.max；允许超目标，外部硬限额保留。旧硬限额仅凭同身份journal及仍持有的值恢复。下述旧版实现/测试保持历史来源，不能替代新策略验证。见[内存策略](memory-reclaim-policy.md)。
