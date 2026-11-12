@@ -27,3 +27,5 @@
 同一源码的[原生AMD64/ARM64实际控制器回归](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43156593022)各22项，共44项通过，实际内核7.0.0-1017-azure；仍使用原CPU/IO负载与恢复/新ID/只读/清理检查，内存期望按用户指定改为high，外部max保持。CI程序链接版本为native-controller-ci，不能说与preview.4字节相同。发布两架构程序另做相同固定工具链的二次构建，逐字节一致。Linux构建/竞态及原生ARM64检查通过。
 
 此30+44项只覆盖工程控制行为。脏页+受限IO、真实数据库缓存高峰、完整两角色业务和新策略长期验证继续；不把旧硬限额七天任务计入新策略，不关闭稳定1.0的原门槛。
+
+已发布[preview.4](releases/v1.0.0-preview.4.md)，[八项公开下载逐字节验证](test-results-preview4-publication.json)。包内程序即上述固定摘要，源码与文档包修订分别记录；不自动更新现有环境。

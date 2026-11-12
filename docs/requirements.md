@@ -272,3 +272,5 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 2026-11-12用户已选择memory.high，不再新增memory.max。组合及分区开发候选已实现百分比回收目标、手动high与所有权迁移；本地Go测试通过，真机/Linux/发布交付待完成。main程序尚未回移；详见[内存策略](memory-reclaim-policy.md)。原52项及稳定1.0门槛不变。
 
 2026-11-12内存high新策略：[两原镜像隔离30项、两架构实际控制器44项通过及失败原件](testing-memory-high.md)。仅工程控制资格；完整业务、新策略长期及原52项/稳定条件不关闭，preview.4正在准备。
+
+2026-11-12已交付[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[两架构等八项公开附件逐字节校验](test-results-preview4-publication.json)。独立百分比各默认20、旧自有硬限额迁移、版本门禁、一对一、自动IO标定和日志保留；30+44项仅工程控制范围，原52项与稳定1.0门槛继续。
