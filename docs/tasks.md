@@ -464,5 +464,5 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 2026-11-12已交付[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[两架构等八项公开附件逐字节校验](test-results-preview4-publication.json)。独立百分比各默认20、旧自有硬限额迁移、版本门禁、一对一、自动IO标定和日志保留；30+44项仅工程控制范围，原52项与稳定1.0门槛继续。
 
 <!-- memory-high-preview4-current:start -->
-2026-11-12 preview.4 新内存策略接受进度：[原生 Linux6/7、AMD64/ARM64 四组88项](testing-memory-high-native.md)通过，每组八文件与发布构建完全一致；[两个全新检出与节点身份](test-results-memory-high-identity.json)及14项包完整性通过。[三场景1800秒开销](testing-memory-high-overhead.md)正在采样，首次创建Pod前的错误断言失败原件保留、第二次标准保持；[两角色真实路径业务](testing-memory-high-business.md)协调器只等待新版开销终态，尚无业务接受结论。冻结驱动原件和逐格CI收据见[归档](test-evidence/memory-high-release-frozen.json.gz)。内存使用memory.high，外部memory.max保持；旧硬策略时长不计入。52项定义、原硬件/业务/长期条件和未完成状态保持，稳定版尚未接受。
+2026-11-12 preview.4：memory.high新策略[原生四格88项](testing-memory-high-native.md)、[发布身份及新检出重建](test-results-memory-high-identity.json)、[三场景实际1800秒开销及独立清理](testing-memory-high-overhead.md)通过。首次创建Pod前的错误断言失败原件保留。[两角色真实路径业务](testing-memory-high-business.md)已在新版开销终态通过并清理后开始，DBS启动中，业务仍待600秒负载及备份/同步/独立恢复终态。内存使用memory.high，外部memory.max保持；旧硬策略时长不计入。52项定义、原硬件/业务/长期条件和未完成状态保持，稳定版尚未接受。
 <!-- memory-high-preview4-current:end -->

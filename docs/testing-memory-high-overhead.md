@@ -9,3 +9,5 @@
 第一次准备在创建 Pod 前失败，原始[结果](test-results-memory-high-overhead-v1.json)保留：驱动误把 build-info 的完整说明值与短策略名比较，实际程序策略正确。第二次按四格 CI 所记录的完整值作精确比较，其他标准保持，见[新冻结计划](test-plan-memory-high-overhead-v2.json)；使用独立目录和命名空间，尚未启动。
 
 第二次已启动并进入实际采样，固定程序摘要6088721c；仍须完整1800秒终态、exit0和独立清理后才能接受。
+
+第二次已终态通过，见[完整结果及独立清理](test-results-memory-high-overhead-v2.json)：实测1800.0305秒，每场景181次采样；健康/导出失败/只读的单核CPU平均分别0.02389%、0.02278%、0.03111%，RSS最高分别10174464/10027008/10240000字节。状态写入最短间隔均≥300秒，写入量均低于原门槛，零OOM kill。只读场景保持降级，外部IO夹具不计为Agent成功。namespace、自有3个Pod父cgroup、3个叶cgroup及6个原PID1/Agent进程均经独立观察确认消失；runner已退出、exit0。业务等待门槛已解除，DBS启动中，不把本项当作业务或长期接受。
