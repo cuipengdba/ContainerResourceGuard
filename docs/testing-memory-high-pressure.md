@@ -44,3 +44,10 @@
 DBS的release命令遇到BrokenPipe；同一进程在进入该命令前已消失，finally确认辅助已退出。原同步PG身份SQL在压力检查中可能超过辅助10秒租约，且该调用期间没有心跳；原辅助的终态stdout未被保存，因此只能列为租约退出假设，不补称已证明。原租约/240秒寿命/配额保持；后续仅完善有界心跳与原终态保留，不能以修正测试驱动抹去真实SQL/API超时。逐请求时间线至少一个API错误在压力准备和high写入之前，另一个SQL跨越写入时点，不能把全部7次错误归因于high。原业务错误优先，失败收尾仅向绑定的合成native进程发TERM，145秒中断不能算600秒通过。
 
 两个Pod/父叶cgroup、原PID1及所有已记录原进程、namespace、runner/worker经独立观察消失；原配置字节/profile缺省恢复。两角色完整压力业务、default20%、原52项和稳定1.0仍未接受；已发布产品资产/版本没有因测试变化而替换。
+
+
+## 第五轮：原SQL等待期间续租，保留全部原标准
+
+[冻结计划](test-plan-memory-high-pressure-v5.json)、[完整输入](test-evidence/memory-high-pressure-v5-frozen.json.gz)及[精确测试源](../tests/memory-high-pressure-frozen-v5/README.md)保留实际preview.4程序、原83/135 IOPS等CPU/IO预算、全部原帮助脚本、租约10秒/寿命240秒、两角色各600秒/原SLA/11区间/32项框架。在原PG身份SQL及30秒超时保持的前提下，主线程继续串行ping，辅助终态stdout在成功/失败时有界保留，区间结束时间移到身份检查完成后。使用[9项真实续租资格](testing-pressure-SQL-lease.md)的新模块；只完善测试生命周期，不声称第四轮DBS原因已证实或原超时已消除。
+
+第五轮新夹具已进入DBS native与原引擎活动，运行中；尚非32项完整业务或稳定1.0通过。原第四轮27项局部/HIS600.513及DBS145.053/错误2/5、前三轮准备失败继续独立保留。
