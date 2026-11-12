@@ -33,5 +33,5 @@ func logRunStatus(log *runlog.Logger, status guard.Status) {
 	for _, item := range status.Items {
 		items = append(items, map[string]string{"controller": item.File, "state": item.State, "detail": item.Detail})
 	}
-	log.Event("INFO", "resource_status", map[string]any{"state": status.State, "mode": status.Mode, "error": status.Error, "percentages": status.Plan.Percentages, "legacy_percent": status.Plan.Percent, "items": items})
+	log.Event("INFO", "resource_status", map[string]any{"state": status.State, "mode": status.Mode, "error": status.Error, "percentages": status.Plan.Percentages, "legacy_percent": status.Plan.Percent, "memory_policy": status.Plan.MemoryPolicy, "warnings": status.Plan.Warnings, "items": items})
 }
