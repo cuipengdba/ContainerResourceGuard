@@ -493,3 +493,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出1/独立无目录与namespace/进程消失已归档；不改旧输入。另冻结[独立v4轮](testing-pg-wait-v2-qualification-v4.md)，纠正namespace及独立runtime-v3的读取器引用，原四份v2源码、全部44/18项及资源/时间边界不变；本地inert不计原生资格，尚未运行。
+
+
+[PG v2诊断资格独立v4轮168项](testing-pg-wait-v2-qualification-v4.md)通过：宿主44、两厂商原生Python2各44解析/18真实PG，精确常规源、read/EACCES/13、实际退出和新backend身份及全部原边界/独立清理通过。投射装载ELOOP在新轮复现，原namespace guard和缺失报告失败保留；只接受工具资格，不证明受限IO业务因果、不抵消135写IOPS/默认百分比等失败，不关闭原52项。
