@@ -471,3 +471,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 <!-- memory-high-preview4-current:start -->
 2026-11-12 preview.4：memory.high新策略[原生四格88项](testing-memory-high-native.md)、[发布身份及新检出重建](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)、[DBS/HISDBS真实路径各600秒及十项备份/同步/独立恢复](testing-memory-high-business.md)均通过；命名手动预算、SQL/API零错误、原5秒/1秒/98%与启动300/缓存45秒标准保持，独立清理已确认。两次准备驱动错误原件保留。内存使用memory.high，外部memory.max保持；不能冒充默认百分比/high回收压力/脏页/受限IO/辅助故障或长期接受，旧硬策略时长也不计入。52项定义及原稳定门槛和未完成状态保持，稳定版尚未接受。
 <!-- memory-high-preview4-current:end -->
+
+
+已冻结[memory.high发布程序的20场景故障复验](testing-memory-high-faults.md)：使用精确preview.4程序，保留108项、90/45/12秒及真实标定取消身份标准；实际开销/两角色短业务终态通过并清理后才可启动。故障结果尚未产生，不能记作压力或长期通过。
