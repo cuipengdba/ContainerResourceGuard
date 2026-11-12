@@ -1,0 +1,1588 @@
+{
+  "schema": "crg-perf-metadata-host-qualification-four-failures-v1",
+  "phase": "failed-not-integrated",
+  "planned_checks_each": 9,
+  "attempts": {
+    "1": {
+      "phase": "failed",
+      "checks": [
+        {
+          "name": "missing-marker-rejected-before-opening-target",
+          "passed": true
+        },
+        {
+          "name": "mismatched-real-start-ticks-rejected",
+          "passed": true
+        }
+      ],
+      "report": {
+        "schema": "crg-perf-metadata-host-qualification-v1",
+        "phase": "failed",
+        "node_utc": "2026-11-12T14:37:45.776388+00:00",
+        "source_sha256": "af099cf07521aaaf1eaff2198370ee8a14aa3520aef9abebbb3902c96401e34c",
+        "checks": [
+          {
+            "name": "missing-marker-rejected-before-opening-target",
+            "passed": true
+          },
+          {
+            "name": "mismatched-real-start-ticks-rejected",
+            "passed": true
+          }
+        ],
+        "target_business_processes": 0,
+        "target_signals_or_control_writes": 0,
+        "own_target": {
+          "pid": 1319977,
+          "start_ticks": 143420888,
+          "state": "S",
+          "cgroup": "0::/user.slice/user-0.slice/session-231964.scope",
+          "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f"
+        },
+        "error_class": "Rejected",
+        "error": "PERF_ENABLE_HANDSHAKE",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace655-tools-20261112/checks.py\", line 38, in <module>\n    stream=m.Stream([target]).start();check('real-perf-enable-ack-before-request',stream.ready);child.stdin.write('\\n');child.stdin.flush()\n  File \"/var/tmp/crg-trace655-tools-20261112/vendor-perf-metadata.py\", line 102, in start\n    need(bytes(ack)==b'ack\\n','PERF_ENABLE_HANDSHAKE');validate(list(self.targets.values()));self.ready=True\n  File \"/var/tmp/crg-trace655-tools-20261112/vendor-perf-metadata.py\", line 26, in need\n    if not ok:raise Rejected(reason)\nmetadata.Rejected: PERF_ENABLE_HANDSHAKE\n",
+        "own_target_exit": 1,
+        "own_target_stderr": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace655-checks-20261112/own-http-with-blocked-pipe.py\", line 8, in <module>\n    input()\nEOFError: EOF when reading a line\n",
+        "ended_node_utc": "2026-11-12T14:37:47.329965+00:00"
+      },
+      "source_sha256": {
+        "vendor-perf-metadata.py": "af099cf07521aaaf1eaff2198370ee8a14aa3520aef9abebbb3902c96401e34c",
+        "checks.py": "c28a649a466a40e4ca775e168ae1029550d89239476402f5b3ca0b818338199d"
+      },
+      "source_directory": "../tests/perf-metadata-frozen-v1/",
+      "original_receipt": "129-crg-r656-observe-perf97.json",
+      "observed_node_utc": "2026-11-12T14:40:10.168533+00:00",
+      "qualification_accepted": false,
+      "independent_current_entry_scan_absent": true,
+      "original_coordinators_and_helpers_independently_gone": false,
+      "first_SSH_observation_timeout_did_not_trigger_restart": true
+    },
+    "2": {
+      "phase": "failed",
+      "checks": [
+        {
+          "name": "missing-marker-rejected-before-opening-target",
+          "passed": true
+        },
+        {
+          "name": "mismatched-real-start-ticks-rejected",
+          "passed": true
+        },
+        {
+          "name": "real-perf-enable-ack-before-request",
+          "passed": true
+        },
+        {
+          "name": "original-own-loopback-request-completes-without-target-signals",
+          "passed": true
+        },
+        {
+          "name": "stream-closes-cleanly-and-target-still-running",
+          "passed": false
+        }
+      ],
+      "report": {
+        "schema": "crg-perf-metadata-host-qualification-v1",
+        "phase": "failed",
+        "node_utc": "2026-11-12T14:44:47.842580+00:00",
+        "source_sha256": "b15919abdf91ad6af747296cb9cae5b88c1b9293773b1ce729a8cf1083957129",
+        "checks": [
+          {
+            "name": "missing-marker-rejected-before-opening-target",
+            "passed": true
+          },
+          {
+            "name": "mismatched-real-start-ticks-rejected",
+            "passed": true
+          },
+          {
+            "name": "real-perf-enable-ack-before-request",
+            "passed": true
+          },
+          {
+            "name": "original-own-loopback-request-completes-without-target-signals",
+            "passed": true
+          },
+          {
+            "name": "stream-closes-cleanly-and-target-still-running",
+            "passed": false
+          }
+        ],
+        "target_business_processes": 0,
+        "target_signals_or_control_writes": 0,
+        "own_target": {
+          "pid": 1411894,
+          "start_ticks": 143463095,
+          "state": "S",
+          "cgroup": "0::/user.slice/user-0.slice/session-232033.scope",
+          "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f"
+        },
+        "stream": {
+          "schema": "crg-perf-metadata-stream-v1",
+          "enable_handshake": true,
+          "ack_bytes": 5,
+          "owned_collector_processes": {
+            "record": {
+              "pid": 1411895,
+              "start_ticks": 143463098
+            },
+            "script": {
+              "pid": 1411896,
+              "start_ticks": 143463098
+            }
+          },
+          "record_exit": -2,
+          "script_exit": 0,
+          "events": [
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631586754720,
+              "direction": "enter",
+              "call": "accept4",
+              "fd": 5,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631704490819,
+              "direction": "exit",
+              "call": "accept4",
+              "return": 6,
+              "accepted_fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631704551039,
+              "direction": "enter",
+              "call": "recvfrom",
+              "fd": 6,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631704554359,
+              "direction": "exit",
+              "call": "recvfrom",
+              "return": 22
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631704559265,
+              "direction": "enter",
+              "call": "write",
+              "fd": 4,
+              "count": 4096,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631704560996,
+              "direction": "exit",
+              "call": "write",
+              "return": -11
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434631706374864,
+              "direction": "enter",
+              "call": "write",
+              "fd": 4,
+              "count": 4096,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434632206923015,
+              "direction": "exit",
+              "call": "write",
+              "return": 4096
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434632207027621,
+              "direction": "enter",
+              "call": "sendto",
+              "fd": 6,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1411894,
+              "tid": 1411894,
+              "monotonic_ns": 1434632207091631,
+              "direction": "exit",
+              "call": "sendto",
+              "return": 41
+            }
+          ],
+          "pairs": [
+            {
+              "entry": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631586754720,
+                "direction": "enter",
+                "call": "accept4",
+                "fd": 5,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631704490819,
+                "direction": "exit",
+                "call": "accept4",
+                "return": 6,
+                "accepted_fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "elapsed_ns": 117736099
+            },
+            {
+              "entry": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631704551039,
+                "direction": "enter",
+                "call": "recvfrom",
+                "fd": 6,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631704554359,
+                "direction": "exit",
+                "call": "recvfrom",
+                "return": 22
+              },
+              "elapsed_ns": 3320
+            },
+            {
+              "entry": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631704559265,
+                "direction": "enter",
+                "call": "write",
+                "fd": 4,
+                "count": 4096,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631704560996,
+                "direction": "exit",
+                "call": "write",
+                "return": -11
+              },
+              "elapsed_ns": 1731
+            },
+            {
+              "entry": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434631706374864,
+                "direction": "enter",
+                "call": "write",
+                "fd": 4,
+                "count": 4096,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434632206923015,
+                "direction": "exit",
+                "call": "write",
+                "return": 4096
+              },
+              "elapsed_ns": 500548151
+            },
+            {
+              "entry": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434632207027621,
+                "direction": "enter",
+                "call": "sendto",
+                "fd": 6,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1411894,
+                "tid": 1411894,
+                "monotonic_ns": 1434632207091631,
+                "direction": "exit",
+                "call": "sendto",
+                "return": 41
+              },
+              "elapsed_ns": 64010
+            }
+          ],
+          "unfinished_entries": [],
+          "diagnostic_errors": {},
+          "stderr_present": {
+            "record": false,
+            "script": false
+          },
+          "stderr_unknown_present": {
+            "record": false,
+            "script": false
+          },
+          "known_control_messages": [],
+          "raw_metadata_stream_bytes_consumed": 1114,
+          "elapsed_seconds": 2.915257108164951,
+          "collector_CPU_seconds": 0.011206330000000007,
+          "other_inherited_PIDs_omitted": 0,
+          "target_signals_or_control_writes": 0,
+          "raw_perf_files_target_buffers_addresses_or_payload_saved": false,
+          "FD_snapshots_are_nonatomic": true
+        },
+        "request": {
+          "client_port": 9712,
+          "server_port": 5987,
+          "started_monotonic_ns": 1434631704490455,
+          "ended_monotonic_ns": 1434632207118405,
+          "status_ok": true
+        },
+        "error_class": "AssertionError",
+        "error": "stream-closes-cleanly-and-target-still-running",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace657-tools-20261112/checks.py\", line 56, in <module>\n    result=stream.finish();report.update(stream=result,request=request);check('stream-closes-cleanly-and-target-still-running',not result['diagnostic_errors'] and result['record_exit']==result['script_exit']==0 and child.poll() is None)\n  File \"/var/tmp/crg-trace657-tools-20261112/checks.py\", line 26, in check\n    report['checks'].append({'name':name,'passed':bool(value)});assert value,name\nAssertionError: stream-closes-cleanly-and-target-still-running\n",
+        "own_target_exit": 1,
+        "own_target_stderr": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace657-checks-20261112/own-http-with-blocked-pipe.py\", line 18, in <module>\n    input()\nEOFError: EOF when reading a line\n",
+        "ended_node_utc": "2026-11-12T14:44:50.792430+00:00"
+      },
+      "source_sha256": {
+        "vendor-perf-metadata.py": "b15919abdf91ad6af747296cb9cae5b88c1b9293773b1ce729a8cf1083957129",
+        "checks.py": "b1806ccf1be43c643330d1882a236fbc199fc74efa8d0c4f156a67921784aa77",
+        "runner.py": "e548a1c0c24dd71edcdfd8f6158bbff4e56637ab409591020b9b11ff521e6c55"
+      },
+      "source_directory": "../tests/perf-metadata-frozen-v2/",
+      "original_receipt": "130-crg-r658-observe-perf97.json",
+      "observed_node_utc": "2026-11-12T14:45:18.850378+00:00",
+      "qualification_accepted": false,
+      "independent_current_entry_scan_absent": true,
+      "original_coordinators_and_helpers_independently_gone": true,
+      "first_SSH_observation_timeout_did_not_trigger_restart": false
+    },
+    "3": {
+      "phase": "failed",
+      "checks": [
+        {
+          "name": "missing-marker-rejected-before-opening-target",
+          "passed": true
+        },
+        {
+          "name": "mismatched-real-start-ticks-rejected",
+          "passed": true
+        },
+        {
+          "name": "real-perf-enable-ack-before-request",
+          "passed": true
+        },
+        {
+          "name": "original-own-loopback-request-completes-without-target-signals",
+          "passed": true
+        },
+        {
+          "name": "stream-closes-cleanly-and-target-still-running",
+          "passed": true
+        },
+        {
+          "name": "actual-negative-EAGAIN-return-retained",
+          "passed": true
+        },
+        {
+          "name": "actual-half-second-blocked-write-paired",
+          "passed": true
+        },
+        {
+          "name": "same-thread-exact-loopback-connection-wraps-blocking-write",
+          "passed": false
+        }
+      ],
+      "report": {
+        "schema": "crg-perf-metadata-host-qualification-v1",
+        "phase": "failed",
+        "node_utc": "2026-11-12T14:49:54.979648+00:00",
+        "source_sha256": "24e81cca2718ebf41e6e11acae37886eec5093d878fda6acc16d814d969c3f88",
+        "checks": [
+          {
+            "name": "missing-marker-rejected-before-opening-target",
+            "passed": true
+          },
+          {
+            "name": "mismatched-real-start-ticks-rejected",
+            "passed": true
+          },
+          {
+            "name": "real-perf-enable-ack-before-request",
+            "passed": true
+          },
+          {
+            "name": "original-own-loopback-request-completes-without-target-signals",
+            "passed": true
+          },
+          {
+            "name": "stream-closes-cleanly-and-target-still-running",
+            "passed": true
+          },
+          {
+            "name": "actual-negative-EAGAIN-return-retained",
+            "passed": true
+          },
+          {
+            "name": "actual-half-second-blocked-write-paired",
+            "passed": true
+          },
+          {
+            "name": "same-thread-exact-loopback-connection-wraps-blocking-write",
+            "passed": false
+          }
+        ],
+        "target_business_processes": 0,
+        "target_signals_or_control_writes": 0,
+        "own_target": {
+          "pid": 1479622,
+          "start_ticks": 143493809,
+          "state": "S",
+          "cgroup": "0::/user.slice/user-0.slice/session-232083.scope",
+          "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f"
+        },
+        "stream": {
+          "schema": "crg-perf-metadata-stream-v1",
+          "enable_handshake": true,
+          "ack_bytes": 5,
+          "collector_control_pings": 12,
+          "collector_control_ack_bytes": 60,
+          "stop_method": "SIGINT-to-owned-perf-pidfd-only",
+          "owned_collector_processes": {
+            "record": {
+              "pid": 1479623,
+              "start_ticks": 143493811
+            },
+            "script": {
+              "pid": 1479624,
+              "start_ticks": 143493812
+            }
+          },
+          "record_exit": -2,
+          "script_exit": 0,
+          "events": [
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938674746587,
+              "direction": "enter",
+              "call": "accept4",
+              "fd": 5,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938677022231,
+              "direction": "exit",
+              "call": "accept4",
+              "return": 6,
+              "accepted_fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938677068238,
+              "direction": "enter",
+              "call": "recvfrom",
+              "fd": 6,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938677071391,
+              "direction": "exit",
+              "call": "recvfrom",
+              "return": 22
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938677075391,
+              "direction": "enter",
+              "call": "write",
+              "fd": 4,
+              "count": 4096,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938677076773,
+              "direction": "exit",
+              "call": "write",
+              "return": -11
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434938679243503,
+              "direction": "enter",
+              "call": "write",
+              "fd": 4,
+              "count": 4096,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179787128,
+              "direction": "exit",
+              "call": "write",
+              "return": 4096
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179801933,
+              "direction": "enter",
+              "call": "close",
+              "fd": 4,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179803858,
+              "direction": "exit",
+              "call": "close",
+              "return": 0
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179879715,
+              "direction": "enter",
+              "call": "close",
+              "fd": 3,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179885580,
+              "direction": "exit",
+              "call": "close",
+              "return": 0
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179891289,
+              "direction": "enter",
+              "call": "sendto",
+              "fd": 6,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179931160,
+              "direction": "exit",
+              "call": "sendto",
+              "return": 41
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179939005,
+              "direction": "enter",
+              "call": "close",
+              "fd": 6,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179951793,
+              "direction": "exit",
+              "call": "close",
+              "return": 0
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179954810,
+              "direction": "enter",
+              "call": "close",
+              "fd": 5,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1479622,
+              "tid": 1479622,
+              "monotonic_ns": 1434939179959093,
+              "direction": "exit",
+              "call": "close",
+              "return": 0
+            }
+          ],
+          "pairs": [
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938674746587,
+                "direction": "enter",
+                "call": "accept4",
+                "fd": 5,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938677022231,
+                "direction": "exit",
+                "call": "accept4",
+                "return": 6,
+                "accepted_fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "elapsed_ns": 2275644
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938677068238,
+                "direction": "enter",
+                "call": "recvfrom",
+                "fd": 6,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938677071391,
+                "direction": "exit",
+                "call": "recvfrom",
+                "return": 22
+              },
+              "elapsed_ns": 3153
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938677075391,
+                "direction": "enter",
+                "call": "write",
+                "fd": 4,
+                "count": 4096,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938677076773,
+                "direction": "exit",
+                "call": "write",
+                "return": -11
+              },
+              "elapsed_ns": 1382
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434938679243503,
+                "direction": "enter",
+                "call": "write",
+                "fd": 4,
+                "count": 4096,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179787128,
+                "direction": "exit",
+                "call": "write",
+                "return": 4096
+              },
+              "elapsed_ns": 500543625
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179801933,
+                "direction": "enter",
+                "call": "close",
+                "fd": 4,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179803858,
+                "direction": "exit",
+                "call": "close",
+                "return": 0
+              },
+              "elapsed_ns": 1925
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179879715,
+                "direction": "enter",
+                "call": "close",
+                "fd": 3,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179885580,
+                "direction": "exit",
+                "call": "close",
+                "return": 0
+              },
+              "elapsed_ns": 5865
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179891289,
+                "direction": "enter",
+                "call": "sendto",
+                "fd": 6,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179931160,
+                "direction": "exit",
+                "call": "sendto",
+                "return": 41
+              },
+              "elapsed_ns": 39871
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179939005,
+                "direction": "enter",
+                "call": "close",
+                "fd": 6,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179951793,
+                "direction": "exit",
+                "call": "close",
+                "return": 0
+              },
+              "elapsed_ns": 12788
+            },
+            {
+              "entry": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179954810,
+                "direction": "enter",
+                "call": "close",
+                "fd": 5,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1479622,
+                "tid": 1479622,
+                "monotonic_ns": 1434939179959093,
+                "direction": "exit",
+                "call": "close",
+                "return": 0
+              },
+              "elapsed_ns": 4283
+            }
+          ],
+          "unfinished_entries": [],
+          "diagnostic_errors": {},
+          "stderr_present": {
+            "record": false,
+            "script": false
+          },
+          "stderr_unknown_present": {
+            "record": false,
+            "script": false
+          },
+          "known_control_messages": [],
+          "raw_metadata_stream_bytes_consumed": 1762,
+          "elapsed_seconds": 1.5248942219186574,
+          "collector_CPU_seconds": 0.011322611999999996,
+          "other_inherited_PIDs_omitted": 0,
+          "target_signals_or_control_writes": 0,
+          "raw_perf_files_target_buffers_addresses_or_payload_saved": false,
+          "FD_snapshots_are_nonatomic": true
+        },
+        "request": {
+          "client_port": 62832,
+          "server_port": 35001,
+          "started_monotonic_ns": 1434938677037792,
+          "ended_monotonic_ns": 1434939179956653,
+          "status_ok": true
+        },
+        "error_class": "AssertionError",
+        "error": "same-thread-exact-loopback-connection-wraps-blocking-write",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace659-tools-20261112/checks.py\", line 62, in <module>\n    check('same-thread-exact-loopback-connection-wraps-blocking-write',any(a['entry']['tid']==blocked[0]['entry']['tid']==z['entry']['tid'] and a['exit']['monotonic_ns']<=blocked[0]['entry']['monotonic_ns']<blocked[0]['exit']['monotonic_ns']<=z['entry']['monotonic_ns'] for a in recv for z in sent))\n  File \"/var/tmp/crg-trace659-tools-20261112/checks.py\", line 26, in check\n    report['checks'].append({'name':name,'passed':bool(value)});assert value,name\nAssertionError: same-thread-exact-loopback-connection-wraps-blocking-write\n",
+        "own_target_exit": 1,
+        "own_target_stderr": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace659-checks-20261112/own-http-with-blocked-pipe.py\", line 18, in <module>\n    input()\nEOFError: EOF when reading a line\n",
+        "ended_node_utc": "2026-11-12T14:49:56.539896+00:00"
+      },
+      "source_sha256": {
+        "vendor-perf-metadata.py": "24e81cca2718ebf41e6e11acae37886eec5093d878fda6acc16d814d969c3f88",
+        "checks.py": "97666ebee687e837f690a37cf75ba347c0a321bf3d7d4057693fbb6306a977e4",
+        "runner.py": "e548a1c0c24dd71edcdfd8f6158bbff4e56637ab409591020b9b11ff521e6c55"
+      },
+      "source_directory": "../tests/perf-metadata-frozen-v3/",
+      "original_receipt": "131-crg-r660-observe-perf97.json",
+      "observed_node_utc": "2026-11-12T14:50:54.279887+00:00",
+      "qualification_accepted": false,
+      "independent_current_entry_scan_absent": true,
+      "original_coordinators_and_helpers_independently_gone": true,
+      "first_SSH_observation_timeout_did_not_trigger_restart": false
+    },
+    "4": {
+      "phase": "failed",
+      "checks": [
+        {
+          "name": "missing-marker-rejected-before-opening-target",
+          "passed": true
+        },
+        {
+          "name": "mismatched-real-start-ticks-rejected",
+          "passed": true
+        },
+        {
+          "name": "real-perf-enable-ack-before-request",
+          "passed": true
+        },
+        {
+          "name": "original-own-loopback-request-completes-without-target-signals",
+          "passed": true
+        },
+        {
+          "name": "stream-closes-cleanly-and-target-still-running",
+          "passed": true
+        },
+        {
+          "name": "actual-negative-EAGAIN-return-retained",
+          "passed": true
+        },
+        {
+          "name": "actual-half-second-blocked-write-paired",
+          "passed": true
+        },
+        {
+          "name": "same-thread-exact-loopback-connection-wraps-blocking-write",
+          "passed": false
+        }
+      ],
+      "report": {
+        "schema": "crg-perf-metadata-host-qualification-v1",
+        "phase": "failed",
+        "node_utc": "2026-11-12T14:52:37.237863+00:00",
+        "source_sha256": "baa83ddd401d15bb1881f8cae7ac8bc01aeb87821b13d946aec8a6bb994e4856",
+        "checks": [
+          {
+            "name": "missing-marker-rejected-before-opening-target",
+            "passed": true
+          },
+          {
+            "name": "mismatched-real-start-ticks-rejected",
+            "passed": true
+          },
+          {
+            "name": "real-perf-enable-ack-before-request",
+            "passed": true
+          },
+          {
+            "name": "original-own-loopback-request-completes-without-target-signals",
+            "passed": true
+          },
+          {
+            "name": "stream-closes-cleanly-and-target-still-running",
+            "passed": true
+          },
+          {
+            "name": "actual-negative-EAGAIN-return-retained",
+            "passed": true
+          },
+          {
+            "name": "actual-half-second-blocked-write-paired",
+            "passed": true
+          },
+          {
+            "name": "same-thread-exact-loopback-connection-wraps-blocking-write",
+            "passed": false
+          }
+        ],
+        "target_business_processes": 0,
+        "target_signals_or_control_writes": 0,
+        "own_target": {
+          "pid": 1515643,
+          "start_ticks": 143510035,
+          "state": "S",
+          "cgroup": "0::/user.slice/user-0.slice/session-232115.scope",
+          "executable_sha256": "d2eef42dede233fa62d32de6363b8d29f135a6187067a23b4bd711125365e47f"
+        },
+        "stream": {
+          "schema": "crg-perf-metadata-stream-v1",
+          "enable_handshake": true,
+          "ack_bytes": 5,
+          "collector_control_pings": 12,
+          "collector_control_ack_bytes": 60,
+          "stop_method": "SIGINT-to-owned-perf-pidfd-only",
+          "owned_collector_processes": {
+            "record": {
+              "pid": 1515644,
+              "start_ticks": 143510037
+            },
+            "script": {
+              "pid": 1515645,
+              "start_ticks": 143510037
+            }
+          },
+          "record_exit": -2,
+          "script_exit": 0,
+          "events": [
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100932492202,
+              "direction": "enter",
+              "call": "accept4",
+              "fd": 5,
+              "decoded_monotonic_ns": 1435101479426817,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100934790483,
+              "direction": "exit",
+              "call": "accept4",
+              "return": 6,
+              "decoded_monotonic_ns": 1435101479998115,
+              "accepted_fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100934833229,
+              "direction": "enter",
+              "call": "recvfrom",
+              "fd": 6,
+              "decoded_monotonic_ns": 1435101480327625,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100934835890,
+              "direction": "exit",
+              "call": "recvfrom",
+              "return": 22,
+              "decoded_monotonic_ns": 1435101480533069
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100934839968,
+              "direction": "enter",
+              "call": "write",
+              "fd": 4,
+              "count": 4096,
+              "decoded_monotonic_ns": 1435101480552592,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100934841623,
+              "direction": "exit",
+              "call": "write",
+              "return": -11,
+              "decoded_monotonic_ns": 1435101480748431
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435100937031116,
+              "direction": "enter",
+              "call": "write",
+              "fd": 4,
+              "count": 4096,
+              "decoded_monotonic_ns": 1435101480766637,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437581964,
+              "direction": "exit",
+              "call": "write",
+              "return": 4096,
+              "decoded_monotonic_ns": 1435101501242518
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437595476,
+              "direction": "enter",
+              "call": "close",
+              "fd": 4,
+              "decoded_monotonic_ns": 1435101501275591,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437597886,
+              "direction": "exit",
+              "call": "close",
+              "return": 0,
+              "decoded_monotonic_ns": 1435101501597812
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437670938,
+              "direction": "enter",
+              "call": "close",
+              "fd": 3,
+              "decoded_monotonic_ns": 1435101501614691,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437676768,
+              "direction": "exit",
+              "call": "close",
+              "return": 0,
+              "decoded_monotonic_ns": 1435101501820265
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437682888,
+              "direction": "enter",
+              "call": "sendto",
+              "fd": 6,
+              "decoded_monotonic_ns": 1435101501843429,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437729626,
+              "direction": "exit",
+              "call": "sendto",
+              "return": 41,
+              "decoded_monotonic_ns": 1435101502056372
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437737849,
+              "direction": "enter",
+              "call": "close",
+              "fd": 6,
+              "decoded_monotonic_ns": 1435101502071473,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437751409,
+              "direction": "exit",
+              "call": "close",
+              "return": 0,
+              "decoded_monotonic_ns": 1435101502270853
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437753606,
+              "direction": "enter",
+              "call": "close",
+              "fd": 5,
+              "decoded_monotonic_ns": 1435101502285918,
+              "fd_metadata": {
+                "kind": "unknown",
+                "reason": "FileNotFoundError"
+              }
+            },
+            {
+              "pid": 1515643,
+              "tid": 1515643,
+              "monotonic_ns": 1435101437758147,
+              "direction": "exit",
+              "call": "close",
+              "return": 0,
+              "decoded_monotonic_ns": 1435101502479739
+            }
+          ],
+          "pairs": [
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100932492202,
+                "direction": "enter",
+                "call": "accept4",
+                "fd": 5,
+                "decoded_monotonic_ns": 1435101479426817,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100934790483,
+                "direction": "exit",
+                "call": "accept4",
+                "return": 6,
+                "decoded_monotonic_ns": 1435101479998115,
+                "accepted_fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "elapsed_ns": 2298281
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100934833229,
+                "direction": "enter",
+                "call": "recvfrom",
+                "fd": 6,
+                "decoded_monotonic_ns": 1435101480327625,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100934835890,
+                "direction": "exit",
+                "call": "recvfrom",
+                "return": 22,
+                "decoded_monotonic_ns": 1435101480533069
+              },
+              "elapsed_ns": 2661
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100934839968,
+                "direction": "enter",
+                "call": "write",
+                "fd": 4,
+                "count": 4096,
+                "decoded_monotonic_ns": 1435101480552592,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100934841623,
+                "direction": "exit",
+                "call": "write",
+                "return": -11,
+                "decoded_monotonic_ns": 1435101480748431
+              },
+              "elapsed_ns": 1655
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435100937031116,
+                "direction": "enter",
+                "call": "write",
+                "fd": 4,
+                "count": 4096,
+                "decoded_monotonic_ns": 1435101480766637,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437581964,
+                "direction": "exit",
+                "call": "write",
+                "return": 4096,
+                "decoded_monotonic_ns": 1435101501242518
+              },
+              "elapsed_ns": 500550848
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437595476,
+                "direction": "enter",
+                "call": "close",
+                "fd": 4,
+                "decoded_monotonic_ns": 1435101501275591,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437597886,
+                "direction": "exit",
+                "call": "close",
+                "return": 0,
+                "decoded_monotonic_ns": 1435101501597812
+              },
+              "elapsed_ns": 2410
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437670938,
+                "direction": "enter",
+                "call": "close",
+                "fd": 3,
+                "decoded_monotonic_ns": 1435101501614691,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437676768,
+                "direction": "exit",
+                "call": "close",
+                "return": 0,
+                "decoded_monotonic_ns": 1435101501820265
+              },
+              "elapsed_ns": 5830
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437682888,
+                "direction": "enter",
+                "call": "sendto",
+                "fd": 6,
+                "decoded_monotonic_ns": 1435101501843429,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437729626,
+                "direction": "exit",
+                "call": "sendto",
+                "return": 41,
+                "decoded_monotonic_ns": 1435101502056372
+              },
+              "elapsed_ns": 46738
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437737849,
+                "direction": "enter",
+                "call": "close",
+                "fd": 6,
+                "decoded_monotonic_ns": 1435101502071473,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437751409,
+                "direction": "exit",
+                "call": "close",
+                "return": 0,
+                "decoded_monotonic_ns": 1435101502270853
+              },
+              "elapsed_ns": 13560
+            },
+            {
+              "entry": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437753606,
+                "direction": "enter",
+                "call": "close",
+                "fd": 5,
+                "decoded_monotonic_ns": 1435101502285918,
+                "fd_metadata": {
+                  "kind": "unknown",
+                  "reason": "FileNotFoundError"
+                }
+              },
+              "exit": {
+                "pid": 1515643,
+                "tid": 1515643,
+                "monotonic_ns": 1435101437758147,
+                "direction": "exit",
+                "call": "close",
+                "return": 0,
+                "decoded_monotonic_ns": 1435101502479739
+              },
+              "elapsed_ns": 4541
+            }
+          ],
+          "unfinished_entries": [],
+          "diagnostic_errors": {},
+          "stderr_present": {
+            "record": false,
+            "script": false
+          },
+          "stderr_unknown_present": {
+            "record": false,
+            "script": false
+          },
+          "known_control_messages": [],
+          "raw_metadata_stream_bytes_consumed": 1843,
+          "elapsed_seconds": 1.5252442120108753,
+          "collector_CPU_seconds": 0.011282706999999996,
+          "other_inherited_PIDs_omitted": 0,
+          "target_signals_or_control_writes": 0,
+          "raw_perf_files_target_buffers_addresses_or_payload_saved": false,
+          "FD_snapshots_are_nonatomic": true
+        },
+        "request": {
+          "client_port": 53222,
+          "server_port": 35001,
+          "started_monotonic_ns": 1435100934802171,
+          "ended_monotonic_ns": 1435101437755508,
+          "status_ok": true
+        },
+        "error_class": "AssertionError",
+        "error": "same-thread-exact-loopback-connection-wraps-blocking-write",
+        "traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace661-tools-20261112/checks.py\", line 62, in <module>\n    check('same-thread-exact-loopback-connection-wraps-blocking-write',any(a['entry']['tid']==blocked[0]['entry']['tid']==z['entry']['tid'] and a['exit']['monotonic_ns']<=blocked[0]['entry']['monotonic_ns']<blocked[0]['exit']['monotonic_ns']<=z['entry']['monotonic_ns'] for a in recv for z in sent))\n  File \"/var/tmp/crg-trace661-tools-20261112/checks.py\", line 26, in check\n    report['checks'].append({'name':name,'passed':bool(value)});assert value,name\nAssertionError: same-thread-exact-loopback-connection-wraps-blocking-write\n",
+        "own_target_exit": 1,
+        "own_target_stderr": "Traceback (most recent call last):\n  File \"/var/tmp/crg-trace661-checks-20261112/own-http-with-blocked-pipe.py\", line 18, in <module>\n    input()\nEOFError: EOF when reading a line\n",
+        "ended_node_utc": "2026-11-12T14:52:38.797978+00:00"
+      },
+      "source_sha256": {
+        "vendor-perf-metadata.py": "baa83ddd401d15bb1881f8cae7ac8bc01aeb87821b13d946aec8a6bb994e4856",
+        "checks.py": "8f8f2440aaa81ba00308d765ad2dddd41e499a4c90c28a02152b6f8dc3f3bd31",
+        "runner.py": "e548a1c0c24dd71edcdfd8f6158bbff4e56637ab409591020b9b11ff521e6c55"
+      },
+      "source_directory": "../tests/perf-metadata-frozen-v4/",
+      "original_receipt": "133-crg-r662-observe-perf97.json",
+      "observed_node_utc": "2026-11-12T14:53:56.589475+00:00",
+      "qualification_accepted": false,
+      "independent_current_entry_scan_absent": true,
+      "original_coordinators_and_helpers_independently_gone": true,
+      "first_SSH_observation_timeout_did_not_trigger_restart": false
+    }
+  },
+  "latest_checks_recorded": 8,
+  "latest_checks_passed": 7,
+  "last_connection_binding_check_failed": true,
+  "latest_event_count": 18,
+  "latest_unknown_entry_FD_count": 9,
+  "latest_decode_delay_milliseconds": {
+    "minimum": 63.660554,
+    "maximum": 546.934615
+  },
+  "qualified_for_vendor_business": false,
+  "qualification_accepted": false,
+  "business_accepted": false,
+  "causal_attribution_accepted": false,
+  "product_source_or_assets_changed": false,
+  "all_four_local_snapshots_retained": true,
+  "direct_BPF_capability": {
+    "node_utc": "2026-11-12T14:58:20.481823+00:00",
+    "clang_found": false,
+    "BPF_backend_present": false,
+    "libbpf": "libbpf.so.1",
+    "bcc_module": false,
+    "HIS_vendor_executable": {
+      "sha256": "bd21a02c74b4e416439d72f1cc5039280bea6399f67e2923dff6a743c189fdcb",
+      "bytes": 30814840
+    },
+    "kernel_or_target_mutations": 0
+  },
+  "exact_evidence": {
+    "path": "test-evidence/perf-metadata-unqualified.json.gz",
+    "sha256": "9e16fca0ff50518b9d1f4d0815d37519897b4e896a117d84815d3ac9a540b0f4",
+    "uncompressed_sha256": "b99db63f0f68a2d297acfe4d81712b101d36bb957f78c6c052dfb1989f9ff4b1"
+  },
+  "stable_release_accepted": false
+}

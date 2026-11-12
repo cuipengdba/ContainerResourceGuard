@@ -1,12 +1,14 @@
 # 开发任务与验收跟踪
 
-2026-11-12即时交付：[v1.0.0-preview.3](releases/v1.0.0-preview.3.md)，[八项公开下载校验](test-results-preview3-publication.json)。沿用受测程序并更新文档，稳定1.0及原验收条件继续；下方历史记录保留原时点。
+当前发布：[memory.high版v1.0.0-preview.4](releases/v1.0.0-preview.4.md)。CPU/内存/IO独立默认20%，内存写high，原外部硬上限保留；[第五轮实际压力](testing-memory-high-pressure.md)两角色各600秒/SQL0/API各1，稳定1.0尚未通过。
 
-当前即时交付：[v1.0.0-preview.2](releases/v1.0.0-preview.2.md)，与preview.1同一受测程序；[实际发布/下载核对](test-results-preview2-publication.json)。本版仅刷新文档和证据，稳定1.0尚未发布。
+历史即时交付：[v1.0.0-preview.3](releases/v1.0.0-preview.3.md)，[八项公开下载校验](test-results-preview3-publication.json)。沿用受测程序并更新文档，稳定1.0及原验收条件继续；下方历史记录保留原时点。
+
+历史即时交付：[v1.0.0-preview.2](releases/v1.0.0-preview.2.md)，与preview.1同一受测程序；[实际发布/下载核对](test-results-preview2-publication.json)。本版仅刷新文档和证据，稳定1.0尚未发布。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
 
-最后更新：2026-11-11。未完成的项目不能写成已完成。
+最后更新：2026-11-12。未完成的项目不能写成已完成。
 
 最新状态优先看[当前验收入口](current-acceptance.md)及[52项原始任务/当前范围](current-task-registry.json)。下方进展表已按程序来源更新；后续按时间追加段落保留历史观察，不能当作当前实时状态。
 
@@ -528,3 +530,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [第五轮完整high压力终态](testing-memory-high-pressure.md)：DBS实际600.289秒，HISDBS实际600.447秒；两者SQL错误0、API错误各1，均未中断且11个重载区间和10项引擎内容检查完成。实际26主检查，整体失败；辅助续租/终态保留已实际工作，不抵消API错误。DBS日志写页等待时间线和17份原始诊断归档，原52定义与稳定门槛不变。
+
+
+[日志写/API连接关联诊断](testing-perf-metadata.md)：标准perf内存管道四轮资格失败全部保留，最新7/8记录项/预定9项，不能因耗时配对成功而接入业务因果诊断。当前只读能力已确认；下一步独立直接BPF工具，尚未执行。产品源码/发布物、原配额/SLA、全部52定义与未通过状态保持。

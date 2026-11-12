@@ -2,7 +2,7 @@
   "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
   "product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
   "task_count": 52,
-  "latest_requirements": "R29/R30: CPU,memory,IO only; independent percentages each default20; v1/hybrid/unknown skip, purev2 gated;daily30day/1GB logs; helper failure does not gate original business.",
+  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business.",
   "tasks": [
     {
       "id": "P01.1",
@@ -1678,5 +1678,18 @@
     "qualification_accepted": true,
     "business_accepted": false,
     "prior_DBS_lease_exit_reason_proven": false
-  }
+  },
+  "perf_metadata_qualification": {
+    "phase": "four-failures-not-integrated",
+    "result": "docs/test-results-perf-metadata-unqualified.json",
+    "qualification_accepted": false,
+    "business_accepted": false,
+    "latest_passed_checks": 7,
+    "latest_recorded_checks": 8,
+    "planned_checks_each": 9,
+    "connection_binding_failed": true,
+    "direct_BPF_next_not_executed": true
+  },
+  "current_published_source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "current_published_version": "v1.0.0-preview.4"
 }
