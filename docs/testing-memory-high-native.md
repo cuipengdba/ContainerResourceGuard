@@ -4,4 +4,4 @@
 
 内存断言按用户要求改为 memory.high 回收和节流目标，容器运行时设置的 memory.max 保持。CPU、IO、唯一 Agent、恢复、只读降级、日志及清理标准保持。旧硬上限策略的原生结果和冻结计划保留；本次不借用其时长、通过项或业务结论。
 
-当前已冻结，尚无本次四格终态。该验证不代表 DBS/HISDBS 业务、物理多盘、长期验收或稳定版接受，也不生成来源签名证明。
+四格已全部终态通过，共 88 项，见[逐格结果与清理](test-results-memory-high-native.json)及[原始工作流](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43162262024)。每格的八个文件与 Windows 发布构建逐字节一致；包检查和 14 项完整性测试逐格通过，自有容器、cgroup、镜像、loop/mapper、目录全部清理。该验证不代表 DBS/HISDBS 业务、物理多盘、长期验收或稳定版接受，也不生成来源签名证明。
