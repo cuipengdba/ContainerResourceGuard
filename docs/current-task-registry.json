@@ -1533,7 +1533,7 @@
   },
   "memory_reclaim_preference_request": {
     "date": "2026-11-12",
-    "phase": "preview4-published-native88-overhead1800-business600-fault20-maintenance26-qualified",
+    "phase": "preview4-published-native-overhead-business-faults-maintenance-cold-qualified",
     "design": "docs/memory-reclaim-policy.md",
     "user_request": "达到内存目标后释放内存，不希望OOM；说明其他cgroup内存控制参数",
     "choices": [
@@ -1551,7 +1551,7 @@
       "next/partition-io"
     ],
     "main_source_backport": false,
-    "verification": "docs/test-results-memory-high-maintenance.json",
+    "verification": "docs/test-results-memory-high-cold-rebuild.json",
     "published_version": "v1.0.0-preview.4",
     "publication": "docs/test-results-preview4-publication.json"
   },
@@ -1594,7 +1594,8 @@
     "maintenance_verification": "docs/test-results-memory-high-maintenance.json",
     "published_minor_migrations_accepted": false,
     "cold_rebuild_plan": "docs/test-plan-memory-high-cold-rebuild.json",
-    "cold_rebuild_phase": "frozen-not-launched",
-    "cold_rebuild_accepted": false
+    "cold_rebuild_phase": "passed-4-boots-44-checks",
+    "cold_rebuild_accepted": true,
+    "cold_rebuild_verification": "docs/test-results-memory-high-cold-rebuild.json"
   }
 }
