@@ -6,4 +6,4 @@
 
 测试节点上用原未改辅助进程做[9项真实检查](test-results-pressure-SQL-lease.json)：不续租保留真实10.001秒SIGALRM释放原因/退出1；续租同一进程跨过15.016秒、59次ping并在EOF正常零分配释放；SQL和心跳错误优先级、原真实子进程超时及立即返回均通过。全程辅助分配0字节，没有使用业务数据库或写cgroup。两个辅助PID、runner及检查进程经独立观察不存在。此项是宿主测试驱动的生命周期资格，不是厂商业务或压力负载通过。
 
-[冻结计划](test-plan-pressure-SQL-lease.json)、[精确全部源码](test-evidence/pressure-SQL-lease-frozen.json.gz)和[检查源](../tests/vendor-pressure-sql-lease-checks.py)归档。实际厂商管道/高压调用将在[第五轮完整压力](testing-memory-high-pressure.md)验证；原配额、租约10/寿命240、原32项及600秒门槛保持，四轮旧失败与原52项不关闭。
+[冻结计划](test-plan-pressure-SQL-lease.json)、[精确全部源码](test-evidence/pressure-SQL-lease-frozen.json.gz)和[检查源](../tests/vendor-pressure-sql-lease-checks.py)归档。实际厂商管道/高压调用已在[第五轮完整压力终态](testing-memory-high-pressure.md)集成验证，辅助退出0且终态保留；两角色仍有API错误、整体业务失败；原配额、租约10/寿命240、原32项及600秒门槛保持，四轮旧失败与原52项不关闭。

@@ -283,3 +283,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 <!-- memory-high-preview4-current:start -->
 2026-11-12 preview.4：memory.high精确发布程序已通过[原生四格88项](testing-memory-high-native.md)、[身份与重建](test-results-memory-high-identity.json)、[三场景各1800秒开销](testing-memory-high-overhead.md)、[两角色各600秒真实路径业务](testing-memory-high-business.md)、[20场景/108项故障](testing-memory-high-faults.md)、[在线维护26项](testing-memory-high-maintenance.md)、[保留数据四次新ID/44项冷重建](testing-memory-high-cold-rebuild.md)。命名手动预算、原时限及独立清理保持；旧硬上限到high往返、过期快照拒绝、journal归属与原值恢复均实测。前一维护程序仍为未发布协议构建。默认百分比、真实回收/脏页与受限IO、老化故障、新策略实际长期和其他原稳定门槛继续独立判定，旧源时间不转移，52项未关闭，稳定版尚未接受。
 <!-- memory-high-preview4-current:end -->
+
+
+[按用户选择memory.high的第五轮复验](testing-memory-high-pressure.md)：DBS实际600.289秒，HISDBS实际600.447秒；两者SQL错误0、API错误各1，均未中断且11个重载区间和10项引擎内容检查完成。内存不新增max，外部硬上限保留；辅助生命周期放行不等于资源节流没有业务延迟。所有失败、诊断与独立清理归档，原需求/52任务/稳定门槛保留。
