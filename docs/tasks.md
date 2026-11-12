@@ -490,3 +490,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [PG等待诊断v2的新资格轮](testing-pg-wait-v2-qualification-v3.md)已冻结：原宿主44项后缺失原生报告的失败和源码保留，原四份v2源码/32+14基线/边界均不改；新驱动用私有常规源、先记录子命令再读报告、独立退出文件补齐取证，尚未运行，不宣称根因或业务通过。原52项和长期/稳定条件保持。
+
+
+PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出1/独立无目录与namespace/进程消失已归档；不改旧输入。另冻结[独立v4轮](testing-pg-wait-v2-qualification-v4.md)，纠正namespace及独立runtime-v3的读取器引用，原四份v2源码、全部44/18项及资源/时间边界不变；本地inert不计原生资格，尚未运行。

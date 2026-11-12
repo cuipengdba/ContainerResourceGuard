@@ -1,0 +1,80 @@
+{
+  "schema": "crg-pg-wait-v2-runtime-plan-v4",
+  "tool_directory": "/var/tmp/crg-pgwait593-tools-20261112",
+  "output_directory": "/var/tmp/crg-pgwait593-results-20261112",
+  "namespace": "crg-vendor-lab-pgwait593-20261112",
+  "source_namespace": "crg-vendor-lab-acceptance78-20261111",
+  "source_sha256": {
+    "vendor-pg-wait-v2.py": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+    "vendor-pg-wait-v2-checks.py": "ee57341ff76bf3dd7b7dbea2113fdce291348c34f3b7ad494bbc46d2d9111842",
+    "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+    "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+    "vendor-device-state-observer.py": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+    "vendor-soak-load-diagnostics.py": "50ea0454d17d5412a9d4085472ed89831e4408f60aa0fa0ca2dfd905a2bacb1f",
+    "vendor-pg-wait-v2-runtime-v3.py": "4bf935e9c42363637341cc7c3f455bb712a3c29d99224819d053c3c39611fc4d",
+    "vendor-pg-wait-v2-qualification-v4.py": "9760aecebafee44bd63eb6a19267ecc75e7c44de8366720a1cbfb8482a3eeeb8"
+  },
+  "parser_checks_per_runtime": 44,
+  "real_PG_checks_per_role": 18,
+  "whole_deadline_seconds": 540,
+  "parser_runtimes": [
+    "host-Python3",
+    "dbs-native-Python2.7.5",
+    "hisdbs-native-Python2.7.5"
+  ],
+  "run_as": {
+    "uid": 999,
+    "gid": 998,
+    "capabilities": "drop-ALL",
+    "read_only_root": true
+  },
+  "original_parser_checks_preserved": 32,
+  "original_real_PG_checks_preserved": 14,
+  "old_parser_checks_sha256": "e8016d925aa838e69402370e9905e61cb110184bc20890f24303ea0cd0b8130f",
+  "old_real_PG_driver_sha256": "2e0c9625926a2ed1d70aa8f35ff8389c4e7555ec8b34050eb252df3fb7408982",
+  "original_boundaries": {
+    "targets": 4,
+    "selected_SQL_rows_for_overflow_detection": 5,
+    "per_target_bytes": 1900,
+    "per_sample_bytes": 8192,
+    "stack_read_bytes": 4096,
+    "stack_frames": 8,
+    "normal_cost_wall_seconds": 0.25,
+    "normal_cost_thread_CPU_seconds": 0.1,
+    "qualifier_RSS_kib": 131072
+  },
+  "new_scope": "fixed stack open/read/close errno metadata; extra cases are substitutes except separately listed real new-PG tests",
+  "new_real_PG_cases": [
+    "target-stack-read-EACCES13",
+    "v2-schema-and-no-exception-text",
+    "actual-target-exit-rejects-old-proc",
+    "new-backend-gets-independent-identity"
+  ],
+  "expected_actual_PG_stack_metadata": {
+    "available": false,
+    "stage": "read",
+    "errno": 13,
+    "errno_name": "EACCES"
+  },
+  "source_PG_components": "read-only bin/lib/share from previously owned isolated realpaths64 fixture; no deployed data/config/Agent mounted",
+  "original_business_SLA_quotas_or_long_handles_changed": false,
+  "historic_generic_OSError_errno_remains_unknown": true,
+  "qualification_driver_revision": "v4-correct-namespace-guard-and-exact-runtime-v2-reader",
+  "previous_frozen_plan_sha256": "1fe88ea772be7c20bebbc8436e761f381d51ba55fc22adbb4644f2cbca64b01a",
+  "old_v2_sources_unchanged": true,
+  "projected_source_probe": "diagnostic-only; does not count as qualification or assume a cause",
+  "native_sources": "copy pinned projected bytes to fresh uid999 0700 private directory, regular0400 files; frozen sampler O_NOFOLLOW stays",
+  "runtime_driver_correction": {
+    "old_file": "vendor-pg-wait-v2-runtime.py",
+    "old_sha256": "d28dbcffd5f5067fe436d48d437f6e7d3fbabce2c6712465f2df7a6df313e17a",
+    "new_file": "vendor-pg-wait-v2-runtime-v3.py",
+    "new_sha256": "4bf935e9c42363637341cc7c3f455bb712a3c29d99224819d053c3c39611fc4d",
+    "only_change": "helper path vendor-pg-wait.py to vendor-pg-wait-v2.py; all18 assertions unchanged"
+  },
+  "prior_v3_qualification": "failed namespace guard before creating output or namespace; immutable evidence retained",
+  "source_lint_before_launch": {
+    "exact_tool_output_namespace_constants": true,
+    "no_prior_namespace_path_literals": true,
+    "runtime_loads_exact_v2_helper": true
+  }
+}
