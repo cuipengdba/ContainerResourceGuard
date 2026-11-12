@@ -1,0 +1,154 @@
+{
+  "schema": "crg-pressure-SQL-lease-qualification-result-v1",
+  "phase": "passed",
+  "plan": "test-plan-pressure-SQL-lease.json",
+  "plan_sha256": "b714ae1ededb5bac80af8d60c3f72629855a0f4806c6412f86cb58395abcf7eb",
+  "checks": [
+    {
+      "name": "unleased-unchanged-ready-lease-and-zero-allocation",
+      "passed": true
+    },
+    {
+      "name": "unleased-exits-and-retains-real-alarm-release-reason",
+      "passed": true
+    },
+    {
+      "name": "leased15-unchanged-ready-lease-and-zero-allocation",
+      "passed": true
+    },
+    {
+      "name": "leased-probe-longer-than-ten-seconds-keeps-same-helper",
+      "passed": true
+    },
+    {
+      "name": "leased-EOF-releases-without-signals-or-allocation",
+      "passed": true
+    },
+    {
+      "name": "SQL-error-object-keeps-precedence-over-pulse-failure",
+      "passed": true
+    },
+    {
+      "name": "pulse-error-remains-visible-after-successful-SQL",
+      "passed": true
+    },
+    {
+      "name": "original-real-subprocess-timeout-is-not-retried-or-extended",
+      "passed": true
+    },
+    {
+      "name": "immediate-return-does-not-add-a-pulse",
+      "passed": true
+    }
+  ],
+  "report": {
+    "phase": "passed",
+    "checks": [
+      {
+        "name": "unleased-unchanged-ready-lease-and-zero-allocation",
+        "passed": true
+      },
+      {
+        "name": "unleased-exits-and-retains-real-alarm-release-reason",
+        "passed": true
+      },
+      {
+        "name": "leased15-unchanged-ready-lease-and-zero-allocation",
+        "passed": true
+      },
+      {
+        "name": "leased-probe-longer-than-ten-seconds-keeps-same-helper",
+        "passed": true
+      },
+      {
+        "name": "leased-EOF-releases-without-signals-or-allocation",
+        "passed": true
+      },
+      {
+        "name": "SQL-error-object-keeps-precedence-over-pulse-failure",
+        "passed": true
+      },
+      {
+        "name": "pulse-error-remains-visible-after-successful-SQL",
+        "passed": true
+      },
+      {
+        "name": "original-real-subprocess-timeout-is-not-retried-or-extended",
+        "passed": true
+      },
+      {
+        "name": "immediate-return-does-not-add-a-pulse",
+        "passed": true
+      }
+    ],
+    "cases": {
+      "unleased": {
+        "exit": 1,
+        "terminal_stdout": "{\"phase\":\"released\",\"allocated_bytes\":0,\"reason\":\"RuntimeError:lease-or-signal-14\",\"lifetime_seconds\":10.00137834600173}\n",
+        "terminal": [
+          {
+            "phase": "released",
+            "allocated_bytes": 0,
+            "reason": "RuntimeError:lease-or-signal-14",
+            "lifetime_seconds": 10.00137834600173
+          }
+        ],
+        "pid": 604120,
+        "process_gone": true
+      },
+      "leased15": {
+        "wrapper": {
+          "phase": "completed",
+          "source_SQL_timeout_seconds": 30,
+          "SQL_completion_observation_deadline_seconds": 31,
+          "pulse_count": 59,
+          "pipe_readers_and_writers": "calling-thread-only",
+          "SQL_retries": 0,
+          "business_process_signals": 0,
+          "elapsed_seconds": 15.016291499137878,
+          "original_SQL_call_finished": true,
+          "SQL_thread_alive_at_return": false
+        },
+        "exit": 0,
+        "terminal_stdout": "{\"phase\":\"released\",\"allocated_bytes\":0,\"reason\":\"EOF\",\"lifetime_seconds\":15.018480042926967}\n",
+        "terminal": [
+          {
+            "phase": "released",
+            "allocated_bytes": 0,
+            "reason": "EOF",
+            "lifetime_seconds": 15.018480042926967
+          }
+        ],
+        "pid": 606442,
+        "process_gone": true
+      }
+    },
+    "maximum_allocated_bytes": 0,
+    "helper_sha256": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+    "lease_module_sha256": "6438655928f11ce029c5a8321af1fb6e5de7895fd5b7eb12cdbb894bf906fd71",
+    "all_owned_helpers_gone": true,
+    "forced_own_helper_cleanup": false
+  },
+  "observed_node_utc": "2026-11-12T13:49:49.934041+00:00",
+  "independent_helper_PIDs_absent": {
+    "unleased": true,
+    "leased15": true
+  },
+  "original_coordinators_gone": true,
+  "helper_allocated_bytes": 0,
+  "source_sha256": {
+    "vendor-pressure-sql-lease.py": "6438655928f11ce029c5a8321af1fb6e5de7895fd5b7eb12cdbb894bf906fd71",
+    "vendor-pressure-sql-lease-checks.py": "d7624f7bb4e622118e281d54774af6ee4d5ff0dbc3d57e6309fe5ee8f10896c8",
+    "vendor-memory-pressure-worker-v2.py": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff"
+  },
+  "qualification_accepted": true,
+  "business_accepted": false,
+  "prior_DBS_lease_exit_reason_proven": false,
+  "prior_DBS_request_errors_resolved": false,
+  "stable_release_accepted": false,
+  "exact_evidence": {
+    "path": "test-evidence/pressure-SQL-lease.json.gz",
+    "sha256": "e13f910e309ae8300fc564bc5f26e4d8d4bb6d2e05e67a70f82afcce9fa78626",
+    "uncompressed_sha256": "12a41cf5f3790d4c05b2e8e64557f7abffab12277d13d135bad318b260db6d1e"
+  }
+}

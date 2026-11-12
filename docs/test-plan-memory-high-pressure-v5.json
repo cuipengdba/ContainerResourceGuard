@@ -1,0 +1,168 @@
+{
+  "schema": "crg-memory-high-full32-plan-v1",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "version": "v1.0.0-preview.4",
+  "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+  "tools": "/var/tmp/crg-high638-tools-20261112",
+  "output": "/var/tmp/crg-high638-pressure-20261112",
+  "namespace": "crg-vendor-lab-high638-20261112",
+  "run_id": "20261112638",
+  "job_sha256": "e57a35d5454804fd6be9d4d4792380418628f2bab8821126f2ca655712e541ef",
+  "source_sha256": {
+    "vendor-device-state-observer.py": "0fa377189ded92e2b5a9e182871e0494c8af4bc73920b8eb25d03ba9937995c6",
+    "vendor-native-diagnostics-v3-checks.py": "83b0c5658c7ecb515fe98d6142d12e95d29b96f900789042b532794f0ab822d1",
+    "vendor-native-diagnostics-v3-runtime.py": "45655d52a845f56d4a4e858b2d0d46a5d464c4790c3e4ad10d8cb721caba273a",
+    "vendor-native-diagnostics-v3.py": "29d888b7bd90fcc11a2594753fbe44d4da0e9a6262f7c95d3ceb0508ee459ebd",
+    "vendor-native-diagnostics.py": "83b3f8894eea96af9dfc2c789ee54b63cd5803e9dd2218a74f6bc100934c31ab",
+    "vendor-pg-wait-v2.py": "7c97642469f24facbe0d7e6f45c3fbd382ba6a2e7a3d76124753a202b227d275",
+    "vendor-pg-wait.py": "09c330fb06f5ebedddbf4fca108c3b7d4e0f74ca97d3e565292b41ad5391ed69",
+    "vendor-proc-read-error.py": "cd9653252535bbc0d5100599c89073532c0d40a7b1eeabe74eac8c2950c575ab",
+    "vendor-soak-load-diagnostics-v3.py": "bbb86c6af6c472674ebf108686052d5676207b8470b69dbf34fdeb5197cff29b",
+    "vendor-thread-session.py": "35f65518ce56f5b889c82041a1c45c87d9f3284ab6bd59cc39752bf78fdc8bce",
+    "vendor-thread-wait-observer.py": "c904c1d13b41f7f5c5b517e0dc1aa8348126665fcf8fe97e232a92f2dedf0c02",
+    "vendor-thread-wait.py": "fceb41233f46c869d00f844642b842a35341270cbe37d126ef41685ab1a179f6",
+    "vendor-native-session.py": "ae53be88970f343624882cd7a11ffc5945bae469a7ad005b4c760592b08aec63",
+    "vendor-device-business-session.py": "a3bad42812e387acd18079df11af49e4c9d2e646c0ca59e3813dd6442a3ed103",
+    "vendor-device-session.py": "632a93f267bcb8aeee992d00f5fc4f0aaec63e8bbcd5e393ba83bf14b3474444",
+    "vendor-memory-pressure-worker-v2.py": "741a1aaaecef91bb54a06bdd6af3bf76f5f8e1ad17c25bbdee4c868fddd3daff",
+    "vendor-engine-timed.py": "5abbc7110ece3383c63e84737c70f8265d7f674ffdca09cff23fdade05fbe42d",
+    "vendor-api-timed.py": "907a705ddfa55a3635a757c38ee5fcb46e1b0a5c93a2056b15e06488e2b8f2d8",
+    "vendor-memory-high-pressure-core.py": "7f331574f797a96eaed11605164c8b7ef56927e457ee417b9ac12ebff15c8a38",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "binaries/crg-linux-amd64": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+    "identity-qualification.json": "5bcb84aaf61dd3f7d9d1978483fc30be13aab726ca13f79c78802cc005d9ef70",
+    "integration-qualification.json": "0671b09e69a6f70741aa28636cc54e9144f5a16fc7c7ee37d07088c5481dec1c",
+    "native-v3-qualification.json": "5ff9a180a136d75c17a3a55c8ef51eddcb69f0c128367945ebf77249d643ca73",
+    "vendor-pressure-sql-lease.py": "6438655928f11ce029c5a8321af1fb6e5de7895fd5b7eb12cdbb894bf906fd71"
+  },
+  "manual": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_high": "20001980416B",
+      "io_read_bps": "64MiB",
+      "io_write_bps": "64MiB",
+      "io_read_iops": 4096,
+      "io_write_iops": 4096
+    },
+    "data_paths": [
+      "/opt/postgresql"
+    ]
+  },
+  "policies": [
+    {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 100
+    },
+    {
+      "cpu_percent": 25,
+      "memory_percent": 29,
+      "io_percent": 80
+    }
+  ],
+  "expected_numeric": [
+    {
+      "cpu.max": "720000 100000",
+      "memory.high": "20001980416",
+      "io.max": "253:0 rbps=64700080 wbps=37470104 riops=83 wiops=135"
+    },
+    {
+      "cpu.max": "600000 100000",
+      "memory.high": "19335249920",
+      "io.max": "253:0 rbps=51760064 wbps=29976083 riops=66 wiops=108"
+    }
+  ],
+  "pressure_contract": {
+    "old_memory_percent": 30,
+    "requested_memory_percent": 20,
+    "old_memory_bytes": 20001980416,
+    "requested_memory_bytes": 13334654976,
+    "chunk_bytes": 67108864,
+    "maximum_helper_bytes": 12884901888,
+    "group_reserve_below_old_limit_bytes": 2147483648,
+    "pressure_above_target_bytes": 268435456,
+    "helper_lease_seconds": 10,
+    "helper_lifetime_seconds": 240,
+    "prepare_seconds": 60,
+    "defer_wait_seconds": null,
+    "hold_seconds": 6,
+    "retry_wait_seconds": null,
+    "total_intervals_each_role": 11,
+    "total_main_checks": 32,
+    "configuration_write_reference": "before-mutation",
+    "memory_control": "memory.high",
+    "apply_wait_seconds": 60,
+    "release_recovery_seconds": 60,
+    "high_event_delta_required": true,
+    "external_memory_max_bytes": 21474836480,
+    "short_exceedance_allowed": true,
+    "no_new_memory_max_write": true
+  },
+  "criteria": {
+    "startup_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "native_seconds_each_role": 600,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "sql_period_seconds": 2,
+    "api_period_seconds": 5,
+    "maximum_request_seconds": 5,
+    "maximum_errors": 0,
+    "p95_bucket_seconds": 1,
+    "minimum_coverage": 0.98,
+    "payload_bytes": 67108864,
+    "engine_content_checks_each_role": 10,
+    "engine_launch_offset_seconds": 30,
+    "host_sample_period_seconds": 60,
+    "maximum_host_sample_gap_seconds": 120,
+    "original_control_readbacks_each_role": 8,
+    "main_checks": 32,
+    "reload_intervals_each_role": 11
+  },
+  "changes_from_original_full32": [
+    "Exactly the published preview4 high-policy source and binary.",
+    "memory.high is the owned memory target; external hard max is retained.",
+    "Replace obsolete hard-max defer/retry checks with high apply under pressure/high event and release recovery at same generation.",
+    "Use exact 101-check-qualified native v3/PGv2 snapshot; preserve all original native and device/thread budgets and source helpers.",
+    "Persist failed native/engine evidence before assertions; original business failure retains precedence.",
+    "Second attempt only fixes test-driver kubectl stdin forwarding; independent fresh fixture IDs/paths, unchanged helper sources, high semantics, all budgets and native standards.",
+    "Third attempt changes launcher digest binding and fresh fixture identifiers only; all helper bytes, native standards and high-pressure semantics remain unchanged.",
+    "Fourth attempt supplies source-directory global omitted when extracting the original methods; static symbol-table check reports no unresolved globals in core or fixture. All helper bytes and original contracts unchanged.",
+    "Fifth attempt preserves the original PG identity SQL/30s timeout while same-thread serialized heartbeats keep the unchanged pressure helper leased; retain bounded terminal stdout on success/failure. End each interval after its PG identity check, without changing any business criterion or resource quota."
+  ],
+  "original_full32_source_sha256": "71007a5560f26b48b916d1311bdb1509082ca3074da6ec18576d9812b5a4397a",
+  "native_tool_qualification_sha256": "5ff9a180a136d75c17a3a55c8ef51eddcb69f0c128367945ebf77249d643ca73",
+  "first_native_v3_failure_cause_unproven": true,
+  "stable_release_accepted": false,
+  "attempt": 5,
+  "prior_attempt": {
+    "plan_sha256": "60c6774145bece17bb099d127d5eb7d22156877b7610db4ea0ae9f8a9d2c197e",
+    "job_sha256": "b42ca8a986954137ae9df4b03a0d3ed5283b761d2f3f23a3a53c959aabf9b0f1",
+    "failure": "EDGE_TIMED_API_COPY before native/engine/pressure; kubectl exec lacked -i so nonempty stdin was not forwarded",
+    "business_accepted": false
+  },
+  "previous_launcher_failure": {
+    "plan_sha256": "56ab7a495523aaffebe333a9b9af83de05faa25fc1ef10774d29700d8bcd3362",
+    "reason": "Global numeric replacement altered a SHA256 literal in runner before exact plan substitution; assertion rejected before business worker or namespace."
+  },
+  "third_attempt_failure": {
+    "job_sha256": "f25f25303951f7851d598febdc49c0395a9b15e0a748bf7e5218bcaf0dcb6290",
+    "plan_sha256": "f88c03697d12fc188997e3766122bc74e019d613d37cc00dc2426c1a503bef34",
+    "failure": "name 'here' is not defined before native/engine/pressure; both startup cases passed and independently cleaned"
+  },
+  "previous_actual_pressure_result": "test-results-memory-high-pressure-v4.json",
+  "lease_qualification": {
+    "plan_sha256": "b714ae1ededb5bac80af8d60c3f72629855a0f4806c6412f86cb58395abcf7eb",
+    "checks": 9,
+    "module_sha256": "6438655928f11ce029c5a8321af1fb6e5de7895fd5b7eb12cdbb894bf906fd71",
+    "same_helper_lease10_lifetime240": true,
+    "SQL_source_timeout_seconds": 30,
+    "module_only_observes_completion_deadline_seconds": 31,
+    "failed_native_or_business_metrics_not_discarded": true
+  }
+}
