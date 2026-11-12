@@ -511,3 +511,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [high完整压力第三轮](testing-memory-high-pressure.md)：第二轮启动器摘要误替换，在business worker前断言失败，原stderr/只读观察与独立namespace不存在已归档；第三轮精确绑定摘要，所有帮助脚本、数值和标准逐一核对不变，使用新隔离目录。正在运行，不能计为完整压力、原52项完成或稳定发布。
+
+
+[high完整压力第四轮](testing-memory-high-pressure.md)：第三轮源目录全局缺失的准备失败原件/四项启动和独立清理归档；第四轮补齐变量并静态核查全局，原帮助脚本、CPU/IO配额、600秒与压力契约逐一相等。已进入DBS原native活动，未接受完整32项/两角色或稳定发布；前三轮失败和52项原定义保持。
