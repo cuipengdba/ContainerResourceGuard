@@ -187,3 +187,6 @@ R203[完整压力接入原生/PG诊断](testing-business-pressure-native-diagnos
 
 
 [memory.high独立七天组件已进入真实测量](testing-memory-high-seven-day.md)：精确preview.4程序、自己的计时/数据/句柄，10项启动检查通过，首个实际请求快照已记录；完整604800秒/28轮、老化postflight及全部其他原稳定条件尚未接受。只读观察字段修正保留原错误，业务作业未重启，旧源时长不移入。
+
+
+[实际已发布preview.3→preview.4包内程序维护26项](testing-public-preview-memory-high-maintenance.md)通过：实际公开tar/manifest/ELF摘要绑定、两角色各600秒/各9命令区间/原全部SLA、hard/high往返及独立清理。旧506开发构建结果独立保留，这两个预发布tag不代替两个实际已发布次版本；[专用逐容器升级回退步骤](upgrade-preview3-preview4.zh.md)已归档，原52项及其他稳定条件保持。
