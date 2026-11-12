@@ -316,4 +316,4 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 [memory.high与长会话诊断](testing-long-perf-session.md)：内存百分比只对应memory.high，不新设memory.max，保留外部硬上限。自有600秒/120请求及56项检查通过，前后perf映射3244032字节一致；MaxRSS仅为序列化前观测值。完整压力调用包装九个合成用例通过，真实工厂和厂商600秒/11区间尚未接入；旧失败与52项原条件保留，稳定1.0未接受，产品及preview.4附件未变。
 
 
-[完整压力诊断接入](testing-full-pressure-diagnostic-integration.md)：内存继续只下发memory.high。DBS/HISDBS原600秒和11区间均完成，业务检查29/32，API错误原样保留。辅助诊断在null字段计数时失败，未挂接BPF，原业务仍继续；原件回放及修复候选17个用例通过，修复版完整真机诊断未验收。报告输出Linux5项、原镜像传输注解9项通过，完整原件已按长度和摘要下载归档。52项原条件、全部旧失败与稳定1.0未接受状态保留，产品及preview.4附件未变。
+[完整压力诊断接入](testing-full-pressure-diagnostic-integration.md)：内存继续只下发memory.high。DBS/HISDBS原600秒和11区间均完成，计划32项，实际记录29项均通过；DBS业务异常导致最后三项未执行，API错误原样保留。辅助诊断在null字段计数时失败，未挂接BPF，原业务仍继续；原件回放及修复候选17个用例通过，修复版完整真机诊断未验收。报告输出Linux5项、原镜像传输注解9项通过，完整原件已按长度和摘要下载归档。52项原条件、全部旧失败与稳定1.0未接受状态保留，产品及preview.4附件未变。
