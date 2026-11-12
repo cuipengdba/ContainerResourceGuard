@@ -19,4 +19,13 @@
 
 [原终态、观察和源码绑定](test-results-native-diagnostics-v3-v1.json)记录宿主15项、DBS原Python2回调15项通过；DBS正常场景runtime退出1，stdout报告第10项normal-original-native-gate-passes失败，HISDBS尚未执行。外层先检查子命令成功才存储已读取的runtime报告，导致正常场景的具体SQL/API/覆盖/时延数据未归档；不推断是哪项指标失败，不把它归因于读取器或放宽标准。原空卷Pod删除后这些未归档指标不能恢复。独立观察确认namespace、DBS父/叶cgroup、原PID1与runner/worker均消失；两个退出文件均为1。
 
-[第二轮冻结计划](test-plan-native-diagnostics-v3-v2.json)只修正报告保留次序：先保存raw/解析报告，再判断子命令成功；宿主也先记录子命令输出。原四份新集成源码、三个场景时长、全部15/28项、CPU/内存/报告/540秒边界逐项保持，新namespace/目录/计时，不复用旧结果。节点在创建新夹具前重新核对第一轮失败报告/退出/进程与父叶cgroup消失。尚未启动，不计复测通过；[第二轮精确源码](test-evidence/native-diagnostics-v3-v2-frozen.json.gz)含独立inert检查，不代表实际运行。
+[第二轮冻结计划](test-plan-native-diagnostics-v3-v2.json)只修正报告保留次序：先保存raw/解析报告，再判断子命令成功；宿主也先记录子命令输出。原四份新集成源码、三个场景时长、全部15/28项、CPU/内存/报告/540秒边界逐项保持，新namespace/目录/计时，不复用旧结果。节点在创建新夹具前重新核对第一轮失败报告/退出/进程与父叶cgroup消失。第二轮已完成101项及独立清理；[第二轮精确源码](test-evidence/native-diagnostics-v3-v2-frozen.json.gz)含独立inert检查，不代表实际运行。
+
+
+## 第二轮实际终态：集成资格101项通过
+
+[原始报告、各场景请求统计和独立清理](test-results-native-diagnostics-v3-v2.json)确认宿主15项、两厂商Python2.7.5各15项回调/28项真实PG+模拟HTTP，共101项通过，两个退出文件为0且未超时。两角色均验证正常/受控锁/缺少标记的原行为；受控锁必须保留SQL超时失败并关联真实backend与锁等待，缺少标记时诊断失败可见且原请求仍按原门槛通过。两个有标记场景均集成PG v2 read/EACCES/13且无私有异常内容，原身份复查保持。
+
+同一helper/worker/unit/runtime字节与第一轮保持，只有外层报告保存次序修正；所有原15/26项、另加2项以及预算/时限不变。内部三类线程CPU占单核最大实测0.3948%，在原5%以内，不外推持续业务开销。新PG均正常停止，namespace、两个Pod父/叶cgroup、原PID1和runner/worker经独立观察确认消失。
+
+已归档[九份完整的已测源码副本](../tests/diagnostics-v3-frozen/README.md)，摘要与本轮逐项相同，不覆盖原v2源或正在运行的任务。原第一轮正常请求失败的具体指标已丢失、原因仍未知；本轮通过不能证明该不稳定现象已解决，也不抵消受限IO/default20%等原失败。当前只接受本轮诊断集成资格，不接受短正常场景稳定性、完整厂商业务、真实high压力或1.0稳定发布。
