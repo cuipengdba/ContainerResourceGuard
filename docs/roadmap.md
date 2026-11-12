@@ -276,3 +276,6 @@ R203[原生诊断压力联测终态](testing-business-pressure-native-diagnostic
 
 
 [固定IO后续449进展](test-progress-agent-fixed-io-comparison-v3.json)：A1/B1分别实际600.307/600.350秒，SQL/API均0、原十项引擎检查及每臂七个实例/namespace/父叶cgroup独立清理复核合格；2026-11-11T23:59:37Z原runner/worker和B2 Agent/watchdog存活。全四臂尚未完成，不计有效ABBA、原32项压力/两角色或稳定验收。新只读分析器按完整证据独立判定，两个真实臂复核及16个合成反例共18项通过；原两轮失败和严格资格保持。
+
+
+[固定IO四臂449终态](test-results-agent-fixed-io-comparison-v3.json)：A1/B1/B2/A2的SQL,API错误依次为0,0/0,0/2,5/1,0；B2暂停Agent时仍实际600.294秒/SQL2/API5，原业务失败保留。独立结论为preplanned-association-not-observed，不作Agent因果或产品性能修复；30个原实例、四namespace和父叶cgroup独立清理，原来源和副本恢复。只读分析器修正业务失败出口无重复摘要的读取缺陷，旧源码/错误原件保留，3个真实臂及17个合成反例共20项复核通过。对照结构资格不等于原业务SLA通过；原32项/两角色/配额/门槛、52任务和长期条件保持。

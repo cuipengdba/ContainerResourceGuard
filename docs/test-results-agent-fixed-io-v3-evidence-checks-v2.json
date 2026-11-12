@@ -1,0 +1,112 @@
+{
+  "schema": "crg-agent-fixed-io-v3-evidence-checks-v1",
+  "phase": "passed",
+  "observed_local_utc": "2026-11-12T00:20:02.772556+00:00",
+  "reader_sha256": "fa070e6804358543b9da290daf21708e8367b4dda48e808936c350937ba6c0ff",
+  "tests": [
+    {
+      "name": "actual-A1-full-evidence-independently-eligible",
+      "passed": true,
+      "synthetic": false
+    },
+    {
+      "name": "actual-B1-full-paused-and-resumed-evidence-independently-eligible",
+      "passed": true,
+      "synthetic": false
+    },
+    {
+      "name": "actual-failed-B2-retains-full-raw-native-without-duplicate-summary",
+      "passed": true,
+      "synthetic": false
+    },
+    {
+      "name": "consistent-digests-changed-frozen-executor-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "consistent-digests-changed-node-qualification-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "wrong-cleaned-namespace-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "missing-independent-helper-identity-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "wrong-helper-birth-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "changed-native-not-bound-to-snapshot-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "boot-and-raw-native-disagreement-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "missing-duplicate-on-passed-arm-still-rejected",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "fully-rebound-short-native-remains-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "forged-summary-pass-missing-activity-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "forged-summary-pass-wrong-helper-parent-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "forged-summary-pass-changed-kernel-quota-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "forged-summary-pass-early-activity-end-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "B1-missing-same-instance-resume-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "B1-missing-matched-CONT-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "B1-CPU-progress-during-claimed-pause-ineligible",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "name": "B1-early-watchdog-resume-ineligible",
+      "passed": true,
+      "synthetic": true
+    }
+  ],
+  "scope": "three real A1/B1/B2 replays and seventeen local synthetic rejection cases; failed B2 remains a business failure; no new vendor workload",
+  "whole_ABBA_accepted": false,
+  "original32_accepted": false,
+  "stable_release_accepted": false
+}
