@@ -469,7 +469,7 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 2026-11-12已交付[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[两架构等八项公开附件逐字节校验](test-results-preview4-publication.json)。独立百分比各默认20、旧自有硬限额迁移、版本门禁、一对一、自动IO标定和日志保留；30+44项仅工程控制范围，原52项与稳定1.0门槛继续。
 
 <!-- memory-high-preview4-current:start -->
-2026-11-12 preview.4：memory.high新策略[原生四格88项](testing-memory-high-native.md)、[发布身份及新检出重建](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)、[DBS/HISDBS真实路径各600秒及十项备份/同步/独立恢复](testing-memory-high-business.md)均通过；命名手动预算、SQL/API零错误、原5秒/1秒/98%与启动300/缓存45秒标准保持，独立清理已确认。两次准备驱动错误原件保留。内存使用memory.high，外部memory.max保持；不能冒充默认百分比/high回收压力/脏页/受限IO/辅助故障或长期接受，旧硬策略时长也不计入。52项定义及原稳定门槛和未完成状态保持，稳定版尚未接受。
+2026-11-12 preview.4：memory.high新策略[原生四格88项](testing-memory-high-native.md)、[发布身份及新检出重建](test-results-memory-high-identity.json)、[三场景实际1800秒开销](testing-memory-high-overhead.md)、[两角色真实路径各600秒及备份/同步/独立恢复](testing-memory-high-business.md)、[20场景/108项辅助故障](testing-memory-high-faults.md)均通过，均为同一发布程序；业务使用命名手动预算，故障保持原90/45/12秒标准，独立清理确认。准备及测试计算错误原件保留。内存使用memory.high，外部memory.max保持；不能冒充默认百分比/high回收压力/脏页/受限IO/老化故障或长期接受，旧硬策略时长不计入。52项定义及原稳定门槛和未完成状态保持，稳定版尚未接受。
 <!-- memory-high-preview4-current:end -->
 
 
