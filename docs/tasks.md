@@ -501,3 +501,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [PG v2诊断资格独立v4轮168项](testing-pg-wait-v2-qualification-v4.md)通过：宿主44、两厂商原生Python2各44解析/18真实PG，精确常规源、read/EACCES/13、实际退出和新backend身份及全部原边界/独立清理通过。投射装载ELOOP在新轮复现，原namespace guard和缺失报告失败保留；只接受工具资格，不证明受限IO业务因果、不抵消135写IOPS/默认百分比等失败，不关闭原52项。
+
+
+冻结[PG v2集成诊断资格101项](testing-native-diagnostics-v3.md)：保留每运行时15回调检查/每角色26新PG+模拟HTTP检查及所有原故障/线程CPU/报告/采样边界；增加每角色两项实际栈错误元数据检查，原请求worker只更换诊断模块和摘要。尚未运行，不计600秒持续业务/受限IO因果或真实high压力通过；原52项和三个长任务保持。
