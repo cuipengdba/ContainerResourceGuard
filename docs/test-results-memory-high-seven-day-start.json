@@ -1,0 +1,478 @@
+{
+  "schema": "crg-memory-high-seven-day-start-v1",
+  "phase": "running-not-accepted",
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+  "version": "v1.0.0-preview.4",
+  "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+  "plan": "test-plan-memory-high-seven-day.json",
+  "plan_sha256": "c93929cbd7d91891ae3d3ccc7c6e4405de2060ceb92a1b07655866a7e3075c4f",
+  "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+  "observed_node_utc": "2026-11-12T10:09:00Z",
+  "collection_utc": "2026-11-12T10:14:36.139634+00:00",
+  "namespace_uid": "a6bd949d-7091-4001-ae76-01bf7a99e8a7",
+  "startup_checks": [
+    {
+      "name": "v10-dbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-dbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-real-path-original-startup-manual-accepted-budget",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "v10-hisdbs-bw64-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    }
+  ],
+  "coordinators": {
+    "runner": {
+      "pid": 1703323,
+      "start_ticks": 141722385,
+      "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-runner.py",
+      "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+      "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "exists": true,
+      "actual_start_ticks": 141722385,
+      "original_absent": false,
+      "state": "S",
+      "expected_entry_matches": true
+    },
+    "worker": {
+      "pid": 1703324,
+      "start_ticks": 141722389,
+      "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-job.py",
+      "exists": true,
+      "actual_start_ticks": 141722389,
+      "original_absent": false,
+      "state": "S",
+      "expected_entry_matches": true
+    },
+    "campaign_process": {
+      "pid": 1722386,
+      "start_ticks": 141729405,
+      "entry": "/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py",
+      "exists": true,
+      "actual_start_ticks": 141729405,
+      "original_absent": false,
+      "state": "S",
+      "expected_entry_matches": true
+    }
+  },
+  "roles": {
+    "dbs": {
+      "native_started_node_utc": "2026-11-12T09:56:01.643569Z",
+      "earliest_604800_finish_on_node_clock_utc": "2026-11-19T09:56:01.643569+00:00",
+      "snapshot_elapsed_seconds": 600.5719622329343,
+      "SQL_attempts": 301,
+      "SQL_errors": 0,
+      "API_attempts": 121,
+      "API_errors": 0,
+      "host_sample_count": 13,
+      "maximum_sample_gap_seconds": 60.08364528696984,
+      "actual_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "20001980416",
+        "memory.swap.max": "0"
+      },
+      "fixture_identity": {
+        "pod_uid": "cc98d270-c4d6-47aa-a58a-32e86d70ae05",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podcc98d270_c4d6_47aa_a58a_32e86d70ae05.slice/cri-containerd-fb8dc141b76686ab5f9ff1495d87bb905edc633ef6bcc219d4bd5885bd63b031.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podcc98d270_c4d6_47aa_a58a_32e86d70ae05.slice",
+        "processes": [
+          {
+            "pid": 1704478,
+            "start_ticks": 141722914,
+            "program": "bash"
+          },
+          {
+            "pid": 1704938,
+            "start_ticks": 141723117,
+            "program": "bash"
+          },
+          {
+            "pid": 1704954,
+            "start_ticks": 141723118,
+            "program": "bash"
+          },
+          {
+            "pid": 1704956,
+            "start_ticks": 141723118,
+            "program": "crg"
+          },
+          {
+            "pid": 1706156,
+            "start_ticks": 141723532,
+            "program": "bash"
+          },
+          {
+            "pid": 1706158,
+            "start_ticks": 141723532,
+            "program": "bash"
+          },
+          {
+            "pid": 1706172,
+            "start_ticks": 141723532,
+            "program": "sleep"
+          },
+          {
+            "pid": 1706177,
+            "start_ticks": 141723532,
+            "program": "su"
+          },
+          {
+            "pid": 1706186,
+            "start_ticks": 141723532,
+            "program": "bash"
+          },
+          {
+            "pid": 1706197,
+            "start_ticks": 141723534,
+            "program": "dbs"
+          },
+          {
+            "pid": 1706200,
+            "start_ticks": 141723540,
+            "program": "sleep"
+          },
+          {
+            "pid": 1706273,
+            "start_ticks": 141723585,
+            "program": "dbs"
+          },
+          {
+            "pid": 1709664,
+            "start_ticks": 141724619,
+            "program": "containercacheguard"
+          },
+          {
+            "pid": 1710363,
+            "start_ticks": 141724774,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710420,
+            "start_ticks": 141724813,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710586,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710587,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710588,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710591,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710593,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710594,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710595,
+            "start_ticks": 141724837,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710607,
+            "start_ticks": 141724839,
+            "program": "postgres"
+          },
+          {
+            "pid": 1710929,
+            "start_ticks": 141724919,
+            "program": "sleep"
+          }
+        ]
+      },
+      "Agent": {
+        "pid": 1704956,
+        "start_ticks": 141723118,
+        "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+      },
+      "native_worker": {
+        "pid": 1722730,
+        "start_ticks": 141729517,
+        "entry": "/tmp/crg-soak-load-20261112576.py"
+      }
+    },
+    "hisdbs": {
+      "native_started_node_utc": "2026-11-12T09:56:04.293053Z",
+      "earliest_604800_finish_on_node_clock_utc": "2026-11-19T09:56:04.293053+00:00",
+      "snapshot_elapsed_seconds": 600.2639327298384,
+      "SQL_attempts": 300,
+      "SQL_errors": 0,
+      "API_attempts": 121,
+      "API_errors": 0,
+      "host_sample_count": 13,
+      "maximum_sample_gap_seconds": 60.083614635048434,
+      "actual_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "20001980416",
+        "memory.swap.max": "0"
+      },
+      "fixture_identity": {
+        "pod_uid": "61747e23-49c7-4cf4-9ef7-c0a007bc55eb",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod61747e23_49c7_4cf4_9ef7_c0a007bc55eb.slice/cri-containerd-1ef0f2d4a4483c155605d00aad604594acbc48ba3de42faaffa866206f80c39b.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod61747e23_49c7_4cf4_9ef7_c0a007bc55eb.slice",
+        "processes": [
+          {
+            "pid": 1711395,
+            "start_ticks": 141725184,
+            "program": "bash"
+          },
+          {
+            "pid": 1713573,
+            "start_ticks": 141726089,
+            "program": "bash"
+          },
+          {
+            "pid": 1713583,
+            "start_ticks": 141726089,
+            "program": "bash"
+          },
+          {
+            "pid": 1713584,
+            "start_ticks": 141726089,
+            "program": "crg"
+          },
+          {
+            "pid": 1714795,
+            "start_ticks": 141726504,
+            "program": "bash"
+          },
+          {
+            "pid": 1714797,
+            "start_ticks": 141726504,
+            "program": "bash"
+          },
+          {
+            "pid": 1714810,
+            "start_ticks": 141726504,
+            "program": "sleep"
+          },
+          {
+            "pid": 1714816,
+            "start_ticks": 141726504,
+            "program": "su"
+          },
+          {
+            "pid": 1714824,
+            "start_ticks": 141726505,
+            "program": "bash"
+          },
+          {
+            "pid": 1714837,
+            "start_ticks": 141726506,
+            "program": "hisdbs"
+          },
+          {
+            "pid": 1714877,
+            "start_ticks": 141726512,
+            "program": "sleep"
+          },
+          {
+            "pid": 1714917,
+            "start_ticks": 141726557,
+            "program": "hisdbs"
+          },
+          {
+            "pid": 1719936,
+            "start_ticks": 141728327,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720123,
+            "start_ticks": 141728369,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720323,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720324,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720325,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720326,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720327,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720328,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720329,
+            "start_ticks": 141728389,
+            "program": "postgres"
+          },
+          {
+            "pid": 1720330,
+            "start_ticks": 141728391,
+            "program": "postgres"
+          },
+          {
+            "pid": 1721478,
+            "start_ticks": 141728894,
+            "program": "postgres"
+          },
+          {
+            "pid": 1722032,
+            "start_ticks": 141729170,
+            "program": "postgres"
+          },
+          {
+            "pid": 1722033,
+            "start_ticks": 141729171,
+            "program": "postgres"
+          },
+          {
+            "pid": 1722362,
+            "start_ticks": 141729390,
+            "program": "containercacheguard"
+          },
+          {
+            "pid": 1722363,
+            "start_ticks": 141729390,
+            "program": "sleep"
+          }
+        ]
+      },
+      "Agent": {
+        "pid": 1713584,
+        "start_ticks": 141726089,
+        "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+      },
+      "native_worker": {
+        "pid": 1723080,
+        "start_ticks": 141729578,
+        "entry": "/tmp/crg-soak-load-20261112576.py"
+      }
+    }
+  },
+  "backup_cycles_observed": 1,
+  "backup_reports": [
+    {
+      "offset_seconds": 300.40017158794217,
+      "run_id": "2026111257600",
+      "content_started_epoch": 1794477665.2026653,
+      "exit": 0,
+      "phase": "content-passed-native-pending",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": true,
+            "samples": 31,
+            "api_max": 4.574697062838823,
+            "sql_max": 1.1986492041032761
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": true,
+            "samples": 29,
+            "api_max": 1.638848328962922,
+            "sql_max": 2.4248141078278422
+          }
+        }
+      },
+      "content_ended_epoch": 1794477787.3692565
+    }
+  ],
+  "exact_evidence": {
+    "path": "test-evidence/memory-high-seven-day-start.json.gz",
+    "sha256": "b88f9e59cad78b24ff299c6a3aa51bdf7258180b49d450061a8681848b6258c5",
+    "uncompressed_sha256": "14c7ebe2b1f8b30c3ef4bbe4b528d85ebdf77a4f025dcaa8c0a8f747ff694de6"
+  },
+  "readonly_observer_correction": "Original looked for absent role field; v2 uses only two fixed case-key mappings. Original failure retained; same frozen runtime job/handles continued.",
+  "node_clock_and_collection_clock_distinct": true,
+  "seven_day_accepted": false,
+  "aged_state_postflight_accepted": false,
+  "P10_complete": false,
+  "stable_release_accepted": false,
+  "limitations": [
+    "Exact same preview4 published ELF and named manual64MiB/s budget on existing AMD64/Linux5.14/single physical disk; not default percentages or high-pressure/dirty-IO acceptance.",
+    "Each role must actually measure604800seconds and28engine cycles; startup,planned duration or previous-source elapsed time does not count.",
+    "Fresh synthetic64MiB schemas,loopbackSQL/API,real vendor paths and original startup/PG/cache; no production mutation or unknown vendor-specific API claim.",
+    "Aged retained data must later pass its own rebuild,maintenance,fault,logging and restore postflight; previous-source postflight cannot be transferred.",
+    "Formal24hobserve+24henforce,actual published-minor migrations,ARM vendor and multiplephysical-device gates and all original52 completion definitions remain open.",
+    "No source replacement,quota/deadline relaxation or automatic failure suppression during measurement; continuous component alone cannot close stable1.0."
+  ]
+}
