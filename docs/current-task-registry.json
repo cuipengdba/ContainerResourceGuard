@@ -1533,7 +1533,7 @@
   },
   "memory_reclaim_preference_request": {
     "date": "2026-11-12",
-    "phase": "preview4-published-native88-overhead1800-manual-business600-qualified",
+    "phase": "preview4-published-native88-overhead1800-manual-business600-fault20-qualified",
     "design": "docs/memory-reclaim-policy.md",
     "user_request": "达到内存目标后释放内存，不希望OOM；说明其他cgroup内存控制参数",
     "choices": [
@@ -1551,7 +1551,7 @@
       "next/partition-io"
     ],
     "main_source_backport": false,
-    "verification": "docs/test-results-memory-high-business-v2.json",
+    "verification": "docs/test-results-memory-high-faults-v2.json",
     "published_version": "v1.0.0-preview.4",
     "publication": "docs/test-results-preview4-publication.json"
   },
@@ -1583,8 +1583,10 @@
     "overhead_verification": "docs/test-results-memory-high-overhead-v2.json",
     "business_verification": "docs/test-results-memory-high-business-v2.json",
     "faults_plan": "docs/test-plan-memory-high-faults-v2.json",
-    "faults_phase": "retry-frozen-after-driver-page-alignment-failure",
-    "faults_accepted": false,
-    "faults_previous_failure": "docs/test-results-memory-high-faults-v1.json"
+    "faults_phase": "passed-20-cases-108-checks",
+    "faults_accepted": true,
+    "faults_previous_failure": "docs/test-results-memory-high-faults-v1.json",
+    "faults_verification": "docs/test-results-memory-high-faults-v2.json",
+    "followup_plan": "docs/plan-memory-high-followup.md"
   }
 }
