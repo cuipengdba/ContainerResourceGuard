@@ -19,3 +19,6 @@ DBS/HISDBS分别使用固定的新命名空间和独立输出。前一角色协�
 当前为执行前冻结，尚无运行通过结论。节点只读预检时间`2026-11-13T07:13:08.113150+00:00`，前960任务已终态且进程/namespace消失，内存与磁盘满足原28GiB/20GiB克隆前保留量。已有长期测试容器继续运行，所以本轮不是正式独占24小时或开销因果实验。
 
 [旧硬策略默认20%四格失败](testing-three-resource-default20-supplement.md)和[960的SQL失败](testing-full960-native-child-fixed.md)保持原结论。空配置能应用不表示适合这个业务负载；冷启动、解包/备份后启动及30%变化、原52项、长期/老化和支持矩阵继续分别验收，不提前宣称稳定1.0。
+
+
+[空配置20%实际启动快照](test-start-default20-memory-high-business.json)：节点2026-11-13T07:51:58.042161+00:00确认同一协调器/DBS驱动PID及start仍活跃，DBS在66.292秒就绪且managed，7项启动/默认换算/单Agent/缓存/high-only journal/v2日志检查通过。实际CPU4.8核、high13334654976B，自动选中/etc/crg所在XFS253:0，IO基准20%为读9831622/写4251266B/s、读12/写6IOPS。原生尚在preparing，零计数不代表600秒零错，HISDBS未开始；当前不作业务或稳定接受。见[冻结计划](testing-default20-memory-high-business.md)。
