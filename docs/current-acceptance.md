@@ -1,5 +1,7 @@
 # 当前验收入口
 
+[原52项当前范围与证据复核](requirements-evidence-review.md)已逐项归档：用户后续三资源/high语义覆盖旧pids/权重/swap及新max下调要求，保留原文、恢复保护与全部未满足验收。表中证据入口不表示整项通过，原52项完成声明未改；默认业务失败、正式24h/七天、硬件与真实发布迁移仍分别处理。
+
 [空配置默认20%原业务终态](testing-default20-memory-high-business.md)：原16项记录16、通过14；两角色启动/单Agent/缓存/三项high-only控制/日志各7项通过，但物理备份均触发原300秒超时，各仅完成1/10内容检查。DBS原生被中断且SQL24/API5错误，HIS原生只有旧running快照，不能按600秒零错接受。22份270144字节原件及66个登记进程实例、两个namespace和自有父叶cgroup清理独立确认；保留engine/exec清理错误。低标定IOPS与超时并存尚无单因素因果结论，不提高配额或延长超时。preview.4产品/附件不变，默认业务与稳定1.0未接受。
 
 [空配置20%实际启动快照](test-start-default20-memory-high-business.json)：节点2026-11-13T07:51:58.042161+00:00确认同一协调器/DBS驱动PID及start仍活跃，DBS在66.292秒就绪且managed，7项启动/默认换算/单Agent/缓存/high-only journal/v2日志检查通过。实际CPU4.8核、high13334654976B，自动选中/etc/crg所在XFS253:0，IO基准20%为读9831622/写4251266B/s、读12/写6IOPS。原生尚在preparing，零计数不代表600秒零错，HISDBS未开始；当前不作业务或稳定接受。见[冻结计划](testing-default20-memory-high-business.md)。
