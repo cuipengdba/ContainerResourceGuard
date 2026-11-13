@@ -1,5 +1,9 @@
 # 开发任务与验收跟踪
 
+最新终态：独立HIS30补测1170在9项通过后因旧节点Python不接受9位纳秒而退出，27项未执行；31登记实例及namespace/父叶独立清理。原报告保留。[纳秒兼容v2完整补测](testing-bandwidth-calendar-HIS30-v2.md)已另行冻结，18项真实纳秒正负回归在节点通过，15项预检通过；同一发布程序、原业务门槛不变，尚未接受为业务通过。
+
+以下保留原时点记录。
+
 独立HISDBS30补测已经唯一启动，节点16:49:01快照为7项通过、首次PG/API/受控就绪29.35/29.62/59.25秒，尚待两次冷重建、备份/独立恢复及原探针；[启动原件](test-start-bandwidth-calendar-HIS30.json)记录准确PID/start及全部冻结哈希，不能算36项终态。旧preview.4七天任务中断的直接原因也已从PID295208的CSV确认：23:56:21备用库无法绑定127.0.0.1:55432（Address already in use），随后FATAL无法创建TCP套接字；[两份1380字节准确原件](test-evidence-memory-high-seven-day-port-conflict.json.gz)及[分析](test-results-memory-high-seven-day-port-conflict.json)已归档。当时端口占用者未捕获，不推断资源限制因果，旧任务仍为失败。
 
 以下按原时点保留。
