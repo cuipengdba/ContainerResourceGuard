@@ -1,0 +1,725 @@
+{
+  "schema": "crg-preview5-bandwidth-default20-full600-start-v1",
+  "phase": "launched-DBS-seven-startup-checks-native-still-running",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "binary_sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+  "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+  "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+  "node_utc": "2026-11-13T17:37:37.309999+00:00",
+  "launch": {
+    "pid": 1945180,
+    "start_ticks": 153128981,
+    "entry": "/var/tmp/crg-bandwidth1210-tools-20261114/runner.py",
+    "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+    "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851"
+  },
+  "runtime_checks_at_snapshot": 7,
+  "runtime_passed_checks_at_snapshot": 7,
+  "planned_checks": 16,
+  "planned_native_seconds_each_role": 600,
+  "DBS_ready_and_managed_seconds": 55.148882891982794,
+  "HISDBS_not_started_at_snapshot": true,
+  "exact_read_only_node_observation": {
+    "node_utc": "2026-11-13T17:37:37.309999+00:00",
+    "processes": {
+      "launch": {
+        "pid": 1945180,
+        "start_ticks": 153128981,
+        "entry": "/var/tmp/crg-bandwidth1210-tools-20261114/runner.py",
+        "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+        "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+        "original_absent": false,
+        "state": "S"
+      },
+      "dbs-driver": {
+        "pid": 1945258,
+        "start_ticks": 153129013,
+        "entry": "/var/tmp/crg-bandwidth1210-tools-20261114/default20-business.py",
+        "role": "dbs",
+        "original_absent": false,
+        "state": "S"
+      }
+    },
+    "node_available_memory_bytes": 37726347264,
+    "node_free_disk_bytes": 77229539328,
+    "phase": "testing-dbs",
+    "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+    "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+    "coordinator_report_sha256": "fe6191e74e1ef6209d424ac159fdd170bacc6184a6ba76bba258f1d89771b1d6",
+    "coordinator_report": {
+      "schema": "crg-default20-memory-high-coordinator-v1",
+      "phase": "testing-dbs",
+      "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+      "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+      "started_epoch": 1794591346.8885546,
+      "roles": {
+        "dbs": {
+          "phase": "starting",
+          "driver": {
+            "pid": 1945258,
+            "start_ticks": 153129013,
+            "entry": "/var/tmp/crg-bandwidth1210-tools-20261114/default20-business.py",
+            "role": "dbs"
+          }
+        }
+      },
+      "errors": [],
+      "no_other_fixture_restart_or_resource_mutation": true
+    },
+    "roles": {
+      "dbs": {
+        "phase": "testing-preview5-dbs-default20",
+        "checks": [
+          {
+            "name": "preview5-dbs-default20-real-path-original-startup-default20-and-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "preview5-dbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+            "passed": true
+          },
+          {
+            "name": "preview5-dbs-default20-original-CCG-mount-stays-readonly",
+            "passed": true
+          },
+          {
+            "name": "preview5-dbs-default20-original-cache-independent-enforce",
+            "passed": true
+          },
+          {
+            "name": "preview5-dbs-default20-only-three-resource-controls-and-other-values-preserved",
+            "passed": true
+          },
+          {
+            "name": "preview5-dbs-default20-daily-logs-report-v2-before-business-campaign",
+            "passed": true
+          },
+          {
+            "name": "preview5-dbs-default20-one-current-Agent-cache-and-owned-high-only-journal",
+            "passed": true
+          }
+        ],
+        "error": null,
+        "case_phase": "booting",
+        "case_error": null,
+        "first_pg_ready_seconds": 27.24940785486251,
+        "first_api_ready_seconds": 29.319431822979823,
+        "ready_and_managed_seconds": 55.148882891982794,
+        "actual_three_controls": {
+          "cpu.max": "480000 100000",
+          "memory.high": "13334654976",
+          "io.max": "253:0 rbps=13256766 wbps=9044830 riops=max wiops=max"
+        },
+        "profile": {
+          "version": 2,
+          "method": "direct-sync-qdepth1-seq1m-random4k",
+          "devices": [
+            {
+              "device": "253:0",
+              "read_bps": 66283830,
+              "write_bps": 45224153,
+              "read_iops": 146,
+              "write_iops": 33
+            }
+          ]
+        },
+        "automatic_io": {
+          "state": "calibrated",
+          "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+          "selection": {
+            "directory": "/etc/crg",
+            "filesystem": "xfs",
+            "device": "253:0",
+            "identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "control_device": "253:0",
+            "total_bytes": 965520392192,
+            "available_bytes": 78202675200
+          },
+          "profile": "/etc/crg/io-profile.json",
+          "quality": {
+            "samples": 3,
+            "spread_percent": {
+              "read_bps": 112.27960122400893,
+              "read_iops": 104.10958904109589,
+              "write_bps": 87.13785529604058,
+              "write_iops": 375.75757575757575
+            },
+            "warnings": [
+              "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+              "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+              "read_iops spread exceeds 25%; check device competition and repeat explicitly",
+              "write_iops spread exceeds 25%; check device competition and repeat explicitly"
+            ]
+          }
+        },
+        "fixture_identity": {
+          "pod_uid": "2035e27a-30d7-42fc-94cb-9a3065441aa3",
+          "container_id": "0d849cfe3c6c0c6c67864d905f4ad1dfbda3e4e2521c0ff6ce79bbab93ba5942",
+          "init_pid": 1946371,
+          "init_start_ticks": 153129523,
+          "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2035e27a_30d7_42fc_94cb_9a3065441aa3.slice/cri-containerd-0d849cfe3c6c0c6c67864d905f4ad1dfbda3e4e2521c0ff6ce79bbab93ba5942.scope",
+          "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2035e27a_30d7_42fc_94cb_9a3065441aa3.slice",
+          "processes": [
+            {
+              "pid": 1946371,
+              "start_ticks": 153129523,
+              "executable": "/usr/bin/bash",
+              "sha256": null
+            },
+            {
+              "pid": 1946743,
+              "start_ticks": 153129727,
+              "executable": "/usr/bin/bash",
+              "sha256": null
+            },
+            {
+              "pid": 1946754,
+              "start_ticks": 153129728,
+              "executable": "/usr/bin/bash",
+              "sha256": null
+            },
+            {
+              "pid": 1946756,
+              "start_ticks": 153129728,
+              "executable": "/opt/crg/crg",
+              "sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333"
+            },
+            {
+              "pid": 1948106,
+              "start_ticks": 153130258,
+              "executable": "/usr/bin/bash",
+              "sha256": null
+            },
+            {
+              "pid": 1948109,
+              "start_ticks": 153130258,
+              "executable": "/usr/bin/bash",
+              "sha256": null
+            },
+            {
+              "pid": 1948121,
+              "start_ticks": 153130258,
+              "executable": "/usr/bin/sleep",
+              "sha256": null
+            },
+            {
+              "pid": 1948130,
+              "start_ticks": 153130258,
+              "executable": "/usr/bin/su",
+              "sha256": null
+            },
+            {
+              "pid": 1948135,
+              "start_ticks": 153130259,
+              "executable": "/usr/bin/bash",
+              "sha256": null
+            },
+            {
+              "pid": 1948146,
+              "start_ticks": 153130260,
+              "executable": "/opt/dbs/bin/dbs",
+              "sha256": null
+            },
+            {
+              "pid": 1948150,
+              "start_ticks": 153130266,
+              "executable": "/usr/bin/sleep",
+              "sha256": null
+            },
+            {
+              "pid": 1948210,
+              "start_ticks": 153130321,
+              "executable": "/opt/dbs/bin/dbs",
+              "sha256": null
+            },
+            {
+              "pid": 1950927,
+              "start_ticks": 153131228,
+              "executable": "/opt/ccg/bin/containercacheguard",
+              "sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+            },
+            {
+              "pid": 1951850,
+              "start_ticks": 153131562,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1951924,
+              "start_ticks": 153131630,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953175,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953176,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953177,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953178,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953179,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953180,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953181,
+              "start_ticks": 153132110,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1953202,
+              "start_ticks": 153132124,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1954207,
+              "start_ticks": 153132618,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1954283,
+              "start_ticks": 153132680,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1954284,
+              "start_ticks": 153132681,
+              "executable": "/opt/postgresql/pgsql/bin/postgres",
+              "sha256": null
+            },
+            {
+              "pid": 1960360,
+              "start_ticks": 153135130,
+              "executable": "/usr/bin/sleep",
+              "sha256": null
+            }
+          ]
+        },
+        "pod_delete_command": null,
+        "namespace_absent": null,
+        "native": {
+          "phase": "running",
+          "elapsed_seconds": null,
+          "requested_duration_seconds": 600,
+          "sql": {
+            "attempts": 0,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0,
+            "successes": 0,
+            "total_seconds": 0
+          },
+          "api": {
+            "attempts": 0,
+            "errors": 0,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "max_seconds": 0,
+            "successes": 0,
+            "total_seconds": 0
+          },
+          "interrupted": null,
+          "threads_stopped": null
+        }
+      }
+    },
+    "summary": {
+      "node_utc": "2026-11-13T17:37:37.309999+00:00",
+      "processes": {
+        "launch": {
+          "pid": 1945180,
+          "start_ticks": 153128981,
+          "entry": "/var/tmp/crg-bandwidth1210-tools-20261114/runner.py",
+          "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+          "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+          "original_absent": false,
+          "state": "S"
+        },
+        "dbs-driver": {
+          "pid": 1945258,
+          "start_ticks": 153129013,
+          "entry": "/var/tmp/crg-bandwidth1210-tools-20261114/default20-business.py",
+          "role": "dbs",
+          "original_absent": false,
+          "state": "S"
+        }
+      },
+      "node_available_memory_bytes": 37726347264,
+      "node_free_disk_bytes": 77229539328,
+      "phase": "testing-dbs",
+      "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+      "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+      "coordinator_report_sha256": "fe6191e74e1ef6209d424ac159fdd170bacc6184a6ba76bba258f1d89771b1d6",
+      "roles": {
+        "dbs": {
+          "phase": "testing-preview5-dbs-default20",
+          "checks": [
+            {
+              "name": "preview5-dbs-default20-real-path-original-startup-default20-and-automatic-profile",
+              "passed": true
+            },
+            {
+              "name": "preview5-dbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+              "passed": true
+            },
+            {
+              "name": "preview5-dbs-default20-original-CCG-mount-stays-readonly",
+              "passed": true
+            },
+            {
+              "name": "preview5-dbs-default20-original-cache-independent-enforce",
+              "passed": true
+            },
+            {
+              "name": "preview5-dbs-default20-only-three-resource-controls-and-other-values-preserved",
+              "passed": true
+            },
+            {
+              "name": "preview5-dbs-default20-daily-logs-report-v2-before-business-campaign",
+              "passed": true
+            },
+            {
+              "name": "preview5-dbs-default20-one-current-Agent-cache-and-owned-high-only-journal",
+              "passed": true
+            }
+          ],
+          "error": null,
+          "case_phase": "booting",
+          "case_error": null,
+          "first_pg_ready_seconds": 27.24940785486251,
+          "first_api_ready_seconds": 29.319431822979823,
+          "ready_and_managed_seconds": 55.148882891982794,
+          "actual_three_controls": {
+            "cpu.max": "480000 100000",
+            "memory.high": "13334654976",
+            "io.max": "253:0 rbps=13256766 wbps=9044830 riops=max wiops=max"
+          },
+          "profile": {
+            "version": 2,
+            "method": "direct-sync-qdepth1-seq1m-random4k",
+            "devices": [
+              {
+                "device": "253:0",
+                "read_bps": 66283830,
+                "write_bps": 45224153,
+                "read_iops": 146,
+                "write_iops": 33
+              }
+            ]
+          },
+          "automatic_io": {
+            "state": "calibrated",
+            "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+            "selection": {
+              "directory": "/etc/crg",
+              "filesystem": "xfs",
+              "device": "253:0",
+              "identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "control_device": "253:0",
+              "total_bytes": 965520392192,
+              "available_bytes": 78202675200
+            },
+            "profile": "/etc/crg/io-profile.json",
+            "quality": {
+              "samples": 3,
+              "spread_percent": {
+                "read_bps": 112.27960122400893,
+                "read_iops": 104.10958904109589,
+                "write_bps": 87.13785529604058,
+                "write_iops": 375.75757575757575
+              },
+              "warnings": [
+                "read_bps spread exceeds 25%; check device competition and repeat explicitly",
+                "write_bps spread exceeds 25%; check device competition and repeat explicitly",
+                "read_iops spread exceeds 25%; check device competition and repeat explicitly",
+                "write_iops spread exceeds 25%; check device competition and repeat explicitly"
+              ]
+            }
+          },
+          "fixture_identity": {
+            "pod_uid": "2035e27a-30d7-42fc-94cb-9a3065441aa3",
+            "container_id": "0d849cfe3c6c0c6c67864d905f4ad1dfbda3e4e2521c0ff6ce79bbab93ba5942",
+            "init_pid": 1946371,
+            "init_start_ticks": 153129523,
+            "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2035e27a_30d7_42fc_94cb_9a3065441aa3.slice/cri-containerd-0d849cfe3c6c0c6c67864d905f4ad1dfbda3e4e2521c0ff6ce79bbab93ba5942.scope",
+            "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod2035e27a_30d7_42fc_94cb_9a3065441aa3.slice",
+            "processes": [
+              {
+                "pid": 1946371,
+                "start_ticks": 153129523,
+                "executable": "/usr/bin/bash",
+                "sha256": null
+              },
+              {
+                "pid": 1946743,
+                "start_ticks": 153129727,
+                "executable": "/usr/bin/bash",
+                "sha256": null
+              },
+              {
+                "pid": 1946754,
+                "start_ticks": 153129728,
+                "executable": "/usr/bin/bash",
+                "sha256": null
+              },
+              {
+                "pid": 1946756,
+                "start_ticks": 153129728,
+                "executable": "/opt/crg/crg",
+                "sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333"
+              },
+              {
+                "pid": 1948106,
+                "start_ticks": 153130258,
+                "executable": "/usr/bin/bash",
+                "sha256": null
+              },
+              {
+                "pid": 1948109,
+                "start_ticks": 153130258,
+                "executable": "/usr/bin/bash",
+                "sha256": null
+              },
+              {
+                "pid": 1948121,
+                "start_ticks": 153130258,
+                "executable": "/usr/bin/sleep",
+                "sha256": null
+              },
+              {
+                "pid": 1948130,
+                "start_ticks": 153130258,
+                "executable": "/usr/bin/su",
+                "sha256": null
+              },
+              {
+                "pid": 1948135,
+                "start_ticks": 153130259,
+                "executable": "/usr/bin/bash",
+                "sha256": null
+              },
+              {
+                "pid": 1948146,
+                "start_ticks": 153130260,
+                "executable": "/opt/dbs/bin/dbs",
+                "sha256": null
+              },
+              {
+                "pid": 1948150,
+                "start_ticks": 153130266,
+                "executable": "/usr/bin/sleep",
+                "sha256": null
+              },
+              {
+                "pid": 1948210,
+                "start_ticks": 153130321,
+                "executable": "/opt/dbs/bin/dbs",
+                "sha256": null
+              },
+              {
+                "pid": 1950927,
+                "start_ticks": 153131228,
+                "executable": "/opt/ccg/bin/containercacheguard",
+                "sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+              },
+              {
+                "pid": 1951850,
+                "start_ticks": 153131562,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1951924,
+                "start_ticks": 153131630,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953175,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953176,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953177,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953178,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953179,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953180,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953181,
+                "start_ticks": 153132110,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1953202,
+                "start_ticks": 153132124,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1954207,
+                "start_ticks": 153132618,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1954283,
+                "start_ticks": 153132680,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1954284,
+                "start_ticks": 153132681,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null
+              },
+              {
+                "pid": 1960360,
+                "start_ticks": 153135130,
+                "executable": "/usr/bin/sleep",
+                "sha256": null
+              }
+            ]
+          },
+          "pod_delete_command": null,
+          "namespace_absent": null,
+          "native": {
+            "phase": "running",
+            "elapsed_seconds": null,
+            "requested_duration_seconds": 600,
+            "sql": {
+              "attempts": 0,
+              "errors": 0,
+              "histogram": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "max_seconds": 0,
+              "successes": 0,
+              "total_seconds": 0
+            },
+            "api": {
+              "attempts": 0,
+              "errors": 0,
+              "histogram": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "max_seconds": 0,
+              "successes": 0,
+              "total_seconds": 0
+            },
+            "interrupted": null,
+            "threads_stopped": null
+          }
+        }
+      }
+    }
+  },
+  "observation_script_sha256": "088c589acf4a9afeebc94546883804d91cd78b11c98d46262917281e8eb8fda8",
+  "original_criteria_unchanged": true,
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "zero_initial_native_counters_not_actual_zero_error_result": true
+}
