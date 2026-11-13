@@ -575,3 +575,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [接收端自有600秒与内存交付复核](testing-private-fifo-receiver-long600.md)：882七项通过，121条显式合成记录/14047字节完整，接收父进程CPU占单核约0.252%，真实线程/FD及身份清理确认；无HTTP/DB/Pod/BPF或全Agent开销声明。精确preview.4六项本地内存策略回归通过，公开八附件元数据及tag不变。memory.high选择、外部硬上限、原52项、完整联调/BPF边界/长期与稳定条件保留。
+
+
+[BPF边界对照](testing-bpf-pair-boundaries.md)：自有四组/13项完成，延后目标map启用解决半挂接窗口；启动前在途与停止时在途仍明确incomplete。首轮跨页计数夹具失败保留，采集器/探针/严格配对未因重试改变；两轮12进程/225对象独立消失。仅部分顺序修复，完整准入/排空和厂商600秒联调未验收，原52项/历史失败/长期/稳定条件及memory.high产品保持。
