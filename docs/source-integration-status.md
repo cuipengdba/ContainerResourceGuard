@@ -1,5 +1,11 @@
 # 源码集成与当前验收状态
 
+截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
+
+准确产品源码ced461705ebc27315a59aefe463f9b4af47130a3，已发布标签v1.0.0-preview.5、打包提交d32987af8c02319f949b2e7bcc1429d598553921。草稿PR #1未合并，main和其它旧开发分支本次仅同步文档/读取工具；新程序在release/integration-v1及发布标签，源码复现检出ced4617并使用固定工具链/preview.5版本。原导入来源、两次工程失败、旧手动及旧百分比失败全部保留。
+
+## 历史进展记录
+
 当前新带宽默认值候选准确源码ced4617已通过完整Linux、原生ARM64、52项实际cgroup和180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已唯一启动。节点15:06:47 UTC快照：DBS20已记录17项通过、两次不同ID启动在58.60/85.87秒就绪，后续冷重建及其余三组仍运行，尚非144项终态。IO百分比只新增读写BPS、IOPS留手动且保留外部原值；内存继续memory.high。[首轮实际证据](test-start-bandwidth-percent.json)已归档，preview.5尚未发布，preview.4附件/原52项/历史失败保持。
 
 当前准确工程源码为`ced461705ebc27315a59aefe463f9b4af47130a3`，后续提交仅文档/证据。四项准确CI及精确原件见[IO带宽CI分析](test-results-IO-bandwidth-CI.json)，逐文件来源见[集成来源计划](https://github.com/cuipengdba/ContainerResourceGuard/blob/release/integration-v1/docs/source-integration-plan.json)。草稿[PR #1](https://github.com/cuipengdba/ContainerResourceGuard/pull/1)尚未合并；main/其余旧开发分支仅同步本次文档，不能据此把其旧程序视为新源码。
