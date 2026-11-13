@@ -1,0 +1,28 @@
+{
+  "schema": "crg-full600-HIS-standby-stop-followup-qualification-v1",
+  "phase": "standby-shut-down-after-original30second-budget",
+  "job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+  "plan_sha256": "7fdee53072afaef21e54450894d015f84267f1720976f05f3b1a946262752851",
+  "coordinator_report_sha256": "ed813f4358a4e0623c1845ee69077e8aff50d05acf8f2c81075169c5b5d97626",
+  "node_utc": "2026-11-13T18:11:53.805531+00:00",
+  "standby_PID_in_container": 5029,
+  "checkpointer_PID_in_container": 5409,
+  "fast_shutdown_request_CST": "2026-11-14 01:54:58.439 CST",
+  "shutdown_complete_CST": "2026-11-14 01:55:30.136 CST",
+  "elapsed_request_to_shutdown_seconds": 31.697,
+  "original_pg_ctl_stop_timeout_seconds": 30,
+  "original_timeout_failure_preserved": true,
+  "restartpoint_completion_message": "restartpoint complete: wrote 14781 buffers (90.2%); 1 WAL file(s) added, 0 removed, 0 recycled; write=0.151 s, sync=20.962 s, total=25.879 s; sync files=53, longest=11.501 s, average=0.396 s; distance=96378 kB, estimate=96378 kB",
+  "restartpoint_sync_seconds": 20.962,
+  "exact_files": 7,
+  "exact_bytes": 10380,
+  "all_files_are_complete_not_truncated": true,
+  "mutated_or_restarted_remote_fixture": false,
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "limitations": [
+    "Observed shutdown and sync time are direct evidence, not proof of IO-only/cgroup causation.",
+    "No quota/PG settings/timeout/probe change or rerun. Original fourteen positive/two failed and interrupted343second native results remain.",
+    "Additional diagnostic evidence is separate from immutable22file original export/index."
+  ]
+}
