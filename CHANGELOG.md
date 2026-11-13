@@ -1,5 +1,9 @@
 # 变更记录
 
+截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](docs/releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](docs/test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](docs/testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
+
+以下历史记录按原时点保留。
+
 ## v1.0.0-preview.4
 
 内存百分比/手动内存使用memory.high，不新增memory.max；按journal恢复自有旧硬限额，外部限额保留。策略与警告写入每日日志。两原镜像隔离30项及两架构实际控制器44项通过；完整业务/长期验收继续。[发布说明](docs/releases/v1.0.0-preview.4.md)。

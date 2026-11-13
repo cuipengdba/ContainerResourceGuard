@@ -1,5 +1,7 @@
 # 新带宽默认值的真机启动/重建矩阵
 
+当前已完成默认20%两角色各36项，合计72项；六次启动、真实新ID/同profile、逻辑备份及独立恢复/还原均通过，189登记实例及两namespace/六组父叶独立清理。[准确终结组分析及十份原件](testing-bandwidth-default20-two-role.md)已归档。节点15:41:11 UTC正在DBS30，HIS30未执行，完整144项未接受；[工程preview.5已发布并核对八项下载](test-results-preview5-publication.json)，程序与本测试字节相同，原计划/门槛及旧失败保持。以下是冻结方案与早期快照。
+
 状态：按冻结方案唯一启动，原300秒/探针/删除等门槛保持；DBS20首轮17项通过，尚未终结。
 
 [首轮只读证据](test-start-bandwidth-percent.json)：节点15:06:47 UTC，原runner PID4039696/start152166052；DBS20初始化及第一次冷重建容器/Pod ID各不相同，PG/API及受控就绪在58.60/85.87秒以内，已记录17项通过。首次真实io.max为rbps8408293/wbps7905573、riops/wiops=max；外部memory.max20GiB未变，memory.high13334654976。每次自动发现自身ID并沿用已标定profile；其它组未执行不计通过。第二次冷重建与后续三组继续，未改程序/计划/原时限。

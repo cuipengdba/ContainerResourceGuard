@@ -1,5 +1,19 @@
 # ContainerResourceGuard
 
+截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](docs/releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](docs/test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](docs/testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
+
+```json
+{"cpu_percent":30,"memory_percent":40,"io_percent":25}
+```
+
+未填写各默认20；每容器独立一份Agent，重建后自动发现自身ID。纯Cgroup v2设置，v1/混合/未知及权限不足记日志降级，原启动链继续。自动选择最大合格本地可写文件系统后台标定，无需手填目录；一天一日志，30日/1GB清理。memory.high允许超过目标，原有硬限额或宿主不足仍可能OOM。
+
+使用[当前下载及升级说明](docs/releases/v1.0.0-preview.5.md)，逐容器保留配置/profile/journal。main与其它旧开发分支程序尚未变为新IO语义，源代码复现请检出ced461705ebc27315a59aefe463f9b4af47130a3并使用固定Go1.27.3执行`bash scripts/build.sh v1.0.0-preview.5`；BUILD.json分别记录产品源码与文档打包身份。[当前验收入口](docs/current-acceptance.md)及[全部需求](docs/requirements.md)列明未完成范围。
+
+## 历史开发与发布记录
+
+以下保留各历史版本当时进度，当前交付以上文为准。
+
 当前新带宽默认值候选准确源码ced4617已通过完整Linux、原生ARM64、52项实际cgroup和180项分区检查；[默认20/30真机矩阵](docs/testing-bandwidth-percent-startup.md)已唯一启动。节点15:06:47 UTC快照：DBS20已记录17项通过、两次不同ID启动在58.60/85.87秒就绪，后续冷重建及其余三组仍运行，尚非144项终态。IO百分比只新增读写BPS、IOPS留手动且保留外部原值；内存继续memory.high。[首轮实际证据](docs/test-start-bandwidth-percent.json)已归档，preview.5尚未发布，preview.4附件/原52项/历史失败保持。
 
 实际公开preview.3→preview.4程序已通过[两角色在线迁移26项](docs/testing-public-preview-memory-high-maintenance.md)；需要更新现有容器时参阅[逐容器升级、即时回退与反向安装步骤](docs/upgrade-preview3-preview4.zh.md)。其他原稳定条件继续独立判定。

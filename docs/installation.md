@@ -1,5 +1,9 @@
 # 安装、升级与回退
 
+截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
+
+以下历史记录按原时点保留。
+
 preview.3到preview.4的已发布包内程序迁移实测与受控操作见[专用升级步骤](upgrade-preview3-preview4.zh.md)及[26项终态](testing-public-preview-memory-high-maintenance.md)。下述开发记录保留原时点；不把过期快照自动回退与显式反向安装混用。
 
 已发布[memory.high版preview.4](releases/v1.0.0-preview.4.md)，[八项公开下载校验](test-results-preview4-publication.json)。每容器分别更新，保留原配置/profile/state_dir/journal，核对旧硬限额恢复；源码构建使用发布标签。完整业务和长期门槛继续。
