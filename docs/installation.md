@@ -1,5 +1,9 @@
 # 安装、升级与回退
 
+截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
+
+以下历史记录按原时点保留。
+
 当前工程交付：[v1.0.0-preview.5](releases/v1.0.0-preview.5.md)。IO百分比只新增读写BPS，IOPS留手动且外部原值保留；内存继续memory.high。[已验证范围](testing-preview5-qualified-subset.md)：准确源码完整Linux/原生ARM64/52项实际cgroup/180项分区通过，新程序DBS默认20%完整36项通过、三次不同ID启动均在原300秒内，95登记实例清理。HIS20及30%两组仍按冻结方案继续，不宣称144项或稳定1.0通过。以下历史状态按原时点保留。
 
 ## 历史安装与验收记录

@@ -2364,7 +2364,7 @@
     "stable_release_accepted": false
   },
   "IO_bandwidth_policy": {
-    "phase": "exact-engineering-DBS20-subset-qualified-full-matrix-running",
+    "phase": "preview5-published-exact-CI-and-default20-both-roles-qualified",
     "documentation": "io-bandwidth-policy.md",
     "user_choice": "默认按读写带宽百分比限制，IOPS 留给手动模式",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2381,10 +2381,12 @@
     "owned_legacy_IOPS_safe_migration": true,
     "new_business_accepted": false,
     "old_preview4_unchanged": true,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "preview5_published": true,
+    "preview5_publication_report": "test-results-preview5-publication.json"
   },
   "bandwidth_default_startup_matrix": {
-    "phase": "running-DBS20-complete36-independent95-clean",
+    "phase": "running-completed-default20-both-roles",
     "documentation": "testing-bandwidth-percent-startup.md",
     "plan": "test-plan-bandwidth-percent-startup.json",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2395,13 +2397,13 @@
     "structural_checks": 17,
     "planned_checks": 144,
     "planned_boots": 12,
-    "runtime_checks": 36,
+    "runtime_checks": 72,
     "terminal": false,
     "business_accepted": false,
     "stable_release_accepted": false,
-    "passed_checks": 36,
-    "observed_boots": 3,
-    "node_utc": "2026-11-13T15:24:52.434826+00:00",
+    "passed_checks": 72,
+    "observed_boots": 6,
+    "node_utc": "2026-11-13T15:41:11.878815+00:00",
     "start_evidence": "test-start-bandwidth-percent.json",
     "source_plan_commit": "e21fdac63becb62d5409f2fba49cb504e577db6d",
     "runner": {
@@ -2412,7 +2414,15 @@
       "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c"
     },
     "remaining_cases_not_accepted": true,
-    "subset_report": "test-results-preview5-qualified-subset.json"
+    "subset_report": "test-results-preview5-qualified-subset.json",
+    "checks_basis": "completed case checks only; ongoing partial checks excluded",
+    "completed_cases": [
+      "dbs-20",
+      "hisdbs-20"
+    ],
+    "current_case": "dbs-30",
+    "two_role_report": "test-results-bandwidth-default20-two-role.json",
+    "independently_absent_registered_process_instances": 189
   },
   "preview5_engineering_scope": {
     "version": "v1.0.0-preview.5",
@@ -2423,5 +2433,19 @@
     "full_matrix_accepted": false,
     "stable_release_accepted": false,
     "publication_download_proof": "published separately after server-byte verification"
+  },
+  "preview5_publication": {
+    "phase": "published-and-all-eight-public-downloads-verified",
+    "tag": "v1.0.0-preview.5",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "package_commit": "d32987af8c02319f949b2e7bcc1429d598553921",
+    "release_id": 444410114,
+    "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5",
+    "public_assets": 8,
+    "publication_report": "test-results-preview5-publication.json",
+    "initial_package_scope_complete_DBS20_checks": 36,
+    "subsequent_complete_default20_checks": 72,
+    "complete144_matrix_accepted": false,
+    "stable_release_accepted": false
   }
 }
