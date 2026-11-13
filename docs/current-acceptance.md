@@ -1,5 +1,9 @@
 # 当前验收入口
 
+手动参考预算完整业务已经终结：16项记录/16通过/0失败，每角色原600秒及备份同步恢复/SLA按原标准独立核对，接受值为true；两namespace/两组父叶及54登记实例独立确认消失。[完整终态与准确原件](testing-manual-reference-full600-terminal.md)已归档。默认20%失败保持，不改默认值或宣称稳定1.0通过。[实际公开preview.4→preview.5维护设计](testing-preview45-manual-maintenance-design.md)另行规划，16个公开附件重核，仅是输入/设计，尚未执行。
+
+以下保留原时点记录。
+
 手动参考预算任务已唯一启动。节点2026-11-13 18:30:11 UTC快照：DBS在32.12秒受控就绪，7项启动检查通过；实际7.2核、memory.high20001980416B、读写64MiB/s及IOPS4096一致，无自动标定。native仍运行，HISDBS按顺序等待。[启动身份与只读原件](test-start-manual-reference-full600.json)归档；初始零计数不是600秒或物理备份同步验收，默认20%失败保持。
 
 
