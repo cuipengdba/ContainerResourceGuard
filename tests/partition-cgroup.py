@@ -45,6 +45,8 @@ report = {'phase': 'preparing', 'source_revision': args.source_revision,
           'driver_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
           'scope': 'real GPT sibling partitions, native scratch PID1 and own cgroup; not vendor business or independent physical disks',
           'architecture': args.expected_arch, 'machine': platform.machine(), 'kernel': platform.release(),
+          'memory_policy': 'high-reclaim-throttle; external memory.max retained',
+          'legacy_driver_source_revision': '09821268845707493bcd68cdce2b3103896c3852',
           'tests': [], 'measurements': {}, 'cleanup': {}}
 
 
@@ -435,8 +437,11 @@ def remove(item):
 def exact(item, s, expected):
     alive(item)
     return (s['state'] == 'managed' and len(s['items']) == 3 and
-            {x['file'] for x in s['items']} == {'cpu.max', 'memory.max', 'io.max'} and
-            all(x['state'] == 'applied' for x in s['items']) and controls(item) == expected)
+            {x['file'] for x in s['items']} == {'cpu.max', 'memory.high', 'io.max'} and
+            all(x['state'] == 'applied' for x in s['items']) and
+            s['plan']['memory_policy'] == 'high-reclaim-throttle' and
+            controls(item)['memory.max'] == item['original']['memory.max'] and
+            controls(item) == expected)
 
 
 try:
@@ -480,7 +485,7 @@ try:
     record('finite-external-own-leaf-baseline-established', item['original']['io.max'] == device + ' rbps=33554432 wbps=33554432 riops=2048 wiops=2048')
     root = Path('/sys/dev/block', filesystem_device)
     report['device_inventory'] = {'exposed': root.exists(), 'is_partition': root.joinpath('partition').exists(), 'direct_identity_files': {p: root.joinpath(p).is_file() for p in ['dm/uuid', 'device/wwid', 'wwid']}}
-    expected = {**item['original'], 'cpu.max': '50000 100000', 'memory.max': str(128 * 1024**2), 'io.max': device + ' rbps=4194304 wbps=4194304 riops=256 wiops=256'}
+    expected = {**item['original'], 'cpu.max': '50000 100000', 'memory.high': str(128 * 1024**2), 'io.max': device + ' rbps=4194304 wbps=4194304 riops=256 wiops=256'}
     s, agent = start_agent(item)
     record('manual-exact-three-actual-controls', exact(item, s, expected), actual_controls=controls(item))
     plan = json.loads(ex(item, '/crg', 'doctor', '--config', '/etc/crg/config.json').stdout)
@@ -543,7 +548,7 @@ try:
     profile_stamp = profile.stat().st_mtime_ns
     page = os.sysconf('SC_PAGESIZE')
     rates = [math.floor(d[k] * 20 / 100) for k in ['read_bps', 'write_bps', 'read_iops', 'write_iops']]
-    expected = {**item['original'], 'cpu.max': str(int(hostcpus * 10 / 100 * 100000)) + ' 100000', 'memory.max': str(int(hostmem * 1 / 100) // page * page), 'io.max': device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))}
+    expected = {**item['original'], 'cpu.max': str(int(hostcpus * 10 / 100 * 100000)) + ' 100000', 'memory.high': str(int(hostmem * 1 / 100) // page * page), 'io.max': device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))}
     report['measurements']['percent'] = {'host_online_CPUs': hostcpus, 'host_memory_bytes': hostmem, 'requested_percentages': {'cpu': 10, 'memory': 1, 'IO': 20}, 'expected_controls': expected, 'automatic_IO_state': s.get('automatic_io', {}).get('state'), 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest()}
     record('independent-percentages-and-real-automatic-profile', s.get('automatic_io', {}).get('state') == 'calibrated' and exact(item, s, expected) and all(v > 0 for v in rates))
     record('automatic-profile-binds-filesystem-to-whole-parent', d['device'] == filesystem_device and s['automatic_io']['selection']['control_device'] == device and s['automatic_io']['selection']['device'] == filesystem_device)
@@ -591,7 +596,7 @@ try:
     ex(item, '/crg', 'enable', '--config', '/etc/crg/config.json')
     s, agent = start_agent(item)
     actual = controls(item)
-    record('mixed-whole-and-partition-baselines-refuse-IO-writes', s['state'] == 'degraded' and {x['file'] for x in s['items']} == {'cpu.max', 'memory.max'} and all(x['state'] == 'applied' for x in s['items']) and actual['io.max'] == item['original']['io.max'] and actual['cpu.max'] == expected['cpu.max'] and actual['memory.max'] == expected['memory.max'], status=s)
+    record('mixed-whole-and-partition-baselines-refuse-IO-writes', s['state'] == 'degraded' and {x['file'] for x in s['items']} == {'cpu.max', 'memory.high'} and all(x['state'] == 'applied' for x in s['items']) and actual['io.max'] == item['original']['io.max'] and actual['cpu.max'] == expected['cpu.max'] and actual['memory.high'] == expected['memory.high'], status=s)
     record('overlap-profile-safe-restore', stop_agent(item))
     cfg['io_profile'] = '/etc/crg/both-profile.json'
     (percent / 'config/config.json').write_text(json.dumps(cfg))
@@ -611,7 +616,7 @@ try:
         raise RuntimeError('one new actual geometry identity required')
     unchanged = read(percent / 'config/sibling-profile.json')['devices'][0]
     rates = [math.floor(min(new[0][k], unchanged[k]) * 20 / 100) for k in ['read_bps', 'write_bps', 'read_iops', 'write_iops']]
-    expected = {**item['original'], 'cpu.max': expected['cpu.max'], 'memory.max': expected['memory.max'], 'io.max': device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))}
+    expected = {**item['original'], 'cpu.max': expected['cpu.max'], 'memory.high': expected['memory.high'], 'io.max': device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))}
     journal = read(percent / 'state/journal.json')
     ios = [x for x in journal['mutations'].values() if x['file'] == 'io.max']
     record('changed-geometry-recalibrates-with-stale-profile-visible', s['automatic_io']['state'] == 'calibrated' and len(changed['devices']) == 3 and s['state'] == 'degraded' and len(s['items']) == 3 and all(x['state'] == 'applied' for x in s['items']) and controls(item) == expected and len(ios) == 1 and ios[0]['device_identity'] == parent_identity, status=s, profiles=changed)

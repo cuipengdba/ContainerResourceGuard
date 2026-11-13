@@ -1,6 +1,6 @@
 {
   "schema": "crg-v1-source-integration-plan-v1",
-  "phase": "prepared-before-local-validation-and-CI",
+  "phase": "first-CI-qualified-legacy-partition-test-ported-revalidation-pending",
   "main_base": "21bc470b4f3a094d7daa3bf6f44842fe12905b33",
   "import_source": "97ae6787b3549faa8916ff954baad4ff847c76fa",
   "candidate_branch": "release/integration-v1",
@@ -4988,5 +4988,15 @@
   "current_IO_semantics_user_decision_pending": true,
   "not_a_stable_release": true,
   "not_current_candidate_business_acceptance": true,
-  "scope": "Bring existing combined implementation/test/build/packaging into a clean main-based candidate. No invented feature or default-policy change. Includes already developed IOQuality log fields and bounded public packaging repair; these were not in shipped preview4."
+  "scope": "Bring existing combined implementation/test/build/packaging into a clean main-based candidate. No invented feature or default-policy change. Includes already developed IOQuality log fields and bounded public packaging repair; these were not in shipped preview4.",
+  "subsequent_changes": {
+    "tests/partition-cgroup.py": {
+      "reason": "Adapt previously exact imported legacy partition test to authorized memory.high, preserving external memory.max and all original non-memory criteria.",
+      "original_commit": "09821268845707493bcd68cdce2b3103896c3852",
+      "original_sha256": "f229011ab56d671bab7c8e272df65b5b6f7aec3cfd89e20bac3356872cee2699",
+      "new_sha256": "8d0c7457b0f063ce50fd0950b8e5e7f624bd66f350905081dbe9c78c35b321c9",
+      "diff": "partition-memory-high-port.diff",
+      "Go_product_source_unchanged": true
+    }
+  }
 }
