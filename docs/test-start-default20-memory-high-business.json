@@ -1,0 +1,73 @@
+{
+  "schema": "crg-default20-memory-high-start-public-v1",
+  "phase": "running-not-accepted",
+  "node_utc": "2026-11-13T07:51:58.042161+00:00",
+  "launch": {
+    "pid": 2580723,
+    "start_ticks": 149611345,
+    "entry": "/var/tmp/crg-default980-tools-20261113/runner.py"
+  },
+  "job_sha256": "3f168312ea72564c4ad219e90807ad52b2eb1a87af1e60520756848f77ec3fdf",
+  "plan_sha256": "1c52844c39f6b32100eb08b9b447e21944b2cb249c4717b85953e437394bec1d",
+  "DBS_initial_startup_checks": [
+    {
+      "name": "preview4-dbs-default20-real-path-original-startup-default20-and-automatic-profile",
+      "passed": true
+    },
+    {
+      "name": "preview4-dbs-default20-default20-uses-host-capacity-and-calibrated-IO",
+      "passed": true
+    },
+    {
+      "name": "preview4-dbs-default20-original-CCG-mount-stays-readonly",
+      "passed": true
+    },
+    {
+      "name": "preview4-dbs-default20-original-cache-independent-enforce",
+      "passed": true
+    },
+    {
+      "name": "preview4-dbs-default20-only-three-resource-controls-and-other-values-preserved",
+      "passed": true
+    },
+    {
+      "name": "preview4-dbs-default20-daily-logs-report-v2-before-business-campaign",
+      "passed": true
+    },
+    {
+      "name": "preview4-dbs-default20-one-current-Agent-cache-and-owned-high-only-journal",
+      "passed": true
+    }
+  ],
+  "DBS_ready_and_managed_seconds": 66.29186276206747,
+  "DBS_actual_three_controls": {
+    "cpu.max": "480000 100000",
+    "memory.high": "13334654976",
+    "io.max": "253:0 rbps=9831622 wbps=4251266 riops=12 wiops=6"
+  },
+  "DBS_automatic_io": {
+    "state": "calibrated",
+    "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+    "selection": {
+      "directory": "/etc/crg",
+      "filesystem": "xfs",
+      "device": "253:0",
+      "identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+      "control_device": "253:0",
+      "total_bytes": 965520392192,
+      "available_bytes": 60526862336
+    },
+    "profile": "/etc/crg/io-profile.json"
+  },
+  "DBS_native_phase": "preparing",
+  "DBS_full600_complete": false,
+  "HISDBS_started": false,
+  "exact_evidence": {
+    "path": "test-evidence/default20-memory-high-business-start.json.gz",
+    "sha256": "efcc5e1b22223a8eb76193bc94856be387e17154e50c12df6bfcec12a60ddf40",
+    "uncompressed_sha256": "9957b60261ff5779e1d496eb851a0141011859632776135aeb2bdebf5175fc05"
+  },
+  "runtime_accepted": false,
+  "business_accepted": false,
+  "stable_release_accepted": false
+}

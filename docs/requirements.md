@@ -350,3 +350,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [memory.high空配置默认20%计划](testing-default20-memory-high-business.md)已冻结：准确preview.4、原DBS/HISDBS镜像及真实路径，首次自动选盘/标定，三项各20%，外部硬上限保持；两独立namespace顺序运行原600秒/内容/覆盖标准，预期16项，未执行不计通过。原native/campaign/engine字节不变，凭据不导出，旧默认与960失败/52项/长期/稳定条件保持。
+
+
+[空配置20%实际启动快照](test-start-default20-memory-high-business.json)：节点2026-11-13T07:51:58.042161+00:00确认同一协调器/DBS驱动PID及start仍活跃，DBS在66.292秒就绪且managed，7项启动/默认换算/单Agent/缓存/high-only journal/v2日志检查通过。实际CPU4.8核、high13334654976B，自动选中/etc/crg所在XFS253:0，IO基准20%为读9831622/写4251266B/s、读12/写6IOPS。原生尚在preparing，零计数不代表600秒零错，HISDBS未开始；当前不作业务或稳定接受。见[冻结计划](testing-default20-memory-high-business.md)。
