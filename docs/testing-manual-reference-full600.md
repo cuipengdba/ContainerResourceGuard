@@ -1,5 +1,8 @@
 # preview.5 手动模式原完整业务验收
 
+手动参考预算任务已唯一启动。节点2026-11-13 18:30:11 UTC快照：DBS在32.12秒受控就绪，7项启动检查通过；实际7.2核、memory.high20001980416B、读写64MiB/s及IOPS4096一致，无自动标定。native仍运行，HISDBS按顺序等待。[启动身份与只读原件](test-start-manual-reference-full600.json)归档；初始零计数不是600秒或物理备份同步验收，默认20%失败保持。
+
+
 启动前冻结新任务`fc981713aa1d45833c161776bb005e874cb51fc8ac20117c5d1f26e2f0dd654d`、计划`7562087a52b9ddc44d81cbd91b6146ee27467e5aed534724343ca4ef49ce5e74`。准确产品ced4617及公开preview.5程序不变；本轮是独立手动模式验收。[默认20%完整业务的16记录/14通过/2失败](testing-bandwidth-default20-full600-terminal.md)保持，不能用本轮结果替代。
 
 预算逐项等于此前[手动模式业务v2计划](test-plan-memory-high-business-v2.json)：CPU7.2核（cpu.max=720000 100000）、memory.high=20001980416B（约18.6GiB）、读写带宽各67108864B/s、读写IOPS各4096；外部memory.max=21474836480B由原fixture保留，CRG不新增硬上限。目录/opt/postgresql，仅本容器；manual不自动测速/profile。可选IOPS仅手动设置，不改百分比模式BPS-only默认。
