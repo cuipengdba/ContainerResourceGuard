@@ -2,7 +2,7 @@
   "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
   "product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
   "task_count": 52,
-  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business.",
+  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; new-source actual business pending.",
   "tasks": [
     {
       "id": "P01.1",
@@ -2312,7 +2312,9 @@
     "exact_evidence": "test-evidence-manual-IOPS-comparison.json.gz",
     "registered_process_instances_absent": 219,
     "independent_cleanup_node_utc": "2026-11-13T14:10:45.944399+00:00",
-    "default_IO_semantics_answer_pending": true
+    "default_IO_semantics_answer_pending": false,
+    "default_four_axis_policy_unchanged_at_test_time": true,
+    "subsequent_user_decision": "BPS-only percentage for new source; no historical test/release mutation"
   },
   "memory_high_guidance_review": {
     "phase": "documentation-corrected",
@@ -2330,12 +2332,49 @@
     "documentation": "source-integration-status.md",
     "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1",
     "draft": true,
-    "source_commit": "7823d8d5da8d1f25909e26660697b36f0e0e9e2e",
-    "native_checks": 44,
-    "partition_checks": 164,
-    "ARM_test_pass_events": 226,
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "native_checks": 52,
+    "partition_checks": 180,
+    "ARM_test_pass_events": 240,
     "merged": false,
     "deployed": false,
+    "stable_release_accepted": false
+  },
+  "IO_bandwidth_policy": {
+    "phase": "exact-engineering-CI-passed-new-business-pending",
+    "documentation": "io-bandwidth-policy.md",
+    "user_choice": "默认按读写带宽百分比限制，IOPS 留给手动模式",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "CI_report": "test-results-IO-bandwidth-CI.json",
+    "percent_axes": [
+      "rbps",
+      "wbps"
+    ],
+    "manual_optional_axes": [
+      "riops",
+      "wiops"
+    ],
+    "external_IOPS_preserved": true,
+    "owned_legacy_IOPS_safe_migration": true,
+    "new_business_accepted": false,
+    "old_preview4_unchanged": true,
+    "stable_release_accepted": false
+  },
+  "bandwidth_default_startup_matrix": {
+    "phase": "frozen-native-preflight-passed-not-launched",
+    "documentation": "testing-bandwidth-percent-startup.md",
+    "plan": "test-plan-bandwidth-percent-startup.json",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+    "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c",
+    "binary_sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+    "candidate_version": "v1.0.0-preview.5",
+    "structural_checks": 17,
+    "planned_checks": 144,
+    "planned_boots": 12,
+    "runtime_checks": 0,
+    "terminal": false,
+    "business_accepted": false,
     "stable_release_accepted": false
   }
 }

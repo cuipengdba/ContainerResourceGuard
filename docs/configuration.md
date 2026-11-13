@@ -1,5 +1,7 @@
 # 配置参数
 
+用户已明确选择：下一版IO百分比只限制标定读写BPS，IOPS留手动，外部IOPS保留且自有旧值按身份/journal迁移；内存继续memory.high。[新策略](io-bandwidth-policy.md)的准确源码ced4617已通过完整Linux/原生ARM64、52项实际cgroup及180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已冻结/预检，尚未启动。preview.4仍为旧四轴、未改附件，原52项和历史失败保持，当前不作新业务或稳定发布接受。
+
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
 
 本页描述 next/compatibility-contract 的组合开发候选，尚未发布。已发布 RC2 不接受后续新增字段；各版本安排见 [双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
@@ -90,7 +92,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 - 内存百分比写memory.high，允许超过并可能节流；旧硬限额降低/恢复仍检查余量、增长及可用events/PSI。原有外部memory.max仍可能导致OOM，见[内存策略与升级](memory-reclaim-policy.md)。
 - 独立百分比及旧percent配置的内存预算均写memory.high；manual使用limits.memory_high，旧limits.memory_max作为带警告的high别名。默认不设置Swap。不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
-- IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
+- IO 百分比换算后读/写带宽低于 1 个整数 BPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
 - 同一台机器上两个容器各设 20%，表示各自资源目标（内存high不是硬上限）；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
