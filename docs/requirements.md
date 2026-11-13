@@ -341,3 +341,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [memory.high完整私有通道/准入联调](testing-full930-private-admission.md)：原标准32项记录32、通过32；独立检查28/30，业务接受=True、诊断接受=False。保持core/worker和全部业务标准，实际私有FIFO原件与原始边界保留，35份48324339字节完整归档。只写memory.high的preview.4附件不变，历史失败、原52项和长期/稳定条件保持。
+
+
+[字节码/导出修复完整复测](testing-full950-bytecode-export-fixed.md)：独立22项通过，包含原镜像Python2/Python3真实缓存负例、匹配命令禁用缓存、正常/读端故障和19项有界导出。原标准32项记录32、通过32；独立30/30，业务接受=True、诊断接受=False。正式清单35份48493981字节原件，历史930/831失败与原52项保留。memory.high产品/preview.4附件不变，默认20%及长期/稳定条件独立继续。
