@@ -1,5 +1,7 @@
 # 开发任务与验收跟踪
 
+[20%/30%启动矩阵首轮终态与PSI兼容重测](testing-high-percent-startup-psi-compatible.md)：原四格首次业务采样因节点无io.pressure中止，144项只记录4项独立原kubelet探针成功，140项/8次依赖重建未执行，整体failed。18份113346字节原件及148个登记实例/四namespace/父叶清理确认。修正为明确PSI不可用，保持必需IO/CPU/内存计数、所有额度和原业务/探针门槛，38项离线工具检查通过，新编号启动前冻结，尚未运行。high576越过24h原生SQL/API0错，第五次内容备份完成但DBS exec诊断API6.43s超原5s，保留原结果；默认业务、原52项及稳定条件不变。
+
 [20%/30%三状态启动矩阵](testing-high-percent-startup-matrix.md)已启动前冻结：四格12次启动/144项预期，保留三项独立百分比与memory.high、首次自动标定、原300秒SQL/API门槛和实际原Kubernetes liveness；旧克隆仅显式ls的证据边界已更正。21项离线工具检查通过，尚未上传或启动，业务不计通过。待原high576同一进程的第五次备份完成且清理后顺序运行；不重启长期任务。默认980完整业务失败、原52项及稳定条件不变。
 
 当前发布：[memory.high版v1.0.0-preview.4](releases/v1.0.0-preview.4.md)。CPU/内存/IO独立默认20%，内存写high，原外部硬上限保留；[第五轮实际压力](testing-memory-high-pressure.md)两角色各600秒/SQL0/API各1，稳定1.0尚未通过。
