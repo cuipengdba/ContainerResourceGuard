@@ -1,5 +1,9 @@
 # preview.5默认20%原完整业务验收
 
+默认20%原完整业务验证已经终结：16项记录/14通过/2业务失败。DBS实际600.248秒中SQL6错误；HISDBS343.329秒中断，SQL18/API5错误，standby停止超过原30秒。两角色物理备份已完成，但完整native/收尾未通过，不能算完整备份同步验收；两namespace/两组父叶及54登记实例独立确认消失。[完整终态与准确原件](testing-bandwidth-default20-full600-terminal.md)保留全部原门槛、失败和瞬时诊断局限。preview.5程序及八项附件不变，稳定版未接受。
+
+以下保留原时点记录。
+
 本任务已唯一启动。节点17:37:37 UTC快照DBS7项启动检查通过、PG/API/受控就绪27.25/29.32/55.15秒；cpu.max480000/100000、memory.high13334654976，io.max读13256766B/s、写9044830B/s且IOPS均max。native初始running及零计数不是完整业务结果。HISDBS按顺序等待。[准确启动原件](test-start-bandwidth-default20-full600.json)。
 
 
