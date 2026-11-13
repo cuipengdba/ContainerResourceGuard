@@ -1,0 +1,594 @@
+{
+  "phase": "local-passed-Linux-CI-pending",
+  "checks": [
+    {
+      "branch_directory": "ContainerResourceGuard-v10",
+      "result": {
+        "checks": [
+          "transitive-committed-source-and-fragment",
+          "unreferenced-test-data-excluded",
+          "directory-link-expands-already-present-parent",
+          "oversized-evidence-external-at-exact-commit",
+          "original-evidence-digest-and-transformation-recorded",
+          "deterministic-rendering",
+          "reject-missing-source",
+          "reject-parent-escape",
+          "reject-backslash",
+          "reject-symlink",
+          "reject-oversized-required-script",
+          "reject-bytecode",
+          "current-committed-document-closure-and-bounds"
+        ],
+        "count": 13,
+        "actual_committed_public_members": 819,
+        "actual_committed_public_bytes": 39460473
+      }
+    },
+    {
+      "branch_directory": "ContainerResourceGuard-partition",
+      "result": {
+        "checks": [
+          "transitive-committed-source-and-fragment",
+          "unreferenced-test-data-excluded",
+          "directory-link-expands-already-present-parent",
+          "oversized-evidence-external-at-exact-commit",
+          "original-evidence-digest-and-transformation-recorded",
+          "deterministic-rendering",
+          "reject-missing-source",
+          "reject-parent-escape",
+          "reject-backslash",
+          "reject-symlink",
+          "reject-oversized-required-script",
+          "reject-bytecode",
+          "current-committed-document-closure-and-bounds"
+        ],
+        "count": 13,
+        "actual_committed_public_members": 818,
+        "actual_committed_public_bytes": 39449561
+      }
+    }
+  ],
+  "source_sha256": {
+    "scripts/package.py": "0e9a1f4ada0f33c47125fbd2711a09fc92ab8767058542e1fefe1872b07fec96",
+    "scripts/package_public.py": "2b9925c8dc439fed90047a23a100535ec97ea7a8e9a31c9a535b03645c053ecb",
+    "tests/package-public-checks.py": "5abbdd639360b76109e05f5522491be458a8096077063a8923ff0b3f92663a7b",
+    ".github/workflows/ci.yml": "0819459053e47f7e12f5dbc1719d09113d94c5eeadb83ec54c364310602464c7"
+  },
+  "original_CI_failures_retained": {
+    "recorded_utc": "2026-11-13T11:20:06.849480+00:00",
+    "runs": {
+      "43415575989": {
+        "jobs": [
+          {
+            "id": 131852480947,
+            "run_id": 43415575989,
+            "workflow_name": "build-and-test",
+            "head_branch": "next/compatibility-contract",
+            "run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/runs/43415575989",
+            "run_attempt": 1,
+            "node_id": "CR_kwDOVn-7f88AAAAeswUxsw",
+            "head_sha": "67a9db1be0f334d16eaf32f157ac83c988c7cbb7",
+            "url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/jobs/131852480947",
+            "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43415575989/job/131852480947",
+            "status": "completed",
+            "conclusion": "failure",
+            "created_at": "2026-11-13T11:15:17Z",
+            "started_at": "2026-11-13T11:15:19Z",
+            "completed_at": "2026-11-13T11:16:32Z",
+            "name": "test",
+            "steps": [
+              {
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 1,
+                "started_at": "2026-11-13T11:15:19Z",
+                "completed_at": "2026-11-13T11:15:21Z"
+              },
+              {
+                "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 2,
+                "started_at": "2026-11-13T11:15:21Z",
+                "completed_at": "2026-11-13T11:15:24Z"
+              },
+              {
+                "name": "Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 3,
+                "started_at": "2026-11-13T11:15:24Z",
+                "completed_at": "2026-11-13T11:15:31Z"
+              },
+              {
+                "name": "Run test -z \"$(gofmt -l cmd internal tests/load)\"",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 4,
+                "started_at": "2026-11-13T11:15:31Z",
+                "completed_at": "2026-11-13T11:15:31Z"
+              },
+              {
+                "name": "Run go vet ./...",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 5,
+                "started_at": "2026-11-13T11:15:31Z",
+                "completed_at": "2026-11-13T11:15:37Z"
+              },
+              {
+                "name": "Run go test -race -cover ./...",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 6,
+                "started_at": "2026-11-13T11:15:37Z",
+                "completed_at": "2026-11-13T11:15:50Z"
+              },
+              {
+                "name": "Run bash tests/supervisor.sh",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 7,
+                "started_at": "2026-11-13T11:15:50Z",
+                "completed_at": "2026-11-13T11:16:05Z"
+              },
+              {
+                "name": "Run python3 tests/integration-patch.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 8,
+                "started_at": "2026-11-13T11:16:05Z",
+                "completed_at": "2026-11-13T11:16:10Z"
+              },
+              {
+                "name": "Run python3 tests/soak-report-audit-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 9,
+                "started_at": "2026-11-13T11:16:10Z",
+                "completed_at": "2026-11-13T11:16:11Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-aged-preflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 10,
+                "started_at": "2026-11-13T11:16:11Z",
+                "completed_at": "2026-11-13T11:16:11Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-versioned-aged-preflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 11,
+                "started_at": "2026-11-13T11:16:11Z",
+                "completed_at": "2026-11-13T11:16:11Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-aged-postflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 12,
+                "started_at": "2026-11-13T11:16:11Z",
+                "completed_at": "2026-11-13T11:16:11Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-versioned-aged-postflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 13,
+                "started_at": "2026-11-13T11:16:11Z",
+                "completed_at": "2026-11-13T11:16:11Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-aged-faults-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 14,
+                "started_at": "2026-11-13T11:16:11Z",
+                "completed_at": "2026-11-13T11:16:11Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-versioned-aged-faults-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 15,
+                "started_at": "2026-11-13T11:16:11Z",
+                "completed_at": "2026-11-13T11:16:12Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-enforce-stage-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 16,
+                "started_at": "2026-11-13T11:16:12Z",
+                "completed_at": "2026-11-13T11:16:12Z"
+              },
+              {
+                "name": "Run bash scripts/build.sh \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 17,
+                "started_at": "2026-11-13T11:16:12Z",
+                "completed_at": "2026-11-13T11:16:23Z"
+              },
+              {
+                "name": "Run python3 scripts/package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 18,
+                "started_at": "2026-11-13T11:16:23Z",
+                "completed_at": "2026-11-13T11:16:29Z"
+              },
+              {
+                "name": "Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "failure",
+                "number": 19,
+                "started_at": "2026-11-13T11:16:29Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Run python3 tests/release-integrity.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 20,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Run python3 scripts/check-reproducible.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 21,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Run ./dist/crg-linux-amd64 build-info > dist/build-info.json",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 22,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Attest build provenance",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 23,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Attest amd64 SBOM",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 24,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Attest arm64 SBOM",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 25,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 26,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Post Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 51,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 52,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              },
+              {
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 53,
+                "started_at": "2026-11-13T11:16:30Z",
+                "completed_at": "2026-11-13T11:16:30Z"
+              }
+            ],
+            "check_run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/check-runs/131852480947",
+            "labels": [
+              "ubuntu-latest"
+            ],
+            "runner_id": 1000004882,
+            "runner_name": "GitHub Actions 1000004882",
+            "runner_group_id": 0,
+            "runner_group_name": "GitHub Actions"
+          }
+        ],
+        "failed_log": "test\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t\ufeff2026-11-13T11:16:29.6676701Z ##[group]Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:29.6677011Z ^[[36;1mpython3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"^[[0m\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:29.6693764Z shell: /usr/bin/bash -e {0}\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:29.6693905Z ##[endgroup]\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:30.1998167Z Traceback (most recent call last):\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:30.1998903Z   File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/scripts/check-package.py\", line 40, in <module>\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:30.1999414Z     assert not bad,bad\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:30.1999770Z            ^^^^^^^\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:30.2010429Z AssertionError: [('docs/testing-bounded-perf-timing.md', '../tests/bounded-perf-host-frozen-v1/perf_budget.go'), ('docs/testing-bounded-perf-timing.md', '../tests/bounded-perf-vendor-frozen-v1/vendor-diagnostic.py'), ('docs/testing-bpf-admission-drain.md', '../tests/bpf-admission-drain-frozen-v1/candidate/main.go'), ('docs/testing-bpf-admission-drain.md', '../tests/bpf-admission-drain-frozen-v1/candidate/admission.go'), ('docs/testing-bpf-admission-faults-long.md', '../tests/bpf-admission-faults-long-frozen-v1/common/main.go'), ('docs/testing-bpf-admission-faults-long.md', '../tests/bpf-admission-faults-long-frozen-v1/faults/checks-920.py'), ('docs/testing-bpf-admission-faults-long.md', '../tests/bpf-admission-faults-long-frozen-v1/long/checks-923.py'), ('docs/testing-bpf-pair-boundaries.md', '../tests/bpf-pair-boundary-frozen-v1/legacy/main.go'), ('docs/testing-bpf-pair-boundaries.md', '../tests/bpf-pair-boundary-frozen-v1/ordered/main.go'), ('docs/testing-default20-memory-high-business.md', '../tests/default20-high-original-business-frozen-v1/default20-business.py'), ('docs/testing-direct-bpf-host.md', '../tests/direct-bpf-host-frozen-v1/main.go'), ('docs/testing-direct-bpf-vendor.md', '../tests/direct-bpf-vendor-frozen-v1/main.go'), ('docs/testing-direct-bpf-vendor.md', '../tests/direct-bpf-layout/main.go'), ('docs/testing-event-time-kernel-endpoint.md', '../tests/event-time-endpoint-host-frozen-v1/kernel.go'), ('docs/testing-event-time-kernel-endpoint.md', '../tests/event-time-endpoint-vendor-frozen-v1/fixture.py'), ('docs/testing-fixed-null-full-pressure831.md', '../tests/full-pressure-diagnostics-fixed-frozen-v2/full-pressure-integration.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-frozen-v1/full-pressure-integration.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/compact-report-output-host-frozen-v1/report_output.go'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/native-transport-shim-frozen-v1/sitecustomize.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-frozen-v1/artifact-transfer.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-frozen-v1/full-pressure-integration.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-null-fix-v1/full-pressure-integration.py'), ('docs/testing-full930-private-admission.md', '../tests/full-pressure-private-admission-frozen-v3/full-pressure-integration.py'), ('docs/testing-full950-bytecode-export-fixed.md', '../tests/private-bytecode-export-frozen-v1/checks.py'), ('docs/testing-full950-bytecode-export-fixed.md', '../tests/full-pressure-bytecode-fixed-frozen-v4/full-pressure-integration.py'), ('docs/testing-full960-native-child-fixed.md', '../tests/full-pressure-native-child-fixed-frozen-v5/full-pressure-integration.py'), ('docs/testing-high-percent-startup-matrix.md', '../tests/high-percent-startup-frozen-v1/README.md'), ('docs/testing-high-percent-startup-psi-compatible.md', '../tests/high-percent-startup-frozen-v2/README.md'), ('docs/testing-iomap-stage-timing.md', '../tests/iomap-stage-host-frozen-v4/scope.go'), ('docs/testing-iomap-vendor-stages.md', '../tests/iomap-stage-vendor-frozen-v1/vendor-diagnostic.py'), ('docs/testing-long-perf-session.md', '../tests/long-perf-host-frozen-v1/session_limits.go'), ('docs/testing-long-perf-session.md', '../tests/full-pressure-hook-draft-v1/crg-full-pressure-hook810.py'), ('docs/testing-memory-high-pressure.md', '../tests/diagnostics-v3-frozen/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v2/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v3/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v4/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v5/README.md'), ('docs/testing-native-child-lifecycle.md', '../tests/native-child-lifecycle-frozen-v1/factory.py'), ('docs/testing-native-diagnostics-v3.md', '../tests/diagnostics-v3-frozen/README.md'), ('docs/testing-paired-wait-timing.md', '../tests/paired-wait-host-frozen-v4/function.go'), ('docs/testing-paired-wait-timing.md', '../tests/paired-wait-vendor-frozen-v1/fixture.py'), ('docs/testing-perf-metadata.md', '../tests/vendor-perf-metadata.py'), ('docs/testing-pressure-SQL-lease.md', '../tests/vendor-pressure-sql-lease.py'), ('docs/testing-pressure-SQL-lease.md', '../tests/vendor-pressure-sql-lease-checks.py'), ('docs/testing-private-fifo-receiver-long600.md', '../tests/private-fifo-receiver-long-frozen-882/manifest.json'), ('docs/testing-writeback-metadata.md', '../tests/writeback-metadata-host-frozen-v2/main.go'), ('docs/testing-writeback-metadata.md', '../tests/writeback-metadata-host-frozen-v1/main.go'), ('docs/testing-writeback-metadata.md', '../tests/vendor-diagnostic-persistence-v1/vendor-diagnostic.py'), ('docs/testing-writeback-metadata.md', '../tests/writeback-metadata-vendor-frozen-v1/fixture.py')]\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:30.2133350Z ##[error]Process completed with exit code 1.\n"
+      },
+      "43415590527": {
+        "jobs": [
+          {
+            "id": 131852529654,
+            "run_id": 43415590527,
+            "workflow_name": "build-and-test",
+            "head_branch": "next/partition-io",
+            "run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/runs/43415590527",
+            "run_attempt": 1,
+            "node_id": "CR_kwDOVn-7f88AAAAeswXv9g",
+            "head_sha": "ec4376c27ba988759d8a6068a1831fc3d5191ea5",
+            "url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/jobs/131852529654",
+            "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43415590527/job/131852529654",
+            "status": "completed",
+            "conclusion": "failure",
+            "created_at": "2026-11-13T11:15:23Z",
+            "started_at": "2026-11-13T11:15:25Z",
+            "completed_at": "2026-11-13T11:16:57Z",
+            "name": "test",
+            "steps": [
+              {
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 1,
+                "started_at": "2026-11-13T11:15:26Z",
+                "completed_at": "2026-11-13T11:15:27Z"
+              },
+              {
+                "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 2,
+                "started_at": "2026-11-13T11:15:27Z",
+                "completed_at": "2026-11-13T11:15:29Z"
+              },
+              {
+                "name": "Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 3,
+                "started_at": "2026-11-13T11:15:29Z",
+                "completed_at": "2026-11-13T11:15:37Z"
+              },
+              {
+                "name": "Run test -z \"$(gofmt -l cmd internal tests/load)\"",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 4,
+                "started_at": "2026-11-13T11:15:37Z",
+                "completed_at": "2026-11-13T11:15:37Z"
+              },
+              {
+                "name": "Run go vet ./...",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 5,
+                "started_at": "2026-11-13T11:15:37Z",
+                "completed_at": "2026-11-13T11:15:47Z"
+              },
+              {
+                "name": "Run go test -race -cover ./...",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 6,
+                "started_at": "2026-11-13T11:15:47Z",
+                "completed_at": "2026-11-13T11:16:06Z"
+              },
+              {
+                "name": "Run bash tests/supervisor.sh",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 7,
+                "started_at": "2026-11-13T11:16:06Z",
+                "completed_at": "2026-11-13T11:16:20Z"
+              },
+              {
+                "name": "Run python3 tests/integration-patch.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 8,
+                "started_at": "2026-11-13T11:16:20Z",
+                "completed_at": "2026-11-13T11:16:26Z"
+              },
+              {
+                "name": "Run python3 tests/soak-report-audit-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 9,
+                "started_at": "2026-11-13T11:16:26Z",
+                "completed_at": "2026-11-13T11:16:27Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-aged-preflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 10,
+                "started_at": "2026-11-13T11:16:27Z",
+                "completed_at": "2026-11-13T11:16:27Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-versioned-aged-preflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 11,
+                "started_at": "2026-11-13T11:16:27Z",
+                "completed_at": "2026-11-13T11:16:27Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-aged-postflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 12,
+                "started_at": "2026-11-13T11:16:27Z",
+                "completed_at": "2026-11-13T11:16:28Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-versioned-aged-postflight-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 13,
+                "started_at": "2026-11-13T11:16:28Z",
+                "completed_at": "2026-11-13T11:16:28Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-aged-faults-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 14,
+                "started_at": "2026-11-13T11:16:28Z",
+                "completed_at": "2026-11-13T11:16:28Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-versioned-aged-faults-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 15,
+                "started_at": "2026-11-13T11:16:28Z",
+                "completed_at": "2026-11-13T11:16:28Z"
+              },
+              {
+                "name": "Run python3 tests/vendor-enforce-stage-checks.py",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 16,
+                "started_at": "2026-11-13T11:16:28Z",
+                "completed_at": "2026-11-13T11:16:28Z"
+              },
+              {
+                "name": "Run bash scripts/build.sh \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 17,
+                "started_at": "2026-11-13T11:16:28Z",
+                "completed_at": "2026-11-13T11:16:45Z"
+              },
+              {
+                "name": "Run python3 scripts/package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 18,
+                "started_at": "2026-11-13T11:16:45Z",
+                "completed_at": "2026-11-13T11:16:54Z"
+              },
+              {
+                "name": "Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "failure",
+                "number": 19,
+                "started_at": "2026-11-13T11:16:54Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Run python3 tests/release-integrity.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 20,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Run python3 scripts/check-reproducible.py \"${GITHUB_REF_NAME//\\//-}\"",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 21,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Run ./dist/crg-linux-amd64 build-info > dist/build-info.json",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 22,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Attest build provenance",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 23,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Attest amd64 SBOM",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 24,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Attest arm64 SBOM",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 25,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 26,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Post Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 51,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 52,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              },
+              {
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 53,
+                "started_at": "2026-11-13T11:16:55Z",
+                "completed_at": "2026-11-13T11:16:55Z"
+              }
+            ],
+            "check_run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/check-runs/131852529654",
+            "labels": [
+              "ubuntu-latest"
+            ],
+            "runner_id": 1000004884,
+            "runner_name": "GitHub Actions 1000004884",
+            "runner_group_id": 0,
+            "runner_group_name": "GitHub Actions"
+          }
+        ],
+        "failed_log": "test\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t\ufeff2026-11-13T11:16:54.8479773Z ##[group]Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:54.8480318Z ^[[36;1mpython3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"^[[0m\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:54.8500158Z shell: /usr/bin/bash -e {0}\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:54.8500417Z ##[endgroup]\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:55.5744090Z Traceback (most recent call last):\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:55.5746009Z   File \"/home/runner/work/ContainerResourceGuard/ContainerResourceGuard/scripts/check-package.py\", line 40, in <module>\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:55.5748172Z     assert not bad,bad\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:55.5748803Z            ^^^^^^^\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:55.5773801Z AssertionError: [('docs/testing-bounded-perf-timing.md', '../tests/bounded-perf-host-frozen-v1/perf_budget.go'), ('docs/testing-bounded-perf-timing.md', '../tests/bounded-perf-vendor-frozen-v1/vendor-diagnostic.py'), ('docs/testing-bpf-admission-drain.md', '../tests/bpf-admission-drain-frozen-v1/candidate/main.go'), ('docs/testing-bpf-admission-drain.md', '../tests/bpf-admission-drain-frozen-v1/candidate/admission.go'), ('docs/testing-bpf-admission-faults-long.md', '../tests/bpf-admission-faults-long-frozen-v1/common/main.go'), ('docs/testing-bpf-admission-faults-long.md', '../tests/bpf-admission-faults-long-frozen-v1/faults/checks-920.py'), ('docs/testing-bpf-admission-faults-long.md', '../tests/bpf-admission-faults-long-frozen-v1/long/checks-923.py'), ('docs/testing-bpf-pair-boundaries.md', '../tests/bpf-pair-boundary-frozen-v1/legacy/main.go'), ('docs/testing-bpf-pair-boundaries.md', '../tests/bpf-pair-boundary-frozen-v1/ordered/main.go'), ('docs/testing-default20-memory-high-business.md', '../tests/default20-high-original-business-frozen-v1/default20-business.py'), ('docs/testing-direct-bpf-host.md', '../tests/direct-bpf-host-frozen-v1/main.go'), ('docs/testing-direct-bpf-vendor.md', '../tests/direct-bpf-vendor-frozen-v1/main.go'), ('docs/testing-direct-bpf-vendor.md', '../tests/direct-bpf-layout/main.go'), ('docs/testing-event-time-kernel-endpoint.md', '../tests/event-time-endpoint-host-frozen-v1/kernel.go'), ('docs/testing-event-time-kernel-endpoint.md', '../tests/event-time-endpoint-vendor-frozen-v1/fixture.py'), ('docs/testing-fixed-null-full-pressure831.md', '../tests/full-pressure-diagnostics-fixed-frozen-v2/full-pressure-integration.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-frozen-v1/full-pressure-integration.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/compact-report-output-host-frozen-v1/report_output.go'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/native-transport-shim-frozen-v1/sitecustomize.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-frozen-v1/artifact-transfer.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-frozen-v1/full-pressure-integration.py'), ('docs/testing-full-pressure-diagnostic-integration.md', '../tests/full-pressure-diagnostics-null-fix-v1/full-pressure-integration.py'), ('docs/testing-full930-private-admission.md', '../tests/full-pressure-private-admission-frozen-v3/full-pressure-integration.py'), ('docs/testing-full950-bytecode-export-fixed.md', '../tests/private-bytecode-export-frozen-v1/checks.py'), ('docs/testing-full950-bytecode-export-fixed.md', '../tests/full-pressure-bytecode-fixed-frozen-v4/full-pressure-integration.py'), ('docs/testing-full960-native-child-fixed.md', '../tests/full-pressure-native-child-fixed-frozen-v5/full-pressure-integration.py'), ('docs/testing-high-percent-startup-matrix.md', '../tests/high-percent-startup-frozen-v1/README.md'), ('docs/testing-high-percent-startup-psi-compatible.md', '../tests/high-percent-startup-frozen-v2/README.md'), ('docs/testing-iomap-stage-timing.md', '../tests/iomap-stage-host-frozen-v4/scope.go'), ('docs/testing-iomap-vendor-stages.md', '../tests/iomap-stage-vendor-frozen-v1/vendor-diagnostic.py'), ('docs/testing-long-perf-session.md', '../tests/long-perf-host-frozen-v1/session_limits.go'), ('docs/testing-long-perf-session.md', '../tests/full-pressure-hook-draft-v1/crg-full-pressure-hook810.py'), ('docs/testing-memory-high-pressure.md', '../tests/diagnostics-v3-frozen/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v2/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v3/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v4/README.md'), ('docs/testing-memory-high-pressure.md', '../tests/memory-high-pressure-frozen-v5/README.md'), ('docs/testing-native-child-lifecycle.md', '../tests/native-child-lifecycle-frozen-v1/factory.py'), ('docs/testing-native-diagnostics-v3.md', '../tests/diagnostics-v3-frozen/README.md'), ('docs/testing-paired-wait-timing.md', '../tests/paired-wait-host-frozen-v4/function.go'), ('docs/testing-paired-wait-timing.md', '../tests/paired-wait-vendor-frozen-v1/fixture.py'), ('docs/testing-perf-metadata.md', '../tests/vendor-perf-metadata.py'), ('docs/testing-pressure-SQL-lease.md', '../tests/vendor-pressure-sql-lease.py'), ('docs/testing-pressure-SQL-lease.md', '../tests/vendor-pressure-sql-lease-checks.py'), ('docs/testing-private-fifo-receiver-long600.md', '../tests/private-fifo-receiver-long-frozen-882/manifest.json'), ('docs/testing-writeback-metadata.md', '../tests/writeback-metadata-host-frozen-v2/main.go'), ('docs/testing-writeback-metadata.md', '../tests/writeback-metadata-host-frozen-v1/main.go'), ('docs/testing-writeback-metadata.md', '../tests/vendor-diagnostic-persistence-v1/vendor-diagnostic.py'), ('docs/testing-writeback-metadata.md', '../tests/writeback-metadata-vendor-frozen-v1/fixture.py')]\ntest\tRun python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"\t2026-11-13T11:16:55.5929374Z ##[error]Process completed with exit code 1.\n"
+      }
+    }
+  },
+  "unchanged_offline_verifier_sha256": "9455f038a1cb1062aed03a7cf9e963307c4adc6d1931831d2d53a47262b8e93f",
+  "not_release_or_business_acceptance": true
+}

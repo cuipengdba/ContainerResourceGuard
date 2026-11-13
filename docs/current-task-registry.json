@@ -2078,6 +2078,40 @@
     "first_case": "dbs-20",
     "first_ready_and_managed_seconds": 62.50809808098711,
     "first_actual_kubelet_probe_phase": "observing",
-    "terminal": false
+    "terminal": false,
+    "interim_observation": {
+      "node_utc": "2026-11-13T11:11:23.715464+00:00",
+      "two20percent_rebuilds_failed_original300s": true,
+      "DBS_controller_new_identity_and_profile_reuse_confirmed": true,
+      "evidence": "test-evidence-rebuild-controller-and-startup.json.gz",
+      "not_terminal": true
+    }
+  },
+  "automatic_io_quality_development": {
+    "phase": "implemented-local-passed-package-CI-fix-pending",
+    "documentation": "automatic-io-quality.md",
+    "source_commits": {
+      "ContainerResourceGuard-v10": "67a9db1be0f334d16eaf32f157ac83c988c7cbb7",
+      "ContainerResourceGuard-partition": "ec4376c27ba988759d8a6068a1831fc3d5191ea5"
+    },
+    "source_sha256": {
+      "internal/guard/calibration_auto.go": "ff81c6b77e27718c46fbe02846192e4237b7f52c2dca22b225e667a26d85e879",
+      "internal/guard/calibration_quality_test.go": "3f2955a84908385d66b85803e0e38345e7cf9a4124828983556804a2c7231ed6"
+    },
+    "new_scenarios": 7,
+    "published": false,
+    "production_preview4_unchanged": true
+  },
+  "package_documentation_repair": {
+    "phase": "implemented13-local-passed-awaiting-full-CI",
+    "documentation": "package-documentation.md",
+    "source_sha256": {
+      "scripts/package.py": "0e9a1f4ada0f33c47125fbd2711a09fc92ab8767058542e1fefe1872b07fec96",
+      "scripts/package_public.py": "2b9925c8dc439fed90047a23a100535ec97ea7a8e9a31c9a535b03645c053ecb",
+      "tests/package-public-checks.py": "5abbdd639360b76109e05f5522491be458a8096077063a8923ff0b3f92663a7b",
+      ".github/workflows/ci.yml": "0819459053e47f7e12f5dbc1719d09113d94c5eeadb83ec54c364310602464c7"
+    },
+    "offline_verifier_unchanged": true,
+    "published": false
   }
 }
