@@ -1,5 +1,7 @@
 # 当前交付与后续验收
 
+[接收端自有600秒与内存交付复核](testing-private-fifo-receiver-long600.md)：882七项通过，121条显式合成记录/14047字节完整，接收父进程CPU占单核约0.252%，真实线程/FD及身份清理确认；无HTTP/DB/Pod/BPF或全Agent开销声明。精确preview.4六项本地内存策略回归通过，公开八附件元数据及tag不变。memory.high选择、外部硬上限、原52项、完整联调/BPF边界/长期与稳定条件保留。
+
 [私有接收端与工厂接线](testing-private-fifo-receiver-factory.md)：867真实接收资格15项通过，保留17工厂用例、新18接收及8通道故障用例，两个原镜像各3次postgres启动；873工厂启动路径9项通过，采集器/K8s身份为模拟而FIFO/线程/FD真实。生产程序/preview.4不变，完整600秒联调、接收端长期CPU及BPF边界仍待验收；原52项和全部失败保留。
 
 [原镜像启动/FIFO资格](testing-native-startup-private-fifo.md)：最终19项通过，保留原9传输/19参数并新增13通道用例；两镜像各4次真实postgres启动及自有HTTP，缺失/无读取端/写满均不阻断，stdout标志未改。843、848、850三轮失败与完整源码原件保留。仅测试诊断器资格，完整工厂接收端及BPF启动边界待完成，产品/preview.4及原52项完成声明不变。用户内存选择保持memory.high，不新增memory.max。
