@@ -60,9 +60,11 @@ RC2 同时持有自身 cgroup 目录 inode 的独占非阻塞锁及状态目录�
 
 基准依靠 UUID/WWID、大小等身份重新定位设备。编号变化可重新识别，更换设备不能复用旧基准。同一 profile 同时出现某层设备和其下层/分区父设备时，两者都跳过并说明，避免在同一路径上盲目重复限流。共享下层的两个独立逻辑卷不直接当成同一设备层；复杂存储栈仍需实机验收。
 
-## 内存下调预检
+## memory.high回收目标与历史硬限额预检
 
-下调前间隔 50ms 读取两次 memory.current；除了 `5% + 16 MiB` 余量，还为采样到的增长率预留约 1 秒空间。期间 memory.events 的 high/max/oom/oom_kill 增加，或可读取的 PSI `full avg10 >= 1%`、`some avg10 >= 10%`，均跳过本次下调。日志同步保存后、真正写入前再次检查用量。
+preview.4的memory_percent和手动limits.memory_high写memory.high，可设置到当前用量以下，触达后由内核回收/节流，允许超目标；不使用下面的硬限额余量条件阻止high生效。它不能任意释放业务仍在使用的堆/共享内存。high本身不触发OOM killer，CRG也不新增memory.max；外部/Kubernetes/祖先硬限额或宿主内存耗尽仍可能OOM。见[内存策略与旧版升级](memory-reclaim-policy.md)。
+
+下面只描述历史硬限额降低/恢复的保护路径：下调前间隔 50ms 读取两次 memory.current；除了 `5% + 16 MiB` 余量，还为采样到的增长率预留约 1 秒空间。期间 memory.events 的 high/max/oom/oom_kill 增加，或可读取的 PSI `full avg10 >= 1%`、`some avg10 >= 10%`，均跳过本次下调。日志同步保存后、真正写入前再次检查用量。
 
 缺少可选 PSI/events 文件时继续执行用量余量检查；无法读取有效 memory.current 则拒绝下调。恢复到较低的旧 memory.max 同样检查。没有主动回收数据库缓存、修改数据库参数或自动放宽用户百分比。
 

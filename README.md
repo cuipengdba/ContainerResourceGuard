@@ -66,7 +66,7 @@ crg preflight --format human
 
 CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgroup、程序不存在、配置错误、Agent 崩溃，不能决定业务容器退出。使用 [集成示例](docs/integration.md)，不要把 CRG 设为业务启动前置条件或健康探针。
 
-资源限额由内核执行，**Agent 退出不等于撤销已写入限额**。过低的 CPU/IO 会影响性能，过低的内存可能 OOM。RC2 可用 `crg disable --config /etc/crg/config.json` 协调停用并恢复；外部已经改写的值不会被强制覆盖。详见 [本地运维](docs/operations.md)。
+资源限额由内核执行，**Agent 退出不等于撤销已写入限额**。过低的CPU/IO额度或memory.high回收目标会拖慢业务。preview.4触达high会回收/节流、允许超目标；CRG不新增memory.max，外部硬限额或宿主内存耗尽仍可能OOM。可用 `crg disable --config /etc/crg/config.json` 协调停用并恢复；外部已经改写的值不会被强制覆盖。详见 [本地运维](docs/operations.md)。
 
 ## 支持范围
 

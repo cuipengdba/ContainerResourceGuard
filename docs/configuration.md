@@ -4,7 +4,7 @@
 
 本页描述 next/compatibility-contract 的组合开发候选，尚未发布。已发布 RC2 不接受后续新增字段；各版本安排见 [双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
 
-## 手动资源模式（RC3 开发中）
+## 手动资源模式（preview.4）
 
 ```json
 {"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_high":"4GiB"}}
@@ -26,7 +26,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 仅CPU、内存、IO各自默认20%。可写`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`单独调整；其他资源保持原值。完整字段、换算基准、范围、旧配置兼容见[独立百分比](independent-percentages.md)。
 
-例如 24 个在线逻辑 CPU、64 GiB 宿主机：20% 的请求为 4.8 核 CPU 时间与约 12.8 GiB 内存。内存向下按页对齐，CPU 使用 100000 微秒周期；实际值受既有上限和 cpuset 约束。CPU 不是绑定固定的若干核。
+例如24个在线逻辑CPU、64GiB宿主机：20%的请求为4.8核CPU时间与约12.8GiB的memory.high回收/节流目标，允许用量超过。内存向下按页对齐，CPU 使用 100000 微秒周期；实际值受既有上限和 cpuset 约束。CPU 不是绑定固定的若干核。
 
 宿主机内存取 `MemTotal`，不是随时变化的空闲内存；CPU 取 sysfs 在线 CPU 列表，而不是 Go 进程当前可调度核数。状态输出容量来源。如果 `/proc/meminfo` 被 lxcfs 等虚拟化，应只读提供 `/host/proc/meminfo`，CRG 优先使用该文件。
 
@@ -34,7 +34,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 | JSON 字段 | 默认值 | 含义 |
 |---|---|---|
-| `resource_mode` | `percent` | 开发分支新增；percent 自动换算，manual 分别指定 |
+| `resource_mode` | `percent` | percent自动换算，manual分别指定CPU/内存回收目标/IO |
 | `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/内存/标定IO，独立生效 |
 | `percent` | 不使用 | 仅旧配置兼容入口，不能混用独立百分比；manual禁用 |
 | `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
@@ -95,6 +95,6 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
 
-`io_calibration` 默认 `auto`，可选 `off`；percent/enforce首次启动自动选最大合格文件系统，缺基准才测，observe/manual及只读命令不测。默认输出 `/etc/crg/io-profile.json`，详见[自动标定](automatic-io-calibration.md)。RC3写v1汇总；1.0组合候选写v2样本，未发布版本勿混用。
+`io_calibration` 默认 `auto`，可选 `off`；percent/enforce首次启动自动选最大合格文件系统，缺基准才测，observe/manual及只读命令不测。默认输出 `/etc/crg/io-profile.json`，详见[自动标定](automatic-io-calibration.md)。preview.4使用v2三次样本中位数及稳定设备身份；旧版profile格式和来源不能混为本次实测。
 
 R29/R30覆盖旧默认：仅CPU、内存、IO各自默认20，v1跳过、v2校验后设置，运行日志默认启用；手动模式仍按绝对值且省略项不接管。具体示例以[独立百分比](independent-percentages.md)及[日志](logging.md)为准，历史测试使用的旧配置不追改。
