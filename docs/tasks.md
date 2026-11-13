@@ -579,3 +579,6 @@ PG诊断资格v3在创建夹具前因旧namespace guard拒绝，原stderr/退出
 
 
 [准入状态故障与新候选600秒](testing-bpf-admission-faults-long.md)：同一910Go/ELF完成注入故障17项、并发参考600秒及洪泛13项；原始错误/丢失不隐藏，917夹具删除参数失败保留，实际OS线程号复用未验收。三轮24注册进程/480对象独立消失，内存high产品未改。完整厂商FIFO联调、原52项/历史失败、长期与稳定条件保持。
+
+
+[memory.high完整私有通道/准入联调](testing-full930-private-admission.md)：原标准32项记录32、通过32；独立检查28/30，业务接受=True、诊断接受=False。保持core/worker和全部业务标准，实际私有FIFO原件与原始边界保留，35份48324339字节完整归档。只写memory.high的preview.4附件不变，历史失败、原52项和长期/稳定条件保持。
