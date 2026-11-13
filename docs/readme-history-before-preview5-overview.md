@@ -9,4 +9,4 @@
 | partition | `0a8326850da838742aed1f80c90db953e554bbfa` | [历史README](readme-history-partition-before-preview5-overview.md) |
 | main | `ec47b29bc002ce1cfe574435157f7d6f52d3ee54` | [历史README](readme-history-main-before-preview5-overview.md) |
 
-[精确原文、SHA256及链接变换记录](test-evidence/readme-before-preview5-overview.json.gz)同时保留每份原始UTF8文本。历史Markdown正文不删减，只为从根目录移动到docs后的相对链接增加`../`。
+[精确原文、SHA256及链接变换记录](test-evidence/readme-before-preview5-overview.json.gz)同时保留每份原始UTF8文本。历史Markdown正文不删减，把原相对Markdown链接固定到各自当时的Git源提交，避免跨分支文件缺失或后续内容变更。
