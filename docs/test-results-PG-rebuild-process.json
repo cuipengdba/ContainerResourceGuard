@@ -1,0 +1,79 @@
+{
+  "schema": "crg-PG-rebuild-fsync-terminal-analysis-v1",
+  "phase": "failed",
+  "job_sha256": "23395fe6772dd9ecec1bea37fa8e45df375d68259b7a4eef6493957ce50d4537",
+  "plan_sha256": "bb26ece02e9c73f710dfa76c325956363e33c31315aba937f7faa5082583d14c",
+  "artifact_files": 8,
+  "artifact_bytes": 387429,
+  "planned_checks": 36,
+  "recorded_checks": 11,
+  "passed_checks": 11,
+  "unexecuted_checks": 25,
+  "planned_boots": 3,
+  "created_boots": 2,
+  "completed_business_boots": 1,
+  "unexecuted_boots": 1,
+  "first_ready_and_managed_seconds": 61.40879146801308,
+  "second_business_gate": "failed-original300s",
+  "original_UID_liveness_both_boots": "passed",
+  "registered_process_instances_absent": 48,
+  "independent_namespace_leaf_parent_cleanup": true,
+  "observer_samples": 87,
+  "recorded_PG_samples": 114,
+  "PG_by_host_pid": {
+    "2068823": {
+      "start_ticks": 151255395,
+      "samples": 83,
+      "first_elapsed": 20.443431854248047,
+      "last_elapsed": 431.9469938278198
+    },
+    "2124581": {
+      "start_ticks": 151281595,
+      "samples": 31,
+      "first_elapsed": 281.0241174697876,
+      "last_elapsed": 431.9469938278198
+    }
+  },
+  "confirmed_wait_site": "XFS fsync/writeback waiting; FD3 of PID2068823 matched actual own postmaster.pid inode and device in both bounded live samples",
+  "PID_file_bytes": 45,
+  "actual_controls": {
+    "cpu.max": "480000 100000",
+    "memory.max": "21474836480",
+    "io.max": "253:0 rbps=12554471 wbps=7746597 riops=27 wiops=11",
+    "pids.max": "406648",
+    "cpu.weight": "4",
+    "io.weight": "default 100",
+    "memory.high": "13334654976",
+    "memory.swap.max": "0"
+  },
+  "IO_profile_sha256": "8872228226108f72967f0fb747c9153ccf1224ed2e0361f96a3d840a265ac24b",
+  "two_sample_interval_seconds": 10.013354301452637,
+  "own_cgroup_device_write_IOPS": 9.986663508500143,
+  "own_cgroup_device_write_Bps": 800109.1101747726,
+  "first_live_sample_memory_bytes": {
+    "anon": 49291264,
+    "file": 691879936,
+    "file_dirty": 93614080,
+    "file_writeback": 434765824,
+    "pgscan": 0,
+    "pgsteal": 0
+  },
+  "inference_not_controlled_causality_proof": "Low write IOPS cap and bulk-writeback backlog are consistent with startup fsync starvation. This did not remove or change a limit, run an A/B comparison or prove the sole cause. No IO semantic change or higher limit implemented.",
+  "IO_percentage_semantics_decision": "awaiting explicit user selection between default bandwidth-only percentages/manual IOPS and keeping four-axis percentages",
+  "original144_matrix_still_failed": true,
+  "original52_unchanged": true,
+  "offline_provenance_checks": [
+    "eight-exact-artifacts-and-terminal-index",
+    "exact-frozen-source-job-plan-and-failed-coordinator",
+    "exact-failed-second-business-budget-not11of11-success",
+    "first-boot-real-controls-and-reused-profile-unchanged",
+    "independent-exact-terminal-namespace-parent-leaf-instances-clean",
+    "87-bounded-own-observer-samples-and-no-observer-errors",
+    "114-recorded-PG-samples-all-D-XFS-fsync-FD3",
+    "live-readonly-two-samples-match-one-own-PID-file-inode",
+    "same20percent-baseline-and-actual-IO-during-FD-samples"
+  ],
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "production_release_unchanged": true
+}
