@@ -1,0 +1,94 @@
+{
+  "base": "crg-r1240-manual-full600-freeze/manual-business.py",
+  "base_sha256": "fc981713aa1d45833c161776bb005e874cb51fc8ac20117c5d1f26e2f0dd654d",
+  "new_job_sha256": "e7239815f60ca28a0bb5e59735c3e61bf8bc68458736f47d31d9039355760b6a",
+  "reversible_changes": [
+    {
+      "before": "manual1240",
+      "after": "public1261",
+      "count": 3
+    },
+    {
+      "before": "MANUAL1240",
+      "after": "PUBLIC1261",
+      "count": 1
+    },
+    {
+      "before": "('preview5',role_argument)",
+      "after": "('preview45',role_argument)",
+      "count": 1
+    },
+    {
+      "before": "sources={'preview5':{'revision':plan['source_revision'],'binary_sha256':plan['source_sha256']['binaries/crg-linux-amd64']}}",
+      "after": "sources={k:{'revision':v['source_revision'],'binary_sha256':v['binary_sha256']} for k,v in plan['programs'].items()}",
+      "count": 1
+    },
+    {
+      "before": " info=json.loads(run([str(candidates/'binaries/crg-linux-amd64'),'build-info']).stdout);assert info['revision']==plan['source_revision'] and info['version']==plan['candidate_version'] and info['io_percent_policy']=='calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained' and info['memory_policy']=='high-reclaim-throttle; percentages may be exceeded; external hard limits retained';report['build_info']=info\n",
+      "after": " import importlib.util\n spec=importlib.util.spec_from_file_location('manual_maintenance_contract',candidates/'tests/manual-maintenance-contract.py');policy_contract=importlib.util.module_from_spec(spec);spec.loader.exec_module(policy_contract)\n report['build_info']={}\n for name,bound in plan['programs'].items():\n  info=json.loads(run([str(candidates/'binaries'/name),'build-info']).stdout);assert info['revision']==bound['source_revision'] and info['version']==bound['embedded_version'] and info['lock_protocol']=='cgroup-inode-flock+state-agent-lock-v1' and 1 in info['journal_versions'] and info['memory_policy']=='high-reclaim-throttle; percentages may be exceeded; external hard limits retained';report['build_info'][name]=info\n assert report['build_info']['candidate']['io_percent_policy']=='calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained'\n",
+      "count": 1
+    },
+    {
+      "before": "'binaries/crg-linux-amd64'",
+      "after": "'binaries/previous'",
+      "count": 2
+    },
+    {
+      "before": "report['sources'][candidate]",
+      "after": "report['sources']['previous']",
+      "count": 1
+    },
+    {
+      "before": "'cache-state','etcd','ccg','crg','crg-config']",
+      "after": "'cache-state','etcd','ccg','crg','crg-config','recovery','staging']",
+      "count": 1
+    },
+    {
+      "before": "   shutil.copyfile(candidates/'examples/optional-agent.sh',folder/'crg/optional-agent.sh')",
+      "after": "   shutil.copyfile(candidates/'binaries/candidate',folder/'staging/crg');(folder/'staging/crg').chmod(0o755)\n   shutil.copyfile(candidates/'examples/optional-agent.sh',folder/'crg/optional-agent.sh')",
+      "count": 1
+    },
+    {
+      "before": "('crg','/opt/crg',True)",
+      "after": "('crg','/opt/crg',False)",
+      "count": 1
+    },
+    {
+      "before": "   volume('pgconfig'",
+      "after": "   volume('recovery',folder/'recovery','/recovery');volume('staging',folder/'staging','/staging',True)\n   volume('pgconfig'",
+      "count": 1
+    },
+    {
+      "before": "campaign_job=None;folder=None;group=None;",
+      "after": "campaign_job=None;native_log=None;folder=None;group=None;",
+      "count": 1
+    },
+    {
+      "before": "   started=time.monotonic();(gates/meta['metadata']['uid']).write_text('isolated\\n');",
+      "after": "   runtime_controls={f:(group/f).read_text() for f in policy_contract.FILES};old_doctor=json.loads(ex(role,'/opt/crg/crg','doctor','--config','/etc/crg/config.json').stdout);new_doctor=json.loads(ex(role,'/staging/crg','doctor','--config','/etc/crg/config.json').stdout);contract=policy_contract.Contract(runtime_controls,old_doctor,new_doctor);assert contract.empty_journal['target']==str(group)\n   started=time.monotonic();(gates/meta['metadata']['uid']).write_text('isolated\\n');",
+      "count": 1
+    },
+    {
+      "before": "   deadline=time.monotonic()+300",
+      "after": "   item.update(predeclared_runtime_controls=runtime_controls,predeclared_active_controls=contract.controls,predeclared_journal=contract.journal,predeclared_empty_journal=contract.empty_journal,old_doctor=old_doctor,new_doctor=new_doctor);save()\n   deadline=time.monotonic()+300",
+      "count": 1
+    },
+    {
+      "before": "   campaign=case_root/('campaign-'+role);agent=hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest();ccg=hashlib.sha256((folder/'ccg/bin/containercacheguard').read_bytes()).hexdigest()\n   args=['python3',str(root/'tools/vendor-soak-campaign.py'),'--namespace',ns,'--fixture-root',str(case_root),'--work-dir',str(campaign),'--role',role,'--smoke-enforce','--run-id',plan['run_ids'][role],'--test-phase','smoke','--seconds','600','--agent-sha256',agent,'--cache-sha256',ccg]\n   with (root/(key+'-campaign.log')).open('xb') as log:\n    job=subprocess.Popen(args,stdin=subprocess.DEVNULL,stdout=log,stderr=log);campaign_job=job\n    while job.poll() is None:reserve();time.sleep(5)\n   native=json.loads((campaign/'report.json').read_text());item['campaign_report']=native;item['campaign_exit']=job.returncode;save();record(key+'-600s-native-and-backup-sync-independent-restore',job.returncode==0 and native['phase']=='passed')\n",
+      "after": "   # Exact original600s native worker; original startup/fixture guards above.\n   statefile=folder/'resource-state/journal.json';held=statefile.read_bytes();contract.verify({f:(group/f).read_text() for f in policy_contract.FILES},held);contract.status(state)\n   oldsha=plan['programs']['previous']['binary_sha256'];newsha=plan['programs']['candidate']['binary_sha256'];pid1=ex(role,'cat','/proc/1/stat').stdout.split()[21];cache_identity=[(v['pid'],v['start_ticks']) for v in caches];config_sha=hashlib.sha256((folder/'crg-config/config.json').read_bytes()).hexdigest();oom=int(dict(x.split() for x in (group/'memory.events').read_text().splitlines())['oom_kill']);maintenance_active=False\n   def same():\n    return statefile.read_bytes()==held and {f:(group/f).read_text() for f in policy_contract.FILES}==contract.controls and hashlib.sha256((folder/'crg-config/config.json').read_bytes()).hexdigest()==config_sha and ex(role,'cat','/proc/1/stat').stdout.split()[21]==pid1 and all(int(pathlib.Path('/proc',str(p),'stat').read_bytes().rsplit(b')',1)[1].split()[19])==ticks for p,ticks in cache_identity)\n   def measurement_active():return nativejob.poll() is None and loadfile.exists() and json.loads(loadfile.read_bytes()).get('phase')=='running' and time.time()<measurement_started_epoch+600\n   def cli(command,*a,**kw):\n    if maintenance_active and not measurement_active():raise RuntimeError('operation outside active original600s native measurement')\n    executor=kw.pop('_executor','/staging/crg');refusal=kw.pop('_expect_refusal',False);started_epoch=time.time();result=ex(role,executor,command,'--config','/etc/crg/config.json',*a,check=False,**kw);ended_epoch=time.time();response={}\n    try:response=json.loads(result.stdout)\n    except ValueError:pass\n    item.setdefault('maintenance_intervals',[]).append({'command':command,'executor':executor,'expected_refusal':refusal,'exit':result.returncode,'started_epoch':started_epoch,'ended_epoch':ended_epoch,'response':response,'stderr':result.stderr});save()\n    if refusal:\n     if result.returncode==0 or 'state or effective configuration changed since installation; automatic rollback refused' not in result.stdout+result.stderr:raise RuntimeError('changed-config rollback did not explicitly refuse')\n    elif result.returncode:raise RuntimeError('maintenance command failed: '+command)\n    if maintenance_active and not measurement_active():raise RuntimeError('operation not fully covered by active original600s native measurement')\n    return result\n   def wait_guard(expected,seconds=120):\n    deadline=time.monotonic()+seconds\n    while time.monotonic()<deadline:\n     found=[]\n     for member in (group/'cgroup.procs').read_text().splitlines():\n      p=pathlib.Path('/proc',member)\n      try:\n       argv=(p/'cmdline').read_bytes().split(b'\\0')\n       if len(argv)>1 and pathlib.Path(os.fsdecode(argv[0])).name=='crg' and argv[1]==b'run':\n        fields=(p/'stat').read_bytes().rsplit(b')',1)[1].split();found.append({'pid':int(member),'start_ticks':int(fields[19]),'sha256':hashlib.sha256((p/'exe').read_bytes()).hexdigest(),'executable':os.readlink(p/'exe')})\n      except (FileNotFoundError,ProcessLookupError):pass\n     if len(found)>1:raise RuntimeError('more than one own CRG run writer')\n     if len(found)==1 and found[0]['sha256']==expected:\n      raw=statefile.read_bytes();actual={f:(group/f).read_text() for f in policy_contract.FILES};current=json.loads((folder/'resource-state/status.json').read_bytes())\n      try:\n       contract.verify(actual,raw);contract.status(current);assert raw==held and same()\n       if maintenance_active and not measurement_active():raise RuntimeError('Agent resume outside original600s measurement')\n       item.setdefault('writer_snapshots',[]).append({'epoch':time.time(),'writer':found[0],'controls':actual,'journal':json.loads(raw),'journal_sha256':hashlib.sha256(raw).hexdigest(),'status':current});item['fixture_identity']['processes'].append(found[0]);save();return True\n      except (AssertionError,FileNotFoundError,json.JSONDecodeError) as err:item['last_resume_error']=str(err);save()\n     reserve();time.sleep(1)\n    return False\n   record(key+'-actual-preview4-source-one-writer-and-predeclared-originals',wait_guard(oldsha))\n   runid=plan['run_ids'][role];entry='/tmp/crg-preview45-load-'+runid+'.py';worker=(root/'tools/vendor-soak-load.py').read_bytes();command=['kubectl','exec','-i','-n',ns,role+'-business','-c',role,'--','/bin/bash','-c','set -Ce; umask 077; cat > '+entry+'; chmod 0444 '+entry];copied=subprocess.run(command,input=worker,capture_output=True,timeout=30);assert copied.returncode==0 and ex(role,'sha256sum',entry).stdout.split()[0]==hashlib.sha256(worker).hexdigest()\n   native_log=(root/(key+'-native.log')).open('xb');nativejob=subprocess.Popen(['kubectl','exec','-n',ns,role+'-business','-c',role,'--','su','-','postgres','-c','CRG_VENDOR_SOAK_TEST=disposable-loopback-only python '+entry+' --run-id '+runid+' --seconds 600 --test-phase smoke'],stdin=subprocess.DEVNULL,stdout=native_log,stderr=native_log);campaign_job=nativejob\n   loadfile=folder/'postgresql/basebackup'/('crg-soak-'+runid)/'load.json';deadline=time.monotonic()+360\n   while time.monotonic()<deadline:\n    if nativejob.poll() is not None:raise RuntimeError('native worker ended before maintenance measurement')\n    if loadfile.exists() and json.loads(loadfile.read_bytes()).get('phase')=='running':break\n    reserve();time.sleep(2)\n   else:raise RuntimeError('native measurement preparation deadline')\n   measured=json.loads(loadfile.read_bytes());measurement_started_epoch=__import__('datetime').datetime.fromisoformat(measured['started_utc'].replace('Z','+00:00')).timestamp();item['measurement_started_epoch']=measurement_started_epoch;maintenance_active=True;item['phase']='online-maintenance-native-running';save()\n   def install(name):return cli('binary-install','--install-dir','/opt/crg','--backup-dir','/recovery/'+name,'--previous-sha256',oldsha,'--candidate-sha256',newsha,timeout=90)\n   def rollback(name):return cli('binary-rollback','--install-dir','/opt/crg','--backup-dir','/recovery/'+name,timeout=90)\n   cli('quiesce');record(key+'-online-quiesce-preserves-controls-PID1-and-original-cache',same())\n   result=json.loads(install('first').stdout);record(key+'-first-online-install-preserves-originals',result['state']=='installed' and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==newsha and same())\n   result=json.loads(rollback('first').stdout);record(key+'-immediate-rollback-before-enable-preserves-originals',result['state']=='rolled_back' and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==oldsha and same())\n   install('second');cli('enable');record(key+'-second-install-new-source-resumes-one-writer',wait_guard(newsha) and same())\n   cli('quiesce');result=json.loads(rollback('second').stdout);record(key+'-unchanged-snapshot-rollback-after-candidate-ran-is-allowed',result['state']=='rolled_back' and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==oldsha and same())\n   cli('enable');record(key+'-old-source-resumes-after-unchanged-snapshot-rollback',wait_guard(oldsha) and same())\n   install_third_quiesce=cli('quiesce');install('third');cli('enable');record(key+'-third-install-new-source-resumes-with-same-budget',wait_guard(newsha) and same())\n   cli('quiesce');receipt_before=(folder/'recovery/third/receipt.json').read_bytes();config_path=folder/'crg-config/config.json';original_config=config_path.read_bytes();negative=dict(plan['configuration'],interval_seconds=16);temp_config=folder/'crg-config/snapshot-negative.json';assert not temp_config.exists()\n   try:\n    temp_config.write_text(json.dumps(negative));os.replace(temp_config,config_path);refused=cli('binary-rollback','--install-dir','/opt/crg','--backup-dir','/recovery/third',timeout=90,_expect_refusal=True);assert statefile.read_bytes()==held and {f:(group/f).read_text() for f in policy_contract.FILES}==contract.controls and (folder/'recovery/third/receipt.json').read_bytes()==receipt_before and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==newsha\n   finally:temp_config.write_bytes(original_config);os.replace(temp_config,config_path)\n   record(key+'-changed-quiescent-config-refuses-old-receipt-without-state-change',refused.returncode!=0 and same() and config_path.read_bytes()==original_config)\n   result=json.loads(cli('binary-install','--install-dir','/opt/crg','--backup-dir','/recovery/reverse','--previous-sha256',newsha,'--candidate-sha256',oldsha,timeout=90,_executor='/recovery/third/previous-crg').stdout);record(key+'-explicit-reverse-new-receipt-preserves-current-originals',result['state']=='installed' and result['previous_sha256']==newsha and result['candidate_sha256']==oldsha and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==oldsha and same())\n   cli('enable');record(key+'-old-source-resumes-after-explicit-reverse',wait_guard(oldsha) and same())\n   maintenance_active=False;deadline=time.monotonic()+900\n   while nativejob.poll() is None and time.monotonic()<deadline:reserve();time.sleep(3)\n   if nativejob.poll() is None:raise RuntimeError('original native completion deadline')\n   native_log.close();native=json.loads(loadfile.read_bytes());item['native']=native;save();record(key+'-original600s-zero-error-native-across-all-maintenance',nativejob.returncode==0 and native['phase']=='passed' and same() and int(dict(x.split() for x in (group/'memory.events').read_text().splitlines())['oom_kill'])==oom)\n   restored=json.loads(cli('disable').stdout);item['final_restored_controls']={f:(group/f).read_text() for f in policy_contract.FILES};item['final_restored_journal']=json.loads(statefile.read_bytes());item['config_bytes_restored']=config_path.read_bytes()==original_config;save();record(key+'-disable-restores-all-eight-runtime-originals-and-empty-journal',restored['state']=='restored' and item['final_restored_controls']==contract.runtime and item['final_restored_journal']==contract.empty_journal and item['config_bytes_restored'] and ex(role,'cat','/proc/1/stat').stdout.split()[21]==pid1 and all(int(pathlib.Path('/proc',str(p),'stat').read_bytes().rsplit(b')',1)[1].split()[19])==ticks for p,ticks in cache_identity))\n",
+      "count": 1
+    },
+    {
+      "before": "   if pod_created:\n    if group is not None",
+      "after": "   if native_log is not None:native_log.close()\n   if pod_created:\n    if group is not None",
+      "count": 1
+    },
+    {
+      "before": "len(report['tests'])==8",
+      "after": "len(report['tests'])==20",
+      "count": 1
+    }
+  ],
+  "old583maintenance_block_reference_sha256": "780832f2f14ff3b039da32d0fa185c3740133917b0445d804d621d0812628148",
+  "maintenance_block_sha256": "b49b47c9016dd8c750f25a792a6f0c86ca5286f969d169a9e47c3a931ca7f208"
+}
