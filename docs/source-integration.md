@@ -20,3 +20,10 @@
 [驱动差异](partition-memory-high-port.diff)只把三项集合和预期内存目标从max改为high，保留八个实际控制文件的完整相等核对，并额外显式核对原外部memory.max未变和计划memory_policy。旧manual memory_max配置保留为别名，用于原发布程序disable/恢复兼容验证。全部原检查名称/数量、CPU/IO负载与吞吐标准、真实同盘两分区、重标定/几何失效、旧程序恢复、只读失败和清理时限继续；不删项或改变工程通过标准。程序Go代码和默认IO策略不变，需用新提交完整复验。
 
 CI派发后的初次列表摘要过早要求恰好4个run而失败，三个dispatch均已受理；随后按相同提交取得实际四个run，没有重派或重启。首次日志读取发生在运行尚未终结时不可用，之后从同一已完成job取得原日志。原错误保留在本轮私人执行记录，不修改CI失败或补算通过。
+
+
+## 第二轮失败与补正
+
+[第二轮12份精确成员及5份日志](test-evidence-source-integration-second-CI.json.gz)保留：分区仍在第7项失败，首轮修正遗漏旧memory_max别名警告使状态为degraded。本次主流程/只读夹具改用规范memory_high；不把degraded放宽为通过。旧发布程序不认识这个新JSON字段，使用它已有的disable --state-dir /state入口，仍恢复同一journal，并完整核对八个运行时原值、Agent退出和PID1。
+
+该轮构建/包/完整性检查已走到最后的可复现步骤，但新检出因一份既有部署记录的CRLF被text/eol=lf规则视作脏源而拒绝。该文件的提交/集成工作区/main原工作区字节摘要完全相等，均为6389ac109a1a17f78aab30554747eadc6d44a76ee03ea34090ab9450fa80f3db，63个CRLF。本次只为这一记录设置-text !eol保留原字节，不改记录、不忽略内容变更，也不删除dirty-source拒绝或可复现逐字节比较。main原工作区文件仍未触碰。两轮失败不能改写为通过，第三个准确提交需重新执行全部工程/分区检查。

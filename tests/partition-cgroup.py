@@ -141,7 +141,10 @@ def start_agent(item, seconds=30):
 
 
 def stop_agent(item, binary='/crg'):
-    result = json.loads(ex(item, binary, 'disable', '--config', '/etc/crg/config.json', timeout=30).stdout)
+    # The old executable cannot decode the new limits.memory_high JSON name.
+    # Its existing state-dir maintenance entry restores the same owned journal.
+    options = ['--state-dir', '/state'] if binary == '/oldcrg' else ['--config', '/etc/crg/config.json']
+    result = json.loads(ex(item, binary, 'disable', *options, timeout=30).stdout)
     deadline = time.monotonic() + 10
     while actors(item) and time.monotonic() < deadline:
         time.sleep(.1)
@@ -470,7 +473,7 @@ try:
     image = json.loads(run(['docker', 'image', 'inspect', tag]).stdout)[0]
     record('scratch-image-native-and-owned', image['Architecture'] == args.expected_arch and image['Config']['Labels']['crg.native-ci'] == nonce)
     prepare_storage()
-    manual = make_folder('manual', {'resource_mode': 'manual', 'limits': {'cpu_cores': .5, 'memory_max': '128MiB', 'io_read_bps': '4MiB', 'io_write_bps': '4MiB', 'io_read_iops': 256, 'io_write_iops': 256}})
+    manual = make_folder('manual', {'resource_mode': 'manual', 'limits': {'cpu_cores': .5, 'memory_high': '128MiB', 'io_read_bps': '4MiB', 'io_write_bps': '4MiB', 'io_read_iops': 256, 'io_write_iops': 256}})
     item = launch(manual, 'manual')
     dev = manual.joinpath('data').stat().st_dev
     device = str(os.major(dev)) + ':' + str(os.minor(dev))
@@ -624,7 +627,7 @@ try:
     record('old-partition-profile-reported-unavailable', sum(x['state'] == 'unavailable' for x in check['devices']) == 1 and sum(x['state'] == 'resolved' for x in check['devices']) == 2, inspection=check)
     record('geometry-originals-data-logs-and-no-OOM', stop_agent(item) and bool(logs(item)) and (percent / 'data/sentinel').read_text() == 'preserve\n' and int(dict(x.split() for x in (item['group'] / 'memory.events').read_text().splitlines())['oom_kill']) == item['oom'])
     remove(item)
-    readonly = make_folder('readonly', {'resource_mode': 'manual', 'limits': {'cpu_cores': .5, 'memory_max': '128MiB', 'io_read_bps': '4MiB', 'io_write_bps': '4MiB', 'io_read_iops': 256, 'io_write_iops': 256}})
+    readonly = make_folder('readonly', {'resource_mode': 'manual', 'limits': {'cpu_cores': .5, 'memory_high': '128MiB', 'io_read_bps': '4MiB', 'io_write_bps': '4MiB', 'io_read_iops': 256, 'io_write_iops': 256}})
     item = launch(readonly, 'readonly', readonly=True)
     s, agent = start_agent(item)
     record('actual-readonly-without-capabilities-is-degraded', s['state'] == 'degraded' and controls(item) == item['original'] and all(x['state'] != 'applied' for x in s['items']))
