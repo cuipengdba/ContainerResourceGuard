@@ -1,0 +1,802 @@
+{
+  "schema": "crg-original52-current-scope-review-v1",
+  "review_date_UTC": "2026-11-13",
+  "current_product_version": "v1.0.0-preview.4",
+  "product_source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "archived_definition_sha256": "ebc4452a988ef2b0af7051459e46dd0ba7c612ae27e1f48f90d47dbcbb1f4284",
+  "original_task_count": 52,
+  "scope_authority": "User later requirements: only CPU/memory/IO, independent percent20 defaults, v1skip/v2set, memory.high instead of new memory.max. Later explicit user scope replaces conflicting earlier features; original definitions preserved as history.",
+  "scope_review_is_not_completion_or_new_runtime_test": true,
+  "original_task_completion_claims_unchanged": true,
+  "current_business_terminal": "test-results-default20-memory-high-business.json",
+  "current_business_accepted": false,
+  "stable_release_accepted": false,
+  "tasks": [
+    {
+      "id": "P01.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立 DBS 与 HISDBS 原镜像、原 supervisor、原缓存程序的隔离克隆回归入口；保留原启动链",
+        "分别记录数据库访问、关键业务 API、缓存程序共存、备份、同步和独立恢复结果；通用 PostgreSQL 冒烟不能替代厂商业务验收"
+      ],
+      "current_scope": "保留两角色原启动链、缓存共存与独立备份/同步/恢复验收",
+      "remaining_acceptance": "手动预算短测与默认20%失败分别保留；完整业务、厂商未公开接口及长期条件尚不能整体接受。",
+      "evidence_paths": [
+        "testing-memory-high-business.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加固定额度下的冷启动、解包后启动、备份后启动及原健康探针联合测试；采集 IO 积压和就绪时间",
+        "在 20%/30% 候选额度中逐项记录预算、数据量、就绪阈值和失败；不自动临时放宽限额或悄悄修改原探针"
+      ],
+      "current_scope": "保留固定额度冷启动、解包后和备份后启动20%/30%矩阵",
+      "remaining_acceptance": "逐格冻结预算、数据、原探针和就绪界限并记录成功/失败；现有默认20%短测不能替代全部矩阵。原文要求如实记录，不等于保证任意负载20%都通过。",
+      "evidence_paths": [
+        "testing-default20-memory-high-business.md",
+        "testing-memory-high-cold-rebuild.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "根据实测修正 CRG 自身启动、日志持久化与退出路径的额外开销；区分业务额度不足和 Agent 缺陷",
+        "已知 30s 启动超时有可复现条件、定位证据和处置结论；不以一次成功复测消除原失败记录，不削弱必要的原值日志持久化"
+      ],
+      "current_scope": "保留Agent额外开销与业务额度不足的区分",
+      "remaining_acceptance": "原30秒失败及新默认20%备份300秒超时需分别形成证据和处置；低标定IOPS与超时并存不构成单因素因果证明。",
+      "evidence_paths": [
+        "testing-memory-high-overhead.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "补齐实际 supervisor 版本的接入、完整备份和回退方案；修复业务回归发现的接入问题",
+        "克隆环境中缺程序、无权限、坏配置、崩溃、卡死、忽略 TERM 均不决定原业务退出；未知脚本拒绝自动修改"
+      ],
+      "current_scope": "保留已知supervisor、备份回退与可选辅助失败继续原业务",
+      "remaining_acceptance": "现有两角色故障证据按原超时判断；未知脚本拒改，继续老化与全生命周期组合复核。",
+      "evidence_paths": [
+        "testing-memory-high-faults.md",
+        "installation.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "双模式 CPU/内存/IO 与旧最小配置兼容"
+      ],
+      "current_scope": "保留percent/manual两模式，只控制三类资源",
+      "remaining_acceptance": "内存规范字段memory_high；旧memory_max仅为high兼容别名，不能恢复新增硬限额语义。整体业务另验。",
+      "evidence_paths": [
+        "configuration.md",
+        "memory-reclaim-policy.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.6",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "pids_max、cpu_weight 及危险下调/恢复保护"
+      ],
+      "current_scope": "用户后续要求替代：不新增pids_max或cpu_weight控制",
+      "remaining_acceptance": "危险下调、所有权及恢复规则只继续适用于当前三类资源；旧扩展资源测试作为历史，不作为重新开放功能的理由。",
+      "evidence_paths": [
+        "configuration.md",
+        "memory-reclaim-policy.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.7",
+      "archived_definition_file": "tasks.md",
+      "archived_definition": [
+        "v0.1.0-rc.3",
+        "默认最大文件系统选盘、首次后台标定、持久复用；按真机路径覆盖两套原业务与只读挂载",
+        "两线实现及Windows/Linux/race/vet、22项自动标定/9项状态故障通过；真实路径业务短测另判，未发布"
+      ],
+      "current_scope": "保留最大合格文件系统自动选盘、后台标定、持久复用",
+      "remaining_acceptance": "默认20%已完成首次自动标定/原路径启动，但完整业务失败；旧RC3名称和旧测试结果不能冒充当前发布字节。",
+      "evidence_paths": [
+        "testing-automatic-io.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.8",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：默认每日日志、30天及总1GB清理、失败放行",
+        "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
+      ],
+      "current_scope": "保留每日一个文件、30日及总1GB清理、记录失败放行",
+      "remaining_acceptance": "功能与故障证据保留；不因日志局部通过关闭长期业务条件。",
+      "evidence_paths": [
+        "testing-three-percent-cgroup-logs.md",
+        "testing-memory-high-faults.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P01.9",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：仅CPU/内存/IO独立百分比，各默认20；v1跳过、v2校验设置；旧配置兼容及manual保留",
+        "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
+      ],
+      "current_scope": "保留CPU/内存/IO独立百分比，各省略默认20；v1跳过/v2检查",
+      "remaining_acceptance": "当前内存仅high；保留旧percent/manual兼容，重载和完整业务证据分别判断。",
+      "evidence_paths": [
+        "configuration.md",
+        "testing-memory-high.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P02.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立 observe 基线与 enforce 持续运行的采集、对比和报告工具",
+        "每种目标业务至少 24h 基线及 24h 候选额度运行，覆盖一次完整备份/同步高峰；周期更长则延长，不以满 48h 自动判定通过"
+      ],
+      "current_scope": "保留每种目标业务24h observe基线及24h enforce真实高峰",
+      "remaining_acceptance": "既有旧策略基线、共存短测和七天任务不能拼接为当前high正式独占对照；必须按原负载/高峰标准取得结果。",
+      "evidence_paths": [
+        "testing-baseline24h-final.md",
+        "testing-memory-high-seven-day.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P02.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "把关键业务指标纳入回归：错误、延迟分位数、备份/同步时间、恢复校验、OOM、CPU 节流和 IO 压力",
+        "测试前记录负载、数据量和可接受阈值，测试后逐项判断；原缓存程序全程参与，失败不可只归因于资源限制后忽略"
+      ],
+      "current_scope": "保留错误、分位数、备份/同步/恢复、OOM/节流/IO压力",
+      "remaining_acceptance": "默认20%真实失败与960 SQL失败保持；预算不足也不能被忽略或改称通过。",
+      "evidence_paths": [
+        "testing-default20-memory-high-business.md",
+        "testing-full960-native-child-fixed.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P02.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "在克隆业务中补齐容器重建、Agent 重启、权限撤销、状态目录故障、外部改值、停用恢复及旧版回退",
+        "身份不串用、不覆盖外部值、原值可追溯；辅助进程故障不改变原业务退出行为，恢复失败必须可见"
+      ],
+      "current_scope": "保留重建/重启/撤权/状态故障/外部改值/停用/回退组合",
+      "remaining_acceptance": "现有故障与维护证据不替代老化及状态保留/丢失的完整组合验收。",
+      "evidence_paths": [
+        "testing-memory-high-faults.md",
+        "testing-public-preview-memory-high-maintenance.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P02.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "发布稳定版安装/卸载/回退手册和精确支持矩阵；冻结首版配置语义",
+        "明确镜像、内核、运行时、架构、存储及权限条件；区分“已构建”“已测试”“未支持”，不发布未验证组合的稳定性结论"
+      ],
+      "current_scope": "保留精确支持矩阵和安装/卸载/回退合同",
+      "remaining_acceptance": "当前仅工程预发布；逐架构、镜像、内核、运行时、存储与权限说明范围，不发布未测组合稳定性结论。",
+      "evidence_paths": [
+        "installation.md",
+        "compatibility-contract.md",
+        "releases/v1.0.0-preview.4.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P03.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加本地配置重载入口与文件替换检测，兼容原子替换、符号链接切换和短暂缺文件；支持CPU/内存/IO独立比例变更，兼容旧percent",
+        "合法新配置成为新代次；重复键、错误类型、半写入文件和无法读取时保留上一份有效配置，不清空预算"
+      ],
+      "current_scope": "保留本地重载、文件替换及保留上一有效配置",
+      "remaining_acceptance": "现有重载证据需与当前发布源码和high语义绑定，坏输入不清空预算。",
+      "evidence_paths": [
+        "testing-three-percent-reload.md",
+        "configuration.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P03.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "实现“校验完整候选配置 → 计算计划 → 逐项持久化/写入/回读”的重载流程",
+        "CPU/内存/IO 分别显示成功、延后或冲突；20→30 只放宽 CRG 自己仍拥有的限额，不突破外部约束，不宣称三项同时原子切换"
+      ],
+      "current_scope": "保留完整候选校验、逐项持久化/写入/回读、外部约束",
+      "remaining_acceptance": "三项不是原子切换；需分别展示实际结果，不借high迁移覆盖外部硬上限。",
+      "evidence_paths": [
+        "testing-memory-high-maintenance.md",
+        "memory-reclaim-policy.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P03.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "显示请求代次、已接受配置、逐项实际值和待完成原因；内存危险下调可在后续周期重试",
+        "30→20 遇到内存压力时保持原实际值并显示未生效，不能显示整体成功；冲突控制项不反复争写"
+      ],
+      "current_scope": "用户high语义替代旧max危险下调等待，保留代次与逐项状态",
+      "remaining_acceptance": "high允许低于当前用量并回收/节流；不为遵守旧句子重新延后所有high写入。历史硬限额恢复仍用保护，冲突/失败必须可见。",
+      "evidence_paths": [
+        "memory-reclaim-policy.md",
+        "testing-memory-high.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P03.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "规定配置变更的支持范围与模式切换行为，补齐并发重载/重启/disable 测试和文档",
+        "state_dir 变更仍要求受控升级；enforce→observe 不隐式撤销限额，停用恢复继续用明确操作；新增字段不成为必填"
+      ],
+      "current_scope": "保留双模式切换、并发重载、删除项目与明确停用恢复",
+      "remaining_acceptance": "state_dir受控升级、enforce转observe不隐式撤限；需保留当前high维护及业务验证边界。",
+      "evidence_paths": [
+        "configuration.md",
+        "testing-memory-high-maintenance.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P03.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "双模式热重载与切换，明确删除项目的恢复/保留规则"
+      ],
+      "current_scope": "保留双模式切换、并发重载、删除项目与明确停用恢复",
+      "remaining_acceptance": "state_dir受控升级、enforce转observe不隐式撤限；需保留当前high维护及业务验证边界。",
+      "evidence_paths": [
+        "configuration.md",
+        "testing-memory-high-maintenance.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P04.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "扩展默认自动标定工具：自动选盘、重复采样、离散程度、时间/方法/版本记录与基准有效性检查",
+        "顺序读写 BPS 和随机读写 IOPS 分开测量并记录；受竞争影响的结果提示质量不足，不伪称设备物理总量，首次辅助进程自动尝试；后续复用，业务不等待"
+      ],
+      "current_scope": "保留自动选盘、三次顺序BPS/随机IOPS、质量及身份记录",
+      "remaining_acceptance": "当前默认20%测得低IOPS，不能称物理峰值；需核对竞争和可用预算，不擅自用人工高基准替换失败。",
+      "evidence_paths": [
+        "testing-automatic-io.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P04.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供本容器可见设备 profile 的检查、合并、替换和迁移预览工具",
+        "设备编号变更按稳定身份重识别；替盘、重复身份、旧格式和缺样本有明确处理；新机器不直接套用另一机器性能基准"
+      ],
+      "current_scope": "保留本容器profile检查/合并/替换/迁移预览与设备身份",
+      "remaining_acceptance": "工程证据与实际替盘、重复身份、缺样本处理分别记录；新机器基准不得无验证套用。",
+      "evidence_paths": [
+        "configuration.md",
+        "testing-partition-io-core.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P04.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "完善数据/WAL/备份路径与设备覆盖报告，测试分区、LVM 和选定 device-mapper 栈",
+        "同层/上下层重复配置可解释地拒绝或跳过；NFS、对象存储、Overlay 等不能确认的路径明确显示未覆盖，不猜设备"
+      ],
+      "current_scope": "保留数据/WAL/备份路径覆盖及选定分区/映射栈报告",
+      "remaining_acceptance": "不能确认的NFS/对象/Overlay显示未覆盖；可见路径不等于已测任意存储栈。",
+      "evidence_paths": [
+        "testing-native-cgroup-dm-loop.md",
+        "testing-partition-cgroup.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P04.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立至少两个独立块设备和一个选定映射栈的实机回归",
+        "各设备 BPS/IOPS、共享竞争、profile 缺项/失效分别记录；不把该矩阵外的复杂存储栈宣称已支持"
+      ],
+      "current_scope": "保留至少两块独立块设备及一个选定映射栈实测",
+      "remaining_acceptance": "用户暂时没有额外节点；单设备、loop或同设备分区不代替两块独立实盘，缺证据明确保留。",
+      "evidence_paths": [
+        "testing-native-cgroup-dm-loop.md",
+        "compatibility-contract.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P04.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "io_weight、手动多路径/多设备与替盘回归"
+      ],
+      "current_scope": "用户后续要求取消io_weight；多路径/多设备仍属IO范围",
+      "remaining_acceptance": "只用io.max表达IO预算；多设备/替盘实机条件仍未由单设备节点满足。",
+      "evidence_paths": [
+        "configuration.md",
+        "testing-partition-io-core.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P05.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "展示可获得的匿名内存、文件缓存、内核内存、events/PSI，以及 swap/HugeTLB 等统计范围",
+        "缺失的内核字段显示不可用，不拼成虚假的完整总量；只读诊断，不改变 swap、OOM 策略、数据库参数或缓存回收策略"
+      ],
+      "current_scope": "保留只读内存统计、events/PSI、swap/HugeTLB范围",
+      "remaining_acceptance": "统计缺失显示不可用；诊断不是新增swap/OOM/数据库或缓存策略控制。",
+      "evidence_paths": [
+        "configuration.md",
+        "memory-reclaim-policy.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P05.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加多周期稳定窗口、增长趋势和安全重试策略；复用写前复查与持久化保护",
+        "并发分配、慢 fsync、持续缓存压力和恢复较低原值时均有测试；危险下调延后，不能为追求“生效”强制回收或擅自加预算"
+      ],
+      "current_scope": "用户high策略替代新max安全下调窗口，保留历史max恢复保护",
+      "remaining_acceptance": "high可能同步回收并明显延迟，不承诺限时写入；不得强杀业务、强制drop_caches或擅自加预算。",
+      "evidence_paths": [
+        "memory-reclaim-policy.md",
+        "testing-memory-high.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P05.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "结合原缓存程序验证高查询负载、备份、WAL 增长和缓存回收重叠场景",
+        "两个辅助程序互不接管、互不等待，不形成重复回收或重启风暴；记录业务延迟、OOM 和额度未生效时长"
+      ],
+      "current_scope": "保留原缓存与查询/备份/WAL/回收压力重叠",
+      "remaining_acceptance": "950手动预算业务通过与960 SQL失败属不同运行；压力、缓存和新策略长期需分别验收，不能用诊断通过替代。",
+      "evidence_paths": [
+        "testing-full950-bytecode-export-fixed.md",
+        "testing-full960-native-child-fixed.md",
+        "testing-memory-high-pressure.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P05.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加长期延后、原预算不适用和统计不足的可操作解释",
+        "用户能区分“已受控”“等待安全下调”“额度不足”“缺统计”；保持三个独立百分比入口，不增加扩展资源参数，不保证绝不OOM"
+      ],
+      "current_scope": "保留三百分比与已受控/不足/冲突/缺统计的解释",
+      "remaining_acceptance": "默认20%能写入不表示适配业务；high不是硬上限，也不保证绝不OOM。",
+      "evidence_paths": [
+        "memory-reclaim-policy.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P05.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "memory_high、memory_swap_max 和下调保护"
+      ],
+      "current_scope": "memory_high成为唯一新内存目标；取消memory_swap_max控制",
+      "remaining_acceptance": "保留Kubernetes/祖先max。只按同身份/仍自有journal恢复旧CRG硬值，禁止盲目写max；恢复低旧值仍需保护。",
+      "evidence_paths": [
+        "memory-reclaim-policy.md",
+        "testing-memory-high.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P06.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立 Linux 内核、cgroup 挂载方式、containerd/runc 和选定容器运行方式的兼容矩阵",
+        "覆盖当前 5.14 环境及选定 6.x 环境；每个宣称组合有版本、权限和结果，未测版本不自动标为兼容"
+      ],
+      "current_scope": "保留按内核/运行时/挂载/权限逐组合兼容矩阵",
+      "remaining_acceptance": "5.14厂商业务与Linux6/7控制器CI分别列明；新内核CI不代表该内核厂商完整业务已验收。",
+      "evidence_paths": [
+        "testing-memory-high-native.md",
+        "testing-linux6-current-integration.md",
+        "compatibility-contract.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P06.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "在 arm64 真机执行 CPU/内存/IO、故障恢复和业务回归",
+        "arm64 不再仅有交叉编译证据；发布说明逐架构列明业务和存储覆盖范围"
+      ],
+      "current_scope": "保留原生ARM64控制器、恢复及厂商业务实机验收",
+      "remaining_acceptance": "已有原生ARM64工程控制器证据；缺可访问ARM64 DBS/HISDBS真机业务环境，不能以交叉编译或普通CI替代。",
+      "evidence_paths": [
+        "testing-memory-high-native.md",
+        "compatibility-contract.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P06.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "加强只读/委派不足、私有 cgroup namespace、systemd 路径、祖先约束和宿主容量来源的发现测试",
+        "不能确认自身目标时不写；不能得到可信宿主基数时明确降级，不将容器虚拟容量误称宿主总量，不越权写父组"
+      ],
+      "current_scope": "保留只读/委派/私有namespace/systemd/祖先/可信宿主容量发现",
+      "remaining_acceptance": "不确认自身目标则不写；当前节点和CI工程证据不能推断所有发行版/运行时组合。",
+      "evidence_paths": [
+        "testing-memory-high.md",
+        "compatibility-contract.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P06.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加连续重建、路径复用、CPU 在线数变化和只读权限切换的回归",
+        "新身份不使用旧恢复日志；容量变化不突破既有外部约束；各类控制器可用性独立显示"
+      ],
+      "current_scope": "保留重建、路径复用、CPU在线变化及只读切换",
+      "remaining_acceptance": "新身份不得套用旧journal；各控制器可用性独立，继续对应发布程序组合证据核对。",
+      "evidence_paths": [
+        "testing-memory-high-cold-rebuild.md",
+        "testing-memory-high-faults.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P06.5",
+      "archived_definition_file": "resource-modes.md",
+      "archived_definition": [
+        "双模式下容器/Pod/节点重启及状态保留/丢失组合回归"
+      ],
+      "current_scope": "保留双模式容器/Pod/节点重启及状态保留/丢失矩阵",
+      "remaining_acceptance": "现有冷重建与故障用例不是实际主机重启及全部状态组合证明，缺项仍保留。",
+      "evidence_paths": [
+        "testing-memory-high-cold-rebuild.md",
+        "testing-memory-high-faults.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P07.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供统一原因码和解释：请求比例、宿主基数、上层约束、实际值、外部冲突、profile 覆盖及重载代次",
+        "human/JSON 输出含义一致；状态过期、锁被持有和数据库健康不混为一谈；旧脚本依赖的字段遵守兼容规则"
+      ],
+      "current_scope": "保留human/JSON原因、比例/基数/外限/代次与状态过期区分",
+      "remaining_acceptance": "CLI状态不等于数据库健康；已归档合同和当前high字段继续按发布源码复核。",
+      "evidence_paths": [
+        "compatibility-contract.md",
+        "testing-cli-contract-ci-20261111.md",
+        "memory-reclaim-policy.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P07.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供按白名单采集的脱敏诊断包和体积上限",
+        "不采集密码、令牌、环境变量全集、业务数据、私有业务脚本或其他容器信息；输出前说明内容，本地生成，不自动上传"
+      ],
+      "current_scope": "保留白名单、脱敏、有界、本地诊断包",
+      "remaining_acceptance": "不采全集env、业务数据/私有脚本/别容器；本轮22原件明确清单不是默认扩大产品采集范围。",
+      "evidence_paths": [
+        "testing-diagnostics.md",
+        "diagnostics-development.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P07.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供默认关闭的本容器指标导出，优先采用本地文本文件或 Unix socket",
+        "默认无监听网络端口、无远程控制入口；只报告自身，指标失败不影响业务，不能把 Agent 端点变成业务健康前置条件"
+      ],
+      "current_scope": "保留默认关闭、仅本容器、本地指标、无默认网络端口",
+      "remaining_acceptance": "指标失败不影响业务、端点不成为原健康前置条件；工程证据与长期预算分别核对。",
+      "evidence_paths": [
+        "testing-metrics.md",
+        "configuration.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P07.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加有大小/保留上限的本地事件记录和低 IO 验证",
+        "高频异常不写满目录；原值日志持久化不能因限流而被省略；说明 CPU/RSS/写入量及开销变化"
+      ],
+      "current_scope": "保留有界事件/每日清理与高频异常低IO",
+      "remaining_acceptance": "原值journal持久化不省略；三场景30分钟工程预算和长期异常/低IO证据不互相替代。",
+      "evidence_paths": [
+        "testing-events.md",
+        "testing-memory-high-overhead.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P08.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "提供当前容器内的安装检查、拟执行变更、备份和卸载方案；支持已验证 supervisor 模板",
+        "变更限于当前容器，未知脚本/哈希不匹配拒绝改写；程序缺失仍按可选辅助进程处理；不操作其他 Pod 或 Kubernetes API"
+      ],
+      "current_scope": "保留当前容器安装预览/备份/卸载及已知模板",
+      "remaining_acceptance": "产品不操作Kubernetes API；测试协调器使用API仅为隔离夹具，不成为产品架构的一对多管理。",
+      "evidence_paths": [
+        "installation.md",
+        "testing-upgrade-check.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P08.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加版本/锁兼容预检及仅重启 Agent 的受控二进制切换",
+        "升级前旧写入者全部停止，保留同一状态目录；新版本失败可回退；不让不同锁协议的旧新版本并行争写"
+      ],
+      "current_scope": "保留单写入者、兼容锁、受控换程序及失败回退",
+      "remaining_acceptance": "现有preview3→preview4工程迁移不等于两个正式小版本迁移；不让旧新Agent争写。",
+      "evidence_paths": [
+        "testing-public-preview-memory-high-maintenance.md",
+        "installation.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P08.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加 journal/profile 格式版本检查、迁移备份、预览和不兼容回退处理",
+        "升降级不丢原值；无法安全读取新版状态的旧程序明确拒绝，不删除日志重建、不用 max 批量覆盖"
+      ],
+      "current_scope": "保留journal/profile版本、备份预览和不兼容回退",
+      "remaining_acceptance": "缺失/损坏旧journal不得猜原硬上限；兼容失败拒绝，不能删状态或全写max。",
+      "evidence_paths": [
+        "memory-reclaim-policy.md",
+        "compatibility-contract.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P08.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "补齐镜像持久化、重建后配置、永久停用和升级操作的演练",
+        "明确只改运行中容器文件不会自动进入新镜像；永久停用由持久配置/启动入口表达，不把旧身份停用标记直接用于新身份"
+      ],
+      "current_scope": "保留镜像持久化、重建、永久停用及升级演练",
+      "remaining_acceptance": "运行容器内改文件不会自动进入新镜像；新身份不复用旧身份停用/恢复状态。",
+      "evidence_paths": [
+        "installation.md",
+        "testing-memory-high-cold-rebuild.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P09.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "固定发布工具链，提供源码修订/构建来源、SBOM、产物证明和可重复构建核对",
+        "程序修订、打包修订、二进制摘要明确对应；验证过程公开可执行，不把“静态链接”当成完整依赖清单"
+      ],
+      "current_scope": "保留固定工具链、修订/包/SBOM/摘要与可重复构建来源",
+      "remaining_acceptance": "preview.4固定工具链二次构建与公开八文件校验有证据；不得把本地构建描述为GitHub签名产物。",
+      "evidence_paths": [
+        "releases/v1.0.0-preview.4.md",
+        "test-results-preview4-publication.json"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P09.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "增加本地安装前的完整性/来源校验及离线校验步骤",
+        "校验失败拒绝安装；信任根与验证方式说明清楚，不执行未经校验的远程 shell；凭据和私有 profile 不进入包"
+      ],
+      "current_scope": "保留安装前完整性/来源与离线校验",
+      "remaining_acceptance": "实际安装应核对对应架构八文件清单，不执行未校验远程shell，不把私有profile或凭据打包。",
+      "evidence_paths": [
+        "installation.md",
+        "releases/v1.0.0-preview.4.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P09.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "扩展解析器模糊测试、长故障回归及持久化中断验证",
+        "覆盖异常大文件、坏格式、持续权限撤销、慢/满文件系统；强杀与真实掉电证据分开，掉电仅在隔离可恢复测试环境执行"
+      ],
+      "current_scope": "保留解析器fuzz、长故障及持久化中断",
+      "remaining_acceptance": "强杀和满盘等证据不能声称真实掉电已测；隔离掉电与长期撤权/慢文件系统缺项单列。",
+      "evidence_paths": [
+        "testing-d370-parser-fuzz-windows.md",
+        "testing-memory-high-faults.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P09.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "建立不同限额下的长期 Agent 开销预算及回归阈值",
+        "工程目标：15s 周期、稳定状态至少 30min，单核平均 CPU ≤0.1%、RSS ≤20MiB，状态文件最多每 5min 一次；另测低 IO/持续异常，不为达标省略必要日志"
+      ],
+      "current_scope": "保留15s周期/30min CPU≤单核0.1%/RSS≤20MiB/状态≤5min一次预算",
+      "remaining_acceptance": "当前发布程序三场景1800秒证据可复核；长期低IO/持续异常及业务吞吐不是同一指标。",
+      "evidence_paths": [
+        "testing-memory-high-overhead.md",
+        "testing-memory-high-seven-day.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.1",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "固化配置、CLI/JSON、journal 和 IO profile 的版本与兼容规则",
+        "固定CPU/内存/IO三个独立百分比及各默认20，保留旧单percent兼容；明确废弃周期与格式迁移；验证从最近两个已发布次版本升级及兼容范围内回退，不承诺无法读取新状态的旧版本可直接运行"
+      ],
+      "current_scope": "保留三独立20%默认、旧配置兼容、格式合同与真实发布迁移",
+      "remaining_acceptance": "preview3/4均为prerelease；已做的准确包迁移不能冒充最近两个已发布正式次版本验证，也不补造历史版本。",
+      "evidence_paths": [
+        "compatibility-contract.md",
+        "testing-public-preview-memory-high-maintenance.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.2",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "对目标 DBS/HISDBS 业务完成至少 7 天综合验收",
+        "覆盖原缓存程序、实际备份/同步周期、冷启动、重建、恢复、升级和故障；长于 7 天的关键周期补充覆盖，按预先记录的业务阈值判断"
+      ],
+      "current_scope": "保留当前策略两业务至少604800秒和28实际备份/同步周期",
+      "remaining_acceptance": "high576原任务继续同PID/start；需真实时间和周期完整/老化后验证，旧硬策略时长不可转记，单纯七天也不自动通过。",
+      "evidence_paths": [
+        "testing-memory-high-seven-day.md",
+        "testing-aged-postflight-execution.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.3",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "完整复核目标隔离、权限降级、外部冲突、诊断脱敏、包来源和恢复所有权",
+        "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
+      ],
+      "current_scope": "保留目标隔离/权限/冲突/脱敏/来源/恢复所有权最终复核",
+      "remaining_acceptance": "默认20%和960业务失败及缺失证据需有处置；辅助启动放行不保证资源节流不影响业务。",
+      "evidence_paths": [
+        "testing-default20-memory-high-business.md",
+        "testing-full960-native-child-fixed.md",
+        "installation.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.4",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "发布支持矩阵、运维手册、问题分级、补丁发布和证据归档规则",
+        "每个对外支持组合有对应报告；未测的架构/存储/内核不包装成全面支持；稳定发布和生产部署分别记录"
+      ],
+      "current_scope": "保留精确支持矩阵/运维/问题分级/补丁与证据归档",
+      "remaining_acceptance": "稳定发布与生产部署各自记录；未测组合不包装为全面支持。",
+      "evidence_paths": [
+        "operations.md",
+        "compatibility-contract.md",
+        "releases/v1.0.0-preview.4.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.5",
+      "archived_definition_file": "tasks.md",
+      "archived_definition": [
+        "v1.0.0",
+        "组合候选复核自动标定、双模式/故障/重建/升级和两业务共存",
+        "实现已编写，验收中；原24h+24h和至少7天条件不变"
+      ],
+      "current_scope": "保留组合1.0候选自动标定/双模式/故障/重建/升级/两业务",
+      "remaining_acceptance": "实现与工程包已存在；原24h+24h、至少七天、业务与支持矩阵门槛没有满足前不能标记稳定1.0发布。",
+      "evidence_paths": [
+        "current-acceptance.md",
+        "testing-memory-high-seven-day.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.6",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：默认每日日志、30天及总1GB清理、失败放行",
+        "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
+      ],
+      "current_scope": "保留每日一个文件、30日及总1GB清理、记录失败放行",
+      "remaining_acceptance": "功能与故障证据保留；不因日志局部通过关闭长期业务条件。",
+      "evidence_paths": [
+        "testing-three-percent-cgroup-logs.md",
+        "testing-memory-high-faults.md"
+      ],
+      "completion_claim": false
+    },
+    {
+      "id": "P10.7",
+      "archived_definition_file": "roadmap.md",
+      "archived_definition": [
+        "RC3及1.0组合线：仅CPU/内存/IO独立百分比，各默认20；v1跳过、v2校验设置；旧配置兼容及manual保留",
+        "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
+      ],
+      "current_scope": "保留CPU/内存/IO独立百分比，各省略默认20；v1跳过/v2检查",
+      "remaining_acceptance": "当前内存仅high；保留旧percent/manual兼容，重载和完整业务证据分别判断。",
+      "evidence_paths": [
+        "configuration.md",
+        "testing-memory-high.md",
+        "testing-default20-memory-high-business.md"
+      ],
+      "completion_claim": false
+    }
+  ],
+  "evidence_reference_base": "https://github.com/cuipengdba/ContainerResourceGuard/blob/a2d581537cf6abaae65aaa4233ceca8731c782d3/docs/"
+}
