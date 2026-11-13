@@ -6,7 +6,7 @@
 
 从源码构建本版请先checkout标签v1.0.0-preview.4；main保留历史程序线，新策略源码位于该标签和组合/分区开发分支。
 
-> 2026-11-12内存新策略已在组合/分区候选实现：使用memory.high回收/节流目标，不新增memory.max。main程序尚未回移，已发布preview.3也仍为旧策略；见[实现及交付状态](docs/memory-reclaim-policy.md)。
+> 当前下载的preview.4使用memory.high回收/节流目标，不新增memory.max。main源码尚未回移，旧preview.3仍为memory.max策略；部署请按发布包及BUILD.json，见[实现及交付状态](docs/memory-reclaim-policy.md)。
 
 此前下载版本：[v1.0.0-preview.3](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.3)。[功能、更新步骤和限制](docs/releases/v1.0.0-preview.3.md)、[八项公开附件下载校验](docs/test-results-preview3-publication.json)。程序与preview.1/preview.2相同，本版同步最新升级/回退及Agent工具验证文档；稳定1.0和长期验收继续。
 
@@ -71,7 +71,7 @@ crg preflight --format human
 
 CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgroup、程序不存在、配置错误、Agent 崩溃，不能决定业务容器退出。使用 [集成示例](docs/integration.md)，不要把 CRG 设为业务启动前置条件或健康探针。
 
-资源限额由内核执行，**Agent 退出不等于撤销已写入限额**。过低的 CPU/IO 会影响性能，过低的内存可能 OOM。RC2 可用 `crg disable --config /etc/crg/config.json` 协调停用并恢复；外部已经改写的值不会被强制覆盖。详见 [本地运维](docs/operations.md)。
+资源限额由内核执行，**Agent 退出不等于撤销已写入限额**。过低的CPU/IO额度或memory.high回收目标会拖慢业务。preview.4触达high会回收/节流、允许超目标；CRG不新增memory.max，外部硬限额或宿主内存耗尽仍可能OOM。可用 `crg disable --config /etc/crg/config.json` 协调停用并恢复；外部已经改写的值不会被强制覆盖。详见 [本地运维](docs/operations.md)。
 
 ## 支持范围
 
@@ -89,7 +89,7 @@ CRG 是可选辅助进程。原业务必须独立启动；无权限、只读 cgr
 
 持续开发与验收状态见 [当前进展](docs/development-status.md)。安全热重载已在独立分支通过 13 项真实 cgroup 检查，尚未发布；原镜像业务验收正在推进。
 
-开发分支已加入手动模式入口，例如 `{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_max":"4GiB"}}`。完整示例见 [manual.json](examples/manual.json)，无需 IO 的示例见 [manual-cpu-memory.json](examples/manual-cpu-memory.json)。新增功能已完成 [Linux 隔离限额与恢复验证](docs/testing-dual-modes.md)，厂商业务验收仍未完成；已发布 RC2 仅支持原字段。
+开发分支已加入手动模式入口，例如 `{"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_high":"4GiB"}}`。完整示例见 [manual.json](https://github.com/cuipengdba/ContainerResourceGuard/blob/180c86ad7986a76526a41575cc1c176d5da98a9c/examples/manual.json)，无需 IO 的示例见 [manual-cpu-memory.json](https://github.com/cuipengdba/ContainerResourceGuard/blob/180c86ad7986a76526a41575cc1c176d5da98a9c/examples/manual-cpu-memory.json)。新增功能已完成 [Linux 隔离限额与恢复验证](docs/testing-dual-modes.md)，厂商业务验收仍未完成；已发布 RC2 仅支持原字段。
 
 | 文档 | 内容 |
 |---|---|
