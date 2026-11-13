@@ -2364,7 +2364,7 @@
     "stable_release_accepted": false
   },
   "IO_bandwidth_policy": {
-    "phase": "exact-engineering-CI-passed-new-business-pending",
+    "phase": "exact-engineering-CI-passed-new-business-running",
     "documentation": "io-bandwidth-policy.md",
     "user_choice": "默认按读写带宽百分比限制，IOPS 留给手动模式",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2384,7 +2384,7 @@
     "stable_release_accepted": false
   },
   "bandwidth_default_startup_matrix": {
-    "phase": "frozen-native-preflight-passed-not-launched",
+    "phase": "running-first-DBS20-two-boots-ready",
     "documentation": "testing-bandwidth-percent-startup.md",
     "plan": "test-plan-bandwidth-percent-startup.json",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2395,9 +2395,22 @@
     "structural_checks": 17,
     "planned_checks": 144,
     "planned_boots": 12,
-    "runtime_checks": 0,
+    "runtime_checks": 17,
     "terminal": false,
     "business_accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "passed_checks": 17,
+    "observed_boots": 2,
+    "node_utc": "2026-11-13T15:06:47.832896+00:00",
+    "start_evidence": "test-start-bandwidth-percent.json",
+    "source_plan_commit": "e21fdac63becb62d5409f2fba49cb504e577db6d",
+    "runner": {
+      "pid": 4039696,
+      "start_ticks": 152166052,
+      "entry": "/var/tmp/crg-bandwidth1129-tools-20261113/runner.py",
+      "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+      "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c"
+    },
+    "remaining_cases_not_accepted": true
   }
 }

@@ -1,0 +1,241 @@
+{
+  "schema": "crg-bandwidth-percent-default-start-observation-v1",
+  "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "candidate_version": "v1.0.0-preview.5",
+  "binary_sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+  "source_plan_commit": "e21fdac63becb62d5409f2fba49cb504e577db6d",
+  "launch": {
+    "pid": 4039696,
+    "start_ticks": 152166052,
+    "entry": "/var/tmp/crg-bandwidth1129-tools-20261113/runner.py",
+    "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+    "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c"
+  },
+  "source_and_process_observation": {
+    "node_utc": "2026-11-13T14:58:35.493019+00:00",
+    "actual_source_sha256": {
+      "startup-matrix-driver.py": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+      "runner.py": "098d48c544a879d388fc0b46b143340362362ed4f56af04dee8534aa98d5d04f",
+      "scoped-probe.py": "87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2",
+      "backup-gate.py": "0e9eb6a3535290383057ed68e08f71c8eb94dc791691629979f45b9b86d84b08",
+      "startup-sample.py": "9a7d8de1b8bdadd87b586b1b8ac85349072744ff2e324b8e98777bb8cc21182d",
+      "artifact-transfer.py": "026271a8f692d6c1e226b9784339f100f6d76a908d565638430a4925620179f5",
+      "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+      "binaries/crg-linux-amd64": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333"
+    },
+    "processes": {
+      "runner": {
+        "pid": 4039696,
+        "start_ticks": 152166052,
+        "entry": "/var/tmp/crg-bandwidth1129-tools-20261113/runner.py",
+        "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+        "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c",
+        "original_absent": false,
+        "state": "S",
+        "entry_matches": true
+      },
+      "dbs-20-driver": {
+        "pid": 4040186,
+        "start_ticks": 152166173,
+        "entry": "/var/tmp/crg-bandwidth1129-tools-20261113/startup-matrix-driver.py",
+        "original_absent": false,
+        "state": "S",
+        "entry_matches": true
+      }
+    },
+    "first_boot": {
+      "phase": "initialization",
+      "pod_uid": "e6e8ea47-34ab-4eda-94f3-3ebc2329afc2",
+      "container_id": "7fc83f66d76698c9a5b780fc4e669ec8e049171e0820c16a9c04abd02c16748b",
+      "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pode6e8ea47_34ab_4eda_94f3_3ebc2329afc2.slice/cri-containerd-7fc83f66d76698c9a5b780fc4e669ec8e049171e0820c16a9c04abd02c16748b.scope",
+      "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pode6e8ea47_34ab_4eda_94f3_3ebc2329afc2.slice",
+      "gate_epoch": 1794581725.0325289,
+      "PG_ready_seconds": 28.732515824958682,
+      "API_ready_seconds": 28.993381584063172,
+      "ready_and_managed_seconds": 58.601864111144096,
+      "resource_identity": "c75e2d9cfa537e02a49c877f6a88b92134b4bbbc282b53cf34b0b024d8829b52",
+      "runtime_original_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "actual_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=8408293 wbps=7905573 riops=max wiops=max",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "13334654976",
+        "memory.swap.max": "0"
+      },
+      "expected_controls_from_frozen_formula": {
+        "cpu.max": "480000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=8408293 wbps=7905573 riops=max wiops=max",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "13334654976",
+        "memory.swap.max": "0"
+      },
+      "last_controls": {
+        "cpu.max": "480000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=8408293 wbps=7905573 riops=max wiops=max",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "13334654976",
+        "memory.swap.max": "0"
+      },
+      "last_PG_probe_exit": 0,
+      "last_API_probe_exit": 0,
+      "boot_error_before_probe": null,
+      "real_kubelet_probe": {
+        "phase": "observing",
+        "expected_own_labels": {
+          "namespace": "crg-vendor-lab-bandwidth1129-dbs-20-20261113",
+          "pod": "dbs-business",
+          "pod_uid": "e6e8ea47-34ab-4eda-94f3-3ebc2329afc2",
+          "container": "dbs",
+          "probe_type": "Liveness"
+        },
+        "samples": [
+          {
+            "gate_elapsed_seconds": 59.43021191214211,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 74.60480987816118,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 89.76352857798338,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 104.91906860796735,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 120.1538088740781,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 135.30777864414267,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 150.46179116214626,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 165.61481230705976,
+            "selected_own_counters": []
+          },
+          {
+            "gate_elapsed_seconds": 180.76780500402674,
+            "selected_own_counters": []
+          }
+        ],
+        "maximum_gate_to_probe_observation_seconds": 720,
+        "no_other_container_metrics_saved": true,
+        "gate_elapsed_seconds": 180.90541031211615
+      },
+      "real_kubelet_probe_error": null,
+      "pod_delete_command": null,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "elapsed_since_gate": 190.4611463546753,
+      "startup_samples_count": 13,
+      "latest_startup_sample": {
+        "io.stat": "8:0 rbytes=415875072 wbytes=731033088 rios=2496 wios=3263 dbytes=0 dios=0\n253:0 rbytes=415875072 wbytes=1521356288 rios=1317 wios=6726 dbytes=0 dios=0\n",
+        "cpu.stat": "usage_usec 9381882\nuser_usec 6757814\nsystem_usec 2624067\ncore_sched.force_idle_usec 0\nnr_periods 482\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "memory.current": "1498853376\n",
+        "io.pressure": {
+          "state": "unavailable",
+          "reason": "missing-cgroup-file",
+          "error_class": "FileNotFoundError"
+        },
+        "elapsed_seconds": 58.09910694905557
+      }
+    }
+  },
+  "later_business_observation": {
+    "phase": "measuring-dbs-20",
+    "node_utc": "2026-11-13T15:06:47.832896+00:00",
+    "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+    "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c",
+    "cases": {
+      "dbs-20": {
+        "coordinator_phase": "running",
+        "phase": "preparing",
+        "recorded": 17,
+        "passed": 17,
+        "failed": [],
+        "error": null,
+        "roles": {
+          "preview5-dbs-percent20-startup": {
+            "phase": "preparing",
+            "error": null,
+            "starts": [
+              {
+                "phase": "initialization",
+                "gate_epoch": 1794581725.0325289,
+                "pod_uid": "e6e8ea47-34ab-4eda-94f3-3ebc2329afc2",
+                "container_id": "7fc83f66d76698c9a5b780fc4e669ec8e049171e0820c16a9c04abd02c16748b",
+                "PG_ready_seconds": 28.732515824958682,
+                "API_ready_seconds": 28.993381584063172,
+                "ready_and_managed_seconds": 58.601864111144096,
+                "boot_error_before_probe": null,
+                "real_kubelet_probe_error": null,
+                "pod_delete_command": {
+                  "exit": 0,
+                  "stdout": "pod \"dbs-business\" deleted\n",
+                  "stderr": ""
+                },
+                "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+              },
+              {
+                "phase": "after-extraction-recreation",
+                "gate_epoch": 1794582144.1818037,
+                "pod_uid": "e5c02344-c57a-496d-a164-9fbee2371d83",
+                "container_id": "e0e5571a027a82a8680a173e0d799cd3ea32f9af6ace5ee4145d855eb4033753",
+                "PG_ready_seconds": 85.61038696300238,
+                "API_ready_seconds": 85.87060552998446,
+                "ready_and_managed_seconds": 85.87087213480845,
+                "boot_error_before_probe": null,
+                "real_kubelet_probe_error": null,
+                "pod_delete_command": null,
+                "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "errors": [],
+    "exit": null
+  },
+  "observer_sources": {
+    "crg-r1135-observe-bandwidth97.py": {
+      "sha256": "d1d93c4edf7dd3aa92314858481a3ea95a42fcf78c6953f8dc37e48854d1f6f8",
+      "exact_executed_utf8": "from pathlib import Path\nimport datetime,hashlib,json,time\n\nw=Path('/var/tmp/crg-bandwidth1129-tools-20261113');praw=(w/'plan.json').read_bytes();plan=json.loads(praw);sha=lambda v:hashlib.sha256(v).hexdigest();assert sha(praw)=='b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c';root=Path(plan['output']);assert root==Path('/var/tmp/crg-bandwidth1129-results-20261113')\nactual={name:sha((w/name).read_bytes()) for name in plan['source_sha256']};assert actual==plan['source_sha256']\ndef read(path):\n    for attempt in range(8):\n        try:\n            raw=path.read_bytes();assert len(raw)<=8*1024**2;return json.loads(raw)\n        except json.JSONDecodeError:\n            if attempt==7:raise\n            time.sleep(.1)\ndef process(row):\n    p=Path('/proc',str(row['pid']));value=dict(row)\n    try:\n        fields=(p/'stat').read_bytes().rsplit(b')',1)[1].split();value.update(original_absent=int(fields[19])!=row['start_ticks'],state=fields[0].decode());value['entry_matches']=not value['original_absent'] and row['entry'].encode() in (p/'cmdline').read_bytes().split(b'\\0')\n    except (FileNotFoundError,ProcessLookupError):value.update(original_absent=True,entry_matches=False)\n    return value\ncoordinator=read(root/'report.json');launch=read(w/'launch.json');assert launch['job_sha256']==coordinator['job_sha256']==plan['job_sha256'] and launch['plan_sha256']==coordinator['plan_sha256']==sha(praw);out={'node_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'phase':coordinator['phase'],'job_sha256':plan['job_sha256'],'plan_sha256':sha(praw),'actual_source_sha256':actual,'processes':{'runner':process(launch)},'coordinator':coordinator,'cases':{}}\nfor case,case_row in coordinator['cases'].items():\n    out['processes'][case+'-driver']=process(case_row['driver']);path=root/case/'report.json';value={'coordinator_case':case_row}\n    if path.exists():\n        report=read(path);value.update(phase=report['phase'],recorded_checks=len(report['tests']),passed_checks=sum(v['passed'] for v in report['tests']),failed_checks=[v['name'] for v in report['tests'] if not v['passed']],report_error=report.get('error'),roles={})\n        for key,item in report['roles'].items():\n            value['roles'][key]={'phase':item['phase'],'error':item.get('error'),'traceback':item.get('traceback'),'starts':[]}\n            for start in item['starts']:\n                row={k:start.get(k) for k in ['phase','pod_uid','container_id','group','pod_parent','gate_epoch','PG_ready_seconds','API_ready_seconds','ready_and_managed_seconds','resource_identity','runtime_original_controls','actual_controls','expected_controls_from_frozen_formula','last_controls','last_PG_probe_exit','last_API_probe_exit','boot_error_before_probe','real_kubelet_probe','real_kubelet_probe_error','pod_delete_command','memory_events']};row['elapsed_since_gate']=time.time()-row['gate_epoch'] if row['gate_epoch'] else None;row['startup_samples_count']=len(start.get('startup_samples',[]));row['latest_startup_sample']=start.get('startup_samples',[None])[-1] if start.get('startup_samples') else None;value['roles'][key]['starts'].append(row)\n    out['cases'][case]=value\nout['exit']=read(w/'exit.json') if (w/'exit.json').exists() else None\nout['summary']={'node_utc':out['node_utc'],'phase':out['phase'],'processes':out['processes'],'exit':out['exit'],'cases':out['cases']};print(json.dumps(out))\n"
+    },
+    "crg-r1138-bandwidth-minimal97.py": {
+      "sha256": "318bbd663bd48a2d03d2ebfb52cca82876262a56ada2dd436be1014f60f69161",
+      "exact_executed_utf8": "from pathlib import Path\nimport datetime,hashlib,json\nw=Path('/var/tmp/crg-bandwidth1129-tools-20261113');root=Path('/var/tmp/crg-bandwidth1129-results-20261113');raw=(w/'plan.json').read_bytes();assert hashlib.sha256(raw).hexdigest()=='b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c';p=json.loads(raw);co=json.loads((root/'report.json').read_bytes());assert co['job_sha256']==p['job_sha256'] and co['plan_sha256']==hashlib.sha256(raw).hexdigest();out={'phase':co['phase'],'node_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'job_sha256':co['job_sha256'],'plan_sha256':co['plan_sha256'],'cases':{},'errors':co['errors'],'exit':json.loads((w/'exit.json').read_bytes()) if (w/'exit.json').exists() else None}\nfor name,row in co['cases'].items():\n v={'coordinator_phase':row['phase']};rp=root/name/'report.json'\n if rp.exists():\n  r=json.loads(rp.read_bytes());v.update(phase=r['phase'],recorded=len(r['tests']),passed=sum(t['passed'] for t in r['tests']),failed=[t['name'] for t in r['tests'] if not t['passed']],error=r.get('error'),roles={})\n  for key,role in r['roles'].items():v['roles'][key]={'phase':role['phase'],'error':role.get('error'),'starts':[{k:s.get(k) for k in ['phase','gate_epoch','pod_uid','container_id','PG_ready_seconds','API_ready_seconds','ready_and_managed_seconds','boot_error_before_probe','real_kubelet_probe_error','pod_delete_command','memory_events']} for s in role['starts']]}\n out['cases'][name]=v\nprint(json.dumps(out))\n"
+    }
+  },
+  "terminal": false,
+  "recorded_checks": 17,
+  "planned_checks": 144,
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "readonly_transport_retry": "An intervening full-observer SSH read timed out without a saved result; the later minimal readonly observation succeeded. No fixture relaunch or timeout change."
+}
