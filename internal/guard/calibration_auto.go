@@ -28,6 +28,7 @@ type AutomaticIOStatus struct {
 	Detail     string                `json:"detail,omitempty"`
 	Selection  *CalibrationSelection `json:"selection,omitempty"`
 	Profile    string                `json:"profile"`
+	Quality    *ProfileQuality       `json:"quality,omitempty"`
 }
 
 // PrepareAutomaticIO is called once by the optional Agent, under its existing
@@ -64,6 +65,8 @@ func prepareAutomaticIO(ctx context.Context, c Config, env Environment,
 		}
 		for _, d := range prior.Devices {
 			if d.Identity == selected.Identity {
+				quality := Quality(d)
+				s.Quality = &quality
 				s.State, s.Detail = "reused", "matching stable device identity; no benchmark performed"
 				return s
 			}
@@ -94,6 +97,7 @@ func prepareAutomaticIO(ctx context.Context, c Config, env Environment,
 	if err = ValidateProfile(p); err != nil || len(p.Devices) != 1 || p.Devices[0].Identity != selected.Identity || p.Devices[0].Device != selected.Device {
 		return fail("calibration_device_changed", errors.New("selected device differs from completed measurement; no profile accepted"))
 	}
+	quality := Quality(p.Devices[0])
 	if len(prior.Devices) > 0 {
 		p, err = MergeProfiles(prior, p, true)
 		if err != nil {
@@ -106,6 +110,7 @@ func prepareAutomaticIO(ctx context.Context, c Config, env Environment,
 	if err = save(c.IOProfile, p); err != nil {
 		return fail("calibration_profile_write_failed", err)
 	}
+	s.Quality = &quality
 	s.State, s.Detail = "calibrated", "three samples saved atomically; subsequent starts reuse matching device identity"
 	return s
 }
