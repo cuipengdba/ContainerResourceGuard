@@ -1,5 +1,8 @@
 # 当前验收入口
 
+已发布程序维护：[preview.4→preview.5同预算在线维护](testing-preview45-manual-maintenance.md)冻结，17项结构/真机预检通过，计划DBS/HISDBS各20项/共40项，原600秒零错误及延迟/覆盖标准保持；尚未启动或接受业务终态。此前手动完整业务16/16通过、默认20%失败和原52项任务保持，稳定1.0未接受。
+
+
 手动参考预算完整业务已经终结：16项记录/16通过/0失败，每角色原600秒及备份同步恢复/SLA按原标准独立核对，接受值为true；两namespace/两组父叶及54登记实例独立确认消失。[完整终态与准确原件](testing-manual-reference-full600-terminal.md)已归档。默认20%失败保持，不改默认值或宣称稳定1.0通过。[实际公开preview.4→preview.5维护设计](testing-preview45-manual-maintenance-design.md)另行规划，16个公开附件重核，仅是输入/设计，尚未执行。
 
 以下保留原时点记录。
