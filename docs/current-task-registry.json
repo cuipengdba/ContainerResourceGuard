@@ -2060,7 +2060,7 @@
     "reason": "optional io.pressure absent; only independent original kubelet probe passed; original business not observed"
   },
   "revised_percent_startup_matrix": {
-    "phase": "running",
+    "phase": "failed",
     "documentation": "testing-high-percent-startup-psi-compatible.md",
     "plan": "test-plan-high-percent-startup-psi-compatible.json",
     "job_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
@@ -2068,27 +2068,41 @@
     "offline_checks": 38,
     "planned_checks": 144,
     "planned_boots": 12,
-    "runtime_checks": 7,
+    "runtime_checks": 22,
     "business_accepted": false,
     "stable_release_accepted": false,
     "original_failure_retained": true,
-    "start_snapshot": "test-start-high-percent-startup-psi-compatible.json",
-    "snapshot_node_utc": "2026-11-13T10:40:13.454202+00:00",
-    "passed_checks": 7,
-    "first_case": "dbs-20",
-    "first_ready_and_managed_seconds": 62.50809808098711,
-    "first_actual_kubelet_probe_phase": "observing",
-    "terminal": false,
+    "passed_checks": 22,
+    "terminal": true,
     "interim_observation": {
       "node_utc": "2026-11-13T11:11:23.715464+00:00",
       "two20percent_rebuilds_failed_original300s": true,
       "DBS_controller_new_identity_and_profile_reuse_confirmed": true,
       "evidence": "test-evidence-rebuild-controller-and-startup.json.gz",
       "not_terminal": true
+    },
+    "unexecuted_checks": 122,
+    "created_boots": 4,
+    "completed_business_boots": 2,
+    "unexecuted_boots": 8,
+    "results": "test-results-high-percent-startup-psi-compatible.json",
+    "evidence": "test-evidence-high-percent-startup-psi-compatible.json.gz",
+    "artifact_files": 10,
+    "artifact_bytes": 246613,
+    "registered_instances_absent": 107,
+    "later_independent_cleanup": true,
+    "original_cleanup_deadline_failed": true,
+    "two30percent_cases_unexecuted": true,
+    "initial_snapshot": {
+      "start_snapshot": "test-start-high-percent-startup-psi-compatible.json",
+      "snapshot_node_utc": "2026-11-13T10:40:13.454202+00:00",
+      "first_case": "dbs-20",
+      "first_ready_and_managed_seconds": 62.50809808098711,
+      "first_actual_kubelet_probe_phase": "observing"
     }
   },
   "automatic_io_quality_development": {
-    "phase": "implemented-local-passed-package-CI-fix-pending",
+    "phase": "implemented-full-CI-passed-unreleased",
     "documentation": "automatic-io-quality.md",
     "source_commits": {
       "ContainerResourceGuard-v10": "67a9db1be0f334d16eaf32f157ac83c988c7cbb7",
@@ -2100,10 +2114,11 @@
     },
     "new_scenarios": 7,
     "published": false,
-    "production_preview4_unchanged": true
+    "production_preview4_unchanged": true,
+    "CI": "test-results-quality-package-CI.json"
   },
   "package_documentation_repair": {
-    "phase": "implemented13-local-passed-awaiting-full-CI",
+    "phase": "implemented-full-CI-passed-unreleased",
     "documentation": "package-documentation.md",
     "source_sha256": {
       "scripts/package.py": "0e9a1f4ada0f33c47125fbd2711a09fc92ab8767058542e1fefe1872b07fec96",
@@ -2112,6 +2127,7 @@
       ".github/workflows/ci.yml": "0819459053e47f7e12f5dbc1719d09113d94c5eeadb83ec54c364310602464c7"
     },
     "offline_verifier_unchanged": true,
-    "published": false
+    "published": false,
+    "CI": "test-results-quality-package-CI.json"
   }
 }
