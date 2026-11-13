@@ -1,0 +1,221 @@
+{
+  "schema": "crg-admission-faults-long-result-v1",
+  "phase": "passed17-injected-faults-and13-paired600-flood-only",
+  "source_family": "tests/bpf-admission-faults-long-frozen-v1",
+  "faults": {
+    "schema": "crg-own-admission-map-fault-analysis-v1",
+    "phase": "passed17-own-injected-faults-first-fixture-failure-preserved",
+    "runs": {
+      "917": {
+        "phase": "failed",
+        "recorded_checks": 14,
+        "passed_checks": 14,
+        "forced_own_cleanup": true,
+        "cases": {
+          "capacity-full": {
+            "raw_events": 194,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": false,
+            "admitted_incomplete": true,
+            "admission_errors": 33,
+            "invalid_events_retained": 33,
+            "boundary_events_retained": 161,
+            "final_states": 1024,
+            "drain_timed_out": false,
+            "stream_bytes": 220620,
+            "stream_sha256": "15965445b2f798aad9f4ddedbd4d1fb4dea30ccd56003e61660123e5843b45a1"
+          },
+          "depth-overflow": {
+            "raw_events": 976,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": true,
+            "admitted_incomplete": true,
+            "admission_errors": 68,
+            "invalid_events_retained": 68,
+            "boundary_events_retained": 0,
+            "final_states": 1,
+            "drain_timed_out": true,
+            "stream_bytes": 608042,
+            "stream_sha256": "fbf9b87dad06c10d72cd31d745c29e6ad3b137e3cbca3af8cb4cdfced627a79a"
+          },
+          "syscall-active-mismatch": {
+            "raw_events": 976,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": true,
+            "admitted_incomplete": true,
+            "admission_errors": 66,
+            "invalid_events_retained": 66,
+            "boundary_events_retained": 0,
+            "final_states": 1,
+            "drain_timed_out": true,
+            "stream_bytes": 608643,
+            "stream_sha256": "d78ab5fef1b8308c8066e63ca47d2c0fe10f75ce683ac6c47eaf76206a3e3909"
+          },
+          "stale-task-start-key": {
+            "raw_events": 1566,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": true,
+            "admitted_incomplete": true,
+            "admission_errors": 0,
+            "invalid_events_retained": 0,
+            "boundary_events_retained": 0,
+            "final_states": 2,
+            "drain_timed_out": true,
+            "stream_bytes": 963516,
+            "stream_sha256": "aa9488a6c16f2bdeef5441afde763e959cab730225a2919b595bd2e75bbbd7d8"
+          }
+        }
+      },
+      "920": {
+        "phase": "passed-own-injected-admission-faults-not-actual-TID-reuse-or-vendor-qualified",
+        "recorded_checks": 17,
+        "passed_checks": 17,
+        "forced_own_cleanup": false,
+        "cases": {
+          "capacity-full": {
+            "raw_events": 194,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": false,
+            "admitted_incomplete": true,
+            "admission_errors": 33,
+            "invalid_events_retained": 33,
+            "boundary_events_retained": 161,
+            "final_states": 1024,
+            "drain_timed_out": false,
+            "stream_bytes": 220614,
+            "stream_sha256": "32b95541baaebb68734426e1c5027f1a96b2bfde64a22af5077cb9d133cf2fc4"
+          },
+          "depth-overflow": {
+            "raw_events": 976,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": true,
+            "admitted_incomplete": true,
+            "admission_errors": 68,
+            "invalid_events_retained": 68,
+            "boundary_events_retained": 0,
+            "final_states": 1,
+            "drain_timed_out": true,
+            "stream_bytes": 608046,
+            "stream_sha256": "3960cfdf06c46a496a27fddaa02345950647255d918e0071e9d9fb4f0f3543fa"
+          },
+          "syscall-active-mismatch": {
+            "raw_events": 978,
+            "overall_incomplete": true,
+            "original_raw_pairing_incomplete_before_admission": true,
+            "admitted_incomplete": true,
+            "admission_errors": 66,
+            "invalid_events_retained": 66,
+            "boundary_events_retained": 0,
+            "final_states": 1,
+            "drain_timed_out": true,
+            "stream_bytes": 609801,
+            "stream_sha256": "ebe42a7328fa45ff8cd52333e20dfe97647e8d12a27feef7b07a94ed47b3fedd"
+          },
+          "stale-task-start-key": {
+            "raw_events": 1566,
+            "overall_incomplete": false,
+            "original_raw_pairing_incomplete_before_admission": false,
+            "admitted_incomplete": false,
+            "admission_errors": 0,
+            "invalid_events_retained": 0,
+            "boundary_events_retained": 0,
+            "final_states": 1,
+            "drain_timed_out": false,
+            "stream_bytes": 963402,
+            "stream_sha256": "8007b1718fc80df6e890f4c85da1c3025f3140f4d1252d4a99889f30d7d2c738"
+          }
+        }
+      }
+    },
+    "actual_passed_checks_latest": 17,
+    "original_first_trial_planned_checks": 17,
+    "first_trial_recorded_passed_checks": 14,
+    "first_trial_remaining_checks_unexecuted": 3,
+    "Go_top_level_tests_each": 14,
+    "Go_ELFs_and_original_probe_identical_to910": true,
+    "only_fixture_delete_unused_pointer_fixed": true,
+    "all_raw_streams_and_first_failure_preserved": true,
+    "own_map_FDs_identity_bound_and_closed": true,
+    "independent_registered_process_instances_absent": 18,
+    "independent_BPF_objects_absent": 384,
+    "capacity1024_and_depth64_faults_injected_not_natural_thread_churn": true,
+    "stale_start_key_isolation_tested_with_real_kernel_probes": true,
+    "actual_OS_TID_reuse_accepted": false,
+    "full_vendor_business_or_factory_accepted": false,
+    "production_source_or_release_changed": false,
+    "stable_release_accepted": false
+  },
+  "long600": {
+    "schema": "crg-own-admission-paired600-flood-analysis-v1",
+    "phase": "passed-own-paired600-and-flood-not-vendor-business-qualified",
+    "terminal_receipt_name": "210-crg-r924-observe-long97.json",
+    "actual_passed_checks": 13,
+    "Go_top_level_tests": 14,
+    "Go_ELFs_byte_identical_to910": true,
+    "actual_seconds_each": {
+      "baseline": 600.000353019,
+      "long": 600.000820793
+    },
+    "actual_successful_requests_each": 120,
+    "socket_timeout_seconds": 4,
+    "cases": {
+      "long": {
+        "raw_events": 3902,
+        "syscall_pairs": 603,
+        "function_pairs": 1348,
+        "overall_incomplete": false,
+        "admitted_incomplete": false,
+        "perf_lost_samples": 0,
+        "BPF_output_failures": 0,
+        "stream_bytes": 2648207,
+        "stream_sha256": "beb50fdd1c6ed8a5a07b5ab548e4f3f142d65f50e16ce542b6b58b6c656682a7"
+      },
+      "flood": {
+        "raw_events": 1489,
+        "syscall_pairs": 744,
+        "function_pairs": 0,
+        "overall_incomplete": true,
+        "admitted_incomplete": true,
+        "perf_lost_samples": 0,
+        "BPF_output_failures": 198515,
+        "stream_bytes": 984890,
+        "stream_sha256": "b3803aad29b0e7d61291260dfe2be05a3e2ac92f0d2bb683a6417024ae62b2d6"
+      }
+    },
+    "overhead_observation": {
+      "concurrent_reference_not_isolated_causal_measurement": true,
+      "target_cpu_seconds": {
+        "baseline": 0.06670999999999999,
+        "long": 0.070626
+      },
+      "target_maxrss_kB": {
+        "baseline": 10560,
+        "long": 10752
+      },
+      "collector_cpu_seconds": 6.624055,
+      "collector_maxrss_kB_before_serialization": 53192,
+      "collector_total_elapsed_seconds": 601.167285166,
+      "collector_perf_mmap_bytes": 3244032,
+      "does_not_claim_CR_Guard_production_Agent_budget": true
+    },
+    "own600_no_loss_admitted_drain_and_flood_detection_accepted": true,
+    "concurrent_reference_not_isolated_causal_overhead_measurement": true,
+    "actual_OS_TID_reuse_accepted": false,
+    "full_vendor_business_or_factory_accepted": false,
+    "new_production_source_or_release": false,
+    "independent_registered_process_instances_absent": 6,
+    "independent_BPF_objects_absent": 96,
+    "stable_release_accepted": false
+  },
+  "independent_registered_process_instances_absent": 24,
+  "independent_BPF_objects_absent": 480,
+  "exact_evidence": {
+    "path": "test-evidence/bpf-admission-faults-long.json.gz",
+    "sha256": "ed3cb44bc2d46aa3efee981241fabc87f330d06dba79c3fb4f724e0504862c50",
+    "uncompressed_sha256": "d86735b9463acc0c634632abf72d9459f08d94ef327a7be76bb9f7f8279eacf3"
+  },
+  "actual_OS_TID_reuse_accepted": false,
+  "vendor_full600_factory_accepted": false,
+  "stable_release_accepted": false,
+  "production_source_or_release_changed": false
+}
