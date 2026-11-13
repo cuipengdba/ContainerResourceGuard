@@ -1,5 +1,7 @@
 # 开发需求档案
 
+[手动IOPS对照](testing-manual-IOPS-comparison.md)已按冻结方案唯一启动；[首个只读快照](test-start-manual-IOPS-comparison.json)确认准确runner/DBS四轴驱动及资源值，启动约44秒、PG尚未就绪、已记录业务检查0项。其余三组尚未运行，不宣称终态/对照因果/默认策略变更；原矩阵失败和52项仍保持。
+
 [手动模式IOPS对照](testing-manual-IOPS-comparison.md)已冻结并通过原生预检查、尚未启动：DBS/HIS各四轴和仅带宽两组，固定同一CPU/memory.high/带宽，只比较IOPS27/11是否另设。沿用preview.4和原真实路径/300秒/原探针/36项检查，不改变默认百分比语义、不补算原矩阵/52项/稳定验收。
 
 [重建fsync诊断终态](diagnosis-PG-rebuild-fsync.md)已定位实际等待点：87次采样/114条PG记录均在XFS fsync写回等待，两次FD设备/inode核验确认第一进程同步的是自身45字节PID文件。写IO约9.99IOPS/0.763MiB/s，额度11IOPS且仍有约415MiB写回；低IOPS影响为强线索，尚无A/B因果结论。该格重建仍超原300秒，11项通过/25未执行，48登记实例/父叶/namespace实际清理，八份387429字节原件已归档。默认IO百分比改为只约束带宽还是继续四轴，等待用户选择；当前语义及原144项失败/52项定义/preview.4不变。

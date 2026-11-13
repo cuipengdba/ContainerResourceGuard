@@ -1,6 +1,6 @@
 # DBS/HISDBS 手动模式 IOPS 对照诊断
 
-状态：启动前冻结、原生节点预检查通过，尚未运行。此项定位业务启动/重建失败；不改变产品默认策略，不代替原百分比20/30矩阵或稳定版验收。
+状态：已按冻结方案启动，首个快照业务检查0项、仍在DBS four初次启动。此项定位业务启动/重建失败；不改变产品默认策略，不代替原百分比20/30矩阵或稳定版验收。
 
 用户已确认内存百分比使用memory.high；preview.4继续保留外部memory.max。上次[实际等待诊断](diagnosis-PG-rebuild-fsync.md)采样到PostgreSQL在自己的45字节PID文件fsync等待XFS回写，整组同时存在较多待回写页和低IOPS限额。尚未通过对照证明唯一原因。
 
@@ -13,3 +13,5 @@
 [驱动差异](../tests/manual-IOPS-comparison-frozen/driver-changes.diff)、[冻结驱动](../tests/manual-IOPS-comparison-frozen/startup-matrix-driver.py)、[协调器](../tests/manual-IOPS-comparison-frozen/runner.py)及[8项结构预检查](../tests/manual-IOPS-comparison-frozen/offline-qualification.json)可审阅。8项只验证对照配置、保留的检查/时限/实际原值核对及业务逻辑差异边界，不能说业务已通过。本地冻结前的三次准备脚本错误和修正已在资格报告保留，期间没有上传或创建测试容器。[Linux原生预检查](test-results-manual-IOPS-native-preflight.json)核对准确上传摘要、二进制build-info、源码可编译、上一诊断准确failed终态及48登记实例/namespace/父叶清理；同时原长期任务相同三个进程与第五次内容备份仍在，不重启它。
 
 程序Go代码、已发布附件、默认百分比四轴换算及原52项状态保持原样。默认IO是否改成只限制带宽，仍等待用户明确选择；本手动对照不是替用户决定。原矩阵失败、物理备份、24h+24h独占、七天、硬件和正式升级门槛继续开放。
+
+[手动IOPS对照](testing-manual-IOPS-comparison.md)已按冻结方案唯一启动；[首个只读快照](test-start-manual-IOPS-comparison.json)确认准确runner/DBS四轴驱动及资源值，启动约44秒、PG尚未就绪、已记录业务检查0项。其余三组尚未运行，不宣称终态/对照因果/默认策略变更；原矩阵失败和52项仍保持。
