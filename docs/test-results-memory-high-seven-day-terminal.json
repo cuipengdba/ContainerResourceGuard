@@ -1,0 +1,132 @@
+{
+  "schema": "crg-preview4-high576-seven-day-terminal-qualification-v1",
+  "phase": "failed-sixth-periodic-standby-start-after-about30h",
+  "source_commit": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+  "node_utc": "2026-11-13T16:08:28.864068+00:00",
+  "requested_seconds": 604800,
+  "native": {
+    "dbs": {
+      "phase": "failed",
+      "elapsed_seconds": 108021.09948701994,
+      "sql": {
+        "attempts": 54007,
+        "errors": 0,
+        "histogram": [
+          53900,
+          84,
+          5,
+          2,
+          0,
+          1,
+          3,
+          3,
+          4,
+          3,
+          2,
+          0
+        ],
+        "max_seconds": 2.9169975749682635,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 0.1785945767195767,
+        "successes": 54007,
+        "total_seconds": 50.18197167827748
+      },
+      "api": {
+        "attempts": 21604,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          21544,
+          55,
+          0,
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.2963544859085232,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 0.17860449735449735,
+        "successes": 21604,
+        "total_seconds": 177.65843036375009
+      },
+      "failure": null,
+      "error": null,
+      "ended_epoch": null
+    },
+    "hisdbs": {
+      "phase": "failed",
+      "elapsed_seconds": 108018.45112532796,
+      "sql": {
+        "attempts": 54005,
+        "errors": 0,
+        "histogram": [
+          53881,
+          99,
+          3,
+          2,
+          0,
+          3,
+          6,
+          4,
+          3,
+          0,
+          4,
+          0
+        ],
+        "max_seconds": 4.67391670611687,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 0.17858796296296298,
+        "successes": 54005,
+        "total_seconds": 53.600213609403
+      },
+      "api": {
+        "attempts": 21604,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          21515,
+          85,
+          0,
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.49348018993623555,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 0.17860449735449735,
+        "successes": 21604,
+        "total_seconds": 182.7748421691358
+      },
+      "failure": null,
+      "error": null,
+      "ended_epoch": null
+    }
+  },
+  "failure": "command failed exit=1 log=standby-start.txt detail=pg_ctl: could not start server\nExamine the log output.\ncommand terminated with exit code 1\nwaiting for server to start.... stopped waiting\n",
+  "sixth_DBS_passed_checks": 2,
+  "sixth_HIS_not_executed": true,
+  "sixth_engine_cleanup_accepted": false,
+  "independent_initial_registered_instances_absent": 51,
+  "independent_namespace_and_two_parent_leaf_pairs_absent": true,
+  "cleanup_scope": "51 initially registered process instances; does not relabel sixth engine cleanup=false",
+  "exact_artifact_members": 9,
+  "exact_artifact_bytes": 4123389,
+  "fifth_DBS_exec_API_seconds": 6.431522,
+  "fifth_exec_API_threshold_seconds": 5,
+  "fifth_timing_failure_retained": true,
+  "failure_root_cause": "pg_ctl exited1, redirected server logs still require diagnosis; no OOM or IO cause inferred",
+  "new_source_inherits_elapsed": false,
+  "seven_day_accepted": false,
+  "stable_release_accepted": false
+}
