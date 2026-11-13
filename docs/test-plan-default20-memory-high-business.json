@@ -1,0 +1,71 @@
+{
+  "schema": "crg-default20-memory-high-realpaths-v1",
+  "phase": "frozen-before-launch",
+  "tools": "/var/tmp/crg-default980-tools-20261113",
+  "output": "/var/tmp/crg-default980-results-20261113",
+  "namespaces": {
+    "dbs": "crg-vendor-lab-default980-dbs-20261113",
+    "hisdbs": "crg-vendor-lab-default980-hisdbs-20261113"
+  },
+  "run_ids": {
+    "dbs": "202611139800",
+    "hisdbs": "202611139801"
+  },
+  "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+  "job_sha256": "3f168312ea72564c4ad219e90807ad52b2eb1a87af1e60520756848f77ec3fdf",
+  "previous960_report_sha256": "4a5a26868a967fde30f3274eacb9c3159af61ce073c65779913ab3ccdd4de102",
+  "private_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "configuration": {},
+  "percentages": {
+    "cpu_percent": 20,
+    "memory_percent": 20,
+    "io_percent": 20
+  },
+  "criteria": {
+    "original_start_and_mounts_PG_cache_unchanged": true,
+    "PG_API_managed_startup_seconds": 300,
+    "cache_seconds_after_ready": 45,
+    "native_seconds_each_role": 600,
+    "SQL_API_errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "minimum_scheduled_sample_coverage": 0.98,
+    "engine_checks": 10,
+    "engine_cycle_must_fit_inside_successful_native_window": true,
+    "payload_rows": 16384,
+    "payload_bytes": 67108864,
+    "startup_checks_each_role": 7,
+    "business_checks_each_role": 1,
+    "all_own_objects_independently_absent": true,
+    "clone_available_memory_GiB": 28,
+    "steady_available_memory_GiB": 8,
+    "free_disk_GiB": 20
+  },
+  "failure_policy": "Keep every result, original quotas/timeouts and native criteria. Separate fresh per-role namespaces and outputs; proceed to next role only if preceding namespace/process/cgroup absence verified. No retry or quota relaxation. No cache-memory program changes.",
+  "limitations": [
+    "Empty config may be insufficient for this workload; actual limit enforcement is distinct from business acceptance.",
+    "First auto calibration uses shared original disk and no manual directory/profile/rate overrides. Existing long-running fixtures remain; this is not formal isolated24h or causal overhead measurement.",
+    "No native per-request PG/BPF diagnostic instrumentation in this run; unchanged original campaign and workload bytes. Previous native PG errors/root-cause uncertainty remain.",
+    "Cold/unpack/backup restart and30% startup variations are separate remaining gates.",
+    "Historical default20 hard-policy failures and full960 business failure are preserved."
+  ],
+  "original_driver_sha256": "d9d23afc8ff49d5164f61c23e2bf4d15822fed59118b540f769c4cb1e34c4c21",
+  "source_sha256": {
+    "artifact-transfer.py": "8678cf9fb8b1c49630ce3f5954ed0cff964ea7f05585d25461114ba86a136cd2",
+    "binaries/crg-linux-amd64": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+    "default20-business.py": "3f168312ea72564c4ad219e90807ad52b2eb1a87af1e60520756848f77ec3fdf",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "runner.py": "38145236763ffaab7cdf4c7d0effc2ec444c25ba0f0bc24e0855b4a306131390",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461"
+  },
+  "expected_original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  }
+}

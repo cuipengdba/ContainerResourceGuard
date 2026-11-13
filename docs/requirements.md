@@ -350,3 +350,6 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 
 [子进程句柄修复完整终态](testing-full960-native-child-fixed.md)：两角色各600秒/11区间，BPF与私有通道原工厂及独立30项通过；原业务子进程退出1/0准确保留。DBS出现5次SQL超时且覆盖不足，原32项只记录29项通过、三项未执行，整体业务失败；HIS SQL/API0错。首个窗口WALWrite、后四BufferContent，原PG诊断另有5次采集错误，不宣称因果或全面诊断完整。35份49549278字节原件及59进程/96对象清理确认，历史失败/52项/默认20%/长期与稳定条件保持，memory.high产品及preview.4附件不变。
+
+
+[memory.high空配置默认20%计划](testing-default20-memory-high-business.md)已冻结：准确preview.4、原DBS/HISDBS镜像及真实路径，首次自动选盘/标定，三项各20%，外部硬上限保持；两独立namespace顺序运行原600秒/内容/覆盖标准，预期16项，未执行不计通过。原native/campaign/engine字节不变，凭据不导出，旧默认与960失败/52项/长期/稳定条件保持。
