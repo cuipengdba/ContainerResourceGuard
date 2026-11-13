@@ -1,5 +1,7 @@
 # 开发需求档案
 
+[手动模式IOPS对照](testing-manual-IOPS-comparison.md)已冻结并通过原生预检查、尚未启动：DBS/HIS各四轴和仅带宽两组，固定同一CPU/memory.high/带宽，只比较IOPS27/11是否另设。沿用preview.4和原真实路径/300秒/原探针/36项检查，不改变默认百分比语义、不补算原矩阵/52项/稳定验收。
+
 [重建fsync诊断终态](diagnosis-PG-rebuild-fsync.md)已定位实际等待点：87次采样/114条PG记录均在XFS fsync写回等待，两次FD设备/inode核验确认第一进程同步的是自身45字节PID文件。写IO约9.99IOPS/0.763MiB/s，额度11IOPS且仍有约415MiB写回；低IOPS影响为强线索，尚无A/B因果结论。该格重建仍超原300秒，11项通过/25未执行，48登记实例/父叶/namespace实际清理，八份387429字节原件已归档。默认IO百分比改为只约束带宽还是继续四轴，等待用户选择；当前语义及原144项失败/52项定义/preview.4不变。
 
 [PG重建诊断已实际启动](test-start-PG-rebuild-process.json)：节点12:16UTC确认同一runner、只读观察器和DBS20驱动三者的PID/startticks/入口均在运行。上轮准确失败与107实例/四namespace实际清理、原长期任务同句柄第五备份门槛均通过；当前首次PG探针exit0，但仍未记录业务检查，观察器等第二次启动。两开发分支[完整CI及新增16项](test-results-PG-rebuild-process-CI.json)通过。第一次SSH启动请求中断后先证实无launch/日志/结果目录，再修正本地字符串编码后唯一启动；冻结源和计划未改。原业务失败及稳定条件保持。
