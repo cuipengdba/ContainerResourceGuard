@@ -2168,24 +2168,151 @@
     "documentation": "diagnosis-PG-rebuild-fsync.md"
   },
   "manual_IOPS_comparison": {
-    "phase": "running",
+    "phase": "failed-terminal-comparison-qualified-not-original-percent-acceptance",
     "documentation": "testing-manual-IOPS-comparison.md",
     "plan": "test-plan-manual-IOPS-comparison.json",
     "job_sha256": "436eda818441f6885f215f629d99c14e5e67f81c105fb02abd8229c44835d754",
     "plan_sha256": "6e24f22922c747ed323a123a97e81a7a24d1d65be8ddc7d75f2241edf7af0efb",
     "structural_preflight_checks": 8,
     "planned_diagnostic_checks": 144,
-    "runtime_checks": 0,
+    "runtime_checks": 74,
     "default_four_axis_policy_unchanged": true,
     "not_original_percent_matrix": true,
     "business_accepted": false,
     "stable_release_accepted": false,
-    "terminal": false,
+    "terminal": true,
     "first_observation_utc": "2026-11-13T13:11:51.513849+00:00",
     "first_observation": "test-start-manual-IOPS-comparison.json",
     "created_cases": [
-      "dbs-four"
-    ]
+      "dbs-four",
+      "dbs-bps",
+      "hisdbs-bps",
+      "hisdbs-four"
+    ],
+    "unexecuted_checks": 70,
+    "cases": {
+      "dbs-four": {
+        "phase": "failed",
+        "passed_checks": 1,
+        "planned_checks": 36,
+        "unexecuted_checks": 35,
+        "ready_seconds": [
+          null
+        ],
+        "created_boots": 1,
+        "role_error": "original PG/API/managed cold-start budget not met within300s",
+        "report_error": null,
+        "original_liveness_passes": 1,
+        "external_memory_max_preserved": true,
+        "observed_OOM_events_zero": true,
+        "full_originals_restored_by_disable": false,
+        "cleanup_independently_confirmed_later": true,
+        "report_sha256": "88f6da7d60a57d75aa4ea64992431e3d2525ed4176ba7068c89df78e958aaad1",
+        "actual_last_controls": {
+          "cpu.max": "480000 100000",
+          "memory.max": "21474836480",
+          "io.max": "253:0 rbps=12554471 wbps=7746597 riops=27 wiops=11",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "13334654976",
+          "memory.swap.max": "0"
+        }
+      },
+      "dbs-bps": {
+        "phase": "passed",
+        "passed_checks": 36,
+        "planned_checks": 36,
+        "unexecuted_checks": 0,
+        "ready_seconds": [
+          109.51033319998533,
+          85.21901424298994,
+          85.09336645901203
+        ],
+        "created_boots": 3,
+        "role_error": null,
+        "report_error": null,
+        "original_liveness_passes": 3,
+        "external_memory_max_preserved": true,
+        "observed_OOM_events_zero": true,
+        "full_originals_restored_by_disable": true,
+        "cleanup_independently_confirmed_later": true,
+        "report_sha256": "1c80e20e9b1c38208bfa4999ee97d7acc73181061eff5c65dec7d1719e0c1c7b",
+        "actual_last_controls": {
+          "cpu.max": "480000 100000",
+          "memory.max": "21474836480",
+          "io.max": "253:0 rbps=12554471 wbps=7746597 riops=max wiops=max",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "13334654976",
+          "memory.swap.max": "0"
+        }
+      },
+      "hisdbs-bps": {
+        "phase": "passed",
+        "passed_checks": 36,
+        "planned_checks": 36,
+        "unexecuted_checks": 0,
+        "ready_seconds": [
+          114.32295898604207,
+          88.15055286302231,
+          84.769825222902
+        ],
+        "created_boots": 3,
+        "role_error": null,
+        "report_error": null,
+        "original_liveness_passes": 3,
+        "external_memory_max_preserved": true,
+        "observed_OOM_events_zero": true,
+        "full_originals_restored_by_disable": true,
+        "cleanup_independently_confirmed_later": true,
+        "report_sha256": "79f77809206ab685930146c49c6f66f165fe2856f8c7456c21d9e301dff6e07d",
+        "actual_last_controls": {
+          "cpu.max": "480000 100000",
+          "memory.max": "21474836480",
+          "io.max": "253:0 rbps=12554471 wbps=7746597 riops=max wiops=max",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "13334654976",
+          "memory.swap.max": "0"
+        }
+      },
+      "hisdbs-four": {
+        "phase": "failed",
+        "passed_checks": 1,
+        "planned_checks": 36,
+        "unexecuted_checks": 35,
+        "ready_seconds": [
+          null
+        ],
+        "created_boots": 1,
+        "role_error": "original PG/API/managed cold-start budget not met within300s",
+        "report_error": "original120s own Pod delete failed",
+        "original_liveness_passes": 1,
+        "external_memory_max_preserved": true,
+        "observed_OOM_events_zero": true,
+        "full_originals_restored_by_disable": false,
+        "cleanup_independently_confirmed_later": true,
+        "report_sha256": "b76c74a71989c25a85d9b87a48c2790672aac18c1a811bebd17d075192e11e6b",
+        "actual_last_controls": {
+          "cpu.max": "480000 100000",
+          "memory.max": "21474836480",
+          "io.max": "253:0 rbps=12554471 wbps=7746597 riops=27 wiops=11",
+          "pids.max": "406648",
+          "cpu.weight": "4",
+          "io.weight": "default 100",
+          "memory.high": "13334654976",
+          "memory.swap.max": "0"
+        }
+      }
+    },
+    "qualification": "test-results-manual-IOPS-comparison.json",
+    "exact_evidence": "test-evidence-manual-IOPS-comparison.json.gz",
+    "registered_process_instances_absent": 219,
+    "independent_cleanup_node_utc": "2026-11-13T14:10:45.944399+00:00",
+    "default_IO_semantics_answer_pending": true
   },
   "memory_high_guidance_review": {
     "phase": "documentation-corrected",
@@ -2197,5 +2324,18 @@
     ],
     "program_release_and_original52_unchanged": true,
     "new_business_acceptance": false
+  },
+  "source_integration_review": {
+    "phase": "engineering-CI-passed-not-business-or-stable-acceptance",
+    "documentation": "source-integration-status.md",
+    "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1",
+    "draft": true,
+    "source_commit": "7823d8d5da8d1f25909e26660697b36f0e0e9e2e",
+    "native_checks": 44,
+    "partition_checks": 164,
+    "ARM_test_pass_events": 226,
+    "merged": false,
+    "deployed": false,
+    "stable_release_accepted": false
   }
 }
