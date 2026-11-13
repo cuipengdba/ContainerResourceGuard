@@ -2037,7 +2037,7 @@
     "scope_review_only": true
   },
   "percent_startup_matrix": {
-    "phase": "frozen-before-upload-and-launch",
+    "phase": "failed",
     "plan": "test-plan-high-percent-startup-matrix.json",
     "plan_sha256": "f431ff2866e6648d2afa385294b72665484769d8dd883223dca1c00ca50c456b",
     "job_sha256": "7fbb3645c068053ef3fc48a46eb95e406e8bfdd36b9d36ca859549c6807ffb81",
@@ -2045,9 +2045,32 @@
     "offline_checks": 21,
     "planned_boots": 12,
     "planned_checks": 144,
+    "runtime_checks": 4,
+    "business_accepted": false,
+    "stable_release_accepted": false,
+    "original_tasks_and_default980_failure_unchanged": true,
+    "results": "test-results-high-percent-startup-first-attempt.json",
+    "evidence": "test-evidence-high-percent-startup-first-attempt.json.gz",
+    "passed_checks": 4,
+    "unexecuted_checks": 140,
+    "created_boots": 4,
+    "unexecuted_dependent_boots": 8,
+    "infrastructure_errors": 4,
+    "registered_instances_absent": 148,
+    "reason": "optional io.pressure absent; only independent original kubelet probe passed; original business not observed"
+  },
+  "revised_percent_startup_matrix": {
+    "phase": "frozen-before-upload-and-launch",
+    "documentation": "testing-high-percent-startup-psi-compatible.md",
+    "plan": "test-plan-high-percent-startup-psi-compatible.json",
+    "job_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+    "plan_sha256": "9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a",
+    "offline_checks": 38,
+    "planned_checks": 144,
+    "planned_boots": 12,
     "runtime_checks": 0,
     "business_accepted": false,
     "stable_release_accepted": false,
-    "original_tasks_and_default980_failure_unchanged": true
+    "original_failure_retained": true
   }
 }
