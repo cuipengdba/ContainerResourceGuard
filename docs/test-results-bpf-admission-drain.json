@@ -1,0 +1,88 @@
+{
+  "schema": "crg-own-admission-drain-analysis-v1",
+  "phase": "passed-own-admission-drain-only-whole-raw-failures-preserved",
+  "actual_checks": 18,
+  "passed_checks": 18,
+  "Go_top_level_tests": 14,
+  "first906_passed_recorded_checks": 1,
+  "first906_planned_checks": 18,
+  "first906_remaining_checks_unexecuted": 17,
+  "first906_kernel_load_failure_preserved": true,
+  "only_generator_CFG_and_rebuilt_ELFs_changed_between_attempts": true,
+  "all_boundary_records_retained_and_whole_raw_incomplete_never_reset": true,
+  "original_strict_pairer_and_scope_helper_byte_unchanged": true,
+  "scope_caller_deliberately_refuses_new_stage_gate_after_closing": true,
+  "per_task_start_key_BTF_layout_and_actual_leader_start_ticks_verified": true,
+  "TID_reuse_fault_not_yet_tested": true,
+  "state_map_capacity_and_depth_faults_not_yet_tested": true,
+  "five_own_cases": {
+    "regular-normal": {
+      "raw_events": 784,
+      "raw_incomplete": false,
+      "retained_boundary_events": 0,
+      "admitted_events": 784,
+      "admitted_incomplete": false,
+      "admitted_calls_quiesced_before_detach": true,
+      "drain_timed_out": false,
+      "stream_bytes": 489885,
+      "stream_sha256": "8b39cf58601fb4c8362e6e2efdbc48ecda6a94920dc3a3eac4e6c0530f0f9eed"
+    },
+    "inflight-start": {
+      "raw_events": 3,
+      "raw_incomplete": true,
+      "retained_boundary_events": 1,
+      "admitted_events": 2,
+      "admitted_incomplete": false,
+      "admitted_calls_quiesced_before_detach": true,
+      "drain_timed_out": false,
+      "stream_bytes": 16712,
+      "stream_sha256": "f7c2439b672ad531692150618bd7475e6b322a3cf15197d42f74e10f35f5a67f"
+    },
+    "inflight-drained": {
+      "raw_events": 6,
+      "raw_incomplete": false,
+      "retained_boundary_events": 2,
+      "admitted_events": 4,
+      "admitted_incomplete": false,
+      "admitted_calls_quiesced_before_detach": true,
+      "drain_timed_out": false,
+      "stream_bytes": 18815,
+      "stream_sha256": "2ab9d6a62a01e707764332280557fb6aaa62476efe512972c6833b988ef3445e"
+    },
+    "inflight-timeout": {
+      "raw_events": 3,
+      "raw_incomplete": true,
+      "retained_boundary_events": 0,
+      "admitted_events": 3,
+      "admitted_incomplete": true,
+      "admitted_calls_quiesced_before_detach": false,
+      "drain_timed_out": true,
+      "stream_bytes": 16747,
+      "stream_sha256": "edece991c617724a7a23bb6060df97c00c35c2694428f1a1ca4a9b5959c92273"
+    },
+    "closing-new-regular": {
+      "raw_events": 199,
+      "raw_incomplete": true,
+      "retained_boundary_events": 195,
+      "admitted_events": 4,
+      "admitted_incomplete": false,
+      "admitted_calls_quiesced_before_detach": true,
+      "drain_timed_out": false,
+      "stream_bytes": 120261,
+      "stream_sha256": "63b611356c77dc114c87b9812851cb7e1fd350b763299a20abe9cd8a6bce24d8"
+    }
+  },
+  "independent_registered_process_instances_absent": 14,
+  "independent_BPF_objects_absent": 248,
+  "production_source_or_release_changed": false,
+  "full_original600_factory_integration_accepted": false,
+  "vendor_admission_qualified": false,
+  "new_candidate_long600_and_overhead_accepted": false,
+  "stable_release_accepted": false,
+  "source_family": "tests/bpf-admission-drain-frozen-v1",
+  "exact_evidence": {
+    "path": "test-evidence/bpf-admission-drain.json.gz",
+    "sha256": "bb6d88b1a63c9fc72626d939f198abadb37dc8333469640030c415380d2f847f",
+    "uncompressed_sha256": "3c35822418a9d3a6eaa7d202994f32f61913f1f263650dbb260652aa761bbbaf"
+  }
+}
