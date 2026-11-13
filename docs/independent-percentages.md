@@ -1,5 +1,7 @@
 # CPU、内存、IO 独立百分比（R29 / R30）
 
+用户已明确选择：下一版IO百分比只限制标定读写BPS，IOPS留手动，外部IOPS保留且自有旧值按身份/journal迁移；内存继续memory.high。[新策略](io-bandwidth-policy.md)的准确源码ced4617已通过完整Linux/原生ARM64、52项实际cgroup及180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已冻结/预检，尚未启动。preview.4仍为旧四轴、未改附件，原52项和历史失败保持，当前不作新业务或稳定发布接受。
+
 最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
 
 最新需求以R29/R30为准：仅接管CPU、内存、IO，三个百分比分别设置，未填写的一项独立默认20%。R28中五项扩展百分比已取消，不再默认管理任务数、权重或Swap；内存百分比使用memory.high回收/节流目标；这些额外的`*_percent`字段和CLI参数会被拒绝，避免配置误用。

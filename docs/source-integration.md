@@ -1,5 +1,7 @@
 # 1.0 主线源码集成候选
 
+用户已明确选择：下一版IO百分比只限制标定读写BPS，IOPS留手动，外部IOPS保留且自有旧值按身份/journal迁移；内存继续memory.high。[新策略](io-bandwidth-policy.md)的准确源码ced4617已通过完整Linux/原生ARM64、52项实际cgroup及180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已冻结/预检，尚未启动。preview.4仍为旧四轴、未改附件，原52项和历史失败保持，当前不作新业务或稳定发布接受。
+
 最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
 
 状态：已增加用户授权的带宽百分比新语义，当前候选需重新执行完整CI/实际Cgroup/真机；下列7823工程通过属于变更前来源，不能作本次通过。草稿PR #1未合并、未部署、未发布。
@@ -35,3 +37,5 @@ CI派发后的初次列表摘要过早要求恰好4个run而失败，三个dispa
 [独立资格分析](test-results-source-integration-current-CI.json)、[28份精确成员及原始job步骤元数据](test-evidence-source-integration-current-CI.json.gz)归档。四格各41项完成，规范memory_high及旧程序同state-dir恢复通过；八个实际控制文件保持完整比较，外部max为4294967296、high为134217728。完整构建的新检出可复现也通过，旧记录原字节未变。第一轮“保留旧别名”的描述是当时策略，第二轮已补正为规范high夹具；两个失败来源仍在历史归档中，不能抹去。
 
 原生ARM64为真实机器ELF183和226测试事件；两架构各22项cgroup，Linux6.8/7.0两架构各41项同盘双分区，均有自己的清理证据。[集成与业务范围](source-integration-status.md)和[现有preview.4手动对照终态](testing-manual-IOPS-comparison.md)独立列出。PR事件额外构建成功可能采用合成merge SHA，准确源码采用push43438798105及三个固定dispatch，不混用来源。
+
+当前IO新语义准确ced4617工程验证已通过；下一步为新二进制默认20/30原业务矩阵。原7823验证和两次失败仅属其各自历史来源。

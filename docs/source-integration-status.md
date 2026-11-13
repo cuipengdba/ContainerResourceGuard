@@ -1,5 +1,7 @@
 # 源码集成与当前验收状态
 
+用户已明确选择：下一版IO百分比只限制标定读写BPS，IOPS留手动，外部IOPS保留且自有旧值按身份/journal迁移；内存继续memory.high。[新策略](io-bandwidth-policy.md)的准确源码ced4617已通过完整Linux/原生ARM64、52项实际cgroup及180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已冻结/预检，尚未启动。preview.4仍为旧四轴、未改附件，原52项和历史失败保持，当前不作新业务或稳定发布接受。
+
 最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
 
 已建立[草稿PR #1](https://github.com/cuipengdba/ContainerResourceGuard/pull/1)，准确工程验证源码为7823d8d5da8d1f25909e26660697b36f0e0e9e2e。[来源与集成范围](https://github.com/cuipengdba/ContainerResourceGuard/blob/release/integration-v1/docs/source-integration-plan.json)、[验证分析](https://github.com/cuipengdba/ContainerResourceGuard/blob/release/integration-v1/docs/test-results-source-integration-current-CI.json)及[精确证据](https://github.com/cuipengdba/ContainerResourceGuard/blob/release/integration-v1/docs/test-evidence-source-integration-current-CI.json.gz)可复查。
