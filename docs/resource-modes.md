@@ -15,7 +15,7 @@ R29/R30覆盖R28：只接管CPU、内存、IO，分别设置百分比，各默�
   "resource_mode":"manual",
   "limits":{
     "cpu_cores":4,
-    "memory_max":"8GiB",
+    "memory_high":"8GiB",
     "io_read_bps":"100MiB",
     "io_write_bps":"50MiB",
     "io_read_iops":1000,
