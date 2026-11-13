@@ -1,6 +1,8 @@
 # 新带宽默认值的真机启动/重建矩阵
 
-状态：启动前冻结、17项结构检查及测试节点原生预检查通过，尚未启动。
+状态：按冻结方案唯一启动，原300秒/探针/删除等门槛保持；DBS20首轮17项通过，尚未终结。
+
+[首轮只读证据](test-start-bandwidth-percent.json)：节点15:06:47 UTC，原runner PID4039696/start152166052；DBS20初始化及第一次冷重建容器/Pod ID各不相同，PG/API及受控就绪在58.60/85.87秒以内，已记录17项通过。首次真实io.max为rbps8408293/wbps7905573、riops/wiops=max；外部memory.max20GiB未变，memory.high13334654976。每次自动发现自身ID并沿用已标定profile；其它组未执行不计通过。第二次冷重建与后续三组继续，未改程序/计划/原时限。
 
 准确产品源码ced461705ebc27315a59aefe463f9b4af47130a3，内置版本v1.0.0-preview.5、amd64二进制SHA256 be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333，尚未发布。使用准备发布的版本字符串构建并固定字节；不在测试中替换。新策略memory.high、io_percent仅标定读写BPS，手动IOPS可选；[策略及用户选择](io-bandwidth-policy.md)和[准确工程CI](test-results-IO-bandwidth-CI.json)已归档。
 
