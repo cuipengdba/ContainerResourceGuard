@@ -1,5 +1,9 @@
 # 开发任务与验收跟踪
 
+独立HISDBS30补测已经唯一启动，节点16:49:01快照为7项通过、首次PG/API/受控就绪29.35/29.62/59.25秒，尚待两次冷重建、备份/独立恢复及原探针；[启动原件](test-start-bandwidth-calendar-HIS30.json)记录准确PID/start及全部冻结哈希，不能算36项终态。旧preview.4七天任务中断的直接原因也已从PID295208的CSV确认：23:56:21备用库无法绑定127.0.0.1:55432（Address already in use），随后FATAL无法创建TCP套接字；[两份1380字节准确原件](test-evidence-memory-high-seven-day-port-conflict.json.gz)及[分析](test-results-memory-high-seven-day-port-conflict.json)已归档。当时端口占用者未捕获，不推断资源限制因果，旧任务仍为失败。
+
+以下按原时点保留。
+
 新增验收修复任务：[独立HISDBS30完整补测](testing-bandwidth-calendar-HIS30.md)已冻结并通过15项预检/十项Linux日历断言回归，尚未作为业务结果接受。修正跨日旧文件增长误判，发布程序不变；原失败/未执行记录保留，全部原业务门槛保持。
 
 

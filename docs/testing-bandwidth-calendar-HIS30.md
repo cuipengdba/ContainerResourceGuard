@@ -1,5 +1,9 @@
 # 独立HISDBS30完整补测计划
 
+独立HISDBS30补测已经唯一启动，节点16:49:01快照为7项通过、首次PG/API/受控就绪29.35/29.62/59.25秒，尚待两次冷重建、备份/独立恢复及原探针；[启动原件](test-start-bandwidth-calendar-HIS30.json)记录准确PID/start及全部冻结哈希，不能算36项终态。旧preview.4七天任务中断的直接原因也已从PID295208的CSV确认：23:56:21备用库无法绑定127.0.0.1:55432（Address already in use），随后FATAL无法创建TCP套接字；[两份1380字节准确原件](test-evidence-memory-high-seven-day-port-conflict.json.gz)及[分析](test-results-memory-high-seven-day-port-conflict.json)已归档。当时端口占用者未捕获，不推断资源限制因果，旧任务仍为失败。
+
+以下按原时点保留。
+
 任务4d932a57b2dd9c0af045e11cfac2187f9856edf7db462a61640b74edf56b31a4；计划1548f836ae7478a59ccc0860cba69b5714f04868dbcb0cb191518ad6be8795b1。本记录为启动前冻结状态，不是业务通过。
 
 [原129项记录/128通过/1失败/15未执行](testing-bandwidth-percent-terminal.md)和原报告保持。只修正验收脚本跨日期的两处追加断言，使用同一个preview.5程序独立跑HISDBS30完整36项/三次启动；CPU/IO/内存30%、自动最大合格文件系统三样本标定、同profile跨ID、64MiB/128标记、逻辑备份/独立恢复及disable恢复全部保留。原300秒PG/API/managed、45秒缓存、原liveness720秒观察、120秒删除/30秒父叶消失门槛不改。
