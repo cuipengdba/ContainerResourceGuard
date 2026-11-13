@@ -1,0 +1,212 @@
+{
+  "schema": "crg-preview5-nanosecond-calendar-log-independent-HIS30-v2",
+  "phase": "frozen-before-launch",
+  "tools": "/var/tmp/crg-bandwidth1190-tools-20261114",
+  "output": "/var/tmp/crg-bandwidth1190-results-20261114",
+  "namespaces": {
+    "hisdbs-30": "crg-vendor-lab-bandwidth1190-hisdbs-30-20261114"
+  },
+  "cases": [
+    "hisdbs-30"
+  ],
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "prior_driver_sha256": "70c50138766fd2e55a547719ff302804d56e84752007d5533099deff86f48387",
+  "prior_plan": "test-plan-memory-high-cold-rebuild.json",
+  "prior_exact_high_cold_report_sha256": "cbb6cd624bc5ecf85a315b6f7792ec24f54ece9011b71101d58c81e06500661a",
+  "previous980_report_sha256": "2ba85642727bc88c4fce52ed37a5f951767978f6fa16fe6dcc520c3246853785",
+  "private_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "original_probe_specs": {
+    "dbs": {
+      "livenessProbe": {
+        "exec": {
+          "command": [
+            "ls"
+          ]
+        },
+        "failureThreshold": 3,
+        "initialDelaySeconds": 300,
+        "periodSeconds": 120,
+        "successThreshold": 1,
+        "timeoutSeconds": 300
+      }
+    },
+    "hisdbs": {
+      "livenessProbe": {
+        "exec": {
+          "command": [
+            "ls"
+          ]
+        },
+        "failureThreshold": 3,
+        "initialDelaySeconds": 300,
+        "periodSeconds": 120,
+        "successThreshold": 1,
+        "timeoutSeconds": 300
+      }
+    }
+  },
+  "original_probe_observed_utc": "2026-11-13T09:25:33.236282+00:00",
+  "expected_original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  },
+  "percentage_formula": {
+    "CPU": "host online CPUs * percent /100, period100000",
+    "memory.high": "floor(hostMemTotal*percent/100/pageBytes)*pageBytes",
+    "IO": "read/write BPS floor(median of three saved measurements*percent/100); no extra IOPS, require own runtime originalio.max empty before gate; original profile retained across identities"
+  },
+  "criteria": {
+    "config20": {},
+    "config30": {
+      "cpu_percent": 30,
+      "memory_percent": 30,
+      "io_percent": 30
+    },
+    "boot_states": [
+      "initialization",
+      "after-extraction-recreation",
+      "after-backup-recreation"
+    ],
+    "PG_API_managed_max_seconds_each_boot": 300,
+    "cache_after_ready_seconds": 45,
+    "cache_also_within_startup_seconds": 300,
+    "probe_configuration": "exact original deployment liveness exec ls delay300/period120/timeout300/failure3/success1, no startup/readiness probe added",
+    "probe_observation": "after business readiness or its failure, only actual kubelet prober_probe_total exact own PodUID/namespace/pod/container/Liveness; at least1successful, no recorded non-success; bounded720s after gate, does not extend SQL/API300s",
+    "payload_rows": 16384,
+    "payload_bytes": 67108864,
+    "marker_rows": 128,
+    "marker_sum": 8256,
+    "payload_backup_restore_operation_seconds": 300,
+    "readonly_cache_and_one_current_agent_each_boot": true,
+    "full_runtime_originals_journal_and_external_memory_max_preserved": true,
+    "daily0600_logs_keep_and_append": true,
+    "boots": 3,
+    "checks_per_case": 36,
+    "expected_checks": 36,
+    "clone_available_memory_GiB": 28,
+    "steady_available_memory_GiB": 8,
+    "free_disk_GiB": 20,
+    "case_outer_containment_seconds": 5400,
+    "own_cgroup_removal_observation_seconds": 30,
+    "startup_sampling": {
+      "required": [
+        "io.stat",
+        "cpu.stat",
+        "memory.current"
+      ],
+      "io.pressure": "read when available; missing/read-denied explicitly unavailable, other errors remain failures; no PSI enable or host changes and no pressure-measurement claim if unavailable"
+    }
+  },
+  "limitations": [
+    "After-extraction state preserves private directories from prior original startup, but original start.sh may re-extract on every start; it is not a no-IO or host-cache-cold claim.",
+    "Actual liveness ls success is separate from SQL/API300 readiness; no readiness/startup probe is invented. restartPolicy Never remains fixture containment, not complete production restart policy equivalence.",
+    "Default980 original physical-backup300s/SQL/API failures remain; this startup matrix uses schema logical backup/independent database restore, not a substitute for full600s or physical restore campaign.",
+    "Existing other long fixtures stay on shared single disk; no exclusive24h or causal performance claim. Current high576 fifth completed backup is a launch gate to avoid overlap, not its fullseven-day acceptance.",
+    "No quota, baseline, original business/start/cache/database/probe or timeout relaxation; failure and unexecuted dependent boots retained.",
+    "No ARMvendor/multipleindependentdisks/oldruntime time transfer or stable1.0 acceptance.",
+    "Actual node has no host/cgroup PSI. Explicit unavailable is preserved; mandatory io.stat and timings still required. Original failed attempt remains separate, not corrected in place or accepted.",
+    "New user-authorized BPS-only product source; previous manual36+36 results and prior seven-day time do not count as this source acceptance. Exact business deadlines/probes/load retained. Only current matrix; physical backups/synchronization/formal migration/exclusive24h+24h/seven-day/other hardware remain separate.",
+    "Independent full HIS30 rerun only, same published preview5 binary. Original1129failed129/128/1/15 retained. Old576nowterminalfailed, exact report/handles/initial51absence required instead of waiting for oldcampaign. Prior live gate archived, business deadlines/fixtures/probes/load unchanged. No seventhday/exclusive claim.",
+    "1170 calendar rerun failed after9positive recorded checks due old node Python fromisoformat9digit incompatibility;27steps unexecuted, original report retained. New1190freshfull36 uses same published binary and timestamps parsed by calendar construction; no business budget change."
+  ],
+  "job_sha256": "094edb20c6a328c573ef9454814f1ba39b96e601b2c9ee3faa46b715f859a168",
+  "source_sha256": {
+    "startup-matrix-driver.py": "094edb20c6a328c573ef9454814f1ba39b96e601b2c9ee3faa46b715f859a168",
+    "runner.py": "5bb06909e7f17564b6dd4c6e8873cd8425224deae4f448a19936369376fb9f74",
+    "scoped-probe.py": "87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2",
+    "backup-gate.py": "722931db6e9fada241acb83df79d1256c55df3737974105f2cf72cdc654739a1",
+    "startup-sample.py": "9a7d8de1b8bdadd87b586b1b8ac85349072744ff2e324b8e98777bb8cc21182d",
+    "artifact-transfer.py": "2f4c67ea7e6ec03a95216776d1731a3fc4aafacdfb3f1e68d150987a8c0c1f63",
+    "daily-log-continuity.py": "519f14d34958c5e75625a9798302c4229770607b0f459af537ac283197a7ac5f",
+    "daily-log-checks.py": "95b2c4ff44bc4b2726d191f6da84671df4fce6e4c9d1f7bd14e865f4bd0931dd",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "binaries/crg-linux-amd64": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333"
+  },
+  "artifact_transfer": {
+    "qualified_previous_source_sha256": "8678cf9fb8b1c49630ce3f5954ed0cff964ea7f05585d25461114ba86a136cd2",
+    "only_change": "fixed export ROOT; all bounded transfer functions exact unchanged",
+    "MAX_FILE": 33554432,
+    "MAX_TOTAL": 268435456,
+    "MAX_FILES": 64,
+    "CHUNK": 1048576
+  },
+  "own_cgroup_cleanup": "after original120s Pod delete, independently observe exact own leaf/parent absence within30s; never extends PG/API300s",
+  "candidate_version": "v1.0.0-preview.5",
+  "resource_policy": "memory.high; IO percent calibrated read/write BPS only; optionalIOPS manual; externalIOPS retained",
+  "new_source_not_previous_release": false,
+  "previous_diagnostic": {
+    "tools": "/var/tmp/crg-bandwidth1170-tools-20261114",
+    "output": "/var/tmp/crg-bandwidth1170-results-20261114",
+    "namespaces": {
+      "hisdbs-30": "crg-vendor-lab-bandwidth1170-hisdbs-30-20261114"
+    },
+    "job_sha256": "4d932a57b2dd9c0af045e11cfac2187f9856edf7db462a61640b74edf56b31a4",
+    "plan_sha256": "1548f836ae7478a59ccc0860cba69b5714f04868dbcb0cb191518ad6be8795b1",
+    "report_sha256": "aad562570b0dc119939df9434e992bc7c929429b434ef7e3439704e918b76cd4",
+    "registered_instances_absent": 31
+  },
+  "new_harness_same_published_binary": true,
+  "old576_terminal": {
+    "tools": "/var/tmp/crg-high576-tools-20261112",
+    "output": "/var/tmp/crg-high576-seven-20261112",
+    "namespace": "crg-vendor-lab-high576-20261112",
+    "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+    "report_sha256": "c789395d31daedae631a0c66b8fe4be6f3ad093191b0d757f5e2e078e2973e1f",
+    "campaign_report_sha256": "6572e7b165375ada933788ba76ef4f77546468ea0085db8cb3b2216505c35021"
+  },
+  "archived_original_live_gate": {
+    "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+    "runner": {
+      "pid": 1703323,
+      "start_ticks": 141722385,
+      "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-runner.py",
+      "job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+      "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "original_absent": false,
+      "entry_matches": true,
+      "state": "S"
+    },
+    "worker": {
+      "pid": 1703324,
+      "start_ticks": 141722389,
+      "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-job.py",
+      "original_absent": false,
+      "entry_matches": true,
+      "state": "S"
+    },
+    "campaign": {
+      "pid": 1722386,
+      "start_ticks": 141729405,
+      "entry": "/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py",
+      "original_absent": false,
+      "entry_matches": true,
+      "state": "S"
+    },
+    "required_successful_backup_run_id": "2026111257604",
+    "minimum_backup_offset_seconds": 86400,
+    "maximum_wait_seconds": 10800,
+    "poll_seconds": 30,
+    "failure": "same original process identity missing/terminal or required engine failure stops without creating new fixture; never restart prior job"
+  },
+  "calendar_log_assertion": "Snapshot all current daily files immediately before each deletion; preserve all historical prefixes; require exactly one appended Agent start with exact version/revision across any local day, matching event day/file and0600. Never demand growth in a closed historical file. Ten meaningful positive/negative calendar/source/integrity regressions mandatory. RFC3339Nano fraction1..9 parsed explicitly without older Python fromisoformat limitation;18 positive/negative native regressions use actual9digit format and validate date/time/offset.",
+  "revised_from_failed_job_sha256": "4d932a57b2dd9c0af045e11cfac2187f9856edf7db462a61640b74edf56b31a4",
+  "original1129_failed_matrix": {
+    "tools": "/var/tmp/crg-bandwidth1129-tools-20261113",
+    "output": "/var/tmp/crg-bandwidth1129-results-20261113",
+    "namespaces": {
+      "dbs-20": "crg-vendor-lab-bandwidth1129-dbs-20-20261113",
+      "hisdbs-20": "crg-vendor-lab-bandwidth1129-hisdbs-20-20261113",
+      "dbs-30": "crg-vendor-lab-bandwidth1129-dbs-30-20261113",
+      "hisdbs-30": "crg-vendor-lab-bandwidth1129-hisdbs-30-20261113"
+    },
+    "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+    "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c",
+    "report_sha256": "00ef5532632eddd2c38d6a5e18c2aa56d0cfb09cfd2d2dc6bcd33654f889ba4f",
+    "registered_instances_absent": 369
+  }
+}

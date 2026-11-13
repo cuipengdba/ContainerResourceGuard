@@ -2462,7 +2462,7 @@
     "terminal_followup": "test-results-preview5-terminal-followup.json"
   },
   "calendar_log_acceptance_rerun": {
-    "phase": "running-first-boot-ready-7checks-not-terminal",
+    "phase": "failed-harness-old-Python-RFC3339Nano-parser",
     "plan": "test-plan-bandwidth-calendar-HIS30.json",
     "report": "test-results-bandwidth-calendar-preflight.json",
     "documentation": "testing-bandwidth-calendar-HIS30.md",
@@ -2480,8 +2480,8 @@
     "stable_release_accepted": false,
     "start_report": "test-start-bandwidth-calendar-HIS30.json",
     "node_utc": "2026-11-13T16:49:01.112196+00:00",
-    "runtime_checks": 7,
-    "passed_checks": 7,
+    "runtime_checks": 9,
+    "passed_checks": 9,
     "observed_boots": 1,
     "runner": {
       "pid": 1320002,
@@ -2490,6 +2490,28 @@
       "job_sha256": "4d932a57b2dd9c0af045e11cfac2187f9856edf7db462a61640b74edf56b31a4",
       "plan_sha256": "1548f836ae7478a59ccc0860cba69b5714f04868dbcb0cb191518ad6be8795b1"
     },
-    "terminal": false
+    "terminal": true,
+    "failed_check_rows": 0,
+    "unexecuted_checks": 27,
+    "terminal_report": "test-results-bandwidth-calendar-v1-terminal.json",
+    "independent_registered_instances_absent": 31
+  },
+  "calendar_log_acceptance_rerun_v2": {
+    "phase": "qualified-before-launch-not-business-pass",
+    "plan": "test-plan-bandwidth-calendar-HIS30-v2.json",
+    "report": "test-results-bandwidth-calendar-v2-preflight.json",
+    "documentation": "testing-bandwidth-calendar-HIS30-v2.md",
+    "job_sha256": "094edb20c6a328c573ef9454814f1ba39b96e601b2c9ee3faa46b715f859a168",
+    "plan_sha256": "ddde6280174c70c5c95872c5fc14357a9b5845a71451877f609f740465b2e25a",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "binary_sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+    "planned_checks": 36,
+    "planned_boots": 3,
+    "structural_checks": 15,
+    "native_calendar_regressions": 18,
+    "production_code_changed": false,
+    "previous_failures_unchanged": true,
+    "business_accepted": false,
+    "stable_release_accepted": false
   }
 }
