@@ -1,0 +1,95 @@
+{
+  "schema": "crg-bandwidth1129-terminal-qualification-v1",
+  "phase": "failed-original-matrix-log-assertion-crosses-midnight",
+  "node_utc": "2026-11-13T16:26:50.102871+00:00",
+  "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+  "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c",
+  "coordinator_report_sha256": "00ef5532632eddd2c38d6a5e18c2aa56d0cfb09cfd2d2dc6bcd33654f889ba4f",
+  "planned_checks": 144,
+  "recorded_checks": 129,
+  "passed_checks": 128,
+  "failed_checks": 1,
+  "unexecuted_checks": 15,
+  "planned_boots": 12,
+  "observed_boots": 11,
+  "cases": {
+    "dbs-20": {
+      "phase": "passed",
+      "recorded_checks": 36,
+      "passed_checks": 36,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "ready_and_managed_seconds": [
+        58.601864111144096,
+        85.87087213480845,
+        83.42528540804051
+      ],
+      "boots": 3,
+      "no_oom_kill_at_recorded_boots": true
+    },
+    "hisdbs-20": {
+      "phase": "passed",
+      "recorded_checks": 36,
+      "passed_checks": 36,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "ready_and_managed_seconds": [
+        60.43711470882408,
+        80.84647792484611,
+        27.225361579097807
+      ],
+      "boots": 3,
+      "no_oom_kill_at_recorded_boots": true
+    },
+    "dbs-30": {
+      "phase": "passed",
+      "recorded_checks": 36,
+      "passed_checks": 36,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "ready_and_managed_seconds": [
+        65.91919726808555,
+        55.52640845696442,
+        24.23304730397649
+      ],
+      "boots": 3,
+      "no_oom_kill_at_recorded_boots": true
+    },
+    "hisdbs-30": {
+      "phase": "failed",
+      "recorded_checks": 21,
+      "passed_checks": 20,
+      "failed_checks": [
+        "preview5-hisdbs-percent30-startup-after-extraction-daily-log-appends-across-ID-change"
+      ],
+      "unexecuted_checks": 15,
+      "ready_and_managed_seconds": [
+        59.05977005790919,
+        86.27181129693054
+      ],
+      "boots": 2,
+      "no_oom_kill_at_recorded_boots": true
+    }
+  },
+  "exact_artifact_members": 23,
+  "exact_artifact_bytes": 528700,
+  "independently_absent_registered_process_instances": 369,
+  "namespaces_absent": 4,
+  "leaf_and_parent_pairs_absent": 11,
+  "export_defect_original_preserved": true,
+  "supplemental_readonly": true,
+  "diagnosis": {
+    "classification": "frozen-test-assertion-does-not-account-for-local-midnight",
+    "old_day_last_event": "2026-11-13T23:56:24.076581111+08:00",
+    "new_day_first_event": "2026-11-14T00:00:00.032028755+08:00",
+    "new_day_second_agent_start": "2026-11-14T00:02:18.180613167+08:00",
+    "defect": "Frozen driver captures old boot daily list before the 300s-delay liveness check, later requires each old daily file to grow across a container ID change. Nov13 closed file correctly stays unchanged after midnight; Nov14 file contains rollover and new Agent.",
+    "original_failure_retained": true,
+    "production_code_changed_for_this_diagnosis": false,
+    "missing_steps_not_relabelled_passed": true,
+    "corrected_independent_full_case_required": true
+  },
+  "complete_matrix_accepted": false,
+  "stable_release_accepted": false
+}
