@@ -1,6 +1,6 @@
 # 20%/30%启动矩阵：可选PSI兼容重测
 
-状态：启动前冻结，尚未上传或启动，预期12次启动/144项检查，当前运行检查0。产品仍为准确preview.4，内存百分比只写memory.high，原外部memory.max保持。
+状态：已启动，尚未终态。[节点10:40:13UTC的准确启动快照](test-start-high-percent-startup-psi-compatible.json)确认首个DBS20空配置62.508秒managed，已记录7项且均通过；原实际探针observing，后续重建和三格未完成。预期12次/144项，不能按已全部通过接受。产品仍为准确preview.4，内存百分比只写memory.high，原外部memory.max保持。
 
 ## 首轮真实终态与原因
 
