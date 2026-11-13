@@ -1,5 +1,7 @@
 # 当前交付与后续验收
 
+[手动IOPS四组对照](testing-manual-IOPS-comparison.md)已终结：仅带宽组DBS/HISDBS各36项通过、共六次启动85～114秒就绪；低IOPS四轴两组各仅记录1项原liveness成功，均未达原300秒业务启动标准，HISDBS另有原120秒Pod删除超时。共74/144项阳性、70项未执行，不能称整套通过；后续独立确认四命名空间、八组leaf/parent及219个登记进程实例清理。[完整结果](test-results-manual-IOPS-comparison.json)和[18文件443558字节精确归档](test-evidence-manual-IOPS-comparison.json.gz)保留。默认IO策略不变，原52项仍开放。[源码集成草稿及工程CI](source-integration-status.md)另列，工程通过不替代业务/稳定发布。
+
 [手动IOPS对照](testing-manual-IOPS-comparison.md)已按冻结方案唯一启动；[首个只读快照](test-start-manual-IOPS-comparison.json)确认准确runner/DBS四轴驱动及资源值，启动约44秒、PG尚未就绪、已记录业务检查0项。其余三组尚未运行，不宣称终态/对照因果/默认策略变更；原矩阵失败和52项仍保持。
 
 [手动模式IOPS对照](testing-manual-IOPS-comparison.md)已冻结并通过原生预检查、尚未启动：DBS/HIS各四轴和仅带宽两组，固定同一CPU/memory.high/带宽，只比较IOPS27/11是否另设。沿用preview.4和原真实路径/300秒/原探针/36项检查，不改变默认百分比语义、不补算原矩阵/52项/稳定验收。
