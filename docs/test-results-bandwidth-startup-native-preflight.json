@@ -1,0 +1,102 @@
+{
+  "phase": "native-preflight-passed-not-launched",
+  "node_utc": "2026-11-13T14:47:05.340811+00:00",
+  "source_sha256": {
+    "startup-matrix-driver.py": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
+    "runner.py": "098d48c544a879d388fc0b46b143340362362ed4f56af04dee8534aa98d5d04f",
+    "scoped-probe.py": "87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2",
+    "backup-gate.py": "0e9eb6a3535290383057ed68e08f71c8eb94dc791691629979f45b9b86d84b08",
+    "startup-sample.py": "9a7d8de1b8bdadd87b586b1b8ac85349072744ff2e324b8e98777bb8cc21182d",
+    "artifact-transfer.py": "026271a8f692d6c1e226b9784339f100f6d76a908d565638430a4925620179f5",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "binaries/crg-linux-amd64": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+    "plan.json": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c"
+  },
+  "build_info": {
+    "arch": "amd64",
+    "go_version": "go1.27.3",
+    "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+    "io_profile_versions": [
+      1,
+      2
+    ],
+    "journal_versions": [
+      1
+    ],
+    "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+    "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+    "os": "linux",
+    "revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "version": "v1.0.0-preview.5",
+    "writer_controls": [
+      "cpu.max",
+      "cpu.weight",
+      "io.max",
+      "io.weight",
+      "memory.max",
+      "memory.high",
+      "memory.swap.max",
+      "pids.max"
+    ]
+  },
+  "structural_preflight_only_not_business": true,
+  "previous219_processes_namespaces_parent_and_leaf_cleanup_revalidated": true,
+  "same_original_long_gate": {
+    "node_epoch": 1794581225.3383243,
+    "same_original_processes": {
+      "runner": {
+        "pid": 1703323,
+        "start_ticks": 141722385,
+        "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-runner.py"
+      },
+      "worker": {
+        "pid": 1703324,
+        "start_ticks": 141722389,
+        "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-job.py"
+      },
+      "campaign": {
+        "pid": 1722386,
+        "start_ticks": 141729405,
+        "entry": "/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py"
+      }
+    },
+    "original_phase": "seven-day-native-measurement",
+    "campaign_phase": "measuring",
+    "completed_backups": 5,
+    "required_backup": {
+      "offset_seconds": 86400.09484980884,
+      "run_id": "2026111257604",
+      "content_started_epoch": 1794563765.057563,
+      "exit": 0,
+      "phase": "content-passed-native-pending",
+      "roles": {
+        "dbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": false,
+            "samples": 20,
+            "api_max": 6.431522105121985,
+            "sql_max": 1.4138061830308288
+          }
+        },
+        "hisdbs": {
+          "checks": 10,
+          "cleanup": true,
+          "native_pending": true,
+          "exec_probe_diagnostic": {
+            "passed_original_5s_criterion": true,
+            "samples": 18,
+            "api_max": 4.921372347977012,
+            "sql_max": 1.2693127498496324
+          }
+        }
+      },
+      "content_ended_epoch": 1794563857.0286326
+    },
+    "gate_passed": true,
+    "not_seven_day_acceptance": true
+  },
+  "no_new_fixture_created": true
+}

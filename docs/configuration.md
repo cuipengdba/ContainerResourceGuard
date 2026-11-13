@@ -1,5 +1,7 @@
 # 配置参数
 
+用户已明确选择：下一版IO百分比只限制标定读写BPS，IOPS留手动，外部IOPS保留且自有旧值按身份/journal迁移；内存继续memory.high。[新策略](io-bandwidth-policy.md)的准确源码ced4617已通过完整Linux/原生ARM64、52项实际cgroup及180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已冻结/预检，尚未启动。preview.4仍为旧四轴、未改附件，原52项和历史失败保持，当前不作新业务或稳定发布接受。
+
 > 本页面向已发布preview.4下载程序。main源码尚未回移memory.high，旧源码请按对应标签文档；新部署参阅[preview.4说明](releases/v1.0.0-preview.4.md)。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
@@ -79,7 +81,7 @@ Agent 启动时读取配置；持续运行不会热加载。重启 Agent 可更�
 - 内存百分比写memory.high，可低于当前用量以触发回收/节流；允许超目标。旧硬限额的降低/恢复才使用余量和稳定检查。外部memory.max或宿主内存耗尽仍可能OOM，见[内存策略](memory-reclaim-policy.md)。
 - 独立百分比及旧percent内存预算写memory.high；手动用limits.memory_high，旧limits.memory_max仅作带警告的high别名。CRG不新增memory.max，保留外部既有限额；不设置swap或主动回收活跃数据库内存，不改OOM策略、cpuset和资源requests。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
-- IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
+- IO 百分比换算后读/写带宽低于 1 个整数 BPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
