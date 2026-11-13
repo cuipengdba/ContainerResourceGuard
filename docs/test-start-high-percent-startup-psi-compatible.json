@@ -1,0 +1,666 @@
+{
+  "schema": "crg-high-percent-startup-PSI-compatible-live-snapshot-v1",
+  "node_utc": "2026-11-13T10:40:13.454202+00:00",
+  "exact_observation_utf8": "{\"node_utc\": \"2026-11-13T10:40:13.454202+00:00\", \"plan_sha256\": \"9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a\", \"job_sha256\": \"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\", \"actual_source_sha256\": {\"startup-matrix-driver.py\": \"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\", \"scoped-probe.py\": \"87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2\", \"backup-gate.py\": \"0e9eb6a3535290383057ed68e08f71c8eb94dc791691629979f45b9b86d84b08\", \"runner.py\": \"8edde79d4e8dfe96f4ed3604df7c8c6b7eb033d9ccc1e1db5659a2d61d968c80\", \"artifact-transfer.py\": \"6feb08750886cd62af3086675de1c444cf2325dc59b0043e45fb833c08e8d983\", \"startup-sample.py\": \"9a7d8de1b8bdadd87b586b1b8ac85349072744ff2e324b8e98777bb8cc21182d\", \"examples/optional-agent.sh\": \"f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79\", \"binaries/crg-linux-amd64\": \"6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e\"}, \"phase\": \"testing-dbs-20\", \"processes\": {\"runner\": {\"pid\": 705779, \"start_ticks\": 150617214, \"entry\": \"/var/tmp/crg-startup1020-tools-20261113/runner.py\", \"job_sha256\": \"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\", \"plan_sha256\": \"9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": true}, \"dbs-20-driver\": {\"pid\": 706044, \"start_ticks\": 150617297, \"entry\": \"/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py\", \"case\": \"dbs-20\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": true}}, \"cases\": {\"dbs-20\": {\"phase\": \"preparing\", \"case_phase\": \"preparing\", \"case_error\": null, \"error\": null, \"checks\": [{\"name\": \"preview4-dbs-percent20-startup-initialization-original-PG-API-and-exact-three-percent-controls\", \"passed\": true}, {\"name\": \"preview4-dbs-percent20-startup-initialization-original-readonly-cache-mount\", \"passed\": true}, {\"name\": \"preview4-dbs-percent20-startup-initialization-cache-enforce-within-original-budget\", \"passed\": true}, {\"name\": \"preview4-dbs-percent20-startup-initialization-original-ls-probe\", \"passed\": true}, {\"name\": \"preview4-dbs-percent20-startup-initialization-daily0600-v2-high-logs-and-automatic-profile\", \"passed\": true}, {\"name\": \"preview4-dbs-percent20-startup-initialization-exactly-one-source-qualified-Agent\", \"passed\": true}, {\"name\": \"preview4-dbs-percent20-startup-initialization-no-container-OOM\", \"passed\": true}], \"starts\": [{\"phase\": \"initialization\", \"pod_uid\": \"5c055a07-7fe3-4f51-81ab-69bab0c76d69\", \"container_id\": \"07e342b256c1ca1805c3b35bede63d9ff89da8a6724da0940596a744d1878a84\", \"group\": \"/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5c055a07_7fe3_4f51_81ab_69bab0c76d69.slice/cri-containerd-07e342b256c1ca1805c3b35bede63d9ff89da8a6724da0940596a744d1878a84.scope\", \"pod_parent\": \"/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5c055a07_7fe3_4f51_81ab_69bab0c76d69.slice\", \"init_pid\": 707621, \"init_start_ticks\": 150617943, \"ready_and_managed_seconds\": 62.50809808098711, \"PG_ready_seconds\": 19.628182105952874, \"API_ready_seconds\": 20.88175509381108, \"IO_profile_sha256\": \"2648a13282e5fa8849fe14e21a28850981e9f0939398ee787206d1f5d412096f\", \"automatic_io\": {\"state\": \"calibrated\", \"detail\": \"three samples saved atomically; subsequent starts reuse matching device identity\", \"selection\": {\"directory\": \"/etc/crg\", \"filesystem\": \"xfs\", \"device\": \"253:0\", \"identity\": \"46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3\", \"control_device\": \"253:0\", \"total_bytes\": 965520392192, \"available_bytes\": 52629430272}, \"profile\": \"/etc/crg/io-profile.json\"}, \"real_kubelet_probe\": {\"phase\": \"observing\", \"expected_own_labels\": {\"namespace\": \"crg-vendor-lab-startup1020-dbs-20-20261113\", \"pod\": \"dbs-business\", \"pod_uid\": \"5c055a07-7fe3-4f51-81ab-69bab0c76d69\", \"container\": \"dbs\", \"probe_type\": \"Liveness\"}, \"samples\": [{\"gate_elapsed_seconds\": 63.86355559295043, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 79.03471674094908, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 94.18666893988848, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 109.33966360380873, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 124.49203934683464, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 139.6426625768654, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 154.7956669589039, \"selected_own_counters\": []}, {\"gate_elapsed_seconds\": 170.01266228687018, \"selected_own_counters\": []}], \"maximum_gate_to_probe_observation_seconds\": 720, \"no_other_container_metrics_saved\": true, \"gate_elapsed_seconds\": 170.14885265287012}, \"real_kubelet_probe_error\": null, \"boot_error_before_probe\": null, \"pod_delete_command\": null, \"leaf_absent_after_delete\": null, \"parent_absent_after_delete\": null, \"group_exists\": true, \"processes\": [{\"pid\": 707621, \"start_ticks\": 150617943, \"program\": \"bash\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 707961, \"start_ticks\": 150618047, \"program\": \"sleep\", \"original_absent\": true}, {\"pid\": 708677, \"start_ticks\": 150618147, \"program\": \"bash\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 708688, \"start_ticks\": 150618147, \"program\": \"bash\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 708690, \"start_ticks\": 150618147, \"program\": \"crg\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709671, \"start_ticks\": 150618580, \"program\": \"bash\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709674, \"start_ticks\": 150618580, \"program\": \"bash\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709686, \"start_ticks\": 150618581, \"program\": \"sleep\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709698, \"start_ticks\": 150618581, \"program\": \"su\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709700, \"start_ticks\": 150618581, \"program\": \"bash\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709711, \"start_ticks\": 150618582, \"program\": \"dbs\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 709712, \"start_ticks\": 150618588, \"program\": \"sleep\", \"original_absent\": true}, {\"pid\": 709847, \"start_ticks\": 150618633, \"program\": \"dbs\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 712731, \"start_ticks\": 150619648, \"program\": \"containercacheguard\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 712972, \"start_ticks\": 150619686, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713015, \"start_ticks\": 150619729, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713057, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713058, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713059, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713060, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713061, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713062, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713063, \"start_ticks\": 150619761, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 713121, \"start_ticks\": 150619764, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 714410, \"start_ticks\": 150620271, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 715062, \"start_ticks\": 150620625, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 715063, \"start_ticks\": 150620626, \"program\": \"postgres\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": null}, {\"pid\": 724204, \"start_ticks\": 150624450, \"program\": \"sleep\", \"original_absent\": true}], \"startup_sample_count\": 14, \"last_startup_sample\": {\"io.stat\": \"8:0 rbytes=647598080 wbytes=802921984 rios=3125 wios=3906 dbytes=0 dios=0\\n253:0 rbytes=647598080 wbytes=1576050176 rios=1280 wios=6827 dbytes=0 dios=0\\n\", \"cpu.stat\": \"usage_usec 9575297\\nuser_usec 6902476\\nsystem_usec 2672821\\ncore_sched.force_idle_usec 0\\nnr_periods 572\\nnr_throttled 0\\nthrottled_usec 0\\nnr_bursts 0\\nburst_usec 0\\n\", \"memory.current\": \"1499930624\\n\", \"io.pressure\": {\"state\": \"unavailable\", \"reason\": \"missing-cgroup-file\", \"error_class\": \"FileNotFoundError\"}, \"elapsed_seconds\": 62.01411223481409}, \"actual_controls\": {\"cpu.max\": \"480000 100000\", \"memory.high\": \"13334654976\", \"io.max\": \"253:0 rbps=15131041 wbps=8097125 riops=10 wiops=15\", \"memory.max\": \"21474836480\", \"pids.max\": \"406648\", \"cpu.weight\": \"4\", \"io.weight\": \"default 100\", \"memory.swap.max\": \"0\"}, \"memory_events\": \"low 0\\nhigh 0\\nmax 0\\noom 0\\noom_kill 0\\noom_group_kill 0\\n\", \"current_resource_state\": \"managed\", \"current_resource_identity\": \"c70b54b6067260ee13f0db3093281b384b7e344fe2eb0d6a7771979c459f5ce0\"}], \"namespace_absent\": null, \"report_sha256\": \"2a2af00d4394af85dd25eca998ca0415fd105b26df5a4a577b116a3bd6e4e609\"}}, \"available_memory_bytes\": 35875409920, \"free_disk_bytes\": 51839717376, \"coordinator_report_sha256\": \"dbb4ed2a4bb6446dd355729b60ece2401e3ab3597e262fe371f039140a73f15a\", \"coordinator_report_utf8\": \"{\\n  \\\"schema\\\": \\\"crg-high-percent-startup-matrix-coordinator-v1\\\",\\n  \\\"phase\\\": \\\"testing-dbs-20\\\",\\n  \\\"plan_sha256\\\": \\\"9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a\\\",\\n  \\\"job_sha256\\\": \\\"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\\\",\\n  \\\"started_epoch\\\": 1794566229.089374,\\n  \\\"cases\\\": {\\n    \\\"dbs-20\\\": {\\n      \\\"phase\\\": \\\"starting\\\",\\n      \\\"driver\\\": {\\n        \\\"pid\\\": 706044,\\n        \\\"start_ticks\\\": 150617297,\\n        \\\"entry\\\": \\\"/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py\\\",\\n        \\\"case\\\": \\\"dbs-20\\\"\\n      }\\n    }\\n  },\\n  \\\"errors\\\": [],\\n  \\\"gate_samples\\\": [\\n    {\\n      \\\"node_epoch\\\": 1794566229.6658685,\\n      \\\"same_original_processes\\\": {\\n        \\\"runner\\\": {\\n          \\\"pid\\\": 1703323,\\n          \\\"start_ticks\\\": 141722385,\\n          \\\"entry\\\": \\\"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\\\"\\n        },\\n        \\\"worker\\\": {\\n          \\\"pid\\\": 1703324,\\n          \\\"start_ticks\\\": 141722389,\\n          \\\"entry\\\": \\\"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\\\"\\n        },\\n        \\\"campaign\\\": {\\n          \\\"pid\\\": 1722386,\\n          \\\"start_ticks\\\": 141729405,\\n          \\\"entry\\\": \\\"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\\\"\\n        }\\n      },\\n      \\\"original_phase\\\": \\\"seven-day-native-measurement\\\",\\n      \\\"campaign_phase\\\": \\\"measuring\\\",\\n      \\\"completed_backups\\\": 5,\\n      \\\"required_backup\\\": {\\n        \\\"offset_seconds\\\": 86400.09484980884,\\n        \\\"run_id\\\": \\\"2026111257604\\\",\\n        \\\"content_started_epoch\\\": 1794563765.057563,\\n        \\\"exit\\\": 0,\\n        \\\"phase\\\": \\\"content-passed-native-pending\\\",\\n        \\\"roles\\\": {\\n          \\\"dbs\\\": {\\n            \\\"checks\\\": 10,\\n            \\\"cleanup\\\": true,\\n            \\\"native_pending\\\": true,\\n            \\\"exec_probe_diagnostic\\\": {\\n              \\\"passed_original_5s_criterion\\\": false,\\n              \\\"samples\\\": 20,\\n              \\\"api_max\\\": 6.431522105121985,\\n              \\\"sql_max\\\": 1.4138061830308288\\n            }\\n          },\\n          \\\"hisdbs\\\": {\\n            \\\"checks\\\": 10,\\n            \\\"cleanup\\\": true,\\n            \\\"native_pending\\\": true,\\n            \\\"exec_probe_diagnostic\\\": {\\n              \\\"passed_original_5s_criterion\\\": true,\\n              \\\"samples\\\": 18,\\n              \\\"api_max\\\": 4.921372347977012,\\n              \\\"sql_max\\\": 1.2693127498496324\\n            }\\n          }\\n        },\\n        \\\"content_ended_epoch\\\": 1794563857.0286326\\n      },\\n      \\\"gate_passed\\\": true,\\n      \\\"not_seven_day_acceptance\\\": true\\n    }\\n  ],\\n  \\\"no_prior_fixture_restart_or_resource_mutation\\\": true,\\n  \\\"previous_attempt_cleanup\\\": {\\n    \\\"report_sha256\\\": \\\"db0f01b46664a4aa7123407e83e21e2418b4a75e058a9bcdb94326d92d3c5eaa\\\",\\n    \\\"all_four_prior_namespaces_groups_drivers_runner_and_registered_instances_absent\\\": true,\\n    \\\"registered_instances\\\": {\\n      \\\"dbs-20\\\": 28,\\n      \\\"hisdbs-20\\\": 40,\\n      \\\"dbs-30\\\": 40,\\n      \\\"hisdbs-30\\\": 40\\n    },\\n    \\\"prior_failure_not_overwritten\\\": true\\n  },\\n  \\\"passed_gate\\\": {\\n    \\\"node_epoch\\\": 1794566229.6658685,\\n    \\\"same_original_processes\\\": {\\n      \\\"runner\\\": {\\n        \\\"pid\\\": 1703323,\\n        \\\"start_ticks\\\": 141722385,\\n        \\\"entry\\\": \\\"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\\\"\\n      },\\n      \\\"worker\\\": {\\n        \\\"pid\\\": 1703324,\\n        \\\"start_ticks\\\": 141722389,\\n        \\\"entry\\\": \\\"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\\\"\\n      },\\n      \\\"campaign\\\": {\\n        \\\"pid\\\": 1722386,\\n        \\\"start_ticks\\\": 141729405,\\n        \\\"entry\\\": \\\"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\\\"\\n      }\\n    },\\n    \\\"original_phase\\\": \\\"seven-day-native-measurement\\\",\\n    \\\"campaign_phase\\\": \\\"measuring\\\",\\n    \\\"completed_backups\\\": 5,\\n    \\\"required_backup\\\": {\\n      \\\"offset_seconds\\\": 86400.09484980884,\\n      \\\"run_id\\\": \\\"2026111257604\\\",\\n      \\\"content_started_epoch\\\": 1794563765.057563,\\n      \\\"exit\\\": 0,\\n      \\\"phase\\\": \\\"content-passed-native-pending\\\",\\n      \\\"roles\\\": {\\n        \\\"dbs\\\": {\\n          \\\"checks\\\": 10,\\n          \\\"cleanup\\\": true,\\n          \\\"native_pending\\\": true,\\n          \\\"exec_probe_diagnostic\\\": {\\n            \\\"passed_original_5s_criterion\\\": false,\\n            \\\"samples\\\": 20,\\n            \\\"api_max\\\": 6.431522105121985,\\n            \\\"sql_max\\\": 1.4138061830308288\\n          }\\n        },\\n        \\\"hisdbs\\\": {\\n          \\\"checks\\\": 10,\\n          \\\"cleanup\\\": true,\\n          \\\"native_pending\\\": true,\\n          \\\"exec_probe_diagnostic\\\": {\\n            \\\"passed_original_5s_criterion\\\": true,\\n            \\\"samples\\\": 18,\\n            \\\"api_max\\\": 4.921372347977012,\\n            \\\"sql_max\\\": 1.2693127498496324\\n          }\\n        }\\n      },\\n      \\\"content_ended_epoch\\\": 1794563857.0286326\\n    },\\n    \\\"gate_passed\\\": true,\\n    \\\"not_seven_day_acceptance\\\": true\\n  }\\n}\\n\", \"coordinator_report\": {\"schema\": \"crg-high-percent-startup-matrix-coordinator-v1\", \"phase\": \"testing-dbs-20\", \"plan_sha256\": \"9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a\", \"job_sha256\": \"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\", \"started_epoch\": 1794566229.089374, \"cases\": {\"dbs-20\": {\"phase\": \"starting\", \"driver\": {\"pid\": 706044, \"start_ticks\": 150617297, \"entry\": \"/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py\", \"case\": \"dbs-20\"}}}, \"errors\": [], \"gate_samples\": [{\"node_epoch\": 1794566229.6658685, \"same_original_processes\": {\"runner\": {\"pid\": 1703323, \"start_ticks\": 141722385, \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\"}, \"worker\": {\"pid\": 1703324, \"start_ticks\": 141722389, \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\"}, \"campaign\": {\"pid\": 1722386, \"start_ticks\": 141729405, \"entry\": \"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\"}}, \"original_phase\": \"seven-day-native-measurement\", \"campaign_phase\": \"measuring\", \"completed_backups\": 5, \"required_backup\": {\"offset_seconds\": 86400.09484980884, \"run_id\": \"2026111257604\", \"content_started_epoch\": 1794563765.057563, \"exit\": 0, \"phase\": \"content-passed-native-pending\", \"roles\": {\"dbs\": {\"checks\": 10, \"cleanup\": true, \"native_pending\": true, \"exec_probe_diagnostic\": {\"passed_original_5s_criterion\": false, \"samples\": 20, \"api_max\": 6.431522105121985, \"sql_max\": 1.4138061830308288}}, \"hisdbs\": {\"checks\": 10, \"cleanup\": true, \"native_pending\": true, \"exec_probe_diagnostic\": {\"passed_original_5s_criterion\": true, \"samples\": 18, \"api_max\": 4.921372347977012, \"sql_max\": 1.2693127498496324}}}, \"content_ended_epoch\": 1794563857.0286326}, \"gate_passed\": true, \"not_seven_day_acceptance\": true}], \"no_prior_fixture_restart_or_resource_mutation\": true, \"previous_attempt_cleanup\": {\"report_sha256\": \"db0f01b46664a4aa7123407e83e21e2418b4a75e058a9bcdb94326d92d3c5eaa\", \"all_four_prior_namespaces_groups_drivers_runner_and_registered_instances_absent\": true, \"registered_instances\": {\"dbs-20\": 28, \"hisdbs-20\": 40, \"dbs-30\": 40, \"hisdbs-30\": 40}, \"prior_failure_not_overwritten\": true}, \"passed_gate\": {\"node_epoch\": 1794566229.6658685, \"same_original_processes\": {\"runner\": {\"pid\": 1703323, \"start_ticks\": 141722385, \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\"}, \"worker\": {\"pid\": 1703324, \"start_ticks\": 141722389, \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\"}, \"campaign\": {\"pid\": 1722386, \"start_ticks\": 141729405, \"entry\": \"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\"}}, \"original_phase\": \"seven-day-native-measurement\", \"campaign_phase\": \"measuring\", \"completed_backups\": 5, \"required_backup\": {\"offset_seconds\": 86400.09484980884, \"run_id\": \"2026111257604\", \"content_started_epoch\": 1794563765.057563, \"exit\": 0, \"phase\": \"content-passed-native-pending\", \"roles\": {\"dbs\": {\"checks\": 10, \"cleanup\": true, \"native_pending\": true, \"exec_probe_diagnostic\": {\"passed_original_5s_criterion\": false, \"samples\": 20, \"api_max\": 6.431522105121985, \"sql_max\": 1.4138061830308288}}, \"hisdbs\": {\"checks\": 10, \"cleanup\": true, \"native_pending\": true, \"exec_probe_diagnostic\": {\"passed_original_5s_criterion\": true, \"samples\": 18, \"api_max\": 4.921372347977012, \"sql_max\": 1.2693127498496324}}}, \"content_ended_epoch\": 1794563857.0286326}, \"gate_passed\": true, \"not_seven_day_acceptance\": true}}, \"summary\": {\"node_utc\": \"2026-11-13T10:40:13.454202+00:00\", \"phase\": \"testing-dbs-20\", \"processes\": {\"runner\": {\"pid\": 705779, \"start_ticks\": 150617214, \"entry\": \"/var/tmp/crg-startup1020-tools-20261113/runner.py\", \"job_sha256\": \"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\", \"plan_sha256\": \"9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": true}, \"dbs-20-driver\": {\"pid\": 706044, \"start_ticks\": 150617297, \"entry\": \"/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py\", \"case\": \"dbs-20\", \"original_absent\": false, \"state\": \"S\", \"entry_matches\": true}}, \"exit\": null, \"last_gate_sample\": {\"node_epoch\": 1794566229.6658685, \"same_original_processes\": {\"runner\": {\"pid\": 1703323, \"start_ticks\": 141722385, \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\"}, \"worker\": {\"pid\": 1703324, \"start_ticks\": 141722389, \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\"}, \"campaign\": {\"pid\": 1722386, \"start_ticks\": 141729405, \"entry\": \"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\"}}, \"original_phase\": \"seven-day-native-measurement\", \"campaign_phase\": \"measuring\", \"completed_backups\": 5, \"required_backup\": {\"offset_seconds\": 86400.09484980884, \"run_id\": \"2026111257604\", \"content_started_epoch\": 1794563765.057563, \"exit\": 0, \"phase\": \"content-passed-native-pending\", \"roles\": {\"dbs\": {\"checks\": 10, \"cleanup\": true, \"native_pending\": true, \"exec_probe_diagnostic\": {\"passed_original_5s_criterion\": false, \"samples\": 20, \"api_max\": 6.431522105121985, \"sql_max\": 1.4138061830308288}}, \"hisdbs\": {\"checks\": 10, \"cleanup\": true, \"native_pending\": true, \"exec_probe_diagnostic\": {\"passed_original_5s_criterion\": true, \"samples\": 18, \"api_max\": 4.921372347977012, \"sql_max\": 1.2693127498496324}}}, \"content_ended_epoch\": 1794563857.0286326}, \"gate_passed\": true, \"not_seven_day_acceptance\": true}, \"cases\": {\"dbs-20\": {\"phase\": \"preparing\", \"case_phase\": \"preparing\", \"case_error\": null, \"recorded_checks\": 7, \"passed_checks\": 7, \"starts\": [{\"phase\": \"initialization\", \"ready_and_managed_seconds\": 62.50809808098711, \"actual_kubelet_probe_phase\": \"observing\"}]}}, \"stable_release_accepted\": false}}\n",
+  "observation_sha256": "9b65b959bdf51175a4c87a474959fbff335daa65da53430d3d04690fa0d11dd6",
+  "exact_readonly_observer_source": "from pathlib import Path\nimport datetime,hashlib,json,shutil,subprocess,time\nw=Path('/var/tmp/crg-startup1020-tools-20261113');root=Path('/var/tmp/crg-startup1020-results-20261113');sha=lambda raw:hashlib.sha256(raw).hexdigest()\ndef read(path,maximum=8*1024*1024):\n    for attempt in range(5):\n        raw=path.read_bytes();assert len(raw)<=maximum\n        try:return raw,json.loads(raw)\n        except json.JSONDecodeError:\n            if attempt==4:raise\n            time.sleep(.1)\ndef proc(row):\n    try:\n        p=Path('/proc',str(row['pid']));fields=(p/'stat').read_bytes().rsplit(b')',1)[1].split();args=(p/'cmdline').read_bytes().split(b'\\0');return dict(row,original_absent=int(fields[19])!=row['start_ticks'],state=fields[0].decode(),entry_matches=row['entry'].encode() in args if row.get('entry') else None)\n    except (FileNotFoundError,ProcessLookupError):return dict(row,original_absent=True)\nraw,plan=read(w/'plan.json');out={'node_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'plan_sha256':sha(raw),'job_sha256':plan['job_sha256'],'actual_source_sha256':{name:sha((w/name).read_bytes()) for name in plan['source_sha256']},'phase':'no-report-yet','processes':{},'cases':{},'available_memory_bytes':int(next(v.split()[1] for v in Path('/proc/meminfo').read_text().splitlines() if v.startswith('MemAvailable:')))*1024,'free_disk_bytes':shutil.disk_usage('/var/tmp').free};assert out['actual_source_sha256']==plan['source_sha256']\nif (w/'launch.json').exists():out['processes']['runner']=proc(read(w/'launch.json')[1])\nif (root/'report.json').exists():\n    raw,report=read(root/'report.json');out.update(phase=report['phase'],coordinator_report_sha256=sha(raw),coordinator_report_utf8=raw.decode(),coordinator_report=report)\n    for key,row in report.get('cases',{}).items():\n        if row.get('driver'):out['processes'][key+'-driver']=proc(row['driver'])\nfor case_name in plan['cases']:\n    path=root/case_name/'report.json'\n    if not path.exists():continue\n    raw,value=read(path);role,pct=case_name.split('-');item=value['roles'].get('preview4-'+role+'-percent'+pct+'-startup',{});starts=[]\n    for row in item.get('starts',[]):\n        group=Path(row['group']) if row.get('group') else None;v={k:row.get(k) for k in ['phase','pod_uid','container_id','group','pod_parent','init_pid','init_start_ticks','ready_and_managed_seconds','PG_ready_seconds','API_ready_seconds','IO_profile_sha256','automatic_io','real_kubelet_probe','real_kubelet_probe_error','boot_error_before_probe','pod_delete_command','leaf_absent_after_delete','parent_absent_after_delete']};v['group_exists']=group is not None and group.is_dir();v['processes']=[proc(p) for p in row.get('processes',[])];v['startup_sample_count']=len(row.get('startup_samples',[]));v['last_startup_sample']=row.get('startup_samples',[None])[-1] if row.get('startup_samples') else None\n        if v['group_exists']:\n            v['actual_controls']={name:(group/name).read_text().strip() for name in ['cpu.max','memory.high','io.max','memory.max','pids.max','cpu.weight','io.weight','memory.swap.max']};v['memory_events']=(group/'memory.events').read_text();folder=root/case_name/('preview4-'+role+'-percent'+pct+'-startup')/(role+'-business');status=folder/'resource-state/status.json'\n            if status.exists():_,state=read(status);v['current_resource_state']=state.get('state');v['current_resource_identity']=state.get('plan',{}).get('environment',{}).get('identity')\n        starts.append(v)\n    out['cases'][case_name]={'phase':value['phase'],'case_phase':item.get('phase'),'case_error':item.get('error'),'error':value.get('error'),'checks':value['tests'],'starts':starts,'namespace_absent':value.get('namespace_absent'),'report_sha256':sha(raw)}\nif (w/'exit.json').exists():raw,value=read(w/'exit.json',16384);out['exit']=value;out['exit_sha256']=sha(raw)\nif (w/'artifact-index.json').exists():raw,value=read(w/'artifact-index.json',65536);out.update(artifact_index=value,artifact_index_utf8=raw.decode(),artifact_index_sha256=sha(raw))\nif out.get('exit') is not None and all(v['original_absent'] for v in out['processes'].values()):\n    out['independent_cleanup']={}\n    for name,row in out.get('coordinator_report',{}).get('cases',{}).items():\n        q=subprocess.run(['kubectl','get','namespace',plan['namespaces'][name],'--ignore-not-found','-o','json'],capture_output=True,text=True,timeout=15,check=True);assert not q.stderr\n        out['independent_cleanup'][name]={'namespace_absent':not q.stdout.strip(),'starts':[{'leaf_absent':not Path(v['group']).exists(),'parent_absent':not Path(v['pod_parent']).exists(),'processes':[proc(p) for p in v.get('processes',[])]} for v in row.get('cleanup',[])]}\nout['summary']={'node_utc':out['node_utc'],'phase':out['phase'],'processes':out['processes'],'exit':out.get('exit'),'last_gate_sample':out.get('coordinator_report',{}).get('gate_samples',[None])[-1],'cases':{k:{'phase':v['phase'],'case_phase':v['case_phase'],'case_error':v['case_error'],'recorded_checks':len(v['checks']),'passed_checks':sum(q['passed'] for q in v['checks']),'starts':[{'phase':s['phase'],'ready_and_managed_seconds':s['ready_and_managed_seconds'],'actual_kubelet_probe_phase':(s['real_kubelet_probe'] or {}).get('phase')} for s in v['starts']]} for k,v in out['cases'].items()},'stable_release_accepted':False}\nprint(json.dumps(out))\n",
+  "observer_source_sha256": "5aff511c43de7475d52d638f24cb2017c7bfa81ea8666ff1c0d04db57c140329",
+  "observation": {
+    "node_utc": "2026-11-13T10:40:13.454202+00:00",
+    "plan_sha256": "9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a",
+    "job_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+    "actual_source_sha256": {
+      "startup-matrix-driver.py": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+      "scoped-probe.py": "87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2",
+      "backup-gate.py": "0e9eb6a3535290383057ed68e08f71c8eb94dc791691629979f45b9b86d84b08",
+      "runner.py": "8edde79d4e8dfe96f4ed3604df7c8c6b7eb033d9ccc1e1db5659a2d61d968c80",
+      "artifact-transfer.py": "6feb08750886cd62af3086675de1c444cf2325dc59b0043e45fb833c08e8d983",
+      "startup-sample.py": "9a7d8de1b8bdadd87b586b1b8ac85349072744ff2e324b8e98777bb8cc21182d",
+      "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+      "binaries/crg-linux-amd64": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+    },
+    "phase": "testing-dbs-20",
+    "processes": {
+      "runner": {
+        "pid": 705779,
+        "start_ticks": 150617214,
+        "entry": "/var/tmp/crg-startup1020-tools-20261113/runner.py",
+        "job_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+        "plan_sha256": "9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a",
+        "original_absent": false,
+        "state": "S",
+        "entry_matches": true
+      },
+      "dbs-20-driver": {
+        "pid": 706044,
+        "start_ticks": 150617297,
+        "entry": "/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py",
+        "case": "dbs-20",
+        "original_absent": false,
+        "state": "S",
+        "entry_matches": true
+      }
+    },
+    "cases": {
+      "dbs-20": {
+        "phase": "preparing",
+        "case_phase": "preparing",
+        "case_error": null,
+        "error": null,
+        "checks": [
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-original-PG-API-and-exact-three-percent-controls",
+            "passed": true
+          },
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-original-readonly-cache-mount",
+            "passed": true
+          },
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-cache-enforce-within-original-budget",
+            "passed": true
+          },
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-original-ls-probe",
+            "passed": true
+          },
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-daily0600-v2-high-logs-and-automatic-profile",
+            "passed": true
+          },
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-exactly-one-source-qualified-Agent",
+            "passed": true
+          },
+          {
+            "name": "preview4-dbs-percent20-startup-initialization-no-container-OOM",
+            "passed": true
+          }
+        ],
+        "starts": [
+          {
+            "phase": "initialization",
+            "pod_uid": "5c055a07-7fe3-4f51-81ab-69bab0c76d69",
+            "container_id": "07e342b256c1ca1805c3b35bede63d9ff89da8a6724da0940596a744d1878a84",
+            "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5c055a07_7fe3_4f51_81ab_69bab0c76d69.slice/cri-containerd-07e342b256c1ca1805c3b35bede63d9ff89da8a6724da0940596a744d1878a84.scope",
+            "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5c055a07_7fe3_4f51_81ab_69bab0c76d69.slice",
+            "init_pid": 707621,
+            "init_start_ticks": 150617943,
+            "ready_and_managed_seconds": 62.50809808098711,
+            "PG_ready_seconds": 19.628182105952874,
+            "API_ready_seconds": 20.88175509381108,
+            "IO_profile_sha256": "2648a13282e5fa8849fe14e21a28850981e9f0939398ee787206d1f5d412096f",
+            "automatic_io": {
+              "state": "calibrated",
+              "detail": "three samples saved atomically; subsequent starts reuse matching device identity",
+              "selection": {
+                "directory": "/etc/crg",
+                "filesystem": "xfs",
+                "device": "253:0",
+                "identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+                "control_device": "253:0",
+                "total_bytes": 965520392192,
+                "available_bytes": 52629430272
+              },
+              "profile": "/etc/crg/io-profile.json"
+            },
+            "real_kubelet_probe": {
+              "phase": "observing",
+              "expected_own_labels": {
+                "namespace": "crg-vendor-lab-startup1020-dbs-20-20261113",
+                "pod": "dbs-business",
+                "pod_uid": "5c055a07-7fe3-4f51-81ab-69bab0c76d69",
+                "container": "dbs",
+                "probe_type": "Liveness"
+              },
+              "samples": [
+                {
+                  "gate_elapsed_seconds": 63.86355559295043,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 79.03471674094908,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 94.18666893988848,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 109.33966360380873,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 124.49203934683464,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 139.6426625768654,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 154.7956669589039,
+                  "selected_own_counters": []
+                },
+                {
+                  "gate_elapsed_seconds": 170.01266228687018,
+                  "selected_own_counters": []
+                }
+              ],
+              "maximum_gate_to_probe_observation_seconds": 720,
+              "no_other_container_metrics_saved": true,
+              "gate_elapsed_seconds": 170.14885265287012
+            },
+            "real_kubelet_probe_error": null,
+            "boot_error_before_probe": null,
+            "pod_delete_command": null,
+            "leaf_absent_after_delete": null,
+            "parent_absent_after_delete": null,
+            "group_exists": true,
+            "processes": [
+              {
+                "pid": 707621,
+                "start_ticks": 150617943,
+                "program": "bash",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 707961,
+                "start_ticks": 150618047,
+                "program": "sleep",
+                "original_absent": true
+              },
+              {
+                "pid": 708677,
+                "start_ticks": 150618147,
+                "program": "bash",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 708688,
+                "start_ticks": 150618147,
+                "program": "bash",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 708690,
+                "start_ticks": 150618147,
+                "program": "crg",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709671,
+                "start_ticks": 150618580,
+                "program": "bash",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709674,
+                "start_ticks": 150618580,
+                "program": "bash",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709686,
+                "start_ticks": 150618581,
+                "program": "sleep",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709698,
+                "start_ticks": 150618581,
+                "program": "su",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709700,
+                "start_ticks": 150618581,
+                "program": "bash",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709711,
+                "start_ticks": 150618582,
+                "program": "dbs",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 709712,
+                "start_ticks": 150618588,
+                "program": "sleep",
+                "original_absent": true
+              },
+              {
+                "pid": 709847,
+                "start_ticks": 150618633,
+                "program": "dbs",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 712731,
+                "start_ticks": 150619648,
+                "program": "containercacheguard",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 712972,
+                "start_ticks": 150619686,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713015,
+                "start_ticks": 150619729,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713057,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713058,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713059,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713060,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713061,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713062,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713063,
+                "start_ticks": 150619761,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 713121,
+                "start_ticks": 150619764,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 714410,
+                "start_ticks": 150620271,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 715062,
+                "start_ticks": 150620625,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 715063,
+                "start_ticks": 150620626,
+                "program": "postgres",
+                "original_absent": false,
+                "state": "S",
+                "entry_matches": null
+              },
+              {
+                "pid": 724204,
+                "start_ticks": 150624450,
+                "program": "sleep",
+                "original_absent": true
+              }
+            ],
+            "startup_sample_count": 14,
+            "last_startup_sample": {
+              "io.stat": "8:0 rbytes=647598080 wbytes=802921984 rios=3125 wios=3906 dbytes=0 dios=0\n253:0 rbytes=647598080 wbytes=1576050176 rios=1280 wios=6827 dbytes=0 dios=0\n",
+              "cpu.stat": "usage_usec 9575297\nuser_usec 6902476\nsystem_usec 2672821\ncore_sched.force_idle_usec 0\nnr_periods 572\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+              "memory.current": "1499930624\n",
+              "io.pressure": {
+                "state": "unavailable",
+                "reason": "missing-cgroup-file",
+                "error_class": "FileNotFoundError"
+              },
+              "elapsed_seconds": 62.01411223481409
+            },
+            "actual_controls": {
+              "cpu.max": "480000 100000",
+              "memory.high": "13334654976",
+              "io.max": "253:0 rbps=15131041 wbps=8097125 riops=10 wiops=15",
+              "memory.max": "21474836480",
+              "pids.max": "406648",
+              "cpu.weight": "4",
+              "io.weight": "default 100",
+              "memory.swap.max": "0"
+            },
+            "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+            "current_resource_state": "managed",
+            "current_resource_identity": "c70b54b6067260ee13f0db3093281b384b7e344fe2eb0d6a7771979c459f5ce0"
+          }
+        ],
+        "namespace_absent": null,
+        "report_sha256": "2a2af00d4394af85dd25eca998ca0415fd105b26df5a4a577b116a3bd6e4e609"
+      }
+    },
+    "available_memory_bytes": 35875409920,
+    "free_disk_bytes": 51839717376,
+    "coordinator_report_sha256": "dbb4ed2a4bb6446dd355729b60ece2401e3ab3597e262fe371f039140a73f15a",
+    "coordinator_report_utf8": "{\n  \"schema\": \"crg-high-percent-startup-matrix-coordinator-v1\",\n  \"phase\": \"testing-dbs-20\",\n  \"plan_sha256\": \"9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a\",\n  \"job_sha256\": \"d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408\",\n  \"started_epoch\": 1794566229.089374,\n  \"cases\": {\n    \"dbs-20\": {\n      \"phase\": \"starting\",\n      \"driver\": {\n        \"pid\": 706044,\n        \"start_ticks\": 150617297,\n        \"entry\": \"/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py\",\n        \"case\": \"dbs-20\"\n      }\n    }\n  },\n  \"errors\": [],\n  \"gate_samples\": [\n    {\n      \"node_epoch\": 1794566229.6658685,\n      \"same_original_processes\": {\n        \"runner\": {\n          \"pid\": 1703323,\n          \"start_ticks\": 141722385,\n          \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\"\n        },\n        \"worker\": {\n          \"pid\": 1703324,\n          \"start_ticks\": 141722389,\n          \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\"\n        },\n        \"campaign\": {\n          \"pid\": 1722386,\n          \"start_ticks\": 141729405,\n          \"entry\": \"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\"\n        }\n      },\n      \"original_phase\": \"seven-day-native-measurement\",\n      \"campaign_phase\": \"measuring\",\n      \"completed_backups\": 5,\n      \"required_backup\": {\n        \"offset_seconds\": 86400.09484980884,\n        \"run_id\": \"2026111257604\",\n        \"content_started_epoch\": 1794563765.057563,\n        \"exit\": 0,\n        \"phase\": \"content-passed-native-pending\",\n        \"roles\": {\n          \"dbs\": {\n            \"checks\": 10,\n            \"cleanup\": true,\n            \"native_pending\": true,\n            \"exec_probe_diagnostic\": {\n              \"passed_original_5s_criterion\": false,\n              \"samples\": 20,\n              \"api_max\": 6.431522105121985,\n              \"sql_max\": 1.4138061830308288\n            }\n          },\n          \"hisdbs\": {\n            \"checks\": 10,\n            \"cleanup\": true,\n            \"native_pending\": true,\n            \"exec_probe_diagnostic\": {\n              \"passed_original_5s_criterion\": true,\n              \"samples\": 18,\n              \"api_max\": 4.921372347977012,\n              \"sql_max\": 1.2693127498496324\n            }\n          }\n        },\n        \"content_ended_epoch\": 1794563857.0286326\n      },\n      \"gate_passed\": true,\n      \"not_seven_day_acceptance\": true\n    }\n  ],\n  \"no_prior_fixture_restart_or_resource_mutation\": true,\n  \"previous_attempt_cleanup\": {\n    \"report_sha256\": \"db0f01b46664a4aa7123407e83e21e2418b4a75e058a9bcdb94326d92d3c5eaa\",\n    \"all_four_prior_namespaces_groups_drivers_runner_and_registered_instances_absent\": true,\n    \"registered_instances\": {\n      \"dbs-20\": 28,\n      \"hisdbs-20\": 40,\n      \"dbs-30\": 40,\n      \"hisdbs-30\": 40\n    },\n    \"prior_failure_not_overwritten\": true\n  },\n  \"passed_gate\": {\n    \"node_epoch\": 1794566229.6658685,\n    \"same_original_processes\": {\n      \"runner\": {\n        \"pid\": 1703323,\n        \"start_ticks\": 141722385,\n        \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-runner.py\"\n      },\n      \"worker\": {\n        \"pid\": 1703324,\n        \"start_ticks\": 141722389,\n        \"entry\": \"/var/tmp/crg-high576-tools-20261112/acceptance-job.py\"\n      },\n      \"campaign\": {\n        \"pid\": 1722386,\n        \"start_ticks\": 141729405,\n        \"entry\": \"/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py\"\n      }\n    },\n    \"original_phase\": \"seven-day-native-measurement\",\n    \"campaign_phase\": \"measuring\",\n    \"completed_backups\": 5,\n    \"required_backup\": {\n      \"offset_seconds\": 86400.09484980884,\n      \"run_id\": \"2026111257604\",\n      \"content_started_epoch\": 1794563765.057563,\n      \"exit\": 0,\n      \"phase\": \"content-passed-native-pending\",\n      \"roles\": {\n        \"dbs\": {\n          \"checks\": 10,\n          \"cleanup\": true,\n          \"native_pending\": true,\n          \"exec_probe_diagnostic\": {\n            \"passed_original_5s_criterion\": false,\n            \"samples\": 20,\n            \"api_max\": 6.431522105121985,\n            \"sql_max\": 1.4138061830308288\n          }\n        },\n        \"hisdbs\": {\n          \"checks\": 10,\n          \"cleanup\": true,\n          \"native_pending\": true,\n          \"exec_probe_diagnostic\": {\n            \"passed_original_5s_criterion\": true,\n            \"samples\": 18,\n            \"api_max\": 4.921372347977012,\n            \"sql_max\": 1.2693127498496324\n          }\n        }\n      },\n      \"content_ended_epoch\": 1794563857.0286326\n    },\n    \"gate_passed\": true,\n    \"not_seven_day_acceptance\": true\n  }\n}\n",
+    "coordinator_report": {
+      "schema": "crg-high-percent-startup-matrix-coordinator-v1",
+      "phase": "testing-dbs-20",
+      "plan_sha256": "9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a",
+      "job_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+      "started_epoch": 1794566229.089374,
+      "cases": {
+        "dbs-20": {
+          "phase": "starting",
+          "driver": {
+            "pid": 706044,
+            "start_ticks": 150617297,
+            "entry": "/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py",
+            "case": "dbs-20"
+          }
+        }
+      },
+      "errors": [],
+      "gate_samples": [
+        {
+          "node_epoch": 1794566229.6658685,
+          "same_original_processes": {
+            "runner": {
+              "pid": 1703323,
+              "start_ticks": 141722385,
+              "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-runner.py"
+            },
+            "worker": {
+              "pid": 1703324,
+              "start_ticks": 141722389,
+              "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-job.py"
+            },
+            "campaign": {
+              "pid": 1722386,
+              "start_ticks": 141729405,
+              "entry": "/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py"
+            }
+          },
+          "original_phase": "seven-day-native-measurement",
+          "campaign_phase": "measuring",
+          "completed_backups": 5,
+          "required_backup": {
+            "offset_seconds": 86400.09484980884,
+            "run_id": "2026111257604",
+            "content_started_epoch": 1794563765.057563,
+            "exit": 0,
+            "phase": "content-passed-native-pending",
+            "roles": {
+              "dbs": {
+                "checks": 10,
+                "cleanup": true,
+                "native_pending": true,
+                "exec_probe_diagnostic": {
+                  "passed_original_5s_criterion": false,
+                  "samples": 20,
+                  "api_max": 6.431522105121985,
+                  "sql_max": 1.4138061830308288
+                }
+              },
+              "hisdbs": {
+                "checks": 10,
+                "cleanup": true,
+                "native_pending": true,
+                "exec_probe_diagnostic": {
+                  "passed_original_5s_criterion": true,
+                  "samples": 18,
+                  "api_max": 4.921372347977012,
+                  "sql_max": 1.2693127498496324
+                }
+              }
+            },
+            "content_ended_epoch": 1794563857.0286326
+          },
+          "gate_passed": true,
+          "not_seven_day_acceptance": true
+        }
+      ],
+      "no_prior_fixture_restart_or_resource_mutation": true,
+      "previous_attempt_cleanup": {
+        "report_sha256": "db0f01b46664a4aa7123407e83e21e2418b4a75e058a9bcdb94326d92d3c5eaa",
+        "all_four_prior_namespaces_groups_drivers_runner_and_registered_instances_absent": true,
+        "registered_instances": {
+          "dbs-20": 28,
+          "hisdbs-20": 40,
+          "dbs-30": 40,
+          "hisdbs-30": 40
+        },
+        "prior_failure_not_overwritten": true
+      },
+      "passed_gate": {
+        "node_epoch": 1794566229.6658685,
+        "same_original_processes": {
+          "runner": {
+            "pid": 1703323,
+            "start_ticks": 141722385,
+            "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-runner.py"
+          },
+          "worker": {
+            "pid": 1703324,
+            "start_ticks": 141722389,
+            "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-job.py"
+          },
+          "campaign": {
+            "pid": 1722386,
+            "start_ticks": 141729405,
+            "entry": "/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py"
+          }
+        },
+        "original_phase": "seven-day-native-measurement",
+        "campaign_phase": "measuring",
+        "completed_backups": 5,
+        "required_backup": {
+          "offset_seconds": 86400.09484980884,
+          "run_id": "2026111257604",
+          "content_started_epoch": 1794563765.057563,
+          "exit": 0,
+          "phase": "content-passed-native-pending",
+          "roles": {
+            "dbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": false,
+                "samples": 20,
+                "api_max": 6.431522105121985,
+                "sql_max": 1.4138061830308288
+              }
+            },
+            "hisdbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 18,
+                "api_max": 4.921372347977012,
+                "sql_max": 1.2693127498496324
+              }
+            }
+          },
+          "content_ended_epoch": 1794563857.0286326
+        },
+        "gate_passed": true,
+        "not_seven_day_acceptance": true
+      }
+    },
+    "summary": {
+      "node_utc": "2026-11-13T10:40:13.454202+00:00",
+      "phase": "testing-dbs-20",
+      "processes": {
+        "runner": {
+          "pid": 705779,
+          "start_ticks": 150617214,
+          "entry": "/var/tmp/crg-startup1020-tools-20261113/runner.py",
+          "job_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+          "plan_sha256": "9d521f5615f4c72b69bfe7824962efc41bf8f1a385ff67126de389c0f05e5b7a",
+          "original_absent": false,
+          "state": "S",
+          "entry_matches": true
+        },
+        "dbs-20-driver": {
+          "pid": 706044,
+          "start_ticks": 150617297,
+          "entry": "/var/tmp/crg-startup1020-tools-20261113/startup-matrix-driver.py",
+          "case": "dbs-20",
+          "original_absent": false,
+          "state": "S",
+          "entry_matches": true
+        }
+      },
+      "exit": null,
+      "last_gate_sample": {
+        "node_epoch": 1794566229.6658685,
+        "same_original_processes": {
+          "runner": {
+            "pid": 1703323,
+            "start_ticks": 141722385,
+            "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-runner.py"
+          },
+          "worker": {
+            "pid": 1703324,
+            "start_ticks": 141722389,
+            "entry": "/var/tmp/crg-high576-tools-20261112/acceptance-job.py"
+          },
+          "campaign": {
+            "pid": 1722386,
+            "start_ticks": 141729405,
+            "entry": "/var/tmp/crg-high576-tools-20261112/campaign-wrapper.py"
+          }
+        },
+        "original_phase": "seven-day-native-measurement",
+        "campaign_phase": "measuring",
+        "completed_backups": 5,
+        "required_backup": {
+          "offset_seconds": 86400.09484980884,
+          "run_id": "2026111257604",
+          "content_started_epoch": 1794563765.057563,
+          "exit": 0,
+          "phase": "content-passed-native-pending",
+          "roles": {
+            "dbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": false,
+                "samples": 20,
+                "api_max": 6.431522105121985,
+                "sql_max": 1.4138061830308288
+              }
+            },
+            "hisdbs": {
+              "checks": 10,
+              "cleanup": true,
+              "native_pending": true,
+              "exec_probe_diagnostic": {
+                "passed_original_5s_criterion": true,
+                "samples": 18,
+                "api_max": 4.921372347977012,
+                "sql_max": 1.2693127498496324
+              }
+            }
+          },
+          "content_ended_epoch": 1794563857.0286326
+        },
+        "gate_passed": true,
+        "not_seven_day_acceptance": true
+      },
+      "cases": {
+        "dbs-20": {
+          "phase": "preparing",
+          "case_phase": "preparing",
+          "case_error": null,
+          "recorded_checks": 7,
+          "passed_checks": 7,
+          "starts": [
+            {
+              "phase": "initialization",
+              "ready_and_managed_seconds": 62.50809808098711,
+              "actual_kubelet_probe_phase": "observing"
+            }
+          ]
+        }
+      },
+      "stable_release_accepted": false
+    }
+  },
+  "business_accepted": false,
+  "stable_release_accepted": false,
+  "not_terminal_or_144_checks_completed": true
+}
