@@ -1,6 +1,6 @@
 # 保留数据重建的 PostgreSQL 进程诊断
 
-状态：启动前冻结、原生节点预检查通过，尚未启动。此项推进P01.2/P01.3实际业务失败定位，不改原52项或144项矩阵定义和失败结果。
+状态：[准确源CI通过](test-results-PG-rebuild-process-CI.json)，[已唯一启动](test-start-PG-rebuild-process.json)，原始观察时间及三个进程身份见记录；尚未获得重建终态。此项推进P01.2/P01.3实际业务失败定位，不改原52项或144项矩阵定义和失败结果。
 
 [原矩阵终态](test-results-high-percent-startup-psi-compatible.json)为failed：DBS/HIS20首启通过、重建超原300秒，HIS原120秒删除也失败，30%未执行。[新增只读片段](test-evidence-PG-rebuild-startup-selected.json.gz)显示原厂程序已经执行pg_ctl start，随后报告PG startup fail且没有第二次PG启动日志。保留PID文件的数值启动时间位于本次重建门槛之后，不能仅凭残留文件将原因说成旧PID；HIS文件来自后续启动重试。未采集当时的内核等待栈，尚不能确定卡在IO、同步或其他阶段。
 
@@ -13,3 +13,5 @@
 [本地冻结来源和16项观察器检查](https://github.com/cuipengdba/ContainerResourceGuard/blob/739e01f69c741101dded3d4da85cc294294da6d7/tests/pg-rebuild-process-frozen/offline-qualification.json)、[原生Linux16项与准确上传摘要](test-results-PG-rebuild-process-native-preflight.json)、[观察器](https://github.com/cuipengdba/ContainerResourceGuard/blob/739e01f69c741101dded3d4da85cc294294da6d7/tests/pg-rebuild-process-frozen/pg-process-observer.py)、[驱动](https://github.com/cuipengdba/ContainerResourceGuard/blob/739e01f69c741101dded3d4da85cc294294da6d7/tests/pg-rebuild-process-frozen/startup-matrix-driver.py)及[协调器](https://github.com/cuipengdba/ContainerResourceGuard/blob/739e01f69c741101dded3d4da85cc294294da6d7/tests/pg-rebuild-process-frozen/runner.py)均在启动前归档。检查覆盖目标叶、拒绝父级/兄弟/错误Pod/非规范路径、等待状态/FD分类、非PG/外组排除、缺栈/超大字段明确不可用、采样中PID复用和迁组。Windows早期Path拼写夹具错误已在冻结资格报告注明，修正后本地/原生均16项通过；不计真实业务结果。
 
 程序生产代码、preview.4发布附件及正在运行的长期Agent均保持原样；memory_percent仍写memory.high，外部memory.max保留。
+
+[PG重建诊断已实际启动](test-start-PG-rebuild-process.json)：节点12:16UTC确认同一runner、只读观察器和DBS20驱动三者的PID/startticks/入口均在运行。上轮准确失败与107实例/四namespace实际清理、原长期任务同句柄第五备份门槛均通过；当前首次PG探针exit0，但仍未记录业务检查，观察器等第二次启动。两开发分支[完整CI及新增16项](test-results-PG-rebuild-process-CI.json)通过。第一次SSH启动请求中断后先证实无launch/日志/结果目录，再修正本地字符串编码后唯一启动；冻结源和计划未改。原业务失败及稳定条件保持。
