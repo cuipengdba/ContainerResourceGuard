@@ -1598,7 +1598,7 @@
     "cold_rebuild_accepted": true,
     "cold_rebuild_verification": "docs/test-results-memory-high-cold-rebuild.json",
     "seven_day_plan": "docs/test-plan-memory-high-seven-day.json",
-    "seven_day_phase": "running-own-exact-preview4-not-accepted",
+    "seven_day_phase": "failed-sixth-periodic-standby-start-after-about30h",
     "seven_day_frozen_evidence": "docs/test-evidence/memory-high-seven-day-frozen.json.gz",
     "seven_day_frozen_evidence_sha256": "a3522d34b765f008441adee2be0c9343afd43e926e9d61e55a94651f601f9e73",
     "seven_day_observation": "docs/test-results-memory-high-seven-day-start.json",
@@ -1607,7 +1607,9 @@
     "public_preview_maintenance_phase": "passed-26-checks-two-actual-public-package-programs",
     "public_preview_maintenance_accepted": true,
     "public_preview_maintenance_verification": "docs/test-results-public-preview-memory-high-maintenance.json",
-    "public_upgrade_runbook": "docs/upgrade-preview3-preview4.zh.md"
+    "public_upgrade_runbook": "docs/upgrade-preview3-preview4.zh.md",
+    "seven_day_terminal_report": "docs/test-results-memory-high-seven-day-terminal.json",
+    "seven_day_accepted": false
   },
   "pg_wait_v2_qualification_v3": {
     "phase": "failed-before-output-or-namespace-no-native-checks",
@@ -2364,7 +2366,7 @@
     "stable_release_accepted": false
   },
   "IO_bandwidth_policy": {
-    "phase": "preview5-published-exact-CI-and-default20-both-roles-qualified",
+    "phase": "preview5-published-original-matrix-terminal-log-assertion-failed",
     "documentation": "io-bandwidth-policy.md",
     "user_choice": "默认按读写带宽百分比限制，IOPS 留给手动模式",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2383,10 +2385,11 @@
     "old_preview4_unchanged": true,
     "stable_release_accepted": false,
     "preview5_published": true,
-    "preview5_publication_report": "test-results-preview5-publication.json"
+    "preview5_publication_report": "test-results-preview5-publication.json",
+    "terminal_matrix_report": "test-results-bandwidth-percent-terminal.json"
   },
   "bandwidth_default_startup_matrix": {
-    "phase": "running-completed-default20-both-roles",
+    "phase": "failed-original-matrix-log-assertion-crosses-midnight",
     "documentation": "testing-bandwidth-percent-startup.md",
     "plan": "test-plan-bandwidth-percent-startup.json",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2397,13 +2400,13 @@
     "structural_checks": 17,
     "planned_checks": 144,
     "planned_boots": 12,
-    "runtime_checks": 72,
-    "terminal": false,
+    "runtime_checks": 129,
+    "terminal": true,
     "business_accepted": false,
     "stable_release_accepted": false,
-    "passed_checks": 72,
-    "observed_boots": 6,
-    "node_utc": "2026-11-13T15:41:11.878815+00:00",
+    "passed_checks": 128,
+    "observed_boots": 11,
+    "node_utc": "2026-11-13T16:26:50.102871+00:00",
     "start_evidence": "test-start-bandwidth-percent.json",
     "source_plan_commit": "e21fdac63becb62d5409f2fba49cb504e577db6d",
     "runner": {
@@ -2415,14 +2418,18 @@
     },
     "remaining_cases_not_accepted": true,
     "subset_report": "test-results-preview5-qualified-subset.json",
-    "checks_basis": "completed case checks only; ongoing partial checks excluded",
+    "checks_basis": "all recorded original terminal checks, including one failed cross-midnight log assertion",
     "completed_cases": [
       "dbs-20",
-      "hisdbs-20"
+      "hisdbs-20",
+      "dbs-30"
     ],
-    "current_case": "dbs-30",
+    "current_case": null,
     "two_role_report": "test-results-bandwidth-default20-two-role.json",
-    "independently_absent_registered_process_instances": 189
+    "independently_absent_registered_process_instances": 369,
+    "failed_checks": 1,
+    "unexecuted_checks": 15,
+    "terminal_report": "test-results-bandwidth-percent-terminal.json"
   },
   "preview5_engineering_scope": {
     "version": "v1.0.0-preview.5",
@@ -2446,6 +2453,10 @@
     "initial_package_scope_complete_DBS20_checks": 36,
     "subsequent_complete_default20_checks": 72,
     "complete144_matrix_accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "subsequent_complete_case_checks": 108,
+    "terminal_matrix_recorded_checks": 129,
+    "terminal_matrix_passed_checks": 128,
+    "terminal_matrix_failed_checks": 1
   }
 }
