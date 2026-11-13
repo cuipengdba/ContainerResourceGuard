@@ -1,5 +1,8 @@
 # 开发任务与验收跟踪
 
+默认20%完整600秒任务已经唯一启动；节点2026-11-13 17:37:37 UTC快照：DBS约55.15秒受控就绪、7项启动检查通过，实际IO仅读写BPS、riops/wiops均max，native负载仍运行，HISDBS尚未启动。运行快照不能作为600秒/物理备份同步通过；[启动身份与只读原件](test-start-bandwidth-default20-full600.json)及[原冻结门槛](testing-bandwidth-default20-full600.md)已归档。
+
+
 后续独立任务：[默认20%原完整600秒业务验证](testing-bandwidth-default20-full600.md)已冻结，15项资格和真机预检通过；同一preview.5程序，原16项角色检查/物理备份300秒/native600秒及全部SLA保持，尚无业务终态。1190已清理的106登记实例和namespace/三组父叶是启动前硬门槛，原失败与非独占范围保留。
 
 
