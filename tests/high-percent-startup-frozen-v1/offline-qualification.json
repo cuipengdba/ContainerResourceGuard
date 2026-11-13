@@ -1,0 +1,34 @@
+{
+  "schema": "crg-startup-coordinator-offline-qualification-v1",
+  "phase": "passed",
+  "checks": [
+    "all-candidate-python-syntax",
+    "only-complete-exact-backup-gates",
+    "absent-backup-waits",
+    "unfinished-backup-waits",
+    "reject-terminal-campaign",
+    "reject-duplicate-target",
+    "reject-wrong-exit",
+    "reject-wrong-phase",
+    "reject-early-offset",
+    "reject-no-end",
+    "reject-missing-role",
+    "reject-missing-content",
+    "reject-cleanup-failed",
+    "reject-wrong-native-semantics",
+    "exact-own-UID-probe-and-foreign-exclusion",
+    "reject-probe-duplicate-label",
+    "reject-probe-nonfinite",
+    "reject-probe-negative",
+    "reject-probe-fraction",
+    "reject-probe-duplicate-result",
+    "reject-probe-unknown-label"
+  ],
+  "source_sha256": {
+    "backup-gate.py": "16b0b959107e09f3809888c6fe3bfa2787824f45f81ce1ef4c51107b2605bff6",
+    "runner.py": "eb6aa0022ba44836b96f0cb393fc29790e258a81d473cff3219706730ca42820",
+    "scoped-probe.py": "87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2",
+    "startup-matrix-driver.py": "7fbb3645c068053ef3fc48a46eb95e406e8bfdd36b9d36ca859549c6807ffb81"
+  },
+  "live_process_gate_or_kubelet_or_business_claim": false
+}
