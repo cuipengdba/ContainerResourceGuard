@@ -12,12 +12,13 @@ import (
 )
 
 type DeviceProfile struct {
-	Device    string `json:"device"`
-	Identity  string `json:"identity"`
-	ReadBPS   uint64 `json:"read_bps"`
-	WriteBPS  uint64 `json:"write_bps"`
-	ReadIOPS  uint64 `json:"read_iops"`
-	WriteIOPS uint64 `json:"write_iops"`
+	Device       string          `json:"device"`
+	Identity     string          `json:"identity"`
+	ReadBPS      uint64          `json:"read_bps"`
+	WriteBPS     uint64          `json:"write_bps"`
+	ReadIOPS     uint64          `json:"read_iops"`
+	WriteIOPS    uint64          `json:"write_iops"`
+	Measurements []IOMeasurement `json:"measurements,omitempty"`
 }
 type Profile struct {
 	Version    int             `json:"version"`
@@ -35,6 +36,7 @@ type Setting struct {
 func (s Setting) Key() string { return s.File + ":" + s.Device }
 
 type Plan struct {
+	MemoryPolicy string               `json:"memory_policy,omitempty"`
 	Percentages  *ResourcePercentages `json:"percentages,omitempty"`
 	Environment  Environment          `json:"environment"`
 	Percent      float64              `json:"percent,omitempty"`
@@ -69,10 +71,16 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if err := c.Validate(); err != nil {
 		return Plan{}, err
 	}
-	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode}
+	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode, MemoryPolicy: "high-reclaim-throttle"}
+	if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
+		p.Warnings = append(p.Warnings, "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit")
+	}
 	if c.independentPercentages() {
 		values := c.ResourcePercentages
 		p.Percentages = &values
+	}
+	if c.ResourceMode == "percent" {
+		p.Warnings = append(p.Warnings, env.CapacityWarnings...)
 	}
 	if p.ResourceMode == "" {
 		p.ResourceMode = "percent"
@@ -111,6 +119,12 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if wantMem && mem < desiredMem {
 		p.Warnings = append(p.Warnings, "memory constrained by existing limits")
 	}
+	if cap := externalMemoryCap(env, "memory.high", original); cap < mem {
+		mem = cap
+		if wantMem {
+			p.Warnings = append(p.Warnings, "memory target constrained by existing memory.high")
+		}
+	}
 	quota := uint64(cpu * 100000)
 	if wantCPU && quota < 1000 {
 		p.Warnings = append(p.Warnings, "CPU target below kernel minimum quota; CPU skipped")
@@ -119,8 +133,8 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	}
 	if wantMem && mem < 16<<20 {
 		p.Warnings = append(p.Warnings, "memory target below 16 MiB; memory skipped")
-	} else if wantMem {
-		p.Settings = append(p.Settings, Setting{File: "memory.max", Value: strconv.FormatUint(mem, 10)})
+	} else if wantMem && c.MemoryHigh == "" {
+		p.Settings = append(p.Settings, Setting{File: "memory.high", Value: strconv.FormatUint(mem, 10)})
 	}
 	if c.PidsMax != nil {
 		n := *c.PidsMax
@@ -149,12 +163,12 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if c.IOWeight != nil {
 		p.Settings = append(p.Settings, Setting{File: "io.weight", Value: "default " + strconv.FormatUint(*c.IOWeight, 10)})
 	}
-	extraSettings, memoryWarnings, extraErr := memoryExtras(c, env, original, wantMem, desiredMem, mem)
-	if extraErr != nil {
-		return p, extraErr
+	extra, warnings, err := memoryExtras(c, env, original, wantMem, desiredMem, mem)
+	if err != nil {
+		return p, err
 	}
-	p.Settings = append(p.Settings, extraSettings...)
-	p.Warnings = append(p.Warnings, memoryWarnings...)
+	p.Settings = append(p.Settings, extra...)
+	p.Warnings = append(p.Warnings, warnings...)
 	if c.ResourceMode == "manual" {
 		settings, devices, warnings := manualIO(c, env, original, manualDevice, relatedDevices)
 		p.Settings = append(p.Settings, settings...)
@@ -163,7 +177,7 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		p.Paths = pathCoverage(c.DataPaths, p.Settings)
 		return p, nil
 	}
-	data, e := os.ReadFile(c.IOProfile)
+	data, e := ReadBoundedFile(c.IOProfile)
 	if e != nil {
 		p.Warnings = append(p.Warnings, "IO unmanaged: profile unavailable: "+e.Error())
 		p.Paths = pathCoverage(c.DataPaths, p.Settings)
@@ -173,69 +187,13 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 	if e = Decode(data, &profile); e != nil {
 		return p, fmt.Errorf("invalid IO profile: %w", e)
 	}
-	if profile.Version != 1 || len(profile.Devices) == 0 || profile.Method != "direct-sync-qdepth1-seq1m-random4k" {
-		return p, errors.New("unsupported or empty IO profile")
+	if e = ValidateProfile(profile); e != nil {
+		return p, e
 	}
-	seen := map[string]bool{}
-	resolved := map[string]DeviceProfile{}
-	for _, d := range profile.Devices {
-		if d.ReadBPS == 0 || d.WriteBPS == 0 || d.ReadIOPS == 0 || d.WriteIOPS == 0 {
-			return p, errors.New("IO profile rates must all be positive")
-		}
-		dev, e := resolveProfileDevice(d)
-		if e != nil {
-			p.Warnings = append(p.Warnings, "IO unmanaged: "+e.Error())
-			p.Devices = append(p.Devices, DeviceCoverage{ProfileDevice: d.Device, State: "unavailable", Detail: e.Error()})
-			continue
-		}
-		if seen[dev] {
-			return p, errors.New("duplicate profile device")
-		}
-		seen[dev] = true
-		resolved[dev] = d
-	}
-	for _, d := range profile.Devices {
-		dev, err := resolveProfileDevice(d)
-		if err != nil {
-			continue
-		}
-		coverage := DeviceCoverage{ProfileDevice: d.Device, Device: dev, State: "planned", Detail: "all four calibrated dimensions; actual write/readback required"}
-		stacked := false
-		for other := range resolved {
-			if other == dev {
-				continue
-			}
-			related, err := relatedDevices(dev, other)
-			if err != nil || related {
-				stacked = true
-				break
-			}
-		}
-		if stacked {
-			coverage.State, coverage.Detail = "skipped", "overlapping or unreadable device stack; use one calibrated layer per path"
-			p.Devices = append(p.Devices, coverage)
-			p.Warnings = append(p.Warnings, "IO unmanaged: "+dev+": "+coverage.Detail)
-			continue
-		}
-		_, _, ioPercent := c.corePercentages()
-		scale := func(n uint64) uint64 { return scaleRate(n, ioPercent) }
-		if scale(d.ReadBPS) == 0 || scale(d.WriteBPS) == 0 || scale(d.ReadIOPS) == 0 || scale(d.WriteIOPS) == 0 {
-			p.Warnings = append(p.Warnings, "IO unmanaged: percent below whole-unit BPS/IOPS minimum for device "+dev)
-			coverage.State, coverage.Detail = "skipped", "percent below integer BPS/IOPS minimum"
-			p.Devices = append(p.Devices, coverage)
-			continue
-		}
-		value := fmt.Sprintf("rbps=%d wbps=%d riops=%d wiops=%d", scale(d.ReadBPS), scale(d.WriteBPS), scale(d.ReadIOPS), scale(d.WriteIOPS))
-		// Keep stricter pre-existing limits for each dimension of this device.
-		prev, _ := read(filepath.Join(env.Target, "io.max"))
-		prev = ioValue(prev, dev)
-		if v, ok := original["io.max:"+dev]; ok {
-			prev = v
-		}
-		value = clampIO(value, prev)
-		p.Settings = append(p.Settings, Setting{File: "io.max", Device: dev, DeviceIdentity: d.Identity, Value: value})
-		p.Devices = append(p.Devices, coverage)
-	}
+	ioSettings, devices, ioWarnings := percentageIO(c, env, original, profile, resolveProfileBinding, relatedDevices)
+	p.Settings = append(p.Settings, ioSettings...)
+	p.Devices = devices
+	p.Warnings = append(p.Warnings, ioWarnings...)
 	p.Paths = pathCoverage(c.DataPaths, p.Settings)
 	for _, v := range p.Paths {
 		if v.State != "planned" {

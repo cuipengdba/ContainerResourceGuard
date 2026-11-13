@@ -1,6 +1,6 @@
 # 配置参数
 
-> 本页面向已发布preview.4下载程序。main源码尚未回移memory.high，旧源码请按对应标签文档；新部署参阅[preview.4说明](releases/v1.0.0-preview.4.md)。
+> 本页面向已发布preview.4下载程序。此集成源码已包含memory.high实现memory.high，旧源码请按对应标签文档；新部署参阅[preview.4说明](releases/v1.0.0-preview.4.md)。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
 

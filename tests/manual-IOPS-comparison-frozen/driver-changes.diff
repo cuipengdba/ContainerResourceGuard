@@ -1,0 +1,102 @@
+--- previous-frozen-driver
++++ manual-comparison-driver
+@@ -1,13 +1,14 @@
+ import pathlib,json,subprocess,time,traceback,hashlib,os,shutil,re,uuid,shlex,sys,importlib.util,signal
+-candidates=pathlib.Path('/var/tmp/crg-rebuild1060-tools-20261113');plan=json.loads((candidates/'plan.json').read_bytes());role_argument=sys.argv[1];percent=int(sys.argv[2]);case_argument=role_argument+'-'+str(percent)
+-assert role_argument in ['dbs','hisdbs'] and percent in [20,30]
++candidates=pathlib.Path('/var/tmp/crg-manual1080-tools-20261113');plan=json.loads((candidates/'plan.json').read_bytes());role_argument=sys.argv[1];arm=sys.argv[2];percent=20;case_argument=role_argument+'-'+arm;config=plan['manual_configurations'][arm]
++assert role_argument in ['dbs','hisdbs'] and arm in ['four','bps'] and case_argument in plan['cases']
+ root=pathlib.Path(plan['output'])/case_argument;source=pathlib.Path('/var/tmp/crg-business-20261110');ns=plan['namespaces'][case_argument];created=False;namespace_uid=None;boot_nodes={}
+-assert root==pathlib.Path('/var/tmp/crg-rebuild1060-results-20261113')/case_argument and ns=='crg-vendor-lab-rebuild1060-'+case_argument+'-20261113'
++assert root==pathlib.Path('/var/tmp/crg-manual1080-results-20261113')/case_argument and ns=='crg-vendor-lab-manual1080-'+case_argument+'-20261113'
+ spec=importlib.util.spec_from_file_location('scoped_probe',candidates/'scoped-probe.py');scoped_probe=importlib.util.module_from_spec(spec);spec.loader.exec_module(scoped_probe)
+ spec=importlib.util.spec_from_file_location('startup_sample',candidates/'startup-sample.py');startup_sample=importlib.util.module_from_spec(spec);spec.loader.exec_module(startup_sample)
+ def interrupted(signum,frame):raise RuntimeError('isolated startup matrix interrupted')
+ signal.signal(signal.SIGTERM,interrupted)
+-report={'resource_mode':'percent','declared_test_budget':{'configuration':{} if percent==20 else {'cpu_percent':30,'memory_percent':30,'io_percent':30},'percentages':{k:percent for k in ['cpu_percent','memory_percent','io_percent']},'IO_basis':'fresh automatic maximum-eligible-filesystem calibration, same exact profile retained across three boots'},'phase':'preparing','scope':'isolated original images, original real paths/start/PG/cache, exact observed original kubelet liveness; not undocumented vendor API or no-OOM guarantee','roles':{},'tests':[]}
++report={'resource_mode':'manual','comparison_arm':arm,'declared_test_budget':{'configuration':config,'IO_basis':'fixed rates from prior exact profile20; existing manual mode; no calibration, default policy change, or acceptance substitution'},'phase':'preparing','scope':'isolated original images, original real paths/start/PG/cache, exact observed original kubelet liveness; not undocumented vendor API or no-OOM guarantee','roles':{},'tests':[]}
++
+ def run(a,check=True,timeout=60,**kw):
+  r=subprocess.run(a,capture_output=True,text=True,timeout=timeout,**kw)
+  if check and r.returncode:raise RuntimeError('test command failed, exit='+str(r.returncode))
+@@ -51,7 +52,7 @@
+   except (FileNotFoundError,ProcessLookupError):pass
+  row['processes']=list(rows.values());save()
+ try:
+- assert os.geteuid()==0 and os.uname().machine=='x86_64' and os.environ.get('CRG_REBUILD1060')=='authorized-disposable-test-node-only'
++ assert os.geteuid()==0 and os.uname().machine=='x86_64' and os.environ.get('CRG_MANUAL1080')=='authorized-disposable-test-node-only'
+  for name,digest in plan['source_sha256'].items():assert hashlib.sha256((candidates/name).read_bytes()).hexdigest()==digest
+  assert plan['job_sha256']==hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()
+  for name,digest in plan['private_fixture_sha256'].items():assert hashlib.sha256((source/name).read_bytes()).hexdigest()==digest
+@@ -71,7 +72,7 @@
+  create({'apiVersion':'networking.k8s.io/v1','kind':'NetworkPolicy','metadata':{'name':'deny-all','namespace':ns},'spec':{'podSelector':{},'policyTypes':['Ingress','Egress']}})
+  images=json.loads((source/'vendor-import.json').read_text())['images']
+  for index,(candidate,role,bandwidth) in enumerate([('preview4',role_argument,percent)]):
+-  key=candidate+'-'+role+'-percent'+str(percent)+'-startup';pod_created=False;campaign_job=None;item={'phase':'preparing','candidate_branch':candidate,'role':role,'percentages':{k:percent for k in ['cpu_percent','memory_percent','io_percent']},'starts':[]};report['roles'][key]=item;save()
++  key=candidate+'-'+role+'-'+arm+'-startup';pod_created=False;campaign_job=None;item={'phase':'preparing','candidate_branch':candidate,'role':role,'comparison_arm':arm,'manual_configuration':config,'starts':[]};report['roles'][key]=item;save()
+   try:
+    available=reserve(28);case_root=root/key;case_root.mkdir(mode=0o700);folder=case_root/(role+'-business');folder.mkdir(mode=0o700)
+    for n in ['postgresql','dbs','highgo','log','core','sql','hbp-runtime','resource-state','cache-state','etcd','ccg','crg','crg-config']:(folder/n).mkdir(mode=0o700)
+@@ -84,7 +85,7 @@
+    shutil.copyfile(binary,folder/'crg/crg');(folder/'crg/crg').chmod(0o755)
+    shutil.copyfile(candidates/'examples/optional-agent.sh',folder/'crg/optional-agent.sh')
+    cache=json.loads((source/'fixture'/role/'cache.json').read_text());cache['state_file']=cachepath+'/status.json';(folder/('ccg/config/'+role+'.json')).write_text(json.dumps(cache))
+-   config={} if percent==20 else {'cpu_percent':30,'memory_percent':30,'io_percent':30};(folder/'crg-config/config.json').write_text(json.dumps(config,separators=(',',':')))
++   (folder/'crg-config/config.json').write_text(json.dumps(config,separators=(',',':')))
+    env=json.loads((source/'fixture'/role/'env.json').read_text());secret=uuid.uuid4().hex
+    env.update(MY_POD_NAMESPACE=ns,MY_POD_NAME=role+'-realpath-0',PGPASSWORD=secret,CCG_BIN='/opt/ccg/bin/containercacheguard',CCG_CONFIG='/opt/ccg/config/'+role+'.json',CRG_BIN='/opt/crg/crg',CRG_CONFIG='/etc/crg/config.json',CRG_HELPER_SCRIPT='/opt/crg/optional-agent.sh',YSP_PRODUCT_TYPE='PUC-DBS')
+    pg=(source/'fixture'/role/'postgres.yml').read_text();pg=re.sub(r'(?m)^(\s+password:).*$',r'\1 '+secret,pg).replace('namespace: /crg-isolated/','namespace: /crg-realpaths/')
+@@ -146,7 +147,7 @@
+     if initial['cpu.max']!='800000 100000' or initial['memory.max']!='21474836480' or initial['memory.high']!='max' or initial['io.max']!='':raise RuntimeError('pre-gate original runtime differs')
+     cpu_online=pathlib.Path('/sys/devices/system/cpu/online').read_text().strip();cpu_count=sum(int(v.split('-')[-1])-int(v.split('-')[0])+1 for v in cpu_online.split(','));hostmem=int(next(v.split()[1] for v in pathlib.Path('/proc/meminfo').read_text().splitlines() if v.startswith('MemTotal:')))*1024;page=os.sysconf('SC_PAGE_SIZE')
+     assert envinfo['host_online_cpus']==cpu_count and envinfo['host_memory_bytes']==hostmem
+-    row['independent_host_basis']={'online_cpu_list':cpu_online,'cpu_count':cpu_count,'MemTotal_bytes':hostmem,'page_bytes':page};row['expected_formula_before_gate']=plan['percentage_formula']
++    row['independent_host_basis']={'online_cpu_list':cpu_online,'cpu_count':cpu_count,'MemTotal_bytes':hostmem,'page_bytes':page};row['expected_formula_before_gate']=plan['manual_expected_controls'][arm];assert config==plan['manual_configurations'][arm];assert str(os.major(os.stat(folder/'postgresql').st_dev))+':'+str(os.minor(os.stat(folder/'postgresql').st_dev))==plan['fixed_IO_device']['device']
+     row['IO_profile_exists_before_boot']=(folder/'crg-config/io-profile.json').exists();row['IO_profile_before_boot_sha256']=hashlib.sha256((folder/'crg-config/io-profile.json').read_bytes()).hexdigest() if row['IO_profile_exists_before_boot'] else None
+     started=time.monotonic();row['gate_monotonic']=started;row['gate_epoch']=time.time();deadline=started+300;(gates/meta['metadata']['uid']).write_text('isolated');status=folder/'resource-state/status.json'
+     while time.monotonic()<deadline:
+@@ -164,20 +165,18 @@
+      save();time.sleep(max(0,min(3,deadline-time.monotonic())))
+     else:raise RuntimeError('original PG/API/managed cold-start budget not met within300s')
+     row['ready_and_managed_seconds']=time.monotonic()-started;state=json.loads(status.read_text());row['resource_identity']=state['plan']['environment']['identity'];row['actual_controls']=controls(group)
+-    profile_raw=(folder/'crg-config/io-profile.json').read_bytes();profile=json.loads(profile_raw);assert profile['version']==2 and profile['method']=='direct-sync-qdepth1-seq1m-random4k' and len(profile['devices'])==1
+-    dev=profile['devices'][0];assert len(dev['measurements'])==3 and all(dev[k]==sorted(v[k] for v in dev['measurements'])[1] for k in ['read_bps','write_bps','read_iops','write_iops'])
+-    assert re.fullmatch('[0-9]+:[0-9]+',dev['device']) and re.fullmatch('[0-9a-f]{64}',dev['identity'])
+-    expected_cpu=str(cpu_count*percent*1000)+' 100000';expected_high=str((hostmem*percent//100)//page*page);expected_IO='rbps=%d wbps=%d riops=%d wiops=%d'%tuple(max(1,dev[k]*percent//100) for k in ['read_bps','write_bps','read_iops','write_iops'])
++    assert not (folder/'crg-config/io-profile.json').exists() and state.get('automatic_io') is None
++    dev=plan['fixed_IO_device'];expected_cpu=plan['manual_expected_controls'][arm]['cpu.max'];expected_high=plan['manual_expected_controls'][arm]['memory.high'];expected_IO=plan['manual_expected_controls'][arm]['io.value']
+     wanted=dict(initial);wanted.update({'cpu.max':expected_cpu,'memory.high':expected_high,'io.max':dev['device']+' '+expected_IO})
+     mutations={}
+     for setting in [{'file':'cpu.max','value':expected_cpu},{'file':'memory.high','value':expected_high},{'file':'io.max','device':dev['device'],'device_identity':dev['identity'],'value':expected_IO}]:
+      value=dict(setting,original='rbps=max wbps=max riops=max wiops=max' if setting['file']=='io.max' else initial[setting['file']],applied=setting['value']);mutations[setting['file']+':'+setting.get('device','')]=value
+     expected_journal={'version':1,'identity':envinfo['identity'],'target':str(group),'mutations':mutations};row['expected_controls_from_frozen_formula']=wanted;row['expected_journal_from_runtime_originals_and_profile']=expected_journal
+-    row['actual_journal']=json.loads((folder/'resource-state/journal.json').read_text());row['automatic_io']=state.get('automatic_io');row['IO_profile_sha256']=hashlib.sha256(profile_raw).hexdigest();row['recorded_runtime_documents']={}
+-    for name,path in [('status',status),('journal',folder/'resource-state/journal.json'),('profile',folder/'crg-config/io-profile.json')]:
++    row['actual_journal']=json.loads((folder/'resource-state/journal.json').read_text());row['automatic_io']=state.get('automatic_io');row['IO_profile_sha256']=None;row['recorded_runtime_documents']={}
++    for name,path in [('status',status),('journal',folder/'resource-state/journal.json'),('config',folder/'crg-config/config.json')]:
+      raw=path.read_bytes();assert len(raw)<=1048576;row['recorded_runtime_documents'][name]={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'exact_utf8':raw.decode()}
+-    if row['actual_controls']!=wanted or row['actual_journal']!=expected_journal or row['resource_identity']!=envinfo['identity']:raise RuntimeError('actual percent high controls or exact original journal differs from frozen formula')
+-    record(key+'-'+phase+'-original-PG-API-and-exact-three-percent-controls',set(x['file'] for x in state['items'])=={'cpu.max','memory.high','io.max'} and len(state['items'])==3 and all(x['state']=='applied' for x in state['items']) and state['plan']['percentages']=={k:percent for k in ['cpu_percent','memory_percent','io_percent']} and state['automatic_io']['state'] in ['calibrated','reused'] and (not row['IO_profile_exists_before_boot'] if phase=='initialization' else row['IO_profile_before_boot_sha256']==row['IO_profile_sha256']))
++    if row['actual_controls']!=wanted or row['actual_journal']!=expected_journal or row['resource_identity']!=envinfo['identity']:raise RuntimeError('actual manual controls or exact original journal differs from frozen fixed rates')
++    record(key+'-'+phase+'-original-PG-API-and-exact-three-manual-controls',set(x['file'] for x in state['items'])=={'cpu.max','memory.high','io.max'} and len(state['items'])==3 and all(x['state']=='applied' for x in state['items']) and state['plan']['resource_mode']=='manual' and state['plan'].get('percentages') is None and state.get('automatic_io') is None and not row['IO_profile_exists_before_boot'])
+     record(key+'-'+phase+'-original-readonly-cache-mount','ro' in ex(role,'findmnt','-n','-o','OPTIONS','/opt/ccg').stdout.strip().split(','))
+     cachefile=folder/'cache-state/status.json';cache_started=time.monotonic();cache_deadline=min(started+300,cache_started+45)
+     while time.monotonic()<cache_deadline:
+@@ -188,7 +187,7 @@
+     record(key+'-'+phase+'-cache-enforce-within-original-budget',row['cache_current_source_and_fresh_status'] and time.monotonic()<=started+300)
+     record(key+'-'+phase+'-original-ls-probe',ex(role,'ls',check=False,timeout=10).returncode==0)
+     daily=list((folder/'log/crg').glob('crg-*.log'));events=[json.loads(x) for file in daily for x in file.read_text().splitlines()]
+-    record(key+'-'+phase+'-daily0600-v2-high-logs-and-automatic-profile',bool(daily) and all(file.stat().st_mode&0o777==0o600 for file in daily) and any(x['event']=='cgroup_detected' and x.get('fields',{}).get('check',{}).get('cgroup_version')=='v2' for x in events) and any(x['event']=='resource_status' and x.get('fields',{}).get('memory_policy')=='high-reclaim-throttle' for x in events) and (folder/'crg-config/io-profile.json').is_file())
++    record(key+'-'+phase+'-daily0600-v2-high-logs-and-no-manual-calibration',bool(daily) and all(file.stat().st_mode&0o777==0o600 for file in daily) and any(x['event']=='cgroup_detected' and x.get('fields',{}).get('check',{}).get('cgroup_version')=='v2' for x in events) and any(x['event']=='resource_status' and x.get('fields',{}).get('memory_policy')=='high-reclaim-throttle' for x in events) and not (folder/'crg-config/io-profile.json').exists())
+     agents=[]
+     for process in (group/'cgroup.procs').read_text().splitlines():
+      try:
+@@ -212,7 +211,7 @@
+      item['starts'][-1]['boot_error_before_probe']={'class':type(error).__name__,'error':str(error),'traceback':traceback.format_exc()};save();capture_real_probe(phase,False);raise
+     capture_real_probe(phase,True);return value
+    first=boot_with_probe('initialization');config_hash=hashlib.sha256((folder/'crg-config/config.json').read_bytes()).hexdigest()
+-   schema='crg_startup_20261113r1060';db='crg_startup_restore_20261113r1060'
++   schema='crg_startup_20261113r1080';db='crg_startup_restore_20261113r1080'
+    sql('CREATE SCHEMA '+schema+'; CREATE TABLE '+schema+'.fixture(id bigint PRIMARY KEY,payload text NOT NULL,counter bigint NOT NULL DEFAULT 0); ALTER TABLE '+schema+'.fixture ALTER COLUMN payload SET STORAGE EXTERNAL; INSERT INTO '+schema+".fixture(id,payload) SELECT g,repeat(md5(g::text),128) FROM generate_series(1,16384) g; CREATE TABLE "+schema+'.marker(k integer PRIMARY KEY); INSERT INTO '+schema+'.marker SELECT generate_series(1,128); CHECKPOINT;',timeout=300)
+    checksum="SELECT count(*),sum(id),sum(octet_length(payload)),md5(string_agg(md5(payload),'' ORDER BY id)),sum(counter) FROM "+schema+'.fixture;'
+    marker='SELECT count(*),sum(k) FROM '+schema+'.marker;';before=sql(checksum);mark_before=sql(marker);item['payload_before']=before;item['marker_before']=mark_before

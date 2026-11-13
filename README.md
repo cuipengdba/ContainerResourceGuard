@@ -6,7 +6,7 @@
 
 从源码构建本版请先checkout标签v1.0.0-preview.4；main保留历史程序线，新策略源码位于该标签和组合/分区开发分支。
 
-> 当前下载的preview.4使用memory.high回收/节流目标，不新增memory.max。main源码尚未回移，旧preview.3仍为memory.max策略；部署请按发布包及BUILD.json，见[实现及交付状态](docs/memory-reclaim-policy.md)。
+> 当前下载的preview.4使用memory.high回收/节流目标，不新增memory.max。此集成源码已包含memory.high实现，旧preview.3仍为memory.max策略；部署请按发布包及BUILD.json，见[实现及交付状态](docs/memory-reclaim-policy.md)。
 
 此前下载版本：[v1.0.0-preview.3](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.3)。[功能、更新步骤和限制](docs/releases/v1.0.0-preview.3.md)、[八项公开附件下载校验](docs/test-results-preview3-publication.json)。程序与preview.1/preview.2相同，本版同步最新升级/回退及Agent工具验证文档；稳定1.0和长期验收继续。
 
