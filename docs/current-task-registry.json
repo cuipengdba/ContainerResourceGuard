@@ -1609,7 +1609,8 @@
     "public_preview_maintenance_verification": "docs/test-results-public-preview-memory-high-maintenance.json",
     "public_upgrade_runbook": "docs/upgrade-preview3-preview4.zh.md",
     "seven_day_terminal_report": "docs/test-results-memory-high-seven-day-terminal.json",
-    "seven_day_accepted": false
+    "seven_day_accepted": false,
+    "seven_day_standby_failure_followup": "docs/test-results-memory-high-seven-day-port-conflict.json"
   },
   "pg_wait_v2_qualification_v3": {
     "phase": "failed-before-output-or-namespace-no-native-checks",
@@ -2461,7 +2462,7 @@
     "terminal_followup": "test-results-preview5-terminal-followup.json"
   },
   "calendar_log_acceptance_rerun": {
-    "phase": "qualified-before-launch-not-business-pass",
+    "phase": "running-first-boot-ready-7checks-not-terminal",
     "plan": "test-plan-bandwidth-calendar-HIS30.json",
     "report": "test-results-bandwidth-calendar-preflight.json",
     "documentation": "testing-bandwidth-calendar-HIS30.md",
@@ -2476,6 +2477,19 @@
     "production_code_changed": false,
     "original_failure_unchanged": true,
     "business_accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "start_report": "test-start-bandwidth-calendar-HIS30.json",
+    "node_utc": "2026-11-13T16:49:01.112196+00:00",
+    "runtime_checks": 7,
+    "passed_checks": 7,
+    "observed_boots": 1,
+    "runner": {
+      "pid": 1320002,
+      "start_ticks": 152840914,
+      "entry": "/var/tmp/crg-bandwidth1170-tools-20261114/runner.py",
+      "job_sha256": "4d932a57b2dd9c0af045e11cfac2187f9856edf7db462a61640b74edf56b31a4",
+      "plan_sha256": "1548f836ae7478a59ccc0860cba69b5714f04868dbcb0cb191518ad6be8795b1"
+    },
+    "terminal": false
   }
 }
