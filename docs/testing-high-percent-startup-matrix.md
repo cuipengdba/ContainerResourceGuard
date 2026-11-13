@@ -1,6 +1,6 @@
 # memory.high：20%/30%原厂商启动矩阵
 
-状态：启动前冻结，尚未上传或启动，144项预期检查均不计通过。原默认20%完整物理备份失败继续保留，本矩阵只补充原P01.2的配置/三种启动状态/原健康探针联合证据，不替代P01.1/P04完整业务或稳定1.0验收。
+状态：首轮终态failed。四格首次业务采样因缺少可选io.pressure异常；144项只记录4项且均为独立原kubelet探针成功，140项和8次依赖重建未执行。18份113346字节原件、148个登记实例/四namespace/父叶清理已确认；[完整分析](test-results-high-percent-startup-first-attempt.json)与[原件](test-evidence-high-percent-startup-first-attempt.json.gz)保留。[新编号PSI兼容重测](testing-high-percent-startup-psi-compatible.md)保持全部业务门槛，尚未启动。原默认20%完整物理备份失败继续保留，本矩阵只补充原P01.2的配置/三种启动状态/原健康探针联合证据，不替代P01.1/P04完整业务或稳定1.0验收。
 
 ## 固定产品和输入
 
