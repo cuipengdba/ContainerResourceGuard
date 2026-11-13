@@ -1,5 +1,9 @@
 # 当前验收入口
 
+当前工程交付：[v1.0.0-preview.5](releases/v1.0.0-preview.5.md)。IO百分比只新增读写BPS，IOPS留手动且外部原值保留；内存继续memory.high。[已验证范围](testing-preview5-qualified-subset.md)：准确源码完整Linux/原生ARM64/52项实际cgroup/180项分区通过，新程序DBS默认20%完整36项通过、三次不同ID启动均在原300秒内，95登记实例清理。HIS20及30%两组仍按冻结方案继续，不宣称144项或稳定1.0通过。以下历史状态按原时点保留。
+
+## 历史安装与验收记录
+
 当前新带宽默认值候选准确源码ced4617已通过完整Linux、原生ARM64、52项实际cgroup和180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已唯一启动。节点15:06:47 UTC快照：DBS20已记录17项通过、两次不同ID启动在58.60/85.87秒就绪，后续冷重建及其余三组仍运行，尚非144项终态。IO百分比只新增读写BPS、IOPS留手动且保留外部原值；内存继续memory.high。[首轮实际证据](test-start-bandwidth-percent.json)已归档，preview.5尚未发布，preview.4附件/原52项/历史失败保持。
 
 [手动IOPS四组对照](testing-manual-IOPS-comparison.md)已终结：仅带宽组DBS/HISDBS各36项通过、共六次启动85～114秒就绪；低IOPS四轴两组各仅记录1项原liveness成功，均未达原300秒业务启动标准，HISDBS另有原120秒Pod删除超时。共74/144项阳性、70项未执行，不能称整套通过；后续独立确认四命名空间、八组leaf/parent及219个登记进程实例清理。[完整结果](test-results-manual-IOPS-comparison.json)和[18文件443558字节精确归档](test-evidence-manual-IOPS-comparison.json.gz)保留。默认IO策略不变，原52项仍开放。[源码集成草稿及工程CI](source-integration-status.md)另列，工程通过不替代业务/稳定发布。

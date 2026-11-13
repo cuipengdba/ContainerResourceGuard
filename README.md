@@ -1,5 +1,19 @@
 # ContainerResourceGuard
 
+当前工程交付：[v1.0.0-preview.5](docs/releases/v1.0.0-preview.5.md)。IO百分比只新增读写BPS，IOPS留手动且外部原值保留；内存继续memory.high。[已验证范围](docs/testing-preview5-qualified-subset.md)：准确源码完整Linux/原生ARM64/52项实际cgroup/180项分区通过，新程序DBS默认20%完整36项通过、三次不同ID启动均在原300秒内，95登记实例清理。HIS20及30%两组仍按冻结方案继续，不宣称144项或稳定1.0通过。以下历史状态按原时点保留。
+
+每容器一份Agent，CPU、内存、IO三个百分比可分别配置，未填各默认20；只在纯Cgroup v2设置，v1或权限不足记日志并降级，原业务启动链继续。IO默认自动选最大合格可写本地文件系统后台标定，无需指定目录；日志一天一文件，30日/1GB清理。
+
+```json
+{"cpu_percent":30,"memory_percent":40,"io_percent":25}
+```
+
+下载和迁移按[版本说明](docs/releases/v1.0.0-preview.5.md)进行，保留配置/profile/journal。memory.high允许超过目标，原有硬上限仍可能OOM。若需逐字节复现交付程序，检出产品源码ced461705ebc27315a59aefe463f9b4af47130a3，使用固定Go1.27.3执行`bash scripts/build.sh v1.0.0-preview.5`；BUILD.json另外记录文档打包提交，不把两者混用。
+
+## 历史开发与发布记录
+
+以下记录保留当时版本和验证进度，当前下载与验证范围以上文为准。
+
 候选发布包：[v1.0.0-preview.5](docs/releases/v1.0.0-preview.5.md)，IO 百分比改为读写带宽，IOPS 手动可选，内存继续 memory.high。本打包提交尚未发布；准确源码及当前验证范围见版本说明。
 
 当前新带宽默认值候选准确源码ced4617已通过完整Linux、原生ARM64、52项实际cgroup和180项分区检查；[默认20/30真机矩阵](docs/testing-bandwidth-percent-startup.md)已唯一启动。节点15:06:47 UTC快照：DBS20已记录17项通过、两次不同ID启动在58.60/85.87秒就绪，后续冷重建及其余三组仍运行，尚非144项终态。IO百分比只新增读写BPS、IOPS留手动且保留外部原值；内存继续memory.high。[首轮实际证据](docs/test-start-bandwidth-percent.json)已归档，preview.5尚未发布，preview.4附件/原52项/历史失败保持。

@@ -1,5 +1,9 @@
 # 安装、升级与回退
 
+当前工程交付：[v1.0.0-preview.5](releases/v1.0.0-preview.5.md)。IO百分比只新增读写BPS，IOPS留手动且外部原值保留；内存继续memory.high。[已验证范围](testing-preview5-qualified-subset.md)：准确源码完整Linux/原生ARM64/52项实际cgroup/180项分区通过，新程序DBS默认20%完整36项通过、三次不同ID启动均在原300秒内，95登记实例清理。HIS20及30%两组仍按冻结方案继续，不宣称144项或稳定1.0通过。以下历史状态按原时点保留。
+
+## 历史安装与验收记录
+
 下一版候选：[带宽默认值 preview.5](releases/v1.0.0-preview.5.md)。每容器单独升级，保留配置/profile/journal；使用原程序 quiesce 后替换，检查新 IO 语义及逐项迁移。当前打包尚未公开发布。
 
 preview.3到preview.4的已发布包内程序迁移实测与受控操作见[专用升级步骤](upgrade-preview3-preview4.zh.md)及[26项终态](testing-public-preview-memory-high-maintenance.md)。下述开发记录保留原时点；不把过期快照自动回退与显式反向安装混用。

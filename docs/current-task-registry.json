@@ -2364,7 +2364,7 @@
     "stable_release_accepted": false
   },
   "IO_bandwidth_policy": {
-    "phase": "exact-engineering-CI-passed-new-business-running",
+    "phase": "exact-engineering-DBS20-subset-qualified-full-matrix-running",
     "documentation": "io-bandwidth-policy.md",
     "user_choice": "默认按读写带宽百分比限制，IOPS 留给手动模式",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2384,7 +2384,7 @@
     "stable_release_accepted": false
   },
   "bandwidth_default_startup_matrix": {
-    "phase": "running-first-DBS20-two-boots-ready",
+    "phase": "running-DBS20-complete36-independent95-clean",
     "documentation": "testing-bandwidth-percent-startup.md",
     "plan": "test-plan-bandwidth-percent-startup.json",
     "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -2395,13 +2395,13 @@
     "structural_checks": 17,
     "planned_checks": 144,
     "planned_boots": 12,
-    "runtime_checks": 17,
+    "runtime_checks": 36,
     "terminal": false,
     "business_accepted": false,
     "stable_release_accepted": false,
-    "passed_checks": 17,
-    "observed_boots": 2,
-    "node_utc": "2026-11-13T15:06:47.832896+00:00",
+    "passed_checks": 36,
+    "observed_boots": 3,
+    "node_utc": "2026-11-13T15:24:52.434826+00:00",
     "start_evidence": "test-start-bandwidth-percent.json",
     "source_plan_commit": "e21fdac63becb62d5409f2fba49cb504e577db6d",
     "runner": {
@@ -2411,6 +2411,17 @@
       "job_sha256": "3533a4d607b2af8db19b0185c0912423c3c8865037e1fe43790fe65f8483fe3a",
       "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c"
     },
-    "remaining_cases_not_accepted": true
+    "remaining_cases_not_accepted": true,
+    "subset_report": "test-results-preview5-qualified-subset.json"
+  },
+  "preview5_engineering_scope": {
+    "version": "v1.0.0-preview.5",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "qualified_report": "test-results-preview5-qualified-subset.json",
+    "complete_DBS20_checks": 36,
+    "planned_matrix_checks": 144,
+    "full_matrix_accepted": false,
+    "stable_release_accepted": false,
+    "publication_download_proof": "published separately after server-byte verification"
   }
 }
