@@ -1,0 +1,49 @@
+{
+  "schema": "crg-own-PG-process-observer-local-qualification-v1",
+  "phase": "passed",
+  "PG_checks": {
+    "checks": [
+      "exact-own-declared-leaf",
+      "reject-host-root",
+      "reject-sibling",
+      "reject-wrong-Pod",
+      "reject-parent-traversal",
+      "reject-invalid-ID",
+      "reject-backslash",
+      "reject-noncanonical",
+      "captures-own-wait-state-and-numeric-identity",
+      "fd-links-classified-no-contents-or-paths",
+      "foreign-cgroup-no-observation",
+      "non-PG-no-observation",
+      "missing-stack-explicit-unavailable",
+      "oversized-proc-field-explicit-unavailable",
+      "PID-reuse-during-sample-rejected",
+      "cgroup-migration-during-sample-rejected"
+    ],
+    "count": 16,
+    "product_resource_settings_not_modified": true
+  },
+  "source_sha256": {
+    "startup-matrix-driver.py": "23395fe6772dd9ecec1bea37fa8e45df375d68259b7a4eef6493957ce50d4537",
+    "scoped-probe.py": "87007889c5da1a0418945d4d6ce36fbb20fcac7eb464bab81e991c7522817ae2",
+    "backup-gate.py": "0e9eb6a3535290383057ed68e08f71c8eb94dc791691629979f45b9b86d84b08",
+    "startup-sample.py": "9a7d8de1b8bdadd87b586b1b8ac85349072744ff2e324b8e98777bb8cc21182d",
+    "runner.py": "64780ae43fd459eefebe91b83103ef1d1e1b87ff69d69728de8f120647009eb3",
+    "artifact-transfer.py": "844302fcd6bcd4bd5bfabd616dbdd734b232079828217e68adb6203fdcc92159",
+    "pg-process-observer.py": "b65507f4eb09d385e4699224307c69c8c2593a8539b6aee7f101b4253d55653e",
+    "pg-process-observer-checks.py": "d918af8a2d620a4d13467dec88af5d1c9bccf4c859a6baa975d4965dc428b61a",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "binaries/crg-linux-amd64": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e"
+  },
+  "driver_only_changes": [
+    "isolated startup1020 path/namespace\u2192rebuild1060",
+    "own fixture environment marker",
+    "private SQL schema suffix r1060"
+  ],
+  "original_driver_sha256": "d974b13ab1058277c0dcf08a29a5c7449d250a890582b8f72d1d3a32374d7408",
+  "new_driver_sha256": "23395fe6772dd9ecec1bea37fa8e45df375d68259b7a4eef6493957ce50d4537",
+  "product_binary_unchanged": true,
+  "resource_formula_original_deadlines_and_36_case_checks_unchanged": true,
+  "prior_Windows_check_failure_retained": "Initial canonical path fixture used native Windows Path spelling; corrected POSIX validation/fixture before freezing. Product and remote files unchanged.",
+  "not_live_acceptance": true
+}
