@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import tarfile
 import subprocess
+from package_public import collect_public
 
 parser=argparse.ArgumentParser()
 parser.add_argument('version')
@@ -33,15 +34,7 @@ if manifest['source_revision']!=revision or manifest['version']!=args.version:pa
 # Only committed, allowlisted public blobs enter the package. Working-tree or
 # untracked files can never silently become release documentation or scripts.
 snapshot=subprocess.check_output(['git','archive','--format=tar',package_revision],cwd=root)
-public={}
-with tarfile.open(fileobj=io.BytesIO(snapshot),mode='r:') as source:
-    for member in source:
-        name=member.name
-        selected=name in ('README.md','LICENSE','THIRD_PARTY_NOTICES.md','CHANGELOG.md','SECURITY.md','tests/README.md','tests/vendor-engine-smoke.py','tests/vendor-soak-load.py','tests/vendor-soak-campaign.py') or name.startswith(('docs/','examples/','scripts/'))
-        if not selected:continue
-        if member.isdir():public[name]=None
-        elif member.isfile():public[name]=source.extractfile(member).read()
-        else:raise SystemExit('release source contains unsupported link/special file')
+public=collect_public(snapshot,package_revision)
 for arch in ('amd64','arm64'):
     binary=dist/f'crg-linux-{arch}'
     if not binary.is_file():raise SystemExit(f'missing {binary}')
