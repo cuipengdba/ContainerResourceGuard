@@ -1,5 +1,7 @@
 # 本地运维与恢复（组合开发候选）
 
+用户已明确选择：下一版IO百分比只限制标定读写BPS，IOPS留手动，外部IOPS保留且自有旧值按身份/journal迁移；内存继续memory.high。[新策略](io-bandwidth-policy.md)的准确源码ced4617已通过完整Linux/原生ARM64、52项实际cgroup及180项分区检查；[默认20/30真机矩阵](testing-bandwidth-percent-startup.md)已冻结/预检，尚未启动。preview.4仍为旧四轴、未改附件，原52项和历史失败保持，当前不作新业务或稳定发布接受。
+
 next/compatibility-contract 已组合后续开发能力，尚未发布；公开RC2的功能以对应标签文档为准。维护命令不接入业务启动必经路径。
 
 当前建议配置为 `{"cpu_percent":20,"memory_percent":20,"io_percent":20}`，三项各自省略时默认20；旧单`percent`只作历史兼容。本页的命令只作用于执行命令的当前容器；没有远程容器管理入口。与 Agent 使用同一个 `--config` 或 `--state-dir`。
