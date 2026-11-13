@@ -1,5 +1,7 @@
 # RC2 本地运维与恢复
 
+最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
+
 当前建议配置为 `{"cpu_percent":20,"memory_percent":20,"io_percent":20}`，三项各自省略时默认20；旧单`percent`只作历史兼容。本页的命令只作用于执行命令的当前容器；没有远程容器管理入口。与 Agent 使用同一个 `--config` 或 `--state-dir`。
 
 ## 安装前检查

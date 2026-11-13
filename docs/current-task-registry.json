@@ -2,7 +2,7 @@
   "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
   "product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
   "task_count": 52,
-  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business.",
+  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. User explicitly selected io_percent=calibrated read/write BPS only, optionalIOPS manual; externalIOPS preserved, owned legacyIOPS restored only with existing identity/journal checks.",
   "tasks": [
     {
       "id": "P01.1",
@@ -2312,7 +2312,8 @@
     "exact_evidence": "test-evidence-manual-IOPS-comparison.json.gz",
     "registered_process_instances_absent": 219,
     "independent_cleanup_node_utc": "2026-11-13T14:10:45.944399+00:00",
-    "default_IO_semantics_answer_pending": true
+    "default_IO_semantics_answer_pending": false,
+    "policy_at_test_time": "original four-axis preview4; subsequent explicit user decision switches future percentage policy, no historical results altered"
   },
   "memory_high_guidance_review": {
     "phase": "documentation-corrected",
@@ -2326,7 +2327,7 @@
     "new_business_acceptance": false
   },
   "source_integration_candidate": {
-    "phase": "engineering-CI-passed-not-business-or-stable-acceptance",
+    "phase": "new-authorized-bandwidth-policy-exact-revalidation-pending",
     "documentation": "source-integration.md",
     "plan": "source-integration-plan.json",
     "base": "21bc470b4f3a094d7daa3bf6f44842fe12905b33",
@@ -2343,10 +2344,11 @@
     "exact_CI_source": "7823d8d5da8d1f25909e26660697b36f0e0e9e2e",
     "current_CI_report": "test-results-source-integration-current-CI.json",
     "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1",
-    "draft": true
+    "draft": true,
+    "previous_passed_CI_source": "7823d8d5da8d1f25909e26660697b36f0e0e9e2e"
   },
   "source_integration_review": {
-    "phase": "engineering-CI-passed-not-business-or-stable-acceptance",
+    "phase": "previous-source-passed-current-bandwidth-policy-revalidation-pending",
     "documentation": "source-integration-status.md",
     "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1",
     "draft": true,
@@ -2356,6 +2358,26 @@
     "ARM_test_pass_events": 226,
     "merged": false,
     "deployed": false,
+    "stable_release_accepted": false
+  },
+  "IO_bandwidth_policy": {
+    "phase": "implemented-local-Go-passed-exact-CI-and-native-business-pending",
+    "documentation": "io-bandwidth-policy.md",
+    "user_decision_utc_observed": "2026-11-13T14:40:29.769923+00:00",
+    "user_answer": "默认按读写带宽百分比限制，IOPS 留给手动模式（推荐）",
+    "percent_axes": [
+      "rbps",
+      "wbps"
+    ],
+    "manual_optional_axes": [
+      "riops",
+      "wiops"
+    ],
+    "default_percent": 20,
+    "external_IOPS_preserved": true,
+    "owned_legacy_migration": "same container/device identity, no conflict and actual current equals Applied/Pending; existing write-intent/readback/restore safeguards",
+    "old_release_unchanged": true,
+    "new_source_business_accepted": false,
     "stable_release_accepted": false
   }
 }

@@ -66,8 +66,9 @@ func mainErr() (result error) {
 	if cmd == "build-info" {
 		emit(map[string]any{"version": version, "revision": revision, "os": runtime.GOOS, "arch": runtime.GOARCH, "go_version": runtime.Version(),
 			"lock_protocol": guard.LockProtocol, "journal_versions": []int{1}, "io_profile_versions": []int{1, 2},
-			"memory_policy":   "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
-			"writer_controls": []string{"cpu.max", "cpu.weight", "io.max", "io.weight", "memory.max", "memory.high", "memory.swap.max", "pids.max"}})
+			"memory_policy":     "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+			"io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+			"writer_controls":   []string{"cpu.max", "cpu.weight", "io.max", "io.weight", "memory.max", "memory.high", "memory.swap.max", "pids.max"}})
 		return nil
 	}
 	f := flag.NewFlagSet(cmd, flag.ContinueOnError)
@@ -625,9 +626,9 @@ func humanPlan(p guard.Plan) {
 		fmt.Println("Requested: manual CPU / memory / per-device IO; omitted dimensions unmanaged")
 	} else {
 		if p.Percentages != nil {
-			fmt.Printf("Requested: CPU %.4g%%; memory %.4g%%; calibrated IO %.4g%%\n", *p.Percentages.CPUPercent, *p.Percentages.MemoryPercent, *p.Percentages.IOPercent)
+			fmt.Printf("Requested: CPU %.4g%%; memory %.4g%%; calibrated read/write bandwidth %.4g%% (IOPS baseline retained)\n", *p.Percentages.CPUPercent, *p.Percentages.MemoryPercent, *p.Percentages.IOPercent)
 		} else {
-			fmt.Printf("Requested (legacy): %.4g%% CPU / memory / calibrated IO\n", p.Percent)
+			fmt.Printf("Requested (legacy): %.4g%% CPU / memory / calibrated read/write bandwidth (IOPS baseline retained)\n", p.Percent)
 		}
 	}
 	fmt.Printf("Cgroup: %s\nHost: %d online CPUs, %d bytes memory\n", p.Environment.Target, p.Environment.OnlineCPUs, p.Environment.MemoryBytes)

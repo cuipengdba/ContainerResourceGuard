@@ -37,6 +37,7 @@ func (s Setting) Key() string { return s.File + ":" + s.Device }
 
 type Plan struct {
 	MemoryPolicy string               `json:"memory_policy,omitempty"`
+	IOPolicy     string               `json:"io_policy,omitempty"`
 	Percentages  *ResourcePercentages `json:"percentages,omitempty"`
 	Environment  Environment          `json:"environment"`
 	Percent      float64              `json:"percent,omitempty"`
@@ -72,6 +73,10 @@ func BuildPlan(c Config, env Environment, original map[string]string) (Plan, err
 		return Plan{}, err
 	}
 	p := Plan{Environment: env, Percent: c.Percent, ResourceMode: c.ResourceMode, MemoryPolicy: "high-reclaim-throttle"}
+	p.IOPolicy = "calibrated-bandwidth; IOPS baseline retained"
+	if c.ResourceMode == "manual" {
+		p.IOPolicy = "manual-explicit; omitted IO axes retain baseline"
+	}
 	if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
 		p.Warnings = append(p.Warnings, "legacy limits.memory_max is interpreted as a memory.high target; use limits.memory_high; no new memory.max hard limit")
 	}

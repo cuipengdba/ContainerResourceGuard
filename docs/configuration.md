@@ -1,5 +1,7 @@
 # 配置参数
 
+最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
+
 > 本页面向已发布preview.4下载程序。此集成源码已包含memory.high实现memory.high，旧源码请按对应标签文档；新部署参阅[preview.4说明](releases/v1.0.0-preview.4.md)。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
@@ -37,7 +39,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | JSON 字段 | 默认值 | 含义 |
 |---|---|---|
 | `resource_mode` | `percent` | percent自动换算，manual分别指定CPU/内存回收目标/IO |
-| `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/内存/标定IO，独立生效 |
+| `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/memory.high/标定读写BPS，独立生效；IOPS仅手动 |
 | `percent` | 不使用 | 仅旧配置兼容入口，不能混用独立百分比；manual禁用 |
 | `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
@@ -79,7 +81,7 @@ Agent 启动时读取配置；持续运行不会热加载。重启 Agent 可更�
 - 内存百分比写memory.high，可低于当前用量以触发回收/节流；允许超目标。旧硬限额的降低/恢复才使用余量和稳定检查。外部memory.max或宿主内存耗尽仍可能OOM，见[内存策略](memory-reclaim-policy.md)。
 - 独立百分比及旧percent内存预算写memory.high；手动用limits.memory_high，旧limits.memory_max仅作带警告的high别名。CRG不新增memory.max，保留外部既有限额；不设置swap或主动回收活跃数据库内存，不改OOM策略、cpuset和资源requests。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
-- IO 换算后任何维度低于 1 个整数 BPS/IOPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
+- IO 百分比换算后的读/写带宽低于 1 个整数 BPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
 - 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。

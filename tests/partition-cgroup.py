@@ -437,6 +437,34 @@ def remove(item):
     item['removed'] = True
 
 
+def percent_io_value(item, dev, rates):
+    baseline = {'rbps': 'max', 'wbps': 'max', 'riops': 'max', 'wiops': 'max'}
+    for line in item['original']['io.max'].splitlines():
+        fields = line.split()
+        if fields and fields[0] == dev:
+            baseline.update(dict(v.split('=', 1) for v in fields[1:]))
+    result = {k: str(min(rates[i], int(baseline[k]))) if baseline[k] != 'max' else str(rates[i]) for i, k in enumerate(['rbps', 'wbps'])}
+    return dev + ' rbps=' + result['rbps'] + ' wbps=' + result['wbps'] + ' riops=' + baseline['riops'] + ' wiops=' + baseline['wiops']
+
+
+def terminate_own_agent(item, agent):
+    if actors(item) != [agent] or proc(agent['pid']) != agent:
+        raise RuntimeError('Agent identity changed before mode transition')
+    handle = os.pidfd_open(agent['pid'])
+    try:
+        if proc(agent['pid']) != agent or Path('/proc', str(agent['pid']), 'cgroup').read_text() != item['membership']:
+            raise RuntimeError('mode-transition Agent ownership changed')
+        signal.pidfd_send_signal(handle, signal.SIGKILL)
+    finally:
+        os.close(handle)
+    deadline = time.monotonic() + 10
+    while actors(item) and time.monotonic() < deadline:
+        time.sleep(.1)
+    if actors(item):
+        raise RuntimeError('previous own Agent did not exit')
+    alive(item)
+
+
 def exact(item, s, expected):
     alive(item)
     return (s['state'] == 'managed' and len(s['items']) == 3 and
@@ -550,11 +578,29 @@ try:
     profile_bytes = profile.read_bytes()
     profile_stamp = profile.stat().st_mtime_ns
     page = os.sysconf('SC_PAGESIZE')
-    rates = [math.floor(d[k] * 20 / 100) for k in ['read_bps', 'write_bps', 'read_iops', 'write_iops']]
-    expected = {**item['original'], 'cpu.max': str(int(hostcpus * 10 / 100 * 100000)) + ' 100000', 'memory.high': str(int(hostmem * 1 / 100) // page * page), 'io.max': device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))}
+    rates = [math.floor(d[k] * 20 / 100) for k in ['read_bps', 'write_bps']]
+    expected = {**item['original'], 'cpu.max': str(int(hostcpus * 10 / 100 * 100000)) + ' 100000', 'memory.high': str(int(hostmem * 1 / 100) // page * page), 'io.max': percent_io_value(item, device, rates)}
     report['measurements']['percent'] = {'host_online_CPUs': hostcpus, 'host_memory_bytes': hostmem, 'requested_percentages': {'cpu': 10, 'memory': 1, 'IO': 20}, 'expected_controls': expected, 'automatic_IO_state': s.get('automatic_io', {}).get('state'), 'profile_sha256': hashlib.sha256(profile_bytes).hexdigest()}
     record('independent-percentages-and-real-automatic-profile', s.get('automatic_io', {}).get('state') == 'calibrated' and exact(item, s, expected) and all(v > 0 for v in rates))
     record('automatic-profile-binds-filesystem-to-whole-parent', d['device'] == filesystem_device and s['automatic_io']['selection']['control_device'] == device and s['automatic_io']['selection']['device'] == filesystem_device)
+    # Use actual journaled manual writes, then switch the same container back
+    # to percent without disable/restore. This exercises owned IOPS migration.
+    saved_config = (percent / 'config/config.json').read_bytes()
+    manual_config = json.loads(saved_config)
+    for key in ['cpu_percent', 'memory_percent', 'io_percent', 'percent']:
+        manual_config.pop(key, None)
+    manual_config.update(resource_mode='manual', limits={'cpu_cores': hostcpus * .1, 'memory_high': expected['memory.high'], 'io_read_bps': str(rates[0]), 'io_write_bps': str(rates[1]), 'io_read_iops': 27, 'io_write_iops': 11})
+    terminate_own_agent(item, agent)
+    (percent / 'config/config.json').write_text(json.dumps(manual_config))
+    s, agent = start_agent(item)
+    manual_expected = {**expected, 'io.max': device + ' rbps=' + str(rates[0]) + ' wbps=' + str(rates[1]) + ' riops=27 wiops=11'}
+    record('manual-optional-IOPS-on-same-container', exact(item, s, manual_expected) and s['plan']['io_policy'].startswith('manual-explicit'))
+    owned_manual = read(percent / 'state/journal.json')
+    terminate_own_agent(item, agent)
+    (percent / 'config/config.json').write_bytes(saved_config)
+    s, agent = start_agent(item)
+    migrated = read(percent / 'state/journal.json')
+    record('percent-switch-restores-owned-IOPS-baseline', exact(item, s, expected) and s['plan']['io_policy'].startswith('calibrated-bandwidth') and owned_manual['identity'] == migrated['identity'] and owned_manual['mutations']['io.max:' + device]['original'] == migrated['mutations']['io.max:' + device]['original'] and profile.read_bytes() == profile_bytes and profile.stat().st_mtime_ns == profile_stamp)
     paths, events = logs(item)
     prefix = {p.name: p.read_bytes() for p in paths}
     old_id = item['id']
@@ -562,7 +608,12 @@ try:
     record('percent-disable-before-normal-rebuild', stop_agent(item))
     remove(item)
     item = launch(percent, 'rebuild')
+    (item['group'] / 'io.max').write_text(device + ' riops=197 wiops=149')
+    item['original'] = controls(item)
+    record('new-container-external-IOPS-baseline', item['original']['io.max'] == device + ' rbps=max wbps=max riops=197 wiops=149')
+    expected['io.max'] = percent_io_value(item, device, rates)
     s, agent = start_agent(item)
+    record('percent-retains-new-external-IOPS', controls(item)['io.max'] == expected['io.max'] and s['plan']['io_policy'].startswith('calibrated-bandwidth'))
     previous = read(percent / 'state/journal.previous.json')
     current = read(percent / 'state/journal.json')
     record('new-Docker-ID-discovers-new-journal-identity', item['id'] != old_id and previous['identity'] == journal['identity'] and current['identity'] != previous['identity'] and exact(item, s, expected))
@@ -579,8 +630,8 @@ try:
     cfg = read(percent / 'config/config.json')
     cfg['io_profile'] = '/etc/crg/both-profile.json'
     (percent / 'config/config.json').write_text(json.dumps(cfg))
-    rates = [math.floor(min(x[k] for x in both['devices']) * 20 / 100) for k in ['read_bps', 'write_bps', 'read_iops', 'write_iops']]
-    expected['io.max'] = device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))
+    rates = [math.floor(min(x[k] for x in both['devices']) * 20 / 100) for k in ['read_bps', 'write_bps']]
+    expected['io.max'] = percent_io_value(item, device, rates)
     ex(item, '/crg', 'enable', '--config', '/etc/crg/config.json')
     s, agent = start_agent(item)
     journal = read(percent / 'state/journal.json')
@@ -618,8 +669,8 @@ try:
     if len(new) != 1:
         raise RuntimeError('one new actual geometry identity required')
     unchanged = read(percent / 'config/sibling-profile.json')['devices'][0]
-    rates = [math.floor(min(new[0][k], unchanged[k]) * 20 / 100) for k in ['read_bps', 'write_bps', 'read_iops', 'write_iops']]
-    expected = {**item['original'], 'cpu.max': expected['cpu.max'], 'memory.high': expected['memory.high'], 'io.max': device + ' ' + ' '.join(k + '=' + str(v) for k, v in zip(['rbps', 'wbps', 'riops', 'wiops'], rates))}
+    rates = [math.floor(min(new[0][k], unchanged[k]) * 20 / 100) for k in ['read_bps', 'write_bps']]
+    expected = {**item['original'], 'cpu.max': expected['cpu.max'], 'memory.high': expected['memory.high'], 'io.max': percent_io_value(item, device, rates)}
     journal = read(percent / 'state/journal.json')
     ios = [x for x in journal['mutations'].values() if x['file'] == 'io.max']
     record('changed-geometry-recalibrates-with-stale-profile-visible', s['automatic_io']['state'] == 'calibrated' and len(changed['devices']) == 3 and s['state'] == 'degraded' and len(s['items']) == 3 and all(x['state'] == 'applied' for x in s['items']) and controls(item) == expected and len(ios) == 1 and ios[0]['device_identity'] == parent_identity, status=s, profiles=changed)

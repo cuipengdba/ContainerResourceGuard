@@ -24,11 +24,11 @@ func TestSiblingPartitionsShareConservativeCapAndOriginalClamp(t *testing.T) {
 		t.Fatal(err)
 	}
 	s, d, w := percentageIO(Config{}, Environment{Target: root}, nil, p, resolve, func(string, string) (bool, error) { return false, nil })
-	if len(s) != 1 || len(d) != 2 || len(w) != 0 || s[0].Device != "8:0" || s[0].DeviceIdentity != strings.Repeat("c", 64) || s[0].Value != "rbps=70 wbps=100 riops=10 wiops=10" {
+	if len(s) != 1 || len(d) != 2 || len(w) != 0 || s[0].Device != "8:0" || s[0].DeviceIdentity != strings.Repeat("c", 64) || s[0].Value != "rbps=70 wbps=100 riops=max wiops=max" {
 		t.Fatal("siblings got separate/additive caps or lost parent clamp", s, d, w)
 	}
 	s, _, _ = percentageIO(Config{}, Environment{Target: root}, map[string]string{"io.max:8:0": "rbps=90 wbps=max riops=max wiops=max"}, p, resolve, func(string, string) (bool, error) { return false, nil })
-	if len(s) != 1 || s[0].Value != "rbps=90 wbps=100 riops=10 wiops=10" {
+	if len(s) != 1 || s[0].Value != "rbps=90 wbps=100 riops=max wiops=max" {
 		t.Fatal("owned original not used", s)
 	}
 }
@@ -57,7 +57,7 @@ func TestPartitionPlanRejectsAmbiguityOverlapAndStaleBindings(t *testing.T) {
 				return b, err
 			}
 			if scenario == "minimum" {
-				p.Devices[0].ReadIOPS = 1
+				p.Devices[0].ReadBPS = 1
 			}
 			related := func(string, string) (bool, error) {
 				if scenario == "unreadable-stack" {
@@ -79,7 +79,7 @@ func TestSiblingCapsUseIOPercentageAndDoNotDependOnProfileOrder(t *testing.T) {
 	c := Config{ResourcePercentages: ResourcePercentages{IOPercent: &io, CPUPercent: &cpu}}
 	for attempt := 0; attempt < 2; attempt++ {
 		s, _, _ := percentageIO(c, Environment{}, nil, p, resolve, func(string, string) (bool, error) { return false, nil })
-		if len(s) != 1 || s[0].Value != "rbps=150 wbps=150 riops=15 wiops=15" {
+		if len(s) != 1 || s[0].Value != "rbps=150 wbps=150 riops=max wiops=max" {
 			t.Fatal("IO percentage or input order changed shared cap", s)
 		}
 		p.Devices[0], p.Devices[1] = p.Devices[1], p.Devices[0]

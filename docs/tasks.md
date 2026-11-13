@@ -1,5 +1,7 @@
 # 开发任务与验收跟踪
 
+最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
+
 [手动IOPS四组对照](testing-manual-IOPS-comparison.md)已终结：仅带宽组DBS/HISDBS各36项通过、共六次启动85～114秒就绪；低IOPS四轴两组各仅记录1项原liveness成功，均未达原300秒业务启动标准，HISDBS另有原120秒Pod删除超时。共74/144项阳性、70项未执行，不能称整套通过；后续独立确认四命名空间、八组leaf/parent及219个登记进程实例清理。[完整结果](test-results-manual-IOPS-comparison.json)和[18文件443558字节精确归档](test-evidence-manual-IOPS-comparison.json.gz)保留。默认IO策略不变，原52项仍开放。[源码集成草稿及工程CI](source-integration-status.md)另列，工程通过不替代业务/稳定发布。
 
 [手动IOPS对照](testing-manual-IOPS-comparison.md)已按冻结方案唯一启动；[首个只读快照](test-start-manual-IOPS-comparison.json)确认准确runner/DBS四轴驱动及资源值，启动约44秒、PG尚未就绪、已记录业务检查0项。其余三组尚未运行，不宣称终态/对照因果/默认策略变更；原矩阵失败和52项仍保持。

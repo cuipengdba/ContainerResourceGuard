@@ -1,5 +1,7 @@
 # ContainerResourceGuard
 
+最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](docs/io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
+
 实际公开preview.3→preview.4程序已通过[两角色在线迁移26项](docs/testing-public-preview-memory-high-maintenance.md)；需要更新现有容器时参阅[逐容器升级、即时回退与反向安装步骤](docs/upgrade-preview3-preview4.zh.md)。其他原稳定条件继续独立判定。
 
 当前可下载版本：[v1.0.0-preview.4](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.4)。内存改用memory.high，保留CPU/内存/IO独立百分比与30天/1GB日志。[迁移、验证范围与下载](docs/releases/v1.0.0-preview.4.md)、[八项公开下载校验](docs/test-results-preview4-publication.json)。稳定1.0及完整业务/长期验收继续。

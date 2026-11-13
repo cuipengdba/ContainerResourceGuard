@@ -1,5 +1,7 @@
 # DBS/HISDBS 手动模式 IOPS 对照诊断
 
+最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
+
 状态：四组已终结，整体失败；bps两组各36项通过，four两组原300秒启动失败。默认策略保持，见新增实际终态。此项定位业务启动/重建失败；不改变产品默认策略，不代替原百分比20/30矩阵或稳定版验收。
 
 用户已确认内存百分比使用memory.high；preview.4继续保留外部memory.max。上次[实际等待诊断](diagnosis-PG-rebuild-fsync.md)采样到PostgreSQL在自己的45字节PID文件fsync等待XFS回写，整组同时存在较多待回写页和低IOPS限额。尚未通过对照证明唯一原因。

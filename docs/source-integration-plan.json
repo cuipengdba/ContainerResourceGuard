@@ -1,6 +1,6 @@
 {
   "schema": "crg-v1-source-integration-plan-v1",
-  "phase": "engineering-CI-passed-not-business-or-stable-acceptance",
+  "phase": "authorized-bandwidth-policy-revalidation-pending",
   "main_base": "21bc470b4f3a094d7daa3bf6f44842fe12905b33",
   "import_source": "97ae6787b3549faa8916ff954baad4ff847c76fa",
   "candidate_branch": "release/integration-v1",
@@ -4984,17 +4984,17 @@
   ],
   "frozen_business_jobs_not_modified": true,
   "preview4_source": "180c86ad7986a76526a41575cc1c176d5da98a9c",
-  "default_IO_four_axis_unchanged": true,
-  "current_IO_semantics_user_decision_pending": true,
+  "default_IO_four_axis_unchanged": false,
+  "current_IO_semantics_user_decision_pending": false,
   "not_a_stable_release": true,
   "not_current_candidate_business_acceptance": true,
   "scope": "Bring existing combined implementation/test/build/packaging into a clean main-based candidate. No invented feature or default-policy change. Includes already developed IOQuality log fields and bounded public packaging repair; these were not in shipped preview4.",
   "subsequent_changes": {
     "tests/partition-cgroup.py": {
-      "reason": "Canonical memory_high fixture with exact external max preservation; old released binary disable uses pre-existing same-state-dir maintenance API. First incomplete port and both failures preserved.",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases.",
       "original_commit": "09821268845707493bcd68cdce2b3103896c3852",
       "original_sha256": "f229011ab56d671bab7c8e272df65b5b6f7aec3cfd89e20bac3356872cee2699",
-      "new_sha256": "e24704ec12104d1549d3ed7469263b750dd5e59a8ddacea411667c9ffff2f9a6",
+      "new_sha256": "a37a6027f664e6441328d73385b266b593d75fc30e3b9c2167bc956400f0ff7a",
       "diff": "partition-memory-high-port.diff",
       "Go_product_source_unchanged": true
     },
@@ -5003,9 +5003,53 @@
       "original_sha256": "3f293a20291cb7d66586593890ce809776d17019519447aac74d93c54489dbd9",
       "new_sha256": "b7932ac4fce4495214c7e3b9d0743c94d18fe944f1cc78d18fba725a8e88f53a",
       "reason": "Preserve exact existing committed CRLF legacy record on fresh clone. No protected-document content or dirty-source/reproduction checks changed."
+    },
+    "cmd/crg/main.go": {
+      "original_commit": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+      "original_sha256": "f59f5941aaaefdc5747ed1a974df4da380e8150036afcc497c566af858ad714c",
+      "new_sha256": "09e039b5af3c8da9c7c2d59a460bf038f04c358c5f42ff1c95728150f328d9a0",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases."
+    },
+    "cmd/crg/run_logging.go": {
+      "original_commit": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+      "original_sha256": "05cb10bda4771449e1b2812c993c68c81c9fe99ff6189186f0ef76c53c296ab6",
+      "new_sha256": "3757aac3e87192678221087bae89dd97859dac96febb63119f8ac10208e87773",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases."
+    },
+    "internal/guard/partition_plan.go": {
+      "original_commit": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+      "original_sha256": "befa049205cff7b3f30b61d13ae87e3357e7290dd8ee2921ce00dd31cd7d60db",
+      "new_sha256": "457e3f5529577bd86fd65032cfebea356ec96ac74f941388765a23836ec6b1a1",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases."
+    },
+    "internal/guard/partition_plan_test.go": {
+      "original_commit": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+      "original_sha256": "99b2387599de91ac1347841251582a5048a917e9d8db4ec501b65090cc4d4e7d",
+      "new_sha256": "9e7dd117276cb96a20d22cfe491198d7aacc7d13e80f08b80aeaafd85619cbfc",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases."
+    },
+    "internal/guard/plan.go": {
+      "original_commit": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+      "original_sha256": "cee44d7fffee84621d376449f58ca6bc346f75e53f6ab7914639c0074acb0269",
+      "new_sha256": "f100eddcf13668e6a84c4a53295f4fb4afa48aefe20e82d1f84a427fb34cd493",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases."
+    },
+    "tests/native-cgroup-high.py": {
+      "original_commit": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+      "original_sha256": "e8177ca4717ffeb3f9e8e24555426d685a9f591295c3cee989d46389d1dcd96f",
+      "new_sha256": "1db645cea159b4521b20b8007678e11806a1ff08340ee9972fa691009de572e4",
+      "reason": "Explicit user-approved BPS-only percentage default with safe existing journal ownership, visible policy, preserved manualIOPS and original assertions plus native migration/externalIOPS cases."
     }
   },
   "exact_current_CI_source": "7823d8d5da8d1f25909e26660697b36f0e0e9e2e",
   "current_CI_report": "test-results-source-integration-current-CI.json",
-  "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1"
+  "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1",
+  "IO_percent_policy": "calibrated read/write bandwidth only; optionalIOPS manual, externalIOPS retained",
+  "user_decision_document": "io-bandwidth-policy.md",
+  "new_derived_files": {
+    "internal/guard/io_bandwidth_policy_test.go": {
+      "sha256": "5c9f4ee0441ee52da846c0e427698140126998501422ea1ccfd8d88021f74d3d",
+      "reason": "Regression for owned/defaultIOPS migration, external conflicts, device identity, crash intent, observe and lowIOPS profile bandwidth."
+    }
+  }
 }

@@ -31,7 +31,7 @@ func logRunStatus(log *runlog.Logger, status guard.Status) {
 	}
 	items := make([]map[string]string, 0, len(status.Items))
 	for _, item := range status.Items {
-		items = append(items, map[string]string{"controller": item.File, "state": item.State, "detail": item.Detail})
+		items = append(items, map[string]string{"controller": item.File, "device": item.Device, "value": item.Value, "state": item.State, "detail": item.Detail})
 	}
-	log.Event("INFO", "resource_status", map[string]any{"state": status.State, "mode": status.Mode, "error": status.Error, "percentages": status.Plan.Percentages, "legacy_percent": status.Plan.Percent, "memory_policy": status.Plan.MemoryPolicy, "warnings": status.Plan.Warnings, "items": items})
+	log.Event("INFO", "resource_status", map[string]any{"state": status.State, "mode": status.Mode, "error": status.Error, "percentages": status.Plan.Percentages, "legacy_percent": status.Plan.Percent, "memory_policy": status.Plan.MemoryPolicy, "io_policy": status.Plan.IOPolicy, "warnings": status.Plan.Warnings, "items": items})
 }

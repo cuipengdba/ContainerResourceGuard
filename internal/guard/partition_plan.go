@@ -25,7 +25,7 @@ func resolveProfileBinding(d DeviceProfile) (IOBlockDevice, error) {
 }
 
 // Sibling partitions share one whole-device cap in this container. Select the
-// conservative per-axis baseline, never sum caps or silently pick the last path.
+// conservative bandwidth baseline, never sum caps or silently pick the last path.
 func percentageIO(c Config, env Environment, original map[string]string, profile Profile,
 	resolve func(DeviceProfile) (IOBlockDevice, error), related func(string, string) (bool, error)) (settings []Setting, devices []DeviceCoverage, warnings []string) {
 	groups := map[string][]profileBinding{}
@@ -79,14 +79,16 @@ func percentageIO(c Config, env Environment, original map[string]string, profile
 				reason = "one stable control identity resolves to multiple devices"
 			}
 		}
-		for axis := range rates {
+		// Percentages target bandwidth only. Profile IOPS remain diagnostic;
+		// preserve external IOPS, or the owned journal's pre-CRG baseline.
+		for axis := 0; axis < 2; axis++ {
 			rates[axis] = scaleRate(rates[axis], percent)
 			if rates[axis] == 0 {
-				reason = "percent below integer BPS/IOPS minimum"
+				reason = "percent below integer BPS minimum"
 			}
 		}
 		for _, m := range members {
-			coverage := DeviceCoverage{ProfileDevice: m.profile.Device, FilesystemDevice: m.block.Device, Device: key, State: "planned", Detail: "shared whole-device cap; per-axis minimum calibrated baseline; actual write/readback required"}
+			coverage := DeviceCoverage{ProfileDevice: m.profile.Device, FilesystemDevice: m.block.Device, Device: key, State: "planned", Detail: "shared whole-device bandwidth cap; minimum calibrated read/write BPS; external/original IOPS retained; actual write/readback required"}
 			if reason != "" {
 				coverage.State, coverage.Detail = "skipped", reason
 			}
@@ -96,7 +98,7 @@ func percentageIO(c Config, env Environment, original map[string]string, profile
 			warnings = append(warnings, "IO unmanaged: "+key+": "+reason)
 			continue
 		}
-		value := fmt.Sprintf("rbps=%d wbps=%d riops=%d wiops=%d", rates[0], rates[1], rates[2], rates[3])
+		value := fmt.Sprintf("rbps=%d wbps=%d riops=max wiops=max", rates[0], rates[1])
 		previous, _ := read(filepath.Join(env.Target, "io.max"))
 		previous = ioValue(previous, key)
 		if v, ok := original["io.max:"+key]; ok {

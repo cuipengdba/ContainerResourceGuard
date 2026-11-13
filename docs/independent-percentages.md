@@ -1,6 +1,8 @@
 # CPU、内存、IO 独立百分比（R29 / R30）
 
-最新需求以R29/R30为准：仅接管CPU、内存、IO，三个百分比分别设置，未填写的一项独立默认20%。R28中五项扩展百分比已取消，不再默认管理任务数、权重、memory.high或Swap；这些额外的`*_percent`字段和CLI参数会被拒绝，避免配置误用。
+最新用户选择已覆盖旧R10：下一版io_percent仅限制标定读写BPS，IOPS留手动；既有外部IOPS保留，旧自有限额按身份/journal安全迁移。实现与新增回归见[IO带宽策略](io-bandwidth-policy.md)，当前待准确Linux/原生/真机验证；preview.4及旧结果保持，原52项不补算完成。
+
+最新需求以R29/R30为准：仅接管CPU、内存、IO，三个百分比分别设置，未填写的一项独立默认20%。R28中五项扩展百分比已取消，不再默认管理任务数、权重或Swap；内存百分比使用memory.high回收/节流目标；这些额外的`*_percent`字段和CLI参数会被拒绝，避免配置误用。
 
 最小配置是`{}`，等价于：
 
@@ -17,10 +19,10 @@
 | 字段 | 默认 | 换算依据 |
 |---|---|---|
 | cpu_percent | 20 | 宿主在线逻辑CPU数，写cpu.max总CPU时间配额 |
-| memory_percent | 20 | 宿主MemTotal，向下按页取整，写memory.max |
-| io_percent | 20 | 自动标定读/写BPS及读/写IOPS基准，写io.max四项硬上限 |
+| memory_percent | 20 | 宿主MemTotal，向下按页取整，写memory.high（允许超过目标） |
+| io_percent | 20 | 自动标定读/写BPS基准，只新增rbps/wbps；保留外部IOPS，额外IOPS仅手动 |
 
-取值大于0且不超过100，允许小数；20表示20%，不是0.2%。显式0、null、重复键、未知字段或与旧percent混用均拒绝。上层限额更严格时保留上层边界；危险内存下调、设备不明确和标定失败均报告跳过/降级原因，不宣称已成功限制。20%不能保证所有DBS/HISDBS负载都满足性能要求。
+取值大于0且不超过100，允许小数；20表示20%，不是0.2%。显式0、null、重复键、未知字段或与旧percent混用均拒绝。上层限额更严格时保留上层边界；旧硬限额危险下调、设备不明确和标定失败均报告跳过/降级原因，不宣称已成功限制。20%不能保证所有DBS/HISDBS负载都满足性能要求。
 
 ```bash
 crg doctor --config /etc/crg/config.json --format human
