@@ -1,0 +1,722 @@
+{
+  "schema": "crg-package-quality-CI-v1",
+  "recorded_utc": "2026-11-13T11:48:32.846124+00:00",
+  "branches": {
+    "ContainerResourceGuard-v10": {
+      "source_commit": "e73a3f4cc555e1df9964a65147cc97d47ce66843",
+      "runs": [
+        {
+          "run": {
+            "id": 43419119821,
+            "name": "native-arm64",
+            "head_sha": "e73a3f4cc555e1df9964a65147cc97d47ce66843",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43419119821",
+            "created_at": "2026-11-13T11:41:52Z",
+            "updated_at": "2026-11-13T11:43:01Z"
+          },
+          "jobs": [
+            {
+              "id": 131864382162,
+              "run_id": 43419119821,
+              "workflow_name": "native-arm64",
+              "head_branch": "next/compatibility-contract",
+              "run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/runs/43419119821",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVn-7f88AAAAes7rK0g",
+              "head_sha": "e73a3f4cc555e1df9964a65147cc97d47ce66843",
+              "url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/jobs/131864382162",
+              "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43419119821/job/131864382162",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-13T11:41:53Z",
+              "started_at": "2026-11-13T11:41:57Z",
+              "completed_at": "2026-11-13T11:43:01Z",
+              "name": "native",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-13T11:41:58Z",
+                  "completed_at": "2026-11-13T11:41:59Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-13T11:41:59Z",
+                  "completed_at": "2026-11-13T11:42:02Z"
+                },
+                {
+                  "name": "Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-13T11:42:02Z",
+                  "completed_at": "2026-11-13T11:42:11Z"
+                },
+                {
+                  "name": "Record actual native environment",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-13T11:42:11Z",
+                  "completed_at": "2026-11-13T11:42:11Z"
+                },
+                {
+                  "name": "Native vet and race checks",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-13T11:42:11Z",
+                  "completed_at": "2026-11-13T11:42:30Z"
+                },
+                {
+                  "name": "Independent business startup helper checks",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-13T11:42:30Z",
+                  "completed_at": "2026-11-13T11:42:50Z"
+                },
+                {
+                  "name": "Build and execute native CLI",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-13T11:42:50Z",
+                  "completed_at": "2026-11-13T11:42:55Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-13T11:42:55Z",
+                  "completed_at": "2026-11-13T11:42:57Z"
+                },
+                {
+                  "name": "Post Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-13T11:42:57Z",
+                  "completed_at": "2026-11-13T11:42:57Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-13T11:42:57Z",
+                  "completed_at": "2026-11-13T11:42:57Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-13T11:42:57Z",
+                  "completed_at": "2026-11-13T11:42:58Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/check-runs/131864382162",
+              "labels": [
+                "ubuntu-24.04-arm"
+              ],
+              "runner_id": 1000004885,
+              "runner_name": "GitHub Actions 1000004885",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        },
+        {
+          "run": {
+            "id": 43419119893,
+            "name": "build-and-test",
+            "head_sha": "e73a3f4cc555e1df9964a65147cc97d47ce66843",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43419119893",
+            "created_at": "2026-11-13T11:41:52Z",
+            "updated_at": "2026-11-13T11:43:48Z"
+          },
+          "jobs": [
+            {
+              "id": 131864382210,
+              "run_id": 43419119893,
+              "workflow_name": "build-and-test",
+              "head_branch": "next/compatibility-contract",
+              "run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/runs/43419119893",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVn-7f88AAAAes7rLAg",
+              "head_sha": "e73a3f4cc555e1df9964a65147cc97d47ce66843",
+              "url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/jobs/131864382210",
+              "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43419119893/job/131864382210",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-13T11:41:53Z",
+              "started_at": "2026-11-13T11:41:55Z",
+              "completed_at": "2026-11-13T11:43:47Z",
+              "name": "test",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-13T11:41:56Z",
+                  "completed_at": "2026-11-13T11:41:58Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-13T11:41:58Z",
+                  "completed_at": "2026-11-13T11:42:02Z"
+                },
+                {
+                  "name": "Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-13T11:42:02Z",
+                  "completed_at": "2026-11-13T11:42:10Z"
+                },
+                {
+                  "name": "Run test -z \"$(gofmt -l cmd internal tests/load)\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-13T11:42:10Z",
+                  "completed_at": "2026-11-13T11:42:10Z"
+                },
+                {
+                  "name": "Run go vet ./...",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-13T11:42:10Z",
+                  "completed_at": "2026-11-13T11:42:19Z"
+                },
+                {
+                  "name": "Run go test -race -cover ./...",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-13T11:42:19Z",
+                  "completed_at": "2026-11-13T11:42:39Z"
+                },
+                {
+                  "name": "Run bash tests/supervisor.sh",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-13T11:42:39Z",
+                  "completed_at": "2026-11-13T11:42:54Z"
+                },
+                {
+                  "name": "Run python3 tests/integration-patch.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-13T11:42:54Z",
+                  "completed_at": "2026-11-13T11:42:59Z"
+                },
+                {
+                  "name": "Run python3 tests/soak-report-audit-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-13T11:42:59Z",
+                  "completed_at": "2026-11-13T11:43:00Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-aged-preflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-13T11:43:00Z",
+                  "completed_at": "2026-11-13T11:43:00Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-versioned-aged-preflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-13T11:43:00Z",
+                  "completed_at": "2026-11-13T11:43:01Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-aged-postflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 12,
+                  "started_at": "2026-11-13T11:43:01Z",
+                  "completed_at": "2026-11-13T11:43:01Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-versioned-aged-postflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 13,
+                  "started_at": "2026-11-13T11:43:01Z",
+                  "completed_at": "2026-11-13T11:43:01Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-aged-faults-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 14,
+                  "started_at": "2026-11-13T11:43:01Z",
+                  "completed_at": "2026-11-13T11:43:01Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-versioned-aged-faults-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-13T11:43:01Z",
+                  "completed_at": "2026-11-13T11:43:01Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-enforce-stage-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-13T11:43:01Z",
+                  "completed_at": "2026-11-13T11:43:01Z"
+                },
+                {
+                  "name": "Run python3 tests/package-public-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-13T11:43:01Z",
+                  "completed_at": "2026-11-13T11:43:02Z"
+                },
+                {
+                  "name": "Run bash scripts/build.sh \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 18,
+                  "started_at": "2026-11-13T11:43:02Z",
+                  "completed_at": "2026-11-13T11:43:17Z"
+                },
+                {
+                  "name": "Run python3 scripts/package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 19,
+                  "started_at": "2026-11-13T11:43:17Z",
+                  "completed_at": "2026-11-13T11:43:22Z"
+                },
+                {
+                  "name": "Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 20,
+                  "started_at": "2026-11-13T11:43:22Z",
+                  "completed_at": "2026-11-13T11:43:22Z"
+                },
+                {
+                  "name": "Run python3 tests/release-integrity.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-13T11:43:22Z",
+                  "completed_at": "2026-11-13T11:43:26Z"
+                },
+                {
+                  "name": "Run python3 scripts/check-reproducible.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-13T11:43:26Z",
+                  "completed_at": "2026-11-13T11:43:34Z"
+                },
+                {
+                  "name": "Run ./dist/crg-linux-amd64 build-info > dist/build-info.json",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-13T11:43:34Z",
+                  "completed_at": "2026-11-13T11:43:34Z"
+                },
+                {
+                  "name": "Attest build provenance",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 24,
+                  "started_at": "2026-11-13T11:43:34Z",
+                  "completed_at": "2026-11-13T11:43:36Z"
+                },
+                {
+                  "name": "Attest amd64 SBOM",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 25,
+                  "started_at": "2026-11-13T11:43:36Z",
+                  "completed_at": "2026-11-13T11:43:38Z"
+                },
+                {
+                  "name": "Attest arm64 SBOM",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 26,
+                  "started_at": "2026-11-13T11:43:38Z",
+                  "completed_at": "2026-11-13T11:43:40Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 27,
+                  "started_at": "2026-11-13T11:43:40Z",
+                  "completed_at": "2026-11-13T11:43:43Z"
+                },
+                {
+                  "name": "Post Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 53,
+                  "started_at": "2026-11-13T11:43:43Z",
+                  "completed_at": "2026-11-13T11:43:43Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 54,
+                  "started_at": "2026-11-13T11:43:43Z",
+                  "completed_at": "2026-11-13T11:43:43Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 55,
+                  "started_at": "2026-11-13T11:43:43Z",
+                  "completed_at": "2026-11-13T11:43:43Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/check-runs/131864382210",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000004886,
+              "runner_name": "GitHub Actions 1000004886",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      ]
+    },
+    "ContainerResourceGuard-partition": {
+      "source_commit": "dce8578eddcfa8c87c7d79dfe26a7303c2298738",
+      "runs": [
+        {
+          "run": {
+            "id": 43419132540,
+            "name": "build-and-test",
+            "head_sha": "dce8578eddcfa8c87c7d79dfe26a7303c2298738",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43419132540",
+            "created_at": "2026-11-13T11:41:58Z",
+            "updated_at": "2026-11-13T11:43:48Z"
+          },
+          "jobs": [
+            {
+              "id": 131864425533,
+              "run_id": 43419132540,
+              "workflow_name": "build-and-test",
+              "head_branch": "next/partition-io",
+              "run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/runs/43419132540",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVn-7f88AAAAes7t0PQ",
+              "head_sha": "dce8578eddcfa8c87c7d79dfe26a7303c2298738",
+              "url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/actions/jobs/131864425533",
+              "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43419132540/job/131864425533",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-13T11:41:59Z",
+              "started_at": "2026-11-13T11:42:01Z",
+              "completed_at": "2026-11-13T11:43:47Z",
+              "name": "test",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-13T11:42:02Z",
+                  "completed_at": "2026-11-13T11:42:03Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-13T11:42:03Z",
+                  "completed_at": "2026-11-13T11:42:05Z"
+                },
+                {
+                  "name": "Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-13T11:42:05Z",
+                  "completed_at": "2026-11-13T11:42:13Z"
+                },
+                {
+                  "name": "Run test -z \"$(gofmt -l cmd internal tests/load)\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-13T11:42:13Z",
+                  "completed_at": "2026-11-13T11:42:13Z"
+                },
+                {
+                  "name": "Run go vet ./...",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-13T11:42:13Z",
+                  "completed_at": "2026-11-13T11:42:22Z"
+                },
+                {
+                  "name": "Run go test -race -cover ./...",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-13T11:42:22Z",
+                  "completed_at": "2026-11-13T11:42:42Z"
+                },
+                {
+                  "name": "Run bash tests/supervisor.sh",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-13T11:42:42Z",
+                  "completed_at": "2026-11-13T11:42:57Z"
+                },
+                {
+                  "name": "Run python3 tests/integration-patch.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-13T11:42:57Z",
+                  "completed_at": "2026-11-13T11:43:02Z"
+                },
+                {
+                  "name": "Run python3 tests/soak-report-audit-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-13T11:43:02Z",
+                  "completed_at": "2026-11-13T11:43:03Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-aged-preflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-13T11:43:03Z",
+                  "completed_at": "2026-11-13T11:43:03Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-versioned-aged-preflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-13T11:43:03Z",
+                  "completed_at": "2026-11-13T11:43:04Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-aged-postflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 12,
+                  "started_at": "2026-11-13T11:43:04Z",
+                  "completed_at": "2026-11-13T11:43:04Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-versioned-aged-postflight-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 13,
+                  "started_at": "2026-11-13T11:43:04Z",
+                  "completed_at": "2026-11-13T11:43:04Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-aged-faults-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 14,
+                  "started_at": "2026-11-13T11:43:04Z",
+                  "completed_at": "2026-11-13T11:43:04Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-versioned-aged-faults-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-13T11:43:04Z",
+                  "completed_at": "2026-11-13T11:43:04Z"
+                },
+                {
+                  "name": "Run python3 tests/vendor-enforce-stage-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-13T11:43:04Z",
+                  "completed_at": "2026-11-13T11:43:04Z"
+                },
+                {
+                  "name": "Run python3 tests/package-public-checks.py",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-13T11:43:04Z",
+                  "completed_at": "2026-11-13T11:43:05Z"
+                },
+                {
+                  "name": "Run bash scripts/build.sh \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 18,
+                  "started_at": "2026-11-13T11:43:05Z",
+                  "completed_at": "2026-11-13T11:43:21Z"
+                },
+                {
+                  "name": "Run python3 scripts/package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 19,
+                  "started_at": "2026-11-13T11:43:21Z",
+                  "completed_at": "2026-11-13T11:43:26Z"
+                },
+                {
+                  "name": "Run python3 scripts/check-package.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 20,
+                  "started_at": "2026-11-13T11:43:26Z",
+                  "completed_at": "2026-11-13T11:43:27Z"
+                },
+                {
+                  "name": "Run python3 tests/release-integrity.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-13T11:43:27Z",
+                  "completed_at": "2026-11-13T11:43:30Z"
+                },
+                {
+                  "name": "Run python3 scripts/check-reproducible.py \"${GITHUB_REF_NAME//\\//-}\"",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-13T11:43:30Z",
+                  "completed_at": "2026-11-13T11:43:37Z"
+                },
+                {
+                  "name": "Run ./dist/crg-linux-amd64 build-info > dist/build-info.json",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-13T11:43:37Z",
+                  "completed_at": "2026-11-13T11:43:37Z"
+                },
+                {
+                  "name": "Attest build provenance",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 24,
+                  "started_at": "2026-11-13T11:43:37Z",
+                  "completed_at": "2026-11-13T11:43:39Z"
+                },
+                {
+                  "name": "Attest amd64 SBOM",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 25,
+                  "started_at": "2026-11-13T11:43:39Z",
+                  "completed_at": "2026-11-13T11:43:40Z"
+                },
+                {
+                  "name": "Attest arm64 SBOM",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 26,
+                  "started_at": "2026-11-13T11:43:40Z",
+                  "completed_at": "2026-11-13T11:43:42Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 27,
+                  "started_at": "2026-11-13T11:43:42Z",
+                  "completed_at": "2026-11-13T11:43:44Z"
+                },
+                {
+                  "name": "Post Run actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 53,
+                  "started_at": "2026-11-13T11:43:44Z",
+                  "completed_at": "2026-11-13T11:43:44Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 54,
+                  "started_at": "2026-11-13T11:43:44Z",
+                  "completed_at": "2026-11-13T11:43:45Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 55,
+                  "started_at": "2026-11-13T11:43:45Z",
+                  "completed_at": "2026-11-13T11:43:45Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/cuipengdba/ContainerResourceGuard/check-runs/131864425533",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000004887,
+              "runner_name": "GitHub Actions 1000004887",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "not_business_or_release_acceptance": true,
+  "native_cgroup_prior_exact_Go_source": {
+    "id": 43415575689,
+    "name": "native-cgroup",
+    "head_sha": "67a9db1be0f334d16eaf32f157ac83c988c7cbb7",
+    "conclusion": "success",
+    "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43415575689"
+  },
+  "original_CI_failure_runs_preserved": [
+    43415575989,
+    43415590527
+  ]
+}
