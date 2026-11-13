@@ -1,6 +1,6 @@
 # 保留数据重建的 PostgreSQL 进程诊断
 
-状态：[准确源CI通过](test-results-PG-rebuild-process-CI.json)，[已唯一启动](test-start-PG-rebuild-process.json)，原始观察时间及三个进程身份见记录；尚未获得重建终态。此项推进P01.2/P01.3实际业务失败定位，不改原52项或144项矩阵定义和失败结果。
+状态：[准确源CI通过](test-results-PG-rebuild-process-CI.json)，[已唯一启动](test-start-PG-rebuild-process.json)，原始观察时间及三个进程身份见记录；本轮已终态失败，实际卡点、原始记录和后续语义选择见[fsync诊断](diagnosis-PG-rebuild-fsync.md)。此项推进P01.2/P01.3实际业务失败定位，不改原52项或144项矩阵定义和失败结果。
 
 [原矩阵终态](test-results-high-percent-startup-psi-compatible.json)为failed：DBS/HIS20首启通过、重建超原300秒，HIS原120秒删除也失败，30%未执行。[新增只读片段](test-evidence-PG-rebuild-startup-selected.json.gz)显示原厂程序已经执行pg_ctl start，随后报告PG startup fail且没有第二次PG启动日志。保留PID文件的数值启动时间位于本次重建门槛之后，不能仅凭残留文件将原因说成旧PID；HIS文件来自后续启动重试。未采集当时的内核等待栈，尚不能确定卡在IO、同步或其他阶段。
 
@@ -15,3 +15,5 @@
 程序生产代码、preview.4发布附件及正在运行的长期Agent均保持原样；memory_percent仍写memory.high，外部memory.max保留。
 
 [PG重建诊断已实际启动](test-start-PG-rebuild-process.json)：节点12:16UTC确认同一runner、只读观察器和DBS20驱动三者的PID/startticks/入口均在运行。上轮准确失败与107实例/四namespace实际清理、原长期任务同句柄第五备份门槛均通过；当前首次PG探针exit0，但仍未记录业务检查，观察器等第二次启动。两开发分支[完整CI及新增16项](test-results-PG-rebuild-process-CI.json)通过。第一次SSH启动请求中断后先证实无launch/日志/结果目录，再修正本地字符串编码后唯一启动；冻结源和计划未改。原业务失败及稳定条件保持。
+
+[重建fsync诊断终态](diagnosis-PG-rebuild-fsync.md)已定位实际等待点：87次采样/114条PG记录均在XFS fsync写回等待，两次FD设备/inode核验确认第一进程同步的是自身45字节PID文件。写IO约9.99IOPS/0.763MiB/s，额度11IOPS且仍有约415MiB写回；低IOPS影响为强线索，尚无A/B因果结论。该格重建仍超原300秒，11项通过/25未执行，48登记实例/父叶/namespace实际清理，八份387429字节原件已归档。默认IO百分比改为只约束带宽还是继续四轴，等待用户选择；当前语义及原144项失败/52项定义/preview.4不变。

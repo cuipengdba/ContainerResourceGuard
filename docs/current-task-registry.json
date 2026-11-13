@@ -2131,21 +2131,40 @@
     "CI": "test-results-quality-package-CI.json"
   },
   "PG_rebuild_process_diagnostic": {
-    "phase": "running",
+    "phase": "failed",
     "documentation": "testing-PG-rebuild-process.md",
     "plan": "test-plan-PG-rebuild-process.json",
     "job_sha256": "23395fe6772dd9ecec1bea37fa8e45df375d68259b7a4eef6493957ce50d4537",
     "plan_sha256": "bb26ece02e9c73f710dfa76c325956363e33c31315aba937f7faa5082583d14c",
     "native_checks": 16,
     "planned_case_checks": 36,
-    "runtime_checks": 0,
+    "runtime_checks": 11,
     "original144_matrix_still_failed": true,
     "business_accepted": false,
     "stable_release_accepted": false,
     "snapshot": "test-start-PG-rebuild-process.json",
     "snapshot_node_utc": "2026-11-13T12:16:22.347017+00:00",
     "CI": "test-results-PG-rebuild-process-CI.json",
-    "terminal": false,
-    "observer_samples": 0
+    "terminal": true,
+    "observer_samples": 87,
+    "passed_checks": 11,
+    "unexecuted_checks": 25,
+    "recorded_PG_samples": 114,
+    "artifact_files": 8,
+    "artifact_bytes": 387429,
+    "registered_instances_absent": 48,
+    "independent_cleanup": true,
+    "results": "test-results-PG-rebuild-process.json",
+    "evidence": "test-evidence-PG-rebuild-process.json.gz",
+    "diagnosis": "diagnosis-PG-rebuild-fsync.md"
+  },
+  "IO_percentage_semantics_decision": {
+    "phase": "awaiting-explicit-user-selection",
+    "reason": "own PID file fsync waits under bulk XFS writeback with11 writeIOPS in original20percent diagnostic",
+    "recommended": "default bandwidth percentages; optional manual IOPS",
+    "alternative": "keep current four-axis percentages with performance tradeoff",
+    "current_implementation": "four-axis percentages unchanged",
+    "not_permission_to_change_current_defaults": true,
+    "documentation": "diagnosis-PG-rebuild-fsync.md"
   }
 }
