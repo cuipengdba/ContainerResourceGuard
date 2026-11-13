@@ -1,5 +1,7 @@
 # 开发任务与验收跟踪
 
+[PG重建诊断已实际启动](test-start-PG-rebuild-process.json)：节点12:16UTC确认同一runner、只读观察器和DBS20驱动三者的PID/startticks/入口均在运行。上轮准确失败与107实例/四namespace实际清理、原长期任务同句柄第五备份门槛均通过；当前首次PG探针exit0，但仍未记录业务检查，观察器等第二次启动。两开发分支[完整CI及新增16项](test-results-PG-rebuild-process-CI.json)通过。第一次SSH启动请求中断后先证实无launch/日志/结果目录，再修正本地字符串编码后唯一启动；冻结源和计划未改。原业务失败及稳定条件保持。
+
 [PG重建进程诊断](testing-PG-rebuild-process.md)已启动前冻结：从原两角色失败记录确认pg_ctl已调用、PID时间属于本次重建/重试、尚无新PG日志，原因仍未确定。只新增DBS20独立宿主只读等待栈/IO观察，沿用原程序/空配置/300秒与原探针；16项本地及原生检查通过，尚未启动，不补算原144项失败或原52项完成。
 
 最新终态：[自动标定质量与打包CI](test-results-quality-package-CI.json)在两个开发分支完整通过，包括竞态/构建、原安装包/完整性/可重复检查，兼容分支原生ARM通过；准确来源提交见报告，首次CI失败保留，尚未发布新包。[PSI兼容启动矩阵终态](test-results-high-percent-startup-psi-compatible.json)为failed：两角色20%首启和控制通过，重建均超原300秒，HIS清理又超原120秒，协调器停止，30%两格未执行。144项中记录22通过、122未执行，不能按22/22判业务成功；10份246613字节原件及后续107实例/namespace/父叶清理已归档。内存仍只以memory.high表达目标，外部max保留；preview.4、原52项及稳定条件不变。
