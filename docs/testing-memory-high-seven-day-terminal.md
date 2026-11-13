@@ -1,5 +1,9 @@
 # 旧preview.4七天任务终态
 
+独立HISDBS30补测已经唯一启动，节点16:49:01快照为7项通过、首次PG/API/受控就绪29.35/29.62/59.25秒，尚待两次冷重建、备份/独立恢复及原探针；[启动原件](test-start-bandwidth-calendar-HIS30.json)记录准确PID/start及全部冻结哈希，不能算36项终态。旧preview.4七天任务中断的直接原因也已从PID295208的CSV确认：23:56:21备用库无法绑定127.0.0.1:55432（Address already in use），随后FATAL无法创建TCP套接字；[两份1380字节准确原件](test-evidence-memory-high-seven-day-port-conflict.json.gz)及[分析](test-results-memory-high-seven-day-port-conflict.json)已归档。当时端口占用者未捕获，不推断资源限制因果，旧任务仍为失败。
+
+以下按原时点保留。
+
 原任务5605b847…、源码180c86ad7986a76526a41575cc1c176d5da98a9c已经失败退出，未完成请求的604800秒。DBS/HISDBS分别运行108021.099/108018.451秒，SQL成功54007/54005且零错误，API各21604次成功且零错误；这段约30小时的部分数据不能计为七天通过，也不转移给preview.5源码。
 
 第六轮周期检查run_id=2026111257605：DBS的初始数据及物理备份完成两项通过，随后standby的pg_ctl启动退出1；HISDBS第六轮未执行，engine cleanup未接受。不是把此次物理备份计成超时。standby.log将实际服务日志转向/opt/postgresql/pg_log，根因仍需独立读取服务日志确认，不推断OOM或IO因果。第五轮DBS执行接口6.431522秒超过原5秒门槛的既有失败仍保留。
