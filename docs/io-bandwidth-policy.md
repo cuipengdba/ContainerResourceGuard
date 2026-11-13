@@ -10,6 +10,8 @@ HISDBS30纳秒兼容v2独立补测已完成36/36项、三次不同ID受控启动
 
 当前已交付preview.5，见[八项公开下载校验](test-results-preview5-publication.json)；准确工程CI与默认20%两角色完整72项通过，[实际范围](testing-bandwidth-default20-two-role.md)独立归档。30%两组和原其它验收继续，稳定1.0未接受；以下保留实现时的任务状态与设计。
 
+当前交付范围见[preview.5已验证子集](testing-preview5-qualified-subset.md)：准确工程CI、两架构重复字节、新程序DBS20完整36项及95实例清理通过；完整20/30矩阵仍在运行。下文早期任务状态按原时点保留，原完整业务/长期与稳定门槛继续。
+
 状态：用户已明确选择，下一版候选已实现；准确ced461705ebc27315a59aefe463f9b4af47130a3完整Linux/两架构包/可复现、原生ARM64、52项实际Cgroup及180项分区检查通过，新默认真机回归已运行，DBS20首轮17项通过，未终结。已发布preview.4仍是旧四轴语义，未原地替换其附件。
 
 用户答复：“默认按读写带宽百分比限制，IOPS 留给手动模式”。因此io_percent默认20，只换算标定read_bps/write_bps；例如读100MiB/s、写50MiB/s的基准，20对应rbps20MiB/s和wbps10MiB/s。不是物理设备保证吞吐，也不按标定read_iops/write_iops生成默认IOPS硬限额。旧percent兼容入口采用相同新IO语义；CPU/内存独立百分比及各默认20、memory.high和每日30天/1GB日志保持。

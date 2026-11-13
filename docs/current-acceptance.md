@@ -1,5 +1,8 @@
 # 当前验收入口
 
+已发布程序维护：[preview.4→preview.5同预算在线维护](testing-preview45-manual-maintenance.md)冻结，17项结构/真机预检通过，计划DBS/HISDBS各20项/共40项，原600秒零错误及延迟/覆盖标准保持；尚未启动或接受业务终态。此前手动完整业务16/16通过、默认20%失败和原52项任务保持，稳定1.0未接受。
+
+
 手动参考预算完整业务已经终结：16项记录/16通过/0失败，每角色原600秒及备份同步恢复/SLA按原标准独立核对，接受值为true；两namespace/两组父叶及54登记实例独立确认消失。[完整终态与准确原件](testing-manual-reference-full600-terminal.md)已归档。默认20%失败保持，不改默认值或宣称稳定1.0通过。[实际公开preview.4→preview.5维护设计](testing-preview45-manual-maintenance-design.md)另行规划，16个公开附件重核，仅是输入/设计，尚未执行。
 
 以下保留原时点记录。
@@ -42,6 +45,10 @@ HISDBS30纳秒兼容v2独立补测已完成36/36项、三次不同ID受控启动
 截至节点2026-11-13 16:26:50 UTC，已发布[工程预览preview.5](releases/v1.0.0-preview.5.md)，八项公开附件已逐字节校验。新默认值真机原矩阵已经结束：DBS20/HISDBS20/DBS30各36项通过；HISDBS30记录20通过、1失败、15项未执行，共129项记录/128通过/1失败、11次启动。失败是冻结脚本要求跨午夜后旧日期日志继续增长，与每日轮转规则冲突；实际新日期日志已有轮转及新Agent启动。保留原失败，另行修正脚本独立补测，不把原144项改成通过。四namespace、11组父叶及369登记实例独立确认消失。[原矩阵终态及精确原件](testing-bandwidth-percent-terminal.md)已归档。旧preview.4七天任务也已在约30小时的第六轮standby启动失败退出，未达到七天；[独立终态](testing-memory-high-seven-day-terminal.md)保留51个初始登记实例清理及第六轮cleanup未接受的区别。稳定1.0、原52项及其它完整业务/升级/长期门槛继续。
 
 以下保留按原时点记录的历史进展。
+
+当前工程交付：[v1.0.0-preview.5](releases/v1.0.0-preview.5.md)。IO百分比只新增读写BPS，IOPS留手动且外部原值保留；内存继续memory.high。[已验证范围](testing-preview5-qualified-subset.md)：准确源码完整Linux/原生ARM64/52项实际cgroup/180项分区通过，新程序DBS默认20%完整36项通过、三次不同ID启动均在原300秒内，95登记实例清理。HIS20及30%两组仍按冻结方案继续，不宣称144项或稳定1.0通过。以下历史状态按原时点保留。
+
+## 历史安装与验收记录
 
 截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
 

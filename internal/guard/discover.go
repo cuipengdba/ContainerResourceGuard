@@ -1,14 +1,12 @@
 package guard
 
 import (
-	"crypto/sha256"
 	"encoding/hex"
 	"errors"
 	"fmt"
 	"os"
 	"path"
 	"path/filepath"
-	"strconv"
 	"strings"
 )
 
@@ -75,14 +73,15 @@ func Resolve(cgroup, mountinfo, pid1 string) (string, error) {
 }
 
 type Environment struct {
-	CgroupVersion        string `json:"cgroup_version,omitempty"`
-	Target               string `json:"cgroup"`
-	Identity             string `json:"identity"`
-	OnlineCPUs           int    `json:"host_online_cpus"`
-	MemoryBytes          uint64 `json:"host_memory_bytes"`
-	CPUCapacitySource    string `json:"cpu_capacity_source"`
-	MemoryCapacitySource string `json:"memory_capacity_source"`
-	EffectiveCPUs        string `json:"effective_cpuset,omitempty"`
+	CgroupVersion        string   `json:"cgroup_version,omitempty"`
+	Target               string   `json:"cgroup"`
+	Identity             string   `json:"identity"`
+	OnlineCPUs           int      `json:"host_online_cpus"`
+	MemoryBytes          uint64   `json:"host_memory_bytes"`
+	CPUCapacitySource    string   `json:"cpu_capacity_source"`
+	MemoryCapacitySource string   `json:"memory_capacity_source"`
+	EffectiveCPUs        string   `json:"effective_cpuset,omitempty"`
+	CapacityWarnings     []string `json:"capacity_warnings,omitempty"`
 }
 
 func Discover() (Environment, error) {
@@ -130,67 +129,9 @@ func Discover() (Environment, error) {
 	if e != nil {
 		return env, e
 	}
-	online, e := read("/sys/devices/system/cpu/online")
-	if e != nil {
-		return env, e
-	}
-	env.OnlineCPUs, e = CountCPUs(online)
-	if e != nil {
-		return env, e
-	}
-	env.CPUCapacitySource = "/sys/devices/system/cpu/online"
-	// A read-only host proc mount may be used on systems that virtualize /proc/meminfo.
-	env.MemoryCapacitySource = "/proc/meminfo"
-	if _, e = os.Stat("/host/proc/meminfo"); e == nil {
-		env.MemoryCapacitySource = "/host/proc/meminfo"
-	}
-	mem, e := read(env.MemoryCapacitySource)
-	if e != nil {
-		return env, e
-	}
-	for _, line := range strings.Split(mem, "\n") {
-		f := strings.Fields(line)
-		if len(f) == 3 && f[0] == "MemTotal:" && f[2] == "kB" {
-			v, x := strconv.ParseUint(f[1], 10, 64)
-			if x != nil || v == 0 || v > 1<<54 {
-				return env, errors.New("invalid MemTotal")
-			}
-			env.MemoryBytes = v * 1024
-		}
-	}
-	if env.MemoryBytes == 0 {
-		return env, errors.New("host MemTotal unavailable")
-	}
+	discoverCapacity(&env, read, func(path string) bool { _, err := os.Stat(path); return err == nil }, verifyCapacitySource)
 	env.EffectiveCPUs, _ = read(filepath.Join(env.Target, "cpuset.cpus.effective"))
 	return env, nil
-}
-
-func DeviceIdentity(dev string) (string, error) {
-	if !validDevice(dev) {
-		return "", errors.New("invalid device number")
-	}
-	root := filepath.Join("/sys/dev/block", dev)
-	if _, e := os.Stat(root); e != nil {
-		return "", e
-	}
-	var id string
-	for _, p := range []string{"dm/uuid", "device/wwid", "wwid"} {
-		if v, e := read(filepath.Join(root, p)); e == nil && v != "" {
-			id = p + ":" + v
-			break
-		}
-	}
-	if id == "" {
-		return "", errors.New("device has no stable UUID/WWID; refusing a portable IO profile")
-	}
-	size, e := read(filepath.Join(root, "size"))
-	if e != nil {
-		return "", e
-	}
-	// Partition start disambiguates partitions sharing a parent's WWID.
-	start, _ := read(filepath.Join(root, "start"))
-	hash := sha256.Sum256([]byte(id + ":" + size + ":" + start))
-	return hex.EncodeToString(hash[:]), nil
 }
 
 func validDevice(s string) bool {

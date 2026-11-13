@@ -18,7 +18,7 @@ type DisableMarker struct {
 // A marker belongs to a cgroup incarnation. A replacement container starts with
 // its own policy even when an emptyDir survives the old container process.
 func IsDisabled(c Config, env Environment) (bool, error) {
-	b, err := os.ReadFile(filepath.Join(c.StateDir, "disabled.json"))
+	b, err := ReadStateBoundedFile(filepath.Join(c.StateDir, "disabled.json"))
 	if os.IsNotExist(err) {
 		return false, nil
 	}
@@ -88,15 +88,16 @@ func (w *StatusWriter) Write(s Status, now time.Time) (bool, error) {
 
 type StatusView struct {
 	Status
-	SnapshotAgeSeconds int64        `json:"snapshot_age_seconds"`
-	WriterLockHeld     bool         `json:"writer_lock_held"`
-	Actual             []ItemStatus `json:"actual"`
-	LockCheckError     string       `json:"lock_check_error,omitempty"`
+	Memory             *MemorySnapshot `json:"memory,omitempty"`
+	SnapshotAgeSeconds int64           `json:"snapshot_age_seconds"`
+	WriterLockHeld     bool            `json:"writer_lock_held"`
+	Actual             []ItemStatus    `json:"actual"`
+	LockCheckError     string          `json:"lock_check_error,omitempty"`
 }
 
 func ReadStatus(c Config, env Environment) (StatusView, error) {
 	var v StatusView
-	b, err := os.ReadFile(filepath.Join(c.StateDir, "status.json"))
+	b, err := ReadStateBoundedFile(filepath.Join(c.StateDir, "status.json"))
 	if err != nil {
 		return v, err
 	}
@@ -120,10 +121,17 @@ func ReadStatus(c Config, env Environment) (StatusView, error) {
 		}
 	}
 	e := Engine{Env: env, Files: RealFiles{}}
-	settings := v.Plan.Settings
-	if len(settings) == 0 {
-		for _, i := range v.Items {
+	memory := ReadMemorySnapshot(env, e.Files)
+	v.Memory = &memory
+	settings := append([]Setting(nil), v.Plan.Settings...)
+	seen := map[string]bool{}
+	for _, s := range settings {
+		seen[s.Key()] = true
+	}
+	for _, i := range v.Items {
+		if !seen[i.Key()] {
 			settings = append(settings, i.Setting)
+			seen[i.Key()] = true
 		}
 	}
 	for _, s := range settings {

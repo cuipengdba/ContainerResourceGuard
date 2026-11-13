@@ -1,0 +1,206 @@
+{
+  "schema": "crg-public-preview45-manual-online-maintenance-plan-v1",
+  "phase": "frozen-before-qualification-preflight-and-launch",
+  "tools": "/var/tmp/crg-public1261-tools-20261114",
+  "output": "/var/tmp/crg-public1261-results-20261114",
+  "namespaces": {
+    "dbs": "crg-vendor-lab-public1261-dbs-20261114",
+    "hisdbs": "crg-vendor-lab-public1261-hisdbs-20261114"
+  },
+  "run_ids": {
+    "dbs": "202611141261",
+    "hisdbs": "202611141262"
+  },
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "job_sha256": "e7239815f60ca28a0bb5e59735c3e61bf8bc68458736f47d31d9039355760b6a",
+  "previous960_report_sha256": "4a5a26868a967fde30f3274eacb9c3159af61ce073c65779913ab3ccdd4de102",
+  "private_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "configuration": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_high": "20001980416",
+      "io_read_bps": "64MiB",
+      "io_write_bps": "64MiB",
+      "io_read_iops": 4096,
+      "io_write_iops": 4096
+    },
+    "data_paths": [
+      "/opt/postgresql"
+    ]
+  },
+  "criteria": {
+    "original_start_and_mounts_PG_cache_unchanged": true,
+    "PG_API_managed_startup_seconds": 300,
+    "cache_seconds_after_ready": 45,
+    "native_seconds_each_role": 600,
+    "SQL_API_errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "minimum_scheduled_sample_coverage": 0.98,
+    "payload_rows": 16384,
+    "payload_bytes": 67108864,
+    "all_own_objects_independently_absent": true,
+    "clone_available_memory_GiB": 28,
+    "steady_available_memory_GiB": 8,
+    "free_disk_GiB": 20,
+    "all_maintenance_intervals_inside_successful_native600": true,
+    "single_writer": true,
+    "original_PID1_primary_and_CCG_unchanged": true,
+    "quiescent_install_immediate_rollback": true,
+    "unchanged_snapshot_after_running_candidate_rollback_allowed": true,
+    "changed_quiescent_config_old_receipt_refused": true,
+    "explicit_reverse_fresh_receipt": true,
+    "final_eight_runtime_originals_and_empty_journal_restored": true
+  },
+  "failure_policy": "Keep every result, original quotas/timeouts and native criteria. Separate fresh per-role namespaces and outputs; proceed to next role only if preceding namespace/process/cgroup absence verified. No retry or quota relaxation. No cache-memory program changes.",
+  "limitations": [
+    "Shared node; not exclusive24h, causal overhead, high pressure or seven-day acceptance.",
+    "Original paired business fixture has no Kubelet liveness; independently completed exact-probe three-boot startup combinations are separate evidence.",
+    "Manual CPU/IO/memory reference budget was declared before this default20failure; this new case does not turn default20failure into success or change product defaults.",
+    "Synthetic SQL/API64MiB and engine physicalbackup/streaming/restore use actual vendor images/startup/paths; undocumented vendor-specific backup APIs not asserted.",
+    "Any failure is retained; no automatic retry, quota escalation, PG setting change or relaxed original300/45/600,zeroerror/5s/1s/98%,engine300/stop30 criteria.",
+    "This new scope tests actual publishedpreview4to5 program maintenance at unchanged manual budget; not all distribution installer paths or percentage migration. Prior actual1240full business result is a separately completed prerequisite; no old source/time inheritance.",
+    "Both versions are prereleases, not two released minor versions. Native ARM/Linux6engineeringCI is distinct from deferred vendor hardware."
+  ],
+  "original_driver_sha256": "d9d23afc8ff49d5164f61c23e2bf4d15822fed59118b540f769c4cb1e34c4c21",
+  "source_sha256": {
+    "maintenance-business.py": "e7239815f60ca28a0bb5e59735c3e61bf8bc68458736f47d31d9039355760b6a",
+    "runner.py": "e681ec71c57fb92f45fecffca4e9b71b9a90515b5bddff6302246aab50827fae",
+    "artifact-transfer.py": "0579f26ade37c4919d967422895125ad0801cb2f06290daee7c5a2f8fdcbc9c9",
+    "tests/manual-maintenance-contract.py": "6afad3226a99767caa70b20cedf474a41d24dd545f2a557922c6256e227d886a",
+    "public-artifact-binding.json": "f3b378d7881cb130eaf4cbf1cc9ced1d1fef4780288387b6d063686411ba5a6b",
+    "binaries/previous": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+    "binaries/candidate": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "expected_original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  },
+  "candidate_version": "v1.0.0-preview.5",
+  "resource_policy": "Both published programs same canonical manual memory.high budget; no quota changes during online replacement",
+  "configuration_exact_utf8": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":7.2,\"memory_high\":\"20001980416\",\"io_read_bps\":\"64MiB\",\"io_write_bps\":\"64MiB\",\"io_read_iops\":4096,\"io_write_iops\":4096},\"data_paths\":[\"/opt/postgresql\"]}",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_high_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096,
+    "external_memory_max_bytes": 21474836480
+  },
+  "previous_full600": {
+    "tools": "/var/tmp/crg-manual1240-tools-20261114",
+    "output": "/var/tmp/crg-manual1240-results-20261114",
+    "namespaces": {
+      "dbs": "crg-vendor-lab-manual1240-dbs-20261114",
+      "hisdbs": "crg-vendor-lab-manual1240-hisdbs-20261114"
+    },
+    "job_sha256": "fc981713aa1d45833c161776bb005e874cb51fc8ac20117c5d1f26e2f0dd654d",
+    "plan_sha256": "7562087a52b9ddc44d81cbd91b6146ee27467e5aed534724343ca4ef49ce5e74",
+    "report_sha256": "cdedbcc757829fc9e657298fd14d294546b6cbe12be5a1bd29a53ee49b0d7185",
+    "registered_process_instances_absent": 54
+  },
+  "manual_reference_plan": "test-plan-memory-high-business-v2.json",
+  "manual_reference_plan_sha256": "4c71f5aed4fe675ca6d66cf36e18ededc1b400e141de700588828b7bb89eb209",
+  "adapter_base_job_sha256": "8b61d73a06c79b99b7fdca8bc2a460b925f87e00b8a6089f1b1a9a948d787a39",
+  "adapter_scope": "Explicit separately named existing manual reference budget; default20failed case retained. Original startup, fixture/native/campaign/engine, timeouts, load, error/latency/coverage criteria unchanged.",
+  "programs": {
+    "previous": {
+      "tag": "v1.0.0-preview.4",
+      "release_id": 442515524,
+      "release_url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.4",
+      "package_revision": "7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0",
+      "source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+      "embedded_version": "v1.0.0-preview.4",
+      "binary_sha256": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "binary_bytes": 4026528,
+      "all_eight_prior_public_download_bytes_rechecked": true,
+      "current_eight_asset_metadata_matches_publication": true,
+      "selected_assets": {
+        "public-artifacts/previous/build-manifest.json": {
+          "name": "build-manifest.json",
+          "id": 738138367,
+          "bytes": 3347,
+          "sha256": "da0a5724f34307dfa242024ed780445608b98ca54a718040246cd78f614523db",
+          "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.4/build-manifest.json"
+        },
+        "public-artifacts/previous/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz": {
+          "name": "containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz",
+          "id": 738138548,
+          "bytes": 11445152,
+          "sha256": "bf2c9db3e0a129b1f9cbdeb84f1e9dbcecb47923f7b1310ebfe03ad258829f4d",
+          "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.4/containerresourceguard-v1.0.0-preview.4-linux-amd64.tar.gz"
+        }
+      },
+      "current_release_body_sha256": "fac532ad1a282abcf33b4644c74f62339342cf8123a053aa755e0c66756fd4be"
+    },
+    "candidate": {
+      "tag": "v1.0.0-preview.5",
+      "release_id": 444410114,
+      "release_url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5",
+      "package_revision": "d32987af8c02319f949b2e7bcc1429d598553921",
+      "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+      "embedded_version": "v1.0.0-preview.5",
+      "binary_sha256": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+      "binary_bytes": 4026528,
+      "all_eight_prior_public_download_bytes_rechecked": true,
+      "current_eight_asset_metadata_matches_publication": true,
+      "selected_assets": {
+        "public-artifacts/candidate/build-manifest.json": {
+          "name": "build-manifest.json",
+          "id": 744199930,
+          "bytes": 3347,
+          "sha256": "fc8dc4c889bfce69457ca86725d908df2ccd65d98c80dcb0cd1fe6b54e26407c",
+          "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.5/build-manifest.json"
+        },
+        "public-artifacts/candidate/containerresourceguard-v1.0.0-preview.5-linux-amd64.tar.gz": {
+          "name": "containerresourceguard-v1.0.0-preview.5-linux-amd64.tar.gz",
+          "id": 744199912,
+          "bytes": 25354382,
+          "sha256": "570dc4092763965ec45f7c465a56bfbaa4abfef0e8daa7cc05d8fe4545a2cdca",
+          "url": "https://github.com/cuipengdba/ContainerResourceGuard/releases/download/v1.0.0-preview.5/containerresourceguard-v1.0.0-preview.5-linux-amd64.tar.gz"
+        }
+      },
+      "current_release_body_sha256": "cf4d77bbf16cc88e31d17a7e54d8ec9a20ca7e7342ac0d456586a32d870b3245"
+    }
+  },
+  "design": "test-plan-preview45-manual-maintenance-design.json",
+  "business_prerequisite_qualification": "test-results-manual-reference-full600-terminal.json",
+  "business_prerequisite_qualification_sha256": "155200b383eb93750dd77fd851393acf586872fee5bd9a2c80267f0f43720390",
+  "business_prerequisite_criteria": {
+    "original_start_and_mounts_PG_cache_unchanged": true,
+    "PG_API_managed_startup_seconds": 300,
+    "cache_seconds_after_ready": 45,
+    "native_seconds_each_role": 600,
+    "SQL_API_errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "minimum_scheduled_sample_coverage": 0.98,
+    "engine_checks": 10,
+    "engine_cycle_must_fit_inside_successful_native_window": true,
+    "payload_rows": 16384,
+    "payload_bytes": 67108864,
+    "startup_checks_each_role": 7,
+    "business_checks_each_role": 1,
+    "all_own_objects_independently_absent": true,
+    "clone_available_memory_GiB": 28,
+    "steady_available_memory_GiB": 8,
+    "free_disk_GiB": 20
+  },
+  "planned_checks_each_role": 20,
+  "planned_checks": 40,
+  "original_native_worker_byte_identical": true,
+  "negative_snapshot_config": {
+    "interval_seconds": 16,
+    "only_while_quiescent": true,
+    "resources_unchanged": true,
+    "exact_original_config_restored_before_next_operation": true
+  }
+}

@@ -8,6 +8,10 @@
 
 以下历史记录按原时点保留。
 
+## v1.0.0-preview.5
+
+IO 百分比仅新增标定读写 BPS，保留外部 IOPS，旧自有 IOPS 按 journal 安全迁移；手动 IOPS 保留，计划/状态/日志可识别新策略。[交付与验证范围](docs/releases/v1.0.0-preview.5.md)。
+
 ## v1.0.0-preview.4
 
 内存百分比/手动内存使用memory.high，不新增memory.max；按journal恢复自有旧硬限额，外部限额保留。策略与警告写入每日日志。两原镜像隔离30项及两架构实际控制器44项通过；完整业务/长期验收继续。[发布说明](docs/releases/v1.0.0-preview.4.md)。

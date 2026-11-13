@@ -2,7 +2,7 @@
   "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
   "product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
   "task_count": 52,
-  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; new-source actual business pending.",
+  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. User explicitly selected io_percent=calibrated read/write BPS only, optionalIOPS manual; externalIOPS preserved, owned legacyIOPS restored only with existing identity/journal checks. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; new-source actual business pending.",
   "tasks": [
     {
       "id": "P01.1",
@@ -2316,6 +2316,7 @@
     "registered_process_instances_absent": 219,
     "independent_cleanup_node_utc": "2026-11-13T14:10:45.944399+00:00",
     "default_IO_semantics_answer_pending": false,
+    "policy_at_test_time": "original four-axis preview4; subsequent explicit user decision switches future percentage policy, no historical results altered",
     "default_four_axis_policy_unchanged_at_test_time": true,
     "subsequent_user_decision": "BPS-only percentage for new source; no historical test/release mutation"
   },
@@ -2329,6 +2330,28 @@
     ],
     "program_release_and_original52_unchanged": true,
     "new_business_acceptance": false
+  },
+  "source_integration_candidate": {
+    "phase": "bandwidth-policy-exact-engineering-CI-passed-new-business-pending",
+    "documentation": "source-integration.md",
+    "plan": "source-integration-plan.json",
+    "base": "21bc470b4f3a094d7daa3bf6f44842fe12905b33",
+    "import_source": "97ae6787b3549faa8916ff954baad4ff847c76fa",
+    "branch": "release/integration-v1",
+    "merged": false,
+    "deployed": false,
+    "stable_release_accepted": false,
+    "first_CI_source": "09821268845707493bcd68cdce2b3103896c3852",
+    "first_CI_report": "test-results-source-integration-first-CI.json",
+    "original_partition_failure_preserved": true,
+    "second_failed_source": "02e2c7374bb732748a376652b1efa05743c9a748",
+    "second_failure_evidence": "test-evidence-source-integration-second-CI.json.gz",
+    "exact_CI_source": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "current_CI_report": "test-results-source-integration-current-CI.json",
+    "PR": "https://github.com/cuipengdba/ContainerResourceGuard/pull/1",
+    "draft": true,
+    "previous_passed_CI_source": "7823d8d5da8d1f25909e26660697b36f0e0e9e2e",
+    "latest_policy_CI_report": "test-results-IO-bandwidth-CI.json"
   },
   "source_integration_review": {
     "phase": "engineering-CI-passed-not-business-or-stable-acceptance",
@@ -2397,6 +2420,7 @@
       "plan_sha256": "b2c68f37f146991e32212b1ec8a3ad3f26869fd771d0956d82bd0daa528c0c5c"
     },
     "remaining_cases_not_accepted": true,
+    "subset_report": "test-results-preview5-qualified-subset.json",
     "checks_basis": "all recorded original terminal checks, including one failed cross-midnight log assertion",
     "completed_cases": [
       "dbs-20",
@@ -2410,6 +2434,16 @@
     "unexecuted_checks": 15,
     "terminal_report": "test-results-bandwidth-percent-terminal.json",
     "independent_HIS30_supplement": "test-results-bandwidth-calendar-v2-terminal.json"
+  },
+  "preview5_engineering_scope": {
+    "version": "v1.0.0-preview.5",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "qualified_report": "test-results-preview5-qualified-subset.json",
+    "complete_DBS20_checks": 36,
+    "planned_matrix_checks": 144,
+    "full_matrix_accepted": false,
+    "stable_release_accepted": false,
+    "publication_download_proof": "published separately after server-byte verification"
   },
   "preview5_publication": {
     "phase": "published-and-all-eight-public-downloads-verified",
@@ -2612,6 +2646,27 @@
     "public_program_binding": "test-input-preview45-public-program-binding.json",
     "prior_sixteen_public_downloads_rehashed": true,
     "runtime_launched": false,
+    "stable_release_accepted": false
+  },
+  "preview45_manual_maintenance": {
+    "phase": "qualified-before-launch-not-business-pass",
+    "documentation": "testing-preview45-manual-maintenance.md",
+    "plan": "test-plan-preview45-manual-maintenance.json",
+    "preflight": "test-results-preview45-manual-maintenance-preflight.json",
+    "job_sha256": "e7239815f60ca28a0bb5e59735c3e61bf8bc68458736f47d31d9039355760b6a",
+    "plan_sha256": "fb6dc754e3c0b260c3ba869ec30f682a94641e3e9217d4c8bd8c2a8e7df5a6a1",
+    "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "budget": {
+      "cpu_cores": 7.2,
+      "memory_high_bytes": 20001980416,
+      "read_write_bps": 67108864,
+      "read_write_iops": 4096,
+      "external_memory_max_bytes": 21474836480
+    },
+    "planned_checks": 40,
+    "native_seconds_each_role": 600,
+    "qualification_checks": 17,
+    "business_accepted": false,
     "stable_release_accepted": false
   }
 }

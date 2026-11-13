@@ -15,22 +15,25 @@ import (
 
 type Config struct {
 	ResourcePercentages
-	LogDir          string        `json:"log_dir,omitempty"`
-	Percent         float64       `json:"percent,omitempty"`
-	ResourceMode    string        `json:"resource_mode,omitempty"`
-	Limits          *ManualLimits `json:"limits,omitempty"`
-	PidsMax         *uint64       `json:"pids_max,omitempty"`
-	CPUWeight       *uint64       `json:"cpu_weight,omitempty"`
-	IOWeight        *uint64       `json:"io_weight,omitempty"`
-	MemoryHigh      string        `json:"memory_high,omitempty"`
-	MemorySwapMax   string        `json:"memory_swap_max,omitempty"`
-	Mode            string        `json:"mode,omitempty"`
-	IOProfile       string        `json:"io_profile,omitempty"`
-	IOCalibration   string        `json:"io_calibration,omitempty"`
-	StateDir        string        `json:"state_dir,omitempty"`
-	IntervalSeconds int           `json:"interval_seconds,omitempty"`
-	DataPaths       []string      `json:"data_paths,omitempty"`
-	percentPresent  bool
+	LogDir              string        `json:"log_dir,omitempty"`
+	Percent             float64       `json:"percent,omitempty"`
+	ResourceMode        string        `json:"resource_mode,omitempty"`
+	Limits              *ManualLimits `json:"limits,omitempty"`
+	PidsMax             *uint64       `json:"pids_max,omitempty"`
+	CPUWeight           *uint64       `json:"cpu_weight,omitempty"`
+	IOWeight            *uint64       `json:"io_weight,omitempty"`
+	MemoryHigh          string        `json:"memory_high,omitempty"`
+	MemorySwapMax       string        `json:"memory_swap_max,omitempty"`
+	MemoryStableSeconds int           `json:"memory_stable_seconds,omitempty"`
+	MetricsEnabled      bool          `json:"metrics_enabled,omitempty"`
+	EventsEnabled       bool          `json:"events_enabled,omitempty"`
+	Mode                string        `json:"mode,omitempty"`
+	IOProfile           string        `json:"io_profile,omitempty"`
+	IOCalibration       string        `json:"io_calibration,omitempty"`
+	StateDir            string        `json:"state_dir,omitempty"`
+	IntervalSeconds     int           `json:"interval_seconds,omitempty"`
+	DataPaths           []string      `json:"data_paths,omitempty"`
+	percentPresent      bool
 }
 
 func (c *Config) UnmarshalJSON(data []byte) error {
@@ -57,6 +60,9 @@ func (c *Config) UnmarshalJSON(data []byte) error {
 }
 
 func Decode(data []byte, out any) error {
+	if len(data) > MaxJSONBytes {
+		return errors.New("JSON source exceeds 1MiB")
+	}
 	trimmed := bytes.TrimSpace(data)
 	if len(trimmed) == 0 || trimmed[0] != '{' {
 		return errors.New("expected a JSON object")
@@ -79,6 +85,13 @@ func Decode(data []byte, out any) error {
 }
 
 func uniqueJSON(d *json.Decoder) error {
+	return uniqueJSONDepth(d, 0)
+}
+
+func uniqueJSONDepth(d *json.Decoder, depth int) error {
+	if depth > 64 {
+		return errors.New("JSON nesting exceeds 64 levels")
+	}
 	t, err := d.Token()
 	if err != nil {
 		return err
@@ -100,13 +113,13 @@ func uniqueJSON(d *json.Decoder) error {
 				return errors.New("duplicate or invalid JSON key")
 			}
 			seen[s] = true
-			if err := uniqueJSON(d); err != nil {
+			if err := uniqueJSONDepth(d, depth+1); err != nil {
 				return err
 			}
 		}
 	case '[':
 		for d.More() {
-			if err := uniqueJSON(d); err != nil {
+			if err := uniqueJSONDepth(d, depth+1); err != nil {
 				return err
 			}
 		}
@@ -159,10 +172,10 @@ func (c *Config) Validate() error {
 		if err != nil || n < 16<<20 {
 			return errors.New("memory_high must be an integer byte quantity of at least 16MiB")
 		}
-		if c.ResourceMode == "manual" && c.Limits.MemoryMax != "" {
-			max, _ := ParseBytes(c.Limits.MemoryMax)
+		if c.ResourceMode == "manual" && c.Limits.memoryTarget() != "" {
+			max, _ := ParseBytes(c.Limits.memoryTarget())
 			if n > max {
-				return errors.New("memory_high cannot exceed requested memory_max")
+				return errors.New("memory_high cannot exceed requested manual memory target")
 			}
 		}
 	}
@@ -171,6 +184,9 @@ func (c *Config) Validate() error {
 		if err != nil || n > 0 && n < uint64(os.Getpagesize()) {
 			return errors.New("memory_swap_max must be 0B or at least one page in whole bytes")
 		}
+	}
+	if c.MemoryStableSeconds != 0 && (c.MemoryStableSeconds < 2 || c.MemoryStableSeconds > 3600) {
+		return errors.New("memory_stable_seconds must be 0 (legacy instantaneous guards) or 2..3600")
 	}
 	if c.Mode == "" {
 		c.Mode = "enforce"
@@ -202,7 +218,13 @@ func (c *Config) Validate() error {
 	if c.IntervalSeconds < 1 || c.IntervalSeconds > 3600 {
 		return errors.New("interval_seconds must be 1..3600")
 	}
+	if len(c.DataPaths) > 64 {
+		return errors.New("data_paths supports at most 64 paths per container")
+	}
 	for _, p := range c.DataPaths {
+		if len(p) > 4096 {
+			return errors.New("data_paths entries must not exceed 4096 bytes")
+		}
 		if !path.IsAbs(p) || path.Clean(p) != p {
 			return errors.New("data_paths must contain clean absolute Linux paths")
 		}
@@ -217,7 +239,7 @@ func ReadConfig(path string, percent float64) (Config, error) {
 func ReadConfigPercentages(path string, percent float64, percentages ResourcePercentages) (Config, error) {
 	var c Config
 	if path != "" {
-		b, e := os.ReadFile(path)
+		b, e := ReadBoundedFile(path)
 		if e != nil {
 			return c, e
 		}
