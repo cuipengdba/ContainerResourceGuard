@@ -1,0 +1,273 @@
+{
+  "schema": "crg-final-v1-same-Agent-business-reload-v1",
+  "phase": "frozen-before-preflight-qualification-and-launch",
+  "tools": "/var/tmp/crg-final1429-tools-20261115",
+  "output": "/var/tmp/crg-final1429-results-20261115",
+  "namespaces": {
+    "normal": {
+      "dbs": "crg-vendor-lab-final1429-normal-dbs-20261115",
+      "hisdbs": "crg-vendor-lab-final1429-normal-hisdbs-20261115"
+    }
+  },
+  "run_ids": {
+    "normal": {
+      "dbs": "202611151429",
+      "hisdbs": "202611151430"
+    }
+  },
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "job_sha256": "55eb6c9d3f2bbc3e707d37c7769a72d7f71cb69b9cc1bba776f8b4af09020131",
+  "previous960_report_sha256": "4a5a26868a967fde30f3274eacb9c3159af61ce073c65779913ab3ccdd4de102",
+  "private_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "configuration": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_high": "20001980416",
+      "io_read_bps": "64MiB",
+      "io_write_bps": "64MiB",
+      "io_read_iops": 4096,
+      "io_write_iops": 4096
+    },
+    "data_paths": [
+      "/opt/postgresql"
+    ],
+    "interval_seconds": 1
+  },
+  "criteria": {
+    "original_start_and_mounts_PG_cache_unchanged": true,
+    "PG_API_managed_startup_seconds": 300,
+    "cache_seconds_after_ready": 45,
+    "native_seconds_each_role": 600,
+    "SQL_API_errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "minimum_scheduled_sample_coverage": 0.98,
+    "engine_checks": 10,
+    "engine_cycle_must_fit_inside_successful_native_window": true,
+    "payload_rows": 16384,
+    "payload_bytes": 67108864,
+    "startup_checks_each_role": 7,
+    "business_checks_each_role": 1,
+    "all_own_objects_independently_absent": true,
+    "clone_available_memory_GiB": 28,
+    "steady_available_memory_GiB": 8,
+    "free_disk_GiB": 20,
+    "conflict_holder_port": 55432,
+    "conflict_expected_engine_exit_nonzero": true,
+    "conflict_raw_PG_log_address_in_use_required": true,
+    "normal_diagnostic_checks_each_role": 1
+  },
+  "failure_policy": "Keep every result, original quotas/timeouts and native criteria. Separate fresh per-role namespaces and outputs; proceed to next role only if preceding namespace/process/cgroup absence verified. No retry or quota relaxation. No cache-memory program changes.",
+  "limitations": [
+    "Shared node; not exclusive24h, causal overhead, high pressure or seven-day acceptance.",
+    "Original paired business fixture has no Kubelet liveness; independently completed exact-probe three-boot startup combinations are separate evidence.",
+    "Manual CPU/IO/memory reference budget was declared before this default20failure; this new case does not turn default20failure into success or change product defaults.",
+    "Synthetic SQL/API64MiB and engine physicalbackup/streaming/restore use actual vendor images/startup/paths; undocumented vendor-specific backup APIs not asserted.",
+    "Any failure is retained; no automatic retry, quota escalation, PG setting change or relaxed original300/45/600,zeroerror/5s/1s/98%,engine300/stop30 criteria.",
+    "28structural/14Pod checks separately qualified current diagnostics; this run must verify real PG conflict and fresh full600, not borrow their runtime.",
+    "Conflict is intentional negative engine result, never relabelled engine passed. All normal-arm and prior default20 failures retained."
+  ],
+  "original_driver_sha256": "fc981713aa1d45833c161776bb005e874cb51fc8ac20117c5d1f26e2f0dd654d",
+  "source_sha256": {
+    "artifact-transfer.py": "9b34b67e1c37a57dd88fe669014d543c7d0b140ffa8cc70da242875565d1a501",
+    "business-driver.py": "55eb6c9d3f2bbc3e707d37c7769a72d7f71cb69b9cc1bba776f8b4af09020131",
+    "runner.py": "6f74499a625988a4ab5e6230fb3d2978acd6d774e0df35153f9f43c234bc91db",
+    "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+    "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+    "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "tests/reload-profile.json": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "tests/reload-protocol.py": "d99d94ba7b40463161e346c02a0db1b16f77d9aeeb982ee5aa171efc505b3f68",
+    "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+    "tests/vendor-soak-campaign.py": "fa63ccedfc37bc37f4984afd247dc7b132f99201e4433839af3a4442e04a22f4",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461"
+  },
+  "expected_original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  },
+  "candidate_version": "v1.0.0",
+  "resource_policy": "Manual explicit CPU7.2/high20001980416/BPS64MiB/IOPS4096; no automatic profile; other controls/external20GiB retained",
+  "configuration_exact_utf8": "{\"resource_mode\": \"manual\", \"limits\": {\"cpu_cores\": 7.2, \"memory_high\": \"20001980416\", \"io_read_bps\": \"64MiB\", \"io_write_bps\": \"64MiB\", \"io_read_iops\": 4096, \"io_write_iops\": 4096}, \"data_paths\": [\"/opt/postgresql\"], \"interval_seconds\": 1}",
+  "budget": {
+    "cpu_cores": 7.2,
+    "memory_high_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096,
+    "external_memory_max_bytes": 21474836480
+  },
+  "manual_reference_plan": "test-plan-memory-high-business-v2.json",
+  "manual_reference_plan_sha256": "4c71f5aed4fe675ca6d66cf36e18ededc1b400e141de700588828b7bb89eb209",
+  "arms": [
+    "normal"
+  ],
+  "planned_checks": {
+    "normal_each_role": 9,
+    "total": 18
+  },
+  "qualification_scope": "Fixed final ELF exact original-image business600 per role with13 same-Agent reload observations, original SQL/API/engine deadlines and strict process/ownership guards. No older runtime inherited, no default20 performance claim or formal long acceptance.",
+  "prerequisites": [
+    {
+      "name": "manual_full600",
+      "tools": "/var/tmp/crg-manual1240-tools-20261114",
+      "output": "/var/tmp/crg-manual1240-results-20261114",
+      "report_sha256": "cdedbcc757829fc9e657298fd14d294546b6cbe12be5a1bd29a53ee49b0d7185",
+      "namespaces": [
+        "crg-vendor-lab-manual1240-dbs-20261114",
+        "crg-vendor-lab-manual1240-hisdbs-20261114"
+      ]
+    },
+    {
+      "name": "manual_maintenance",
+      "tools": "/var/tmp/crg-public1261-tools-20261114",
+      "output": "/var/tmp/crg-public1261-results-20261114",
+      "report_sha256": "14161044e95a24e16f1fd4ded7d379e12149ad7c2964a47557c79ead5b6f9908",
+      "namespaces": [
+        "crg-vendor-lab-public1261-dbs-20261114",
+        "crg-vendor-lab-public1261-hisdbs-20261114"
+      ]
+    },
+    {
+      "name": "percent_migration",
+      "tools": "/var/tmp/crg-percent1287-tools-20261115",
+      "output": "/var/tmp/crg-percent1287-results-20261115",
+      "report_sha256": "8252c7adc5e803cd476774ab323fe73506b2b4b67e5c59b218e97ede6d08a716",
+      "namespaces": [
+        "crg-vendor-lab-percent1287-dbs-20261115",
+        "crg-vendor-lab-percent1287-hisdbs-20261115"
+      ]
+    }
+  ],
+  "diagnostic_prerequisite": {
+    "tools": "/var/tmp/crg-port1314-tools-20261115",
+    "namespace": "crg-vendor-lab-port1312-20261115",
+    "report_sha256": "8be9deee8dbc439bdfb22e6d6f4cd40054c6ddece4a0bb5b52b369f0cf06387e"
+  },
+  "failed_predecessor": {
+    "tools": "/var/tmp/crg-port1325-tools-20261115",
+    "output": "/var/tmp/crg-port1325-results-20261115",
+    "job_sha256": "ea766b49dde53e62daa9a9490168150f9d636efa6061dc8cbb4715177b7570bd",
+    "plan_sha256": "281a02f8ce0b3af70bc1db09d46a4779c8caec991dec7cf864db6186b110931f",
+    "report_sha256": "01df0545fd6ff09393b0d007d151652c04f6d07a258934c93a992e3200d7a20d",
+    "namespaces": [
+      "crg-vendor-lab-port1325-conflict-dbs-20261115",
+      "crg-vendor-lab-port1325-conflict-hisdbs-20261115",
+      "crg-vendor-lab-port1325-normal-dbs-20261115",
+      "crg-vendor-lab-port1325-normal-hisdbs-20261115"
+    ],
+    "recorded": 18,
+    "passed": 16,
+    "failed": 2,
+    "unexecuted": 26,
+    "not_relabelled": true,
+    "archived_not_relabelled": true
+  },
+  "reader_native_replay": {},
+  "startup_log_correction": "Resolve current_logfiles CSV; require bounded immutable regular file, all rows same own startup PID and 90-second window; partial otherwise. Preserve exact CSV and stderr separately. No original PG command, budget, deadline or SLA changes.",
+  "reader_local_replay_checks": 25,
+  "required_current_full600": {
+    "tools": "/var/tmp/crg-final1366-tools-20261115",
+    "output": "/var/tmp/crg-final1366-results-20261115",
+    "report_sha256": "8f2dfb30a8ac1b0499e36b19651af79bc5f0af5ba5d1ce1fc34c82ad65ff708b",
+    "namespaces": [
+      "crg-vendor-lab-final1366-normal-dbs-20261115",
+      "crg-vendor-lab-final1366-normal-hisdbs-20261115"
+    ]
+  },
+  "final_ELF_identity": {
+    "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "embedded_version": "v1.0.0",
+    "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "identity_receipt_sha256": "31112bfa3f6759af1449a968fb7d638ce6be9d563368d5f55ada882b042f7ccd",
+    "production_files_exact": 50,
+    "different_absolute_checkout_reproduction": true,
+    "actual_new_binary_business_accepted": false,
+    "stable_release_accepted": false
+  },
+  "reload_contract": {
+    "cases": [
+      "manual-to-percent30",
+      "independent-percent25-29-80",
+      "invalid-IO101",
+      "truncated-JSON",
+      "duplicate-key",
+      "temporarily-missing",
+      "FIFO-without-writer",
+      "atomic-ConfigMap-link-recovery",
+      "whitespace-same-policy",
+      "manual-CPU-only-removes-owned-high-IO",
+      "manual-all-three",
+      "manual-to-percent-again",
+      "return-original-manual"
+    ],
+    "cases_each_role": 13,
+    "offset_seconds": [
+      31,
+      61,
+      91,
+      121,
+      151,
+      181,
+      211,
+      241,
+      271,
+      301,
+      331,
+      361,
+      391
+    ],
+    "transition_deadline_seconds": 60,
+    "expected_generations": [
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "profile_sha256": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "profile_source": "previous actual same-node three-run calibrated profile; copied without changing bytes, no recalibration",
+    "percent_policies": [
+      {
+        "cpu_percent": 30,
+        "memory_percent": 30,
+        "io_percent": 100
+      },
+      {
+        "cpu_percent": 25,
+        "memory_percent": 29,
+        "io_percent": 80
+      }
+    ],
+    "first_effective_reload_must_overlap_engine": true,
+    "initial_and_final_manual_budget_unchanged": true,
+    "other_five_controls_always_unchanged": true,
+    "continuous_same_Agent_PID1_cache_and_native_primary": true,
+    "rejected_config_retains_hash_generation_plan_and_kernel": true,
+    "source_profile_bytes_and_mtime_unchanged": true,
+    "CLI_precedence_scope": "exact-source native unit/race evidence separately retained; original vendor helper launches file config without CLI percentage override",
+    "whitespace_case_ack": "explicit crg reload request_id; same generation and accepted hash, fresh acknowledgement required",
+    "removal_observation": "wait within original60s for settled applied items after ownership-checked restoration; never change quota or SLA"
+  },
+  "superseded_unlaunched_plan": {
+    "plan_sha256": "3d1ca184ef3b0e9019f17a56b202f0928b7f580a61975b711769166d28d0ad01",
+    "job_sha256": "c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294",
+    "reason": "Prelaunch review: unchanged effective configuration may suppress status writes until heartbeat; whitespace case now requests explicit durable reload and matches request_id. Removal waits through restored item results to settled applied items. Original frozen1425 inputs remain unchanged, no workload was launched.",
+    "original_tools": "/var/tmp/crg-final1425-tools-20261115",
+    "original_output": "/var/tmp/crg-final1425-results-20261115"
+  }
+}

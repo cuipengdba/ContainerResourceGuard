@@ -1,22 +1,22 @@
 {
   "schema": "crg-final-v1-same-Agent-business-reload-v1",
   "phase": "frozen-before-preflight-qualification-and-launch",
-  "tools": "/var/tmp/crg-final1425-tools-20261115",
-  "output": "/var/tmp/crg-final1425-results-20261115",
+  "tools": "/var/tmp/crg-final1429-tools-20261115",
+  "output": "/var/tmp/crg-final1429-results-20261115",
   "namespaces": {
     "normal": {
-      "dbs": "crg-vendor-lab-final1425-normal-dbs-20261115",
-      "hisdbs": "crg-vendor-lab-final1425-normal-hisdbs-20261115"
+      "dbs": "crg-vendor-lab-final1429-normal-dbs-20261115",
+      "hisdbs": "crg-vendor-lab-final1429-normal-hisdbs-20261115"
     }
   },
   "run_ids": {
     "normal": {
-      "dbs": "202611151425",
-      "hisdbs": "202611151426"
+      "dbs": "202611151429",
+      "hisdbs": "202611151430"
     }
   },
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
-  "job_sha256": "c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294",
+  "job_sha256": "55eb6c9d3f2bbc3e707d37c7769a72d7f71cb69b9cc1bba776f8b4af09020131",
   "previous960_report_sha256": "4a5a26868a967fde30f3274eacb9c3159af61ce073c65779913ab3ccdd4de102",
   "private_fixture_sha256": {
     "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
@@ -74,16 +74,16 @@
   ],
   "original_driver_sha256": "fc981713aa1d45833c161776bb005e874cb51fc8ac20117c5d1f26e2f0dd654d",
   "source_sha256": {
-    "artifact-transfer.py": "fb78c95a344fe87195ff07e1969a09897bec0c01df3a7d5d247b8eb69b421022",
-    "business-driver.py": "c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294",
-    "runner.py": "e75d7bfb869e3c6b342449d78cb77625f9b5d10d76aedc81b644c5be1062dcb3",
+    "artifact-transfer.py": "9b34b67e1c37a57dd88fe669014d543c7d0b140ffa8cc70da242875565d1a501",
+    "business-driver.py": "55eb6c9d3f2bbc3e707d37c7769a72d7f71cb69b9cc1bba776f8b4af09020131",
+    "runner.py": "6f74499a625988a4ab5e6230fb3d2978acd6d774e0df35153f9f43c234bc91db",
     "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
     "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
     "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
     "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
     "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
     "tests/reload-profile.json": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
-    "tests/reload-protocol.py": "afc8e8661e78464b69f91ff01eb40bc2c496373373c53b156f82880b1ac1a541",
+    "tests/reload-protocol.py": "d99d94ba7b40463161e346c02a0db1b16f77d9aeeb982ee5aa171efc505b3f68",
     "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
     "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
     "tests/vendor-soak-campaign.py": "fa63ccedfc37bc37f4984afd247dc7b132f99201e4433839af3a4442e04a22f4",
@@ -259,6 +259,15 @@
     "continuous_same_Agent_PID1_cache_and_native_primary": true,
     "rejected_config_retains_hash_generation_plan_and_kernel": true,
     "source_profile_bytes_and_mtime_unchanged": true,
-    "CLI_precedence_scope": "exact-source native unit/race evidence separately retained; original vendor helper launches file config without CLI percentage override"
+    "CLI_precedence_scope": "exact-source native unit/race evidence separately retained; original vendor helper launches file config without CLI percentage override",
+    "whitespace_case_ack": "explicit crg reload request_id; same generation and accepted hash, fresh acknowledgement required",
+    "removal_observation": "wait within original60s for settled applied items after ownership-checked restoration; never change quota or SLA"
+  },
+  "superseded_unlaunched_plan": {
+    "plan_sha256": "3d1ca184ef3b0e9019f17a56b202f0928b7f580a61975b711769166d28d0ad01",
+    "job_sha256": "c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294",
+    "reason": "Prelaunch review: unchanged effective configuration may suppress status writes until heartbeat; whitespace case now requests explicit durable reload and matches request_id. Removal waits through restored item results to settled applied items. Original frozen1425 inputs remain unchanged, no workload was launched.",
+    "original_tools": "/var/tmp/crg-final1425-tools-20261115",
+    "original_output": "/var/tmp/crg-final1425-results-20261115"
   }
 }
