@@ -1,5 +1,5 @@
 {
-  "schema": "crg-verified-staging-native-plan-v2",
+  "schema": "crg-verified-staging-native-plan-v3",
   "scope": "exact prior candidate package staging/refusal/races and scratch PID1 single-container CPU-only upgrade/rollback; not final stable publication, vendor/aged, physical slow disk or power-loss acceptance",
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "source_sha256": {
@@ -60,7 +60,7 @@
   "inputs": {
     "scripts/stage-release.py": "1d8faf3c88948cf946559878a4f279e4f68f7ab6ecabaeea5b27f52e02fbd952",
     "scripts/verify-release.py": "9455f038a1cb1062aed03a7cf9e963307c4adc6d1931831d2d53a47262b8e93f",
-    "tests/verified-staging-v1.py": "6dace76530bdbd41cbd71be02f76514ec591d4f37327a1e9f1c8eb0ab88e3d69",
+    "tests/verified-staging-v1.py": "048e720391f4cd80669415117b5449b15ea1325930400e93ea9835ed4adcd4e3",
     "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
     "tests/legacy-restore-pressure-v1/workload.go": "2196d2b29d6498bdf17a95b96fafa5cacb6f36999a1bb1f6858d4f81063777f7"
   },
@@ -119,5 +119,8 @@
   "failure_policy": "retain all failures; protocol fixes require a new frozen revision",
   "completed_original_tasks_claimed": false,
   "previous_undispatched_plan_sha256": "fd1b65336221f2fcd01b5afd53bdb25b364268ee973b1f20faac347a246a4160",
-  "pre_dispatch_review": "Explicit private creation umask and restrictive inherited0777 test added before any native dispatch. Initial plan retained; production50 and all artifact bytes unchanged."
+  "pre_dispatch_review": "Explicit private creation umask and restrictive inherited0777 test added before any native dispatch. Initial plan retained; production50 and all artifact bytes unchanged.",
+  "previous_failed_plan_sha256": "4d7f61022413b5d4276506c0a3ea4aa96f0203e12243f7506213747ded6fa4e4",
+  "preserved_failure": "test-results-final-v1-verified-staging-first-pilot-failure.json",
+  "harness_correction": "Determine first regular member from exact hash-bound archive, observe that same named file and require matching DELAYED fsync. No product-stager change or criteria relaxation."
 }
