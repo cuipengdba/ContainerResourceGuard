@@ -1,0 +1,77 @@
+{
+  "base_job_sha256": "fc981713aa1d45833c161776bb005e874cb51fc8ac20117c5d1f26e2f0dd654d",
+  "new_job_sha256": "ea766b49dde53e62daa9a9490168150f9d636efa6061dc8cbb4715177b7570bd",
+  "reversible_changes": [
+    {
+      "before": "manual1240",
+      "after": "port1325",
+      "count": 3
+    },
+    {
+      "before": "MANUAL1240",
+      "after": "PORT1325",
+      "count": 1
+    },
+    {
+      "before": "20261114",
+      "after": "20261115",
+      "count": 3
+    },
+    {
+      "before": "role_argument=sys.argv[1];assert role_argument in ['dbs','hisdbs']",
+      "after": "role_argument=sys.argv[1];assert role_argument in ['dbs','hisdbs'];arm=sys.argv[2];assert arm in ['conflict','normal']",
+      "count": 1
+    },
+    {
+      "before": "root=pathlib.Path(plan['output'])/role_argument",
+      "after": "root=pathlib.Path(plan['output'])/arm/role_argument",
+      "count": 1
+    },
+    {
+      "before": "ns=plan['namespaces'][role_argument]",
+      "after": "ns=plan['namespaces'][arm][role_argument]",
+      "count": 1
+    },
+    {
+      "before": "pathlib.Path('/var/tmp/crg-port1325-results-20261115')/role_argument",
+      "after": "pathlib.Path('/var/tmp/crg-port1325-results-20261115')/arm/role_argument",
+      "count": 1
+    },
+    {
+      "before": "ns=='crg-vendor-lab-port1325-'+role_argument+'-20261115'",
+      "after": "ns=='crg-vendor-lab-port1325-'+arm+'-'+role_argument+'-20261115'",
+      "count": 1
+    },
+    {
+      "before": "import pathlib,json,subprocess,time,traceback,hashlib,os,shutil,re,uuid,sys,signal",
+      "after": "import pathlib,json,subprocess,time,traceback,hashlib,os,shutil,re,uuid,sys,signal,selectors,importlib.util",
+      "count": 1
+    },
+    {
+      "before": "for name in ['vendor-soak-load.py','vendor-soak-campaign.py','vendor-engine-smoke.py']:",
+      "after": "for name in ['vendor-soak-load.py','vendor-soak-campaign.py','vendor-engine-smoke.py','vendor-port-diagnostics.py','port-owner-observer.py']:",
+      "count": 1
+    },
+    {
+      "before": "pod_created=False;campaign_job=None;folder=None;group=None;item=",
+      "after": "pod_created=False;campaign_job=None;holder=None;folder=None;group=None;item=",
+      "count": 1
+    },
+    {
+      "before": "   campaign=case_root/('campaign-'+role);agent=hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest();ccg=hashlib.sha256((folder/'ccg/bin/containercacheguard').read_bytes()).hexdigest()\n   args=['python3',str(root/'tools/vendor-soak-campaign.py'),'--namespace',ns,'--fixture-root',str(case_root),'--work-dir',str(campaign),'--role',role,'--smoke-enforce','--run-id',plan['run_ids'][role],'--test-phase','smoke','--seconds','600','--agent-sha256',agent,'--cache-sha256',ccg]\n   with (root/(key+'-campaign.log')).open('xb') as log:\n    job=subprocess.Popen(args,stdin=subprocess.DEVNULL,stdout=log,stderr=log);campaign_job=job\n    while job.poll() is None:reserve();time.sleep(5)\n   native=json.loads((campaign/'report.json').read_text());item['campaign_report']=native;item['campaign_exit']=job.returncode;save();record(key+'-600s-native-and-backup-sync-independent-restore',job.returncode==0 and native['phase']=='passed')\n",
+      "after": "   if arm=='conflict':\n    def pg_start():return ex(role,'su','-','postgres','-c',\"/opt/postgresql/pgsql/bin/psql -XAtw -h127.0.0.1 -p5432 -U postgres -d postgres -v ON_ERROR_STOP=1 -c 'SELECT pg_postmaster_start_time();'\").stdout.strip().splitlines()[-1]\n    primary_before=pg_start();item['primary_start_before']=primary_before\n    module_spec=importlib.util.spec_from_file_location('qualified_port_session',root/'tools/vendor-port-diagnostics.py');port_module=importlib.util.module_from_spec(module_spec);module_spec.loader.exec_module(port_module);session=port_module.begin(ns,role,meta);assert isinstance(session,port_module.Session)\n    holder_code=\"import json,os,socket,sys\\na=socket.socket();a.bind(('127.0.0.1',55432));a.listen(1)\\nsys.stdout.write(json.dumps({'pid':os.getpid()})+'\\\\n');sys.stdout.flush();sys.stdin.readline();a.close()\\n\"\n    holder=subprocess.Popen(['kubectl','exec','-i','-n',ns,role+'-business','-c',role,'--','python','-u','-c',holder_code],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True);item['holder_exec']={'pid':holder.pid,'start_ticks':int(pathlib.Path('/proc',str(holder.pid),'stat').read_bytes().rsplit(b')',1)[1].split()[19])};save()\n    with selectors.DefaultSelector() as selected:\n     selected.register(holder.stdout,selectors.EVENT_READ);assert selected.select(10),'own listener output timeout';inside=json.loads(holder.stdout.readline())\n    admitted=session.snapshot('controlled-holder-admitted');item['holder_admission']=admitted;owners=[p for row in admitted.get('sample',{}).get('listeners',[]) if row['table']=='tcp' and row['port']==55432 for p in row['owners']];assert len(owners)==1;owner=owners[0];owner_identity={k:owner[k] for k in ['pid','start_ticks']};item['holder_owner']=owner_identity;item['fixture_identity']['processes'].append(dict(owner_identity,executable='controlled-python-socket-holder',sha256=None));save()\n    record(key+'-controlled-own55432-holder-admitted',owner['same_cgroup'] and owner['cgroup_membership']==session.target['cgroup_membership'] and int(next(v.split()[-1] for v in pathlib.Path('/proc',str(owner['pid']),'status').read_text().splitlines() if v.startswith('NSpid:')))==inside['pid'] and holder.poll() is None)\n    engine_root=case_root/'conflict-engine';args=['python3',str(root/'tools/vendor-engine-smoke.py'),'--namespace',ns,'--work-dir',str(engine_root),'--role',role,'--run-id',plan['run_ids'][arm][role],'--cleanup-fixture','--native-campaign-probes']\n    with (root/(key+'-engine.log')).open('xb') as log:\n     job=subprocess.Popen(args,stdin=subprocess.DEVNULL,stdout=log,stderr=log);campaign_job=job\n     while job.poll() is None:reserve();time.sleep(2)\n    engine=json.loads((engine_root/'business-backup.json').read_bytes());e=engine['roles'][role];item.update(engine_report=engine,engine_exit=job.returncode);pglog=folder/'postgresql/basebackup'/('crg-acceptance-'+plan['run_ids'][arm][role])/'standby.log';raw_log=pglog.read_bytes();item['standby_log_sha256']=hashlib.sha256(raw_log).hexdigest();save()\n    record(key+'-actual-PG-start-conflict-remains-engine-failed',job.returncode!=0 and engine['phase']=='failed' and 'log=standby-start.txt' in engine.get('error','') and any(v['name']=='physical_backup_finished' and v['passed'] for v in e['checks']) and (b'Address already in use' in raw_log or b'address already in use' in raw_log) and b'could not bind' in raw_log)\n    stages={v['stage']:v for v in e.get('port_diagnostics',[])};required=['before-standby-start','standby-start-failed','after-standby-cleanup','after-restore-cleanup'];found={name:[p for row in stages.get(name,{}).get('sample',{}).get('listeners',[]) if row['table']=='tcp' and row['port']==55432 for p in row['owners']] for name in required}\n    record(key+'-real-failure-and-cleanup-snapshots-identify-held-owner',all(stages.get(name,{}).get('sample',{}).get('target_identity_stable') and any(p['pid']==owner['pid'] and p['start_ticks']==owner['start_ticks'] and p['same_cgroup'] for p in found[name]) for name in required) and 'after-standby-start' not in stages and e.get('probe_monitor_stopped'))\n    api=\"import urllib2,json; r=urllib2.urlopen(urllib2.Request('http://127.0.0.1:8090/test',data='{}',headers={'Content-Type':'application/json'}),timeout=3); assert r.getcode()==200; assert json.loads(r.read(1024))['Result']=='000'\";api_after=ex(role,'python','-c',api,timeout=10);primary_after=pg_start();item['primary_start_after']=primary_after;held_still=session.snapshot('after-engine-failure-holder-still-live');item['holder_after_engine']=held_still\n    persistent=[v for v in item['fixture_identity']['processes'] if v.get('executable') in ['/opt/crg/crg','/opt/ccg/bin/containercacheguard']]+[{'pid':fixture_identity['init_pid'],'start_ticks':fixture_identity['init_start_ticks']}]\n    record(key+'-engine-cleanup-does-not-stop-holder-primary-or-guards',holder.poll() is None and pathlib.Path('/proc',str(owner['pid'])).exists() and primary_before==primary_after and api_after.returncode==0 and all(int(pathlib.Path('/proc',str(v['pid']),'stat').read_bytes().rsplit(b')',1)[1].split()[19])==v['start_ticks'] for v in persistent))\n    stdout,stderr=holder.communicate('\\n',timeout=15);item['holder_exit']=holder.returncode;after=session.snapshot('after-explicit-own-holder-EOF');item['holder_after_EOF']=after;save()\n    record(key+'-explicit-own-holder-EOF-removes-listener',holder.returncode==0 and after.get('sample',{}).get('target_identity_stable') and not any(v['port']==55432 for v in after['sample']['listeners']))\n    record(key+'-original-controls-and-config-retained-after-expected-failure',item['initial_controls']=={f:(group/f).read_text().strip() for f in item['initial_controls']} and (folder/'crg-config/config.json').read_bytes()==plan['configuration_exact_utf8'].encode())\n    item['expected_engine_failure_qualification_passed']=True\n   else:\n    campaign=case_root/('campaign-'+role);agent=hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest();ccg=hashlib.sha256((folder/'ccg/bin/containercacheguard').read_bytes()).hexdigest()\n    args=['python3',str(root/'tools/vendor-soak-campaign.py'),'--namespace',ns,'--fixture-root',str(case_root),'--work-dir',str(campaign),'--role',role,'--smoke-enforce','--run-id',plan['run_ids'][arm][role],'--test-phase','smoke','--seconds','600','--agent-sha256',agent,'--cache-sha256',ccg]\n    with (root/(key+'-campaign.log')).open('xb') as log:\n     job=subprocess.Popen(args,stdin=subprocess.DEVNULL,stdout=log,stderr=log);campaign_job=job\n     while job.poll() is None:reserve();time.sleep(5)\n    native=json.loads((campaign/'report.json').read_bytes());item['campaign_report']=native;item['campaign_exit']=job.returncode;save();record(key+'-600s-native-and-backup-sync-independent-restore',job.returncode==0 and native['phase']=='passed')\n    engines=list(campaign.glob('backup-*/business-backup.json'));assert len(engines)==1;engine=json.loads(engines[0].read_bytes());e=engine['roles'][role];stages={v['stage']:v for v in e.get('port_diagnostics',[])};required=['before-standby-start','after-standby-start','before-restore-start','after-restore-start','after-standby-stop','after-restore-stop','after-standby-cleanup','after-restore-cleanup'];item['engine_diagnostics']=e.get('port_diagnostics',[]);save()\n    def pg_owner(stage,port,suffix):return any(p['same_cgroup'] and p['comm']=='postgres' and p['cwd_observed'] and p['cwd_observed'].endswith(suffix) for v in stages.get(stage,{}).get('sample',{}).get('listeners',[]) if v['port']==port for p in v['owners'])\n    record(key+'-normal-engine-real-PG-owner-start-stop-cleanup-diagnostics',all(stages.get(name,{}).get('sample',{}).get('target_identity_stable') for name in required) and pg_owner('after-standby-start',55432,'/standby') and pg_owner('after-restore-start',55433,'/restore') and not stages['after-restore-cleanup']['sample']['listeners'])\n",
+      "count": 1
+    },
+    {
+      "before": "  finally:\n   if campaign_job",
+      "after": "  finally:\n   if holder is not None and holder.poll() is None:\n    try:holder.communicate('\\n',timeout=15)\n    except subprocess.TimeoutExpired:item['holder_exec_pending_Pod_cleanup']=True\n   if campaign_job",
+      "count": 1
+    },
+    {
+      "before": "len(report['tests'])==8",
+      "after": "len(report['tests'])==(13 if arm=='conflict' else 9)",
+      "count": 1
+    }
+  ],
+  "reverse_reconstructs_original_driver": true
+}
