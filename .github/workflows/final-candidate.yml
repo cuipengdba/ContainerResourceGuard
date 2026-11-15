@@ -1,0 +1,137 @@
+name: final-candidate
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  controller:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            arch: amd64
+            kernel: '6.'
+          - runner: ubuntu-22.04-arm
+            arch: arm64
+            kernel: '6.'
+          - runner: ubuntu-24.04
+            arch: amd64
+            kernel: '7.'
+          - runner: ubuntu-24.04-arm
+            arch: arm64
+            kernel: '7.'
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 40
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: v0.1.0-rc.3-preview.1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ced461705ebc27315a59aefe463f9b4af47130a3
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: qualification
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Record actual environment before fixtures
+        run: |
+          mkdir -p ci-final/download
+          python3 - <<'PY'
+          import json, os, pathlib, platform, subprocess
+          result = {'workflow_revision':os.environ['GITHUB_SHA'],'source_revision':'ced461705ebc27315a59aefe463f9b4af47130a3','runner_label':'${{ matrix.runner }}','architecture':'${{ matrix.arch }}','machine':platform.machine(),'kernel':platform.release(),'expected_kernel_prefix':'${{ matrix.kernel }}','cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'scope':'real sibling partitions in native VM; not vendor business or independent physical disks'}
+          pathlib.Path('ci-final/environment.json').write_text(json.dumps(result,indent=2)+'\n')
+          assert result['kernel'].startswith(result['expected_kernel_prefix']), 'actual kernel family differs; no fixture started'
+          assert result['machine'] in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[result['architecture']]
+          assert result['cgroup_filesystem'] == 'cgroup2fs'
+          PY
+      - name: Verify frozen source and final binary plan before fixtures
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          raw=pathlib.Path('qualification/docs/test-plan-final-v1-native-CI.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='615d5bc09e9a6a1bd57f90e50a2a0a854bf84497e25779c76a2c126b0c508471'
+          p=json.loads(raw)
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
+          assert not subprocess.check_output(['git','diff','--name-only'])
+          assert not subprocess.check_output(['git','diff','--cached','--name-only'])
+          for name,h in p['source_sha256'].items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==h,name
+          pathlib.Path('ci-final/frozen-plan.json').write_bytes(raw)
+          PY
+      - name: Download and verify the unchanged published executable
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > ci-final/download/release.json
+          gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$RELEASE_TAG" > ci-final/download/tag.json
+          gh api "repos/$GITHUB_REPOSITORY/git/tags/54cd5c74852aa680c9779783328bfeaebf5e8744" > ci-final/download/tag-object.json
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir ci-final/download \
+            --pattern "containerresourceguard-$RELEASE_TAG-linux-${{ matrix.arch }}.tar.gz" --pattern SHA256SUMS
+          python3 tests/released-package.py --directory ci-final/download --arch '${{ matrix.arch }}' --output ci-final/verified
+          ./ci-final/verified/crg build-info > ci-final/old-build-info.json
+          python3 - <<'PY'
+          import json, pathlib
+          receipt=json.loads(pathlib.Path('ci-final/verified/verification.json').read_text())
+          info=json.loads(pathlib.Path('ci-final/old-build-info.json').read_text())
+          assert info['version']==receipt['version'] and info['revision']==receipt['source_revision'] and info['arch']==receipt['architecture'] and info['os']=='linux'
+          PY
+      - name: Build exact candidate and bounded native fixtures
+        run: |
+          test "$(go env GOHOSTARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOARCH)" = '${{ matrix.arch }}'
+          test "$(go env GOVERSION)" = 'go1.27.3'
+          bash scripts/build.sh v1.0.0
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          p=json.loads(pathlib.Path('ci-final/frozen-plan.json').read_bytes())
+          result={}
+          for arch,h in p['binary_sha256'].items():
+              raw=pathlib.Path('dist/crg-linux-'+arch).read_bytes()
+              actual=hashlib.sha256(raw).hexdigest()
+              assert actual==h,(arch,actual,h)
+              result[arch]={'sha256':actual,'bytes':len(raw),'exact_final_frozen_ELF':True}
+          pathlib.Path('ci-final/exact-build.json').write_text(json.dumps(result,indent=2)+'\n')
+          PY
+          cp 'dist/crg-linux-${{ matrix.arch }}' ci-final/crg
+          CGO_ENABLED=0 go build -trimpath -o ci-final/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ci-final/load ./tests/load
+          CGO_ENABLED=0 go build -trimpath -o ci-final/shared-load ./tests/partition-load
+          ./ci-final/crg build-info > ci-final/build-info.json
+      - name: Verify embedded identity and run actual native own-container controls
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=json.loads(pathlib.Path('ci-final/frozen-plan.json').read_bytes())
+          info=json.loads(pathlib.Path('ci-final/build-info.json').read_bytes())
+          assert info['version']==p['version'] and info['revision']==p['source_revision']
+          assert info['arch']=='${{ matrix.arch }}' and info['os']=='linux'
+          PY
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/native-cgroup-high.py \
+            --binary "$PWD/ci-final/crg" --holder "$PWD/ci-final/hold" \
+            --load "$PWD/ci-final/load" --output "$PWD/ci-final/native-results" \
+            --expected-arch '${{ matrix.arch }}' --source-revision 'ced461705ebc27315a59aefe463f9b4af47130a3'
+      - name: Prepare only the running kernel SCSI test module on this ephemeral VM
+        run: |
+          if ! modinfo scsi_debug >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install --yes --no-upgrade --no-install-recommends "linux-modules-extra-$(uname -r)"
+          fi
+          modinfo scsi_debug > ci-final/scsi-debug-module.txt
+          test ! -d /sys/module/scsi_debug
+      - name: Actual sibling partition shared budget, geometry invalidation and old binary recovery
+        run: |
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/partition-cgroup.py \
+            --binary "$PWD/ci-final/crg" --old-binary "$PWD/ci-final/verified/crg" --holder "$PWD/ci-final/hold" \
+            --load "$PWD/ci-final/load" --shared-load "$PWD/ci-final/shared-load" --output "$PWD/ci-final/results" \
+            --expected-arch '${{ matrix.arch }}' --source-revision 'ced461705ebc27315a59aefe463f9b4af47130a3'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: final-candidate-${{ matrix.runner }}-${{ github.sha }}
+          path: ci-final/
+          retention-days: 14
