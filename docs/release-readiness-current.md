@@ -38,3 +38,5 @@
 [最终ELF只读诊断与内存统计补验](testing-final-v1-diagnostics.md)已唯一启动；DBS19项诊断子检查和8项初始主检查通过，输出1852字节/0600，PSI/hugetlb缺失如实显示不可用。完整两角色600秒业务和HIS诊断仍待终态；P05.1/P07.2不提前勾选。
 
 [诊断执行器计数修订](testing-final-v1-diagnostics-counter-fixed.md)：DBS10项检查全通过，但末尾旧9项计数使driver退出1；HIS仍在原任务测量。原失败保持，确定根因后已冻结独立修订，待原任务终态归档/清理及新准入后才运行。[两档实际限额的30分钟开销补验](testing-final-v1-budget-overhead.md)亦已冻结并通过只读准入，尚未启动，等诊断夹具清理后独立执行。两项不提前验收，完成数仍12。
+
+原1448现取得[完整失败终态及准确原件](testing-final-v1-diagnostics-counter-failure-terminal.md)：20项实际主检查及38项诊断子检查通过，整体failed/退出1来自汇总计数错误，清理独立完成。修订1465新准入通过，尚未启动新轮。原失败不改判，完成数仍12。
