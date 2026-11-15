@@ -7,3 +7,5 @@
 不是遇错就盲目重跑或放宽标准；有确定的执行器根因，原失败按原样归档后才允许新的具名修订。新轮独立完成全部原600秒和清理，不能继承原1448业务秒数。当前仅冻结修订输入，未原生准入、未创建业务夹具或启动；P05.1/P07.2仍不提前勾选。
 
 [原执行计划](testing-final-v1-diagnostics.md)、[修订计划](test-plan-final-v1-diagnostics-counter-fixed.json)、[准确可逆变化](test-adapter-final-v1-diagnostics-counter-fixed.json)、[新冻结输入](../tests/final-v1-diagnostics-counter-fixed/README.md)。产品源码及固定最终ELF不变，稳定1.0尚未接受。
+
+原1448现取得[完整失败终态及准确原件](testing-final-v1-diagnostics-counter-failure-terminal.md)：20项实际主检查及38项诊断子检查通过，整体failed/退出1来自汇总计数错误，清理独立完成。修订1465新准入通过，尚未启动新轮。原失败不改判，完成数仍12。
