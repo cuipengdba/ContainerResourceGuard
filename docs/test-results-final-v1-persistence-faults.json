@@ -1,0 +1,43 @@
+{
+  "schema": "crg-offline-native-persistence-review-v3",
+  "scope": "Exact final ELF and actual own single-container cgroup CPU/journal recovery; real bounded4MiB tmpfs ENOSPC, DAC EACCES without bypass caps, private bind-mount EROFS sustained>=30s with3failed retries; SIGKILL before/after actual CPU write with durable pending journal and delayed fsync. Syscall delay is injected, not a physical slow device; no physical power loss/vendor/aged/stable publication acceptance.",
+  "plan_sha256": "fd2b4c61160cd204254c337cea65c0f017868f02460f560678f65361553d8538",
+  "environments": [
+    {
+      "run_id": 43747067149,
+      "artifact_id": 14174817120,
+      "ZIP_sha256": "50b3ed15348d0f7c1c891fab5900ebc897e31d8f504769805e558cc6a7124942",
+      "runner": "ubuntu-22.04",
+      "arch": "amd64",
+      "kernel": "6.8.0-1070-azure",
+      "checks": 60,
+      "cases": 6,
+      "sustained_real_filesystem_faults": 3,
+      "exact_SIGKILL_boundaries": 2,
+      "delayed_complete": 1,
+      "all_original8_restored": true,
+      "own_cleanup_verified": true
+    },
+    {
+      "run_id": 43747511724,
+      "artifact_id": 14175370465,
+      "ZIP_sha256": "09b5e3ad7974f35d60d18412282f6c3831147da70ac5ddf3d82557926ee94530",
+      "runner": "ubuntu-24.04-arm",
+      "arch": "arm64",
+      "kernel": "7.0.0-1017-azure",
+      "checks": 60,
+      "cases": 6,
+      "sustained_real_filesystem_faults": 3,
+      "exact_SIGKILL_boundaries": 2,
+      "delayed_complete": 1,
+      "all_original8_restored": true,
+      "own_cleanup_verified": true
+    }
+  ],
+  "total_checks": 120,
+  "cases": 12,
+  "full_original_P09_3_closed": false,
+  "physical_power_loss_tested": false,
+  "hidden_uncommitted_state_originals_preserved": true,
+  "stable_release_accepted": false
+}

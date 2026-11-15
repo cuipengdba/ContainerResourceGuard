@@ -25,6 +25,7 @@
 | [历史硬内存恢复并发](testing-final-v1-legacy-restore-pressure.md) | 相同最终ELF、amd64/ARM64与Linux6.8/7.0四VM，116/116及16夹具清理；模拟旧journal，不代替真实旧版本迁移或厂商老化验收 |
 | [安全暂存与准确包维护](verified-release-staging.md) | 两架构150/150及52暂存场景，实际候选包升级/回退/禁用；原失败保留，非稳定身份或厂商/老化验收 |
 | [安全暂存深度修复](verified-release-staging-depth.md) | 旧缺陷两架构复现保留；新工具整树预检/64层上限，原150项及12个深度场景通过；未改变长期门槛 |
+| [真实状态FS故障与强杀恢复](testing-final-v1-persistence-faults.md) | 双架构120/120及12场景，原值/归属清理及隐藏原件核对；旧失败和归档缺口保留，非物理慢盘/掉电或厂商长期验收 |
 
 ## 正在进行与待办
 
