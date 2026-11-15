@@ -518,9 +518,9 @@
       ],
       "current_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
-        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
-        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
-        "evidence": "testing-live-capacity-native-and-business-current.md"
+        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。 隔离SQL/API有界失败诊断已实现，Windows及原生amd64/Linux5.14各26项故障验证通过，原统计/SLA/600秒及其余函数/main字节不变；不属于厂商性能验收。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界诊断已故障验证，厂商环境受控注入、只读时间线与隔离因果对照尚待完成，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。 新诊断未在厂商容器执行，DBS1761原因仍未知/失败不撤销；新18项及24h/24h/七天和发布门槛未满足。",
+        "evidence": "development-sql-failure-diagnostics.zh.md"
       },
       "current_acceptance_history": [
         {
@@ -1028,6 +1028,29 @@
         "evidence": "test-evidence-live-capacity-business600-terminal.json.gz",
         "business_accepted": false,
         "stable_release_accepted": false
+      },
+      "before_bounded_failure_diagnostics_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
+        "evidence": "testing-live-capacity-native-and-business-current.md"
+      },
+      "load_failure_diagnostics": {
+        "phase": "fault-verified-not-vendor-qualified",
+        "product_source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "product_runtime_unchanged": true,
+        "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+        "old_worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "verifier_sha256": "ddaafee6eb1cf59849b4bb3ea3945b91415154b8b9f827ef5a0fe010127a029f",
+        "checks_each_platform": 26,
+        "maximum_events": 128,
+        "maximum_compact_event_bytes": 65536,
+        "new_vendor_campaign_launched": false,
+        "new_long_started": false,
+        "stable_release_accepted": false,
+        "result": "test-results-bounded-load-diagnostics.json",
+        "guide": "development-sql-failure-diagnostics.zh.md",
+        "old1761_failure_cause_unknown": true
       }
     },
     {
@@ -1064,9 +1087,9 @@
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
-        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
-        "evidence": "testing-live-capacity-native-and-business-current.md"
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。 隔离SQL/API有界失败诊断已实现，Windows及原生amd64/Linux5.14各26项故障验证通过，原统计/SLA/600秒及其余函数/main字节不变；不属于厂商性能验收。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界诊断已故障验证，厂商环境受控注入、只读时间线与隔离因果对照尚待完成，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。 新诊断未在厂商容器执行，DBS1761原因仍未知/失败不撤销；新18项及24h/24h/七天和发布门槛未满足。",
+        "evidence": "development-sql-failure-diagnostics.zh.md"
       },
       "before_original1396_terminal_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
@@ -1562,6 +1585,29 @@
         "evidence": "test-evidence-live-capacity-business600-terminal.json.gz",
         "business_accepted": false,
         "stable_release_accepted": false
+      },
+      "before_bounded_failure_diagnostics_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
+        "evidence": "testing-live-capacity-native-and-business-current.md"
+      },
+      "load_failure_diagnostics": {
+        "phase": "fault-verified-not-vendor-qualified",
+        "product_source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "product_runtime_unchanged": true,
+        "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+        "old_worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "verifier_sha256": "ddaafee6eb1cf59849b4bb3ea3945b91415154b8b9f827ef5a0fe010127a029f",
+        "checks_each_platform": 26,
+        "maximum_events": 128,
+        "maximum_compact_event_bytes": 65536,
+        "new_vendor_campaign_launched": false,
+        "new_long_started": false,
+        "stable_release_accepted": false,
+        "result": "test-results-bounded-load-diagnostics.json",
+        "guide": "development-sql-failure-diagnostics.zh.md",
+        "old1761_failure_cause_unknown": true
       }
     },
     {
@@ -3229,9 +3275,9 @@
       ],
       "current_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
-        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
-        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
-        "evidence": "testing-live-capacity-native-and-business-current.md"
+        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。 隔离SQL/API有界失败诊断已实现，Windows及原生amd64/Linux5.14各26项故障验证通过，原统计/SLA/600秒及其余函数/main字节不变；不属于厂商性能验收。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界诊断已故障验证，厂商环境受控注入、只读时间线与隔离因果对照尚待完成，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。 新诊断未在厂商容器执行，DBS1761原因仍未知/失败不撤销；新18项及24h/24h/七天和发布门槛未满足。",
+        "evidence": "development-sql-failure-diagnostics.zh.md"
       },
       "before_original1396_terminal_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
@@ -3727,6 +3773,29 @@
         "evidence": "test-evidence-live-capacity-business600-terminal.json.gz",
         "business_accepted": false,
         "stable_release_accepted": false
+      },
+      "before_bounded_failure_diagnostics_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新DBS完整600.337秒实际7通过/1失败/1未执行，SQL299次1错误、max5.004658635s；HISDBS按原协议继续，原新long尚未启动。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
+        "evidence": "testing-live-capacity-native-and-business-current.md"
+      },
+      "load_failure_diagnostics": {
+        "phase": "fault-verified-not-vendor-qualified",
+        "product_source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "product_runtime_unchanged": true,
+        "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+        "old_worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "verifier_sha256": "ddaafee6eb1cf59849b4bb3ea3945b91415154b8b9f827ef5a0fe010127a029f",
+        "checks_each_platform": 26,
+        "maximum_events": 128,
+        "maximum_compact_event_bytes": 65536,
+        "new_vendor_campaign_launched": false,
+        "new_long_started": false,
+        "stable_release_accepted": false,
+        "result": "test-results-bounded-load-diagnostics.json",
+        "guide": "development-sql-failure-diagnostics.zh.md",
+        "old1761_failure_cause_unknown": true
       }
     },
     {
@@ -3740,9 +3809,9 @@
       "completion_claim": false,
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。 旧运行中容量不刷新缺陷已复现；新37ca44e修复在ARM6456/56通过，完整新候选复验尚待。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新37ca44e在完整59来源绑定下四格原生284/284独立复核通过，全部归属清理；不能代替业务、物理盘、内存热插拔或节点重启。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
-        "remaining_or_boundary": "新源/ELF完整原生矩阵、原路径业务、长稳/老化、包发布身份及原安全审计须重新闭环，不能继承旧ELF时钟和验收；原1728按原因明确停止并独立清理，稳定1.0未接受。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
-        "evidence": "testing-live-capacity-native-and-business-current.md"
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。 旧运行中容量不刷新缺陷已复现；新37ca44e修复在ARM6456/56通过，完整新候选复验尚待。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新37ca44e在完整59来源绑定下四格原生284/284独立复核通过，全部归属清理；不能代替业务、物理盘、内存热插拔或节点重启。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。 隔离SQL/API有界失败诊断已实现，Windows及原生amd64/Linux5.14各26项故障验证通过，原统计/SLA/600秒及其余函数/main字节不变；不属于厂商性能验收。",
+        "remaining_or_boundary": "新源/ELF完整原生矩阵、原路径业务、长稳/老化、包发布身份及原安全审计须重新闭环，不能继承旧ELF时钟和验收；原1728按原因明确停止并独立清理，稳定1.0未接受。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界诊断已故障验证，厂商环境受控注入、只读时间线与隔离因果对照尚待完成，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。 新诊断未在厂商容器执行，DBS1761原因仍未知/失败不撤销；新18项及24h/24h/七天和发布门槛未满足。",
+        "evidence": "development-sql-failure-diagnostics.zh.md"
       },
       "current_evidence_files": [
         "verified-release-staging.md",
@@ -4157,6 +4226,29 @@
         "evidence": "test-evidence-live-capacity-business600-terminal.json.gz",
         "business_accepted": false,
         "stable_release_accepted": false
+      },
+      "before_bounded_failure_diagnostics_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。 旧运行中容量不刷新缺陷已复现；新37ca44e修复在ARM6456/56通过，完整新候选复验尚待。 新37ca44e已单次启动原路径600秒重新验收；21:06:26Z原生DBS约300秒快照出现1项SQL延迟失败(max5.004658635s)，API0错误，尚非完整终态。 新37ca44e在完整59来源绑定下四格原生284/284独立复核通过，全部归属清理；不能代替业务、物理盘、内存热插拔或节点重启。 新37ca44e原路径本轮终态：HISDBS9/9通过；DBS7通过/1失败/1未执行，两角色完整600秒，合计17记录16通过，整体failed/exit1；22原件/318943字节、61条登记/53唯一实例及namespace/父组/leaf独立清理通过，13输入未改。",
+        "remaining_or_boundary": "新源/ELF完整原生矩阵、原路径业务、长稳/老化、包发布身份及原安全审计须重新闭环，不能继承旧ELF时钟和验收；原1728按原因明确停止并独立清理，稳定1.0未接受。 本轮SQL错误/超5秒需保持失败并核对，原工作线程未保留异常明细、原因未知；不得放宽SLA、静默重跑或以原生控制测试替代业务通过。 DBS本轮完整600秒超5秒/SQL1错误保持失败，异常明细缺失、原因未知；HISDBS及全轮终态/独立清理待取，不静默重跑或变更SLA。 原因未知的DBS SQL1错误/max5.004658635s仍阻断；有界请求错误诊断、隔离因果复验尚待开发，不能放宽原SLA或静默重跑。原长稳/老化/最终发布门槛不变。",
+        "evidence": "testing-live-capacity-native-and-business-current.md"
+      },
+      "load_failure_diagnostics": {
+        "phase": "fault-verified-not-vendor-qualified",
+        "product_source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "product_runtime_unchanged": true,
+        "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+        "old_worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "verifier_sha256": "ddaafee6eb1cf59849b4bb3ea3945b91415154b8b9f827ef5a0fe010127a029f",
+        "checks_each_platform": 26,
+        "maximum_events": 128,
+        "maximum_compact_event_bytes": 65536,
+        "new_vendor_campaign_launched": false,
+        "new_long_started": false,
+        "stable_release_accepted": false,
+        "result": "test-results-bounded-load-diagnostics.json",
+        "guide": "development-sql-failure-diagnostics.zh.md",
+        "old1761_failure_cause_unknown": true
       }
     },
     {
@@ -6772,5 +6864,22 @@
     "all52_definitions_and18_claims_preserved": true,
     "candidate_runtime_kept": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
     "stable_release_accepted": false
+  },
+  "load_failure_diagnostics": {
+    "phase": "fault-verified-not-vendor-qualified",
+    "product_source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+    "product_runtime_unchanged": true,
+    "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+    "old_worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "verifier_sha256": "ddaafee6eb1cf59849b4bb3ea3945b91415154b8b9f827ef5a0fe010127a029f",
+    "checks_each_platform": 26,
+    "maximum_events": 128,
+    "maximum_compact_event_bytes": 65536,
+    "new_vendor_campaign_launched": false,
+    "new_long_started": false,
+    "stable_release_accepted": false,
+    "result": "test-results-bounded-load-diagnostics.json",
+    "guide": "development-sql-failure-diagnostics.zh.md",
+    "old1761_failure_cause_unknown": true
   }
 }
