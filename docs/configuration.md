@@ -1,12 +1,15 @@
 # 配置参数
 
+> 当前交付为[preview.5](releases/v1.0.0-preview.5.md)。最新完整测试结果与剩余发布门槛见[当前交付与待办](release-readiness-current.md)；历史时点测试不能代替后续终态。
+
+
 截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
 
-本页描述 next/compatibility-contract 的组合开发候选，尚未发布。已发布 RC2 不接受后续新增字段；各版本安排见 [双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
+本页新部署配置面向已发布preview.5；旧RC2不接受后续新增字段，各版本历史安排见[双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
 
-## 手动资源模式（preview.4）
+## 手动资源模式（preview.5）
 
 ```json
 {"resource_mode":"manual","limits":{"cpu_cores":2.5,"memory_high":"4GiB"}}
@@ -16,7 +19,7 @@
 
 CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字节字符串支持整数及 B/KiB/MiB/GiB/TiB/KB/MB/GB/TB 后缀；无后缀表示字节，区分大小写，不接受小数、负数、指数、/s 或超出有符号 64 位范围的数值。IOPS 是正整数。manual 不能填写 percent，percent 模式不能填写 limits。
 
-新可选参数：`pids_max` 为 1–2147483647 的任务数上限（包含线程）；`cpu_weight` 为 1–10000 的相对权重。manual或旧percent兼容配置中两者不填写就不改；新三项百分比模式不接受这两项绝对值，不管理这些控制。pids 下调需当前用量之外保留至少 32 个任务或 10% 的余量，并在日志持久化后复查。CPU 权重不是 CPU 配额，不限制其他容器。
+最新交付只使用CPU、内存、IO三个资源入口。历史`pids_max`、`cpu_weight`、`io_weight`、`memory_swap_max`字段保留旧配置兼容代码，不是当前新增配置项；新部署不要加入这些字段，独立百分比模式会拒绝它们。旧manual或percent配置迁移前应检查并清理历史扩展配置及其仍自有的限额，不能假定换用新配置就自动撤销旧值。
 
 组合候选已经实现双模式热切换和移除项协调，详见 [热重载](hot-reload.md)。完整候选先校验，再逐项应用；删除维度尝试恢复自有原值，内存/任务安全下调可能延后，需核对实际结果。旧版没有热重载时，先用匹配版本 disable 完成恢复，再改配置并 enable。
 
