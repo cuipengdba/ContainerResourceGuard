@@ -1,0 +1,18 @@
+# 修订输出组合1571冻结输入
+
+所有12项准确摘要见计划source_sha256；ELF不重复提交，本目录11项非二进制输入。生产源码/最终ELF不变，失败1551原件保持。
+
+[协议](../../docs/testing-final-v1-output1571.md)、[计划](../../docs/test-plan-final-v1-output1571.json)。
+
+maintenance-business.py 742a23195f91aaacf0869fb7d9b0113311282cace62236081336704ffbd68601
+runner.py 35a08252f65af3c8636b9a35cf3d9e6db759a91ab182a46d1148aa78926528f4
+artifact-transfer.py b7ccd1ab5787a2baac8dbc3d201b5400f0266ba5bbfc7a32a8b29f068efa7d4c
+tests/manual-maintenance-contract.py 42edbdfb1b727f02c70a8e45d362748d78aeb3bc43f586263bd811660b743985
+binaries/candidate 9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8
+tests/vendor-soak-load.py ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461
+tests/vendor-soak-campaign.py b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea
+tests/vendor-engine-smoke.py b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c
+examples/optional-agent.sh f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79
+tests/output-matrix-checks.py 571d1defbe60c616ead335b91128eb4575960f3b5042f5ce99c0a94e40d11dc6
+tests/output-profile.json 00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b
+plan.json 3dc23337c6e3500a79f45b24a9273ca80d5ec5b6f30f48e343ec6027c0ab5b92
