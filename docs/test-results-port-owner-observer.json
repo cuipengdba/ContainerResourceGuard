@@ -1,0 +1,211 @@
+{
+  "node_kernel": "5.14.0-570.22.1.el9_6.x86_64",
+  "node_architecture": "x86_64",
+  "source_sha256": {
+    "collector": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "qualification": "38f403eaa4332801c29de992eca90ddbc9b088a3cfa2c9a2060c0506d5fe3319"
+  },
+  "qualification": {
+    "schema": "crg-readonly-port-owner-native-qualification-v1",
+    "phase": "passed",
+    "checks": [
+      {
+        "name": "actual-own-TCP4-listener-inode-and-stable-owner",
+        "passed": true
+      },
+      {
+        "name": "actual-own-PG-style-unix-listener-and-stable-owner",
+        "passed": true
+      },
+      {
+        "name": "actual-IPv6-if-supported-or-explicitly-unavailable",
+        "passed": true
+      },
+      {
+        "name": "owner-membership-namespace-and-observed-CWD",
+        "passed": true
+      },
+      {
+        "name": "target-identity-retained-and-no-availability-claim",
+        "passed": true
+      },
+      {
+        "name": "reject-wrong-target-start_ticks",
+        "passed": true
+      },
+      {
+        "name": "reject-wrong-target-net_namespace_inode",
+        "passed": true
+      },
+      {
+        "name": "reject-wrong-target-cgroup_membership",
+        "passed": true
+      },
+      {
+        "name": "reject-invalid-ports-[]",
+        "passed": true
+      },
+      {
+        "name": "reject-invalid-ports-[0]",
+        "passed": true
+      },
+      {
+        "name": "reject-invalid-ports-[65536]",
+        "passed": true
+      },
+      {
+        "name": "reject-invalid-ports-[True]",
+        "passed": true
+      },
+      {
+        "name": "reject-invalid-ports-[1.2]",
+        "passed": true
+      },
+      {
+        "name": "reject-invalid-ports-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]",
+        "passed": true
+      },
+      {
+        "name": "reject-zero-max_seconds",
+        "passed": true
+      },
+      {
+        "name": "reject-zero-max_processes",
+        "passed": true
+      },
+      {
+        "name": "reject-zero-max_fds",
+        "passed": true
+      },
+      {
+        "name": "reject-zero-max_sockets",
+        "passed": true
+      },
+      {
+        "name": "reject-zero-max_table_bytes",
+        "passed": true
+      },
+      {
+        "name": "oversized-tables-report-partial-not-empty-success",
+        "passed": true
+      },
+      {
+        "name": "listener-count-limit-retains-partial",
+        "passed": true
+      },
+      {
+        "name": "process-count-limit-is-partial",
+        "passed": true
+      },
+      {
+        "name": "descriptor-count-limit-is-partial",
+        "passed": true
+      },
+      {
+        "name": "injected-owner-or-final-target-change-retains-unknown",
+        "passed": true
+      },
+      {
+        "name": "collector-does-not-stop-or-change-own-fixture",
+        "passed": true
+      },
+      {
+        "name": "own-child-and-unix-fixture-cleanup",
+        "passed": true
+      },
+      {
+        "name": "exited-target-is-partial-not-free-port",
+        "passed": true
+      }
+    ],
+    "count": 27,
+    "ipv6_fixture_available": true,
+    "native_snapshot": {
+      "schema": "crg-readonly-port-owners-v1",
+      "phase": "partial",
+      "started_utc": "2026-11-15T04:21:06.775412+00:00",
+      "target": {
+        "pid": 3090573,
+        "start_ticks": 165640986,
+        "net_namespace_inode": 4026531840,
+        "cgroup_membership": "0::/user.slice/user-0.slice/session-268103.scope\n"
+      },
+      "ports": [
+        44749
+      ],
+      "listeners": [
+        {
+          "table": "tcp",
+          "port": 44749,
+          "inode": "941753433",
+          "endpoint": "0100007F:AECD",
+          "owners": [
+            {
+              "pid": 3090573,
+              "start_ticks": 165640986,
+              "net_namespace_inode": 4026531840,
+              "cgroup_membership": "0::/user.slice/user-0.slice/session-268103.scope\n",
+              "fd": 3,
+              "comm": "python3",
+              "cwd_observed": "/tmp/crg-port-owner-qualification-vhoxotu0",
+              "same_cgroup": true
+            }
+          ],
+          "owner_resolution": "observed-stable-owner"
+        },
+        {
+          "table": "tcp6",
+          "port": 44749,
+          "inode": "941753435",
+          "endpoint": "00000000000000000000000001000000:AECD",
+          "owners": [
+            {
+              "pid": 3090573,
+              "start_ticks": 165640986,
+              "net_namespace_inode": 4026531840,
+              "cgroup_membership": "0::/user.slice/user-0.slice/session-268103.scope\n",
+              "fd": 5,
+              "comm": "python3",
+              "cwd_observed": "/tmp/crg-port-owner-qualification-vhoxotu0",
+              "same_cgroup": true
+            }
+          ],
+          "owner_resolution": "observed-stable-owner"
+        },
+        {
+          "table": "unix",
+          "port": 44749,
+          "inode": "941753434",
+          "endpoint": ".s.PGSQL.44749",
+          "owners": [
+            {
+              "pid": 3090573,
+              "start_ticks": 165640986,
+              "net_namespace_inode": 4026531840,
+              "cgroup_membership": "0::/user.slice/user-0.slice/session-268103.scope\n",
+              "fd": 4,
+              "comm": "python3",
+              "cwd_observed": "/tmp/crg-port-owner-qualification-vhoxotu0",
+              "same_cgroup": true
+            }
+          ],
+          "owner_resolution": "observed-stable-owner"
+        }
+      ],
+      "issues": [
+        "process-disappeared-during-scan"
+      ],
+      "counts": {
+        "processes": 1156,
+        "fds": 9430
+      },
+      "atomic_snapshot": false,
+      "port_availability_claimed": false,
+      "target_identity_stable": true,
+      "elapsed_seconds": 0.20100676687434316
+    },
+    "product_or_other_business_changed": false,
+    "business_SLA_accepted": false,
+    "harness_integrated": false
+  }
+}

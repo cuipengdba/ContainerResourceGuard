@@ -1,5 +1,8 @@
 # 开发任务与验收跟踪
 
+[临时备库端口只读归属采集](testing-port-owner-observer.md)已实现，现有Linux节点27项资格通过：实际TCP4/TCP6/PG风格Unix监听、PID/start与命名空间/成员身份保护、边界/故障保留unknown。原始正常采样因其他进程扫描中消失而标记partial，监听者仍取得，不改判完整。尚未接入长期执行器或启动新长期测试；48/48控制层迁移与原默认20%业务失败分别保持。
+
+
 实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
 
 
