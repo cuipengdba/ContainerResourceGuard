@@ -2,6 +2,8 @@
 
 ## 当前结论
 
+v4终态：两个准确原镜像Python2.7各6/6兼容性检查通过，真实libpq空loopback连接失败分类正确、namespace/父组清理和全部输入未变；[结果](test-results-original-image-diagnostics-v4.json)、[原件](test-evidence-original-image-diagnostics-v4.json.gz)。未启动PG/原业务、未访问业务数据库；仍非原600秒或因果验收。后文各“尚未启动”均为对应冻结前历史状态。
+
 为隔离验收负载完成有界SQL/API失败诊断，Windows及测试机原生amd64/Linux5.14各26/26项故障测试通过。此变更属于测试程序，不改变CRG生产源37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0，也未部署到现有业务容器。原1761 DBS SQL一次错误/max5.004658635秒仍失败，原因未知，原异常明细已丢失；HISDBS9/9与本轮整体失败分别保持。
 
 [诊断工作线程及校验器](../tests/bounded-load-diagnostics-v1/)、[准确来源适配证明](../tests/bounded-load-diagnostics-v1/adapter.json)、[独立结果](test-results-bounded-load-diagnostics.json)、[原生回执及故障验证证据](test-evidence-bounded-load-diagnostics.json.gz)。旧原件[继续保留](testing-live-capacity-native-and-business-current.md)，新诊断不能事后还原旧请求，也不能据一次失败认定资源控制是原因。
@@ -53,3 +55,9 @@ v2完成Python2编译/AST/固定分类/隐私检查后在加载libpq处失败，
 v3在创建工具目录或Pod前拒绝：校验器计划错误假定PG客户端文件归root；独立只读stat证明既有本轮隔离软件归数据库UID999/GID998、0755、单链接规则文件，摘要及345576字节相符。[原拒绝与stat回执](test-evidence-original-image-diagnostics-v3-admission.json.gz)保留；无v3 Pod执行，不计任何通过。
 
 [v4新身份计划](test-plan-original-image-diagnostics-v4.json)绑定实际UID/GID/mode及原SHA，保留准确路径、规则单链接、只读单文件挂载与六项检查。未chmod/chown原文件，不更改工作线程或镜像。v4尚未启动，前两轮失败及v3拒绝不改写。补齐软件夹具仍不是原启动链或正常600秒业务验收。
+
+## 当前后续任务
+
+两平台26项故障验证与原镜像Python2.7两角色各6项兼容检查已完成。原工作线程三函数之外保持原字节/AST，CRG产品源和所有外部资源预算未变。v4只是只读原镜像加准确PG客户端单文件的代码/连接失败兼容资格，未执行正常600秒、真实SQL锁等待、原启动链或备份。原1761 DBS一次SQL失败原因仍未知，HISDBS9/9及整体失败原件保持；所有测试Pod及namespace已清理，当前无新增业务/长稳任务。
+
+下一步实现并验证有界只读压力/等待时间线，在新隔离身份进行仅本轮合成schema的受控SQL锁超时诊断，然后按预先冻结的observe/enforce对照定位问题；问题闭环后才重做原18项和两角色各600秒。原52项定义/18项完成声明、24h+24h/七天/老化后验收和最终稳定包门槛全部保留，不以兼容性替代。
