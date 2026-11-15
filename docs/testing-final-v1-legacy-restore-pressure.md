@@ -62,9 +62,42 @@ host headroom, or another already running Docker fixture. It neither discovers
 nor operates DBS/HISDBS containers. Test dependencies are copied into a scratch
 image only; they are not part of the product or vendor image.
 
-Current status: protocol prepared; no native result claimed by this document yet.
-Raw reports, traces and failed attempts must be retained before this status is
-updated. A test-driver correction requires a new frozen revision and keeps the
-earlier failed evidence. Results can advance the generic concurrency evidence
+Current status (2026-11-16 CST): **116/116 checks, all 16 cases and owned
+cleanup passed** across the four planned native environments. No driver, helper,
+plan, runtime source or final ELF change was needed between pilot and remaining
+dispatches. The initial pilot was independently reviewed before expansion.
+
+| Runner | Actual architecture/kernel | Checks |
+| --- | --- | --- |
+| ubuntu-24.04 | amd64 / 7.0.0-1017-azure | 29/29 |
+| ubuntu-22.04 | amd64 / 6.8.0-1070-azure | 29/29 |
+| ubuntu-22.04-arm | arm64 / 6.8.0-1070-azure | 29/29 |
+| ubuntu-24.04-arm | arm64 / 7.0.0-1017-azure | 29/29 |
+
+Actual Actions runs: [pilot 43736213350](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43736213350),
+[remaining 43736560710](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43736560710).
+Both used qualification commit `09550dde8034171dedc36b2ece80d45742095ba7`;
+the product source remains the separately pinned `ced4617...` revision above.
+
+The [four exact downloaded ZIP archives](test-evidence-final-v1-legacy-restore-pressure.json.gz)
+preserve all 108 member byte sequences, including reports, complete delayed-fsync
+traces, worker acknowledgements, logs, journals, frozen inputs and environments.
+Every full ZIP was checked against its GitHub artifact API SHA-256, then each
+member was CRC/length/SHA-256 checked. Run identity/result fields are selected;
+commit author emails are omitted from the public metadata, without altering any
+ZIP or member. No credentials or signed download URLs are archived.
+The [independent offline review](test-results-final-v1-legacy-restore-pressure.json)
+recomputes all four identities, source/input bindings, named persistence barriers,
+deferred/conflict/readback outcomes, OOM counter deltas, worker progress and
+observed cleanup. It can be repeated without running CRG:
+
+```sh
+python3 tests/legacy-restore-pressure-v1/review.py \
+  --evidence docs/test-evidence-final-v1-legacy-restore-pressure.json.gz \
+  --plan docs/test-plan-final-v1-legacy-restore-pressure.json
+```
+
+Raw reports, traces and any failed attempts must remain archived. A test-driver
+correction requires a new frozen revision and keeps earlier failed evidence. Results can advance the generic concurrency evidence
 for P03.3/P05.2; they do not close vendor/aged acceptance, actual legacy-binary
 migration, or stable-release gates. The original 52 definitions remain intact.
