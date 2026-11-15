@@ -1,0 +1,28 @@
+{
+  "schema": "crg-current-source-reload-mode-metrics-unit-evidence-review-v1",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "exact_event_evidence": "docs/test-evidence-IO-bandwidth-CI.json.gz",
+  "results": [
+    {
+      "artifact_name": "native-arm64-ced461705ebc27315a59aefe463f9b4af47130a3",
+      "member": "go-test-race.jsonl",
+      "sha256": "c350174d18b2de1cc2635a592df0e9b13d45a5e0e1ae9f49093bff4ad8974c80",
+      "passed_events_total": 240,
+      "required_names_passed": [
+        "TestMetricsDefaultOffFailureBoundedAndRecovery",
+        "TestMetricsFailureStateDoesNotForceEveryCycleStatusWrites",
+        "TestMetricsRenderCountersUnitsUnknownsAndDeviceBound",
+        "TestModeSwitchRestoresRemovedControlsButObserveNeverWrites",
+        "TestReloadIndependentDefaultsCLIOverridesAndLastGoodPolicy",
+        "TestReloadModeSwitchWhitespaceAndStateDirectory",
+        "TestReloadPreservesExplicitCLIOverridesAndRecoversAfterReadFailure",
+        "TestReloadReaderBoundsAndRejectsNonRegularFiles",
+        "TestReloadReaderFIFOAndConfigMapLinkReplacement",
+        "TestReloadRejectsBadFileWithoutDiscardingGoodPolicy",
+        "TestRequestReloadRequiresOwnRunningWriterAndSource"
+      ],
+      "all_required_passed": true
+    }
+  ],
+  "scope": "Actual exact-source native unit/race events; implementation semantics supplement final ELF runtime evidence, no transferred runtime duration or vendor-specific CLI override claim."
+}
