@@ -1,0 +1,18 @@
+# 冻结的最终候选业务热重载输入
+
+[执行范围](../../docs/testing-final-v1-business-reload.md)。全部非二进制准确文件如下；Linux ELF只按计划摘要从固定最终产物取得，不重新构建。不可在生产namespace直接执行。
+
+- [artifact-transfer.py](artifact-transfer.py) SHA256 `fb78c95a344fe87195ff07e1969a09897bec0c01df3a7d5d247b8eb69b421022`
+- [business-driver.py](business-driver.py) SHA256 `c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294`
+- [runner.py](runner.py) SHA256 `e75d7bfb869e3c6b342449d78cb77625f9b5d10d76aedc81b644c5be1062dcb3`
+- [examples/optional-agent.sh](examples/optional-agent.sh) SHA256 `f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79`
+- [tests/own-pg-startup-log.py](tests/own-pg-startup-log.py) SHA256 `d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f`
+- [tests/port-integration-checks.py](tests/port-integration-checks.py) SHA256 `4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77`
+- [tests/port-owner-observer.py](tests/port-owner-observer.py) SHA256 `fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0`
+- [tests/reload-profile.json](tests/reload-profile.json) SHA256 `00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b`
+- [tests/reload-protocol.py](tests/reload-protocol.py) SHA256 `afc8e8661e78464b69f91ff01eb40bc2c496373373c53b156f82880b1ac1a541`
+- [tests/vendor-engine-smoke.py](tests/vendor-engine-smoke.py) SHA256 `1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a`
+- [tests/vendor-port-diagnostics.py](tests/vendor-port-diagnostics.py) SHA256 `c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a`
+- [tests/vendor-soak-campaign.py](tests/vendor-soak-campaign.py) SHA256 `fa63ccedfc37bc37f4984afd247dc7b132f99201e4433839af3a4442e04a22f4`
+- [tests/vendor-soak-load.py](tests/vendor-soak-load.py) SHA256 `ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461`
+- [plan.json](plan.json) SHA256 `3d1ca184ef3b0e9019f17a56b202f0928b7f580a61975b711769166d28d0ad01`
