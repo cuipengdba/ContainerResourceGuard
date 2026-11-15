@@ -26,10 +26,11 @@
 | [安全暂存与准确包维护](verified-release-staging.md) | 两架构150/150及52暂存场景，实际候选包升级/回退/禁用；原失败保留，非稳定身份或厂商/老化验收 |
 | [安全暂存深度修复](verified-release-staging-depth.md) | 旧缺陷两架构复现保留；新工具整树预检/64层上限，原150项及12个深度场景通过；未改变长期门槛 |
 | [真实状态FS故障与强杀恢复](testing-final-v1-persistence-faults.md) | 双架构120/120及12场景，原值/归属清理及隐藏原件核对；旧失败和归档缺口保留，非物理慢盘/掉电或厂商长期验收 |
+| [三项同时变更的持久化恢复](testing-final-v1-persistence-three-resources.md) | 双架构184/184、20场景，三资源各写入前/后强杀、原值和完整IO轨迹/隐藏原件核对；非厂商长期或掉电验收 |
 
-## 正在进行与待办
+## 当前阻断与待办
 
-[正式1396长期试验](testing-final-v1-long-node-admission.md)已独立准入并唯一启动baseline observe。原16输入、最终ELF和原SLA保持，另有只读Pod/事件记录器。协议是同容器24h observe→24h enforce→新七天，至少777600秒；启动/首周期不计时长通过。旧78已失败、不足七天，不继承其时长。当前不启动其他一次性厂商业务夹具干扰独占测量。
+[正式1396长期试验已失败结束](testing-final-v1-long1396-terminal.md)：baseline约4.23小时，协调器exclusive()的kubectl全部Pod查询退出1，原stderr未保留，底层原因未知。原程序已清理，独立只读观察确认namespace/cgroup/登记进程消失；未重启。12启动/一次native-pending内容周期不算24h通过，enforce和七天未开始。原24h observe→24h enforce→新七天、SLA和98%覆盖保持，后续须先补齐协调器失败观测再冻结新身份，从零计时。
 
 后续需完成长期及老化后故障/维护验收、各项剩余压力/所有权/状态场景，以及最终稳定打包、安装/回退和发布实际下载。每项边界见逐项审核。用户暂无额外厂商ARM和独立物理多盘节点，保留未验证范围；[环境矩阵](tested-environment-matrix.md)不扩大支持。
 

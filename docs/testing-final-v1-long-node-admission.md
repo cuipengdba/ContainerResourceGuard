@@ -1,5 +1,8 @@
 # 最终候选长期测试的独立准入与事件记录
 
+> 当前终态：原1396已在baseline失败结束，未达到24h/七天。[原始终态与后续任务](testing-final-v1-long1396-terminal.md)。以下内容保留原冻结/启动时点。
+
+
 状态：原16项冻结输入及最终ELF保持；原生只读preflight=ready、无其他一次性业务Pod，其后已唯一启动并进入baseline observe，尚未达到长期门槛。当前18/52、稳定1.0未接受，公开preview.5不变。
 
 沿用[原24小时+24小时+新七天协议](testing-final-v1-long.md)，同一正式1396目录、namespace、准确16项源摘要和600/长测原标准；不重建/重新上传候选或改写旧78。准入包装器验证原16项、精确已通过1615主报告SHA、原runner/driver/登记进程退出及父/叶不存在，再执行原预检与独立节点准入。只接受单节点Ready、三种压力False、空闲至少max(20GiB,文件系统15%)、两原厂镜像的精确digest与原tag；帮助程序及其已核对镜像计划也SHA绑定。唯一O_EXCL launch.guard保护，原runner PID/start和准确启动源另行记账；观察超时不允许重启原任务。
