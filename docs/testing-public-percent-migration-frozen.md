@@ -1,5 +1,8 @@
 # 公开程序默认百分比迁移：冻结与预检
 
+实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
+
+
 实际公开preview.4→preview.5，源码/程序不变。job `eb067f58a193e22740938ffdd6cea9e9a86d45fbab54d168bb1ff98de9f1d537`，plan `e01b628b45cf910fc64f825bc9ae868149e49d6e5c569340b3cf70d0608ba781`。15项结构与真机预检通过，尚未启动迁移测试，不是48项通过。先前20项历史快照回放仅用于断言资格，另补合法格式下仅IOPS值错误的负例，原回放保留。
 
 DBS/HISDBS各两个顺序创建的不同Pod/container ID，复用各自原镜像、真实挂载路径和私有持久目录。全程业务gate关闭，原业务及缓存helper不启动；测试只验证控制层迁移，不声称SQL/API性能或原300秒启动。每容器只运行本容器程序，CLI run --once前后没有其他写者。
