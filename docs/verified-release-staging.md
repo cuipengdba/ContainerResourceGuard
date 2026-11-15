@@ -32,6 +32,8 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
    校验可信摘要；后续校验与解包使用这同一快照，不重新读取调用者的下载路径。
 2. 使用预信任校验器核对路径、成员数/大小、ELF架构、源码修订、内层摘要和SBOM绑定，
    另外核对打包修订。拒绝链接、特殊文件、重复/越界成员及保留的收据名称。
+   写入任何包成员前预检完整目录树，每个路径最多64个组成部分；
+   [深度修复及新身份实测](verified-release-staging-depth.md)记录旧缺陷与验证结果。
 3. 只在父目录下新建的私有临时目录写文件。目录0700，普通文件0600，
    包内原有拥有者执行位映射为0700；不保留其他用户权限、setuid/setgid或归档用户身份。
    工具自身使用077创建掩码，避免调用者的过严umask剥掉程序执行位，退出前恢复本进程原掩码。
@@ -51,7 +53,9 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
 明确的回退收据/状态匹配规则见[升级流程](upgrade-preview4-preview5.zh.md)。
 只复制到运行中容器的文件不会自动进入重建后的镜像或持久部署。
 
-## 本轮验证范围
+## 初版工具验证范围
+
+以下150项属于旧工具1d8faf3c的准确历史结果。当前工具0ff1bc89的相同检查及新增深度边界测试，见[目录深度修复](verified-release-staging-depth.md)。
 
 冻结方案见[机器可读计划](test-plan-final-v1-verified-staging.json)。
 使用已完成来源/签名核对的准确候选打包修订
@@ -60,7 +64,7 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
 两者程序源码均为 `ced461705ebc27315a59aefe463f9b4af47130a3`，嵌入版本不同，
 不能继承另一二进制的时长。
 
-当前状态（2026-11-16 CST）：**两环境150/150检查、52个暂存场景及两套实际升级/回退/禁用流程通过**。
+初版验证状态（2026-11-16 CST）：**两环境150/150检查、52个暂存场景及两套实际升级/回退/禁用流程通过**。
 
 | 实际环境 | 检查 | Python |
 | --- | --- | --- |
