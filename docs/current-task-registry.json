@@ -3404,7 +3404,7 @@
       "P07.1"
     ],
     "remaining_design": "testing-final-v1-cli-output-matrix-design.md",
-    "remaining_design_phase": "protocol-frozen-native-preflight-passed-not-launched",
+    "remaining_design_phase": "actual-output-protocol-failed-await-correction",
     "remaining_protocol": "testing-final-v1-output-matrix.md"
   },
   "final_v1_cli_supervisor": {
@@ -3444,7 +3444,7 @@
     "independently_absent_registered_process_instances": 55
   },
   "final_v1_output_matrix": {
-    "phase": "native-preflight-passed-not-launched",
+    "phase": "failed",
     "plan": "test-plan-final-v1-output-matrix.json",
     "native_preflight": "test-results-final-v1-output-native-preflight.json",
     "job_sha256": "d3f6a28570767e629d7a1fb405c96558375258cdef538bea45d8b9c1f6ff101e",
@@ -3452,8 +3452,32 @@
     "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
     "main_checks_planned": 26,
     "online_subchecks_each_role": 14,
-    "measurement_started": false,
+    "measurement_started": true,
     "accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "actual_runner": {
+      "entry": "/var/tmp/crg-final1551-tools-20261115/runner.py",
+      "job_sha256": "d3f6a28570767e629d7a1fb405c96558375258cdef538bea45d8b9c1f6ff101e",
+      "plan_sha256": "f3228ea48660a2c8df85a1937a8472da18ab12ed4d47194399ee6e3d3fd9f276",
+      "predecessor_diagnostic_registered_instances_absent": 71,
+      "predecessor_binary_maintenance_registered_instances_absent": 64,
+      "predecessor_CLI_registered_instances_absent": 55,
+      "single_launch_guard": true,
+      "launcher_source_sha256": "3419e9d8d9b4c68c7df5557018d7dd451d0539bfb5be9fa497d6fea686167336",
+      "pid": 1238016,
+      "start_ticks": 168673634,
+      "node_utc": "2026-11-15T12:46:33.235467+00:00"
+    },
+    "terminal": "test-results-final-v1-output-matrix-failed.json",
+    "terminal_evidence": "test-evidence-final-v1-output-matrix-failed.json.gz",
+    "recorded_main_checks": 16,
+    "passed_main_checks": 16,
+    "unexecuted_main_checks": 10,
+    "unrecorded_assertion_failures": 2,
+    "recorded_output_checks": 2,
+    "passed_output_checks": 2,
+    "unexecuted_output_checks": 26,
+    "all_owned_processes_namespace_parent_leaf_absent": true,
+    "independently_absent_registered_process_instances": 56
   }
 }
