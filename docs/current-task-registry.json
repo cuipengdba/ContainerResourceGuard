@@ -3317,7 +3317,7 @@
     "accepted": false
   },
   "final_v1_budget_overhead": {
-    "phase": "native-preflight-passed-not-launched",
+    "phase": "warming",
     "documentation": "testing-final-v1-budget-overhead.md",
     "plan": "test-plan-final-v1-budget-overhead.json",
     "job_sha256": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
@@ -3326,9 +3326,26 @@
       "healthy-half",
       "healthy-threequarters"
     ],
-    "measurement_started": false,
+    "measurement_started": true,
     "accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "actual_runner": {
+      "pid": 3356931,
+      "start_ticks": 167701029,
+      "entry": "/var/tmp/crg-final1461-tools-20261115/runner.py",
+      "job_sha256": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
+      "plan_sha256": "6b39a50e93705bb7e139ffb0e79cb2ec3ace0fd1ae220d7af68a2665b2aafc83",
+      "node_utc": "2026-11-15T10:04:27.183865+00:00",
+      "launcher_sha256": "2f48d20390d72a8746ea933638cdeeb450b1e2833240b47a67d96d0700bc0238",
+      "prerequisite_report_sha256": {
+        "failed1448_report_sha256": "86ac9a71e30459bf74abdb6a848eb4c65be19388986a8601ac133a425a5e55c8",
+        "corrected1465_report_sha256": "4a7d0a3c04bf82aac0a91b65a44a01601c6e210b2b9b7e6eefacdbc20f674d03",
+        "completed1404_report_sha256": "3a9f00c75b629ddf5d070dccb9218432ecc814670b6fb453c6754ad0dc48e619"
+      }
+    },
+    "start_observation": "test-start-final-v1-budget-overhead.json",
+    "launcher_sha256": "2f48d20390d72a8746ea933638cdeeb450b1e2833240b47a67d96d0700bc0238",
+    "launch_and_observer_are_additional_guards_not_replacements_of_seven_frozen_measurement_inputs": true
   },
   "final_v1_diagnostics_counter_fixed": {
     "phase": "passed",
