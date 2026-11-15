@@ -4,10 +4,10 @@
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "candidate_version": "v1.0.0",
   "original_tasks": 52,
-  "completed_in_defined_scope": 14,
+  "completed_in_defined_scope": 15,
   "status_counts": {
-    "complete-in-defined-scope": 14,
-    "partial-evidence-or-verification-open": 30,
+    "complete-in-defined-scope": 15,
+    "partial-evidence-or-verification-open": 29,
     "superseded-by-three-resource-request": 1,
     "waiting-real-duration-and-postflight": 3,
     "waiting-unavailable-hardware": 2,
@@ -577,9 +577,9 @@
       "archived_definition_sha256": "70db3b2797f71e0551d3025eae1fbd0b6614f135de1dbde8eaa3287b86b67491",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "旧源码长fuzz/持续输出故障和准确源码race已有证据。",
-      "remaining_or_boundary": "最终候选对应长fuzz/持久化中断及边界覆盖需逐项复核；真实掉电未测且不得称强杀等同掉电。",
-      "evidence": "testing-combined-long.md"
+      "verified_scope": "准确源码418份输入前后不变，Windows amd64两个解析器分别新跑300秒、目标/包pass及完整事件独立复算；旧长故障和准确源码race保持各自来源。",
+      "remaining_or_boundary": "模糊测试不等于全部语义/厂商运行时通过；最终ELF持久化中断、持续权限撤销、慢/满文件系统和边界仍需核对，强杀不得冒充真实掉电。",
+      "evidence": "testing-final-v1-parser-fuzz.md"
     },
     {
       "id": "P09.4",
@@ -588,11 +588,11 @@
         "工程目标：15s 周期、稳定状态至少 30min，单核平均 CPU ≤0.1%、RSS ≤20MiB，状态文件最多每 5min 一次；另测低 IO/持续异常，不为达标省略必要日志"
       ],
       "archived_definition_sha256": "1293bb20b605e2af22155560a87949d83fac9479827a8480073c37ec73c30b71",
-      "current_status": "partial-evidence-or-verification-open",
-      "completion_claim": false,
-      "verified_scope": "固定最终ELF原15s周期及30min实际开销三场景通过；CPU≤0.1%单核、RSS≤20MiB、状态≥299秒、低IO/异常写入预算及必要journal均核对。",
-      "remaining_or_boundary": "本轮有效强制预算为单套manual低IO额度；仍需不同有效限额的开销对比/回归和长期老化结果，不能将三种故障等同多种限额。",
-      "evidence": "testing-final-v1-overhead-terminal.md"
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "同一最终ELF在0.25/0.5/0.75CPU、128/192/224MiB high和三档BPS/手动IOPS有各自实际1800秒；新增两档各181样本、原阈值、正常导出、原PID/实际控制及清理复算通过，既有低IO/持续导出故障/实际只读各1800秒保持。",
+      "remaining_or_boundary": "本项原工程目标至少30分钟及不同有效限额完成；为Agent自身计数和占位PID1，非厂商/共享节点因果性能；七天业务老化归P10.2，不能转记旧时长。",
+      "evidence": "testing-final-v1-budget-overhead-terminal.md"
     },
     {
       "id": "P10.1",
