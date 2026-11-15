@@ -21,6 +21,59 @@
       "test-evidence-final-v1-verified-staging-depth.json.gz"
     ]
   },
+  "final_v1_native_persistence_faults": {
+    "qualification_source_revision": "73c7b80db558dd46cabf7641c3dd67036eafc7f6",
+    "plan_sha256": "fd2b4c61160cd204254c337cea65c0f017868f02460f560678f65361553d8538",
+    "checks": 120,
+    "cases": 12,
+    "environments": [
+      {
+        "run_id": 43747067149,
+        "artifact_id": 14174817120,
+        "ZIP_sha256": "50b3ed15348d0f7c1c891fab5900ebc897e31d8f504769805e558cc6a7124942",
+        "runner": "ubuntu-22.04",
+        "arch": "amd64",
+        "kernel": "6.8.0-1070-azure",
+        "checks": 60,
+        "cases": 6,
+        "sustained_real_filesystem_faults": 3,
+        "exact_SIGKILL_boundaries": 2,
+        "delayed_complete": 1,
+        "all_original8_restored": true,
+        "own_cleanup_verified": true
+      },
+      {
+        "run_id": 43747511724,
+        "artifact_id": 14175370465,
+        "ZIP_sha256": "09b5e3ad7974f35d60d18412282f6c3831147da70ac5ddf3d82557926ee94530",
+        "runner": "ubuntu-24.04-arm",
+        "arch": "arm64",
+        "kernel": "7.0.0-1017-azure",
+        "checks": 60,
+        "cases": 6,
+        "sustained_real_filesystem_faults": 3,
+        "exact_SIGKILL_boundaries": 2,
+        "delayed_complete": 1,
+        "all_original8_restored": true,
+        "own_cleanup_verified": true
+      }
+    ],
+    "two_exact_ZIPs_members": 148,
+    "hidden_uncommitted_state_originals_preserved": true,
+    "first_failed_readonly_setup_preserved": true,
+    "v2_native_pass_archive_gap_preserved": true,
+    "runtime_source50_changed": false,
+    "completed_original_tasks_added": 0,
+    "stable_release_accepted": false,
+    "evidence": [
+      "testing-final-v1-persistence-faults.md",
+      "test-plan-final-v1-persistence-faults.json",
+      "test-results-final-v1-persistence-faults.json",
+      "test-evidence-final-v1-persistence-faults.json.gz",
+      "test-results-final-v1-persistence-first-pilot-failure.json",
+      "test-results-final-v1-persistence-before-hidden-archive.json"
+    ]
+  },
   "tasks": [
     {
       "id": "P01.1",
@@ -1786,13 +1839,20 @@
         "扩展解析器模糊测试、长故障回归及持久化中断验证",
         "覆盖异常大文件、坏格式、持续权限撤销、慢/满文件系统；强杀与真实掉电证据分开，掉电仅在隔离可恢复测试环境执行"
       ],
-      "current_scope_note": "原506源码fuzz保持历史。当前d370精确源代码在Windows/Go1.27.3完成DecodeConfig及DecodeProfile各请求600秒、实际601.727/601.328秒，合计21680191次执行，均exit0且50生产文件合同不变；仅解析/校验崩溃与挂起覆盖。真实慢/满文件系统、持续权限撤销、强杀和真实掉电仍须按原要求分别核对，不以fuzz或短辅助故障关闭整项。；另保留CLI契约测试一次signal:killed及同提交复验通过，终止原因未定；仅加测试失败诊断，不改5秒或断言。",
+      "current_scope_note": "原506源码fuzz保持历史。当前d370精确源代码在Windows/Go1.27.3完成DecodeConfig及DecodeProfile各请求600秒、实际601.727/601.328秒，合计21680191次执行，均exit0且50生产文件合同不变；仅解析/校验崩溃与挂起覆盖。真实慢/满文件系统、持续权限撤销、强杀和真实掉电仍须按原要求分别核对，不以fuzz或短辅助故障关闭整项。；另保留CLI契约测试一次signal:killed及同提交复验通过，终止原因未定；仅加测试失败诊断，不改5秒或断言。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-d370-parser-fuzz-windows.json",
         "testing-d370-parser-fuzz-windows.md",
         "test-results-cli-contract-ci-20261111.json",
-        "testing-cli-contract-ci-20261111.md"
+        "testing-cli-contract-ci-20261111.md",
+        "testing-final-v1-parser-fuzz.md",
+        "testing-final-v1-persistence-faults.md",
+        "test-plan-final-v1-persistence-faults.json",
+        "test-results-final-v1-persistence-faults.json",
+        "test-evidence-final-v1-persistence-faults.json.gz",
+        "test-results-final-v1-persistence-first-pilot-failure.json",
+        "test-results-final-v1-persistence-before-hidden-archive.json"
       ],
       "scope_note_history": [
         {
@@ -1802,6 +1862,65 @@
         }
       ],
       "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "准确源码418份输入前后不变，Windows amd64两个解析器分别新跑300秒、目标/包pass及完整事件独立复算；旧长故障和准确源码race保持各自来源。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。",
+        "remaining_or_boundary": "本轮仅准确ELF的CPU手动策略/临时4MiB状态tmpfs/独立VM；更长持续故障、其他资源/文件系统与厂商老化、物理慢设备及真实掉电等仍需核对。fsync延迟只是注入，SIGKILL不等于真实掉电；模糊测试不等于全部语义通过。",
+        "evidence": "testing-final-v1-persistence-faults.md"
+      },
+      "persistence_faults_followup": {
+        "qualification_source_revision": "73c7b80db558dd46cabf7641c3dd67036eafc7f6",
+        "plan_sha256": "fd2b4c61160cd204254c337cea65c0f017868f02460f560678f65361553d8538",
+        "checks": 120,
+        "cases": 12,
+        "environments": [
+          {
+            "run_id": 43747067149,
+            "artifact_id": 14174817120,
+            "ZIP_sha256": "50b3ed15348d0f7c1c891fab5900ebc897e31d8f504769805e558cc6a7124942",
+            "runner": "ubuntu-22.04",
+            "arch": "amd64",
+            "kernel": "6.8.0-1070-azure",
+            "checks": 60,
+            "cases": 6,
+            "sustained_real_filesystem_faults": 3,
+            "exact_SIGKILL_boundaries": 2,
+            "delayed_complete": 1,
+            "all_original8_restored": true,
+            "own_cleanup_verified": true
+          },
+          {
+            "run_id": 43747511724,
+            "artifact_id": 14175370465,
+            "ZIP_sha256": "09b5e3ad7974f35d60d18412282f6c3831147da70ac5ddf3d82557926ee94530",
+            "runner": "ubuntu-24.04-arm",
+            "arch": "arm64",
+            "kernel": "7.0.0-1017-azure",
+            "checks": 60,
+            "cases": 6,
+            "sustained_real_filesystem_faults": 3,
+            "exact_SIGKILL_boundaries": 2,
+            "delayed_complete": 1,
+            "all_original8_restored": true,
+            "own_cleanup_verified": true
+          }
+        ],
+        "two_exact_ZIPs_members": 148,
+        "hidden_uncommitted_state_originals_preserved": true,
+        "first_failed_readonly_setup_preserved": true,
+        "v2_native_pass_archive_gap_preserved": true,
+        "runtime_source50_changed": false,
+        "completed_original_tasks_added": 0,
+        "stable_release_accepted": false,
+        "evidence": [
+          "testing-final-v1-persistence-faults.md",
+          "test-plan-final-v1-persistence-faults.json",
+          "test-results-final-v1-persistence-faults.json",
+          "test-evidence-final-v1-persistence-faults.json.gz",
+          "test-results-final-v1-persistence-first-pilot-failure.json",
+          "test-results-final-v1-persistence-before-hidden-archive.json"
+        ]
+      },
+      "before_native_persistence_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
         "verified_scope": "准确源码418份输入前后不变，Windows amd64两个解析器分别新跑300秒、目标/包pass及完整事件独立复算；旧长故障和准确源码race保持各自来源。",
         "remaining_or_boundary": "模糊测试不等于全部语义/厂商运行时通过；最终ELF持久化中断、持续权限撤销、慢/满文件系统和边界仍需核对，强杀不得冒充真实掉电。",
@@ -1887,11 +2006,11 @@
         "完整复核目标隔离、权限降级、外部冲突、诊断脱敏、包来源和恢复所有权",
         "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
       ],
-      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。 安全暂存深度修复：旧1d8工具在两架构1100层目录实测递归异常/私有残留，未发布目标；原件保留且测试独立有界清理。新0ff1工具写成员前整树预检/64层上限，准确冻结来源68a604a在amd64/Linux6.8与ARM64/Linux7重新各75项及6个深度场景通过，合计150+12，另有2个旧缺陷复现。源50/最终ELF及97长期任务不变；非稳定身份、厂商长期/满盘/掉电验收，原开放项保持。",
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。 安全暂存深度修复：旧1d8工具在两架构1100层目录实测递归异常/私有残留，未发布目标；原件保留且测试独立有界清理。新0ff1工具写成员前整树预检/64层上限，准确冻结来源68a604a在amd64/Linux6.8与ARM64/Linux7重新各75项及6个深度场景通过，合计150+12，另有2个旧缺陷复现。源50/最终ELF及97长期任务不变；非稳定身份、厂商长期/满盘/掉电验收，原开放项保持。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。",
       "completion_claim": false,
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。",
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。",
         "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
         "evidence": "release-readiness-current.md"
       },
@@ -1904,7 +2023,14 @@
         "verified-release-staging-depth.md",
         "test-plan-final-v1-verified-staging-depth.json",
         "test-results-final-v1-verified-staging-depth.json",
-        "test-evidence-final-v1-verified-staging-depth.json.gz"
+        "test-evidence-final-v1-verified-staging-depth.json.gz",
+        "release-readiness-current.md",
+        "testing-final-v1-persistence-faults.md",
+        "test-plan-final-v1-persistence-faults.json",
+        "test-results-final-v1-persistence-faults.json",
+        "test-evidence-final-v1-persistence-faults.json.gz",
+        "test-results-final-v1-persistence-first-pilot-failure.json",
+        "test-results-final-v1-persistence-before-hidden-archive.json"
       ],
       "verified_staging_followup": {
         "status": "candidate-package-tool-and-actual-isolated-installation-passed-original-scope-open",
@@ -1936,6 +2062,65 @@
           "test-results-final-v1-verified-staging-depth.json",
           "test-evidence-final-v1-verified-staging-depth.json.gz"
         ]
+      },
+      "persistence_faults_followup": {
+        "qualification_source_revision": "73c7b80db558dd46cabf7641c3dd67036eafc7f6",
+        "plan_sha256": "fd2b4c61160cd204254c337cea65c0f017868f02460f560678f65361553d8538",
+        "checks": 120,
+        "cases": 12,
+        "environments": [
+          {
+            "run_id": 43747067149,
+            "artifact_id": 14174817120,
+            "ZIP_sha256": "50b3ed15348d0f7c1c891fab5900ebc897e31d8f504769805e558cc6a7124942",
+            "runner": "ubuntu-22.04",
+            "arch": "amd64",
+            "kernel": "6.8.0-1070-azure",
+            "checks": 60,
+            "cases": 6,
+            "sustained_real_filesystem_faults": 3,
+            "exact_SIGKILL_boundaries": 2,
+            "delayed_complete": 1,
+            "all_original8_restored": true,
+            "own_cleanup_verified": true
+          },
+          {
+            "run_id": 43747511724,
+            "artifact_id": 14175370465,
+            "ZIP_sha256": "09b5e3ad7974f35d60d18412282f6c3831147da70ac5ddf3d82557926ee94530",
+            "runner": "ubuntu-24.04-arm",
+            "arch": "arm64",
+            "kernel": "7.0.0-1017-azure",
+            "checks": 60,
+            "cases": 6,
+            "sustained_real_filesystem_faults": 3,
+            "exact_SIGKILL_boundaries": 2,
+            "delayed_complete": 1,
+            "all_original8_restored": true,
+            "own_cleanup_verified": true
+          }
+        ],
+        "two_exact_ZIPs_members": 148,
+        "hidden_uncommitted_state_originals_preserved": true,
+        "first_failed_readonly_setup_preserved": true,
+        "v2_native_pass_archive_gap_preserved": true,
+        "runtime_source50_changed": false,
+        "completed_original_tasks_added": 0,
+        "stable_release_accepted": false,
+        "evidence": [
+          "testing-final-v1-persistence-faults.md",
+          "test-plan-final-v1-persistence-faults.json",
+          "test-results-final-v1-persistence-faults.json",
+          "test-evidence-final-v1-persistence-faults.json.gz",
+          "test-results-final-v1-persistence-first-pilot-failure.json",
+          "test-results-final-v1-persistence-before-hidden-archive.json"
+        ]
+      },
+      "before_native_persistence_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。",
+        "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
+        "evidence": "release-readiness-current.md"
       }
     },
     {
