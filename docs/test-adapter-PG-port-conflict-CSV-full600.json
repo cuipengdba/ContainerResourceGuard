@@ -1,0 +1,33 @@
+{
+  "base_job_sha256": "ea766b49dde53e62daa9a9490168150f9d636efa6061dc8cbb4715177b7570bd",
+  "new_job_sha256": "61e0ab046295950d63dc53e46e888a6702b42129f1252e940afd9520584475f7",
+  "reversible_changes": [
+    {
+      "before": "port1325",
+      "after": "port1340",
+      "count": 3
+    },
+    {
+      "before": "PORT1325",
+      "after": "PORT1340",
+      "count": 1
+    },
+    {
+      "before": "'vendor-port-diagnostics.py','port-owner-observer.py']:",
+      "after": "'vendor-port-diagnostics.py','port-owner-observer.py','own-pg-startup-log.py']:",
+      "count": 1
+    },
+    {
+      "before": "raw_log=pglog.read_bytes();item['standby_log_sha256']=hashlib.sha256(raw_log).hexdigest();save()",
+      "after": "startup_stdout=pglog.read_bytes();item['standby_log_sha256']=hashlib.sha256(startup_stdout).hexdigest();reader_spec=importlib.util.spec_from_file_location('own_pg_startup_reader',root/'tools/own-pg-startup-log.py');reader=importlib.util.module_from_spec(reader_spec);reader_spec.loader.exec_module(reader);collected=reader.collect(folder,plan['run_ids'][arm][role]);item['standby_CSV']=collected;raw_log=collected.get('exact_utf8','').encode();(engine_root/'own-startup-CSV.log').write_bytes(raw_log);save()",
+      "count": 1
+    },
+    {
+      "before": "job.returncode!=0 and engine['phase']=='failed' and 'log=standby-start.txt'",
+      "after": "collected['phase']=='complete' and job.returncode!=0 and engine['phase']=='failed' and 'log=standby-start.txt'",
+      "count": 1
+    }
+  ],
+  "reverse_reconstructs_original_driver": true,
+  "no_original_PG_command_budget_timeout_or_SLA_changes": true
+}
