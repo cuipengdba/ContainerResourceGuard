@@ -59,7 +59,7 @@ def snapshot(item,label):
  raw=(item['folder']/'state/status.json').read_bytes();state=json.loads(raw);assert len(raw)<1024**2
  path=item['out']/(label+'-status.json');path.write_bytes(raw)
  fresh=ex(item,'/crg','doctor','--config','/etc/crg/config.json');freshvalue=json.loads(fresh.stdout);(item['out']/(label+'-fresh-plan.json')).write_bytes(fresh.stdout)
- actual=controls(item);who=actors(item);metadata=state.get('plan',{}).get('environment',{});samples=item['record']['samples'];samples.append({'label':label,'online_mask':mask(),'online_count':n,'expected_cpu_max':expected,'actual_controls':actual,'reported_online_cpus':metadata.get('host_online_cpus'),'fresh_cli_online_cpus':freshvalue['environment']['host_online_cpus'],'agent':who,'status_file':path.name,'status_sha256':SHA(raw),'fresh_plan_sha256':SHA(fresh.stdout)})
+ actual=controls(item);who=actors(item);metadata=state.get('plan',{}).get('environment',{});samples=item['record']['samples'];samples.append({'label':label,'online_mask':mask(),'online_count':n,'expected_cpu_max':expected,'actual_controls':actual,'reported_online_cpus':metadata.get('host_online_cpus'),'fresh_cli_online_cpus':freshvalue['environment']['host_online_cpus'],'agent':who,'status_file':path.name,'status_sha256':SHA(raw),'fresh_plan_sha256':SHA(fresh.stdout),'journal_present':(item['folder']/'state/journal.json').exists()})
  prefix=item['name']+':'+label
  check(prefix+':same-single-Agent-and-PID1',who==[item['agent']] and alive(item['main']))
  check(prefix+':current-host-capacity-in-live-status',metadata.get('host_online_cpus')==n,actual=metadata.get('host_online_cpus'),expected=n)
@@ -101,7 +101,9 @@ def finish(item):
  assert not actors(item)
  result=ex(item,'/crg','restore','--config','/etc/crg/config.json',required=False);value=json.loads(result.stdout);(item['out']/'restore.json').write_bytes(result.stdout)
  check(item['name']+':restore-original-eight-controls',result.returncode==0 and value['state']=='restored' and controls(item)==item['original'])
- journal=item['folder']/'state/journal.json';assert not json.loads(journal.read_bytes())['mutations']
+ journal=item['folder']/'state/journal.json'
+ if journal.exists():assert not json.loads(journal.read_bytes())['mutations']
+ else:assert item['tight'] and len(item['record']['samples'])==5 and all(not row['journal_present'] and row['actual_controls']==item['original'] for row in item['record']['samples'])
  check(item['name']+':no-OOM-kill',dict(x.split() for x in (item['group']/'memory.events').read_text().splitlines())['oom_kill']==item['oom'])
  owned(item);run(['docker','rm','-f',item['id']]);item['removed']=True
  check(item['name']+':owned-container-leaf-and-processes-absent',not item['group'].exists() and not alive(item['main']) and all(not alive(p) for p in item['seen']))

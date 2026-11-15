@@ -1,6 +1,6 @@
 {
   "schema": "crg-live-cpu-capacity-plan-v1",
-  "phase": "frozen-v2-doctor-interface-before-native-pilot",
+  "phase": "frozen-v3-proven-noop-journal-absence-before-native-pilot",
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "binary_sha256": {
     "amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
@@ -59,7 +59,7 @@
     "internal/runlog/sink_other.go": "46d05c89d88015522544246640a148dddf4c65050c9e242d01e9cc7eaf3d90e4"
   },
   "test_inputs_sha256": {
-    "tests/live-cpu-capacity-v1/driver.py": "5f103256bfa3a15150b90b3ed105a1655e999b677393ce682309457eebf80702",
+    "tests/live-cpu-capacity-v1/driver.py": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
     "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7"
   },
   "expected_checks": 56,
@@ -87,5 +87,14 @@
     "archive_sha256": "2ddf6dfcf5e76e2207eae65dd8beb1047bc45f85f60e41aabf508a8b465103df",
     "old_plan_sha256": "5466bd2af7acd4defd95ee4b64aac6354675014ee545efeffc30a75d21b35e5a",
     "product_issue_proved": false
+  },
+  "noop_journal_rule": "An absent journal is allowed ONLY in tight-cap case when all five original snapshots prove no journal and all eight controls exactly unchanged. Any mutated case must retain a valid empty journal after restore. No missing journals manufactured.",
+  "v2_failures": {
+    "source": "2ab93a810d7bd4a295ece83e9eb794a649049b6a",
+    "amd64_run": 43758489795,
+    "ARM64_run": 43758860709,
+    "partial_old_ARM_stale_capacity_failures": 6,
+    "owned_cleanup_gap_preserved": true,
+    "evidence": "test-evidence-live-cpu-capacity-v2-failures.json.gz"
   }
 }
