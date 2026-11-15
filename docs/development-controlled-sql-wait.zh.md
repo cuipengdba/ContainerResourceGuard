@@ -1,25 +1,32 @@
-# 原路径SQL等待诊断：两次失败与第三版冻结
+# DBS/HISDBS原路径受控SQL等待诊断完成
 
-## 当前结果
+## 已验证的结果
 
-第二版1824已失败终止并独立复核清理，两角色各9项记录/8通过/1失败/4未执行。观察器在原DBS/HISDBS启动路径采到了实际Lock/relation及阻塞PID，也记录到注入8秒锁区间的SQL deadline；但psql调用未取到持锁PID，无法进行“准确holder=实际blocker”验收，不能算诊断通过。负载因检查失败在约19秒停止，未完成120秒，更不替代原18项/600秒。
+第三版1830按启动前发布的冻结计划各执行一次，DBS/HISDBS各13/13通过（各7项原启动+6项新增诊断）。各完成独立120秒负向窗口，唯一8秒合成表锁实际造成SQL deadline；原负载正确保持failed。观察器真实Lock/relation中的阻塞PID与同连接psql准确持锁PID一致，事件时间区间重叠，解锁后SQL计数继续、API满足原标准、无新增OOM。不是正常业务18项通过，也不是原1761错误原因已经查明。
 
-[第二版终态及独立复算](test-results-controlled-sql-wait-v2-terminal.json)、[24个准确索引原件215628字节](test-evidence-controlled-sql-wait-v2-terminal.json.gz)、[第二版冻结计划](test-plan-controlled-sql-wait-v2.json)。两namespace/父叶cgroup及58条登记进程实例均独立复核消失；观察器与负载已为不同PID。正常停止标记未到达，两个缺失文件如实登记，观察器由本轮准确身份pidfd在紧急清理中停止，没有改业务PID1/Agent/cache。PSI六项全部明确unavailable，不能声称测得压力或压力因果。
+|角色|检查|原负载实际秒|预期SQL错误|持锁PID|时间线样本|API错误|API最大秒|锁前计数|解锁后计数|
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+|dbs|13/13|120.192|1|1745|65|0|0.008|96|176|
+|hisdbs|13/13|120.155|1|1766|64|0|0.009|96|176|
 
-第一版1816各7项启动通过，但观察器header后退出、0样本、未注入锁/未完成120秒；12项诊断未执行。其任意argv匹配和normal导出错误已在第二版修复。原14索引文件与10只读补取原件保留，重复辅助身份不冒充独立PID；[第一版终态](test-results-controlled-sql-wait-v1-terminal.json)与[原件](test-evidence-controlled-sql-wait-v1-terminal.json.gz)不删除。宿主PSI缺失不是已终止第一版容器确切异常的证明，旧观察器没有写出异常阶段/类别，原因边界仍保留。[第一版历史说明](development-controlled-sql-wait-frozen-v1.zh.md)、[第二版历史说明](development-controlled-sql-wait-frozen-v2.zh.md)中的未启动状态只表示当时。
+[独立逐原件复算结果](test-results-controlled-sql-wait-v3-terminal.json)、[准确原件和原生终态](test-evidence-controlled-sql-wait-v3-terminal.json.gz)、[启动前15项冻结计划](test-plan-controlled-sql-wait-v3.json)、[准确文本来源](../tests/controlled-sql-wait-v3/)、[独立复算程序](../tests/controlled-sql-wait-v3/qualify-selected-originals.py)。全部选定索引原件26个/441991字节逐长度/摘要核验，source-map无缺失；两namespace/Pod/父叶cgroup及55条登记进程实例消失另行复核。准确主入口、PID/start、成员摘要和自身目标inode绑定，观察器与负载为不同PID。观察器按身份/时钟绑定停止标记正常退出，未向原PID1/Agent/cache发停止信号，八个控制值前后完全一致。
 
-## 第三版修复与启动前计划
+## 实现和适用边界
 
-第二版把SELECT pg_backend_pid、BEGIN/LOCK/pg_sleep/ROLLBACK放在一个psql -c字符串，只得到末条SQL的结果；[PostgreSQL14官方说明](https://www.postgresql.org/docs/14/app-psql.html)明确该行为。第三版改为同一psql连接连续两个-c：先独立输出pg_backend_pid，再运行原事务和8秒锁；仍只有一个持锁连接、一次8秒锁、原超时选项。必须得到一个数值PID且与等待时间线真实blocker相等，不能仅凭“看到锁”等价通过。
+CRG生产源37ca44e0及AMD64候选ee4f0a14未改；原镜像、start.sh、软件/数据/只读CCG路径和业务配置保持。手动7.2核、memory.high20001980416、64MiB/s读写、手动4096IOPS，外部8核/20GiB保持；本试验不改变百分比模式的BPS-only定义。负载SQL/API/超时/采样/零错误/max5秒/p95桶1秒/98%覆盖与原数据校验方程不变，注入锁时预期failed不能被改成正常passed。
 
-[第三版15项冻结计划](test-plan-controlled-sql-wait-v3.json)、[全部文本输入](../tests/controlled-sql-wait-v3/)、[准入结果](test-results-controlled-sql-wait-v3-preflight.json)、[原生24项故障检查](test-results-own-wait-pressure-faults-v3.json)、[原件](test-evidence-own-wait-pressure-faults-v3.json.gz)。Windows23通过、1项Linux专用符号链接检查跳过。准入重新核对两次失败的计划/全部来源/终态/归属清理及原前置业务记录；全新工具和输出身份，当前第三版尚未启动，发布后只启动一次，不自动重复到通过。
+观察器每2秒读取自身CPU节流、内存及IO计数、固定只读PG等待查询；源字节与第二版相同。实际六项PSI全部unavailable（ENOENT），明确没有压力测量资格，不填零、不宣称无压力。必需计数和PG查询完整，查询错误0；最多900样本、16KiB行、4MiB总量/2KiB终态预留，目录0700/文件0600，固定异常阶段/类别/errno，未知字段不导出任意SQL/异常/连接串/环境。数据有采样与额外查询开销，非原子，不能仅凭相关性判断旧故障原因。
 
-第三版观察器与第二版准确字节相同：必需CPU节流、内存计数和IO计数；PSI仅ENOENT记录unavailable，不填零，权限/格式错误或能力变化失败。2秒一条固定只读PG等待查询及本容器计数，PID1 start/成员摘要/组inode/device前后核对；固定异常阶段/类别/errno，不导出任意SQL/异常/连接/环境。900样本、16KiB行、4MiB总量、2KiB终态预留；私有目录0700/文件0600；正常停止为当前身份/单调时钟绑定标记，紧急信号只针对准确自有辅助入口。
+第三版同一psql连接先-c SELECT pg_backend_pid，再-c原BEGIN/LOCK/pg_sleep(8)/ROLLBACK，仍一个锁连接一次8秒锁；[PG14 psql说明](https://www.postgresql.org/docs/14/app-psql.html)解释单个-c多SQL只输出最后结果。原生24项辅助故障检查通过，Windows23通过/1项Linux专用符号链接检查跳过。它们是辅助程序检查，不增加原任务的完成声明。
 
-原镜像、start.sh、软件/数据/缓存路径与7项启动检查不变，手动7.2核、memory.high20001980416、64MiB/s读写及手动4096IOPS、外部8核/20GiB不变。完整120秒负向窗口、运行10秒后唯一8秒合成表锁、SQL/API/超时/2秒与5秒采样/零错误/max5秒/p95桶1秒/98%覆盖、解锁后计数/API/OOM、辅助停止及八控制值检查都不变。负载应如实failed；六项诊断通过只证明受控错误可定位，不能抵销原1761 DBS错误。
+## 全部失败仍保留
 
-## 发布门槛与归档
+第一版1816观察器header后退出、0样本、未注入锁/未完成120秒，各原7启动通过、12诊断未执行。任意argv匹配误把--worker参数作为入口、normal导出分支错位的问题已修复；原14索引与10只读补取文件分别保留，重复辅助登记不冒充独立身份。旧观察器没写异常阶段/类别，后来宿主PSI缺失不等于确知旧容器异常原因。[第一版终态](test-results-controlled-sql-wait-v1-terminal.json)、[原件](test-evidence-controlled-sql-wait-v1-terminal.json.gz)。
 
-CRG产品源37ca44e0及候选ELF不变；仅CPU/IO/memory.high、各自百分比默认20、v1跳过/v2设置、无权限不阻断、每容器一对一、日志30天/1GiB保持。所有改动属于隔离辅助程序，preview.5资产不变，稳定1.0尚未接受。
+第二版1824已采到锁等待/SQL deadline，但单个psql -c未输出前置持锁PID，各9项记录/8通过/1失败/4未执行；约19秒中断，未完成120秒，不接受精确holder归属。24原件与58登记进程归属清理独立核对，缺失停止标记如实列出。[第二版终态](test-results-controlled-sql-wait-v2-terminal.json)、[原件](test-evidence-controlled-sql-wait-v2-terminal.json.gz)。[第一版](development-controlled-sql-wait-frozen-v1.zh.md)、[第二版](development-controlled-sql-wait-frozen-v2.zh.md)、[第三版启动前](development-controlled-sql-wait-frozen-v3.zh.md)历史冻结说明中的“未启动”仅表示当时状态。
 
-原52定义/18既有范围声明保留，本轮归入P02.1/P02.2/P06.3/P10.2/P10.3。受控诊断后仍需预先冻结observe/enforce对照及新的原18项/各600秒，然后从零完成24h observe、同容器24h enforce、新七天、原老化后故障/恢复/升级/稳定包门槛。旧故障、旧源及旧时钟不转移。只读观察有额外查询和输出开销，不能声称零开销或只凭相关性推出历史故障原因。
+## 下一步与稳定发布
+
+[固定次数observe/enforce业务对照设计](development-next-business-comparison.zh.md)已归档：DBS/HISDBS各observe/enforce一次、各原600秒，唯一CRG模式变量，缓存/外部限制/SQL/API/备份恢复不变。该文件只是待实现设计，未生成可执行冻结来源、未启动。对照不能冒充原18项正式复验；随后还要新原18项/各600秒，从零24h observe、同容器24h enforce、新七天及原老化后故障/恢复/升级/稳定包门槛。
+
+原1761 DBS完整600秒失败、HISDBS9/9和DBS原因unknown不改变，不凭已知注入锁反推旧故障。全部52项定义/18项既有范围声明保留，本轮属于P02.1/P02.2/P06.3/P10.2/P10.3辅助诊断子任务。仅CPU/IO/memory.high、各自百分比默认20、v1跳过/v2设置、每容器一对一、无权限不阻断原启动、每日日志30天/1GiB要求保持。preview.5资产未改，稳定1.0尚未接受。
