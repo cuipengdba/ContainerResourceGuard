@@ -27,10 +27,10 @@
 
 ## 剩余发布工作
 
-[固定产物24h observe基线→原容器24h enforce→七天验收执行程序](testing-final-v1-long.md)已开发并完成原生只读预检查。当前旧测试夹具仍在节点，程序按计划拒绝启动；新计时未开始。旧版七天任务实际仍运行，已约4.24天，不能计为本候选时长。长期运行及老化后验证尚未完成。[原52项已逐项审核](current-52-task-audit.md)：10项在限定范围完成，扩展参数取消/部分取消单列，缺硬件、真实时长和其余具体待办分别保留。原定义与历史失败不删除，不能整体勾选完成。最终候选的[三场景30分钟开销补验](testing-final-v1-overhead.md)三场景均实际1800秒/181样本通过，已独立复算CPU/RSS/写入和确认全部登记进程、父叶cgroup与namespace清理，见[终态](testing-final-v1-overhead-terminal.md)。不同有效限额回归和长期老化仍未完成。
+[固定产物24h observe基线→原容器24h enforce→七天验收执行程序](testing-final-v1-long.md)已开发并完成原生只读预检查。当前旧测试夹具仍在节点，程序按计划拒绝启动；新计时未开始。旧版七天任务实际仍运行，已约4.24天，不能计为本候选时长。长期运行及老化后验证尚未完成。[原52项已逐项审核](current-52-task-audit.md)：12项在限定范围完成，扩展参数取消/部分取消单列，缺硬件、真实时长和其余具体待办分别保留。原定义与历史失败不删除，不能整体勾选完成。最终候选的[三场景30分钟开销补验](testing-final-v1-overhead.md)三场景均实际1800秒/181样本通过，已独立复算CPU/RSS/写入和确认全部登记进程、父叶cgroup与namespace清理，见[终态](testing-final-v1-overhead-terminal.md)。不同有效限额回归和长期老化仍未完成。
 
 [准确已测环境矩阵](tested-environment-matrix.md)逐一列出内核、运行时/runc、架构、存储、挂载权限和结果；当前支持只按实际报告的环境声明；暂无厂商ARM/独立物理多盘节点，不能扩大支持结论。稳定发布和生产部署分别记录，正式交付以本页及最新终态为准。全部需求与任务见[任务登记](current-task-registry.json)。
 
 
 
-[固定最终ELF同一Agent业务热重载](testing-final-v1-business-reload.md)已唯一启动，DBS首个实际配置观察通过，完整两角色600秒业务和13种配置观察仍待终态；无旧版计时转记。[当前运维、问题分级和补丁/归档规则](operations-release-policy.md)已补齐，旧RC2不支持重载的过时说明已修正。
+[固定最终ELF同一Agent业务热重载](testing-final-v1-business-reload.md)已取得[两角色终态](testing-final-v1-business-reload-terminal.md)：18/18主检查、26/26配置观察，各原生600秒SQL/API零错误、实际备份/同步/独立恢复通过，全部自有进程与夹具清理已独立确认。P03.1和P07.3按定义范围补齐，仍不替代长期、默认20%业务性能及其他待办。[当前运维、问题分级和补丁/归档规则](operations-release-policy.md)已补齐，旧RC2不支持重载的过时说明已修正。
