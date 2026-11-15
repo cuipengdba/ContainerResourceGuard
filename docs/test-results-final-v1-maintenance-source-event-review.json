@@ -1,0 +1,34 @@
+{
+  "schema": "crg-fixed-source-maintenance-unit-race-event-review-v1",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "evidence": "test-evidence-IO-bandwidth-CI.json.gz",
+  "evidence_gzip_sha256": "6cf98ec2cac44ba9c583984ac83156a789f76048dbcb84b90b6b4c9e193fc4e4",
+  "results": [
+    {
+      "artifact_id": 14046558744,
+      "artifact_name": "native-arm64-ced461705ebc27315a59aefe463f9b4af47130a3",
+      "member": "go-test-race.jsonl",
+      "bytes": 249507,
+      "sha256": "c350174d18b2de1cc2635a592df0e9b13d45a5e0e1ae9f49093bff4ad8974c80",
+      "required_names_passed": [
+        "TestBinaryTrustAndPathBoundaries",
+        "TestBinaryCopyVerifiesDigestAndNeverOverwrites",
+        "TestBinarySnapshotCannotAuthorizeOtherIdentityOrChangedState",
+        "TestUpgradeExistingLockNeverCreatesAndRejectsOtherWriter",
+        "TestPrivateBackupOutsideStateExclusiveAndAliasProtection",
+        "TestUpgradePreviewPreservesPendingOriginalAndForeignIdentity",
+        "TestUpgradeRejectsFutureMalformedOrDuplicateState",
+        "TestUpgradeDisableIdentityAndProfileAreExplicit"
+      ]
+    }
+  ],
+  "source_files_exact_at_revision": {
+    "internal/guard/binary.go": "c7023d6337eb046b6001bfa4bf42fd3cad8fde7f7e9f3689623e302f705b2b90",
+    "internal/guard/binary_test.go": "738ee58111f25bd68728b58b27ec781a22b659a92ed7627bad1081ae7ac9bfc7",
+    "internal/guard/upgrade_linux_test.go": "613b522b82d49b7a8210c89d99c9f3523d6c743e12eff864c1a2dd23c495df40",
+    "internal/guard/upgrade_test.go": "3cf4c4137588262b150ff0036cf9aee52143a6e8863571d22b9e5a0374a03fee"
+  },
+  "scope": "Review of existing exact-source native unit/race events; no new runtime, failure injection, vendor ARM, unknown-protocol executable or duration claim. Supplements separately new fixed-final vendor binary maintenance.",
+  "P08_3_full_vendor_format_matrix_accepted": false,
+  "stable_release_accepted": false
+}
