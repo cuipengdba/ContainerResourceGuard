@@ -1,30 +1,39 @@
-name: native-cgroup
+name: live-cpu-capacity
 on:
   workflow_dispatch:
-  push:
-    branches: [main, next/compatibility-contract]
-    paths:
-      - .github/workflows/native-cgroup.yml
-      - tests/native-cgroup.py
-      - tests/native-cgroup-high.py
-      - tests/native-holder/**
-      - tests/load/**
-      - cmd/**
-      - internal/**
-      - go.mod
-      - go.sum
+    inputs:
+      batch:
+        description: Frozen pilot or remaining ARM64 environment
+        required: true
+        default: pilot
+        type: choice
+        options:
+          - pilot
+          - remaining
 permissions:
   contents: read
 jobs:
-  controller:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - id: select
+        env:
+          BATCH: ${{ inputs.batch }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          choices={'pilot':[{'runner':'ubuntu-22.04','arch':'amd64','kernel':'6.'}],
+                   'remaining':[{'runner':'ubuntu-24.04-arm','arch':'arm64','kernel':'7.'}]}
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('matrix='+json.dumps({'include':choices[os.environ['BATCH']]})+'\n')
+          PY
+  native:
+    needs: plan
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - runner: ubuntu-24.04
-            arch: amd64
-          - runner: ubuntu-24.04-arm
-            arch: arm64
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 20
     env:
@@ -33,33 +42,73 @@ jobs:
       GOENV: 'off'
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ced461705ebc27315a59aefe463f9b4af47130a3
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: qualification
       - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
         with:
           go-version: '1.27.3'
           cache: false
-      - name: Build exact native test programs
+      - name: Freeze source, protocol and actual environment before any fixture
+        env:
+          EXPECTED_ARCH: ${{ matrix.arch }}
+          EXPECTED_KERNEL: ${{ matrix.kernel }}
+          RUNNER_LABEL: ${{ matrix.runner }}
         run: |
-          test "$(go env GOHOSTARCH)" = '${{ matrix.arch }}'
-          test "$(go env GOARCH)" = '${{ matrix.arch }}'
-          test "$(go env GOVERSION)" = 'go1.27.3'
-          mkdir -p ci-native-cgroup
-          CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-s -w -X main.version=native-controller-ci -X main.revision=$GITHUB_SHA" -o ci-native-cgroup/crg ./cmd/crg
-          CGO_ENABLED=0 go build -trimpath -o ci-native-cgroup/hold ./tests/native-holder
-          CGO_ENABLED=0 go build -trimpath -o ci-native-cgroup/load ./tests/load
-          ./ci-native-cgroup/crg build-info > ci-native-cgroup/build-info.json
-      - name: Actual own-container controls and recovery
+          mkdir -p ci-hotplug
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,platform,subprocess
+          planpath=pathlib.Path('qualification/docs/test-plan-final-v1-live-cpu-capacity.json')
+          raw=planpath.read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='5466bd2af7acd4defd95ee4b64aac6354675014ee545efeffc30a75d21b35e5a'
+          p=json.loads(raw)
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
+          for n,h in p['source_sha256'].items():
+              assert hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest()==h,n
+          for n,h in p['test_inputs_sha256'].items():
+              assert hashlib.sha256(pathlib.Path('qualification',n).read_bytes()).hexdigest()==h,n
+          assert len(p['source_sha256'])==50
+          assert platform.release().startswith(os.environ['EXPECTED_KERNEL'])
+          assert platform.machine() in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[os.environ['EXPECTED_ARCH']]
+          environment={'workflow_revision':os.environ['GITHUB_SHA'],'runner':os.environ['RUNNER_LABEL'],
+                       'kernel':platform.release(),'machine':platform.machine(),'source50_verified':True,
+                       'run_id':os.environ['GITHUB_RUN_ID'],'attempt':os.environ['GITHUB_RUN_ATTEMPT']}
+          pathlib.Path('ci-hotplug/environment.json').write_text(json.dumps(environment,indent=2)+'\n')
+          pathlib.Path('ci-hotplug/plan.json').write_bytes(raw)
+          PY
+      - name: Build exact source-pinned final candidate and placeholder only
         run: |
-          crg_driver=tests/native-cgroup.py
-          if python3 -c 'import json; raise SystemExit(0 if json.load(open("ci-native-cgroup/build-info.json")).get("memory_policy", "").startswith("high-reclaim-throttle") else 1)'; then
-            crg_driver=tests/native-cgroup-high.py
-          fi
-          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 "$crg_driver" \
-            --binary "$PWD/ci-native-cgroup/crg" --holder "$PWD/ci-native-cgroup/hold" \
-            --load "$PWD/ci-native-cgroup/load" --output "$PWD/ci-native-cgroup/results" \
-            --expected-arch '${{ matrix.arch }}' --source-revision "$GITHUB_SHA"
+          test "$(go env GOVERSION)" = go1.27.3
+          bash scripts/build.sh v1.0.0
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          p=json.loads(pathlib.Path('ci-hotplug/plan.json').read_bytes())
+          for arch,h in p['binary_sha256'].items():
+              assert hashlib.sha256(pathlib.Path('dist/crg-linux-'+arch).read_bytes()).hexdigest()==h
+          PY
+          cp 'dist/crg-linux-${{ matrix.arch }}' ci-hotplug/crg
+          CGO_ENABLED=0 go build -trimpath -o ci-hotplug/hold ./tests/native-holder
+      - name: Actual live host CPU offline-online percentage and external cap test
+        run: |
+          sudo env CRG_CPU_HOTPLUG_TEST=exclusive-ephemeral-github-vm-only GITHUB_ACTIONS=true RUNNER_ENVIRONMENT=github-hosted \
+            python3 qualification/tests/live-cpu-capacity-v1/driver.py \
+            --binary "$PWD/ci-hotplug/crg" --holder "$PWD/ci-hotplug/hold" \
+            --plan "$PWD/ci-hotplug/plan.json" --arch '${{ matrix.arch }}' --output "$PWD/ci-hotplug/results"
+      - name: Save only bounded receipts and exact test inputs
+        if: always()
+        run: |
+          mkdir -p ci-hotplug/receipts
+          cp ci-hotplug/environment.json ci-hotplug/plan.json ci-hotplug/receipts/ 2>/dev/null || true
+          cp qualification/tests/live-cpu-capacity-v1/driver.py qualification/tests/native-holder/main.go ci-hotplug/receipts/
+          if test -d ci-hotplug/results; then sudo cp -r ci-hotplug/results ci-hotplug/receipts/; fi
+          sudo chmod -R a+rX ci-hotplug/receipts
+          test "$(du -sb ci-hotplug/receipts | cut -f1)" -lt 67108864
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
-          name: native-cgroup-${{ matrix.arch }}-${{ github.sha }}
-          path: ci-native-cgroup/
-          retention-days: 14
+          name: live-cpu-capacity-${{ matrix.runner }}-${{ github.sha }}
+          path: ci-hotplug/receipts/
+          retention-days: 30
+          include-hidden-files: true
