@@ -8,4 +8,8 @@
 
 先执行amd64/Linux6.8 pilot，保留准确原输出/方案/源码/状态及新CLI计划后独立复核，再决定后续ARM步骤。失败时也必须恢复原CPU在线mask并清理所属夹具。隔离VM与占位业务不代替厂商业务或整个P06.4完成。
 
-准确输入见[test plan](test-plan-final-v1-live-cpu-capacity.json)，SHA256 `5466bd2af7acd4defd95ee4b64aac6354675014ee545efeffc30a75d21b35e5a`。使用已注册native-cgroup工作流在独立test/live-cpu-capacity分支调度，仅该分支的工作流执行此协议；既有固定来源的历史工作流及证明不改变。原1728长测暂时保持原程序/计时，但本问题闭合前不能据此接受最终稳定候选。
+准确输入见[test plan](test-plan-final-v1-live-cpu-capacity.json)，SHA256 `72c051c3667f1d073aa57482cab136a2391c0585c8c504a81efb29465c178b0a`。使用已注册native-cgroup工作流在独立test/live-cpu-capacity分支调度，仅该分支的工作流执行此协议；既有固定来源的历史工作流及证明不改变。原1728长测暂时保持原程序/计时，但本问题闭合前不能据此接受最终稳定候选。
+
+## 首轮测试夹具错误（保留）
+
+冻结源码742c988、run43758083710、artifact14178469670原件[完整归档](test-evidence-live-cpu-capacity-first-fixture-error.json.gz)。初始状态读取后，测试脚本误用不存在的`plan`子命令，实际返回usage_invalid/unknown command并退出1；CPU尚未下线，仅3项所属夹具清理通过，原CPU mask恢复。不是产品容量缺陷的实测证据。v2只将该调用改为现有`doctor`接口，预定56项、10秒窗口、同Agent及实际sysfs操作标准不变，重新冻结后重跑。

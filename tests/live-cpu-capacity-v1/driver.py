@@ -58,7 +58,7 @@ def snapshot(item,label):
  assert state is not None
  raw=(item['folder']/'state/status.json').read_bytes();state=json.loads(raw);assert len(raw)<1024**2
  path=item['out']/(label+'-status.json');path.write_bytes(raw)
- fresh=ex(item,'/crg','plan','--config','/etc/crg/config.json');freshvalue=json.loads(fresh.stdout);(item['out']/(label+'-fresh-plan.json')).write_bytes(fresh.stdout)
+ fresh=ex(item,'/crg','doctor','--config','/etc/crg/config.json');freshvalue=json.loads(fresh.stdout);(item['out']/(label+'-fresh-plan.json')).write_bytes(fresh.stdout)
  actual=controls(item);who=actors(item);metadata=state.get('plan',{}).get('environment',{});samples=item['record']['samples'];samples.append({'label':label,'online_mask':mask(),'online_count':n,'expected_cpu_max':expected,'actual_controls':actual,'reported_online_cpus':metadata.get('host_online_cpus'),'fresh_cli_online_cpus':freshvalue['environment']['host_online_cpus'],'agent':who,'status_file':path.name,'status_sha256':SHA(raw),'fresh_plan_sha256':SHA(fresh.stdout)})
  prefix=item['name']+':'+label
  check(prefix+':same-single-Agent-and-PID1',who==[item['agent']] and alive(item['main']))

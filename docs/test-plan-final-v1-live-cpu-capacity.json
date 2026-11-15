@@ -1,6 +1,6 @@
 {
   "schema": "crg-live-cpu-capacity-plan-v1",
-  "phase": "frozen-before-native-pilot",
+  "phase": "frozen-v2-doctor-interface-before-native-pilot",
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "binary_sha256": {
     "amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
@@ -59,7 +59,7 @@
     "internal/runlog/sink_other.go": "46d05c89d88015522544246640a148dddf4c65050c9e242d01e9cc7eaf3d90e4"
   },
   "test_inputs_sha256": {
-    "tests/live-cpu-capacity-v1/driver.py": "a266b11cafc600e6e5460ebd8373da28b8bc6f52c69fec58f548c5a3a5a31306",
+    "tests/live-cpu-capacity-v1/driver.py": "5f103256bfa3a15150b90b3ed105a1655e999b677393ce682309457eebf80702",
     "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7"
   },
   "expected_checks": 56,
@@ -79,5 +79,13 @@
   "tight_external_CPU_max": "10000 100000",
   "hotplug_rules": "Actual sysfs offline/online of highest originally online CPU other than0, at least one CPU remains online; same Agent/PID1; restore original mask even on failure; only exclusive ephemeral GitHub-hosted root VM, never SSH nodes",
   "scope": "Live CPU capacity percentage recalculation and existing external quota preservation on actual kernel hotplug. Isolated scratch placeholder containers, not vendor business, physical replacement, or full P06.4 completion. Baseline observation failure is retained; do not weaken current-capacity expectations to a startup snapshot.",
-  "stable_release_accepted": false
+  "stable_release_accepted": false,
+  "previous_fixture_failure": {
+    "source": "742c98826094e8b7282688aa3076a8ab8e4d67da",
+    "run_id": 43758083710,
+    "artifact_id": 14178469670,
+    "archive_sha256": "2ddf6dfcf5e76e2207eae65dd8beb1047bc45f85f60e41aabf508a8b465103df",
+    "old_plan_sha256": "5466bd2af7acd4defd95ee4b64aac6354675014ee545efeffc30a75d21b35e5a",
+    "product_issue_proved": false
+  }
 }

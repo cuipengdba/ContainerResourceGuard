@@ -62,7 +62,7 @@ jobs:
           import hashlib,json,os,pathlib,platform,subprocess
           planpath=pathlib.Path('qualification/docs/test-plan-final-v1-live-cpu-capacity.json')
           raw=planpath.read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='5466bd2af7acd4defd95ee4b64aac6354675014ee545efeffc30a75d21b35e5a'
+          assert hashlib.sha256(raw).hexdigest()=='72c051c3667f1d073aa57482cab136a2391c0585c8c504a81efb29465c178b0a'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           for n,h in p['source_sha256'].items():
