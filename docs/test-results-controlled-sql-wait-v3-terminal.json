@@ -1,0 +1,122 @@
+{
+  "schema": "crg-controlled-lock-independent-v3",
+  "phase": "passed-negative-diagnostic-only",
+  "roles": {
+    "dbs": {
+      "phase": "passed-negative-diagnostic-only",
+      "checks": 13,
+      "workload_phase_expected_failed": "failed",
+      "workload_elapsed_seconds": 120.19217326887883,
+      "SQL_errors": 1,
+      "SQL_max_seconds": 5.004871318116784,
+      "SQL_coverage": 0.9833333333333333,
+      "API_errors": 0,
+      "API_max_seconds": 0.008186478167772293,
+      "API_coverage": 1.0416666666666667,
+      "holder_backend_pid": 1745,
+      "lock_exec_seconds": 8.253978811902925,
+      "timeline_samples": 65,
+      "timeline_bytes": 130512,
+      "timeline_span_seconds": 128.01362970494665,
+      "timeline_backend_errors": 0,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "event_to_actual_holder": [
+        {
+          "SQL_attempt": 7,
+          "matches": [
+            {
+              "sequence": 12,
+              "waiter_pid": 1698,
+              "holder_pid": 1745
+            },
+            {
+              "sequence": 13,
+              "waiter_pid": 1698,
+              "holder_pid": 1745
+            },
+            {
+              "sequence": 14,
+              "waiter_pid": 1698,
+              "holder_pid": 1745
+            }
+          ]
+        }
+      ],
+      "counter_before_lock": 96,
+      "counter_after_lock": 176,
+      "eight_controls_unchanged": true,
+      "auxiliaries_and_all_own_objects_absent": true
+    },
+    "hisdbs": {
+      "phase": "passed-negative-diagnostic-only",
+      "checks": 13,
+      "workload_phase_expected_failed": "failed",
+      "workload_elapsed_seconds": 120.15524237998761,
+      "SQL_errors": 1,
+      "SQL_max_seconds": 5.004741928074509,
+      "SQL_coverage": 0.9833333333333333,
+      "API_errors": 0,
+      "API_max_seconds": 0.008991170907393098,
+      "API_coverage": 1.0416666666666667,
+      "holder_backend_pid": 1766,
+      "lock_exec_seconds": 8.24625565088354,
+      "timeline_samples": 64,
+      "timeline_bytes": 128587,
+      "timeline_span_seconds": 126.01389163499698,
+      "timeline_backend_errors": 0,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "event_to_actual_holder": [
+        {
+          "SQL_attempt": 7,
+          "matches": [
+            {
+              "sequence": 10,
+              "waiter_pid": 1718,
+              "holder_pid": 1766
+            },
+            {
+              "sequence": 11,
+              "waiter_pid": 1718,
+              "holder_pid": 1766
+            },
+            {
+              "sequence": 12,
+              "waiter_pid": 1718,
+              "holder_pid": 1766
+            }
+          ]
+        }
+      ],
+      "counter_before_lock": 96,
+      "counter_after_lock": 176,
+      "eight_controls_unchanged": true,
+      "auxiliaries_and_all_own_objects_absent": true
+    }
+  },
+  "total_diagnostic_and_startup_checks": 26,
+  "indexed_originals": 26,
+  "indexed_bytes": 441991,
+  "job_sha256": "64e288f06cf0badb297b0148b7651836f27082f13dce013520367ef6ba994e61",
+  "plan_sha256": "54694f68e330a15d98e36553ff01bf66f0f33cc43cedb2e8afa09b46703a3e5f",
+  "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+  "cleanup_independent": true,
+  "registered_process_records_checked": 55,
+  "original18_full600_accepted": false,
+  "old1761_failure_cause": "unknown",
+  "pressure_measurement_qualified": false,
+  "stable_release_accepted": false
+}
