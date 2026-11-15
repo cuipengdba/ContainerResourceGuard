@@ -60,7 +60,41 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
 两者程序源码均为 `ced461705ebc27315a59aefe463f9b4af47130a3`，嵌入版本不同，
 不能继承另一二进制的时长。
 
-当前状态：工具和冻结测试已开发，实际原生结果尚待。
+当前状态（2026-11-16 CST）：**两环境150/150检查、52个暂存场景及两套实际升级/回退/禁用流程通过**。
+
+| 实际环境 | 检查 | Python |
+| --- | --- | --- |
+| amd64 / Linux6.8.0-1070-azure | 75/75 | 3.10.12 |
+| ARM64 / Linux7.0.0-1017-azure | 75/75 | 3.12.3 |
+
+实际运行：[amd64 43740167084](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43740167084)、
+[ARM64 43740471640](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43740471640)。
+两次准确工具/测试来源均为 `1cc1e55e23f6ea5c583262b664a46c79c1469cd8`，
+通过amd64独立复核后才派发ARM64；暂存器、测试器及v3计划在两次之间没有变化。
+
+两份[完整原始ZIP及46文件](test-evidence-final-v1-verified-staging.json.gz)保留原字节，
+包含错误拒绝结果、真实延迟轨迹、准确工具/计划、升级/回退收据和进程清理记录。
+每个ZIP都核对GitHub artifact API完整摘要，再逐成员核对CRC/长度/摘要；
+公开运行元数据只选身份/结果字段，不含提交作者邮箱，未改变ZIP内容。
+[离线复算结果](test-results-final-v1-verified-staging.json)可通过以下命令重现，
+不会执行发布包、修改安装或写cgroup：
+
+```sh
+python3 tests/verified-staging-review.py \
+  --evidence docs/test-evidence-final-v1-verified-staging.json.gz \
+  --plan docs/test-plan-final-v1-verified-staging.json
+```
+
+实际容器维护使用CPU-only手动策略、占位PID1及有界fsync写盘任务；
+验证旧Agent退出、新Agent唯一、准确包内程序替换、保持状态的回退、禁用后八项原值恢复，
+并核对原PID1/写盘连续、观测OOM计数不变以及所属容器/cgroup/登记实例清理。
+这不是厂商原镜像或真实业务/老化结果；两套暂存工具测试按root执行，
+不概括全部非root、旧libc、满盘/掉电或发布后同步失败场景。
+
+本工具可在Linux分发/维护端先执行，再按逐容器维护流程部署已校验内容；
+既有DBS/HISDBS容器无需为常驻CRG额外增加Python。暂存工具来自新的预信任源码，
+不假称它已包含在旧576候选包里。P09.2得到新的实际候选包安装证据，
+最终稳定身份的附件/安装及原长期验收仍待，不新增整项完成声明。
 首次派发前的源码审查补齐了过严umask的处理和实测用例；
 [初始未派发计划](test-plan-final-v1-verified-staging-before-umask-review.json)保留原件，
 该修正使用v2身份，随后进行了首次原生派发。首次[试验失败](test-results-final-v1-verified-staging-first-pilot-failure.json)及[准确原件](test-evidence-final-v1-verified-staging-first-pilot.json.gz)保留：53项局部检查通过，第54项因为测试器错误假定BUILD.json是首个文件，延迟屏障未证明而失败；尚未启动Docker维护夹具，不接受完整75项。
