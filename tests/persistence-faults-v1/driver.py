@@ -408,11 +408,25 @@ def traced_fault(item, worker, stage):
             signal_actor(item, actor, signal.SIGTERM)
         else:
             wait_for(barrier, bool, 30)
+            uncommitted = None
+            if stage == 'after-control':
+                def finalization_file():
+                    for path in (item['folder'] / 'state').glob('.crg-*'):
+                        try:
+                            raw = path.read_bytes()
+                            value = json.loads(raw)['mutations']['cpu.max:']
+                            if value['applied'] == '75000 100000' and not value.get('pending'):
+                                return {'name': path.name, 'bytes': len(raw), 'sha256': sha(raw)}
+                        except (FileNotFoundError, ValueError, KeyError):
+                            pass
+                    return None
+                uncommitted = wait_for(finalization_file, bool, 10)
             before = time.monotonic_ns()
             time.sleep(.25)
             check(item['name'] + ': durable pending journal and actual kernel boundary', barrier())
             snapshot = {'before_monotonic_ns': before, 'signal_monotonic_ns': time.monotonic_ns(),
-                        'journal': journal(item), 'controls': controls(item), 'actor': actor}
+                        'journal': journal(item), 'controls': controls(item), 'actor': actor,
+                        'uncommitted_finalization': uncommitted}
             item['record']['kill_boundary'] = snapshot
             signal_actor(item, actor, signal.SIGKILL)
         code, text = finish(item, process, 'baseline', timeout=30)
@@ -453,9 +467,13 @@ def case(name, operation):
         state = item['folder'] / 'state'
         state.chmod(0o700)
         remove(item)
+        item['record']['archived_state_files'] = []
         for p in state.iterdir():
             if p.is_file() and not p.is_symlink() and p.name != 'fill' and p.stat().st_size <= 1048576:
-                shutil.copyfile(p, item['output'] / p.name)
+                raw = p.read_bytes()
+                (item['output'] / p.name).write_bytes(raw)
+                item['record']['archived_state_files'].append({'name': p.name, 'bytes': len(raw),
+                                                                'sha256': sha(raw)})
         mounted = next(row for path, row in MOUNTS if path == state)
         assert mount_row(state) == mounted
         run(['umount', state])
