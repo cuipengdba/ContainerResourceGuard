@@ -1,4 +1,6 @@
-# RC2 本地运维与恢复
+# 本地运维与恢复
+
+当前三资源版本请先读[运维、问题分级及补丁/归档规则](operations-release-policy.md)和[交付状态](release-readiness-current.md)。下文带日期的进展保留历史时点，不能替代当前终态。
 
 截至节点2026-11-13 16:26:50 UTC，已发布[工程预览preview.5](releases/v1.0.0-preview.5.md)，八项公开附件已逐字节校验。新默认值真机原矩阵已经结束：DBS20/HISDBS20/DBS30各36项通过；HISDBS30记录20通过、1失败、15项未执行，共129项记录/128通过/1失败、11次启动。失败是冻结脚本要求跨午夜后旧日期日志继续增长，与每日轮转规则冲突；实际新日期日志已有轮转及新Agent启动。保留原失败，另行修正脚本独立补测，不把原144项改成通过。四namespace、11组父叶及369登记实例独立确认消失。[原矩阵终态及精确原件](testing-bandwidth-percent-terminal.md)已归档。旧preview.4七天任务也已在约30小时的第六轮standby启动失败退出，未达到七天；[独立终态](testing-memory-high-seven-day-terminal.md)保留51个初始登记实例清理及第六轮cleanup未接受的区别。稳定1.0、原52项及其它完整业务/升级/长期门槛继续。
 
@@ -42,7 +44,7 @@ crg disable --config /etc/crg/config.json
 crg enable --config /etc/crg/config.json
 ```
 
-此命令在持有协调锁时删除停用标记，不重启业务。原辅助循环将在下次退避重试时重新启动 Agent，可能等待 5–300 秒；也可按现有 supervisor 的管理方式仅重启辅助循环。运行后的配置仍从启动时读取，不支持热加载。
+此命令在持有协调锁时删除停用标记，不重启业务。原辅助循环将在下次退避重试时重新启动 Agent，可能等待 5–300 秒；也可按现有 supervisor 的管理方式仅重启辅助循环。当前版本支持合法配置文件原子替换后的热重载及显式crg reload；检查status.configuration的request_id、accepted/rejected、generation和逐项实际值。等价配置不必增加generation，坏配置保留上一整份策略，运行中不能改变state_dir。详见[配置](configuration.md)。
 
 `restore` 继续保留给已停止 Agent **及辅助重试循环**的维护场景。需要自动协调停用时优先使用 disable。
 
