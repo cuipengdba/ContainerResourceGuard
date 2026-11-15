@@ -1,0 +1,139 @@
+{
+  "schema": "crg-fixed-final-package-attestation-v1",
+  "phase": "passed",
+  "package_revision": "576e6070b09804017ececf3f82fb2f6517c18316",
+  "program_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "repo": "cuipengdba/ContainerResourceGuard",
+  "workflow": "cuipengdba/ContainerResourceGuard/.github/workflows/final-package.yml",
+  "ref": "refs/heads/release/integration-v1",
+  "run_id": 43729111057,
+  "online_positive_cases": 4,
+  "offline_positive_cases": 3,
+  "offline_negative_cases": [
+    "wrong-source",
+    "wrong-workflow",
+    "changed-package"
+  ],
+  "artifacts": {
+    "containerresourceguard-v1.0.0-linux-amd64.tar.gz": "a8dd05aa19f65264d218b727f0867b24c26414409c5a1961987e8a74caba54ed",
+    "crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "containerresourceguard-v1.0.0-linux-arm64.tar.gz": "91363daf6b6df14c7e3ffd7b7a8a472cd5b658508b2256e28c665b88b9ecca7e",
+    "crg-linux-arm64": "ff1a2c1c599eb38fde6857c2eede70a1deabf0c2c89977ab92e71ec52ec3982b"
+  },
+  "script_sha256": "6a5c17e0d4837e0ca37df012ad37dc03fc08623e187525df71e87ea51ae44b22",
+  "checks": [
+    {
+      "name": "online-provenance-amd64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "a8dd05aa19f65264d218b727f0867b24c26414409c5a1961987e8a74caba54ed",
+      "matching_attestations": 1,
+      "exact_certificate_and_subject": true
+    },
+    {
+      "name": "online-SBOM-amd64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+      "matching_attestations": 1,
+      "exact_certificate_and_subject": true
+    },
+    {
+      "name": "online-provenance-arm64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "91363daf6b6df14c7e3ffd7b7a8a472cd5b658508b2256e28c665b88b9ecca7e",
+      "matching_attestations": 1,
+      "exact_certificate_and_subject": true
+    },
+    {
+      "name": "online-SBOM-arm64",
+      "exit": 0,
+      "passed": true,
+      "artifact_sha256": "ff1a2c1c599eb38fde6857c2eede70a1deabf0c2c89977ab92e71ec52ec3982b",
+      "matching_attestations": 1,
+      "exact_certificate_and_subject": true
+    },
+    {
+      "name": "offline-positive-amd64",
+      "exit": 0,
+      "passed": true,
+      "expected_success": true,
+      "stdout_sha256": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "offline-positive-arm64",
+      "exit": 0,
+      "passed": true,
+      "expected_success": true,
+      "stdout_sha256": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "offline-wrong-source",
+      "exit": 1,
+      "passed": true,
+      "expected_success": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8e3d08e3564b94b78afc011ddd77ed06ff70b9ea7f3304963cee014291e57e0b"
+    },
+    {
+      "name": "offline-wrong-workflow",
+      "exit": 1,
+      "passed": true,
+      "expected_success": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92"
+    },
+    {
+      "name": "offline-changed-package",
+      "exit": 1,
+      "passed": true,
+      "expected_success": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92"
+    },
+    {
+      "name": "offline-positive-after",
+      "exit": 0,
+      "passed": true,
+      "expected_success": true,
+      "stdout_sha256": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "trusted_root_sha256": "db07310827da2ae2798ec7eefc5daf8432506ce458d5bc30cd2feba03708d239",
+  "raw_receipts": {
+    "offline-changed-package.stderr.txt": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92",
+    "offline-changed-package.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-positive-after.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-positive-after.stdout.json": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+    "offline-positive-amd64.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-positive-amd64.stdout.json": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+    "offline-positive-arm64.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-positive-arm64.stdout.json": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+    "offline-wrong-source.stderr.txt": "8e3d08e3564b94b78afc011ddd77ed06ff70b9ea7f3304963cee014291e57e0b",
+    "offline-wrong-source.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-wrong-workflow.stderr.txt": "2ca67e09bed7c06410222b4f873d67ddc7e01a6b76e896981e496dcf8c7b3f92",
+    "offline-wrong-workflow.stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "online-provenance-amd64.bundle.jsonl": "b252a4885aa97eb32460249455ad03c211dbdac94eae41ff6cf318c49c4d48bd",
+    "online-provenance-amd64.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "online-provenance-amd64.stdout.json": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+    "online-provenance-arm64.bundle.jsonl": "b252a4885aa97eb32460249455ad03c211dbdac94eae41ff6cf318c49c4d48bd",
+    "online-provenance-arm64.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "online-provenance-arm64.stdout.json": "99f96c2eae6c429938f8c7ec32e225dafcd1fcac4187afd298df0c47bda09e10",
+    "online-SBOM-amd64.bundle.jsonl": "9c003d5906e143c155a776060493e6daaef2ae8aad91a0b3cd16a759c20b1b33",
+    "online-SBOM-amd64.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "online-SBOM-amd64.stdout.json": "6ba97112892b9818446b9150baee95657846b7639f59d97b8200f92fa46b754d",
+    "online-SBOM-arm64.bundle.jsonl": "5664beef3f1957e4581fdbf4b08000a950906c06c8378d5642a24c3691595591",
+    "online-SBOM-arm64.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "online-SBOM-arm64.stdout.json": "c908b2e5a521543bc9cb63acf425c95b96f452ed0df0726fd102e65a6be44d77",
+    "trusted-root.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trusted-root.stdout.json": "db07310827da2ae2798ec7eefc5daf8432506ce458d5bc30cd2feba03708d239"
+  },
+  "network_condition": "offline HTTP/HTTPS/ALL proxies point to closed loopback and empty NO_PROXY; not OS firewall isolation",
+  "trust_bootstrap": "existing GitHub CLI 2.103.3 and TUF bootstrap fetched trust root before offline checks; bundle extracted only from successful online verification",
+  "stable_release_accepted": false,
+  "completed_utc": "2026-11-15T15:42:27.938740+00:00"
+}

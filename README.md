@@ -1,16 +1,6 @@
 # ContainerResourceGuard
 
-固定正式版本号候选已完成[DBS/HISDBS原路径18/18](docs/testing-final-v1-full600-terminal.md)及[原生跨架构/内核284/284](docs/testing-final-v1-native-CI-terminal.md)，准确产物与独立清理证据已归档。[当前交付与剩余工作](docs/release-readiness-current.md)：公开preview.5不变，长期验收尚未完成，稳定1.0未发布。
-
-
-[正式版本号候选与原路径18项验收计划](docs/testing-final-v1-full600.md)已冻结：独立构建可重复，14项预检通过，尚未启动本轮业务。当前公开下载仍为preview.5，稳定1.0未接受，旧失败与长期门槛保留。
-
-
-修正CSV来源后的新套件通过：计划44项，记录44项、44通过、0失败、0未执行。[完整终态](docs/testing-PG-port-conflict-CSV-full600-terminal.md)已归档。预算/原业务SLA保持，原失败保留，稳定1.0尚未接受；[当前交付与待办](docs/release-readiness-current.md)。
-
-
-实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
-
+当前18/52项按定义范围完成，DBS/HISDBS固定候选原路径业务及跨架构控制已验证；正式24h+24h+新七天已启动baseline，尚未完成。公开下载为preview.5，稳定1.0未发布。[当前交付与待办](docs/release-readiness-current.md)、[候选打包与来源演练](docs/final-v1-package-rehearsal.md)、[此前README原记录](README-history-before-package-rehearsal.md)。
 
 ContainerResourceGuard（CRG）在容器内部控制当前容器的 CPU、内存和 IO。**一个容器一份 Agent**，DBS 与 HISDBS 分别运行；无需 Operator、CRD、Docker socket 或 Kubernetes API。容器或 Pod 重建后重新发现自身 cgroup，不需要保存或手改旧 ID。
 

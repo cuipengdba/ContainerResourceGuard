@@ -358,26 +358,44 @@
         "建立 observe 基线与 enforce 持续运行的采集、对比和报告工具",
         "每种目标业务至少 24h 基线及 24h 候选额度运行，覆盖一次完整备份/同步高峰；周期更长则延长，不以满 48h 自动判定通过"
       ],
-      "current_scope_note": "原fc2 observe基线已按冻结原生协议完成两角色各86400秒和4周期，协调/原生负载入口独立退出，原业务Pods/数据保留；7项exec超过5秒诊断原样保留。固定d6正式限额阶段最近只读门13/14，仍须待其他业务夹具自然结束后重核；24h enforce与完整对照未完成。两个d370七天组件分属开发ELF3a1和版本化ELFdbc，不能转移时间或接受条件。",
+      "current_scope_note": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。 启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-baseline24h-final-linux-amd64.json",
         "test-results-formal-stage-after-baseline.json",
-        "task-index-review-20261111.md"
+        "task-index-review-20261111.md",
+        "testing-final-v1-long-node-admission.md"
       ],
       "scope_note_history": [
         {
           "review_date": "2026-11-11",
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "原fc2 observe基线已有固定22h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce未开始；d370独立七天组件首300秒观察已归档，尚未接受。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。"
+        },
+        {
+          "review_date": "2026-11-15",
+          "prior_registry_sha256": "117086ae3fb5ff9b9347c7d1504f92180b0ea364d138be0a2346cf8aba9752bc",
+          "previous_scope_note": "原fc2 observe基线已按冻结原生协议完成两角色各86400秒和4周期，协调/原生负载入口独立退出，原业务Pods/数据保留；7项exec超过5秒诊断原样保留。固定d6正式限额阶段最近只读门13/14，仍须待其他业务夹具自然结束后重核；24h enforce与完整对照未完成。两个d370七天组件分属开发ELF3a1和版本化ELFdbc，不能转移时间或接受条件。"
         }
       ],
       "current_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
-        "verified_scope": "固定候选同容器observe86400→enforce86400执行器和原生只读准入完成。",
-        "remaining_or_boundary": "旧任务仍在，新的独占两阶段尚未开始；必须分别跑满并通过原业务标准。",
-        "evidence": "testing-final-v1-long.md"
-      }
+        "verified_scope": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。",
+        "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。",
+        "evidence": "testing-final-v1-long-node-admission.md"
+      },
+      "current_acceptance_history": [
+        {
+          "review_date": "2026-11-15",
+          "prior_registry_sha256": "117086ae3fb5ff9b9347c7d1504f92180b0ea364d138be0a2346cf8aba9752bc",
+          "previous_current_acceptance": {
+            "current_status": "waiting-real-duration-and-postflight",
+            "verified_scope": "固定候选同容器observe86400→enforce86400执行器和原生只读准入完成。",
+            "remaining_or_boundary": "旧任务仍在，新的独占两阶段尚未开始；必须分别跑满并通过原业务标准。",
+            "evidence": "testing-final-v1-long.md"
+          }
+        }
+      ]
     },
     {
       "id": "P02.2",
@@ -1588,25 +1606,43 @@
         "固定发布工具链，提供源码修订/构建来源、SBOM、产物证明和可重复构建核对",
         "程序修订、打包修订、二进制摘要明确对应；验证过程公开可执行，不把“静态链接”当成完整依赖清单"
       ],
-      "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。；已交付preview.2，同一受测ELF重新打包文档，八项公开附件均实际下载校验；没有新tag构建证明声明，固定source与package_revision分开。",
+      "current_scope_note": "固定ced/Go1.27.3及两架构准确ELF；实际Linux候选打包、另目录重复构建/打包及4项在线签名和6项离线签名正常/拒绝独立核对，本地官方SBOM schema通过。 本次是准确576打包提交的候选演练。最终稳定提交/附件及其对应来源证明与发布后实际下载仍待，不能把演练或旧预发布证明自动移用。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-preview2-publication.json",
-        "test-results-preview2-release.json"
+        "test-results-preview2-release.json",
+        "final-v1-package-rehearsal.md"
       ],
       "scope_note_history": [
         {
           "review_date": "2026-11-11",
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。"
+        },
+        {
+          "review_date": "2026-11-15",
+          "prior_registry_sha256": "117086ae3fb5ff9b9347c7d1504f92180b0ea364d138be0a2346cf8aba9752bc",
+          "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。；已交付preview.2，同一受测ELF重新打包文档，八项公开附件均实际下载校验；没有新tag构建证明声明，固定source与package_revision分开。"
         }
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "Go1.27.3、源码/包修订、两架构SBOM及跨Windows/Linux准确ELF重复构建已固定。",
-        "remaining_or_boundary": "最终稳定包和对应发布来源证明尚未生成/公开，不能把旧预发布证明移用。",
-        "evidence": "final-v1-candidate-identity.json"
-      }
+        "verified_scope": "固定ced/Go1.27.3及两架构准确ELF；实际Linux候选打包、另目录重复构建/打包及4项在线签名和6项离线签名正常/拒绝独立核对，本地官方SBOM schema通过。",
+        "remaining_or_boundary": "本次是准确576打包提交的候选演练。最终稳定提交/附件及其对应来源证明与发布后实际下载仍待，不能把演练或旧预发布证明自动移用。",
+        "evidence": "final-v1-package-rehearsal.md"
+      },
+      "current_acceptance_history": [
+        {
+          "review_date": "2026-11-15",
+          "prior_registry_sha256": "117086ae3fb5ff9b9347c7d1504f92180b0ea364d138be0a2346cf8aba9752bc",
+          "previous_current_acceptance": {
+            "current_status": "partial-evidence-or-verification-open",
+            "verified_scope": "Go1.27.3、源码/包修订、两架构SBOM及跨Windows/Linux准确ELF重复构建已固定。",
+            "remaining_or_boundary": "最终稳定包和对应发布来源证明尚未生成/公开，不能把旧预发布证明移用。",
+            "evidence": "final-v1-candidate-identity.json"
+          }
+        }
+      ]
     },
     {
       "id": "P09.2",
@@ -1615,25 +1651,43 @@
         "增加本地安装前的完整性/来源校验及离线校验步骤",
         "校验失败拒绝安装；信任根与验证方式说明清楚，不执行未经校验的远程 shell；凭据和私有 profile 不进入包"
       ],
-      "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。；已交付preview.2，同一受测ELF重新打包文档，八项公开附件均实际下载校验；没有新tag构建证明声明，固定source与package_revision分开。",
+      "current_scope_note": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。 验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-preview2-publication.json",
-        "test-results-preview2-release.json"
+        "test-results-preview2-release.json",
+        "final-v1-package-rehearsal.md"
       ],
       "scope_note_history": [
         {
           "review_date": "2026-11-11",
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。"
+        },
+        {
+          "review_date": "2026-11-15",
+          "prior_registry_sha256": "117086ae3fb5ff9b9347c7d1504f92180b0ea364d138be0a2346cf8aba9752bc",
+          "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。；已交付preview.2，同一受测ELF重新打包文档，八项公开附件均实际下载校验；没有新tag构建证明声明，固定source与package_revision分开。"
         }
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "预发布安装包有摘要/来源和离线验证，八附件下载已核对。",
-        "remaining_or_boundary": "最终稳定包的实际校验失败拒绝安装和离线校验待形成；禁止未经验证远程shell。",
-        "evidence": "installation.md"
-      }
+        "verified_scope": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。",
+        "remaining_or_boundary": "验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。",
+        "evidence": "final-v1-package-rehearsal.md"
+      },
+      "current_acceptance_history": [
+        {
+          "review_date": "2026-11-15",
+          "prior_registry_sha256": "117086ae3fb5ff9b9347c7d1504f92180b0ea364d138be0a2346cf8aba9752bc",
+          "previous_current_acceptance": {
+            "current_status": "partial-evidence-or-verification-open",
+            "verified_scope": "预发布安装包有摘要/来源和离线验证，八附件下载已核对。",
+            "remaining_or_boundary": "最终稳定包的实际校验失败拒绝安装和离线校验待形成；禁止未经验证远程shell。",
+            "evidence": "installation.md"
+          }
+        }
+      ]
     },
     {
       "id": "P09.3",
@@ -3558,5 +3612,15 @@
     "supplemental_recorder_sha256": "049bf2640a21e63c71db1f7068efa3618f830b96cb3556fe0420ead3b4220423",
     "long_duration_accepted": false,
     "native_preflight_ready": true
+  },
+  "final_v1_package_rehearsal": {
+    "phase": "candidate-rehearsal-passed-not-stable-release",
+    "run_id": 43729111057,
+    "program_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "package_revision": "576e6070b09804017ececf3f82fb2f6517c18316",
+    "guide": "final-v1-package-rehearsal.md",
+    "original_52_definitions_unchanged": true,
+    "completed_in_defined_scope": 18,
+    "stable_release_accepted": false
   }
 }

@@ -28,22 +28,20 @@ CRG 是放进既有业务容器的静态二进制，不需要安装 Operator、�
 
 从本仓库 Releases 下载匹配架构的 `containerresourceguard-VERSION-linux-amd64.tar.gz` 或 arm64 包，同时下载校验和、BUILD/SBOM和可获得的证明。校验和与包同目录下载只解决传输一致性，预期摘要和源码SHA须来自可信发布渠道；后续有证明的版本应先限定来源身份验证，再解包/执行。
 
+`SHA256SUMS`可检查下载损坏；与包同渠道取得的摘要本身不建立发布者信任。先通过可信维护渠道取得预期完整摘要、程序源码修订与架构。若发布提供签名，按其准确工作流/打包提交核对；不能假设历史预发布已有新候选的签名。候选验证的实际范围见[打包与来源](final-v1-package-rehearsal.md)。
+
+在仅当前维护者可写的私有空目录操作，验证脚本必须来自预先信任的源码检出，不能先运行待验证包里的脚本。以下校验失败时不会进入解包或执行步骤；缺少可信摘要/源码/架构时先停止安装。
+
 ```bash
-sha256sum -c SHA256SUMS --ignore-missing
-# 有证明的正式发布：用实际版本完整源码SHA与 refs/tags/VERSION，
-# 限定仓库、ci.yml和托管runner；开发分支证明不能替代正式tag。
-gh attestation verify containerresourceguard-VERSION-linux-amd64.tar.gz \
-  --repo cuipengdba/ContainerResourceGuard \
-  --signer-workflow cuipengdba/ContainerResourceGuard/.github/workflows/ci.yml \
-  --source-digest EXPECTED_FULL_SOURCE_SHA --source-ref refs/tags/VERSION \
-  --deny-self-hosted-runners
-# 此脚本来自已信任的源码/工具目录，不从未知包中先解出再信任它。
-python3 scripts/verify-release.py containerresourceguard-VERSION-linux-amd64.tar.gz \
-  --sha256 TRUSTED_PACKAGE_SHA256 --source-revision EXPECTED_FULL_SOURCE_SHA --arch amd64
-# 上述验证通过后，在新建的私有目录解包：
-tar -xzf containerresourceguard-VERSION-linux-amd64.tar.gz
+python3 /trusted-crg-source/scripts/verify-release.py \
+  containerresourceguard-VERSION-linux-amd64.tar.gz \
+  --sha256 "$CRG_TRUSTED_PACKAGE_SHA256" \
+  --source-revision "$CRG_TRUSTED_SOURCE_REVISION" --arch amd64 &&
+tar --no-same-owner --no-same-permissions -xzf containerresourceguard-VERSION-linux-amd64.tar.gz &&
 ./crg version
 ```
+
+此处源码修订是程序的 `source_revision`，签名证书的提交通常是 `package_revision`；不能混用。校验器不解包/执行，也不验证签名；来源信任和实际安装/升级验收分别完成。
 
 发布包包含程序、示例配置、可选启动脚本、文档和许可证，不包含设备标定文件、服务器地址或凭据。arm64 若只经过交叉编译，测试报告会明确说明。
 
