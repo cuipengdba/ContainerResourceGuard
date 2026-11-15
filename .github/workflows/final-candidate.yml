@@ -55,8 +55,8 @@ jobs:
         run: |
           python3 - <<'PY'
           import hashlib,json,pathlib,subprocess
-          raw=pathlib.Path('qualification/docs/test-plan-capacity-refresh-native-CI.json').read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='89b7c63a655d43d6b9ca7d452c78041f61c09076494bd3693699a7c3ab27546a'
+          raw=pathlib.Path('qualification/docs/test-plan-capacity-refresh-native-CI-v2.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='b971e185a4c0572fa56a78ac5d0bcdad7d4195d5adec647b3c4286ee18a732b4'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           assert not subprocess.check_output(['git','diff','--name-only'])
