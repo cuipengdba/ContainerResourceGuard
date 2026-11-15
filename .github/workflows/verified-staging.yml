@@ -1,0 +1,139 @@
+name: verified-staging
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: Independently reviewed pilot or remaining native ARM environment
+        type: choice
+        required: true
+        default: pilot
+        options:
+          - pilot
+          - remaining
+permissions:
+  contents: read
+  actions: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - id: select
+        env:
+          BATCH: ${{ inputs.batch }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          choices={'pilot':[{'runner':'ubuntu-22.04','arch':'amd64','kernel':'6.'}],
+                   'remaining':[{'runner':'ubuntu-24.04-arm','arch':'arm64','kernel':'7.'}]}
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('matrix='+json.dumps({'include':choices[os.environ['BATCH']]})+'\n')
+          PY
+  native:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 25
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ced461705ebc27315a59aefe463f9b4af47130a3
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: qualification
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Verify frozen inputs and record actual environment
+        env:
+          ARCH: ${{ matrix.arch }}
+          KERNEL: ${{ matrix.kernel }}
+          LABEL: ${{ matrix.runner }}
+        run: |
+          mkdir -p ci-staging/download ci-staging/receipts
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,platform,subprocess
+          raw=pathlib.Path('qualification/docs/test-plan-final-v1-verified-staging.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='fd1b65336221f2fcd01b5afd53bdb25b364268ee973b1f20faac347a246a4160'
+          p=json.loads(raw)
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
+          for n,h in p['source_sha256'].items():assert hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest()==h,n
+          for n,h in p['inputs'].items():assert hashlib.sha256(pathlib.Path('qualification',n).read_bytes()).hexdigest()==h,n
+          assert len(p['source_sha256'])==50 and platform.release().startswith(os.environ['KERNEL'])
+          assert platform.machine() in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[os.environ['ARCH']]
+          env={'workflow_revision':os.environ['GITHUB_SHA'],'source_revision':p['source_revision'],'source50_verified':True,
+               'runner':os.environ['LABEL'],'arch':os.environ['ARCH'],'kernel':platform.release(),'machine':platform.machine(),
+               'python':platform.python_version(),'run_id':os.environ['GITHUB_RUN_ID'],'attempt':os.environ['GITHUB_RUN_ATTEMPT']}
+          pathlib.Path('ci-staging/receipts/environment.json').write_text(json.dumps(env,indent=2)+'\n')
+          pathlib.Path('ci-staging/receipts/plan.json').write_bytes(raw)
+          PY
+      - name: Download exact previously verified candidate artifact and public preview package
+        env:
+          ARCH: ${{ matrix.arch }}
+        run: |
+          gh api repos/cuipengdba/ContainerResourceGuard/actions/artifacts/14168150210 > ci-staging/download/artifact.json
+          gh api repos/cuipengdba/ContainerResourceGuard/actions/artifacts/14168150210/zip > ci-staging/download/artifact.zip
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,zipfile
+          root=pathlib.Path('ci-staging/download');p=json.loads(pathlib.Path('ci-staging/receipts/plan.json').read_bytes())
+          r=p['artifacts'][os.environ['ARCH']];meta=json.loads((root/'artifact.json').read_bytes());raw=(root/'artifact.zip').read_bytes()
+          assert meta['id']==p['candidate_Actions_artifact']['id'] and not meta['expired']
+          assert meta['digest']=='sha256:'+p['candidate_Actions_artifact']['sha256']
+          assert len(raw)==p['candidate_Actions_artifact']['bytes'] and hashlib.sha256(raw).hexdigest()==p['candidate_Actions_artifact']['sha256']
+          with zipfile.ZipFile(root/'artifact.zip') as z:
+              info=z.getinfo(r['candidate_name']);assert info.file_size==r['candidate_bytes']
+              data=z.read(info);assert hashlib.sha256(data).hexdigest()==r['candidate_sha256']
+              (root/r['candidate_name']).write_bytes(data)
+          pathlib.Path('ci-staging/receipts/candidate-download.json').write_text(json.dumps({'artifact_id':meta['id'],'ZIP_sha256':hashlib.sha256(raw).hexdigest(),'ZIP_bytes':len(raw),'candidate_sha256':r['candidate_sha256'],'member':r['candidate_name'],'all_bytes_verified':True},indent=2)+'\n')
+          PY
+          gh release download v1.0.0-preview.5 --repo cuipengdba/ContainerResourceGuard --dir ci-staging/download \
+            --pattern 'containerresourceguard-v1.0.0-preview.5-linux-${{ matrix.arch }}.tar.gz'
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          p=json.loads(pathlib.Path('ci-staging/receipts/plan.json').read_bytes());r=p['artifacts'][os.environ['ARCH']]
+          raw=pathlib.Path('ci-staging/download',r['previous_name']).read_bytes()
+          assert len(raw)==r['previous_bytes'] and hashlib.sha256(raw).hexdigest()==r['previous_sha256']
+          pathlib.Path('ci-staging/receipts/previous-download.json').write_text(json.dumps({'name':r['previous_name'],'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'all_bytes_verified':True},indent=2)+'\n')
+          PY
+      - name: Build only test fixtures and install tracer on this disposable VM
+        run: |
+          test "$(go env GOVERSION)" = go1.27.3
+          CGO_ENABLED=0 go build -trimpath -o ci-staging/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ci-staging/worker ./qualification/tests/legacy-restore-pressure-v1/workload.go
+          if ! command -v strace >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install --yes --no-upgrade --no-install-recommends strace
+          fi
+          strace --version > ci-staging/receipts/strace-version.txt
+      - name: Actual verified staging, refusal, snapshot races and package binary maintenance
+        run: |
+          sudo env CRG_STAGING_TEST=ephemeral-github-hosted-vm-only GITHUB_ACTIONS=true RUNNER_ENVIRONMENT=github-hosted \
+            python3 qualification/tests/verified-staging-v1.py \
+            --plan "$PWD/ci-staging/receipts/plan.json" --arch '${{ matrix.arch }}' \
+            --candidate "$PWD/ci-staging/download/containerresourceguard-v1.0.0-linux-${{ matrix.arch }}.tar.gz" \
+            --previous "$PWD/ci-staging/download/containerresourceguard-v1.0.0-preview.5-linux-${{ matrix.arch }}.tar.gz" \
+            --stager "$PWD/qualification/scripts/stage-release.py" --holder "$PWD/ci-staging/hold" --worker "$PWD/ci-staging/worker" \
+            --output "$PWD/ci-staging/results"
+      - name: Preserve bounded results and exact trusted tool sources
+        if: always()
+        run: |
+          mkdir -p ci-staging/receipts
+          cp qualification/scripts/stage-release.py qualification/scripts/verify-release.py qualification/tests/verified-staging-v1.py ci-staging/receipts/
+          if test -d ci-staging/results; then sudo cp -r ci-staging/results ci-staging/receipts/; fi
+          sudo chmod -R a+rX ci-staging/receipts
+          test "$(du -sb ci-staging/receipts | cut -f1)" -lt 67108864
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: verified-staging-${{ matrix.runner }}-${{ github.sha }}
+          path: ci-staging/receipts/
+          retention-days: 30
