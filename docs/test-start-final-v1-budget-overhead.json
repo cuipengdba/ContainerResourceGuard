@@ -1,0 +1,140 @@
+{
+  "schema": "crg-budget-overhead-actual-start-v1",
+  "node_utc": "2026-11-15T10:05:15.787156+00:00",
+  "phase": "warming",
+  "processes": {
+    "runner": {
+      "pid": 3356931,
+      "expected_start_ticks": 167701029,
+      "actual_start_ticks": 167701029,
+      "original_absent": false,
+      "state": "S",
+      "expected_entry_matches": true,
+      "cgroup": "0::/user.slice/user-0.slice/session-271516.scope\n",
+      "children": [
+        3356938
+      ]
+    },
+    "worker": {
+      "pid": 3356938,
+      "expected_start_ticks": 167701032,
+      "actual_start_ticks": 167701032,
+      "original_absent": false,
+      "state": "S",
+      "expected_entry_matches": true,
+      "cgroup": "0::/user.slice/user-0.slice/session-271516.scope\n",
+      "children": []
+    }
+  },
+  "job_sha256": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
+  "plan_sha256": "6b39a50e93705bb7e139ffb0e79cb2ec3ace0fd1ae220d7af68a2665b2aafc83",
+  "fixture_processes": {
+    "healthy-half": {
+      "identity": {
+        "pod_uid": "b77dcd6c-16f8-42cc-8a3d-6152fba77d7a",
+        "container_id": "90fb230097846b314e1cbc7371fa0b2de55977fa9d90ff42e816dbaf16eb0c71",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb77dcd6c_16f8_42cc_8a3d_6152fba77d7a.slice/cri-containerd-90fb230097846b314e1cbc7371fa0b2de55977fa9d90ff42e816dbaf16eb0c71.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb77dcd6c_16f8_42cc_8a3d_6152fba77d7a.slice",
+        "main": {
+          "pid": 3358049,
+          "start_ticks": 167701399
+        },
+        "Agent": {
+          "pid": 3358085,
+          "start_ticks": 167701404
+        }
+      },
+      "main": {
+        "pid": 3358049,
+        "expected_start_ticks": 167701399,
+        "actual_start_ticks": 167701399,
+        "original_absent": false,
+        "state": "S",
+        "cgroup": "0::/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb77dcd6c_16f8_42cc_8a3d_6152fba77d7a.slice/cri-containerd-90fb230097846b314e1cbc7371fa0b2de55977fa9d90ff42e816dbaf16eb0c71.scope\n",
+        "children": [
+          3358070,
+          3358083,
+          3368513
+        ]
+      },
+      "Agent": {
+        "pid": 3358085,
+        "expected_start_ticks": 167701404,
+        "actual_start_ticks": 167701404,
+        "original_absent": false,
+        "state": "S",
+        "cgroup": "0::/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb77dcd6c_16f8_42cc_8a3d_6152fba77d7a.slice/cri-containerd-90fb230097846b314e1cbc7371fa0b2de55977fa9d90ff42e816dbaf16eb0c71.scope\n",
+        "children": []
+      },
+      "leaf_absent": false,
+      "parent_absent": false,
+      "current_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=131072 wbps=131072 riops=16 wiops=16",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "201326592",
+        "memory.swap.max": "0"
+      },
+      "expected_controls_match": true,
+      "Agent_binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8"
+    },
+    "healthy-threequarters": {
+      "identity": {
+        "pod_uid": "b1d97157-5829-4f63-94f6-3f295707cc5a",
+        "container_id": "e293f7d04d4957ee82ad331edf73e4bcb2456e6909d9238779faca9919cfdee3",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb1d97157_5829_4f63_94f6_3f295707cc5a.slice/cri-containerd-e293f7d04d4957ee82ad331edf73e4bcb2456e6909d9238779faca9919cfdee3.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb1d97157_5829_4f63_94f6_3f295707cc5a.slice",
+        "main": {
+          "pid": 3359418,
+          "start_ticks": 167701837
+        },
+        "Agent": {
+          "pid": 3359465,
+          "start_ticks": 167701840
+        }
+      },
+      "main": {
+        "pid": 3359418,
+        "expected_start_ticks": 167701837,
+        "actual_start_ticks": 167701837,
+        "original_absent": false,
+        "state": "S",
+        "cgroup": "0::/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb1d97157_5829_4f63_94f6_3f295707cc5a.slice/cri-containerd-e293f7d04d4957ee82ad331edf73e4bcb2456e6909d9238779faca9919cfdee3.scope\n",
+        "children": [
+          3359458,
+          3359463,
+          3368640
+        ]
+      },
+      "Agent": {
+        "pid": 3359465,
+        "expected_start_ticks": 167701840,
+        "actual_start_ticks": 167701840,
+        "original_absent": false,
+        "state": "S",
+        "cgroup": "0::/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb1d97157_5829_4f63_94f6_3f295707cc5a.slice/cri-containerd-e293f7d04d4957ee82ad331edf73e4bcb2456e6909d9238779faca9919cfdee3.scope\n",
+        "children": []
+      },
+      "leaf_absent": false,
+      "parent_absent": false,
+      "current_controls": {
+        "cpu.max": "75000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=1048576 wbps=1048576 riops=128 wiops=128",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "234881024",
+        "memory.swap.max": "0"
+      },
+      "expected_controls_match": true,
+      "Agent_binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8"
+    }
+  },
+  "corrected_diagnostics_passed_and_clean": true,
+  "business_accepted": false,
+  "stable_release_accepted": false
+}
