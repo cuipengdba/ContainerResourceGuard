@@ -3392,7 +3392,7 @@
     "independently_absent_registered_process_instances": 64
   },
   "final_v1_cli_supervisor_next_design": {
-    "phase": "protocol-frozen-native-preflight-passed-not-launched",
+    "phase": "actual-vendor-protocol-running-not-accepted",
     "documentation": "testing-final-v1-cli-supervisor-design.md",
     "tasks": [
       "P07.1",
@@ -3402,7 +3402,7 @@
     "protocol": "testing-final-v1-cli-supervisor.md"
   },
   "final_v1_cli_supervisor": {
-    "phase": "native-preflight-passed-not-launched",
+    "phase": "testing-dbs",
     "plan": "test-plan-final-v1-cli-supervisor.json",
     "native_preflight": "test-results-final-v1-cli-supervisor-native-preflight.json",
     "job_sha256": "d89b41e3646832724c0007cff6a3ac8055bd244356b79d56557b2fd6b79b06c0",
@@ -3411,8 +3411,22 @@
     "main_checks_planned": 26,
     "online_subchecks_each_role": 22,
     "post600_subchecks_each_role": 2,
-    "measurement_started": false,
+    "measurement_started": true,
     "accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "actual_runner": {
+      "entry": "/var/tmp/crg-final1525-tools-20261115/runner.py",
+      "job_sha256": "d89b41e3646832724c0007cff6a3ac8055bd244356b79d56557b2fd6b79b06c0",
+      "plan_sha256": "6b2a9f475eb68f1d8f64e6a949e96fa489ee7293029863c35d9fbbf8dae52759",
+      "predecessor_diagnostic_registered_instances_absent": 71,
+      "predecessor_binary_maintenance_registered_instances_absent": 64,
+      "single_launch_guard": true,
+      "launcher_source_sha256": "73f01271e56f74d04712fb0ca8b807c6ad2d1818b3772f398f04ad020a520ca6",
+      "pid": 588532,
+      "start_ticks": 168371697,
+      "node_utc": "2026-11-15T11:56:13.864889+00:00"
+    },
+    "start_observation": "test-start-final-v1-cli-supervisor.json",
+    "start_evidence": "test-evidence-final-v1-cli-supervisor-start.json.gz"
   }
 }
