@@ -1,0 +1,709 @@
+{
+  "schema": "crg-52-current-scope-evidence-review-v1",
+  "phase": "individual-review-not-stable-release-acceptance",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "candidate_version": "v1.0.0",
+  "original_tasks": 52,
+  "completed_in_defined_scope": 17,
+  "status_counts": {
+    "complete-in-defined-scope": 17,
+    "partial-evidence-or-verification-open": 27,
+    "superseded-by-three-resource-request": 1,
+    "waiting-real-duration-and-postflight": 3,
+    "waiting-unavailable-hardware": 2,
+    "partly-superseded-with-retained-work": 2
+  },
+  "tasks": [
+    {
+      "id": "P01.1",
+      "archived_definition": [
+        "建立 DBS 与 HISDBS 原镜像、原 supervisor、原缓存程序的隔离克隆回归入口；保留原启动链",
+        "分别记录数据库访问、关键业务 API、缓存程序共存、备份、同步和独立恢复结果；通用 PostgreSQL 冒烟不能替代厂商业务验收"
+      ],
+      "archived_definition_sha256": "707d0594f48131df91d5d27062abcda179e1bdaaf56bc2ce4d57dc5d0ce28c28",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "完整克隆回归入口及用户接受的原启动链、SQL、/test、缓存共存、实际备份/同步/独立恢复已建立，固定最终ELF18/18通过。",
+      "remaining_or_boundary": "本项入口与所列manual参考验收完成；默认20%失败保持，生产专用未知接口不在用户接受范围。",
+      "evidence": "testing-final-v1-full600-terminal.md"
+    },
+    {
+      "id": "P01.2",
+      "archived_definition": [
+        "增加固定额度下的冷启动、解包后启动、备份后启动及原健康探针联合测试；采集 IO 积压和就绪时间",
+        "在 20%/30% 候选额度中逐项记录预算、数据量、就绪阈值和失败；不自动临时放宽限额或悄悄修改原探针"
+      ],
+      "archived_definition_sha256": "34d5db52c5e46dd988109745067d7fb03fd2d7e9f018f61aae48238c3d5729b4",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "20/30四个启动组合各有36项完整组，重建、探针、标定复用和恢复已记录；原矩阵失败保留。",
+      "remaining_or_boundary": "核对归档启动数据是否逐一覆盖“解包后、备份后”触发条件；不能把启动组当物理备份或持续业务通过。",
+      "evidence": "testing-bandwidth-current-combinations.md"
+    },
+    {
+      "id": "P01.3",
+      "archived_definition": [
+        "根据实测修正 CRG 自身启动、日志持久化与退出路径的额外开销；区分业务额度不足和 Agent 缺陷",
+        "已知 30s 启动超时有可复现条件、定位证据和处置结论；不以一次成功复测消除原失败记录，不削弱必要的原值日志持久化"
+      ],
+      "archived_definition_sha256": "0c51911095f3bf4639ecde1349106e18b4e2ca70f8a66111a8bae57791c9dba3",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "分段诊断和原失败原件保留；当前manual参考完整业务通过。",
+      "remaining_or_boundary": "历史启动/外层exec/受限IO下停库延迟的根因及处置结论尚未全部闭合；一次通过不能替代定位。",
+      "evidence": "testing-bandwidth-default20-full600-terminal.md"
+    },
+    {
+      "id": "P01.4",
+      "archived_definition": [
+        "补齐实际 supervisor 版本的接入、完整备份和回退方案；修复业务回归发现的接入问题",
+        "克隆环境中缺程序、无权限、坏配置、崩溃、卡死、忽略 TERM 均不决定原业务退出；未知脚本拒绝自动修改"
+      ],
+      "archived_definition_sha256": "9884ef2d51b1cba6fff6fb8f53c1d30a0b1efb8d5a8e0ee99f94d2015364b906",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "已验证模板、可选helper、备份/回退和旧版108项辅助故障；最终ELF原路径通过。",
+      "remaining_or_boundary": "最终候选全部辅助故障和老化故障仍需明确对应来源；不将旧ELF108项移记。",
+      "evidence": "testing-memory-high-faults.md"
+    },
+    {
+      "id": "P01.5",
+      "archived_definition": [
+        "双模式 CPU/内存/IO 与旧最小配置兼容"
+      ],
+      "archived_definition_sha256": "9137bb4a37dbcd7550b2c6c5bdce5b858f2dea23c315875bddef22876a59ce93",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "percent/manual三资源及旧最小配置兼容已由准确源码unit/race与固定ELF实际控制、迁移验证。",
+      "remaining_or_boundary": "本项双模式兼容完成；旧扩展字段仅兼容，不推荐新配置。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P01.6",
+      "archived_definition": [
+        "pids_max、cpu_weight 及危险下调/恢复保护"
+      ],
+      "archived_definition_sha256": "3f057fbb4aa82752a12acd9df6da6593db369d5adea9011d896fac02415b8447",
+      "current_status": "superseded-by-three-resource-request",
+      "completion_claim": false,
+      "verified_scope": "用户最新范围只限制CPU/内存/IO，任务数与CPU权重不再作为新功能交付。",
+      "remaining_or_boundary": "本项扩展控制取消；已有旧配置兼容和外部值保护保留，不删除历史定义。",
+      "evidence": "independent-percentages.md"
+    },
+    {
+      "id": "P01.7",
+      "archived_definition": [
+        "v0.1.0-rc.3",
+        "默认最大文件系统选盘、首次后台标定、持久复用；按真机路径覆盖两套原业务与只读挂载",
+        "两线实现及Windows/Linux/race/vet、22项自动标定/9项状态故障通过；真实路径业务短测另判，未发布"
+      ],
+      "archived_definition_sha256": "ca0636c84fba019bf6dd91a40b46d51046ce60d5d2a48112f584599763258f22",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "最大合格本地文件系统自动选盘/后台首次标定、跨ID持久复用及两套真实路径/只读降级已验证。",
+      "remaining_or_boundary": "限定在已验证单设备与本地文件系统；多物理设备是P04.4。",
+      "evidence": "testing-bandwidth-current-combinations.md"
+    },
+    {
+      "id": "P01.8",
+      "archived_definition": [
+        "RC3及1.0组合线：默认每日日志、30天及总1GB清理、失败放行",
+        "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
+      ],
+      "archived_definition_sha256": "dcc8465cfc8a45f9bd41ef73afc786e4fee0cb7c1a90e959401cbcc3b5d5bbb1",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "每日一文件、30日/1GB清理、真实1GB边界与不可写降级在准确源码原生unit/race通过；真实路径日日志保持。",
+      "remaining_or_boundary": "日志功能本项完成，长期业务归P02.1/P10.2。",
+      "evidence": "logging.md"
+    },
+    {
+      "id": "P01.9",
+      "archived_definition": [
+        "RC3及1.0组合线：仅CPU/内存/IO独立百分比，各默认20；v1跳过、v2校验设置；旧配置兼容及manual保留",
+        "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
+      ],
+      "archived_definition_sha256": "d28bef9962420ab91120cf5b6795efd1fcb4628d11163212785d3c877db95ab9",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "三项独立默认20、v1跳过/v2校验、旧配置/manual和实际控制/不同ID重建已验证。",
+      "remaining_or_boundary": "本项配置和版本门禁完成，不表示默认20%业务性能通过。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P02.1",
+      "archived_definition": [
+        "建立 observe 基线与 enforce 持续运行的采集、对比和报告工具",
+        "每种目标业务至少 24h 基线及 24h 候选额度运行，覆盖一次完整备份/同步高峰；周期更长则延长，不以满 48h 自动判定通过"
+      ],
+      "archived_definition_sha256": "fd043c35d5ab8e3e00e29e8ea8225ebae41e927462df83d7f941927649275276",
+      "current_status": "waiting-real-duration-and-postflight",
+      "completion_claim": false,
+      "verified_scope": "固定候选同容器observe86400→enforce86400执行器和原生只读准入完成。",
+      "remaining_or_boundary": "旧任务仍在，新的独占两阶段尚未开始；必须分别跑满并通过原业务标准。",
+      "evidence": "testing-final-v1-long.md"
+    },
+    {
+      "id": "P02.2",
+      "archived_definition": [
+        "把关键业务指标纳入回归：错误、延迟分位数、备份/同步时间、恢复校验、OOM、CPU 节流和 IO 压力",
+        "测试前记录负载、数据量和可接受阈值，测试后逐项判断；原缓存程序全程参与，失败不可只归因于资源限制后忽略"
+      ],
+      "archived_definition_sha256": "bdb3d8609f775edfc6eb8df9a3d2e3cb63213babd355d7a19293bb66eb464bfa",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。",
+      "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。",
+      "evidence": "testing-final-v1-full600-terminal.md"
+    },
+    {
+      "id": "P02.3",
+      "archived_definition": [
+        "在克隆业务中补齐容器重建、Agent 重启、权限撤销、状态目录故障、外部改值、停用恢复及旧版回退",
+        "身份不串用、不覆盖外部值、原值可追溯；辅助进程故障不改变原业务退出行为，恢复失败必须可见"
+      ],
+      "archived_definition_sha256": "bc42975ff2be5b5438fe9f5dd102feb7c03a0c487bf270ad87f3da4c3c797eb8",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "原生最终ELF有崩溃/重启/只读/恢复，公开percent48和manual40维护通过。",
+      "remaining_or_boundary": "两厂商最终ELF完整业务辅助故障及老化后所有权/状态故障还需逐场景终态。",
+      "evidence": "testing-public-percent-migration-terminal.md"
+    },
+    {
+      "id": "P02.4",
+      "archived_definition": [
+        "发布稳定版安装/卸载/回退手册和精确支持矩阵；冻结首版配置语义",
+        "明确镜像、内核、运行时、架构、存储及权限条件；区分“已构建”“已测试”“未支持”，不发布未验证组合的稳定性结论"
+      ],
+      "archived_definition_sha256": "1699175b1329d91a09ad3a5a3052e004a865d388eee13f913ede61fce0e37bb3",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "安装/卸载恢复、首版配置语义与准确已测环境矩阵已归档，厂商/原生VM和权限逐组合对应证据。",
+      "remaining_or_boundary": "最终稳定包、发布后操作演练和main产品源码合入仍待完成。",
+      "evidence": "tested-environment-matrix.md"
+    },
+    {
+      "id": "P03.1",
+      "archived_definition": [
+        "增加本地配置重载入口与文件替换检测，兼容原子替换、符号链接切换和短暂缺文件；支持CPU/内存/IO独立比例变更，兼容旧percent",
+        "合法新配置成为新代次；重复键、错误类型、半写入文件和无法读取时保留上一份有效配置，不清空预算"
+      ],
+      "archived_definition_sha256": "c8c7adfa8bbccc46a22b24eb0b90a054c527dc477d2adb6c4768330c1cbdcb54",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "准确源码unit/race及固定最终ELF两角色同Agent13场景逐项通过，独立比例、原子/链接切换、短缺失、重复键、半写入、FIFO/读错误保留整份旧策略，显式reload确认及原业务600秒终态已绑定。",
+      "remaining_or_boundary": "本项文件重载入口与所列边界完成；CLI优先/旧percent/类型由准确源码unit/race另证，不扩成厂商CLI、并发disable或老化验收。",
+      "evidence": "testing-final-v1-business-reload-terminal.md"
+    },
+    {
+      "id": "P03.2",
+      "archived_definition": [
+        "实现“校验完整候选配置 → 计算计划 → 逐项持久化/写入/回读”的重载流程",
+        "CPU/内存/IO 分别显示成功、延后或冲突；20→30 只放宽 CRG 自己仍拥有的限额，不突破外部约束，不宣称三项同时原子切换"
+      ],
+      "archived_definition_sha256": "b7e2d65dd376707c1af1152f339bcbd4ba32ff21fbd030e16946c52f60ddf920",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "候选完整校验、逐项持久化/回读、所有权及外部限额保护已有实现和原生证据。",
+      "remaining_or_boundary": "当前ELF厂商20→30/回落压力的完整业务标准仍需逐项复核；不宣称三项原子。",
+      "evidence": "test-results-IO-bandwidth-CI.json"
+    },
+    {
+      "id": "P03.3",
+      "archived_definition": [
+        "显示请求代次、已接受配置、逐项实际值和待完成原因；内存危险下调可在后续周期重试",
+        "30→20 遇到内存压力时保持原实际值并显示未生效，不能显示整体成功；冲突控制项不反复争写"
+      ],
+      "archived_definition_sha256": "ea8309ec1972271c00541dfd918148bc702df6cc0dc409f3e383e00eb104e03e",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "代次/逐项实际值/冲突和重试已实现；用户改为memory.high后，高水位可低于当前用量，不再按旧硬上限窗口延后。",
+      "remaining_or_boundary": "继续验收冲突/部分生效可见性和历史自有memory.max恢复延期；不得把允许high立即回收误写成下调保护缺陷。",
+      "evidence": "test-results-IO-bandwidth-CI.json"
+    },
+    {
+      "id": "P03.4",
+      "archived_definition": [
+        "规定配置变更的支持范围与模式切换行为，补齐并发重载/重启/disable 测试和文档",
+        "state_dir 变更仍要求受控升级；enforce→observe 不隐式撤销限额，停用恢复继续用明确操作；新增字段不成为必填"
+      ],
+      "archived_definition_sha256": "0f38097fb4c4c68864b3cc5bea84e4021fff9215ed5a522e9b33dc8a8dd8379f",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "模式、state_dir边界、并发/停用和显式恢复规则已有实现及unit/race。",
+      "remaining_or_boundary": "当前候选厂商并发重载/重启/disable组合的闭环结果仍需逐一绑定。",
+      "evidence": "configuration.md"
+    },
+    {
+      "id": "P03.5",
+      "archived_definition": [
+        "双模式热重载与切换，明确删除项目的恢复/保留规则"
+      ],
+      "archived_definition_sha256": "db4fe3387d624a521b3781743fe6a141091ae5c0760629e7da02314c9e5de56b",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "两角色同Agentmanual与percent连续切换、移除自有high/IO及恢复IOPS、回原三项与业务600秒已通过；CPU移除及外部IOPS另有最终ELF原生CI。",
+      "remaining_or_boundary": "全部删除/外部冲突保留规则的当前厂商业务组合未逐项齐备；不把重启Agent原生CI当连续厂商热重载。",
+      "evidence": "testing-final-v1-business-reload-terminal.md"
+    },
+    {
+      "id": "P04.1",
+      "archived_definition": [
+        "扩展默认自动标定工具：自动选盘、重复采样、离散程度、时间/方法/版本记录与基准有效性检查",
+        "顺序读写 BPS 和随机读写 IOPS 分开测量并记录；受竞争影响的结果提示质量不足，不伪称设备物理总量，首次辅助进程自动尝试；后续复用，业务不等待"
+      ],
+      "archived_definition_sha256": "1e9fa4a2f069481c2b52b2223146d32e482068b11088638bb56e56da4e85e893",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "三次独立采样、中位数/离散程度/质量与方法版本记录、自动复用已实现并实测。",
+      "remaining_or_boundary": "需逐项确认持续竞争/质量不足下的当前候选实测；IOPS可测量记录但百分比仅应用BPS。",
+      "evidence": "automatic-io-calibration.md"
+    },
+    {
+      "id": "P04.2",
+      "archived_definition": [
+        "提供本容器可见设备 profile 的检查、合并、替换和迁移预览工具",
+        "设备编号变更按稳定身份重识别；替盘、重复身份、旧格式和缺样本有明确处理；新机器不直接套用另一机器性能基准"
+      ],
+      "archived_definition_sha256": "b9ed560f954e2ac88f8cdb014da04851aa47d1619c670a43311a8d575a286574",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "profile预览/合并、稳定身份、歧义/缺项拒绝和几何失效已实现；最终ELF分区测试通过。",
+      "remaining_or_boundary": "独立替换物理盘/新机器迁移的实机证据不足，不能套用别机基准。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P04.3",
+      "archived_definition": [
+        "完善数据/WAL/备份路径与设备覆盖报告，测试分区、LVM 和选定 device-mapper 栈",
+        "同层/上下层重复配置可解释地拒绝或跳过；NFS、对象存储、Overlay 等不能确认的路径明确显示未覆盖，不猜设备"
+      ],
+      "archived_definition_sha256": "3de64b9b62d7c652919d5646b6a51b0f135bdcb177a078332025170e7f4028e2",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "路径覆盖及同设备兄弟分区共享目标有最终ELF180项；现有XFS→DM→物理路径已核对。",
+      "remaining_or_boundary": "所选LVM/映射栈及路径覆盖声明还需逐项列出真实写入有效性；未知栈明确未覆盖。",
+      "evidence": "testing-final-wait-io-map.md"
+    },
+    {
+      "id": "P04.4",
+      "archived_definition": [
+        "建立至少两个独立块设备和一个选定映射栈的实机回归",
+        "各设备 BPS/IOPS、共享竞争、profile 缺项/失效分别记录；不把该矩阵外的复杂存储栈宣称已支持"
+      ],
+      "archived_definition_sha256": "14d9d763e0bed31d04af19fbc2b4fb1be78f0cb0cf19cb17322e77651680b837",
+      "current_status": "waiting-unavailable-hardware",
+      "completion_claim": false,
+      "verified_scope": "现有两分区来自同一物理设备，未伪称两盘。",
+      "remaining_or_boundary": "缺至少两块独立物理块设备及选定映射栈节点；用户暂未提供。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P04.5",
+      "archived_definition": [
+        "io_weight、手动多路径/多设备与替盘回归"
+      ],
+      "archived_definition_sha256": "e1ed840dc5992918087d196c35640b42487ae3e034029eecd9ccaf6042f6d9fe",
+      "current_status": "partly-superseded-with-retained-work",
+      "completion_claim": false,
+      "verified_scope": "新配置IO权重取消；保留manual多路径及设备身份/重复栈保护。",
+      "remaining_or_boundary": "权重部分取消，独立多设备/实际替盘回归仍待；不能整项视为取消。",
+      "evidence": "configuration.md"
+    },
+    {
+      "id": "P05.1",
+      "archived_definition": [
+        "展示可获得的匿名内存、文件缓存、内核内存、events/PSI，以及 swap/HugeTLB 等统计范围",
+        "缺失的内核字段显示不可用，不拼成虚假的完整总量；只读诊断，不改变 swap、OOM 策略、数据库参数或缓存回收策略"
+      ],
+      "archived_definition_sha256": "72e7932e2bfb8f746c6c7acb38c4bd3eac592e926f901e608c3e3ee81d26c3c8",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "固定最终ELF两角色实际current/swap、匿名/文件/内核/events与缺字段逐项复算，原600秒业务通过；准确源码unit/race覆盖可用PSI和类型/范围边界。",
+      "remaining_or_boundary": "厂商内核memory.pressure及hugetlb缺失明确不可用；不相加重叠统计、不保证无OOM，不新增swap或缓存回收策略。",
+      "evidence": "testing-final-v1-diagnostics-counter-fixed-terminal.md"
+    },
+    {
+      "id": "P05.2",
+      "archived_definition": [
+        "增加多周期稳定窗口、增长趋势和安全重试策略；复用写前复查与持久化保护",
+        "并发分配、慢 fsync、持续缓存压力和恢复较低原值时均有测试；危险下调延后，不能为追求“生效”强制回收或擅自加预算"
+      ],
+      "archived_definition_sha256": "6df2ef7d05e9b0eaa0457ac212982b13575149bdd87c94d49f641c2de45b4616",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "稳定窗口/趋势及写前复查用于降低历史硬上限/恢复；当前memory.high回收目标不使用该窗口阻止生效。",
+      "remaining_or_boundary": "核对历史硬限额恢复的并发分配/慢fsync保护；新high下脏页/压力业务验证仍需完成，不能强行回收活跃内存或擅自加预算。",
+      "evidence": "test-results-IO-bandwidth-CI.json"
+    },
+    {
+      "id": "P05.3",
+      "archived_definition": [
+        "结合原缓存程序验证高查询负载、备份、WAL 增长和缓存回收重叠场景",
+        "两个辅助程序互不接管、互不等待，不形成重复回收或重启风暴；记录业务延迟、OOM 和额度未生效时长"
+      ],
+      "archived_definition_sha256": "79dffd0eb6a03fc3d319a068f57989e230ac7d2d94d72d471143a8b6b3b5c83a",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "当前manual600和原缓存共存通过，旧压力失败有SQL/API/停库和IO诊断。",
+      "remaining_or_boundary": "高查询/WAL/备份与缓存回收重叠的最终候选原业务终态尚未满足；不改数据库参数绕过。",
+      "evidence": "testing-bandwidth-default20-full600-terminal.md"
+    },
+    {
+      "id": "P05.4",
+      "archived_definition": [
+        "增加长期延后、原预算不适用和统计不足的可操作解释",
+        "用户能区分“已受控”“等待安全下调”“额度不足”“缺统计”；保持三个独立百分比入口，不增加扩展资源参数，不保证绝不OOM"
+      ],
+      "archived_definition_sha256": "892e33b066e70f54e3d7610e5ed2bedd350b762a63fb7c50de5406d4df13dfbf",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "已区分受控、等待、冲突、额度不足及缺统计，memory.high允许超过且无绝对OOM承诺。",
+      "remaining_or_boundary": "需针对长期延期/预算不适用的实际现象复核解释和处置，不把20%失败隐藏。",
+      "evidence": "memory-reclaim-policy.md"
+    },
+    {
+      "id": "P05.5",
+      "archived_definition": [
+        "memory_high、memory_swap_max 和下调保护"
+      ],
+      "archived_definition_sha256": "6832de67b2d011f8ffd7f8e7d5c1778cf055854992520b79aebe1b4a106838b8",
+      "current_status": "partly-superseded-with-retained-work",
+      "completion_claim": false,
+      "verified_scope": "memory.high与下调保护按新要求保留，新增swap控制取消；已有K8s硬上限保持。",
+      "remaining_or_boundary": "swap部分退出当前范围；真实压力/安全恢复归P05.2/P05.3继续。",
+      "evidence": "memory-reclaim-policy.md"
+    },
+    {
+      "id": "P06.1",
+      "archived_definition": [
+        "建立 Linux 内核、cgroup 挂载方式、containerd/runc 和选定容器运行方式的兼容矩阵",
+        "覆盖当前 5.14 环境及选定 6.x 环境；每个宣称组合有版本、权限和结果，未测版本不自动标为兼容"
+      ],
+      "archived_definition_sha256": "b31933b04ca294260b55287fa7a549708c3d562fcd1e35f0d08dec766c804ce3",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "5.14厂商amd64及6.8/7.0两架构四原生VM组合已逐一列出准确内核、运行时/runc、挂载和权限，并对应18/284原件及摘要。",
+      "remaining_or_boundary": "选定组合矩阵本项完成；未测运行时、rootless、ARM厂商和独立物理多盘不宣称兼容，稳定发布仍待长期验收。",
+      "evidence": "tested-environment-matrix.md"
+    },
+    {
+      "id": "P06.2",
+      "archived_definition": [
+        "在 arm64 真机执行 CPU/内存/IO、故障恢复和业务回归",
+        "arm64 不再仅有交叉编译证据；发布说明逐架构列明业务和存储覆盖范围"
+      ],
+      "archived_definition_sha256": "5d5f2cb6276e61da2190f456163f70515b451ce9e968c5b6e2752bd5afb919c9",
+      "current_status": "waiting-unavailable-hardware",
+      "completion_claim": false,
+      "verified_scope": "有原生ARM64 VM实际控制及race，已超出交叉编译。",
+      "remaining_or_boundary": "仍缺ARM64 DBS/HISDBS厂商业务节点，不能用VM替代这一完整要求。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P06.3",
+      "archived_definition": [
+        "加强只读/委派不足、私有 cgroup namespace、systemd 路径、祖先约束和宿主容量来源的发现测试",
+        "不能确认自身目标时不写；不能得到可信宿主基数时明确降级，不将容器虚拟容量误称宿主总量，不越权写父组"
+      ],
+      "archived_definition_sha256": "bb2b6c7865c31f3a2a7d2a56555d0e9c127ea45a0bda3a46b86cd54b18a71ee0",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "容量来源、私有namespace/只读、祖先约束和自己leaf保护有实现/原生测试。",
+      "remaining_or_boundary": "逐组合核对当前委派不足/虚拟化宿主容量及实际容器挂载，无法确认则跳过。",
+      "evidence": "test-results-IO-bandwidth-CI.json"
+    },
+    {
+      "id": "P06.4",
+      "archived_definition": [
+        "增加连续重建、路径复用、CPU 在线数变化和只读权限切换的回归",
+        "新身份不使用旧恢复日志；容量变化不突破既有外部约束；各类控制器可用性独立显示"
+      ],
+      "archived_definition_sha256": "0a1e978689c071fef1498681cc64908e2d0e3cc13dca8f17e0c65c0c14e1d264",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "最终ELF新ID新journal、只读降级、profile复用和几何变化通过。",
+      "remaining_or_boundary": "真实CPU在线数变化与连续权限切换的当前组合还须独立现场记录。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P06.5",
+      "archived_definition": [
+        "双模式下容器/Pod/节点重启及状态保留/丢失组合回归"
+      ],
+      "archived_definition_sha256": "7dc6b7824edddc6a02d8bc9140f0cca359127cdeaf99d8f07434e0a5243235b9",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "两模式多次Pod/container重建和持久状态保留已有实际证据。",
+      "remaining_or_boundary": "整节点重启及状态保留/丢失的完整组合未全部完成；不重启当前共享节点干扰任务。",
+      "evidence": "testing-bandwidth-current-combinations.md"
+    },
+    {
+      "id": "P07.1",
+      "archived_definition": [
+        "提供统一原因码和解释：请求比例、宿主基数、上层约束、实际值、外部冲突、profile 覆盖及重载代次",
+        "human/JSON 输出含义一致；状态过期、锁被持有和数据库健康不混为一谈；旧脚本依赖的字段遵守兼容规则"
+      ],
+      "archived_definition_sha256": "9c11ab8d33c06cd51057749cd39123c2007741c2545388275a87e61e641fe297",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "固定最终ELF两角色各原600秒内实际status/doctor/preflight的手动请求/宿主基数/自身目标及实际三控制human/JSON核对；持锁、静默未持锁、快照自然老化305秒、单写者恢复与持续业务健康分别验证，status不改快照。",
+      "remaining_or_boundary": "独立百分比、上层约束、外部冲突、profile覆盖及重载代次的human/JSON逐字段兼容覆盖仍需完整核对；本轮手动状态与模板成功不代替全部P07.1。",
+      "evidence": "testing-final-v1-cli-supervisor-terminal.md"
+    },
+    {
+      "id": "P07.2",
+      "archived_definition": [
+        "提供按白名单采集的脱敏诊断包和体积上限",
+        "不采集密码、令牌、环境变量全集、业务数据、私有业务脚本或其他容器信息；输出前说明内容，本地生成，不自动上传"
+      ],
+      "archived_definition_sha256": "82cb4a20c7f8de92bb967f442e07c8218bd48fedd5622ed7fe1e0798a7440a9d",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "固定最终ELF两角色实际白名单说明、64KiB上限、标准输出/0600新文件、敏感标记排除和已有文件/链接/状态/profile拒绝覆盖；实际控制/journal/原业务保持。",
+      "remaining_or_boundary": "只读本容器本地生成，不自动上传；原计数失败保留，原生边界由准确源码unit/race补充，不扩大跨容器采集范围。",
+      "evidence": "testing-final-v1-diagnostics-counter-fixed-terminal.md"
+    },
+    {
+      "id": "P07.3",
+      "archived_definition": [
+        "提供默认关闭的本容器指标导出，优先采用本地文本文件或 Unix socket",
+        "默认无监听网络端口、无远程控制入口；只报告自身，指标失败不影响业务，不能把 Agent 端点变成业务健康前置条件"
+      ],
+      "archived_definition_sha256": "723c24789503aff46d618b74adaccbd4780f0858f0281311789891df473798d8",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "最终ELF两角色原业务默认无导出文件通过；活HIS Agent两次快照无socket FD；开启导出/持续写失败各1800秒181样本及准确源码unit/race复核，失败不阻断资源控制。",
+      "remaining_or_boundary": "本项默认关闭的本容器本地文本导出及故障隔离完成；socket为快照，导出故障夹具不冒充厂商业务故障/长期老化。",
+      "evidence": "test-results-final-v1-optional-metrics.json"
+    },
+    {
+      "id": "P07.4",
+      "archived_definition": [
+        "增加有大小/保留上限的本地事件记录和低 IO 验证",
+        "高频异常不写满目录；原值日志持久化不能因限流而被省略；说明 CPU/RSS/写入量及开销变化"
+      ],
+      "archived_definition_sha256": "7ed1108471eb954a0f472c4b924b73f5690717e0f9052ae1e0a30c32c3dc4f79",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "准确源码有界事件/去重与必要journal持久化，固定最终ELF低IO、持续导出失败、只读三组各1800秒/181样本，CPU/RSS/写入/状态间隔原门槛和独立清理通过。",
+      "remaining_or_boundary": "本项有界事件和低IO开销完成；Agent指标不代表业务/整节点开销，不替代七天与不同有效限额回归。",
+      "evidence": "testing-final-v1-overhead-terminal.md"
+    },
+    {
+      "id": "P08.1",
+      "archived_definition": [
+        "提供当前容器内的安装检查、拟执行变更、备份和卸载方案；支持已验证 supervisor 模板",
+        "变更限于当前容器，未知脚本/哈希不匹配拒绝改写；程序缺失仍按可选辅助进程处理；不操作其他 Pod 或 Kubernetes API"
+      ],
+      "archived_definition_sha256": "e12aaf714b1ff3336543db8c5639b7333eb81b766a517013ecbddf2a346a1084",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "固定最终ELF两角色各原600秒内实际预览、两种受支持公开模板私有副本安装、活动写锁/未知布局/链接别名/受信摘要拒绝；测量后空journal合法卸载还原原字节/模式。26/26主检查和48/48子检查、原业务及独立清理通过，准确源码5项unit/race补充原子替换/不执行输入保护。",
+      "remaining_or_boundary": "只支持所列已验证模板；真实私有厂商脚本布局本轮不支持，副本安全拒绝，不声明自动改任意启动脚本。副本不执行，不改实际只读CCG/K8s API；镜像持久化和未来格式另验。",
+      "evidence": "testing-final-v1-cli-supervisor-terminal.md"
+    },
+    {
+      "id": "P08.2",
+      "archived_definition": [
+        "增加版本/锁兼容预检及仅重启 Agent 的受控二进制切换",
+        "升级前旧写入者全部停止，保留同一状态目录；新版本失败可回退；不让不同锁协议的旧新版本并行争写"
+      ],
+      "archived_definition_sha256": "a230d2b7580a23c4740b8bbd70bbd8d851265289fe6c36d1cb58f07e03694a61",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "固定最终ELF与实际公开preview.5在DBS/HISDBS各原600秒SQL/API内受控切换/显式回退40/40；写入者先静默、五次实际ELF单写者快照、同一journal/额度，变化配置旧回执拒绝与新回执反向安装、末尾原值恢复及独立清理通过；准确源码8项unit/race补充锁/摘要/身份保护。",
+      "remaining_or_boundary": "仅声明同协议实际版本的显式维护与回退，不含自动业务故障检测/自动切版；未知协议/未来格式和启动安装/镜像持久化分别归P08.1/P08.3/P08.4，长期/默认20%性能不转记。",
+      "evidence": "testing-final-v1-binary-maintenance-terminal.md"
+    },
+    {
+      "id": "P08.3",
+      "archived_definition": [
+        "增加 journal/profile 格式版本检查、迁移备份、预览和不兼容回退处理",
+        "升降级不丢原值；无法安全读取新版状态的旧程序明确拒绝，不删除日志重建、不用 max 批量覆盖"
+      ],
+      "archived_definition_sha256": "0d696538dfb073536d65b1ba2e280792e2b5777602144653de9cc4c6699e3f79",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "journal/profile版本、迁移备份、未知格式拒绝和旧程序有限恢复有实现/原生证据。",
+      "remaining_or_boundary": "最终候选真实升级/降级格式组合与拒绝原因仍需逐项审核。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    },
+    {
+      "id": "P08.4",
+      "archived_definition": [
+        "补齐镜像持久化、重建后配置、永久停用和升级操作的演练",
+        "明确只改运行中容器文件不会自动进入新镜像；永久停用由持久配置/启动入口表达，不把旧身份停用标记直接用于新身份"
+      ],
+      "archived_definition_sha256": "0325983739ead5999207ad23bd96a8edb70d48c4e5392ce88649acce6b67ddde",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "持久挂载/镜像要求、跨ID状态和永久停用说明已有文档与重建测试。",
+      "remaining_or_boundary": "最终候选镜像持久化、永久停用/重建及受控升级全流程仍待演练。",
+      "evidence": "installation.md"
+    },
+    {
+      "id": "P09.1",
+      "archived_definition": [
+        "固定发布工具链，提供源码修订/构建来源、SBOM、产物证明和可重复构建核对",
+        "程序修订、打包修订、二进制摘要明确对应；验证过程公开可执行，不把“静态链接”当成完整依赖清单"
+      ],
+      "archived_definition_sha256": "f81a7b9f679367d93121685fe0704d21f0eb1068ed33da2c0da844e0ebe59c61",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "Go1.27.3、源码/包修订、两架构SBOM及跨Windows/Linux准确ELF重复构建已固定。",
+      "remaining_or_boundary": "最终稳定包和对应发布来源证明尚未生成/公开，不能把旧预发布证明移用。",
+      "evidence": "final-v1-candidate-identity.json"
+    },
+    {
+      "id": "P09.2",
+      "archived_definition": [
+        "增加本地安装前的完整性/来源校验及离线校验步骤",
+        "校验失败拒绝安装；信任根与验证方式说明清楚，不执行未经校验的远程 shell；凭据和私有 profile 不进入包"
+      ],
+      "archived_definition_sha256": "568985a40c9ae5ffac31364caf8c914568ddb1797f2f87fa8db8cf2d73566488",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "预发布安装包有摘要/来源和离线验证，八附件下载已核对。",
+      "remaining_or_boundary": "最终稳定包的实际校验失败拒绝安装和离线校验待形成；禁止未经验证远程shell。",
+      "evidence": "installation.md"
+    },
+    {
+      "id": "P09.3",
+      "archived_definition": [
+        "扩展解析器模糊测试、长故障回归及持久化中断验证",
+        "覆盖异常大文件、坏格式、持续权限撤销、慢/满文件系统；强杀与真实掉电证据分开，掉电仅在隔离可恢复测试环境执行"
+      ],
+      "archived_definition_sha256": "70db3b2797f71e0551d3025eae1fbd0b6614f135de1dbde8eaa3287b86b67491",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "准确源码418份输入前后不变，Windows amd64两个解析器分别新跑300秒、目标/包pass及完整事件独立复算；旧长故障和准确源码race保持各自来源。",
+      "remaining_or_boundary": "模糊测试不等于全部语义/厂商运行时通过；最终ELF持久化中断、持续权限撤销、慢/满文件系统和边界仍需核对，强杀不得冒充真实掉电。",
+      "evidence": "testing-final-v1-parser-fuzz.md"
+    },
+    {
+      "id": "P09.4",
+      "archived_definition": [
+        "建立不同限额下的长期 Agent 开销预算及回归阈值",
+        "工程目标：15s 周期、稳定状态至少 30min，单核平均 CPU ≤0.1%、RSS ≤20MiB，状态文件最多每 5min 一次；另测低 IO/持续异常，不为达标省略必要日志"
+      ],
+      "archived_definition_sha256": "1293bb20b605e2af22155560a87949d83fac9479827a8480073c37ec73c30b71",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "同一最终ELF在0.25/0.5/0.75CPU、128/192/224MiB high和三档BPS/手动IOPS有各自实际1800秒；新增两档各181样本、原阈值、正常导出、原PID/实际控制及清理复算通过，既有低IO/持续导出故障/实际只读各1800秒保持。",
+      "remaining_or_boundary": "本项原工程目标至少30分钟及不同有效限额完成；为Agent自身计数和占位PID1，非厂商/共享节点因果性能；七天业务老化归P10.2，不能转记旧时长。",
+      "evidence": "testing-final-v1-budget-overhead-terminal.md"
+    },
+    {
+      "id": "P10.1",
+      "archived_definition": [
+        "固化配置、CLI/JSON、journal 和 IO profile 的版本与兼容规则",
+        "固定CPU/内存/IO三个独立百分比及各默认20，保留旧单percent兼容；明确废弃周期与格式迁移；验证从最近两个已发布次版本升级及兼容范围内回退，不承诺无法读取新状态的旧版本可直接运行"
+      ],
+      "archived_definition_sha256": "b3e2aa718871925f9a087d9aba4d29190c6a5d109d0dca6e6e7f6c2feb5b021f",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "当前三资源/默认20、memory.high/BPS语义及格式规则已编写；预发布升级有证据。",
+      "remaining_or_boundary": "最近两个已发布“次版本”历史不齐，预发布不能冒充两个minor；最终契约冻结/范围处置仍需明确。",
+      "evidence": "upgrade-preview4-preview5.zh.md"
+    },
+    {
+      "id": "P10.2",
+      "archived_definition": [
+        "对目标 DBS/HISDBS 业务完成至少 7 天综合验收",
+        "覆盖原缓存程序、实际备份/同步周期、冷启动、重建、恢复、升级和故障；长于 7 天的关键周期补充覆盖，按预先记录的业务阈值判断"
+      ],
+      "archived_definition_sha256": "cc6fc54ed9f9a66b43d2536cd87e301d26f439b01512f0576ee671768fca8893",
+      "current_status": "waiting-real-duration-and-postflight",
+      "completion_claim": false,
+      "verified_scope": "固定最终候选七天/28周期执行器已冻结，旧任务进程仍活跃且不继承其时长。",
+      "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。",
+      "evidence": "testing-final-v1-long.md"
+    },
+    {
+      "id": "P10.3",
+      "archived_definition": [
+        "完整复核目标隔离、权限降级、外部冲突、诊断脱敏、包来源和恢复所有权",
+        "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
+      ],
+      "archived_definition_sha256": "4fee425cb9e66427646bb5c484af5632264fcabbb0b337a512f220d758badd75",
+      "current_status": "partial-evidence-or-verification-open",
+      "completion_claim": false,
+      "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。",
+      "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
+      "evidence": "release-readiness-current.md"
+    },
+    {
+      "id": "P10.4",
+      "archived_definition": [
+        "发布支持矩阵、运维手册、问题分级、补丁发布和证据归档规则",
+        "每个对外支持组合有对应报告；未测的架构/存储/内核不包装成全面支持；稳定发布和生产部署分别记录"
+      ],
+      "archived_definition_sha256": "996eb67db2ad78a3b9053d55cc4fb1b8f84f321555cb66563fbc215291ea4d63",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "准确已测矩阵及当前运维、P0/P1/P2问题分级、补丁发布、恢复和隐私/原件归档规则已发布，代码/发布/部署分别记录。",
+      "remaining_or_boundary": "本项文档与规则交付完成；真实稳定发布、生产部署、长期/老化及具体操作演练仍按其他任务独立验收。",
+      "evidence": "operations-release-policy.md"
+    },
+    {
+      "id": "P10.5",
+      "archived_definition": [
+        "v1.0.0",
+        "组合候选复核自动标定、双模式/故障/重建/升级和两业务共存",
+        "实现已编写，验收中；原24h+24h和至少7天条件不变"
+      ],
+      "archived_definition_sha256": "f3faa67a20c34a40523d20c037a47c8daff2883e3de82f63faa80ffd7552b1b1",
+      "current_status": "waiting-real-duration-and-postflight",
+      "completion_claim": false,
+      "verified_scope": "最终ELF18业务与284原生实际通过，自动标定/双模式/重建已有分项证据。",
+      "remaining_or_boundary": "组合候选长运行、老化故障、维护和发布审核继续，不整体勾选。",
+      "evidence": "testing-final-v1-long.md"
+    },
+    {
+      "id": "P10.6",
+      "archived_definition": [
+        "RC3及1.0组合线：默认每日日志、30天及总1GB清理、失败放行",
+        "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
+      ],
+      "archived_definition_sha256": "dcc8465cfc8a45f9bd41ef73afc786e4fee0cb7c1a90e959401cbcc3b5d5bbb1",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "与P01.8同一日志需求，准确源码真实1GB/日历/失败隔离通过；属于重复归档项。",
+      "remaining_or_boundary": "本项日志功能完成，不重复增加测试数量或代替长期业务。",
+      "evidence": "logging.md"
+    },
+    {
+      "id": "P10.7",
+      "archived_definition": [
+        "RC3及1.0组合线：仅CPU/内存/IO独立百分比，各默认20；v1跳过、v2校验设置；旧配置兼容及manual保留",
+        "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
+      ],
+      "archived_definition_sha256": "d28bef9962420ab91120cf5b6795efd1fcb4628d11163212785d3c877db95ab9",
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "与P01.9同一三百分比/版本门禁需求，准确源码与固定最终ELF实际控制/重建通过。",
+      "remaining_or_boundary": "本项功能完成，不重复计数或改变默认20%业务失败。",
+      "evidence": "testing-final-v1-native-CI-terminal.md"
+    }
+  ],
+  "actual_native_unit_event_source": {
+    "artifact_name": "native-arm64-ced461705ebc27315a59aefe463f9b4af47130a3",
+    "member": "go-test-race.jsonl",
+    "sha256": "c350174d18b2de1cc2635a592df0e9b13d45a5e0e1ae9f49093bff4ad8974c80",
+    "required_tests_present_and_passed": [
+      "TestThreeIndependentDefaultsAndValidation",
+      "TestThreePercentPlanDoesNotRequestOtherControllers",
+      "TestDualModesRejectAmbiguousAndUnsafeInput",
+      "TestManualPlanOmitsUnrequestedResourcesAndPreservesExternalLimits",
+      "TestAutomaticIOReuseAndFaultBoundaries",
+      "TestAutomaticIONeverRunsForReadOnlyModes",
+      "TestCgroupVersionGate",
+      "TestDateRotationRestartAndQuietCleanup",
+      "TestActualOneGBBudgetDeletesOldestThenResetsOnlyDailyFile",
+      "TestUnwritableUnsafeAndReplacedPathsFallbackWithoutTouchingOthers"
+    ],
+    "counts_not_new_tests": true
+  },
+  "stable_release_accepted": false
+}

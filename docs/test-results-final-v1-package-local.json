@@ -1,0 +1,96 @@
+{
+  "schema": "crg-fixed-final-package-local-rehearsal-v1",
+  "program_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "local_package_revision": "82c0c721494675545c56c7ea184bf3f1de6082d6",
+  "local_commit_publicly_published": false,
+  "scope": "local rehearsal only; published Actions artifacts below have their own packaging revision and archive digests",
+  "commands": [
+    {
+      "tool": "scripts/package.py",
+      "exit": 0
+    },
+    {
+      "tool": "scripts/check-package.py",
+      "exit": 0
+    },
+    {
+      "tool": "tests/release-integrity.py",
+      "exit": 0
+    },
+    {
+      "tool": "scripts/validate-sbom.py",
+      "exit": 0
+    },
+    {
+      "tool": "scripts/validate-sbom.py",
+      "exit": 0
+    },
+    {
+      "tool": "scripts/check-reproducible.py",
+      "exit": 0
+    }
+  ],
+  "SBOM_schema_results": [
+    {
+      "schema_valid": true,
+      "SBOM_sha256": "29c7e7df0517638caaae961960ffc3ae7eed226db93da728b447fff7c782faec",
+      "validator": "jsonschema 4.26.0 / Draft7Validator",
+      "errors": [],
+      "scope": "schema validation only; not completeness, provenance or security certification"
+    },
+    {
+      "schema_valid": true,
+      "SBOM_sha256": "0ed5285d41850f5c54182627b938f3868f1137dc9b5640d2e42c03066d41d2db",
+      "validator": "jsonschema 4.26.0 / Draft7Validator",
+      "errors": [],
+      "scope": "schema validation only; not completeness, provenance or security certification"
+    }
+  ],
+  "artifacts": {
+    "build-manifest.json": {
+      "bytes": 3337,
+      "sha256": "da5d613f74ece007b00ab9db8ffc9eb8d2b2178ef8114410fc65b3b14942417b"
+    },
+    "containerresourceguard-v1.0.0-linux-amd64.tar.gz": {
+      "bytes": 29229540,
+      "sha256": "6f4b8327127ca5bf7f27eb0f89d4caa99ef32484838daa5ac9f198087f2a2e34"
+    },
+    "containerresourceguard-v1.0.0-linux-arm64.tar.gz": {
+      "bytes": 29060831,
+      "sha256": "1299893161cbc2b137d6760eb8f35a3430aed385bccb773f567b9433fcece041"
+    },
+    "crg-linux-amd64": {
+      "bytes": 4026528,
+      "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8"
+    },
+    "crg-linux-arm64": {
+      "bytes": 3801248,
+      "sha256": "ff1a2c1c599eb38fde6857c2eede70a1deabf0c2c89977ab92e71ec52ec3982b"
+    },
+    "integrity-check.json": {
+      "bytes": 1135,
+      "sha256": "f08cac20c0c49b04650e931a5efaab1f4c7d67ca2343417e4a34ca175c6e0943"
+    },
+    "package-check.json": {
+      "bytes": 369,
+      "sha256": "d4e5c06e3f6cc9ac464d1bfe2dcfcccaec7e7b529d521b76466ffd867c929e53"
+    },
+    "reproducibility-check.json": {
+      "bytes": 1304,
+      "sha256": "55e801cd9041a0141367fdfa10a3b0eaf05dc293e74eedce4eafccb6c19ce3cc"
+    },
+    "sbom-linux-amd64.cdx.json": {
+      "bytes": 42929,
+      "sha256": "29c7e7df0517638caaae961960ffc3ae7eed226db93da728b447fff7c782faec"
+    },
+    "sbom-linux-arm64.cdx.json": {
+      "bytes": 42929,
+      "sha256": "0ed5285d41850f5c54182627b938f3868f1137dc9b5640d2e42c03066d41d2db"
+    },
+    "SHA256SUMS": {
+      "bytes": 230,
+      "sha256": "a88c79694237d529cd61be53db35c01c12e0b5c10252e2f97b4e085c131cc500"
+    }
+  },
+  "stable_release_accepted": false
+}

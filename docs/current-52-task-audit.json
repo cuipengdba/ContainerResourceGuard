@@ -4,10 +4,10 @@
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "candidate_version": "v1.0.0",
   "original_tasks": 52,
-  "completed_in_defined_scope": 17,
+  "completed_in_defined_scope": 18,
   "status_counts": {
-    "complete-in-defined-scope": 17,
-    "partial-evidence-or-verification-open": 27,
+    "complete-in-defined-scope": 18,
+    "partial-evidence-or-verification-open": 26,
     "superseded-by-three-resource-request": 1,
     "waiting-real-duration-and-postflight": 3,
     "waiting-unavailable-hardware": 2,
@@ -139,9 +139,9 @@
       "archived_definition_sha256": "fd043c35d5ab8e3e00e29e8ea8225ebae41e927462df83d7f941927649275276",
       "current_status": "waiting-real-duration-and-postflight",
       "completion_claim": false,
-      "verified_scope": "固定候选同容器observe86400→enforce86400执行器和原生只读准入完成。",
-      "remaining_or_boundary": "旧任务仍在，新的独占两阶段尚未开始；必须分别跑满并通过原业务标准。",
-      "evidence": "testing-final-v1-long.md"
+      "verified_scope": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。",
+      "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。",
+      "evidence": "testing-final-v1-long-node-admission.md"
     },
     {
       "id": "P02.2",
@@ -445,11 +445,11 @@
         "human/JSON 输出含义一致；状态过期、锁被持有和数据库健康不混为一谈；旧脚本依赖的字段遵守兼容规则"
       ],
       "archived_definition_sha256": "9c11ab8d33c06cd51057749cd39123c2007741c2545388275a87e61e641fe297",
-      "current_status": "partial-evidence-or-verification-open",
-      "completion_claim": false,
-      "verified_scope": "固定最终ELF两角色各原600秒内实际status/doctor/preflight的手动请求/宿主基数/自身目标及实际三控制human/JSON核对；持锁、静默未持锁、快照自然老化305秒、单写者恢复与持续业务健康分别验证，status不改快照。",
-      "remaining_or_boundary": "独立百分比、上层约束、外部冲突、profile覆盖及重载代次的human/JSON逐字段兼容覆盖仍需完整核对；本轮手动状态与模板成功不代替全部P07.1。",
-      "evidence": "testing-final-v1-cli-supervisor-terminal.md"
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "原定义统一原因码、请求/宿主/约束/实际值/profile/冲突/代次及共享human/JSON字段，在最终ELF两原厂原600秒内逐项核对；1525自然老化、持锁/未持锁与数据库健康分离原证据保持。",
+      "remaining_or_boundary": "JSON专有字段保持既有兼容范围；状态与数据库健康分开，不保证低限额业务性能或支持未知私有启动模板。",
+      "evidence": "testing-final-v1-output1615-terminal.md"
     },
     {
       "id": "P07.2",
@@ -551,9 +551,9 @@
       "archived_definition_sha256": "f81a7b9f679367d93121685fe0704d21f0eb1068ed33da2c0da844e0ebe59c61",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "Go1.27.3、源码/包修订、两架构SBOM及跨Windows/Linux准确ELF重复构建已固定。",
-      "remaining_or_boundary": "最终稳定包和对应发布来源证明尚未生成/公开，不能把旧预发布证明移用。",
-      "evidence": "final-v1-candidate-identity.json"
+      "verified_scope": "固定ced/Go1.27.3及两架构准确ELF；实际Linux候选打包、另目录重复构建/打包及4项在线签名和6项离线签名正常/拒绝独立核对，本地官方SBOM schema通过。",
+      "remaining_or_boundary": "本次是准确576打包提交的候选演练。最终稳定提交/附件及其对应来源证明与发布后实际下载仍待，不能把演练或旧预发布证明自动移用。",
+      "evidence": "final-v1-package-rehearsal.md"
     },
     {
       "id": "P09.2",
@@ -564,9 +564,9 @@
       "archived_definition_sha256": "568985a40c9ae5ffac31364caf8c914568ddb1797f2f87fa8db8cf2d73566488",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "预发布安装包有摘要/来源和离线验证，八附件下载已核对。",
-      "remaining_or_boundary": "最终稳定包的实际校验失败拒绝安装和离线校验待形成；禁止未经验证远程shell。",
-      "evidence": "installation.md"
+      "verified_scope": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。",
+      "remaining_or_boundary": "验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。",
+      "evidence": "final-v1-package-rehearsal.md"
     },
     {
       "id": "P09.3",
@@ -705,5 +705,6 @@
     ],
     "counts_not_new_tests": true
   },
-  "stable_release_accepted": false
+  "stable_release_accepted": false,
+  "refresh_note": "Current registry aligned after output1615 and actual long launch; fixed-candidate packaging rehearsal adds evidence without claiming final-release acceptance."
 }
