@@ -1,0 +1,45 @@
+{
+  "base_manifest": "crg-r1366-final-business-frozen.json",
+  "reversible_text_changes": {
+    "business-driver.py": [
+      {
+        "before": "final1366",
+        "after": "final1448",
+        "count": 3
+      },
+      {
+        "before": "FINAL1366",
+        "after": "FINAL1448",
+        "count": 1
+      },
+      {
+        "before": "   if arm=='conflict':\n    def pg_start():",
+        "after": "   diag_spec=importlib.util.spec_from_file_location('frozen_diagnostic_protocol',candidates/'tests/diagnostic-protocol.py');diag=importlib.util.module_from_spec(diag_spec);diag_spec.loader.exec_module(diag);item['diagnostic_qualification']=diag.qualify(lambda *a,**kw:ex(role,*a,**kw),folder,group,item,plan);record(key+'-read-only-diagnostic-allowlist-memory-and-local-file-boundaries',item['diagnostic_qualification']['phase']=='passed');save()\n   if arm=='conflict':\n    def pg_start():",
+        "count": 1
+      }
+    ],
+    "runner.py": [
+      {
+        "before": "final1366",
+        "after": "final1448",
+        "count": 2
+      },
+      {
+        "before": "FINAL1366",
+        "after": "FINAL1448",
+        "count": 1
+      }
+    ],
+    "artifact-transfer.py": [
+      {
+        "before": "final1366",
+        "after": "final1448",
+        "count": 1
+      }
+    ]
+  },
+  "original_worker_campaign_engine_port_observer_and_all_SLA_criteria_unchanged": true,
+  "new_protocol_module_sha256": "a265d7f3f3035c790d2e63238b8a6b75efcf02a2a8d9713e96c3f1f21d58a493",
+  "default15s_manual_budget_original_all8_unchanged": true,
+  "product_code_changed": false
+}
