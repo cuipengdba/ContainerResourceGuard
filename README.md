@@ -1,5 +1,8 @@
 # ContainerResourceGuard
 
+实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
+
+
 ContainerResourceGuard（CRG）在容器内部控制当前容器的 CPU、内存和 IO。**一个容器一份 Agent**，DBS 与 HISDBS 分别运行；无需 Operator、CRD、Docker socket 或 Kubernetes API。容器或 Pod 重建后重新发现自身 cgroup，不需要保存或手改旧 ID。
 
 当前交付：[v1.0.0-preview.5 工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)。[逐容器升级步骤](docs/upgrade-preview4-preview5.zh.md)说明下载校验、配置/profile/journal保留、安装及回退。八项公开附件已[实际下载校验](docs/test-results-preview5-publication.json)，后续补充测试不替换已发布文件。
