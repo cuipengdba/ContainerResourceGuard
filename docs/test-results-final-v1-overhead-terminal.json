@@ -1,0 +1,190 @@
+{
+  "schema": "crg-final-ELF-overhead-independent-terminal-v1",
+  "phase": "passed",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "version": "v1.0.0",
+  "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "job_sha256": "4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230",
+  "plan_sha256": "28c4adb773b90f15de7e13b6cf105488efcd17481565cd8ac50f47497d3262c2",
+  "terminal_node_utc": "2026-11-15T07:55:25.315415+00:00",
+  "actual_measurement_seconds": 1800.0293409738224,
+  "runner_exit": 0,
+  "runner_and_worker_original_absent": true,
+  "namespace_absent": true,
+  "six_original_PID_start_instances_and_three_parent_leaf_pairs_absent": true,
+  "all_frozen_inputs_unchanged": true,
+  "original_report_sha256": "3a9f00c75b629ddf5d070dccb9218432ecc814670b6fb453c6754ad0dc48e619",
+  "cases": {
+    "healthy": {
+      "samples": 181,
+      "recomputed": {
+        "CPU_single_core_percent": 0.022777670634829786,
+        "max_RSS_bytes": 10223616,
+        "write_bytes_delta": 155648,
+        "wchar_delta": 79412,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.001020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0084669459611,
+        "same_Agent_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "identity": {
+        "pod_uid": "5bb3c33e-3df4-461a-8d61-bd81f61a3efe",
+        "container_id": "06c9d1959adae32ed0294c0fe7cd93e4c2f8b5510325e5e5628c9da538aebee5",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5bb3c33e_3df4_461a_8d61_bd81f61a3efe.slice/cri-containerd-06c9d1959adae32ed0294c0fe7cd93e4c2f8b5510325e5e5628c9da538aebee5.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5bb3c33e_3df4_461a_8d61_bd81f61a3efe.slice",
+        "main": {
+          "pid": 1258601,
+          "start_ticks": 166735216
+        },
+        "Agent": {
+          "pid": 1258620,
+          "start_ticks": 166735224
+        }
+      },
+      "all_own_processes_and_parent_leaf_absent": true,
+      "terminal_files": {
+        "logs": [
+          {
+            "filename": "crg-2026-11-15.log",
+            "bytes": 2716,
+            "mode": "0o600",
+            "sha256": "c4317be274b39ec3a8c261934c0a05b21052de7aeade85536f9f59025d96d7aa",
+            "has_v2_detection": true,
+            "has_high_policy": true
+          }
+        ],
+        "marker": null,
+        "metrics_symlink": false,
+        "events_symlink": false,
+        "journal_sha256": "5e62213739f8aabf3c4d666e3820b3cd913edbbf489f3f7732f37f7e5c6fdf22",
+        "status_sha256": "d9d47649abee42ae1cc3acb728f40b03d0c0a194f300dd5d4ae754f2b9043d4e"
+      }
+    },
+    "export-failure": {
+      "samples": 181,
+      "recomputed": {
+        "CPU_single_core_percent": 0.022777670872047056,
+        "max_RSS_bytes": 10354688,
+        "write_bytes_delta": 45056,
+        "wchar_delta": 15698,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0084481998347,
+        "same_Agent_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "identity": {
+        "pod_uid": "6c37f923-cd02-477d-9f1e-1240245bd5d9",
+        "container_id": "74a895b188092ac8a4e5ed7041b9406cd7291cc42867f5c5676335c1c8c302c9",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod6c37f923_cd02_477d_9f1e_1240245bd5d9.slice/cri-containerd-74a895b188092ac8a4e5ed7041b9406cd7291cc42867f5c5676335c1c8c302c9.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod6c37f923_cd02_477d_9f1e_1240245bd5d9.slice",
+        "main": {
+          "pid": 1260107,
+          "start_ticks": 166735683
+        },
+        "Agent": {
+          "pid": 1260127,
+          "start_ticks": 166735686
+        }
+      },
+      "all_own_processes_and_parent_leaf_absent": true,
+      "terminal_files": {
+        "logs": [
+          {
+            "filename": "crg-2026-11-15.log",
+            "bytes": 2714,
+            "mode": "0o600",
+            "sha256": "8473fea5efdfd307c7f90425b119d948620f16092b5d144675e648972f82ac2d",
+            "has_v2_detection": true,
+            "has_high_policy": true
+          }
+        ],
+        "marker": "preserve",
+        "metrics_symlink": true,
+        "events_symlink": true,
+        "journal_sha256": "fcc742bdfad8de2da6c76beafcc6476eb5775cd8a23c297405372e68d7f8a3da",
+        "status_sha256": "d7900b392dbe07516497ac09c726dec2b383659c0d9c28644719df3d100860ad"
+      }
+    },
+    "readonly": {
+      "samples": 181,
+      "recomputed": {
+        "CPU_single_core_percent": 0.031110965689796776,
+        "max_RSS_bytes": 9904128,
+        "write_bytes_delta": 1138688,
+        "wchar_delta": 327469,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.066020348,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0084137010854,
+        "same_Agent_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "100000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "identity": {
+        "pod_uid": "99212a91-97a8-4fbf-958e-57b0c4d7d483",
+        "container_id": "3182bc38c80939522136c711e6240ee8465dd0e5ac35b87692706cb847a84ca0",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod99212a91_97a8_4fbf_958e_57b0c4d7d483.slice/cri-containerd-3182bc38c80939522136c711e6240ee8465dd0e5ac35b87692706cb847a84ca0.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod99212a91_97a8_4fbf_958e_57b0c4d7d483.slice",
+        "main": {
+          "pid": 1261070,
+          "start_ticks": 166736048
+        },
+        "Agent": {
+          "pid": 1261090,
+          "start_ticks": 166736051
+        }
+      },
+      "all_own_processes_and_parent_leaf_absent": true,
+      "terminal_files": {
+        "logs": [
+          {
+            "filename": "crg-2026-11-15.log",
+            "bytes": 2934,
+            "mode": "0o600",
+            "sha256": "b744ffb8578d240fcccae0aea64430a690dea60a0c0db564e5d7f020f8f45299",
+            "has_v2_detection": true,
+            "has_high_policy": true
+          }
+        ],
+        "marker": null,
+        "metrics_symlink": false,
+        "events_symlink": false,
+        "journal_sha256": "689d46a6719f61a4235cca4fc3becd5b7d67d73542450154f6890522cbc41717",
+        "status_sha256": "3ca0b4decd5798af63dbd2f766707dfc8b65e506c380018bab063f2d0a2a5f7f"
+      }
+    }
+  },
+  "scope": "AMD64/Linux5.14 native exact final ELF, three isolated placeholder PID1 containers, one Agent each. Shared node with old seven-day78; no vendor performance, default20 promise, exclusive long duration or stable release accepted. ManualIOPS8 is explicit overhead stress configuration, not percent policy. No business/cache process or existing controls are modified.",
+  "new_long_started": false,
+  "stable_release_accepted": false
+}

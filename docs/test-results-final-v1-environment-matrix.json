@@ -1,0 +1,152 @@
+{
+  "schema": "crg-final-tested-environment-matrix-v1",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "candidate_version": "v1.0.0",
+  "status": "tested combinations only; stable release pending",
+  "vendor_node": {
+    "observation": {
+      "phase": "read-only-current-test-environment",
+      "node_utc": "2026-11-15T07:43:14.480311+00:00",
+      "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+      "machine": "x86_64",
+      "os_release": {
+        "ID": "almalinux",
+        "VERSION_ID": "9.6",
+        "PRETTY_NAME": "AlmaLinux 9.6 (Sage Margay)"
+      },
+      "versions": {
+        "containerd": [
+          "containerd github.com/containerd/containerd v1.6.27 a1496014c916f9e62104b33d1bb5bd03b0858e59"
+        ],
+        "runc": [
+          "runc version 1.1.11",
+          "commit: v1.1.11-0-g4bccb38c",
+          "spec: 1.0.2-dev"
+        ],
+        "crictl": [
+          "crictl version 1.27.0"
+        ]
+      },
+      "unknown": [],
+      "kubernetes_node_info": {
+        "kernelVersion": "5.14.0-570.22.1.el9_6.x86_64",
+        "osImage": "AlmaLinux 9.6 (Sage Margay)",
+        "containerRuntimeVersion": "containerd://1.6.27",
+        "kubeletVersion": "v1.26.12",
+        "kubeProxyVersion": "v1.26.12",
+        "operatingSystem": "linux",
+        "architecture": "amd64"
+      },
+      "cgroup_mount": {
+        "fstype": "cgroup2",
+        "options": "rw,nosuid,nodev,noexec,relatime"
+      },
+      "test_backing_filesystem": {
+        "fstype": "xfs",
+        "maj:min": "253:0"
+      },
+      "scope": "Current node environment metadata only; no workload start/stop, cgroup write, CPU hotplug, reboot or calibration. Actual original-image business and native VM controller coverage remain separate. No IP, node name, machine ID, credentials or complete environment exported."
+    },
+    "result_evidence": "test-results-final-v1-full600-terminal.json",
+    "result_scope": "DBS/HISDBS original-image manual reference 18/18; default20 complete business failure retained; current metadata read separately without rerunning business",
+    "mount_permissions": "business enforcing fixture: privileged, writable cgroup v2 access, own leaf checked; runtime hard caps retained",
+    "storage_scope": "one backing device 253:0 with XFS; no independent multi-physical-disk claim"
+  },
+  "native_VM_rows": [
+    {
+      "runner_label": "ubuntu-22.04",
+      "architecture": "amd64",
+      "kernel": "6.8.0-1070-azure",
+      "OS_release": "not recorded; runner label only",
+      "cgroup": "pure v2, cgroup2fs; host cgroup namespace with own leaf validation",
+      "runtime": {
+        "Docker_Engine": "28.0.4",
+        "Docker_API": "1.48",
+        "containerd": "v2.4.2",
+        "runc": "1.5.2"
+      },
+      "permissions": "enforcing: privileged, rw host cgroup bind; negative: cap-drop ALL and read-only cgroup bind; private PID/mount/network namespaces",
+      "storage": "one fixture-owned scsi_debug device; real sibling partitions, shared whole-device cap; not independent physical disks",
+      "result": "26 native + 45 partition checks passed; cleanup qualified",
+      "vendor_business": false,
+      "artifact_name": "final-candidate-ubuntu-22.04-96092e64bb354082c3740aa66646c27ea77859f9",
+      "environment_sha256": "32ddc24a3579ff7759c7916fb068df38c766cc86a00a6390e3d055966d2ead5e",
+      "native_report_sha256": "dade357bd07ad8e1832b9e30968b7092ce12e1274a56a7113827dc2fbe734fec",
+      "partition_report_sha256": "5b2a42f672e1cec05612211182d8a3476f661e69eff133ed1ced3630ff7531ff"
+    },
+    {
+      "runner_label": "ubuntu-22.04-arm",
+      "architecture": "arm64",
+      "kernel": "6.8.0-1070-azure",
+      "OS_release": "not recorded; runner label only",
+      "cgroup": "pure v2, cgroup2fs; host cgroup namespace with own leaf validation",
+      "runtime": {
+        "Docker_Engine": "28.0.4",
+        "Docker_API": "1.48",
+        "containerd": "v2.4.2",
+        "runc": "1.5.2"
+      },
+      "permissions": "enforcing: privileged, rw host cgroup bind; negative: cap-drop ALL and read-only cgroup bind; private PID/mount/network namespaces",
+      "storage": "one fixture-owned scsi_debug device; real sibling partitions, shared whole-device cap; not independent physical disks",
+      "result": "26 native + 45 partition checks passed; cleanup qualified",
+      "vendor_business": false,
+      "artifact_name": "final-candidate-ubuntu-22.04-arm-96092e64bb354082c3740aa66646c27ea77859f9",
+      "environment_sha256": "88102d827473c9aa91321c5dde60a77c879300eb10c635568a1418631770630a",
+      "native_report_sha256": "c258ecf0a26475e6563029b9fd43beae268c393dfe05df4adb6ed8a2d0a5064d",
+      "partition_report_sha256": "ac569dde0b8e31f2c8975ba903d9894757bc17b7ceb30e4211f14d6683f3cb03"
+    },
+    {
+      "runner_label": "ubuntu-24.04",
+      "architecture": "amd64",
+      "kernel": "7.0.0-1014-aws",
+      "OS_release": "not recorded; runner label only",
+      "cgroup": "pure v2, cgroup2fs; host cgroup namespace with own leaf validation",
+      "runtime": {
+        "Docker_Engine": "28.0.4",
+        "Docker_API": "1.48",
+        "containerd": "v2.4.2",
+        "runc": "1.5.2"
+      },
+      "permissions": "enforcing: privileged, rw host cgroup bind; negative: cap-drop ALL and read-only cgroup bind; private PID/mount/network namespaces",
+      "storage": "one fixture-owned scsi_debug device; real sibling partitions, shared whole-device cap; not independent physical disks",
+      "result": "26 native + 45 partition checks passed; cleanup qualified",
+      "vendor_business": false,
+      "artifact_name": "final-candidate-ubuntu-24.04-96092e64bb354082c3740aa66646c27ea77859f9",
+      "environment_sha256": "14e9d227c7cd7035943a950a33016c3fe5e01213ec74beec1975f2e2efa20062",
+      "native_report_sha256": "4d26c5d656e6fd22800349dc1f1721e6e926855adbf1c64cf6352addac7fdd40",
+      "partition_report_sha256": "3da3d16c1679869202110dec050d9502a8a35ac34763e41c8f8f82e3b960dd00"
+    },
+    {
+      "runner_label": "ubuntu-24.04-arm",
+      "architecture": "arm64",
+      "kernel": "7.0.0-1017-azure",
+      "OS_release": "not recorded; runner label only",
+      "cgroup": "pure v2, cgroup2fs; host cgroup namespace with own leaf validation",
+      "runtime": {
+        "Docker_Engine": "28.0.4",
+        "Docker_API": "1.48",
+        "containerd": "v2.4.2",
+        "runc": "1.5.2"
+      },
+      "permissions": "enforcing: privileged, rw host cgroup bind; negative: cap-drop ALL and read-only cgroup bind; private PID/mount/network namespaces",
+      "storage": "one fixture-owned scsi_debug device; real sibling partitions, shared whole-device cap; not independent physical disks",
+      "result": "26 native + 45 partition checks passed; cleanup qualified",
+      "vendor_business": false,
+      "artifact_name": "final-candidate-ubuntu-24.04-arm-96092e64bb354082c3740aa66646c27ea77859f9",
+      "environment_sha256": "51d47c00920dd8138c177d399b74971063868e55c0f46b6250791b53047bd58b",
+      "native_report_sha256": "73650f7ffe1db0a943ff3b3f381c4aa8e043ac5f1ebd06bc3b9c23a6de006311",
+      "partition_report_sha256": "3cbb7b855265285214d76bdac0a4b5486861029ad2a33a6b6639358e5ea330b3"
+    }
+  ],
+  "exact_CI_evidence_sha256": "450a5ad4fd82eb1de444bb4a577a843966d962bed9ee2585a6ec19238f19ef59",
+  "not_qualified": [
+    "ARM64 DBS/HISDBS original-image business",
+    "two independent physical block devices",
+    "rootless/delegated-only enforcement",
+    "all Linux kernels or all runtime versions",
+    "physical-host reboot/CPU hotplug/complex LVM coverage",
+    "stable long-duration acceptance"
+  ],
+  "version_rule": "Only exact recorded combinations are tested. Build availability is not runtime qualification. Native CI is not vendor business. No unmeasured versions are called compatible.",
+  "stable_release_accepted": false
+}

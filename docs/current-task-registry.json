@@ -458,9 +458,9 @@
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "安装、卸载/恢复、配置语义和已测范围已有预发布文档。",
-        "remaining_or_boundary": "最终稳定包、精确矩阵和发布后操作演练尚待形成；main源码尚未合入。",
-        "evidence": "release-readiness-current.md"
+        "verified_scope": "安装/卸载恢复、首版配置语义与准确已测环境矩阵已归档，厂商/原生VM和权限逐组合对应证据。",
+        "remaining_or_boundary": "最终稳定包、发布后操作演练和main产品源码合入仍待完成。",
+        "evidence": "tested-environment-matrix.md"
       }
     },
     {
@@ -1330,12 +1330,12 @@
         "覆盖当前 5.14 环境及选定 6.x 环境；每个宣称组合有版本、权限和结果，未测版本不自动标为兼容"
       ],
       "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
-      "completion_claim": false,
+      "completion_claim": true,
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "5.14厂商amd64和6.8/7.0原生VM两架构有实际报告，环境范围分开。",
-        "remaining_or_boundary": "整理到稳定矩阵的运行时/runc/挂载方式逐组合证据，不能泛称全部内核兼容。",
-        "evidence": "testing-final-v1-native-CI-terminal.md"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "5.14厂商amd64及6.8/7.0两架构四原生VM组合已逐一列出准确内核、运行时/runc、挂载和权限，并对应18/284原件及摘要。",
+        "remaining_or_boundary": "选定组合矩阵本项完成；未测运行时、rootless、ARM厂商和独立物理多盘不宣称兼容，稳定发布仍待长期验收。",
+        "evidence": "tested-environment-matrix.md"
       }
     },
     {
@@ -1457,12 +1457,12 @@
         "高频异常不写满目录；原值日志持久化不能因限流而被省略；说明 CPU/RSS/写入量及开销变化"
       ],
       "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false,
+      "completion_claim": true,
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "有界事件及去重限流保留必要journal，旧版三场景低IO开销通过。",
-        "remaining_or_boundary": "固定最终ELF三场景已实际进入测量，仍须真实1800秒、原CPU/RSS/写入门槛通过及独立进程/父叶清理。",
-        "evidence": "testing-final-v1-overhead.md"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "准确源码有界事件/去重与必要journal持久化，固定最终ELF低IO、持续导出失败、只读三组各1800秒/181样本，CPU/RSS/写入/状态间隔原门槛和独立清理通过。",
+        "remaining_or_boundary": "本项有界事件和低IO开销完成；Agent指标不代表业务/整节点开销，不替代七天与不同有效限额回归。",
+        "evidence": "testing-final-v1-overhead-terminal.md"
       }
     },
     {
@@ -1659,9 +1659,9 @@
       "completion_claim": false,
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "保持原15s周期、CPU≤0.1%单核/RSS≤20MiB、状态约5min及低IO/异常门槛。",
-        "remaining_or_boundary": "固定最终ELF三场景已实际进入测量，仍须真实1800秒、原CPU/RSS/写入门槛通过及独立进程/父叶清理。",
-        "evidence": "testing-final-v1-overhead.md"
+        "verified_scope": "固定最终ELF原15s周期及30min实际开销三场景通过；CPU≤0.1%单核、RSS≤20MiB、状态≥299秒、低IO/异常写入预算及必要journal均核对。",
+        "remaining_or_boundary": "本轮有效强制预算为单套manual低IO额度；仍需不同有效限额的开销对比/回归和长期老化结果，不能将三种故障等同多种限额。",
+        "evidence": "testing-final-v1-overhead-terminal.md"
       }
     },
     {
@@ -1747,9 +1747,9 @@
       "completion_claim": false,
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "当前交付页明确已测/未测、预发布与稳定及部署的区别，全部证据保留。",
-        "remaining_or_boundary": "最终支持矩阵、运维、问题分级和补丁/归档规则需发布审核闭环。",
-        "evidence": "release-readiness-current.md"
+        "verified_scope": "逐组合运行时/内核/权限/存储矩阵已发布，厂商业务与原生控制、已测与未测分别列出，原件可追溯。",
+        "remaining_or_boundary": "运维、问题分级和补丁/归档规则需最终发布审核闭环；稳定发布与生产部署另记。",
+        "evidence": "tested-environment-matrix.md"
       }
     },
     {
@@ -3200,11 +3200,11 @@
   "current_52_scope_audit": {
     "documentation": "current-52-task-audit.md",
     "machine_audit": "current-52-task-audit.json",
-    "completed_in_defined_scope": 7,
+    "completed_in_defined_scope": 9,
     "stable_release_accepted": false
   },
   "final_v1_overhead": {
-    "phase": "measuring",
+    "phase": "passed",
     "documentation": "testing-final-v1-overhead.md",
     "plan": "test-plan-final-v1-overhead.json",
     "preflight": "test-results-final-v1-overhead-preflight.json",
@@ -3216,7 +3216,7 @@
     "measurement_seconds": 1800,
     "cases": 3,
     "measurement_started": true,
-    "accepted": false,
+    "accepted": true,
     "stable_release_accepted": false,
     "start_observation": "test-start-final-v1-overhead.json",
     "actual_runner": {
@@ -3232,6 +3232,18 @@
       "start_ticks": 166734858,
       "entry": "/var/tmp/crg-final1404-tools-20261115/overhead-job.py"
     },
-    "initial_sample_count_each": 1
+    "initial_sample_count_each": 1,
+    "terminal_documentation": "testing-final-v1-overhead-terminal.md",
+    "terminal_qualification": "test-results-final-v1-overhead-terminal.json",
+    "samples_each": 181,
+    "runner_exit": 0,
+    "all_owned_processes_and_cgroups_removed": true
+  },
+  "tested_environment_matrix": {
+    "documentation": "tested-environment-matrix.md",
+    "machine_matrix": "test-results-final-v1-environment-matrix.json",
+    "native_VM_combinations": 4,
+    "vendor_node_combinations": 1,
+    "stable_release_accepted": false
   }
 }
