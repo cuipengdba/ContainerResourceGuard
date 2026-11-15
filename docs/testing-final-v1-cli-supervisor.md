@@ -1,6 +1,6 @@
 # 固定最终候选：CLI状态与可选启动安装验收
 
-本轮已于节点2026-11-15T11:56:13.864889+00:00唯一启动，runner 588532/start168371697。11项输入、17项本地核对和原生准入保持；DBS首次快照8项主检查、20项在线子检查通过，正在自然老化等待。两角色完整600秒及终态仍待。旧1523稿漏掉移除维护块后的两个恢复配置变量，在上传前静态检查拦截，原字节保留，新1525显式初始化；不是产品或真机运行失败。
+本轮已完成26/26主检查、48/48子检查，DBS/HISDBS各自新600秒SQL/API通过，全部自有对象清理已独立确认。[准确终态](testing-final-v1-cli-supervisor-terminal.md)。11项冻结输入、17项本地核对和原生准入保持，未重建最终产物。旧1523稿漏掉移除维护块后的两个恢复配置变量，在上传前静态检查拦截，原字节保留，新1525显式初始化；不是产品或真机运行失败。
 
 仅使用准确源码 ced461705ebc27315a59aefe463f9b4af47130a3 的固定 v1.0.0 ELF 9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8，不升级或重建程序。沿用1501实际通过的原业务夹具/原生worker与完整配额契约；契约遗留 old/new doctor 字段在本轮均为同一个最终ELF的实际只读doctor结果，不冒充两版本。
 
@@ -14,7 +14,7 @@ DBS/HISDBS分别新namespace/输出/run-id，各13项主检查，总26；每角�
 
 启动前准确要求：1465完整诊断业务和71登记记录清理；1461两档1800秒开销与全部自有对象清理；1501升级回滚40/40、64登记记录及runner/driver/两namespace/父叶清理。原生预检已执行同一runner的实际只读前缀；启动时再执行一次。旧七天任务保留，1396正式长测未开始。新夹具需28GiB可用内存、20GiB磁盘，运行保持8GiB内存余量。
 
-P07.1/P08.1等待本轮实际证据；当前16/52完成和稳定版未接受保持。未来格式、镜像持久化、故障压力和长期等分别继续；不是默认20%性能、厂商ARM/独立物理多盘、自动业务故障切版或两次正式minor证明。
+P08.1按已验证模板范围完成，P07.1仍保留逐字段组合待办；当前17/52完成，稳定版未接受。未来格式、镜像持久化、故障压力和长期等分别继续；不是默认20%性能、厂商ARM/独立物理多盘、自动业务故障切版或两次正式minor证明。
 
 [原设计](testing-final-v1-cli-supervisor-design.md)、[冻结计划](test-plan-final-v1-cli-supervisor.json)、[准确工具](../tests/final-v1-cli-supervisor-frozen/README.md)、[适配记录](test-adapter-final-v1-cli-supervisor.json)、[本地核对](test-results-final-v1-cli-supervisor-local-preflight.json)、[原生准入](test-results-final-v1-cli-supervisor-native-preflight.json)、[上传前拒绝原件](test-results-final-v1-cli-preupload-rejection.json)、[1501前置终态](testing-final-v1-binary-maintenance-terminal.md)。
 

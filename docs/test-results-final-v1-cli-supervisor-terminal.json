@@ -1,0 +1,781 @@
+{
+  "schema": "crg-fixed-final-cli-supervisor-terminal-qualification-v1",
+  "phase": "passed",
+  "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "programs": {
+    "candidate": {
+      "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+      "embedded_version": "v1.0.0",
+      "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+      "binary_bytes": 4026528,
+      "release_state": "fixed final candidate, not released",
+      "fixed_identity_evidence": "final-v1-candidate-identity.json"
+    }
+  },
+  "job_sha256": "d89b41e3646832724c0007cff6a3ac8055bd244356b79d56557b2fd6b79b06c0",
+  "plan_sha256": "6b2a9f475eb68f1d8f64e6a949e96fa489ee7293029863c35d9fbbf8dae52759",
+  "coordinator_report_sha256": "5e1583ff8e5d78122d25613801aca3d37aefb1960e463d457a79751dab9bfa3d",
+  "node_utc": "2026-11-15T12:18:34.627855+00:00",
+  "planned_checks": 26,
+  "recorded_checks": 26,
+  "passed_checks": 26,
+  "failed_checks": 0,
+  "unexecuted_checks": 0,
+  "planned_subchecks": 48,
+  "recorded_subchecks": 48,
+  "passed_subchecks": 48,
+  "roles": {
+    "dbs": {
+      "phase": "passed",
+      "recorded_checks": 13,
+      "passed_checks": 13,
+      "failed_checks": 0,
+      "unexecuted_checks": 0,
+      "recorded_subchecks": 24,
+      "passed_subchecks": 24,
+      "error": null,
+      "native": {
+        "phase": "passed",
+        "elapsed_seconds": 600.3595087600406,
+        "requested_duration_seconds": 600,
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            296,
+            3,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "max_seconds": 1.339054541895166,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 1.554157770704478
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.007618683855980635,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.8150023138150573
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "native_failed_criteria": [],
+      "commands": 31,
+      "status_observations": 4,
+      "natural_age_wait": {
+        "started_epoch": 1794743831.476115,
+        "snapshot_time_utc": "2026-11-15T11:56:39Z",
+        "ended_epoch": 1794744104.6421485,
+        "observed_age_seconds": 305
+      },
+      "private_vendor_template_supported": false,
+      "supervisor_copies": [
+        {
+          "name": "template-colon",
+          "source_sha256": "83f973e0eb53fd001d04731e1972157d8d9e9eafaed244b80c0e7f9eaf95040b",
+          "proposed_sha256": "e3b895b3d2346a24597c5f4f1fc26e70cf9d021672fdb916a2a11ae131dc2752",
+          "source_mode": 488,
+          "private_source_bytes_exported": false
+        },
+        {
+          "name": "template-true",
+          "source_sha256": "85576d94b3242efdd0216ce3d6d032008fca9df5f4c572dbdaa16acc1284b631",
+          "proposed_sha256": "913f748b09a912c15b7ccc09f7c2c3e4b7393cfaa9cbc701a24418129d3136f6",
+          "source_mode": 488,
+          "private_source_bytes_exported": false
+        }
+      ],
+      "all_online_actions_temporally_contained": true,
+      "original_runtime_and_empty_journal_restored": true,
+      "scoped_accepted": true,
+      "independent_cleanup": {
+        "namespace_absent": true,
+        "fixtures": [
+          {
+            "leaf_absent": true,
+            "parent_absent": true,
+            "processes": [
+              {
+                "pid": 591089,
+                "start_ticks": 168372415,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 591741,
+                "start_ticks": 168372719,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 591758,
+                "start_ticks": 168372719,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 591759,
+                "start_ticks": 168372719,
+                "executable": "/opt/crg/crg",
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "original_absent": true
+              },
+              {
+                "pid": 593218,
+                "start_ticks": 168373131,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593223,
+                "start_ticks": 168373131,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593233,
+                "start_ticks": 168373131,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593243,
+                "start_ticks": 168373131,
+                "executable": "/usr/bin/su",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593247,
+                "start_ticks": 168373132,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593258,
+                "start_ticks": 168373133,
+                "executable": "/opt/dbs/bin/dbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593261,
+                "start_ticks": 168373139,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 593405,
+                "start_ticks": 168373185,
+                "executable": "/opt/dbs/bin/dbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597789,
+                "start_ticks": 168374961,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597817,
+                "start_ticks": 168375000,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597865,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597866,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597867,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597868,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597869,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597870,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597871,
+                "start_ticks": 168375016,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 597872,
+                "start_ticks": 168375019,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 598817,
+                "start_ticks": 168375569,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 599164,
+                "start_ticks": 168375625,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 599165,
+                "start_ticks": 168375626,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 600057,
+                "start_ticks": 168376020,
+                "executable": "/opt/ccg/bin/containercacheguard",
+                "sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+                "original_absent": true
+              },
+              {
+                "pid": 600058,
+                "start_ticks": 168376020,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 591759,
+                "start_ticks": 168372719,
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "executable": "/opt/crg/crg",
+                "original_absent": true
+              },
+              {
+                "pid": 676325,
+                "start_ticks": 168408930,
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "executable": "/opt/crg/crg",
+                "original_absent": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "hisdbs": {
+      "phase": "passed",
+      "recorded_checks": 13,
+      "passed_checks": 13,
+      "failed_checks": 0,
+      "unexecuted_checks": 0,
+      "recorded_subchecks": 24,
+      "passed_subchecks": 24,
+      "error": null,
+      "native": {
+        "phase": "passed",
+        "elapsed_seconds": 600.3821730390191,
+        "requested_duration_seconds": 600,
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            298,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011206242023035884,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 0.21495258621871471
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009207531111314893,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 0.9753417221363634
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "native_failed_criteria": [],
+      "commands": 31,
+      "status_observations": 4,
+      "natural_age_wait": {
+        "started_epoch": 1794744488.5547616,
+        "snapshot_time_utc": "2026-11-15T12:07:44Z",
+        "ended_epoch": 1794744771.5511608,
+        "observed_age_seconds": 305
+      },
+      "private_vendor_template_supported": false,
+      "supervisor_copies": [
+        {
+          "name": "template-colon",
+          "source_sha256": "83f973e0eb53fd001d04731e1972157d8d9e9eafaed244b80c0e7f9eaf95040b",
+          "proposed_sha256": "e3b895b3d2346a24597c5f4f1fc26e70cf9d021672fdb916a2a11ae131dc2752",
+          "source_mode": 488,
+          "private_source_bytes_exported": false
+        },
+        {
+          "name": "template-true",
+          "source_sha256": "85576d94b3242efdd0216ce3d6d032008fca9df5f4c572dbdaa16acc1284b631",
+          "proposed_sha256": "913f748b09a912c15b7ccc09f7c2c3e4b7393cfaa9cbc701a24418129d3136f6",
+          "source_mode": 488,
+          "private_source_bytes_exported": false
+        }
+      ],
+      "all_online_actions_temporally_contained": true,
+      "original_runtime_and_empty_journal_restored": true,
+      "scoped_accepted": true,
+      "independent_cleanup": {
+        "namespace_absent": true,
+        "fixtures": [
+          {
+            "leaf_absent": true,
+            "parent_absent": true,
+            "processes": [
+              {
+                "pid": 740639,
+                "start_ticks": 168438839,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 741814,
+                "start_ticks": 168439233,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 741825,
+                "start_ticks": 168439234,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 741826,
+                "start_ticks": 168439234,
+                "executable": "/opt/crg/crg",
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "original_absent": true
+              },
+              {
+                "pid": 743340,
+                "start_ticks": 168439650,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743342,
+                "start_ticks": 168439651,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743355,
+                "start_ticks": 168439651,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743364,
+                "start_ticks": 168439651,
+                "executable": "/usr/bin/su",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743369,
+                "start_ticks": 168439651,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743380,
+                "start_ticks": 168439652,
+                "executable": "/opt/dbs/bin/hisdbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743382,
+                "start_ticks": 168439659,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 743483,
+                "start_ticks": 168439703,
+                "executable": "/opt/dbs/bin/hisdbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 745834,
+                "start_ticks": 168440734,
+                "executable": "/opt/ccg/bin/containercacheguard",
+                "sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+                "original_absent": true
+              },
+              {
+                "pid": 747112,
+                "start_ticks": 168440996,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747144,
+                "start_ticks": 168441034,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747173,
+                "start_ticks": 168441041,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747188,
+                "start_ticks": 168441060,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747189,
+                "start_ticks": 168441060,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747190,
+                "start_ticks": 168441060,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747191,
+                "start_ticks": 168441060,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747192,
+                "start_ticks": 168441061,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747193,
+                "start_ticks": 168441061,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747194,
+                "start_ticks": 168441061,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 747196,
+                "start_ticks": 168441064,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 741826,
+                "start_ticks": 168439234,
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "executable": "/opt/crg/crg",
+                "original_absent": true
+              },
+              {
+                "pid": 822867,
+                "start_ticks": 168474644,
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "executable": "/opt/crg/crg",
+                "original_absent": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "exact_artifact_members": 18,
+  "exact_artifact_bytes": 791216,
+  "independently_absent_registered_process_instances": 55,
+  "independently_absent_unique_process_instances": 53,
+  "independent_evidence_checks": [
+    {
+      "name": "all-exact-terminal-members-index-source-map-and-known-handles-absent",
+      "passed": true
+    },
+    {
+      "name": "dbs-raw-role-report-and-coordinator-bound",
+      "passed": true
+    },
+    {
+      "name": "dbs-actual-single-fixed-final-buildinfo-ELF",
+      "passed": true
+    },
+    {
+      "name": "dbs-same-final-two-doctor-legacy-labels-predeclared-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-each-recorded-actual-writer-has-fixed-ELF-journal-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "dbs-original-native-SLA-config-unchanged",
+      "passed": true
+    },
+    {
+      "name": "dbs-full-native-original600-criteria-recomputed",
+      "passed": true
+    },
+    {
+      "name": "dbs-all-online-CLI-subchecks-four-status-and-resume-inside-own600",
+      "passed": true
+    },
+    {
+      "name": "dbs-all22-online-and-two-post600-declared-subchecks-passed",
+      "passed": true
+    },
+    {
+      "name": "dbs-exact-online-command-count-and-explicit-refusal-exits",
+      "passed": true
+    },
+    {
+      "name": "dbs-four-status-labels-and-actual-writer-lock-states",
+      "passed": true
+    },
+    {
+      "name": "dbs-natural305-age-with-original-status-hash-and-mtime-no-edits",
+      "passed": true
+    },
+    {
+      "name": "dbs-supported-public-templates-both-installed-private-safe-boundary",
+      "passed": true
+    },
+    {
+      "name": "dbs-lock-trust-unknown-and-unresolved-journal-reasons-retained",
+      "passed": true
+    },
+    {
+      "name": "dbs-disable-original-eight-controls-empty-journal-raw-config-and-post-uninstall",
+      "passed": true
+    },
+    {
+      "name": "dbs-all-original-instance-namespace-parent-and-leaf-absent",
+      "passed": true
+    },
+    {
+      "name": "dbs-independent-acceptance-matches-coordinator",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-raw-role-report-and-coordinator-bound",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-actual-single-fixed-final-buildinfo-ELF",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-same-final-two-doctor-legacy-labels-predeclared-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-each-recorded-actual-writer-has-fixed-ELF-journal-and-eight-controls",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-original-native-SLA-config-unchanged",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-full-native-original600-criteria-recomputed",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-all-online-CLI-subchecks-four-status-and-resume-inside-own600",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-all22-online-and-two-post600-declared-subchecks-passed",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-exact-online-command-count-and-explicit-refusal-exits",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-four-status-labels-and-actual-writer-lock-states",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-natural305-age-with-original-status-hash-and-mtime-no-edits",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-supported-public-templates-both-installed-private-safe-boundary",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-lock-trust-unknown-and-unresolved-journal-reasons-retained",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-disable-original-eight-controls-empty-journal-raw-config-and-post-uninstall",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-all-original-instance-namespace-parent-and-leaf-absent",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-independent-acceptance-matches-coordinator",
+      "passed": true
+    }
+  ],
+  "scoped_cli_supervisor_accepted": true,
+  "stable_release_accepted": false,
+  "manual_budget": {
+    "cpu_cores": 7.2,
+    "memory_high_bytes": 20001980416,
+    "read_write_bps": 67108864,
+    "read_write_iops": 4096,
+    "external_memory_max_bytes": 21474836480
+  },
+  "criteria_or_quotas_relaxed": false,
+  "limitations": [
+    "Final candidate only; no binary upgrade performed in this new scope. Historical contract old/new doctor field labels both refer to exact same final ELF.",
+    "Each role new original600 SQL/API validation; no new physical backup cycle asserted. Completed1465 realengine acceptance is separate prerequisite.",
+    "Supervisor edits target protected private /recovery copies only. No script execution/extra vendor processes, no real readonlyCCG/start/PID1 changes. Existing failsoft startup evidence remains separately attributed.",
+    "Unknown private vendor template is explicitly refused unchanged. Two known public source templates must install/uninstall. No universal vendor installer layout guarantee.",
+    "Natural age uses persisted actual TimeUTC and unchanged snapshot bytes/mtime; no auto stale boolean exists. Optional helper may briefly launch disabled run attempts that exit before resource lock; quiescence is verified by actual inode lock, original journal/controls and snapshot preservation.",
+    "All online checks and Agent resume must fit successful original600. Legal uninstall is explicitly after disable in post600 phase, with original runtime controls and empty journal.",
+    "Manual pass does not override default20business failure; no exclusive24h, seven-day, causal performance, vendorARM/multi-independentphysical proof."
+  ]
+}
