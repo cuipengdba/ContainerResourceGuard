@@ -1,0 +1,96 @@
+{
+  "base_manifest": "crg-r1501-final-maintenance-frozen.json",
+  "reversible_text_changes": {
+    "maintenance-business.py": [
+      {
+        "before": "final1501",
+        "after": "final1525",
+        "count": 3
+      },
+      {
+        "before": "FINAL1501",
+        "after": "FINAL1525",
+        "count": 1
+      },
+      {
+        "before": "preview5final",
+        "after": "cli1525",
+        "count": 2
+      },
+      {
+        "before": "binary=candidates/'binaries/previous'",
+        "after": "binary=candidates/'binaries/candidate'",
+        "count": 1
+      },
+      {
+        "before": "report['sources']['previous']['binary_sha256']",
+        "after": "report['sources']['candidate']['binary_sha256']",
+        "count": 1
+      },
+      {
+        "before": "plan['source_sha256']['binaries/previous']",
+        "after": "plan['source_sha256']['binaries/candidate']",
+        "count": 1
+      },
+      {
+        "before": "oldsha=plan['programs']['previous']['binary_sha256'];newsha=plan['programs']['candidate']['binary_sha256']",
+        "after": "oldsha=newsha=plan['programs']['candidate']['binary_sha256']",
+        "count": 1
+      },
+      {
+        "before": "-actual-published-preview5-one-writer-and-predeclared-originals",
+        "after": "-actual-fixed-final-one-writer-and-predeclared-originals",
+        "count": 1
+      },
+      {
+        "before": "   def install(name):return cli('binary-install','--install-dir','/opt/crg','--backup-dir','/recovery/'+name,'--previous-sha256',oldsha,'--candidate-sha256',newsha,timeout=90)\n   def rollback(name):return cli('binary-rollback','--install-dir','/opt/crg','--backup-dir','/recovery/'+name,timeout=90)\n   cli('quiesce');record(key+'-online-quiesce-preserves-controls-PID1-and-original-cache',same())\n   result=json.loads(install('first').stdout);record(key+'-first-online-install-preserves-originals',result['state']=='installed' and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==newsha and same())\n   result=json.loads(rollback('first').stdout);record(key+'-immediate-rollback-before-enable-preserves-originals',result['state']=='rolled_back' and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==oldsha and same())\n   install('second');cli('enable');record(key+'-second-install-new-source-resumes-one-writer',wait_guard(newsha) and same())\n   cli('quiesce');result=json.loads(rollback('second').stdout);record(key+'-unchanged-snapshot-rollback-after-candidate-ran-is-allowed',result['state']=='rolled_back' and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==oldsha and same())\n   cli('enable');record(key+'-old-source-resumes-after-unchanged-snapshot-rollback',wait_guard(oldsha) and same())\n   install_third_quiesce=cli('quiesce');install('third');cli('enable');record(key+'-third-install-new-source-resumes-with-same-budget',wait_guard(newsha) and same())\n   cli('quiesce');receipt_before=(folder/'recovery/third/receipt.json').read_bytes();config_path=folder/'crg-config/config.json';original_config=config_path.read_bytes();negative=dict(plan['configuration'],interval_seconds=16);temp_config=folder/'crg-config/snapshot-negative.json';assert not temp_config.exists()\n   try:\n    temp_config.write_text(json.dumps(negative));os.replace(temp_config,config_path);refused=cli('binary-rollback','--install-dir','/opt/crg','--backup-dir','/recovery/third',timeout=90,_expect_refusal=True);assert statefile.read_bytes()==held and {f:(group/f).read_text() for f in policy_contract.FILES}==contract.controls and (folder/'recovery/third/receipt.json').read_bytes()==receipt_before and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==newsha\n   finally:temp_config.write_bytes(original_config);os.replace(temp_config,config_path)\n   record(key+'-changed-quiescent-config-refuses-old-receipt-without-state-change',refused.returncode!=0 and same() and config_path.read_bytes()==original_config)\n   result=json.loads(cli('binary-install','--install-dir','/opt/crg','--backup-dir','/recovery/reverse','--previous-sha256',newsha,'--candidate-sha256',oldsha,timeout=90,_executor='/recovery/third/previous-crg').stdout);record(key+'-explicit-reverse-new-receipt-preserves-current-originals',result['state']=='installed' and result['previous_sha256']==newsha and result['candidate_sha256']==oldsha and hashlib.sha256((folder/'crg/crg').read_bytes()).hexdigest()==oldsha and same())\n   cli('enable');record(key+'-old-source-resumes-after-explicit-reverse',wait_guard(oldsha) and same())\n",
+        "after": "   config_path=folder/'crg-config/config.json';original_config=config_path.read_bytes()\n   spec=importlib.util.spec_from_file_location('actual_cli_supervisor_checks',candidates/'tests/cli-supervisor-checks.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);cli_checks=module.Checks(locals().copy());cli_checks.online()\n   record(key+'-actual-CLI-human-JSON-natural-age-lock-and-resume',len(item['cli_status_observations'])==4 and same())\n   record(key+'-actual-supervisor-trust-lock-install-and-owned-uninstall-refusal',len(item['cli_supervisor_checks'])==len(plan['cli_supervisor_online_checks']) and all(v['passed'] for v in item['cli_supervisor_checks']) and same())\n",
+        "count": 1
+      },
+      {
+        "before": "   item['phase']='short-acceptance-passed';save()",
+        "after": "   cli_checks.after_disable();record(key+'-post600-private-copy-uninstall-after-empty-journal',len(item['cli_supervisor_checks'])==len(plan['cli_supervisor_online_checks'])+len(plan['cli_supervisor_post600_checks']) and all(v['passed'] for v in item['cli_supervisor_checks']))\n   item['phase']='short-acceptance-passed';save()",
+        "count": 1
+      }
+    ],
+    "runner.py": [
+      {
+        "before": "final1501",
+        "after": "final1525",
+        "count": 2
+      },
+      {
+        "before": "FINAL1501",
+        "after": "FINAL1525",
+        "count": 1
+      },
+      {
+        "before": "preview5final",
+        "after": "cli1525",
+        "count": 2
+      },
+      {
+        "before": "root.mkdir(mode=0o700);out=",
+        "after": "prior=plan['previous_binary_maintenance'];pw=Path(prior['tools']);pr=Path(prior['output']);raw=(pr/'report.json').read_bytes();report=json.loads(raw);term=json.loads((pw/'exit.json').read_bytes());assert sha(raw)==prior['report_sha256'] and report['phase']=='passed' and term['exit']==0 and term['artifact_index_complete'] and term['job_sha256']==prior['job_sha256'] and term['plan_sha256']==prior['plan_sha256'] and prior_absent(json.loads((pw/'launch.json').read_bytes()));maintenance_registered=0\nfor row in report['roles'].values():\n assert row['recorded_checks']==row['passed_checks']==20 and row['phase']=='passed' and prior_absent(row['driver'])\n for record in row['cleanup']:\n  identity=record['identity'];assert not Path(identity['group']).exists() and not Path(identity['pod_parent']).exists() and all(prior_absent(p) for p in identity['processes']);maintenance_registered+=len(identity['processes'])\nassert maintenance_registered==prior['registered_process_instances_absent']==64\nfor ns in prior['namespaces'].values():\n p=subprocess.run(['kubectl','get','namespace',ns,'--ignore-not-found','--request-timeout=8s','-o','json'],capture_output=True,text=True,timeout=12,check=True);assert not p.stdout.strip() and not p.stderr\nroot.mkdir(mode=0o700);out=",
+        "count": 1
+      },
+      {
+        "before": "    for receipt in ['first','second','third','reverse']:copy(folder/'recovery'/receipt/'receipt.json',role+'-'+receipt+'-receipt.json')\n",
+        "after": "",
+        "count": 1
+      }
+    ],
+    "artifact-transfer.py": [
+      {
+        "before": "final1501",
+        "after": "final1525",
+        "count": 1
+      }
+    ]
+  },
+  "new_module": "tests/cli-supervisor-checks.py",
+  "single_uploaded_fixed_final_ELF": true,
+  "configuration_budget_worker_campaign_engine_optional_helper_unchanged": true,
+  "production_source_changed": false,
+  "new_main_checks_each_role": 13
+}
