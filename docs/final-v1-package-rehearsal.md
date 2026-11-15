@@ -38,3 +38,13 @@ gh attestation verify dist/containerresourceguard-v1.0.0-linux-amd64.tar.gz \
 ## 验收记录要求
 
 归档实际打包提交、源码提交、工具版本、每个产物摘要/大小、离线正常和拒绝结果、SBOM schema 核对、重复构建结果，以及实际 Actions run 与签名核对。失败必须保留原结果后修订，不替换正在长期测试的 ELF。没有取得的来源证明或最终安装验证保持待完成；候选包即使文件名含 v1.0.0，也不表示稳定版已发布。
+
+## 本次实际结果
+
+[Actions 43729111057](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43729111057)在打包提交 `576e6070b09804017ececf3f82fb2f6517c18316` 成功：50份运行时源码及两份 ELF 固定摘要匹配，两架构包检查、14项离线检查和另一绝对目录重复构建/打包通过。实际下载 ZIP 与 API 公布摘要一致；两份包内 BUILD/SBOM/ELF 绑定另行核对。文件详情见[CI原件与独立复核](test-results-final-v1-package-CI.json)。临时 Actions 附件30天过期，不是稳定 Release。
+
+[Windows 本地演练](test-results-final-v1-package-local.json)另有14项及两份官方 schema 核对和完整重复构建通过；本地演练提交未公开，不能冒充上述公开打包提交。两平台压缩包摘要各自记录，不要求跨平台 gzip 字节相同；两架构 ELF 始终分别等于固定候选摘要。
+
+[独立签名复核](test-results-final-v1-package-signatures.json)共10项通过：两架构归档来源和两份 ELF/SBOM 在线验证；两架构离线正常验证；错误源码、错误工作流、篡改包三个有效策略拒绝；末尾正常对照。每项证书精确核对仓库、工作流、分支、打包提交、GitHub托管环境及准确 run/attempt，并绑定实际文件摘要；没有把网络/CLI用法失败计作拒绝。离线环境为关闭代理端口与空NO_PROXY，不宣称OS防火墙隔离。公开[签名原件](test-evidence-final-v1-package-signatures.json.gz)及[本次执行源码](../tests/final-v1-package-attestation-rehearsal.py)；执行源码需按冻结布局准备工具和附件，通用操作以上述CLI步骤为准。
+
+当前从 `release/integration-v1` 的已核对提交手动运行该流程；main 尚未合入产品实现，在旧运行时源码上运行会被50份源码检查拒绝。本次没有新标签、Release附件替换、生产安装或长期试验变更；P09.1/P09.2的最终稳定发布/安装门槛仍开放。
