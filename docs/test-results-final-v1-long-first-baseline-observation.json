@@ -1,0 +1,1017 @@
+{
+  "read_only": true,
+  "node_utc": "2026-11-15T14:47:12.121246+00:00",
+  "processes": {
+    "runner": {
+      "pid": 2759375,
+      "start_ticks": 169386336,
+      "entry": "/var/tmp/crg-final1396-tools-20261115/runner.py",
+      "job_sha256": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+      "plan_sha256": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4",
+      "node_utc": "2026-11-15T14:45:20.256764+00:00",
+      "single_launch_guard": true,
+      "source_sha256": {
+        "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+        "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+        "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+        "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+        "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+        "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+        "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+        "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+        "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+        "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+        "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+        "job.py": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+        "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+        "runner.py": "979a310540e305b10dc34fa0161c7b89a4681605ee08a92ebe382c411c5054d9",
+        "plan.json": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4"
+      },
+      "node_admission": {
+        "admitted": true,
+        "issues": [],
+        "minimum_free_bytes": 144828058829,
+        "actual_free_bytes": 150619361280,
+        "filesystem_bytes": 965520392192,
+        "expected_original_images": {
+          "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+          "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+        },
+        "schema": "crg-disposable-test-node-admission-v1",
+        "node_utc": "2026-11-15T14:45:19.401955+00:00",
+        "read_only": true,
+        "fixtures_created": false,
+        "product_controls_changed": false
+      },
+      "admission": {
+        "phase": "ready",
+        "node_utc": "2026-11-15T14:45:20.188331+00:00",
+        "build_info": {
+          "arch": "amd64",
+          "go_version": "go1.27.3",
+          "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+          "io_profile_versions": [
+            1,
+            2
+          ],
+          "journal_versions": [
+            1
+          ],
+          "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+          "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+          "os": "linux",
+          "revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+          "version": "v1.0.0",
+          "writer_controls": [
+            "cpu.max",
+            "cpu.weight",
+            "io.max",
+            "io.weight",
+            "memory.max",
+            "memory.high",
+            "memory.swap.max",
+            "pids.max"
+          ]
+        },
+        "all_frozen_inputs_verified": 15,
+        "business18_and_native284_verified": true,
+        "available_memory_bytes": 45284724736,
+        "free_disk_bytes": 150619361280,
+        "blocking_pods": [],
+        "business_fixture_created": false,
+        "long_measurement_started": false
+      },
+      "original_alive": true,
+      "expected_entry_matches": true
+    },
+    "worker": {
+      "pid": 2759376,
+      "start_ticks": 169386340,
+      "entry": "/var/tmp/crg-final1396-tools-20261115/job.py",
+      "original_alive": true,
+      "expected_entry_matches": true
+    },
+    "readonly_recorder": {
+      "pid": 2759377,
+      "start_ticks": 169386340,
+      "entry": "/var/tmp/crg-final1396-tools-20261115/observer-readonly.py",
+      "source_sha256": "049bf2640a21e63c71db1f7068efa3618f830b96cb3556fe0420ead3b4220423",
+      "read_only_Kubernetes_queries": true,
+      "product_or_business_signals": false,
+      "original_alive": true,
+      "expected_entry_matches": true
+    }
+  },
+  "phase": "measuring-baseline",
+  "long_duration_accepted": false,
+  "main_report_sha256": "c222147c7c1725b2b92fe8293d036064eeccbfcc21cbab38ac205a0b071eb972",
+  "main_checks": 12,
+  "main_passed": 12,
+  "stages": {
+    "baseline": {
+      "phase": "starting",
+      "run_id": "202611151396",
+      "requested_seconds": 86400,
+      "source_run_id": null,
+      "output": "/var/tmp/crg-final1396-results-20261115/campaign-baseline",
+      "native_accepted": false,
+      "campaign_identity": {
+        "pid": 2778423,
+        "start_ticks": 169394262,
+        "entry": "/var/tmp/crg-final1396-tools-20261115/campaign-wrapper.py"
+      }
+    }
+  },
+  "error": null,
+  "roles": {
+    "candidate1-dbs-bw64": {
+      "phase": "ready-for-baseline",
+      "fixed_processes": {
+        "PID1": {
+          "pid": 2760337,
+          "start_ticks": 169386774
+        },
+        "Agent": {
+          "pid": 2761031,
+          "start_ticks": 169386978
+        },
+        "cache": {
+          "pid": 2768835,
+          "start_ticks": 169390279
+        }
+      },
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "actual_three_controls": null,
+      "original_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "fixed_controls": null,
+      "fixture_identity": {
+        "pod_uid": "509b1c17-87a4-4024-a37e-241601a2fa88",
+        "container_id": "04d7e495da1d69eb3498447b7063f8ade9089ebe8a147801285c26d0ebdeb689",
+        "init_pid": 2760337,
+        "init_start_ticks": 169386774,
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod509b1c17_87a4_4024_a37e_241601a2fa88.slice/cri-containerd-04d7e495da1d69eb3498447b7063f8ade9089ebe8a147801285c26d0ebdeb689.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod509b1c17_87a4_4024_a37e_241601a2fa88.slice",
+        "processes": [
+          {
+            "pid": 2760337,
+            "start_ticks": 169386774,
+            "program": "bash"
+          },
+          {
+            "pid": 2761018,
+            "start_ticks": 169386977,
+            "program": "bash"
+          },
+          {
+            "pid": 2761029,
+            "start_ticks": 169386978,
+            "program": "bash"
+          },
+          {
+            "pid": 2761031,
+            "start_ticks": 169386978,
+            "program": "crg"
+          },
+          {
+            "pid": 2761888,
+            "start_ticks": 169387389,
+            "program": "bash"
+          },
+          {
+            "pid": 2761891,
+            "start_ticks": 169387389,
+            "program": "bash"
+          },
+          {
+            "pid": 2761903,
+            "start_ticks": 169387390,
+            "program": "sleep"
+          },
+          {
+            "pid": 2761912,
+            "start_ticks": 169387390,
+            "program": "su"
+          },
+          {
+            "pid": 2761917,
+            "start_ticks": 169387390,
+            "program": "bash"
+          },
+          {
+            "pid": 2761928,
+            "start_ticks": 169387391,
+            "program": "dbs"
+          },
+          {
+            "pid": 2761945,
+            "start_ticks": 169387397,
+            "program": "sleep"
+          },
+          {
+            "pid": 2762013,
+            "start_ticks": 169387442,
+            "program": "dbs"
+          },
+          {
+            "pid": 2766585,
+            "start_ticks": 169389294,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766620,
+            "start_ticks": 169389335,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766622,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766623,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766624,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766625,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766626,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766627,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766628,
+            "start_ticks": 169389357,
+            "program": "postgres"
+          },
+          {
+            "pid": 2766629,
+            "start_ticks": 169389361,
+            "program": "postgres"
+          },
+          {
+            "pid": 2767663,
+            "start_ticks": 169389861,
+            "program": "postgres"
+          },
+          {
+            "pid": 2767737,
+            "start_ticks": 169389911,
+            "program": "postgres"
+          },
+          {
+            "pid": 2767741,
+            "start_ticks": 169389912,
+            "program": "postgres"
+          },
+          {
+            "pid": 2768835,
+            "start_ticks": 169390279,
+            "program": "containercacheguard"
+          },
+          {
+            "pid": 2768836,
+            "start_ticks": 169390279,
+            "program": "sleep"
+          }
+        ]
+      }
+    },
+    "candidate1-hisdbs-bw64": {
+      "phase": "ready-for-baseline",
+      "fixed_processes": {
+        "PID1": {
+          "pid": 2769683,
+          "start_ticks": 169390668
+        },
+        "Agent": {
+          "pid": 2770377,
+          "start_ticks": 169390872
+        },
+        "cache": {
+          "pid": 2778141,
+          "start_ticks": 169394173
+        }
+      },
+      "original_start_script_unmodified": true,
+      "same_container_mount_paths": true,
+      "actual_three_controls": null,
+      "original_controls": {
+        "cpu.max": "800000 100000",
+        "memory.max": "21474836480",
+        "io.max": "",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      },
+      "fixed_controls": null,
+      "fixture_identity": {
+        "pod_uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30",
+        "container_id": "9dcada2b454c5e949c127765f05d0faf72df30d1b4d6f6d0a65ac6e4ccd45b5e",
+        "init_pid": 2769683,
+        "init_start_ticks": 169390668,
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podf3ac9fb9_f65d_4233_b82e_8e2fd4e5fa30.slice/cri-containerd-9dcada2b454c5e949c127765f05d0faf72df30d1b4d6f6d0a65ac6e4ccd45b5e.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podf3ac9fb9_f65d_4233_b82e_8e2fd4e5fa30.slice",
+        "processes": [
+          {
+            "pid": 2769683,
+            "start_ticks": 169390668,
+            "program": "bash"
+          },
+          {
+            "pid": 2770365,
+            "start_ticks": 169390871,
+            "program": "bash"
+          },
+          {
+            "pid": 2770375,
+            "start_ticks": 169390872,
+            "program": "bash"
+          },
+          {
+            "pid": 2770377,
+            "start_ticks": 169390872,
+            "program": "crg"
+          },
+          {
+            "pid": 2771213,
+            "start_ticks": 169391288,
+            "program": "bash"
+          },
+          {
+            "pid": 2771216,
+            "start_ticks": 169391288,
+            "program": "bash"
+          },
+          {
+            "pid": 2771228,
+            "start_ticks": 169391288,
+            "program": "sleep"
+          },
+          {
+            "pid": 2771237,
+            "start_ticks": 169391288,
+            "program": "su"
+          },
+          {
+            "pid": 2771242,
+            "start_ticks": 169391289,
+            "program": "bash"
+          },
+          {
+            "pid": 2771253,
+            "start_ticks": 169391290,
+            "program": "hisdbs"
+          },
+          {
+            "pid": 2771261,
+            "start_ticks": 169391296,
+            "program": "sleep"
+          },
+          {
+            "pid": 2771277,
+            "start_ticks": 169391341,
+            "program": "hisdbs"
+          },
+          {
+            "pid": 2775687,
+            "start_ticks": 169393074,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775702,
+            "start_ticks": 169393115,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775713,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775714,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775715,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775716,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775717,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775718,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775720,
+            "start_ticks": 169393136,
+            "program": "postgres"
+          },
+          {
+            "pid": 2775769,
+            "start_ticks": 169393140,
+            "program": "postgres"
+          },
+          {
+            "pid": 2776603,
+            "start_ticks": 169393648,
+            "program": "postgres"
+          },
+          {
+            "pid": 2777371,
+            "start_ticks": 169393874,
+            "program": "postgres"
+          },
+          {
+            "pid": 2777373,
+            "start_ticks": 169393875,
+            "program": "postgres"
+          },
+          {
+            "pid": 2778141,
+            "start_ticks": 169394173,
+            "program": "containercacheguard"
+          },
+          {
+            "pid": 2778142,
+            "start_ticks": 169394173,
+            "program": "sleep"
+          }
+        ]
+      }
+    }
+  },
+  "campaigns": {
+    "baseline": {
+      "phase": "measuring",
+      "report_sha256": "ba3b76b776bee35fcb716d8b78a12674a358620d73302697a6dd10987dd3bdec",
+      "cycles": 0,
+      "last_cycle": null,
+      "both_workers_started_epoch": 1794754007.8902116,
+      "roles": {
+        "dbs": {
+          "host_samples": 1,
+          "last_sample": {
+            "elapsed_seconds": 0.0009754120837897062,
+            "cpu_stat": "usage_usec 10050102\nuser_usec 7439888\nsystem_usec 2610213\ncore_sched.force_idle_usec 0\nnr_periods 657\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory_current": 1747025920,
+            "memory_events": {
+              "low": 0,
+              "high": 0,
+              "max": 0,
+              "oom": 0,
+              "oom_kill": 0,
+              "oom_group_kill": 0
+            },
+            "io_stat": "8:0 rbytes=4096 wbytes=238368768 rios=1 wios=1066 dbytes=0 dios=0\n253:0 rbytes=4096 wbytes=1011558400 rios=1 wios=5826 dbytes=0 dios=0\n",
+            "agent": {
+              "CPU_seconds": 0.01,
+              "RSS_bytes": 7077888,
+              "write_bytes": 12288,
+              "wchar": 8243
+            },
+            "cache": {
+              "CPU_seconds": 0.11,
+              "RSS_bytes": 9633792,
+              "write_bytes": 196608,
+              "wchar": 129172
+            },
+            "agent_same_process": true,
+            "cache_same_process": true,
+            "PID1_same_process": true
+          },
+          "workload": null
+        },
+        "hisdbs": {
+          "host_samples": 1,
+          "last_sample": {
+            "elapsed_seconds": 0.002177773043513298,
+            "cpu_stat": "usage_usec 9400438\nuser_usec 7019504\nsystem_usec 2380934\ncore_sched.force_idle_usec 0\nnr_periods 322\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory_current": 1743163392,
+            "memory_events": {
+              "low": 0,
+              "high": 0,
+              "max": 0,
+              "oom": 0,
+              "oom_kill": 0,
+              "oom_group_kill": 0
+            },
+            "io_stat": "8:0 rbytes=4096 wbytes=229540352 rios=1 wios=1015 dbytes=0 dios=0\n253:0 rbytes=4096 wbytes=1021645312 rios=1 wios=5786 dbytes=0 dios=0\n",
+            "agent": {
+              "CPU_seconds": 0.01,
+              "RSS_bytes": 6684672,
+              "write_bytes": 12288,
+              "wchar": 8243
+            },
+            "cache": {
+              "CPU_seconds": 0.01,
+              "RSS_bytes": 7274496,
+              "write_bytes": 40960,
+              "wchar": 26861
+            },
+            "agent_same_process": true,
+            "cache_same_process": true,
+            "PID1_same_process": true
+          },
+          "workload": null
+        }
+      }
+    }
+  },
+  "readonly_recorder_latest": {
+    "utc": "2026-11-15T14:46:20.848025+00:00",
+    "elapsed_seconds": 60.51911092107184,
+    "disk": {
+      "total": 965520392192,
+      "used": 816688676864,
+      "free": 148831715328
+    },
+    "nodes": [
+      {
+        "conditions": [
+          {
+            "type": "NetworkUnavailable",
+            "status": "False",
+            "lastTransitionTime": "2026-10-27T00:24:27Z",
+            "reason": "CalicoIsUp"
+          },
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastTransitionTime": "2026-06-27T19:17:52Z",
+            "reason": "KubeletHasSufficientMemory"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastTransitionTime": "2026-11-15T13:17:41Z",
+            "reason": "KubeletHasNoDiskPressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastTransitionTime": "2026-06-27T19:17:52Z",
+            "reason": "KubeletHasSufficientPID"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-09-18T08:22:24Z",
+            "reason": "KubeletReady"
+          }
+        ]
+      }
+    ],
+    "node_query_error": null,
+    "pods": [
+      {
+        "name": "dbs-business",
+        "UID": "509b1c17-87a4-4024-a37e-241601a2fa88",
+        "resourceVersion": "31601874",
+        "deletionTimestamp": null,
+        "phase": "Running",
+        "reason": null,
+        "message": "",
+        "containers": [
+          {
+            "name": "dbs",
+            "containerID": "containerd://04d7e495da1d69eb3498447b7063f8ade9089ebe8a147801285c26d0ebdeb689",
+            "restartCount": 0,
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-15T14:45:24Z"
+              }
+            }
+          },
+          {
+            "name": "isolated-dcs",
+            "containerID": "containerd://311b51a54ed355b04b3177e2ce5796a984875aad9499edd366191e9639425c0a",
+            "restartCount": 0,
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-15T14:45:25Z"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "hisdbs-business",
+        "UID": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30",
+        "resourceVersion": "31601919",
+        "deletionTimestamp": null,
+        "phase": "Running",
+        "reason": null,
+        "message": "",
+        "containers": [
+          {
+            "name": "hisdbs",
+            "containerID": "containerd://9dcada2b454c5e949c127765f05d0faf72df30d1b4d6f6d0a65ac6e4ccd45b5e",
+            "restartCount": 0,
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-15T14:46:03Z"
+              }
+            }
+          },
+          {
+            "name": "isolated-dcs",
+            "containerID": "containerd://3fb79f8e5e5cd5d5ef579c86abe26c275ce9d08275abba7e4825a1da90e493e7",
+            "restartCount": 0,
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-15T14:46:04Z"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "pod_query_error": null,
+    "events": [
+      {
+        "UID": "1d2894bd-16b0-47fb-a9ae-9c0cce54e397",
+        "resourceVersion": "31601860",
+        "type": "Normal",
+        "reason": "Scheduled",
+        "message": "Successfully assigned crg-vendor-lab-final1396-20261115/dbs-business to k8smaster-3297",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:22Z",
+        "lastTimestamp": "2026-11-15T14:45:22Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "b11fb9c1-7919-4ec8-8217-b68398bae5f6",
+        "resourceVersion": "31601866",
+        "type": "Normal",
+        "reason": "Pulled",
+        "message": "Container image \"db_puc/dbs:V7.[address].56\" already present on machine",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:24Z",
+        "lastTimestamp": "2026-11-15T14:45:24Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "18549745-41c9-46e7-bb8f-cea8723d0a77",
+        "resourceVersion": "31601867",
+        "type": "Normal",
+        "reason": "Created",
+        "message": "Created container dbs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:24Z",
+        "lastTimestamp": "2026-11-15T14:45:24Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "1f4accc4-2ca5-4517-a075-a868ce28f617",
+        "resourceVersion": "31601868",
+        "type": "Normal",
+        "reason": "Started",
+        "message": "Started container dbs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:24Z",
+        "lastTimestamp": "2026-11-15T14:45:24Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "635f7feb-8e10-4c28-9c7f-93c1aa95465a",
+        "resourceVersion": "31601870",
+        "type": "Normal",
+        "reason": "Pulled",
+        "message": "Container image \"db_puc/dbs:V7.[address].56\" already present on machine",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:24Z",
+        "lastTimestamp": "2026-11-15T14:45:24Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "5b866da3-6e6d-4f9b-9ba9-4827699b6b53",
+        "resourceVersion": "31601871",
+        "type": "Normal",
+        "reason": "Created",
+        "message": "Created container isolated-dcs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:25Z",
+        "lastTimestamp": "2026-11-15T14:45:25Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "199447b2-60b3-482c-8670-c26210068b0e",
+        "resourceVersion": "31601872",
+        "type": "Normal",
+        "reason": "Started",
+        "message": "Started container isolated-dcs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:45:25Z",
+        "lastTimestamp": "2026-11-15T14:45:25Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "dbs-business",
+          "uid": "509b1c17-87a4-4024-a37e-241601a2fa88"
+        }
+      },
+      {
+        "UID": "15bf8ea1-888c-4247-be1c-4af84069606a",
+        "resourceVersion": "31601906",
+        "type": "Normal",
+        "reason": "Scheduled",
+        "message": "Successfully assigned crg-vendor-lab-final1396-20261115/hisdbs-business to k8smaster-3297",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:01Z",
+        "lastTimestamp": "2026-11-15T14:46:01Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      },
+      {
+        "UID": "42ad235a-65c0-47da-b1d5-587e458586b8",
+        "resourceVersion": "31601911",
+        "type": "Normal",
+        "reason": "Pulled",
+        "message": "Container image \"db_puc/hisdbs:V7.[address]\" already present on machine",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:03Z",
+        "lastTimestamp": "2026-11-15T14:46:03Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      },
+      {
+        "UID": "4f9fe28b-aec2-4d79-a0e2-dd875388afd4",
+        "resourceVersion": "31601913",
+        "type": "Normal",
+        "reason": "Created",
+        "message": "Created container hisdbs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:03Z",
+        "lastTimestamp": "2026-11-15T14:46:03Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      },
+      {
+        "UID": "5ae34a81-596c-4110-825b-acf52877569f",
+        "resourceVersion": "31601914",
+        "type": "Normal",
+        "reason": "Started",
+        "message": "Started container hisdbs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:03Z",
+        "lastTimestamp": "2026-11-15T14:46:03Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      },
+      {
+        "UID": "6268dba0-efe7-44d6-a338-b1be88e3bd6f",
+        "resourceVersion": "31601915",
+        "type": "Normal",
+        "reason": "Pulled",
+        "message": "Container image \"db_puc/hisdbs:V7.[address]\" already present on machine",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:03Z",
+        "lastTimestamp": "2026-11-15T14:46:03Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      },
+      {
+        "UID": "da7e8fd1-4f55-495a-a925-d032f4420a01",
+        "resourceVersion": "31601917",
+        "type": "Normal",
+        "reason": "Created",
+        "message": "Created container isolated-dcs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:04Z",
+        "lastTimestamp": "2026-11-15T14:46:04Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      },
+      {
+        "UID": "009a70a9-5988-4864-8a76-3d2637563b8a",
+        "resourceVersion": "31601918",
+        "type": "Normal",
+        "reason": "Started",
+        "message": "Started container isolated-dcs",
+        "count": 1,
+        "firstTimestamp": "2026-11-15T14:46:04Z",
+        "lastTimestamp": "2026-11-15T14:46:04Z",
+        "eventTime": null,
+        "object": {
+          "kind": "Pod",
+          "name": "hisdbs-business",
+          "uid": "f3ac9fb9-f65d-4233-b82e-8e2fd4e5fa30"
+        }
+      }
+    ],
+    "event_query_error": null
+  },
+  "summary": {
+    "phase": "measuring-baseline",
+    "processes": {
+      "runner": {
+        "pid": 2759375,
+        "start_ticks": 169386336,
+        "entry": "/var/tmp/crg-final1396-tools-20261115/runner.py",
+        "job_sha256": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+        "plan_sha256": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4",
+        "node_utc": "2026-11-15T14:45:20.256764+00:00",
+        "single_launch_guard": true,
+        "source_sha256": {
+          "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+          "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+          "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+          "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+          "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+          "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+          "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+          "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+          "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+          "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+          "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+          "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+          "job.py": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+          "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+          "runner.py": "979a310540e305b10dc34fa0161c7b89a4681605ee08a92ebe382c411c5054d9",
+          "plan.json": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4"
+        },
+        "node_admission": {
+          "admitted": true,
+          "issues": [],
+          "minimum_free_bytes": 144828058829,
+          "actual_free_bytes": 150619361280,
+          "filesystem_bytes": 965520392192,
+          "expected_original_images": {
+            "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+          },
+          "schema": "crg-disposable-test-node-admission-v1",
+          "node_utc": "2026-11-15T14:45:19.401955+00:00",
+          "read_only": true,
+          "fixtures_created": false,
+          "product_controls_changed": false
+        },
+        "admission": {
+          "phase": "ready",
+          "node_utc": "2026-11-15T14:45:20.188331+00:00",
+          "build_info": {
+            "arch": "amd64",
+            "go_version": "go1.27.3",
+            "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+            "io_profile_versions": [
+              1,
+              2
+            ],
+            "journal_versions": [
+              1
+            ],
+            "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+            "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+            "os": "linux",
+            "revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+            "version": "v1.0.0",
+            "writer_controls": [
+              "cpu.max",
+              "cpu.weight",
+              "io.max",
+              "io.weight",
+              "memory.max",
+              "memory.high",
+              "memory.swap.max",
+              "pids.max"
+            ]
+          },
+          "all_frozen_inputs_verified": 15,
+          "business18_and_native284_verified": true,
+          "available_memory_bytes": 45284724736,
+          "free_disk_bytes": 150619361280,
+          "blocking_pods": [],
+          "business_fixture_created": false,
+          "long_measurement_started": false
+        },
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "worker": {
+        "pid": 2759376,
+        "start_ticks": 169386340,
+        "entry": "/var/tmp/crg-final1396-tools-20261115/job.py",
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "readonly_recorder": {
+        "pid": 2759377,
+        "start_ticks": 169386340,
+        "entry": "/var/tmp/crg-final1396-tools-20261115/observer-readonly.py",
+        "source_sha256": "049bf2640a21e63c71db1f7068efa3618f830b96cb3556fe0420ead3b4220423",
+        "read_only_Kubernetes_queries": true,
+        "product_or_business_signals": false,
+        "original_alive": true,
+        "expected_entry_matches": true
+      }
+    },
+    "main_checks": 12,
+    "main_passed": 12,
+    "campaigns": {
+      "baseline": {
+        "phase": "measuring",
+        "cycles": 0,
+        "both_workers_started_epoch": 1794754007.8902116
+      }
+    },
+    "long_duration_accepted": false,
+    "terminal": null,
+    "recorder_sample_utc": "2026-11-15T14:46:20.848025+00:00"
+  }
+}
