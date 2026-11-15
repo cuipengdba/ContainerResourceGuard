@@ -1,5 +1,7 @@
 # 新容量刷新候选：DBS/HISDBS原路径600秒重新验收
 
+当前更新：原节点UTC2026-11-15T20:59:51Z已单次启动，新runner3165983/start171633500。DBS21:06:26Z约300秒快照SQL1错误/max5.004658635s，API0错误，原600秒及两角色协议继续至终态并按原清理；不能算业务通过。工作线程未保存这次异常明细，具体原因未确认。[带日期原生负载快照](test-results-live-capacity-business-live.json)。下文“未启动”为冻结/预检时点。
+
 源37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0，AMD64静态ELF ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c。当前为已上传、原生预检ready、未启动；不得将预检当业务通过。
 
 [精确计划](test-plan-live-capacity-business600.json)、[可逆适配及原条件核对](test-plan-live-capacity-business-adapter.json)、[原生预检](test-results-live-capacity-business-preflight.json)。13项输入均核验摘要，旧1728原进程/namespace/cgroup清理再次确认，无其它业务验收夹具运行。节点Ready且三类Pressure为False、可用磁盘约144.6GB；保留原28GiB可用内存启动、8GiB持续内存和20GiB磁盘储备条件。

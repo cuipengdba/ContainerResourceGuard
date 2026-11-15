@@ -35,3 +35,9 @@
 原52项定义与18项既有范围完成声明不变，P06.3/P06.4/P10.3及长期门槛仍开放；无可用厂商ARM或独立多物理盘的边界保持。
 
 新ELF的[DBS/HISDBS原路径600秒冻结方案和原生预检](testing-live-capacity-business600.md)已公开，预检ready、尚未启动。
+
+## 当前重新验收进度
+
+新业务已按原18项/两角色各600秒单次启动；DBS约300秒快照记录SQL1错误/max5.004658635秒，API0错误，完整终态待取，不能算业务通过。具体异常未被原工作线程保存、原因未知。
+
+四格原生首轮[43760445882](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43760445882)报告共284项通过，但50生产绑定计划漏列原9项夹具/构建摘要，不能算完整来源门禁通过；[准确32原件](test-evidence-live-capacity-native-first-gap.json.gz)及[边界结论](test-results-live-capacity-native-first-gap.json)保留。v2恢复原59绑定、驱动/候选/条件不变，[冻结v2计划](test-plan-capacity-refresh-native-CI-v2.json)另跑[43761828877](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43761828877)，当前待独立终态验收。

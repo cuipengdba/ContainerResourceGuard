@@ -1,5 +1,7 @@
 # 当前交付与待办：2026-11-16
 
+最新业务边界：[新ELF DBS约300秒SQL1项/超5秒失败快照](test-results-live-capacity-business-live.json)，原因未知、完整终态待取；原SLA不变。四格原生50绑定首轮报告284通过但来源门禁缺9项，已恢复59另跑，待独立验收。
+
 当前更新：[CPU容量刷新缺陷/修复、旧1728明确停止与新候选重新验收](testing-live-cpu-capacity-refresh.md)。37ca44e已ARM64热插拔56/56；旧1728已exit1并独立清理，任何旧“测量中”文字仅为带日期历史快照。新候选原生/业务/长期与最终发布仍待，不继承旧通过和时钟。
 
 当前18/52项按各自原定义范围完成，稳定1.0尚未接受。公开下载仍为[v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)，八附件和标签不变；固定最终候选的产品实现尚未合入main。[完整任务](current-task-registry.json)及[逐项审核](current-52-task-audit.md)保持全部原定义、失败和具体待办。
