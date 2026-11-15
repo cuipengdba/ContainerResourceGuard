@@ -2,7 +2,7 @@
   "kind": "52 preserved archived definitions with individual current-scope evidence audit, not stable release acceptance",
   "product_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "task_count": 52,
-  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; exact final candidate original-path18 and native284 passed; current-source default20 full business failure retained; formal long pending.",
+  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; exact final candidate original-path18 and native284 passed; current-source default20 full business failure retained; formal long pending. Current live-capacity candidate37ca44e has ARM64 CPU56 only; old ced source results and long1728 explicitly stopped are not new-candidate acceptance.",
   "final_v1_verified_staging_depth": {
     "qualification_source_revision": "68a604af517869d03975301bceca73f8887a623e",
     "stager_sha256": "0ff1bc892957862888d5fbd687d3596e6232addca72654cc8f2c4c105aa1465d",
@@ -486,7 +486,7 @@
         "建立 observe 基线与 enforce 持续运行的采集、对比和报告工具",
         "每种目标业务至少 24h 基线及 24h 候选额度运行，覆盖一次完整备份/同步高峰；周期更长则延长，不以满 48h 自动判定通过"
       ],
-      "current_scope_note": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。 启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396已在baseline约4.23小时因协调器kubectl查询退出1失败，已独立复核清理，未进入enforce/七天；原stderr缺失，底层原因未知。 协调器24项原生故障与114原件离线复核通过；新1728已单次从零启动，快照确认12项启动通过、两角色baseline测量中；长期尚未接受。",
+      "current_scope_note": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。 启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396已在baseline约4.23小时因协调器kubectl查询退出1失败，已独立复核清理，未进入enforce/七天；原stderr缺失，底层原因未知。 协调器24项原生故障与114原件离线复核通过；新1728已单次从零启动，快照确认12项启动通过、两角色baseline测量中；长期尚未接受。 在线CPU容量修复和旧1728明确终止见 testing-live-cpu-capacity-refresh.md；新候选其它原门槛仍开放。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-baseline24h-final-linux-amd64.json",
@@ -518,9 +518,9 @@
       ],
       "current_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
-        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
-        "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
-        "evidence": "testing-final-v1-long1728.md"
+        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。",
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       },
       "current_acceptance_history": [
         {
@@ -790,6 +790,44 @@
         "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
         "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
         "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "before_live_capacity_refresh_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
+        "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
+        "evidence": "testing-final-v1-long1728.md"
+      },
+      "live_capacity_refresh": {
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "phase": "ARM64-56-passed-other-candidate-gates-open",
+        "native_result": {
+          "schema": "crg-live-cpu-capacity-replay-v1",
+          "phase": "passed",
+          "native_phase": "passed",
+          "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+          "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+          "members": 34,
+          "kernel": "7.0.0-1017-azure",
+          "arch": "arm64",
+          "checks": 56,
+          "passed_checks": 56,
+          "failure_names": [],
+          "real_cpu_offline_events": 4,
+          "original_host_CPU_mask_restored": true,
+          "own_container_process_control_cleanup_verified": true,
+          "fresh_CLI_correct_while_old_running_Agent_stale": false,
+          "vendor_business_qualification": false,
+          "whole_P06_4_complete": false
+        },
+        "old_baseline_passed": 50,
+        "old_baseline_failed": 6,
+        "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+        "fix_in_this_branch": false,
+        "full_candidate_requalification_pending": true,
+        "stable_release_accepted": false,
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       }
     },
     {
@@ -799,7 +837,7 @@
         "把关键业务指标纳入回归：错误、延迟分位数、备份/同步时间、恢复校验、OOM、CPU 节流和 IO 压力",
         "测试前记录负载、数据量和可接受阈值，测试后逐项判断；原缓存程序全程参与，失败不可只归因于资源限制后忽略"
       ],
-      "current_scope_note": "原fc2 observe基线已按冻结原生协议完成两角色各86400秒和4周期，协调/原生负载入口独立退出，原业务Pods/数据保留；7项exec超过5秒诊断原样保留。固定d6正式限额阶段最近只读门13/14，仍须待其他业务夹具自然结束后重核；24h enforce与完整对照未完成。两个d370七天组件分属开发ELF3a1和版本化ELFdbc，不能转移时间或接受条件。 原1396已在baseline约4.23小时因协调器kubectl查询退出1失败，已独立复核清理，未进入enforce/七天；原stderr缺失，底层原因未知。 协调器24项原生故障与114原件离线复核通过；新1728已单次从零启动，快照确认12项启动通过、两角色baseline测量中；长期尚未接受。",
+      "current_scope_note": "原fc2 observe基线已按冻结原生协议完成两角色各86400秒和4周期，协调/原生负载入口独立退出，原业务Pods/数据保留；7项exec超过5秒诊断原样保留。固定d6正式限额阶段最近只读门13/14，仍须待其他业务夹具自然结束后重核；24h enforce与完整对照未完成。两个d370七天组件分属开发ELF3a1和版本化ELFdbc，不能转移时间或接受条件。 原1396已在baseline约4.23小时因协调器kubectl查询退出1失败，已独立复核清理，未进入enforce/七天；原stderr缺失，底层原因未知。 协调器24项原生故障与114原件离线复核通过；新1728已单次从零启动，快照确认12项启动通过、两角色baseline测量中；长期尚未接受。 在线CPU容量修复和旧1728明确终止见 testing-live-cpu-capacity-refresh.md；新候选其它原门槛仍开放。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-baseline24h-final-linux-amd64.json",
@@ -826,9 +864,9 @@
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
-        "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
-        "evidence": "testing-final-v1-long1728.md"
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。",
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       },
       "before_original1396_terminal_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
@@ -1086,6 +1124,44 @@
         "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
         "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
         "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "before_live_capacity_refresh_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
+        "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
+        "evidence": "testing-final-v1-long1728.md"
+      },
+      "live_capacity_refresh": {
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "phase": "ARM64-56-passed-other-candidate-gates-open",
+        "native_result": {
+          "schema": "crg-live-cpu-capacity-replay-v1",
+          "phase": "passed",
+          "native_phase": "passed",
+          "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+          "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+          "members": 34,
+          "kernel": "7.0.0-1017-azure",
+          "arch": "arm64",
+          "checks": 56,
+          "passed_checks": 56,
+          "failure_names": [],
+          "real_cpu_offline_events": 4,
+          "original_host_CPU_mask_restored": true,
+          "own_container_process_control_cleanup_verified": true,
+          "fresh_CLI_correct_while_old_running_Agent_stale": false,
+          "vendor_business_qualification": false,
+          "whole_P06_4_complete": false
+        },
+        "old_baseline_passed": 50,
+        "old_baseline_failed": 6,
+        "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+        "fix_in_this_branch": false,
+        "full_candidate_requalification_pending": true,
+        "stable_release_accepted": false,
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       }
     },
     {
@@ -2074,13 +2150,51 @@
         "加强只读/委派不足、私有 cgroup namespace、systemd 路径、祖先约束和宿主容量来源的发现测试",
         "不能确认自身目标时不写；不能得到可信宿主基数时明确降级，不将容器虚拟容量误称宿主总量，不越权写父组"
       ],
-      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
+      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。 在线CPU容量修复和旧1728明确终止见 testing-live-cpu-capacity-refresh.md；新候选其它原门槛仍开放。",
       "completion_claim": false,
       "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "容量来源、私有namespace/只读、祖先约束和自己leaf保护有实现/原生测试。 新37ca44e在ARM64/Linux7实际四次CPU下线/上线，同一Agent/PID1自动刷新容量及20%配额，紧外部上限保留；56/56与八项恢复/清理独立复核通过，旧版六项失败保留。",
+        "remaining_or_boundary": "新候选其它原生/厂商业务组合与连续权限切换、节点重启等原门槛仍待；AMD64 CPU下线EBUSY未覆盖，内存热插拔/厂商ARM/物理多盘不在本次范围。",
+        "evidence": "testing-live-cpu-capacity-refresh.md"
+      },
+      "before_live_capacity_refresh_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
         "verified_scope": "容量来源、私有namespace/只读、祖先约束和自己leaf保护有实现/原生测试。",
         "remaining_or_boundary": "逐组合核对当前委派不足/虚拟化宿主容量及实际容器挂载，无法确认则跳过。",
         "evidence": "test-results-IO-bandwidth-CI.json"
+      },
+      "live_capacity_refresh": {
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "phase": "ARM64-56-passed-other-candidate-gates-open",
+        "native_result": {
+          "schema": "crg-live-cpu-capacity-replay-v1",
+          "phase": "passed",
+          "native_phase": "passed",
+          "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+          "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+          "members": 34,
+          "kernel": "7.0.0-1017-azure",
+          "arch": "arm64",
+          "checks": 56,
+          "passed_checks": 56,
+          "failure_names": [],
+          "real_cpu_offline_events": 4,
+          "original_host_CPU_mask_restored": true,
+          "own_container_process_control_cleanup_verified": true,
+          "fresh_CLI_correct_while_old_running_Agent_stale": false,
+          "vendor_business_qualification": false,
+          "whole_P06_4_complete": false
+        },
+        "old_baseline_passed": 50,
+        "old_baseline_failed": 6,
+        "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+        "fix_in_this_branch": false,
+        "full_candidate_requalification_pending": true,
+        "stable_release_accepted": false,
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       }
     },
     {
@@ -2090,13 +2204,51 @@
         "增加连续重建、路径复用、CPU 在线数变化和只读权限切换的回归",
         "新身份不使用旧恢复日志；容量变化不突破既有外部约束；各类控制器可用性独立显示"
       ],
-      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
+      "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。 在线CPU容量修复和旧1728明确终止见 testing-live-cpu-capacity-refresh.md；新候选其它原门槛仍开放。",
       "completion_claim": false,
       "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "最终ELF新ID新journal、只读降级、profile复用和几何变化通过。 新37ca44e在ARM64/Linux7实际四次CPU下线/上线，同一Agent/PID1自动刷新容量及20%配额，紧外部上限保留；56/56与八项恢复/清理独立复核通过，旧版六项失败保留。",
+        "remaining_or_boundary": "新候选其它原生/厂商业务组合与连续权限切换、节点重启等原门槛仍待；AMD64 CPU下线EBUSY未覆盖，内存热插拔/厂商ARM/物理多盘不在本次范围。",
+        "evidence": "testing-live-cpu-capacity-refresh.md"
+      },
+      "before_live_capacity_refresh_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
         "verified_scope": "最终ELF新ID新journal、只读降级、profile复用和几何变化通过。",
         "remaining_or_boundary": "真实CPU在线数变化与连续权限切换的当前组合还须独立现场记录。",
         "evidence": "testing-final-v1-native-CI-terminal.md"
+      },
+      "live_capacity_refresh": {
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "phase": "ARM64-56-passed-other-candidate-gates-open",
+        "native_result": {
+          "schema": "crg-live-cpu-capacity-replay-v1",
+          "phase": "passed",
+          "native_phase": "passed",
+          "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+          "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+          "members": 34,
+          "kernel": "7.0.0-1017-azure",
+          "arch": "arm64",
+          "checks": 56,
+          "passed_checks": 56,
+          "failure_names": [],
+          "real_cpu_offline_events": 4,
+          "original_host_CPU_mask_restored": true,
+          "own_container_process_control_cleanup_verified": true,
+          "fresh_CLI_correct_while_old_running_Agent_stale": false,
+          "vendor_business_qualification": false,
+          "whole_P06_4_complete": false
+        },
+        "old_baseline_passed": 50,
+        "old_baseline_failed": 6,
+        "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+        "fix_in_this_branch": false,
+        "full_candidate_requalification_pending": true,
+        "stable_release_accepted": false,
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       }
     },
     {
@@ -2638,7 +2790,7 @@
         "对目标 DBS/HISDBS 业务完成至少 7 天综合验收",
         "覆盖原缓存程序、实际备份/同步周期、冷启动、重建、恢复、升级和故障；长于 7 天的关键周期补充覆盖，按预先记录的业务阈值判断"
       ],
-      "current_scope_note": "版本化dbc候选七天原实例在本轮节点05:15:42只读观察时仍在线；两个角色原生结果仍running，仅第300秒内容完成/native-pending。旧开发3a1七天同时在线，已有第300/21600秒两周期内容完成/native-pending，来源分别保留。dbc短保留数据后置36项/两角色各600秒及辅助故障20场景/152项已终态通过且清理；未执行真实七天后置，尚未满足604800秒/28周期、正式24h enforce与完整对照，P10未完成。 原1396已在baseline约4.23小时因协调器kubectl查询退出1失败，已独立复核清理，未进入enforce/七天；原stderr缺失，底层原因未知。 协调器24项原生故障与114原件离线复核通过；新1728已单次从零启动，快照确认12项启动通过、两角色baseline测量中；长期尚未接受。",
+      "current_scope_note": "版本化dbc候选七天原实例在本轮节点05:15:42只读观察时仍在线；两个角色原生结果仍running，仅第300秒内容完成/native-pending。旧开发3a1七天同时在线，已有第300/21600秒两周期内容完成/native-pending，来源分别保留。dbc短保留数据后置36项/两角色各600秒及辅助故障20场景/152项已终态通过且清理；未执行真实七天后置，尚未满足604800秒/28周期、正式24h enforce与完整对照，P10未完成。 原1396已在baseline约4.23小时因协调器kubectl查询退出1失败，已独立复核清理，未进入enforce/七天；原stderr缺失，底层原因未知。 协调器24项原生故障与114原件离线复核通过；新1728已单次从零启动，快照确认12项启动通过、两角色baseline测量中；长期尚未接受。 在线CPU容量修复和旧1728明确终止见 testing-live-cpu-capacity-refresh.md；新候选其它原门槛仍开放。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-progress-seven-day-two-lineage-20261111.json",
@@ -2665,9 +2817,9 @@
       ],
       "current_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
-        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
-        "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
-        "evidence": "testing-final-v1-long1728.md"
+        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。 原1728旧候选约3107秒baseline后因新缺陷需更换候选而明确SIGTERM停止；12项启动及0 SQL/API错误仅为短窗口，原终态exit1与完整独立清理保留。",
+        "remaining_or_boundary": "新37ca44e须先复验原路径与短负载，再从零执行完整24h observe、同容器24h enforce、新7天、全部原生周期/清理和老化后验收；旧1396/78/1728结果与时钟不继承。",
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       },
       "before_original1396_terminal_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
@@ -2925,6 +3077,44 @@
         "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
         "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
         "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "before_live_capacity_refresh_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
+        "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
+        "evidence": "testing-final-v1-long1728.md"
+      },
+      "live_capacity_refresh": {
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "phase": "ARM64-56-passed-other-candidate-gates-open",
+        "native_result": {
+          "schema": "crg-live-cpu-capacity-replay-v1",
+          "phase": "passed",
+          "native_phase": "passed",
+          "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+          "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+          "members": 34,
+          "kernel": "7.0.0-1017-azure",
+          "arch": "arm64",
+          "checks": 56,
+          "passed_checks": 56,
+          "failure_names": [],
+          "real_cpu_offline_events": 4,
+          "original_host_CPU_mask_restored": true,
+          "own_container_process_control_cleanup_verified": true,
+          "fresh_CLI_correct_while_old_running_Agent_stale": false,
+          "vendor_business_qualification": false,
+          "whole_P06_4_complete": false
+        },
+        "old_baseline_passed": 50,
+        "old_baseline_failed": 6,
+        "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+        "fix_in_this_branch": false,
+        "full_candidate_requalification_pending": true,
+        "stable_release_accepted": false,
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       }
     },
     {
@@ -2934,13 +3124,13 @@
         "完整复核目标隔离、权限降级、外部冲突、诊断脱敏、包来源和恢复所有权",
         "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
       ],
-      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。 安全暂存深度修复：旧1d8工具在两架构1100层目录实测递归异常/私有残留，未发布目标；原件保留且测试独立有界清理。新0ff1工具写成员前整树预检/64层上限，准确冻结来源68a604a在amd64/Linux6.8与ARM64/Linux7重新各75项及6个深度场景通过，合计150+12，另有2个旧缺陷复现。源50/最终ELF及97长期任务不变；非稳定身份、厂商长期/满盘/掉电验收，原开放项保持。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。",
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。 安全暂存深度修复：旧1d8工具在两架构1100层目录实测递归异常/私有残留，未发布目标；原件保留且测试独立有界清理。新0ff1工具写成员前整树预检/64层上限，准确冻结来源68a604a在amd64/Linux6.8与ARM64/Linux7重新各75项及6个深度场景通过，合计150+12，另有2个旧缺陷复现。源50/最终ELF及97长期任务不变；非稳定身份、厂商长期/满盘/掉电验收，原开放项保持。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。 在线CPU容量修复和旧1728明确终止见 testing-live-cpu-capacity-refresh.md；新候选其它原门槛仍开放。",
       "completion_claim": false,
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。",
-        "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
-        "evidence": "release-readiness-current.md"
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。 旧运行中容量不刷新缺陷已复现；新37ca44e修复在ARM6456/56通过，完整新候选复验尚待。",
+        "remaining_or_boundary": "新源/ELF完整原生矩阵、原路径业务、长稳/老化、包发布身份及原安全审计须重新闭环，不能继承旧ELF时钟和验收；原1728按原因明确停止并独立清理，稳定1.0未接受。",
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       },
       "current_evidence_files": [
         "verified-release-staging.md",
@@ -3117,6 +3307,44 @@
         "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。",
         "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
         "evidence": "release-readiness-current.md"
+      },
+      "before_live_capacity_refresh_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。 最终ELF原生持久化故障v3：准确来源73c7b80在amd64/Linux6.8和ARM64/Linux7各60项/6场景、共120/12通过；真实4MiB状态tmpfs的ENOSPC、去除DAC绕过后的EACCES、私有挂载EROFS各至少30秒/3次失败重试，解除后可应用新CPU策略；精确控制写入前后SIGKILL及延迟完成均恢复八项原值，PID1/fsync/归属进程和挂载清理通过。新归档逐文件清单及强杀前未提交隐藏文件原件核对通过。首轮readonly准备EBUSY失败27局部、v2原生120通过但遗漏隐藏原件均保留各自身份。只证明临时VM/CPU手动策略/有界状态FS，不代替厂商老化、其他资源/文件系统、更长故障、物理慢盘或掉电；原任务仍开放。 固定最终ELF同一容器同时设置CPU、memory.high及读写BPS；准确来源7aa804a两架构184/184项、20场景通过，三种真实状态FS故障持续至少30秒/三次显式失败重试；三项各自写入前/后精确强杀和延迟完成恢复八项外部原值，外部硬内存/IOPS保留。完整系统调用参数、隐藏未提交临时原件及全部所属容器/挂载/dm/loop清理独立核对。首轮92项原生通过但轨迹截断的复核失败另存。不是百分比/厂商老化/物理慢盘或掉电验收，原任务不整体关闭。",
+        "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
+        "evidence": "release-readiness-current.md"
+      },
+      "live_capacity_refresh": {
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "phase": "ARM64-56-passed-other-candidate-gates-open",
+        "native_result": {
+          "schema": "crg-live-cpu-capacity-replay-v1",
+          "phase": "passed",
+          "native_phase": "passed",
+          "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+          "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+          "members": 34,
+          "kernel": "7.0.0-1017-azure",
+          "arch": "arm64",
+          "checks": 56,
+          "passed_checks": 56,
+          "failure_names": [],
+          "real_cpu_offline_events": 4,
+          "original_host_CPU_mask_restored": true,
+          "own_container_process_control_cleanup_verified": true,
+          "fresh_CLI_correct_while_old_running_Agent_stale": false,
+          "vendor_business_qualification": false,
+          "whole_P06_4_complete": false
+        },
+        "old_baseline_passed": 50,
+        "old_baseline_failed": 6,
+        "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+        "fix_in_this_branch": false,
+        "full_candidate_requalification_pending": true,
+        "stable_release_accepted": false,
+        "evidence": "testing-live-cpu-capacity-refresh.md"
       }
     },
     {
@@ -5310,88 +5538,9 @@
     ]
   },
   "final_v1_long1728": {
-    "phase": "measuring-baseline-at-dated-native-snapshot",
-    "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
-    "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
-    "new_clock": true,
-    "inherited_seconds": 0,
-    "original1396_failed_unchanged": true,
-    "product_runtime_unchanged": true,
-    "coordinator_probe": {
-      "schema": "crg-coordinator-probe-offline-review-v1",
-      "phase": "passed",
-      "passed_native_cases": 24,
-      "members_verified": 114,
-      "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
-      "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
-      "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
-      "read_only_observation_total_budget_seconds": 15,
-      "max_readonly_attempts": 3,
-      "mutating_retries": 0,
-      "actual_cluster_readonly": true,
-      "product_changed": false,
-      "old_API_failure_cause_known": false,
-      "business_long_duration_accepted": false
-    },
-    "evidence": "testing-final-v1-long1728.md",
-    "stable_release_accepted": false,
-    "initial_native_snapshot": {
-      "schema": "crg-long1728-initial-offline-review-v1",
-      "phase": "startup-snapshot-verified",
-      "observed_utc": "2026-11-15T19:56:32.574820+00:00",
-      "archive_sha256": "8f71a411e642bf85651b019cfa58c20a4745939d262653150ad2473ee598b7c1",
-      "members_verified": 8,
-      "startup_checks": 12,
-      "native_phase_at_snapshot": "measuring-baseline",
-      "launch_utc": "2026-11-15T19:52:19.274030+00:00",
-      "both_native_started_epoch": 1794772419.1161368,
-      "original_processes": {
-        "runner": {
-          "pid": 2329588,
-          "start_ticks": 171228238,
-          "entry": "/var/tmp/crg-final1728-tools-20261116/runner.py"
-        },
-        "worker": {
-          "pid": 2329624,
-          "start_ticks": 171228241,
-          "entry": "/var/tmp/crg-final1728-tools-20261116/job.py"
-        },
-        "readonly_recorder": {
-          "pid": 2329660,
-          "start_ticks": 171228245,
-          "entry": "/var/tmp/crg-final1728-tools-20261116/observer-readonly.py"
-        }
-      },
-      "source_sha256": {
-        "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
-        "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
-        "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
-        "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
-        "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
-        "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
-        "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
-        "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
-        "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
-        "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
-        "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
-        "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
-        "job.py": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
-        "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
-        "runner.py": "232f1be70660e34970e779a273f23a9877468cb6cfb2f5b75d084ae57ad13d65",
-        "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
-        "plan.json": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
-        "observer-readonly.py": "fabfb66930dcf8d415e7771c1f487d619017ed03bdb5cbd8220000ddde4da6d4"
-      },
-      "same_original_start_and_observe_controls": true,
-      "runtime_inherited": false,
-      "stable_release_accepted": false,
-      "long_duration_accepted": false,
-      "boundary": "Dated native snapshot only; no continuous-duration or future process-health acceptance"
-    },
-    "runtime_active_at_snapshot": true,
-    "long_duration_accepted": false,
-    "before_launch_snapshot": {
-      "phase": "frozen-not-launched",
+    "phase": "explicitly-stopped-old-candidate-not-duration-accepted",
+    "previous_native_snapshot": {
+      "phase": "measuring-baseline-at-dated-native-snapshot",
       "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
       "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
       "new_clock": true,
@@ -5415,8 +5564,120 @@
         "business_long_duration_accepted": false
       },
       "evidence": "testing-final-v1-long1728.md",
+      "stable_release_accepted": false,
+      "initial_native_snapshot": {
+        "schema": "crg-long1728-initial-offline-review-v1",
+        "phase": "startup-snapshot-verified",
+        "observed_utc": "2026-11-15T19:56:32.574820+00:00",
+        "archive_sha256": "8f71a411e642bf85651b019cfa58c20a4745939d262653150ad2473ee598b7c1",
+        "members_verified": 8,
+        "startup_checks": 12,
+        "native_phase_at_snapshot": "measuring-baseline",
+        "launch_utc": "2026-11-15T19:52:19.274030+00:00",
+        "both_native_started_epoch": 1794772419.1161368,
+        "original_processes": {
+          "runner": {
+            "pid": 2329588,
+            "start_ticks": 171228238,
+            "entry": "/var/tmp/crg-final1728-tools-20261116/runner.py"
+          },
+          "worker": {
+            "pid": 2329624,
+            "start_ticks": 171228241,
+            "entry": "/var/tmp/crg-final1728-tools-20261116/job.py"
+          },
+          "readonly_recorder": {
+            "pid": 2329660,
+            "start_ticks": 171228245,
+            "entry": "/var/tmp/crg-final1728-tools-20261116/observer-readonly.py"
+          }
+        },
+        "source_sha256": {
+          "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+          "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+          "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+          "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+          "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+          "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+          "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+          "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+          "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+          "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+          "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+          "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+          "job.py": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+          "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+          "runner.py": "232f1be70660e34970e779a273f23a9877468cb6cfb2f5b75d084ae57ad13d65",
+          "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+          "plan.json": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+          "observer-readonly.py": "fabfb66930dcf8d415e7771c1f487d619017ed03bdb5cbd8220000ddde4da6d4"
+        },
+        "same_original_start_and_observe_controls": true,
+        "runtime_inherited": false,
+        "stable_release_accepted": false,
+        "long_duration_accepted": false,
+        "boundary": "Dated native snapshot only; no continuous-duration or future process-health acceptance"
+      },
+      "runtime_active_at_snapshot": true,
+      "long_duration_accepted": false,
+      "before_launch_snapshot": {
+        "phase": "frozen-not-launched",
+        "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+        "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+        "new_clock": true,
+        "inherited_seconds": 0,
+        "original1396_failed_unchanged": true,
+        "product_runtime_unchanged": true,
+        "coordinator_probe": {
+          "schema": "crg-coordinator-probe-offline-review-v1",
+          "phase": "passed",
+          "passed_native_cases": 24,
+          "members_verified": 114,
+          "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+          "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+          "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+          "read_only_observation_total_budget_seconds": 15,
+          "max_readonly_attempts": 3,
+          "mutating_retries": 0,
+          "actual_cluster_readonly": true,
+          "product_changed": false,
+          "old_API_failure_cause_known": false,
+          "business_long_duration_accepted": false
+        },
+        "evidence": "testing-final-v1-long1728.md",
+        "stable_release_accepted": false
+      }
+    },
+    "terminal": {
+      "schema": "crg-long1728-explicit-stop-result-v1",
+      "phase": "explicitly-stopped-old-candidate-not-duration-accepted",
+      "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+      "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+      "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+      "stop_requested_utc": "2026-11-15T20:45:24.209792+00:00",
+      "native_ended_utc": "2026-11-15T20:45:36.848703+00:00",
+      "error": "explicit long-test stop requested",
+      "reason": "Old source ced4617 reproduced stale CPU capacity; new source37ca44e requires separate candidate qualification, no clock transfer",
+      "startup_checks": 12,
+      "native_exit": 1,
+      "recorded_baseline_cycles": 1,
+      "sql_and_api_errors": {
+        "dbs": {
+          "sql": 0,
+          "api": 0
+        },
+        "hisdbs": {
+          "sql": 0,
+          "api": 0
+        }
+      },
+      "cleanup_independently_verified": true,
+      "long_duration_accepted": false,
+      "runtime_or_clocks_transferred": false,
       "stable_release_accepted": false
-    }
+    },
+    "runtime_active": false,
+    "long_duration_accepted": false
   },
   "coordinator_probe1726": {
     "schema": "crg-coordinator-probe-offline-review-v1",
@@ -5433,5 +5694,37 @@
     "product_changed": false,
     "old_API_failure_cause_known": false,
     "business_long_duration_accepted": false
+  },
+  "live_capacity_refresh": {
+    "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+    "phase": "ARM64-56-passed-other-candidate-gates-open",
+    "native_result": {
+      "schema": "crg-live-cpu-capacity-replay-v1",
+      "phase": "passed",
+      "native_phase": "passed",
+      "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+      "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+      "driver_sha256": "dfcb84e1c01538c6b2efded31bffcdb162df3b4ad80cce465e2d6bb4dfe1ec44",
+      "archive_sha256": "6cf2062c75908421aca4044cc56efde3811a2e8f2429f583bfb2e7e92080bf08",
+      "members": 34,
+      "kernel": "7.0.0-1017-azure",
+      "arch": "arm64",
+      "checks": 56,
+      "passed_checks": 56,
+      "failure_names": [],
+      "real_cpu_offline_events": 4,
+      "original_host_CPU_mask_restored": true,
+      "own_container_process_control_cleanup_verified": true,
+      "fresh_CLI_correct_while_old_running_Agent_stale": false,
+      "vendor_business_qualification": false,
+      "whole_P06_4_complete": false
+    },
+    "old_baseline_passed": 50,
+    "old_baseline_failed": 6,
+    "AMD64_hotplug": "EBUSY-no-successful-offline-cause-unknown",
+    "fix_in_this_branch": false,
+    "full_candidate_requalification_pending": true,
+    "stable_release_accepted": false,
+    "evidence": "testing-live-cpu-capacity-refresh.md"
   }
 }
