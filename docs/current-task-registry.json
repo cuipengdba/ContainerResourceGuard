@@ -1408,14 +1408,30 @@
         "提供统一原因码和解释：请求比例、宿主基数、上层约束、实际值、外部冲突、profile 覆盖及重载代次",
         "human/JSON 输出含义一致；状态过期、锁被持有和数据库健康不混为一谈；旧脚本依赖的字段遵守兼容规则"
       ],
-      "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false,
+      "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。 固定最终ELF输出1615两原厂角色原600秒、26主/28输出及逐字段数值/配置代次/profile覆盖/外部冲突通过，结合1525自然老化与锁/健康分离，按原P07.1定义完成。",
+      "completion_claim": true,
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "固定最终ELF两角色各原600秒内实际status/doctor/preflight的手动请求/宿主基数/自身目标及实际三控制human/JSON核对；持锁、静默未持锁、快照自然老化305秒、单写者恢复与持续业务健康分别验证，status不改快照。",
-        "remaining_or_boundary": "独立百分比、上层约束、外部冲突、profile覆盖及重载代次的human/JSON逐字段兼容覆盖仍需完整核对；本轮手动状态与模板成功不代替全部P07.1。",
-        "evidence": "testing-final-v1-cli-supervisor-terminal.md"
-      }
+        "current_status": "complete-in-original-defined-scope",
+        "verified_scope": "原定义统一原因码、请求/宿主/约束/实际值/profile/冲突/代次及共享human/JSON字段，在最终ELF两原厂原600秒内逐项核对；1525自然老化、持锁/未持锁与数据库健康分离原证据保持。",
+        "remaining_or_boundary": "JSON专有字段保持既有兼容范围；状态与数据库健康分开，不保证低限额业务性能或支持未知私有启动模板。",
+        "evidence": "testing-final-v1-output1615-terminal.md"
+      },
+      "scope_note_history": [
+        {
+          "change_kind": "complete-original-P071-defined-scope",
+          "evidence": "testing-final-v1-output1615-terminal.md",
+          "previous_acceptance": {
+            "current_status": "partial-evidence-or-verification-open",
+            "verified_scope": "固定最终ELF两角色各原600秒内实际status/doctor/preflight的手动请求/宿主基数/自身目标及实际三控制human/JSON核对；持锁、静默未持锁、快照自然老化305秒、单写者恢复与持续业务健康分别验证，status不改快照。",
+            "remaining_or_boundary": "独立百分比、上层约束、外部冲突、profile覆盖及重载代次的human/JSON逐字段兼容覆盖仍需完整核对；本轮手动状态与模板成功不代替全部P07.1。",
+            "evidence": "testing-final-v1-cli-supervisor-terminal.md"
+          }
+        }
+      ],
+      "current_evidence_files": [
+        "testing-final-v1-output1615-terminal.md",
+        "test-results-final-v1-output1615-terminal.json"
+      ]
     },
     {
       "id": "P07.2",
@@ -3404,7 +3420,7 @@
       "P07.1"
     ],
     "remaining_design": "testing-final-v1-cli-output-matrix-design.md",
-    "remaining_design_phase": "corrected-output1571-early-image-failure-await-new-environment-admission",
+    "remaining_design_phase": "P071-output-contract-accepted-original-scope",
     "remaining_protocol": "testing-final-v1-output1571.md"
   },
   "final_v1_cli_supervisor": {
@@ -3517,14 +3533,18 @@
     "business_acceptance": false
   },
   "final_v1_output1615": {
-    "phase": "native-preflight-passed-not-launched",
+    "phase": "passed",
     "job_sha256": "4bd98d7164de6a94d11ac0a1b4dd6888842dc86d97152bb297a78c09cc89e621",
     "plan_sha256": "6b49b1f71108a10b3793afc628dc7b727b2246fdcfdd2cadba287bcc272d12aa",
     "guide": "testing-capacity-recovery-output1615.md",
-    "measurement_started": false,
-    "accepted": false,
+    "measurement_started": true,
+    "accepted": true,
     "main_checks_planned": 26,
     "output_checks_planned": 28,
-    "frozen_inputs": 13
+    "frozen_inputs": 13,
+    "terminal": "test-results-final-v1-output1615-terminal.json",
+    "main_checks_passed": 26,
+    "output_checks_passed": 28,
+    "source_ELF_unchanged": true
   }
 }
