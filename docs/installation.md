@@ -26,11 +26,20 @@ CRG 是放进既有业务容器的静态二进制，不需要安装 Operator、�
 
 从本仓库 Releases 下载匹配架构的 `containerresourceguard-VERSION-linux-amd64.tar.gz` 或 arm64 包，同时下载 `SHA256SUMS`。
 
+`SHA256SUMS`可检查下载损坏；与包同渠道取得的摘要本身不建立发布者信任。先通过可信维护渠道取得预期完整摘要、程序源码修订与架构。若发布提供签名，按其准确工作流/打包提交核对；不能假设历史预发布已有新候选的签名。候选验证的实际范围见[打包与来源](final-v1-package-rehearsal.md)。
+
+在仅当前维护者可写的私有空目录操作，验证脚本必须来自预先信任的源码检出，不能先运行待验证包里的脚本。以下校验失败时不会进入解包或执行步骤；缺少可信摘要/源码/架构时先停止安装。
+
 ```bash
-sha256sum -c SHA256SUMS --ignore-missing
-tar -xzf containerresourceguard-VERSION-linux-amd64.tar.gz
+python3 /trusted-crg-source/scripts/verify-release.py \
+  containerresourceguard-VERSION-linux-amd64.tar.gz \
+  --sha256 "$CRG_TRUSTED_PACKAGE_SHA256" \
+  --source-revision "$CRG_TRUSTED_SOURCE_REVISION" --arch amd64 &&
+tar --no-same-owner --no-same-permissions -xzf containerresourceguard-VERSION-linux-amd64.tar.gz &&
 ./crg version
 ```
+
+此处源码修订是程序的 `source_revision`，签名证书的提交通常是 `package_revision`；不能混用。校验器不解包/执行，也不验证签名；来源信任和实际安装/升级验收分别完成。
 
 发布包包含程序、示例配置、可选启动脚本、文档和许可证，不包含设备标定文件、服务器地址或凭据。arm64 若只经过交叉编译，测试报告会明确说明。
 
