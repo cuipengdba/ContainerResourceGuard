@@ -1,6 +1,6 @@
 {
   "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
-  "product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "product_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "task_count": 52,
   "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; new-source actual business pending.",
   "tasks": [
@@ -1694,8 +1694,8 @@
     "direct_BPF_next_not_executed": false,
     "direct_BPF_host_result": "docs/test-results-direct-bpf-host-qualification.json"
   },
-  "current_published_source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
-  "current_published_version": "v1.0.0-preview.4",
+  "current_published_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "current_published_version": "v1.0.0-preview.5",
   "direct_BPF_host_qualification": {
     "phase": "host-probe-qualified-vendor-not-executed",
     "result": "docs/test-results-direct-bpf-host-qualification.json",
@@ -2738,7 +2738,7 @@
     "unexecuted_checks": 26
   },
   "real_PG_conflict_CSV_corrected_full600": {
-    "phase": "preflight-qualified-not-launched",
+    "phase": "passed",
     "documentation": "testing-PG-port-conflict-CSV-full600.md",
     "plan": "test-plan-PG-port-conflict-CSV-full600.json",
     "qualification": "test-results-PG-port-conflict-CSV-full600-preflight.json",
@@ -2747,8 +2747,21 @@
     "preflight_checks": 16,
     "reader_replay_checks": 25,
     "planned_checks": 44,
-    "native_fixture_created": false,
-    "business_accepted": false,
-    "stable_release_accepted": false
-  }
+    "native_fixture_created": true,
+    "business_accepted": true,
+    "stable_release_accepted": false,
+    "terminal_documentation": "testing-PG-port-conflict-CSV-full600-terminal.md",
+    "terminal_qualification": "test-results-PG-port-conflict-CSV-full600-terminal.json",
+    "recorded_checks": 44,
+    "passed_checks": 44,
+    "failed_checks": 0,
+    "unexecuted_checks": 0,
+    "manual_reference_business_accepted": true,
+    "registered_process_records_independently_absent": 134,
+    "unique_process_instances_independently_absent": 110,
+    "default20_business_accepted": false
+  },
+  "historical_registry_product_source_revision": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "current_delivery_documentation": "release-readiness-current.md",
+  "historical_published_source_revision": "180c86ad7986a76526a41575cc1c176d5da98a9c"
 }

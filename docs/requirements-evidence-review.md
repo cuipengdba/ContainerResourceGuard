@@ -1,5 +1,8 @@
 # 原52项任务与当前用户范围复核
 
+> 此页是preview.4/180c86a时点的52项范围复核快照，原定义、证据来源和未完成项保留。当前公开交付已是preview.5/ced4617，IO百分比现只限读写BPS；最新控制迁移、业务终态及待办见[当前交付与待办](release-readiness-current.md)，本页不表示新的52项结项审计。
+
+
 当前交付为preview.4，产品源码固定为`180c86ad7986a76526a41575cc1c176d5da98a9c`。本页是范围与证据入口复核，**不是52项已完成或稳定1.0验收报告**。原定义和完成声明保持；[机器可读52项](requirements-evidence-review.json)保留逐项原文及摘要，[原登记表](current-task-registry.json)和[十版规划](roadmap.md)继续可追溯。
 
 用户后来的明确需求优先：每容器一份Agent，只控制CPU、内存、IO，各百分比省略默认20；设置前识别v1/v2；内存只新增`memory.high`目标，保留外部`memory.max`。pids、CPU/IO权重、swap额度不再作为新增控制任务。high可低于当前用量并回收/节流，原max下调窗口不应阻止high生效；仅仍自有的历史硬限额恢复沿用保护。详见[内存合同](https://github.com/cuipengdba/ContainerResourceGuard/blob/a2d581537cf6abaae65aaa4233ceca8731c782d3/docs/memory-reclaim-policy.md)。只读统计、诊断、恢复与升级仍继续。

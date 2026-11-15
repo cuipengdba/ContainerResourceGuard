@@ -1,5 +1,8 @@
 # 开发任务与验收跟踪
 
+修正CSV来源后的新套件通过：计划44项，记录44项、44通过、0失败、0未执行。[完整终态](testing-PG-port-conflict-CSV-full600-terminal.md)已归档。预算/原业务SLA保持，原失败保留，稳定1.0尚未接受；[当前交付与待办](release-readiness-current.md)。
+
+
 [首轮真实PG冲突终态](testing-PG-port-conflict-terminal.md)：44项计划只执行18项，16通过/2失败/26未执行，原失败保留；实际CSV确认两次端口冲突，60登记记录清理。修正CSV读取后25项回放、16项结构/节点预检通过，[全新44项计划](testing-PG-port-conflict-CSV-full600.md)已冻结，尚未启动。原52任务、默认20%失败及长期门槛保持。
 
 
