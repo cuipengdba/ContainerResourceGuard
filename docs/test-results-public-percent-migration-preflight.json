@@ -1,0 +1,270 @@
+{
+  "schema": "crg-public-percent-driver-prelaunch-qualification-v1",
+  "phase": "qualified-before-publication-and-launch-not-migration-pass",
+  "job_sha256": "eb067f58a193e22740938ffdd6cea9e9a86d45fbab54d168bb1ff98de9f1d537",
+  "plan_sha256": "e01b628b45cf910fc64f825bc9ae868149e49d6e5c569340b3cf70d0608ba781",
+  "checks": [
+    {
+      "name": "twelve-frozen-uploaded-files-exact",
+      "passed": true
+    },
+    {
+      "name": "both-actual-public-ELF-inputs-unchanged",
+      "passed": true
+    },
+    {
+      "name": "24-record-sites-14owned10external-and48two-roles",
+      "passed": true
+    },
+    {
+      "name": "default-empty-config-and-percent-budget-not-manual",
+      "passed": true
+    },
+    {
+      "name": "closed-business-gate-and-no-workload-start",
+      "passed": true
+    },
+    {
+      "name": "own-namespace-image-UID-cgroup-and-network-isolation",
+      "passed": true
+    },
+    {
+      "name": "two-new-containers-reuse-same-own-persistent-folders",
+      "passed": true
+    },
+    {
+      "name": "actual-old-profile-and-new-reuse-not-manufactured",
+      "passed": true
+    },
+    {
+      "name": "real-binary-install-and-only-own-external-IOPS-injection",
+      "passed": true
+    },
+    {
+      "name": "new-identity-active-journal-and-current-originals-restored",
+      "passed": true
+    },
+    {
+      "name": "prior40maintenance61records-clean-before-new-root",
+      "passed": true
+    },
+    {
+      "name": "all-python-sources-parse",
+      "passed": true
+    },
+    {
+      "name": "20recorded-input-replays-including-clean-valid-IOPS-mismatch",
+      "passed": true
+    },
+    {
+      "name": "native-prefix61cleanup-two-programs-and-no-fixtures",
+      "passed": true
+    },
+    {
+      "name": "native28GiB-memory20GiB-disk-reserves",
+      "passed": true
+    }
+  ],
+  "count": 15,
+  "native_preflight": {
+    "phase": "public-percent-migration-native-preflight-passed-not-launched",
+    "node_utc": "2026-11-15T03:53:32.407809+00:00",
+    "runtime_python": "3.9.21 (main, Feb 10 2025, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)]",
+    "source_sha256": {
+      "percent-driver.py": "eb067f58a193e22740938ffdd6cea9e9a86d45fbab54d168bb1ff98de9f1d537",
+      "runner.py": "a5c1207027d6c56d996ad981d064f9f37270bd8b0eb4c575e38a21d185cb9eea",
+      "artifact-transfer.py": "9ef3d700cb28ef161d84467d5c7f0e133eb699dc7bdcfc1f0ff2819da612663b",
+      "tests/percent-contract.py": "c3edd3d93617b5105049bff154f39d22617cb3da1d215dc95f132b31172cb08f",
+      "public-artifact-binding.json": "f3b378d7881cb130eaf4cbf1cc9ced1d1fef4780288387b6d063686411ba5a6b",
+      "binaries/previous": "6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e",
+      "binaries/candidate": "be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333",
+      "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+      "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+      "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+      "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+      "plan.json": "e01b628b45cf910fc64f825bc9ae868149e49d6e5c569340b3cf70d0608ba781"
+    },
+    "build_info": {
+      "previous": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "version": "v1.0.0-preview.4",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "candidate": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+        "version": "v1.0.0-preview.5",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      }
+    },
+    "previous_full600_registered_instances_absent": 61,
+    "previous_full600_two_namespace_leaf_parent_pairs_absent": true,
+    "fresh_namespaces_absent": [
+      "crg-vendor-lab-percent1287-dbs-20261115",
+      "crg-vendor-lab-percent1287-hisdbs-20261115"
+    ],
+    "MemAvailable_bytes": 38497116160,
+    "free_disk_bytes": 66023227392,
+    "private_fixture_hashes_verified": true,
+    "no_business_fixture_created": true,
+    "business_accepted": false,
+    "stable_release_accepted": false
+  },
+  "clean_negative_replay": {
+    "schema": "crg-percent-migration-readonly-assertion-qualification-v1",
+    "phase": "recorded-input-replay-qualified-no-new-native-run",
+    "contract_sha256": "c3edd3d93617b5105049bff154f39d22617cb3da1d215dc95f132b31172cb08f",
+    "recorded_input_sha256": {
+      "crg-r992-downloaded-default980-attempt1/dbs-report.json": "45c34d152be838ec5fcf6d48d0179b1051ce392b56349c74859d9d9807217a25",
+      "crg-r992-downloaded-default980-attempt1/dbs-resource-status.json": "43f1a410c9ceb448d6380ea3f7b1a87cbd8c79c597fc77ea99618476bd5221b7",
+      "crg-r992-downloaded-default980-attempt1/dbs-resource-journal.json": "23c58ca67ae3c0dc92c1816c6a211d0efeaf0e7cbe80c41b9000e0aa0efe66f9",
+      "crg-r992-downloaded-default980-attempt1/dbs-io-profile.json": "e3c941a0e06a1d095cb8aaa9e687e745881843abf885279d39c04a8e985b5e63",
+      "crg-r992-downloaded-default980-attempt1/hisdbs-report.json": "46a025fc7ac1d0c8143f1e235240e7aa37757bf3bbbd295eaac4e8ddc9db232c",
+      "crg-r992-downloaded-default980-attempt1/hisdbs-resource-status.json": "ff4ff135599c87665691a8d54e2c9d70c3012fc676024d979c0c53ee00105600",
+      "crg-r992-downloaded-default980-attempt1/hisdbs-resource-journal.json": "85868c3c27102d98349b3f264e870be364742f413005fd08c77eb79a80499d20",
+      "crg-r992-downloaded-default980-attempt1/hisdbs-io-profile.json": "f39243849ca84f687b35618020032374688b4dfa7214fe7f35c135e8f38bce66",
+      "crg-r1227-full600-exact/dbs-report.json": "211be8572462c586c6a042c8f8636d26f627c51845023bf7aa2ad03dc9a2abd5",
+      "crg-r1227-full600-exact/dbs-resource-status.json": "712f0eb6979635f4c51382a2ba257c1cf42a7ede6bbf0dde48d5e45cb2d60ad9",
+      "crg-r1227-full600-exact/dbs-resource-journal.json": "92d788d5c1615d468eae3c89e9fea1c93ca0a7bcba1d0c15743fe84b979ab634",
+      "crg-r1227-full600-exact/dbs-io-profile.json": "dad15fe61e65d7b5db5b8810490211dbc6ab5f2c26db5392814e1add23247e0a",
+      "crg-r1227-full600-exact/hisdbs-report.json": "9e550e48ce232c1f1e7b1c2e24d7e78d6bfad22777f10af7440a502728e0d1b5",
+      "crg-r1227-full600-exact/hisdbs-resource-status.json": "db36f8df4ef14af20898811050c7ccf53dba4219e1085dc8acdeaea90cd0537b",
+      "crg-r1227-full600-exact/hisdbs-resource-journal.json": "4c71d258645ab9b17a0cd958b85f53b34fcd52b324f7efc66f68c5b654a3c383",
+      "crg-r1227-full600-exact/hisdbs-io-profile.json": "52cc239a379774b03b7453b10f0a80e7c3e0b141e559f167065f2894c71d1a55"
+    },
+    "count": 20,
+    "checks": [
+      {
+        "name": "4-dbs-replays-recorded-independent-default20-quotas-and-originals",
+        "passed": true
+      },
+      {
+        "name": "4-dbs-rejects-foreign-journal",
+        "passed": true
+      },
+      {
+        "name": "4-dbs-rejects-wrong-IOPS",
+        "passed": true
+      },
+      {
+        "name": "4-dbs-rejects-wrong-device",
+        "passed": true
+      },
+      {
+        "name": "4-dbs-rejects-duplicate-setting",
+        "passed": true
+      },
+      {
+        "name": "4-hisdbs-replays-recorded-independent-default20-quotas-and-originals",
+        "passed": true
+      },
+      {
+        "name": "4-hisdbs-rejects-foreign-journal",
+        "passed": true
+      },
+      {
+        "name": "4-hisdbs-rejects-wrong-IOPS",
+        "passed": true
+      },
+      {
+        "name": "4-hisdbs-rejects-wrong-device",
+        "passed": true
+      },
+      {
+        "name": "4-hisdbs-rejects-duplicate-setting",
+        "passed": true
+      },
+      {
+        "name": "5-dbs-replays-recorded-independent-default20-quotas-and-originals",
+        "passed": true
+      },
+      {
+        "name": "5-dbs-rejects-foreign-journal",
+        "passed": true
+      },
+      {
+        "name": "5-dbs-rejects-wrong-IOPS",
+        "passed": true
+      },
+      {
+        "name": "5-dbs-rejects-wrong-device",
+        "passed": true
+      },
+      {
+        "name": "5-dbs-rejects-duplicate-setting",
+        "passed": true
+      },
+      {
+        "name": "5-hisdbs-replays-recorded-independent-default20-quotas-and-originals",
+        "passed": true
+      },
+      {
+        "name": "5-hisdbs-rejects-foreign-journal",
+        "passed": true
+      },
+      {
+        "name": "5-hisdbs-rejects-wrong-IOPS",
+        "passed": true
+      },
+      {
+        "name": "5-hisdbs-rejects-wrong-device",
+        "passed": true
+      },
+      {
+        "name": "5-hisdbs-rejects-duplicate-setting",
+        "passed": true
+      }
+    ],
+    "scope": "Four real old4/new5 terminal snapshots replayed to qualify independent quota/journal assertions. These are separate historical runs, not observations of an actual4to5 percentage migration. Existing default20business failures unchanged.",
+    "new_migration_driver_frozen": false,
+    "new_native_fixture_created": false,
+    "actual_public_percent_migration_accepted": false,
+    "stable_release_accepted": false
+  },
+  "planned_checks": 48,
+  "new_native_fixture_created": false,
+  "actual_percent_migration_accepted": false,
+  "stable_release_accepted": false
+}
