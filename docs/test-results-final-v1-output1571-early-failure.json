@@ -1,0 +1,52 @@
+{
+  "schema": "crg-output1571-early-Ready-failure-v1",
+  "phase": "failed",
+  "job_sha256": "742a23195f91aaacf0869fb7d9b0113311282cace62236081336704ffbd68601",
+  "plan_sha256": "3dc23337c6e3500a79f45b24a9273ca80d5ec5b6f30f48e343ec6027c0ab5b92",
+  "node_utc": "2026-11-15T13:08:07.455309+00:00",
+  "sole_launch": "435-crg-r1576-output-launch-native.json",
+  "DBS_main_checks": 0,
+  "DBS_output_subchecks": 0,
+  "HISDBS_started": false,
+  "unexecuted_main": 26,
+  "unexecuted_output": 28,
+  "business_measurement_started": false,
+  "fixed_candidate_run_started": false,
+  "failure": "Original DBS image absent locally with imagePullPolicy Never; original90s Ready wait failed before product startup. Coordinator refused next role because fixture process/cgroup identity not recorded.",
+  "safe_image_events": [
+    {
+      "realtime_timestamp": "1794747919789292",
+      "message": "I1115 21:05:19.789269    9002 event.go:294] \"Event occurred\" object=\"crg-vendor-lab-final1571-dbs-20261115/dbs-business\" fieldPath=\"spec.containers{dbs}\" kind=\"Pod\" apiVersion=\"v1\" type=\"Warning\" reason=\"ErrImageNeverPull\" message=\"Container image \\\"db_puc/dbs:V7.0.12.001.02.56\\\" is not present with pull policy of Never\""
+    },
+    {
+      "realtime_timestamp": "1794747919789978",
+      "message": "I1115 21:05:19.789951    9002 event.go:294] \"Event occurred\" object=\"crg-vendor-lab-final1571-dbs-20261115/dbs-business\" fieldPath=\"spec.containers{isolated-dcs}\" kind=\"Pod\" apiVersion=\"v1\" type=\"Warning\" reason=\"ErrImageNeverPull\" message=\"Container image \\\"db_puc/dbs:V7.0.12.001.02.56\\\" is not present with pull policy of Never\""
+    },
+    {
+      "realtime_timestamp": "1794747920209383",
+      "message": "I1115 21:05:20.209366    9002 event.go:294] \"Event occurred\" object=\"crg-vendor-lab-final1571-dbs-20261115/dbs-business\" fieldPath=\"spec.containers{dbs}\" kind=\"Pod\" apiVersion=\"v1\" type=\"Warning\" reason=\"ErrImageNeverPull\" message=\"Container image \\\"db_puc/dbs:V7.0.12.001.02.56\\\" is not present with pull policy of Never\""
+    },
+    {
+      "realtime_timestamp": "1794747920210680",
+      "message": "I1115 21:05:20.210044    9002 event.go:294] \"Event occurred\" object=\"crg-vendor-lab-final1571-dbs-20261115/dbs-business\" fieldPath=\"spec.containers{isolated-dcs}\" kind=\"Pod\" apiVersion=\"v1\" type=\"Warning\" reason=\"ErrImageNeverPull\" message=\"Container image \\\"db_puc/dbs:V7.0.12.001.02.56\\\" is not present with pull policy of Never\""
+    }
+  ],
+  "own_runner_and_driver_absent": true,
+  "original_observer_cleanup_unproven_retained": true,
+  "later_independent_UID_sandbox_cgroup_process_cleanup": {
+    "node_utc": "2026-11-15T13:14:54.592463+00:00",
+    "remaining_sandboxes": [],
+    "remaining_containers": [],
+    "matching_cgroups": [],
+    "matching_process_PIDs": [],
+    "namespace_absent": true,
+    "UID_sandbox_cgroup_process_cleanup_confirmed": true
+  },
+  "pod_UID": "cc2df50a-1c16-4082-be20-efb1126a9c63",
+  "sandbox_ID": "e84c85065c738066e063ddc228ee974483850770013e55baeb1738a2de421f1f",
+  "original_final_inputs_unchanged": true,
+  "exact_artifact_members": 5,
+  "exact_artifact_bytes": 9264,
+  "scoped_accepted": false,
+  "stable_release_accepted": false
+}

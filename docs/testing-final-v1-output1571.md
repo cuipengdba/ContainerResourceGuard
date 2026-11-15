@@ -1,6 +1,6 @@
 # 固定最终候选：修订输出组合1571
 
-状态：12项输入冻结，22项本地检查、原生只读准入通过；未启动，不计通过。17/52保持，P07.1仍待。
+状态：已唯一启动；因原镜像本地缺失在90秒Ready前失败，产品和600秒测量未开始，HISDBS未启动。见[准确终态与修订准入](testing-output1571-old78-node-admission.md)。原12冻结输入和本地22项原件保持，17/52及P07.1未接受。
 
 1551的[原失败及全部原件](testing-final-v1-output-matrix-failed.md)保持不变。本轮仅修正测试聚合状态：存在已核对plan.warnings、拒绝配置或external_conflict时应为degraded；无这些原因时应为managed。两角色真实失败响应回放及反例验证已纳入本地检查。警告不代表应用失败，也不能替代各控制applied/unchanged、目标/内核值精确相等的检查。生产源码ced461705ebc27315a59aefe463f9b4af47130a3和最终AMD64 ELF9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8均不变，不重建。
 
