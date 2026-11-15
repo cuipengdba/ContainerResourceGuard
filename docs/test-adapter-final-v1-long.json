@@ -1,0 +1,68 @@
+{
+  "base_setup_job_sha256": "5605b84760c44c4e1f09e8e992c274594d0e365a3dc91713da600716b5272df8",
+  "base_setup_section_sha256": "45499347af1ff706361472a4aff31c3f8bc0517d57d42acdbae5c918c0124fe0",
+  "inverse_exact": true,
+  "changes": [
+    {
+      "before": "['vendor-soak-load.py','vendor-soak-campaign.py','vendor-engine-smoke.py']",
+      "after": "['vendor-soak-load.py','vendor-soak-campaign.py','vendor-engine-smoke.py','vendor-port-diagnostics.py','port-owner-observer.py','own-pg-startup-log.py']"
+    },
+    {
+      "before": "[('v10','dbs',64),('v10','hisdbs',64)]",
+      "after": "[('candidate1','dbs',64),('candidate1','hisdbs',64)]"
+    },
+    {
+      "before": "(folder/'crg-config/config.json').write_text(json.dumps({'resource_mode':'manual','limits':{'cpu_cores':7.2,'memory_high':'20001980416B','io_read_bps':str(bandwidth)+'MiB','io_write_bps':str(bandwidth)+'MiB','io_read_iops':4096,'io_write_iops':4096},'data_paths':['/opt/postgresql']}))",
+      "after": "(folder/'crg-config/config.json').write_text(plan['baseline_configuration_exact_utf8'])"
+    },
+    {
+      "before": "   if group.name!='cri-containerd-'+cid+'.scope':raise RuntimeError('self leaf mismatch')",
+      "after": "   if group.name!='cri-containerd-'+cid+'.scope':raise RuntimeError('self leaf mismatch')\n   actual_image=next(v['imageID'] for v in meta['status']['containerStatuses'] if v['name']==role);assert actual_image.rsplit('sha256:',1)[-1]==plan['expected_original_image_sha256'][role]\n   assert meta['metadata']['namespace']==ns and meta['metadata']['labels'].get('managed-by')=='crg-vendor-test' and not any(meta['spec'].get(k,False) for k in ['hostNetwork','hostPID','hostIPC'])\n   assert pid>1 and all(Path('/proc',str(pid),'ns',kind).stat().st_ino!=Path('/proc/1/ns',kind).stat().st_ino for kind in ['net','pid','mnt'])"
+    },
+    {
+      "before": "fixture_identity={'pod_uid':meta['metadata']['uid'],'group':str(group),'pod_parent':str(group.parent),'processes':[]}",
+      "after": "fixture_identity={'pod_uid':meta['metadata']['uid'],'container_id':cid,'init_pid':pid,'init_start_ticks':identity(pid)['start_ticks'],'group':str(group),'pod_parent':str(group.parent),'processes':[]}"
+    },
+    {
+      "before": "predeclared_controls=wanted,predeclared_journal=expected_journal)",
+      "after": "predeclared_controls=initial,enforce_controls=wanted,enforce_journal=expected_journal,role=role,original_image_id=actual_image)"
+    },
+    {
+      "before": "json.loads(status.read_text()).get('state')=='managed'",
+      "after": "json.loads(status.read_text()).get('state')=='observe'"
+    },
+    {
+      "before": "state['state']=='managed'",
+      "after": "state['state']=='observe'"
+    },
+    {
+      "before": "readiness/managed budget",
+      "after": "readiness/observe budget"
+    },
+    {
+      "before": "'-real-path-original-startup-manual-accepted-budget'",
+      "after": "'-real-path-original-startup-observe-without-resource-writes'"
+    },
+    {
+      "before": "'-only-three-resource-controls-and-other-values-preserved'",
+      "after": "'-observe-three-planned-controls-and-all-eight-originals-preserved'"
+    },
+    {
+      "before": "all(x['state']=='applied' for x in state['items']) and actual_active==expected_active",
+      "after": "all(x['state']=='observe' for x in state['items']) and actual_active=={f:initial[f] for f in actual_active}"
+    },
+    {
+      "before": "item['actual_journal']=json.loads((folder/'resource-state/journal.json').read_text())",
+      "after": "item['actual_journal']=json.loads((folder/'resource-state/journal.json').read_text()) if (folder/'resource-state/journal.json').exists() else None"
+    },
+    {
+      "before": "if item['actual_controls']!=wanted or item['actual_journal']!=expected_journal:raise RuntimeError('full high controls/journal differs from pre-gate originals')",
+      "after": "if item['actual_controls']!=initial or item['actual_journal'] is not None and item['actual_journal'].get('mutations'):raise RuntimeError('observe changed original controls or created owned mutations')"
+    },
+    {
+      "before": "   item['phase']='ready-for-seven-day-measurement';save()",
+      "after": "   fixed={'PID1':identity(pid)}\n   for name,expected_exe,expected_sha in [('Agent','/opt/crg/crg',plan['binary_sha256']),('cache','/opt/ccg/bin/containercacheguard',plan['private_fixture_sha256']['fixture/containercacheguard'])]:\n    matches=[]\n    for member in (group/'cgroup.procs').read_text().split():\n     try:\n      proc=Path('/proc',member)\n      if os.readlink(proc/'exe')==expected_exe:\n       assert sha((proc/'exe').read_bytes())==expected_sha;matches.append(identity(member))\n     except (FileNotFoundError,ProcessLookupError):pass\n    assert len(matches)==1;fixed[name]=matches[0]\n   item['fixed_processes']=fixed;item['registered_processes']=list(fixture_identity['processes']);item['primary_start']=ex(role,'su','-','postgres','-c',\"/opt/postgresql/pgsql/bin/psql -XAtw -h127.0.0.1 -p5432 -U postgres -d postgres -v ON_ERROR_STOP=1 -c 'SELECT pg_postmaster_start_time();'\").stdout.strip().splitlines()[-1]\n   record(key+'-one-exact-Agent-cache-and-initial-primary',True)\n   item['phase']='ready-for-baseline';save()"
+    }
+  ],
+  "current_final_actual_journal_formula_two_roles_matches": true
+}
