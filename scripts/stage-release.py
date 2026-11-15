@@ -165,6 +165,10 @@ def main():
                 metadata = json.load(archive.extractfile('BUILD.json'))
                 require(metadata['package_revision'] == a.package_revision, 'trusted package revision mismatch')
                 require('STAGING-VERIFICATION.json' not in archive.getnames(), 'reserved receipt name in package')
+                # Validate the complete tree before creating any package member.
+                # Recursive sync/cleanup must stay comfortably below Python's
+                # recursion/descriptor limits, including implicit directories.
+                members = []
                 for member in archive:
                     name = member.name.rstrip('/') if member.isdir() else member.name
                     require(name not in ['', '.'] and PurePosixPath(name).as_posix() == name
@@ -172,6 +176,9 @@ def main():
                             and not re.search(r'(^[A-Za-z]:|\\)', name), 'unsafe staging member name')
                     require(member.isfile() or member.isdir(), 'links and special files cannot be staged')
                     parts = PurePosixPath(name).parts
+                    require(len(parts) <= 64, 'staging member path depth exceeds64 components')
+                    members.append((member, parts))
+                for member, parts in members:
                     directory = parent_of(stage, parts if member.isdir() else parts[:-1])
                     try:
                         if member.isdir():

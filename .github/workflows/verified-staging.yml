@@ -1,4 +1,4 @@
-name: verified-staging
+name: verified-staging-depth
 on:
   workflow_dispatch:
     inputs:
@@ -62,8 +62,8 @@ jobs:
           mkdir -p ci-staging/download ci-staging/receipts
           python3 - <<'PY'
           import hashlib,json,os,pathlib,platform,subprocess
-          raw=pathlib.Path('qualification/docs/test-plan-final-v1-verified-staging.json').read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='36f4757afb4fed07646ec6f5a7be8c9139a41c5a48bf59cf67d7662e47ae00a9'
+          raw=pathlib.Path('qualification/docs/test-plan-final-v1-verified-staging-depth.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='e416793d10490cb3f9c707340b49dfe716f1f47aa807754896ba6395d3abe5b1'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           for n,h in p['source_sha256'].items():assert hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest()==h,n
@@ -114,6 +114,17 @@ jobs:
             sudo apt-get install --yes --no-upgrade --no-install-recommends strace
           fi
           strace --version > ci-staging/receipts/strace-version.txt
+      - name: Reproduce old depth defect and verify complete-tree preflight boundary
+        run: |
+          mkdir -p ci-staging/baseline
+          git -C qualification fetch --no-tags --depth=1 origin 258c7c3d19f89df50467cd0c3ab810bfa084e041
+          git -C qualification show 258c7c3d19f89df50467cd0c3ab810bfa084e041:scripts/stage-release.py > ci-staging/baseline/stage-release.py
+          cp qualification/scripts/verify-release.py ci-staging/baseline/verify-release.py
+          python3 qualification/tests/verified-staging-depth-v1.py \
+            --plan "$PWD/ci-staging/receipts/plan.json" --arch '${{ matrix.arch }}' \
+            --candidate "$PWD/ci-staging/download/containerresourceguard-v1.0.0-linux-${{ matrix.arch }}.tar.gz" \
+            --stager "$PWD/qualification/scripts/stage-release.py" --baseline "$PWD/ci-staging/baseline/stage-release.py" \
+            --output "$PWD/ci-staging/receipts/depth"
       - name: Actual verified staging, refusal, snapshot races and package binary maintenance
         run: |
           sudo env CRG_STAGING_TEST=ephemeral-github-hosted-vm-only GITHUB_ACTIONS=true RUNNER_ENVIRONMENT=github-hosted \
@@ -127,13 +138,13 @@ jobs:
         if: always()
         run: |
           mkdir -p ci-staging/receipts
-          cp qualification/scripts/stage-release.py qualification/scripts/verify-release.py qualification/tests/verified-staging-v1.py ci-staging/receipts/
+          cp qualification/scripts/stage-release.py qualification/scripts/verify-release.py qualification/tests/verified-staging-v1.py qualification/tests/verified-staging-depth-v1.py ci-staging/receipts/
           if test -d ci-staging/results; then sudo cp -r ci-staging/results ci-staging/receipts/; fi
           sudo chmod -R a+rX ci-staging/receipts
           test "$(du -sb ci-staging/receipts | cut -f1)" -lt 67108864
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
-          name: verified-staging-${{ matrix.runner }}-${{ github.sha }}
+          name: verified-staging-depth-${{ matrix.runner }}-${{ github.sha }}
           path: ci-staging/receipts/
           retention-days: 30

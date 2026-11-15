@@ -3,6 +3,24 @@
   "product_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "task_count": 52,
   "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; exact final candidate original-path18 and native284 passed; current-source default20 full business failure retained; formal long pending.",
+  "final_v1_verified_staging_depth": {
+    "qualification_source_revision": "68a604af517869d03975301bceca73f8887a623e",
+    "stager_sha256": "0ff1bc892957862888d5fbd687d3596e6232addca72654cc8f2c4c105aa1465d",
+    "plan_sha256": "e416793d10490cb3f9c707340b49dfe716f1f47aa807754896ba6395d3abe5b1",
+    "existing_checks": 150,
+    "new_depth_regression_cases": 12,
+    "old_defect_reproductions": 2,
+    "old_tool_actual_defect_preserved": true,
+    "runtime_source50_changed": false,
+    "completed_original_tasks_added": 0,
+    "stable_release_accepted": false,
+    "evidence": [
+      "verified-release-staging-depth.md",
+      "test-plan-final-v1-verified-staging-depth.json",
+      "test-results-final-v1-verified-staging-depth.json",
+      "test-evidence-final-v1-verified-staging-depth.json.gz"
+    ]
+  },
   "tasks": [
     {
       "id": "P01.1",
@@ -1683,7 +1701,7 @@
         "增加本地安装前的完整性/来源校验及离线校验步骤",
         "校验失败拒绝安装；信任根与验证方式说明清楚，不执行未经校验的远程 shell；凭据和私有 profile 不进入包"
       ],
-      "current_scope_note": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。 验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。",
+      "current_scope_note": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。 验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。 安全暂存深度修复：旧1d8工具在两架构1100层目录实测递归异常/私有残留，未发布目标；原件保留且测试独立有界清理。新0ff1工具写成员前整树预检/64层上限，准确冻结来源68a604a在amd64/Linux6.8与ARM64/Linux7重新各75项及6个深度场景通过，合计150+12，另有2个旧缺陷复现。源50/最终ELF及97长期任务不变；非稳定身份、厂商长期/满盘/掉电验收，原开放项保持。",
       "completion_claim": false,
       "current_evidence_files": [
         "test-results-preview2-publication.json",
@@ -1693,7 +1711,11 @@
         "test-plan-final-v1-verified-staging.json",
         "test-results-final-v1-verified-staging.json",
         "test-evidence-final-v1-verified-staging.json.gz",
-        "test-results-final-v1-verified-staging-first-pilot-failure.json"
+        "test-results-final-v1-verified-staging-first-pilot-failure.json",
+        "verified-release-staging-depth.md",
+        "test-plan-final-v1-verified-staging-depth.json",
+        "test-results-final-v1-verified-staging-depth.json",
+        "test-evidence-final-v1-verified-staging-depth.json.gz"
       ],
       "scope_note_history": [
         {
@@ -1737,6 +1759,24 @@
           "test-results-final-v1-verified-staging-first-pilot-failure.json"
         ],
         "boundaries": "新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。"
+      },
+      "verified_staging_depth_followup": {
+        "qualification_source_revision": "68a604af517869d03975301bceca73f8887a623e",
+        "stager_sha256": "0ff1bc892957862888d5fbd687d3596e6232addca72654cc8f2c4c105aa1465d",
+        "plan_sha256": "e416793d10490cb3f9c707340b49dfe716f1f47aa807754896ba6395d3abe5b1",
+        "existing_checks": 150,
+        "new_depth_regression_cases": 12,
+        "old_defect_reproductions": 2,
+        "old_tool_actual_defect_preserved": true,
+        "runtime_source50_changed": false,
+        "completed_original_tasks_added": 0,
+        "stable_release_accepted": false,
+        "evidence": [
+          "verified-release-staging-depth.md",
+          "test-plan-final-v1-verified-staging-depth.json",
+          "test-results-final-v1-verified-staging-depth.json",
+          "test-evidence-final-v1-verified-staging-depth.json.gz"
+        ]
       }
     },
     {
@@ -1847,7 +1887,7 @@
         "完整复核目标隔离、权限降级、外部冲突、诊断脱敏、包来源和恢复所有权",
         "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
       ],
-      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。",
+      "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。 新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。 安全暂存深度修复：旧1d8工具在两架构1100层目录实测递归异常/私有残留，未发布目标；原件保留且测试独立有界清理。新0ff1工具写成员前整树预检/64层上限，准确冻结来源68a604a在amd64/Linux6.8与ARM64/Linux7重新各75项及6个深度场景通过，合计150+12，另有2个旧缺陷复现。源50/最终ELF及97长期任务不变；非稳定身份、厂商长期/满盘/掉电验收，原开放项保持。",
       "completion_claim": false,
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
@@ -1860,7 +1900,11 @@
         "test-plan-final-v1-verified-staging.json",
         "test-results-final-v1-verified-staging.json",
         "test-evidence-final-v1-verified-staging.json.gz",
-        "test-results-final-v1-verified-staging-first-pilot-failure.json"
+        "test-results-final-v1-verified-staging-first-pilot-failure.json",
+        "verified-release-staging-depth.md",
+        "test-plan-final-v1-verified-staging-depth.json",
+        "test-results-final-v1-verified-staging-depth.json",
+        "test-evidence-final-v1-verified-staging-depth.json.gz"
       ],
       "verified_staging_followup": {
         "status": "candidate-package-tool-and-actual-isolated-installation-passed-original-scope-open",
@@ -1874,6 +1918,24 @@
           "test-results-final-v1-verified-staging-first-pilot-failure.json"
         ],
         "boundaries": "新增预信任快照安全暂存工具；准确576候选包和公开preview.5经amd64/Linux6.8/Python3.10、ARM64/Linux7/Python3.12各75项、合计150/150及52暂存场景验证，通过错误包/身份/架构/目标拒绝、0777掩码、下载路径替换/目标并发创建，以及占位PID1单容器实际升级/回退/禁用和原值/实例清理。首轮54记录/53通过/屏障失败保持，v3只修正首成员观察。此为root临时VM/CPU-only候选包流程，不等于最终稳定身份安装、厂商或老化/掉电验收，原任务仍开放。"
+      },
+      "verified_staging_depth_followup": {
+        "qualification_source_revision": "68a604af517869d03975301bceca73f8887a623e",
+        "stager_sha256": "0ff1bc892957862888d5fbd687d3596e6232addca72654cc8f2c4c105aa1465d",
+        "plan_sha256": "e416793d10490cb3f9c707340b49dfe716f1f47aa807754896ba6395d3abe5b1",
+        "existing_checks": 150,
+        "new_depth_regression_cases": 12,
+        "old_defect_reproductions": 2,
+        "old_tool_actual_defect_preserved": true,
+        "runtime_source50_changed": false,
+        "completed_original_tasks_added": 0,
+        "stable_release_accepted": false,
+        "evidence": [
+          "verified-release-staging-depth.md",
+          "test-plan-final-v1-verified-staging-depth.json",
+          "test-results-final-v1-verified-staging-depth.json",
+          "test-evidence-final-v1-verified-staging-depth.json.gz"
+        ]
       }
     },
     {
