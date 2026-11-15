@@ -1,0 +1,41 @@
+{
+  "schema": "crg-exact-source-optional-helper-unit-v1",
+  "node_utc": "2026-11-15T12:19:45.477420+00:00",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "phase": "passed",
+  "exit": 0,
+  "elapsed_seconds": 15.776132106781006,
+  "source_sha256": {
+    "tests/supervisor.sh": "df3dd001e4bc139c52c0739d26696b4dba4dd9e32366e527ef1abf649f835ee2",
+    "examples/supervisor.sh": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79"
+  },
+  "stdout": "PASS optional-agent-missing business_exit=37\nPASS optional-agent-denied business_exit=37\nPASS optional-agent-invalid business_exit=37\nPASS optional-agent-crash business_exit=37\nPASS optional-agent-hang business_exit=37\nPASS optional-agent-ignore-term business_exit=37\n",
+  "expected": [
+    "PASS optional-agent-missing business_exit=37",
+    "PASS optional-agent-denied business_exit=37",
+    "PASS optional-agent-invalid business_exit=37",
+    "PASS optional-agent-crash business_exit=37",
+    "PASS optional-agent-hang business_exit=37",
+    "PASS optional-agent-ignore-term business_exit=37"
+  ],
+  "handle": {
+    "pid": 901164,
+    "start_ticks": 168511281,
+    "pgrp": 901164,
+    "session": 901164
+  },
+  "remaining_own_session_members": [],
+  "new_ELF_run": false,
+  "vendor_business_acceptance": false,
+  "scope": "Exact-source shell helper integration only; six mock auxiliary failures preserve mock business exit37 and normal completion. Not vendor failure injection or cgroup test.",
+  "qualification": {
+    "exact_source_inputs": 3,
+    "scenarios": 6,
+    "preserved_mock_business_exit": 37,
+    "all_original_process_group_members_absent": true,
+    "source_event_review_runtime_inherited": false,
+    "native_driver_sha256": "f69b8b44d1d925e58d9e707dc8470f050accda9d6e54791fe45a10d85bd179b2",
+    "observation_file_sha256": "eb4e74a02a9a6e513a1ad3b4585a5669cc3b9e3159d45216b35187592111c06c"
+  }
+}
