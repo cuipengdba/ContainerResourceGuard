@@ -1,15 +1,15 @@
 {
   "schema": "crg-live-cpu-capacity-plan-v1",
-  "phase": "frozen-v3-proven-noop-journal-absence-before-native-pilot",
-  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "phase": "frozen-v3-protocol-fixed-source-before-native-arm64",
+  "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
   "binary_sha256": {
-    "amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
-    "arm64": "ff1a2c1c599eb38fde6857c2eede70a1deabf0c2c89977ab92e71ec52ec3982b"
+    "amd64": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+    "arm64": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1"
   },
   "source_sha256": {
     "cmd/crg/cgroup_gate.go": "1f79536032fc1c37ea0166df58b5c7c1e36db4a07faed642558c45ec9069fbfe",
     "cmd/crg/errors.go": "4ee18876d2f8eead180477bc4b8e7402934c09d326d01fc7d89c81bf9e140e71",
-    "cmd/crg/main.go": "09e039b5af3c8da9c7c2d59a460bf038f04c358c5f42ff1c95728150f328d9a0",
+    "cmd/crg/main.go": "6dd57828772c8a99385732159af4c07f262927334b8836664307a6b0c81c4647",
     "cmd/crg/percentage_flags.go": "79a6dbea86c891512c7061527e3bfc153cf32b4640407a4d1745b1c088c075ea",
     "cmd/crg/run_logging.go": "3757aac3e87192678221087bae89dd97859dac96febb63119f8ac10208e87773",
     "go.mod": "52c805337a180bfc5eb3bcbb94ef1f3c1ed61fee9c2eda11a5ceb9002533e3d0",
@@ -30,7 +30,7 @@
     "internal/guard/diagnostic_bundle.go": "d53d8a436f27cf73ac34bfe0d9063558f9a6a32397a2279f267fd4d7405c7ae7",
     "internal/guard/diagnostics.go": "3ce58448947f89ec6b0e71b6b2a68ade03bbac7c4d641f4d1baaac365f3c5f8a",
     "internal/guard/discover.go": "b47cc1310b3ff2b52f1088153ac48d872efd0622135db01cbbe9d0b44b49d734",
-    "internal/guard/engine.go": "8c51afc636af1cb0d2f01a833419d48458e5228e8dfeb8fc8e6d484dc8154204",
+    "internal/guard/engine.go": "8d7b41bc3ad6154c8de9c7d9bfbf5639fccb0a5541a572827001654136c686fa",
     "internal/guard/events.go": "0982c1a45527cf6ffe7d9745c0e70bb69b51ecd2b2f0060499e934780c9731cd",
     "internal/guard/io_weight.go": "0f3faeac99d294be5d637709c660655e4bbd3091556f55e12c6a1fd61b054297",
     "internal/guard/manual.go": "b027f91d2019f9249195f956fae0eb021b208123a2ffbcec974106a99d269f73",
@@ -96,5 +96,17 @@
     "partial_old_ARM_stale_capacity_failures": 6,
     "owned_cleanup_gap_preserved": true,
     "evidence": "test-evidence-live-cpu-capacity-v2-failures.json.gz"
+  },
+  "old_baseline": {
+    "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "workflow_revision": "c2e37ec41ce520ffcb61be783baeed7f137bacca",
+    "run_id": 43759787440,
+    "native_checks": 56,
+    "native_passed": 50,
+    "false_checks": 6,
+    "cleanup_verified": true,
+    "evidence": "docs/test-evidence-live-cpu-capacity-v3-old.json.gz",
+    "driver_unchanged": true,
+    "acceptance_criteria_unchanged": true
   }
 }

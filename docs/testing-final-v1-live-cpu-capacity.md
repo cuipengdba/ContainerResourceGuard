@@ -19,3 +19,9 @@
 v2 amd64/Linux6.8 run43758489795的CPU3下线写入被内核EBUSY拒绝，8项启动/清理通过但没有实际下线，不计热插拔通过。ARM64/Linux7 run43758860709实际完成4次CPU下线；4→3时常驻容量仍为4，未受紧cap的20%实际仍80000/100000，独立doctor为60000/100000，六项明确失败。另有夹具清理缺陷：紧cap容器所有控制原本已等于目标，无资源写入就不会生成journal，但脚本错误要求journal必存在。该原试验55项/6失败及清理不全保持，[两份准确ZIP原件](test-evidence-live-cpu-capacity-v2-failures.json.gz)完整归档，不接受为全矩阵通过。
 
 v3只修正清理条件：仅紧cap格五份快照都证明journal不存在且八项控制始终等于原值时，允许恢复后journal不存在；发生过变更的格仍要求准确存在且为空。增加journal存在性原始字段，CPU同进程/真实online/20%/10秒/56项标准均未降低。重新冻结并重跑baseline，之后修复程序须使用同一v3测试协议。
+
+## 冻结 v3 对照与修复候选
+
+旧ELF实际ARM64复测 run43759787440：56项中50通过，六项容量/配额失败，四次真实CPU下线，原CPU掩码、八项控制与容器/进程/cgroup清理均通过。原始ZIP及API摘要归档于 test-evidence-live-cpu-capacity-v3-old.json.gz。
+
+修复候选源 37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0，计划摘要 b89326a62840c6429ed9de41752599ee4cd30d28c77b93f1af5a102d58b7f250；驱动、56项条件、10秒观测、两种外部上限、同一Agent/PID1和清理门槛逐字不变，仅更新候选来源、50个生产文件摘要、ELF身份及对照证据。独立ARM64复测尚未完成；不是DBS/HISDBS业务或完整P06.4验收。
