@@ -1,5 +1,7 @@
 # 当前交付与待办：2026-11-16
 
+最新状态：[新源59绑定四格原生284/284通过；DBS完整600秒失败、HISDBS仍运行](testing-live-capacity-native-and-business-current.md)。原52项与18项既有完成声明不变，稳定1.0未接受；以下早期“待原生复核/未启动”均为历史时点。
+
 最新业务边界：[新ELF DBS约300秒SQL1项/超5秒失败快照](test-results-live-capacity-business-live.json)，原因未知、完整终态待取；原SLA不变。四格原生50绑定首轮报告284通过但来源门禁缺9项，已恢复59另跑，待独立验收。
 
 当前更新：[CPU容量刷新缺陷/修复、旧1728明确停止与新候选重新验收](testing-live-cpu-capacity-refresh.md)。37ca44e已ARM64热插拔56/56；旧1728已exit1并独立清理，任何旧“测量中”文字仅为带日期历史快照。新候选原生/业务/长期与最终发布仍待，不继承旧通过和时钟。

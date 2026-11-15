@@ -1,0 +1,687 @@
+{
+  "schema": "crg-final-exact-ELF-native-CI-terminal-v1",
+  "phase": "passed",
+  "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+  "workflow_head_sha": "1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+  "run": {
+    "id": 43761828877,
+    "html_url": "https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43761828877",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "head_sha": "1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09"
+  },
+  "version": "v1.0.0",
+  "plan_sha256": "b971e185a4c0572fa56a78ac5d0bcdad7d4195d5adec647b3c4286ee18a732b4",
+  "actual_native_checks": 104,
+  "actual_partition_checks": 180,
+  "actual_total_checks": 284,
+  "matrix": [
+    {
+      "artifact_id": 14181256191,
+      "artifact_name": "final-candidate-ubuntu-22.04-arm-1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+      "environment": {
+        "workflow_revision": "1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "runner_label": "ubuntu-22.04-arm",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "6.8.0-1070-azure",
+        "expected_kernel_prefix": "6.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      },
+      "build_info": {
+        "arch": "arm64",
+        "go_version": "go1.27.3",
+        "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "exact_build": {
+        "amd64": {
+          "sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "bytes": 4030624,
+          "exact_final_frozen_ELF": true
+        },
+        "arm64": {
+          "sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "bytes": 3801248,
+          "exact_final_frozen_ELF": true
+        }
+      },
+      "reports": {
+        "native": {
+          "checks": 26,
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "1db645cea159b4521b20b8007678e11806a1ff08340ee9972fa691009de572e4",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_mount_mapper_and_loop_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "manual-exact-three-actual-controls",
+            "CPU-actual-throttling",
+            "read-actual-direct-IO-cap",
+            "write-actual-direct-IO-cap",
+            "randwrite-actual-direct-IO-cap",
+            "memory-high-target-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "manual-disable-restores-eight-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        },
+        "partition": {
+          "checks": 45,
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "a37a6027f664e6441328d73385b266b593d75fc30e3b9c2167bc956400f0ff7a",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "original-released-preview-for-independent-restore",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "actual-two-partition-filesystems-share-one-parent",
+            "finite-external-own-leaf-baseline-established",
+            "manual-exact-three-actual-controls",
+            "manual-journal-uses-one-whole-device-key",
+            "two-real-filesystem-paths-covered-by-one-control-target",
+            "CPU-actual-throttling",
+            "/data-read-actual-direct-IO-cap",
+            "/data-write-actual-direct-IO-cap",
+            "/data-randwrite-actual-direct-IO-cap",
+            "/sibling-read-actual-direct-IO-cap",
+            "/sibling-write-actual-direct-IO-cap",
+            "/sibling-randwrite-actual-direct-IO-cap",
+            "sibling-partitions-share-one-write-budget",
+            "sibling-partitions-share-one-randwrite-budget",
+            "memory-limit-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "old-released-disable-restores-eight-finite-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "automatic-profile-binds-filesystem-to-whole-parent",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "two-real-profiles-form-one-minimum-percentage-cap",
+            "merged-profile-originals-restored",
+            "mixed-whole-and-partition-baselines-refuse-IO-writes",
+            "overlap-profile-safe-restore",
+            "offline-owned-partition-growth-preserves-cache-and-data",
+            "changed-geometry-recalibrates-with-stale-profile-visible",
+            "old-partition-profile-reported-unavailable",
+            "geometry-originals-data-logs-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        }
+      },
+      "old_published_binary_verification": {
+        "version": "v0.1.0-rc.3-preview.1",
+        "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+        "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+        "architecture": "arm64",
+        "asset_id": 730823217,
+        "archive_sha256": "3e650f035bb87411821e429b611c39e3e42860ddfe78c722555c4de981a0c89a",
+        "binary_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+        "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+        "scope": "published bytes selected; not yet execution or controller acceptance"
+      }
+    },
+    {
+      "artifact_id": 14181087206,
+      "artifact_name": "final-candidate-ubuntu-22.04-1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+      "environment": {
+        "workflow_revision": "1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "runner_label": "ubuntu-22.04",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "6.8.0-1070-azure",
+        "expected_kernel_prefix": "6.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      },
+      "build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "exact_build": {
+        "amd64": {
+          "sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "bytes": 4030624,
+          "exact_final_frozen_ELF": true
+        },
+        "arm64": {
+          "sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "bytes": 3801248,
+          "exact_final_frozen_ELF": true
+        }
+      },
+      "reports": {
+        "native": {
+          "checks": 26,
+          "binary_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "driver_sha256": "1db645cea159b4521b20b8007678e11806a1ff08340ee9972fa691009de572e4",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_mount_mapper_and_loop_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "manual-exact-three-actual-controls",
+            "CPU-actual-throttling",
+            "read-actual-direct-IO-cap",
+            "write-actual-direct-IO-cap",
+            "randwrite-actual-direct-IO-cap",
+            "memory-high-target-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "manual-disable-restores-eight-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        },
+        "partition": {
+          "checks": 45,
+          "binary_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "driver_sha256": "a37a6027f664e6441328d73385b266b593d75fc30e3b9c2167bc956400f0ff7a",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "original-released-preview-for-independent-restore",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "actual-two-partition-filesystems-share-one-parent",
+            "finite-external-own-leaf-baseline-established",
+            "manual-exact-three-actual-controls",
+            "manual-journal-uses-one-whole-device-key",
+            "two-real-filesystem-paths-covered-by-one-control-target",
+            "CPU-actual-throttling",
+            "/data-read-actual-direct-IO-cap",
+            "/data-write-actual-direct-IO-cap",
+            "/data-randwrite-actual-direct-IO-cap",
+            "/sibling-read-actual-direct-IO-cap",
+            "/sibling-write-actual-direct-IO-cap",
+            "/sibling-randwrite-actual-direct-IO-cap",
+            "sibling-partitions-share-one-write-budget",
+            "sibling-partitions-share-one-randwrite-budget",
+            "memory-limit-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "old-released-disable-restores-eight-finite-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "automatic-profile-binds-filesystem-to-whole-parent",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "two-real-profiles-form-one-minimum-percentage-cap",
+            "merged-profile-originals-restored",
+            "mixed-whole-and-partition-baselines-refuse-IO-writes",
+            "overlap-profile-safe-restore",
+            "offline-owned-partition-growth-preserves-cache-and-data",
+            "changed-geometry-recalibrates-with-stale-profile-visible",
+            "old-partition-profile-reported-unavailable",
+            "geometry-originals-data-logs-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        }
+      },
+      "old_published_binary_verification": {
+        "version": "v0.1.0-rc.3-preview.1",
+        "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+        "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+        "architecture": "amd64",
+        "asset_id": 730823163,
+        "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+        "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+        "scope": "published bytes selected; not yet execution or controller acceptance"
+      }
+    },
+    {
+      "artifact_id": 14180862529,
+      "artifact_name": "final-candidate-ubuntu-24.04-1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+      "environment": {
+        "workflow_revision": "1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "runner_label": "ubuntu-24.04",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "7.0.0-1017-azure",
+        "expected_kernel_prefix": "7.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      },
+      "build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "exact_build": {
+        "amd64": {
+          "sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "bytes": 4030624,
+          "exact_final_frozen_ELF": true
+        },
+        "arm64": {
+          "sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "bytes": 3801248,
+          "exact_final_frozen_ELF": true
+        }
+      },
+      "reports": {
+        "native": {
+          "checks": 26,
+          "binary_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "driver_sha256": "1db645cea159b4521b20b8007678e11806a1ff08340ee9972fa691009de572e4",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_mount_mapper_and_loop_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "manual-exact-three-actual-controls",
+            "CPU-actual-throttling",
+            "read-actual-direct-IO-cap",
+            "write-actual-direct-IO-cap",
+            "randwrite-actual-direct-IO-cap",
+            "memory-high-target-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "manual-disable-restores-eight-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        },
+        "partition": {
+          "checks": 45,
+          "binary_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "driver_sha256": "a37a6027f664e6441328d73385b266b593d75fc30e3b9c2167bc956400f0ff7a",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "original-released-preview-for-independent-restore",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "actual-two-partition-filesystems-share-one-parent",
+            "finite-external-own-leaf-baseline-established",
+            "manual-exact-three-actual-controls",
+            "manual-journal-uses-one-whole-device-key",
+            "two-real-filesystem-paths-covered-by-one-control-target",
+            "CPU-actual-throttling",
+            "/data-read-actual-direct-IO-cap",
+            "/data-write-actual-direct-IO-cap",
+            "/data-randwrite-actual-direct-IO-cap",
+            "/sibling-read-actual-direct-IO-cap",
+            "/sibling-write-actual-direct-IO-cap",
+            "/sibling-randwrite-actual-direct-IO-cap",
+            "sibling-partitions-share-one-write-budget",
+            "sibling-partitions-share-one-randwrite-budget",
+            "memory-limit-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "old-released-disable-restores-eight-finite-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "automatic-profile-binds-filesystem-to-whole-parent",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "two-real-profiles-form-one-minimum-percentage-cap",
+            "merged-profile-originals-restored",
+            "mixed-whole-and-partition-baselines-refuse-IO-writes",
+            "overlap-profile-safe-restore",
+            "offline-owned-partition-growth-preserves-cache-and-data",
+            "changed-geometry-recalibrates-with-stale-profile-visible",
+            "old-partition-profile-reported-unavailable",
+            "geometry-originals-data-logs-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        }
+      },
+      "old_published_binary_verification": {
+        "version": "v0.1.0-rc.3-preview.1",
+        "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+        "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+        "architecture": "amd64",
+        "asset_id": 730823163,
+        "archive_sha256": "65ad8e81d85249e7d4f96d216eaed8cc09b6e03b41d3b65342da9d62b6c9c45f",
+        "binary_sha256": "f07973272313db26d359797dda4665145f7dd6490bac2a55f9084bd367faf361",
+        "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+        "scope": "published bytes selected; not yet execution or controller acceptance"
+      }
+    },
+    {
+      "artifact_id": 14180802774,
+      "artifact_name": "final-candidate-ubuntu-24.04-arm-1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+      "environment": {
+        "workflow_revision": "1c9fb28dd2d66e2be0c9fb42fdc7b83657474f09",
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "runner_label": "ubuntu-24.04-arm",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "7.0.0-1017-azure",
+        "expected_kernel_prefix": "7.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      },
+      "build_info": {
+        "arch": "arm64",
+        "go_version": "go1.27.3",
+        "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "exact_build": {
+        "amd64": {
+          "sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+          "bytes": 4030624,
+          "exact_final_frozen_ELF": true
+        },
+        "arm64": {
+          "sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "bytes": 3801248,
+          "exact_final_frozen_ELF": true
+        }
+      },
+      "reports": {
+        "native": {
+          "checks": 26,
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "1db645cea159b4521b20b8007678e11806a1ff08340ee9972fa691009de572e4",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_mount_mapper_and_loop_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "manual-exact-three-actual-controls",
+            "CPU-actual-throttling",
+            "read-actual-direct-IO-cap",
+            "write-actual-direct-IO-cap",
+            "randwrite-actual-direct-IO-cap",
+            "memory-high-target-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "manual-disable-restores-eight-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        },
+        "partition": {
+          "checks": 45,
+          "binary_sha256": "865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1",
+          "driver_sha256": "a37a6027f664e6441328d73385b266b593d75fc30e3b9c2167bc956400f0ff7a",
+          "cleanup": {
+            "own_image_absent": true,
+            "all_owned_containers_and_cgroups_absent": true,
+            "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+            "private_directory_removed": true
+          },
+          "check_names": [
+            "exact-native-program-source",
+            "original-released-preview-for-independent-restore",
+            "local-Docker-only",
+            "scratch-image-native-and-owned",
+            "actual-two-partition-filesystems-share-one-parent",
+            "finite-external-own-leaf-baseline-established",
+            "manual-exact-three-actual-controls",
+            "manual-journal-uses-one-whole-device-key",
+            "two-real-filesystem-paths-covered-by-one-control-target",
+            "CPU-actual-throttling",
+            "/data-read-actual-direct-IO-cap",
+            "/data-write-actual-direct-IO-cap",
+            "/data-randwrite-actual-direct-IO-cap",
+            "/sibling-read-actual-direct-IO-cap",
+            "/sibling-write-actual-direct-IO-cap",
+            "/sibling-randwrite-actual-direct-IO-cap",
+            "sibling-partitions-share-one-write-budget",
+            "sibling-partitions-share-one-randwrite-budget",
+            "memory-limit-and-safe-allocation",
+            "Agent-crash-retains-kernel-caps-and-PID1",
+            "same-journal-Agent-restart",
+            "old-released-disable-restores-eight-finite-originals",
+            "manual-logs-sentinel-and-no-OOM",
+            "independent-percentages-and-real-automatic-profile",
+            "automatic-profile-binds-filesystem-to-whole-parent",
+            "manual-optional-IOPS-on-same-container",
+            "percent-switch-restores-owned-IOPS-baseline",
+            "percent-disable-before-normal-rebuild",
+            "new-container-external-IOPS-baseline",
+            "percent-retains-new-external-IOPS",
+            "new-Docker-ID-discovers-new-journal-identity",
+            "stable-profile-reused-without-second-calibration",
+            "daily-log-prefix-retained-and-appended",
+            "new-container-originals-restore-and-no-OOM",
+            "two-real-profiles-form-one-minimum-percentage-cap",
+            "merged-profile-originals-restored",
+            "mixed-whole-and-partition-baselines-refuse-IO-writes",
+            "overlap-profile-safe-restore",
+            "offline-owned-partition-growth-preserves-cache-and-data",
+            "changed-geometry-recalibrates-with-stale-profile-visible",
+            "old-partition-profile-reported-unavailable",
+            "geometry-originals-data-logs-and-no-OOM",
+            "actual-readonly-without-capabilities-is-degraded",
+            "readonly-failure-visible-and-PID1-preserved",
+            "readonly-disable-with-no-owned-mutations"
+          ]
+        }
+      },
+      "old_published_binary_verification": {
+        "version": "v0.1.0-rc.3-preview.1",
+        "source_revision": "7638ee9f871287d1056e267034e0c4e46903b66e",
+        "package_revision": "73bf2aaf38dfd92757cd58e610d4e49debc56b1f",
+        "tag_object": "54cd5c74852aa680c9779783328bfeaebf5e8744",
+        "architecture": "arm64",
+        "asset_id": 730823217,
+        "archive_sha256": "3e650f035bb87411821e429b611c39e3e42860ddfe78c722555c4de981a0c89a",
+        "binary_sha256": "c20a9ea5b070ea1039f1dcdc8cbba867eda58eb016c1c4cd8aceec28a8151463",
+        "checksum_file_sha256": "6d810ca571c4a2d0ae9f9b47a1f924dff1e87de6b78d99e2f5394b33b1480ae1",
+        "scope": "published bytes selected; not yet execution or controller acceptance"
+      }
+    }
+  ],
+  "all_actual_controller_programs_match_frozen_final_ELFs": true,
+  "all_owned_native_fixtures_removed": true,
+  "exact_files": 32,
+  "exact_bytes": 186456,
+  "scope": "Disposable native GitHub VM controller, sibling partitions, recovery and exact final-version ELF. Not vendor ARM business, two independent physical devices, shared-node performance, 24h or seven days. Failure retained; no automatic retry or altered driver/criteria.",
+  "vendor_ARM_business_accepted": false,
+  "stable_release_accepted": false
+}
