@@ -1,0 +1,39 @@
+{
+  "schema": "crg-offline-verified-staging-depth-review-v1",
+  "scope": "exact prior candidate package staging/refusal/races and scratch PID1 single-container CPU-only upgrade/rollback; not final stable publication, vendor/aged, physical slow disk or power-loss acceptance",
+  "plan_sha256": "e416793d10490cb3f9c707340b49dfe716f1f47aa807754896ba6395d3abe5b1",
+  "environments": [
+    {
+      "run_id": 43742522227,
+      "artifact_id": 14172647282,
+      "ZIP_sha256": "e408a1540e6a0a9b5718759f6ed84e16007eb6c19d37470021300969d3540294",
+      "runner": "ubuntu-22.04",
+      "arch": "amd64",
+      "kernel": "6.8.0-1070-azure",
+      "python": "3.10.12",
+      "checks": 75,
+      "staging_cases": 26,
+      "native_upgrade_and_rollback": true,
+      "observed_cleanup_verified": true
+    },
+    {
+      "run_id": 43742834468,
+      "artifact_id": 14172838153,
+      "ZIP_sha256": "9887ea48bf63ac4decf3825945f3f4933057a45ccc98a7ebb58cb7badedfb335",
+      "runner": "ubuntu-24.04-arm",
+      "arch": "arm64",
+      "kernel": "7.0.0-1017-azure",
+      "python": "3.12.3",
+      "checks": 75,
+      "staging_cases": 26,
+      "native_upgrade_and_rollback": true,
+      "observed_cleanup_verified": true
+    }
+  ],
+  "total_checks": 150,
+  "depth_regression_cases": 12,
+  "old_defect_reproductions": 2,
+  "staging_cases": 52,
+  "full_original_task_closed": false,
+  "stable_release_accepted": false
+}
