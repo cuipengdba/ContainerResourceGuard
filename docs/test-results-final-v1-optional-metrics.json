@@ -1,0 +1,59 @@
+{
+  "schema": "crg-final-default-export-and-optional-failure-evidence-v1",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "final_binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "default_runtime_observations": [
+    {
+      "node_utc": "2026-11-15T08:37:57.019157+00:00",
+      "HIS_Agent_PID_start": {
+        "pid": 2125779,
+        "start_ticks": 167138121,
+        "executable": "/opt/crg/crg",
+        "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+        "original_absent": false,
+        "state": "S",
+        "expected_entry_matches": null
+      },
+      "Agent_owned_socket_FD_count": 0,
+      "both_roles_export_files_absent": true
+    },
+    {
+      "node_utc": "2026-11-15T08:41:21.958809+00:00",
+      "HIS_Agent_PID_start": {
+        "pid": 2125779,
+        "start_ticks": 167138121,
+        "executable": "/opt/crg/crg",
+        "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+        "original_absent": false,
+        "state": "S",
+        "expected_entry_matches": null
+      },
+      "Agent_owned_socket_FD_count": 0,
+      "both_roles_export_files_absent": true
+    }
+  ],
+  "default_status_optional_export_fields": "omitted/null; no invented disabled state",
+  "enabled_and_failure_qualification": {
+    "healthy": {
+      "samples": 181,
+      "metrics_state": "ready",
+      "events_state": "ready",
+      "actual_controls_unchanged_every_sample": true,
+      "Agent_managed_every_sample": true,
+      "last_elapsed_seconds": 1800.0096268018242
+    },
+    "export-failure": {
+      "samples": 181,
+      "metrics_state": "unavailable",
+      "events_state": "unavailable",
+      "actual_controls_unchanged_every_sample": true,
+      "Agent_managed_every_sample": true,
+      "last_elapsed_seconds": 1800.0107575408183
+    }
+  },
+  "exact_existing_enabled_and_failure_evidence": "test-evidence-final-v1-overhead-terminal.json.gz",
+  "exact_existing_enabled_and_failure_evidence_sha256": "aae697a6f507c6f9e48d00c6bd176efe5fff3ef8a6329ac34d433ee7c6824816",
+  "source_unit_review": "test-results-final-v1-reload-metrics-source-review.json",
+  "scope": "Socket FD absence is two live HIS Agent snapshots, not a continuous network capture. Both original-path business roles pass with export files absent; export failure fixture proves continuing resource control, not a second vendor-business fault campaign.",
+  "stable_release_accepted": false
+}
