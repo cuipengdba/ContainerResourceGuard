@@ -64,8 +64,10 @@ v1/混合/未知Cgroup或权限不足会记录跳过/降级，辅助失败继续
 
 ## 回退与验收范围
 
-尚未enable且配置、profile、journal仍与forward收据快照匹配时，可以按[安装与回退](installation.md)使用当前收据的binary-rollback。新版运行并更新状态后，旧收据必须拒绝快照不一致的自动回退；保留当前状态并从当前quiescent状态建立全新的显式反向安装收据，不能覆盖旧journal。若目的是解除CRG限制，优先由当前程序disable并核对原值恢复。
+自动回退取决于配置、profile、journal及当前身份是否仍与forward收据快照匹配。按[安装与回退](installation.md)使用当前收据的binary-rollback；新版运行后若快照仍完全一致，重新quiesce后也可以回退，暂停时间戳本身不构成变化。若新版运行使快照发生变化，旧收据必须拒绝自动回退；保留当前状态并从当前quiescent状态建立全新的显式反向安装收据，不能覆盖旧journal。若目的是解除CRG限制，优先由当前程序disable并核对原值恢复。
 
 回到preview.4还会恢复它的四轴IO百分比语义，可能再次得到较低IOPS限制。回退同样要逐容器核对预算、单实例、实际值及数据库健康。恢复文件包含原状态，只在私有维护目录保存。
 
 本页列出受保护的维护操作流程，不声明已完成preview.4到preview.5的正式已发布包全流程升级验收。准确CI的同容器旧IOPS基线恢复及新容器外部IOPS保留检查、[默认20/30原矩阵](testing-bandwidth-percent-terminal.md)、[独立HIS30补测](testing-bandwidth-calendar-HIS30-v2.md)与正式迁移是不同范围。以[当前验收入口](current-acceptance.md)为准；预发布不能当作稳定1.0已经接受。
+
+[实际公开程序同预算维护终态](testing-preview45-manual-maintenance-terminal.md)：通过，40/40项；此手动模式结果不等于百分比策略迁移或全部安装路径验收。
