@@ -1,0 +1,44 @@
+{
+  "schema": "crg-offline-native-three-resource-review-v1",
+  "scope": "Actual exact final ELF, simultaneous manual CPU/memory.high/read+writeBPS on own isolated single container. Three real state filesystem faults>=30s and three explicit retries; actual durable/kernel interruption before and after each of CPU, memory.high and io.max writes. External memory.max/IOPS and other controls retained; own dm-linear+ext4 over exclusive2GiB loop file, not independent physical disk. Not default percentages/vendor/aged/physical slow disk/power loss/stable publication acceptance.",
+  "plan_sha256": "ba40ffaad2972c0131ab9afe0ee31fd80dacd84357b49ec2247932dfdd8bf493",
+  "environments": [
+    {
+      "run_id": 43751660373,
+      "artifact_id": 14175824512,
+      "ZIP_sha256": "e6f92affea7cbd00948c2f7d68b420c5ac40f9447870a2cd45f7b6292ce981a1",
+      "runner": "ubuntu-24.04-arm",
+      "arch": "arm64",
+      "kernel": "7.0.0-1017-azure",
+      "checks": 92,
+      "cases": 10,
+      "sustained_real_filesystem_faults": 3,
+      "exact_SIGKILL_boundaries": 6,
+      "delayed_complete": 1,
+      "all_original8_restored": true,
+      "own_cleanup_verified": true
+    },
+    {
+      "run_id": 43750954359,
+      "artifact_id": 14176597072,
+      "ZIP_sha256": "7f969150d90028a23588277fb2466b822cc109a608b19470d7f10e9a627eee58",
+      "runner": "ubuntu-22.04",
+      "arch": "amd64",
+      "kernel": "6.8.0-1070-azure",
+      "checks": 92,
+      "cases": 10,
+      "sustained_real_filesystem_faults": 3,
+      "exact_SIGKILL_boundaries": 6,
+      "delayed_complete": 1,
+      "all_original8_restored": true,
+      "own_cleanup_verified": true
+    }
+  ],
+  "pilot_only": false,
+  "total_checks": 184,
+  "cases": 20,
+  "full_original_P09_3_closed": false,
+  "physical_power_loss_tested": false,
+  "hidden_uncommitted_state_originals_preserved": true,
+  "stable_release_accepted": false
+}
