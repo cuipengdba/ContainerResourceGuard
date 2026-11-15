@@ -1643,9 +1643,9 @@
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "旧源码长fuzz/持续输出故障和准确源码race已有证据。",
-        "remaining_or_boundary": "最终候选对应长fuzz/持久化中断及边界覆盖需逐项复核；真实掉电未测且不得称强杀等同掉电。",
-        "evidence": "testing-combined-long.md"
+        "verified_scope": "准确源码418份输入前后不变，Windows amd64两个解析器分别新跑300秒、目标/包pass及完整事件独立复算；旧长故障和准确源码race保持各自来源。",
+        "remaining_or_boundary": "模糊测试不等于全部语义/厂商运行时通过；最终ELF持久化中断、持续权限撤销、慢/满文件系统和边界仍需核对，强杀不得冒充真实掉电。",
+        "evidence": "testing-final-v1-parser-fuzz.md"
       }
     },
     {
@@ -1656,12 +1656,12 @@
         "工程目标：15s 周期、稳定状态至少 30min，单核平均 CPU ≤0.1%、RSS ≤20MiB，状态文件最多每 5min 一次；另测低 IO/持续异常，不为达标省略必要日志"
       ],
       "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。",
-      "completion_claim": false,
+      "completion_claim": true,
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "固定最终ELF原15s周期及30min实际开销三场景通过；CPU≤0.1%单核、RSS≤20MiB、状态≥299秒、低IO/异常写入预算及必要journal均核对。",
-        "remaining_or_boundary": "本轮有效强制预算为单套manual低IO额度；仍需不同有效限额的开销对比/回归和长期老化结果，不能将三种故障等同多种限额。",
-        "evidence": "testing-final-v1-overhead-terminal.md"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "同一最终ELF在0.25/0.5/0.75CPU、128/192/224MiB high和三档BPS/手动IOPS有各自实际1800秒；新增两档各181样本、原阈值、正常导出、原PID/实际控制及清理复算通过，既有低IO/持续导出故障/实际只读各1800秒保持。",
+        "remaining_or_boundary": "本项原工程目标至少30分钟及不同有效限额完成；为Agent自身计数和占位PID1，非厂商/共享节点因果性能；七天业务老化归P10.2，不能转记旧时长。",
+        "evidence": "testing-final-v1-budget-overhead-terminal.md"
       }
     },
     {
@@ -3166,7 +3166,7 @@
   "current_52_scope_audit": {
     "documentation": "current-52-task-audit.md",
     "machine_audit": "current-52-task-audit.json",
-    "completed_in_defined_scope": 14,
+    "completed_in_defined_scope": 15,
     "stable_release_accepted": false
   },
   "final_v1_overhead": {
@@ -3283,7 +3283,7 @@
     "accepted": false
   },
   "final_v1_budget_overhead": {
-    "phase": "warming",
+    "phase": "passed",
     "documentation": "testing-final-v1-budget-overhead.md",
     "plan": "test-plan-final-v1-budget-overhead.json",
     "job_sha256": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
@@ -3293,7 +3293,7 @@
       "healthy-threequarters"
     ],
     "measurement_started": true,
-    "accepted": false,
+    "accepted": true,
     "stable_release_accepted": false,
     "actual_runner": {
       "pid": 3356931,
@@ -3311,7 +3311,16 @@
     },
     "start_observation": "test-start-final-v1-budget-overhead.json",
     "launcher_sha256": "2f48d20390d72a8746ea933638cdeeb450b1e2833240b47a67d96d0700bc0238",
-    "launch_and_observer_are_additional_guards_not_replacements_of_seven_frozen_measurement_inputs": true
+    "launch_and_observer_are_additional_guards_not_replacements_of_seven_frozen_measurement_inputs": true,
+    "terminal": "test-results-final-v1-budget-overhead-terminal.json",
+    "terminal_evidence": "test-evidence-final-v1-budget-overhead-terminal.json.gz",
+    "actual_measurement_seconds": 1800.024253203068,
+    "all_owned_processes_namespace_parent_leaf_absent": true,
+    "compared_budget_labels": [
+      "healthy-low",
+      "healthy-half",
+      "healthy-threequarters"
+    ]
   },
   "final_v1_diagnostics_counter_fixed": {
     "phase": "passed",
@@ -3338,5 +3347,12 @@
     "passed_main_checks": 20,
     "diagnostic_subchecks_passed": 38,
     "all_owned_processes_namespace_parent_leaf_absent": true
+  },
+  "final_source_parser_fuzz": {
+    "phase": "passed-in-source-parser-scope",
+    "platform": "Windows amd64 native parser tests; not Linux cgroup or product ELF execution",
+    "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "evidence": "test-results-final-v1-parser-fuzz.json",
+    "full_P09_3_accepted": false
   }
 }

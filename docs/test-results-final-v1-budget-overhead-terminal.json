@@ -1,0 +1,213 @@
+{
+  "schema": "crg-final-ELF-two-budget-overhead-independent-terminal-v1",
+  "phase": "passed",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "version": "v1.0.0",
+  "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "job_sha256": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
+  "plan_sha256": "6b39a50e93705bb7e139ffb0e79cb2ec3ace0fd1ae220d7af68a2665b2aafc83",
+  "terminal_node_utc": "2026-11-15T10:36:20.108381+00:00",
+  "actual_measurement_seconds": 1800.024253203068,
+  "runner_exit": 0,
+  "runner_and_worker_original_absent": true,
+  "namespace_absent": true,
+  "four_original_PID_start_instances_and_two_parent_leaf_pairs_absent": true,
+  "all_frozen_inputs_unchanged": true,
+  "original_report_sha256": "57bd99526775652425e7478b9954202e8658fd7c80a33015fc7a8eb792f79c19",
+  "cases": {
+    "healthy-half": {
+      "samples": 181,
+      "recomputed": {
+        "CPU_single_core_percent": 0.023333210345085377,
+        "max_RSS_bytes": 10326016,
+        "write_bytes_delta": 159744,
+        "wchar_delta": 81798,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.001020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0094877148513,
+        "same_Agent_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=131072 wbps=131072 riops=16 wiops=16",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "201326592",
+        "memory.swap.max": "0"
+      },
+      "identity": {
+        "pod_uid": "b77dcd6c-16f8-42cc-8a3d-6152fba77d7a",
+        "container_id": "90fb230097846b314e1cbc7371fa0b2de55977fa9d90ff42e816dbaf16eb0c71",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb77dcd6c_16f8_42cc_8a3d_6152fba77d7a.slice/cri-containerd-90fb230097846b314e1cbc7371fa0b2de55977fa9d90ff42e816dbaf16eb0c71.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb77dcd6c_16f8_42cc_8a3d_6152fba77d7a.slice",
+        "main": {
+          "pid": 3358049,
+          "start_ticks": 167701399
+        },
+        "Agent": {
+          "pid": 3358085,
+          "start_ticks": 167701404
+        }
+      },
+      "all_own_processes_and_parent_leaf_absent": true,
+      "terminal_files": {
+        "logs": [
+          {
+            "filename": "crg-2026-11-15.log",
+            "bytes": 2721,
+            "mode": "0o600",
+            "sha256": "3b23d85fb4e06e390e943fa21ac84ea24de86b04a29673d61fc3b1130f712630",
+            "has_v2_detection": true,
+            "has_high_policy": true
+          }
+        ],
+        "marker": null,
+        "metrics_symlink": false,
+        "events_symlink": false,
+        "journal_sha256": "c846b7e2e4fe82c382223493019b0d1fa1af4425ec6d9521c3cfca6ee3e73765",
+        "status_sha256": "2d3ab3a2a12115e94edd6c08ea8878dece5f7047d4270e5a22f107d07ca5e0cf"
+      }
+    },
+    "healthy-threequarters": {
+      "samples": 181,
+      "recomputed": {
+        "CPU_single_core_percent": 0.02333321047835451,
+        "max_RSS_bytes": 9990144,
+        "write_bytes_delta": 155648,
+        "wchar_delta": 79247,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0094774339814,
+        "same_Agent_process": true
+      },
+      "actual_controls": {
+        "cpu.max": "75000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=1048576 wbps=1048576 riops=128 wiops=128",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "234881024",
+        "memory.swap.max": "0"
+      },
+      "identity": {
+        "pod_uid": "b1d97157-5829-4f63-94f6-3f295707cc5a",
+        "container_id": "e293f7d04d4957ee82ad331edf73e4bcb2456e6909d9238779faca9919cfdee3",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb1d97157_5829_4f63_94f6_3f295707cc5a.slice/cri-containerd-e293f7d04d4957ee82ad331edf73e4bcb2456e6909d9238779faca9919cfdee3.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podb1d97157_5829_4f63_94f6_3f295707cc5a.slice",
+        "main": {
+          "pid": 3359418,
+          "start_ticks": 167701837
+        },
+        "Agent": {
+          "pid": 3359465,
+          "start_ticks": 167701840
+        }
+      },
+      "all_own_processes_and_parent_leaf_absent": true,
+      "terminal_files": {
+        "logs": [
+          {
+            "filename": "crg-2026-11-15.log",
+            "bytes": 2730,
+            "mode": "0o600",
+            "sha256": "2ba1c915f4228bb7f3d5316b7f8ce97a2abbea806c4944ccb0b43bfc42b09c22",
+            "has_v2_detection": true,
+            "has_high_policy": true
+          }
+        ],
+        "marker": null,
+        "metrics_symlink": false,
+        "events_symlink": false,
+        "journal_sha256": "34d1e26c0b5e9465763e0ff4fe12e62480d836dc1bae67e7f95df7348c19e150",
+        "status_sha256": "d99731cf396b199870a9328b3b24ba920132cc8080ec2ecab3d1916504e78e30"
+      }
+    }
+  },
+  "scope": "Final fixed ELF shared-node Agent-only two additional healthy effective budgets, same15s/45warmup/1800measure/181samples and original thresholds. Compare with exact final1404 healthy low-IO and actual fault results, without causal performance or vendor business/long-aging inference. No prior runtime inherited. Existing vendor diagnostic and old78 untouched.",
+  "new_long_started": false,
+  "different_effective_budget_comparison": [
+    {
+      "origin": "prior completed final1404 healthy reference; no runtime inherited",
+      "label": "healthy-low",
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "recomputed": {
+        "CPU_single_core_percent": 0.022777670634829786,
+        "max_RSS_bytes": 10223616,
+        "write_bytes_delta": 155648,
+        "wchar_delta": 79412,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.001020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0084669459611,
+        "same_Agent_process": true
+      }
+    },
+    {
+      "origin": "new final1461 measurement",
+      "label": "healthy-half",
+      "actual_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=131072 wbps=131072 riops=16 wiops=16",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "201326592",
+        "memory.swap.max": "0"
+      },
+      "recomputed": {
+        "CPU_single_core_percent": 0.023333210345085377,
+        "max_RSS_bytes": 10326016,
+        "write_bytes_delta": 159744,
+        "wchar_delta": 81798,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.001020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0094877148513,
+        "same_Agent_process": true
+      }
+    },
+    {
+      "origin": "new final1461 measurement",
+      "label": "healthy-threequarters",
+      "actual_controls": {
+        "cpu.max": "75000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=1048576 wbps=1048576 riops=128 wiops=128",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "234881024",
+        "memory.swap.max": "0"
+      },
+      "recomputed": {
+        "CPU_single_core_percent": 0.02333321047835451,
+        "max_RSS_bytes": 9990144,
+        "write_bytes_delta": 155648,
+        "wchar_delta": 79247,
+        "status_write_count": 5,
+        "status_min_write_gap_seconds": 300.000020344,
+        "OOM_kill_delta": 0,
+        "elapsed_seconds": 1800.0094774339814,
+        "same_Agent_process": true
+      }
+    }
+  ],
+  "historical_reference_runtime_inherited": false,
+  "startup_live_ELF_controls_and_identities_verified": true,
+  "stable_release_accepted": false
+}
