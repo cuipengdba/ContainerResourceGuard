@@ -1,0 +1,80 @@
+{
+  "engine": {
+    "base_sha256": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "integrated_sha256": "849a4c12f6839a54cef09a0a57882e4108141247a5376e2d39136aa8994efd1b",
+    "reversible_exact_changes": [
+      {
+        "before": "import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys,signal",
+        "after": "import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys,signal,importlib.util",
+        "count": 1
+      },
+      {
+        "before": "def interrupted(signum,frame):raise RuntimeError('engine fixture interrupted; attempting temporary-instance cleanup')",
+        "after": "class EngineInterrupted(RuntimeError):\n    _crg_engine_interrupted=True\n\ndef interrupted(signum,frame):raise EngineInterrupted('engine fixture interrupted; attempting temporary-instance cleanup')",
+        "count": 1
+      },
+      {
+        "before": "def summary(role,port=5432):",
+        "after": "def prepare_port_capture(role,meta,item):\n    session=None;issue=None\n    try:\n        path=pathlib.Path(__file__).resolve().parent/'vendor-port-diagnostics.py'\n        spec=importlib.util.spec_from_file_location('vendor_port_diagnostics',path)\n        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)\n        session=module.begin(ns,role,meta)\n    except EngineInterrupted:raise\n    except Exception as error:issue='diagnostic-module-unavailable-'+type(error).__name__\n    def capture(stage):\n        try:\n            event=session.snapshot(stage) if session is not None else {'stage':stage,'phase':'partial','issues':[issue]}\n        except EngineInterrupted:raise\n        except Exception as error:event={'stage':stage,'phase':'partial','issues':['diagnostic-capture-unavailable-'+type(error).__name__]}\n        item.setdefault('port_diagnostics',[]).append(event)\n        try:save()\n        except EngineInterrupted:raise\n        except Exception:item['port_diagnostic_save_unavailable']=True\n    return capture\n\ndef summary(role,port=5432):",
+        "count": 1
+      },
+      {
+        "before": "    item={'checks':[],'phase':'preparing','probes':[]};report['roles'][role]=item",
+        "after": "    item={'checks':[],'phase':'preparing','probes':[]};report['roles'][role]=item\n    capture_ports=prepare_port_capture(role,meta,item)",
+        "count": 1
+      },
+      {
+        "before": "      ex(role,bin+'pg_ctl -D '+standby+' -o '+shlex.quote(opts)+' -l '+root+'/standby.log -w -t 60 start',log='standby-start.txt',timeout=90)",
+        "after": "      capture_ports('before-standby-start')\n      try:\n        ex(role,bin+'pg_ctl -D '+standby+' -o '+shlex.quote(opts)+' -l '+root+'/standby.log -w -t 60 start',log='standby-start.txt',timeout=90)\n      except BaseException:\n        capture_ports('standby-start-failed');raise\n      capture_ports('after-standby-start')",
+        "count": 1
+      },
+      {
+        "before": "      ex(role,bin+'pg_ctl -D '+restore+' -o '+shlex.quote(opts)+' -l '+root+'/restore.log -w -t 60 start',log='restore-start.txt',timeout=90)",
+        "after": "      capture_ports('before-restore-start')\n      try:\n        ex(role,bin+'pg_ctl -D '+restore+' -o '+shlex.quote(opts)+' -l '+root+'/restore.log -w -t 60 start',log='restore-start.txt',timeout=90)\n      except BaseException:\n        capture_ports('restore-start-failed');raise\n      capture_ports('after-restore-start')",
+        "count": 1
+      },
+      {
+        "before": "      for directory in [standby,restore]:ex(role,bin+'pg_ctl -D '+directory+' -m fast -w -t 30 stop',log='stop-'+directory.rsplit('/',1)[-1]+'.txt',timeout=45)",
+        "after": "      for directory in [standby,restore]:\n        try:ex(role,bin+'pg_ctl -D '+directory+' -m fast -w -t 30 stop',log='stop-'+directory.rsplit('/',1)[-1]+'.txt',timeout=45)\n        except BaseException:\n          capture_ports(directory.rsplit('/',1)[-1]+'-stop-failed');raise\n        capture_ports('after-'+directory.rsplit('/',1)[-1]+'-stop')",
+        "count": 1
+      },
+      {
+        "before": "      stop.set();monitor.join(timeout=25)",
+        "after": "        finally:capture_ports('after-'+directory.rsplit('/',1)[-1]+'-cleanup')\n      stop.set();monitor.join(timeout=25)",
+        "count": 1
+      }
+    ],
+    "new_source_sha256": {
+      "port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+      "vendor-engine-smoke.py": "849a4c12f6839a54cef09a0a57882e4108141247a5376e2d39136aa8994efd1b",
+      "vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a"
+    },
+    "business_commands_quotas_and_timeouts_unchanged": true
+  },
+  "finalized": {
+    "phase": "local-engine-and-campaign-diagnostic-integration-not-qualified-or-launched",
+    "original_engine_adapter": "crg-r1309-engine-port-adapter.json",
+    "engine_closure_keepalive_changes": [
+      {
+        "before": "    session=None;issue=None",
+        "after": "    session=None;issue=None;module=None"
+      },
+      {
+        "before": "    def capture(stage):",
+        "after": "    def capture(stage,_diagnostic_module=module):"
+      }
+    ],
+    "campaign_reversible_summary_change": {
+      "before": "'exec_probe_diagnostic': value.get('exec_probe_diagnostic')} for role, value in result['roles'].items()}",
+      "after": "'exec_probe_diagnostic': value.get('exec_probe_diagnostic'), 'port_diagnostic_samples': len(value.get('port_diagnostics', [])), 'port_diagnostic_phases': {phase: sum(v['phase'] == phase for v in value.get('port_diagnostics', [])) for phase in ['complete', 'partial']}} for role, value in result['roles'].items()}"
+    },
+    "source_sha256": {
+      "port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+      "vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+      "vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+      "vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287"
+    },
+    "product_changed": false
+  },
+  "local_preparation_note": "An initial local source enumeration encountered __pycache__ directory before any upload; fresh freeze selects only .py. Initial empty local directory retained; no server job or result was restarted."
+}

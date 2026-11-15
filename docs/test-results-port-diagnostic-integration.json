@@ -1,0 +1,85 @@
+{
+  "schema": "crg-vendor-port-integration-terminal-qualification-v1",
+  "phase": "passed",
+  "source_sha256": {
+    "port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+    "vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+    "port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+    "driver.py": "f0a4aff764ac7ba6dd5b191b3edf3b1dca395fb5c365298ba00c786c30aa56f0"
+  },
+  "plan_sha256": "248e9aba651c88f0f901730506fae4c1197e20db58471d48169f3a55fa61505a",
+  "report_sha256": "8be9deee8dbc439bdfb22e6d6f4cd40054c6ddece4a0bb5b52b369f0cf06387e",
+  "node_utc": "2026-11-15T04:40:10.376106+00:00",
+  "structural_fault_checks": 28,
+  "native_vendor_Pod_checks": 14,
+  "independent_evidence_checks": [
+    {
+      "name": "dbs-three-actual-live-target-identities-match-runtime",
+      "passed": true
+    },
+    {
+      "name": "dbs-before-and-after-have-no-matching-listener-without-availability-claim",
+      "passed": true
+    },
+    {
+      "name": "dbs-TCP-Unix-socket-inodes-have-same-stable-owned-process",
+      "passed": true
+    },
+    {
+      "name": "dbs-runtime-and-Pod-UID-faults-remain-partial-no-scan",
+      "passed": true
+    },
+    {
+      "name": "dbs-independent-all-original-instance-and-parent-leaf-absence",
+      "passed": true
+    },
+    {
+      "name": "dbs-sample-partial-issues-preserved-not-relabelled",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-three-actual-live-target-identities-match-runtime",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-before-and-after-have-no-matching-listener-without-availability-claim",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-TCP-Unix-socket-inodes-have-same-stable-owned-process",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-runtime-and-Pod-UID-faults-remain-partial-no-scan",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-independent-all-original-instance-and-parent-leaf-absence",
+      "passed": true
+    },
+    {
+      "name": "hisdbs-sample-partial-issues-preserved-not-relabelled",
+      "passed": true
+    },
+    {
+      "name": "one-original-driver-and-namespace-independently-absent",
+      "passed": true
+    }
+  ],
+  "registered_instance_records": 8,
+  "unique_instances_independently_absent": 6,
+  "namespace_absent": true,
+  "parent_leaf_pairs_absent": 2,
+  "program_changed": false,
+  "actual_engine_or_business_cycle_accepted": false,
+  "new_long_test_launched": false,
+  "stable_release_accepted": false,
+  "limitations": [
+    "28 structural/fault checks execute real inserted AST with command/metadata stubs; 14 live checks exercise admission and actual TCP/Unix ownership in two original-image isolated Pods.",
+    "No actual PostgreSQL startup conflict cycle or full600 business has run with this harness yet.",
+    "Runtime and Pod UID changes explicitly injected; not real PID reuse.",
+    "Complete/partial/unknown original sample states retained; interval observations are not atomic port reservations."
+  ]
+}
