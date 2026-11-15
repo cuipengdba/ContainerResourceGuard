@@ -4,10 +4,10 @@
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "candidate_version": "v1.0.0",
   "original_tasks": 52,
-  "completed_in_defined_scope": 7,
+  "completed_in_defined_scope": 9,
   "status_counts": {
-    "complete-in-defined-scope": 7,
-    "partial-evidence-or-verification-open": 37,
+    "complete-in-defined-scope": 9,
+    "partial-evidence-or-verification-open": 35,
     "superseded-by-three-resource-request": 1,
     "waiting-real-duration-and-postflight": 3,
     "waiting-unavailable-hardware": 2,
@@ -178,9 +178,9 @@
       "archived_definition_sha256": "1699175b1329d91a09ad3a5a3052e004a865d388eee13f913ede61fce0e37bb3",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "安装、卸载/恢复、配置语义和已测范围已有预发布文档。",
-      "remaining_or_boundary": "最终稳定包、精确矩阵和发布后操作演练尚待形成；main源码尚未合入。",
-      "evidence": "release-readiness-current.md"
+      "verified_scope": "安装/卸载恢复、首版配置语义与准确已测环境矩阵已归档，厂商/原生VM和权限逐组合对应证据。",
+      "remaining_or_boundary": "最终稳定包、发布后操作演练和main产品源码合入仍待完成。",
+      "evidence": "tested-environment-matrix.md"
     },
     {
       "id": "P03.1",
@@ -381,11 +381,11 @@
         "覆盖当前 5.14 环境及选定 6.x 环境；每个宣称组合有版本、权限和结果，未测版本不自动标为兼容"
       ],
       "archived_definition_sha256": "b31933b04ca294260b55287fa7a549708c3d562fcd1e35f0d08dec766c804ce3",
-      "current_status": "partial-evidence-or-verification-open",
-      "completion_claim": false,
-      "verified_scope": "5.14厂商amd64和6.8/7.0原生VM两架构有实际报告，环境范围分开。",
-      "remaining_or_boundary": "整理到稳定矩阵的运行时/runc/挂载方式逐组合证据，不能泛称全部内核兼容。",
-      "evidence": "testing-final-v1-native-CI-terminal.md"
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "5.14厂商amd64及6.8/7.0两架构四原生VM组合已逐一列出准确内核、运行时/runc、挂载和权限，并对应18/284原件及摘要。",
+      "remaining_or_boundary": "选定组合矩阵本项完成；未测运行时、rootless、ARM厂商和独立物理多盘不宣称兼容，稳定发布仍待长期验收。",
+      "evidence": "tested-environment-matrix.md"
     },
     {
       "id": "P06.2",
@@ -484,11 +484,11 @@
         "高频异常不写满目录；原值日志持久化不能因限流而被省略；说明 CPU/RSS/写入量及开销变化"
       ],
       "archived_definition_sha256": "7ed1108471eb954a0f472c4b924b73f5690717e0f9052ae1e0a30c32c3dc4f79",
-      "current_status": "partial-evidence-or-verification-open",
-      "completion_claim": false,
-      "verified_scope": "有界事件及去重限流保留必要journal，旧版三场景低IO开销通过。",
-      "remaining_or_boundary": "固定最终ELF三场景已实际进入测量，仍须真实1800秒、原CPU/RSS/写入门槛通过及独立进程/父叶清理。",
-      "evidence": "testing-final-v1-overhead.md"
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "准确源码有界事件/去重与必要journal持久化，固定最终ELF低IO、持续导出失败、只读三组各1800秒/181样本，CPU/RSS/写入/状态间隔原门槛和独立清理通过。",
+      "remaining_or_boundary": "本项有界事件和低IO开销完成；Agent指标不代表业务/整节点开销，不替代七天与不同有效限额回归。",
+      "evidence": "testing-final-v1-overhead-terminal.md"
     },
     {
       "id": "P08.1",
@@ -590,9 +590,9 @@
       "archived_definition_sha256": "1293bb20b605e2af22155560a87949d83fac9479827a8480073c37ec73c30b71",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "保持原15s周期、CPU≤0.1%单核/RSS≤20MiB、状态约5min及低IO/异常门槛。",
-      "remaining_or_boundary": "固定最终ELF三场景已实际进入测量，仍须真实1800秒、原CPU/RSS/写入门槛通过及独立进程/父叶清理。",
-      "evidence": "testing-final-v1-overhead.md"
+      "verified_scope": "固定最终ELF原15s周期及30min实际开销三场景通过；CPU≤0.1%单核、RSS≤20MiB、状态≥299秒、低IO/异常写入预算及必要journal均核对。",
+      "remaining_or_boundary": "本轮有效强制预算为单套manual低IO额度；仍需不同有效限额的开销对比/回归和长期老化结果，不能将三种故障等同多种限额。",
+      "evidence": "testing-final-v1-overhead-terminal.md"
     },
     {
       "id": "P10.1",
@@ -642,9 +642,9 @@
       "archived_definition_sha256": "996eb67db2ad78a3b9053d55cc4fb1b8f84f321555cb66563fbc215291ea4d63",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "当前交付页明确已测/未测、预发布与稳定及部署的区别，全部证据保留。",
-      "remaining_or_boundary": "最终支持矩阵、运维、问题分级和补丁/归档规则需发布审核闭环。",
-      "evidence": "release-readiness-current.md"
+      "verified_scope": "逐组合运行时/内核/权限/存储矩阵已发布，厂商业务与原生控制、已测与未测分别列出，原件可追溯。",
+      "remaining_or_boundary": "运维、问题分级和补丁/归档规则需最终发布审核闭环；稳定发布与生产部署另记。",
+      "evidence": "tested-environment-matrix.md"
     },
     {
       "id": "P10.5",
