@@ -1,12 +1,12 @@
-# 本地运维与恢复（组合开发候选）
+# 本地运维与恢复
+
+当前三资源版本请先读[运维、问题分级及补丁/归档规则](operations-release-policy.md)和[交付状态](release-readiness-current.md)。下文带日期的进展保留历史时点，不能替代当前终态。
 
 截至节点2026-11-13 16:26:50 UTC，已发布[工程预览preview.5](releases/v1.0.0-preview.5.md)，八项公开附件已逐字节校验。新默认值真机原矩阵已经结束：DBS20/HISDBS20/DBS30各36项通过；HISDBS30记录20通过、1失败、15项未执行，共129项记录/128通过/1失败、11次启动。失败是冻结脚本要求跨午夜后旧日期日志继续增长，与每日轮转规则冲突；实际新日期日志已有轮转及新Agent启动。保留原失败，另行修正脚本独立补测，不把原144项改成通过。四namespace、11组父叶及369登记实例独立确认消失。[原矩阵终态及精确原件](testing-bandwidth-percent-terminal.md)已归档。旧preview.4七天任务也已在约30小时的第六轮standby启动失败退出，未达到七天；[独立终态](testing-memory-high-seven-day-terminal.md)保留51个初始登记实例清理及第六轮cleanup未接受的区别。稳定1.0、原52项及其它完整业务/升级/长期门槛继续。
 
 以下保留按原时点记录的历史进展。
 
 截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
-
-next/compatibility-contract 已组合后续开发能力，尚未发布；公开RC2的功能以对应标签文档为准。维护命令不接入业务启动必经路径。
 
 当前建议配置为 `{"cpu_percent":20,"memory_percent":20,"io_percent":20}`，三项各自省略时默认20；旧单`percent`只作历史兼容。本页的命令只作用于执行命令的当前容器；没有远程容器管理入口。与 Agent 使用同一个 `--config` 或 `--state-dir`。
 
@@ -44,7 +44,7 @@ crg disable --config /etc/crg/config.json
 crg enable --config /etc/crg/config.json
 ```
 
-此命令在持有协调锁时删除停用标记，不重启业务。原辅助循环将在下次退避重试时重新启动 Agent，可能等待5–300秒；也可按现有supervisor管理方式仅重启辅助循环。组合候选支持同一路径配置热重载，无效候选保留最后有效版本，详见[重载规则](hot-reload.md)。
+此命令在持有协调锁时删除停用标记，不重启业务。原辅助循环将在下次退避重试时重新启动 Agent，可能等待 5–300 秒；也可按现有 supervisor 的管理方式仅重启辅助循环。当前版本支持合法配置文件原子替换后的热重载及显式crg reload；检查status.configuration的request_id、accepted/rejected、generation和逐项实际值。等价配置不必增加generation，坏配置保留上一整份策略，运行中不能改变state_dir。详见[配置](configuration.md)。
 
 `restore` 继续保留给已停止 Agent **及辅助重试循环**的维护场景。需要自动协调停用时优先使用 disable。
 
