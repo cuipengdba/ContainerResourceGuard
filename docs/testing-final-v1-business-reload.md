@@ -1,6 +1,6 @@
 # 固定最终候选：同一Agent业务热重载补验
 
-准确最终v1.0.0、源码`ced461705ebc27315a59aefe463f9b4af47130a3`、AMD64二进制`9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8`。协议及全部输入先冻结，原生只读准入已通过，尚未启动本轮业务或取得终态。覆盖P03.1/2/3/5相关当前候选证据缺口，不转记旧d370/d6或preview的运行结果。
+准确最终v1.0.0、源码`ced461705ebc27315a59aefe463f9b4af47130a3`、AMD64二进制`9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8`。协议及全部输入先冻结，原生只读准入通过后已于节点2026-11-15T08:19:26.186761+00:00唯一启动；首份独立观察确认DBS进入实际业务测量、7项初始检查及首个配置观察通过。尚未取得完整600秒或HISDBS终态。覆盖P03.1/2/3/5相关当前候选证据缺口，不转记旧d370/d6或preview的运行结果。
 
 沿用已通过最终候选18项的两角色原镜像、真实路径、原start/supervisor和独立CCG；各建立独立namespace顺序执行。先以既有manual参考7.2CPU、memory.high20001980416字节、读写64MiB/s和手动IOPS4096启动。Kubernetes8CPU/20GiB、另外五项控制保持。仅配置协调周期由默认15秒改为1秒用于原60秒重载观察；不是CPU开销回归。
 
@@ -17,3 +17,5 @@ IO100是原真实三次标定基准，非物理设备全速承诺：64700080/374
 CLI优先由准确源码原生unit/race另证；本轮沿原业务helper以文件配置启动，不伪称厂商CLI覆盖实测。无并发disable/物理掉电/CPU热插拔或老化后故障资格声明；这些仍按原任务保留。默认20%完整业务历史失败不改判；任何本轮失败原样归档，不自动重跑、加配额或放宽业务标准。
 
 [固定计划](test-plan-final-v1-business-reload.json)、[原生准入](test-results-final-v1-business-reload-preflight.json)、[非二进制准确输入](../tests/final-v1-business-reload-frozen-v2/README.md)、[原最终候选600秒结果](testing-final-v1-full600-terminal.md)、[原52项](current-52-task-audit.md)。稳定1.0尚未接受，本轮计时不替代24h+24h/七天。
+
+[启动快照](test-start-final-v1-business-reload.json)与[准确原件](test-evidence-final-v1-business-reload-start.json.gz)按当时状态保留；不能以快照代替后续原生终态。
