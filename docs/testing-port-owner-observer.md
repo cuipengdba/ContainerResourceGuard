@@ -1,5 +1,8 @@
 # 临时备库端口只读归属采集
 
+[端口诊断已接入engine/campaign](testing-port-diagnostic-integration.md)：28项结构/故障、两原镜像Pod共14项真机及13项独立复核通过。启动前/后、启动失败、stop失败和cleanup后采集；普通诊断失败放行，执行器停止请求继续传递。尚无新执行器的真实PG冲突/完整业务或长期计时通过；默认20%业务失败与原52项保持。以下保留此前时点记录。
+
+
 长期执行器以前曾在临时端口55432被占用时失败，未取到占用者；旧七天任务约30小时的失败和旧结论保留。本工具为下一轮增加诊断能力，不修改产品或业务配额，不替代长期验收。
 
 `tests/port-owner-observer.py`按调用方事先授权的目标PID/start_ticks、网络命名空间inode及完整cgroup成员身份先后核对，读取目标`/proc/PID/net/tcp`、tcp6、unix，按指定端口筛选监听socket inode，再在相同网络命名空间的FD中查找所属PID/start。返回comm、观测cwd、fd及是否同一cgroup；同网络命名空间的其他cgroup拥有者也可记录，适用于Pod共享网络。cwd仅为该时点观测，不断言一定是PGDATA。
