@@ -1,0 +1,34 @@
+{
+  "schema": "crg-native-three-resource-first-pilot-review-gap-v1",
+  "source_revision": "84c4a8f8a0153c697c2b548167688d295c4a2246",
+  "run_id": 43750027399,
+  "artifact_id": 14176351220,
+  "ZIP_bytes": 92700,
+  "ZIP_sha256": "5ac87bc7a8b6891861194fe3a2d268752589ad0a413f0afd2ad1dd6ced1513e3",
+  "exact_members": 108,
+  "native_checks_passed": 92,
+  "native_cases": 10,
+  "native_phase": "passed",
+  "independent_review": "failed",
+  "failure": "strace default string limit32 truncates actual io.max argument after wbps; reviewer requires complete rbps/wbps/riops/wiops. Native full kernel readbacks/journal/restore and own cleanup passed; original truncated trace cannot prove full syscall argument.",
+  "review_failure": {
+    "phase": "independent-review-failed",
+    "exit": 1,
+    "reviewer_sha256": "c9d01edf2d4b70ab78ae33c1c0d3e32632bd1b14010e727b91030863158d161e",
+    "native_run_failed": false,
+    "native_checks_passed": 92,
+    "native_cases": 10,
+    "criteria_relaxed": false,
+    "stderr_scope": "Full local traceback preserved privately; public selection omits local workspace paths.",
+    "failed_assertion": "assert bool(resource_writes[resource])==written",
+    "exception": "AssertionError"
+  },
+  "owned_cleanup": {
+    "errors": [],
+    "owned_state_mounts_remaining": 0,
+    "private_fixture_files_retained_until_VM_disposal": true,
+    "own_mount_mapper_and_loop_absent": true
+  },
+  "full_original_P09_3_closed": false,
+  "stable_release_accepted": false
+}

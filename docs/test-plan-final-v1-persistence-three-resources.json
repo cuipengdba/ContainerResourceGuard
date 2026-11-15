@@ -1,5 +1,5 @@
 {
-  "schema": "crg-native-three-resource-persistence-plan-v1",
+  "schema": "crg-native-three-resource-persistence-plan-v2",
   "scope": "Actual exact final ELF, simultaneous manual CPU/memory.high/read+writeBPS on own isolated single container. Three real state filesystem faults>=30s and three explicit retries; actual durable/kernel interruption before and after each of CPU, memory.high and io.max writes. External memory.max/IOPS and other controls retained; own dm-linear+ext4 over exclusive2GiB loop file, not independent physical disk. Not default percentages/vendor/aged/physical slow disk/power loss/stable publication acceptance.",
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "source_sha256": {
@@ -62,7 +62,7 @@
     "tests/persistence-faults-v1/helper.go": "29fd355c1081647bec1012b54c21ec231ed98b21ef1b7061389613d461bb3f83",
     "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
     "tests/legacy-restore-pressure-v1/workload.go": "2196d2b29d6498bdf17a95b96fafa5cacb6f36999a1bb1f6858d4f81063777f7",
-    "tests/persistence-three-resources-v1/driver.py": "640ed4f13ee47934c33b0a1e6c6109d15d7dd2654acfb2a1006ef45d8c8d3d16"
+    "tests/persistence-three-resources-v1/driver.py": "5103b05ada9dcae22d1d06794c2b471f05049be225f23789d4849d9455c888b9"
   },
   "environments": [
     {
@@ -115,5 +115,7 @@
     "per_case_regular_state_file_manifest": "name/bytes/SHA256; ZIP membership and bytes independently required",
     "after_control_barrier": "bind actual parsed uncommitted finalization JSON for the interrupted resource to exact name/length/SHA before SIGKILL; committed journal remains pending"
   },
-  "expected_checks_per_environment": 92
+  "expected_checks_per_environment": 92,
+  "previous_plan_sha256": "6be86a1c3f2a881bdd795e0dbce21c8535f298ea21e1d14f2a1b538108800666",
+  "tracer_full_argument_fix": "First actual amd64 pilot92/10 passed native checks but default32char strace truncates io.max argument. Original92/10/108members and failed reviewer preserved. Set strace -s4096 before new trials; no product/quota/delay/barrier/count/success criteria change, do not weaken full syscall argument requirement."
 }
