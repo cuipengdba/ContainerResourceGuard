@@ -1,5 +1,7 @@
 # DBS SQL失败诊断：开发记录与后续隔离验收
 
+最新开发：[只读时间线已完成故障验证，原路径受控锁负向试验冻结及准入通过，尚未启动](development-controlled-sql-wait.zh.md)。原1761失败及正常600秒/发布门槛不变；后文待开发描述为此前历史。
+
 ## 当前结论
 
 v4终态：两个准确原镜像Python2.7各6/6兼容性检查通过，真实libpq空loopback连接失败分类正确、namespace/父组清理和全部输入未变；[结果](test-results-original-image-diagnostics-v4.json)、[原件](test-evidence-original-image-diagnostics-v4.json.gz)。未启动PG/原业务、未访问业务数据库；仍非原600秒或因果验收。后文各“尚未启动”均为对应冻结前历史状态。
