@@ -1,5 +1,7 @@
 # 当前交付与待办：2026-11-15
 
+最新进展：[测试容量恢复及输出1615](testing-capacity-recovery-output1615.md)。退役数据按守卫回收约94.09GiB并保留报告；原厂镜像已同摘要恢复。新13输入协议绑定只读节点准入，19项本地及原生前缀通过，待唯一启动，未计业务通过。旧78主库收到fast shutdown，但来源未确认；原活动资源消失已独立核对。17/52、最终ELF及preview.5保持，正式1396与稳定验收未完成。
+
 最新节点终态：[1571/旧78/存储准入](testing-output1571-old78-node-admission.md)。1571因原镜像缺失在Ready前失败，未运行产品或600秒；旧78在第19周期自行failed/exit1，不足七天，不再在线。八份退役冷副本载荷已按守卫清理，实际约4.7GiB；报告/原件保留。节点压力恢复False但可用空间与原镜像尚未满足新准入，正式1396未启动。17/52保持，稳定版未接受。
 
 当前可下载 [v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)。固定 v1.0.0 候选尚未发布，main 产品实现尚未合入；公开八项附件及标签保持。产品源码为 ced461705ebc27315a59aefe463f9b4af47130a3，最终两架构 ELF 见[候选身份](final-v1-candidate-identity.json)。
