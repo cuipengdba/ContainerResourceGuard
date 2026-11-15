@@ -1,0 +1,52 @@
+{
+  "schema": "crg-original-image-diagnostics-compatibility-plan-v4",
+  "phase": "frozen-before-image-check-Pod-launch",
+  "namespace": "crg-vendor-lab-image-diagnostics1803-20261116",
+  "tools": "/var/tmp/crg-image-diagnostics1803-20261116",
+  "original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  },
+  "source_sha256": {
+    "worker.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+    "original.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "adapter.json": "28f513741f183c5c1409d14b93564a3d82bdfceebd166dfe5930403123790468",
+    "image-check.py": "2a4c1d039bd63e90b2b8d79bbfab9f7002b05c58fbdbac14f2f34a89d165fd58"
+  },
+  "checks_each_role": 6,
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "entry": "python -B /fixture/image-check.py /fixture",
+  "guard": "new private namespace and read-only original-image Pods; no worker main, PostgreSQL service, vendor startup, host namespaces, service account or business data mount; numeric empty-Pod loopback only; plus one read-only exact SHA-bound PG client software file, never PG data or configuration",
+  "maximum_seconds_per_Pod": 60,
+  "cleanup": "identity-checked exact namespace UID; native absence verified; all input bytes retained",
+  "product_runtime_modified": false,
+  "formal_business_acceptance": false,
+  "stable_release_accepted": false,
+  "previous_plan_sha256": "e6dd3e2f21062036dbe0fadbdd5193bb341ab2094b3a6a02aa803e6f1ffa96c7",
+  "fixture_correction": "V3 refused before tools/Pod creation: PG test software is owned by actual database UID999/GID998, not assumed root. Bind inspected exact UID/GID/mode/SHA and retain regular/containment/single-inode/read-only checks; no worker/check changes.",
+  "previous_both_failed_and_cleaned": true,
+  "source_files": {
+    "worker.py": "tests/bounded-load-diagnostics-v1/worker.py",
+    "original.py": "tests/bounded-load-diagnostics-v1/original.py",
+    "adapter.json": "tests/bounded-load-diagnostics-v1/adapter.json",
+    "image-check.py": "tests/bounded-load-diagnostics-v1/image-check-v3.py"
+  },
+  "library_input": {
+    "sha256": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+    "bytes": 345576,
+    "mount_path": "/opt/postgresql/pgsql/lib/libpq.so.5",
+    "read_only": true,
+    "sources_by_role": {
+      "dbs": "/var/tmp/crg-capacity1761-results-20261116/normal/dbs/candidate1-dbs-manual64/dbs-business/postgresql/pgsql/lib/libpq.so.5.14",
+      "hisdbs": "/var/tmp/crg-capacity1761-results-20261116/normal/hisdbs/candidate1-hisdbs-manual64/hisdbs-business/postgresql/pgsql/lib/libpq.so.5.14"
+    },
+    "provenance": "old1761 owned isolated fixture software only; no database data/configuration mounted",
+    "must_remain_regular_single_inode_within_exact_old_software_root": true,
+    "node_source_uid": 999,
+    "node_source_gid": 998,
+    "node_source_mode": 493
+  }
+}

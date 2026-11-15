@@ -47,3 +47,9 @@
 v2完成Python2编译/AST/固定分类/隐私检查后在加载libpq处失败，两镜像均没有裸路径/opt/postgresql/pgsql/lib/libpq.so.5；实际部署是在/opt/postgresql挂载路径中生成PG软件。故本轮仍不是六项通过。[完整v2终态](test-results-original-image-diagnostics-v2-failure.json)与[原件](test-evidence-original-image-diagnostics-v2-failure.json.gz)保留，两个Pod/namespace/父组已清理，工作线程未变。
 
 已只读核对1761原隔离夹具的PG客户端软件：两角色准确libpq.so.5.14均为345576字节，SHA256 a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89，依赖原镜像现有libssl.so.10/libcrypto.so.10等。[v3新身份计划](test-plan-original-image-diagnostics-v3.json)保留原六项，另将这一准确库文件只读挂到原libpq路径；不挂载数据库数据或配置，不启动原业务/PG。节点及镜像内都先校验该软件摘要，[v3校验器](../tests/bounded-load-diagnostics-v1/image-check-v3.py)没有改变工作线程或六项标准。此为补齐测试软件路径，非放宽业务SLA。v3尚未启动；结果不替代原600秒/受控锁/因果对照及稳定发布门槛。
+
+## v3准入拒绝及v4实际软件归属
+
+v3在创建工具目录或Pod前拒绝：校验器计划错误假定PG客户端文件归root；独立只读stat证明既有本轮隔离软件归数据库UID999/GID998、0755、单链接规则文件，摘要及345576字节相符。[原拒绝与stat回执](test-evidence-original-image-diagnostics-v3-admission.json.gz)保留；无v3 Pod执行，不计任何通过。
+
+[v4新身份计划](test-plan-original-image-diagnostics-v4.json)绑定实际UID/GID/mode及原SHA，保留准确路径、规则单链接、只读单文件挂载与六项检查。未chmod/chown原文件，不更改工作线程或镜像。v4尚未启动，前两轮失败及v3拒绝不改写。补齐软件夹具仍不是原启动链或正常600秒业务验收。
