@@ -3356,15 +3356,33 @@
     "full_P09_3_accepted": false
   },
   "final_v1_binary_maintenance": {
-    "phase": "native-preflight-passed-not-launched",
+    "phase": "testing-dbs",
     "plan": "test-plan-final-v1-binary-maintenance.json",
     "native_preflight": "test-results-final-v1-binary-maintenance-native-preflight.json",
     "job_sha256": "5375499dbe57e65265210d52dfe6f71167c1c0a833127eefd36409920a7e3574",
     "plan_sha256": "62d781dd81addd02ff809dac13ab17ae006ed75711112e2010659d2ae9e5eacf",
     "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
     "main_checks_planned": 40,
-    "measurement_started": false,
+    "measurement_started": true,
     "accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "actual_runner": {
+      "pid": 4139156,
+      "start_ticks": 168071232,
+      "entry": "/var/tmp/crg-final1501-tools-20261115/runner.py",
+      "job_sha256": "5375499dbe57e65265210d52dfe6f71167c1c0a833127eefd36409920a7e3574",
+      "plan_sha256": "62d781dd81addd02ff809dac13ab17ae006ed75711112e2010659d2ae9e5eacf",
+      "node_utc": "2026-11-15T11:07:46.672055+00:00",
+      "actual_coordinator_started_epoch": 1794740769.7306628,
+      "launch_guard_utc": "2026-11-15T11:06:09.178110+00:00",
+      "launcher_source_sha256": "c82d146371be5682e89dc40c342362e179ae2c152f5150a4f8055f03e2f9625f",
+      "single_launch_guard": true,
+      "record_reconstructed_after_launcher_NameError": true,
+      "reconstruction_scope": "Only missing launch identity record; existing runner PID/start/entry and frozen source checked. No process start, signal, configuration, quota or report changes."
+    },
+    "start_observation": "test-start-final-v1-binary-maintenance.json",
+    "start_evidence": "test-evidence-final-v1-binary-maintenance-start.json.gz",
+    "launcher_record_failure_preserved": true,
+    "existing_runner_identity_reconstructed_without_restart": true
   }
 }
