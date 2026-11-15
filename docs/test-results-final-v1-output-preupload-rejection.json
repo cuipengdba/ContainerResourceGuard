@@ -1,0 +1,22 @@
+{
+  "phase": "rejected-before-upload-or-launch",
+  "manifest": "crg-r1545-output-matrix-frozen.json",
+  "frozen_job_sha256": "dfa4cbcab7619e32e1ba2c887bceb78d28d73cc82f2b881e5667652532f6e675",
+  "frozen_plan_sha256": "bce6ed797767c9919a4198a3360c9c58313d9a67edd77e511c48d16e1d3283f3",
+  "all12_frozen_inputs_preserved": {
+    "maintenance-business.py": "dfa4cbcab7619e32e1ba2c887bceb78d28d73cc82f2b881e5667652532f6e675",
+    "runner.py": "14440dfd2682ca95baface07cd02a11fd9d3cd38f560f9ad26aa5a2c4b7afb4e",
+    "artifact-transfer.py": "34e78648ac2987fd4182d116a4546b688c1dd794baf5f23fb5ceb192a64a2c3d",
+    "tests/manual-maintenance-contract.py": "42edbdfb1b727f02c70a8e45d362748d78aeb3bc43f586263bd811660b743985",
+    "binaries/candidate": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/vendor-soak-campaign.py": "b49d5a73654c5cf7c93b04851f3409eea318b3a9c71c0e8f601f252a3dda07ea",
+    "tests/vendor-engine-smoke.py": "b0d4fe313156743ff1424b46eb58c5ab5b8e1f2c91851420023f5f018dd08e5c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "tests/output-matrix-checks.py": "ea038043c54d4581f6ae0c8468b2448c58c66aae0370a26366e11741312c344e",
+    "tests/output-profile.json": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "plan.json": "bce6ed797767c9919a4198a3360c9c58313d9a67edd77e511c48d16e1d3283f3"
+  },
+  "reason": "Code review: status with explicit malformed active config would fail config decoding before ReadStatus. Corrected status reads use existing --state-dir without --config, inspect persisted last-good policy during malformed input; product code unchanged. Reload already explicitly supports malformed source config via separate runtime request path.",
+  "no_remote_upload_or_workload": true
+}
