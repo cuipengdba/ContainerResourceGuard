@@ -1,0 +1,63 @@
+{
+  "phase": "native-preflight-passed-not-measured",
+  "native_receipt": {
+    "exit": 0,
+    "stdout": "{\"phase\": \"native-overhead-readonly-preflight-passed\", \"node_utc\": \"2026-11-15T07:13:06.644265+00:00\", \"source_sha256\": {\"binaries/crg-linux-amd64\": \"9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8\", \"examples/supervisor.sh\": \"7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9\", \"examples/optional-agent.sh\": \"f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79\", \"qualification.json\": \"64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0\", \"overhead-job.py\": \"4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230\", \"runner.py\": \"f2ecf19383376abeb714e0421babd70543f95c336a0af2be340e30751bfab401\", \"overhead-plan.json\": \"28c4adb773b90f15de7e13b6cf105488efcd17481565cd8ac50f47497d3262c2\"}, \"build_info\": {\"arch\": \"amd64\", \"go_version\": \"go1.27.3\", \"io_percent_policy\": \"calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained\", \"io_profile_versions\": [1, 2], \"journal_versions\": [1], \"lock_protocol\": \"cgroup-inode-flock+state-agent-lock-v1\", \"memory_policy\": \"high-reclaim-throttle; percentages may be exceeded; external hard limits retained\", \"os\": \"linux\", \"revision\": \"ced461705ebc27315a59aefe463f9b4af47130a3\", \"version\": \"v1.0.0\", \"writer_controls\": [\"cpu.max\", \"cpu.weight\", \"io.max\", \"io.weight\", \"memory.max\", \"memory.high\", \"memory.swap.max\", \"pids.max\"]}, \"native284_verified\": true, \"other_overhead_pods\": [], \"available_memory_bytes\": 38459379712, \"free_disk_bytes\": 55313162240, \"business_fixture_created\": false, \"measurement_started\": false, \"stable_release_accepted\": false}\n",
+    "stderr": ""
+  },
+  "adapter": {
+    "base_job_sha256": "f78e7152bc78fd8344e2bf113e4f98b94f4cfd0391969137df68924f51749e2c",
+    "changes": [
+      {
+        "before": "crg-high542-tools-20261112",
+        "after": "crg-final1404-tools-20261115"
+      },
+      {
+        "before": "crg-high542-overhead-20261112",
+        "after": "crg-final1404-overhead-20261115"
+      },
+      {
+        "before": "CRG_HIGH542_OVERHEAD",
+        "after": "CRG_FINAL1404_OVERHEAD"
+      },
+      {
+        "before": "180c86ad7986a76526a41575cc1c176d5da98a9c",
+        "after": "ced461705ebc27315a59aefe463f9b4af47130a3"
+      },
+      {
+        "before": " qualification=json.loads((w/'qualification.json').read_text())\n if qualification.get('phase')!='passed' or qualification.get('source_revision')!=report['source'] or len(qualification.get('CI',[]))!=4:raise RuntimeError('current exact-source CI qualification missing')\n report['qualification_sha256']=hashlib.sha256((w/'qualification.json').read_bytes()).hexdigest()\n if qualification.get('memory_policy')!='high-reclaim-throttle' or qualification.get('package_revision')!='7a20c3bbbf03e5b72e7f5acbe1add2de0aee95d0':raise RuntimeError('high policy exact package qualification missing')\n if qualification.get('version')!='v1.0.0-preview.4' or qualification.get('controller_checks')!=88 or qualification.get('all_eight_files_equal_Windows_each_cell') is not True:raise RuntimeError('new exact versioned binary native qualification missing')\n for name,digest in {'optional-agent.sh': 'f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79', 'supervisor.sh': '7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9'}.items():\n  if hashlib.sha256((w/'examples'/name).read_bytes()).hexdigest()!=digest:raise RuntimeError('helper payload missing or differs from qualified source')\n prior_attempt=json.loads(pathlib.Path('/var/tmp/crg-overhead-r50-20261111/report.json').read_text())\n if prior_attempt.get('phase')!='failed' or prior_attempt.get('namespace_absent') is not True:raise RuntimeError('previous failed fixture not terminal and cleaned')\n previous=pathlib.Path('/var/tmp/crg-overhead-r50b-20261111/report.json');previous_exit=pathlib.Path('/var/tmp/crg-r50b-20261111/overhead.exit.json')\n if not previous.is_file() or not previous_exit.is_file():raise RuntimeError('previous overhead terminal receipts absent')\n previous_result=json.loads(previous.read_text())\n if previous_result.get('phase')!='passed' or previous_result.get('binary_sha256')!='3a1ce7dbf5630f8f1c823005ceb4958653c6c235b2ba5026956ca6597f1926f9' or previous_result.get('namespace_absent') is not True or json.loads(previous_exit.read_text()).get('exit')!=0:raise RuntimeError('previous source-specific overhead is not passed and cleaned')\n previous_namespace=run(['kubectl','get','namespace','crg-overhead-r50b-20261111','--ignore-not-found','-o','json'],False)\n if previous_namespace.returncode or previous_namespace.stdout.strip():raise RuntimeError('previous overhead namespace still exists')\n old_candidate=json.loads(pathlib.Path('/var/tmp/crg-overhead-r63-20261111/report.json').read_text())\n if old_candidate.get('phase')!='passed' or old_candidate.get('namespace_absent') is not True or old_candidate.get('binary_sha256')!='dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8' or json.loads(pathlib.Path('/var/tmp/crg-r63-20261111/overhead.exit.json').read_text()).get('exit')!=0:raise RuntimeError('old candidate overhead not terminal and cleaned')\n old_ns=run(['kubectl','get','namespace','crg-overhead-r63-20261111','--ignore-not-found','-o','json'],False)\n if old_ns.returncode or old_ns.stdout.strip():raise RuntimeError('old candidate overhead namespace remains')\n failed_preparation=json.loads(pathlib.Path('/var/tmp/crg-high539-overhead-20261112/report.json').read_text())\n if failed_preparation.get('phase')!='failed' or failed_preparation.get('error')!='wrong memory policy' or failed_preparation.get('cases') or failed_preparation.get('job_sha256')!='50de5e77f3a34eb1658f0f20eee364b06aca9329000c021c0d98d1e10046da77' or json.loads(pathlib.Path('/var/tmp/crg-high539-tools-20261112/overhead.exit.json').read_text()).get('exit')!=1:raise RuntimeError('failed pre-Pod preparation not preserved')\n failed_ns=run(['kubectl','get','namespace','crg-high539-overhead-20261112','--ignore-not-found','-o','json'],False)\n if failed_ns.returncode or failed_ns.stdout.strip():raise RuntimeError('failed preparation namespace not absent')\n",
+        "after": " plan=json.loads((w/'overhead-plan.json').read_bytes())\n if hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()!=plan['job_sha256']:raise RuntimeError('frozen job differs')\n for name,digest in plan['source_sha256'].items():\n  if hashlib.sha256((w/name).read_bytes()).hexdigest()!=digest:raise RuntimeError('frozen input differs')\n qualification=json.loads((w/'qualification.json').read_bytes())\n if qualification['phase']!='passed' or qualification['source_revision']!=report['source'] or qualification['version']!='v1.0.0' or qualification['actual_total_checks']!=284 or not qualification['all_actual_controller_programs_match_frozen_final_ELFs']:raise RuntimeError('fixed final284 qualification missing')\n report['qualification_sha256']=hashlib.sha256((w/'qualification.json').read_bytes()).hexdigest();report['plan_sha256']=hashlib.sha256((w/'overhead-plan.json').read_bytes()).hexdigest()\n"
+      },
+      {
+        "before": " prior=pathlib.Path('/var/tmp/crg-overhead-r35-20261110/report.json')\n if not prior.is_file() or json.loads(prior.read_text()).get('phase')!='passed' or json.loads(prior.read_text()).get('namespace_absent') is not True:raise RuntimeError('previous overhead fixture not accepted and cleaned')\n gone=run(['kubectl','get','namespace','crg-overhead-r35-20261110','--ignore-not-found','-o','json'],False)\n if gone.returncode!=0 or gone.stdout.strip():raise RuntimeError('previous overhead namespace remains')\n old_process=pathlib.Path('/proc/2602146/cmdline')\n if old_process.exists() and b'/var/tmp/crg-realpath-tools-20261110/overhead-r35-job.py' in old_process.read_bytes().split(b'\\0'):raise RuntimeError('previous overhead coordinator still live')\n info=json.loads(run([str(w/'binaries/crg-linux-amd64'),'build-info']).stdout)\n if info.get('revision')!=report['source'] or info.get('arch')!='amd64' or info.get('os')!='linux' or info.get('go_version')!='go1.27.3' or info.get('version')!='v1.0.0-preview.4':raise RuntimeError('candidate build-info differs')\n if info.get('memory_policy')!='high-reclaim-throttle; percentages may be exceeded; external hard limits retained':raise RuntimeError('wrong memory policy')\n report['build_info']=info\n report['binary_sha256']=hashlib.sha256((w/'binaries/crg-linux-amd64').read_bytes()).hexdigest()\n if report['binary_sha256']!='6088721cd4846f95b3b71c82f9884e1909797a199d962b50519c9e013de98b4e':raise RuntimeError('candidate digest differs from frozen plan')\n",
+        "after": " info=json.loads(run([str(w/'binaries/crg-linux-amd64'),'build-info']).stdout)\n if info.get('revision')!=report['source'] or info.get('arch')!='amd64' or info.get('os')!='linux' or info.get('go_version')!='go1.27.3' or info.get('version')!='v1.0.0':raise RuntimeError('candidate build-info differs')\n if info.get('memory_policy')!='high-reclaim-throttle; percentages may be exceeded; external hard limits retained' or info.get('io_percent_policy')!='calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained':raise RuntimeError('final policy differs')\n report['build_info']=info\n report['binary_sha256']=hashlib.sha256((w/'binaries/crg-linux-amd64').read_bytes()).hexdigest()\n if report['binary_sha256']!='9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8':raise RuntimeError('candidate digest differs from frozen plan')\n"
+      },
+      {
+        "before": "create({'apiVersion':'v1','kind':'Namespace','metadata':{'name':ns,'labels':{'managed-by':'crg-overhead-test'}}});created=True",
+        "after": "create({'apiVersion':'v1','kind':'Namespace','metadata':{'name':ns,'labels':{'managed-by':'crg-overhead-test'}}});created=True;report['namespace_uid']=json.loads(run(['kubectl','get','namespace',ns,'-o','json']).stdout)['metadata']['uid'];save()"
+      },
+      {
+        "before": "'actual_controls':actual}",
+        "after": "'actual_controls':actual,'fixture_identity':{'pod_uid':m['metadata']['uid'],'container_id':cid,'group':str(g),'pod_parent':str(g.parent),'main':process_identity(mainpid),'Agent':process_identity(pid)}}"
+      },
+      {
+        "before": "if m['metadata']['labels'].get('managed-by')!='crg-overhead-test':",
+        "after": "if m['metadata']['uid']!=report['namespace_uid'] or m['metadata']['labels'].get('managed-by')!='crg-overhead-test':"
+      },
+      {
+        "before": "import pathlib,json,subprocess,time,traceback,hashlib,os,shutil,math,platform",
+        "after": "import pathlib,json,subprocess,time,traceback,hashlib,os,shutil,math,platform,signal"
+      },
+      {
+        "before": "try:\n if os.geteuid()",
+        "after": "def stopped(signum,frame):raise RuntimeError('explicit overhead fixture stop requested')\nsignal.signal(signal.SIGTERM,stopped)\ntry:\n if os.geteuid()"
+      }
+    ],
+    "inverse_exact": true,
+    "criteria_and_measurement_body_unchanged": true,
+    "historic_prerequisites_replaced_by_exact_final_ELF284_qualification": true
+  },
+  "all7_frozen_inputs_exact": true,
+  "measurement_started": false,
+  "stable_release_accepted": false
+}

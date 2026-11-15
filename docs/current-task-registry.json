@@ -1,8 +1,8 @@
 {
-  "kind": "52 archived task definitions plus current scoped progress; not final completion audit",
+  "kind": "52 preserved archived definitions with individual current-scope evidence audit, not stable release acceptance",
   "product_source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "task_count": 52,
-  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; new-source actual business pending.",
+  "latest_requirements": "CPU/memory/IO only, independent percentages each default20; memory uses memory.high, no new memory.max, original external caps retained; only pure v2 writes, v1/hybrid/unknown skip; daily30day/1GB logs; strict one Agent per container; helper failure does not gate original business. io_percent uses calibrated read/write BPS only; optionalIOPS manual, externalIOPS retained, owned legacyIOPS safe migration; exact final candidate original-path18 and native284 passed; current-source default20 full business failure retained; formal long pending.",
   "tasks": [
     {
       "id": "P01.1",
@@ -12,7 +12,13 @@
         "分别记录数据库访问、关键业务 API、缓存程序共存、备份、同步和独立恢复结果；通用 PostgreSQL 冒烟不能替代厂商业务验收"
       ],
       "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径各600秒/12项通过且清理，20场景/108项辅助故障通过且清理；当前开发维护22项和冷重建44项通过；长期/发布另判，旧结论不改来源。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "完整克隆回归入口及用户接受的原启动链、SQL、/test、缓存共存、实际备份/同步/独立恢复已建立，固定最终ELF18/18通过。",
+        "remaining_or_boundary": "本项入口与所列manual参考验收完成；默认20%失败保持，生产专用未知接口不在用户接受范围。",
+        "evidence": "testing-final-v1-full600-terminal.md"
+      }
     },
     {
       "id": "P01.2",
@@ -22,7 +28,13 @@
         "在 20%/30% 候选额度中逐项记录预算、数据量、就绪阈值和失败；不自动临时放宽限额或悄悄修改原探针"
       ],
       "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径各600秒/12项通过且清理，20场景/108项辅助故障通过且清理；当前开发维护22项和冷重建44项通过；长期/发布另判，旧结论不改来源。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "20/30四个启动组合各有36项完整组，重建、探针、标定复用和恢复已记录；原矩阵失败保留。",
+        "remaining_or_boundary": "核对归档启动数据是否逐一覆盖“解包后、备份后”触发条件；不能把启动组当物理备份或持续业务通过。",
+        "evidence": "testing-bandwidth-current-combinations.md"
+      }
     },
     {
       "id": "P01.3",
@@ -236,7 +248,13 @@
         "test-results-agent-fixed-io-comparison-v3.json",
         "test-analysis-agent-fixed-io-comparison-v3.json",
         "test-results-agent-fixed-io-v3-evidence-checks-v2.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "分段诊断和原失败原件保留；当前manual参考完整业务通过。",
+        "remaining_or_boundary": "历史启动/外层exec/受限IO下停库延迟的根因及处置结论尚未全部闭合；一次通过不能替代定位。",
+        "evidence": "testing-bandwidth-default20-full600-terminal.md"
+      }
     },
     {
       "id": "P01.4",
@@ -246,7 +264,13 @@
         "克隆环境中缺程序、无权限、坏配置、崩溃、卡死、忽略 TERM 均不决定原业务退出；未知脚本拒绝自动修改"
       ],
       "current_scope_note": "原7638/d6手动64矩阵24项/各600秒、冷重建88项及故障216项各自通过；默认20%四格均未接受。d370自身三场景1800秒开销通过，两格真实路径各600秒/12项通过且清理，20场景/108项辅助故障通过且清理；当前开发维护22项和冷重建44项通过；长期/发布另判，旧结论不改来源。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "已验证模板、可选helper、备份/回退和旧版108项辅助故障；最终ELF原路径通过。",
+        "remaining_or_boundary": "最终候选全部辅助故障和老化故障仍需明确对应来源；不将旧ELF108项移记。",
+        "evidence": "testing-memory-high-faults.md"
+      }
     },
     {
       "id": "P01.5",
@@ -255,7 +279,13 @@
         "双模式 CPU/内存/IO 与旧最小配置兼容"
       ],
       "current_scope_note": "三资源双模式已实现；原7638/d6手动64预算业务已通过，当前分区组合d370两格真实路径各600秒/12项通过且清理，不混用来源。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "percent/manual三资源及旧最小配置兼容已由准确源码unit/race与固定ELF实际控制、迁移验证。",
+        "remaining_or_boundary": "本项双模式兼容完成；旧扩展字段仅兼容，不推荐新配置。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P01.6",
@@ -264,7 +294,13 @@
         "pids_max、cpu_weight 及危险下调/恢复保护"
       ],
       "current_scope_note": "R29已暂缓任务数/CPU权重的新交付；历史代码仅用于既有配置/恢复兼容，不是当前三资源推荐配置。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "superseded-by-three-resource-request",
+        "verified_scope": "用户最新范围只限制CPU/内存/IO，任务数与CPU权重不再作为新功能交付。",
+        "remaining_or_boundary": "本项扩展控制取消；已有旧配置兼容和外部值保护保留，不删除历史定义。",
+        "evidence": "independent-percentages.md"
+      }
     },
     {
       "id": "P01.7",
@@ -275,7 +311,13 @@
         "两线实现及Windows/Linux/race/vet、22项自动标定/9项状态故障通过；真实路径业务短测另判，未发布"
       ],
       "current_scope_note": "自动选盘/首次后台标定/稳定缓存已在工程预览提供；旧22项自动/9项状态故障、原路径及冷重建各自留档，d370新增分区映射按独立来源验证。首次标定仍有真实IO负载，业务不等待。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "最大合格本地文件系统自动选盘/后台首次标定、跨ID持久复用及两套真实路径/只读降级已验证。",
+        "remaining_or_boundary": "限定在已验证单设备与本地文件系统；多物理设备是P04.4。",
+        "evidence": "testing-bandwidth-current-combinations.md"
+      }
     },
     {
       "id": "P01.8",
@@ -285,7 +327,13 @@
         "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
       ],
       "current_scope_note": "每日日志/30天/总1GB/失败放行已实现，旧真实只读/满盘/1GB及当前1800秒稳定日志分别留档；最终两业务长期验收未完成。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "每日一文件、30日/1GB清理、真实1GB边界与不可写降级在准确源码原生unit/race通过；真实路径日日志保持。",
+        "remaining_or_boundary": "日志功能本项完成，长期业务归P02.1/P10.2。",
+        "evidence": "logging.md"
+      }
     },
     {
       "id": "P01.9",
@@ -295,7 +343,13 @@
         "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
       ],
       "current_scope_note": "仅三独立百分比各默认20、纯v2门禁和v1/混合/未知跳过已实现；版本模拟与真实v2控制证据分开。完整业务/长期和最终发布尚未接受。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "三项独立默认20、v1跳过/v2校验、旧配置/manual和实际控制/不同ID重建已验证。",
+        "remaining_or_boundary": "本项配置和版本门禁完成，不表示默认20%业务性能通过。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P02.1",
@@ -317,7 +371,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "原fc2 observe基线已有固定22h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce未开始；d370独立七天组件首300秒观察已归档，尚未接受。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "固定候选同容器observe86400→enforce86400执行器和原生只读准入完成。",
+        "remaining_or_boundary": "旧任务仍在，新的独占两阶段尚未开始；必须分别跑满并通过原业务标准。",
+        "evidence": "testing-final-v1-long.md"
+      }
     },
     {
       "id": "P02.2",
@@ -339,7 +399,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "原fc2 observe基线已有固定22h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce未开始；d370独立七天组件首300秒观察已归档，尚未接受。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。",
+        "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。",
+        "evidence": "testing-final-v1-full600-terminal.md"
+      }
     },
     {
       "id": "P02.3",
@@ -361,7 +427,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "原fc2 observe基线已有固定22h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce未开始；d370独立七天组件首300秒观察已归档，尚未接受。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "原生最终ELF有崩溃/重启/只读/恢复，公开percent48和manual40维护通过。",
+        "remaining_or_boundary": "两厂商最终ELF完整业务辅助故障及老化后所有权/状态故障还需逐场景终态。",
+        "evidence": "testing-public-percent-migration-terminal.md"
+      }
     },
     {
       "id": "P02.4",
@@ -383,7 +455,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "原fc2 observe基线已有固定22h观察，4周期内容native-pending；完整86400秒尚未接受，24h enforce未开始；d370独立七天组件首300秒观察已归档，尚未接受。d6固定正式切换候选和13/14只读门保持，未来切换须重新核对实时身份/预算/原值。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "安装、卸载/恢复、配置语义和已测范围已有预发布文档。",
+        "remaining_or_boundary": "最终稳定包、精确矩阵和发布后操作演练尚待形成；main源码尚未合入。",
+        "evidence": "release-readiness-current.md"
+      }
     },
     {
       "id": "P03.1",
@@ -431,7 +509,13 @@
           "prior_registry_sha256": "bf1cfcd25be5bbad881b3a5a9e9b3302d2f05c70a3b40c8c5cd4a0eeabf447c2",
           "note": "热重载已实现；旧13项及d6三比例15项保持原来源。精确已发布候选dbc本轮同一原镜像占位PID1完成原15项协议，默认只读/缺标记拒绝及清理已核对；包含三独立比例、CLI优先、坏配置保留、manual切换、恢复及冲突，但正向每步三资源数值未全部独立回读；不是厂商原启动/原生业务负载或所有文件替换/并发/危险内存分支验收。preview.2已交付同一ELF，稳定条件另判。 本轮冻结R95真实厂商业务600秒重载/引擎补测，包含逐步8文件数值回读和坏输入保留；尚未执行或通过，不替代原全部条目。 R95现已24项/两角色各600秒真实业务重载通过，14次配置8文件回读和两组10项原引擎、同一进程/配置恢复/清理已核对；坏输入/符号链接为本协议范围，其它并发/危险内存延后等仍未据此关闭。 R113已冻结原业务600秒内危险内存1%延后、六秒稳定窗口和五类配置来源错误/恢复联测，预计54项；此时尚未执行，不据此关闭并发全部分支或长期条件。 R120已冻结原业务600秒内危险内存1%延后、六秒稳定窗口和五类配置来源错误/恢复联测，预计54项；此时尚未执行，不据此关闭并发全部分支或长期条件。 R113实际在目录恢复观测超60秒失败，仅DBS17项局部检查，未完成原生600秒/HIS；已独立清理和恢复输入。终态accepted9及脚本时序缺陷保留，旧mark缺失不精确归因；R120新观察协议未放宽SLA。1%仅补充，原30→20高用量压力仍待。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "准确源码有文件监测、原子替换/符号链接读取、CLI优先和坏配置保留；原生unit/race通过。",
+        "remaining_or_boundary": "需把每个文件替换/短缺失/重复键场景与当前厂商业务终态逐项绑定，不能仅引用旧d6实测。",
+        "evidence": "testing-three-percent-reload.md"
+      }
     },
     {
       "id": "P03.2",
@@ -460,7 +544,13 @@
           "prior_registry_sha256": "74a7e208db30031bd81939fd51a23754256f3960d664129fead2ed59f8df6a73",
           "note": "热重载已实现；旧13项及d6三比例15项保持原来源。精确已发布候选dbc本轮同一原镜像占位PID1完成原15项协议，默认只读/缺标记拒绝及清理已核对；包含三独立比例、CLI优先、坏配置保留、manual切换、恢复及冲突，但正向每步三资源数值未全部独立回读；不是厂商原启动/原生业务负载或所有文件替换/并发/危险内存分支验收。preview.2已交付同一ELF，稳定条件另判。 本轮冻结R95真实厂商业务600秒重载/引擎补测，包含逐步8文件数值回读和坏输入保留；尚未执行或通过，不替代原全部条目。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "候选完整校验、逐项持久化/回读、所有权及外部限额保护已有实现和原生证据。",
+        "remaining_or_boundary": "当前ELF厂商20→30/回落压力的完整业务标准仍需逐项复核；不宣称三项原子。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P03.3",
@@ -720,7 +810,13 @@
           "note": "[固定IO四臂449终态](test-results-agent-fixed-io-comparison-v3.json)：A1/B1/B2/A2的SQL,API错误依次为0,0/0,0/2,5/1,0；B2暂停Agent时仍实际600.294秒/SQL2/API5，原业务失败保留。独立结论为preplanned-association-not-observed，不作Agent因果或产品性能修复；30个原实例、四namespace和父叶cgroup独立清理，原来源和副本恢复。只读分析器修正业务失败出口无重复摘要的读取缺陷，旧源码/错误原件保留，3个真实臂及17个合成反例共20项复核通过。对照结构资格不等于原业务SLA通过；原32项/两角色/配额/门槛、52任务和长期条件保持。",
           "change_kind": "append terminal diagnostic results retaining business failures; no original acceptance waiver"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "请求代次、已接受策略、逐项延期/冲突和重试状态已实现，旧压力与失败均保留。",
+        "remaining_or_boundary": "30→20真实压力下的最终候选完整业务/安全应用及未生效时长需要对应当前终态。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P03.4",
@@ -741,7 +837,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "安全重载已实现并合入组合线；旧13项和d6三比例15项实测分别保留，CLI比例/日志优先、坏配置保持、独立默认、manual切换及冲突已有证据；当前分区程序不冒用旧二进制执行记录，尚未正式发布。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "模式、state_dir边界、并发/停用和显式恢复规则已有实现及unit/race。",
+        "remaining_or_boundary": "当前候选厂商并发重载/重启/disable组合的闭环结果仍需逐一绑定。",
+        "evidence": "configuration.md"
+      }
     },
     {
       "id": "P03.5",
@@ -788,7 +890,13 @@
           "prior_registry_sha256": "bf1cfcd25be5bbad881b3a5a9e9b3302d2f05c70a3b40c8c5cd4a0eeabf447c2",
           "note": "热重载已实现；旧13项及d6三比例15项保持原来源。精确已发布候选dbc本轮同一原镜像占位PID1完成原15项协议，默认只读/缺标记拒绝及清理已核对；包含三独立比例、CLI优先、坏配置保留、manual切换、恢复及冲突，但正向每步三资源数值未全部独立回读；不是厂商原启动/原生业务负载或所有文件替换/并发/危险内存分支验收。preview.2已交付同一ELF，稳定条件另判。 本轮冻结R95真实厂商业务600秒重载/引擎补测，包含逐步8文件数值回读和坏输入保留；尚未执行或通过，不替代原全部条目。 R95现已24项/两角色各600秒真实业务重载通过，14次配置8文件回读和两组10项原引擎、同一进程/配置恢复/清理已核对；坏输入/符号链接为本协议范围，其它并发/危险内存延后等仍未据此关闭。 R113已冻结原业务600秒内危险内存1%延后、六秒稳定窗口和五类配置来源错误/恢复联测，预计54项；此时尚未执行，不据此关闭并发全部分支或长期条件。 R120已冻结原业务600秒内危险内存1%延后、六秒稳定窗口和五类配置来源错误/恢复联测，预计54项；此时尚未执行，不据此关闭并发全部分支或长期条件。 R113实际在目录恢复观测超60秒失败，仅DBS17项局部检查，未完成原生600秒/HIS；已独立清理和恢复输入。终态accepted9及脚本时序缺陷保留，旧mark缺失不精确归因；R120新观察协议未放宽SLA。1%仅补充，原30→20高用量压力仍待。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "manual与percent切换、删除自有项目恢复及外部冲突保留有实现；最终ELFIOPS切换已实际通过。",
+        "remaining_or_boundary": "CPU/内存/IO全部删除/保留规则的当前厂商业务完整组合尚待逐项验收。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P04.1",
@@ -798,7 +906,13 @@
         "顺序读写 BPS 和随机读写 IOPS 分开测量并记录；受竞争影响的结果提示质量不足，不伪称设备物理总量，首次辅助进程自动尝试；后续复用，业务不等待"
       ],
       "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "三次独立采样、中位数/离散程度/质量与方法版本记录、自动复用已实现并实测。",
+        "remaining_or_boundary": "需逐项确认持续竞争/质量不足下的当前候选实测；IOPS可测量记录但百分比仅应用BPS。",
+        "evidence": "automatic-io-calibration.md"
+      }
     },
     {
       "id": "P04.2",
@@ -808,7 +922,13 @@
         "设备编号变更按稳定身份重识别；替盘、重复身份、旧格式和缺样本有明确处理；新机器不直接套用另一机器性能基准"
       ],
       "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "profile预览/合并、稳定身份、歧义/缺项拒绝和几何失效已实现；最终ELF分区测试通过。",
+        "remaining_or_boundary": "独立替换物理盘/新机器迁移的实机证据不足，不能套用别机基准。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P04.3",
@@ -818,7 +938,13 @@
         "同层/上下层重复配置可解释地拒绝或跳过；NFS、对象存储、Overlay 等不能确认的路径明确显示未覆盖，不猜设备"
       ],
       "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "路径覆盖及同设备兄弟分区共享目标有最终ELF180项；现有XFS→DM→物理路径已核对。",
+        "remaining_or_boundary": "所选LVM/映射栈及路径覆盖声明还需逐项列出真实写入有效性；未知栈明确未覆盖。",
+        "evidence": "testing-final-wait-io-map.md"
+      }
     },
     {
       "id": "P04.4",
@@ -828,7 +954,13 @@
         "各设备 BPS/IOPS、共享竞争、profile 缺项/失效分别记录；不把该矩阵外的复杂存储栈宣称已支持"
       ],
       "current_scope_note": "分区核心已接入组合d370，当前原生ARM212个Go pass事件/整盘44项、构建身份9项及自身三组1800秒开销通过；实际分区四格164项仍对应468fe73。独立物理多设备及未测复杂栈仍待验收。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "waiting-unavailable-hardware",
+        "verified_scope": "现有两分区来自同一物理设备，未伪称两盘。",
+        "remaining_or_boundary": "缺至少两块独立物理块设备及选定映射栈节点；用户暂未提供。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P04.5",
@@ -837,7 +969,13 @@
         "io_weight、手动多路径/多设备与替盘回归"
       ],
       "current_scope_note": "R29暂缓IO权重交付；三资源IO的多路径/多设备与替盘工作继续。分区同父盘164项不等于独立物理多盘通过。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partly-superseded-with-retained-work",
+        "verified_scope": "新配置IO权重取消；保留manual多路径及设备身份/重复栈保护。",
+        "remaining_or_boundary": "权重部分取消，独立多设备/实际替盘回归仍待；不能整项视为取消。",
+        "evidence": "configuration.md"
+      }
     },
     {
       "id": "P05.1",
@@ -870,7 +1008,13 @@
         "test-results-business-reload-edges-failure.json",
         "testing-business-reload-source-recovery.md",
         "test-results-business-reload-source-recovery-failure.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "匿名/文件缓存/内核/events/PSI与缺字段unknown有只读实现及准确源码unit/race。",
+        "remaining_or_boundary": "逐字段核对当前厂商/内核实际可用范围；不能以加总重叠统计或不可用值0冒充完成。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P05.2",
@@ -1123,7 +1267,13 @@
         "test-results-agent-fixed-io-comparison-v3.json",
         "test-analysis-agent-fixed-io-comparison-v3.json",
         "test-results-agent-fixed-io-v3-evidence-checks-v2.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "多周期窗口、趋势/压力与写前复查/持久化保护有实现及单测。",
+        "remaining_or_boundary": "当前候选并发分配、慢fsync、持续脏页和恢复较低原值的实机组合仍待闭环。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P05.3",
@@ -1133,7 +1283,13 @@
         "两个辅助程序互不接管、互不等待，不形成重复回收或重启风暴；记录业务延迟、OOM 和额度未生效时长"
       ],
       "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前manual600和原缓存共存通过，旧压力失败有SQL/API/停库和IO诊断。",
+        "remaining_or_boundary": "高查询/WAL/备份与缓存回收重叠的最终候选原业务终态尚未满足；不改数据库参数绕过。",
+        "evidence": "testing-bandwidth-default20-full600-terminal.md"
+      }
     },
     {
       "id": "P05.4",
@@ -1143,7 +1299,13 @@
         "用户能区分“已受控”“等待安全下调”“额度不足”“缺统计”；保持三个独立百分比入口，不增加扩展资源参数，不保证绝不OOM"
       ],
       "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "已区分受控、等待、冲突、额度不足及缺统计，memory.high允许超过且无绝对OOM承诺。",
+        "remaining_or_boundary": "需针对长期延期/预算不适用的实际现象复核解释和处置，不把20%失败隐藏。",
+        "evidence": "memory-reclaim-policy.md"
+      }
     },
     {
       "id": "P05.5",
@@ -1152,7 +1314,13 @@
         "memory_high、memory_swap_max 和下调保护"
       ],
       "current_scope_note": "R29暂缓memory.high/Swap新交付；内存max、安全下调、压力诊断和原缓存共存继续由P05.1–P05.4验收，历史扩展恢复兼容保留。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partly-superseded-with-retained-work",
+        "verified_scope": "memory.high与下调保护按新要求保留，新增swap控制取消；已有K8s硬上限保持。",
+        "remaining_or_boundary": "swap部分退出当前范围；真实压力/安全恢复归P05.2/P05.3继续。",
+        "evidence": "memory-reclaim-policy.md"
+      }
     },
     {
       "id": "P06.1",
@@ -1162,7 +1330,13 @@
         "覆盖当前 5.14 环境及选定 6.x 环境；每个宣称组合有版本、权限和结果，未测版本不自动标为兼容"
       ],
       "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "5.14厂商amd64和6.8/7.0原生VM两架构有实际报告，环境范围分开。",
+        "remaining_or_boundary": "整理到稳定矩阵的运行时/runc/挂载方式逐组合证据，不能泛称全部内核兼容。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P06.2",
@@ -1172,7 +1346,13 @@
         "arm64 不再仅有交叉编译证据；发布说明逐架构列明业务和存储覆盖范围"
       ],
       "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "waiting-unavailable-hardware",
+        "verified_scope": "有原生ARM64 VM实际控制及race，已超出交叉编译。",
+        "remaining_or_boundary": "仍缺ARM64 DBS/HISDBS厂商业务节点，不能用VM替代这一完整要求。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P06.3",
@@ -1182,7 +1362,13 @@
         "不能确认自身目标时不写；不能得到可信宿主基数时明确降级，不将容器虚拟容量误称宿主总量，不越权写父组"
       ],
       "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "容量来源、私有namespace/只读、祖先约束和自己leaf保护有实现/原生测试。",
+        "remaining_or_boundary": "逐组合核对当前委派不足/虚拟化宿主容量及实际容器挂载，无法确认则跳过。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P06.4",
@@ -1192,7 +1378,13 @@
         "新身份不使用旧恢复日志；容量变化不突破既有外部约束；各类控制器可用性独立显示"
       ],
       "current_scope_note": "原生Linux6.8/7.0、AMD64/ARM64的dm/loop与原发布包控制器矩阵已归档，分区四格另164项；各结果限定来源/内核/运行时和占位容器。ARM厂商业务、独立物理多盘、其他内核/运行时及节点重启未完成。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "最终ELF新ID新journal、只读降级、profile复用和几何变化通过。",
+        "remaining_or_boundary": "真实CPU在线数变化与连续权限切换的当前组合还须独立现场记录。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P06.5",
@@ -1201,7 +1393,13 @@
         "双模式下容器/Pod/节点重启及状态保留/丢失组合回归"
       ],
       "current_scope_note": "已归档旧来源容量/身份37项及连续重建；原发布包和分区四格新ID另有结果，节点重启、状态丢失全组合及未测硬件仍未完整验收。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "两模式多次Pod/container重建和持久状态保留已有实际证据。",
+        "remaining_or_boundary": "整节点重启及状态保留/丢失的完整组合未全部完成；不重启当前共享节点干扰任务。",
+        "evidence": "testing-bandwidth-current-combinations.md"
+      }
     },
     {
       "id": "P07.1",
@@ -1211,7 +1409,13 @@
         "human/JSON 输出含义一致；状态过期、锁被持有和数据库健康不混为一谈；旧脚本依赖的字段遵守兼容规则"
       ],
       "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "统一原因码、human/JSON、实际值/外部冲突和代次已有实现与准确源码测试。",
+        "remaining_or_boundary": "需逐字段验证状态过期/锁持有与业务健康区分的当前用户输出和兼容性。",
+        "evidence": "operations.md"
+      }
     },
     {
       "id": "P07.2",
@@ -1221,7 +1425,13 @@
         "不采集密码、令牌、环境变量全集、业务数据、私有业务脚本或其他容器信息；输出前说明内容，本地生成，不自动上传"
       ],
       "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "白名单脱敏、路径边界和体积上限有实现/单测，不自动上传。",
+        "remaining_or_boundary": "对最终候选生成包做内容和体积的实际现场复核；保留输出说明与敏感字段拒绝证据。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P07.3",
@@ -1231,7 +1441,13 @@
         "默认无监听网络端口、无远程控制入口；只报告自身，指标失败不影响业务，不能把 Agent 端点变成业务健康前置条件"
       ],
       "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "默认关闭的本地文本指标已有实现，默认无网络监听/远程控制，失败隔离有测试。",
+        "remaining_or_boundary": "复核最终ELF实际默认不导出/开启导出/持续写失败，不以指标作为业务前置。",
+        "evidence": "test-results-IO-bandwidth-CI.json"
+      }
     },
     {
       "id": "P07.4",
@@ -1241,7 +1457,13 @@
         "高频异常不写满目录；原值日志持久化不能因限流而被省略；说明 CPU/RSS/写入量及开销变化"
       ],
       "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "有界事件及去重限流保留必要journal，旧版三场景低IO开销通过。",
+        "remaining_or_boundary": "固定最终ELF正常/输出失败/只读三场景1800秒独立测量本轮准备中。",
+        "evidence": "testing-final-v1-overhead.md"
+      }
     },
     {
       "id": "P08.1",
@@ -1263,7 +1485,13 @@
         "testing-published-migration.md",
         "test-results-published-migration-v2.json",
         "test-results-published-migration-first-failure.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "模板识别、哈希/备份/卸载和可选启动接入实现，真实路径原启动链通过。",
+        "remaining_or_boundary": "最终候选全部已验证模板/未知哈希拒绝与回退演练须列出对应结果；不写K8s API的产品边界保持。",
+        "evidence": "integration.md"
+      }
     },
     {
       "id": "P08.2",
@@ -1285,7 +1513,13 @@
         "testing-published-migration.md",
         "test-results-published-migration-v2.json",
         "test-results-published-migration-first-failure.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "公开preview4→5 manual40和控制迁移48均通过，旧写入者静默后才换二进制。",
+        "remaining_or_boundary": "固定最终候选受控安装/失败回退尚需独立验证；旧预发布结果不移记。",
+        "evidence": "testing-preview45-manual-maintenance-terminal.md"
+      }
     },
     {
       "id": "P08.3",
@@ -1307,7 +1541,13 @@
         "testing-published-migration.md",
         "test-results-published-migration-v2.json",
         "test-results-published-migration-first-failure.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "journal/profile版本、迁移备份、未知格式拒绝和旧程序有限恢复有实现/原生证据。",
+        "remaining_or_boundary": "最终候选真实升级/降级格式组合与拒绝原因仍需逐项审核。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     },
     {
       "id": "P08.4",
@@ -1317,7 +1557,13 @@
         "明确只改运行中容器文件不会自动进入新镜像；永久停用由持久配置/启动入口表达，不把旧身份停用标记直接用于新身份"
       ],
       "current_scope_note": "历史31项维护、四格首次接入68项、共享切换/独立恢复及开发构建往返有独立记录；旧main预览缺协议的首次安装拒绝保留。当前d370与50671aa开发程序实际维护22项/各600秒通过且清理；当前冷重建44项/四次启动通过，最近两个已发布次版本及最终持久部署验收仍未完成。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "持久挂载/镜像要求、跨ID状态和永久停用说明已有文档与重建测试。",
+        "remaining_or_boundary": "最终候选镜像持久化、永久停用/重建及受控升级全流程仍待演练。",
+        "evidence": "installation.md"
+      }
     },
     {
       "id": "P09.1",
@@ -1338,7 +1584,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "Go1.27.3、源码/包修订、两架构SBOM及跨Windows/Linux准确ELF重复构建已固定。",
+        "remaining_or_boundary": "最终稳定包和对应发布来源证明尚未生成/公开，不能把旧预发布证明移用。",
+        "evidence": "final-v1-candidate-identity.json"
+      }
     },
     {
       "id": "P09.2",
@@ -1359,7 +1611,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "预发布安装包有摘要/来源和离线验证，八附件下载已核对。",
+        "remaining_or_boundary": "最终稳定包的实际校验失败拒绝安装和离线校验待形成；禁止未经验证远程shell。",
+        "evidence": "installation.md"
+      }
     },
     {
       "id": "P09.3",
@@ -1382,7 +1640,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "旧源码长fuzz/持续输出故障和准确源码race已有证据。",
+        "remaining_or_boundary": "最终候选对应长fuzz/持久化中断及边界覆盖需逐项复核；真实掉电未测且不得称强杀等同掉电。",
+        "evidence": "testing-combined-long.md"
+      }
     },
     {
       "id": "P09.4",
@@ -1392,7 +1656,13 @@
         "工程目标：15s 周期、稳定状态至少 30min，单核平均 CPU ≤0.1%、RSS ≤20MiB，状态文件最多每 5min 一次；另测低 IO/持续异常，不为达标省略必要日志"
       ],
       "current_scope_note": "当前d370两目标Windows/Linux程序及完整manifest一致，4项在线证明、2项离线正常对照、3项有效拒绝及三场景1800秒开销通过；无效互斥CLI反例剔除留档。506源码两项10min fuzz属历史，真实掉电及更长故障不据此关闭。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "保持原15s周期、CPU≤0.1%单核/RSS≤20MiB、状态约5min及低IO/异常门槛。",
+        "remaining_or_boundary": "最终候选三场景预检查已过，需真实至少1800秒及独立清理；不能计旧版30分钟。",
+        "evidence": "testing-final-v1-overhead.md"
+      }
     },
     {
       "id": "P10.1",
@@ -1414,7 +1684,13 @@
         "testing-published-migration.md",
         "test-results-published-migration-v2.json",
         "test-results-published-migration-first-failure.json"
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前三资源/默认20、memory.high/BPS语义及格式规则已编写；预发布升级有证据。",
+        "remaining_or_boundary": "最近两个已发布“次版本”历史不齐，预发布不能冒充两个minor；最终契约冻结/范围处置仍需明确。",
+        "evidence": "upgrade-preview4-preview5.zh.md"
+      }
     },
     {
       "id": "P10.2",
@@ -1436,7 +1712,13 @@
           "prior_registry_sha256": "eb4337db848186550ecac23b72c6778ab57522ff8beb44eca6f29ee21f682bf4",
           "previous_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 当前d370七天连续组件已实际开始，仅首300秒固定观察，28周期及老化状态后置未完成。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。"
         }
-      ]
+      ],
+      "current_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "固定最终候选七天/28周期执行器已冻结，旧任务进程仍活跃且不继承其时长。",
+        "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。",
+        "evidence": "testing-final-v1-long.md"
+      }
     },
     {
       "id": "P10.3",
@@ -1446,7 +1728,13 @@
         "没有未解决的阻断缺陷；权限不足不阻断原启动，生效限额的性能影响和不能撤销的情形明确可见"
       ],
       "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前固定ELF目标隔离、外部IOPS保留和恢复有原生及业务证据；历史失败全部保留。",
+        "remaining_or_boundary": "逐项安全/隐私/所有权及未解决阻断评审未终结，不能以绿CI概括全部条件。",
+        "evidence": "release-readiness-current.md"
+      }
     },
     {
       "id": "P10.4",
@@ -1456,7 +1744,13 @@
         "每个对外支持组合有对应报告；未测的架构/存储/内核不包装成全面支持；稳定发布和生产部署分别记录"
       ],
       "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已补环境覆盖索引草案，按程序/内核/架构/存储限定来源；仍非最终支持承诺。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "当前交付页明确已测/未测、预发布与稳定及部署的区别，全部证据保留。",
+        "remaining_or_boundary": "最终支持矩阵、运维、问题分级和补丁/归档规则需发布审核闭环。",
+        "evidence": "release-readiness-current.md"
+      }
     },
     {
       "id": "P10.5",
@@ -1467,7 +1761,13 @@
         "实现已编写，验收中；原24h+24h和至少7天条件不变"
       ],
       "current_scope_note": "自动标定在组合候选中实现；当前分区程序CI、源身份、同盘映射证据和自身开销具备，两业务手动短测、108项辅助故障、22项开发维护及44项冷重建通过；正式24h+24h与至少7天尚未接受。 已实现只读老化身份采集和后置门禁，Linux7方法及真实pending检查通过；已补恢复/重建/维护执行器与Linux7方法及真实提前执行拒绝；独立短数据演练36项/两角色各600秒通过且清理，真实七天后置、老化辅助故障及最终综合审计仍未完成。；版本化dbc候选自身短保留数据后置36项/两角色各600秒、16个维护区间通过且独立清理；实际七天后置与老化故障仍待。；dbc候选自身短保留数据辅助故障20场景/152项通过且原进程/20Pod scope独立清理；不代替真实老化状态和七天后置。",
-      "completion_claim": false
+      "completion_claim": false,
+      "current_acceptance": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "最终ELF18业务与284原生实际通过，自动标定/双模式/重建已有分项证据。",
+        "remaining_or_boundary": "组合候选长运行、老化故障、维护和发布审核继续，不整体勾选。",
+        "evidence": "testing-final-v1-long.md"
+      }
     },
     {
       "id": "P10.6",
@@ -1477,7 +1777,13 @@
         "Linux/race及每日日志真实只读/满盘/1GB清理已通过；业务长期验收独立继续"
       ],
       "current_scope_note": "每日日志/30天/总1GB/失败放行已实现，旧真实只读/满盘/1GB及当前1800秒稳定日志分别留档；最终两业务长期验收未完成。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "与P01.8同一日志需求，准确源码真实1GB/日历/失败隔离通过；属于重复归档项。",
+        "remaining_or_boundary": "本项日志功能完成，不重复增加测试数量或代替长期业务。",
+        "evidence": "logging.md"
+      }
     },
     {
       "id": "P10.7",
@@ -1487,7 +1793,13 @@
         "三项默认/独立换算/CLI、版本门禁、实际回读/恢复/Pod重建已通过；热重载及业务验收继续"
       ],
       "current_scope_note": "仅三独立百分比各默认20、纯v2门禁和v1/混合/未知跳过已实现；版本模拟与真实v2控制证据分开。完整业务/长期和最终发布尚未接受。",
-      "completion_claim": false
+      "completion_claim": true,
+      "current_acceptance": {
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "与P01.9同一三百分比/版本门禁需求，准确源码与固定最终ELF实际控制/重建通过。",
+        "remaining_or_boundary": "本项功能完成，不重复计数或改变默认20%业务失败。",
+        "evidence": "testing-final-v1-native-CI-terminal.md"
+      }
     }
   ],
   "limitations": [
@@ -2849,6 +3161,28 @@
     "new_long_started": false,
     "business_accepted": false,
     "long_runtime_inherited": false,
+    "stable_release_accepted": false
+  },
+  "current_52_scope_audit": {
+    "documentation": "current-52-task-audit.md",
+    "machine_audit": "current-52-task-audit.json",
+    "completed_in_defined_scope": 7,
+    "stable_release_accepted": false
+  },
+  "final_v1_overhead": {
+    "phase": "native-preflight-passed-not-launched",
+    "documentation": "testing-final-v1-overhead.md",
+    "plan": "test-plan-final-v1-overhead.json",
+    "preflight": "test-results-final-v1-overhead-preflight.json",
+    "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "version": "v1.0.0",
+    "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "job_sha256": "4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230",
+    "plan_sha256": "28c4adb773b90f15de7e13b6cf105488efcd17481565cd8ac50f47497d3262c2",
+    "measurement_seconds": 1800,
+    "cases": 3,
+    "measurement_started": false,
+    "accepted": false,
     "stable_release_accepted": false
   }
 }

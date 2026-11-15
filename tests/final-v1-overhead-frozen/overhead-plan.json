@@ -1,0 +1,47 @@
+{
+  "schema": "crg-fixed-final-1800-overhead-plan-v1",
+  "phase": "frozen-before-native-preflight-and-launch",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "version": "v1.0.0",
+  "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "job_sha256": "4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230",
+  "tools": "/var/tmp/crg-final1404-tools-20261115",
+  "output": "/var/tmp/crg-final1404-overhead-20261115",
+  "namespace": "crg-final1404-overhead-20261115",
+  "criteria": {
+    "warmup_seconds": 45,
+    "actual_seconds": 1800,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "single_core_CPU_percent_max": 0.1,
+    "Agent_RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_Agent_write_bytes_max": 8388608,
+    "fault_Agent_write_bytes_max": 16777216,
+    "OOM_kill_delta_max": 0,
+    "same_Agent_process_all_samples": true,
+    "daily0600_logs_report_v2": true,
+    "manual_cpu_cores": 0.25,
+    "io_cap_read_write_bps": 65536,
+    "io_cap_read_write_iops": 8,
+    "manual_memory_high_bytes": 134217728,
+    "external_memory_max_bytes": 268435456
+  },
+  "cases": [
+    "healthy",
+    "persistent metrics/events symlink failure, marker preserved",
+    "actually read-only cgroup mount; private fixture externally caps only its own leaf IO"
+  ],
+  "source_sha256": {
+    "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "examples/supervisor.sh": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+    "overhead-job.py": "4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230",
+    "runner.py": "f2ecf19383376abeb714e0421babd70543f95c336a0af2be340e30751bfab401"
+  },
+  "scope": "AMD64/Linux5.14 native exact final ELF, three isolated placeholder PID1 containers, one Agent each. Shared node with old seven-day78; no vendor performance, default20 promise, exclusive long duration or stable release accepted. ManualIOPS8 is explicit overhead stress configuration, not percent policy. No business/cache process or existing controls are modified.",
+  "previous_source_evidence_retained": "test-results-memory-high-overhead-v2.json",
+  "new_measurement_started": false,
+  "stable_release_accepted": false
+}
