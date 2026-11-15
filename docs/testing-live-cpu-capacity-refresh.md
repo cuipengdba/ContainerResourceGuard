@@ -1,5 +1,7 @@
 # 在线CPU容量刷新：对照、修复和重新验收
 
+当前终态：[新源CPU56/原生284通过；HISDBS9/9通过、DBS7通过/1失败/1未执行，整体failed/exit1且全部归属独立清理](testing-live-capacity-native-and-business-current.md)。新长稳未启动，稳定1.0未接受；以下“HISDBS在测/待全轮终态”均为历史快照。
+
 最新状态：[新源59绑定四格原生284/284通过；DBS完整600秒失败、HISDBS仍运行](testing-live-capacity-native-and-business-current.md)。原52项与18项既有完成声明不变，稳定1.0未接受；以下早期“待原生复核/未启动”均为历史时点。
 
 当前结论：新生产源37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0已在ARM64/Linux7完成56/56原生CPU热插拔检查，已合入release/integration-v1。main、compatibility和partition分支本次只同步证据/任务，未替换其旧运行时代码或发布包。完整新候选业务、原生矩阵与长期验收仍待，稳定1.0.0未发布。
