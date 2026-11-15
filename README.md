@@ -77,7 +77,7 @@ Agent退出不会自动撤销已生效的内核限额。需要解除自身限制
 
 [手动参考预算完整业务终态](docs/testing-manual-reference-full600-terminal.md)：通过，16/16项；两角色原600秒及备份同步恢复独立判定。默认20%的失败仍保留，手动结果不替代长期或稳定1.0验收。
 
-[preview.4→preview.5在线维护验收](docs/testing-preview45-manual-maintenance.md)已冻结并预检，尚未取得业务终态。
+[preview.4→preview.5同预算在线维护](docs/testing-preview45-manual-maintenance-terminal.md)：通过，40/40项；限定实际公开程序和本次手动预算，百分比迁移与长期验收另判。
 
 ## 文档
 

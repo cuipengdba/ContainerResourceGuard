@@ -1,5 +1,9 @@
 # preview.4 → preview.5 同预算在线维护验收
 
+已发布程序维护终态：preview.4→preview.5同预算在线维护通过，40/40项，0失败/0未执行；[完整终态和准确原件](testing-preview45-manual-maintenance-terminal.md)已独立核对。两namespace、两组父叶及59登记实例消失。此限定范围不替代百分比迁移、长期验收或原默认20%失败；原52项和稳定1.0门槛保持。
+
+以下保留原时点记录。
+
 计划在启动前冻结：job `e7239815f60ca28a0bb5e59735c3e61bf8bc68458736f47d31d9039355760b6a`，plan `fb6dc754e3c0b260c3ba869ec30f682a94641e3e9217d4c8bd8c2a8e7df5a6a1`。17项结构/真机资格检查通过，尚未启动，不是业务通过。两版公开包各8项下载重新核对，AMD64 tarball中的regular ELF与冻结输入完全相同。发布说明可继续追加，因此程序绑定中的旧body哈希仅为绑定当时快照；启动前另查当前说明，附件与tag保持不可变。
 
 前置的[手动完整600秒业务](testing-manual-reference-full600-terminal.md)已经两角色16/16通过并独立清理54登记实例；本轮另外新建namespace、输出及回环DCS隔离副本，使用DBS/HISDBS原镜像、启动、真实挂载路径和原CCG，只维护各自容器中的CRG。固定7.2核、memory.high20001980416B、读写64MiB/s、可选手动IOPS4096，保留外部20GiB硬上限；不改产品默认百分比，不自动标定。
