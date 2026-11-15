@@ -1,0 +1,180 @@
+{
+  "schema": "crg-final-business-reload-selected-native-preflight-v1",
+  "phase": "passed-not-launched",
+  "node_utc": "2026-11-15T08:08:10.939657+00:00",
+  "source_sha256": {
+    "artifact-transfer.py": "fb78c95a344fe87195ff07e1969a09897bec0c01df3a7d5d247b8eb69b421022",
+    "business-driver.py": "c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294",
+    "runner.py": "e75d7bfb869e3c6b342449d78cb77625f9b5d10d76aedc81b644c5be1062dcb3",
+    "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+    "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+    "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "tests/reload-profile.json": "00e35e91594ed0ad1075a196c20bd8f4c6628c346c4bd6e901ac05d4cc90ef6b",
+    "tests/reload-protocol.py": "afc8e8661e78464b69f91ff01eb40bc2c496373373c53b156f82880b1ac1a541",
+    "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+    "tests/vendor-soak-campaign.py": "fa63ccedfc37bc37f4984afd247dc7b132f99201e4433839af3a4442e04a22f4",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "plan.json": "3d1ca184ef3b0e9019f17a56b202f0928b7f580a61975b711769166d28d0ad01"
+  },
+  "build_info": {
+    "arch": "amd64",
+    "go_version": "go1.27.3",
+    "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+    "io_profile_versions": [
+      1,
+      2
+    ],
+    "journal_versions": [
+      1
+    ],
+    "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+    "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+    "os": "linux",
+    "revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+    "version": "v1.0.0",
+    "writer_controls": [
+      "cpu.max",
+      "cpu.weight",
+      "io.max",
+      "io.weight",
+      "memory.max",
+      "memory.high",
+      "memory.swap.max",
+      "pids.max"
+    ]
+  },
+  "structural_qualification": {
+    "schema": "crg-vendor-port-integration-fault-qualification-v1",
+    "phase": "passed",
+    "checks": [
+      {
+        "name": "admit-explicit-isolated-Pod-metadata",
+        "passed": true
+      },
+      {
+        "name": "deny-wrong-namespace",
+        "passed": true
+      },
+      {
+        "name": "deny-wrong-name",
+        "passed": true
+      },
+      {
+        "name": "deny-wrong-label",
+        "passed": true
+      },
+      {
+        "name": "deny-host-net",
+        "passed": true
+      },
+      {
+        "name": "deny-host-pid",
+        "passed": true
+      },
+      {
+        "name": "deny-host-ipc",
+        "passed": true
+      },
+      {
+        "name": "deny-bad-UID",
+        "passed": true
+      },
+      {
+        "name": "deny-bad-runtime",
+        "passed": true
+      },
+      {
+        "name": "deny-not-running",
+        "passed": true
+      },
+      {
+        "name": "deny-duplicate-role",
+        "passed": true
+      },
+      {
+        "name": "changed-fixture-never-scans-processes",
+        "passed": true
+      },
+      {
+        "name": "matching-fixture-uses-only-temporary-PG-ports",
+        "passed": true
+      },
+      {
+        "name": "ordinary-diagnostic-timeout-retains-partial-without-error-message",
+        "passed": true
+      },
+      {
+        "name": "snapshot-propagates-exact-engine-stop-request",
+        "passed": true
+      },
+      {
+        "name": "ordinary-admission-failure-becomes-unavailable",
+        "passed": true
+      },
+      {
+        "name": "stop-during-admission-propagates",
+        "passed": true
+      },
+      {
+        "name": "actual-engine-helper-appends-event-and-saves",
+        "passed": true
+      },
+      {
+        "name": "engine-module-or-admission-fault-does-not-gate-business",
+        "passed": true
+      },
+      {
+        "name": "engine-capture-fault-does-not-gate-business",
+        "passed": true
+      },
+      {
+        "name": "diagnostic-save-failure-retains-original-execution",
+        "passed": true
+      },
+      {
+        "name": "actual-engine-capture-propagates-exact-stop",
+        "passed": true
+      },
+      {
+        "name": "standby-original-error-preserved-with-diagnostic-success",
+        "passed": true
+      },
+      {
+        "name": "standby-original-error-preserved-with-diagnostic-failure",
+        "passed": true
+      },
+      {
+        "name": "standby-unchanged-pgctl-start-timeout",
+        "passed": true
+      },
+      {
+        "name": "restore-original-error-preserved-with-diagnostic-success",
+        "passed": true
+      },
+      {
+        "name": "restore-original-error-preserved-with-diagnostic-failure",
+        "passed": true
+      },
+      {
+        "name": "restore-unchanged-pgctl-start-timeout",
+        "passed": true
+      }
+    ],
+    "count": 28,
+    "scope": "Pure metadata, injected faults and execution of actual engine AST nodes on Linux host; no live vendor Pod or business cycle claimed.",
+    "live_vendor_engine_accepted": false,
+    "new_long_test_launched": false
+  },
+  "available_memory_bytes": 38399397888,
+  "free_disk_bytes": 55254380544,
+  "business_fixture_created": false,
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "job_sha256": "c8b9798881c6d485be992ae7cddba92eb44360f50fddaf6c8c4dbf71d02a9294",
+  "plan_sha256": "3d1ca184ef3b0e9019f17a56b202f0928b7f580a61975b711769166d28d0ad01",
+  "qualified_prior_final_business_cleanup": true,
+  "inherited_summary_labels_not_used_as_counts": "Private preflight retained compatibility names from its older adapter; no literal 1340/134 process-count claim is made here. The frozen runner validates actual required_current_full6001366 instances from its raw report.",
+  "stable_release_accepted": false
+}
