@@ -13,9 +13,12 @@ import zlib
 
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('version')
+p.add_argument('--source-revision',help='program source commit when documentation is packaged from a newer commit')
 a=p.parse_args()
 root=Path(__file__).resolve().parents[1]
 revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+source_revision=a.source_revision or revision
+if len(source_revision)!=40 or any(c not in '0123456789abcdef' for c in source_revision):p.error('source revision must be a full lowercase commit SHA')
 names=['crg-linux-'+arch for arch in ['amd64','arm64']]+['containerresourceguard-'+a.version+'-linux-'+arch+'.tar.gz' for arch in ['amd64','arm64']]+['sbom-linux-'+arch+'.cdx.json' for arch in ['amd64','arm64']]+['build-manifest.json','SHA256SUMS']
 expected={name:hashlib.sha256((root/'dist'/name).read_bytes()).hexdigest() for name in names}
 bash=os.environ.get('CRG_BASH') or ('C:/Program Files/Git/bin/bash.exe' if os.name=='nt' and Path('C:/Program Files/Git/bin/bash.exe').exists() else shutil.which('bash'))
@@ -25,10 +28,19 @@ with tempfile.TemporaryDirectory(prefix='crg-reproduce-') as temporary:
     clone=Path(temporary)/'different-absolute-source-directory'
     subprocess.run(['git','clone','--no-hardlinks','--quiet','--no-checkout',str(root),str(clone)],check=True)
     subprocess.run(['git','checkout','--quiet','--detach',revision],cwd=clone,check=True)
-    subprocess.run([bash,'scripts/build.sh',a.version],cwd=clone,env=env,check=True)
-    subprocess.run([sys.executable,'scripts/package.py',a.version],cwd=clone,env=env,check=True)
+    source=clone
+    if source_revision!=revision:
+        source=Path(temporary)/'separate-program-source'
+        subprocess.run(['git','clone','--no-hardlinks','--quiet','--no-checkout',str(root),str(source)],check=True)
+        subprocess.run(['git','checkout','--quiet','--detach',source_revision],cwd=source,check=True)
+    subprocess.run([bash,'scripts/build.sh',a.version],cwd=source,env=env,check=True)
+    if source!=clone:
+        (clone/'dist').mkdir(exist_ok=True)
+        for name in ['crg-linux-'+arch for arch in ['amd64','arm64']]+['sbom-linux-'+arch+'.cdx.json' for arch in ['amd64','arm64']]+['build-manifest.json']:
+            shutil.copyfile(source/'dist'/name,clone/'dist'/name)
+    subprocess.run([sys.executable,'scripts/package.py',a.version,'--source-revision',source_revision],cwd=clone,env=env,check=True)
     actual={name:hashlib.sha256((clone/'dist'/name).read_bytes()).hexdigest() for name in names}
     if actual!=expected:raise SystemExit('reproducibility mismatch: '+','.join(name for name in names if actual[name]!=expected[name]))
-result={'source_revision':revision,'same_toolchain':True,'different_absolute_checkout':True,'byte_equal':True,'packager_environment':{'python':sys.version.split()[0],'zlib_runtime':zlib.ZLIB_RUNTIME_VERSION,'platform':sys.platform},'artifacts':expected,'limits':'same host/toolchain recipe; independent platform and third-party reproduction are separate evidence'}
+result={'source_revision':source_revision,'package_revision':revision,'same_toolchain':True,'different_absolute_checkout':True,'byte_equal':True,'packager_environment':{'python':sys.version.split()[0],'zlib_runtime':zlib.ZLIB_RUNTIME_VERSION,'platform':sys.platform},'artifacts':expected,'limits':'same host/toolchain recipe; independent platform and third-party reproduction are separate evidence'}
 (root/'dist/reproducibility-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result))
