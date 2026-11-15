@@ -1,0 +1,462 @@
+{
+  "schema": "crg-final-version-ELF-full600-terminal-v1",
+  "phase": "passed",
+  "source_commit": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "job_sha256": "8fa9dfc2975a79c56696fce81e20bbb627ef569de82cc381225ab444c7891c23",
+  "plan_sha256": "81279d599ba690afff4f89942e1ed924a3a0b360b34342b02d6d5fada554fdd5",
+  "coordinator_report_sha256": "8f2dfb30a8ac1b0499e36b19651af79bc5f0af5ba5d1ce1fc34c82ad65ff708b",
+  "planned_checks": 18,
+  "recorded_checks": 18,
+  "passed_checks": 18,
+  "failed_checks": 0,
+  "unexecuted_checks": 0,
+  "roles": {
+    "normal-dbs": {
+      "phase": "passed",
+      "recorded_checks": 9,
+      "passed_checks": 9,
+      "failed_checks": 0,
+      "unexecuted_checks": 0,
+      "ready_and_managed_seconds": 26.64230783097446,
+      "actual_three_controls": {
+        "cpu.max": "720000 100000",
+        "memory.high": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+      },
+      "original_image_sha256": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "native": {
+        "phase": "passed",
+        "elapsed_seconds": 600.2630681570154,
+        "requested_duration_seconds": 600,
+        "sql": {
+          "attempts": 301,
+          "errors": 0,
+          "histogram": [
+            291,
+            4,
+            0,
+            1,
+            0,
+            1,
+            3,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.6879064049571753,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0033333333333334,
+          "successes": 301,
+          "total_seconds": 1.4596707329619676
+        },
+        "api": {
+          "attempts": 121,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.009257662808522582,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0083333333333333,
+          "successes": 121,
+          "total_seconds": 1.007306704763323
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "native_failed_criteria": [],
+      "engine_content_checks": [
+        {
+          "name": "fixture_initial_rows",
+          "passed": true,
+          "detail": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687"
+        },
+        {
+          "name": "physical_backup_finished",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "streaming_new_rows_and_checksum",
+          "passed": true,
+          "detail": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37"
+        },
+        {
+          "name": "standby_in_recovery",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "independent_restore_initial_checksum",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "independent_restore_is_writable",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "independent_restore_does_not_modify_primary",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "logical_restore_initial_rows",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "primary_did_not_restart",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "probe_monitor_stopped",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "engine_content_only_passed": true,
+      "engine_cycle_temporally_inside_native_window": true,
+      "business_accepted": true,
+      "real_PG_owner_diagnostics_accepted": true,
+      "engine_physical_backup_seconds": 8.453424904961139,
+      "port_stages": {
+        "before-standby-start": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        },
+        "after-standby-start": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "before-restore-start": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "after-restore-start": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "after-standby-stop": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "after-restore-stop": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        },
+        "after-standby-cleanup": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        },
+        "after-restore-cleanup": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        }
+      },
+      "diagnostic_partial_preserved": true,
+      "campaign_failure": null,
+      "campaign_cleanup_errors": []
+    },
+    "normal-hisdbs": {
+      "phase": "passed",
+      "recorded_checks": 9,
+      "passed_checks": 9,
+      "failed_checks": 0,
+      "unexecuted_checks": 0,
+      "ready_and_managed_seconds": 25.846885854145512,
+      "actual_three_controls": {
+        "cpu.max": "720000 100000",
+        "memory.high": "20001980416",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096"
+      },
+      "original_image_sha256": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "native": {
+        "phase": "passed",
+        "elapsed_seconds": 600.1936729610898,
+        "requested_duration_seconds": 600,
+        "sql": {
+          "attempts": 300,
+          "errors": 0,
+          "histogram": [
+            292,
+            2,
+            0,
+            1,
+            1,
+            0,
+            1,
+            2,
+            0,
+            0,
+            1,
+            0
+          ],
+          "max_seconds": 2.4005881170742214,
+          "p95_bucket_upper_seconds": 0.001,
+          "sample_coverage": 1.0,
+          "successes": 300,
+          "total_seconds": 3.730704493355006
+        },
+        "api": {
+          "attempts": 120,
+          "errors": 0,
+          "histogram": [
+            0,
+            0,
+            119,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "max_seconds": 0.011333256028592587,
+          "p95_bucket_upper_seconds": 0.01,
+          "sample_coverage": 1.0,
+          "successes": 120,
+          "total_seconds": 0.9714616721030325
+        },
+        "payload_integrity": true,
+        "primary_not_restarted": true,
+        "threads_stopped": true,
+        "interrupted": false
+      },
+      "native_failed_criteria": [],
+      "engine_content_checks": [
+        {
+          "name": "fixture_initial_rows",
+          "passed": true,
+          "detail": "16384|134225920|67108864|10b3b8214172d3b698258a128e9c6687"
+        },
+        {
+          "name": "physical_backup_finished",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "streaming_new_rows_and_checksum",
+          "passed": true,
+          "detail": "18432|169878528|75497472|b39528f80580af740eae3a5701ec6c37"
+        },
+        {
+          "name": "standby_in_recovery",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "independent_restore_initial_checksum",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "independent_restore_is_writable",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "independent_restore_does_not_modify_primary",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "logical_restore_initial_rows",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "primary_did_not_restart",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "probe_monitor_stopped",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "engine_content_only_passed": true,
+      "engine_cycle_temporally_inside_native_window": true,
+      "business_accepted": true,
+      "real_PG_owner_diagnostics_accepted": true,
+      "engine_physical_backup_seconds": 5.799438080051914,
+      "port_stages": {
+        "before-standby-start": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        },
+        "after-standby-start": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "before-restore-start": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "after-restore-start": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "after-standby-stop": {
+          "phase": "partial",
+          "sample_phase": "partial",
+          "target_identity_stable": true
+        },
+        "after-restore-stop": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        },
+        "after-standby-cleanup": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        },
+        "after-restore-cleanup": {
+          "phase": "complete",
+          "sample_phase": "complete",
+          "target_identity_stable": true
+        }
+      },
+      "diagnostic_partial_preserved": true,
+      "campaign_failure": null,
+      "campaign_cleanup_errors": []
+    }
+  },
+  "independent_evidence_checks": [
+    {
+      "name": "frozen-job-plan-terminal-exit-index-and-all-original-handles",
+      "passed": true
+    },
+    {
+      "name": "every-exact-byte-bound-to-index-map-coordinator-and-terminal-observer",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-exact-role-report-and-original-seven-startup-checks",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-actual-frozen-final-ELF-original-image-and-fixed-config",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-executed-final-version-build-info",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-manual-three-controls-high-only-and-external-cap-retained",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-independent-namespace-parent-leaf-and-own-process-cleanup",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-executed-exact-frozen-engine-campaign-worker-and-agent",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-original-native-duration-zeroerror-and-latency-coverage-criteria",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-native-phase-recomputed-from-actual-metrics",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-business-result-recomputed-with-engine-content-containment",
+      "passed": true
+    },
+    {
+      "name": "normal-dbs-real-PG-owner-diagnostic-result-independently-recomputed",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-exact-role-report-and-original-seven-startup-checks",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-actual-frozen-final-ELF-original-image-and-fixed-config",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-executed-final-version-build-info",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-manual-three-controls-high-only-and-external-cap-retained",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-independent-namespace-parent-leaf-and-own-process-cleanup",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-executed-exact-frozen-engine-campaign-worker-and-agent",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-original-native-duration-zeroerror-and-latency-coverage-criteria",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-native-phase-recomputed-from-actual-metrics",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-business-result-recomputed-with-engine-content-containment",
+      "passed": true
+    },
+    {
+      "name": "normal-hisdbs-real-PG-owner-diagnostic-result-independently-recomputed",
+      "passed": true
+    },
+    {
+      "name": "coordinator-and-exit-cannot-hide-any-failed-or-unexecuted-check",
+      "passed": true
+    }
+  ],
+  "exact_artifacts": 22,
+  "exact_bytes": 353830,
+  "registered_process_records_independently_absent": 74,
+  "unique_process_instances_independently_absent": 58,
+  "all_original_handles_and_namespace_parent_leaf_independently_absent": true,
+  "manual_reference_business_accepted": true,
+  "default20_business_accepted": false,
+  "old_failure_not_relabelled": true,
+  "stable_release_accepted": false
+}

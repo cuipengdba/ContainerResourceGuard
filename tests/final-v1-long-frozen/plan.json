@@ -1,0 +1,116 @@
+{
+  "schema": "crg-fixed-final-24h-24h-seven-day-plan-v1",
+  "phase": "frozen-before-native-preflight-and-publication",
+  "tools": "/var/tmp/crg-final1396-tools-20261115",
+  "output": "/var/tmp/crg-final1396-results-20261115",
+  "namespace": "crg-vendor-lab-final1396-20261115",
+  "version": "v1.0.0",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "control_files": [
+    "cpu.max",
+    "memory.max",
+    "io.max",
+    "pids.max",
+    "cpu.weight",
+    "io.weight",
+    "memory.high",
+    "memory.swap.max"
+  ],
+  "baseline_configuration": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_high": "20001980416",
+      "io_read_bps": "64MiB",
+      "io_write_bps": "64MiB",
+      "io_read_iops": 4096,
+      "io_write_iops": 4096
+    },
+    "data_paths": [
+      "/opt/postgresql"
+    ],
+    "mode": "observe"
+  },
+  "baseline_configuration_exact_utf8": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":7.2,\"memory_high\":\"20001980416\",\"io_read_bps\":\"64MiB\",\"io_write_bps\":\"64MiB\",\"io_read_iops\":4096,\"io_write_iops\":4096},\"data_paths\":[\"/opt/postgresql\"],\"mode\":\"observe\"}\n",
+  "enforce_configuration": {
+    "resource_mode": "manual",
+    "limits": {
+      "cpu_cores": 7.2,
+      "memory_high": "20001980416",
+      "io_read_bps": "64MiB",
+      "io_write_bps": "64MiB",
+      "io_read_iops": 4096,
+      "io_write_iops": 4096
+    },
+    "data_paths": [
+      "/opt/postgresql"
+    ],
+    "mode": "enforce"
+  },
+  "enforce_configuration_exact_utf8": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":7.2,\"memory_high\":\"20001980416\",\"io_read_bps\":\"64MiB\",\"io_write_bps\":\"64MiB\",\"io_read_iops\":4096,\"io_write_iops\":4096},\"data_paths\":[\"/opt/postgresql\"],\"mode\":\"enforce\"}\n",
+  "private_fixture_sha256": {
+    "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+    "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+    "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+  },
+  "expected_original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  },
+  "stages": [
+    {
+      "phase": "baseline",
+      "seconds": 86400,
+      "cycles": 4,
+      "run_id": "202611151396"
+    },
+    {
+      "phase": "enforce",
+      "seconds": 86400,
+      "cycles": 4,
+      "run_id": "202611151397",
+      "source_run_id": "202611151396"
+    },
+    {
+      "phase": "acceptance",
+      "seconds": 604800,
+      "cycles": 28,
+      "run_id": "202611151398"
+    }
+  ],
+  "business_prerequisite": {
+    "tools": "/var/tmp/crg-final1366-tools-20261115",
+    "output": "/var/tmp/crg-final1366-results-20261115",
+    "report_sha256": "8f2dfb30a8ac1b0499e36b19651af79bc5f0af5ba5d1ce1fc34c82ad65ff708b"
+  },
+  "minimum_duration_seconds": 777600,
+  "policy": "All three stages use same fixed final ELF, exact original-image containers and unmodified cache helper. Observe changes no resource controls. Enforce reuses full accepted baseline payload in same containers via atomic config replacement/reload with same guards. Seven-day phase uses separately identified64MiB schema because auditor requires equal-duration source lineage. No prior clocks inherited, no automatic retries/limit relaxation/SLA edits. No other disposable business Pods during formal phases; preserve outputs/aged fixture backing data after owned cleanup.",
+  "scope": "Native AMD64/Linux5.14/one physical device, original vendor-image synthetic SQL/API and real PG backup/stream/independent restore, explicit manual reference budget. Not arbitrary20% performance promise, ARM vendor/multiple physical devices, whole-node workload exclusivity or completed stable release.",
+  "stable_release_accepted": false,
+  "job_sha256": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+  "source_sha256": {
+    "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+    "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+    "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+    "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+    "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+    "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+    "job.py": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+    "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+    "runner.py": "979a310540e305b10dc34fa0161c7b89a4681605ee08a92ebe382c411c5054d9"
+  },
+  "campaign_pins": {
+    "agent_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "worker_sha256": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "campaign_script_sha256": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+    "engine_script_sha256": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+  }
+}
