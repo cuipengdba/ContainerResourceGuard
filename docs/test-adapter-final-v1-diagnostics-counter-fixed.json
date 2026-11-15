@@ -1,0 +1,53 @@
+{
+  "schema": "crg-diagnostic-adapter-counter-correction-v1",
+  "base_manifest": "crg-r1448-final-diagnostics-frozen.json",
+  "reversible_text_changes": {
+    "business-driver.py": [
+      {
+        "before": "final1448",
+        "after": "final1465",
+        "count": 3
+      },
+      {
+        "before": "FINAL1448",
+        "after": "FINAL1465",
+        "count": 1
+      },
+      {
+        "before": "len(report['tests'])==(13 if arm=='conflict' else 9)",
+        "after": "len(report['tests'])==plan['planned_checks'][arm+'_each_role']",
+        "count": 1
+      }
+    ],
+    "runner.py": [
+      {
+        "before": "final1448",
+        "after": "final1465",
+        "count": 2
+      },
+      {
+        "before": "FINAL1448",
+        "after": "FINAL1465",
+        "count": 1
+      },
+      {
+        "before": "root.mkdir(mode=0o700);out=",
+        "after": "failed=plan['counter_failure_predecessor'];fw=Path(failed['tools']);fr=Path(failed['output']);oldplan=(fw/'plan.json').read_bytes();assert sha(oldplan)==failed['plan_sha256'] and sha((fw/'business-driver.py').read_bytes())==failed['job_sha256']\nassert absent(json.loads((fw/'launch.json').read_bytes())) and json.loads((fw/'exit.json').read_bytes())['exit']==1\nco=json.loads((fr/'report.json').read_bytes());assert co['phase']=='failed' and co['job_sha256']==failed['job_sha256'] and co['plan_sha256']==failed['plan_sha256'] and len(co['roles'])==2\nfor key,row in co['roles'].items():\n assert row['phase']=='failed' and row['exit']==1 and row['recorded_checks']==row['passed_checks']==10 and absent(row['driver']) and ns_absent(failed['namespaces'][row['role']])\n r=json.loads((fr/row['arm']/row['role']/'report.json').read_bytes());assert r['phase']=='failed' and not r.get('error') and len(r['tests'])==10 and all(v['passed'] for v in r['tests']) and all(v['phase']=='short-acceptance-passed' and v['campaign_report']['phase']=='passed' and v['diagnostic_qualification']['phase']=='passed' for v in r['roles'].values())\n for c in row['cleanup']:\n  identity=c['identity'];assert not Path(identity['group']).exists() and not Path(identity['pod_parent']).exists() and all(absent(v) for v in identity['processes']+c['additional_processes'])\nroot.mkdir(mode=0o700);out=",
+        "count": 1
+      }
+    ],
+    "artifact-transfer.py": [
+      {
+        "before": "final1448",
+        "after": "final1465",
+        "count": 1
+      }
+    ]
+  },
+  "old_summary_condition": "len(report['tests'])==(13 if arm=='conflict' else 9)",
+  "new_summary_condition": "len(report['tests'])==plan['planned_checks'][arm+'_each_role']",
+  "diagnostic_module_byte_unchanged": true,
+  "all_worker_campaign_engine_ELF_criteria_and_budgets_unchanged": true,
+  "old_failure_not_relabelled": true,
+  "current_failure_not_product_business_failure_claim": true
+}
