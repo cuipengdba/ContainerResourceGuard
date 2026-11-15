@@ -1,0 +1,123 @@
+name: persistence-three-resources
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: Frozen pilot or remaining ARM64 environment
+        required: true
+        default: pilot
+        type: choice
+        options:
+          - pilot
+          - remaining
+permissions:
+  contents: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - id: select
+        env:
+          BATCH: ${{ inputs.batch }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          choices={'pilot':[{'runner':'ubuntu-22.04','arch':'amd64','kernel':'6.'}],
+                   'remaining':[{'runner':'ubuntu-24.04-arm','arch':'arm64','kernel':'7.'}]}
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('matrix='+json.dumps({'include':choices[os.environ['BATCH']]})+'\n')
+          PY
+  native:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      GOENV: 'off'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ced461705ebc27315a59aefe463f9b4af47130a3
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: qualification
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Freeze source, protocol and actual environment before any fixture
+        env:
+          EXPECTED_ARCH: ${{ matrix.arch }}
+          EXPECTED_KERNEL: ${{ matrix.kernel }}
+          RUNNER_LABEL: ${{ matrix.runner }}
+        run: |
+          mkdir -p ci-three-resources
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,platform,subprocess
+          planpath=pathlib.Path('qualification/docs/test-plan-final-v1-persistence-three-resources.json')
+          raw=planpath.read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='6be86a1c3f2a881bdd795e0dbce21c8535f298ea21e1d14f2a1b538108800666'
+          p=json.loads(raw)
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
+          for n,h in p['source_sha256'].items():
+              assert hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest()==h,n
+          for n,h in p['test_inputs_sha256'].items():
+              assert hashlib.sha256(pathlib.Path('qualification',n).read_bytes()).hexdigest()==h,n
+          assert len(p['source_sha256'])==50
+          assert platform.release().startswith(os.environ['EXPECTED_KERNEL'])
+          assert platform.machine() in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[os.environ['EXPECTED_ARCH']]
+          environment={'workflow_revision':os.environ['GITHUB_SHA'],'runner':os.environ['RUNNER_LABEL'],
+                       'kernel':platform.release(),'machine':platform.machine(),'source50_verified':True,
+                       'run_id':os.environ['GITHUB_RUN_ID'],'attempt':os.environ['GITHUB_RUN_ATTEMPT']}
+          pathlib.Path('ci-three-resources/environment.json').write_text(json.dumps(environment,indent=2)+'\n')
+          pathlib.Path('ci-three-resources/plan.json').write_bytes(raw)
+          PY
+      - name: Build exact final candidate and bounded test-only programs
+        run: |
+          test "$(go env GOVERSION)" = go1.27.3
+          bash scripts/build.sh v1.0.0
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          p=json.loads(pathlib.Path('ci-three-resources/plan.json').read_bytes())
+          for arch,h in p['binary_sha256'].items():
+              assert hashlib.sha256(pathlib.Path('dist/crg-linux-'+arch).read_bytes()).hexdigest()==h
+          PY
+          cp 'dist/crg-linux-${{ matrix.arch }}' ci-three-resources/crg
+          CGO_ENABLED=0 go build -trimpath -o ci-three-resources/hold ./tests/native-holder
+          CGO_ENABLED=0 go build -trimpath -o ci-three-resources/worker ./qualification/tests/legacy-restore-pressure-v1/workload.go
+          CGO_ENABLED=0 go build -trimpath -o ci-three-resources/fault-helper ./qualification/tests/persistence-faults-v1/helper.go
+      - name: Install test tracer only on this disposable VM
+        run: |
+          if ! command -v strace >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install --yes --no-upgrade --no-install-recommends strace
+          fi
+          strace --version > ci-three-resources/strace-version.txt
+      - name: Actual own-container bounded filesystem faults and interrupted durable writes
+        run: |
+          sudo env CRG_PERSIST_TEST=ephemeral-github-hosted-vm-only GITHUB_ACTIONS=true RUNNER_ENVIRONMENT=github-hosted \
+            python3 qualification/tests/persistence-three-resources-v1/driver.py \
+            --binary "$PWD/ci-three-resources/crg" --holder "$PWD/ci-three-resources/hold" --worker "$PWD/ci-three-resources/worker" --helper "$PWD/ci-three-resources/fault-helper" \
+            --plan "$PWD/ci-three-resources/plan.json" --arch '${{ matrix.arch }}' --output "$PWD/ci-three-resources/results"
+      - name: Save only bounded receipts and exact test inputs
+        if: always()
+        run: |
+          mkdir -p ci-three-resources/receipts
+          cp ci-three-resources/environment.json ci-three-resources/plan.json ci-three-resources/strace-version.txt ci-three-resources/receipts/ 2>/dev/null || true
+          cp qualification/tests/persistence-three-resources-v1/driver.py qualification/tests/legacy-restore-pressure-v1/workload.go qualification/tests/persistence-faults-v1/helper.go ci-three-resources/receipts/
+          if test -d ci-three-resources/results; then sudo cp -r ci-three-resources/results ci-three-resources/receipts/; fi
+          sudo chmod -R a+rX ci-three-resources/receipts
+          test "$(du -sb ci-three-resources/receipts | cut -f1)" -lt 67108864
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: persistence-three-resources-${{ matrix.runner }}-${{ github.sha }}
+          path: ci-three-resources/receipts/
+          retention-days: 30
+          include-hidden-files: true
