@@ -1,5 +1,7 @@
 # 新容量刷新候选：DBS/HISDBS原路径600秒重新验收
 
+最新状态：[新源59绑定四格原生284/284通过；DBS完整600秒失败、HISDBS仍运行](testing-live-capacity-native-and-business-current.md)。原52项与18项既有完成声明不变，稳定1.0未接受；以下早期“待原生复核/未启动”均为历史时点。
+
 当前更新：原节点UTC2026-11-15T20:59:51Z已单次启动，新runner3165983/start171633500。DBS21:06:26Z约300秒快照SQL1错误/max5.004658635s，API0错误，原600秒及两角色协议继续至终态并按原清理；不能算业务通过。工作线程未保存这次异常明细，具体原因未确认。[带日期原生负载快照](test-results-live-capacity-business-live.json)。下文“未启动”为冻结/预检时点。
 
 源37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0，AMD64静态ELF ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c。当前为已上传、原生预检ready、未启动；不得将预检当业务通过。
