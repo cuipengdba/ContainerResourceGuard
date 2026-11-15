@@ -1,7 +1,7 @@
 # 最终 ELF：真实状态文件系统故障与中断恢复
 
 2026-11-16 CST。本轮补充 P09.3/P10.3 的原生证据，原任务不缩减。
-计划与执行器已开发，**完整实际结果尚待**，不能据此接受稳定版。
+**v3两环境合计120/120检查、12场景通过，隐藏临时文件原件及逐文件清单核对通过**。不能据此单独接受稳定版。
 
 ## 冻结任务与判据
 
@@ -82,4 +82,41 @@ v2准确来源611efbbb的[amd64运行43745715109](https://github.com/cuipengdba/
 v3启用明确的隐藏文件上传，为每个状态文件记录名称/长度/SHA256，离线要求逐文件存在且一致。
 控制写入后强杀还要求先观察匹配的未提交finalization临时JSON，绑定该文件摘要；
 恢复不得采信它，而该准确原件必须进入ZIP。保留原60项/6场景、产品/ELF、配额、时限和判据，
-新增归档完整性要求更严格。v3结果尚待，不把v2结果自动归给新来源。
+新增归档完整性要求更严格。v3随后按新的冻结来源重新执行，结果见下节；不把v2结果自动归给新来源。
+
+
+## v3实际终态与独立复算
+
+冻结工具/测试来源 `73c7b80db558dd46cabf7641c3dd67036eafc7f6`，
+计划SHA256 `fd2b4c61160cd204254c337cea65c0f017868f02460f560678f65361553d8538`。
+产品50份源码及最终两个ELF保持准确原身份。
+
+| 实际环境 | 检查/场景 | 结果 |
+| --- | --- | --- |
+| amd64 / Linux6.8.0-1070-azure | 60/6 | 通过，先独立核对后再派发ARM |
+| ARM64 / Linux7.0.0-1017-azure | 60/6 | 通过，工具、计划和判据不变 |
+
+运行：[amd64 43747067149](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43747067149)、
+[ARM64 43747511724](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43747511724)。
+两环境均实际维持ENOSPC/EACCES/EROFS至少30秒，各三次显式重试失败且保留已有CPU值，
+故障解除后可应用新CPU策略；两类强杀后从已提交pending日志恢复，未采信隐藏临时文件。
+全部12场景真实恢复八项原值，业务占位PID1/有界fsync写盘任务连续，观测OOM计数不变，
+各自容器/cgroup、登记进程和状态挂载均确认清理。
+
+[完整原ZIP证据](test-evidence-final-v1-persistence-faults.json.gz)包含两个准确ZIP、148个成员，
+逐个核对GitHub artifact完整摘要、ZIP成员CRC/长度/摘要、全部状态文件清单，
+以及强杀前未提交临时文件的准确名称/长度/SHA256和实际fsync轨迹。
+保留原字节，不将v2缺失原件伪造补齐。
+[离线结果](test-results-final-v1-persistence-faults.json)可复现：
+
+```sh
+python3 tests/persistence-faults-v1/review.py \
+  --evidence docs/test-evidence-final-v1-persistence-faults.json.gz \
+  --plan docs/test-plan-final-v1-persistence-faults.json
+```
+
+离线复算只验证收据，不执行候选包或写cgroup。真实内核测试来自上述两次原生运行。
+本轮仍是CPU手动策略、临时tmpfs与独立VM；更长持续故障、其余资源/文件系统、厂商老化、
+物理慢设备及真实掉电等边界仍需分别核对。延迟为真实syscall返回路径注入，
+不是物理慢盘；SIGKILL不是掉电。P09.3/P10.3只增加对应证据，原52定义及18项范围内完成声明保持，
+97原长期任务不重启、不改配额、不新增业务夹具，稳定v1.0.0仍待原全部门槛。
