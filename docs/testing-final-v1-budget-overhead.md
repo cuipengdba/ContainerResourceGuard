@@ -1,6 +1,6 @@
 # 最终ELF不同有效限额开销补验
 
-固定源码ced4617、v1.0.0 ELF 9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8。7项输入冻结，原生只读准入通过，尚未创建夹具或启动计时。P09.4仍待实际终态。
+已完成[两档实际1800秒终态及独立清理](testing-final-v1-budget-overhead-terminal.md)，P09.4按原至少30分钟工程定义完成。固定源码ced4617、v1.0.0 ELF 9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8及7项冻结输入保持；以下保留预先声明的计划与时点记录。
 
 每容器单独Agent、独立父叶cgroup，两个占位PID1夹具：CPU0.5/high192MiB/双向128KiB每秒/手动16IOPS，以及CPU0.75/high224MiB/双向1MiB每秒/手动128IOPS。外部1CPU/memory.max256MiB由夹具设置，CRG不新增memory.max。两档均正常开启本地metrics/events，与已完成最终1404低IO健康档0.25CPU/high128MiB/64KiB每秒/8IOPS保持相同导出配置；不能把故障标签算作不同预算。
 

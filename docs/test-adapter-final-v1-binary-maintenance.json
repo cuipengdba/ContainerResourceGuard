@@ -1,0 +1,112 @@
+{
+  "base_manifest": "crg-r1261-maintenance-frozen.json",
+  "reversible_text_changes": {
+    "maintenance-business.py": [
+      {
+        "before": "public1261",
+        "after": "final1501",
+        "count": 3
+      },
+      {
+        "before": "PUBLIC1261",
+        "after": "FINAL1501",
+        "count": 1
+      },
+      {
+        "before": "20261114",
+        "after": "20261115",
+        "count": 3
+      },
+      {
+        "before": "preview45",
+        "after": "preview5final",
+        "count": 2
+      },
+      {
+        "before": "len(report['tests'])==20",
+        "after": "len(report['tests'])==plan['planned_checks_each_role']",
+        "count": 1
+      },
+      {
+        "before": "-actual-preview4-source-one-writer-and-predeclared-originals",
+        "after": "-actual-published-preview5-one-writer-and-predeclared-originals",
+        "count": 1
+      }
+    ],
+    "runner.py": [
+      {
+        "before": "public1261",
+        "after": "final1501",
+        "count": 2
+      },
+      {
+        "before": "PUBLIC1261",
+        "after": "FINAL1501",
+        "count": 1
+      },
+      {
+        "before": "20261114",
+        "after": "20261115",
+        "count": 2
+      },
+      {
+        "before": "preview45",
+        "after": "preview5final",
+        "count": 2
+      },
+      {
+        "before": "row['recorded_checks']==row['passed_checks']==8 and prior_absent(row['driver'])",
+        "after": "row['recorded_checks']==row['passed_checks']==10 and prior_absent(row['driver'])",
+        "count": 1
+      },
+      {
+        "before": "all(prior_absent(p) for p in identity['processes']);registered+=len(identity['processes'])",
+        "after": "all(prior_absent(p) for p in identity['processes']+record['additional_processes']);registered+=len(identity['processes'])+len(record['additional_processes'])",
+        "count": 1
+      },
+      {
+        "before": "prior['registered_process_instances_absent']==54",
+        "after": "prior['registered_process_instances_absent']==71",
+        "count": 1
+      },
+      {
+        "before": "row['recorded_checks']==row['passed_checks']==20 else 'failed'",
+        "after": "row['recorded_checks']==row['passed_checks']==plan['planned_checks_each_role'] else 'failed'",
+        "count": 1
+      },
+      {
+        "before": "\nroot.mkdir(mode=0o700);out=",
+        "after": "\nover=plan['required_final_overhead'];ow=Path(over['tools']);raw=(Path(over['output'])/'report.json').read_bytes();r=json.loads(raw);assert sha(raw)==over['report_sha256'] and sha((ow/'overhead-plan.json').read_bytes())==over['plan_sha256'] and sha((ow/'overhead-job.py').read_bytes())==over['job_sha256'];assert r['phase']=='passed' and r['measurement_elapsed_seconds']>=1800 and json.loads((ow/'exit.json').read_bytes())['exit']==0 and prior_absent(json.loads((ow/'launch.json').read_bytes())) and prior_absent(json.loads((ow/'worker.json').read_bytes()))\nfor row in r['cases'].values():\n identity=row['fixture_identity'];assert row['passed'] and len(row['samples'])==181 and prior_absent(identity['main']) and prior_absent(identity['Agent']) and not Path(identity['group']).exists() and not Path(identity['pod_parent']).exists()\nq=subprocess.run(['kubectl','get','namespace',over['namespace'],'--ignore-not-found','--request-timeout=5s','-o','json'],capture_output=True,text=True,timeout=8,check=True);assert not q.stdout.strip() and not q.stderr\nassert not Path('/var/tmp/crg-final1396-results-20261115').exists()\nfor proc in Path('/proc').glob('[0-9]*'):\n try:\n  args=(proc/'cmdline').read_bytes().split(bytes([0]));assert not any(arg.startswith(b'/var/tmp/crg-final') and arg.endswith((b'/business-driver.py',b'/maintenance-business.py',b'/vendor-soak-campaign.py')) for arg in args),'other final business measurement still live'\n except (FileNotFoundError,ProcessLookupError):pass\n\nroot.mkdir(mode=0o700);out=",
+        "count": 1
+      }
+    ],
+    "artifact-transfer.py": [
+      {
+        "before": "public1261",
+        "after": "final1501",
+        "count": 1
+      },
+      {
+        "before": "20261114",
+        "after": "20261115",
+        "count": 1
+      }
+    ],
+    "tests/manual-maintenance-contract.py": [
+      {
+        "before": "actual preview4/5 programs",
+        "after": "published preview5 and fixed final programs",
+        "count": 1
+      },
+      {
+        "before": "both-published-programs-same-three-manual-high-settings",
+        "after": "both-tested-programs-same-three-manual-high-settings",
+        "count": 1
+      }
+    ]
+  },
+  "old_configuration_and_budget_and_all_native_SLA_unchanged": true,
+  "worker_campaign_engine_and_optional_helper_byte_unchanged": true,
+  "new_cleanup_predecessors": "passed corrected1465 actual20 and final1461 actual1800x2, independently absent",
+  "source_code_or_final_ELFs_rebuilt": false
+}
