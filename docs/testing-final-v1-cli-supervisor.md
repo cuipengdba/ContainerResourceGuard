@@ -1,6 +1,6 @@
 # 固定最终候选：CLI状态与可选启动安装验收
 
-本轮尚未启动。11项输入已冻结，17项本地核对和原生准入通过；未创建业务夹具。旧1523稿漏掉移除维护块后的两个恢复配置变量，在上传前静态检查拦截，原字节保留，新1525显式初始化；不是产品或真机运行失败。
+本轮已于节点2026-11-15T11:56:13.864889+00:00唯一启动，runner 588532/start168371697。11项输入、17项本地核对和原生准入保持；DBS首次快照8项主检查、20项在线子检查通过，正在自然老化等待。两角色完整600秒及终态仍待。旧1523稿漏掉移除维护块后的两个恢复配置变量，在上传前静态检查拦截，原字节保留，新1525显式初始化；不是产品或真机运行失败。
 
 仅使用准确源码 ced461705ebc27315a59aefe463f9b4af47130a3 的固定 v1.0.0 ELF 9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8，不升级或重建程序。沿用1501实际通过的原业务夹具/原生worker与完整配额契约；契约遗留 old/new doctor 字段在本轮均为同一个最终ELF的实际只读doctor结果，不冒充两版本。
 
@@ -17,3 +17,5 @@ DBS/HISDBS分别新namespace/输出/run-id，各13项主检查，总26；每角�
 P07.1/P08.1等待本轮实际证据；当前16/52完成和稳定版未接受保持。未来格式、镜像持久化、故障压力和长期等分别继续；不是默认20%性能、厂商ARM/独立物理多盘、自动业务故障切版或两次正式minor证明。
 
 [原设计](testing-final-v1-cli-supervisor-design.md)、[冻结计划](test-plan-final-v1-cli-supervisor.json)、[准确工具](../tests/final-v1-cli-supervisor-frozen/README.md)、[适配记录](test-adapter-final-v1-cli-supervisor.json)、[本地核对](test-results-final-v1-cli-supervisor-local-preflight.json)、[原生准入](test-results-final-v1-cli-supervisor-native-preflight.json)、[上传前拒绝原件](test-results-final-v1-cli-preupload-rejection.json)、[1501前置终态](testing-final-v1-binary-maintenance-terminal.md)。
+
+[启动快照](test-start-final-v1-cli-supervisor.json)、[准确原件](test-evidence-final-v1-cli-supervisor-start.json.gz)。额外[启动守卫](../tests/final-v1-cli-supervisor-launch.py)和[只读观察器](../tests/final-v1-cli-supervisor-observe.py)不替换11项冻结测量输入；观察器对写入中的报告只做最多1秒只读稳定重读，绝不启动/重启测量。
