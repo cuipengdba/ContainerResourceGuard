@@ -1,0 +1,852 @@
+{
+  "schema": "crg-fixed-final-output-matrix-failed-qualification-v1",
+  "phase": "failed",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "job_sha256": "d3f6a28570767e629d7a1fb405c96558375258cdef538bea45d8b9c1f6ff101e",
+  "plan_sha256": "f3228ea48660a2c8df85a1937a8472da18ab12ed4d47194399ee6e3d3fd9f276",
+  "coordinator_report_sha256": "ed4ccb7c082b094c51add9308b07d3b721e36eed2fa7387bca150b8bedf8cfe0",
+  "node_utc": "2026-11-15T12:49:24.206940+00:00",
+  "planned_main": 26,
+  "recorded_main": 16,
+  "passed_main": 16,
+  "failed_main_recorded": 0,
+  "unexecuted_main": 10,
+  "unrecorded_assertion_failures": 2,
+  "planned_output": 28,
+  "recorded_output": 2,
+  "passed_output": 2,
+  "unexecuted_output": 26,
+  "roles": {
+    "dbs": {
+      "phase": "failed",
+      "main_recorded": 8,
+      "main_passed": 8,
+      "main_failed_recorded": 0,
+      "main_unexecuted": 5,
+      "output_recorded": 1,
+      "output_passed": 1,
+      "output_unexecuted": 13,
+      "commands": 5,
+      "transitions": [
+        {
+          "label": "percent50-upper-constraints",
+          "began_epoch": 1794746843.1142023,
+          "ended_epoch": 1794746843.9161026,
+          "request_id": "03a8eaefc7a21494f8521f7e41bc8356",
+          "configuration": {
+            "generation": 2,
+            "accepted_hash": "abb22d0a4e18a299955c0d55f23abc72cae6de87087c46ed5dec5715ea005ab9",
+            "source": "/etc/crg/config.json",
+            "state": "accepted",
+            "request_id": "03a8eaefc7a21494f8521f7e41bc8356"
+          },
+          "expected_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "253:0 rbps=64700080 wbps=37470104 riops=max wiops=max",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "21474836480",
+            "memory.swap.max": "0"
+          },
+          "raw_config_sha256": "f0c30acc751fc772820c895f62b6272a2c13af778042c4d9531f0b746337b199"
+        }
+      ],
+      "actual_constraint_status": {
+        "time_utc": "2026-11-15T12:47:23Z",
+        "mode": "enforce",
+        "state": "degraded",
+        "plan": {
+          "memory_policy": "high-reclaim-throttle",
+          "io_policy": "calibrated-bandwidth; IOPS baseline retained",
+          "percentages": {
+            "cpu_percent": 50,
+            "memory_percent": 50,
+            "io_percent": 100
+          },
+          "environment": {
+            "cgroup_version": "v2",
+            "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod15c9cc91_b2f1_42f4_a16b_f160375bf7e3.slice/cri-containerd-0eab589e0d478ab2bdbea7f0245e87fbad3aa15d87506c51f8f70c9fa057ccf6.scope",
+            "identity": "14c20df42054b4162be45ccb53de1058899ce560784566001f7dfe6eb45fe475",
+            "host_online_cpus": 24,
+            "host_memory_bytes": 66673278976,
+            "cpu_capacity_source": "/sys/devices/system/cpu/online",
+            "memory_capacity_source": "/proc/meminfo",
+            "effective_cpuset": "0-23"
+          },
+          "resource_mode": "percent",
+          "settings": [
+            {
+              "file": "cpu.max",
+              "value": "800000 100000"
+            },
+            {
+              "file": "memory.high",
+              "value": "21474836480"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=64700080 wbps=37470104 riops=max wiops=max"
+            }
+          ],
+          "warnings": [
+            "CPU constrained by existing limits/cpuset",
+            "memory constrained by existing limits"
+          ],
+          "io_devices": [
+            {
+              "profile_device": "253:0",
+              "filesystem_device": "253:0",
+              "resolved_device": "253:0",
+              "state": "planned",
+              "detail": "shared whole-device bandwidth cap; minimum calibrated read/write BPS; external/original IOPS retained; actual write/readback required"
+            }
+          ],
+          "data_paths": [
+            {
+              "path": "/opt/postgresql",
+              "device": "253:0",
+              "control_device": "253:0",
+              "state": "planned",
+              "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+            }
+          ]
+        },
+        "items": [
+          {
+            "file": "cpu.max",
+            "value": "800000 100000",
+            "state": "applied",
+            "detail": "already at desired value",
+            "reason_code": "unchanged"
+          },
+          {
+            "file": "memory.high",
+            "value": "21474836480",
+            "state": "applied",
+            "detail": "already at desired value",
+            "reason_code": "unchanged"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=64700080 wbps=37470104 riops=max wiops=max",
+            "state": "applied",
+            "detail": "already at desired value",
+            "reason_code": "unchanged"
+          }
+        ],
+        "configuration": {
+          "generation": 2,
+          "accepted_hash": "abb22d0a4e18a299955c0d55f23abc72cae6de87087c46ed5dec5715ea005ab9",
+          "source": "/etc/crg/config.json",
+          "state": "accepted",
+          "request_id": "03a8eaefc7a21494f8521f7e41bc8356"
+        },
+        "memory": {
+          "sampled_utc": "2026-11-15T12:47:24Z",
+          "current_bytes": 1750859776,
+          "swap_current_bytes": 0,
+          "stat_bytes": {
+            "active_anon": 787623936,
+            "active_file": 0,
+            "anon": 76460032,
+            "anon_thp": 0,
+            "file": 1643761664,
+            "file_dirty": 8192,
+            "file_mapped": 746590208,
+            "file_thp": 0,
+            "file_writeback": 0,
+            "inactive_anon": 0,
+            "inactive_file": 932470784,
+            "kernel": 29523968,
+            "kernel_stack": 1671168,
+            "pagetables": 9519104,
+            "percpu": 12896,
+            "sec_pagetables": 0,
+            "shmem": 711290880,
+            "shmem_thp": 0,
+            "slab": 17642312,
+            "slab_reclaimable": 14468056,
+            "slab_unreclaimable": 3174256,
+            "sock": 4096,
+            "vmalloc": 0
+          },
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_group_kill": 0,
+            "oom_kill": 0
+          },
+          "pressure": {},
+          "unavailable": [
+            "memory.stat.hugetlb",
+            "memory.pressure"
+          ]
+        },
+        "snapshot_age_seconds": 1,
+        "writer_lock_held": true,
+        "actual": [
+          {
+            "file": "cpu.max",
+            "value": "800000 100000",
+            "state": "read"
+          },
+          {
+            "file": "memory.high",
+            "value": "21474836480",
+            "state": "read"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=64700080 wbps=37470104 riops=max wiops=max",
+            "state": "read"
+          }
+        ]
+      },
+      "assertion_traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-final1551-tools-20261115/maintenance-business.py\", line 202, in <module>\n    spec=importlib.util.spec_from_file_location('actual_output_matrix_checks',candidates/'tests/output-matrix-checks.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);cli_checks=module.Checks(locals().copy());cli_checks.online()\n  File \"/var/tmp/crg-final1551-tools-20261115/tests/output-matrix-checks.py\", line 104, in online\n    p={'cpu_percent':50,'memory_percent':50,'io_percent':100};target,clamped=self.expected_percent(p);assert all(clamped.values());v=self.transition(NAMES[1],self.config(p),target,2,policy=p);assert 'CPU constrained by existing limits/cpuset' in v['plan']['warnings'] and 'memory constrained by existing limits' in v['plan']['warnings'] and v['plan']['percentages']==p;self.check(NAMES[1])\n  File \"/var/tmp/crg-final1551-tools-20261115/tests/output-matrix-checks.py\", line 93, in transition\n    self.expected=copy.deepcopy(expected);self.generation=generation;self.cfgstate=state;self.accepted_hash=cfg['accepted_hash'];self.policy=policy;self.item.setdefault('output_transitions',[]).append({'label':label,'began_epoch':began,'ended_epoch':time.time(),'request_id':ack['request_id'],'configuration':cfg,'expected_controls':copy.deepcopy(expected),'raw_config_sha256':sha(raw)});self.save();return self.observe(label)\n  File \"/var/tmp/crg-final1551-tools-20261115/tests/output-matrix-checks.py\", line 72, in observe\n    assert v['state']==('degraded' if conflict or self.cfgstate=='rejected' else 'managed');stamp=datetime.datetime.fromisoformat(v['time_utc'].replace('Z','+00:00')).timestamp();assert -2<=time.time()-stamp-v['snapshot_age_seconds']<=5;expected_items=keyed(v['plan']['settings']);assert {k[0] for k in expected_items}=={'cpu.max','memory.high','io.max'};actual=keyed(v['actual']);assert set(actual)==set(expected_items)\nAssertionError\n",
+      "failure_reason": "Test incorrectly required managed when accepted policy has upper-limit warnings. Engine.Apply deliberately marks any warning degraded even with all three controls applied. No numeric quota mismatch observed.",
+      "native_phase": "running",
+      "native_elapsed_seconds": null,
+      "native_600_accepted": false,
+      "external_CPU_injected": false,
+      "all_runtime_restored_claim": false,
+      "cleanup": {
+        "namespace_absent": true,
+        "fixtures": [
+          {
+            "leaf_absent": true,
+            "parent_absent": true,
+            "processes": [
+              {
+                "pid": 1239414,
+                "start_ticks": 168674151,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1240136,
+                "start_ticks": 168674455,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1240147,
+                "start_ticks": 168674456,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1240149,
+                "start_ticks": 168674456,
+                "executable": "/opt/crg/crg",
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "original_absent": true
+              },
+              {
+                "pid": 1241179,
+                "start_ticks": 168674976,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241182,
+                "start_ticks": 168674976,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241194,
+                "start_ticks": 168674976,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241206,
+                "start_ticks": 168674976,
+                "executable": "/usr/bin/su",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241208,
+                "start_ticks": 168674977,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241219,
+                "start_ticks": 168674978,
+                "executable": "/opt/dbs/bin/dbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241225,
+                "start_ticks": 168674984,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1241353,
+                "start_ticks": 168675029,
+                "executable": "/opt/dbs/bin/dbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245473,
+                "start_ticks": 168676353,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245510,
+                "start_ticks": 168676394,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245519,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245520,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245521,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245522,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245524,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245526,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245527,
+                "start_ticks": 168676412,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1245552,
+                "start_ticks": 168676416,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1246834,
+                "start_ticks": 168676918,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1247720,
+                "start_ticks": 168677405,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1247721,
+                "start_ticks": 168677406,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1248377,
+                "start_ticks": 168677757,
+                "executable": "/opt/ccg/bin/containercacheguard",
+                "sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+                "original_absent": true
+              },
+              {
+                "pid": 1248378,
+                "start_ticks": 168677757,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1240149,
+                "start_ticks": 168674456,
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "executable": "/opt/crg/crg",
+                "original_absent": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "hisdbs": {
+      "phase": "failed",
+      "main_recorded": 8,
+      "main_passed": 8,
+      "main_failed_recorded": 0,
+      "main_unexecuted": 5,
+      "output_recorded": 1,
+      "output_passed": 1,
+      "output_unexecuted": 13,
+      "commands": 5,
+      "transitions": [
+        {
+          "label": "percent50-upper-constraints",
+          "began_epoch": 1794746905.4515903,
+          "ended_epoch": 1794746906.6321208,
+          "request_id": "b5333292fdffc7bbfc72b858660b65fd",
+          "configuration": {
+            "generation": 2,
+            "accepted_hash": "abb22d0a4e18a299955c0d55f23abc72cae6de87087c46ed5dec5715ea005ab9",
+            "source": "/etc/crg/config.json",
+            "state": "accepted",
+            "request_id": "b5333292fdffc7bbfc72b858660b65fd"
+          },
+          "expected_controls": {
+            "cpu.max": "800000 100000",
+            "memory.max": "21474836480",
+            "io.max": "253:0 rbps=64700080 wbps=37470104 riops=max wiops=max",
+            "pids.max": "406648",
+            "cpu.weight": "4",
+            "io.weight": "default 100",
+            "memory.high": "21474836480",
+            "memory.swap.max": "0"
+          },
+          "raw_config_sha256": "f0c30acc751fc772820c895f62b6272a2c13af778042c4d9531f0b746337b199"
+        }
+      ],
+      "actual_constraint_status": {
+        "time_utc": "2026-11-15T12:48:26Z",
+        "mode": "enforce",
+        "state": "degraded",
+        "plan": {
+          "memory_policy": "high-reclaim-throttle",
+          "io_policy": "calibrated-bandwidth; IOPS baseline retained",
+          "percentages": {
+            "cpu_percent": 50,
+            "memory_percent": 50,
+            "io_percent": 100
+          },
+          "environment": {
+            "cgroup_version": "v2",
+            "cgroup": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podde17d0e0_e523_4b6f_9459_90dc02067b06.slice/cri-containerd-72dbdbc9b47222a3a53d430cb9712b0f84a0209610c842e788241d8604af3d30.scope",
+            "identity": "76398f2dc2217fda3eacea86d20534e363ee2bd74b88ce81450f1dd822bea2dc",
+            "host_online_cpus": 24,
+            "host_memory_bytes": 66673278976,
+            "cpu_capacity_source": "/sys/devices/system/cpu/online",
+            "memory_capacity_source": "/proc/meminfo",
+            "effective_cpuset": "0-23"
+          },
+          "resource_mode": "percent",
+          "settings": [
+            {
+              "file": "cpu.max",
+              "value": "800000 100000"
+            },
+            {
+              "file": "memory.high",
+              "value": "21474836480"
+            },
+            {
+              "file": "io.max",
+              "device": "253:0",
+              "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+              "value": "rbps=64700080 wbps=37470104 riops=max wiops=max"
+            }
+          ],
+          "warnings": [
+            "CPU constrained by existing limits/cpuset",
+            "memory constrained by existing limits"
+          ],
+          "io_devices": [
+            {
+              "profile_device": "253:0",
+              "filesystem_device": "253:0",
+              "resolved_device": "253:0",
+              "state": "planned",
+              "detail": "shared whole-device bandwidth cap; minimum calibrated read/write BPS; external/original IOPS retained; actual write/readback required"
+            }
+          ],
+          "data_paths": [
+            {
+              "path": "/opt/postgresql",
+              "device": "253:0",
+              "control_device": "253:0",
+              "state": "planned",
+              "detail": "whole-device shared cap present in plan; actual enforcement requires readback and workload verification"
+            }
+          ]
+        },
+        "items": [
+          {
+            "file": "cpu.max",
+            "value": "800000 100000",
+            "state": "applied",
+            "detail": "already at desired value",
+            "reason_code": "unchanged"
+          },
+          {
+            "file": "memory.high",
+            "value": "21474836480",
+            "state": "applied",
+            "detail": "already at desired value",
+            "reason_code": "unchanged"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=64700080 wbps=37470104 riops=max wiops=max",
+            "state": "applied",
+            "detail": "already at desired value",
+            "reason_code": "unchanged"
+          }
+        ],
+        "configuration": {
+          "generation": 2,
+          "accepted_hash": "abb22d0a4e18a299955c0d55f23abc72cae6de87087c46ed5dec5715ea005ab9",
+          "source": "/etc/crg/config.json",
+          "state": "accepted",
+          "request_id": "b5333292fdffc7bbfc72b858660b65fd"
+        },
+        "memory": {
+          "sampled_utc": "2026-11-15T12:48:27Z",
+          "current_bytes": 1750622208,
+          "swap_current_bytes": 0,
+          "stat_bytes": {
+            "active_anon": 787865600,
+            "active_file": 0,
+            "anon": 76734464,
+            "anon_thp": 0,
+            "file": 1643761664,
+            "file_dirty": 8192,
+            "file_mapped": 746569728,
+            "file_thp": 0,
+            "file_writeback": 0,
+            "inactive_anon": 0,
+            "inactive_file": 932470784,
+            "kernel": 29294592,
+            "kernel_stack": 1671168,
+            "pagetables": 9379840,
+            "percpu": 12896,
+            "sec_pagetables": 0,
+            "shmem": 711290880,
+            "shmem_thp": 0,
+            "slab": 17620192,
+            "slab_reclaimable": 14436600,
+            "slab_unreclaimable": 3183592,
+            "sock": 4096,
+            "vmalloc": 0
+          },
+          "events": {
+            "high": 0,
+            "low": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_group_kill": 0,
+            "oom_kill": 0
+          },
+          "pressure": {},
+          "unavailable": [
+            "memory.stat.hugetlb",
+            "memory.pressure"
+          ]
+        },
+        "snapshot_age_seconds": 1,
+        "writer_lock_held": true,
+        "actual": [
+          {
+            "file": "cpu.max",
+            "value": "800000 100000",
+            "state": "read"
+          },
+          {
+            "file": "memory.high",
+            "value": "21474836480",
+            "state": "read"
+          },
+          {
+            "file": "io.max",
+            "device": "253:0",
+            "device_identity": "46635b479c29f47171f2a9b966ad8a09ae1a5bd519cf1c1b03cecb9f160464e3",
+            "value": "rbps=64700080 wbps=37470104 riops=max wiops=max",
+            "state": "read"
+          }
+        ]
+      },
+      "assertion_traceback": "Traceback (most recent call last):\n  File \"/var/tmp/crg-final1551-tools-20261115/maintenance-business.py\", line 202, in <module>\n    spec=importlib.util.spec_from_file_location('actual_output_matrix_checks',candidates/'tests/output-matrix-checks.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);cli_checks=module.Checks(locals().copy());cli_checks.online()\n  File \"/var/tmp/crg-final1551-tools-20261115/tests/output-matrix-checks.py\", line 104, in online\n    p={'cpu_percent':50,'memory_percent':50,'io_percent':100};target,clamped=self.expected_percent(p);assert all(clamped.values());v=self.transition(NAMES[1],self.config(p),target,2,policy=p);assert 'CPU constrained by existing limits/cpuset' in v['plan']['warnings'] and 'memory constrained by existing limits' in v['plan']['warnings'] and v['plan']['percentages']==p;self.check(NAMES[1])\n  File \"/var/tmp/crg-final1551-tools-20261115/tests/output-matrix-checks.py\", line 93, in transition\n    self.expected=copy.deepcopy(expected);self.generation=generation;self.cfgstate=state;self.accepted_hash=cfg['accepted_hash'];self.policy=policy;self.item.setdefault('output_transitions',[]).append({'label':label,'began_epoch':began,'ended_epoch':time.time(),'request_id':ack['request_id'],'configuration':cfg,'expected_controls':copy.deepcopy(expected),'raw_config_sha256':sha(raw)});self.save();return self.observe(label)\n  File \"/var/tmp/crg-final1551-tools-20261115/tests/output-matrix-checks.py\", line 72, in observe\n    assert v['state']==('degraded' if conflict or self.cfgstate=='rejected' else 'managed');stamp=datetime.datetime.fromisoformat(v['time_utc'].replace('Z','+00:00')).timestamp();assert -2<=time.time()-stamp-v['snapshot_age_seconds']<=5;expected_items=keyed(v['plan']['settings']);assert {k[0] for k in expected_items}=={'cpu.max','memory.high','io.max'};actual=keyed(v['actual']);assert set(actual)==set(expected_items)\nAssertionError\n",
+      "failure_reason": "Test incorrectly required managed when accepted policy has upper-limit warnings. Engine.Apply deliberately marks any warning degraded even with all three controls applied. No numeric quota mismatch observed.",
+      "native_phase": "running",
+      "native_elapsed_seconds": null,
+      "native_600_accepted": false,
+      "external_CPU_injected": false,
+      "all_runtime_restored_claim": false,
+      "cleanup": {
+        "namespace_absent": true,
+        "fixtures": [
+          {
+            "leaf_absent": true,
+            "parent_absent": true,
+            "processes": [
+              {
+                "pid": 1255021,
+                "start_ticks": 168680370,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1255891,
+                "start_ticks": 168680674,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1255902,
+                "start_ticks": 168680674,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1255904,
+                "start_ticks": 168680675,
+                "executable": "/opt/crg/crg",
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "original_absent": true
+              },
+              {
+                "pid": 1257058,
+                "start_ticks": 168681243,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257061,
+                "start_ticks": 168681243,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257073,
+                "start_ticks": 168681243,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257079,
+                "start_ticks": 168681243,
+                "executable": "/usr/bin/su",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257087,
+                "start_ticks": 168681244,
+                "executable": "/usr/bin/bash",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257098,
+                "start_ticks": 168681245,
+                "executable": "/opt/dbs/bin/hisdbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257106,
+                "start_ticks": 168681251,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1257442,
+                "start_ticks": 168681296,
+                "executable": "/opt/dbs/bin/hisdbs",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262558,
+                "start_ticks": 168682869,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262615,
+                "start_ticks": 168682923,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262656,
+                "start_ticks": 168682947,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262657,
+                "start_ticks": 168682948,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262658,
+                "start_ticks": 168682948,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262659,
+                "start_ticks": 168682948,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262660,
+                "start_ticks": 168682948,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262661,
+                "start_ticks": 168682948,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262662,
+                "start_ticks": 168682948,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1262664,
+                "start_ticks": 168682952,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1263810,
+                "start_ticks": 168683457,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1264174,
+                "start_ticks": 168683539,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1264175,
+                "start_ticks": 168683540,
+                "executable": "/opt/postgresql/pgsql/bin/postgres",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1265125,
+                "start_ticks": 168683976,
+                "executable": "/opt/ccg/bin/containercacheguard",
+                "sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+                "original_absent": true
+              },
+              {
+                "pid": 1265126,
+                "start_ticks": 168683976,
+                "executable": "/usr/bin/sleep",
+                "sha256": null,
+                "original_absent": true
+              },
+              {
+                "pid": 1255904,
+                "start_ticks": 168680675,
+                "sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+                "executable": "/opt/crg/crg",
+                "original_absent": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "exact_artifact_members": 20,
+  "exact_artifact_bytes": 336920,
+  "registered_process_instances_absent": 56,
+  "unique_process_instances_absent": 54,
+  "runner_two_drivers_namespace_parent_leaf_absent": true,
+  "actual_engine_source_sha256": "8c51afc636af1cb0d2f01a833419d48458e5228e8dfeb8fc8e6d484dc8154204",
+  "test_assumption_failed": true,
+  "scoped_output_matrix_accepted": false,
+  "native_600_business_accepted": false,
+  "stable_release_accepted": false,
+  "next_correction": "Expect degraded if verified plan warnings, rejected configuration, or external_conflict; still require exact warning/reason/target/readback/config and unchanged original600 zero-error SLA. Old failed raw remains, next execution must use separate frozen protocol/namespace/output/runIDs with exact56 predecessor process cleanup gate."
+}
