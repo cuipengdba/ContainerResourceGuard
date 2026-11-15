@@ -1,6 +1,6 @@
 # DBS SQL失败诊断：开发记录与后续隔离验收
 
-最新状态：[两次受控诊断失败已归档，第三版修复取PID后冻结/准入，尚未启动](development-controlled-sql-wait.zh.md)。原1761原因与正常600秒/发布门槛不变。
+最新状态：[原DBS/HISDBS路径受控诊断各13/13通过，准确原件复算及归属清理完成](development-controlled-sql-wait.zh.md)。这是120秒负向诊断，原1761原因与正常600秒/发布门槛不变。
 
 ## 当前结论
 
