@@ -1,52 +1,39 @@
 # 当前交付与待办：2026-11-15
 
-当前可下载[v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)，工程预发布，产品源码`ced461705ebc27315a59aefe463f9b4af47130a3`，八项公开附件及标签保持。嵌入正式版本号v1.0.0的候选已固定并通过下述实际验收，但尚未创建稳定标签或发布。源码构建请核对准确产品修订或preview.5标签；main产品实现尚未合入本候选。
+当前可下载 [v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)。固定 v1.0.0 候选尚未发布，main 产品实现尚未合入；公开八项附件及标签保持。产品源码为 ced461705ebc27315a59aefe463f9b4af47130a3，最终两架构 ELF 见[候选身份](final-v1-candidate-identity.json)。
 
-## 已交付的用户需求
+## 已交付功能
 
-- 每个DBS/HISDBS容器分别运行一份Agent，只定位/控制当前容器cgroup；容器或Pod ID变化后自动重新发现。
-- 仅管理CPU、内存、IO。百分比模式分别使用cpu_percent、memory_percent、io_percent，省略各自默认20%；另有明确的手动绝对额度模式。
-- 内存使用memory.high回收/节流，不新增memory.max硬限制；已有Kubernetes硬限制仍有效，不能保证绝无OOM。
-- IO默认自动选择容量最大的合格可写本地文件系统并标定/复用，按读写BPS百分比设置；IOPS只在手动配置时管理，外部已有IOPS保留。
-- 仅纯cgroup v2校验后写入；v1/混合/未知/权限不足明确日志跳过或降级。辅助失败放行原业务启动和运行。
-- 输出运行日志，一天一文件，30天及总量1GB滚动清理；日志失败不作为业务启动门槛。
+- DBS/HISDBS 每容器一份 Agent，仅控制自身 cgroup，容器或 Pod ID 改变后重新发现。
+- 仅 CPU、内存、IO；cpu_percent、memory_percent、io_percent 独立设置，省略各自默认20%，保留手动绝对额度模式。
+- 内存使用 memory.high 回收/节流，保留外部硬上限；百分比可短时超过，不能保证系统绝无 OOM。
+- IO 自动选择容量最大的合格可写本地文件系统进行标定/复用；默认百分比仅限制读写 BPS，IOPS 仅手动配置，外部 IOPS 保留。
+- 仅纯 cgroup v2 校验后写入，v1/混合/未知或权限不足明确日志降级；辅助失败放行业务。
+- 日志每天一文件，保留30天及总量1GB清理；日志故障不阻断业务。
 
-具体接入与配置见[README](../README.md)、[配置](configuration.md)、[升级](upgrade-preview4-preview5.zh.md)。支持范围为各证据实际验证的环境，不能把通用Linux/ARM资格写成厂商ARM真机通过。
+[接入说明](../README.md)、[配置](configuration.md)、[升级](upgrade-preview4-preview5.zh.md)、[运行和恢复策略](operations-release-policy.md)。
 
-## 固定正式版本号候选的实际结果
+## 固定最终候选的已完成验证
 
-- [DBS/HISDBS原路径18/18通过](testing-final-v1-full600-terminal.md)：各实际600秒、SQL/API零错误及原延迟/覆盖要求，真实物理备份、同步、独立恢复和PG拥有者核对；清理已独立确认。
-- [原生amd64/ARM64、Linux6/7共284/284通过](testing-final-v1-native-CI-terminal.md)：实际执行ELF均与已固定产物摘要一致，自有夹具完整清理。这不是厂商ARM业务或独立物理多盘证明。
-- [候选身份](final-v1-candidate-identity.json)保留构建时点快照、两架构及不同绝对路径重复构建证据。新ELF没有继承preview.5或preview.4长期时长。
+| 范围 | 实际结果 |
+| --- | --- |
+| [原路径业务](testing-final-v1-full600-terminal.md) | DBS/HISDBS 各600秒，18/18主检查，SQL/API零错误，真实物理备份、同步、独立恢复及清理 |
+| [原生控制/分区](testing-final-v1-native-CI-terminal.md) | amd64/ARM64、Linux6/7四个实际VM组合284/284；非厂商ARM或独立物理多盘证明 |
+| [同Agent热重载](testing-final-v1-business-reload-terminal.md) | 18/18主检查、26/26配置观察，各600秒，坏配置拒绝保留策略和业务完整验收 |
+| [诊断/内存统计](testing-final-v1-diagnostics-counter-fixed-terminal.md) | 修订1465新测20/20主检查、38/38诊断，各600秒；PSI/HugeTLB缺失如实表示 |
+| [自身开销](testing-final-v1-budget-overhead-terminal.md) | 健康/持续导出失败/实际只读及三档实际限额各自1800秒，181样本；Agent自身计数，非厂商因果性能或七天老化 |
+| [源码解析器](testing-final-v1-parser-fuzz.md) | Windows amd64 两目标各配置300秒、实际301.02秒，418份输入前后不变；非Linux持久化故障证明 |
 
-## 保留的公开预发布结果与失败
+## 当前进行与待办
 
-公开preview.4→5默认百分比控制迁移48/48通过，含Pod重建新ID、旧自有IOPS迁移及外部IOPS保留；该套件业务gate关闭，不是默认20%业务性能通过。公开manual维护40/40通过；此前修正PG日志来源后的冲突/正常完整套件44/44通过，首轮失败仍保留。
+[最终二进制升级/回滚](testing-final-v1-binary-maintenance.md)已唯一启动：实际公开 preview.5 到固定最终 ELF，相同手动配额，两角色分别新600秒、40项计划。首次启动器在创建进程后、保存身份前发生 NameError；只读核实已有 PID/start/入口后补记身份，未重启、未修改冻结输入、配额或业务。DBS快照17项通过、15条在线维护命令已执行，完整600秒和HIS终态仍待。[启动快照](test-start-final-v1-binary-maintenance.json)、[准确原件](test-evidence-final-v1-binary-maintenance-start.json.gz)。
 
-默认三项20%完整业务测试仍有SQL/API超时及备库停止超时，记录为失败。严格限额会影响具体数据库负载，不能把20%解释成任意业务性能承诺，也不能用manual结果覆盖。旧preview.4约30h后端口冲突失败，不继承计时。
+[52项原任务审核](current-52-task-audit.md)当前15项按定义范围完成；[完整任务与历史](current-task-registry.json)保留原定义和失败。安装模板、CLI状态、格式组合、持久化故障及其余具体待办按各项继续，不能用二进制维护代替。
 
-## 剩余发布工作
+[固定最终产物长期执行器](testing-final-v1-long.md)已冻结，24h observe → 同容器24h enforce → 七天新计时尚未开始。既有旧源码七天任务继续运行，其时长不能转记最终候选。未取得新候选长期及老化后验证，稳定发布尚未接受。
 
-[固定产物24h observe基线→原容器24h enforce→七天验收执行程序](testing-final-v1-long.md)已开发并完成原生只读预检查。当前旧测试夹具仍在节点，程序按计划拒绝启动；新计时未开始。旧版七天任务实际仍运行，已约4.24天，不能计为本候选时长。长期运行及老化后验证尚未完成。[原52项已逐项审核](current-52-task-audit.md)：15项在限定范围完成，扩展参数取消/部分取消单列，缺硬件、真实时长和其余具体待办分别保留。原定义与历史失败不删除，不能整体勾选完成。最终候选的[三场景30分钟开销补验](testing-final-v1-overhead.md)三场景均实际1800秒/181样本通过，已独立复算CPU/RSS/写入和确认全部登记进程、父叶cgroup与namespace清理，见[终态](testing-final-v1-overhead-terminal.md)。不同有效限额回归和长期老化仍未完成。
+[环境矩阵](tested-environment-matrix.md)按实际报告声明；用户暂无额外厂商ARM和独立物理多盘节点，这些范围保留未验证。
 
-[准确已测环境矩阵](tested-environment-matrix.md)逐一列出内核、运行时/runc、架构、存储、挂载权限和结果；当前支持只按实际报告的环境声明；暂无厂商ARM/独立物理多盘节点，不能扩大支持结论。稳定发布和生产部署分别记录，正式交付以本页及最新终态为准。全部需求与任务见[任务登记](current-task-registry.json)。
+## 保留的失败与边界
 
-
-
-[固定最终ELF同一Agent业务热重载](testing-final-v1-business-reload.md)已取得[两角色终态](testing-final-v1-business-reload-terminal.md)：18/18主检查、26/26配置观察，各原生600秒SQL/API零错误、实际备份/同步/独立恢复通过，全部自有进程与夹具清理已独立确认。P03.1和P07.3按定义范围补齐，仍不替代长期、默认20%业务性能及其他待办。[当前运维、问题分级和补丁/归档规则](operations-release-policy.md)已补齐，旧RC2不支持重载的过时说明已修正。
-
-[最终ELF只读诊断与内存统计补验](testing-final-v1-diagnostics.md)已唯一启动；DBS19项诊断子检查和8项初始主检查通过，输出1852字节/0600，PSI/hugetlb缺失如实显示不可用。完整两角色600秒业务和HIS诊断仍待终态；P05.1/P07.2不提前勾选。
-
-[诊断执行器计数修订](testing-final-v1-diagnostics-counter-fixed.md)：DBS10项检查全通过，但末尾旧9项计数使driver退出1；HIS仍在原任务测量。原失败保持，确定根因后已冻结独立修订，待原任务终态归档/清理及新准入后才运行。[两档实际限额的30分钟开销补验](testing-final-v1-budget-overhead.md)亦已冻结并通过只读准入，尚未启动，等诊断夹具清理后独立执行。两项不提前验收，完成数仍12。
-
-原1448现取得[完整失败终态及准确原件](testing-final-v1-diagnostics-counter-failure-terminal.md)：20项实际主检查及38项诊断子检查通过，整体failed/退出1来自汇总计数错误，清理独立完成。修订1465新准入通过，尚未启动新轮。原失败不改判，完成数仍12。
-
-修订1465已完成原轮归档/清理守卫及原生准入，在节点2026-11-15T09:39:02.597855+00:00唯一启动新轮；独立观察确认runner和DBSdriver为对应PID/start，当前进入DBS测试。[启动快照](test-start-final-v1-diagnostics-counter-fixed.json)、[准确原件](test-evidence-final-v1-diagnostics-counter-fixed-start.json.gz)。新轮未取得完整600秒或HIS终态，原1448失败保持，完成数仍12。
-
-最新终态：[修订1465完整通过](testing-final-v1-diagnostics-counter-fixed-terminal.md)，20/20主检查、38/38诊断子检查；两角色各新跑原600秒业务、备份/同步/独立恢复及清理通过，原1448计数失败不改判。P05.1/P07.2按定义范围完成，总计14/52项；不同额度开销补验尚未开始，长期和稳定发布条件仍待。
-
-不同有效额度开销补验于节点2026-11-15T10:04:27.183865+00:00通过原1448失败原件/清理、新1465通过/清理及原1404准确报告守卫后唯一启动。独立活体快照确认两档各自原Agent/PID1、实际三项额度及同一最终ELF；45秒预热后新计1800秒，尚未接受。额外[启动守卫](../tests/final-v1-budget-overhead-launch.py)及[观察器](../tests/final-v1-budget-overhead-observe.py)不替换7份冻结测量输入。[启动快照](test-start-final-v1-budget-overhead.json)、[准确原件](test-evidence-final-v1-budget-overhead-start.json.gz)。已完成14/52项及稳定发布未接受保持。
-
-最新终态：[两档实际额度开销通过](testing-final-v1-budget-overhead-terminal.md)，45秒预热后各新1800秒、181样本，原CPU/RSS/写入/状态间隔/OOM门槛及实际控制/进程/清理通过；结合已有同ELF低IO/持续故障原件，P09.4按至少30分钟工程定义完成，总15/52项。另有[准确源码两个解析器各300秒](testing-final-v1-parser-fuzz.md)，P09.3保留持久化/故障待办。长期与稳定发布仍未接受，默认20%业务失败和全部旧失败保持。
-
-[固定最终候选二进制维护](testing-final-v1-binary-maintenance.md)已冻结12项输入、本地17项及原生准入通过；实际公开preview.5到固定v1.0.0两角色各新600秒/共40项计划，尚未启动，不借用旧40/40结果。安装脚本/CLI状态及其余具体待办继续，当前15/52项和稳定未接受保持。
+默认三项20%完整业务测试仍有SQL/API及停库超时；手动参考配额通过不能证明任意数据库20%负载性能。preview.4旧长期端口冲突失败、1448诊断执行器末尾旧计数导致 failed/exit1 均保持原件和失败判定；修订1465是独立新测通过。1498维护初稿在上传前发现导出目录错误，被拒绝且未运行，1501另行冻结修订。旧preview.4→5维护40/40及迁移48/48保留来源，不作为最终ELF新测结果。
