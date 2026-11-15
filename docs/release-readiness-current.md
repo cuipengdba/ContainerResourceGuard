@@ -30,9 +30,9 @@
 
 ## 当前阻断与待办
 
-[协调器故障留存与有界只读查询](testing-final-v1-coordinator-probe.md)已通过24项及114原件独立复核。[全新1728方案](testing-final-v1-long1728.md)已冻结，尚未启动；原24h+24h+7d和全部业务标准保持，从零计时。
+[协调器故障留存与有界只读查询](testing-final-v1-coordinator-probe.md)已通过24项及114原件独立复核。[全新1728](testing-final-v1-long1728.md)已单次从零启动；截至19:56:32Z原生快照，12项启动检查通过、两角色baseline测量中，8原件离线复核。原24h+24h+7d和全部业务标准保持，长期尚未接受。
 
-[正式1396长期试验已失败结束](testing-final-v1-long1396-terminal.md)：baseline约4.23小时，协调器exclusive()的kubectl全部Pod查询退出1，原stderr未保留，底层原因未知。原程序已清理，独立只读观察确认namespace/cgroup/登记进程消失；未重启。12启动/一次native-pending内容周期不算24h通过，enforce和七天未开始。原24h observe→24h enforce→新七天、SLA和98%覆盖保持，后续须先补齐协调器失败观测再冻结新身份，从零计时。
+[正式1396长期试验已失败结束](testing-final-v1-long1396-terminal.md)：baseline约4.23小时，协调器exclusive()的kubectl全部Pod查询退出1，原stderr未保留，底层原因未知。原程序已清理，独立只读观察确认namespace/cgroup/登记进程消失；未重启。12启动/一次native-pending内容周期不算24h通过，enforce和七天未开始。原24h observe→24h enforce→新七天、SLA和98%覆盖保持，协调器已补齐并以新1728从零启动；原1396未重启，后续完整长期及老化验收仍待。
 
 后续需完成长期及老化后故障/维护验收、各项剩余压力/所有权/状态场景，以及最终稳定打包、安装/回退和发布实际下载。每项边界见逐项审核。用户暂无额外厂商ARM和独立物理多盘节点，保留未验证范围；[环境矩阵](tested-environment-matrix.md)不扩大支持。
 
