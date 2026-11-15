@@ -1,4 +1,4 @@
-# 当前交付与待办：2026-11-15
+# 当前交付与待办：2026-11-16
 
 当前18/52项按各自原定义范围完成，稳定1.0尚未接受。公开下载仍为[v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)，八附件和标签不变；固定最终候选的产品实现尚未合入main。[完整任务](current-task-registry.json)及[逐项审核](current-52-task-audit.md)保持全部原定义、失败和具体待办。
 
@@ -22,6 +22,7 @@
 | [开销](testing-final-v1-budget-overhead-terminal.md) | 多档实际限额及健康/导出失败/只读各1800秒；Agent自身计数，不冒充厂商因果性能或七天 |
 | [解析器](testing-final-v1-parser-fuzz.md) | 准确源码两目标各300秒、418输入保持；非真实掉电证明 |
 | [候选打包与来源](final-v1-package-rehearsal.md) | 实际Linux两架构包、14项离线检查、重复构建打包及10项独立签名正常/拒绝；本地SBOM schema通过，尚非稳定附件/安装验收 |
+| [历史硬内存恢复并发](testing-final-v1-legacy-restore-pressure.md) | 相同最终ELF、amd64/ARM64与Linux6.8/7.0四VM，116/116及16夹具清理；模拟旧journal，不代替真实旧版本迁移或厂商老化验收 |
 
 ## 正在进行与待办
 
