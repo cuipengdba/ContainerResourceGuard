@@ -267,9 +267,9 @@
       "archived_definition_sha256": "fd043c35d5ab8e3e00e29e8ea8225ebae41e927462df83d7f941927649275276",
       "current_status": "waiting-real-duration-and-postflight",
       "completion_claim": false,
-      "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
-      "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
-      "evidence": "testing-final-v1-long1396-terminal.md",
+      "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
+      "remaining_or_boundary": "新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
+      "evidence": "testing-final-v1-long1728.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。",
         "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。",
@@ -411,7 +411,7 @@
         "evidence": "testing-final-v1-long1396-terminal.md"
       },
       "fresh1728_followup": {
-        "phase": "frozen-not-launched",
+        "phase": "measuring-baseline-at-dated-native-snapshot",
         "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
         "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
         "new_clock": true,
@@ -435,7 +435,94 @@
           "business_long_duration_accepted": false
         },
         "evidence": "testing-final-v1-long1728.md",
-        "stable_release_accepted": false
+        "stable_release_accepted": false,
+        "initial_native_snapshot": {
+          "schema": "crg-long1728-initial-offline-review-v1",
+          "phase": "startup-snapshot-verified",
+          "observed_utc": "2026-11-15T19:56:32.574820+00:00",
+          "archive_sha256": "8f71a411e642bf85651b019cfa58c20a4745939d262653150ad2473ee598b7c1",
+          "members_verified": 8,
+          "startup_checks": 12,
+          "native_phase_at_snapshot": "measuring-baseline",
+          "launch_utc": "2026-11-15T19:52:19.274030+00:00",
+          "both_native_started_epoch": 1794772419.1161368,
+          "original_processes": {
+            "runner": {
+              "pid": 2329588,
+              "start_ticks": 171228238,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/runner.py"
+            },
+            "worker": {
+              "pid": 2329624,
+              "start_ticks": 171228241,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/job.py"
+            },
+            "readonly_recorder": {
+              "pid": 2329660,
+              "start_ticks": 171228245,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/observer-readonly.py"
+            }
+          },
+          "source_sha256": {
+            "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+            "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+            "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+            "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+            "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+            "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+            "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+            "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+            "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+            "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+            "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+            "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+            "job.py": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+            "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+            "runner.py": "232f1be70660e34970e779a273f23a9877468cb6cfb2f5b75d084ae57ad13d65",
+            "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+            "plan.json": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+            "observer-readonly.py": "fabfb66930dcf8d415e7771c1f487d619017ed03bdb5cbd8220000ddde4da6d4"
+          },
+          "same_original_start_and_observe_controls": true,
+          "runtime_inherited": false,
+          "stable_release_accepted": false,
+          "long_duration_accepted": false,
+          "boundary": "Dated native snapshot only; no continuous-duration or future process-health acceptance"
+        },
+        "runtime_active_at_snapshot": true,
+        "long_duration_accepted": false,
+        "before_launch_snapshot": {
+          "phase": "frozen-not-launched",
+          "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+          "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+          "new_clock": true,
+          "inherited_seconds": 0,
+          "original1396_failed_unchanged": true,
+          "product_runtime_unchanged": true,
+          "coordinator_probe": {
+            "schema": "crg-coordinator-probe-offline-review-v1",
+            "phase": "passed",
+            "passed_native_cases": 24,
+            "members_verified": 114,
+            "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+            "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+            "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+            "read_only_observation_total_budget_seconds": 15,
+            "max_readonly_attempts": 3,
+            "mutating_retries": 0,
+            "actual_cluster_readonly": true,
+            "product_changed": false,
+            "old_API_failure_cause_known": false,
+            "business_long_duration_accepted": false
+          },
+          "evidence": "testing-final-v1-long1728.md",
+          "stable_release_accepted": false
+        }
+      },
+      "before_fresh1728_launch_acceptance": {
+        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
+        "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
+        "evidence": "testing-final-v1-long1396-terminal.md"
       }
     },
     {
@@ -447,9 +534,9 @@
       "archived_definition_sha256": "bdb3d8609f775edfc6eb8df9a3d2e3cb63213babd355d7a19293bb66eb464bfa",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
-      "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
-      "evidence": "testing-final-v1-long1396-terminal.md",
+      "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
+      "remaining_or_boundary": "新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
+      "evidence": "testing-final-v1-long1728.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。",
         "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。",
@@ -591,7 +678,7 @@
         "evidence": "testing-final-v1-long1396-terminal.md"
       },
       "fresh1728_followup": {
-        "phase": "frozen-not-launched",
+        "phase": "measuring-baseline-at-dated-native-snapshot",
         "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
         "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
         "new_clock": true,
@@ -615,7 +702,94 @@
           "business_long_duration_accepted": false
         },
         "evidence": "testing-final-v1-long1728.md",
-        "stable_release_accepted": false
+        "stable_release_accepted": false,
+        "initial_native_snapshot": {
+          "schema": "crg-long1728-initial-offline-review-v1",
+          "phase": "startup-snapshot-verified",
+          "observed_utc": "2026-11-15T19:56:32.574820+00:00",
+          "archive_sha256": "8f71a411e642bf85651b019cfa58c20a4745939d262653150ad2473ee598b7c1",
+          "members_verified": 8,
+          "startup_checks": 12,
+          "native_phase_at_snapshot": "measuring-baseline",
+          "launch_utc": "2026-11-15T19:52:19.274030+00:00",
+          "both_native_started_epoch": 1794772419.1161368,
+          "original_processes": {
+            "runner": {
+              "pid": 2329588,
+              "start_ticks": 171228238,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/runner.py"
+            },
+            "worker": {
+              "pid": 2329624,
+              "start_ticks": 171228241,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/job.py"
+            },
+            "readonly_recorder": {
+              "pid": 2329660,
+              "start_ticks": 171228245,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/observer-readonly.py"
+            }
+          },
+          "source_sha256": {
+            "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+            "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+            "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+            "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+            "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+            "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+            "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+            "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+            "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+            "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+            "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+            "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+            "job.py": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+            "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+            "runner.py": "232f1be70660e34970e779a273f23a9877468cb6cfb2f5b75d084ae57ad13d65",
+            "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+            "plan.json": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+            "observer-readonly.py": "fabfb66930dcf8d415e7771c1f487d619017ed03bdb5cbd8220000ddde4da6d4"
+          },
+          "same_original_start_and_observe_controls": true,
+          "runtime_inherited": false,
+          "stable_release_accepted": false,
+          "long_duration_accepted": false,
+          "boundary": "Dated native snapshot only; no continuous-duration or future process-health acceptance"
+        },
+        "runtime_active_at_snapshot": true,
+        "long_duration_accepted": false,
+        "before_launch_snapshot": {
+          "phase": "frozen-not-launched",
+          "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+          "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+          "new_clock": true,
+          "inherited_seconds": 0,
+          "original1396_failed_unchanged": true,
+          "product_runtime_unchanged": true,
+          "coordinator_probe": {
+            "schema": "crg-coordinator-probe-offline-review-v1",
+            "phase": "passed",
+            "passed_native_cases": 24,
+            "members_verified": 114,
+            "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+            "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+            "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+            "read_only_observation_total_budget_seconds": 15,
+            "max_readonly_attempts": 3,
+            "mutating_retries": 0,
+            "actual_cluster_readonly": true,
+            "product_changed": false,
+            "old_API_failure_cause_known": false,
+            "business_long_duration_accepted": false
+          },
+          "evidence": "testing-final-v1-long1728.md",
+          "stable_release_accepted": false
+        }
+      },
+      "before_fresh1728_launch_acceptance": {
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
+        "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
+        "evidence": "testing-final-v1-long1396-terminal.md"
       }
     },
     {
@@ -1198,9 +1372,9 @@
       "archived_definition_sha256": "cc6fc54ed9f9a66b43d2536cd87e301d26f439b01512f0576ee671768fca8893",
       "current_status": "waiting-real-duration-and-postflight",
       "completion_claim": false,
-      "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
-      "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
-      "evidence": "testing-final-v1-long1396-terminal.md",
+      "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已从零单次启动，12/12启动通过，带日期原生快照确认两角色baseline测量及原控制保持；业务标准未变。",
+      "remaining_or_boundary": "新1728完整baseline24h、同容器enforce24h、新7天、原生周期/清理及老化后验收仍待完成；8原件启动快照不能替代长期通过。原1396与旧78失败/未知原因保留，手动参考不替代任意默认20%性能、厂商ARM或独立物理多盘验证。",
+      "evidence": "testing-final-v1-long1728.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "固定最终候选七天/28周期执行器已冻结，旧任务进程仍活跃且不继承其时长。",
         "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。",
@@ -1342,7 +1516,7 @@
         "evidence": "testing-final-v1-long1396-terminal.md"
       },
       "fresh1728_followup": {
-        "phase": "frozen-not-launched",
+        "phase": "measuring-baseline-at-dated-native-snapshot",
         "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
         "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
         "new_clock": true,
@@ -1366,7 +1540,94 @@
           "business_long_duration_accepted": false
         },
         "evidence": "testing-final-v1-long1728.md",
-        "stable_release_accepted": false
+        "stable_release_accepted": false,
+        "initial_native_snapshot": {
+          "schema": "crg-long1728-initial-offline-review-v1",
+          "phase": "startup-snapshot-verified",
+          "observed_utc": "2026-11-15T19:56:32.574820+00:00",
+          "archive_sha256": "8f71a411e642bf85651b019cfa58c20a4745939d262653150ad2473ee598b7c1",
+          "members_verified": 8,
+          "startup_checks": 12,
+          "native_phase_at_snapshot": "measuring-baseline",
+          "launch_utc": "2026-11-15T19:52:19.274030+00:00",
+          "both_native_started_epoch": 1794772419.1161368,
+          "original_processes": {
+            "runner": {
+              "pid": 2329588,
+              "start_ticks": 171228238,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/runner.py"
+            },
+            "worker": {
+              "pid": 2329624,
+              "start_ticks": 171228241,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/job.py"
+            },
+            "readonly_recorder": {
+              "pid": 2329660,
+              "start_ticks": 171228245,
+              "entry": "/var/tmp/crg-final1728-tools-20261116/observer-readonly.py"
+            }
+          },
+          "source_sha256": {
+            "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+            "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+            "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+            "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+            "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+            "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+            "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+            "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+            "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+            "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+            "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+            "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+            "job.py": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+            "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+            "runner.py": "232f1be70660e34970e779a273f23a9877468cb6cfb2f5b75d084ae57ad13d65",
+            "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+            "plan.json": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+            "observer-readonly.py": "fabfb66930dcf8d415e7771c1f487d619017ed03bdb5cbd8220000ddde4da6d4"
+          },
+          "same_original_start_and_observe_controls": true,
+          "runtime_inherited": false,
+          "stable_release_accepted": false,
+          "long_duration_accepted": false,
+          "boundary": "Dated native snapshot only; no continuous-duration or future process-health acceptance"
+        },
+        "runtime_active_at_snapshot": true,
+        "long_duration_accepted": false,
+        "before_launch_snapshot": {
+          "phase": "frozen-not-launched",
+          "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+          "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+          "new_clock": true,
+          "inherited_seconds": 0,
+          "original1396_failed_unchanged": true,
+          "product_runtime_unchanged": true,
+          "coordinator_probe": {
+            "schema": "crg-coordinator-probe-offline-review-v1",
+            "phase": "passed",
+            "passed_native_cases": 24,
+            "members_verified": 114,
+            "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+            "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+            "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+            "read_only_observation_total_budget_seconds": 15,
+            "max_readonly_attempts": 3,
+            "mutating_retries": 0,
+            "actual_cluster_readonly": true,
+            "product_changed": false,
+            "old_API_failure_cause_known": false,
+            "business_long_duration_accepted": false
+          },
+          "evidence": "testing-final-v1-long1728.md",
+          "stable_release_accepted": false
+        }
+      },
+      "before_fresh1728_launch_acceptance": {
+        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
+        "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
+        "evidence": "testing-final-v1-long1396-terminal.md"
       }
     },
     {
@@ -1707,7 +1968,7 @@
     "evidence": "testing-final-v1-long1396-terminal.md"
   },
   "long1728_followup": {
-    "phase": "frozen-not-launched",
+    "phase": "measuring-baseline-at-dated-native-snapshot",
     "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
     "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
     "new_clock": true,
@@ -1731,6 +1992,88 @@
       "business_long_duration_accepted": false
     },
     "evidence": "testing-final-v1-long1728.md",
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "initial_native_snapshot": {
+      "schema": "crg-long1728-initial-offline-review-v1",
+      "phase": "startup-snapshot-verified",
+      "observed_utc": "2026-11-15T19:56:32.574820+00:00",
+      "archive_sha256": "8f71a411e642bf85651b019cfa58c20a4745939d262653150ad2473ee598b7c1",
+      "members_verified": 8,
+      "startup_checks": 12,
+      "native_phase_at_snapshot": "measuring-baseline",
+      "launch_utc": "2026-11-15T19:52:19.274030+00:00",
+      "both_native_started_epoch": 1794772419.1161368,
+      "original_processes": {
+        "runner": {
+          "pid": 2329588,
+          "start_ticks": 171228238,
+          "entry": "/var/tmp/crg-final1728-tools-20261116/runner.py"
+        },
+        "worker": {
+          "pid": 2329624,
+          "start_ticks": 171228241,
+          "entry": "/var/tmp/crg-final1728-tools-20261116/job.py"
+        },
+        "readonly_recorder": {
+          "pid": 2329660,
+          "start_ticks": 171228245,
+          "entry": "/var/tmp/crg-final1728-tools-20261116/observer-readonly.py"
+        }
+      },
+      "source_sha256": {
+        "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+        "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+        "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+        "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+        "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+        "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+        "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+        "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+        "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+        "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+        "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+        "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+        "job.py": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+        "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+        "runner.py": "232f1be70660e34970e779a273f23a9877468cb6cfb2f5b75d084ae57ad13d65",
+        "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+        "plan.json": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+        "observer-readonly.py": "fabfb66930dcf8d415e7771c1f487d619017ed03bdb5cbd8220000ddde4da6d4"
+      },
+      "same_original_start_and_observe_controls": true,
+      "runtime_inherited": false,
+      "stable_release_accepted": false,
+      "long_duration_accepted": false,
+      "boundary": "Dated native snapshot only; no continuous-duration or future process-health acceptance"
+    },
+    "runtime_active_at_snapshot": true,
+    "long_duration_accepted": false,
+    "before_launch_snapshot": {
+      "phase": "frozen-not-launched",
+      "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+      "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+      "new_clock": true,
+      "inherited_seconds": 0,
+      "original1396_failed_unchanged": true,
+      "product_runtime_unchanged": true,
+      "coordinator_probe": {
+        "schema": "crg-coordinator-probe-offline-review-v1",
+        "phase": "passed",
+        "passed_native_cases": 24,
+        "members_verified": 114,
+        "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+        "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+        "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+        "read_only_observation_total_budget_seconds": 15,
+        "max_readonly_attempts": 3,
+        "mutating_retries": 0,
+        "actual_cluster_readonly": true,
+        "product_changed": false,
+        "old_API_failure_cause_known": false,
+        "business_long_duration_accepted": false
+      },
+      "evidence": "testing-final-v1-long1728.md",
+      "stable_release_accepted": false
+    }
   }
 }
