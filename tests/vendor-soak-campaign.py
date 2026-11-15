@@ -279,7 +279,7 @@ try:
             current = report['backups'][-1]
             result = json.loads((Path(current_dir) / 'business-backup.json').read_text())
             current['exit'], current['phase'] = backup.returncode, result['phase']
-            current['roles'] = {role: {'checks': len(value['checks']), 'cleanup': value.get('own_fixture_schema_restore_database_snapshot_removed', False), 'native_pending': value.get('native_campaign_validation_pending', False), 'exec_probe_diagnostic': value.get('exec_probe_diagnostic')} for role, value in result['roles'].items()}
+            current['roles'] = {role: {'checks': len(value['checks']), 'cleanup': value.get('own_fixture_schema_restore_database_snapshot_removed', False), 'native_pending': value.get('native_campaign_validation_pending', False), 'exec_probe_diagnostic': value.get('exec_probe_diagnostic'), 'port_diagnostic_samples': len(value.get('port_diagnostics', [])), 'port_diagnostic_phases': {phase: sum(v['phase'] == phase for v in value.get('port_diagnostics', [])) for phase in ['complete', 'partial']}} for role, value in result['roles'].items()}
             current['content_ended_epoch'] = time.time()
             if backup.returncode or result['phase'] != 'content-passed-native-pending' or set(current['roles']) != set(roles) or not all(item['cleanup'] and item['native_pending'] for item in current['roles'].values()):
                 raise RuntimeError('periodic engine regression or cleanup failed')

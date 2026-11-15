@@ -1,4 +1,4 @@
-import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys,signal
+import argparse,json,pathlib,subprocess,time,traceback,shlex,threading,re,sys,signal,importlib.util
 parser=argparse.ArgumentParser(description="Engine smoke in disposable original-vendor Pods; never use a business namespace")
 parser.add_argument("--namespace",required=True)
 parser.add_argument("--work-dir",required=True)
@@ -14,7 +14,10 @@ p.mkdir(mode=0o700,parents=True,exist_ok=True)
 report={'phase':'running','started':time.time(),'roles':{},'scope':'isolated original vendor primary plus engine backup/streaming/independent restore; does not verify undocumented vendor backup/sync APIs','criteria':{'rows':16384,'payload_bytes_per_row':4096,'phase_deadline_seconds':300,'api_max_seconds':5,'sql_max_seconds':5,'expected_api_result':'000','stream_catchup_seconds':60}}
 bin='/opt/postgresql/pgsql/bin/';schema='crg_acceptance_'+args.run_id;reportfile=p/'business-backup.json'
 if reportfile.exists() or reportfile.is_symlink():parser.error('existing report; refusing to overwrite evidence')
-def interrupted(signum,frame):raise RuntimeError('engine fixture interrupted; attempting temporary-instance cleanup')
+class EngineInterrupted(RuntimeError):
+    _crg_engine_interrupted=True
+
+def interrupted(signum,frame):raise EngineInterrupted('engine fixture interrupted; attempting temporary-instance cleanup')
 signal.signal(signal.SIGTERM,interrupted)
 def save():reportfile.write_text(json.dumps(report,indent=2))
 def ex(role,cmd,timeout=300,check=True,log=None):
@@ -28,6 +31,26 @@ def sql(role,q,port=5432):
 def check(item,name,condition,detail=None):
     item['checks'].append({'name':name,'passed':bool(condition),'detail':detail});save()
     if not condition:raise RuntimeError(name+' failed')
+def prepare_port_capture(role,meta,item):
+    session=None;issue=None;module=None
+    try:
+        path=pathlib.Path(__file__).resolve().parent/'vendor-port-diagnostics.py'
+        spec=importlib.util.spec_from_file_location('vendor_port_diagnostics',path)
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        session=module.begin(ns,role,meta)
+    except EngineInterrupted:raise
+    except Exception as error:issue='diagnostic-module-unavailable-'+type(error).__name__
+    def capture(stage,_diagnostic_module=module):
+        try:
+            event=session.snapshot(stage) if session is not None else {'stage':stage,'phase':'partial','issues':[issue]}
+        except EngineInterrupted:raise
+        except Exception as error:event={'stage':stage,'phase':'partial','issues':['diagnostic-capture-unavailable-'+type(error).__name__]}
+        item.setdefault('port_diagnostics',[]).append(event)
+        try:save()
+        except EngineInterrupted:raise
+        except Exception:item['port_diagnostic_save_unavailable']=True
+    return capture
+
 def summary(role,port=5432):return sql(role,"SELECT count(*),sum(id),sum(octet_length(payload)),md5(string_agg(md5(payload),'' ORDER BY id)) FROM "+schema+'.fixture;',port)
 save()
 try:
@@ -37,6 +60,7 @@ try:
       raise RuntimeError('refusing Pod without disposable fixture label or with host namespaces')
     (p/(role+'-business')).mkdir(mode=0o700,exist_ok=True)
     item={'checks':[],'phase':'preparing','probes':[]};report['roles'][role]=item
+    capture_ports=prepare_port_capture(role,meta,item)
     item['primary_start_time_before']=sql(role,'SELECT pg_postmaster_start_time();');save()
     root='/opt/postgresql/basebackup/crg-acceptance-'+args.run_id;base=root+'/snapshot';standby=root+'/standby';restore=root+'/restore'
     ex(role,'test ! -e '+shlex.quote(root)+' && mkdir -m 700 '+shlex.quote(root),log='backup-root.txt')
@@ -61,7 +85,12 @@ try:
       check(item,'physical_backup_finished',True)
       ex(role,'cp -a --reflink=auto '+base+' '+standby+' && cp -a --reflink=auto '+base+' '+restore+' && rm -- '+restore+'/standby.signal',log='backup-copies.txt')
       opts='-p 55432 -h 127.0.0.1 -k /tmp -c shared_buffers=128MB'
-      ex(role,bin+'pg_ctl -D '+standby+' -o '+shlex.quote(opts)+' -l '+root+'/standby.log -w -t 60 start',log='standby-start.txt',timeout=90)
+      capture_ports('before-standby-start')
+      try:
+        ex(role,bin+'pg_ctl -D '+standby+' -o '+shlex.quote(opts)+' -l '+root+'/standby.log -w -t 60 start',log='standby-start.txt',timeout=90)
+      except BaseException:
+        capture_ports('standby-start-failed');raise
+      capture_ports('after-standby-start')
       item['phase']='streaming';save()
       sql(role,'INSERT INTO '+schema+".fixture SELECT g,repeat(md5(g::text),128) FROM generate_series(16385,18432) g;")
       expected=summary(role);item['primary_after']=expected;deadline=time.monotonic()+60;matched=False
@@ -71,7 +100,12 @@ try:
       check(item,'streaming_new_rows_and_checksum',matched,expected)
       check(item,'standby_in_recovery',sql(role,'SELECT pg_is_in_recovery();',55432)=='t')
       opts='-p 55433 -h 127.0.0.1 -k /tmp -c shared_buffers=128MB'
-      ex(role,bin+'pg_ctl -D '+restore+' -o '+shlex.quote(opts)+' -l '+root+'/restore.log -w -t 60 start',log='restore-start.txt',timeout=90)
+      capture_ports('before-restore-start')
+      try:
+        ex(role,bin+'pg_ctl -D '+restore+' -o '+shlex.quote(opts)+' -l '+root+'/restore.log -w -t 60 start',log='restore-start.txt',timeout=90)
+      except BaseException:
+        capture_ports('restore-start-failed');raise
+      capture_ports('after-restore-start')
       check(item,'independent_restore_initial_checksum',summary(role,55433)==item['primary_before'])
       check(item,'independent_restore_is_writable',sql(role,'SELECT pg_is_in_recovery();',55433)=='f')
       sql(role,'INSERT INTO '+schema+".fixture VALUES(999999,repeat('r',4096));",55433)
@@ -80,7 +114,11 @@ try:
       ex(role,bin+'pg_restore -w -h127.0.0.1 -p5432 -U postgres -d crg_acceptance_restore_'+args.run_id+' --exit-on-error '+root+'/logical.dump',log='logical-restore.txt')
       r=ex(role,bin+'psql -XAtw -h127.0.0.1 -p5432 -U postgres -d crg_acceptance_restore_'+args.run_id+' -v ON_ERROR_STOP=1 -c '+shlex.quote('SELECT count(*) FROM '+schema+'.fixture;'))
       check(item,'logical_restore_initial_rows',r.stdout.strip().splitlines()[-1]=='16384')
-      for directory in [standby,restore]:ex(role,bin+'pg_ctl -D '+directory+' -m fast -w -t 30 stop',log='stop-'+directory.rsplit('/',1)[-1]+'.txt',timeout=45)
+      for directory in [standby,restore]:
+        try:ex(role,bin+'pg_ctl -D '+directory+' -m fast -w -t 30 stop',log='stop-'+directory.rsplit('/',1)[-1]+'.txt',timeout=45)
+        except BaseException:
+          capture_ports(directory.rsplit('/',1)[-1]+'-stop-failed');raise
+        capture_ports('after-'+directory.rsplit('/',1)[-1]+'-stop')
       item['phase']='checked'
     finally:
       # Stop only the two temporary data directories created by this run. Keep
@@ -93,6 +131,7 @@ try:
           # Retain the original phase failure; still attempt the other temporary
           # engine and stop the monitor. No implicit quota relaxation here.
           item.setdefault('cleanup_errors',[]).append({'temporary_engine':directory.rsplit('/',1)[-1],'kind':type(error).__name__})
+        finally:capture_ports('after-'+directory.rsplit('/',1)[-1]+'-cleanup')
       stop.set();monitor.join(timeout=25)
       item['probe_monitor_stopped']=not monitor.is_alive()
     item['primary_start_time_after']=sql(role,'SELECT pg_postmaster_start_time();')
