@@ -1,0 +1,30 @@
+{
+  "schema": "crg-native-persistence-first-pilot-failure-v1",
+  "run_id": 43745123083,
+  "source_revision": "7f13aa98f09591dfc9ba7bdd7b8ba67b3d681679",
+  "plan_sha256": "438d4b16fff71ca6fc1fc78f2433a0cae0ce1b24149613f2e38f83cf64ca8527",
+  "artifact_id": 14173699631,
+  "artifact_bytes": 39229,
+  "artifact_members": 41,
+  "artifact_sha256": "137e16ed85764d0cdc7c318eabf175162bcabe24620f138841700ef1a7da206d",
+  "phase": "failed",
+  "partial_checks_recorded": 27,
+  "partial_checks_passed": 27,
+  "completed_fault_cases": [
+    "full-state",
+    "permission-state"
+  ],
+  "failed_stage": "readonly-state test fixture remount setup; actual EBUSY with open writable lock descriptor",
+  "last_command_error": {
+    "operation": "['docker', 'exec']",
+    "exit": 2,
+    "stderr": "panic: device or resource busy\n\ngoroutine 1 [running]:\nmain.main()\n\t./helper.go:23 +0x387\n"
+  },
+  "cleanup": {
+    "errors": [],
+    "owned_state_mounts_remaining": 0,
+    "private_fixture_files_retained_until_VM_disposal": true
+  },
+  "full_suite_accepted": false,
+  "stable_release_accepted": false
+}

@@ -178,6 +178,9 @@ def actors(item):
                     raise RuntimeError('DAC bypass capabilities must be absent after candidate exec')
                 if value not in item['observed']:
                     item['observed'].append(value)
+                    item['record'].setdefault('candidate_capabilities', []).append({
+                        **value, 'effective': status['CapEff'].strip(), 'bounding': status['CapBnd'].strip(),
+                        'executable_sha256': R['binary_sha256']})
                 found.append(value)
         except (FileNotFoundError, ProcessLookupError):
             pass
@@ -336,10 +339,15 @@ def state_fault(item, worker, kind):
     elif kind == 'permission':
         state.chmod(0)
     elif kind == 'readonly':
+        mountinfo = Path('/proc', str(item['main']['pid']), 'mountinfo')
+        before = {line.split()[0] for line in mountinfo.read_text().splitlines()}
         ex(item, '/fault-helper', 'remount-ro')
-        mount = next(line.split() for line in Path('/proc', str(item['main']['pid']), 'mountinfo').read_text().splitlines()
-                     if line.split()[4] == '/state')
-        check(item['name'] + ': actual private container state mount read-only', 'ro' in mount[5].split(','))
+        mounts = [line.split() for line in mountinfo.read_text().splitlines()
+                  if line.split()[4] == '/state' and line.split()[0] not in before]
+        item['record']['readonly_overlay'] = {'new_mount_rows': mounts,
+            'statvfs_readonly': bool(os.statvfs('/proc/' + str(item['main']['pid']) + '/root/state').f_flag & os.ST_RDONLY)}
+        check(item['name'] + ': actual private container state mount read-only', len(mounts) == 1
+              and 'ro' in mounts[0][5].split(',') and item['record']['readonly_overlay']['statvfs_readonly'])
     configuration(item, .75)
     code, text = finish(item, process, 'baseline')
     reason = {'full': 'no space left on device', 'permission': 'permission denied', 'readonly': 'read-only file system'}[kind]

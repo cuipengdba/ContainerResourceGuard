@@ -1,7 +1,7 @@
 # 最终 ELF：真实状态文件系统故障与中断恢复
 
 2026-11-16 CST。本轮补充 P09.3/P10.3 的原生证据，原任务不缩减。
-计划与执行器已开发，**实际结果尚待**，不能据此接受稳定版。
+计划与执行器已开发，**完整实际结果尚待**，不能据此接受稳定版。
 
 ## 冻结任务与判据
 
@@ -47,3 +47,19 @@
 强杀可能留下尚未重命名的临时文件，本轮保留这些文件，检查恢复不采信未提交日志；
 不承诺强杀后自动清理全部孤立临时文件。
 原有普通文件模拟恢复单测、解析器模糊测试与已有维护证据继续保留各自范围。
+
+
+## 首轮真实试点失败保留
+
+[运行43745123083](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43745123083)失败：
+27项局部检查通过，真实ENOSPC和持续EACCES两组完成；第三组只读挂载准备返回EBUSY，
+因为Agent持有的可写状态锁描述符阻止直接remountRO。未执行后续三组强杀/延迟完整验收，
+不接受整套60项通过。[原始41成员ZIP](test-evidence-final-v1-persistence-first-pilot.json.gz)及
+[失败摘要](test-results-final-v1-persistence-first-pilot-failure.json)保留，三所属容器/cgroup、
+登记进程和私有状态挂载均确认清理。
+
+[原v1计划](test-plan-final-v1-persistence-faults-before-readonly-overlay.json)不改写。
+v2只修正测试挂载准备：在同一私有/state树上叠加新bind，再将新挂载只读，
+并核对唯一新挂载及实际statvfs只读标志；已有打开的旧锁保持原inode。
+另记录实际观察到的候选DAC能力值，便于离线独立复核。
+产品50份源码、ELF、限额、持续30秒/3次重试和恢复/强杀判据均不变。

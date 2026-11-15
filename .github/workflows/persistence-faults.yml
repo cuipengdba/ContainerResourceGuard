@@ -62,7 +62,7 @@ jobs:
           import hashlib,json,os,pathlib,platform,subprocess
           planpath=pathlib.Path('qualification/docs/test-plan-final-v1-persistence-faults.json')
           raw=planpath.read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='438d4b16fff71ca6fc1fc78f2433a0cae0ce1b24149613f2e38f83cf64ca8527'
+          assert hashlib.sha256(raw).hexdigest()=='a49f0c8ae814fe134495f7988d2b65fc3deb170909eb9657fffa5f38aa29043e'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           for n,h in p['source_sha256'].items():
