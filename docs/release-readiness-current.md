@@ -1,5 +1,7 @@
 # 当前交付与待办：2026-11-16
 
+当前终态：[新源CPU56/原生284通过；HISDBS9/9通过、DBS7通过/1失败/1未执行，整体failed/exit1且全部归属独立清理](testing-live-capacity-native-and-business-current.md)。新长稳未启动，稳定1.0未接受；以下“HISDBS在测/待全轮终态”均为历史快照。
+
 最新状态：[新源59绑定四格原生284/284通过；DBS完整600秒失败、HISDBS仍运行](testing-live-capacity-native-and-business-current.md)。原52项与18项既有完成声明不变，稳定1.0未接受；以下早期“待原生复核/未启动”均为历史时点。
 
 最新业务边界：[新ELF DBS约300秒SQL1项/超5秒失败快照](test-results-live-capacity-business-live.json)，原因未知、完整终态待取；原SLA不变。四格原生50绑定首轮报告284通过但来源门禁缺9项，已恢复59另跑，待独立验收。
