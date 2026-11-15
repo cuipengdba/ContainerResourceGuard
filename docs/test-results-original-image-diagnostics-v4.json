@@ -1,0 +1,72 @@
+{
+  "schema": "crg-original-image-diagnostics-v4-qualified-v1",
+  "phase": "passed-compatibility-only",
+  "plan_sha256": "a607b27f4947aa39673b313f4d1db1ba6826db7019ddd28dcbf985806dea88d6",
+  "roles": {
+    "dbs": {
+      "passed_checks": 6,
+      "python": "2.7.5",
+      "original_image_sha256": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "checks": [
+        "original-image-python-compiles-full-worker-without-executing-main",
+        "original-image-python-AST-retains-all-other-functions",
+        "fixed-SQL-deadline-is-recorded-in-original-image-Python",
+        "hostile-exception-payload-never-serialized",
+        "actual-vendor-libpq-empty-loopback-failure-is-bounded-and-classified",
+        "original-image-Python-event-cap-and-total-error-counters"
+      ],
+      "actual_libpq_failure": {
+        "attempt": 2,
+        "elapsed_seconds": 0.0004816369619220495,
+        "exception_class": "RuntimeError",
+        "kind": "sql",
+        "observed_utc": "2026-11-15T22:10:44.947876Z",
+        "operation_returned_success": false,
+        "reason": "sql_connection_polling",
+        "request_finished_monotonic_seconds": 1720588.059853822,
+        "request_started_monotonic_seconds": 1720588.059372185,
+        "stage": "sql_connect"
+      }
+    },
+    "hisdbs": {
+      "passed_checks": 6,
+      "python": "2.7.5",
+      "original_image_sha256": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+      "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "checks": [
+        "original-image-python-compiles-full-worker-without-executing-main",
+        "original-image-python-AST-retains-all-other-functions",
+        "fixed-SQL-deadline-is-recorded-in-original-image-Python",
+        "hostile-exception-payload-never-serialized",
+        "actual-vendor-libpq-empty-loopback-failure-is-bounded-and-classified",
+        "original-image-Python-event-cap-and-total-error-counters"
+      ],
+      "actual_libpq_failure": {
+        "attempt": 2,
+        "elapsed_seconds": 0.000483411131426692,
+        "exception_class": "RuntimeError",
+        "kind": "sql",
+        "observed_utc": "2026-11-15T22:10:45.447713Z",
+        "operation_returned_success": false,
+        "reason": "sql_connection_polling",
+        "request_finished_monotonic_seconds": 1720588.559691206,
+        "request_started_monotonic_seconds": 1720588.559207795,
+        "stage": "sql_connect"
+      }
+    }
+  },
+  "total_checks": 12,
+  "cleanup_complete": true,
+  "all_inputs_including_old_test_lib_unchanged": true,
+  "exact_PG_client_sha256": "a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89",
+  "read_only_PG_client_file_not_database_data_or_config": true,
+  "worker_main_or_original_startup_executed": false,
+  "actual_empty_Pod_loopback_libpq_attempt": true,
+  "SQL_server_or_database_access": false,
+  "prior_two_failed_image_runs_and_v3_admission_preserved": true,
+  "new_vendor_full600_started": false,
+  "old1761_failure_cause_unknown": true,
+  "product_source_unchanged": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+  "stable_release_accepted": false
+}
