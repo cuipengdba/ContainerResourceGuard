@@ -1,5 +1,8 @@
 # ContainerResourceGuard
 
+固定正式版本号候选已完成[DBS/HISDBS原路径18/18](docs/testing-final-v1-full600-terminal.md)及[原生跨架构/内核284/284](docs/testing-final-v1-native-CI-terminal.md)，准确产物与独立清理证据已归档。[当前交付与剩余工作](docs/release-readiness-current.md)：公开preview.5不变，长期验收尚未完成，稳定1.0未发布。
+
+
 [正式版本号候选与原路径18项验收计划](docs/testing-final-v1-full600.md)已冻结：独立构建可重复，14项预检通过，尚未启动本轮业务。当前公开下载仍为preview.5，稳定1.0未接受，旧失败与长期门槛保留。
 
 

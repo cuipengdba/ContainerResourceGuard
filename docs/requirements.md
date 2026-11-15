@@ -1,5 +1,8 @@
 # 开发需求档案
 
+固定正式版本号候选已完成[DBS/HISDBS原路径18/18](testing-final-v1-full600-terminal.md)及[原生跨架构/内核284/284](testing-final-v1-native-CI-terminal.md)，准确产物与独立清理证据已归档。[当前交付与剩余工作](release-readiness-current.md)：公开preview.5不变，长期验收尚未完成，稳定1.0未发布。
+
+
 正式版本候选[原路径18项业务](testing-final-v1-full600.md)已实际启动；另冻结[原生跨架构/内核控制器计划](testing-final-v1-native-CI.md)，284项仅为计划数量，尚未调度，不代表通过。当前公开preview.5不变，稳定1.0未接受。
 
 
