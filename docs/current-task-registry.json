@@ -3285,7 +3285,7 @@
     "evidence": "test-results-final-v1-optional-metrics.json"
   },
   "final_v1_diagnostics": {
-    "phase": "testing-normal-dbs",
+    "phase": "failed-test-adapter-summary-count",
     "documentation": "testing-final-v1-diagnostics.md",
     "plan": "test-plan-final-v1-diagnostics.json",
     "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -3308,7 +3308,13 @@
     "DBS_initial_main_checks_passed": 8,
     "DBS_diagnostic_subchecks_passed": 19,
     "measurement_started": true,
-    "known_adapter_failure": "added tenth check but old nine-check final dispatch; original failed result retained, not product business failure claim"
+    "known_adapter_failure": "added tenth check but old nine-check final dispatch; original failed result retained, not product business failure claim",
+    "terminal": "test-results-final-v1-diagnostics-counter-failure-terminal.json",
+    "main_checks_recorded": 20,
+    "main_checks_passed": 20,
+    "diagnostic_subchecks_passed": 38,
+    "all_owned_processes_namespace_parent_leaf_absent": true,
+    "accepted": false
   },
   "final_v1_budget_overhead": {
     "phase": "native-preflight-passed-not-launched",
@@ -3325,13 +3331,14 @@
     "stable_release_accepted": false
   },
   "final_v1_diagnostics_counter_fixed": {
-    "phase": "frozen-waiting-original-terminal-archive-and-native-preflight",
+    "phase": "native-preflight-passed-not-launched",
     "documentation": "testing-final-v1-diagnostics-counter-fixed.md",
     "plan": "test-plan-final-v1-diagnostics-counter-fixed.json",
     "job_sha256": "978ad3c2482cd2035189305d44efa20061dc96560345af3956a5b2c2894c33c7",
     "plan_sha256": "1b5b9124b14d4e4f6a30eecfb9a68f4dff51d47b000326dfb94e723848d01af4",
     "measurement_started": false,
     "accepted": false,
-    "stable_release_accepted": false
+    "stable_release_accepted": false,
+    "preflight": "test-results-final-v1-diagnostics-counter-fixed-preflight.json"
   }
 }
