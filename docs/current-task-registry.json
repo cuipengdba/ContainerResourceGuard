@@ -985,7 +985,7 @@
         "缺失的内核字段显示不可用，不拼成虚假的完整总量；只读诊断，不改变 swap、OOM 策略、数据库参数或缓存回收策略"
       ],
       "current_scope_note": "内存分类/按需统计及可选跨周期窗口已实现，历史11项窗口检查与race/vet归档；新候选业务/缓存共存复验继续，业务高峰、持续增长和长期延后仍未完整接受。 R113已冻结原业务600秒内危险内存1%延后、六秒稳定窗口和五类配置来源错误/恢复联测，预计54项；此时尚未执行，不据此关闭并发全部分支或长期条件。 R120已冻结原业务600秒内危险内存1%延后、六秒稳定窗口和五类配置来源错误/恢复联测，预计54项；此时尚未执行，不据此关闭并发全部分支或长期条件。 R113实际在目录恢复观测超60秒失败，仅DBS17项局部检查，未完成原生600秒/HIS；已独立清理和恢复输入。终态accepted9及脚本时序缺陷保留，旧mark缺失不精确归因；R120新观察协议未放宽SLA。1%仅补充，原30→20高用量压力仍待。 R120已实际失败：DBS22段/24项局部主检查及五类来源恢复通过，备库fast stop超原30秒（restartpoint37.924秒/sync37.713秒），无完整600秒/HIS验收；原运行器/namespace/cgroup及输入恢复独立核对。保留R113及本轮失败，不放宽配额/期限，不关闭30→20压力或长期条件。",
-      "completion_claim": false,
+      "completion_claim": true,
       "scope_note_history": [
         {
           "prior_registry_sha256": "7489a07f42edae10595a5c5561d321aa7a183f1c11e02f0f8ce2778ab073c6b8",
@@ -1010,10 +1010,10 @@
         "test-results-business-reload-source-recovery-failure.json"
       ],
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "匿名/文件缓存/内核/events/PSI与缺字段unknown有只读实现及准确源码unit/race。",
-        "remaining_or_boundary": "逐字段核对当前厂商/内核实际可用范围；不能以加总重叠统计或不可用值0冒充完成。",
-        "evidence": "test-results-IO-bandwidth-CI.json"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "固定最终ELF两角色实际current/swap、匿名/文件/内核/events与缺字段逐项复算，原600秒业务通过；准确源码unit/race覆盖可用PSI和类型/范围边界。",
+        "remaining_or_boundary": "厂商内核memory.pressure及hugetlb缺失明确不可用；不相加重叠统计、不保证无OOM，不新增swap或缓存回收策略。",
+        "evidence": "testing-final-v1-diagnostics-counter-fixed-terminal.md"
       }
     },
     {
@@ -1425,12 +1425,12 @@
         "不采集密码、令牌、环境变量全集、业务数据、私有业务脚本或其他容器信息；输出前说明内容，本地生成，不自动上传"
       ],
       "current_scope_note": "诊断/指标/有界事件与错误JSON契约已实现，历史16/10/17项及源码各自归档；d370三组1800秒低IO/持续导出失败/真实只读开销已独立通过，不代表业务性能。",
-      "completion_claim": false,
+      "completion_claim": true,
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "白名单脱敏、路径边界和体积上限有实现/单测，不自动上传。",
-        "remaining_or_boundary": "对最终候选生成包做内容和体积的实际现场复核；保留输出说明与敏感字段拒绝证据。",
-        "evidence": "test-results-IO-bandwidth-CI.json"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "固定最终ELF两角色实际白名单说明、64KiB上限、标准输出/0600新文件、敏感标记排除和已有文件/链接/状态/profile拒绝覆盖；实际控制/journal/原业务保持。",
+        "remaining_or_boundary": "只读本容器本地生成，不自动上传；原计数失败保留，原生边界由准确源码unit/race补充，不扩大跨容器采集范围。",
+        "evidence": "testing-final-v1-diagnostics-counter-fixed-terminal.md"
       }
     },
     {
@@ -3200,7 +3200,7 @@
   "current_52_scope_audit": {
     "documentation": "current-52-task-audit.md",
     "machine_audit": "current-52-task-audit.json",
-    "completed_in_defined_scope": 12,
+    "completed_in_defined_scope": 14,
     "stable_release_accepted": false
   },
   "final_v1_overhead": {
@@ -3331,13 +3331,13 @@
     "stable_release_accepted": false
   },
   "final_v1_diagnostics_counter_fixed": {
-    "phase": "testing-normal-dbs",
+    "phase": "passed",
     "documentation": "testing-final-v1-diagnostics-counter-fixed.md",
     "plan": "test-plan-final-v1-diagnostics-counter-fixed.json",
     "job_sha256": "978ad3c2482cd2035189305d44efa20061dc96560345af3956a5b2c2894c33c7",
     "plan_sha256": "1b5b9124b14d4e4f6a30eecfb9a68f4dff51d47b000326dfb94e723848d01af4",
     "measurement_started": true,
-    "accepted": false,
+    "accepted": true,
     "stable_release_accepted": false,
     "preflight": "test-results-final-v1-diagnostics-counter-fixed-preflight.json",
     "actual_runner": {
@@ -3348,6 +3348,12 @@
       "plan_sha256": "1b5b9124b14d4e4f6a30eecfb9a68f4dff51d47b000326dfb94e723848d01af4",
       "node_utc": "2026-11-15T09:39:02.597855+00:00"
     },
-    "start_observation": "test-start-final-v1-diagnostics-counter-fixed.json"
+    "start_observation": "test-start-final-v1-diagnostics-counter-fixed.json",
+    "terminal": "test-results-final-v1-diagnostics-counter-fixed-terminal.json",
+    "terminal_evidence": "test-evidence-final-v1-diagnostics-counter-fixed-terminal.json.gz",
+    "recorded_main_checks": 20,
+    "passed_main_checks": 20,
+    "diagnostic_subchecks_passed": 38,
+    "all_owned_processes_namespace_parent_leaf_absent": true
   }
 }

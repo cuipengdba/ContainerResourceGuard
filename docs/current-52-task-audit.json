@@ -4,10 +4,10 @@
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "candidate_version": "v1.0.0",
   "original_tasks": 52,
-  "completed_in_defined_scope": 12,
+  "completed_in_defined_scope": 14,
   "status_counts": {
-    "complete-in-defined-scope": 12,
-    "partial-evidence-or-verification-open": 32,
+    "complete-in-defined-scope": 14,
+    "partial-evidence-or-verification-open": 30,
     "superseded-by-three-resource-request": 1,
     "waiting-real-duration-and-postflight": 3,
     "waiting-unavailable-hardware": 2,
@@ -317,11 +317,11 @@
         "缺失的内核字段显示不可用，不拼成虚假的完整总量；只读诊断，不改变 swap、OOM 策略、数据库参数或缓存回收策略"
       ],
       "archived_definition_sha256": "72e7932e2bfb8f746c6c7acb38c4bd3eac592e926f901e608c3e3ee81d26c3c8",
-      "current_status": "partial-evidence-or-verification-open",
-      "completion_claim": false,
-      "verified_scope": "匿名/文件缓存/内核/events/PSI与缺字段unknown有只读实现及准确源码unit/race。",
-      "remaining_or_boundary": "逐字段核对当前厂商/内核实际可用范围；不能以加总重叠统计或不可用值0冒充完成。",
-      "evidence": "test-results-IO-bandwidth-CI.json"
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "固定最终ELF两角色实际current/swap、匿名/文件/内核/events与缺字段逐项复算，原600秒业务通过；准确源码unit/race覆盖可用PSI和类型/范围边界。",
+      "remaining_or_boundary": "厂商内核memory.pressure及hugetlb缺失明确不可用；不相加重叠统计、不保证无OOM，不新增swap或缓存回收策略。",
+      "evidence": "testing-final-v1-diagnostics-counter-fixed-terminal.md"
     },
     {
       "id": "P05.2",
@@ -458,11 +458,11 @@
         "不采集密码、令牌、环境变量全集、业务数据、私有业务脚本或其他容器信息；输出前说明内容，本地生成，不自动上传"
       ],
       "archived_definition_sha256": "82cb4a20c7f8de92bb967f442e07c8218bd48fedd5622ed7fe1e0798a7440a9d",
-      "current_status": "partial-evidence-or-verification-open",
-      "completion_claim": false,
-      "verified_scope": "白名单脱敏、路径边界和体积上限有实现/单测，不自动上传。",
-      "remaining_or_boundary": "对最终候选生成包做内容和体积的实际现场复核；保留输出说明与敏感字段拒绝证据。",
-      "evidence": "test-results-IO-bandwidth-CI.json"
+      "current_status": "complete-in-defined-scope",
+      "completion_claim": true,
+      "verified_scope": "固定最终ELF两角色实际白名单说明、64KiB上限、标准输出/0600新文件、敏感标记排除和已有文件/链接/状态/profile拒绝覆盖；实际控制/journal/原业务保持。",
+      "remaining_or_boundary": "只读本容器本地生成，不自动上传；原计数失败保留，原生边界由准确源码unit/race补充，不扩大跨容器采集范围。",
+      "evidence": "testing-final-v1-diagnostics-counter-fixed-terminal.md"
     },
     {
       "id": "P07.3",
