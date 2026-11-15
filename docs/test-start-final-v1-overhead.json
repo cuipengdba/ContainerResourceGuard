@@ -1,0 +1,111 @@
+{
+  "schema": "crg-final-overhead-measuring-snapshot-v1",
+  "node_utc": "2026-11-15T07:24:25.633749+00:00",
+  "phase": "measuring",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "version": "v1.0.0",
+  "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "job_sha256": "4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230",
+  "plan_sha256": "28c4adb773b90f15de7e13b6cf105488efcd17481565cd8ac50f47497d3262c2",
+  "runner": {
+    "pid": 1257209,
+    "start_ticks": 166734854,
+    "entry": "/var/tmp/crg-final1404-tools-20261115/runner.py",
+    "job_sha256": "4496c3d518b54f927e3921ef8b5c36f261153251530fb699e68c9f05af17b230",
+    "plan_sha256": "28c4adb773b90f15de7e13b6cf105488efcd17481565cd8ac50f47497d3262c2",
+    "node_utc": "2026-11-15T07:23:25.438124+00:00"
+  },
+  "worker": {
+    "pid": 1257232,
+    "start_ticks": 166734858,
+    "entry": "/var/tmp/crg-final1404-tools-20261115/overhead-job.py"
+  },
+  "cases": {
+    "healthy": {
+      "identity": {
+        "pod_uid": "5bb3c33e-3df4-461a-8d61-bd81f61a3efe",
+        "container_id": "06c9d1959adae32ed0294c0fe7cd93e4c2f8b5510325e5e5628c9da538aebee5",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5bb3c33e_3df4_461a_8d61_bd81f61a3efe.slice/cri-containerd-06c9d1959adae32ed0294c0fe7cd93e4c2f8b5510325e5e5628c9da538aebee5.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod5bb3c33e_3df4_461a_8d61_bd81f61a3efe.slice",
+        "main": {
+          "pid": 1258601,
+          "start_ticks": 166735216
+        },
+        "Agent": {
+          "pid": 1258620,
+          "start_ticks": 166735224
+        }
+      },
+      "samples": 1,
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      }
+    },
+    "export-failure": {
+      "identity": {
+        "pod_uid": "6c37f923-cd02-477d-9f1e-1240245bd5d9",
+        "container_id": "74a895b188092ac8a4e5ed7041b9406cd7291cc42867f5c5676335c1c8c302c9",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod6c37f923_cd02_477d_9f1e_1240245bd5d9.slice/cri-containerd-74a895b188092ac8a4e5ed7041b9406cd7291cc42867f5c5676335c1c8c302c9.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod6c37f923_cd02_477d_9f1e_1240245bd5d9.slice",
+        "main": {
+          "pid": 1260107,
+          "start_ticks": 166735683
+        },
+        "Agent": {
+          "pid": 1260127,
+          "start_ticks": 166735686
+        }
+      },
+      "samples": 1,
+      "actual_controls": {
+        "cpu.max": "25000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      }
+    },
+    "readonly": {
+      "identity": {
+        "pod_uid": "99212a91-97a8-4fbf-958e-57b0c4d7d483",
+        "container_id": "3182bc38c80939522136c711e6240ee8465dd0e5ac35b87692706cb847a84ca0",
+        "group": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod99212a91_97a8_4fbf_958e_57b0c4d7d483.slice/cri-containerd-3182bc38c80939522136c711e6240ee8465dd0e5ac35b87692706cb847a84ca0.scope",
+        "pod_parent": "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod99212a91_97a8_4fbf_958e_57b0c4d7d483.slice",
+        "main": {
+          "pid": 1261070,
+          "start_ticks": 166736048
+        },
+        "Agent": {
+          "pid": 1261090,
+          "start_ticks": 166736051
+        }
+      },
+      "samples": 1,
+      "actual_controls": {
+        "cpu.max": "100000 100000",
+        "memory.max": "268435456",
+        "io.max": "253:0 rbps=65536 wbps=65536 riops=8 wiops=8",
+        "pids.max": "406648",
+        "cpu.weight": "1",
+        "io.weight": "default 100",
+        "memory.high": "max",
+        "memory.swap.max": "0"
+      }
+    }
+  },
+  "measurement_started_epoch": 1794727463.6410265,
+  "accepted": false,
+  "new_long_started": false,
+  "evidence_sha256": "b6ae651411d1541420d1f1c6a0f154e56655822e02d44f1dc84c98571a000bd0",
+  "stable_release_accepted": false
+}
