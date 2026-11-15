@@ -10,9 +10,10 @@ import sys
 import tarfile
 import tempfile
 
-p=argparse.ArgumentParser();p.add_argument('version');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('version');p.add_argument('--source-revision');a=p.parse_args()
 root=Path(__file__).resolve().parents[1]
-revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+revision=a.source_revision or subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+if len(revision)!=40 or any(c not in '0123456789abcdef' for c in revision):p.error('source revision must be a full lowercase commit SHA')
 checks=[]
 def check(name,archive,expected,arch='amd64',source=revision,success=False):
     result=subprocess.run([sys.executable,str(root/'scripts/verify-release.py'),str(archive),'--sha256',expected,'--source-revision',source,'--arch',arch],capture_output=True,text=True,timeout=30)

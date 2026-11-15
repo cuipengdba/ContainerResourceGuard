@@ -1,0 +1,80 @@
+name: fixed-final-candidate-package
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    env:
+      CRG_SOURCE: ced461705ebc27315a59aefe463f9b4af47130a3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ced461705ebc27315a59aefe463f9b4af47130a3
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Rebuild the fixed native candidate, without changing the tested program
+        working-directory: candidate
+        run: bash scripts/build.sh v1.0.0
+      - name: Bind current documentation to the fixed program source and exact binaries
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,shutil,subprocess
+          from pathlib import Path
+          identity=json.loads(Path('docs/final-v1-candidate-identity.json').read_bytes())
+          assert identity['source_revision']==os.environ['CRG_SOURCE']
+          source=Path('candidate')
+          assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=source,text=True).strip()==os.environ['CRG_SOURCE']
+          expected=identity['production_source_sha256']
+          tracked=subprocess.check_output(['git','ls-files','cmd','internal','go.mod'],text=True).splitlines()
+          tracked=[p for p in tracked if not p.endswith('_test.go')]
+          assert set(tracked)==set(expected) and len(expected)==50
+          for name,digest in expected.items():
+              assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest
+              assert hashlib.sha256((source/name).read_bytes()).hexdigest()==digest
+          binaries={'amd64':'9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8','arm64':'ff1a2c1c599eb38fde6857c2eede70a1deabf0c2c89977ab92e71ec52ec3982b'}
+          manifest=json.loads((source/'dist/build-manifest.json').read_bytes())
+          assert manifest['source_revision']==os.environ['CRG_SOURCE'] and manifest['version']=='v1.0.0'
+          Path('dist').mkdir(exist_ok=True)
+          for arch,digest in binaries.items():
+              assert hashlib.sha256((source/f'dist/crg-linux-{arch}').read_bytes()).hexdigest()==digest
+              for name in [f'crg-linux-{arch}',f'sbom-linux-{arch}.cdx.json']:
+                  shutil.copyfile(source/'dist'/name,Path('dist')/name)
+          shutil.copyfile(source/'dist/build-manifest.json','dist/build-manifest.json')
+          PY
+      - run: python3 scripts/package.py v1.0.0 --source-revision "$CRG_SOURCE"
+      - run: python3 scripts/check-package.py v1.0.0
+      - run: python3 tests/release-integrity.py v1.0.0 --source-revision "$CRG_SOURCE"
+      - run: python3 scripts/check-reproducible.py v1.0.0 --source-revision "$CRG_SOURCE"
+      - name: Attest the candidate archives from this packaging commit
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: 'dist/*.tar.gz'
+      - name: Attest amd64 SBOM
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: dist/crg-linux-amd64
+          sbom-path: dist/sbom-linux-amd64.cdx.json
+      - name: Attest arm64 SBOM
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: dist/crg-linux-arm64
+          sbom-path: dist/sbom-linux-arm64.cdx.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: crg-fixed-final-package-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
