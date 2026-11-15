@@ -63,7 +63,9 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
 当前状态：工具和冻结测试已开发，实际原生结果尚待。
 首次派发前的源码审查补齐了过严umask的处理和实测用例；
 [初始未派发计划](test-plan-final-v1-verified-staging-before-umask-review.json)保留原件，
-当前使用v2冻结身份。此前没有原生试验或通过声明。
+该修正使用v2身份，随后进行了首次原生派发。首次[试验失败](test-results-final-v1-verified-staging-first-pilot-failure.json)及[准确原件](test-evidence-final-v1-verified-staging-first-pilot.json.gz)保留：53项局部检查通过，第54项因为测试器错误假定BUILD.json是首个文件，延迟屏障未证明而失败；尚未启动Docker维护夹具，不接受完整75项。
+
+当前v3计划只修正测试器：从准确包中确定实际首个普通文件，观察该文件并要求同名DELAYED fsync轨迹；不改变暂存工具、产品二进制或原并发判据。[v2原计划](test-plan-final-v1-verified-staging-before-first-member-fix.json)保留。
 测试覆盖真实包暂存/权限、错误身份/摘要/架构、已有目标、FIFO/链接、恶意包形态、
 下载路径替换与目标并发创建，以及单临时容器实际升级/回退/禁用。
 并发屏障使用 `strace` 延迟真实 fsync，不注入成功返回值；不当作物理慢盘或掉电实测。
