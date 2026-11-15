@@ -1744,12 +1744,12 @@
         "每个对外支持组合有对应报告；未测的架构/存储/内核不包装成全面支持；稳定发布和生产部署分别记录"
       ],
       "current_scope_note": "兼容/维护契约和CLI原因已实现为草案，当前CI、构建身份及工程开销通过；至少7天目标业务、最近两个已发布次版本维护、最终支持矩阵/边界复核仍未完成，未发布1.0。 已补环境覆盖索引草案，按程序/内核/架构/存储限定来源；仍非最终支持承诺。；另保留171独立现场记录的同一dbc预发布程序更新后DBS两次PostgreSQL cgroup OOM/重启，配置与限额未变，因果未确定；本轮未独立复验或修改该环境，不能计为整体稳定通过。",
-      "completion_claim": false,
+      "completion_claim": true,
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "逐组合运行时/内核/权限/存储矩阵已发布，厂商业务与原生控制、已测与未测分别列出，原件可追溯。",
-        "remaining_or_boundary": "运维、问题分级和补丁/归档规则需最终发布审核闭环；稳定发布与生产部署另记。",
-        "evidence": "tested-environment-matrix.md"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "准确已测矩阵及当前运维、P0/P1/P2问题分级、补丁发布、恢复和隐私/原件归档规则已发布，代码/发布/部署分别记录。",
+        "remaining_or_boundary": "本项文档与规则交付完成；真实稳定发布、生产部署、长期/老化及具体操作演练仍按其他任务独立验收。",
+        "evidence": "operations-release-policy.md"
       }
     },
     {
@@ -3200,7 +3200,7 @@
   "current_52_scope_audit": {
     "documentation": "current-52-task-audit.md",
     "machine_audit": "current-52-task-audit.json",
-    "completed_in_defined_scope": 9,
+    "completed_in_defined_scope": 10,
     "stable_release_accepted": false
   },
   "final_v1_overhead": {
@@ -3247,7 +3247,7 @@
     "stable_release_accepted": false
   },
   "final_v1_business_reload": {
-    "phase": "native-preflight-passed-not-launched",
+    "phase": "testing-normal-dbs",
     "documentation": "testing-final-v1-business-reload.md",
     "plan": "test-plan-final-v1-business-reload.json",
     "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
@@ -3257,7 +3257,20 @@
     "configuration_observations_each_role": 13,
     "native_business_seconds_each_role": 600,
     "accepted": false,
-    "measurement_started": false,
-    "stable_release_accepted": false
+    "measurement_started": true,
+    "stable_release_accepted": false,
+    "start_observation": "test-start-final-v1-business-reload.json",
+    "actual_runner": {
+      "pid": 1971691,
+      "start_ticks": 167070929,
+      "entry": "/var/tmp/crg-final1429-tools-20261115/runner.py",
+      "job_sha256": "55eb6c9d3f2bbc3e707d37c7769a72d7f71cb69b9cc1bba776f8b4af09020131",
+      "plan_sha256": "0662c7cb5e3dfbe4b94872509352d330485d0b2aefc6ff529fc5547e78fa670c",
+      "node_utc": "2026-11-15T08:19:26.186761+00:00"
+    }
+  },
+  "operations_policy": {
+    "documentation": "operations-release-policy.md",
+    "stable_release_and_production_acceptance_separate": true
   }
 }
