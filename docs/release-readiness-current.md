@@ -26,9 +26,11 @@
 
 ## 当前进行与待办
 
-[最终二进制升级/回滚](testing-final-v1-binary-maintenance.md)已唯一启动：实际公开 preview.5 到固定最终 ELF，相同手动配额，两角色分别新600秒、40项计划。首次启动器在创建进程后、保存身份前发生 NameError；只读核实已有 PID/start/入口后补记身份，未重启、未修改冻结输入、配额或业务。DBS快照17项通过、15条在线维护命令已执行，完整600秒和HIS终态仍待。[启动快照](test-start-final-v1-binary-maintenance.json)、[准确原件](test-evidence-final-v1-binary-maintenance-start.json.gz)。
+[最终二进制升级/回滚通过](testing-final-v1-binary-maintenance-terminal.md)：40/40，两角色各新600秒SQL/API零错误，单写者/相同配额/回执保护、显式回退和最终原值恢复及全部自有对象清理通过。启动记录错误和一次观察读写竞态均保留准确原件，原进程未重跑。
 
-[52项原任务审核](current-52-task-audit.md)当前15项按定义范围完成；[完整任务与历史](current-task-registry.json)保留原定义和失败。安装模板、CLI状态、格式组合、持久化故障及其余具体待办按各项继续，不能用二进制维护代替。
+[CLI状态与可选启动安装设计](testing-final-v1-cli-supervisor-design.md)已归档，尚未冻结执行程序或启动；P07.1/P08.1不提前接受。
+
+[52项原任务审核](current-52-task-audit.md)当前16项按定义范围完成；[完整任务与历史](current-task-registry.json)保留原定义和失败。安装模板、CLI状态、格式组合、持久化故障及其余具体待办按各项继续，不能用二进制维护代替。
 
 [固定最终产物长期执行器](testing-final-v1-long.md)已冻结，24h observe → 同容器24h enforce → 七天新计时尚未开始。既有旧源码七天任务继续运行，其时长不能转记最终候选。未取得新候选长期及老化后验证，稳定发布尚未接受。
 

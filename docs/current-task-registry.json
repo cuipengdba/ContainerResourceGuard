@@ -1501,7 +1501,7 @@
         "升级前旧写入者全部停止，保留同一状态目录；新版本失败可回退；不让不同锁协议的旧新版本并行争写"
       ],
       "current_scope_note": "历史31项维护、四格首次接入68项、共享切换/独立恢复及开发构建往返有独立记录；旧main预览缺协议的首次安装拒绝保留。当前d370与50671aa开发程序实际维护22项/各600秒通过且清理；当前冷重建44项/四次启动通过，最近两个已发布次版本及最终持久部署验收仍未完成。 [真实已发布旧版受控迁移](testing-published-migration.md)26项通过：DBS/HISDBS各实际600.405/600.322秒、SQL/API错误0，升级与回退后原值记录/实际三资源阶段值、原PID1/PG/缓存及独立清理通过。首轮journal阶段断言缺陷与14项失败原件保留，不补称初始零计数通过。此结果只覆盖0.1旧发布次版本到1.0候选的明确停用/恢复迁移，不替代原同限额维护、两个已发布旧次版本、原32项百分比业务或长期条件。",
-      "completion_claim": false,
+      "completion_claim": true,
       "scope_note_history": [
         {
           "prior_registry_sha256": "92c2a4fb78e96a319029904e7ad90e0bc5808d997d6011fe084cb5b313410c33",
@@ -1515,10 +1515,10 @@
         "test-results-published-migration-first-failure.json"
       ],
       "current_acceptance": {
-        "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "公开preview4→5 manual40和控制迁移48均通过，旧写入者静默后才换二进制。",
-        "remaining_or_boundary": "固定最终候选受控安装/失败回退尚需独立验证；旧预发布结果不移记。",
-        "evidence": "testing-preview45-manual-maintenance-terminal.md"
+        "current_status": "complete-in-defined-scope",
+        "verified_scope": "固定最终ELF与实际公开preview.5在DBS/HISDBS各原600秒SQL/API内受控切换/显式回退40/40；写入者先静默、五次实际ELF单写者快照、同一journal/额度，变化配置旧回执拒绝与新回执反向安装、末尾原值恢复及独立清理通过；准确源码8项unit/race补充锁/摘要/身份保护。",
+        "remaining_or_boundary": "仅声明同协议实际版本的显式维护与回退，不含自动业务故障检测/自动切版；未知协议/未来格式和启动安装/镜像持久化分别归P08.1/P08.3/P08.4，长期/默认20%性能不转记。",
+        "evidence": "testing-final-v1-binary-maintenance-terminal.md"
       }
     },
     {
@@ -3200,7 +3200,7 @@
   "current_52_scope_audit": {
     "documentation": "current-52-task-audit.md",
     "machine_audit": "current-52-task-audit.json",
-    "completed_in_defined_scope": 15,
+    "completed_in_defined_scope": 16,
     "stable_release_accepted": false
   },
   "final_v1_overhead": {
@@ -3390,7 +3390,7 @@
     "full_P09_3_accepted": false
   },
   "final_v1_binary_maintenance": {
-    "phase": "testing-dbs",
+    "phase": "passed",
     "plan": "test-plan-final-v1-binary-maintenance.json",
     "native_preflight": "test-results-final-v1-binary-maintenance-native-preflight.json",
     "job_sha256": "5375499dbe57e65265210d52dfe6f71167c1c0a833127eefd36409920a7e3574",
@@ -3398,7 +3398,7 @@
     "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
     "main_checks_planned": 40,
     "measurement_started": true,
-    "accepted": false,
+    "accepted": true,
     "stable_release_accepted": false,
     "actual_runner": {
       "pid": 4139156,
@@ -3417,6 +3417,21 @@
     "start_observation": "test-start-final-v1-binary-maintenance.json",
     "start_evidence": "test-evidence-final-v1-binary-maintenance-start.json.gz",
     "launcher_record_failure_preserved": true,
-    "existing_runner_identity_reconstructed_without_restart": true
+    "existing_runner_identity_reconstructed_without_restart": true,
+    "terminal": "test-results-final-v1-binary-maintenance-terminal.json",
+    "terminal_evidence": "test-evidence-final-v1-binary-maintenance-terminal.json.gz",
+    "recorded_main_checks": 40,
+    "passed_main_checks": 40,
+    "all_owned_processes_namespace_parent_leaf_absent": true,
+    "independently_absent_registered_process_instances": 64
+  },
+  "final_v1_cli_supervisor_next_design": {
+    "phase": "design-only-not-frozen-uploaded-or-started",
+    "documentation": "testing-final-v1-cli-supervisor-design.md",
+    "tasks": [
+      "P07.1",
+      "P08.1"
+    ],
+    "accepted": false
   }
 }
