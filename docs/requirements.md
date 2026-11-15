@@ -1,5 +1,8 @@
 # 开发需求档案
 
+[正式版本号候选与原路径18项验收计划](testing-final-v1-full600.md)已冻结：独立构建可重复，14项预检通过，尚未启动本轮业务。当前公开下载仍为preview.5，稳定1.0未接受，旧失败与长期门槛保留。
+
+
 修正CSV来源后的新套件通过：计划44项，记录44项、44通过、0失败、0未执行。[完整终态](testing-PG-port-conflict-CSV-full600-terminal.md)已归档。预算/原业务SLA保持，原失败保留，稳定1.0尚未接受；[当前交付与待办](release-readiness-current.md)。
 
 
