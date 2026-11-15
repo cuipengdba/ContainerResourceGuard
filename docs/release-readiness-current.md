@@ -1,5 +1,8 @@
 # 当前交付与待办：2026-11-15
 
+正式版本号候选已固定二进制身份及[全新18项原路径业务计划](testing-final-v1-full600.md)，14项预检通过。计划尚未启动，不能计为业务通过或长期运行；公开preview.5保持不变。
+
+
 当前可下载的是[v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)，属于工程预发布。产品源码`ced461705ebc27315a59aefe463f9b4af47130a3`；现有公开八项附件、标签与程序不随后续测试修改。稳定1.0尚未发布。源码构建请检出`v1.0.0-preview.5`标签或核对准确产品修订；main尚未合入本候选，不能用旧main实现推断下载包行为。
 
 ## 已交付的用户需求
