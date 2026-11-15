@@ -1,0 +1,48 @@
+{
+  "schema": "crg-fixed-source-native-Windows-parser-fuzz-independent-v1",
+  "phase": "passed",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "Go_version": "go version go1.27.3 windows/amd64",
+  "plan_sha256": "09fa9aa2054084e37048c0a55db6e4bbe694d4da62eb40db7e0f088a9f2f4d84",
+  "report_sha256": "2e2287e63cc4786da56da6aba689b4756fa8972b300d4858abbd9c8f0e529b92",
+  "source_files_byte_exact_before_and_after": 418,
+  "cases": {
+    "FuzzDecodeConfig": {
+      "phase": "passed",
+      "target_elapsed_seconds": 301.02,
+      "package_elapsed_seconds": 302.085,
+      "wall_seconds": 353.5470000002533,
+      "last_progress": {
+        "elapsed_seconds": 301.0,
+        "executions": 3422239,
+        "new_interesting": 480,
+        "total_interesting": 485
+      },
+      "progress_records": 101,
+      "zero_execution_intervals_are_retained_not_relabelled_as_job_failure": true,
+      "stdout_sha256": "6821e2b21e870664d58e4cb99e444458a376e921713ba71697089231173bf4bf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FuzzDecodeProfile": {
+      "phase": "passed",
+      "target_elapsed_seconds": 301.02,
+      "package_elapsed_seconds": 301.94,
+      "wall_seconds": 304.344000000041,
+      "last_progress": {
+        "elapsed_seconds": 301.0,
+        "executions": 3092716,
+        "new_interesting": 451,
+        "total_interesting": 453
+      },
+      "progress_records": 101,
+      "zero_execution_intervals_are_retained_not_relabelled_as_job_failure": true,
+      "stdout_sha256": "0b4adbc51784e6c8d3d136a38cb2554ba0f7171f1602f1a07371cd347e571cf9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scope": "Existing exact-source fuzz callbacks exercise Decode and Validate/ValidateProfile; detect crashes/panics/Go fuzz failures. Full semantic correctness, persistent-state interruption, permission/slow/full filesystem, real power loss and vendor runtime remain separate.",
+  "platform": "Windows amd64 native parser tests; not Linux cgroup or product ELF execution",
+  "product_binaries_rebuilt": false,
+  "vendor_runtime_or_persistent_fault_acceptance": false,
+  "stable_release_accepted": false
+}
