@@ -1,0 +1,37 @@
+{
+  "schema": "crg-original-image-diagnostics-compatibility-plan-v2",
+  "phase": "frozen-before-image-check-Pod-launch",
+  "namespace": "crg-vendor-lab-image-diagnostics1793-20261116",
+  "tools": "/var/tmp/crg-image-diagnostics1793-20261116",
+  "original_image_sha256": {
+    "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+    "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+  },
+  "source_sha256": {
+    "worker.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+    "original.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+    "adapter.json": "28f513741f183c5c1409d14b93564a3d82bdfceebd166dfe5930403123790468",
+    "image-check.py": "bb049be6bfdc5301a707899b10e7867640394f54d1f6141a0b8a5f3c0fce36f2"
+  },
+  "checks_each_role": 6,
+  "roles": [
+    "dbs",
+    "hisdbs"
+  ],
+  "entry": "python -B /fixture/image-check.py /fixture",
+  "guard": "new private namespace and read-only original-image Pods; no worker main, PostgreSQL service, vendor startup, host namespaces, service account or business data mount; numeric empty-Pod loopback only",
+  "maximum_seconds_per_Pod": 60,
+  "cleanup": "identity-checked exact namespace UID; native absence verified; all input bytes retained",
+  "product_runtime_modified": false,
+  "formal_business_acceptance": false,
+  "stable_release_accepted": false,
+  "previous_plan_sha256": "d4e23a66d4b9f6ade2b2e3be9a86878007eb261c598c61e9f729f8a01bffe33a",
+  "fixture_correction": "Select only report[failure_diagnostics] initialization, not later main assignments; no changes to worker, six original checks or limits",
+  "previous_both_failed_and_cleaned": true,
+  "source_files": {
+    "worker.py": "tests/bounded-load-diagnostics-v1/worker.py",
+    "original.py": "tests/bounded-load-diagnostics-v1/original.py",
+    "adapter.json": "tests/bounded-load-diagnostics-v1/adapter.json",
+    "image-check.py": "tests/bounded-load-diagnostics-v1/image-check-v2.py"
+  }
+}

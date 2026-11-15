@@ -33,3 +33,11 @@
 以上第1—5项尚未完成；本轮没有新业务/长稳任务在后台运行。用户最新范围仍为CPU/内存/IO独立百分比、默认各20%，memory.high保留外部硬上限、IO百分比仅带宽/IOPS手动、纯v2设置/v1明确跳过、每容器一对一、无权限不阻断原启动及既定日志保留。
 
 已冻结[原镜像兼容性计划](test-plan-original-image-diagnostics.json)与[Python2/3镜像校验器](../tests/bounded-load-diagnostics-v1/image-check.py)，计划在新的只读Pod检验完整工作线程语法、AST、诊断及真实libpq连接失败；不启动PostgreSQL或原业务启动链，不挂载业务数据，不执行正常600秒；此计划尚未执行。
+
+## 原镜像首轮失败与v2修正计划
+
+冻结后在两个准确原镜像均出现校验器NameError：AST提取误选了main末尾的report赋值，访问尚未定义的interrupted。尚未完成六项检查，不能宣称镜像兼容；两个Pod终态失败、namespace及父cgroup均独立确认消失，冻结输入未改。[完整失败及清理](test-results-original-image-diagnostics-first-failure.json)、[准确回执](test-evidence-original-image-diagnostics-first-failure.json.gz)保留。
+
+先前两个发布/准入问题也保留：Git换行规范化改变adapter元数据摘要，远端逐文件校验失败阻止启动；现通过仅该路径的属性规则保留与原生回执绑定的CRLF字节。首次镜像准入没识别CRI给本地短标签增加docker.io/，在工具目录或Pod创建前失败；按实际同一镜像ID和准确规范标签修正。均未改产品或工作线程、标准、预算。
+
+已证明v2 AST只选中一个report['failure_diagnostics']赋值，保留原六项与冻结工作线程。[新身份v2冻结计划](test-plan-original-image-diagnostics-v2.json)、[v2校验器](../tests/bounded-load-diagnostics-v1/image-check-v2.py)在第二轮前发布，首轮工具目录/输入和结果不覆盖。v2目前尚未启动；新正常业务600秒、受控锁等待、时间线/对照与长稳仍未开始。
