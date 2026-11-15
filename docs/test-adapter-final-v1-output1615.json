@@ -1,0 +1,27 @@
+{
+  "base": "crg-r1571-output-matrix-frozen.json",
+  "changes": {
+    "maintenance-business.py": {
+      "before": "742a23195f91aaacf0869fb7d9b0113311282cace62236081336704ffbd68601",
+      "after": "4bd98d7164de6a94d11ac0a1b4dd6888842dc86d97152bb297a78c09cc89e621",
+      "runtime_path_and_environment_labels_only": true
+    },
+    "runner.py": {
+      "before": "35a08252f65af3c8636b9a35cf3d9e6db759a91ab182a46d1148aa78926528f4",
+      "after": "bfe6ebd956efbd7e60b7056316cb2fccbc1a35602be950b1497f97f8c8e5ab78",
+      "runtime_path_and_environment_labels_only": true
+    },
+    "artifact-transfer.py": {
+      "before": "b7ccd1ab5787a2baac8dbc3d201b5400f0266ba5bbfc7a32a8b29f068efa7d4c",
+      "after": "6e0e8cf265fe18a51fc9b0ede3e3cf12ea6972c979b4e246d1608f160cb04117",
+      "runtime_path_and_environment_labels_only": true
+    },
+    "tests/output-matrix-checks.py": {
+      "before": "571d1defbe60c616ead335b91128eb4575960f3b5042f5ce99c0a94e40d11dc6",
+      "after": "85626b877a7a826e5ef87666fca0399905e28e14d798863564f7b05a8c2e32a6",
+      "runtime_path_and_environment_labels_only": true
+    }
+  },
+  "added_runner_gate": "\n# Re-evaluate the exact frozen admission immediately before creating any fixture.\nadmission_process=subprocess.run([sys.executable,str(w/'tests/node-admission.py'),str(w/'plan.json')],capture_output=True,text=True,timeout=40,check=True);assert not admission_process.stderr;node_admission=json.loads(admission_process.stdout);assert node_admission['admitted'] and node_admission['fixtures_created']==False\nearly=plan['previous_early_output'];early_tools=Path(early['tools']);early_raw=(Path(early['output'])/'report.json').read_bytes();early_report=json.loads(early_raw);early_exit=json.loads((early_tools/'exit.json').read_bytes());assert sha(early_raw)==early['report_sha256'] and early_report['phase']=='failed' and early_exit['exit']==1 and early_exit['artifact_index_complete'] and early_exit['job_sha256']==early['job_sha256'] and early_exit['plan_sha256']==early['plan_sha256'];assert prior_absent(json.loads((early_tools/'launch.json').read_bytes()))\nfor row in early_report['roles'].values():assert prior_absent(row['driver']) and row['recorded_checks']==0\nfor ns in early['namespaces'].values():\n p=subprocess.run(['kubectl','get','namespace',ns,'--ignore-not-found','--request-timeout=8s','-o','json'],capture_output=True,text=True,timeout=12,check=True);assert not p.stdout.strip() and not p.stderr\nsandboxes=json.loads(subprocess.run(['crictl','pods','-o','json'],capture_output=True,text=True,timeout=12,check=True).stdout);assert not any(v['id']==early['sandbox_id'] or v.get('metadata',{}).get('uid')==early['Pod_UID'] for v in sandboxes.get('items',[]))\nassert not any(early['Pod_UID'] in str(p) or early['Pod_UID'].replace('-','_') in str(p) for p in Path('/sys/fs/cgroup').rglob('*'))\n",
+  "business_SLA_numeric_output_predicates_and_14_cases_unchanged": true
+}
