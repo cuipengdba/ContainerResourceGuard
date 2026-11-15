@@ -9,3 +9,5 @@
 只读准入可在当前诊断业务运行时完成；实际启动必须等诊断任务终态归档、登记进程/namespace/父叶cgroup清理，且没有下一组诊断业务正在运行，避免这组新测试与该业务互相干扰。旧七天任务不修改。数据只代表共享节点Agent自身CPU/RSS/写入；不能声称排除系统干扰的因果性能对比、厂商业务性能、长期老化或默认20%任意负载保证。完整新1800秒、两组真实控制、独立重新计算及进程/cgroup/namespace清理通过后再判断本项。
 
 [计划](test-plan-final-v1-budget-overhead.json)、[原生准入](test-results-final-v1-budget-overhead-preflight.json)、[可逆适配](test-adapter-final-v1-budget-overhead.json)、[准确输入](../tests/final-v1-budget-overhead-frozen/README.md)、[已有低IO/持续异常终态](testing-final-v1-overhead-terminal.md)。当前未启动，稳定1.0未接受。
+
+不同有效额度开销补验于节点2026-11-15T10:04:27.183865+00:00通过原1448失败原件/清理、新1465通过/清理及原1404准确报告守卫后唯一启动。独立活体快照确认两档各自原Agent/PID1、实际三项额度及同一最终ELF；45秒预热后新计1800秒，尚未接受。额外[启动守卫](../tests/final-v1-budget-overhead-launch.py)及[观察器](../tests/final-v1-budget-overhead-observe.py)不替换7份冻结测量输入。[启动快照](test-start-final-v1-budget-overhead.json)、[准确原件](test-evidence-final-v1-budget-overhead-start.json.gz)。已完成14/52项及稳定发布未接受保持。

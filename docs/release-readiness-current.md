@@ -44,3 +44,5 @@
 修订1465已完成原轮归档/清理守卫及原生准入，在节点2026-11-15T09:39:02.597855+00:00唯一启动新轮；独立观察确认runner和DBSdriver为对应PID/start，当前进入DBS测试。[启动快照](test-start-final-v1-diagnostics-counter-fixed.json)、[准确原件](test-evidence-final-v1-diagnostics-counter-fixed-start.json.gz)。新轮未取得完整600秒或HIS终态，原1448失败保持，完成数仍12。
 
 最新终态：[修订1465完整通过](testing-final-v1-diagnostics-counter-fixed-terminal.md)，20/20主检查、38/38诊断子检查；两角色各新跑原600秒业务、备份/同步/独立恢复及清理通过，原1448计数失败不改判。P05.1/P07.2按定义范围完成，总计14/52项；不同额度开销补验尚未开始，长期和稳定发布条件仍待。
+
+不同有效额度开销补验于节点2026-11-15T10:04:27.183865+00:00通过原1448失败原件/清理、新1465通过/清理及原1404准确报告守卫后唯一启动。独立活体快照确认两档各自原Agent/PID1、实际三项额度及同一最终ELF；45秒预热后新计1800秒，尚未接受。额外[启动守卫](../tests/final-v1-budget-overhead-launch.py)及[观察器](../tests/final-v1-budget-overhead-observe.py)不替换7份冻结测量输入。[启动快照](test-start-final-v1-budget-overhead.json)、[准确原件](test-evidence-final-v1-budget-overhead-start.json.gz)。已完成14/52项及稳定发布未接受保持。
