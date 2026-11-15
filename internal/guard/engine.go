@@ -661,12 +661,23 @@ func requestedControl(c Config, file string) bool {
 }
 
 func VerifyIdentity(env Environment) error {
-	now, e := Discover()
+	_, e := RefreshEnvironment(env)
+	return e
+}
+
+// RefreshEnvironment retains fresh verified capacity and cpuset observations
+// only while they still describe the exact locked container identity.
+func RefreshEnvironment(env Environment) (Environment, error) {
+	return refreshEnvironment(env, Discover)
+}
+
+func refreshEnvironment(env Environment, discover func() (Environment, error)) (Environment, error) {
+	now, e := discover()
 	if e != nil {
-		return e
+		return Environment{}, e
 	}
 	if now.Identity != env.Identity || now.Target != env.Target {
-		return errors.New("cgroup identity changed; no further writes allowed")
+		return Environment{}, errors.New("cgroup identity changed; no further writes allowed")
 	}
-	return nil
+	return now, nil
 }

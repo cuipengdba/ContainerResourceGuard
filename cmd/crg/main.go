@@ -526,9 +526,12 @@ func mainErr() (result error) {
 		} else if disabled {
 			return nil
 		}
-		if e = guard.VerifyIdentity(env); e != nil {
-			return e
+		currentEnvironment, err := guard.RefreshEnvironment(env)
+		if err != nil {
+			return err
 		}
+		env = currentEnvironment
+		engine.Env = currentEnvironment
 		watcher.Poll(env, engine.Originals(), forceReload)
 		forceReload = false
 		if c.IntervalSeconds != watcher.Current.IntervalSeconds {
