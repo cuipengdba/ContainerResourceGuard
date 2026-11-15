@@ -23,6 +23,7 @@
 | [解析器](testing-final-v1-parser-fuzz.md) | 准确源码两目标各300秒、418输入保持；非真实掉电证明 |
 | [候选打包与来源](final-v1-package-rehearsal.md) | 实际Linux两架构包、14项离线检查、重复构建打包及10项独立签名正常/拒绝；本地SBOM schema通过，尚非稳定附件/安装验收 |
 | [历史硬内存恢复并发](testing-final-v1-legacy-restore-pressure.md) | 相同最终ELF、amd64/ARM64与Linux6.8/7.0四VM，116/116及16夹具清理；模拟旧journal，不代替真实旧版本迁移或厂商老化验收 |
+| [安全暂存与准确包维护](verified-release-staging.md) | 两架构150/150及52暂存场景，实际候选包升级/回退/禁用；原失败保留，非稳定身份或厂商/老化验收 |
 
 ## 正在进行与待办
 
