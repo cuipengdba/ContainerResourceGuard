@@ -1,0 +1,92 @@
+{
+  "launcher_source_sha256": "ecbfef2eb8db83740c1712a8ae5ec9ba9dff9ad06fae0cd0df2d010b3a3213b3",
+  "result": {
+    "pid": 2759375,
+    "start_ticks": 169386336,
+    "entry": "/var/tmp/crg-final1396-tools-20261115/runner.py",
+    "job_sha256": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+    "plan_sha256": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4",
+    "node_utc": "2026-11-15T14:45:20.256764+00:00",
+    "single_launch_guard": true,
+    "source_sha256": {
+      "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+      "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+      "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+      "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+      "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+      "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+      "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+      "tests/vendor-soak-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+      "tests/vendor-soak-load.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "business-qualification.json": "a632f14fd1965db27f17a996545d899e8cf6443bee6d89099df32a8a60764b8a",
+      "CI-qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+      "job.py": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+      "campaign-wrapper.py": "d2613220ed5cf5db67d734ef03356eaba90b5599853f23cc4b4ab19164bcae87",
+      "runner.py": "979a310540e305b10dc34fa0161c7b89a4681605ee08a92ebe382c411c5054d9",
+      "plan.json": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4"
+    },
+    "node_admission": {
+      "admitted": true,
+      "issues": [],
+      "minimum_free_bytes": 144828058829,
+      "actual_free_bytes": 150619361280,
+      "filesystem_bytes": 965520392192,
+      "expected_original_images": {
+        "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+        "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+      },
+      "schema": "crg-disposable-test-node-admission-v1",
+      "node_utc": "2026-11-15T14:45:19.401955+00:00",
+      "read_only": true,
+      "fixtures_created": false,
+      "product_controls_changed": false
+    },
+    "admission": {
+      "phase": "ready",
+      "node_utc": "2026-11-15T14:45:20.188331+00:00",
+      "build_info": {
+        "arch": "amd64",
+        "go_version": "go1.27.3",
+        "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+        "io_profile_versions": [
+          1,
+          2
+        ],
+        "journal_versions": [
+          1
+        ],
+        "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+        "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+        "os": "linux",
+        "revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+        "version": "v1.0.0",
+        "writer_controls": [
+          "cpu.max",
+          "cpu.weight",
+          "io.max",
+          "io.weight",
+          "memory.max",
+          "memory.high",
+          "memory.swap.max",
+          "pids.max"
+        ]
+      },
+      "all_frozen_inputs_verified": 15,
+      "business18_and_native284_verified": true,
+      "available_memory_bytes": 45284724736,
+      "free_disk_bytes": 150619361280,
+      "blocking_pods": [],
+      "business_fixture_created": false,
+      "long_measurement_started": false
+    },
+    "observer": {
+      "pid": 2759377,
+      "start_ticks": 169386340,
+      "entry": "/var/tmp/crg-final1396-tools-20261115/observer-readonly.py",
+      "source_sha256": "049bf2640a21e63c71db1f7068efa3618f830b96cb3556fe0420ead3b4220423",
+      "read_only_Kubernetes_queries": true,
+      "product_or_business_signals": false
+    }
+  }
+}
