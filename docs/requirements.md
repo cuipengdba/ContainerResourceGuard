@@ -1,5 +1,8 @@
 # 开发需求档案
 
+实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
+
+
 已发布程序维护终态：preview.4→preview.5同预算在线维护通过，40/40项，0失败/0未执行；[完整终态和准确原件](testing-preview45-manual-maintenance-terminal.md)已独立核对。两namespace、两组父叶及59登记实例消失。此限定范围不替代百分比迁移、长期验收或原默认20%失败；原52项和稳定1.0门槛保持。
 
 以下保留原时点记录。
