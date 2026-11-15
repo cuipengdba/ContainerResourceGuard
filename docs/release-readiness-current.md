@@ -36,3 +36,5 @@
 [固定最终ELF同一Agent业务热重载](testing-final-v1-business-reload.md)已取得[两角色终态](testing-final-v1-business-reload-terminal.md)：18/18主检查、26/26配置观察，各原生600秒SQL/API零错误、实际备份/同步/独立恢复通过，全部自有进程与夹具清理已独立确认。P03.1和P07.3按定义范围补齐，仍不替代长期、默认20%业务性能及其他待办。[当前运维、问题分级和补丁/归档规则](operations-release-policy.md)已补齐，旧RC2不支持重载的过时说明已修正。
 
 [最终ELF只读诊断与内存统计补验](testing-final-v1-diagnostics.md)已唯一启动；DBS19项诊断子检查和8项初始主检查通过，输出1852字节/0600，PSI/hugetlb缺失如实显示不可用。完整两角色600秒业务和HIS诊断仍待终态；P05.1/P07.2不提前勾选。
+
+[诊断执行器计数修订](testing-final-v1-diagnostics-counter-fixed.md)：DBS10项检查全通过，但末尾旧9项计数使driver退出1；HIS仍在原任务测量。原失败保持，确定根因后已冻结独立修订，待原任务终态归档/清理及新准入后才运行。[两档实际限额的30分钟开销补验](testing-final-v1-budget-overhead.md)亦已冻结并通过只读准入，尚未启动，等诊断夹具清理后独立执行。两项不提前验收，完成数仍12。
