@@ -217,8 +217,8 @@
       "archived_definition_sha256": "ea8309ec1972271c00541dfd918148bc702df6cc0dc409f3e383e00eb104e03e",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "请求代次、已接受策略、逐项延期/冲突和重试状态已实现，旧压力与失败均保留。",
-      "remaining_or_boundary": "30→20真实压力下的最终候选完整业务/安全应用及未生效时长需要对应当前终态。",
+      "verified_scope": "代次/逐项实际值/冲突和重试已实现；用户改为memory.high后，高水位可低于当前用量，不再按旧硬上限窗口延后。",
+      "remaining_or_boundary": "继续验收冲突/部分生效可见性和历史自有memory.max恢复延期；不得把允许high立即回收误写成下调保护缺陷。",
       "evidence": "test-results-IO-bandwidth-CI.json"
     },
     {
@@ -332,8 +332,8 @@
       "archived_definition_sha256": "6df2ef7d05e9b0eaa0457ac212982b13575149bdd87c94d49f641c2de45b4616",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "多周期窗口、趋势/压力与写前复查/持久化保护有实现及单测。",
-      "remaining_or_boundary": "当前候选并发分配、慢fsync、持续脏页和恢复较低原值的实机组合仍待闭环。",
+      "verified_scope": "稳定窗口/趋势及写前复查用于降低历史硬上限/恢复；当前memory.high回收目标不使用该窗口阻止生效。",
+      "remaining_or_boundary": "核对历史硬限额恢复的并发分配/慢fsync保护；新high下脏页/压力业务验证仍需完成，不能强行回收活跃内存或擅自加预算。",
       "evidence": "test-results-IO-bandwidth-CI.json"
     },
     {
@@ -487,7 +487,7 @@
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
       "verified_scope": "有界事件及去重限流保留必要journal，旧版三场景低IO开销通过。",
-      "remaining_or_boundary": "固定最终ELF正常/输出失败/只读三场景1800秒独立测量本轮准备中。",
+      "remaining_or_boundary": "固定最终ELF三场景已实际进入测量，仍须真实1800秒、原CPU/RSS/写入门槛通过及独立进程/父叶清理。",
       "evidence": "testing-final-v1-overhead.md"
     },
     {
@@ -591,7 +591,7 @@
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
       "verified_scope": "保持原15s周期、CPU≤0.1%单核/RSS≤20MiB、状态约5min及低IO/异常门槛。",
-      "remaining_or_boundary": "最终候选三场景预检查已过，需真实至少1800秒及独立清理；不能计旧版30分钟。",
+      "remaining_or_boundary": "固定最终ELF三场景已实际进入测量，仍须真实1800秒、原CPU/RSS/写入门槛通过及独立进程/父叶清理。",
       "evidence": "testing-final-v1-overhead.md"
     },
     {

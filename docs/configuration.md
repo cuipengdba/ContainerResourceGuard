@@ -1,13 +1,12 @@
 # 配置参数
 
-> 当前交付为[preview.5](releases/v1.0.0-preview.5.md)。最新完整测试结果与剩余发布门槛见[当前交付与待办](release-readiness-current.md)；历史时点测试不能代替后续终态。
-
-
 截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
+
+> 当前交付为[preview.5](releases/v1.0.0-preview.5.md)。最新完整测试结果与剩余发布门槛见[当前交付与待办](release-readiness-current.md)；历史时点测试不能代替后续终态。
 
 > 最新范围：R29只保留CPU/内存/IO独立百分比，各默认20；R30设置前检查cgroup（v1跳过、v2校验）。日志保留，诊断/热重载/升级等深入功能继续。历史扩展资源规划暂缓。详见[当前配置](independent-percentages.md)和[下一版交付](next-version.md)。
 
-本页新部署配置面向已发布preview.5；旧RC2不接受后续新增字段，各版本历史安排见[双模式设计](resource-modes.md)。`resource_mode` 是预算算法，`mode` 是 enforce/observe。
+当前下载的preview.5支持百分比/手动双资源模式；旧RC2字段不同。见 [设计及分版安排](resource-modes.md)。`resource_mode` 是预算算法，`mode` 仍是 enforce/observe。
 
 ## 手动资源模式（preview.5）
 
@@ -21,7 +20,7 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 
 最新交付只使用CPU、内存、IO三个资源入口。历史`pids_max`、`cpu_weight`、`io_weight`、`memory_swap_max`字段保留旧配置兼容代码，不是当前新增配置项；新部署不要加入这些字段，独立百分比模式会拒绝它们。旧manual或percent配置迁移前应检查并清理历史扩展配置及其仍自有的限额，不能假定换用新配置就自动撤销旧值。
 
-组合候选已经实现双模式热切换和移除项协调，详见 [热重载](hot-reload.md)。完整候选先校验，再逐项应用；删除维度尝试恢复自有原值，内存/任务安全下调可能延后，需核对实际结果。旧版没有热重载时，先用匹配版本 disable 完成恢复，再改配置并 enable。
+当前支持通过合法配置重载切换percent/manual。删除已管理项目时，仅恢复当前身份仍拥有且没有外部冲突的原值；有冲突时保留外部值并报告，不盲目写max。切换后核对status的代次、逐项实际值和journal。manual切percent若尚无可用IO profile，会明确IO降级；需要受控重启辅助Agent进入首次自动标定流程，原业务独立运行。state_dir不能在运行中变更。
 
 ## 最小配置
 
@@ -40,21 +39,15 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | JSON 字段 | 默认值 | 含义 |
 |---|---|---|
 | `resource_mode` | `percent` | percent自动换算，manual分别指定CPU/内存回收目标/IO |
-| `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/内存/标定IO，独立生效 |
+| `cpu_percent` / `memory_percent` / `io_percent` | 各20 | 分别换算CPU/memory.high/标定读写BPS，独立生效；IOPS仅手动 |
 | `percent` | 不使用 | 仅旧配置兼容入口，不能混用独立百分比；manual禁用 |
 | `log_dir` | `/var/log/crg` | 一天一文件、30天/1GB自动清理，失败降级stderr |
 | `limits` | 无 | 手动模式必填对象，至少一项 CPU/内存/IO；省略项目不接管 |
-| `io_weight` | 不修改 | IO 默认竞争权重 1–10000；保留每设备覆盖，需要内核后端支持，不是硬上限 |
-| `memory_high` | 不单独填写 | 旧绝对值兼容参数；推荐手动使用limits.memory_high，百分比自动生成memory.high，允许低于当前用量 |
-| `memory_swap_max` | 不修改 | 字节字符串，0B或至少一页；仅限制交换空间，不包含普通内存；有用量时保留余量，0B须已无swap用量 |
-| `memory_stable_seconds` | 0 | 仅历史硬限额降低/恢复：0保留瞬时安全检查，或2–3600秒连续稳定窗口；不阻止memory.high回收目标；至少3个分隔样本，等待期间不写新意图 |
-| `metrics_enabled` | false | 当前 state_dir 的有界 metrics.prom，默认无监听端口；导出失败不停止资源协调 |
-| `events_enabled` | false | 当前 state_dir 的有界 events.jsonl，最多64条/64KiB，默认无监听端口；不包含原值/路径/原始错误 |
-| `mode` | `enforce` | `enforce` 协调写入；`observe` 不新增写入，也不撤销此前已生效限额 |
+| `mode` | `enforce` | `enforce` 写入，`observe` 仅预览 |
 | `io_profile` | `/etc/crg/io-profile.json` | 默认自动标定/复用的本地设备基准 |
 | `state_dir` | 系统临时目录下 `containerresourceguard`，通常 `/tmp/containerresourceguard` | 本容器独立、可写的锁、状态和原值日志 |
 | `interval_seconds` | 15 | 检查周期，1–3600 秒；仅有变更才输出日志 |
-| `data_paths` | 无 | 最多64个容器内绝对路径、每个最多4096字节；百分比模式诊断覆盖，手动 IO 模式必须用它发现当前设备 |
+| `data_paths` | 无 | 可选的容器内绝对路径列表；只读显示 IO 设备覆盖，不改变统一预算 |
 
 不支持的 JSON 字段、重复键、多个 JSON 对象、无效范围均拒绝，防止拼写错误悄悄失效。不能在配置里指定目标 cgroup/PID/容器。
 
@@ -75,28 +68,21 @@ CPU 核数范围 0.01–1048576；内存至少 16MiB 并向下按页对齐。字
 | `preflight [--format human]` | 计划与控制文件打开权限预检，不写资源值 |
 | `disable [--config FILE] [--state-dir DIR]` | 标记停用、等待 Agent 释放锁、恢复自有原值 |
 | `enable [--config FILE] [--state-dir DIR]` | 删除停用标记，辅助循环下次重试时重启 Agent |
-| `reload [--state-dir DIR] [--config FILE]` | 向同一容器/当前 Agent 会话请求重载；requested不等价已生效 |
-| `quiesce --config FILE` | 暂停写入者，保留内核限额和原值日志；供显式维护 |
-| `diagnose [--config FILE] [--output FRESH_PRIVATE_FILE]` | 默认输出白名单诊断快照，显式新输出文件0600且有界；不复制原始日志 |
-| `upgrade-check --config FILE` / `state-backup --config FILE --output FRESH_PRIVATE_FILE` | 持锁兼容核对 / 显式私有状态备份，见安装升级说明 |
-| `binary-install` / `binary-rollback` | 显式摘要/私有receipt控制的单程序替换，不重启业务，不自动enable |
-| `supervisor-plan` / `supervisor-install` / `supervisor-uninstall` | 已审阅模板的预览/接入/恢复门槛卸载，显式维护路径和摘要，见接入设计 |
 | `restore [--state-dir DIR]` | Agent 停止后恢复自己仍持有的配置 |
-| `calibrate [--seconds 3] [--samples 3]` | 无目录/输出参数也可自动选择；维护时主动重标定，默认后台首次流程见自动标定说明 |
-| `profile-check --io-profile FILE` / `profile-merge --io-profile A --merge-profile B [--replace] [--output FILE]` | 基准质量/身份核对及默认只读合并预览，显式输出才保存 |
+| `calibrate [--directory DIR] [--output FILE] [--seconds 3]` | 默认自动选最大合格文件系统及输出位置；通常无需手工执行。可选显式覆盖，每阶段1–30秒，默认3秒 |
 | `version` | 输出版本 |
 | `build-info` | 输出版本、源码修订与运行架构 |
 
-文件启动的组合候选每个协调周期检查同一路径的新配置，显式reload使用每秒控制轮询；无效候选保留最后有效配置，state_dir不能运行中改变。CLI覆盖持续生效，单纯文件调百分比时不要同时指定--percent。原始外部上限通过日志保存，不会把CRG上次20%误当作不可提高到30%的外部上限。维护参数、错误码与兼容规则见 [契约草案](compatibility-contract.md)。
+Agent支持配置文件检测和`crg reload --config /etc/crg/config.json`请求重载。合法新配置形成新代次；坏文件、半写入、缺失或不可读时保留上一份有效配置，不清空预算。请求完成不等于所有内核值已生效，应核对status的实际值和逐项原因。运行中不能更换state_dir；enforce改为observe不会隐式撤销限额，解除仍用明确disable/restore。原始外部上限通过journal保存，不把CRG自己的上一份预算当作不可提高的外部上限。
 
 ## 安全计算
 
 - 既有外部 CPU/内存/IO 限额更严格时保留更严格值。上级内存和 CPU 配额也参与约束；隐藏的祖先仍由内核限制。
-- 内存百分比写memory.high，允许超过并可能节流；旧硬限额降低/恢复仍检查余量、增长及可用events/PSI。原有外部memory.max仍可能导致OOM，见[内存策略与升级](memory-reclaim-policy.md)。
-- 独立百分比及旧percent配置的内存预算均写memory.high；manual使用limits.memory_high，旧limits.memory_max作为带警告的high别名。默认不设置Swap。不主动回收页缓存、改数据库参数或修改 OOM 策略、cpuset、资源 requests。HugeTLB 单独记账是否纳入内存上限取决于内核配置。
+- 内存百分比写memory.high，可低于当前用量以触发回收/节流；允许超目标。旧硬限额的降低/恢复才使用余量和稳定检查。外部memory.max或宿主内存耗尽仍可能OOM，见[内存策略](memory-reclaim-policy.md)。
+- 独立百分比及旧percent内存预算写memory.high；手动用limits.memory_high，旧limits.memory_max仅作带警告的high别名。CRG不新增memory.max，保留外部既有限额；不设置swap或主动回收活跃数据库内存，不改OOM策略、cpuset和资源requests。
 - 缺 IO profile 时 CPU/内存仍可受控，但总体标记 `degraded`，不会显示全部成功。
-- IO 百分比换算后读/写带宽低于 1 个整数 BPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
-- 同一台机器上两个容器各设 20%，表示各自资源目标（内存high不是硬上限）；本程序不统计全节点所有容器的比例。
+- IO 百分比换算后的读/写带宽低于 1 个整数 BPS 时跳过该设备并报告，不能向上取整伪称符合更小的百分比。极低 IO 限额也会拖慢 Agent 自己的状态持久化。
+- 同一台机器上两个容器各设 20%，表示各自上限；本程序不统计全节点所有容器的比例。
 
 JSON 输出继续是默认格式；doctor、preflight 和 status 可指定 `--format human`。状态没有变化时最多每 5 分钟保存一次，原值日志不减频。
 
