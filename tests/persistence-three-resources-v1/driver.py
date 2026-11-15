@@ -499,7 +499,7 @@ def traced_fault(item, worker, stage, field='io.max'):
     process, actor = baseline(item)
     trace = item['output'] / 'persistence.strace'
     diagnostic = open(item['output'] / 'strace.stderr', 'w')
-    tracer = subprocess.Popen(['/usr/bin/strace', '-f', '-ttt', '-T', '-yy', '-e', 'trace=fsync,rename,renameat,write',
+    tracer = subprocess.Popen(['/usr/bin/strace', '-s', '4096', '-f', '-ttt', '-T', '-yy', '-e', 'trace=fsync,rename,renameat,write',
                                '-e', 'inject=fsync:delay_exit=3s', '-o', str(trace), '-p', str(actor['pid'])],
                               stdout=subprocess.DEVNULL, stderr=diagnostic)
     key = journal_key(field)

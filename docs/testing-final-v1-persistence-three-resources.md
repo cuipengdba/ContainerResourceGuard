@@ -27,3 +27,16 @@ fsync延迟为返回路径注入，SIGKILL不等于掉电；重试显式由测�
 97原独占长期任务保持，不增加业务夹具、不重启、不改配额。稳定1.0仍待原全部门槛。
 
 [计划](test-plan-final-v1-persistence-three-resources.json)、[执行器](../tests/persistence-three-resources-v1/driver.py)。
+
+## 首轮原生通过与独立复核缺口
+
+[首轮运行43750027399](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43750027399)原生92/92检查、10场景通过，
+CPU/memory.high/IO实际读回、日志和八项原值恢复及所属清理通过。
+但独立复核失败：strace默认32字节字符串限制截断io.max较长参数，不能核对完整写入串。
+[准确原ZIP/108成员](test-evidence-final-v1-three-resource-first-pilot.json.gz)、
+[原计划](test-plan-final-v1-three-resource-before-full-trace.json)、
+[原失败复核器](../tests/persistence-three-resources-v1/review-before-full-trace.py)与
+[缺口/失败原件](test-results-final-v1-three-resource-first-pilot-gap.json)保留，不补造缺失轨迹。
+
+新v2协议只增加strace -s4096，保留原92检查/10场景、三种资源配额、延迟、持续时长/三次重试和强杀/恢复判据。
+完整IO参数复核要求保持，不将原结果直接归给新来源。新来源重新运行结果尚待。
