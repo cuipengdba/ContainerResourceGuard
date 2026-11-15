@@ -1,0 +1,86 @@
+{
+  "base_manifest": "crg-r1525-cli-supervisor-frozen.json",
+  "whole_source_forward_text_changes": {
+    "maintenance-business.py": [
+      {
+        "before": "final1525",
+        "after": "final1551",
+        "count": 3
+      },
+      {
+        "before": "FINAL1525",
+        "after": "FINAL1551",
+        "count": 1
+      },
+      {
+        "before": "cli1525",
+        "after": "output1551",
+        "count": 2
+      },
+      {
+        "before": "'IO_basis':'explicit manual BPS/IOPS on data_paths; no calibration/profile'",
+        "after": "'IO_basis':'initial manual; frozen existing calibrated profile for explicit percentage transitions; no new calibration'",
+        "count": 1
+      },
+      {
+        "before": "spec_from_file_location('actual_cli_supervisor_checks',candidates/'tests/cli-supervisor-checks.py')",
+        "after": "spec_from_file_location('actual_output_matrix_checks',candidates/'tests/output-matrix-checks.py')",
+        "count": 1
+      },
+      {
+        "before": "record(key+'-actual-CLI-human-JSON-natural-age-lock-and-resume',len(item['cli_status_observations'])==4 and same())",
+        "after": "record(key+'-actual-full-output-matrix-original-policy-restored',len(item['output_matrix_checks'])==len(plan['output_contract']['cases']) and all(v['passed'] for v in item['output_matrix_checks']) and same())",
+        "count": 1
+      },
+      {
+        "before": "record(key+'-actual-supervisor-trust-lock-install-and-owned-uninstall-refusal',len(item['cli_supervisor_checks'])==len(plan['cli_supervisor_online_checks']) and all(v['passed'] for v in item['cli_supervisor_checks']) and same())",
+        "after": "record(key+'-actual-percent-uppercap-generation-profile-conflict-contract',len(item['output_transitions'])==6 and len(item['output_readonly_plans'])==3 and item['output_external_CPU']['injected']==contract.runtime['cpu.max'].strip() and same())",
+        "count": 1
+      },
+      {
+        "before": "cli_checks.after_disable();record(key+'-post600-private-copy-uninstall-after-empty-journal',len(item['cli_supervisor_checks'])==len(plan['cli_supervisor_online_checks'])+len(plan['cli_supervisor_post600_checks']) and all(v['passed'] for v in item['cli_supervisor_checks']))",
+        "after": "cli_checks.after_disable();record(key+'-post600-original-eight-runtime-and-profile-unchanged',item['output_final_restored'])",
+        "count": 1
+      }
+    ],
+    "runner.py": [
+      {
+        "before": "final1525",
+        "after": "final1551",
+        "count": 2
+      },
+      {
+        "before": "FINAL1525",
+        "after": "FINAL1551",
+        "count": 1
+      },
+      {
+        "before": "cli1525",
+        "after": "output1551",
+        "count": 2
+      },
+      {
+        "before": "root.mkdir(mode=0o700);out=",
+        "after": "prior=plan['previous_CLI_supervisor'];pw=Path(prior['tools']);pr=Path(prior['output']);raw=(pr/'report.json').read_bytes();report=json.loads(raw);term=json.loads((pw/'exit.json').read_bytes());assert sha(raw)==prior['report_sha256'] and report['phase']=='passed' and term['exit']==0 and term['artifact_index_complete'] and term['job_sha256']==prior['job_sha256'] and term['plan_sha256']==prior['plan_sha256'] and prior_absent(json.loads((pw/'launch.json').read_bytes()));output_registered=0\nfor row in report['roles'].values():\n assert row['recorded_checks']==row['passed_checks']==13 and row['phase']=='passed' and prior_absent(row['driver'])\n for record in row['cleanup']:\n  identity=record['identity'];assert not Path(identity['group']).exists() and not Path(identity['pod_parent']).exists() and all(prior_absent(p) for p in identity['processes']);output_registered+=len(identity['processes'])\nassert output_registered==prior['registered_process_instances_absent']==55\nfor ns in prior['namespaces'].values():\n p=subprocess.run(['kubectl','get','namespace',ns,'--ignore-not-found','--request-timeout=8s','-o','json'],capture_output=True,text=True,timeout=12,check=True);assert not p.stdout.strip() and not p.stderr\nroot.mkdir(mode=0o700);out=",
+        "count": 1
+      },
+      {
+        "before": "    for i,path in enumerate",
+        "after": "    copy(folder/'crg-config/io-profile.json',role+'-io-profile.json')\n    for i,path in enumerate",
+        "count": 1
+      }
+    ],
+    "artifact-transfer.py": [
+      {
+        "before": "final1525",
+        "after": "final1551",
+        "count": 1
+      }
+    ]
+  },
+  "new_module": "tests/output-matrix-checks.py",
+  "new_profile": "tests/output-profile.json",
+  "same_worker_campaign_engine_optional_helper_and_final_ELF": true,
+  "initial_config_interval_changed15_to1_only": true,
+  "native600_SLA_unchanged": true
+}
