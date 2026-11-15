@@ -48,3 +48,5 @@
 不同有效额度开销补验于节点2026-11-15T10:04:27.183865+00:00通过原1448失败原件/清理、新1465通过/清理及原1404准确报告守卫后唯一启动。独立活体快照确认两档各自原Agent/PID1、实际三项额度及同一最终ELF；45秒预热后新计1800秒，尚未接受。额外[启动守卫](../tests/final-v1-budget-overhead-launch.py)及[观察器](../tests/final-v1-budget-overhead-observe.py)不替换7份冻结测量输入。[启动快照](test-start-final-v1-budget-overhead.json)、[准确原件](test-evidence-final-v1-budget-overhead-start.json.gz)。已完成14/52项及稳定发布未接受保持。
 
 最新终态：[两档实际额度开销通过](testing-final-v1-budget-overhead-terminal.md)，45秒预热后各新1800秒、181样本，原CPU/RSS/写入/状态间隔/OOM门槛及实际控制/进程/清理通过；结合已有同ELF低IO/持续故障原件，P09.4按至少30分钟工程定义完成，总15/52项。另有[准确源码两个解析器各300秒](testing-final-v1-parser-fuzz.md)，P09.3保留持久化/故障待办。长期与稳定发布仍未接受，默认20%业务失败和全部旧失败保持。
+
+[固定最终候选二进制维护](testing-final-v1-binary-maintenance.md)已冻结12项输入、本地17项及原生准入通过；实际公开preview.5到固定v1.0.0两角色各新600秒/共40项计划，尚未启动，不借用旧40/40结果。安装脚本/CLI状态及其余具体待办继续，当前15/52项和稳定未接受保持。
