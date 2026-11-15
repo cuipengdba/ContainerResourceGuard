@@ -1,0 +1,31 @@
+{
+  "schema": "crg-fixed-source-supervisor-unit-race-event-review-v1",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "evidence": "test-evidence-IO-bandwidth-CI.json.gz",
+  "evidence_gzip_sha256": "6cf98ec2cac44ba9c583984ac83156a789f76048dbcb84b90b6b4c9e193fc4e4",
+  "results": [
+    {
+      "artifact_id": 14046558744,
+      "artifact_name": "native-arm64-ced461705ebc27315a59aefe463f9b4af47130a3",
+      "member": "go-test-race.jsonl",
+      "bytes": 249507,
+      "sha256": "c350174d18b2de1cc2635a592df0e9b13d45a5e0e1ae9f49093bff4ad8974c80",
+      "required_names_passed": [
+        "TestSupervisorAtomicReplacementGuardsAndPreservesMode",
+        "TestSupervisorSyntaxNeverRunsSourceOrBashEnvironment",
+        "TestSupervisorPlanRejectsAliasedStateBeforeAnyInputOrBackup",
+        "TestSupervisorTemplateLeavesBusinessAndCacheAnchorsUnchanged",
+        "TestSupervisorLiteralCannotTurnPathIntoShellCode"
+      ]
+    }
+  ],
+  "source_files_exact_at_revision": {
+    "internal/guard/supervisor.go": "6daa9faf7a7b650b926237250008271001a0a18eff5d58fad5dee1e04ad70d7e",
+    "internal/guard/supervisor_test.go": "58f94236166e3d24505079998d6d99615844b279e1a846fc3139b9ea3218f016",
+    "internal/guard/supervisor_linux.go": "2c3f9fabcc7a4a82d7f39c375bd860177a2b481585029d84b7daf8dcc07b0522",
+    "internal/guard/supervisor_linux_test.go": "f4d8e6c6ccd923460742e2ac443adafa30288ad07f49a19555507d10d4ffa24d"
+  },
+  "scope": "Review of existing exact-source native unit/race events; no new runtime, failure injection, vendor ARM, unknown-protocol executable or duration claim. Supplements separately new fixed-final vendor CLI and private supervisor-copy maintenance.",
+  "P08_3_full_vendor_format_matrix_accepted": false,
+  "stable_release_accepted": false
+}
