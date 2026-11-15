@@ -15,3 +15,5 @@ previous为实际公开v1.0.0-preview.5，ELF be6b0aa9f9bf932d8b02872e86a9cffcfe
 这是最终候选的二进制维护范围。supervisor安装工具/未知模板拒绝、CLI human/JSON过期与锁语义、未来格式/镜像持久化、压力与老化仍分项验收。不是默认20%业务通过、不是两次正式minor兼容、不是厂商ARM或独立物理多盘、不是七天稳定接受。P08.2等待本轮实际终态，当前仍15/52项完成。
 
 [冻结计划](test-plan-final-v1-binary-maintenance.json)、[准确工具](../tests/final-v1-binary-maintenance-frozen/README.md)、[可逆适配](test-adapter-final-v1-binary-maintenance.json)、[本地核对](test-results-final-v1-binary-maintenance-local-preflight.json)、[原生准入](test-results-final-v1-binary-maintenance-native-preflight.json)、[前置诊断业务终态](testing-final-v1-diagnostics-counter-fixed-terminal.md)、[前置开销终态](testing-final-v1-budget-overhead-terminal.md)。
+
+实际于节点2026-11-15T11:06:09.730663+00:00启动，原runner为4139156/start168071232。启动器记录变量错误及只读核实后的补记身份均保留；没有再次启动。DBS快照17项通过、15条在线命令已执行；两角色原600秒及终态仍待。[启动快照](test-start-final-v1-binary-maintenance.json)、[准确原件](test-evidence-final-v1-binary-maintenance-start.json.gz)。新增启动守卫/观察器不改变12项冻结测量输入。
