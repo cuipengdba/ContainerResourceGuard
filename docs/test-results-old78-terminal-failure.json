@@ -1,0 +1,163 @@
+{
+  "schema": "crg-old78-terminal-failure-index-v1",
+  "phase": "failed",
+  "source_commit": "d3706f3ea7ad279fea818e5ad1aa62ac5d3f8710",
+  "binary_sha256": "dbc48aa5a4aa4d4a77c6af03d3294a9fcf08a6855672a80b003fccd1fed8a2c8",
+  "memory_policy": "old memory.max hard limit; not current memory.high candidate",
+  "requested_seconds": 604800,
+  "actual_both_worker_interval_seconds": 388942.8717010021,
+  "completed_content_native_pending_cycles": 18,
+  "failed_cycle": {
+    "offset_seconds": 388800.19021204486,
+    "run_id": "2026111107818",
+    "content_started_epoch": 1794747458.3869984,
+    "exit": 1,
+    "phase": "failed",
+    "roles": {
+      "dbs": {
+        "checks": 10,
+        "cleanup": false,
+        "native_pending": true,
+        "exec_probe_diagnostic": {
+          "passed_original_5s_criterion": true,
+          "samples": 22,
+          "api_max": 4.179021517978981,
+          "sql_max": 3.4025041880086064
+        }
+      },
+      "hisdbs": {
+        "checks": 10,
+        "cleanup": false,
+        "native_pending": true,
+        "exec_probe_diagnostic": {
+          "passed_original_5s_criterion": false,
+          "samples": 24,
+          "api_max": 4.461250740103424,
+          "sql_max": 5.493808913975954
+        }
+      }
+    },
+    "content_ended_epoch": 1794747599.8011484
+  },
+  "failed_cycle_root_cause_fully_qualified": false,
+  "samples_each": 6483,
+  "native_summary": [
+    {
+      "phase": "running",
+      "elapsed_seconds": 388789.8936829651,
+      "sql": {
+        "attempts": 194382,
+        "errors": 0,
+        "histogram": [
+          193985,
+          293,
+          13,
+          2,
+          4,
+          7,
+          17,
+          25,
+          16,
+          15,
+          5,
+          0
+        ],
+        "max_seconds": 3.659180184127763,
+        "successes": 194382,
+        "total_seconds": 192.39082294749096
+      },
+      "api": {
+        "attempts": 77757,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          77563,
+          178,
+          1,
+          2,
+          6,
+          6,
+          1,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.6476312349550426,
+        "successes": 77757,
+        "total_seconds": 646.3454195531085
+      },
+      "interrupted": null,
+      "threads_stopped": null,
+      "payload_integrity": null,
+      "primary_not_restarted": null
+    },
+    {
+      "phase": "failed",
+      "elapsed_seconds": 388942.5661885261,
+      "sql": {
+        "attempts": 194455,
+        "errors": 0,
+        "histogram": [
+          194037,
+          303,
+          10,
+          2,
+          7,
+          9,
+          26,
+          25,
+          15,
+          11,
+          10,
+          0
+        ],
+        "max_seconds": 4.932733079884201,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 0.6430390211640211,
+        "successes": 194455,
+        "total_seconds": 206.1560894390568
+      },
+      "api": {
+        "attempts": 77787,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          77594,
+          182,
+          0,
+          2,
+          3,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.4874299089424312,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 0.6430803571428572,
+        "successes": 77787,
+        "total_seconds": 619.1529916499276
+      },
+      "interrupted": true,
+      "threads_stopped": true,
+      "payload_integrity": true,
+      "primary_not_restarted": true
+    }
+  ],
+  "main_checks_recorded": 11,
+  "main_checks_passed": 10,
+  "main_checks_failed": 1,
+  "runner_campaign_original_absent": true,
+  "main_namespace_absent": true,
+  "all_periodic_restore_fixture_cleanup_independently_qualified": false,
+  "main_report_sha256": "ae84e51f90cc6568fd3c4a2441172954b1c018efdfdd65da20921293265a1e72",
+  "campaign_report_sha256": "36d3f683892d8f768dea58b899748733630a32565d2d1fd5c5affcdbf529ac4f",
+  "exact_artifact_members": 5,
+  "exact_artifact_bytes": 14848929,
+  "accepted": false,
+  "duration_inherited_by_current_final_candidate": false,
+  "stable_release_accepted": false
+}
