@@ -15,6 +15,14 @@ func main() {
 		panic("explicit disposable fixture required")
 	}
 	if os.Args[1] == "remount-ro" || os.Args[1] == "remount-rw" {
+		if os.Args[1] == "remount-ro" {
+			// Existing lock descriptors pin the old writable mount. A new
+			// private bind of the same state tree has no open writer count;
+			// only future path-based access through this overlay becomes RO.
+			if err := syscall.Mount("/state", "/state", "", syscall.MS_BIND, ""); err != nil {
+				panic(err)
+			}
+		}
 		flags := uintptr(syscall.MS_BIND | syscall.MS_REMOUNT)
 		if os.Args[1] == "remount-ro" {
 			flags |= syscall.MS_RDONLY
