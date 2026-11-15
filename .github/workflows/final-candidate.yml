@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          ref: ced461705ebc27315a59aefe463f9b4af47130a3
+          ref: 37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           path: qualification
@@ -45,7 +45,7 @@ jobs:
           mkdir -p ci-final/download
           python3 - <<'PY'
           import json, os, pathlib, platform, subprocess
-          result = {'workflow_revision':os.environ['GITHUB_SHA'],'source_revision':'ced461705ebc27315a59aefe463f9b4af47130a3','runner_label':'${{ matrix.runner }}','architecture':'${{ matrix.arch }}','machine':platform.machine(),'kernel':platform.release(),'expected_kernel_prefix':'${{ matrix.kernel }}','cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'scope':'real sibling partitions in native VM; not vendor business or independent physical disks'}
+          result = {'workflow_revision':os.environ['GITHUB_SHA'],'source_revision':'37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0','runner_label':'${{ matrix.runner }}','architecture':'${{ matrix.arch }}','machine':platform.machine(),'kernel':platform.release(),'expected_kernel_prefix':'${{ matrix.kernel }}','cgroup_filesystem':subprocess.check_output(['stat','-fc','%T','/sys/fs/cgroup'],text=True).strip(),'scope':'real sibling partitions in native VM; not vendor business or independent physical disks'}
           pathlib.Path('ci-final/environment.json').write_text(json.dumps(result,indent=2)+'\n')
           assert result['kernel'].startswith(result['expected_kernel_prefix']), 'actual kernel family differs; no fixture started'
           assert result['machine'] in {'amd64':['x86_64'],'arm64':['aarch64','arm64']}[result['architecture']]
@@ -55,8 +55,8 @@ jobs:
         run: |
           python3 - <<'PY'
           import hashlib,json,pathlib,subprocess
-          raw=pathlib.Path('qualification/docs/test-plan-final-v1-native-CI.json').read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='615d5bc09e9a6a1bd57f90e50a2a0a854bf84497e25779c76a2c126b0c508471'
+          raw=pathlib.Path('qualification/docs/test-plan-capacity-refresh-native-CI.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='89b7c63a655d43d6b9ca7d452c78041f61c09076494bd3693699a7c3ab27546a'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           assert not subprocess.check_output(['git','diff','--name-only'])
@@ -114,7 +114,7 @@ jobs:
           sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/native-cgroup-high.py \
             --binary "$PWD/ci-final/crg" --holder "$PWD/ci-final/hold" \
             --load "$PWD/ci-final/load" --output "$PWD/ci-final/native-results" \
-            --expected-arch '${{ matrix.arch }}' --source-revision 'ced461705ebc27315a59aefe463f9b4af47130a3'
+            --expected-arch '${{ matrix.arch }}' --source-revision '37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0'
       - name: Prepare only the running kernel SCSI test module on this ephemeral VM
         run: |
           if ! modinfo scsi_debug >/dev/null 2>&1; then
@@ -128,7 +128,7 @@ jobs:
           sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/partition-cgroup.py \
             --binary "$PWD/ci-final/crg" --old-binary "$PWD/ci-final/verified/crg" --holder "$PWD/ci-final/hold" \
             --load "$PWD/ci-final/load" --shared-load "$PWD/ci-final/shared-load" --output "$PWD/ci-final/results" \
-            --expected-arch '${{ matrix.arch }}' --source-revision 'ced461705ebc27315a59aefe463f9b4af47130a3'
+            --expected-arch '${{ matrix.arch }}' --source-revision '37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0'
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
