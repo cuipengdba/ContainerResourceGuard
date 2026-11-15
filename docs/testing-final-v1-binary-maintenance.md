@@ -1,6 +1,6 @@
 # 固定1.0候选：受控二进制升级与回退验收
 
-本轮尚未启动。12项输入已冻结，本地17项核对及原生准入通过，未创建业务夹具。旧1498草案的导出ROOT引用旧轮，在上传前静态检查拦截；旧字节保留，新1501已连同导出器改用独立路径，原生确认旧草案未创建工具/结果目录。不是产品运行失败，也不继承旧轮结果。
+本轮已完成40/40，DBS/HISDBS各自新600秒SQL/API通过，全部自有对象清理已独立确认。[准确终态](testing-final-v1-binary-maintenance-terminal.md)。冻结输入及旧草案拒绝原件保持，旧轮运行时长不转记。
 
 previous为实际公开v1.0.0-preview.5，ELF be6b0aa9f9bf932d8b02872e86a9cffcfea6d7199e39c274694dce904af07333；candidate为固定v1.0.0 ELF 9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8。两者产品源码均为ced461705ebc27315a59aefe463f9b4af47130a3，嵌入版本/ELF不同。候选不冒充已公开稳定版，没有重建程序或覆盖旧附件。
 
@@ -12,8 +12,8 @@ previous为实际公开v1.0.0-preview.5，ELF be6b0aa9f9bf932d8b02872e86a9cffcfe
 
 启动前实际要求新1465整体passed/20项主检查和71登记记录清理；同ELF1461两档1800秒整体passed、runner/worker/四个PID/start/两对父叶及namespace消失；拒绝与其他新final业务执行器并行，旧78任务保持不动。新1501自身的namespace、输出、launch/guard必须全新；资源余量需满足创建28GiB/运行8GiB内存和20GiB磁盘。
 
-这是最终候选的二进制维护范围。supervisor安装工具/未知模板拒绝、CLI human/JSON过期与锁语义、未来格式/镜像持久化、压力与老化仍分项验收。不是默认20%业务通过、不是两次正式minor兼容、不是厂商ARM或独立物理多盘、不是七天稳定接受。P08.2等待本轮实际终态，当前仍15/52项完成。
+这是最终候选的二进制维护范围。supervisor安装工具/未知模板拒绝、CLI human/JSON过期与锁语义、未来格式/镜像持久化、压力与老化仍分项验收。不是默认20%业务通过、不是两次正式minor兼容、不是厂商ARM或独立物理多盘、不是七天稳定接受。P08.2在显式受控切换/回退范围补齐，当前16/52项完成；其余边界分项保留。
 
 [冻结计划](test-plan-final-v1-binary-maintenance.json)、[准确工具](../tests/final-v1-binary-maintenance-frozen/README.md)、[可逆适配](test-adapter-final-v1-binary-maintenance.json)、[本地核对](test-results-final-v1-binary-maintenance-local-preflight.json)、[原生准入](test-results-final-v1-binary-maintenance-native-preflight.json)、[前置诊断业务终态](testing-final-v1-diagnostics-counter-fixed-terminal.md)、[前置开销终态](testing-final-v1-budget-overhead-terminal.md)。
 
-实际于节点2026-11-15T11:06:09.730663+00:00启动，原runner为4139156/start168071232。启动器记录变量错误及只读核实后的补记身份均保留；没有再次启动。DBS快照17项通过、15条在线命令已执行；两角色原600秒及终态仍待。[启动快照](test-start-final-v1-binary-maintenance.json)、[准确原件](test-evidence-final-v1-binary-maintenance-start.json.gz)。新增启动守卫/观察器不改变12项冻结测量输入。
+历史启动过程和记录错误见[启动快照](test-start-final-v1-binary-maintenance.json)、[准确原件](test-evidence-final-v1-binary-maintenance-start.json.gz)；只补记已有进程身份，未重跑。额外观察程序不改变12项冻结测量输入。
