@@ -40,3 +40,5 @@
 [诊断执行器计数修订](testing-final-v1-diagnostics-counter-fixed.md)：DBS10项检查全通过，但末尾旧9项计数使driver退出1；HIS仍在原任务测量。原失败保持，确定根因后已冻结独立修订，待原任务终态归档/清理及新准入后才运行。[两档实际限额的30分钟开销补验](testing-final-v1-budget-overhead.md)亦已冻结并通过只读准入，尚未启动，等诊断夹具清理后独立执行。两项不提前验收，完成数仍12。
 
 原1448现取得[完整失败终态及准确原件](testing-final-v1-diagnostics-counter-failure-terminal.md)：20项实际主检查及38项诊断子检查通过，整体failed/退出1来自汇总计数错误，清理独立完成。修订1465新准入通过，尚未启动新轮。原失败不改判，完成数仍12。
+
+修订1465已完成原轮归档/清理守卫及原生准入，在节点2026-11-15T09:39:02.597855+00:00唯一启动新轮；独立观察确认runner和DBSdriver为对应PID/start，当前进入DBS测试。[启动快照](test-start-final-v1-diagnostics-counter-fixed.json)、[准确原件](test-evidence-final-v1-diagnostics-counter-fixed-start.json.gz)。新轮未取得完整600秒或HIS终态，原1448失败保持，完成数仍12。
