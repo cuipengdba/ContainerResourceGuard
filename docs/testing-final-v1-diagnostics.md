@@ -15,3 +15,5 @@
 [固定计划](test-plan-final-v1-diagnostics.json)、[原生准入原件](test-results-final-v1-diagnostics-preflight.json)、[可逆适配](test-adapter-final-v1-diagnostics.json)、[非二进制准确输入](../tests/final-v1-diagnostics-frozen/README.md)。前轮[热重载终态](testing-final-v1-business-reload-terminal.md)已通过，不将该轮计时移记本轮。稳定1.0尚未接受，公开下载仍为preview.5。
 
 [启动快照](test-start-final-v1-diagnostics.json)与[准确观察原件](test-evidence-final-v1-diagnostic-start.json.gz)保留当时状态，不替代终态。DBS stdout及本地文件各1852字节、0600，PSI/hugetlb缺失明确标为不可用。[准确源码8项原生unit/race事件复核](test-results-final-v1-diagnostic-memory-source-review.json)补充异常/缺失解析、白名单/上限、状态路径别名及实时统计不重写持久快照的边界；不移记原产物业务计时。
+
+当前已定位执行器汇总计数漏改：DBS10项通过但末尾仍按9项判定，退出1。原任务与输入不修改；[根因、具名修订与严格新轮前置条件](testing-final-v1-diagnostics-counter-fixed.md)另行保留，不能重标原失败通过。

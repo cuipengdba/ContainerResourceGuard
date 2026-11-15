@@ -1,0 +1,87 @@
+{
+  "schema": "crg-fixed-final-two-effective-budget-overhead-v1",
+  "phase": "frozen-before-native-preflight-and-launch",
+  "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
+  "version": "v1.0.0",
+  "binary_sha256": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+  "job_sha256": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
+  "tools": "/var/tmp/crg-final1461-tools-20261115",
+  "output": "/var/tmp/crg-final1461-overhead-20261115",
+  "namespace": "crg-final1461-overhead-20261115",
+  "criteria": {
+    "warmup_seconds": 45,
+    "actual_seconds": 1800,
+    "sample_period_seconds": 10,
+    "interval_seconds": 15,
+    "single_core_CPU_percent_max": 0.1,
+    "Agent_RSS_max_bytes": 20971520,
+    "stable_status_min_write_interval_seconds": 299,
+    "healthy_Agent_write_bytes_max": 8388608,
+    "fault_Agent_write_bytes_max": 16777216,
+    "OOM_kill_delta_max": 0,
+    "same_Agent_process_all_samples": true,
+    "daily0600_logs_report_v2": true,
+    "external_memory_max_bytes": 268435456
+  },
+  "cases": [
+    "healthy-half",
+    "healthy-threequarters"
+  ],
+  "source_sha256": {
+    "binaries/crg-linux-amd64": "9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8",
+    "examples/supervisor.sh": "7a7428bee5cfaf1742467b7a25c098507f464d9ca85b632102806f98bef5aec9",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "qualification.json": "64d9b042005006f0c3e2a551060d506c838c4b84cc69d889e1283ec7f53453a0",
+    "overhead-job.py": "c7079e5877793a82bc62d0b5090433e1560f31f15f48ed002e80705554a21588",
+    "runner.py": "6bde3aa54ecddb2d0090508451e02cd3fa72ccb78d7184eb44ccb4a124d97ef4"
+  },
+  "scope": "Final fixed ELF shared-node Agent-only two additional healthy effective budgets, same15s/45warmup/1800measure/181samples and original thresholds. Compare with exact final1404 healthy low-IO and actual fault results, without causal performance or vendor business/long-aging inference. No prior runtime inherited. Existing vendor diagnostic and old78 untouched.",
+  "previous_source_evidence_retained": "test-results-memory-high-overhead-v2.json",
+  "new_measurement_started": false,
+  "stable_release_accepted": false,
+  "budgets": {
+    "healthy-half": {
+      "limits": {
+        "cpu_cores": 0.5,
+        "memory_high": "192MiB",
+        "io_read_bps": "128KiB",
+        "io_write_bps": "128KiB",
+        "io_read_iops": 16,
+        "io_write_iops": 16
+      },
+      "expected_cpu_max": "50000 100000",
+      "expected_memory_high": 201326592,
+      "expected_IO_axes": "rbps=131072 wbps=131072 riops=16 wiops=16"
+    },
+    "healthy-threequarters": {
+      "limits": {
+        "cpu_cores": 0.75,
+        "memory_high": "224MiB",
+        "io_read_bps": "1MiB",
+        "io_write_bps": "1MiB",
+        "io_read_iops": 128,
+        "io_write_iops": 128
+      },
+      "expected_cpu_max": "75000 100000",
+      "expected_memory_high": 234881024,
+      "expected_IO_axes": "rbps=1048576 wbps=1048576 riops=128 wiops=128"
+    }
+  },
+  "completed_lowIO_and_fault_reference": {
+    "tools": "/var/tmp/crg-final1404-tools-20261115",
+    "output": "/var/tmp/crg-final1404-overhead-20261115",
+    "report_sha256": "3a9f00c75b629ddf5d070dccb9218432ecc814670b6fb453c6754ad0dc48e619",
+    "qualification_sha256": "f34421da13ba79de86658418c10766ddfef7769a75e8a74e2eff9628cbf6b3ba",
+    "runtime_inherited": false
+  },
+  "launch_requires_diagnostic_terminal_clean": {
+    "tools": "/var/tmp/crg-final1448-tools-20261115",
+    "output": "/var/tmp/crg-final1448-results-20261115",
+    "job_sha256": "393565e59371e348de0653264c9efaa680f9a45b7adf780c362a58f48cae4015",
+    "plan_sha256": "6d3facf393474c3f91942ebee71aa267978d6e6f73cb9ee8af2dba8dbb5b3e75",
+    "namespaces": [
+      "crg-vendor-lab-final1448-normal-dbs-20261115",
+      "crg-vendor-lab-final1448-normal-hisdbs-20261115"
+    ]
+  }
+}
