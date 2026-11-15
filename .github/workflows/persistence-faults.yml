@@ -62,7 +62,7 @@ jobs:
           import hashlib,json,os,pathlib,platform,subprocess
           planpath=pathlib.Path('qualification/docs/test-plan-final-v1-persistence-faults.json')
           raw=planpath.read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='a49f0c8ae814fe134495f7988d2b65fc3deb170909eb9657fffa5f38aa29043e'
+          assert hashlib.sha256(raw).hexdigest()=='fd2b4c61160cd204254c337cea65c0f017868f02460f560678f65361553d8538'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           for n,h in p['source_sha256'].items():
@@ -120,3 +120,4 @@ jobs:
           name: persistence-faults-${{ matrix.runner }}-${{ github.sha }}
           path: ci-persistence/receipts/
           retention-days: 30
+          include-hidden-files: true
