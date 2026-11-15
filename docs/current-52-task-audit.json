@@ -267,8 +267,8 @@
       "archived_definition_sha256": "fd043c35d5ab8e3e00e29e8ea8225ebae41e927462df83d7f941927649275276",
       "current_status": "waiting-real-duration-and-postflight",
       "completion_claim": false,
-      "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。",
-      "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。",
+      "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
+      "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
       "evidence": "testing-final-v1-long1396-terminal.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "原16输入及固定最终ELF已唯一启动，正式1396当前进入baseline observe，另有不控制业务的独立只读Pod/事件记录。",
@@ -404,6 +404,38 @@
         "underlying_API_error_cause_known": false,
         "next_action": "preserve original failure and stderr gap; improve future coordinator failure receipts without relaxing exclusivity/time/SLA; any future long run needs fresh identity and zero inherited time",
         "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "before_fresh1728_acceptance": {
+        "verified_scope": "原16输入与最终ELF保持；正式1396已唯一启动后在baseline约4.23小时失败退出，12启动检查/一次native-pending内容周期及原失败/原件/清理独立核对。",
+        "remaining_or_boundary": "启动和首周期内容检查不等于24小时通过；仍须同容器observe86400→enforce86400及新604800秒/老化验证，旧78失败时间不继承。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。",
+        "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "fresh1728_followup": {
+        "phase": "frozen-not-launched",
+        "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+        "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+        "new_clock": true,
+        "inherited_seconds": 0,
+        "original1396_failed_unchanged": true,
+        "product_runtime_unchanged": true,
+        "coordinator_probe": {
+          "schema": "crg-coordinator-probe-offline-review-v1",
+          "phase": "passed",
+          "passed_native_cases": 24,
+          "members_verified": 114,
+          "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+          "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+          "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+          "read_only_observation_total_budget_seconds": 15,
+          "max_readonly_attempts": 3,
+          "mutating_retries": 0,
+          "actual_cluster_readonly": true,
+          "product_changed": false,
+          "old_API_failure_cause_known": false,
+          "business_long_duration_accepted": false
+        },
+        "evidence": "testing-final-v1-long1728.md",
+        "stable_release_accepted": false
       }
     },
     {
@@ -415,8 +447,8 @@
       "archived_definition_sha256": "bdb3d8609f775edfc6eb8df9a3d2e3cb63213babd355d7a19293bb66eb464bfa",
       "current_status": "partial-evidence-or-verification-open",
       "completion_claim": false,
-      "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。",
-      "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。",
+      "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
+      "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
       "evidence": "testing-final-v1-long1396-terminal.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。",
@@ -552,6 +584,38 @@
         "underlying_API_error_cause_known": false,
         "next_action": "preserve original failure and stderr gap; improve future coordinator failure receipts without relaxing exclusivity/time/SLA; any future long run needs fresh identity and zero inherited time",
         "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "before_fresh1728_acceptance": {
+        "verified_scope": "现有负载/数据/SLA、SQL/API、备份恢复和OOM/节流采集已执行，manual600通过且20%失败。 原1396基线片段两角色SQL/API零错误、最大延迟小于5秒，但计划覆盖仅约17.6%、负载failed/interrupted，不接受24小时对比。",
+        "remaining_or_boundary": "正式24h对比与七天结束后逐项复算，不能忽略失败或只以满时长判定通过。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。",
+        "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "fresh1728_followup": {
+        "phase": "frozen-not-launched",
+        "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+        "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+        "new_clock": true,
+        "inherited_seconds": 0,
+        "original1396_failed_unchanged": true,
+        "product_runtime_unchanged": true,
+        "coordinator_probe": {
+          "schema": "crg-coordinator-probe-offline-review-v1",
+          "phase": "passed",
+          "passed_native_cases": 24,
+          "members_verified": 114,
+          "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+          "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+          "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+          "read_only_observation_total_budget_seconds": 15,
+          "max_readonly_attempts": 3,
+          "mutating_retries": 0,
+          "actual_cluster_readonly": true,
+          "product_changed": false,
+          "old_API_failure_cause_known": false,
+          "business_long_duration_accepted": false
+        },
+        "evidence": "testing-final-v1-long1728.md",
+        "stable_release_accepted": false
       }
     },
     {
@@ -1134,8 +1198,8 @@
       "archived_definition_sha256": "cc6fc54ed9f9a66b43d2536cd87e301d26f439b01512f0576ee671768fca8893",
       "current_status": "waiting-real-duration-and-postflight",
       "completion_claim": false,
-      "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。",
-      "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。",
+      "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。 协调器原始错误留存/原15秒预算内只读重试24项通过；1728独立身份已冻结，业务标准未变。",
+      "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。 新1728尚未启动，不计作长期通过；入场后须完整24h+24h+7d及老化后验收。",
       "evidence": "testing-final-v1-long1396-terminal.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "固定最终候选七天/28周期执行器已冻结，旧任务进程仍活跃且不继承其时长。",
@@ -1271,6 +1335,38 @@
         "underlying_API_error_cause_known": false,
         "next_action": "preserve original failure and stderr gap; improve future coordinator failure receipts without relaxing exclusivity/time/SLA; any future long run needs fresh identity and zero inherited time",
         "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "before_fresh1728_acceptance": {
+        "verified_scope": "最终候选原1396已在baseline失败退出；enforce及新七天未开始。旧78失败不继承时长，当前没有活动的原1396长期进程。",
+        "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。 原1396当前已失败；须先补齐协调器失败原输出/时限记录并核对控制面，再冻结新的从零计时方案，不放宽原门槛。",
+        "evidence": "testing-final-v1-long1396-terminal.md"
+      },
+      "fresh1728_followup": {
+        "phase": "frozen-not-launched",
+        "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+        "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+        "new_clock": true,
+        "inherited_seconds": 0,
+        "original1396_failed_unchanged": true,
+        "product_runtime_unchanged": true,
+        "coordinator_probe": {
+          "schema": "crg-coordinator-probe-offline-review-v1",
+          "phase": "passed",
+          "passed_native_cases": 24,
+          "members_verified": 114,
+          "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+          "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+          "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+          "read_only_observation_total_budget_seconds": 15,
+          "max_readonly_attempts": 3,
+          "mutating_retries": 0,
+          "actual_cluster_readonly": true,
+          "product_changed": false,
+          "old_API_failure_cause_known": false,
+          "business_long_duration_accepted": false
+        },
+        "evidence": "testing-final-v1-long1728.md",
+        "stable_release_accepted": false
       }
     },
     {
@@ -1609,5 +1705,32 @@
     "underlying_API_error_cause_known": false,
     "next_action": "preserve original failure and stderr gap; improve future coordinator failure receipts without relaxing exclusivity/time/SLA; any future long run needs fresh identity and zero inherited time",
     "evidence": "testing-final-v1-long1396-terminal.md"
+  },
+  "long1728_followup": {
+    "phase": "frozen-not-launched",
+    "job_sha256": "d085bd2e573b50c529e90f364beb399a89e437575f568dab7482a60e89286be5",
+    "plan_sha256": "ea19e85c8e8690845449ce36b9e3be8266282015cb8e8ba8ed6eec207187370c",
+    "new_clock": true,
+    "inherited_seconds": 0,
+    "original1396_failed_unchanged": true,
+    "product_runtime_unchanged": true,
+    "coordinator_probe": {
+      "schema": "crg-coordinator-probe-offline-review-v1",
+      "phase": "passed",
+      "passed_native_cases": 24,
+      "members_verified": 114,
+      "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+      "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+      "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+      "read_only_observation_total_budget_seconds": 15,
+      "max_readonly_attempts": 3,
+      "mutating_retries": 0,
+      "actual_cluster_readonly": true,
+      "product_changed": false,
+      "old_API_failure_cause_known": false,
+      "business_long_duration_accepted": false
+    },
+    "evidence": "testing-final-v1-long1728.md",
+    "stable_release_accepted": false
   }
 }
