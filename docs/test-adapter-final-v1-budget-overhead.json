@@ -1,0 +1,64 @@
+{
+  "base_manifest": "crg-r1404-overhead-frozen.json",
+  "reversible_changes": [
+    {
+      "before": "final1404",
+      "after": "final1461",
+      "count": 3
+    },
+    {
+      "before": "FINAL1404",
+      "after": "FINAL1461",
+      "count": 1
+    },
+    {
+      "before": "three isolated placeholder PID1 containers; Agent only, not vendor business performance",
+      "after": "two isolated placeholder PID1 containers at distinct effective manual budgets; Agent only, no vendor performance or causal shared-node comparison",
+      "count": 1
+    },
+    {
+      "before": "for name in ['healthy','export-failure','readonly']:",
+      "after": "for name in ['healthy-half','healthy-threequarters']:",
+      "count": 2
+    },
+    {
+      "before": "  config={'resource_mode':'manual','limits':{'cpu_cores':.25,'memory_high':'128MiB','io_read_bps':'64KiB','io_write_bps':'64KiB','io_read_iops':8,'io_write_iops':8}",
+      "after": "  declared=plan['budgets'][name];config={'resource_mode':'manual','limits':declared['limits']",
+      "count": 1
+    },
+    {
+      "before": "  if actual['io.max']!=dev+' rbps=65536 wbps=65536 riops=8 wiops=8':raise RuntimeError('fixed actual IO budget differs')",
+      "after": "  if actual['io.max']!=dev+' '+declared['expected_IO_axes']:raise RuntimeError('fixed actual IO budget differs')",
+      "count": 1
+    },
+    {
+      "before": "actual['cpu.max']!='25000 100000' or actual['memory.high']!='134217728'",
+      "after": "actual['cpu.max']!=declared['expected_cpu_max'] or actual['memory.high']!=str(declared['expected_memory_high'])",
+      "count": 1
+    },
+    {
+      "before": "'actual_controls':actual,'fixture_identity'",
+      "after": "'actual_controls':actual,'declared_budget':declared,'fixture_identity'",
+      "count": 1
+    },
+    {
+      "before": "budget=8*1024**2 if name=='healthy' else 16*1024**2",
+      "after": "budget=8*1024**2 if name.startswith('healthy-') else 16*1024**2",
+      "count": 1
+    },
+    {
+      "before": "report['phase']='passed' if all(x['passed'] for x in report['cases'].values()) else 'failed'",
+      "after": "report['phase']='passed' if len(report['cases'])==2 and all(x['passed'] for x in report['cases'].values()) else 'failed'",
+      "count": 1
+    },
+    {
+      "before": "report['kernel']=platform.release();",
+      "after": "report['criteria'].pop('io_cap_bps');report['criteria'].pop('io_cap_iops');report['kernel']=platform.release();",
+      "count": 1
+    }
+  ],
+  "inverse_exact": true,
+  "product_final_ELF_unchanged": true,
+  "warmup_measurement_sampling_original_thresholds_unchanged": true,
+  "different_actual_enforced_budgets_not_fault_labels": true
+}
