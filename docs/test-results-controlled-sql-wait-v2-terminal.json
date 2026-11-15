@@ -1,0 +1,85 @@
+{
+  "schema": "crg-controlled-lock-v2-terminal-qualification",
+  "phase": "failed",
+  "roles": {
+    "dbs": {
+      "phase": "failed-holder-PID-not-captured",
+      "recorded": 9,
+      "passed": 8,
+      "failed": 1,
+      "unexecuted": 4,
+      "lock_exit": 0,
+      "lock_exec_seconds": 8.280012737959623,
+      "holder_pid_count": 0,
+      "actual_relation_lock_samples": 4,
+      "SQL_error_events": 1,
+      "worker_actual_seconds": 19.39315196685493,
+      "full120_completed": false,
+      "observer_samples": 13,
+      "observer_backend_errors": 0,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "observer_emergency_stop": "explicit_own_signal",
+      "distinct_auxiliary_PIDs": true,
+      "holder_correlation_qualified": false
+    },
+    "hisdbs": {
+      "phase": "failed-holder-PID-not-captured",
+      "recorded": 9,
+      "passed": 8,
+      "failed": 1,
+      "unexecuted": 4,
+      "lock_exit": 0,
+      "lock_exec_seconds": 8.245281864888966,
+      "holder_pid_count": 0,
+      "actual_relation_lock_samples": 3,
+      "SQL_error_events": 1,
+      "worker_actual_seconds": 18.975580722093582,
+      "full120_completed": false,
+      "observer_samples": 12,
+      "observer_backend_errors": 0,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "observer_emergency_stop": "explicit_own_signal",
+      "distinct_auxiliary_PIDs": true,
+      "holder_correlation_qualified": false
+    }
+  },
+  "recorded": 18,
+  "passed": 16,
+  "failed": 2,
+  "unexecuted": 8,
+  "original18_full600_accepted": false,
+  "full120_accepted": false,
+  "cleanup_independently_verified": true,
+  "registered_process_records_checked": 58,
+  "indexed_originals": 24,
+  "indexed_bytes": 215628,
+  "missing_stop_markers_explicit_in_source_map": [
+    {
+      "source": "normal/dbs/candidate1-dbs-manual64/dbs-business/postgresql/basebackup/crg-wait-202611161824/stop.json",
+      "filename": "normal-dbs-observer-stop.json"
+    },
+    {
+      "source": "normal/hisdbs/candidate1-hisdbs-manual64/hisdbs-business/postgresql/basebackup/crg-wait-202611161825/stop.json",
+      "filename": "normal-hisdbs-observer-stop.json"
+    }
+  ],
+  "PSI_unavailable_not_zero": true,
+  "old1761_cause": "unknown",
+  "specific_fixture_fault": "Single multi-statement psql -c prints only last command result, so leading holder PID SELECT was not captured; split two -c requests on same connection in new v3 source.",
+  "interface_reference": "https://www.postgresql.org/docs/14/app-psql.html",
+  "stable_release_accepted": false
+}
