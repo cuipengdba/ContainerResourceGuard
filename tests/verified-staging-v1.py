@@ -138,6 +138,8 @@ def malicious(name, kind):
 
 
 def race(name, action, success):
+    with tarfile.open(A.candidate, 'r:gz') as package:
+        first_relative = next(m.name for m in package if m.isfile())
     archive = ROOT / (name + '-input.tar.gz')
     shutil.copyfile(A.candidate, archive)
     destination = ROOT / name
@@ -154,8 +156,8 @@ def race(name, action, success):
             if child.poll() is not None:
                 raise RuntimeError('stager exited before delayed-fsync barrier')
             for path in ROOT.glob('.crg-stage-*'):
-                if (path / 'BUILD.json').is_file():
-                    stage, first = path, path / 'BUILD.json'
+                if (path / first_relative).is_file():
+                    stage, first = path, path / first_relative
                     break
             if stage:
                 break
@@ -164,7 +166,7 @@ def race(name, action, success):
             raise TimeoutError('staging barrier not observed')
         before = time.monotonic_ns()
         action(archive, destination)
-        barrier = {'temporary_name': stage.name, 'first_file': first.name,
+        barrier = {'temporary_name': stage.name, 'first_file': first_relative,
                    'before_monotonic_ns': before, 'after_monotonic_ns': time.monotonic_ns(),
                    'temporary_still_present': stage.exists(), 'destination_before_stager_publish': tree(destination)}
         code = child.wait(timeout=120)
@@ -175,7 +177,7 @@ def race(name, action, success):
             child.terminate()
             child.wait(timeout=10)
     value = load(A.output / (name + '.stdout'))
-    barrier['named_delayed_fsync_trace'] = any(stage.name in line and 'BUILD.json' in line
+    barrier['named_delayed_fsync_trace'] = any(stage.name in line and first_relative in line
                                              and 'fsync(' in line and 'DELAYED' in line for line in trace.read_text().splitlines())
     R['staging'].append({'name': name, 'exit': code, 'result': value, 'barrier': barrier,
                           'input_sha256_after': sha(archive.read_bytes()), 'destination_after': tree(destination)})
