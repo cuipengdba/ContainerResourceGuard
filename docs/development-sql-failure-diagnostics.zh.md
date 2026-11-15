@@ -41,3 +41,9 @@
 先前两个发布/准入问题也保留：Git换行规范化改变adapter元数据摘要，远端逐文件校验失败阻止启动；现通过仅该路径的属性规则保留与原生回执绑定的CRLF字节。首次镜像准入没识别CRI给本地短标签增加docker.io/，在工具目录或Pod创建前失败；按实际同一镜像ID和准确规范标签修正。均未改产品或工作线程、标准、预算。
 
 已证明v2 AST只选中一个report['failure_diagnostics']赋值，保留原六项与冻结工作线程。[新身份v2冻结计划](test-plan-original-image-diagnostics-v2.json)、[v2校验器](../tests/bounded-load-diagnostics-v1/image-check-v2.py)在第二轮前发布，首轮工具目录/输入和结果不覆盖。v2目前尚未启动；新正常业务600秒、受控锁等待、时间线/对照与长稳仍未开始。
+
+## v2镜像依赖缺口与v3冻结
+
+v2完成Python2编译/AST/固定分类/隐私检查后在加载libpq处失败，两镜像均没有裸路径/opt/postgresql/pgsql/lib/libpq.so.5；实际部署是在/opt/postgresql挂载路径中生成PG软件。故本轮仍不是六项通过。[完整v2终态](test-results-original-image-diagnostics-v2-failure.json)与[原件](test-evidence-original-image-diagnostics-v2-failure.json.gz)保留，两个Pod/namespace/父组已清理，工作线程未变。
+
+已只读核对1761原隔离夹具的PG客户端软件：两角色准确libpq.so.5.14均为345576字节，SHA256 a0f6cc8fb39a6f84a150c2b423cc17da8766c06923b1722fbea224579c11fd89，依赖原镜像现有libssl.so.10/libcrypto.so.10等。[v3新身份计划](test-plan-original-image-diagnostics-v3.json)保留原六项，另将这一准确库文件只读挂到原libpq路径；不挂载数据库数据或配置，不启动原业务/PG。节点及镜像内都先校验该软件摘要，[v3校验器](../tests/bounded-load-diagnostics-v1/image-check-v3.py)没有改变工作线程或六项标准。此为补齐测试软件路径，非放宽业务SLA。v3尚未启动；结果不替代原600秒/受控锁/因果对照及稳定发布门槛。

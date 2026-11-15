@@ -1,0 +1,119 @@
+{
+  "phase": "failed",
+  "schema": "crg-original-image-diagnostics-v2-failure-v1",
+  "exact_terminal": {
+    "schema": "crg-original-image-diagnostic-terminal-v1",
+    "phase": "failed",
+    "node_utc": "2026-11-15T22:03:47.462076Z",
+    "plan_sha256": "c27c9cbf2ef2a503f8258f4f8013a47e11ca149bfb40b231105b20fd643f044d",
+    "inputs_sha256": {
+      "worker.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "original.py": "ba87ef2d646b723eb8419de25ffcd736f7a5b0925716f4b638761dff70bb2461",
+      "adapter.json": "28f513741f183c5c1409d14b93564a3d82bdfceebd166dfe5930403123790468",
+      "image-check.py": "bb049be6bfdc5301a707899b10e7867640394f54d1f6141a0b8a5f3c0fce36f2"
+    },
+    "roles": {
+      "dbs": {
+        "pod_uid": "03c3d444-ca9a-4eb2-b9d8-f30a39f513c3",
+        "phase": "Failed",
+        "group_candidates": [
+          "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod03c3d444_ca9a_4eb2_b9d8_f30a39f513c3.slice",
+          "/sys/fs/cgroup/kubepods.slice/kubepods-pod03c3d444_ca9a_4eb2_b9d8_f30a39f513c3.slice"
+        ],
+        "original_image_expected": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+        "container_status": [
+          {
+            "containerID": "containerd://1f161e48a5d0b5ea75db05549dc0add8479fb40c8880672d0a3d8e6c8cfba790",
+            "image": "docker.io/db_puc/dbs:V7.0.12.001.02.56",
+            "imageID": "sha256:25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+            "lastState": {},
+            "name": "dbs",
+            "ready": false,
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "terminated": {
+                "containerID": "containerd://1f161e48a5d0b5ea75db05549dc0add8479fb40c8880672d0a3d8e6c8cfba790",
+                "exitCode": 1,
+                "finishedAt": "2026-11-15T22:03:19Z",
+                "reason": "Error",
+                "startedAt": "2026-11-15T22:03:19Z"
+              }
+            }
+          }
+        ],
+        "log_exact_utf8": "Traceback (most recent call last):\n  File \"/fixture/image-check.py\", line 80, in <module>\n    pq=ctypes.CDLL('/opt/postgresql/pgsql/lib/libpq.so.5')\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\n    self._handle = _dlopen(self._name, mode)\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: No such file or directory\n",
+        "log_sha256": "4e3e25f0e4f082d5249308d0c22d794bdc9466e0c087eccbcc7d308c1f3e81a8",
+        "result": null,
+        "image_identity_correct": true,
+        "passed": false
+      },
+      "hisdbs": {
+        "pod_uid": "dac55c32-1794-44bf-813c-78494dad592a",
+        "phase": "Failed",
+        "group_candidates": [
+          "/sys/fs/cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poddac55c32_1794_44bf_813c_78494dad592a.slice",
+          "/sys/fs/cgroup/kubepods.slice/kubepods-poddac55c32_1794_44bf_813c_78494dad592a.slice"
+        ],
+        "original_image_expected": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+        "container_status": [
+          {
+            "containerID": "containerd://a43b2d34147387419fd8dd0fabda3244e5d487fcaf54e95875d812dfb8325b06",
+            "image": "docker.io/db_puc/hisdbs:V7.0.12.001.02",
+            "imageID": "sha256:b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f",
+            "lastState": {},
+            "name": "hisdbs",
+            "ready": false,
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "terminated": {
+                "containerID": "containerd://a43b2d34147387419fd8dd0fabda3244e5d487fcaf54e95875d812dfb8325b06",
+                "exitCode": 1,
+                "finishedAt": "2026-11-15T22:03:20Z",
+                "reason": "Error",
+                "startedAt": "2026-11-15T22:03:20Z"
+              }
+            }
+          }
+        ],
+        "log_exact_utf8": "Traceback (most recent call last):\n  File \"/fixture/image-check.py\", line 80, in <module>\n    pq=ctypes.CDLL('/opt/postgresql/pgsql/lib/libpq.so.5')\n  File \"/usr/lib64/python2.7/ctypes/__init__.py\", line 360, in __init__\n    self._handle = _dlopen(self._name, mode)\nOSError: /opt/postgresql/pgsql/lib/libpq.so.5: cannot open shared object file: No such file or directory\n",
+        "log_sha256": "4e3e25f0e4f082d5249308d0c22d794bdc9466e0c087eccbcc7d308c1f3e81a8",
+        "result": null,
+        "image_identity_correct": true,
+        "passed": false
+      }
+    },
+    "namespace": "crg-vendor-lab-image-diagnostics1793-20261116",
+    "namespace_uid": "838cd5b7-71c3-43dc-bc14-40a65471a952",
+    "namespace_independently_absent": true,
+    "pod_parent_groups_independently_absent": true,
+    "inputs_unchanged_after_cleanup": true,
+    "cleanup_complete": true,
+    "summary": {
+      "phase": "failed",
+      "roles": {
+        "dbs": {
+          "phase": "Failed",
+          "passed": false,
+          "python": null,
+          "checks": null,
+          "image_correct": true
+        },
+        "hisdbs": {
+          "phase": "Failed",
+          "passed": false,
+          "python": null,
+          "checks": null,
+          "image_correct": true
+        }
+      },
+      "cleanup_complete": true
+    }
+  },
+  "reason": "Bare original image omits PG client at /opt/postgresql/pgsql/lib; real deployment populates that mounted path. V2 stops at CDLL, not six-check pass.",
+  "both_actual_original_images_verified": true,
+  "cleanup_complete": true,
+  "product_or_worker_changed": false,
+  "stable_release_accepted": false
+}
