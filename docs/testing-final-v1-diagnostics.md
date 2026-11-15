@@ -1,6 +1,6 @@
 # 固定最终候选：厂商只读诊断与内存统计补验
 
-准确产品源码ced461705ebc27315a59aefe463f9b4af47130a3，v1.0.0 AMD64 ELF摘要9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8。输入已冻结，原生只读准入通过；尚未启动本轮业务，不能计为诊断或业务通过。
+准确产品源码ced461705ebc27315a59aefe463f9b4af47130a3，v1.0.0 AMD64 ELF摘要9b61fcf566087533e2528016073c795b6fa63d15ee5275e6f7c76c1cbcd235e8。输入冻结及原生只读准入通过后，于节点2026-11-15T09:09:56.835894+00:00唯一启动。首份独立观察确认DBS原7项启动和1项诊断主检查通过，19项诊断子检查通过；完整600秒业务及HISDBS尚待终态。
 
 为P05.1/P07.2补齐最终ELF现场证据。两角色各全新隔离namespace/Pod/目录，使用原镜像、真实路径、原启动链和缓存程序，每容器一份Agent。沿原manual参考7.2CPU、memory.high20001980416字节、64MiB/s双向BPS/手动IOPS4096及默认15秒周期；外部8CPU/20GiB和其余五项保持。不测试默认20%性能，不触碰旧七天任务。
 
@@ -13,3 +13,5 @@
 诊断前后全部8项控制、journal摘要、Agent/PID1/缓存和PG启动时间保持；之后完整业务终态独立验收。最后确认runner、driver、登记PID/start、父叶cgroup及namespace消失。任一失败保留准确原件，不自动重跑、加额度或放宽规则。老化、物理掉电、厂商ARM、多物理盘及长期验收不由本轮代替。
 
 [固定计划](test-plan-final-v1-diagnostics.json)、[原生准入原件](test-results-final-v1-diagnostics-preflight.json)、[可逆适配](test-adapter-final-v1-diagnostics.json)、[非二进制准确输入](../tests/final-v1-diagnostics-frozen/README.md)。前轮[热重载终态](testing-final-v1-business-reload-terminal.md)已通过，不将该轮计时移记本轮。稳定1.0尚未接受，公开下载仍为preview.5。
+
+[启动快照](test-start-final-v1-diagnostics.json)与[准确观察原件](test-evidence-final-v1-diagnostic-start.json.gz)保留当时状态，不替代终态。DBS stdout及本地文件各1852字节、0600，PSI/hugetlb缺失明确标为不可用。[准确源码8项原生unit/race事件复核](test-results-final-v1-diagnostic-memory-source-review.json)补充异常/缺失解析、白名单/上限、状态路径别名及实时统计不重写持久快照的边界；不移记原产物业务计时。
