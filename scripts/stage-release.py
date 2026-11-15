@@ -110,8 +110,10 @@ def main():
     files_written = 0
     result = None
     cleanup_error = None
+    previous_umask = None
     try:
         require(sys.platform == 'linux' and sys.version_info >= (3, 8), 'Linux with Python3.8+ is required')
+        previous_umask = os.umask(0o077)
         for value, count in [(a.sha256, 64), (a.source_revision, 40), (a.package_revision, 40)]:
             require(re.fullmatch('[0-9a-f]{' + str(count) + '}', value),
                     'trusted lowercase SHA256 and full source/package revisions are required')
@@ -231,6 +233,8 @@ def main():
                 except (ValueError, OSError) as error:
                     cleanup_error = str(error)
             os.close(parent)
+        if previous_umask is not None:
+            os.umask(previous_umask)
     if cleanup_error:
         result['cleanup_error'] = cleanup_error
         result['retained_private_temporary_name'] = temporary
