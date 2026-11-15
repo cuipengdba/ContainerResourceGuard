@@ -34,3 +34,5 @@
 
 
 [固定最终ELF同一Agent业务热重载](testing-final-v1-business-reload.md)已取得[两角色终态](testing-final-v1-business-reload-terminal.md)：18/18主检查、26/26配置观察，各原生600秒SQL/API零错误、实际备份/同步/独立恢复通过，全部自有进程与夹具清理已独立确认。P03.1和P07.3按定义范围补齐，仍不替代长期、默认20%业务性能及其他待办。[当前运维、问题分级和补丁/归档规则](operations-release-policy.md)已补齐，旧RC2不支持重载的过时说明已修正。
+
+[最终ELF只读诊断与内存统计补验](testing-final-v1-diagnostics.md)已冻结并通过原生只读准入，尚未启动本轮业务；将逐字段核对白名单/64KiB/本地文件拒绝覆盖及内核缺失统计，并各跑原600秒业务。P05.1/P07.2仍待终态，不转记前轮结果。
