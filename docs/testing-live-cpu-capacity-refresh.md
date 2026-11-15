@@ -33,3 +33,5 @@
 [新候选重新验收方案](testing-capacity-refresh-requalification.md)、[原生矩阵冻结计划](test-plan-capacity-refresh-native-CI.json)已单独冻结并派发，保持原284项及四环境条件。DBS/HISDBS原start路径、SQL、/test、备份/同步/独立恢复和短负载需用新ELF复验；之后再从零执行24h observe、同容器24h enforce、新七天及老化后验收。不能把本次56项或旧来源通过概括为上述全部通过。
 
 原52项定义与18项既有范围完成声明不变，P06.3/P06.4/P10.3及长期门槛仍开放；无可用厂商ARM或独立多物理盘的边界保持。
+
+新ELF的[DBS/HISDBS原路径600秒冻结方案和原生预检](testing-live-capacity-business600.md)已公开，预检ready、尚未启动。
