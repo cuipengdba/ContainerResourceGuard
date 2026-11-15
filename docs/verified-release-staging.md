@@ -34,6 +34,7 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
    另外核对打包修订。拒绝链接、特殊文件、重复/越界成员及保留的收据名称。
 3. 只在父目录下新建的私有临时目录写文件。目录0700，普通文件0600，
    包内原有拥有者执行位映射为0700；不保留其他用户权限、setuid/setgid或归档用户身份。
+   工具自身使用077创建掩码，避免调用者的过严umask剥掉程序执行位，退出前恢复本进程原掩码。
    同步文件和目录后，用 `RENAME_NOREPLACE` 发布到目标。并发出现的文件、目录或链接
    都不会被替换。
 4. 成功输出 `state=staged`，目录内有 `STAGING-VERIFICATION.json`，
@@ -60,6 +61,9 @@ python3 -I /trusted-crg-source/scripts/stage-release.py /downloads/PACKAGE.tar.g
 不能继承另一二进制的时长。
 
 当前状态：工具和冻结测试已开发，实际原生结果尚待。
+首次派发前的源码审查补齐了过严umask的处理和实测用例；
+[初始未派发计划](test-plan-final-v1-verified-staging-before-umask-review.json)保留原件，
+当前使用v2冻结身份。此前没有原生试验或通过声明。
 测试覆盖真实包暂存/权限、错误身份/摘要/架构、已有目标、FIFO/链接、恶意包形态、
 下载路径替换与目标并发创建，以及单临时容器实际升级/回退/禁用。
 并发屏障使用 `strace` 延迟真实 fsync，不注入成功返回值；不当作物理慢盘或掉电实测。

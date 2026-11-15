@@ -63,7 +63,7 @@ jobs:
           python3 - <<'PY'
           import hashlib,json,os,pathlib,platform,subprocess
           raw=pathlib.Path('qualification/docs/test-plan-final-v1-verified-staging.json').read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='fd1b65336221f2fcd01b5afd53bdb25b364268ee973b1f20faac347a246a4160'
+          assert hashlib.sha256(raw).hexdigest()=='4d7f61022413b5d4276506c0a3ea4aa96f0203e12243f7506213747ded6fa4e4'
           p=json.loads(raw)
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==p['source_revision']
           for n,h in p['source_sha256'].items():assert hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest()==h,n

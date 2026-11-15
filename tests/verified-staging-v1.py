@@ -60,8 +60,8 @@ def check(name, passed, **data):
         raise AssertionError(name)
 
 
-def run(command, timeout=45, required=True):
-    r = subprocess.run([str(x) for x in command], capture_output=True, text=True, timeout=timeout)
+def run(command, timeout=45, required=True, **options):
+    r = subprocess.run([str(x) for x in command], capture_output=True, text=True, timeout=timeout, **options)
     if required and r.returncode:
         R['command_error'] = {'operation': str(command[:2]), 'exit': r.returncode, 'stderr': r.stderr[-2000:]}
         save()
@@ -97,11 +97,11 @@ def arguments(archive, destination, **overrides):
             *[x for k, value in v.items() for x in ['--' + k, value]]]
 
 
-def staged(name, archive=None, destination=None, success=False, overrides=None):
+def staged(name, archive=None, destination=None, success=False, overrides=None, umask=-1):
     archive = archive or A.candidate
     destination = destination or ROOT / name
     before = tree(destination)
-    r = run(arguments(archive, destination, **(overrides or {})), required=False, timeout=180)
+    r = run(arguments(archive, destination, **(overrides or {})), required=False, timeout=180, umask=umask)
     value = json.loads(r.stdout)
     data = {'name': name, 'exit': r.returncode, 'result': value, 'before': before, 'after': tree(destination)}
     R['staging'].append(data)
@@ -429,6 +429,8 @@ try:
           and sha(A.stager.with_name('verify-release.py').read_bytes()) == PLAN['inputs']['scripts/verify-release.py'])
     check('native architecture', platform.machine() in {'amd64': ['x86_64'], 'arm64': ['aarch64', 'arm64']}[A.arch])
     candidate = staged('valid-candidate', success=True, overrides={'sha256': ROW['candidate_sha256']})
+    restricted = staged('restrictive-umask', success=True, umask=0o777)
+    check('restrictive inherited umask keeps executable private binary', stat.S_IMODE((restricted / 'crg').stat().st_mode) == 0o700)
     previous = staged('valid-previous', archive=A.previous, success=True, overrides={
         'sha256': ROW['previous_sha256'], 'package-revision': PLAN['previous_package_revision']})
     check('private file permissions only', all(stat.S_IMODE(p.lstat().st_mode) & 0o077 == 0
