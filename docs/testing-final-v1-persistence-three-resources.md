@@ -1,6 +1,6 @@
 # 三项资源同时设置时的持久化故障与中断恢复
 
-2026-11-16 CST。新增P09.3/P10.3验证任务；现阶段为冻结方案，未声称运行通过。
+2026-11-16 CST。新增P09.3/P10.3验证任务；本轮两环境合计184/184项、20场景通过，原始完整IO参数、隐藏文件和所属清理独立复核通过。原任务仍保留剩余条件。
 
 延续用户要求：每容器一个Agent，只管理CPU、内存、IO；内存写memory.high而不新设memory.max，辅助故障不得阻断原业务。
 原先CPU单项的120检查不自动覆盖三项同时变更，本轮使用同一最终ELF、另立冻结计划与真实内核收据。
@@ -17,6 +17,7 @@ Agent只设置CPU0.5→0.75核、memory.high128→192MiB、读写BPS4→6MiB/s�
 3. 写入后强杀须先绑定尚未提交finalization临时JSON的准确名称/长度/SHA，原字节进入ZIP；恢复不采信该临时文件。
 4. 同样fsync返回延迟下正常完成三项变更，再正常退出和恢复。
 
+这是逐项持久化恢复，不是三项整体原子事务；中断时前序资源可已更新、后序资源仍旧值，恢复须正确处理该混合状态。
 每场景核对八项外部原值恢复，PID1/有界fsync任务连续及观测OOM计数不变；准确所属容器/cgroup/登记PID/私有挂载/dm/loop清理。
 所有真实失败和原件保留，不修改原52项定义或18项完成声明。
 
@@ -39,4 +40,40 @@ CPU/memory.high/IO实际读回、日志和八项原值恢复及所属清理通�
 [缺口/失败原件](test-results-final-v1-three-resource-first-pilot-gap.json)保留，不补造缺失轨迹。
 
 新v2协议只增加strace -s4096，保留原92检查/10场景、三种资源配额、延迟、持续时长/三次重试和强杀/恢复判据。
-完整IO参数复核要求保持，不将原结果直接归给新来源。新来源重新运行结果尚待。
+完整IO参数复核要求保持，不将原结果直接归给新来源。新来源已重新运行，终态与独立复核如下；原结果不归给新来源。
+
+
+## 完整轨迹的新协议终态
+
+准确测试来源 `7aa804a6c623dc00cd8df8117d7168844cc06307`，产品准确源码 `ced461705ebc27315a59aefe463f9b4af47130a3` 和最终ELF保持。
+冻结计划SHA256 `ba40ffaad2972c0131ab9afe0ee31fd80dacd84357b49ec2247932dfdd8bf493`。
+
+| 环境 | 实际检查/场景 | 结果 |
+| --- | --- | --- |
+| arm64 / 7.0.0-1017-azure | 92/10 | [通过](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43751660373) |
+| amd64 / 6.8.0-1070-azure | 92/10 | [通过](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43750954359) |
+
+先独立复核amd64试点再派发同方案ARM64。各自三种真实状态FS故障至少30秒/三次显式失败重试，
+CPU/memory.high/双向BPS原有策略保持，解除故障后可应用新策略。
+分别在CPU、memory.high和io.max写入前后精确SIGKILL：前序已更新/后序尚未更新的混合状态逐项与日志核对；
+三次写入后强杀的未提交临时JSON原件均与强杀前名称/长度/SHA绑定，恢复不采信它们。
+实际完整strace写入参数与内核读回逐项对应。所有场景恢复八项外部原值；外部512MiB硬内存及4096IOPS保持。
+占位PID1/有界fsync任务连续、观测OOM计数不变；所属容器/cgroup/登记进程、状态挂载、数据ext4挂载/dm/loop均确认清理。
+
+[两份完整原ZIP/成员清单](test-evidence-final-v1-persistence-three-resources.json.gz)共216个成员，
+[独立离线结果](test-results-final-v1-persistence-three-resources.json)可复算：
+
+```sh
+python3 tests/persistence-three-resources-v1/review.py   --evidence docs/test-evidence-final-v1-persistence-three-resources.json.gz   --plan docs/test-plan-final-v1-persistence-three-resources.json
+```
+
+离线复算只验证原件，不执行产品包或写cgroup。原生试验来自上表实际运行，不能扩大到默认百分比、
+厂商原路径/老化、物理慢盘或掉电。原始首轮原生92项通过和跟踪截断的独立复核失败均保留，不补造。
+原52项定义/18项完成声明保持；本轮只增加P09.3/P10.3证据，不接受稳定1.0，不改97的原长期任务。
+
+## 任务Markdown与机器记录同步
+
+此前审核Markdown滞后于后续原生证据，本轮保留[原Markdown](current-52-task-audit-before-three-resource-persistence.md)，
+用[确定性生成器](../scripts/render-task-audit.py)从当前登记及逐项机器审核重新生成[52项审核](current-52-task-audit.md)。
+生成器逐项核对原定义、完成声明、已验证范围、边界和证据，拒绝两份记录不一致；不自动改变完成结论。
+后续更新可运行 `python3 scripts/render-task-audit.py`，用 `--check` 只检查而不写入。
