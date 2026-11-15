@@ -63,3 +63,23 @@ v2只修正测试挂载准备：在同一私有/state树上叠加新bind，再�
 并核对唯一新挂载及实际statvfs只读标志；已有打开的旧锁保持原inode。
 另记录实际观察到的候选DAC能力值，便于离线独立复核。
 产品50份源码、ELF、限额、持续30秒/3次重试和恢复/强杀判据均不变。
+
+
+## v2原生通过与归档缺口
+
+v2准确来源611efbbb的[amd64运行43745715109](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43745715109)
+和[ARM64运行43746227140](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/43746227140)
+各60项/6场景通过，三种真实故障均持续约31秒，两类精确强杀、最终原值及全部所属清理通过。
+[两个原ZIP/146成员](test-evidence-final-v1-persistence-before-hidden-archive.json.gz)、
+[v2计划](test-plan-final-v1-persistence-before-hidden-archive.json)、
+[原范围离线结果](test-results-final-v1-persistence-before-hidden-archive.json)与
+[复核器](../tests/persistence-faults-v1/review-before-hidden.py)保留。
+
+归档复核发现：上传未启用隐藏文件，.crg临时文件虽然在VM结果目录中复制，
+却没有进入这两份ZIP。v2原生120项仍成立，隐藏临时文件原字节未保存，
+不伪造重建或声称其完整性已离线核对。前文“保留这些文件”在公开原件方面仅由后续v3证明。
+
+v3启用明确的隐藏文件上传，为每个状态文件记录名称/长度/SHA256，离线要求逐文件存在且一致。
+控制写入后强杀还要求先观察匹配的未提交finalization临时JSON，绑定该文件摘要；
+恢复不得采信它，而该准确原件必须进入ZIP。保留原60项/6场景、产品/ELF、配额、时限和判据，
+新增归档完整性要求更严格。v3结果尚待，不把v2结果自动归给新来源。

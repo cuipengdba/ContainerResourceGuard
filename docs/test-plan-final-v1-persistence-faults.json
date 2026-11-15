@@ -1,5 +1,5 @@
 {
-  "schema": "crg-native-persistence-faults-plan-v2",
+  "schema": "crg-native-persistence-faults-plan-v3",
   "scope": "Exact final ELF and actual own single-container cgroup CPU/journal recovery; real bounded4MiB tmpfs ENOSPC, DAC EACCES without bypass caps, private bind-mount EROFS sustained>=30s with3failed retries; SIGKILL before/after actual CPU write with durable pending journal and delayed fsync. Syscall delay is injected, not a physical slow device; no physical power loss/vendor/aged/stable publication acceptance.",
   "source_revision": "ced461705ebc27315a59aefe463f9b4af47130a3",
   "source_sha256": {
@@ -59,7 +59,7 @@
     "arm64": "ff1a2c1c599eb38fde6857c2eede70a1deabf0c2c89977ab92e71ec52ec3982b"
   },
   "test_inputs_sha256": {
-    "tests/persistence-faults-v1/driver.py": "05be84e040679cb715f0b8176891b96abd4cd8d92927e821000d1f18016d1392",
+    "tests/persistence-faults-v1/driver.py": "2a3614e46ffa27a37400ca7f088035b8469c98c2ed4dac0b2da0b51446e2a8d3",
     "tests/persistence-faults-v1/helper.go": "29fd355c1081647bec1012b54c21ec231ed98b21ef1b7061389613d461bb3f83",
     "tests/native-holder/main.go": "1a6a4a2622a66e2052ca2902d36cf28429ba21535b6f29cbbf55d8656a1927d7",
     "tests/legacy-restore-pressure-v1/workload.go": "2196d2b29d6498bdf17a95b96fafa5cacb6f36999a1bb1f6858d4f81063777f7"
@@ -105,6 +105,14 @@
   },
   "original_P09_3_whole_closed": false,
   "stable_release_accepted": false,
-  "previous_plan_sha256": "438d4b16fff71ca6fc1fc78f2433a0cae0ce1b24149613f2e38f83cf64ca8527",
-  "test_harness_fix": "First pilot readonly remount setup returned EBUSY because Agent lock descriptor pins writable mount. Test-only helper overlays a new private bind of the identical /state tree and remounts that new mountRO; verify exactly one new state mount plus actualstatvfsRO. Capture raw observed candidate DAC capability values. Exact product/ELF/original60checks, >=30s/3retries, CPU and restore/kill criteria unchanged."
+  "previous_plan_sha256": "a49f0c8ae814fe134495f7988d2b65fc3deb170909eb9657fffa5f38aa29043e",
+  "test_harness_fix": "First pilot readonly remount setup returned EBUSY because Agent lock descriptor pins writable mount. Test-only helper overlays a new private bind of the identical /state tree and remounts that new mountRO; verify exactly one new state mount plus actualstatvfsRO. Capture raw observed candidate DAC capability values. Exact product/ELF/original60checks, >=30s/3retries, CPU and restore/kill criteria unchanged.",
+  "archive_policy": {
+    "include_hidden_files": true,
+    "per_case_regular_state_file_manifest": "name/bytes/SHA256; ZIP membership and bytes independently required",
+    "after_control_barrier": "observe parsed uncommitted finalization temporary CPU applied75000/pendingclear while committed journal still pending and real CPU changed; bind exact temporary SHA before SIGKILL to archived raw bytes",
+    "old_v2_native_checks_passed": 120,
+    "old_v2_gap": "original hidden temporary bytes omitted by upload; do not reconstruct them or claim complete archive",
+    "case_count_and_native_assertion_count_unchanged": true
+  }
 }
