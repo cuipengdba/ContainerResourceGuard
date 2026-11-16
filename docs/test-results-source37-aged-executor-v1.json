@@ -1,0 +1,164 @@
+{
+  "schema": "crg-source37-aged-executor-guard-review-v1",
+  "phase": "passed-executor-guards-only",
+  "files_sha256": {
+    "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "tests/vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+    "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "tests/live-capacity-aged-v1/execution-contract.json": "92c7dee75175afacc70a03135516d8fef729a6c5a8cc2b4a5272f89bcc2edf20",
+    "tests/live-capacity-aged-v1/executor-checks.py": "778b3cb6deaeb5d33195e7d427ad49f6f1d5ffa92c2c27f02e9f5dc7511b32fa",
+    "tests/live-capacity-aged-v1/executor-derivation.json": "1b492e6d142b0bf4735d262cfc95dd680e7d20100154d269b4a5e35976539f86",
+    "tests/live-capacity-aged-v1/executor.py": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+    "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2"
+  },
+  "local_synthetic": {
+    "schema": "crg-source37-aged-executor-checks-v1",
+    "phase": "passed",
+    "tests_run": 12,
+    "failures": 0,
+    "errors": 0,
+    "synthetic_only": true,
+    "postflight_executed": false,
+    "duration_accepted": false,
+    "release_accepted": false
+  },
+  "native": {
+    "phase": "passed-readonly-and-synthetic-only",
+    "checks": [
+      {
+        "name": "synthetic-faults",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-source37-aged-executor-checks-v1",
+          "phase": "passed",
+          "tests_run": 12,
+          "failures": 0,
+          "errors": 0,
+          "synthetic_only": true,
+          "postflight_executed": false,
+          "duration_accepted": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "3edac0997a3f524c3fbe86097b703344251e6671e3f8a10e5e7927356b01c128",
+        "stderr_sha256": "efd0c1ee7149b814e41f8966fc57760a9f3bd65ee23967a63b9c6815fb4807c7",
+        "stderr": "test_accepted_component_without_actual_authority_is_pending (__main__.Checks) ... ok\ntest_authority_rejects_missing_path_or_digest (__main__.Checks) ... ok\ntest_exact_authority_and_each_foreign_or_legacy_binding_rejected (__main__.Checks) ... ok\ntest_exact_high_and_all_five_external_controls (__main__.Checks) ... ok\ntest_execute_flag_and_marker_still_pending_without_writes (__main__.Checks) ... ok\ntest_execute_requires_marker_and_rechecks_readiness_before_constructor (__main__.Checks) ... ok\ntest_native_original600s_thresholds_and_strict_counter_types (__main__.Checks) ... ok\ntest_original_consumers_guard_rejects_direct_data_or_writable_parent (__main__.Checks) ... ok\ntest_original_methods_guards_and_criteria_are_retained (__main__.Checks) ... ok\ntest_original_three_stage_failure_propagates (__main__.Checks) ... ok\ntest_pending_never_reads_seal_previous_inventory_or_constructs_execution (__main__.Checks) ... ok\ntest_ready_requires_original_lineage_and_exact_programs (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.135s\n\nOK\n"
+      },
+      {
+        "name": "actual-pending-default",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "postflight_executed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "f0af2548c04e02dda99b9eddb034d34f9846e8345d72fe944028604fb05548d6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-pending-execute-marker",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "postflight_executed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "f0af2548c04e02dda99b9eddb034d34f9846e8345d72fe944028604fb05548d6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "tests/vendor-versioned-aged-postflight.py": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+      "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+      "tests/live-capacity-aged-v1/execution-contract.json": "92c7dee75175afacc70a03135516d8fef729a6c5a8cc2b4a5272f89bcc2edf20",
+      "tests/live-capacity-aged-v1/executor-checks.py": "778b3cb6deaeb5d33195e7d427ad49f6f1d5ffa92c2c27f02e9f5dc7511b32fa",
+      "tests/live-capacity-aged-v1/executor-derivation.json": "1b492e6d142b0bf4735d262cfc95dd680e7d20100154d269b4a5e35976539f86",
+      "tests/live-capacity-aged-v1/executor.py": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+      "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2"
+    },
+    "long19_unchanged": true,
+    "execution_targets_absent_before_and_after": true,
+    "postflight_executed": false,
+    "long_duration_accepted": false,
+    "stable_release_accepted": false
+  },
+  "live_long_snapshot": {
+    "phase": "measuring-baseline",
+    "node_utc": "2026-11-16T04:57:24.977681+00:00",
+    "processes": {
+      "runner": {
+        "pid": 2738437,
+        "start_ticks": 173481706,
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "worker": {
+        "pid": 2738485,
+        "start_ticks": 173481710,
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "readonly_recorder": {
+        "pid": 2738486,
+        "start_ticks": 173481711,
+        "original_alive": true,
+        "expected_entry_matches": true
+      }
+    },
+    "main_checks": 12,
+    "main_passed": 12,
+    "independent_baseline_guard_roles": 2,
+    "campaigns": {
+      "baseline": {
+        "phase": "measuring",
+        "cycles": 1,
+        "both_workers_started_epoch": 1794794954.6222174
+      }
+    },
+    "long_duration_accepted": false,
+    "terminal": null,
+    "recorder_sample_utc": "2026-11-16T04:56:30.929027+00:00"
+  },
+  "first_windows_fixture_error": {
+    "tests": 12,
+    "errors": 1,
+    "failures": 0,
+    "reason": "importlib test module was not registered in sys.modules; inspect.getsource(class) raised TypeError; register module before loading; no executor behavior change",
+    "stderr_private_sha256": "99d74cd43f73229feaf87e7a71eb753433723d7537fa862a692c530a5f5ed1a9"
+  },
+  "first_native_transport_rejection": {
+    "exit": 1,
+    "stderr": "/bin/bash: Argument list too long\n",
+    "reason": "224226-byte reviewed source exceeded shell per-argument size; shell rejected before Python or target creation. Same decoded source SHA0c951c76 was compressed with integrity assertion; no mutation retry after ambiguous execution."
+  },
+  "managed_memory_policy": "memory.high; unchanged external memory.max",
+  "legacy_previous_source": "50671aa7c037679546d569846eccc5aacc5a34b7",
+  "legacy_previous_binary_sha256": "3f69370b2b0f04f447801212599d6f4596b280331ff83866a11260dc7fc8f8a9",
+  "legacy_previous_compatible_with_current_high_only_policy": false,
+  "original_legacy_managed_resume_accepted": false,
+  "compatible_previous_target": "v1.0.0-preview.5, exact be6b0aa9; separate target, actual resume not yet accepted",
+  "original_criteria_and_all_execution_methods_retained": true,
+  "old_frozen_reader_binding_unchanged_historical_executor_available_false": true,
+  "executor_code_available": true,
+  "actual_seal_available": false,
+  "authority_available": false,
+  "postflight_executed": false,
+  "long_duration_accepted": false,
+  "completed_original_tasks_added": 0,
+  "stable_release_accepted": false
+}
