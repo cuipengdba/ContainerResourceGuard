@@ -671,11 +671,13 @@
       "roles": {
         "dbs": {
           "host_samples": 8,
-          "workload_started": false
+          "terminal_workload_summary_available": false,
+          "campaign_reports_both_native_workers_started": true
         },
         "hisdbs": {
           "host_samples": 8,
-          "workload_started": false
+          "terminal_workload_summary_available": false,
+          "campaign_reports_both_native_workers_started": true
         }
       },
       "last_cycle": {
@@ -685,5 +687,6 @@
       },
       "whole_native_duration_and_cycles_accepted": false
     }
-  }
+  },
+  "metadata_label_amendment": "Initial per-role workload_started was derived from terminal-only workload summary; false meant summary unavailable, not absent native worker. Field renamed; actual both-started timestamp, eight host samples/role and content-passed-native-pending cycle preserved; no duration acceptance."
 }
