@@ -1,5 +1,5 @@
 # DBS/HISDBS模式对照当前进度
 
-原固定次数设计已实现并冻结15输入，通过原生22项辅助故障检查和服务器只读准入；当前尚未启动。
+固定四组原600秒对照已在冻结、发布与准入之后唯一启动。首个只读快照为DBS-observe启动7/7，负载和观察器运行中；尚无四组最终结论。
 
-[可执行冻结方案及准确来源](development-original600-comparison.zh.md)，[原始设计归档](development-next-business-comparison-frozen-design.zh.md)。原业务600秒/SLA/备份恢复未放宽，原18项正式复验与全部长稳、稳定发布门槛保持。
+[实际进度与执行边界](development-original600-comparison.zh.md)、[准确运行记录](test-results-original600-comparison-current.json)、[原始设计归档](development-next-business-comparison-frozen-design.zh.md)。原18项正式复验及全部长稳/稳定发布门槛不变。
