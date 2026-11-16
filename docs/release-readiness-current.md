@@ -21,6 +21,7 @@
 |[老化单次执行包装器](development-source37-aged-runner-v2.zh.md)|Linux11组/Windows4通过7跳过；真实默认/执行均pending|仍待真实一次性启动、authority、退出回执和独立审核，原长测不改|
 |[老化单次执行包装器](development-source37-aged-runner-v3.zh.md)|Linux13组/Windows4通过9跳过；真实默认/执行均pending|仍待真实一次性启动、authority、退出回执和独立审核，原长测不改|
 |[单次七天身份保存](development-source37-capture-save.zh.md)|Linux13组/Windows5通过8跳过；真实默认/保存均pending|必须在真实新七天窗口采集；未生成实际seal，不代表时长或发布接受|
+|[单次后台验收启动](development-source37-detached-launch.zh.md)|Linux12组/Windows4通过8跳过；真实默认/启动均pending|具备后台交接工具，实际启动/退出/恢复和发布审核仍待|
 
 原18项与辅助4项的整体接受来自新正式计划/coordinator及准确原9名称/辅助标签核对；复用per-role原件中的旧comparison scope和raw formal=false仍保留，不能通过改标签冒充接受。受控120秒负向诊断只证明已知注入锁的观察能力，PSI不可用不算零压力。
 

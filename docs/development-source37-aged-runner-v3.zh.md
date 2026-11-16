@@ -1,5 +1,7 @@
 # 老化单次执行包装器 v3：放行信号保护
 
+> 后台交接现有[单次启动器](development-source37-detached-launch.zh.md)，已通过受控真实短子进程/父退出验证，真实长测条件仍pending；下文前台入口和原历史边界保留。
+
 复核[v2包装器](development-source37-aged-runner-v2.zh.md)发现一个保护缺口：父进程已flush放行字节，但released标志尚未设为true时收到SIGTERM，旧handler只记录信号，没有转发给子进程。受控真实Linux回归在该准确位置发送SIGTERM，明确复现旧子进程继续运行并exit0；此前11组通过并未覆盖此窗口。这是实验包装器缺陷，尚未发生正式老化执行，产品Agent及原长测不受影响。
 
 [新v3入口](../tests/live-capacity-aged-v1/runner-v3.py)在放行字节/flush/released状态提交段暂时屏蔽SIGINT/SIGTERM，finally恢复原signal mask，届时pending信号看到准确released状态，按原身份规则转发给自有直接子进程。真实同位置回归验证子进程实际exit -SIGTERM。原v2冻结文件不修改、不重跑正式测试，改用独立目录的新v3。无强杀、killpg、无业务信号，无自动重试或删除guard。
