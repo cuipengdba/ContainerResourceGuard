@@ -1,0 +1,208 @@
+{
+  "schema": "crg-new-source37-fresh1880-long-frozen-v1",
+  "phase": "frozen-not-uploaded-not-launched",
+  "freeze": "crg-r1880-long-freeze",
+  "job_sha256": "9e04850b4da072071feaf73cf395da3b505e8d4d5e90d9c738da39d9774d0972",
+  "plan_sha256": "0b98d3c5cba9e2375cb19d0357a1376dd7dffdda96f616a1297d181c7dacbdae",
+  "uploaded_sha256": {
+    "binaries/crg-linux-amd64": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+    "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+    "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+    "tests/vendor-soak-campaign.py": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+    "tests/vendor-soak-load.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "business-qualification.json": "7bfae4f21f26c441e01e216f24f5af51a38bd67915d85c50651239b186f8ef38",
+    "CI-qualification.json": "a7079fac3267b55edbd819221aed2a9d6d647e3a112641efc3d71189b606e9bf",
+    "job.py": "9e04850b4da072071feaf73cf395da3b505e8d4d5e90d9c738da39d9774d0972",
+    "campaign-wrapper.py": "15eec0f922ac7bce86af9dbc4cc474342dbb4eba5d1e50f4a61a2fa623a1d994",
+    "runner.py": "62e12f33d4761e9275099525bf6a9a047f6177f110d1f8881f752f58b8adc975",
+    "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+    "formal18-independent.json": "8cb2f74b08271b155105ddb024492816b43b157dba1bebd359810a74a11d0aec",
+    "plan.json": "0b98d3c5cba9e2375cb19d0357a1376dd7dffdda96f616a1297d181c7dacbdae",
+    "observer-readonly.py": "fae5d64cd612fb0361081daa04741e4cc41a21a771448a4065b8ee592775c3f0"
+  },
+  "plan": {
+    "schema": "crg-new-source37-zero-clock-24h-24h-seven-day-plan-v1",
+    "phase": "fresh-zero-time-frozen-before-native-preflight-publication-sole-launch",
+    "tools": "/var/tmp/crg-final1880-tools-20261116",
+    "output": "/var/tmp/crg-final1880-results-20261116",
+    "namespace": "crg-vendor-lab-final1880-20261116",
+    "version": "v1.0.0",
+    "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+    "binary_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+    "control_files": [
+      "cpu.max",
+      "memory.max",
+      "io.max",
+      "pids.max",
+      "cpu.weight",
+      "io.weight",
+      "memory.high",
+      "memory.swap.max"
+    ],
+    "baseline_configuration": {
+      "resource_mode": "manual",
+      "limits": {
+        "cpu_cores": 7.2,
+        "memory_high": "20001980416",
+        "io_read_bps": "64MiB",
+        "io_write_bps": "64MiB",
+        "io_read_iops": 4096,
+        "io_write_iops": 4096
+      },
+      "data_paths": [
+        "/opt/postgresql"
+      ],
+      "mode": "observe"
+    },
+    "baseline_configuration_exact_utf8": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":7.2,\"memory_high\":\"20001980416\",\"io_read_bps\":\"64MiB\",\"io_write_bps\":\"64MiB\",\"io_read_iops\":4096,\"io_write_iops\":4096},\"data_paths\":[\"/opt/postgresql\"],\"mode\":\"observe\"}\n",
+    "enforce_configuration": {
+      "resource_mode": "manual",
+      "limits": {
+        "cpu_cores": 7.2,
+        "memory_high": "20001980416",
+        "io_read_bps": "64MiB",
+        "io_write_bps": "64MiB",
+        "io_read_iops": 4096,
+        "io_write_iops": 4096
+      },
+      "data_paths": [
+        "/opt/postgresql"
+      ],
+      "mode": "enforce"
+    },
+    "enforce_configuration_exact_utf8": "{\"resource_mode\":\"manual\",\"limits\":{\"cpu_cores\":7.2,\"memory_high\":\"20001980416\",\"io_read_bps\":\"64MiB\",\"io_write_bps\":\"64MiB\",\"io_read_iops\":4096,\"io_write_iops\":4096},\"data_paths\":[\"/opt/postgresql\"],\"mode\":\"enforce\"}\n",
+    "private_fixture_sha256": {
+      "fixture/containercacheguard": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+      "fixture/dbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211",
+      "fixture/hisdbs/supervisor.sh": "4dce0b38e6c01a9effe08457dc31206a0abaf7ff14eb9ec59dace97a6f1c0211"
+    },
+    "expected_original_image_sha256": {
+      "dbs": "25825bc9f1e9635075f97bedcee37bebb409821cc3c0084ec8ee2a07588cd3b5",
+      "hisdbs": "b772e2bcd0c9d5b8b0896c6efe972d92e76280c0c183d317ebca75df2ca8c39f"
+    },
+    "stages": [
+      {
+        "phase": "baseline",
+        "seconds": 86400,
+        "cycles": 4,
+        "run_id": "202611161880"
+      },
+      {
+        "phase": "enforce",
+        "seconds": 86400,
+        "cycles": 4,
+        "run_id": "202611161881",
+        "source_run_id": "202611161880"
+      },
+      {
+        "phase": "acceptance",
+        "seconds": 604800,
+        "cycles": 28,
+        "run_id": "202611161882"
+      }
+    ],
+    "business_prerequisite": {
+      "tools": "/var/tmp/crg-business1856-tools-20261116",
+      "output": "/var/tmp/crg-business1856-results-20261116",
+      "report_sha256": "0169e86df516d95e8b857b582041020a0b129eb7ea13e1f53d6f4574a4a20a60",
+      "original_checks": 18,
+      "separately_qualified_auxiliary_checks": 4,
+      "exact_independent_qualification_sha256": "8cb2f74b08271b155105ddb024492816b43b157dba1bebd359810a74a11d0aec"
+    },
+    "minimum_duration_seconds": 777600,
+    "policy": "All three stages use same fixed final ELF, exact original-image containers and unmodified cache helper. Observe changes no resource controls. Enforce reuses full accepted baseline payload in same containers via atomic config replacement/reload with same guards. Seven-day phase uses separately identified64MiB schema because auditor requires equal-duration source lineage. No prior clocks inherited, no automatic retries/limit relaxation/SLA edits. No other disposable business Pods during formal phases; preserve outputs/aged fixture backing data after owned cleanup. Fresh1880 starts at zero after original1396 failed and owned cleanup is rechecked. Only failed read-only Pod inventory may retry, at most three attempts within the SAME original15s total observation budget. Invalid/oversize inventory and any other fixture fail immediately. Mutations are not retried. Failed command original outputs retained privately with explicit bounds; receipts are not blindly published. Old1728 explicitly stopped for the CPU-capacity source fix remains failed, all cleanup and exact inputs are rechecked; its clocks never transfer. Only qualified formal1856 original18 plus4 and source37 native284 qualify this new run. Diagnostic worker retains bounded original-request failure metadata; original long sampling/SQL/API/latency/coverage/auditor unchanged. No600 wait observer is enabled for long phases.",
+    "scope": "Native AMD64/Linux5.14/one physical device, original vendor-image synthetic SQL/API and real PG backup/stream/independent restore, explicit manual reference budget. Not arbitrary20% performance promise, ARM vendor/multiple physical devices, whole-node workload exclusivity or completed stable release.",
+    "stable_release_accepted": false,
+    "job_sha256": "9e04850b4da072071feaf73cf395da3b505e8d4d5e90d9c738da39d9774d0972",
+    "source_sha256": {
+      "binaries/crg-linux-amd64": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+      "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+      "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+      "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+      "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+      "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+      "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+      "tests/vendor-soak-campaign.py": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+      "tests/vendor-soak-load.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "business-qualification.json": "7bfae4f21f26c441e01e216f24f5af51a38bd67915d85c50651239b186f8ef38",
+      "CI-qualification.json": "a7079fac3267b55edbd819221aed2a9d6d647e3a112641efc3d71189b606e9bf",
+      "job.py": "9e04850b4da072071feaf73cf395da3b505e8d4d5e90d9c738da39d9774d0972",
+      "campaign-wrapper.py": "15eec0f922ac7bce86af9dbc4cc474342dbb4eba5d1e50f4a61a2fa623a1d994",
+      "runner.py": "62e12f33d4761e9275099525bf6a9a047f6177f110d1f8881f752f58b8adc975",
+      "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+      "formal18-independent.json": "8cb2f74b08271b155105ddb024492816b43b157dba1bebd359810a74a11d0aec"
+    },
+    "campaign_pins": {
+      "agent_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+      "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "campaign_script_sha256": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+      "engine_script_sha256": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+      "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+    },
+    "coordinator_observation_contract": {
+      "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+      "native_qualification": {
+        "schema": "crg-coordinator-probe-offline-review-v1",
+        "phase": "passed",
+        "passed_native_cases": 24,
+        "members_verified": 114,
+        "archive_sha256": "5e7cb24236a64c2fd379c5fc1774a5b799ec33491bc0c7e333b0f1e7160d555d",
+        "module_sha256": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+        "driver_sha256": "cbbce5c3f37c774cedcb7806ad8f84106437d1929ddf1b0eacdcd1e18179092a",
+        "read_only_observation_total_budget_seconds": 15,
+        "max_readonly_attempts": 3,
+        "mutating_retries": 0,
+        "actual_cluster_readonly": true,
+        "product_changed": false,
+        "old_API_failure_cause_known": false,
+        "business_long_duration_accepted": false
+      },
+      "private_output_permissions": "directory0700/files0600; exact bytes with explicit truncation at4MiB stdout/64KiB stderr; fail closed at64MiB/512files",
+      "readonly_inventory_total_budget_seconds": 15,
+      "max_failed_readonly_attempts": 3,
+      "mutating_command_retries": 0,
+      "invalid_inventory_or_other_fixture": "fail immediately; never retry to hide",
+      "new_clock": true,
+      "inherited_seconds": 0,
+      "original1396_terminal_report_sha256": "03a11a35b1a6aaa371c85107c7e9e97e4500ed0228aca23bbcd059f3a096e287",
+      "original1396_job_sha256": "4b2789bca4a30bbf0e2181f74422825a31896384fe6e6f546c2ea240a1a759ac",
+      "original1396_plan_sha256": "9018ae5400591afd4ce04b5fd379be59e892172cb193cf5a06fe9995d5d800a4",
+      "old_failure_cause_known": false
+    },
+    "old1728_terminal_report_sha256": "7adb3ba40455282f546aa90f727f1a13476f097f989f2f786a761f76bc40c733",
+    "fresh_formal18_projection": {
+      "schema": "crg-fresh-formal18-original-checks-projection-v1",
+      "phase": "passed",
+      "source_commit": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+      "job_sha256": "56e7fccdb9f108eaaeea3e9cf2d3b4878f3ab096af5d9f80559267579d810169",
+      "plan_sha256": "235f80f860e771cb7d1a1bd916aec11c27fe310b4f323939a16d848d5183d3ac",
+      "coordinator_report_sha256": "0169e86df516d95e8b857b582041020a0b129eb7ea13e1f53d6f4574a4a20a60",
+      "planned_checks": 18,
+      "recorded_checks": 18,
+      "passed_checks": 18,
+      "auxiliary_checks_passed": 4,
+      "native_whole600_each_role": true,
+      "independent_qualification_sha256": "8cb2f74b08271b155105ddb024492816b43b157dba1bebd359810a74a11d0aec",
+      "original_check_names_equal_previously_frozen9_each_role": true,
+      "all22_and_cleanup_qualified": true,
+      "no_time_data_or_source_transfer": true,
+      "formal_original18_accepted": true,
+      "stable_release_accepted": false
+    },
+    "source_worker_diagnostics_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be"
+  },
+  "all_original_durations_SLA_budgets_cache_and_auditor_unchanged": true,
+  "old1396_1728_inputs_untouched": true,
+  "new_clock": true,
+  "inherited_seconds": 0,
+  "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+  "formal_original18_and_aux4_accepted": true,
+  "new_long_started": false,
+  "stable_release_accepted": false
+}
