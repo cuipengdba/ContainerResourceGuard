@@ -1,5 +1,7 @@
 # 七天身份采集入口修复 v3
 
+> 单次准确保存现用[采集保存工具](development-source37-capture-save.zh.md)：在原真实七天窗口内复核并原子保存准确stdout，默认/pending不建目标。此处capture-v3仍为正确只读底层入口。
+
 ## 提前发现的两个缺陷
 
 审查后续真实七天采集步骤时发现，冻结reader的capture分支传给旧core的计划没有roles字段；即使补上，复制的core还缺少path_clean全局绑定。此前已验证的baseline pending/提前capture拒绝在进入这段前就返回，因此并未证明完整采集路径。现在用受控输入明确复现KeyError roles和NameError path_clean；它们是采集工具缺陷，未发生真实长测采集失败，也不需重启1880。

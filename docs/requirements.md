@@ -12,6 +12,8 @@
 
 [老化单次执行包装器](development-source37-aged-runner-v3.zh.md)归档：独占单次guard、放行前真实PID/start持久化、准确wait退出与报告摘要、无自动重试。仅原长测/真实seal/authority完整允许实际运行；当前pending，受控短回执不冒充真实1200秒或发布资格。
 
+[原七天身份单次保存](development-source37-capture-save.zh.md)归档：固定正确adapter/源、仅两段24h接受且新七天native仍运行时可保存；独占guard/0700/0600、准确stdout/fsync/renameat2不覆盖，失败保留、不自动重试。真实pending未建目标，受控保存不冒充真实seal、时长或发布资格。
+
 以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
 
 ## 历史更新与原计划（原文保留）
