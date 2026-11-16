@@ -1,5 +1,11 @@
 # 当前交付与后续验收
 
+集成候选源`37ca44e0`已独立完成新一轮DBS/HISDBS各原600秒，**原18项业务检查与另4项辅助检查全部接受**；固定四组对照44/44和同源四格原生284/284分别归档。新19输入长稳已唯一实际启动，当前24h observe基线运行中，初期原启动12/12、首周期内容通过但原生整段验证仍pending；同容器24h enforce、新七天和原老化后/发布门槛尚未接受。公开preview.5未改，稳定1.0未发布。 [当前交付与剩余工作](release-readiness-current.md)、[新正式18项/4辅助](development-fresh-formal18.zh.md)、[新长稳计划与实际状态](development-new-long1880.zh.md)。
+
+以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
+
+## 历史更新与原计划（原文保留）
+
 固定正式版本号候选已完成[DBS/HISDBS原路径18/18](testing-final-v1-full600-terminal.md)及[原生跨架构/内核284/284](testing-final-v1-native-CI-terminal.md)，准确产物与独立清理证据已归档。[当前交付与剩余工作](release-readiness-current.md)：公开preview.5不变，长期验收尚未完成，稳定1.0未发布。
 
 
