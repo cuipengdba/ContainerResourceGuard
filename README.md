@@ -1,6 +1,6 @@
 # ContainerResourceGuard
 
-当前18/52项按定义范围完成，DBS/HISDBS固定候选原路径业务及跨架构控制已验证；正式24h+24h+新七天已启动baseline，尚未完成。公开下载为preview.5，稳定1.0未发布。[当前交付与待办](docs/release-readiness-current.md)、[候选打包与来源演练](docs/final-v1-package-rehearsal.md)、[此前README原记录](README-history-before-package-rehearsal.md)。
+集成候选源`37ca44e0`已独立完成新一轮DBS/HISDBS各原600秒，**原18项业务检查与另4项辅助检查全部接受**；固定四组对照44/44和同源四格原生284/284分别归档。新19输入长稳已唯一实际启动，当前24h observe基线运行中，初期原启动12/12、首周期内容通过但原生整段验证仍pending；同容器24h enforce、新七天和原老化后/发布门槛尚未接受。公开preview.5未改，稳定1.0未发布。 [当前交付与待办](docs/release-readiness-current.md)、[准确新正式复验](docs/development-fresh-formal18.zh.md)、[新长稳状态](docs/development-new-long1880.zh.md)。
 
 ContainerResourceGuard（CRG）在容器内部控制当前容器的 CPU、内存和 IO。**一个容器一份 Agent**，DBS 与 HISDBS 分别运行；无需 Operator、CRD、Docker socket 或 Kubernetes API。容器或 Pod 重建后重新发现自身 cgroup，不需要保存或手改旧 ID。
 

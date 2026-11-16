@@ -1,8 +1,14 @@
 # DBS SQL失败诊断：开发记录与后续隔离验收
 
+集成候选源`37ca44e0`已独立完成新一轮DBS/HISDBS各原600秒，**原18项业务检查与另4项辅助检查全部接受**；固定四组对照44/44和同源四格原生284/284分别归档。新19输入长稳已唯一实际启动，当前24h observe基线运行中，初期原启动12/12、首周期内容通过但原生整段验证仍pending；同容器24h enforce、新七天和原老化后/发布门槛尚未接受。公开preview.5未改，稳定1.0未发布。 [当前交付与剩余工作](release-readiness-current.md)、[新正式18项/4辅助](development-fresh-formal18.zh.md)、[新长稳计划与实际状态](development-new-long1880.zh.md)。
+
+以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
+
+## 历史更新与原计划（原文保留）
+
 最新状态：[原DBS/HISDBS路径受控诊断各13/13通过，准确原件复算及归属清理完成](development-controlled-sql-wait.zh.md)。这是120秒负向诊断，原1761原因与正常600秒/发布门槛不变。
 
-## 当前结论
+## 诊断工具阶段结论（先于新正式业务复验）
 
 v4终态：两个准确原镜像Python2.7各6/6兼容性检查通过，真实libpq空loopback连接失败分类正确、namespace/父组清理和全部输入未变；[结果](test-results-original-image-diagnostics-v4.json)、[原件](test-evidence-original-image-diagnostics-v4.json.gz)。未启动PG/原业务、未访问业务数据库；仍非原600秒或因果验收。后文各“尚未启动”均为对应冻结前历史状态。
 
