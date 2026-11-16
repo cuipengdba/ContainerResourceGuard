@@ -1,0 +1,120 @@
+{
+  "schema": "crg-source37-capture-save-review-v1",
+  "phase": "passed-capture-save-guards-only",
+  "files_sha256": {
+    "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "tests/live-capacity-aged-v1/capture-save-checks.py": "24351b3e04b0734a8fb0e93ba7e3d55fe1cffcb3c6e862e5df7e4d0e756c612d",
+    "tests/live-capacity-aged-v1/capture-save-contract.json": "e5fb0badf18274a62ed6810f1085cc99d7670d502d6eb074e2450ad9aa1248b6",
+    "tests/live-capacity-aged-v1/capture-save.py": "b679d2e8cd424c73825e9bd851aadc440da20295172e1c6a2ead37c11a3b70b0",
+    "tests/live-capacity-aged-v1/capture-v3-checks.py": "74e26ddeb42ea1abfb56c9e0cd6813921e57164d1004e6c4e7c5ac362cbb257c",
+    "tests/live-capacity-aged-v1/capture-v3-derivation.json": "cdfbe2f4e1decc0ddf4ff4c15bf2413cd6d2c57f2bb839f23cf6528dd64ed2e6",
+    "tests/live-capacity-aged-v1/capture-v3.py": "1b9033fd978a0d4426bdcb51499b77ab185a1911ac10b8652e561b09d091f05c",
+    "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2"
+  },
+  "native": {
+    "phase": "passed-capture-save-guards-only",
+    "checks": [
+      {
+        "name": "controlled-capture-and-real-noreplace",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-capture-save-checks-v1",
+          "phase": "passed",
+          "tests_run": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "scope": "controlled proc/Pod/native records and real temp files/renameat2; never actual lineage or durations",
+          "actual_seven_day_seal_created": false,
+          "actual_postflight_executed": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "9562cd88d2beee083f115bc73b4bdd99d522cecdfbd4e17d4e3ae1cc17b37fff",
+        "stderr_sha256": "6043c9bec3556950129387a6853bd471b2d65d37dde636781950091637647af7",
+        "stderr": "test_both_original24h_native_acceptance_required (__main__.Checks) ... ok\ntest_child_failure_retained_without_seal (__main__.Checks) ... ok\ntest_closed_and_nonlive_capture_windows_rejected (__main__.Checks) ... ok\ntest_duplicate_preserves_all_original_bytes (__main__.Checks) ... ok\ntest_existing_attempt_is_never_reused (__main__.Checks) ... ok\ntest_full_controlled_capture_exact_stdout_private_and_not_acceptance (__main__.Checks) ... ok\ntest_no_execute_or_directory_override (__main__.Checks) ... ok\ntest_pending_default_and_save_never_write (__main__.Checks) ... ok\ntest_publish_collision_keeps_source_and_existing_destination (__main__.Checks) ... ok\ntest_ready_default_is_readonly (__main__.Checks) ... ok\ntest_seal_wrong_binding_role_or_permission_is_rejected (__main__.Checks) ... ok\ntest_source_pin_and_symlink_rejection (__main__.Checks) ... ok\ntest_window_closing_after_capture_retains_candidate_only (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 1.191s\n\nOK\n"
+      },
+      {
+        "name": "actual-default-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "reason": "ORIGINAL_SEVEN_DAY_CAPTURE_WINDOW_NOT_OPEN",
+          "component_phase": "measuring-baseline",
+          "capture_saved": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "3452b9bc0559bc4ab2bd0698b27526c17326bfb869036f922cfa7a5e33064a9c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-save-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "reason": "ORIGINAL_SEVEN_DAY_CAPTURE_WINDOW_NOT_OPEN",
+          "component_phase": "measuring-baseline",
+          "capture_saved": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "3452b9bc0559bc4ab2bd0698b27526c17326bfb869036f922cfa7a5e33064a9c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+      "tests/live-capacity-aged-v1/capture-save-checks.py": "24351b3e04b0734a8fb0e93ba7e3d55fe1cffcb3c6e862e5df7e4d0e756c612d",
+      "tests/live-capacity-aged-v1/capture-save-contract.json": "e5fb0badf18274a62ed6810f1085cc99d7670d502d6eb074e2450ad9aa1248b6",
+      "tests/live-capacity-aged-v1/capture-save.py": "b679d2e8cd424c73825e9bd851aadc440da20295172e1c6a2ead37c11a3b70b0",
+      "tests/live-capacity-aged-v1/capture-v3-checks.py": "74e26ddeb42ea1abfb56c9e0cd6813921e57164d1004e6c4e7c5ac362cbb257c",
+      "tests/live-capacity-aged-v1/capture-v3-derivation.json": "cdfbe2f4e1decc0ddf4ff4c15bf2413cd6d2c57f2bb839f23cf6528dd64ed2e6",
+      "tests/live-capacity-aged-v1/capture-v3.py": "1b9033fd978a0d4426bdcb51499b77ab185a1911ac10b8652e561b09d091f05c",
+      "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2"
+    },
+    "existing_frozen_sets_unchanged": {
+      "/var/tmp/crg-aged1952-tools-20261116": 15,
+      "/var/tmp/crg-capture1958-tools-20261116": 8,
+      "/var/tmp/crg-runner1965-tools-20261116": 3,
+      "/var/tmp/crg-runner1971-tools-20261116": 5,
+      "/var/tmp/crg-final1880-tools-20261116": 19
+    },
+    "all_real_targets_absent": true,
+    "actual_seven_day_seal_created": false,
+    "actual_postflight_executed": false,
+    "stable_release_accepted": false
+  },
+  "Windows": {
+    "schema": "crg-capture-save-checks-v1",
+    "phase": "passed",
+    "tests_run": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8,
+    "scope": "controlled proc/Pod/native records and real temp files/renameat2; never actual lineage or durations",
+    "actual_seven_day_seal_created": false,
+    "actual_postflight_executed": false,
+    "release_accepted": false
+  },
+  "actual_seven_day_seal_created": false,
+  "actual_postflight_executed": false,
+  "controlled_boundary": "substituted proc/Pod/native records from complete original capture fixture plus real temporary files/modes/fsync/renameat2; not actual lineage or duration qualification",
+  "pending_calls_create_no_real_targets": true,
+  "no_overwrite_or_automatic_retry": true,
+  "atomic_publish_verified_on_current_native_filesystem": true,
+  "unsupported_renameat2_fails_closed": true,
+  "completed_original_tasks_added": 0,
+  "long_duration_accepted": false,
+  "stable_release_accepted": false
+}
