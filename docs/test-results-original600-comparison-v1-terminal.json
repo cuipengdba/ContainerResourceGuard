@@ -1,0 +1,638 @@
+{
+  "schema": "crg-fixed-original600-comparison-independent-v1",
+  "phase": "passed-comparison-only",
+  "cells": {
+    "observe-dbs": {
+      "phase": "passed",
+      "recorded_checks": 11,
+      "passed_checks": 11,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "error": null,
+      "full600_completed": true,
+      "normal_business_passed": true,
+      "auxiliary_diagnostics_passed": true,
+      "eight_controls_unchanged_during_window": true,
+      "engine_exec_probe_diagnostic": {
+        "passed_original_5s_criterion": true,
+        "samples": 24,
+        "api_max": 2.5246027519460768,
+        "sql_max": 2.653988768113777
+      },
+      "engine_probe_boundary": "Separate kubectl-exec diagnostic, including its original5s flag, is preserved verbatim. The original frozen engine mode requires the successful native workload to surround the content cycle; no universal latency or CRG causality claim.",
+      "timeline_samples": 304,
+      "timeline_bytes": 611307,
+      "timeline_span_seconds": 606.0538190829102,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "pressure_measurement_qualified": false,
+      "workload_phase": "passed",
+      "workload_elapsed_seconds": 600.1089947919827,
+      "sql": {
+        "attempts": 300,
+        "errors": 0,
+        "histogram": [
+          293,
+          2,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.2990814468357712,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0,
+        "successes": 300,
+        "total_seconds": 0.9588563905563205
+      },
+      "api": {
+        "attempts": 120,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          120,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.00935836904682219,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0,
+        "successes": 120,
+        "total_seconds": 0.976822046097368
+      },
+      "failure_diagnostics": {
+        "collection_errors": 0,
+        "dropped_events": 0,
+        "events": [],
+        "maximum_event_bytes": 65536,
+        "maximum_events": 128,
+        "persistence": "existing atomic load.json snapshots only",
+        "privacy": "fixed reason/class/stage only; no raw error/SQL/HTTP/environment",
+        "retained_event_bytes": 0,
+        "schema": "crg-bounded-request-failures-v1"
+      },
+      "timeline_surrounds_entire_native_window": true,
+      "window_counters": {
+        "cpu_stat_delta": {
+          "nr_periods": 6023,
+          "nr_throttled": 0,
+          "system_usec": 18261090,
+          "throttled_usec": 0,
+          "usage_usec": 38765715,
+          "user_usec": 20504625
+        },
+        "memory_events_delta": {
+          "high": 0,
+          "low": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_group_kill": 0,
+          "oom_kill": 0
+        },
+        "memory_current_first_last": [
+          1503432704,
+          2224308224
+        ],
+        "file_dirty_first_last": [
+          446464,
+          12288
+        ],
+        "file_writeback_first_last": [
+          16384,
+          0
+        ],
+        "io_stat_delta_by_device": {
+          "253:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 197787648,
+            "rios": 616,
+            "wbytes": 1609498624,
+            "wios": 7448
+          },
+          "8:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 197787648,
+            "rios": 1209,
+            "wbytes": 1362743296,
+            "wios": 7940
+          }
+        },
+        "host_vmstat_delta": {
+          "nr_dirty": -256,
+          "nr_free_pages": 383882,
+          "nr_writeback": -7,
+          "nr_writeback_temp": 0,
+          "pgpgin": 193164,
+          "pgpgout": 3805880,
+          "pgscan_direct": 311,
+          "pgscan_kswapd": 593967,
+          "pgsteal_direct": 311,
+          "pgsteal_kswapd": 593967,
+          "pswpin": 0,
+          "pswpout": 0
+        }
+      },
+      "event_correlations": []
+    },
+    "enforce-dbs": {
+      "phase": "passed",
+      "recorded_checks": 11,
+      "passed_checks": 11,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "error": null,
+      "full600_completed": true,
+      "normal_business_passed": true,
+      "auxiliary_diagnostics_passed": true,
+      "eight_controls_unchanged_during_window": true,
+      "engine_exec_probe_diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 22,
+        "api_max": 5.3326125962194055,
+        "sql_max": 2.000637812074274
+      },
+      "engine_probe_boundary": "Separate kubectl-exec diagnostic, including its original5s flag, is preserved verbatim. The original frozen engine mode requires the successful native workload to surround the content cycle; no universal latency or CRG causality claim.",
+      "timeline_samples": 305,
+      "timeline_bytes": 612431,
+      "timeline_span_seconds": 609.4537532730028,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "pressure_measurement_qualified": false,
+      "workload_phase": "passed",
+      "workload_elapsed_seconds": 600.3323967328761,
+      "sql": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          293,
+          2,
+          0,
+          1,
+          1,
+          0,
+          0,
+          3,
+          0,
+          1,
+          0,
+          0
+        ],
+        "max_seconds": 1.2499603719916195,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 2.814404599601403
+      },
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          120,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.010885837953537703,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 0.9152492529246956
+      },
+      "failure_diagnostics": {
+        "collection_errors": 0,
+        "dropped_events": 0,
+        "events": [],
+        "maximum_event_bytes": 65536,
+        "maximum_events": 128,
+        "persistence": "existing atomic load.json snapshots only",
+        "privacy": "fixed reason/class/stage only; no raw error/SQL/HTTP/environment",
+        "retained_event_bytes": 0,
+        "schema": "crg-bounded-request-failures-v1"
+      },
+      "timeline_surrounds_entire_native_window": true,
+      "window_counters": {
+        "cpu_stat_delta": {
+          "nr_periods": 6049,
+          "nr_throttled": 0,
+          "system_usec": 18073548,
+          "throttled_usec": 0,
+          "usage_usec": 38496031,
+          "user_usec": 20422483
+        },
+        "memory_events_delta": {
+          "high": 0,
+          "low": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_group_kill": 0,
+          "oom_kill": 0
+        },
+        "memory_current_first_last": [
+          1496444928,
+          2207956992
+        ],
+        "file_dirty_first_last": [
+          446464,
+          16384
+        ],
+        "file_writeback_first_last": [
+          0,
+          0
+        ],
+        "io_stat_delta_by_device": {
+          "253:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 197779456,
+            "rios": 561,
+            "wbytes": 1530104832,
+            "wios": 5026
+          },
+          "8:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 74854400,
+            "rios": 729,
+            "wbytes": 376351744,
+            "wios": 2738
+          }
+        },
+        "host_vmstat_delta": {
+          "nr_dirty": -363,
+          "nr_free_pages": 205843,
+          "nr_writeback": 17,
+          "nr_writeback_temp": 0,
+          "pgpgin": 209668,
+          "pgpgout": 3964994,
+          "pgscan_direct": 67,
+          "pgscan_kswapd": 335382,
+          "pgsteal_direct": 67,
+          "pgsteal_kswapd": 335382,
+          "pswpin": 0,
+          "pswpout": 0
+        }
+      },
+      "event_correlations": []
+    },
+    "observe-hisdbs": {
+      "phase": "passed",
+      "recorded_checks": 11,
+      "passed_checks": 11,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "error": null,
+      "full600_completed": true,
+      "normal_business_passed": true,
+      "auxiliary_diagnostics_passed": true,
+      "eight_controls_unchanged_during_window": true,
+      "engine_exec_probe_diagnostic": {
+        "passed_original_5s_criterion": false,
+        "samples": 17,
+        "api_max": 1.5596326820086688,
+        "sql_max": 8.214852486969903
+      },
+      "engine_probe_boundary": "Separate kubectl-exec diagnostic, including its original5s flag, is preserved verbatim. The original frozen engine mode requires the successful native workload to surround the content cycle; no universal latency or CRG causality claim.",
+      "timeline_samples": 305,
+      "timeline_bytes": 613207,
+      "timeline_span_seconds": 608.0550363340881,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "pressure_measurement_qualified": false,
+      "workload_phase": "passed",
+      "workload_elapsed_seconds": 600.3082121559419,
+      "sql": {
+        "attempts": 301,
+        "errors": 0,
+        "histogram": [
+          293,
+          3,
+          0,
+          1,
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.35677295504137874,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0033333333333334,
+        "successes": 301,
+        "total_seconds": 0.9972132919356227
+      },
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          121,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.009186781011521816,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 0.988486677641049
+      },
+      "failure_diagnostics": {
+        "collection_errors": 0,
+        "dropped_events": 0,
+        "events": [],
+        "maximum_event_bytes": 65536,
+        "maximum_events": 128,
+        "persistence": "existing atomic load.json snapshots only",
+        "privacy": "fixed reason/class/stage only; no raw error/SQL/HTTP/environment",
+        "retained_event_bytes": 0,
+        "schema": "crg-bounded-request-failures-v1"
+      },
+      "timeline_surrounds_entire_native_window": true,
+      "window_counters": {
+        "cpu_stat_delta": {
+          "nr_periods": 5982,
+          "nr_throttled": 0,
+          "system_usec": 16833622,
+          "throttled_usec": 0,
+          "usage_usec": 36564606,
+          "user_usec": 19730983
+        },
+        "memory_events_delta": {
+          "high": 0,
+          "low": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_group_kill": 0,
+          "oom_kill": 0
+        },
+        "memory_current_first_last": [
+          1503174656,
+          2156552192
+        ],
+        "file_dirty_first_last": [
+          12288,
+          20480
+        ],
+        "file_writeback_first_last": [
+          0,
+          0
+        ],
+        "io_stat_delta_by_device": {
+          "253:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 197517312,
+            "rios": 598,
+            "wbytes": 1505346560,
+            "wios": 5085
+          },
+          "8:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 197517312,
+            "rios": 1213,
+            "wbytes": 1295430656,
+            "wios": 7562
+          }
+        },
+        "host_vmstat_delta": {
+          "nr_dirty": 122,
+          "nr_free_pages": 176998,
+          "nr_writeback": -311,
+          "nr_writeback_temp": 0,
+          "pgpgin": 193016,
+          "pgpgout": 3813857,
+          "pgscan_direct": 64,
+          "pgscan_kswapd": 324147,
+          "pgsteal_direct": 64,
+          "pgsteal_kswapd": 324147,
+          "pswpin": 0,
+          "pswpout": 0
+        }
+      },
+      "event_correlations": []
+    },
+    "enforce-hisdbs": {
+      "phase": "passed",
+      "recorded_checks": 11,
+      "passed_checks": 11,
+      "failed_checks": [],
+      "unexecuted_checks": 0,
+      "error": null,
+      "full600_completed": true,
+      "normal_business_passed": true,
+      "auxiliary_diagnostics_passed": true,
+      "eight_controls_unchanged_during_window": true,
+      "engine_exec_probe_diagnostic": {
+        "passed_original_5s_criterion": true,
+        "samples": 21,
+        "api_max": 4.073284145910293,
+        "sql_max": 2.455860415007919
+      },
+      "engine_probe_boundary": "Separate kubectl-exec diagnostic, including its original5s flag, is preserved verbatim. The original frozen engine mode requires the successful native workload to surround the content cycle; no universal latency or CRG causality claim.",
+      "timeline_samples": 304,
+      "timeline_bytes": 610545,
+      "timeline_span_seconds": 606.053280916065,
+      "pressure_capabilities": {
+        "group_cpu": "unavailable",
+        "group_io": "unavailable",
+        "group_memory": "unavailable",
+        "host_cpu": "unavailable",
+        "host_io": "unavailable",
+        "host_memory": "unavailable"
+      },
+      "pressure_measurement_qualified": false,
+      "workload_phase": "passed",
+      "workload_elapsed_seconds": 600.2693717109505,
+      "sql": {
+        "attempts": 300,
+        "errors": 0,
+        "histogram": [
+          296,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "max_seconds": 2.418278062948957,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 1.0,
+        "successes": 300,
+        "total_seconds": 2.8023263439536095
+      },
+      "api": {
+        "attempts": 121,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          121,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.00914556416682899,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0083333333333333,
+        "successes": 121,
+        "total_seconds": 0.9856308740563691
+      },
+      "failure_diagnostics": {
+        "collection_errors": 0,
+        "dropped_events": 0,
+        "events": [],
+        "maximum_event_bytes": 65536,
+        "maximum_events": 128,
+        "persistence": "existing atomic load.json snapshots only",
+        "privacy": "fixed reason/class/stage only; no raw error/SQL/HTTP/environment",
+        "retained_event_bytes": 0,
+        "schema": "crg-bounded-request-failures-v1"
+      },
+      "timeline_surrounds_entire_native_window": true,
+      "window_counters": {
+        "cpu_stat_delta": {
+          "nr_periods": 5951,
+          "nr_throttled": 0,
+          "system_usec": 17079790,
+          "throttled_usec": 0,
+          "usage_usec": 36885600,
+          "user_usec": 19805811
+        },
+        "memory_events_delta": {
+          "high": 0,
+          "low": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_group_kill": 0,
+          "oom_kill": 0
+        },
+        "memory_current_first_last": [
+          1503424512,
+          2190581760
+        ],
+        "file_dirty_first_last": [
+          57344,
+          16384
+        ],
+        "file_writeback_first_last": [
+          0,
+          0
+        ],
+        "io_stat_delta_by_device": {
+          "253:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 197517312,
+            "rios": 560,
+            "wbytes": 1517065216,
+            "wios": 5126
+          },
+          "8:0": {
+            "dbytes": 0,
+            "dios": 0,
+            "rbytes": 94941184,
+            "rios": 808,
+            "wbytes": 338170880,
+            "wios": 2476
+          }
+        },
+        "host_vmstat_delta": {
+          "nr_dirty": -98,
+          "nr_free_pages": 152973,
+          "nr_writeback": 0,
+          "nr_writeback_temp": 0,
+          "pgpgin": 192908,
+          "pgpgout": 3603109,
+          "pgscan_direct": 54,
+          "pgscan_kswapd": 329214,
+          "pgsteal_direct": 54,
+          "pgsteal_kswapd": 329214,
+          "pswpin": 0,
+          "pswpout": 0
+        }
+      },
+      "event_correlations": []
+    }
+  },
+  "recorded_checks": 44,
+  "passed_checks": 44,
+  "planned_checks": 44,
+  "missing_selected_originals": [],
+  "indexed_originals": 56,
+  "indexed_bytes": 3274433,
+  "job_sha256": "677273a1ddb99a0d432d4e81546f490f6c063416782694f4e880332b8ecc88ea",
+  "plan_sha256": "05a36379d11547652891affff17d45c668efe9ed0c38c6bff3afa29389b9dd0d",
+  "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+  "cleanup_independent": true,
+  "registered_process_records_checked": 154,
+  "formal_original18_accepted": false,
+  "old1761_failure_cause": "unknown",
+  "one_fixed_order_pair_proves_causality": false,
+  "new_long_started": false,
+  "stable_release_accepted": false
+}
