@@ -1,5 +1,7 @@
 # 源37新长稳的只读老化血缘门禁
 
+> 后续采集修复：[当前capture-v3入口](development-source37-capture-v3.zh.md)已修复冻结reader采集分支的roles/path_clean遗漏；真实七天请使用新入口。原lineage.py默认及终态审计保持可用，下文旧采集命令仅保留历史记录。
+
 ## 本轮完成与边界
 
 本轮实现[新只读reader](../tests/live-capacity-aged-v1/lineage.py)、[准确绑定](../tests/live-capacity-aged-v1/binding.json)和[故障检查](../tests/live-capacity-aged-v1/checks.py)。当前只接受门禁代码的13组Windows/13组Linux合成故障测试、真机基线pending和提前采集拒绝；**没有七天封存、没有老化执行器、没有老化业务或稳定版本验收通过**。[完整复核](test-results-source37-aged-reader-v2.json)、[冻结6文件计划](test-plan-source37-aged-reader-v2.json)、[原字节证据及失败](test-evidence-source37-aged-reader-v2.json.gz)归档。

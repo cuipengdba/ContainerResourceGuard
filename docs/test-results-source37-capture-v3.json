@@ -1,0 +1,123 @@
+{
+  "schema": "crg-source37-capture-v3-review-v1",
+  "phase": "passed-controlled-capture-plumbing-only",
+  "files_sha256": {
+    "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "tests/live-capacity-aged-v1/capture-v3-checks.py": "74e26ddeb42ea1abfb56c9e0cd6813921e57164d1004e6c4e7c5ac362cbb257c",
+    "tests/live-capacity-aged-v1/capture-v3-derivation.json": "cdfbe2f4e1decc0ddf4ff4c15bf2413cd6d2c57f2bb839f23cf6528dd64ed2e6",
+    "tests/live-capacity-aged-v1/capture-v3.py": "1b9033fd978a0d4426bdcb51499b77ab185a1911ac10b8652e561b09d091f05c",
+    "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2"
+  },
+  "local": {
+    "schema": "crg-capture-v3-checks-v1",
+    "phase": "passed",
+    "tests_run": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2,
+    "synthetic_only": true,
+    "real_seven_day_seal_created": false,
+    "release_accepted": false
+  },
+  "native": {
+    "phase": "passed-capture-adapter-plumbing-only",
+    "checks": [
+      {
+        "name": "controlled-complete-capture-and-original-faults",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-capture-v3-checks-v1",
+          "phase": "passed",
+          "tests_run": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "synthetic_only": true,
+          "real_seven_day_seal_created": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "31836639ee714f0e4f2f29cccf38cdeba05ad059096eaf9f449a3907f58a4154",
+        "stderr_sha256": "a4ffb46584226ad52787500f1df0ced83d877565cd2937849f4b97ab2d35ad97",
+        "stderr": "test_both_original24h_must_be_accepted (__main__.Checks) ... ok\ntest_controlled_capture_still_rejects_original_faults (__main__.Checks) ... ok\ntest_default_pending_and_no_execute_argument (__main__.Checks) ... ok\ntest_frozen_old_missing_path_clean_failure_reproduced (__main__.Checks) ... ok\ntest_frozen_old_roles_failure_reproduced_without_real_inventory (__main__.Checks) ... ok\ntest_full_controlled_capture_keeps_original_schema_and_checks_all_actual_files (__main__.Checks) ... ok\ntest_neither_baseline_nor_enforce_can_capture (__main__.Checks) ... ok\ntest_original_capture_body_and_single_plan_repair_preserved (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.644s\n\nOK\n"
+      },
+      {
+        "name": "actual-default-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "7c73e6bdc9ecf371495069d9db8132033e2a323edf46d076cf74fd7af678b403",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "2ac579ad68e7a735922cdcb298d0279aa31deb4660e8933fda135b682951655a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-early-capture-rejected",
+        "exit": 1,
+        "expected_exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "CAPTURE_ONLY_DURING_FRESH_SEVEN_DAY",
+          "postflight_allowed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "cfb7cc5656d906e3e38742ce446bbe12a1a44683efcc47c029929c616cfa3f98",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+      "tests/live-capacity-aged-v1/capture-v3-checks.py": "74e26ddeb42ea1abfb56c9e0cd6813921e57164d1004e6c4e7c5ac362cbb257c",
+      "tests/live-capacity-aged-v1/capture-v3-derivation.json": "cdfbe2f4e1decc0ddf4ff4c15bf2413cd6d2c57f2bb839f23cf6528dd64ed2e6",
+      "tests/live-capacity-aged-v1/capture-v3.py": "1b9033fd978a0d4426bdcb51499b77ab185a1911ac10b8652e561b09d091f05c",
+      "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2"
+    },
+    "long19_unchanged": true,
+    "v2_frozen15_unchanged": true,
+    "execution_and_input_targets_absent": true,
+    "real_seven_day_seal_created": false,
+    "long_duration_accepted": false,
+    "stable_release_accepted": false
+  },
+  "old_failures_reproduced_without_real_capture": [
+    "KeyError roles in frozen capture plan",
+    "NameError path_clean in frozen copied core"
+  ],
+  "repair": "new adapter supplies fixed two roles and original base.path_clean; core body unchanged, wrapper only renamed and exact roles added",
+  "original_reader_and_binding_unchanged": true,
+  "same_seal_schema_and_old_binding_digest": true,
+  "compatible_with_source37_v2_execution_reader": true,
+  "controlled_test_boundary": "temporary real files/0600/digests with substituted Pod, proc and cgroup inventory; no real workload/seal qualification",
+  "real_seven_day_seal_created": false,
+  "actual_postflight_executed": false,
+  "long_duration_accepted": false,
+  "completed_original_tasks_added": 0,
+  "stable_release_accepted": false
+}
