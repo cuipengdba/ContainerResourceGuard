@@ -14,7 +14,7 @@ CRG 源 37ca44e0 的独立 DBS/HISDBS 原18项和另4项辅助检查已经按原
 
 第一次调用唯一启动程序停在原节点准入，未创建launch.guard、launch.json或业务输出目录；只读再次确认三者均不存在。原因是可用128131268608字节低于原max(20GiB,15%文件系统)的144828058829字节。[准确拒绝边界](test-results-new-long1880-pre-guard-rejection.json)保留，当前没有长测时钟。原计划和全部19输入不改，门槛不降低；只读job准入ready不能替代更严格的原节点门槛。
 
-磁盘清点显示已退休的隔离测试PG大文件占用空间。采用[可逆归档程序](../tests/retired-pg-archive-v1/archive-job.py)，只处理两个准确旧测试根内的22个PG目录中、单链接、至少8MiB的普通文件，先检查无Pod hostPath、挂载和进程cwd/exe/fd引用；不接触原业务目录、镜像和正在使用的测试来源。每文件压缩后完整解压复算SHA256和长度，确认原inode/mtime/ctime未变，先fsync记录原权限/uid/gid/atime/mtime/xattrs及摘要，再移除这一份未压缩副本。私有gzip、逐文件恢复清单与所有旧报告保留；失败保留进度，不假装完成。[手动恢复工具](../tests/retired-pg-archive-v1/restore-retired-pg.py)按准确摘要恢复且不覆盖原件；恢复需足够空间，不自动运行。归档数据含测试数据库内容，留在0700私有目录，不公开。
+磁盘清点显示已退休的隔离测试PG大文件占用空间。采用[可逆归档程序](../tests/retired-pg-archive-v1/archive-job.py)，只处理两个准确旧测试根内的22个PG目录中、单链接、至少8MiB的普通文件，先检查无Pod hostPath、挂载和进程cwd/exe/fd引用；不接触原业务目录、镜像和正在使用的测试来源。每文件压缩后完整解压复算SHA256和长度，确认原inode/mtime/ctime未变，先fsync压缩文件并写入原权限/uid/gid/atime/mtime/xattrs及摘要记录，再移除这一份未压缩副本。私有gzip、逐文件恢复清单与所有旧报告保留；失败保留进度，不假装完成。[手动恢复工具](../tests/retired-pg-archive-v1/restore-retired-pg.py)按准确摘要恢复且不覆盖原件；恢复需足够空间，不自动运行。归档数据含测试数据库内容，留在0700私有目录，不公开。
 
 这次归档只恢复可用空间，不改变CRG、测试预算、验收结果或原时长；原failed报告仍failed。归档完成并再次通过全部准入后，方可在未创建守卫的前提下重新执行冻结启动程序；实际业务只允许一次启动。Git公开归档初次换行规范化检查失败也保留：已通过单路径-text规则修正，四分支远端blob与19冻结输入一致后才有首次准入尝试，服务器冻结源从未改写。
 
@@ -29,3 +29,7 @@ CRG 源 37ca44e0 的独立 DBS/HISDBS 原18项和另4项辅助检查已经按原
 ## 初期诊断字段更名说明
 
 初期快照per-role的workload字段在原campaign中只于终态填入完整统计；尚为None不能表示原生线程没启动。发布v1快照曾把这个“终态摘要尚不可用”错误命名为workload_started=false，[原v1字节](test-results-new-long1880-initial-v1-label.json)保留。当前改名为terminal_workload_summary_available，另明确campaign_reports_both_native_workers_started来自原both_workers_started_epoch。实际双线程启动时间、每角色8个样本和首周期content-passed-native-pending不改；原始测量源、19输入、运行身份、验收条件和时长均未改变，也没有重启。此更名不授予整周期或24h接受，[摘要绑定](test-results-new-long1880-initial-label-amendment.json)完整留档。
+
+## 归档持久化描述的准确范围
+
+上述归档实现对压缩文件调用fsync，元数据清单通过临时文件与replace更新，但没有对该清单及父目录单独fsync。先前“fsync记录”的文案过强，现更正；原执行代码、回执及摘要不改。本次正常完成后，1090个文件的完整解压内容、保留压缩件摘要、原未压缩副本消失和旧报告不变都已实际核对；这不授予突然掉电时元数据与unlink原子持久化的资格。私有压缩件与完整恢复清单仍保留。本节只校正开发测试空间归档的描述，不改变CRG资源限制、日志功能或正在进行的长稳输入和条件。
