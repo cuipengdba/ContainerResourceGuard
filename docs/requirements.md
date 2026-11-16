@@ -14,6 +14,8 @@
 
 [原七天身份单次保存](development-source37-capture-save.zh.md)归档：固定正确adapter/源、仅两段24h接受且新七天native仍运行时可保存；独占guard/0700/0600、准确stdout/fsync/renameat2不覆盖，失败保留、不自动重试。真实pending未建目标，受控保存不冒充真实seal、时长或发布资格。
 
+[原老化单次后台启动](development-source37-detached-launch.zh.md)归档：固定正确wrapper-v3/源，原三段终态及真实seal/authority/previous全满足才允许；独占guard、先实际PID/start持久化、setsid/devnull/私有输出，未确定交接保留不重试。真实pending未建目标，短子进程父退出测试不冒充真实老化、退出或发布资格。
+
 以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
 
 ## 历史更新与原计划（原文保留）
