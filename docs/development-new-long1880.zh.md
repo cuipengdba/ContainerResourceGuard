@@ -25,3 +25,7 @@ CRG 源 37ca44e0 的独立 DBS/HISDBS 原18项和另4项辅助检查已经按原
 完成后重新通过原15%/20GiB节点门槛及新job全部前置，才执行同一冻结程序的唯一实际启动；不是连接异常后盲目重启。实际PID/start、原生UTC、job/plan/19输入及节点准入在[初期快照](test-results-new-long1880-initial.json)绑定。两角色各6项原启动检查共12/12，通过原启动链、缓存独立enforce、observe仅三项计划且八原控制不写、v2日志权限和准确一对一Agent/初始主进程检查；两原生工作线程已开始24h基线。快照内备份周期只记当时进度，整段原生时长/全部周期尚未完成，不能提前认定业务周期或长稳接受。
 
 当前是新的24h observe基线运行中；之后同容器24h enforce和新七天，以及老化后原故障/恢复/维护/升级/稳定发布门槛仍全部待验收。之前各历史段落是带日期的准入/准备状态，不抹去被拒、换行校验失败或旧长测失败。源37、精确ELF、19输入与原各阶段参数/时长/检查未变。preview.5未改，稳定1.0尚未发布。
+
+## 初期诊断字段更名说明
+
+初期快照per-role的workload字段在原campaign中只于终态填入完整统计；尚为None不能表示原生线程没启动。发布v1快照曾把这个“终态摘要尚不可用”错误命名为workload_started=false，[原v1字节](test-results-new-long1880-initial-v1-label.json)保留。当前改名为terminal_workload_summary_available，另明确campaign_reports_both_native_workers_started来自原both_workers_started_epoch。实际双线程启动时间、每角色8个样本和首周期content-passed-native-pending不改；原始测量源、19输入、运行身份、验收条件和时长均未改变，也没有重启。此更名不授予整周期或24h接受，[摘要绑定](test-results-new-long1880-initial-label-amendment.json)完整留档。
