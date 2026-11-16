@@ -17,3 +17,9 @@ DBS、HISDBS各新建独立namespace和输出，依次各跑一次原600秒enfor
 ## 后续门槛
 
 只有本轮原18项及辅助4项实际完成并独立核验，才准备全新从零24h observe、同容器24h enforce、新七天和原老化后故障/恢复/升级/稳定包门槛。当前新长稳未开始，稳定1.0未接受，preview.5保持。52项定义和18项既有完成声明不增加。
+
+## 复用驱动的旧报告标签修正说明
+
+运行后检查发现复用的per-role驱动仍写旧scope“fixed one-pair…not formal original18 acceptance”和formal_original18_acceptance=false。它不单独授予整体18项资格；这些原始字段按原件保留，不在测试后修改。正式复验的独立namespace/两个enforce矩阵/原600秒和原18+4门槛，已由启动前发布的正式coordinator和plan明确，不由这个旧标签决定。
+
+[元数据修正记录及摘要](test-results-fresh-formal18-metadata-amendment.json)。[独立复算v2](../tests/fresh-formal18-v1/qualify-selected-originals-v2.py)除既有全部窗口/SLA/备份/控制/清理检查，还严格核对每角色准确原9个检查名称和另外2个auxiliary-diagnostic标签，显式保留原报告的false和旧scope，只有两组新实际结果全部满足才能授予整体原18项。原复算程序保留；本修改不改变正在运行的15输入、业务命令、限额、超时、备份、次数、SLA或失败政策。旧标签并非一次通过声明，也不能代替新独立结论。
