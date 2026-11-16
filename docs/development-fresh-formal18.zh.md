@@ -1,25 +1,34 @@
-# 新候选原18项正式业务复验：启动前冻结
+# DBS/HISDBS新候选原18项复验终态
 
-DBS、HISDBS各新建独立namespace和输出，依次各跑一次原600秒enforce业务。每组原9项启动/业务检查，另2项辅助观察单独计数，总计原18项+辅助4项=22。前一组准确归属清理完成才开始下一组，原镜像/start.sh/软件和数据路径/只读CCG不变，每容器仅一个CRG控制自身，原缓存程序继续enforce。
+两组各一次、各全新原600秒的enforce复验已经结束。原9项与辅助2项分别复算，整体是否接受原18项见下表和准确JSON；这不是稳定1.0发布或长稳完成。
 
-本文件发布时15输入冻结、原生22项来源绑定故障检查、Windows21通过/1Linux专用跳过及只读服务器准入完成，尚未启动。本次来源与上一轮仅新路径、两个enforce矩阵和准确对照终态前置核对不同；业务campaign/worker/观察器字节相同，原测量代码块和全部原SLA/备份验收保持。冻结plan中的fault_qualification字段为前置对照原有资格，当前正式来源逐摘要原生检查在[本轮准备结果](test-results-fresh-formal18-v1-preparation.json)另列，不把两者混同。
+|角色|终态|原检查通过/记录|辅助通过/记录|原负载秒|SQL错误|API错误|
+|---|---|---:|---:|---:|---:|---:|---:|
+|enforce-dbs|passed|9/9|2/2|600.2707152408548|0|0|
+|enforce-hisdbs|passed|9/9|2/2|600.2469101999886|0|0|
 
-[15输入和参数冻结](test-plan-fresh-formal18-v1.json)、[准确文本来源](../tests/fresh-formal18-v1/)、[独立复算程序](../tests/fresh-formal18-v1/qualify-selected-originals.py)。准确ELF仍为37ca44e0、AMD64 ee4f0a14，CRG产品源没有改动。外部8核/20GiB，手动7.2核、memory.high20001980416、读写64MiB/s和手动4096IOPS不变；此固定测试预算不改变产品三个独立百分比默认20或百分比IO仅带宽语义。
+[逐原件复算结果](test-results-fresh-formal18-v1-terminal.json)、[选定准确原件和原生终态](test-evidence-fresh-formal18-v1-terminal.json.gz)、[15输入启动前冻结](test-plan-fresh-formal18-v1.json)、[准确文本来源](../tests/fresh-formal18-v1/)、[独立复算v2](../tests/fresh-formal18-v1/qualify-selected-originals-v2.py)。选定原件30个/1646028字节逐长度/摘要核验，全部缺失项显式列出；本轮namespace、Pod、父叶cgroup和准确PID/start登记的消失另行确认。每角色新原9项准确名称及独立2项auxiliary-diagnostic标签明确分开，不能以22替代18或漏掉辅助失败。
 
-## 不借用前轮资格
+## 原参数与完整范围保持
 
-[四组原600秒对照44/44、56准确原件和154清理登记](development-original600-comparison.zh.md)已结束并独立复算，本轮以其准确plan/report摘要和全部原进程/namespace/父叶组消失为前置；不借用其测量时间、数据或结果作为新原18项。旧1761 DBS错误仍失败且原因unknown。对照中的两个exec原5秒标志false完整保留，不作全部延迟通过或确定因果的断言。
+CRG产品源37ca44e0/准确ELF未改，原镜像/start.sh/软件与数据路径/只读CCG和缓存enforce不变。外部8核/20GiB，手动7.2核、memory.high20001980416、读写64MiB/s及手动4096IOPS与冻结相同。原600秒、SQL/API零错误/max5秒/p95桶1秒/98%覆盖、备份/同步/独立恢复十项内容及成功原生窗口包围完整周期、真实PG归属全部原标准保留。没有重复运行覆盖失败、资源放宽或PG参数修改。
 
-原600秒、SQL/API零错误、max5秒、p95桶1秒、98%覆盖，以及备份/同步/独立恢复十项内容、原生窗口包围完整备份周期、真实PG端口归属和归属清理均保持。单独kubectl exec探针仍按既有规则原样保留诊断标志，只有原生完整成功窗口能验证内容周期。任何失败保留；无重试抹去失败、资源放宽或PG参数修改。
+只读观察器完整覆盖本轮原生窗口，八控制/原PID1/Agent/cache不变；按绑定身份正常停止，最大1800秒/900样本/4MiB。PSI若unavailable仍明确缺失，不冒充压力测试。准确控制、计数、原生错误事件和辅助终态在独立结果及原件保留。
 
-辅助观察与对照相同，每2秒只读本容器计数及固定PG等待，先于负载首样本、1800秒/900样本/4MiB上限、完整窗口后身份标记正常退出，绝不停止原PID1/Agent/cache。PSI若缺失仍明确unavailable，不能冒充压力实测。两组逐一清理，终态统一索引取回所有选定原件逐长度/摘要及业务条件复算。原9项与辅助2项不得混算或漏掉失败。
+## 元数据和单独exec诊断的边界
+
+复用per-role驱动的旧scope仍写“fixed one-pair…not formal original18 acceptance”，raw formal_original18_acceptance仍false；每个驱动本身不能授予两角色整体18项资格，原字段没有被修改。新复验的独立身份/两个enforce矩阵/原600秒/原18+4由启动前正式plan和coordinator明确。运行时发现的[元数据修正说明](test-results-fresh-formal18-metadata-amendment.json)在独立结论前归档，v2除既有全部业务条件还强制核对原9个名称及另2个辅助标签，整体结论来自新实际结果，不是改写旧报告标签或借用四组对照。[启动前和元数据说明原件](development-fresh-formal18-frozen-v1.zh.md)保留。
+
+单独kubectl exec探针计时包括远程命令/进程启动，原5秒标志完整保留。既有native-campaign规则以成功原生窗口覆盖内容周期，这一规则本轮未改；false不变成true，不据此声称全部请求低于5秒或确定CRG因果。
+
+|角色|单独exec原5秒标志|API最大秒|SQL最大秒|
+|---|---|---:|---:|
+|enforce-dbs|True|3.8593586299102753|1.2690246689599007|
+|enforce-hisdbs|True|1.260540173156187|1.4578655678778887|
+
 
 ## 后续门槛
 
-只有本轮原18项及辅助4项实际完成并独立核验，才准备全新从零24h observe、同容器24h enforce、新七天和原老化后故障/恢复/升级/稳定包门槛。当前新长稳未开始，稳定1.0未接受，preview.5保持。52项定义和18项既有完成声明不增加。
+[前次固定四组对照及两个exec超5秒标志](development-original600-comparison.zh.md)、旧1761 DBS原生失败及unknown原因、旧1396失败和1728为源修复而停止的长测都保留。原来源/已运行时间不能转入本次或后续长稳。
 
-## 复用驱动的旧报告标签修正说明
-
-运行后检查发现复用的per-role驱动仍写旧scope“fixed one-pair…not formal original18 acceptance”和formal_original18_acceptance=false。它不单独授予整体18项资格；这些原始字段按原件保留，不在测试后修改。正式复验的独立namespace/两个enforce矩阵/原600秒和原18+4门槛，已由启动前发布的正式coordinator和plan明确，不由这个旧标签决定。
-
-[元数据修正记录及摘要](test-results-fresh-formal18-metadata-amendment.json)。[独立复算v2](../tests/fresh-formal18-v1/qualify-selected-originals-v2.py)除既有全部窗口/SLA/备份/控制/清理检查，还严格核对每角色准确原9个检查名称和另外2个auxiliary-diagnostic标签，显式保留原报告的false和旧scope，只有两组新实际结果全部满足才能授予整体原18项。原复算程序保留；本修改不改变正在运行的15输入、业务命令、限额、超时、备份、次数、SLA或失败政策。旧标签并非一次通过声明，也不能代替新独立结论。
+本轮若原18+辅助4全部实际接受，才允许生成新的从零24h observe、同容器24h enforce、新七天计划，之后仍有原老化后故障/恢复/升级/稳定包门槛。[下一次长稳准备程序](../tests/fresh-formal18-v1/prepare-new-zero-clock-long.py)带本轮准确独立结论、18个准确原检查名称、4辅助及CI284的强制前置，归档不代表已经运行、上传或启动。当前新长稳未开始，稳定1.0未接受，preview.5未改，52项定义/18项既有范围声明不增加。产品仍仅CPU/内存/IO各百分比默认20，memory.high、百分比IO仅带宽、纯v2设置/v1跳过、每容器一对一、辅助失败不阻断原启动及每日30天/1GiB日志。
