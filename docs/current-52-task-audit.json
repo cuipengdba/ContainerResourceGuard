@@ -2384,9 +2384,9 @@
       "archived_definition_sha256": "cc6fc54ed9f9a66b43d2536cd87e301d26f439b01512f0576ee671768fca8893",
       "current_status": "waiting-real-duration-and-postflight",
       "completion_claim": false,
-      "verified_scope": "原18项及独立4辅助全部接受、固定四组44/44及同源四格284/284分别保留原资格；当前新长稳原启动12/12。新v2执行器/Linux14组及独立审核16组通过，Windows14+15通过/1 Linux权限测试跳过，实际三个入口均pending。用户明确high-only回退，旧max目标应拒绝并保留不兼容记录；不声称旧版通过。 新采集适配器Linux8组、Windows6通过/2跳过；受控复现并修复旧采集roles/path_clean遗漏，真实pending/提前采集拒绝通过。 单次包装器Linux11组通过，Windows4通过/7跳过；实际默认/执行开关均pending，原输入及真实目标保持。",
-      "remaining_or_boundary": "原24h/同容器24h/新七天、真实seal、准确high包、单次执行真实终态回执及老化实际执行/独立文件清理验收均待；其它原故障/恢复/维护/升级/稳定发布要求与缺失平台边界保持。旧max managed-resume按用户决定排除当前支持范围，历史原定义与未通过事实保留，不豁免其余标准。 真实七天采集必须使用capture-v3适配器，旧reader --capture不再作为入口；受控采集不是实际seal或时长证明。 包装器前台运行，正式一次性脱离SSH启动器仍待；受控短回执不是真实postflight资格，实际authority/receipt/独立磁盘和清理审核均待。",
-      "evidence": "development-source37-aged-runner-v2.zh.md",
+      "verified_scope": "原18项及独立4辅助全部接受、固定四组44/44及同源四格284/284分别保留原资格；当前新长稳原启动12/12。新v2执行器/Linux14组及独立审核16组通过，Windows14+15通过/1 Linux权限测试跳过，实际三个入口均pending。用户明确high-only回退，旧max目标应拒绝并保留不兼容记录；不声称旧版通过。 新采集适配器Linux8组、Windows6通过/2跳过；受控复现并修复旧采集roles/path_clean遗漏，真实pending/提前采集拒绝通过。 单次包装器Linux11组通过，Windows4通过/7跳过；实际默认/执行开关均pending，原输入及真实目标保持。 放行信号窗口受控复现并修复；v3单次包装器Linux13组通过，Windows4通过/9跳过；实际默认/执行开关均pending，原输入及真实目标保持。",
+      "remaining_or_boundary": "原24h/同容器24h/新七天、真实seal、准确high包、单次执行真实终态回执及老化实际执行/独立文件清理验收均待；其它原故障/恢复/维护/升级/稳定发布要求与缺失平台边界保持。旧max managed-resume按用户决定排除当前支持范围，历史原定义与未通过事实保留，不豁免其余标准。 真实七天采集必须使用capture-v3适配器，旧reader --capture不再作为入口；受控采集不是实际seal或时长证明。 包装器前台运行，正式一次性脱离SSH启动器仍待；受控短回执不是真实postflight资格，实际authority/receipt/独立磁盘和清理审核均待。 包装器前台运行，正式一次性脱离SSH启动器仍待；受控短回执不是真实postflight资格，实际authority/receipt/独立磁盘和清理审核均待。",
+      "evidence": "development-source37-aged-runner-v3.zh.md",
       "before_original1396_terminal_acceptance": {
         "verified_scope": "固定最终候选七天/28周期执行器已冻结，旧任务进程仍活跃且不继承其时长。",
         "remaining_or_boundary": "新候选至少604800秒及老化后故障、重建/恢复/升级尚未完成。",
@@ -3025,6 +3025,18 @@
         "native_groups": 11,
         "Windows_passed": 4,
         "Windows_skipped": 7,
+        "actual_readonly_pending_calls": 2,
+        "actual_postflight_executed": false,
+        "actual_receipt_available": false,
+        "stable_release_accepted": false
+      },
+      "source37_aged_runner_v3": {
+        "phase": "passed-runner-guards-only",
+        "guide": "development-source37-aged-runner-v3.zh.md",
+        "runner_sha256": "0c0ab9d433ed7e9aa59b81de4cf0fede1d876df79aa9b86074e4d91a3bb4dad3",
+        "native_groups": 13,
+        "Windows_passed": 4,
+        "Windows_skipped": 9,
         "actual_readonly_pending_calls": 2,
         "actual_postflight_executed": false,
         "actual_receipt_available": false,
@@ -4540,6 +4552,18 @@
     },
     "all52_definitions_and18_claims_preserved": true,
     "candidate_runtime_kept": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+    "stable_release_accepted": false
+  },
+  "source37_aged_runner_v3": {
+    "phase": "passed-runner-guards-only",
+    "guide": "development-source37-aged-runner-v3.zh.md",
+    "runner_sha256": "0c0ab9d433ed7e9aa59b81de4cf0fede1d876df79aa9b86074e4d91a3bb4dad3",
+    "native_groups": 13,
+    "Windows_passed": 4,
+    "Windows_skipped": 9,
+    "actual_readonly_pending_calls": 2,
+    "actual_postflight_executed": false,
+    "actual_receipt_available": false,
     "stable_release_accepted": false
   }
 }
