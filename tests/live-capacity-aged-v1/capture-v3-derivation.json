@@ -1,0 +1,16 @@
+{
+  "schema": "crg-source37-capture-adapter-v3-derivation-v1",
+  "original_reader_sha256": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+  "capture_core_body_unchanged": true,
+  "capture_wrapper_renamed": "capture_exact",
+  "single_wrapper_replacement": {
+    "before": "p = dict(BINDING, run_id=BINDING['seven_day_run_id'])",
+    "after": "p = dict(BINDING, run_id=BINDING['seven_day_run_id'], roles=['dbs', 'hisdbs'])"
+  },
+  "missing_global_bound": "path_clean = frozen original base.path_clean",
+  "frozen_reader_and_binding_unchanged": true,
+  "original_schema_and_binding_digest_preserved_for_v2_executor": true,
+  "adapter_sha256": "1b9033fd978a0d4426bdcb51499b77ab185a1911ac10b8652e561b09d091f05c",
+  "actual_seven_day_capture_accepted": false,
+  "release_accepted": false
+}

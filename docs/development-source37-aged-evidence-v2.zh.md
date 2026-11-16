@@ -1,5 +1,7 @@
 # 老化维护恢复原始证据与独立审核 v2
 
+> 后续采集修复：[当前capture-v3入口](development-source37-capture-v3.zh.md)已修复冻结reader采集分支的roles/path_clean遗漏；真实七天请使用新入口。原lineage.py默认及终态审计保持可用，下文旧采集命令仅保留历史记录。
+
 ## 用户决定和开发任务归档
 
 用户已明确选择：**仅支持回退到memory.high版本；旧memory.max开发版明确拒绝并保留不兼容记录。** 这是当前兼容范围，旧max版managed-resume不再作为当前验收要求；其历史定义、不兼容和未通过事实完整保留，不声称旧版通过。其它原长稳、恢复和发布要求不因此豁免。
