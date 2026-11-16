@@ -1,0 +1,102 @@
+{
+  "schema": "crg-source37-fresh1880-aged-reader-binding-v1",
+  "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+  "binary_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+  "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de",
+  "version": "v1.0.0",
+  "component_root": "/var/tmp/crg-final1880-results-20261116",
+  "runner_root": "/var/tmp/crg-final1880-tools-20261116",
+  "namespace": "crg-vendor-lab-final1880-20261116",
+  "postflight_root": "/var/tmp/crg-aged-source37-postflight-20261116",
+  "postflight_namespace": "crg-vendor-lab-aged-source37-20261116",
+  "long_plan_sha256": "0b98d3c5cba9e2375cb19d0357a1376dd7dffdda96f616a1297d181c7dacbdae",
+  "long_job_sha256": "9e04850b4da072071feaf73cf395da3b505e8d4d5e90d9c738da39d9774d0972",
+  "uploaded_sha256": {
+    "binaries/crg-linux-amd64": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+    "examples/optional-agent.sh": "f7e7208f58bac7066d75d49cb17199b720e3d05bb5953e2a7a7800f881b54b79",
+    "tests/own-pg-startup-log.py": "d067cde7ccbc2f7e8330409607a21ebda03ea6788ae86215904fa988aa5aac8f",
+    "tests/port-integration-checks.py": "4a07d6ad84ea77d13e6d789882dd382c871d8efbd63ee56d4b06d9c3ab565c77",
+    "tests/port-owner-observer.py": "fb82be5e05e69d4667620228f3e14995764a03c7a7626d73f8ed8b65f38ea4d0",
+    "tests/vendor-engine-smoke.py": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "tests/vendor-port-diagnostics.py": "c8fbc334aa68721f571cf49b2d5d4b65114213091ab1596480ba16bb969ffb2a",
+    "tests/vendor-soak-campaign.py": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+    "tests/vendor-soak-load.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "business-qualification.json": "7bfae4f21f26c441e01e216f24f5af51a38bd67915d85c50651239b186f8ef38",
+    "CI-qualification.json": "a7079fac3267b55edbd819221aed2a9d6d647e3a112641efc3d71189b606e9bf",
+    "job.py": "9e04850b4da072071feaf73cf395da3b505e8d4d5e90d9c738da39d9774d0972",
+    "campaign-wrapper.py": "15eec0f922ac7bce86af9dbc4cc474342dbb4eba5d1e50f4a61a2fa623a1d994",
+    "runner.py": "62e12f33d4761e9275099525bf6a9a047f6177f110d1f8881f752f58b8adc975",
+    "tests/coordinator-probe-v1/probe.py": "8bbffbf5615800cc53dbfb3ee04f7294cb2121f5de43f0af44aa6b54df211f9e",
+    "formal18-independent.json": "8cb2f74b08271b155105ddb024492816b43b157dba1bebd359810a74a11d0aec",
+    "plan.json": "0b98d3c5cba9e2375cb19d0357a1376dd7dffdda96f616a1297d181c7dacbdae",
+    "observer-readonly.py": "fae5d64cd612fb0361081daa04741e4cc41a21a771448a4065b8ee592775c3f0"
+  },
+  "stages": [
+    {
+      "phase": "baseline",
+      "seconds": 86400,
+      "cycles": 4,
+      "run_id": "202611161880"
+    },
+    {
+      "phase": "enforce",
+      "seconds": 86400,
+      "cycles": 4,
+      "run_id": "202611161881",
+      "source_run_id": "202611161880"
+    },
+    {
+      "phase": "acceptance",
+      "seconds": 604800,
+      "cycles": 28,
+      "run_id": "202611161882"
+    }
+  ],
+  "campaign_pins": {
+    "agent_sha256": "ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c",
+    "worker_sha256": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+    "campaign_script_sha256": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+    "engine_script_sha256": "1a4317e3f9ce8ccde4a22c89893780b3c7121afd2cfc2be4a52e23258244c30a",
+    "cache_sha256": "757ba385a0ee4bdadc968b96b5c3e69fd44353060e5ab28520fd6f73a59902de"
+  },
+  "postflight_criteria_original": {
+    "PG_API_managed_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "new_native_smoke_seconds_each_role": 600,
+    "errors": 0,
+    "request_max_seconds": 5,
+    "p95_bucket_upper_seconds": 1,
+    "coverage_min": 0.98,
+    "payload_bytes_each_role": 67108864,
+    "same_manual_budget_as_continuous": {
+      "cpu_cores": 7.2,
+      "memory_max_bytes": 20001980416,
+      "read_write_bps": 67108864,
+      "read_write_iops": 4096
+    }
+  },
+  "base_reader_sha256": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+  "auditor_sha256": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+  "capture_guard_origin": "exact original vendor-aged-preflight.capture body, renamed capture_core; only user-requested managed memory.max item changed to memory.high; external memory.max remains in all8 controls",
+  "original_memory_criterion_semantics": "old memory_max_bytes20001980416 retained verbatim as historical criterion; current user semantics use memory.high20001980416 with unchanged external memory.max21474836480, exact eight-control checks and all original restoration requirements",
+  "duration_seconds": 777600,
+  "seven_day_run_id": "202611161882",
+  "all_original_postflight_criteria_retained": true,
+  "postflight_executor_available": false,
+  "release_accepted": false,
+  "sole_launch_bindings": {
+    "launch.json": {
+      "sha256": "28b062565c589d81e493b411d12fc50d5411d7ee199937e3af29e4f5c43b9809",
+      "pid": 2738437,
+      "start_ticks": 173481706,
+      "entry": "/var/tmp/crg-final1880-tools-20261116/runner.py"
+    },
+    "worker.json": {
+      "sha256": "e097e99cc06c756fac5c219462f5342c7d7988fe813df46e41a6fdfb8d67189a",
+      "pid": 2738485,
+      "start_ticks": 173481710,
+      "entry": "/var/tmp/crg-final1880-tools-20261116/job.py"
+    }
+  }
+}
