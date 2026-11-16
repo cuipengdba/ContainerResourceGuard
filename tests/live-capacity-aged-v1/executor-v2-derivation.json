@@ -1,0 +1,120 @@
+{
+  "schema": "crg-source37-aged-executor-v2-derivation-v1",
+  "ancestor_executor_sha256": "9e0c5d5a7cf70949cea08a019e8e89cbdf15d6a99ca6c726b1202693117e1cad",
+  "v1_executor_sha256": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+  "exact_replacements": [
+    {
+      "before": "CONTRACT_SHA = '92c7dee75175afacc70a03135516d8fef729a6c5a8cc2b4a5272f89bcc2edf20'",
+      "after": "CONTRACT_SHA = '174d97e48ba9dcf6517ed6dae9a50b6f6ab48fcbd6a9869a2d848026db54791b'"
+    },
+    {
+      "before": "here/'execution-contract.json'",
+      "after": "here/'execution-contract-v2.json'"
+    },
+    {
+      "before": "'crg-source37-aged-execution-authority-v1'",
+      "after": "'crg-source37-aged-execution-authority-v2'"
+    },
+    {
+      "before": "'crg-source37-aged-execution-report-v1'",
+      "after": "'crg-source37-aged-execution-report-v2'"
+    },
+    {
+      "before": "'maintenance_scope': CONTRACT['previous']['scope'], 'original_legacy_managed_resume_accepted': False}",
+      "after": "'maintenance_scope': CONTRACT['previous']['scope'], 'original_legacy_managed_resume_accepted': False, 'user_rollback_scope':CONTRACT['user_rollback_scope']}"
+    },
+    {
+      "before": "original_legacy_managed_resume_accepted=False)",
+      "after": "original_legacy_managed_resume_accepted=False, user_rollback_scope=CONTRACT['user_rollback_scope'])"
+    },
+    {
+      "before": "def no_other_mounts(folders):",
+      "after": "def managed_resumption(agents, expected, before, after, status, identity, actual, original):\n    if not (len(agents) == 1 and len(agents[0]) == 3 and type(agents[0][0]) is int and agents[0][0] > 1\n            and type(agents[0][1]) is int and agents[0][1] > 0 and agents[0][2] == expected\n            and isinstance(before,list) and isinstance(after,list) and len(before) == len(after) == 3\n            and all(type(n) is int and n > 0 for n in before+after) and after[1] > before[1]\n            and status.get('state') == 'managed'\n            and status.get('plan',{}).get('environment',{}).get('identity') == identity):return False\n    validate_managed_controls(actual, original, status)\n    return True\n\n\ndef no_other_mounts(folders):"
+    },
+    {
+      "before": "row['identity'] = state['plan']['environment']['identity'];row['active_controls'] = active",
+      "after": "row['identity'] = state['plan']['environment']['identity'];row['active_controls'] = active\n        row['managed_status'] = state;row['ready_epoch'] = time.time()\n        cache_observation_began = time.monotonic()"
+    },
+    {
+      "before": "if len(caches) == 1 and caches[0][2] == PINS['cache'] and stamp() != old_stamp and cachefile.exists() and gate.read_json(cachefile)[0].get('action') == 'enforce':break",
+      "after": "if len(caches) == 1 and caches[0][2] == PINS['cache'] and stamp() != old_stamp and cachefile.exists() and gate.read_json(cachefile)[0].get('action') == 'enforce':\n                row['cache_after_ready_seconds'] = time.monotonic()-cache_observation_began;break"
+    },
+    {
+      "before": "row['primary_start'] = self.sql(role, 'SELECT pg_postmaster_start_time();')\n        return row, group",
+      "after": "row['primary_start'] = self.sql(role, 'SELECT pg_postmaster_start_time();')\n        row['agents'] = agents;row['caches'] = caches\n        row['pid1_start_ticks'] = self.ex(role, 'cat', '/proc/1/stat').stdout.rsplit(')', 1)[1].split()[19]\n        self.save();return row, group"
+    },
+    {
+      "before": "intervals = self.report['roles'][role]['maintenance_intervals']",
+      "after": "item = self.report['roles'][role]\n        intervals = item['maintenance_intervals']\n        status_path = folder/'resource-state/status.json'\n        def status_stamp():\n            info = status_path.stat();return [info.st_ino, info.st_mtime_ns, info.st_size]\n        evidence = {'before':{'controls':fixed, 'journal_sha256':hashlib.sha256(journal).hexdigest(),\n            'pid1_start_ticks':pid1, 'caches':caches, 'primary_start':row['primary_start'],\n            'aged_checksum':aged_checksum}, 'resumptions':[]}\n        item['maintenance_evidence'] = evidence;enable_stamp = None;self.save()"
+    },
+    {
+      "before": "        def cli(command, *args):\n            active();began = time.time()\n            value = json.loads(self.ex(role, '/staging/crg', command, '--config', '/etc/crg/config.json', *args, timeout=90).stdout)\n            active();intervals.append({'command': command, 'started_epoch': began, 'ended_epoch': time.time()});self.save()\n            require(same(), 'MAINTENANCE_CHANGED_BUSINESS_OR_ORIGINALS')\n            return value",
+      "after": "        def cli(command, *args):\n            nonlocal enable_stamp\n            active();began = time.time()\n            if command == 'enable':enable_stamp = status_stamp()\n            value = json.loads(self.ex(role, '/staging/crg', command, '--config', '/etc/crg/config.json', *args, timeout=90).stdout)\n            active()\n            interval = {'command':command, 'started_epoch':began, 'ended_epoch':time.time(), 'result':value,\n                'program_sha256':gate.digest(folder/'crg/crg')['sha256'], 'controls':controls(group),\n                'journal_sha256':hashlib.sha256((folder/'resource-state/journal.json').read_bytes()).hexdigest(),\n                'pid1_start_ticks':self.ex(role, 'cat', '/proc/1/stat').stdout.rsplit(')',1)[1].split()[19],\n                'caches':self.processes(group, '/opt/ccg/bin/containercacheguard')}\n            if command == 'enable':interval['status_stamp_before_enable'] = enable_stamp\n            intervals.append(interval);self.save()\n            require(value.get('state') == {'quiesce':'quiesced','binary-install':'installed','binary-rollback':'rolled_back','enable':'enabled'}[command], 'MAINTENANCE_CLI_RESULT_STATE')\n            require(same(), 'MAINTENANCE_CHANGED_BUSINESS_OR_ORIGINALS')\n            return value"
+    },
+    {
+      "before": "                if len(agents) == 1 and agents[0][2] == expected:return\n                time.sleep(1)",
+      "after": "                current_stamp = status_stamp();status = gate.read_json(status_path)[0]\n                if managed_resumption(agents, expected, enable_stamp, current_stamp, status, row['identity'], controls(group), row['runtime_original_controls']):\n                    evidence['resumptions'].append({'expected_sha256':expected, 'agents':agents,\n                        'status_stamp_before_enable':enable_stamp, 'status_stamp_after_resume':current_stamp,\n                        'managed_status':status, 'controls':controls(group), 'observed_epoch':time.time(),\n                        'journal_sha256':hashlib.sha256((folder/'resource-state/journal.json').read_bytes()).hexdigest()})\n                    require(same(), 'RESUMED_AGENT_CHANGED_ORIGINALS');self.save();return\n                time.sleep(1)"
+    },
+    {
+      "before": "self.report['roles'][role]['native'] = native;self.save()",
+      "after": "item['native'] = native\n        evidence['after'] = {'controls':controls(group), 'journal_sha256':hashlib.sha256((folder/'resource-state/journal.json').read_bytes()).hexdigest(),\n            'pid1_start_ticks':self.ex(role, 'cat', '/proc/1/stat').stdout.rsplit(')',1)[1].split()[19],\n            'caches':self.processes(group, '/opt/ccg/bin/containercacheguard'),\n            'memory_events':dict(x.split() for x in (group/'memory.events').read_text().splitlines())}\n        self.save()"
+    },
+    {
+      "before": "old_journal = gate.read_json(folder/'resource-state/journal.json')[0]",
+      "after": "old_journal = gate.read_json(folder/'resource-state/journal.json')[0]\n        item['before'] = {'directories':directories, 'immutable_files':immutable, 'log_prefixes':logs,\n            'journal_identity':old_journal['identity'], 'aged_native_final_checksum':old_native['final_checksum']}"
+    },
+    {
+      "before": "self.check(role+'-aged-journal-rollover-before-data-check',",
+      "after": "item['first_previous_journal'] = previous;self.save()\n        self.check(role+'-aged-journal-rollover-before-data-check',"
+    },
+    {
+      "before": "self.check(role+'-actual-aged64MiB-and-final-counter-reopened',",
+      "after": "item['aged_checksum_reopened'] = before;self.save()\n        self.check(role+'-actual-aged64MiB-and-final-counter-reopened',"
+    },
+    {
+      "before": "self.check(role+'-aged-schema-logical-backup-readable',",
+      "after": "item['logical_backup'] = {'digest':backup, 'listing':listing};self.save()\n        self.check(role+'-aged-schema-logical-backup-readable',"
+    },
+    {
+      "before": "self.check(role+'-independent-database-restores-aged-payload-and-counter', self.sql(role, checksum_sql, db) == before and self.sql(role, checksum_sql) == before)",
+      "after": "restored = self.sql(role, checksum_sql, db);source_after_restore = self.sql(role, checksum_sql)\n        item['restore_evidence'] = {'database':db, 'restored_checksum':restored, 'source_checksum':source_after_restore};self.save()\n        self.check(role+'-independent-database-restores-aged-payload-and-counter', restored == before and source_after_restore == before)"
+    },
+    {
+      "before": "self.check(role+'-new-ID-journal-PG-restart-and-same-aged-data',",
+      "after": "item['second_previous_journal'] = previous;self.save()\n        self.check(role+'-new-ID-journal-PG-restart-and-same-aged-data',"
+    },
+    {
+      "before": "self.check(role+'-aged-payload-counter-after-native-maintenance', self.sql(role, checksum_sql) == before)",
+      "after": "after_maintenance = self.sql(role, checksum_sql);item['aged_checksum_after_maintenance'] = after_maintenance;self.save()\n        self.check(role+'-aged-payload-counter-after-native-maintenance', after_maintenance == before)"
+    },
+    {
+      "before": "self.check(role+'-disable-restores-new-runtime-originals-and-no-OOM',",
+      "after": "item['disable_evidence'] = {'result':disabled, 'actual_controls':controls(second_group),\n            'memory_events':dict(x.split() for x in (second_group/'memory.events').read_text().splitlines()),\n            'journal':gate.read_json(folder/'resource-state/journal.json')[0]};self.save()\n        self.check(role+'-disable-restores-new-runtime-originals-and-no-OOM',"
+    },
+    {
+      "before": "self.delete_pod(role, second_group);item['phase'] = 'postflight-component-passed';self.save()",
+      "after": "item['after'] = {'directories':{name:gate.directory(folder/name) for name in directories},\n            'immutable_files':{name:gate.digest(folder/name) for name in immutable},\n            'program_sha256':gate.digest(folder/'crg/crg')['sha256'],\n            'preserved_log_prefixes':{name:gate.digest(folder/'log/crg'/name,value['size']) for name,value in logs.items()},\n            'log_files':{p.name:gate.digest(p) for p in (folder/'log/crg').glob('crg-*.log')}}\n        self.delete_pod(role, second_group);item['phase'] = 'postflight-component-passed';self.save()"
+    }
+  ],
+  "criteria_original_exact": {
+    "startup_seconds": 300,
+    "cache_after_ready_seconds": 45,
+    "native_seconds_each_role": 600,
+    "clone_host_available_bytes": 30064771072,
+    "steady_host_available_bytes": 8589934592,
+    "disk_free_bytes": 21474836480,
+    "maximum_errors": 0,
+    "maximum_request_seconds": 5,
+    "p95_bucket_seconds": 1,
+    "minimum_coverage": 0.98,
+    "payload_bytes": 67108864,
+    "oom_kill_delta": 0
+  },
+  "preserved_scope": "all original conditions retained; additional raw proof records, fresh managed resumption and CLI states",
+  "files_sha256": {
+    "tests/live-capacity-aged-v1/executor-v2.py": "56cdb1cd7dc289c84ae0b256f65f67a31020c9fd1e66ca5063704023465de606",
+    "tests/live-capacity-aged-v1/execution-contract-v2.json": "174d97e48ba9dcf6517ed6dae9a50b6f6ab48fcbd6a9869a2d848026db54791b"
+  },
+  "actual_postflight_accepted": false,
+  "release_accepted": false
+}

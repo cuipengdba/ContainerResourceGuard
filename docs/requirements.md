@@ -4,6 +4,8 @@
 
 本轮[老化执行器开发及兼容范围](development-source37-aged-executor-v1.zh.md)归档：保持用户memory.high要求，拒绝原memory.max旧开发版；新high预览回退目标单列未验，不替代原旧版兼容或两个minor。执行器保护检查通过，真实老化与发布仍待。
 
+用户已明确：[回退仅支持memory.high版本，旧memory.max开发版明确拒绝并保留不兼容记录](development-source37-aged-evidence-v2.zh.md)。旧版managed-resume排除当前支持范围，历史原定义/未通过事实保留，其余原验收门槛保持；新增v2恢复原始证据和独立审核已通过保护检查，尚无实际老化通过。
+
 以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
 
 ## 历史更新与原计划（原文保留）
