@@ -12,6 +12,8 @@
 |[固定四组原600秒对照](development-original600-comparison.zh.md)|DBS/HISDBS各observe/enforce，44/44，56准确原件3274433字节；原生SQL/API零错误|两条单独exec原5秒标志仍false，不宣称全部请求低于5秒或确定CRG因果|
 |[CPU修复与新原生矩阵](testing-live-capacity-native-and-business-current.md)|ARM64实际CPU下线/上线56/56；AMD64/ARM64、Linux6.8/7完整59绑定下284/284|AMD64热插拔EBUSY、厂商ARM业务、独立物理多盘仍缺；不是内存热插拔证明|
 |[新长稳1880](development-new-long1880.zh.md)|19输入冻结、原磁盘准入拒绝及可逆归档保留，再次完整准入后唯一实际启动；原启动12/12|24h基线仍运行，首周期content-passed-native-pending，不授予完整时长/周期资格|
+|[源37打包/SBOM/来源](live-capacity-package-rehearsal.zh.md)|准确9deb打包，两架构/14完整性/8输出重建通过；完整ZIP、4客户端内容与10签名条件独立接受|仅候选演练，最终稳定身份附件、实际安装/回退与发布下载仍待|
+
 
 原18项与辅助4项的整体接受来自新正式计划/coordinator及准确原9名称/辅助标签核对；复用per-role原件中的旧comparison scope和raw formal=false仍保留，不能通过改标签冒充接受。受控120秒负向诊断只证明已知注入锁的观察能力，PSI不可用不算零压力。
 
@@ -27,7 +29,7 @@
 
 1. 新24h observe完整时长/原周期及审计接受后，在同一容器24h enforce，再完成新七天及原业务全部标准；不继承旧1396/1728/78时间。
 2. 原老化后故障、恢复、状态/所有权、镜像持久化、维护/升级等剩余组合。旧源结果只保留原资格；缺少的厂商ARM和两块独立物理设备覆盖明确未验。
-3. 最终源/准确包身份下的可重复构建、SBOM/来源与离线校验、安装/回退和发布实际下载核验，产品实现合入main及正式稳定发布。已有打包演练不等于新候选或稳定附件验收。
+3. 最终源/准确包身份下的可重复构建、SBOM/来源与离线校验、安装/回退和发布实际下载核验，产品实现合入main及正式稳定发布。源37本轮演练只绑定准确9deb候选包，后续稳定附件须按最终打包提交重验；安装/回退和发布实际下载仍待。
 
 当前公开下载仍为[v1.0.0-preview.5](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)，原八资产、正文和tag不变；[草稿PR](https://github.com/cuipengdba/ContainerResourceGuard/pull/1)尚未合并，稳定v1.0.0尚未接受。
 
