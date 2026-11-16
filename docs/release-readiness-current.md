@@ -14,7 +14,8 @@
 |[新长稳1880](development-new-long1880.zh.md)|19输入冻结、原磁盘准入拒绝及可逆归档保留，再次完整准入后唯一实际启动；原启动12/12|24h基线仍运行，首周期content-passed-native-pending，不授予完整时长/周期资格|
 |[源37打包/SBOM/来源](live-capacity-package-rehearsal.zh.md)|准确9deb打包，两架构/14完整性/8输出重建通过；完整ZIP、4客户端内容与10签名条件独立接受|仅候选演练，最终稳定身份附件、实际安装/回退与发布下载仍待|
 
-|[源37老化只读门禁](development-source37-aged-reader-v2.zh.md)|两平台各13组合成故障及真机baseline pending/提前采集拒绝通过，19输入保持|尚无真实七天seal、老化执行器或老化验收|
+|[源37老化只读门禁](development-source37-aged-reader-v2.zh.md)|两平台各13组合成故障及真机baseline pending/提前采集拒绝通过，19输入保持|此条记录发布时无执行器；现有新执行器保护检查见下一行，真实seal/老化仍待|
+|[源37老化执行器保护](development-source37-aged-executor-v1.zh.md)|两平台各12组合成保护、实际default/execute均pending；原标准保留，旧max版本拒绝|代码可用但真实seal/authority/老化执行均待，high预览回退目标未验，原旧版兼容未通过|
 
 原18项与辅助4项的整体接受来自新正式计划/coordinator及准确原9名称/辅助标签核对；复用per-role原件中的旧comparison scope和raw formal=false仍保留，不能通过改标签冒充接受。受控120秒负向诊断只证明已知注入锁的观察能力，PSI不可用不算零压力。
 
