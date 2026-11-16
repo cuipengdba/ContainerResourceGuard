@@ -1,5 +1,11 @@
 # 开发需求档案
 
+集成候选源`37ca44e0`已独立完成新一轮DBS/HISDBS各原600秒，**原18项业务检查与另4项辅助检查全部接受**；固定四组对照44/44和同源四格原生284/284分别归档。新19输入长稳已唯一实际启动，当前24h observe基线运行中，初期原启动12/12、首周期内容通过但原生整段验证仍pending；同容器24h enforce、新七天和原老化后/发布门槛尚未接受。公开preview.5未改，稳定1.0未发布。 [当前交付与剩余工作](release-readiness-current.md)、[新正式18项/4辅助](development-fresh-formal18.zh.md)、[新长稳计划与实际状态](development-new-long1880.zh.md)。
+
+以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
+
+## 历史更新与原计划（原文保留）
+
 固定正式版本号候选已完成[DBS/HISDBS原路径18/18](testing-final-v1-full600-terminal.md)及[原生跨架构/内核284/284](testing-final-v1-native-CI-terminal.md)，准确产物与独立清理证据已归档。[当前交付与剩余工作](release-readiness-current.md)：公开preview.5不变，长期验收尚未完成，稳定1.0未发布。
 
 
@@ -106,7 +112,7 @@ HISDBS30纳秒兼容v2独立补测已完成36/36项、三次不同ID受控启动
 | R07 | 自研产品名 ContainerResourceGuard，创建独立 GitHub 仓库 | 独立源码、CI、使用文档、发布物和测试证据 |
 | R08 | 历史要求：一个总百分比，示例20/30，同时用于三类资源 | 已被R29替代；旧percent仅部署兼容。当前三个独立字段各默认20，CPU取宿主在线逻辑CPU、内存取宿主MemTotal，手动模式按R21 |
 | R09 | 无需分别填写 CPU 核数、内存字节、IO 速率 | 自动换算，doctor/状态显示计算依据、实际写入值和上层约束 |
-| R10 | 百分比 IO 采用标定基准的硬上限（用户已选定） | 按后追加 R26 默认自动选盘、首次后台标定并复用；2026-11-13用户追加：io_percent仅换算读写BPS，IOPS留手动；外部IOPS保留、自有旧值安全迁移；手动模式不测速；旧显式流程保留为历史行为 |
+| R10 | 百分比 IO 采用标定基准的硬上限（用户已选定） | 按后追加 R26 默认自动选盘、首次后台标定并复用；2026-11-13用户追加：io_percent仅换算读写BPS，IOPS留手动；保留外部IOPS和自有journal安全迁移，见io-bandwidth-policy.md；手动模式不测速；旧显式流程保留为历史行为 |
 | R11 | 严格一容器一程序、一对一，不能一程序管理多个容器 | 生产 CLI 不接受目标 PID/cgroup/容器列表；只发现自身，不扫描其他容器 |
 | R12 | 每个容器单独控制资源 | 每容器独立配置、状态和锁；不修改父级 Pod 或其他容器 |
 | R13 | 在用户授权的测试服务器执行测试 | 独立临时容器和测试文件；不在现有业务容器中进行破坏性故障演练 |
@@ -171,18 +177,13 @@ P06/P09新增[实际发布包原生控制器计划](plan-released-cgroup-ci.md)�
 
 P06/P09[原发布预览包AMD64/ARM64实测四格88项通过](testing-released-cgroup-ci.md)：直接运行原下载资产，实际Linux6.8/7.0、Docker28.0.4，三控制/自动百分比/新ID/日志/崩溃恢复和只读降级及自有夹具清理通过；发布标签、资产摘要和prerelease状态未改。只补原包占位容器证据，不关闭ARM厂商业务、物理多设备、分区或长期条件。
 
-P04/P06分区修复在`next/partition-io`独立开发：身份/整盘目标、同盘共享限额、标定与覆盖已接入，Windows测试/vet通过；Linux及真实分区验收仍待执行。见[设计与边界](partition-io.md)和[执行前冻结计划](test-plan-partition-io-core.json)。本分支未合入、未发布，不修改正式长测候选。
-
-分区修复核心已完成[Linux race与整盘回归](testing-partition-io-core.md)：源码af1a34d在Linux6.8双架构各212个Go pass事件、实际6.8/7.0整盘四格88项通过。建模分区测试与真实整盘效果分开记录；真实分区IO及旧二进制恢复仍待验收，未合入/发布。
+P04/P06分区修复在[独立next/partition-io分支](https://github.com/cuipengdba/ContainerResourceGuard/tree/next/partition-io)开发：文件系统/控制目标分离、同盘共享限额和标定/诊断已接入，Linux race及原整盘四格88项回归通过；[来源及未完成范围](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-io-core.md)。真实分区IO/旧二进制恢复仍待验收，未合入本线、未发布；正式长测程序和预算不变。
 
 
-P04/P06真实分区控制验收已建立[运行前冻结计划](testing-partition-cgroup.md)：实际两个GPT分区、合计直接IO预算、有限原值及旧发布包恢复、独立百分比/新ID/几何变化缓存失效、重叠profile拒绝和只读降级；四格计划未执行前不声称通过。分区测试使用CI新建自有设备，97正式长测不变。
+P04/P06真实分区控制验收在独立分支新增[冻结计划和四格手动工作流](https://github.com/cuipengdba/ContainerResourceGuard/blob/next/partition-io/docs/testing-partition-cgroup.md)，涵盖双分区共享预算、旧发布包恢复和几何变化缓存失效；仍未执行，不将其记录为支持完成。工作流仅在next/partition-io选择运行；本线产品和97正式长测未改。
 
 
-真实分区首轮四格在DM分区创建时失败，未进入资源效果检查；官方内核确认DM禁止普通分区。已保留原计划，新增执行前冻结的[SCSI测试设备修正](testing-partition-cgroup.md)，数值标准与产品代码不变，下一轮尚未执行。
-
-
-P04/P06[真实GPT双分区四格164项通过](testing-partition-cgroup.md)：AMD64/ARM64、实际6.8/7.0，原预算和来源分别归档；首轮DM设备失败保留，几何变化保留旧profile时明确降级。核心及真实效果范围补齐，本分支仍未合入/发布，物理设备、厂商业务和长期条件不变。
+P04/P06独立分支[真实GPT双分区四格164项通过](testing-partition-cgroup.md)：实际6.8/7.0双架构、共享预算、旧发布包恢复和缓存几何失效；首轮DM失败和所有边界保留。分区产品代码尚未合入本线或发布，正式长测和原资产不变。
 
 
 P04/P06分区实现已等价接入组合候选d3706f3，[当前提交构建、原生ARM和44项整盘回归](testing-partition-integration.md)通过；两目标Windows/Linux程序摘要相同。原分区164项来源不变，新开销计划尚未启动，main及旧发布资产/正式长测来源不变。
@@ -367,7 +368,7 @@ P06[当前组合候选Linux6.8两架构实际控制器44项通过](testing-linux
 
 2026-11-12新增[内存回收优先需求及OOM边界](memory-reclaim-policy.md)：用户希望达到目标后释放内存、避免OOM。已明确memory.max回收不足仍可能OOM，memory.high可回收/节流但允许超目标；已提出语义选择，答复前不改变默认硬限额或发布包。后续实现/迁移/故障与业务验证任务独立归档，仍只控制CPU、内存、IO。
 
-2026-11-12用户已明确选择[内存百分比改用memory.high](memory-reclaim-policy.md)，不新增memory.max。CPU/内存/IO仍独立默认20%；手动规范字段limits.memory_high，旧memory_max只作带警告的high别名。已实现核心计划、所有权迁移、外部边界及低于用量回收目标，本地Go测试通过；真机、Linux和新预览交付另行记录，不冒用旧长期结果，不关闭原52项或稳定1.0门槛。
+2026-11-12用户已选择memory.high，不再新增memory.max。组合及分区开发候选已实现百分比回收目标、手动high与所有权迁移；本地Go测试通过，真机/Linux/发布交付待完成。main程序尚未回移；详见[内存策略](memory-reclaim-policy.md)。原52项及稳定1.0门槛不变。
 
 2026-11-12内存high新策略：[两原镜像隔离30项、两架构实际控制器44项通过及失败原件](testing-memory-high.md)。仅工程控制资格；完整业务、新策略长期及原52项/稳定条件不关闭，preview.4正在准备。
 
