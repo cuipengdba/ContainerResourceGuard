@@ -1,0 +1,147 @@
+{
+  "schema": "crg-source37-detached-launch-review-v1",
+  "phase": "passed-detached-launch-guards-only",
+  "files_sha256": {
+    "tests/live-capacity-aged-v1/launch-aged-checks.py": "a4a59b0b3e6fee745bebed6068c4c766d3a0eb7ca3938fd39947beb83d393866",
+    "tests/live-capacity-aged-v1/launch-aged.py": "4c4909bc22c25f0b923abac014c599db193d79851a7ae085591edbe65e6c45d4",
+    "tests/live-capacity-aged-v1/launch-contract.json": "341b4585e6d9d319b1ae5f2c47006f0df34d1e99c93705b49858e1f6a86a9312",
+    "tests/live-capacity-aged-v1/runner-v2-contract.json": "9ce84bef5751fa4f5259c4ccfdc1f395e238bbe022a8e8bf766e8b7666adf863",
+    "tests/live-capacity-aged-v1/runner-v2.py": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+    "tests/live-capacity-aged-v1/runner-v3-checks.py": "6dc81c5bd55cdc94bff219cec834f80d95428a25fdb61dc9ad46d30cd78d2684",
+    "tests/live-capacity-aged-v1/runner-v3-contract.json": "b18410d4d896d9996facf5bcd47633cee1b6814c8808a62426034e0ed9a018f9",
+    "tests/live-capacity-aged-v1/runner-v3.py": "0c0ab9d433ed7e9aa59b81de4cf0fede1d876df79aa9b86074e4d91a3bb4dad3"
+  },
+  "native": {
+    "phase": "passed-detached-launch-guards-only",
+    "checks": [
+      {
+        "name": "real-short-detach-and-parent-exit",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-aged-detached-checks-v1",
+          "phase": "passed",
+          "tests_run": 12,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "scope": "real short controlled children/proc/files/setsid/DEVNULL/parent exit; readiness and wrapper replaced, no actual aged execution",
+          "actual_postflight_executed": false,
+          "actual_executor_receipt_available": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "fb131bee4b1ba7bab2db87e72a01112901e30560633a46502e1dbe1217dfe295",
+        "stderr_sha256": "41ce9d7d386483e9c183020abeee9e3b8e07d69eed6867eaaf199562bdf02c95",
+        "stderr": "test_actual_handoff_identity_session_stdin_private_files (__main__.Checks) ... ok\ntest_changed_wrapper_exits126_without_running (__main__.Checks) ... ok\ntest_child_survives_real_launcher_parent_exit (__main__.Checks) ... ok\ntest_default_and_launch_pending_have_no_spawn (__main__.Checks) ... ok\ntest_default_ready_has_no_spawn (__main__.Checks) ... ok\ntest_duplicate_never_spawns_another_child (__main__.Checks) ... ok\ntest_existing_wrapper_or_changed_readiness_creates_no_launch (__main__.Checks) ... ok\ntest_failed_start_record_prevents_child_execution (__main__.Checks) ... ok\ntest_marker_and_trusted_pair_required (__main__.Checks) ... ok\ntest_no_partial_authority_or_root_override (__main__.Checks) ... ok\ntest_receipt_write_failure_retains_running_attempt_no_retry (__main__.Checks) ... ok\ntest_signal_at_commit_is_recorded_without_claiming_cancellation (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 3.886s\n\nOK\n"
+      },
+      {
+        "name": "actual-default-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "55fef2a4922234817cb272778e6eaa103b63d193db484fde32d74049eca80029",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false,
+          "postflight_executed": false,
+          "executor_available": true,
+          "real_seal_required": true
+        },
+        "stdout_sha256": "b64c9a9a1dabdc0ca6ce35f02307b1f70be4e71fa339bb7e006e3d5a78fb52b3",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-launch-with-marker-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "55fef2a4922234817cb272778e6eaa103b63d193db484fde32d74049eca80029",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false,
+          "postflight_executed": false,
+          "executor_available": true,
+          "real_seal_required": true
+        },
+        "stdout_sha256": "b64c9a9a1dabdc0ca6ce35f02307b1f70be4e71fa339bb7e006e3d5a78fb52b3",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/live-capacity-aged-v1/launch-aged-checks.py": "a4a59b0b3e6fee745bebed6068c4c766d3a0eb7ca3938fd39947beb83d393866",
+      "tests/live-capacity-aged-v1/launch-aged.py": "4c4909bc22c25f0b923abac014c599db193d79851a7ae085591edbe65e6c45d4",
+      "tests/live-capacity-aged-v1/launch-contract.json": "341b4585e6d9d319b1ae5f2c47006f0df34d1e99c93705b49858e1f6a86a9312",
+      "tests/live-capacity-aged-v1/runner-v2-contract.json": "9ce84bef5751fa4f5259c4ccfdc1f395e238bbe022a8e8bf766e8b7666adf863",
+      "tests/live-capacity-aged-v1/runner-v2.py": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+      "tests/live-capacity-aged-v1/runner-v3-checks.py": "6dc81c5bd55cdc94bff219cec834f80d95428a25fdb61dc9ad46d30cd78d2684",
+      "tests/live-capacity-aged-v1/runner-v3-contract.json": "b18410d4d896d9996facf5bcd47633cee1b6814c8808a62426034e0ed9a018f9",
+      "tests/live-capacity-aged-v1/runner-v3.py": "0c0ab9d433ed7e9aa59b81de4cf0fede1d876df79aa9b86074e4d91a3bb4dad3"
+    },
+    "existing_frozen_sets_unchanged": {
+      "/var/tmp/crg-aged1952-tools-20261116": 15,
+      "/var/tmp/crg-capture1958-tools-20261116": 8,
+      "/var/tmp/crg-runner1965-tools-20261116": 3,
+      "/var/tmp/crg-runner1971-tools-20261116": 5,
+      "/var/tmp/crg-save1979-tools-20261116": 11,
+      "/var/tmp/crg-final1880-tools-20261116": 19
+    },
+    "all_real_targets_absent": true,
+    "actual_postflight_executed": false,
+    "actual_executor_receipt_available": false,
+    "stable_release_accepted": false
+  },
+  "Windows": {
+    "schema": "crg-aged-detached-checks-v1",
+    "phase": "passed",
+    "tests_run": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8,
+    "scope": "real short controlled children/proc/files/setsid/DEVNULL/parent exit; readiness and wrapper replaced, no actual aged execution",
+    "actual_postflight_executed": false,
+    "actual_executor_receipt_available": false,
+    "release_accepted": false
+  },
+  "actual_executor_receipt_available": false,
+  "actual_postflight_executed": false,
+  "controlled_boundary": "real short controlled child/PID/start/setsid/DEVNULL/private files and actual launcher-parent exit; readiness and wrapper substituted, not actual aged execution or duration",
+  "pending_calls_create_no_real_targets": true,
+  "no_overwrite_or_automatic_retry": true,
+  "actual_parent_exit_survival_tested": true,
+  "launch_receipt_is_not_executor_exit": true,
+  "completed_original_tasks_added": 0,
+  "long_duration_accepted": false,
+  "stable_release_accepted": false
+}
