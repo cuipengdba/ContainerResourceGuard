@@ -1,0 +1,144 @@
+{
+  "native": {
+    "schema": "crg-comparison-source-faults-v1",
+    "phase": "passed",
+    "executed": 22,
+    "passed": 22,
+    "skipped": [],
+    "system": "Linux",
+    "kernel": "5.14.0-570.22.1.el9_6.x86_64",
+    "machine": "x86_64",
+    "python": "3.9.21",
+    "source_sha256": {
+      "artifact-transfer.py": "cc3bcf2bf13648e2750bd9554a0999df20f9030ed65ad86946b605d8a7dee2e5",
+      "business-driver.py": "677273a1ddb99a0d432d4e81546f490f6c063416782694f4e880332b8ecc88ea",
+      "business-observer.py": "b9e16faaf46ae72f8d3be2d74ba7104da6c6016e2d6bad2a0e8ca96818022bb3",
+      "original-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+      "original-driver.py": "dc5d36ef47e74686f1ff7dc34a861be4271f49912488d0dbf81dd2d813056aaf",
+      "original-plan.json": "2fee82ca9577b6c5740a70fd158522473dd800309b84ed01f6024b3d6f360e6c",
+      "plan-unfrozen.json": "e07bd015f698e8955bf959a907584b3d16c902723f9e64047720e7ea9e8d6a8b",
+      "runner.py": "9e5954f00955ddfde13328bba329af6f5ed69ce4000460fa1217a08e9c1f5724",
+      "vendor-soak-campaign.py": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+      "vendor-soak-load.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "verify.py": "3918e29bb4ceec13fbd75e044ac9d5fc1078b66b326fbd27e9cb7b5079d47fb9",
+      "wait-timeline.py": "230fac774cc130e1bffc56e9f0076afaf13ea3260067880aeca9fc71793fe2e9"
+    },
+    "test_ids": [
+      "__main__.Compare.test_01_exact_entry_never_matches_observer_worker_argument",
+      "__main__.Compare.test_02_find_only_real_entry_and_original_start",
+      "__main__.Compare.test_03_ambiguous_entry_refused",
+      "__main__.Compare.test_04_moved_or_reused_entry_not_attributed",
+      "__main__.Compare.test_05_campaign_cleanup_signals_only_admitted_worker",
+      "__main__.Compare.test_06_campaign_reused_original_instance_refused_before_signal",
+      "__main__.Compare.test_07_emergency_stop_rechecks_script_and_membership",
+      "__main__.Compare.test_08_emergency_stop_reused_PID_does_nothing",
+      "__main__.Compare.test_09_timeline_bounds_partial_final_and_invalid_json",
+      "__main__.Compare.test_10_timeline_and_JSON_symlinks_refused",
+      "__main__.Compare.test_11_observer_rejects_other_duration_phase_or_unbounded_identity",
+      "__main__.Compare.test_12_exact_qualified_worker_and_timeline",
+      "__main__.Compare.test_13_original_campaign_measurement_entire_block_exact",
+      "__main__.Compare.test_14_original_campaign_helpers_except_stop_exact_AST",
+      "__main__.Compare.test_15_observer_first_sample_before_worker_Popen",
+      "__main__.Compare.test_16_fixed_four_cells_only_mode_differs",
+      "__main__.Compare.test_17_original_driver_helpers_after_only_path_adapter_exact_AST",
+      "__main__.Compare.test_18_original600_no_shorter_or_relaxed_SQL_or_backup",
+      "__main__.Compare.test_19_observe_absence_and_failure_originals_exported",
+      "__main__.Compare.test_20_new_observer_never_writes_cgroup_or_executes_SQL",
+      "__main__.Compare.test_21_full_window_partial_timeline_cannot_be_qualified",
+      "__main__.Compare.test_22_source_privacy_and_no_credentials"
+    ],
+    "failures": [],
+    "database_Kubernetes_or_cgroup_writes": false
+  },
+  "Windows": {
+    "schema": "crg-comparison-source-faults-v1",
+    "phase": "passed",
+    "executed": 22,
+    "passed": 21,
+    "skipped": [
+      {
+        "test": "__main__.Compare.test_10_timeline_and_JSON_symlinks_refused",
+        "reason": "Linux O_NOFOLLOW"
+      }
+    ],
+    "system": "Windows",
+    "kernel": "10",
+    "machine": "AMD64",
+    "python": "3.12.14",
+    "source_sha256": {
+      "artifact-transfer.py": "cc3bcf2bf13648e2750bd9554a0999df20f9030ed65ad86946b605d8a7dee2e5",
+      "business-driver.py": "677273a1ddb99a0d432d4e81546f490f6c063416782694f4e880332b8ecc88ea",
+      "business-observer.py": "b9e16faaf46ae72f8d3be2d74ba7104da6c6016e2d6bad2a0e8ca96818022bb3",
+      "original-campaign.py": "d3865c9e2b78140297636fe06e33a6b5235d9c703298043cfe8914d450b32287",
+      "original-driver.py": "dc5d36ef47e74686f1ff7dc34a861be4271f49912488d0dbf81dd2d813056aaf",
+      "original-plan.json": "2fee82ca9577b6c5740a70fd158522473dd800309b84ed01f6024b3d6f360e6c",
+      "plan-unfrozen.json": "e07bd015f698e8955bf959a907584b3d16c902723f9e64047720e7ea9e8d6a8b",
+      "runner.py": "9e5954f00955ddfde13328bba329af6f5ed69ce4000460fa1217a08e9c1f5724",
+      "vendor-soak-campaign.py": "a89ed2e32fe02876c39a240f8368eecb964ff7bce02235072ab417760fe282ce",
+      "vendor-soak-load.py": "52517a96032305ff3cbcd9f58be8dd8331d9975037ee81f7380400ed370275be",
+      "verify.py": "3918e29bb4ceec13fbd75e044ac9d5fc1078b66b326fbd27e9cb7b5079d47fb9",
+      "wait-timeline.py": "230fac774cc130e1bffc56e9f0076afaf13ea3260067880aeca9fc71793fe2e9"
+    },
+    "test_ids": [
+      "__main__.Compare.test_01_exact_entry_never_matches_observer_worker_argument",
+      "__main__.Compare.test_02_find_only_real_entry_and_original_start",
+      "__main__.Compare.test_03_ambiguous_entry_refused",
+      "__main__.Compare.test_04_moved_or_reused_entry_not_attributed",
+      "__main__.Compare.test_05_campaign_cleanup_signals_only_admitted_worker",
+      "__main__.Compare.test_06_campaign_reused_original_instance_refused_before_signal",
+      "__main__.Compare.test_07_emergency_stop_rechecks_script_and_membership",
+      "__main__.Compare.test_08_emergency_stop_reused_PID_does_nothing",
+      "__main__.Compare.test_09_timeline_bounds_partial_final_and_invalid_json",
+      "__main__.Compare.test_10_timeline_and_JSON_symlinks_refused",
+      "__main__.Compare.test_11_observer_rejects_other_duration_phase_or_unbounded_identity",
+      "__main__.Compare.test_12_exact_qualified_worker_and_timeline",
+      "__main__.Compare.test_13_original_campaign_measurement_entire_block_exact",
+      "__main__.Compare.test_14_original_campaign_helpers_except_stop_exact_AST",
+      "__main__.Compare.test_15_observer_first_sample_before_worker_Popen",
+      "__main__.Compare.test_16_fixed_four_cells_only_mode_differs",
+      "__main__.Compare.test_17_original_driver_helpers_after_only_path_adapter_exact_AST",
+      "__main__.Compare.test_18_original600_no_shorter_or_relaxed_SQL_or_backup",
+      "__main__.Compare.test_19_observe_absence_and_failure_originals_exported",
+      "__main__.Compare.test_20_new_observer_never_writes_cgroup_or_executes_SQL",
+      "__main__.Compare.test_21_full_window_partial_timeline_cannot_be_qualified",
+      "__main__.Compare.test_22_source_privacy_and_no_credentials"
+    ],
+    "failures": [],
+    "database_Kubernetes_or_cgroup_writes": false
+  },
+  "first_windows_fixture_failure": {
+    "sha256": "10279af6a95284748e7f1115b3f08f85c63b9f898d4fb23990834a99961da6e2",
+    "passed": 13,
+    "errors": 8,
+    "skipped": 1,
+    "cause": "test Path joining mock and Linux-only flag mocking; implementation unchanged; fixed verifier rerun retained separately"
+  },
+  "native_transport_failures": {
+    "receipts": [
+      {
+        "file": "583-crg-r1845-native-comparison-faults97.json",
+        "sha256": "9694ffd91312fc3e801e8878faed55dd6e7fea7d186702836f1e9ab20d4d4527"
+      },
+      {
+        "file": "584-crg-r1846-inspect-native-faults97.json",
+        "sha256": "0ffe1b17f9ba85be7d0d13a268b3d23a20e11f78a5cb8c618aca13b053504d6c"
+      },
+      {
+        "file": "585-crg-r1845-native-comparison-faults97.json",
+        "sha256": "d9bd7bd42c7bcaac03b2943b7a7d3a74a49bf611b5541f789a076895ba4ef5d5"
+      }
+    ],
+    "authoritative_absent_before_SFTP": true,
+    "cause_unknown": true,
+    "business_created": false
+  },
+  "preflight": {
+    "source": "crg-r1849-preflight97.py",
+    "source_sha256": "b07b3b541611b05d79774377cc214e605a17d36039866cf15c765e35f43b29ba",
+    "uploaded_members": 15,
+    "exit": 0,
+    "stdout": "{\"schema\": \"crg-fixed-original600-comparison1843-native-preflight-v1\", \"phase\": \"ready-not-launched\", \"source_revision\": \"37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0\", \"binary_sha256\": \"ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c\", \"source_members_verified\": 15, \"previous1728_explicit_stop_cleanup_verified\": true, \"original_runner_readonly_admission_executed\": true, \"blocking_pods\": [], \"node_conditions\": {\"NetworkUnavailable\": \"False\", \"MemoryPressure\": \"False\", \"DiskPressure\": \"False\", \"PIDPressure\": \"False\", \"Ready\": \"True\"}, \"free_disk_bytes\": 135346683904, \"no_business_fixture_created\": true, \"long_started\": false, \"original1761_failure_retained_cleanup_reverified\": true, \"fixed_four_cells_each_original600\": true, \"formal_original18_accepted\": false, \"stable_release_accepted\": false}\n",
+    "stderr": ""
+  },
+  "formal_original18_accepted": false
+}
