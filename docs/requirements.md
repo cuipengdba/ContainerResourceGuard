@@ -8,6 +8,8 @@
 
 [七天采集入口修复](development-source37-capture-v3.zh.md)归档：补齐冻结旧采集分支缺失的roles/path_clean，新增只读适配器；原文件不改，当前真实七天采集改用capture-v3，完整受控测试不冒充真实seal。
 
+[老化单次执行包装器](development-source37-aged-runner-v2.zh.md)归档：独占单次guard、放行前真实PID/start持久化、准确wait退出与报告摘要、无自动重试。仅原长测/真实seal/authority完整允许实际运行；当前pending，受控短回执不冒充真实1200秒或发布资格。
+
 以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
 
 ## 历史更新与原计划（原文保留）

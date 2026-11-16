@@ -18,6 +18,7 @@
 |[源37老化执行器保护](development-source37-aged-executor-v1.zh.md)|两平台各12组合成保护、实际default/execute均pending；原标准保留，旧max版本拒绝|代码可用但真实seal/authority/老化执行均待，high预览回退目标未验；旧max历史未通过保留，当前按用户决定拒绝|
 |[老化v2原始证据与独立审核](development-source37-aged-evidence-v2.zh.md)|Linux14+16组、Windows14+15通过/1跳过，实际3入口pending；high-only范围用户已确认|真实seal/回执/老化仍待，旧max版按要求拒绝；其它原门槛保持|
 |[七天采集入口修复](development-source37-capture-v3.zh.md)|Linux8组、Windows6通过/2跳过，旧两处采集缺陷明确复现；实际pending/提前拒绝通过|真实七天seal仍待；采集须用capture-v3，原源/时长不改|
+|[老化单次执行包装器](development-source37-aged-runner-v2.zh.md)|Linux11组/Windows4通过7跳过；真实默认/执行均pending|仍待真实一次性启动、authority、退出回执和独立审核，原长测不改|
 
 原18项与辅助4项的整体接受来自新正式计划/coordinator及准确原9名称/辅助标签核对；复用per-role原件中的旧comparison scope和raw formal=false仍保留，不能通过改标签冒充接受。受控120秒负向诊断只证明已知注入锁的观察能力，PSI不可用不算零压力。
 
