@@ -3807,9 +3807,9 @@
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "固定ced/Go1.27.3及两架构准确ELF；实际Linux候选打包、另目录重复构建/打包及4项在线签名和6项离线签名正常/拒绝独立核对，本地官方SBOM schema通过。",
-        "remaining_or_boundary": "本次是准确576打包提交的候选演练。最终稳定提交/附件及其对应来源证明与发布后实际下载仍待，不能把演练或旧预发布证明自动移用。",
-        "evidence": "final-v1-package-rehearsal.md"
+        "verified_scope": "固定ced/Go1.27.3及两架构准确ELF；实际Linux候选打包、另目录重复构建/打包及4项在线签名和6项离线签名正常/拒绝独立核对，本地官方SBOM schema通过。 源37新独立打包/来源计划与精确输入已冻结，当前尚未调度；旧ced/576演练原资格不转移。",
+        "remaining_or_boundary": "本次是准确576打包提交的候选演练。最终稳定提交/附件及其对应来源证明与发布后实际下载仍待，不能把演练或旧预发布证明自动移用。 本轮需实际build/package、14离线场景、双架构逐字重建、下载内容/Schema和10签名条件通过；最终稳定附件、安装/发布身份仍待。",
+        "evidence": "live-capacity-package-rehearsal.zh.md"
       },
       "current_acceptance_history": [
         {
@@ -3822,7 +3822,21 @@
             "evidence": "final-v1-candidate-identity.json"
           }
         }
-      ]
+      ],
+      "before_source37_package_rehearsal": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "固定ced/Go1.27.3及两架构准确ELF；实际Linux候选打包、另目录重复构建/打包及4项在线签名和6项离线签名正常/拒绝独立核对，本地官方SBOM schema通过。",
+        "remaining_or_boundary": "本次是准确576打包提交的候选演练。最终稳定提交/附件及其对应来源证明与发布后实际下载仍待，不能把演练或旧预发布证明自动移用。",
+        "evidence": "final-v1-package-rehearsal.md"
+      },
+      "source37_package_rehearsal": {
+        "phase": "frozen-before-sole-CI-dispatch",
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "plan": "test-plan-live-capacity-package-v1.json",
+        "guide": "live-capacity-package-rehearsal.zh.md",
+        "stable_release_accepted": false,
+        "long_source_or_clock_changed": false
+      }
     },
     {
       "id": "P09.2",
@@ -3861,9 +3875,9 @@
       ],
       "current_acceptance": {
         "current_status": "partial-evidence-or-verification-open",
-        "verified_scope": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。",
-        "remaining_or_boundary": "验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。",
-        "evidence": "final-v1-package-rehearsal.md"
+        "verified_scope": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。 源37新独立打包/来源计划与精确输入已冻结，当前尚未调度；旧ced/576演练原资格不转移。",
+        "remaining_or_boundary": "验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。 本轮需实际build/package、14离线场景、双架构逐字重建、下载内容/Schema和10签名条件通过；最终稳定附件、安装/发布身份仍待。",
+        "evidence": "live-capacity-package-rehearsal.zh.md"
       },
       "current_acceptance_history": [
         {
@@ -3907,6 +3921,20 @@
           "test-results-final-v1-verified-staging-depth.json",
           "test-evidence-final-v1-verified-staging-depth.json.gz"
         ]
+      },
+      "before_source37_package_rehearsal": {
+        "current_status": "partial-evidence-or-verification-open",
+        "verified_scope": "两平台候选归档各14项完整性正常/有效拒绝，实际Linux附件ZIP摘要与包内绑定核对；准确工作流/提交/托管环境签名及离线正常、错误源码/工作流/篡改拒绝通过。",
+        "remaining_or_boundary": "验证器不解压/执行；这不是实际生产安装演练。最终稳定包安装前失败拒绝、实际安装/维护及最终离线信任链仍待按发布身份执行，禁止未经验证远程shell。",
+        "evidence": "final-v1-package-rehearsal.md"
+      },
+      "source37_package_rehearsal": {
+        "phase": "frozen-before-sole-CI-dispatch",
+        "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+        "plan": "test-plan-live-capacity-package-v1.json",
+        "guide": "live-capacity-package-rehearsal.zh.md",
+        "stable_release_accepted": false,
+        "long_source_or_clock_changed": false
       }
     },
     {
@@ -8701,5 +8729,13 @@
     "all52_definitions_and18_claims_preserved": true,
     "candidate_runtime_kept": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
     "stable_release_accepted": false
+  },
+  "source37_package_rehearsal": {
+    "phase": "frozen-before-sole-CI-dispatch",
+    "source_revision": "37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0",
+    "plan": "test-plan-live-capacity-package-v1.json",
+    "guide": "live-capacity-package-rehearsal.zh.md",
+    "stable_release_accepted": false,
+    "long_source_or_clock_changed": false
   }
 }
