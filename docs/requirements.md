@@ -6,6 +6,8 @@
 
 用户已明确：[回退仅支持memory.high版本，旧memory.max开发版明确拒绝并保留不兼容记录](development-source37-aged-evidence-v2.zh.md)。旧版managed-resume排除当前支持范围，历史原定义/未通过事实保留，其余原验收门槛保持；新增v2恢复原始证据和独立审核已通过保护检查，尚无实际老化通过。
 
+[七天采集入口修复](development-source37-capture-v3.zh.md)归档：补齐冻结旧采集分支缺失的roles/path_clean，新增只读适配器；原文件不改，当前真实七天采集改用capture-v3，完整受控测试不冒充真实seal。
+
 以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
 
 ## 历史更新与原计划（原文保留）
