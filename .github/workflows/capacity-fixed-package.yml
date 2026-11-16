@@ -1,0 +1,89 @@
+name: capacity-fixed-source37-package
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    env:
+      CRG_SOURCE: 37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: 37ca44e0e24a0eaa14e52b5c8bbbda54c76364b0
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Rebuild the fixed native candidate, without changing the tested program
+        working-directory: candidate
+        run: bash scripts/build.sh v1.0.0
+      - name: Bind current documentation to the fixed program source and exact binaries
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,shutil,subprocess
+          from pathlib import Path
+          identity_raw=Path('docs/live-capacity-candidate-identity.json').read_bytes()
+          assert hashlib.sha256(identity_raw).hexdigest()=='d37092a8a3ca603b91f406caaab0fda8db54e7fbf4c516a2f222d09dfe3c6a64'
+          identity=json.loads(identity_raw)
+          assert identity['schema']=='crg-source37-package-candidate-identity-v1'
+          for name,digest in identity['packaging_recipe_sha256'].items():
+              assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest
+          assert identity['source_revision']==os.environ['CRG_SOURCE']
+          source=Path('candidate')
+          for name,digest in identity['build_recipe_source_sha256'].items():
+              assert hashlib.sha256((source/name).read_bytes()).hexdigest()==digest
+          for name,digest in identity['metadata_sha256'].items():
+              assert hashlib.sha256((source/'dist'/name).read_bytes()).hexdigest()==digest
+          assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=source,text=True).strip()==os.environ['CRG_SOURCE']
+          expected=identity['production_source_sha256']
+          tracked=subprocess.check_output(['git','ls-files','cmd','internal','go.mod'],text=True).splitlines()
+          tracked=[p for p in tracked if not p.endswith('_test.go')]
+          assert set(tracked)==set(expected) and len(expected)==50
+          for name,digest in expected.items():
+              assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest
+              assert hashlib.sha256((source/name).read_bytes()).hexdigest()==digest
+          binaries={'amd64':'ee4f0a140dd7fc1b0435298cd7ee673eedb0eaea6be9f79971d565f5f181308c','arm64':'865459b0de8f217db8c3e0a2e8a97b45eb2b3a5b16b011ba720ebb482d6c44b1'}
+          manifest=json.loads((source/'dist/build-manifest.json').read_bytes())
+          assert manifest['source_revision']==os.environ['CRG_SOURCE'] and manifest['version']=='v1.0.0'
+          Path('dist').mkdir(exist_ok=True)
+          for arch,digest in binaries.items():
+              assert hashlib.sha256((source/f'dist/crg-linux-{arch}').read_bytes()).hexdigest()==digest
+              for name in [f'crg-linux-{arch}',f'sbom-linux-{arch}.cdx.json']:
+                  shutil.copyfile(source/'dist'/name,Path('dist')/name)
+          shutil.copyfile(source/'dist/build-manifest.json','dist/build-manifest.json')
+          PY
+      - run: python3 scripts/package.py v1.0.0 --source-revision "$CRG_SOURCE"
+      - run: python3 scripts/check-package.py v1.0.0
+      - run: python3 tests/release-integrity.py v1.0.0 --source-revision "$CRG_SOURCE"
+      - run: python3 scripts/check-reproducible.py v1.0.0 --source-revision "$CRG_SOURCE"
+      - name: Attest the candidate archives from this packaging commit
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: 'dist/*.tar.gz'
+      - name: Attest amd64 SBOM
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: dist/crg-linux-amd64
+          sbom-path: dist/sbom-linux-amd64.cdx.json
+      - name: Attest arm64 SBOM
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: dist/crg-linux-arm64
+          sbom-path: dist/sbom-linux-arm64.cdx.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: crg-capacity-fixed-package-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
