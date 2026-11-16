@@ -27,6 +27,6 @@ CRG生产源37ca44e0及AMD64候选ee4f0a14未改；原镜像、start.sh、软件
 
 ## 下一步与稳定发布
 
-[固定次数observe/enforce业务对照设计](development-next-business-comparison.zh.md)已归档：DBS/HISDBS各observe/enforce一次、各原600秒，唯一CRG模式变量，缓存/外部限制/SQL/API/备份恢复不变。该文件只是待实现设计，未生成可执行冻结来源、未启动。对照不能冒充原18项正式复验；随后还要新原18项/各600秒，从零24h observe、同容器24h enforce、新七天及原老化后故障/恢复/升级/稳定包门槛。
+[固定次数observe/enforce业务对照设计](development-next-business-comparison.zh.md)已归档：DBS/HISDBS各observe/enforce一次、各原600秒，唯一CRG模式变量，缓存/外部限制/SQL/API/备份恢复不变。该设计现已[实现并冻结、通过辅助故障检查和只读准入](development-original600-comparison.zh.md)，本次发布时尚未启动。对照不能冒充原18项正式复验；随后还要新原18项/各600秒，从零24h observe、同容器24h enforce、新七天及原老化后故障/恢复/升级/稳定包门槛。
 
 原1761 DBS完整600秒失败、HISDBS9/9和DBS原因unknown不改变，不凭已知注入锁反推旧故障。全部52项定义/18项既有范围声明保留，本轮属于P02.1/P02.2/P06.3/P10.2/P10.3辅助诊断子任务。仅CPU/IO/memory.high、各自百分比默认20、v1跳过/v2设置、每容器一对一、无权限不阻断原启动、每日日志30天/1GiB要求保持。preview.5资产未改，稳定1.0尚未接受。
