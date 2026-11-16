@@ -4192,9 +4192,9 @@
       ],
       "current_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
-        "verified_scope": "原18项及独立4辅助全部接受、固定四组44/44及同源四格284/284分别保留原资格；当前新长稳原启动12/12。新v2执行器/Linux14组及独立审核16组通过，Windows14+15通过/1 Linux权限测试跳过，实际三个入口均pending。用户明确high-only回退，旧max目标应拒绝并保留不兼容记录；不声称旧版通过。 新采集适配器Linux8组、Windows6通过/2跳过；受控复现并修复旧采集roles/path_clean遗漏，真实pending/提前采集拒绝通过。",
-        "remaining_or_boundary": "原24h/同容器24h/新七天、真实seal、准确high包、单次执行真实终态回执及老化实际执行/独立文件清理验收均待；其它原故障/恢复/维护/升级/稳定发布要求与缺失平台边界保持。旧max managed-resume按用户决定排除当前支持范围，历史原定义与未通过事实保留，不豁免其余标准。 真实七天采集必须使用capture-v3适配器，旧reader --capture不再作为入口；受控采集不是实际seal或时长证明。",
-        "evidence": "development-source37-capture-v3.zh.md"
+        "verified_scope": "原18项及独立4辅助全部接受、固定四组44/44及同源四格284/284分别保留原资格；当前新长稳原启动12/12。新v2执行器/Linux14组及独立审核16组通过，Windows14+15通过/1 Linux权限测试跳过，实际三个入口均pending。用户明确high-only回退，旧max目标应拒绝并保留不兼容记录；不声称旧版通过。 新采集适配器Linux8组、Windows6通过/2跳过；受控复现并修复旧采集roles/path_clean遗漏，真实pending/提前采集拒绝通过。 单次包装器Linux11组通过，Windows4通过/7跳过；实际默认/执行开关均pending，原输入及真实目标保持。",
+        "remaining_or_boundary": "原24h/同容器24h/新七天、真实seal、准确high包、单次执行真实终态回执及老化实际执行/独立文件清理验收均待；其它原故障/恢复/维护/升级/稳定发布要求与缺失平台边界保持。旧max managed-resume按用户决定排除当前支持范围，历史原定义与未通过事实保留，不豁免其余标准。 真实七天采集必须使用capture-v3适配器，旧reader --capture不再作为入口；受控采集不是实际seal或时长证明。 包装器前台运行，正式一次性脱离SSH启动器仍待；受控短回执不是真实postflight资格，实际authority/receipt/独立磁盘和清理审核均待。",
+        "evidence": "development-source37-aged-runner-v2.zh.md"
       },
       "before_original1396_terminal_acceptance": {
         "current_status": "waiting-real-duration-and-postflight",
@@ -5081,6 +5081,24 @@
         "old_two_capture_failures_reproduced": true,
         "real_seven_day_seal_created": false,
         "long_duration_accepted": false,
+        "stable_release_accepted": false
+      },
+      "before_source37_aged_runner_v2": {
+        "current_status": "waiting-real-duration-and-postflight",
+        "verified_scope": "原18项及独立4辅助全部接受、固定四组44/44及同源四格284/284分别保留原资格；当前新长稳原启动12/12。新v2执行器/Linux14组及独立审核16组通过，Windows14+15通过/1 Linux权限测试跳过，实际三个入口均pending。用户明确high-only回退，旧max目标应拒绝并保留不兼容记录；不声称旧版通过。 新采集适配器Linux8组、Windows6通过/2跳过；受控复现并修复旧采集roles/path_clean遗漏，真实pending/提前采集拒绝通过。",
+        "remaining_or_boundary": "原24h/同容器24h/新七天、真实seal、准确high包、单次执行真实终态回执及老化实际执行/独立文件清理验收均待；其它原故障/恢复/维护/升级/稳定发布要求与缺失平台边界保持。旧max managed-resume按用户决定排除当前支持范围，历史原定义与未通过事实保留，不豁免其余标准。 真实七天采集必须使用capture-v3适配器，旧reader --capture不再作为入口；受控采集不是实际seal或时长证明。",
+        "evidence": "development-source37-capture-v3.zh.md"
+      },
+      "source37_aged_runner_v2": {
+        "phase": "passed-runner-guards-only",
+        "guide": "development-source37-aged-runner-v2.zh.md",
+        "runner_sha256": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+        "native_groups": 11,
+        "Windows_passed": 4,
+        "Windows_skipped": 7,
+        "actual_readonly_pending_calls": 2,
+        "actual_postflight_executed": false,
+        "actual_receipt_available": false,
         "stable_release_accepted": false
       }
     },
@@ -8725,6 +8743,18 @@
     "old_two_capture_failures_reproduced": true,
     "real_seven_day_seal_created": false,
     "long_duration_accepted": false,
+    "stable_release_accepted": false
+  },
+  "source37_aged_runner_v2": {
+    "phase": "passed-runner-guards-only",
+    "guide": "development-source37-aged-runner-v2.zh.md",
+    "runner_sha256": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+    "native_groups": 11,
+    "Windows_passed": 4,
+    "Windows_skipped": 7,
+    "actual_readonly_pending_calls": 2,
+    "actual_postflight_executed": false,
+    "actual_receipt_available": false,
     "stable_release_accepted": false
   }
 }
