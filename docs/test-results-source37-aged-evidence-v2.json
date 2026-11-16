@@ -1,0 +1,239 @@
+{
+  "schema": "crg-source37-aged-evidence-v2-review-v1",
+  "phase": "passed-v2-evidence-guards-only",
+  "user_rollback_scope": {
+    "user_answer": "仅支持回退到 memory.high 版本；旧 memory.max 开发版明确拒绝并保留不兼容记录",
+    "supports_high_only": true,
+    "legacy_max_rejection_required": true,
+    "legacy_max_managed_resume_required": false,
+    "old_incompatibility_record_retained": true,
+    "historical_legacy_pass_claim": false,
+    "other_release_gates_waived": false
+  },
+  "files_sha256": {
+    "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "tests/live-capacity-aged-v1/execution-contract-v2.json": "174d97e48ba9dcf6517ed6dae9a50b6f6ab48fcbd6a9869a2d848026db54791b",
+    "tests/live-capacity-aged-v1/execution-contract.json": "92c7dee75175afacc70a03135516d8fef729a6c5a8cc2b4a5272f89bcc2edf20",
+    "tests/live-capacity-aged-v1/executor-checks.py": "778b3cb6deaeb5d33195e7d427ad49f6f1d5ffa92c2c27f02e9f5dc7511b32fa",
+    "tests/live-capacity-aged-v1/executor-derivation.json": "1b492e6d142b0bf4735d262cfc95dd680e7d20100154d269b4a5e35976539f86",
+    "tests/live-capacity-aged-v1/executor-v2-checks.py": "292e697f7a83796687dfaafe302cce57f7afc27b5ea634c1aa515adf1933fa7d",
+    "tests/live-capacity-aged-v1/executor-v2-derivation.json": "75948f05ea15a3a5f62af5e14f764da96224202a99cb7e62f2540c6a5896f119",
+    "tests/live-capacity-aged-v1/executor-v2.py": "56cdb1cd7dc289c84ae0b256f65f67a31020c9fd1e66ca5063704023465de606",
+    "tests/live-capacity-aged-v1/executor.py": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+    "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+    "tests/live-capacity-aged-v1/qualifier-v2-checks.py": "d318411e49896da808544a5ace42e74b5fd10f3a20aacbcd97be5c2c5c99dfc0",
+    "tests/live-capacity-aged-v1/qualify-v2.py": "eef6682fee28871b8e3c24c4c774fddc340649323a3715ab4d578451124bbe7a"
+  },
+  "local": {
+    "executor": {
+      "schema": "crg-source37-aged-executor-checks-v2",
+      "phase": "passed",
+      "tests_run": 14,
+      "failures": 0,
+      "errors": 0,
+      "synthetic_only": true,
+      "postflight_executed": false,
+      "duration_accepted": false,
+      "release_accepted": false
+    },
+    "qualifier": {
+      "schema": "crg-aged-qualifier-v2-checks-v1",
+      "phase": "passed",
+      "tests_run": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "synthetic_only": true,
+      "actual_postflight_accepted": false,
+      "release_accepted": false
+    }
+  },
+  "native": {
+    "phase": "passed-v2-guards-and-independent-gate-only",
+    "checks": [
+      {
+        "name": "executor-v2-synthetic",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-source37-aged-executor-checks-v2",
+          "phase": "passed",
+          "tests_run": 14,
+          "failures": 0,
+          "errors": 0,
+          "synthetic_only": true,
+          "postflight_executed": false,
+          "duration_accepted": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "d2de1eab1e8e221aa0e5037fc12c476c0d4cdadd1958788b1a596779ee37ea79",
+        "stderr_sha256": "1ebfbafc7ae5580e4a71b7fef6984e630913408d2b84a8175137a697a1e0f198",
+        "stderr": "test_accepted_component_without_actual_authority_is_pending (__main__.Checks) ... ok\ntest_authority_rejects_missing_path_or_digest (__main__.Checks) ... ok\ntest_exact_authority_and_each_foreign_or_legacy_binding_rejected (__main__.Checks) ... ok\ntest_exact_high_and_all_five_external_controls (__main__.Checks) ... ok\ntest_execute_flag_and_marker_still_pending_without_writes (__main__.Checks) ... ok\ntest_execute_requires_marker_and_rechecks_readiness_before_constructor (__main__.Checks) ... ok\ntest_native_original600s_thresholds_and_strict_counter_types (__main__.Checks) ... ok\ntest_original_consumers_guard_rejects_direct_data_or_writable_parent (__main__.Checks) ... ok\ntest_original_three_stage_failure_propagates (__main__.Checks) ... ok\ntest_pending_never_reads_seal_previous_inventory_or_constructs_execution (__main__.Checks) ... ok\ntest_ready_requires_original_lineage_and_exact_programs (__main__.Checks) ... ok\ntest_resumed_process_requires_fresh_managed_snapshot_and_identity (__main__.Checks) ... ok\ntest_user_decision_rejects_legacy_max_and_keeps_historical_record (__main__.Checks) ... ok\ntest_v1_class_guards_and_all_original_criteria_retained (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.111s\n\nOK\n"
+      },
+      {
+        "name": "independent-qualifier-synthetic-and-own-temporary-files",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-aged-qualifier-v2-checks-v1",
+          "phase": "passed",
+          "tests_run": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "synthetic_only": true,
+          "actual_postflight_accepted": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "3c3792465b87b3871908bb79ae644ae0852795aa7b6af11d69b94dcda3935670",
+        "stderr_sha256": "d757a7183d76f626217aa1a5283089736898929a35a10e9f4aea3d38c5e04333",
+        "stderr": "test_actual_cleanup_inventory_denies_namespace_and_group (__main__.Checks) ... ok\ntest_actual_temporary_files_checked_and_tampering_rejected (__main__.Checks) ... ok\ntest_cleanup_or_source_transfer_and_legacy_claim_cannot_be_waived (__main__.Checks) ... ok\ntest_complete_synthetic_report_is_component_only (__main__.Checks) ... ok\ntest_disabled_controls_empty_journal_OOM_and_logs (__main__.Checks) ... ok\ntest_eight_maintenance_commands_states_sources_and_interval_order (__main__.Checks) ... ok\ntest_every_named_result_required_ordered_unique_and_boolean (__main__.Checks) ... ok\ntest_exact_high_and_each_external_control_checked (__main__.Checks) ... ok\ntest_no_report_or_no_proofs_is_pending_not_accepted (__main__.Checks) ... ok\ntest_original_JSON_loader_rejects_duplicates_and_nonfinite (__main__.Checks) ... ok\ntest_original_native600_errors_coverage_histograms_and_checksum (__main__.Checks) ... ok\ntest_pending_returns_before_any_postflight_reads_and_has_no_execute_flag (__main__.Checks) ... ok\ntest_raw_restore_backup_and_aged_counter_checked_even_all_flags_true (__main__.Checks) ... ok\ntest_resumed_process_without_fresh_managed_status_fails (__main__.Checks) ... ok\ntest_source_criteria_and_real_exit_binding (__main__.Checks) ... ok\ntest_startup_cache_and_new_ID_are_real_fields (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.927s\n\nOK\n"
+      },
+      {
+        "name": "actual-executor-default-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "postflight_executed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "f0af2548c04e02dda99b9eddb034d34f9846e8345d72fe944028604fb05548d6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-executor-execute-marker-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "postflight_executed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "f0af2548c04e02dda99b9eddb034d34f9846e8345d72fe944028604fb05548d6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-independent-qualifier-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "43a211cdfb3fd64554925d811f01fcb33ccf010437e186dea8d30dac69248bf9",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false,
+          "postflight_result_accepted": false,
+          "actual_disk_and_cleanup_verified": false
+        },
+        "stdout_sha256": "9e41cb9b8e98dffc9de5dfde62c16379cb8f94638031f32af4f16fe004a67497",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+      "tests/live-capacity-aged-v1/execution-contract-v2.json": "174d97e48ba9dcf6517ed6dae9a50b6f6ab48fcbd6a9869a2d848026db54791b",
+      "tests/live-capacity-aged-v1/execution-contract.json": "92c7dee75175afacc70a03135516d8fef729a6c5a8cc2b4a5272f89bcc2edf20",
+      "tests/live-capacity-aged-v1/executor-checks.py": "778b3cb6deaeb5d33195e7d427ad49f6f1d5ffa92c2c27f02e9f5dc7511b32fa",
+      "tests/live-capacity-aged-v1/executor-derivation.json": "1b492e6d142b0bf4735d262cfc95dd680e7d20100154d269b4a5e35976539f86",
+      "tests/live-capacity-aged-v1/executor-v2-checks.py": "292e697f7a83796687dfaafe302cce57f7afc27b5ea634c1aa515adf1933fa7d",
+      "tests/live-capacity-aged-v1/executor-v2-derivation.json": "75948f05ea15a3a5f62af5e14f764da96224202a99cb7e62f2540c6a5896f119",
+      "tests/live-capacity-aged-v1/executor-v2.py": "56cdb1cd7dc289c84ae0b256f65f67a31020c9fd1e66ca5063704023465de606",
+      "tests/live-capacity-aged-v1/executor.py": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+      "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+      "tests/live-capacity-aged-v1/qualifier-v2-checks.py": "d318411e49896da808544a5ace42e74b5fd10f3a20aacbcd97be5c2c5c99dfc0",
+      "tests/live-capacity-aged-v1/qualify-v2.py": "eef6682fee28871b8e3c24c4c774fddc340649323a3715ab4d578451124bbe7a"
+    },
+    "long19_unchanged": true,
+    "execution_targets_absent_before_and_after": true,
+    "actual_postflight_executed": false,
+    "actual_postflight_accepted": false,
+    "long_duration_accepted": false,
+    "stable_release_accepted": false
+  },
+  "live_long_snapshot": {
+    "phase": "measuring-baseline",
+    "node_utc": "2026-11-16T05:34:01.609644+00:00",
+    "processes": {
+      "runner": {
+        "pid": 2738437,
+        "start_ticks": 173481706,
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "worker": {
+        "pid": 2738485,
+        "start_ticks": 173481710,
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "readonly_recorder": {
+        "pid": 2738486,
+        "start_ticks": 173481711,
+        "original_alive": true,
+        "expected_entry_matches": true
+      }
+    },
+    "main_checks": 12,
+    "main_passed": 12,
+    "independent_baseline_guard_roles": 2,
+    "campaigns": {
+      "baseline": {
+        "phase": "measuring",
+        "cycles": 1,
+        "both_workers_started_epoch": 1794794954.6222174
+      }
+    },
+    "long_duration_accepted": false,
+    "terminal": null,
+    "recorder_sample_utc": "2026-11-16T05:33:55.436251+00:00"
+  },
+  "first_qualifier_fixture_failure": {
+    "tests_run": 15,
+    "failures": 1,
+    "errors": 0,
+    "reason": "synthetic disable-controls object aliased boot runtime originals, causing intended disable mutation to be rejected early as RUNTIME_ORIGINALS. JSON round-trip now separates fixture records as real files do; all original gate conditions kept.",
+    "stderr_private_sha256": "5bfdb13c594f323b0fb7be1be97e7a429a65ebe12095ab1dcba4d16b8a50518b"
+  },
+  "v1_source_retained": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+  "new_proof_strength": "fresh managed resumption with actual ELF/status identity/strictly newer status mtime, raw CLI8/results/program/control/journal/PID1/cache, backup/restore/aged checksum, disable and logs",
+  "independent_report_checks": 36,
+  "independent_actual_file_gate_test": "Linux own temporary files, actual digests/inodes/0600 and input/journal/prefix tampering; cluster namespace/cgroup consumer inventory mocked only in synthetic test",
+  "actual_seal_available": false,
+  "authority_available": false,
+  "terminal_execution_receipt_available": false,
+  "actual_postflight_executed": false,
+  "actual_postflight_accepted": false,
+  "long_duration_accepted": false,
+  "completed_original_tasks_added": 0,
+  "stable_release_accepted": false
+}
