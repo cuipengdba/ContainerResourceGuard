@@ -1,0 +1,139 @@
+{
+  "schema": "crg-source37-aged-runner-v3-review-v1",
+  "phase": "passed-runner-guards-only",
+  "files_sha256": {
+    "tests/live-capacity-aged-v1/runner-v2-contract.json": "9ce84bef5751fa4f5259c4ccfdc1f395e238bbe022a8e8bf766e8b7666adf863",
+    "tests/live-capacity-aged-v1/runner-v2.py": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+    "tests/live-capacity-aged-v1/runner-v3-checks.py": "6dc81c5bd55cdc94bff219cec834f80d95428a25fdb61dc9ad46d30cd78d2684",
+    "tests/live-capacity-aged-v1/runner-v3-contract.json": "b18410d4d896d9996facf5bcd47633cee1b6814c8808a62426034e0ed9a018f9",
+    "tests/live-capacity-aged-v1/runner-v3.py": "0c0ab9d433ed7e9aa59b81de4cf0fede1d876df79aa9b86074e4d91a3bb4dad3"
+  },
+  "native": {
+    "phase": "passed-runner-guards-only",
+    "checks": [
+      {
+        "name": "controlled-real-child-and-files",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "schema": "crg-aged-runner-v3-checks-v1",
+          "phase": "passed",
+          "tests_run": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "scope": "controlled short real child/file tests, never actual aged execution or 1200s qualification",
+          "actual_postflight_executed": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "3e18581cc1574994db8dd59f1ee4f3a8882d19ee427d20db1b1584137432b541",
+        "stderr_sha256": "f698905090ce78ad66afc3c63db75102b534a9f0cd83fc2b1b48ce2d48f37465",
+        "stderr": "test_actual_short_child_exit_receipt_not_qualification (__main__.Checks) ... ok\ntest_changed_readiness_creates_nothing (__main__.Checks) ... ok\ntest_child_rechecks_entry_before_exec (__main__.Checks) ... ok\ntest_default_ready_never_executes (__main__.Checks) ... ok\ntest_duplicate_preserves_original_bytes (__main__.Checks) ... ok\ntest_marker_and_authority_required_before_run (__main__.Checks) ... ok\ntest_new_release_signal_is_forwarded (__main__.Checks) ... ok\ntest_old_release_signal_race_reproduced (__main__.Checks) ... ok\ntest_partial_authority_cli_rejected (__main__.Checks) ... ok\ntest_pending_default_and_execute_write_nothing (__main__.Checks) ... ok\ntest_signal_forwarded_to_owned_child_and_actual_negative_exit (__main__.Checks) ... ok\ntest_symlink_and_hardlink_rejected (__main__.Checks) ... ok\ntest_uncommitted_identity_never_releases_workload (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 3.303s\n\nOK\n"
+      },
+      {
+        "name": "actual-default-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "94de5e429affbdc4513b2380a5f3eff9f94478fa6d399d8b3d0700e92b328ff9",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false,
+          "postflight_executed": false,
+          "executor_available": true,
+          "real_seal_required": true
+        },
+        "stdout_sha256": "764124a33df763a00e4b6222d240f1b1a5382d739613f129e675b6d142c8b457",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-execute-with-marker-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "94de5e429affbdc4513b2380a5f3eff9f94478fa6d399d8b3d0700e92b328ff9",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false,
+          "postflight_executed": false,
+          "executor_available": true,
+          "real_seal_required": true
+        },
+        "stdout_sha256": "764124a33df763a00e4b6222d240f1b1a5382d739613f129e675b6d142c8b457",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/live-capacity-aged-v1/runner-v2-contract.json": "9ce84bef5751fa4f5259c4ccfdc1f395e238bbe022a8e8bf766e8b7666adf863",
+      "tests/live-capacity-aged-v1/runner-v2.py": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+      "tests/live-capacity-aged-v1/runner-v3-checks.py": "6dc81c5bd55cdc94bff219cec834f80d95428a25fdb61dc9ad46d30cd78d2684",
+      "tests/live-capacity-aged-v1/runner-v3-contract.json": "b18410d4d896d9996facf5bcd47633cee1b6814c8808a62426034e0ed9a018f9",
+      "tests/live-capacity-aged-v1/runner-v3.py": "0c0ab9d433ed7e9aa59b81de4cf0fede1d876df79aa9b86074e4d91a3bb4dad3"
+    },
+    "long19_unchanged": true,
+    "v2_frozen15_unchanged": true,
+    "capture_frozen8_unchanged": true,
+    "all_real_targets_absent": true,
+    "actual_postflight_executed": false,
+    "stable_release_accepted": false
+  },
+  "Windows": {
+    "schema": "crg-aged-runner-v3-checks-v1",
+    "phase": "passed",
+    "tests_run": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 9,
+    "scope": "controlled short real child/file tests, never actual aged execution or 1200s qualification",
+    "actual_postflight_executed": false,
+    "release_accepted": false
+  },
+  "actual_postflight_executed": false,
+  "actual_execution_receipt_available": false,
+  "old_release_race": {
+    "old_exit": 0,
+    "new_exit": -15,
+    "signal": "SIGTERM at real pipe flush",
+    "scope": "controlled actual child only"
+  },
+  "controlled_receipt_boundary": "real short temporary child/PID/proc/file/exit receipts test plumbing; elapsed remains real and below1200; these are not actual aged receipts or qualification",
+  "pending_calls_create_no_real_targets": true,
+  "original_long19_executor15_capture8_unchanged": true,
+  "foreground_only": "future actual supervisor must be detached exactly once by a separately reviewed source-pinned launcher with DEVNULL and setsid; no launch performed now",
+  "no_automatic_retry_or_guard_removal": true,
+  "completed_original_tasks_added": 0,
+  "long_duration_accepted": false,
+  "stable_release_accepted": false
+}

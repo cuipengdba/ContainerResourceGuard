@@ -1,0 +1,28 @@
+{
+  "schema": "crg-aged-runner-v3-contract-v1",
+  "entry": "/var/tmp/crg-aged1952-tools-20261116/tests/live-capacity-aged-v1/executor-v2.py",
+  "root": "/var/tmp/crg-aged-source37-runner-v2-20261116",
+  "executor_tools": "/var/tmp/crg-aged1952-tools-20261116",
+  "files_sha256": {
+    "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "tests/live-capacity-aged-v1/execution-contract-v2.json": "174d97e48ba9dcf6517ed6dae9a50b6f6ab48fcbd6a9869a2d848026db54791b",
+    "tests/live-capacity-aged-v1/execution-contract.json": "92c7dee75175afacc70a03135516d8fef729a6c5a8cc2b4a5272f89bcc2edf20",
+    "tests/live-capacity-aged-v1/executor-checks.py": "778b3cb6deaeb5d33195e7d427ad49f6f1d5ffa92c2c27f02e9f5dc7511b32fa",
+    "tests/live-capacity-aged-v1/executor-derivation.json": "1b492e6d142b0bf4735d262cfc95dd680e7d20100154d269b4a5e35976539f86",
+    "tests/live-capacity-aged-v1/executor-v2-checks.py": "292e697f7a83796687dfaafe302cce57f7afc27b5ea634c1aa515adf1933fa7d",
+    "tests/live-capacity-aged-v1/executor-v2-derivation.json": "75948f05ea15a3a5f62af5e14f764da96224202a99cb7e62f2540c6a5896f119",
+    "tests/live-capacity-aged-v1/executor-v2.py": "56cdb1cd7dc289c84ae0b256f65f67a31020c9fd1e66ca5063704023465de606",
+    "tests/live-capacity-aged-v1/executor.py": "e2f6f60ea796bf221aef774a06f06eff3a9c1f562518937f200094bc55d1b15a",
+    "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+    "tests/live-capacity-aged-v1/qualifier-v2-checks.py": "d318411e49896da808544a5ace42e74b5fd10f3a20aacbcd97be5c2c5c99dfc0",
+    "tests/live-capacity-aged-v1/qualify-v2.py": "eef6682fee28871b8e3c24c4c774fddc340649323a3715ab4d578451124bbe7a"
+  },
+  "executor_contract_sha256": "174d97e48ba9dcf6517ed6dae9a50b6f6ab48fcbd6a9869a2d848026db54791b",
+  "execution_style": "foreground supervisor; future detach must launch this exact wrapper only once with DEVNULL and own setsid",
+  "qualification": "only independent qualifier-v2 can accept actual report/receipt/disk; no synthetic clocks or inherited duration",
+  "previous_runner_sha256": "716e4da18aa14c7654298d2da059034709975a39a3af14c794ce67518df8fbb8",
+  "release_signal_policy": "block SIGINT/SIGTERM around pipe release and released flag; restore original mask then forward first pending signal to owned child"
+}

@@ -1,5 +1,7 @@
 # 老化后单次执行包装器 v2
 
+> 当前执行入口改为[runner-v3](development-source37-aged-runner-v3.zh.md)：旧放行信号窗口已受控复现并修复，旧runner-v2仅留历史，不再用于正式执行。
+
 本工具补齐[v2老化执行与独立审核](development-source37-aged-evidence-v2.zh.md)之间的实际退出回执。它属于隔离实验工具，不是每容器产品Agent；产品的一对一、辅助失败不阻断业务、三项百分比/high-only策略均不变。
 
 ## 单次执行和真实身份
