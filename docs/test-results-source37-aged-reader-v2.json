@@ -1,0 +1,212 @@
+{
+  "schema": "crg-source37-aged-reader-v2-review-v1",
+  "phase": "passed-readonly-current-baseline-only",
+  "reader_sha256": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+  "binding_sha256": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+  "files_sha256": {
+    "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+    "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+    "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+    "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+    "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "tests/live-capacity-aged-v1/checks.py": "55163ab4844845230b0ab2e05ec2c252a9dccd5d7f5f6c9faf6a6ae3fad09847"
+  },
+  "local_synthetic": {
+    "scope": "synthetic fault checks only, not native duration/business/postflight acceptance",
+    "phase": "passed",
+    "tests_run": 13,
+    "failures": 0,
+    "errors": 0,
+    "reader_sha256": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+    "binding_sha256": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+    "release_accepted": false
+  },
+  "native": {
+    "phase": "passed-readonly-reader-only",
+    "checks": [
+      {
+        "name": "synthetic-faults",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "scope": "synthetic fault checks only, not native duration/business/postflight acceptance",
+          "phase": "passed",
+          "tests_run": 13,
+          "failures": 0,
+          "errors": 0,
+          "reader_sha256": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+          "binding_sha256": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+          "release_accepted": false
+        },
+        "stdout_sha256": "d08d3a1d0122227e82c654e931e5ad52f8b9004caf7658e757f74e4905a1e064",
+        "stderr_sha256": "3d77c29c3e2f6a3a57fb53d303d29e7a03a610ebfa0dbbb86de9dc853a2dbc77",
+        "stderr": "test_baseline_or_enforce_cannot_capture_seven_day_lineage (__main__.Checks) ... ok\ntest_capture_requires_original24h_accepted_before_seven_day (__main__.Checks) ... ok\ntest_complete_synthetic_three_stages_is_only_lineage_prerequisite (__main__.Checks) ... ok\ntest_contract_rejects_every_changed_binding (__main__.Checks) ... ok\ntest_early_or_foreign_campaign_and_errors_are_rejected_by_original_auditor (__main__.Checks) ... ok\ntest_live_baseline_is_pending_even_with_no_acceptance_report (__main__.Checks) ... ok\ntest_main_checks_cannot_be_missing_extra_or_false (__main__.Checks) ... ok\ntest_native_stage_overlap_rejected (__main__.Checks) ... ok\ntest_old_clock_cleanup_transition_or_primary_cannot_transfer (__main__.Checks) ... ok\ntest_old_or_changed_seal_never_grants_postflight (__main__.Checks) ... ok\ntest_original_capture_guards_preserved_except_user_memory_policy (__main__.Checks) ... ok\ntest_real_campaign_shape_has_no_top_level_run_id_and_rejects_old_phase_identity (__main__.Checks) ... ok\ntest_terminal_requires_exact_exit_and_dead_original_handles (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 1.393s\n\nOK\n"
+      },
+      {
+        "name": "actual-baseline-pending",
+        "exit": 2,
+        "expected_exit": 2,
+        "result": {
+          "phase": "pending",
+          "component_phase": "measuring-baseline",
+          "postflight_allowed": false,
+          "capture_allowed": false,
+          "runner_identity_verified_live": true,
+          "reports": {
+            "baseline": {
+              "sha256": "43e976571591f862027a9fdefd52de1f24daa24cb463f691d3bb091dbefb7b9a",
+              "audit": {
+                "phase": "pending",
+                "requested_seconds": 86400,
+                "continuous_report_accepted": false,
+                "release_accepted": false,
+                "runtime_cleanup_verified": false
+              }
+            }
+          },
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "9bb7f0f89d605cafab5e9af9efbf9dad303deb032111351d9f67943532454ab6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      {
+        "name": "actual-baseline-capture-denied",
+        "exit": 1,
+        "expected_exit": 1,
+        "result": {
+          "phase": "rejected",
+          "reason": "CAPTURE_ONLY_DURING_FRESH_SEVEN_DAY",
+          "postflight_allowed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "cfb7cc5656d906e3e38742ce446bbe12a1a44683efcc47c029929c616cfa3f98",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+      "tests/live-capacity-aged-v1/lineage.py": "f2e167f3d8996fa2d716826a39d6520a8ef125fc286770f469bcd5c086c541e2",
+      "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+      "tests/live-capacity-aged-v1/checks.py": "55163ab4844845230b0ab2e05ec2c252a9dccd5d7f5f6c9faf6a6ae3fad09847"
+    },
+    "long19_unchanged": true,
+    "product_or_business_changed": false,
+    "postflight_executed": false,
+    "long_duration_accepted": false
+  },
+  "live_long_snapshot": {
+    "phase": "measuring-baseline",
+    "node_utc": "2026-11-16T04:24:44.230534+00:00",
+    "processes": {
+      "runner": {
+        "pid": 2738437,
+        "start_ticks": 173481706,
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "worker": {
+        "pid": 2738485,
+        "start_ticks": 173481710,
+        "original_alive": true,
+        "expected_entry_matches": true
+      },
+      "readonly_recorder": {
+        "pid": 2738486,
+        "start_ticks": 173481711,
+        "original_alive": true,
+        "expected_entry_matches": true
+      }
+    },
+    "main_checks": 12,
+    "main_passed": 12,
+    "independent_baseline_guard_roles": 2,
+    "campaigns": {
+      "baseline": {
+        "phase": "measuring",
+        "cycles": 1,
+        "both_workers_started_epoch": 1794794954.6222174
+      }
+    },
+    "long_duration_accepted": false,
+    "terminal": null,
+    "recorder_sample_utc": "2026-11-16T04:24:11.814032+00:00"
+  },
+  "first_native_reader_failed": {
+    "phase": "failed",
+    "checks": [
+      {
+        "name": "synthetic-faults",
+        "exit": 0,
+        "expected_exit": 0,
+        "result": {
+          "scope": "synthetic fault checks only, not native duration/business/postflight acceptance",
+          "phase": "passed",
+          "tests_run": 12,
+          "failures": 0,
+          "errors": 0,
+          "reader_sha256": "2d1bfe91451f4943852c7f868c8da4a18bc7ebd1d3c2c38bbfd7073b1853e58d",
+          "binding_sha256": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+          "release_accepted": false
+        },
+        "stdout_sha256": "8b5af4581f6da51138db5dc1efae50a776e84b19995fd5fcce46b334069dd12a",
+        "stderr_sha256": "d30539df2cb7ea9be63d341c0c05855f9ac69dcfd7f51b7422fcc4f66751feeb",
+        "stderr": "test_baseline_or_enforce_cannot_capture_seven_day_lineage (__main__.Checks) ... ok\ntest_capture_requires_original24h_accepted_before_seven_day (__main__.Checks) ... ok\ntest_complete_synthetic_three_stages_is_only_lineage_prerequisite (__main__.Checks) ... ok\ntest_contract_rejects_every_changed_binding (__main__.Checks) ... ok\ntest_early_or_foreign_campaign_and_errors_are_rejected_by_original_auditor (__main__.Checks) ... ok\ntest_live_baseline_is_pending_even_with_no_acceptance_report (__main__.Checks) ... ok\ntest_main_checks_cannot_be_missing_extra_or_false (__main__.Checks) ... ok\ntest_native_stage_overlap_rejected (__main__.Checks) ... ok\ntest_old_clock_cleanup_transition_or_primary_cannot_transfer (__main__.Checks) ... ok\ntest_old_or_changed_seal_never_grants_postflight (__main__.Checks) ... ok\ntest_original_capture_guards_preserved_except_user_memory_policy (__main__.Checks) ... ok\ntest_terminal_requires_exact_exit_and_dead_original_handles (__main__.Checks) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 1.329s\n\nOK\n"
+      },
+      {
+        "name": "actual-baseline-pending",
+        "exit": 1,
+        "expected_exit": 2,
+        "result": {
+          "phase": "rejected",
+          "reason": "INPUT_SHAPE_READ_OR_INVENTORY",
+          "postflight_allowed": false,
+          "P10_complete": false,
+          "release_accepted": false
+        },
+        "stdout_sha256": "1f64a761a033cd21cea4425c5534e584ab83383b2b55be1e6261ed128cfcac5e",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      }
+    ],
+    "files_sha256": {
+      "tests/vendor-aged-preflight.py": "b82c3a4e50969ac73c49322a7755eb4e40d277741e67270d7845b7e32b016439",
+      "tests/soak-report-audit.py": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+      "tests/soak-report-audit-checks.py": "3ec0d47bf08d4061b8d20c000d7b48f69d39c5778fa92236d60756d9e42aa8b7",
+      "tests/live-capacity-aged-v1/lineage.py": "2d1bfe91451f4943852c7f868c8da4a18bc7ebd1d3c2c38bbfd7073b1853e58d",
+      "tests/live-capacity-aged-v1/binding.json": "5602de6f0d920048247a1df38d8e66307364a22d0d5567bc5674a35ec6df057a",
+      "tests/live-capacity-aged-v1/checks.py": "11fbadedef82dc1086f331bad0bdcbc09bceb5a230872031e87aa8d4f8877534"
+    },
+    "long19_unchanged": true,
+    "product_or_business_changed": false,
+    "postflight_executed": false,
+    "long_duration_accepted": false
+  },
+  "first_native_schema_diagnosis": {
+    "phase": "exception-observed",
+    "error_class": "KeyError",
+    "error": "'run_id'",
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 8, in <module>\n  File \"/var/tmp/crg-aged1930-tools-20261116/tests/live-capacity-aged-v1/lineage.py\", line 112, in component\n    require(campaign['run_id'] == stage['run_id'], 'FRESH_PHASE_RUN_ID')\nKeyError: 'run_id'\n"
+  },
+  "first_Windows_fixture_failure": {
+    "tests_run": 12,
+    "failures": 1,
+    "errors": 3,
+    "cause": "POSIX fixture strings versus Windows Path, Linux absolute-root positive check unsupported on Windows; fixed fixture formatting and exercise root checks on actual Linux. Initial early rejections are not counted as valid injected fault coverage.",
+    "private_stderr_sha256": "c764af50cd30653ee05b0858377e679790badd5e15064f93a9734417c9c140ac"
+  },
+  "original_capture_guards_reused_except_user_high_item": true,
+  "old_helpers_and_long19_unchanged": true,
+  "all_original_postflight_criteria_retained": true,
+  "sealed_seven_day_lineage_available": false,
+  "postflight_executor_available": false,
+  "postflight_executed": false,
+  "long_duration_accepted": false,
+  "completed_original_tasks_added": 0,
+  "stable_release_accepted": false
+}
