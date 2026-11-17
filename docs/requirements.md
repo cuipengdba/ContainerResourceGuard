@@ -16,6 +16,8 @@
 
 [原老化单次后台启动](development-source37-detached-launch.zh.md)归档：固定正确wrapper-v3/源，原三段终态及真实seal/authority/previous全满足才允许；独占guard、先实际PID/start持久化、setsid/devnull/私有输出，未确定交接保留不重试。真实pending未建目标，短子进程父退出测试不冒充真实老化、退出或发布资格。
 
+[回退输入准备与基线独立验收](development-source37-aged-input-prepare.zh.md)：high兼容准确ELF仅暂存，原真实seal/receipt+三段终态未齐时拒绝发布authority；独占/准确schema/不覆盖/部分失败保留均受控验证。原24h基线接受，其余对照、新七天和老化后审核仍待，原需求和历史失败不删。
+
 以下为此前各时点记录，保留原文及原验收要求；其中“当前/未启动/待终态”仅适用于对应历史来源，不覆盖上面的当前结论。
 
 ## 历史更新与原计划（原文保留）

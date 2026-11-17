@@ -1,0 +1,161 @@
+{
+  "schema": "crg-original1880-baseline-independent-v1",
+  "phase": "baseline-independently-accepted-only",
+  "node_utc": "2026-11-17T05:44:40.869995+00:00",
+  "baseline_report_sha256": "276c5ae3e3ccf3a4267cc7b302be65ec4ad948a9c621b1f09621d413b302eceb",
+  "baseline_report_bytes": 3278970,
+  "audit_sha256": "4feb3e7fad630e37245c837fc85e90dec4e10a086e5fe96a4bc299f4ad481eb8",
+  "audit": {
+    "phase": "passed",
+    "requested_seconds": 86400,
+    "roles": [
+      "dbs",
+      "hisdbs"
+    ],
+    "accepted_engine_cycles": 4,
+    "continuous_report_accepted": true,
+    "release_accepted": false,
+    "runtime_cleanup_verified": false
+  },
+  "roles": {
+    "dbs": {
+      "native_elapsed_seconds": 86400.24287167704,
+      "SQL": {
+        "attempts": 43198,
+        "errors": 0,
+        "histogram": [
+          43124,
+          49,
+          0,
+          1,
+          3,
+          1,
+          6,
+          3,
+          6,
+          4,
+          1,
+          0
+        ],
+        "max_seconds": 2.766913532046601,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 0.9999537037037037,
+        "successes": 43198,
+        "total_seconds": 43.23663266538642
+      },
+      "API": {
+        "attempts": 17280,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          17242,
+          37,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.20609670295380056,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0,
+        "successes": 17280,
+        "total_seconds": 141.57263225107454
+      },
+      "host_samples": 1441,
+      "primary_not_restarted": true
+    },
+    "hisdbs": {
+      "native_elapsed_seconds": 86400.21933200397,
+      "SQL": {
+        "attempts": 43197,
+        "errors": 0,
+        "histogram": [
+          43133,
+          43,
+          2,
+          4,
+          2,
+          3,
+          2,
+          4,
+          2,
+          1,
+          1,
+          0
+        ],
+        "max_seconds": 3.8187057469040155,
+        "p95_bucket_upper_seconds": 0.001,
+        "sample_coverage": 0.9999305555555555,
+        "successes": 43197,
+        "total_seconds": 37.698247264139354
+      },
+      "API": {
+        "attempts": 17280,
+        "errors": 0,
+        "histogram": [
+          0,
+          0,
+          17240,
+          40,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "max_seconds": 0.014462627936154604,
+        "p95_bucket_upper_seconds": 0.01,
+        "sample_coverage": 1.0,
+        "successes": 17280,
+        "total_seconds": 140.19579749112017
+      },
+      "host_samples": 1441,
+      "primary_not_restarted": true
+    }
+  },
+  "current_phase": "measuring-enforce",
+  "current_enforce_guards": {
+    "candidate1-dbs-bw64": {
+      "eight_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "20001980416",
+        "memory.swap.max": "0"
+      },
+      "fixed_three_processes_same": true,
+      "actual_running_ELF_matches_frozen": true
+    },
+    "candidate1-hisdbs-bw64": {
+      "eight_controls": {
+        "cpu.max": "720000 100000",
+        "memory.max": "21474836480",
+        "io.max": "253:0 rbps=67108864 wbps=67108864 riops=4096 wiops=4096",
+        "pids.max": "406648",
+        "cpu.weight": "4",
+        "io.weight": "default 100",
+        "memory.high": "20001980416",
+        "memory.swap.max": "0"
+      },
+      "fixed_three_processes_same": true,
+      "actual_running_ELF_matches_frozen": true
+    }
+  },
+  "original19_unchanged": true,
+  "same_container_enforce_native_pending": true,
+  "fresh_seven_day_started": false,
+  "all_three_stages_accepted": false,
+  "runtime_cleanup_verified": false,
+  "stable_release_accepted": false
+}
