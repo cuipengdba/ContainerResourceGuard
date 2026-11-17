@@ -74,7 +74,7 @@ func TestThreePercentPlanDoesNotRequestOtherControllers(t *testing.T) {
 	}
 	page := uint64(os.Getpagesize())
 	wantMemory := strconv.FormatUint(scaleRate(64<<30, 40)/page*page, 10)
-	if len(values) != 2 || values["cpu.max"] != "720000 100000" || values["memory.max"] != wantMemory || p.Percentages == nil || *p.Percentages.IOPercent != 50 {
+	if len(values) != 2 || values["cpu.max"] != "720000 100000" || values["memory.high"] != wantMemory || p.Percentages == nil || *p.Percentages.IOPercent != 50 {
 		t.Fatal(p)
 	}
 	if err := os.WriteFile(filepath.Join(dir, "cpu.max"), []byte("200000 100000"), 0600); err != nil {

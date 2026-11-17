@@ -1,0 +1,43 @@
+{
+  "schema": "crg-bandwidth-percent-local-checks-v1",
+  "phase": "local-Go-passed-not-Linux-native-business-or-release",
+  "base": "520e16e5e636cbe886ed55afd6fc1142f759e390",
+  "checks": {
+    "format": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "vet": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "test": {
+      "exit": 0,
+      "stdout": "ok  \tgithub.com/cuipengdba/ContainerResourceGuard/cmd/crg\t(cached)\nok  \tgithub.com/cuipengdba/ContainerResourceGuard/internal/guard\t(cached)\nok  \tgithub.com/cuipengdba/ContainerResourceGuard/internal/runlog\t(cached)\n",
+      "stderr": ""
+    },
+    "diff_check": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "Go_toolchain": "go version go1.27.3 windows/amd64",
+  "changed_source_sha256": {
+    "cmd/crg/main.go": "09e039b5af3c8da9c7c2d59a460bf038f04c358c5f42ff1c95728150f328d9a0",
+    "cmd/crg/run_logging.go": "3757aac3e87192678221087bae89dd97859dac96febb63119f8ac10208e87773",
+    "internal/guard/partition_plan.go": "457e3f5529577bd86fd65032cfebea356ec96ac74f941388765a23836ec6b1a1",
+    "internal/guard/partition_plan_test.go": "9e7dd117276cb96a20d22cfe491198d7aacc7d13e80f08b80aeaafd85619cbfc",
+    "internal/guard/plan.go": "f100eddcf13668e6a84c4a53295f4fb4afa48aefe20e82d1f84a427fb34cd493",
+    "tests/native-cgroup-high.py": "1db645cea159b4521b20b8007678e11806a1ff08340ee9972fa691009de572e4",
+    "tests/partition-cgroup.py": "a37a6027f664e6441328d73385b266b593d75fc30e3b9c2167bc956400f0ff7a",
+    "internal/guard/io_bandwidth_policy_test.go": "5c9f4ee0441ee52da846c0e427698140126998501422ea1ccfd8d88021f74d3d"
+  },
+  "native_expected_actual_checks": {
+    "native_each": 26,
+    "partition_each": 45
+  },
+  "time_limits_or_original_checks_relaxed": false
+}

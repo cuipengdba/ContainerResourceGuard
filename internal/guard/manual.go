@@ -13,12 +13,13 @@ import (
 
 // Omitted manual dimensions are unmanaged, never implicitly unlimited.
 type ManualLimits struct {
-	CPUCores  *float64 `json:"cpu_cores,omitempty"`
-	MemoryMax string   `json:"memory_max,omitempty"`
-	ReadBPS   string   `json:"io_read_bps,omitempty"`
-	WriteBPS  string   `json:"io_write_bps,omitempty"`
-	ReadIOPS  *uint64  `json:"io_read_iops,omitempty"`
-	WriteIOPS *uint64  `json:"io_write_iops,omitempty"`
+	CPUCores   *float64 `json:"cpu_cores,omitempty"`
+	MemoryMax  string   `json:"memory_max,omitempty"`
+	MemoryHigh string   `json:"memory_high,omitempty"`
+	ReadBPS    string   `json:"io_read_bps,omitempty"`
+	WriteBPS   string   `json:"io_write_bps,omitempty"`
+	ReadIOPS   *uint64  `json:"io_read_iops,omitempty"`
+	WriteIOPS  *uint64  `json:"io_write_iops,omitempty"`
 }
 
 var byteQuantity = regexp.MustCompile(`^(0|[1-9][0-9]*)(B|KiB|MiB|GiB|TiB|KB|MB|GB|TB)?$`)
@@ -43,14 +44,26 @@ func (m ManualLimits) HasIO() bool {
 	return m.ReadBPS != "" || m.WriteBPS != "" || m.ReadIOPS != nil || m.WriteIOPS != nil
 }
 
+// memory_max remains a configuration alias for upgrades, never a request to
+// install a hard cap. The canonical manual name is memory_high.
+func (m ManualLimits) memoryTarget() string {
+	if m.MemoryHigh != "" {
+		return m.MemoryHigh
+	}
+	return m.MemoryMax
+}
+
 func (m ManualLimits) Validate() error {
-	if m.CPUCores == nil && m.MemoryMax == "" && !m.HasIO() {
+	if m.MemoryHigh != "" && m.MemoryMax != "" {
+		return errors.New("specify limits.memory_high; do not combine it with legacy limits.memory_max")
+	}
+	if m.CPUCores == nil && m.memoryTarget() == "" && !m.HasIO() {
 		return errors.New("manual limits must specify at least one dimension")
 	}
 	if m.CPUCores != nil && (math.IsNaN(*m.CPUCores) || math.IsInf(*m.CPUCores, 0) || *m.CPUCores < 0.01 || *m.CPUCores > 1048576) {
 		return errors.New("cpu_cores must be finite and within 0.01..1048576")
 	}
-	for name, s := range map[string]string{"memory_max": m.MemoryMax, "io_read_bps": m.ReadBPS, "io_write_bps": m.WriteBPS} {
+	for name, s := range map[string]string{"memory_max": m.MemoryMax, "memory_high": m.MemoryHigh, "io_read_bps": m.ReadBPS, "io_write_bps": m.WriteBPS} {
 		if s == "" {
 			continue
 		}
@@ -58,8 +71,8 @@ func (m ManualLimits) Validate() error {
 		if err != nil || n == 0 {
 			return fmt.Errorf("%s must be a positive byte quantity", name)
 		}
-		if name == "memory_max" && n < 16<<20 {
-			return errors.New("memory_max must be at least 16MiB")
+		if (name == "memory_max" || name == "memory_high") && n < 16<<20 {
+			return fmt.Errorf("%s must be at least 16MiB", name)
 		}
 	}
 	for _, n := range []*uint64{m.ReadIOPS, m.WriteIOPS} {
@@ -80,10 +93,10 @@ func requestedResources(c Config, env Environment) (float64, uint64, bool, bool)
 	if c.Limits.CPUCores != nil {
 		cpu = *c.Limits.CPUCores
 	}
-	if c.Limits.MemoryMax != "" {
-		mem, _ = ParseBytes(c.Limits.MemoryMax)
+	if c.Limits.memoryTarget() != "" {
+		mem, _ = ParseBytes(c.Limits.memoryTarget())
 	}
-	return cpu, mem, c.Limits.CPUCores != nil, c.Limits.MemoryMax != ""
+	return cpu, mem, c.Limits.CPUCores != nil, c.Limits.memoryTarget() != ""
 }
 
 func manualDevice(path string) (string, string, error) {
@@ -94,11 +107,11 @@ func manualDevice(path string) (string, string, error) {
 	if _, err = os.Stat(filepath.Join("/sys/dev/block", dev)); err != nil {
 		return "", "", errors.New("filesystem does not resolve to an exposed block device; no backend inferred")
 	}
-	id, err := DeviceIdentity(dev)
+	device, err := ResolveIOBlockDevice(dev)
 	if err != nil {
 		return "", "", err
 	}
-	return dev, id, nil
+	return device.ControlDevice, device.ControlIdentity, nil
 }
 
 func manualIO(c Config, env Environment, original map[string]string, resolve func(string) (string, string, error), related func(string, string) (bool, error)) (settings []Setting, devices []DeviceCoverage, warnings []string) {
@@ -143,7 +156,7 @@ func manualIO(c Config, env Environment, original map[string]string, resolve fun
 	}
 	sort.Strings(names)
 	for _, dev := range names {
-		coverage := DeviceCoverage{Device: dev, State: "planned", Detail: "manual per-device limits from data_paths; no benchmark used"}
+		coverage := DeviceCoverage{Device: dev, State: "planned", Detail: "manual shared whole-device limits from data_paths; no benchmark used"}
 		stacked := false
 		for _, other := range names {
 			if dev == other {

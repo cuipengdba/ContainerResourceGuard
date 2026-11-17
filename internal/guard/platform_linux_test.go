@@ -7,8 +7,71 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"syscall"
 	"testing"
 )
+
+func TestReloadReaderFIFOAndConfigMapLinkReplacement(t *testing.T) {
+	root := t.TempDir()
+	fifo := filepath.Join(root, "fifo")
+	if err := syscall.Mkfifo(fifo, 0600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := ReadBoundedFile(fifo); err == nil {
+		t.Fatal("FIFO accepted")
+	}
+	c := Config{Percent: 20, StateDir: root}
+	w, err := NewConfigWatcher(filepath.Join(root, "source.json"), c, ConfigOverrides{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, value := range []string{"20", "30"} {
+		file := filepath.Join(root, value+".json")
+		os.WriteFile(file, []byte(`{"percent":`+value+`,"state_dir":`+quote(root)+`}`), 0600)
+		next := filepath.Join(root, "next")
+		if err := os.Symlink(file, next); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.Rename(next, w.Path); err != nil {
+			t.Fatal(err)
+		}
+		w.Poll(Environment{}, nil, false)
+	}
+	if w.Current.Percent != 30 || w.Revision.Generation != 2 {
+		t.Fatal(w.Revision)
+	}
+}
+
+func TestRequestReloadRequiresOwnRunningWriterAndSource(t *testing.T) {
+	root := t.TempDir()
+	group := filepath.Join(root, "group")
+	os.Mkdir(group, 0700)
+	c := Config{StateDir: filepath.Join(root, "state")}
+	env := Environment{Target: group, Identity: "self"}
+	source := filepath.Join(root, "config.json")
+	_, err := StartReload(c, env, source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := RequestReload(c, env, source); err == nil {
+		t.Fatal("request accepted without a writer")
+	}
+	lock, err := lockGroup(group)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer lock.Close()
+	if _, err := RequestReload(c, env, source+"-other"); err == nil {
+		t.Fatal("different source accepted")
+	}
+	if _, err := RequestReload(c, Environment{Target: group, Identity: "other"}, source); err == nil {
+		t.Fatal("different container accepted")
+	}
+	request, err := RequestReload(c, env, source)
+	if err != nil || !validNonce(request.RequestID) {
+		t.Fatal(request, err)
+	}
+}
 
 func TestGroupLockAcrossStateDirectories(t *testing.T) {
 	root := t.TempDir()
@@ -89,5 +152,23 @@ func TestDisableMarkerIdentity(t *testing.T) {
 	}
 	if off, err := IsDisabled(c, env); err != nil || off {
 		t.Fatal(off, err)
+	}
+}
+
+func TestCapacityFilesMustComeFromNativeFilesystem(t *testing.T) {
+	file := filepath.Join(t.TempDir(), "fake-meminfo")
+	if err := os.WriteFile(file, []byte("MemTotal: 1024 kB\n"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	if err := verifyCapacitySource(file, "memory"); err == nil {
+		t.Fatal("regular disk file accepted as host procfs")
+	}
+	if err := verifyCapacitySource("/proc/meminfo", "memory"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat("/sys/devices/system/cpu/online"); err == nil {
+		if err := verifyCapacitySource("/sys/devices/system/cpu/online", "cpu"); err != nil {
+			t.Fatal(err)
+		}
 	}
 }

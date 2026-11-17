@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/native-cgroup.yml
       - tests/native-cgroup.py
+      - tests/native-cgroup-high.py
       - tests/native-holder/**
       - tests/load/**
       - cmd/**
@@ -48,7 +49,11 @@ jobs:
           ./ci-native-cgroup/crg build-info > ci-native-cgroup/build-info.json
       - name: Actual own-container controls and recovery
         run: |
-          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/native-cgroup.py \
+          crg_driver=tests/native-cgroup.py
+          if python3 -c 'import json; raise SystemExit(0 if json.load(open("ci-native-cgroup/build-info.json")).get("memory_policy", "").startswith("high-reclaim-throttle") else 1)'; then
+            crg_driver=tests/native-cgroup-high.py
+          fi
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 "$crg_driver" \
             --binary "$PWD/ci-native-cgroup/crg" --holder "$PWD/ci-native-cgroup/hold" \
             --load "$PWD/ci-native-cgroup/load" --output "$PWD/ci-native-cgroup/results" \
             --expected-arch '${{ matrix.arch }}' --source-revision "$GITHUB_SHA"

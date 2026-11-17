@@ -52,7 +52,8 @@ jobs:
           ./ci-linux6-cgroup/crg build-info > ci-linux6-cgroup/build-info.json
       - name: Actual own-container controls and recovery
         run: |
-          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/native-cgroup.py \
+          crg_driver="$(python3 -c "import json; print('tests/native-cgroup-high.py' if json.load(open('ci-linux6-cgroup/build-info.json')).get('memory_policy','').startswith('high-reclaim-throttle') else 'tests/native-cgroup.py')")"
+          sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 "$crg_driver" \
             --binary "$PWD/ci-linux6-cgroup/crg" --holder "$PWD/ci-linux6-cgroup/hold" \
             --load "$PWD/ci-linux6-cgroup/load" --output "$PWD/ci-linux6-cgroup/results" \
             --expected-arch '${{ matrix.arch }}' --source-revision "$GITHUB_SHA"

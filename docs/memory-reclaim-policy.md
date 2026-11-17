@@ -1,10 +1,10 @@
 # 内存百分比使用 memory.high
 
-> 实现位于next/compatibility-contract及next/partition-io，main现有程序尚未回移；安装发布包请核对BUILD.json。
+> 实现位于next/compatibility-contract及next/partition-io，此集成源码已包含该实现；安装发布包请核对BUILD.json。
 
 2026-11-12用户已明确选择：“memory.high 限制内存用这个，别用 memory.max 这个了。”本需求覆盖旧版默认硬限额语义，保留CPU、内存、IO三个独立百分比、各默认20%；其他资源不新增控制。
 
-## 当前开发合同
+## 当前内存策略
 
 `memory_percent`按宿主机MemTotal换算并按页向下对齐，写入本容器的`memory.high`。例如`{"cpu_percent":30,"memory_percent":40,"io_percent":25}`分别控制CPU、内存回收目标、标定IO。手动模式使用`{"resource_mode":"manual","limits":{"memory_high":"4GiB"}}`；旧`limits.memory_max`仅作配置别名，实际也写high并记录兼容警告，两种名称不能同时填写。
 

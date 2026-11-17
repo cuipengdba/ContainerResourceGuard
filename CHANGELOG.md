@@ -1,5 +1,11 @@
 # 变更记录
 
+## v1.0.0（2026-11-17，正式发布）
+
+按用户要求立即发布已验证源37的两架构准确程序，独立百分比、memory.high、BPS、v2门禁、一对一和30天/1GB每日日志交付。长稳/真实回退仍未完成，原验收标准不改，测试继续。详见[正式发布说明](docs/releases/v1.0.0.md)和[发布决策](docs/release-decision-v1.0.0.json)。
+
+以下为此前时点记录，不代表当前发布状态。
+
 实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
 
 
@@ -10,6 +16,10 @@
 截至节点2026-11-13 15:41:11 UTC的已完成组快照，已发布工程预览[preview.5](docs/releases/v1.0.0-preview.5.md)，两架构包及[八项公开附件下载](docs/test-results-preview5-publication.json)逐字节核对通过。CPU/内存/IO独立百分比各默认20，memory.high、IO百分比仅读写BPS且IOPS手动可选/外部原值保留。新程序在原DBS/HISDBS路径下，默认20%两组各36项、合计[72项完整组通过](docs/testing-bandwidth-default20-two-role.md)，六次不同ID启动均在原300秒内，189登记实例与两namespace/六组父叶独立清理。该快照四组144项矩阵处于DBS30、HIS30未执行，后续继续；工程CI为准确ced4617的52项实际cgroup/180项分区/原生ARM64。稳定1.0及其它原门槛继续，历史记录不改。
 
 以下历史记录按原时点保留。
+
+## v1.0.0-preview.5
+
+IO 百分比仅新增标定读写 BPS，保留外部 IOPS，旧自有 IOPS 按 journal 安全迁移；手动 IOPS 保留，计划/状态/日志可识别新策略。[交付与验证范围](docs/releases/v1.0.0-preview.5.md)。
 
 ## v1.0.0-preview.4
 

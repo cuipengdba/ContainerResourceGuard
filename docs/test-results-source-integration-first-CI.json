@@ -1,0 +1,251 @@
+{
+  "schema": "crg-source-integration-first-CI-analysis-v1",
+  "source_commit": "09821268845707493bcd68cdce2b3103896c3852",
+  "phase": "engineering-CI-native-passed-partition-driver-incompatible",
+  "full_build_package_race_repro_run": 43435263954,
+  "native_ARM64_run": 43435304285,
+  "native_ARM64": {
+    "environment": {
+      "kind": "native execution environment, not vendor business acceptance",
+      "source_revision": "09821268845707493bcd68cdce2b3103896c3852",
+      "runner_label": "ubuntu-24.04-arm",
+      "machine": "aarch64",
+      "kernel": "7.0.0-1017-azure",
+      "system": "Linux",
+      "go": {
+        "CGO_ENABLED": "1",
+        "GOARCH": "arm64",
+        "GOHOSTARCH": "arm64",
+        "GOHOSTOS": "linux",
+        "GOOS": "linux",
+        "GOVERSION": "go1.27.3"
+      },
+      "cgroup_filesystem": "cgroup2fs",
+      "native_runner_assertions_passed": true
+    },
+    "result": {
+      "phase": "passed",
+      "scope": "native unit/race, helper scripts and CLI only; no actual resource writes or vendor business",
+      "source_revision": "09821268845707493bcd68cdce2b3103896c3852",
+      "binary_sha256": "06c601e5dd49a60101feb9cc3b843e386975679a3f69e2a920e06759f0ee85b4",
+      "ELF_machine": 183,
+      "packages_passed": [
+        "github.com/cuipengdba/ContainerResourceGuard/cmd/crg",
+        "github.com/cuipengdba/ContainerResourceGuard/internal/guard",
+        "github.com/cuipengdba/ContainerResourceGuard/internal/runlog"
+      ],
+      "test_pass_events": 226,
+      "limitations": [
+        "Not cgroup CPU/memory/IO enforcement evidence.",
+        "Not ARM64 DBS/HISDBS business, multi-device or long-duration acceptance.",
+        "Kernel support conclusions require the recorded environment and appropriate real-controller tests."
+      ]
+    }
+  },
+  "native_cgroup_run": 43435309452,
+  "actual_native_cgroup": [
+    {
+      "artifact": "native-cgroup-amd64-09821268845707493bcd68cdce2b3103896c3852",
+      "architecture": "amd64",
+      "kernel": "7.0.0-1017-azure",
+      "checks": 22,
+      "cleanup": {
+        "own_image_absent": true,
+        "all_owned_containers_and_cgroups_absent": true,
+        "own_mount_mapper_and_loop_absent": true,
+        "private_directory_removed": true
+      },
+      "programs": {
+        "crg": "d6785f73074ba24ff92a461b6cf0e0969c603e027772ebc46eee9ae494862a26",
+        "hold": "c0186971a1f36da118e9cccf3e745885485429adfc434fced8a0ba43d62a0752",
+        "load": "0672001edb230b227df2fcc1d4857a3090cb891e03ce2e95bfe8604d283e11a3"
+      }
+    },
+    {
+      "artifact": "native-cgroup-arm64-09821268845707493bcd68cdce2b3103896c3852",
+      "architecture": "arm64",
+      "kernel": "7.0.0-1017-azure",
+      "checks": 22,
+      "cleanup": {
+        "own_image_absent": true,
+        "all_owned_containers_and_cgroups_absent": true,
+        "own_mount_mapper_and_loop_absent": true,
+        "private_directory_removed": true
+      },
+      "programs": {
+        "crg": "cebd0cb0160ce61cd0f23436c328ab21a0b3e2288f4d8b1d6612b83621985e39",
+        "hold": "434a45ba119386d0a214d602f889c96644e1428cf3dffe59a7cc0d545f54de68",
+        "load": "85314df444a61b88c603c0ce7fa16ce58b571e85f801b7cf3ef9f701368bc6ee"
+      }
+    }
+  ],
+  "partition_failed_run": 43435315129,
+  "actual_partition_failures": [
+    {
+      "artifact": "partition-cgroup-ubuntu-24.04-09821268845707493bcd68cdce2b3103896c3852",
+      "architecture": "amd64",
+      "kernel": "7.0.0-1017-azure",
+      "checks": 7,
+      "passed": 6,
+      "failed": "manual-exact-three-actual-controls",
+      "actual_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "4294967296",
+        "io.max": "8:0 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+        "pids.max": "17436",
+        "cpu.weight": "100",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "actual_status_files": [
+        "cpu.max",
+        "memory.high",
+        "io.max"
+      ],
+      "cleanup": {
+        "own_image_absent": true,
+        "all_owned_containers_and_cgroups_absent": true,
+        "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+        "private_directory_removed": true
+      },
+      "cleanup_errors": null,
+      "failure_class": "stale partition test expected memory.max while current requested policy correctly sets memory.high",
+      "environment": {
+        "driver_revision": "09821268845707493bcd68cdce2b3103896c3852",
+        "runner_label": "ubuntu-24.04",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "7.0.0-1017-azure",
+        "expected_kernel_prefix": "7.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      }
+    },
+    {
+      "artifact": "partition-cgroup-ubuntu-22.04-09821268845707493bcd68cdce2b3103896c3852",
+      "architecture": "amd64",
+      "kernel": "6.8.0-1070-azure",
+      "checks": 7,
+      "passed": 6,
+      "failed": "manual-exact-three-actual-controls",
+      "actual_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "4294967296",
+        "io.max": "8:16 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+        "pids.max": "19154",
+        "cpu.weight": "100",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "actual_status_files": [
+        "cpu.max",
+        "memory.high",
+        "io.max"
+      ],
+      "cleanup": {
+        "own_image_absent": true,
+        "all_owned_containers_and_cgroups_absent": true,
+        "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+        "private_directory_removed": true
+      },
+      "cleanup_errors": null,
+      "failure_class": "stale partition test expected memory.max while current requested policy correctly sets memory.high",
+      "environment": {
+        "driver_revision": "09821268845707493bcd68cdce2b3103896c3852",
+        "runner_label": "ubuntu-22.04",
+        "architecture": "amd64",
+        "machine": "x86_64",
+        "kernel": "6.8.0-1070-azure",
+        "expected_kernel_prefix": "6.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      }
+    },
+    {
+      "artifact": "partition-cgroup-ubuntu-22.04-arm-09821268845707493bcd68cdce2b3103896c3852",
+      "architecture": "arm64",
+      "kernel": "6.8.0-1070-azure",
+      "checks": 7,
+      "passed": 6,
+      "failed": "manual-exact-three-actual-controls",
+      "actual_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "4294967296",
+        "io.max": "8:16 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+        "pids.max": "19086",
+        "cpu.weight": "100",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "actual_status_files": [
+        "cpu.max",
+        "memory.high",
+        "io.max"
+      ],
+      "cleanup": {
+        "own_image_absent": true,
+        "all_owned_containers_and_cgroups_absent": true,
+        "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+        "private_directory_removed": true
+      },
+      "cleanup_errors": null,
+      "failure_class": "stale partition test expected memory.max while current requested policy correctly sets memory.high",
+      "environment": {
+        "driver_revision": "09821268845707493bcd68cdce2b3103896c3852",
+        "runner_label": "ubuntu-22.04-arm",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "6.8.0-1070-azure",
+        "expected_kernel_prefix": "6.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      }
+    },
+    {
+      "artifact": "partition-cgroup-ubuntu-24.04-arm-09821268845707493bcd68cdce2b3103896c3852",
+      "architecture": "arm64",
+      "kernel": "7.0.0-1017-azure",
+      "checks": 7,
+      "passed": 6,
+      "failed": "manual-exact-three-actual-controls",
+      "actual_controls": {
+        "cpu.max": "50000 100000",
+        "memory.max": "4294967296",
+        "io.max": "8:16 rbps=4194304 wbps=4194304 riops=256 wiops=256",
+        "pids.max": "17491",
+        "cpu.weight": "100",
+        "io.weight": "default 100",
+        "memory.high": "134217728",
+        "memory.swap.max": "0"
+      },
+      "actual_status_files": [
+        "cpu.max",
+        "memory.high",
+        "io.max"
+      ],
+      "cleanup": {
+        "own_image_absent": true,
+        "all_owned_containers_and_cgroups_absent": true,
+        "own_partitions_mounts_SCSI_disk_host_and_module_absent": true,
+        "private_directory_removed": true
+      },
+      "cleanup_errors": null,
+      "failure_class": "stale partition test expected memory.max while current requested policy correctly sets memory.high",
+      "environment": {
+        "driver_revision": "09821268845707493bcd68cdce2b3103896c3852",
+        "runner_label": "ubuntu-24.04-arm",
+        "architecture": "arm64",
+        "machine": "aarch64",
+        "kernel": "7.0.0-1017-azure",
+        "expected_kernel_prefix": "7.",
+        "cgroup_filesystem": "cgroup2fs",
+        "scope": "real sibling partitions in native VM; not vendor business or independent physical disks"
+      }
+    }
+  ],
+  "scope": "Do not waive failure or remove original checks. Port partition target assertions to requested memory.high and keep memory.max in complete runtime-original control comparison. Preserve legacy old-binary config/restore and all IO/CPU/device/geometry/cleanup limits.",
+  "not_business_or_stable_acceptance": true
+}

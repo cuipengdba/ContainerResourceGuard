@@ -6,8 +6,23 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"os"
+	"path/filepath"
 	"syscall"
 )
+
+func openControlForWrite(path string) (*os.File, error) {
+	flags := syscall.O_WRONLY | syscall.O_NOFOLLOW | syscall.O_CLOEXEC
+	if filepath.Base(path) == "memory.high" {
+		// Kernels supporting nonblocking high updates leave synchronous reclaim
+		// to the workload. Older kernels may still perform reclaim in write().
+		flags |= syscall.O_NONBLOCK
+	}
+	fd, err := syscall.Open(path, flags, 0)
+	if err != nil {
+		return nil, err
+	}
+	return os.NewFile(uintptr(fd), path), nil
+}
 
 func verifyCgroup(p string) error {
 	var s syscall.Statfs_t
@@ -20,6 +35,28 @@ func verifyCgroup(p string) error {
 	return nil
 }
 
+func openStateJSONFile(path string) (*os.File, error) {
+	fd, err := syscall.Open(path, syscall.O_RDONLY|syscall.O_NONBLOCK|syscall.O_NOFOLLOW|syscall.O_CLOEXEC, 0)
+	if err != nil {
+		return nil, err
+	}
+	return os.NewFile(uintptr(fd), path), nil
+}
+
+func verifyCapacitySource(path, kind string) error {
+	var s syscall.Statfs_t
+	if err := syscall.Statfs(path, &s); err != nil {
+		return err
+	}
+	want := int64(0x9fa0) // PROC_SUPER_MAGIC
+	if kind == "cpu" {
+		want = 0x62656572
+	} // SYSFS_MAGIC
+	if int64(s.Type) != want {
+		return fmt.Errorf("source is not native %s filesystem; provide read-only host proc/sys mounts", kind)
+	}
+	return nil
+}
 func groupIdentity(p string) (string, error) {
 	var s syscall.Stat_t
 	if e := syscall.Stat(p, &s); e != nil {
@@ -41,6 +78,25 @@ func lockFile(path string) (*os.File, error) {
 	if e = syscall.Flock(fd, syscall.LOCK_EX|syscall.LOCK_NB); e != nil {
 		f.Close()
 		return nil, e
+	}
+	return f, nil
+}
+
+func lockExistingState(path string) (*os.File, error) {
+	f, err := openStateJSONFile(path)
+	if err != nil {
+		return nil, err
+	}
+	st, err := f.Stat()
+	if err == nil && !st.Mode().IsRegular() {
+		err = fmt.Errorf("existing state lock must be a regular file")
+	}
+	if err == nil {
+		err = syscall.Flock(int(f.Fd()), syscall.LOCK_EX|syscall.LOCK_NB)
+	}
+	if err != nil {
+		f.Close()
+		return nil, err
 	}
 	return f, nil
 }

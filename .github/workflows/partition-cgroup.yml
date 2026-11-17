@@ -71,6 +71,14 @@ jobs:
           CGO_ENABLED=0 go build -trimpath -o ci-partition/load ./tests/load
           CGO_ENABLED=0 go build -trimpath -o ci-partition/shared-load ./tests/partition-load
           ./ci-partition/crg build-info > ci-partition/build-info.json
+      - name: Prepare only the running kernel SCSI test module on this ephemeral VM
+        run: |
+          if ! modinfo scsi_debug >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install --yes --no-upgrade --no-install-recommends "linux-modules-extra-$(uname -r)"
+          fi
+          modinfo scsi_debug > ci-partition/scsi-debug-module.txt
+          test ! -d /sys/module/scsi_debug
       - name: Actual sibling partition shared budget, geometry invalidation and old binary recovery
         run: |
           sudo env CRG_NATIVE_CGROUP_TEST=ephemeral-github-vm-only python3 tests/partition-cgroup.py \

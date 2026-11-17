@@ -98,9 +98,10 @@ func inspectCalibrationMount(directory, device, fsType string) (CalibrationSelec
 		return v, err
 	}
 	v.TotalBytes, v.AvailableBytes = fs.Blocks*uint64(fs.Bsize), fs.Bavail*uint64(fs.Bsize)
-	v.Identity, err = DeviceIdentity(device)
+	binding, err := ResolveIOBlockDevice(device)
 	if err != nil {
 		return v, fmt.Errorf("device has no stable identity: %w", err)
 	}
+	v.Identity, v.ControlDevice = binding.Identity, binding.ControlDevice
 	return v, nil
 }

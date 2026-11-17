@@ -10,6 +10,8 @@ HISDBS30纳秒兼容v2独立补测已完成36/36项、三次不同ID受控启动
 
 当前已完成默认20%两角色各36项，合计72项；六次启动、真实新ID/同profile、逻辑备份及独立恢复/还原均通过，189登记实例及两namespace/六组父叶独立清理。[准确终结组分析及十份原件](testing-bandwidth-default20-two-role.md)已归档。节点15:41:11 UTC正在DBS30，HIS30未执行，完整144项未接受；[工程preview.5已发布并核对八项下载](test-results-preview5-publication.json)，程序与本测试字节相同，原计划/门槛及旧失败保持。以下是冻结方案与早期快照。
 
+最新已完成子集：DBS20的36项全部通过，三次不同ID受控就绪58.60/85.87/83.43秒；节点15:24:52 UTC独立确认95登记实例、namespace及三组父叶消失。[准确子集与取证补充](testing-preview5-qualified-subset.md)已归档。四组矩阵整体仍运行，原144项、原业务和清理时限不变；本工程预发布先交付已完成范围，不作完整矩阵/稳定接受。以下是启动前计划及首轮历史快照。
+
 状态：按冻结方案唯一启动，原300秒/探针/删除等门槛保持；DBS20首轮17项通过，尚未终结。
 
 [首轮只读证据](test-start-bandwidth-percent.json)：节点15:06:47 UTC，原runner PID4039696/start152166052；DBS20初始化及第一次冷重建容器/Pod ID各不相同，PG/API及受控就绪在58.60/85.87秒以内，已记录17项通过。首次真实io.max为rbps8408293/wbps7905573、riops/wiops=max；外部memory.max20GiB未变，memory.high13334654976。每次自动发现自身ID并沿用已标定profile；其它组未执行不计通过。第二次冷重建与后续三组继续，未改程序/计划/原时限。
@@ -30,5 +32,3 @@ HISDBS30纳秒兼容v2独立补测已完成36/36项、三次不同ID受控启动
 [结构检查](test-results-bandwidth-startup-structural.json)及[原生预检查](test-results-bandwidth-startup-native-preflight.json)已完成，预检查重新确认前轮四namespace/八leaf-parent/219登记进程清理，同一原576长期任务的三PID/start及五次备份门槛仍在，没有重启或改变原任务。旧候选后缀1122仅上传/预检未启动，使用实际preview.5版本的1129取代它；所有业务代码、探针及时限等价，原因已记结构检查。
 
 这是新源码的144项独立复验，不改写旧1020/默认980/手动1080失败或借用旧七天经过时间。只证明本次实际完成范围，物理备份/同步、600秒完整业务、正式升级、独占24h+24h、七天老化和其它硬件门槛仍独立继续；未执行不能计通过，稳定1.0未接受。
-
-[冻结源准确提交](https://github.com/cuipengdba/ContainerResourceGuard/tree/e21fdac63becb62d5409f2fba49cb504e577db6d/tests/bandwidth-percent-startup-frozen)仅为隔离测试程序；本分支程序未因此更新。
