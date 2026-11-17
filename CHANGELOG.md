@@ -1,5 +1,17 @@
 # 变更记录
 
+## v1.0.0（2026-11-17，正式发布）
+
+按用户要求立即发布已验证源37的两架构准确程序，独立百分比、memory.high、BPS、v2门禁、一对一和30天/1GB每日日志交付。长稳/真实回退仍未完成，原验收标准不改，测试继续。详见[正式发布说明](docs/releases/v1.0.0.md)和[发布决策](docs/release-decision-v1.0.0.json)。
+
+以下为此前时点记录，不代表当前发布状态。
+
+## v1.0.0（2026-11-17，正式发布）
+
+按用户要求立即发布已验证源37的两架构准确程序，独立百分比、memory.high、BPS、v2门禁、一对一和30天/1GB每日日志交付。长稳/真实回退仍未完成，原验收标准不改，测试继续。详见[正式发布说明](docs/releases/v1.0.0.md)和[发布决策](docs/release-decision-v1.0.0.json)。
+
+以下为此前时点记录，不代表当前发布状态。
+
 实际公开preview.4→preview.5默认百分比控制层迁移已通过：DBS/HISDBS各24项、共48/48项，另有34项独立复核、八份快照回放；20份305712字节准确原件已归档。两namespace、四组父叶和八个登记实例消失。详见[控制层迁移终态](https://github.com/cuipengdba/ContainerResourceGuard/blob/main/docs/testing-public-percent-migration-terminal.md)。本轮业务gate关闭，不代表默认20%业务通过；原默认20%完整业务失败、52项和长期门槛保持。以下保留此前时点记录。
 
 

@@ -1,10 +1,10 @@
 # ContainerResourceGuard
 
-集成候选源`37ca44e0`已独立完成新一轮DBS/HISDBS各原600秒，**原18项业务检查与另4项辅助检查全部接受**；固定四组对照44/44和同源四格原生284/284分别归档。新19输入长稳已唯一实际启动，当前24h observe基线运行中，初期原启动12/12、首周期内容通过但原生整段验证仍pending；同容器24h enforce、新七天和原老化后/发布门槛尚未接受。公开preview.5未改，稳定1.0未发布。 [当前交付与待办](docs/release-readiness-current.md)、[准确新正式复验](docs/development-fresh-formal18.zh.md)、[新长稳状态](docs/development-new-long1880.zh.md)。
+正式交付：[v1.0.0 下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0) · [发布说明与未完成验收](docs/releases/v1.0.0.md)。按用户要求立即发布正式版；24h基线和原业务/控制检查已通过，同容器限制24h、新七天、老化后与真实回退验收继续，不能将版本发布等同于所有稳定性验收完成。
 
-ContainerResourceGuard（CRG）在容器内部控制当前容器的 CPU、内存和 IO。**一个容器一份 Agent**，DBS 与 HISDBS 分别运行；无需 Operator、CRD、Docker socket 或 Kubernetes API。容器或 Pod 重建后重新发现自身 cgroup，不需要保存或手改旧 ID。
+ContainerResourceGuard（CRG）在容器内部控制当前容器的CPU、内存和IO。一个容器一份Agent，DBS与HISDBS分别运行；无需Operator、CRD、Docker socket或Kubernetes API。容器/Pod重建后自动重新识别自身cgroup，无需手改ID。CPU、内存、IO三个独立百分比各默认20%，memory.high回收优先，IO百分比仅读写带宽，保留每日日志及权限不足放行业务的行为。
 
-当前交付：[v1.0.0-preview.5 工程预览及下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0-preview.5)。[逐容器升级步骤](docs/upgrade-preview4-preview5.zh.md)说明下载校验、配置/profile/journal保留、安装及回退。八项公开附件已[实际下载校验](docs/test-results-preview5-publication.json)，后续补充测试不替换已发布文件。
+准确程序源码37ca44e0、AMD64/ARM64、原600秒业务18+4项、四组对照44项、原生矩阵284项及两角色24h基线各有独立证据。[发布决策](docs/release-decision-v1.0.0.json)、[当前交付与剩余验收](docs/release-readiness-current.md)、[原任务审核](docs/current-52-task-audit.md)保持已通过、未执行和失败的区别。
 
 ## 快速使用
 
