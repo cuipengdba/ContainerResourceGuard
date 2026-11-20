@@ -1,0 +1,291 @@
+{
+  "kernel": "7.0.0-1017-azure",
+  "binary_sha256": "0cffe4594672d609cc146884363cee22c7ee7689e2cb84247853911214dcdb4f",
+  "build": {
+    "arch": "amd64",
+    "go_version": "go1.27.3",
+    "io_percent_policy": "calibrated-read-write-bandwidth; IOPS manual only; external IOPS retained",
+    "io_profile_versions": [
+      1,
+      2
+    ],
+    "journal_versions": [
+      1
+    ],
+    "lock_protocol": "cgroup-inode-flock+state-agent-lock-v1",
+    "memory_policy": "high-reclaim-throttle; percentages may be exceeded; external hard limits retained",
+    "os": "linux",
+    "revision": "5a3628a57d7545a6401a1367ff823f8f29f9bb3e",
+    "version": "dev",
+    "writer_controls": [
+      "cpu.max",
+      "cpu.weight",
+      "io.max",
+      "io.weight",
+      "memory.max",
+      "memory.high",
+      "memory.swap.max",
+      "pids.max"
+    ]
+  },
+  "checks": {
+    "dbs_30GiB_next_60s_check": {
+      "elapsed_seconds": 60.000566817000006,
+      "actual": "32212254720",
+      "original": "40802189312",
+      "other_controls_match": true
+    },
+    "hisdbs_15GiB_reload_pause_resume": {
+      "actual": "16106127360",
+      "paused_for_seconds": 5
+    },
+    "above_high_reclaim_and_sql_latency": {
+      "actual": "100663296",
+      "before": {
+        "current": 237805568,
+        "high": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "pgscan": 0,
+        "pgsteal": 0,
+        "psi": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0"
+      },
+      "after": {
+        "current": 198717440,
+        "high": 326,
+        "oom": 0,
+        "oom_kill": 0,
+        "pgscan": 11119,
+        "pgsteal": 9961,
+        "psi": "some avg10=44.03 avg60=9.24 avg300=1.98 total=6073915\nfull avg10=44.03 avg60=9.24 avg300=1.98 total=6066982"
+      },
+      "sql_baseline": "pgbench (16.16 (Debian 16.16-1.pgdg12+1))\ntransaction type: /state/query.sql\nscaling factor: 1\nquery mode: simple\nnumber of clients: 2\nnumber of threads: 1\nmaximum number of tries: 1\nduration: 6 s\nnumber of transactions actually processed: 208\nnumber of failed transactions: 0 (0.000%)\nlatency average = 0.303 ms\nlatency stddev = 0.051 ms\nrate limit schedule lag: avg 0.102 (max 0.146) ms\ninitial connection time = 4.715 ms\ntps = 35.012184 (without initial connection time)",
+      "sql_during_recovery": "pgbench (16.16 (Debian 16.16-1.pgdg12+1))\ntransaction type: /state/query.sql\nscaling factor: 1\nquery mode: simple\nnumber of clients: 2\nnumber of threads: 1\nmaximum number of tries: 1\nduration: 6 s\nnumber of transactions actually processed: 142\nnumber of failed transactions: 0 (0.000%)\nlatency average = 0.284 ms\nlatency stddev = 0.056 ms\nrate limit schedule lag: avg 0.099 (max 0.130) ms\ninitial connection time = 3.725 ms\ntps = 20.554785 (without initial connection time)",
+      "other_controls_match": true
+    },
+    "repeated_overwrite": {
+      "actual": "max",
+      "journal": {
+        "file": "memory.high",
+        "value": "100663296",
+        "original": "max",
+        "applied": "100663296",
+        "conflict": true,
+        "memory_high_recovery": {
+          "verified": "100663296",
+          "last_attempt": "2026-11-20T07:06:36.007769402Z",
+          "events": [
+            {
+              "time_utc": "2026-11-20T07:06:27.008534043Z",
+              "generation": 4,
+              "expected": "16106127360",
+              "reason": "memory_high_recovery_intent"
+            },
+            {
+              "time_utc": "2026-11-20T07:06:27.010256179Z",
+              "generation": 4,
+              "expected": "16106127360",
+              "reason": "memory_high_recovered"
+            },
+            {
+              "time_utc": "2026-11-20T07:06:36.007770253Z",
+              "generation": 6,
+              "expected": "100663296",
+              "reason": "memory_high_recovery_intent"
+            },
+            {
+              "time_utc": "2026-11-20T07:06:36.009923545Z",
+              "generation": 6,
+              "expected": "100663296",
+              "reason": "memory_high_recovered"
+            },
+            {
+              "time_utc": "2026-11-20T07:06:44.186169944Z",
+              "generation": 6,
+              "expected": "100663296",
+              "reason": "memory_high_recovery_backoff"
+            }
+          ]
+        }
+      }
+    },
+    "replacement_id_and_legacy_default": {
+      "new_identity": true,
+      "old_journal_retained": true
+    }
+  },
+  "cleanup": [
+    {
+      "name": "hisdbs-original",
+      "absent": true
+    },
+    {
+      "name": "dbs",
+      "absent": true
+    },
+    {
+      "name": "hisdbs",
+      "absent": true
+    }
+  ],
+  "postgres_image_id": "sha256:74b11758bfe1b381b55d2628584c663bac5d029c7e40b15ee00ec631134eb2bc",
+  "events": [
+    {
+      "time": "2026-11-20T07:06:15.755389304Z",
+      "level": "INFO",
+      "event": "memory_high_recovery_started",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "checking memory.high recovery conditions against the current cgroup and journal",
+        "device": "",
+        "reason_code": "memory_high_recovery_started",
+        "state": "pending",
+        "value": "32212254720"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:15.757465712Z",
+      "level": "INFO",
+      "event": "memory_high_recovered",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "restored from max and verified by kernel readback",
+        "device": "",
+        "reason_code": "memory_high_recovered",
+        "state": "applied",
+        "value": "32212254720"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:21.007673292Z",
+      "level": "WARN",
+      "event": "memory_high_recovery_paused",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "memory.high is max; automatic recovery is paused",
+        "device": "",
+        "reason_code": "memory_high_recovery_paused",
+        "state": "conflict",
+        "value": "16106127360"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:27.008808855Z",
+      "level": "INFO",
+      "event": "memory_high_recovery_started",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "checking memory.high recovery conditions against the current cgroup and journal",
+        "device": "",
+        "reason_code": "memory_high_recovery_started",
+        "state": "pending",
+        "value": "16106127360"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:27.010286157Z",
+      "level": "INFO",
+      "event": "memory_high_recovery_started",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "checking memory.high recovery conditions against the current cgroup and journal",
+        "device": "",
+        "reason_code": "memory_high_recovery_started",
+        "state": "pending",
+        "value": "16106127360"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:27.012197056Z",
+      "level": "INFO",
+      "event": "memory_high_recovered",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "restored from max and verified by kernel readback",
+        "device": "",
+        "reason_code": "memory_high_recovered",
+        "state": "applied",
+        "value": "16106127360"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:29.008233576Z",
+      "level": "WARN",
+      "event": "memory_high_recovery_paused",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "memory.high is max; automatic recovery is paused",
+        "device": "",
+        "reason_code": "memory_high_recovery_paused",
+        "state": "conflict",
+        "value": "100663296"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:36.008210952Z",
+      "level": "INFO",
+      "event": "memory_high_recovery_started",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "checking memory.high recovery conditions against the current cgroup and journal",
+        "device": "",
+        "reason_code": "memory_high_recovery_started",
+        "state": "pending",
+        "value": "100663296"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:40.088191242Z",
+      "level": "INFO",
+      "event": "memory_high_recovered",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "restored from max and verified by kernel readback",
+        "device": "",
+        "reason_code": "memory_high_recovered",
+        "state": "applied",
+        "value": "100663296"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:44.187132724Z",
+      "level": "INFO",
+      "event": "memory_high_recovery_started",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "checking memory.high recovery conditions against the current cgroup and journal",
+        "device": "",
+        "reason_code": "memory_high_recovery_started",
+        "state": "pending",
+        "value": "100663296"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:44.188428519Z",
+      "level": "WARN",
+      "event": "memory_high_recovery_backoff",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "memory.high drift repeated within 10 minutes; automatic writes suspended for this journal entry",
+        "device": "",
+        "reason_code": "memory_high_recovery_backoff",
+        "state": "conflict",
+        "value": "100663296"
+      }
+    },
+    {
+      "time": "2026-11-20T07:06:45.007981631Z",
+      "level": "WARN",
+      "event": "memory_high_external_conflict",
+      "fields": {
+        "controller": "memory.high",
+        "detail": "external change detected previously; explicit restore/review required",
+        "device": "",
+        "reason_code": "external_conflict",
+        "state": "conflict",
+        "value": "100663296"
+      }
+    }
+  ],
+  "phase": "passed"
+}

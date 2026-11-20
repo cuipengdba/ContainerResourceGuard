@@ -27,3 +27,19 @@
 日文件和状态中的事件包括 `memory_high_recovery_started`、`memory_high_recovered`、`memory_high_recovery_paused`、`memory_high_recovery_backoff`、`memory_high_recovery_blocked` 和 `memory_high_recovery_failed`。开启 `events_enabled` 还会在 `state_dir/events.jsonl` 导出摘要。验收以 `crg status` 中 `actual` 的内核回读或本容器 `memory.high` 的直接读取为准。高于软阈值时还应核对 `memory.current`、`memory.events` 的 `high` 与 `oom_kill`、内存 PSI 和实际业务延迟。内核支持用量暂时高于软阈值。参考 [Linux cgroup v2 内存控制器](https://docs.kernel.org/admin-guide/cgroup-v2.html#memory-interface-files)。
 
 隔离 Linux 验证入口为 [native-memory-high-recovery.py](../tests/native-memory-high-recovery.py)。覆盖 60 秒间隔、DBS 30 GiB、HISDBS 15 GiB、热重载、暂停、容器更换和 journal 隔离、重复覆盖、未开启时的旧冲突行为，以及恢复 96 MiB 阈值时的 PostgreSQL 查询延迟和内核压力。开发验证使用临时测试容器。
+
+## 隔离 Linux 验证结果
+
+2026-11-20，Linux AMD64 `7.0.0-1017-azure`、PostgreSQL 16.16。受测提交为 `5a3628a57d7545a6401a1367ff823f8f29f9bb3e`。原始报告包含内核回读、journal、事件日志和清理结果。[实测报告](test-results-memory-high-recovery.json) · [Linux 实测](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/44692261670) · [项目 CI](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/44692261480)
+
+| 测试 | 结果 |
+| --- | --- |
+| DBS，60 秒检查周期 | 在下一轮恢复为 32,212,254,720 字节（30 GiB），从测试写入到观测回读约 60.001 秒。journal 最初值 38 GiB，其他控制值核对一致。 |
+| HISDBS，热重载与暂停 | 热重载从 12 GiB 改为 15 GiB。暂停后确保 `max` 持续 5 秒，恢复启用后回读为 16,106,127,360 字节。 |
+| 重复覆盖 | 同一目标的再次覆盖写入 `max` 后进入退避冲突；经过后续检查仍回读为 `max`，journal 和日志记录 `memory_high_recovery_backoff`。 |
+| 容器更换与旧配置 | 新容器的 ID、cgroup inode 和 journal 身份变更。旧 journal 归档。未配置开关的实例遇到 `max` 后保留原冲突行为。 |
+| 写入和恢复保护 | Linux Go race 测试覆盖未决 intent、写入异常、身份或实际值变化、更新配置导致旧任务取消，以及阻塞写入期间检查仍可运行。 |
+
+压力用例在用量约 **226.8 MiB** 时恢复到 **96 MiB**，随后 `memory.current` 约 **189.5 MiB**。内核 `high` 事件增加 **326** 次，`pgscan` 增加 **11,119**，`oom_kill` 增量为 **0**。两次 6 秒 pgbench 查询均零失败，平均延迟分别为 **0.303 ms** 和 **0.284 ms**，吞吐分别为 **35.01 TPS** 和 **20.55 TPS**。用量和吞吐仍受压力影响，这组数据只覆盖隔离的短查询负载。早期同负载下新启动的容器内清理命令超过 30 秒，最终用例在记录内核与 SQL 结果后由测试宿主清理该临时文件，再等待 journal 确认回读后注入第二次覆盖。[清理超时记录](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/44681552990) · [重复漂移前等待回读的修正记录](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/44687972301)
+
+首次验证的 reload 命令漏传测试实例的自定义状态目录，后续按现有命令参数重试。项目 CI 中的旧厂商阶段自检改为读取与原摘要匹配的冻结夹具，保留原摘要和检查条件。所有临时测试容器及各自 cgroup 均已移除。本轮未在 171 部署。[首次验证记录](https://github.com/cuipengdba/ContainerResourceGuard/actions/runs/44680128956)
