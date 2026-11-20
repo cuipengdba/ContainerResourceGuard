@@ -1,5 +1,9 @@
 # 变更记录
 
+## v1.0.1
+
+新增按容器开启的 `memory.high` 漂移恢复，复用检查间隔、热重载和 journal。支持维护暂停，对重复覆盖退避并告警。[发布说明](docs/releases/v1.0.1.md) · [内核回读和事件日志](docs/test-results-memory-high-recovery.json)
+
 ## v1.0.0（2026-11-17，正式发布）
 
 按用户要求立即发布已验证源37的两架构准确程序，独立百分比、memory.high、BPS、v2门禁、一对一和30天/1GB每日日志交付。长稳/真实回退仍未完成，原验收标准不改，测试继续。详见[正式发布说明](docs/releases/v1.0.0.md)和[发布决策](docs/release-decision-v1.0.0.json)。

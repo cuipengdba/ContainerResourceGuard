@@ -2,7 +2,7 @@
 
 > 正式v1.0.0已发布：八项公开附件完整下载/摘要及两架构离线验包通过，[实际发布收据](docs/publication-v1.0.0.zh.md)。长稳、老化后与真实回退验收继续，不因发布改为已通过。
 
-正式交付：[v1.0.0 下载](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.0) · [发布说明与未完成验收](docs/releases/v1.0.0.md)。按用户要求立即发布正式版；24h基线和原业务/控制检查已通过，同容器限制24h、新七天、老化后与真实回退验收继续，不能将版本发布等同于所有稳定性验收完成。
+当前补丁版 `v1.0.1` 加入按容器开启的 `memory.high` 自动恢复，复用现有间隔和热重载。[下载 v1.0.1](https://github.com/cuipengdba/ContainerResourceGuard/releases/tag/v1.0.1) · [发布说明](docs/releases/v1.0.1.md) · [配置与维护](docs/memory-high-recovery.zh.md)
 
 ContainerResourceGuard（CRG）在容器内部控制当前容器的CPU、内存和IO。一个容器一份Agent，DBS与HISDBS分别运行；无需Operator、CRD、Docker socket或Kubernetes API。容器/Pod重建后自动重新识别自身cgroup，无需手改ID。CPU、内存、IO三个独立百分比各默认20%，memory.high回收优先，IO百分比仅读写带宽，保留每日日志及权限不足放行业务的行为。
 
