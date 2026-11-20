@@ -17,7 +17,7 @@ import uuid
 def command(*args, timeout=30):
     proc = subprocess.run([str(arg) for arg in args], capture_output=True, text=True, timeout=timeout)
     if proc.returncode:
-        raise RuntimeError(f"{args[:2]} failed ({proc.returncode}): {proc.stderr[-2000:]}")
+        raise RuntimeError(f"{args[:2]} failed ({proc.returncode}): {proc.stdout[-2000:]}\n{proc.stderr[-2000:]}")
     return proc.stdout.strip()
 
 
@@ -82,7 +82,8 @@ class Fixture:
         command("docker", "exec", "-d", self.container, "crg", "run", "--config", "/state/config.json")
 
     def reload(self):
-        return json.loads(self.exec("crg", "reload", "--config", "/state/config.json"))["request_id"]
+        return json.loads(self.exec("crg", "reload", "--config", "/state/config.json",
+                                    "--state-dir", "/state/runtime"))["request_id"]
 
     def status(self):
         file = self.folder / "runtime/status.json"
