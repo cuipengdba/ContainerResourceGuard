@@ -66,6 +66,8 @@ func eventSummary(s Status) EventRecord {
 // contents cannot be copied into an event, including from an older state file.
 func eventReason(s string) string {
 	switch s {
+	case "memory_high_recovery_started", "memory_high_recovery_slow", "memory_high_recovery_paused", "memory_high_recovery_intent", "memory_high_recovery_blocked", "memory_high_recovery_backoff", "memory_high_recovery_cancelled", "memory_high_recovery_failed", "memory_high_recovered":
+		return s
 	case "observe", "applied", "unchanged", "invalid_request", "device_identity", "controller_read", "unrestorable_original", "external_conflict", "memory_safety", "memory_window", "task_safety", "swap_safety", "journal_intent", "controller_recheck", "controller_write", "controller_verify", "journal_finalize", "restored", "restore_incomplete", "observe_retained", "plan_unresolved":
 		return s
 	default:

@@ -24,6 +24,14 @@ func openControlForWrite(path string) (*os.File, error) {
 	return os.NewFile(uintptr(fd), path), nil
 }
 
+func openLockedMemoryHigh(group *os.File) (*os.File, error) {
+	fd, err := syscall.Openat(int(group.Fd()), "memory.high", syscall.O_WRONLY|syscall.O_NONBLOCK|syscall.O_NOFOLLOW|syscall.O_CLOEXEC, 0)
+	if err != nil {
+		return nil, err
+	}
+	return os.NewFile(uintptr(fd), "memory.high"), nil
+}
+
 func verifyCgroup(p string) error {
 	var s syscall.Statfs_t
 	if e := syscall.Statfs(p, &s); e != nil {

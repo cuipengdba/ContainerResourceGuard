@@ -25,6 +25,10 @@ func (RealFiles) Write(p, v string) error {
 	if e != nil {
 		return e
 	}
+	return writeControlFile(f, v)
+}
+
+func writeControlFile(f *os.File, v string) error {
 	n, e := f.WriteString(v + "\n")
 	closeErr := f.Close()
 	if e != nil {
@@ -38,10 +42,11 @@ func (RealFiles) Write(p, v string) error {
 
 type Mutation struct {
 	Setting
-	Original string `json:"original"`
-	Applied  string `json:"applied"`
-	Pending  string `json:"pending,omitempty"`
-	Conflict bool   `json:"conflict,omitempty"`
+	Original     string             `json:"original"`
+	Applied      string             `json:"applied"`
+	Pending      string             `json:"pending,omitempty"`
+	Conflict     bool               `json:"conflict,omitempty"`
+	HighRecovery *MemoryHighHistory `json:"memory_high_recovery,omitempty"`
 }
 type Journal struct {
 	Version   int                  `json:"version"`
@@ -59,6 +64,9 @@ func validateJournal(j Journal) error {
 	for key, m := range j.Mutations {
 		if m == nil || !allowed(m.Setting) || key != m.Key() || !validControl(m.Setting, m.Original) || !validControl(m.Setting, m.Applied) || (m.Pending != "" && !validControl(m.Setting, m.Pending)) || !validControl(m.Setting, m.Value) {
 			return errors.New("journal contains an invalid mutation")
+		}
+		if m.HighRecovery != nil && (m.File != "memory.high" || !m.HighRecovery.valid()) {
+			return errors.New("journal contains invalid memory.high recovery history")
 		}
 	}
 	return nil
@@ -83,15 +91,18 @@ type Status struct {
 	AutomaticIO   *AutomaticIOStatus `json:"automatic_io,omitempty"`
 }
 type Engine struct {
-	Config        Config
-	Env           Environment
-	Files         Files
-	Journal       Journal
-	Persist       func(Journal) error
-	Pause         func(time.Duration)
-	Now           func() time.Time
-	memoryWindows map[string]memoryWindow
-	DeviceLookup  func(string) (string, error)
+	Config          Config
+	Env             Environment
+	Files           Files
+	Journal         Journal
+	Persist         func(Journal) error
+	Pause           func(time.Duration)
+	Now             func() time.Time
+	memoryWindows   map[string]memoryWindow
+	DeviceLookup    func(string) (string, error)
+	verifyHierarchy func(string) error
+	group           *os.File
+	highJob         *memoryHighJob
 }
 
 var ErrLocked = errors.New("one agent per container: lock unavailable")
@@ -183,6 +194,7 @@ func OpenEngine(c Config, env Environment) (*Engine, *Locks, error) {
 		group.Close()
 		return nil, nil, e
 	}
+	engine.group = group
 	return engine, &Locks{group: group, state: state}, nil
 }
 
@@ -284,6 +296,10 @@ func (e *Engine) Originals() map[string]string {
 func (e *Engine) save() error { return e.Persist(e.Journal) }
 
 func (e *Engine) Apply(p Plan) Status {
+	return e.apply(p, nil)
+}
+
+func (e *Engine) apply(p Plan, highStatus *ItemStatus) Status {
 	if e.Config.Mode == "observe" {
 		e.memoryWindows = nil
 	}
@@ -298,7 +314,11 @@ func (e *Engine) Apply(p Plan) Status {
 			status.Items = append(status.Items, item)
 			continue
 		}
-		item.State, item.Detail, item.ReasonCode = e.applyOne(s)
+		if highStatus != nil && s.File == "memory.high" {
+			item = *highStatus
+		} else {
+			item.State, item.Detail, item.ReasonCode = e.applyOne(s)
+		}
 		if item.State != "applied" {
 			status.State = "degraded"
 		}
@@ -334,6 +354,7 @@ func (e *Engine) applyOne(s Setting) (string, string, string) {
 	if m.Conflict {
 		return "conflict", "external change detected previously; explicit restore/review required", "external_conflict"
 	}
+	hadPending := m.Pending != ""
 	if m.Pending != "" {
 		if current == m.Pending {
 			m.Applied = m.Pending
@@ -367,6 +388,16 @@ func (e *Engine) applyOne(s Setting) (string, string, string) {
 		}
 	}
 	if current == s.Value {
+		// Adopt an existing, finalized ownership record only after a fresh
+		// kernel read. An untouched external value does not establish ownership.
+		if e.Config.MemoryHighRecovery && s.File == "memory.high" && current != "max" &&
+			!hadPending && m.HighRecovery == nil && m.Original != m.Applied && s.Value == m.Value {
+			m.HighRecovery = &MemoryHighHistory{Verified: current}
+			if err := e.save(); err != nil {
+				m.HighRecovery = nil
+				return "degraded", "cannot persist memory.high ownership proof: " + err.Error(), "journal_finalize"
+			}
+		}
 		return "applied", "already at desired value", "unchanged"
 	}
 	m.Setting = s
@@ -418,7 +449,25 @@ func (e *Engine) applyOne(s Setting) (string, string, string) {
 	}
 	m.Applied = s.Value
 	m.Pending = ""
+	previousProof := m.HighRecovery
+	if s.File == "memory.high" && s.Value != "max" && (e.Config.MemoryHighRecovery || previousProof != nil) {
+		history := MemoryHighHistory{Verified: s.Value}
+		if previousProof != nil {
+			history = *previousProof
+			if history.Verified != s.Value {
+				history.LastAttempt = ""
+			}
+			history.Verified = s.Value
+		}
+		m.HighRecovery = &history
+	}
 	if err = e.save(); err != nil {
+		m.HighRecovery = previousProof
+		// The persisted intent can still be pending. Never allow async recovery
+		// to use a transaction whose final state was not durably committed.
+		if s.File == "memory.high" && (e.Config.MemoryHighRecovery || previousProof != nil) {
+			m.Pending = s.Value
+		}
 		return "degraded", "limit written but journal finalization failed: " + err.Error(), "journal_finalize"
 	}
 	return "applied", "written and verified", "applied"
@@ -570,6 +619,10 @@ func (e *Engine) restoreKeys(selected map[string]bool) Status {
 // Reconcile also handles dimensions removed by a new configuration. Restore
 // only unchanged values that CRG still owns. Observe never initiates writes.
 func (e *Engine) Reconcile(p Plan) Status {
+	return e.reconcile(p, nil)
+}
+
+func (e *Engine) reconcile(p Plan, highStatus *ItemStatus) Status {
 	wanted := map[string]bool{}
 	for _, s := range p.Settings {
 		wanted[s.Key()] = true
@@ -593,7 +646,7 @@ func (e *Engine) Reconcile(p Plan) Status {
 			return restored // A journal failure forbids additional kernel writes.
 		}
 	}
-	r := e.Apply(p)
+	r := e.apply(p, highStatus)
 	if e.Config.Mode == "observe" {
 		for key := range retained {
 			removed[key] = true
