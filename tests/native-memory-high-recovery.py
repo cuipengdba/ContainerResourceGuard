@@ -237,12 +237,14 @@ def main():
                 "actual": his.high(), "before": before_pressure, "after": after_pressure,
                 "sql_baseline": baseline, "sql_during_recovery": pressured, "other_controls_match": True,
             }
-            his.exec("rm", "/dev/shm/crg-pressure")
+            # The next test intentionally relaxes high from the host. Do it
+            # before launching cleanup inside the over-budget cgroup.
             his.external_high("max")
             his.wait_reason("memory_high_recovery_backoff")
             time.sleep(5)
             assert his.high() == "max" and his.history()["conflict"]
             report["checks"]["repeated_overwrite"] = {"actual": his.high(), "journal": his.history()}
+            his.exec("rm", "/dev/shm/crg-pressure")
 
             old_id, old_inode = his.container, his.group_path.stat().st_ino
             old_identity = his.journal()["identity"]
