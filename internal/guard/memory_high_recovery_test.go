@@ -159,3 +159,20 @@ func TestMemoryHighRecoveryCancelsQueuedWriteForNewGeneration(t *testing.T) {
 		t.Fatalf("stale generation was not cancelled: %+v, %+v", item, mutation)
 	}
 }
+
+func TestMemoryHighRecoveryKeepsInterruptedIntentAfterRestart(t *testing.T) {
+	engine, files, plan, path := recoveryFixture(t)
+	mutation := engine.Journal.Mutations["memory.high:"]
+	mutation.Pending = "4194304"
+	mutation.HighRecovery.Events = []MemoryHighEvent{{
+		TimeUTC: time.Now().UTC().Format(time.RFC3339Nano), Generation: 1,
+		Expected: "4194304", Reason: "memory_high_recovery_intent",
+	}}
+	files.data[path] = "4194304"
+	engine.ReconcileLive(plan, 1, func() error { return nil })
+	item := finishedHigh(t, engine)
+	mutation = engine.Journal.Mutations["memory.high:"]
+	if item.ReasonCode != "memory_high_recovery_blocked" || mutation.Pending != "4194304" || !mutation.Conflict || len(files.writes) != 1 {
+		t.Fatalf("interrupted write was not preserved: %+v, %+v", item, mutation)
+	}
+}

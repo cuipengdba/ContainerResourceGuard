@@ -118,11 +118,17 @@ func (e *Engine) ReconcileLive(p Plan, generation uint64, recheck func() error) 
 		if mutation == nil || mutation.Conflict || mutation.HighRecovery == nil {
 			break
 		}
+		history := mutation.HighRecovery
+		if mutation.Pending != "" && len(history.Events) > 0 &&
+			history.Events[len(history.Events)-1].Reason == "memory_high_recovery_intent" {
+			// Restart after an interrupted recovery. Even an expected readback
+			// cannot prove the earlier attempt durably finished.
+			return e.startMemoryHighRecovery(p, setting, generation, recheck)
+		}
 		current, err := e.current(setting)
 		if err != nil || current != "max" {
 			break
 		}
-		history := mutation.HighRecovery
 		if e.Config.MemoryHighPaused && mutation.Pending == "" &&
 			history.Verified == mutation.Applied && mutation.Applied != "max" {
 			item := highItem(setting, "conflict", "memory_high_recovery_paused", "memory.high is max; automatic recovery is paused")
@@ -149,7 +155,7 @@ func (e *Engine) startMemoryHighRecovery(p Plan, setting Setting, generation uin
 		worker.Journal.Mutations[key] = &copyMutation
 	}
 	status := Status{TimeUTC: time.Now().UTC().Format(time.RFC3339), Mode: e.Config.Mode, State: "degraded", Plan: p,
-		Items: []ItemStatus{highItem(setting, "pending", "memory_high_recovery_started", "detected memory.high drift to max; verifying recovery conditions")}}
+		Items: []ItemStatus{highItem(setting, "pending", "memory_high_recovery_started", "checking memory.high recovery conditions against the current cgroup and journal")}}
 	job := &memoryHighJob{initial: status, done: make(chan struct{}), started: time.Now()}
 	e.highJob = job
 	go func() {
