@@ -17,6 +17,8 @@ func openConfigFile(path string) (*os.File, error) { return os.Open(path) }
 
 func openControlForWrite(path string) (*os.File, error) { return os.OpenFile(path, os.O_WRONLY, 0) }
 
+func openLockedMemoryHigh(*os.File) (*os.File, error) { return nil, errors.New("Linux required") }
+
 func openStateJSONFile(path string) (*os.File, error) {
 	st, err := os.Lstat(path)
 	if err != nil {

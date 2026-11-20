@@ -1,0 +1,35 @@
+name: memory-high-recovery
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/memory-high-recovery]
+    paths:
+      - .github/workflows/memory-high-recovery.yml
+      - tests/native-memory-high-recovery.py
+      - internal/**
+      - cmd/**
+      - go.mod
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - run: go test -race ./internal/guard ./cmd/crg
+      - run: |
+          CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-X main.revision=$GITHUB_SHA" -o /tmp/crg-recovery ./cmd/crg
+          mkdir -p "$RUNNER_TEMP/crg-recovery-results"
+          sudo env CRG_NATIVE_MEMORY_TEST=ephemeral-github-vm-only python3 tests/native-memory-high-recovery.py \
+            --binary /tmp/crg-recovery --output "$RUNNER_TEMP/crg-recovery-results/report.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: memory-high-recovery-results
+          path: ${{ runner.temp }}/crg-recovery-results/
+          if-no-files-found: error

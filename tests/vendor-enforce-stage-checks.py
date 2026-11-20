@@ -181,8 +181,11 @@ class GateTests(unittest.TestCase):
         self.assertEqual(observed, [4*n for n in range(30)])
 
     def test_source_hash_alone_does_not_prove_required_workload_interface(self):
-        self.assertTrue(stage.tool_interfaces(ROOT/'tests', smoke=True))
-        self.assertEqual({name: stage.digest(ROOT/'tests'/name) for name in stage.SMOKE_TOOLS}, stage.SMOKE_TOOLS)
+        # This historical stage requires its pinned sources. The maintained
+        # drivers under tests/ can change independently of that stage.
+        frozen = ROOT/'tests/manual-reference-full600-frozen/tests'
+        self.assertTrue(stage.tool_interfaces(frozen, smoke=True))
+        self.assertEqual({name: stage.digest(frozen/name) for name in stage.SMOKE_TOOLS}, stage.SMOKE_TOOLS)
         with tempfile.TemporaryDirectory() as folder:
             # A legacy-shaped source can support the formal phase while
             # lacking the managed smoke and selected-role interfaces.

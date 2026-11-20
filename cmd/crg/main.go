@@ -437,7 +437,19 @@ func mainErr() (result error) {
 	if e != nil {
 		return e
 	}
-	defer lock.Close()
+	defer func() {
+		done := engine.MemoryHighRecoveryDone()
+		if done == nil {
+			_ = lock.Close()
+			return
+		}
+		// An older kernel may still be reclaiming in write(). Keep the
+		// writer locks until that syscall finishes or the process exits.
+		go func() {
+			<-done
+			_ = lock.Close()
+		}()
+	}()
 	if err := guard.VerifyIdentity(env); err != nil {
 		return err
 	}
@@ -520,6 +532,8 @@ func mainErr() (result error) {
 	lastOutput := ""
 	requestID, controlError := "", ""
 	forceReload := false
+	recoveryContext, cancelRecovery := context.WithCancel(ctx)
+	defer cancelRecovery()
 	for {
 		if disabled, err := guard.IsDisabled(c, env); err != nil {
 			return err
@@ -528,25 +542,35 @@ func mainErr() (result error) {
 		}
 		currentEnvironment, err := guard.RefreshEnvironment(env)
 		if err != nil {
+			if c.MemoryHighRecovery && runLog != nil {
+				runLog.Event("WARN", "memory_high_recovery_identity", map[string]string{"detail": err.Error()})
+			}
 			return err
 		}
 		env = currentEnvironment
 		engine.Env = currentEnvironment
-		watcher.Poll(env, engine.Originals(), forceReload)
-		forceReload = false
-		if c.IntervalSeconds != watcher.Current.IntervalSeconds {
-			ticker.Reset(time.Duration(watcher.Current.IntervalSeconds) * time.Second)
+		r, recovering := engine.PollMemoryHighRecovery()
+		if !recovering {
+			watcher.Poll(env, engine.Originals(), forceReload)
+			forceReload = false
+			if c.IntervalSeconds != watcher.Current.IntervalSeconds {
+				ticker.Reset(time.Duration(watcher.Current.IntervalSeconds) * time.Second)
+			}
+			c = watcher.Current
+			if runLog != nil {
+				runLog.SetDirectory(c.LogDir)
+			}
+			engine.Config = c
+			p, err := guard.BuildPlan(c, env, engine.Originals())
+			if err != nil {
+				return err
+			}
+			if *once {
+				r = engine.Reconcile(p)
+			} else {
+				r = engine.ReconcileLive(p, watcher.Revision.Generation, memoryHighRecoveryCheck(recoveryContext, watcher, env))
+			}
 		}
-		c = watcher.Current
-		if runLog != nil {
-			runLog.SetDirectory(c.LogDir)
-		}
-		engine.Config = c
-		p, e := guard.BuildPlan(c, env, engine.Originals())
-		if e != nil {
-			return e
-		}
-		r := engine.Reconcile(p)
 		if c.ResourceMode == "percent" && c.Mode == "enforce" && c.IOCalibration == "auto" && automaticIO != nil && c.IOProfile == automaticIO.Profile {
 			r.AutomaticIO = automaticIO
 			if automaticIO.State == "degraded" {
@@ -580,11 +604,14 @@ func mainErr() (result error) {
 		stable := guard.StableStatus(r)
 		if stable != lastOutput {
 			emit(r)
-			logRunStatus(runLog, r)
+			logRunStatus(runLog, r, c.MemoryHighRecovery)
 			lastOutput = stable
 		}
 		if *once {
 			return nil
+		}
+		if forceReload && engine.MemoryHighRecoveryDone() == nil {
+			continue
 		}
 	waitLoop:
 		for {
@@ -618,6 +645,8 @@ func mainErr() (result error) {
 					break waitLoop
 				}
 			case <-ticker.C:
+				break waitLoop
+			case <-engine.MemoryHighRecoveryDone():
 				break waitLoop
 			}
 		}

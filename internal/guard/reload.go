@@ -109,6 +109,30 @@ func (w *ConfigWatcher) reject(err error) bool {
 	return changed
 }
 
+// RecoveryCheck pins the generation accepted by the loop. While the recovery
+// owns the journal, the loop queues reloads. A changed source cancels a write
+// that has not started yet, even before that queued reload is processed.
+func (w *ConfigWatcher) RecoveryCheck() func() error {
+	path, seen, revision := w.Path, w.seen, w.Revision
+	return func() error {
+		if revision.State != "accepted" || revision.Generation == 0 {
+			return errors.New("memory.high recovery requires an accepted configuration")
+		}
+		if path == "" {
+			return nil
+		}
+		data, err := ReadBoundedFile(path)
+		if err != nil {
+			return err
+		}
+		digest := sha256.Sum256(data)
+		if hex.EncodeToString(digest[:]) != seen {
+			return errors.New("configuration source changed before memory.high recovery")
+		}
+		return nil
+	}
+}
+
 // Poll never discards Current on error. Validate and build the entire candidate
 // before accepting it. No cgroup mutation or journal write happens here.
 func (w *ConfigWatcher) Poll(env Environment, original map[string]string, force bool) bool {
