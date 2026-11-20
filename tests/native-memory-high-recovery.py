@@ -110,6 +110,11 @@ class Fixture:
         until(lambda: any(item["reason_code"] == reason for item in self.status().get("items", [])),
               10, f"missing reason {reason}")
 
+    def wait_recovery(self, value):
+        until(lambda: any(row["reason"] == "memory_high_recovered" and row["expected"] == str(value)
+                          for row in self.history()["memory_high_recovery"].get("events", [])),
+              15, f"recovery for {value} was not durably finalized")
+
     def controls(self):
         fields = ["cpu.max", "cpu.weight", "io.max", "io.weight", "memory.max", "memory.swap.max", "pids.max"]
         return {field: (self.group_path / field).read_text().strip() for field in fields}
@@ -125,6 +130,13 @@ class Fixture:
         self.inspect()
         command("docker", "rm", "-f", self.container)
         until(lambda: not self.group_path.exists(), 15, "fixture cgroup survived removal")
+
+    def remove_pressure_file(self):
+        # Remove the checked fixture's tmpfs allocation from the host without
+        # spawning a process that would itself be throttled in the container.
+        pid = self.inspect()["State"]["Pid"]
+        assert self.group() == self.group_path and pid == self.inspect()["State"]["Pid"]
+        Path(f"/proc/{pid}/root/dev/shm/crg-pressure").unlink()
 
 
 def pressure(group):
@@ -169,106 +181,110 @@ def main():
         item.wait_pg()
         return item
 
+    temporary = tempfile.TemporaryDirectory(prefix="crg-memory-recovery-")
     try:
         command("docker", "pull", "postgres:16-bookworm", timeout=180)
         report["postgres_image_id"] = command("docker", "image", "inspect", "--format", "{{.Id}}", "postgres:16-bookworm")
-        with tempfile.TemporaryDirectory(prefix="crg-memory-recovery-") as directory:
-            dbs_dir, his_dir = Path(directory) / "dbs", Path(directory) / "hisdbs"
-            dbs_dir.mkdir()
-            his_dir.mkdir()
-            dbs = launch(dbs_dir, "dbs")
-            dbs.external_high(38 * gib)
-            dbs.config("30GiB", interval=60)
-            dbs.start()
-            dbs.wait_high(30 * gib)
-            controls = dbs.controls()
-            before = time.monotonic()
-            dbs.external_high("max")
-            dbs.wait_high(30 * gib, 63)
-            elapsed = time.monotonic() - before
-            assert elapsed <= 62 and dbs.controls() == controls
-            until(lambda: any(event["reason"] == "memory_high_recovered" for event in dbs.history()["memory_high_recovery"].get("events", [])),
-                  5, "recovery was not durably recorded")
-            assert dbs.history()["original"] == str(38 * gib)
-            report["checks"]["dbs_30GiB_next_60s_check"] = {"elapsed_seconds": elapsed, "actual": dbs.high(),
-                                                            "original": dbs.history()["original"], "other_controls_match": True}
+        directory = temporary.name
+        dbs_dir, his_dir = Path(directory) / "dbs", Path(directory) / "hisdbs"
+        dbs_dir.mkdir()
+        his_dir.mkdir()
+        dbs = launch(dbs_dir, "dbs")
+        dbs.external_high(38 * gib)
+        dbs.config("30GiB", interval=60)
+        dbs.start()
+        dbs.wait_high(30 * gib)
+        controls = dbs.controls()
+        before = time.monotonic()
+        dbs.external_high("max")
+        dbs.wait_high(30 * gib, 63)
+        elapsed = time.monotonic() - before
+        assert elapsed <= 62 and dbs.controls() == controls
+        dbs.wait_recovery(30 * gib)
+        assert dbs.history()["original"] == str(38 * gib)
+        report["checks"]["dbs_30GiB_next_60s_check"] = {"elapsed_seconds": elapsed, "actual": dbs.high(),
+                                                        "original": dbs.history()["original"], "other_controls_match": True}
 
-            his = launch(his_dir, "hisdbs")
-            his.config("12GiB")
-            his.start()
-            his.wait_high(12 * gib)
-            first_generation = his.status().get("configuration", {}).get("generation", 1)
-            his.config("15GiB")
-            his.wait_reload(his.reload())
-            his.wait_high(15 * gib)
-            assert his.status()["configuration"]["generation"] > first_generation
-            his.config("15GiB", paused=True)
-            his.wait_reload(his.reload())
-            his.external_high("max")
-            his.wait_reason("memory_high_recovery_paused")
-            time.sleep(5)
-            assert his.high() == "max" and not his.history().get("conflict")
-            his.config("15GiB")
-            his.wait_reload(his.reload())
-            his.wait_high(15 * gib)
-            report["checks"]["hisdbs_15GiB_reload_pause_resume"] = {"actual": his.high(), "paused_for_seconds": 5}
+        his = launch(his_dir, "hisdbs")
+        his.config("12GiB")
+        his.start()
+        his.wait_high(12 * gib)
+        first_generation = his.status().get("configuration", {}).get("generation", 1)
+        his.config("15GiB")
+        his.wait_reload(his.reload())
+        his.wait_high(15 * gib)
+        assert his.status()["configuration"]["generation"] > first_generation
+        his.config("15GiB", paused=True)
+        his.wait_reload(his.reload())
+        his.external_high("max")
+        his.wait_reason("memory_high_recovery_paused")
+        time.sleep(5)
+        assert his.high() == "max" and not his.history().get("conflict")
+        his.config("15GiB")
+        his.wait_reload(his.reload())
+        his.wait_high(15 * gib)
+        his.wait_recovery(15 * gib)
+        report["checks"]["hisdbs_15GiB_reload_pause_resume"] = {"actual": his.high(), "paused_for_seconds": 5}
 
-            his.config("96MiB", paused=True)
+        his.config("96MiB", paused=True)
+        his.wait_reload(his.reload())
+        his.wait_high(96 * mib)
+        his.external_high("max")
+        his.wait_reason("memory_high_recovery_paused")
+        his.exec("dd", "if=/dev/zero", "of=/dev/shm/crg-pressure", "bs=1M", "count=160")
+        (his.folder / "query.sql").write_text("SELECT sum(i) FROM generate_series(1,100) AS i;\n")
+        baseline = query_latency(his)
+        before_pressure = pressure(his.group_path)
+        assert before_pressure["current"] > 96 * mib
+        other = his.controls()
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            during = pool.submit(query_latency, his)
+            his.config("96MiB")
             his.wait_reload(his.reload())
-            his.wait_high(96 * mib)
-            his.external_high("max")
-            his.wait_reason("memory_high_recovery_paused")
-            his.exec("dd", "if=/dev/zero", "of=/dev/shm/crg-pressure", "bs=1M", "count=160")
-            (his.folder / "query.sql").write_text("SELECT sum(i) FROM generate_series(1,100) AS i;\n")
-            baseline = query_latency(his)
-            before_pressure = pressure(his.group_path)
-            assert before_pressure["current"] > 96 * mib
-            other = his.controls()
-            with ThreadPoolExecutor(max_workers=1) as pool:
-                during = pool.submit(query_latency, his)
-                his.config("96MiB")
-                his.wait_reload(his.reload())
-                his.wait_high(96 * mib, 12)
-                pressured = during.result()
-            after_pressure = pressure(his.group_path)
-            assert after_pressure["oom_kill"] == before_pressure["oom_kill"] and his.controls() == other
-            assert after_pressure["high"] > before_pressure["high"], "workload did not experience reclaim pressure"
-            report["checks"]["above_high_reclaim_and_sql_latency"] = {
-                "actual": his.high(), "before": before_pressure, "after": after_pressure,
-                "sql_baseline": baseline, "sql_during_recovery": pressured, "other_controls_match": True,
-            }
-            # The next test intentionally relaxes high from the host. Do it
-            # before launching cleanup inside the over-budget cgroup.
-            his.external_high("max")
-            his.wait_reason("memory_high_recovery_backoff")
-            time.sleep(5)
-            assert his.high() == "max" and his.history()["conflict"]
-            report["checks"]["repeated_overwrite"] = {"actual": his.high(), "journal": his.history()}
-            his.exec("rm", "/dev/shm/crg-pressure")
+            his.wait_high(96 * mib, 12)
+            pressured = during.result()
+        after_pressure = pressure(his.group_path)
+        assert after_pressure["oom_kill"] == before_pressure["oom_kill"] and his.controls() == other
+        assert after_pressure["high"] > before_pressure["high"], "workload did not experience reclaim pressure"
+        report["checks"]["above_high_reclaim_and_sql_latency"] = {
+            "actual": his.high(), "before": before_pressure, "after": after_pressure,
+            "sql_baseline": baseline, "sql_during_recovery": pressured, "other_controls_match": True,
+        }
+        his.remove_pressure_file()
+        his.wait_recovery(96 * mib)
+        his.external_high("max")
+        until(lambda: any(row["reason"] == "memory_high_recovery_backoff"
+                          for row in his.history()["memory_high_recovery"]["events"]),
+              10, "repeated drift was not held in the journal")
+        time.sleep(5)
+        assert his.high() == "max" and his.history()["conflict"]
+        report["checks"]["repeated_overwrite"] = {"actual": his.high(), "journal": his.history()}
 
-            old_id, old_inode = his.container, his.group_path.stat().st_ino
-            old_identity = his.journal()["identity"]
-            his.remove()
-            fixtures.remove(his)
-            report["cleanup"].append({"name": "hisdbs-original", "absent": True})
-            replacement = launch(his_dir, "hisdbs-new")
-            replacement.config("128MiB", enabled=False)
-            replacement.start()
-            replacement.wait_high(128 * mib)
-            assert replacement.container != old_id and replacement.group_path.stat().st_ino != old_inode
-            until(lambda: replacement.journal()["identity"] != old_identity, 5, "stale journal was reused")
-            archived = json.loads((his_dir / "runtime/journal.previous.json").read_bytes())
-            assert archived["identity"] == old_identity and archived["mutations"]["memory.high:"]["conflict"]
-            replacement.external_high("max")
-            replacement.wait_reason("external_conflict")
-            assert replacement.high() == "max"
-            report["checks"]["replacement_id_and_legacy_default"] = {"new_identity": True, "old_journal_retained": True}
-            report["events"] = dbs.logs() + replacement.logs()
-            assert any(row["event"] == "memory_high_recovered" for row in report["events"])
-            assert any(row["event"] == "memory_high_recovery_backoff" for row in report["events"])
-            report["phase"] = "passed"
+        old_id, old_inode = his.container, his.group_path.stat().st_ino
+        old_identity = his.journal()["identity"]
+        his.remove()
+        fixtures.remove(his)
+        report["cleanup"].append({"name": "hisdbs-original", "absent": True})
+        replacement = launch(his_dir, "hisdbs-new")
+        replacement.config("128MiB", enabled=False)
+        replacement.start()
+        replacement.wait_high(128 * mib)
+        assert replacement.container != old_id and replacement.group_path.stat().st_ino != old_inode
+        until(lambda: replacement.journal()["identity"] != old_identity, 5, "stale journal was reused")
+        archived = json.loads((his_dir / "runtime/journal.previous.json").read_bytes())
+        assert archived["identity"] == old_identity and archived["mutations"]["memory.high:"]["conflict"]
+        replacement.external_high("max")
+        replacement.wait_reason("external_conflict")
+        assert replacement.high() == "max"
+        report["checks"]["replacement_id_and_legacy_default"] = {"new_identity": True, "old_journal_retained": True}
+        report["events"] = dbs.logs() + replacement.logs()
+        assert any(row["event"] == "memory_high_recovered" for row in report["events"])
+        assert any(row["event"] == "memory_high_recovery_backoff" for row in report["events"])
+        report["phase"] = "passed"
     except BaseException as error:
         report.update(phase="failed", error=str(error))
+        report["last_status"] = {item.folder.name: item.status() for item in fixtures}
+        report["events"] = [event for item in fixtures for event in item.logs()]
         raise
     finally:
         for item in fixtures:
@@ -278,6 +294,7 @@ def main():
             except Exception as error:
                 report["cleanup"].append({"name": item.folder.name, "error": str(error), "absent": False})
                 report["phase"] = "failed"
+        temporary.cleanup()
         args.output.write_text(json.dumps(report, indent=2) + "\n")
         assert all(row["absent"] for row in report["cleanup"])
 
